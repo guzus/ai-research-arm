@@ -4,15 +4,16 @@ title: Apple
 type: entity
 aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC, "M8 Ultra", "macOS Full Disk Access"]
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
-description: Consumer-hardware giant tightening macOS Full Disk Access for AI agents, saying they substantially raise the risk of broad access to files, messages, mail and browsing history.
+description: Consumer-hardware giant; a judge ordered OpenAI to produce Apple interview files on ex-Apple hardware recruits, while OpenAI says an ex-employee took 100+ product-plan files to Apple.
 created_at: 2026-06-08
-timestamp: 2026-10-03T00:00:00Z
+timestamp: 2026-10-15T00:00:00Z
 market:
   ticker: AAPL
   exchange: NASDAQ
   symbol: NASDAQ:AAPL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
@@ -262,6 +263,15 @@ not announced.
   [[agentic-ai-security]] and [[google]]
   (TechCrunch, The Verge, Ars Technica;
   ARA daily digest 2026-10-03).
+
+## OpenAI ordered to produce Apple interview files (2026-10-15)
+
+A judge ordered [[openai]] to hand over materials on ex-Apple hardware
+recruits within **5 and 14 days**, plus forensic device images. OpenAI
+countered that an ex-employee took **100+** product-plan files to Apple
+leadership. This is discovery in the existing talent/IP fight, not a new
+suit (TechCrunch, The Verge, Bloomberg via @rohanpaul_ai; ARA daily digest
+2026-10-15).
 
 ## Open questions
 

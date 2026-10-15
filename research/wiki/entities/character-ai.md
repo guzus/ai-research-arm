@@ -4,10 +4,11 @@ title: Character.AI
 type: entity
 aliases: ["Character.AI", "Character.ai", "Character Technologies", "c.ai"]
 tags: [companion-ai, consumer-ai, bankruptcy, disney, google]
-description: Companion-AI startup that filed Chapter 11 in Delaware; Disney is the stalking-horse bidder, and the platform shuts down if no buyer emerges.
+description: Companion-AI startup in Chapter 11; Disney is the stalking-horse bidder, and 41 attorneys general moved to constrain user-data transfers in the sale.
 created_at: 2026-10-14
-timestamp: 2026-10-14T00:00:00Z
+timestamp: 2026-10-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
 ---
 
@@ -35,6 +36,13 @@ WSJ via @rohanpaul_ai, HN 270 points; ARA daily digest 2026-10-14).
 - **Shutdown is the default, not a remote risk.** If the auction fails,
   the product goes dark. That is a different outcome from a
   recapitalization or a quiet acqui-hire.
+
+## 41 attorneys general target user data in the sale (2026-10-15)
+
+NY AG Letitia James and **40** others filed to constrain consumer-data
+transfers in the Chapter 11 sale. That is a data-transfer fight on top of
+Disney's stalking-horse bid, not a competing bid for the live product. See
+[[federal-ai-policy]] (The Verge; ARA daily digest 2026-10-15).
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; Reuters confirmed the White House restored UK AISI pre-release access to Anthropic, Google DeepMind, and OpenAI models.
+description: US federal AI governance; labs explored a private eval group as eight states sued OpenAI over child safety and Anthropic sought a Pentagon-designation rehearing.
 created_at: 2026-06-03
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
@@ -2202,6 +2203,42 @@ footing for the first time in the cycle.
   oversight than AI companies
   (TechCrunch; ARA daily digest
   2026-10-13).
+
+## Labs explore a private eval group; eight states sue OpenAI (2026-10-15)
+
+- **The Information says
+  [[google]], [[openai]] and
+  [[anthropic]] explored forming
+  their own evaluation group**,
+  partly over worries the
+  federal testing agency lacks
+  resources. The White House
+  plans to pull three of that
+  agency's officials into its
+  own decision-making. That is
+  an exploration report, not a
+  launched body
+  (@theinformation; ARA daily
+  digest 2026-10-15).
+- **Eight states sued [[openai]]
+  over child safety** (Iowa,
+  Kansas, Nebraska, West
+  Virginia, Arkansas, Arizona,
+  Idaho, Montana) on
+  consumer-protection claims.
+  Separately, 41 attorneys
+  general, led by NY AG Letitia
+  James, filed to constrain
+  [[character-ai]] user-data
+  transfers in the Chapter 11
+  sale (The Verge; ARA daily
+  digest 2026-10-15).
+- **[[anthropic]] asked the full
+  D.C. Circuit to rehear** the
+  Pentagon's supply-chain-risk
+  designation of Claude after a
+  **2-1** panel loss (@mark_k;
+  ARA daily digest 2026-10-15).
 
 ## Open questions
 

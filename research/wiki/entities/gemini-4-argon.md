@@ -4,10 +4,11 @@ title: Gemini 4 Argon
 type: entity
 aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon", "Gemini 4 Carbon", "Barium-B", "Argon for Robotics"]
 tags: [model-release, google-deepmind, frontier-model, fairwind, cyber-defense, pricing]
-description: Google's Gemini 4 flagship, now generally available on the paid API, AI Studio, Gemini app, Search AI Mode and Antigravity; independent coding benches split sharply.
+description: Google's Gemini 4 flagship, now generally available; day-two independent benches put it 3rd of 35 on KernelBench-Mega (27.0×) behind Opus 5.5 and Sonnet 5.5.
 created_at: 2026-10-01
-timestamp: 2026-10-14T00:00:00Z
+timestamp: 2026-10-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
@@ -193,3 +194,29 @@ change. See [[google]] (The Decoder; ARA daily digest
   a first-party table
   (@scaling01; ARA daily digest
   2026-10-14).
+
+## Day-two independent benches (2026-10-15)
+
+- **Argon placed 3rd of 35 on
+  KernelBench-Mega (27.0×)**,
+  behind [[claude-opus-5-5|Opus
+  5.5]] (**35.5×**) and
+  [[claude-sonnet-5-5|Sonnet
+  5.5]] (**32.1×**). @theo says
+  it was wrong on over **50%**
+  of claims in his own codebase
+  tests, repeating yesterday's
+  false-claim read. Latent Space
+  says most benchmarks, like
+  CursorBench, independently
+  confirm Google's numbers. HN
+  peaked at **1,360 / 963**
+  before the story left the
+  page. Ethan Mollick said
+  Gemini 4 "feels quite
+  different" from models that
+  seem to distill Claude or GPT.
+  See [[google]]
+  (@elliotarledge, @theo,
+  Latent Space, @emollick; ARA
+  daily digest 2026-10-15).

@@ -2,12 +2,14 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; replaced git with in-house Scion after a 12× jump in merges, and says it cut reasoning-token extraction 90–99%.
+description: AI safety lab behind Claude; opened a Singapore office and signed an AI-safety MOU, while Reuters reports a 500 MW Osaka deal with NTT Data.
 created_at: 2026-05-24
-timestamp: 2026-10-14T00:00:00Z
+timestamp: 2026-10-15T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
+  - {title: "ARA model ticket — Anthropic Singapore office", path: research/models/tickets/anthropic-singapore-office-2026-10.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
@@ -3139,3 +3141,96 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   (@testingcatalog,
   @kimmonismus; ARA daily
   digest 2026-10-14).
+
+## Singapore office, Opaque, and a Pentagon rehearing (2026-10-15)
+
+- **Anthropic opened a Singapore
+  office**, its fifth in
+  Asia-Pacific, and signed an
+  AI-safety MOU with the
+  Government of Singapore. A
+  recap of the blog lists
+  GovTech's **1,500+** engineers
+  on Claude Code, plus DBS, GIC,
+  and Grab. Reuters reports it
+  is near a **500 MW** Osaka
+  data-center deal with NTT
+  Data; those terms are
+  reported, not announced. See
+  [[ai-capex]] and ticket
+  `anthropic-singapore-office-2026-10`
+  (@AnthropicAI, Reuters,
+  Nikkei; ARA daily digest
+  2026-10-15).
+- **Anthropic licensed Opaque
+  Systems' confidential-AI
+  tech** and is hiring CEO
+  Aaron Fulkerson and CTO
+  Rishabh Poddar. Opaque had
+  raised **$55.5M** at a
+  **$300M** valuation; the fate
+  of customers such as
+  ServiceNow and Accenture is
+  unclear (@rohanpaul_ai; ARA
+  daily digest 2026-10-15).
+- **Anthropic asked the full
+  D.C. Circuit to rehear** the
+  Pentagon's supply-chain-risk
+  designation of Claude after
+  losing **2-1** at the panel
+  stage. See
+  [[federal-ai-policy]]
+  (@mark_k; ARA daily digest
+  2026-10-15).
+- **A sunshowers.io post says
+  Scion copies Meta's Mononoke**
+  "down to the terminology"
+  (**200** HN points).
+  Commenters quipped that "Not
+  Invented Here has turned into
+  Not Invented By Our Agents."
+  The original Anthropic post
+  hit **633 / 607**. See
+  [[meta]] (HN; ARA daily
+  digest 2026-10-15).
+- **Claude Code desktop was
+  rebuilt around parallel
+  sessions.** Each parallel
+  task now runs as a nested
+  session that reports back to
+  the main thread, with a
+  session hub and reusable
+  environments. CLI **2.1.299**
+  auto-compacts sessions over
+  **200K** tokens after ~54
+  idle minutes. Managed Agents,
+  the Messages API, and the
+  Claude SDK now emit
+  OpenTelemetry traces. See
+  [[dynamic-workflows]]
+  (@ClaudeDevs, @trq212,
+  @SemiAnalysis_,
+  @testingcatalog; ARA daily
+  digest 2026-10-15).
+- **International chief
+  Guillaume Princen said
+  open-weight models carry "by
+  definition, more risk,"**
+  while [[nvidia|Jensen Huang]]
+  pitched open weights as
+  Europe's way to close the
+  gap. See [[open-weights]]
+  (Bloomberg via @rohanpaul_ai;
+  ARA daily digest 2026-10-15).
+- **A rumor that Claude Fable
+  5.5 ships "tomorrow"** comes
+  from an anonymous account
+  with no sourcing. The model
+  ID was spotted in Azure
+  configs earlier; the ticket
+  is in-testing on that catalog
+  record, still unverified. See
+  [[claude-fable-5]]
+  (@iruletheworldmo; ARA daily
+  digest 2026-10-15 and ticket
+  `anthropic-claude-fable-5-5-2026-10`).

@@ -12,12 +12,12 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.
-- [[anthropic]] — AI safety lab behind Claude; replaced git with in-house Scion after a 12× jump in merges, and says it cut reasoning-token extraction 90–99%.
-- [[apple]] — Consumer-hardware giant tightening macOS Full Disk Access for AI agents after saying they substantially raise file-and-message risk.
+- [[anthropic]] — AI safety lab behind Claude; opened a Singapore office and signed an AI-safety MOU, while Reuters reports a 500 MW Osaka deal with NTT Data.
+- [[apple]] — Consumer-hardware giant; a judge ordered OpenAI to produce Apple interview files on ex-Apple hardware recruits.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
-- [[character-ai]] — Companion-AI startup that filed Chapter 11 in Delaware; Disney is the stalking-horse bidder, and the platform shuts down if no buyer emerges.
+- [[character-ai]] — Companion-AI startup in Chapter 11; Disney is the stalking-horse bidder, and 41 attorneys general moved to constrain user-data transfers in the sale.
 - [[claude-fable-5]] — Anthropic's Mythos-class pair; an expanded Cyber Verification Program now gives vetted security pros access to Mythos 5.1, Opus 5.5 and Sonnet 5.5.
 - [[claude-haiku-5-5]] — Anthropic's 2026-10-07 small Claude 5.5 model; $0.10/$0.50 to 100K tokens then $0.50/$2.50, first Haiku with effort controls.
 - [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; now also the safeguard-reroute target for Fable 5.
@@ -27,7 +27,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[claude-sonnet-5]] — Anthropic's 2026-06-30 mid-tier model, superseded as the Sonnet SKU by Claude Sonnet 5.5 (2026-09-28); $2/$10 intro pricing was made permanent on 2026-08-10.
 - [[claude-sonnet-5-5]] — Anthropic's 2026-09-28 mid-tier Claude 5.5 model at unchanged $2/$10; vendor Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, with the 30% cheaper claim a per-task assertion, not a price cut.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY); in talks at a $40B+ valuation on a round that could exceed $1B (2026-08-13).
-- [[coreweave]] — GPU-as-a-service neocloud; FY26Q2 revenue $2.58B (+112% Y/Y) with a ~$104B contracted backlog (+246%) and ~$5.7B cash burned in the quarter.
+- [[coreweave]] — GPU-as-a-service neocloud; 9.625% 2032 notes fell below 85 cents with yields near 15%, and shares dropped as much as 17%, against a ~$104B backlog.
 - [[crusoe]] — AI-infrastructure builder that cancelled a $1.25B Boom Superpower turbine order at the Abilene campus supplying OpenAI, after a $3.9B Series F at $30.9B.
 - [[cursor]] — AI coding tool/IDE maker Anysphere; SpaceXAI is a named defendant in Buist v. Anthropic PBC, after the reported $60B SpaceX deal and OpenAI's November 12 model-access cutoff.
 - [[decart]] — Chip-efficiency and world-model startup; WSJ, Bloomberg, and Reuters report Amazon talks at about $7 billion.
@@ -47,7 +47,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-3-7-flash]] — Google's Flash-tier follow-on (2026-08-13) at 50% below 3.6 pricing; superseded as the cheap workhorse by Gemini 3.8 Flash (2026-09-03) after gaining agent-based video analysis on 2026-09-02.
 - [[gemini-3-8-flash]] — Google's third Flash SKU in six weeks, shipped 2026-09-03 at the same $0.75/$3.75 intro price as 3.7 through year-end, plus a gated 3.8 Flash Cyber defender model via Fairwind.
 - [[gemini-3-8-live]] — Google's live-dialogue pair in public preview; 3.8 Live takes the Artificial Analysis speech-to-speech lead at 82.6 and about $0.84/hour, roughly 80% cheaper than OpenAI's GPT-Live 1.
-- [[gemini-4-argon]] — Google's Gemini 4 flagship, now generally available on the paid API, AI Studio, Gemini app, Search AI Mode and Antigravity; independent coding benches split sharply.
+- [[gemini-4-argon]] — Google's Gemini 4 flagship, now generally available; day-two independent benches put it 3rd of 35 on KernelBench-Mega (27.0×) behind Opus 5.5 and Sonnet 5.5.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; EmbeddingGemma 2 (740M–270M) is the new multimodal embedder built on Gemma 4.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
 - [[google]] — Hyperscaler behind Gemini; Gemini 4 Argon is now generally available after a Fairwind-gated preview.
@@ -83,7 +83,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[noam-shazeer]] — Transformer co-inventor and Character.AI founder; the company he left behind filed Chapter 11 in 2026-10, with Disney as stalking-horse bidder.
 - [[nous-research]] — Open-weights lab behind Hermes Agent; closed a $90M Series B at $1.5B led by Robot Ventures.
 - [[nvidia]] — Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.
-- [[openai]] — Frontier lab behind the GPT family; an employee-planted recorder led to a firing and an FBI arrest, with no indication weights or customer data were taken.
+- [[openai]] — Frontier lab behind the GPT family; an unsealed complaint names engineer Abdulrahman Alfozan in the office-bugging case, with a detention hearing set for Oct 19.
 - [[openrouter]] — LLM-routing API now under Stripe; Deedy Das reconstructed public token pages at roughly $29.1M a week (~$1.5B annualized), with Anthropic at 36% of dollars.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -131,10 +131,10 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; OpenAI's employee-planted recorder went to the FBI after Anthropic's months-from-IoT-replicator warning.
-- [[ai-capex]] — The historically large compute buildout; Microsoft said Maia becomes its primary inference system from 2027 at multi-gigawatt scale.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; the unsealed OpenAI bugging complaint names an engineer who queried an internal calendar agent before planting a recorder.
+- [[ai-capex]] — The historically large compute buildout; CoreWeave's 2032 bonds fell into distress territory as banks reportedly try to offload $38B of Oracle-linked data-center debt.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
-- [[federal-ai-policy]] — US federal AI governance; Reuters confirmed the White House restored UK AISI pre-release access to Anthropic, Google DeepMind, and OpenAI models.
+- [[federal-ai-policy]] — US federal AI governance; labs explored a private eval group as eight states sued OpenAI over child safety and Anthropic sought a Pentagon-designation rehearing.
 - [[open-weights]] — Open-weight models closing on the frontier; Nous Research closed a $90M Series B at $1.5B for Hermes Agent, a day after Mistral previewed Large 4 weights.

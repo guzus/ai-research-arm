@@ -4,15 +4,16 @@ title: CoreWeave
 type: entity
 aliases: [CoreWeave, CRWV, "CoreWeave, Inc."]
 tags: [neocloud, gpu-cloud, ai-infrastructure, take-or-pay]
-description: NASDAQ-listed GPU-as-a-service neocloud with a ~$104B contracted backlog and revenue up 112% Y/Y to $2.58B in FY26Q2 (filed 2026-08-11), with revenue concentrated in Microsoft, OpenAI, and Meta — and ~$5.7B of cash burned in the quarter per The Information.
+description: GPU-as-a-service neocloud; 9.625% 2032 notes fell below 85 cents with yields near 15%, and shares dropped as much as 17%, against a ~$104B backlog.
 created_at: 2026-05-24
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-10-15T00:00:00Z
 market:
   ticker: CRWV
   exchange: NASDAQ
   symbol: NASDAQ:CRWV
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
   - {title: "ARA daily digest 2026-08-12", path: research/digest/2026-08-12-digest.md}
@@ -60,6 +61,17 @@ point … as our scale began to translate into expanding operating leverage" —
 while The Information separately reports **~$5.7B of cash burned in the
 quarter** and debt priced **above 9% yields** this month, the cost-of-capital
 counterweight to the backlog growth (ARA daily digest 2026-08-13).
+
+## 2032 bonds fall into distress (2026-10-15)
+
+The **9.625% 2032 notes dropped below 85 cents**, with yields near **15%**, and
+the shares fell as much as **17%**. Bloomberg says Q2 net interest expense
+(**$640M**) exceeded the operating loss (**$626M**). CoreWeave points to a
+~**$104B** backlog. Banks are also reportedly trying to offload **$38B** of
+Oracle-linked data-center construction debt. Oracle bonds weakened alongside
+it. A hot September CPI print the same day muddies how much is AI-specific.
+See [[ai-capex]] and [[neocloud]] (Bloomberg via @rohanpaul_ai, HN 239 points;
+ARA daily digest 2026-10-15).
 
 ## Open questions
 - **Counterparty risk.** With ~22% of backlog tied to OpenAI (private, ~$25B/yr
