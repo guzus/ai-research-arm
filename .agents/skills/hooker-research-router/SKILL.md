@@ -23,13 +23,16 @@ Core principle: a Hooker item is only worth routing when it contains a concrete 
 ```bash
 REPO="$(git rev-parse --show-toplevel)"
 ROUTER="$REPO/.agents/skills/hooker-research-router/scripts/hooker_research_router.py"
-python3 "$ROUTER" plan --repo "$REPO" --days 7 --topics auto --max 3 \
-  --out /tmp/hooker-research-plan.json
+PLAN="$(mktemp "${TMPDIR:-/tmp}/hooker-research-plan.XXXXXX")"  # created 0600
+python3 "$ROUTER" plan --repo "$REPO" --days 7 --topics auto --max 3 --out "$PLAN"
+echo "$PLAN"
 ```
+
+The plan holds raw Hooker text, so it stays owner-only: the script rewrites it 0600, and `dispatch` refuses a plan that is not yours or is group/world-writable. Shell variables may not survive between commands, so reuse the printed path.
 
 Add `--backend <selector>` only when the user names a backend; it must be a key or alias in `data/agent-backends.json`. Without it the workflow uses its default lane.
 
-2. Inspect `/tmp/hooker-research-plan.json`.
+2. Inspect the plan at `$PLAN`.
 
 Accept only candidates where:
 - `overlap.overlaps_existing` is `false`
@@ -43,7 +46,7 @@ On `workflow_dispatch`, `generative-research.yml` uses the `topic` itself as the
 4. After the yes, run:
 
 ```bash
-python3 "$ROUTER" dispatch --plan /tmp/hooker-research-plan.json --repo "$REPO" --max 3
+python3 "$ROUTER" dispatch --plan "$PLAN" --repo "$REPO" --max 3
 ```
 
 5. Report exactly what was dispatched and what was skipped for overlap, weak signal, or no approval.

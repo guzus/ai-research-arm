@@ -11,6 +11,7 @@ import re
 import ssl
 import subprocess
 import sys
+import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -20,6 +21,8 @@ from typing import Any
 
 
 DEFAULT_HOOKER_URL = "https://hooker.guzus.xyz"
+# The plan holds raw Hooker text, so it is written owner-only (see write_json).
+DEFAULT_PLAN = str(Path(tempfile.gettempdir()) / "hooker-research-plan.json")
 DEFAULT_TOPICS = ["bookmarks", "hooker-bookmarks", "ara-bookmarks", "research", "ara-research"]
 REQUIRED_TAGS = {"research", "gen-research", "research-required", "required-research", "deep-research"}
 ROUTE_PHRASES = (
@@ -90,8 +93,17 @@ def load_json(path: Path) -> Any:
 
 
 def write_json(path: Path, value: Any) -> None:
+    # mkstemp creates the file 0600; replacing (not truncating) an existing
+    # path also drops whatever mode that file had.
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+    fd, tmp = tempfile.mkstemp(dir=path.parent, prefix=f".{path.name}.")
+    try:
+        with os.fdopen(fd, "w") as fh:
+            fh.write(json.dumps(value, indent=2, sort_keys=True) + "\n")
+        os.replace(tmp, path)
+    except BaseException:
+        Path(tmp).unlink(missing_ok=True)
+        raise
 
 
 def token() -> str:
@@ -382,7 +394,14 @@ def make_plan(args: argparse.Namespace) -> int:
 
 def dispatch(args: argparse.Namespace) -> int:
     repo = Path(args.repo).expanduser().resolve()
-    plan = load_json(Path(args.plan))
+    plan_path = Path(args.plan)
+    if not plan_path.exists():
+        raise SystemExit(f"No plan at {plan_path}; run `plan` first.")
+    st = plan_path.stat()
+    # A plan in a shared temp dir could have been planted or edited by someone else.
+    if st.st_uid != os.getuid() or st.st_mode & 0o022:
+        raise SystemExit(f"Refusing {plan_path}: a plan must be owned by you and not group/world-writable.")
+    plan = load_json(plan_path)
     selected = plan.get("selected", []) if isinstance(plan, dict) else []
     if not selected:
         print("No selected topics to dispatch.")
@@ -428,11 +447,11 @@ def parser() -> argparse.ArgumentParser:
         default="",
         help="selector or alias from data/agent-backends.json; empty uses the workflow default",
     )
-    plan.add_argument("--out", default="/tmp/hooker-research-plan.json")
+    plan.add_argument("--out", default=DEFAULT_PLAN)
     plan.set_defaults(func=make_plan)
 
     disp = sub.add_parser("dispatch")
-    disp.add_argument("--plan", default="/tmp/hooker-research-plan.json")
+    disp.add_argument("--plan", default=DEFAULT_PLAN)
     disp.add_argument("--repo", default=os.getcwd())
     disp.add_argument("--max", type=int, default=3)
     disp.set_defaults(func=dispatch)
