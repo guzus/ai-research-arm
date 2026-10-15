@@ -24,10 +24,11 @@ options:
   you want to iterate on, or when you want to read the result
   immediately.
 - **Route to GitHub workflow** — ~20–45 min on the self-hosted
-  runner. Dispatches `generative-research.yml` with
-  `backend=deepseek-v4-flash` by default. Your chat is freed instantly. The runner
-  produces a longer article (4500–7000 words target, ≥20 cited
-  references) and pushes the commit directly to `main`.
+  runner. Dispatches `generative-research.yml` on the registry's
+  default backend (the `generative-research-default` lane in
+  `data/agent-backends.json`) unless the user names one. Your chat is
+  freed instantly. The runner produces a longer article (4500–7000
+  words target, ≥20 cited references) and publishes it to `main`.
   Recommended for substantive topics where you want maximum depth
   without spending in-chat time.
 
@@ -40,14 +41,24 @@ After the user picks:
 
 ## PATH A — Route to the GitHub workflow
 
-Dispatch the workflow with the user's topic. Use `deepseek-v4-flash` as
-the backend unless the user explicitly asked for Claude in their brief.
+Dispatch the workflow with the user's topic. The backend comes from
+`data/agent-backends.json`, never from memory: omit `-f backend` and the
+workflow runs the `generative-research-default` lane. Pass
+`-f backend=<selector>` only when the user named one, and only if it
+matches a selector, backend key or alias in the registry; otherwise show
+the list and ask.
 
 ```bash
+jq -r '.lanes["generative-research-default"].backend' data/agent-backends.json
+jq -r '.backends | to_entries[] | select(.value.generative.exposed == true)
+  | [.value.generative.selector, .key, .value.display_name] | @tsv' data/agent-backends.json
+
 gh workflow run generative-research.yml \
-  -f topic="<the exact topic the user gave>" \
-  -f backend=deepseek-v4-flash
+  -f topic='<the exact topic the user gave>'
 ```
+
+The shared `gen-research-dispatch` skill covers the same dispatch,
+including X status URLs (`twitter_url`) and finding the run.
 
 Then wait briefly for the run to register and surface its URL:
 
@@ -64,9 +75,9 @@ Report to the user in one short message:
 - The run URL.
 - The command to watch live: `gh run watch <id>`.
 - Expected runtime (~20–45 min) and the destination
-  (`research/generative/`). The runner pushes the commit, so the
+  (`research/generative/`). The runner publishes the commit, so the
   article shows up at https://ara.guzus.xyz/research/<slug>
-  after the next Vercel deploy.
+  after the site redeploys.
 
 Then STOP. Do not run any research or write the article locally
 in this session.
@@ -412,7 +423,7 @@ commit):
 ```bash
 uv run python scripts/write_generative_research.py \
   --topic "<the exact topic the user gave>" \
-  --model "claude-opus-4-7" \
+  --model "<the exact model id this session runs on>" \
   --source "local" \
   --kind fragment \
   --html-body /tmp/gen-research.ara.md
