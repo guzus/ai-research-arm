@@ -1,0 +1,4 @@
+interface:
+  display_name: "Korean Research Backfill"
+  short_description: "Publish Korean versions of ARA research articles"
+  default_prompt: "Use $gen-research-ko-backfill to generate and publish a Korean version of this generative research article."
