@@ -3,7 +3,7 @@ slug: amd-world-labs-acquisition-2026-09
 title: AMD reported to acquire Fei-Fei Li's World Labs for $8.2B
 company: AMD / World Labs
 model: null
-status: rumored
+status: closed
 status_note: |
   **One source, one line, no primary confirmation.** @beincrypto's 2026-09-30
   headline roundup of SEP 29 news, item 5: "$AMD agreed to acquire Fei-Fei Li's
@@ -45,12 +45,14 @@ verification: unverified
 sources:
   - https://x.com/beincrypto/status/2105146555804336266
 created_at: 2026-09-30
-updated_at: 2026-09-30
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-15
+closed_at: 2026-10-15
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-09-30
     change: "Created — RUMORED / unverified. @beincrypto's daily headline list for SEP 29 (posted 2026-09-30 04:03 UTC) states as item 5: '$AMD agreed to acquire Fei-Fei Li's World Labs for $8.2 billion to advance physical-world AI.' That is the ENTIRE evidence base in this cycle's fetch — one line, one aggregator, no named outlet, no AMD or World Labs statement, no filing, and no second account anywhere in 131 retained signal groups mentioning the deal. Status rumored and verification unverified accordingly, notwithstanding the definite 'agreed to acquire' phrasing: the canonical lifecycle reserves 'confirmed' for an official announcement, primary-source news or multi-source corroboration, and none of the three is present. TWO THINGS RAISE THE PRIOR AND NEITHER SUBSTITUTES FOR A SOURCE. First, the other nine items in the same list are verifiable against this cycle's independent signal — the White House accord ([[whitehouse-superintelligence-accord-2026-09]]), the OpenAI DevDay launches ([[openai-dots-agents-2026-09]], [[openai-gpt-6-1-sol-2026-09]]), the Anthropic IPO prospectus figures ([[anthropic-ipo-2026-06]]) and the GPT-6.1 Astra cancellation ([[openai-gpt-6-1-astra-shelved-2026-09]]) — so the compiler is not inventing items wholesale. Second, the claim is specific in the way real deal reporting is: named parties, a one-decimal price, a stated strategic rationale. If real this would be a chip vendor buying a model company outright rather than investing or licensing, which is a departure from the NVIDIA pattern tracked at [[nvidia-ssi-investment-2026-07]] and [[nvidia-poolside-license-2026-08]], and would put AMD directly into world models against [[odyssey-3-world-model-2026-09]]. FALSIFIER: an acquisition this size is an 8-K event for a US-listed acquirer, so primary confirmation should appear within days; if it does not, close as stale-rumor-unverified rather than let a single-line roundup entry harden into a fact through repetition."
+  - ts: 2026-10-15
+    change: "Closed — stale-rumor-unverified. Fifteen daily cycles since the single-line @beincrypto roundup item (2026-09-30) with no corroboration: no AMD press release or 8-K, no World Labs statement, no named outlet, and no second account in any later cycle's signal, including today's 152 retained groups. The ticket's own falsifier (an acquisition this size is a disclosure event within days) fired. Closed without prejudice; a primary confirmation would open a successor that links here."
 ---
 
 This ticket exists mainly to stop a single line in a crypto-news roundup from
@@ -79,3 +81,5 @@ opposite bet, made from a much weaker share position — plausible precisely bec
 the neutral-supplier slot is taken.
 
 Resolution should take days, not cycles. Until then: one line, one source.
+
+**2026-10-15 — closed as stale-rumor-unverified.** Fifteen cycles passed with no corroboration of any kind.

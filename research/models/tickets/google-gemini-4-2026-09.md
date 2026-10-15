@@ -5,6 +5,15 @@ company: Google / DeepMind
 model: Gemini 4
 status: released
 status_note: |
+  **2026-10-15 — day-2 follow-through, status unchanged (released).** @GoogleDeepMind
+  (2026-10-14 17:25 UTC) posted a science thread: quantum computing, fusion and protein
+  design results, including five lab-verified serine esterases designed in hours.
+  DeepMind's own handle now states the scientist programme: 10,000 scientists get the
+  highest Antigravity usage tier free for 6 months. Before this it rested on a
+  researcher RT. @ScaleAILabs (RT'd by @demishassabis) puts Argon #1 on its Humanity's
+  Sixth Sense benchmark at 55.4%, ahead of GPT-6 Astra at 53.6%. @OfficialLoganK
+  posted a launch conversation with Sergey Brin.
+
   **2026-10-14 — RELEASED: global rollout on 2026-10-13.** @GoogleAI (16:07 UTC):
   "Gemini 4 Argon is now rolling out globally." @OfficialLoganK (16:04 UTC): live
   in the Gemini API, for Pro + Ultra subscribers in the Gemini App, and for Ultra
@@ -103,8 +112,13 @@ sources:
   - "https://x.com/ntaylormullen/status/2110330405589008534"
   - "https://x.com/elliscrosby/status/2110322418330083811"
   - "https://x.com/JordanFrery/status/2110341416790683878"
+  - "https://x.com/GoogleDeepMind/status/2110421861435879476"
+  - "https://x.com/GoogleDeepMind/status/2110421871103730104"
+  - "https://x.com/GoogleDeepMind/status/2110421873242861711"
+  - "https://x.com/ScaleAILabs/status/2110455008450040176"
+  - "https://x.com/OfficialLoganK/status/2110420958737813612"
 created_at: 2026-09-24
-updated_at: 2026-10-14
+updated_at: 2026-10-15
 closed_at: null
 closed_reason: null
 history:
@@ -126,6 +140,8 @@ history:
     change: "Confirmed, unchanged — launch-watch chatter, no general availability. @OfficialLoganK posted the single word 'Gemini' (2026-10-13 02:39 UTC). Twelve hours later, replies still note that nothing has launched (@madhav1). Replies to a @testingcatalog post describe a model appearing on a Google quotas page with 'predecessor of an upcoming model' wording (@linlinkyyb, @harshit10sehgal). The underlying post is not in this signal, so this is logged, not adopted. Business Insider Japan (relayed by @hijiri_bcg) reports that Google staff are testing a next-generation Gemini codenamed 'Carbon' that employees rate as comparable to Opus 5.5. That is the outlet-level version of the single relay logged on 2026-10-12, but it is still not adopted as a separate artifact. A Polymarket market on Gemini 4.0 release timing is active (@SheikhSilicon). No mapping was added this cycle because this run could not reach the Polymarket API to read IDs. Status stays confirmed: access is still the Fairwind partner list."
   - ts: 2026-10-14
     change: "CONFIRMED -> RELEASED; verification stays confirmed; title updated. Google rolled Gemini 4 Argon out globally on 2026-10-13. @GoogleAI (16:07 UTC): 'Gemini 4 Argon is now rolling out globally.' @OfficialLoganK (16:04 UTC): available in the Gemini API, to Pro + Ultra subscribers in the Gemini App, and to Ultra subscribers in Antigravity, after more than 100,000 Google staff tested it over the last month and Fairwind/early-access customers used it for two weeks. @GoogleAI's availability post adds the paid API tier, AI Studio and Android Studio for Ultra subscribers, Gemini for business, AI Mode in Search for Pro/Ultra, a 6-month free top-tier Antigravity programme for scientists (applications), and Fairwind access without cyber guardrails for defenders. @demishassabis posted Argon demos on his own handle. The Antigravity SDK v0.1.22 adds `gemini-4-argon` targets (@ntaylormullen). Released because paying developers and Pro/Ultra subscribers can now use it without a partner list. There is still no free tier. Unadopted third-party observations: @elliscrosby notes the release-card scores are identical to the 2026-09-30 announcement, so the 14-day gap was not a new checkpoint. @JordanFrery relays a hallucination rate about 4x lower than Opus 5.5, which matches the low AA hallucination figure already logged. The 'Carbon' checkpoint chatter stays unadopted. No Polymarket mapping was added because this run could not reach the Polymarket API."
+  - ts: 2026-10-15
+    change: "Released, unchanged — day-2 follow-through from Google's own handles. (1) @GoogleDeepMind (2026-10-14 17:25 UTC, ~2.1K likes) threads Argon science results in quantum computing, nuclear fusion and protein design. These include enzyme engineering 'compressed into a matter of hours' to design five lab-verified serine esterases, quoting a DeepMind protein-engineering researcher's zero-shot results. (2) The same thread states on DeepMind's own handle that 10,000 scientists get free access to the highest Antigravity usage tier for 6 months. That upgrades the scientist-programme detail logged on 2026-10-14 from a researcher RT to a first-party statement. (3) @ScaleAILabs, retweeted by @demishassabis, reports Argon #1 on its Humanity's Sixth Sense (HSS) benchmark at 55.4%, ahead of GPT-6 Astra at 53.6%. This is a third-party placement amplified by the vendor. (4) @OfficialLoganK posted a launch conversation with Sergey Brin, Josh Woodward, Tulsee Doshi and Melvin Johnson; no new specs were captured from it. Community comparison posts (Argon vs Opus 5.5 and Muse Wonder on cost and one-shot demos) are logged, not adopted. There is still no free API tier and no smaller Gemini 4 model."
 ---
 
 The July ticket died of exactly one thing: nobody in a position to know would

@@ -3,7 +3,7 @@ slug: yandex-alice-foundation-80b-2026-09
 title: Yandex AliceAI-Foundation-80B-A3B-Base — reported 80B MoE beating its 235B predecessor
 company: Yandex
 model: AliceAI-Foundation-80B-A3B-Base
-status: rumored
+status: closed
 status_note: |
   **One source, but an unusually specific one.** @GarinArtyom, 2026-09-30 03:45
   UTC: AliceAI-Foundation-80B-A3B-Base "outperform[s] the previous Alice AI LLM on
@@ -43,12 +43,14 @@ verification: unverified
 sources:
   - https://x.com/GarinArtyom/status/2105142078107726315
 created_at: 2026-09-30
-updated_at: 2026-09-30
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-15
+closed_at: 2026-10-15
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-09-30
     change: "Created — RUMORED / unverified. @GarinArtyom (2026-09-30 03:45 UTC, with an attached chart) reports Yandex's AliceAI-Foundation-80B-A3B-Base outperforming the previous Alice AI LLM on factual knowledge, math, coding and long-context tasks at roughly one third the total parameters, and supplies the architecture: MoE with 512 routed experts, 10 routed plus 1 shared expert active per token, ~80B total and ~3B active, against a predecessor described as continued from Qwen3-235B-A22B at 235B total and ~22B active. Single source with NO link, model card, HuggingFace reference, benchmark table, license or Yandex post, and no second mention across the 131 retained signal groups — hence rumored/unverified. WHAT MAKES IT WORTH A TICKET AT THAT STRENGTH: the details are model-card-shaped rather than hype-shaped. The '-80B-A3B-Base' suffix is the standard open-weights encoding of total/active parameters, the 512-expert / 10+1-active routing configuration is a concrete design choice, and naming Qwen3-235B-A22B as the predecessor's base is a specific and falsifiable lineage claim. The substantive assertion is an ARCHITECTURE argument — that a large pool of small experts gives the router more specialization headroom at a fraction of the active compute, and beats a smaller pool with 22B active — which is testable rather than promotional. FIRST YANDEX/ALICE TICKET in this set, so there is nothing to dedup against; nearest comparators are the Qwen continued-pretrain lineage at [[alibaba-qwen-4-architecture-2026-08]] (closed) and other sparse-MoE releases. Close trigger: no corroboration within ~15 cycles closes as stale-rumor-unverified."
+  - ts: 2026-10-15
+    change: "Closed — stale-rumor-unverified. Fifteen daily cycles since the single @GarinArtyom post (2026-09-30) describing AliceAI-Foundation-80B-A3B-Base, with no Yandex announcement, model card, repository or second mention in any later cycle, including today's signal. Closed without prejudice; a published model card would open a successor that links here."
 ---
 
 The claim here is not "our model is better." It is "sparsity ratio is the lever,"
@@ -77,3 +79,5 @@ differently-based) 80B beating a continued-pretrain of a much larger Chinese
 open-weights model — which says something about continued pretraining as a strategy
 as much as about sparsity. If the lineage is wrong, the parameter comparison loses
 most of its meaning.
+
+**2026-10-15 — closed as stale-rumor-unverified.** Fifteen cycles passed with no corroboration of any kind.
