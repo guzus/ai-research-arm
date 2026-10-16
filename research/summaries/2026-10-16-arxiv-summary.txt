@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-16
+
+TOP 5 PAPERS:
+• Gemini 4 Argon Minecraft — Singh/Raileanu: 4 agents kill the Ender Dragon in 27h; first autonomous full run
+• T2-z — Fei-Fei/Wu/Choi: test-time env latents for world models; action success 34%→73%
+• Librarian Agents — Finn/Kumar: RL-built filesystems that anticipate queries; +33 pp BrowseComp-Plus
+• Interpreting LM Parameters — Goodfire/Sharkey: adversarial weight decomposition; parameter-level circuits
+• ORL — James Zou: on-policy residual dLLMs; 6.2× tokens/forward, beats AR+EAGLE3
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 7, Other 8
+
+Full report on GitHub.
