@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 16,
+  "count": 17,
   "events": [
+    {
+      "file": "2026-10-15-TSM-FY26Q3.md",
+      "date": "2026-10-15",
+      "ticker": "TSM",
+      "period": "FY26Q3",
+      "issuer": "Taiwan Semiconductor Manufacturing Company Limited",
+      "form": "6-K",
+      "accession": "0001046179-26-000726",
+      "transcript": false
+    },
     {
       "file": "2026-09-30-MU-FY26Q4.md",
       "date": "2026-09-30",
