@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-10-16 11:13:58 UTC
+
+CYCLE: Open ASR release and a sobering AI-delivery benchmark
+
+QUICK HITS:
+• HojoAI open-sources Hojo-ASR-Multi-V1 (Qwen3-4B decoder, Apache 2.0), claims 3.54 avg WER across 5 languages [⚠]
+• FDE-Gym benchmark: best model solved 14/95 real customer-delivery tasks from raw requests [⚠]
+
+WATCH: Independent WER replications of Hojo-ASR against Whisper-class baselines.
+
+Full update on GitHub.
