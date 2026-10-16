@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-16 16:32:41 UTC
+
+CYCLE: US open weights and the Gemini 4 Argon rollout
+
+TOP STORIES:
+• Reflection AI releases Beam, a 501B-A23B open-weight coding model, under Apache 2.0 ✓
+• Four Gemini 4 Argon agents beat Minecraft in 27h via code only; Perplexity makes Argon available to all users ⚠
+• PrismML ships Bonsai 2 ternary models; NVIDIA open-sources the ASPIRE robotics framework ⚠
+
+WATCH: Independent agentic-coding evals for Beam vs Muse Spark Open
+
+Full update on GitHub.
