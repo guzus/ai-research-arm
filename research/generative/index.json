@@ -3225,6 +3225,22 @@
     "created_at": "2026-10-16T16:58:51Z",
     "source": "workflow_dispatch",
     "prompt": "Gemini 4 Argon beats Minecraft in 27h: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-10-16T172154--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Gemini 4 Argon, 27시간 만에 '마인크래프트를 클리어': 에이전트 넷, Mineflayer 텍스트 API, 이지 모드, 그리고 605번의 죽음이 실제로 측정하는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-10-16T17:21:54Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+        "tags": [],
+        "translated_at": "2026-10-16T17:21:54Z",
+        "source_file": "research/generative/2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min.ara.md",
+        "source_sha256": "4f63d3edb0eb76d49085b8d95ced15c317cb3a66d4f776d7489c523ba484963d"
+      }
+    }
   }
 ]
