@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-20 19:00 UTC",
-    "headline": "GOOGLE LAUNCHES GEMINI FOR SCIENCE \u2014 AGENTIC TOOLS WIRE 30+ LIFE-SCIENCE MODELS INTO ANTIGRAVITY",
-    "source": "@GoogleAI",
-    "source_file": "research/summaries/2026-05-20-twitter-19h-headlines.json",
-    "url": "https://x.com/GoogleAI/status/2057161311617008061"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 19:00 UTC",
-    "headline": "THE INFORMATION: ANTHROPIC AND OPENAI NOW GENERATE 89% OF REVENUE ACROSS 34 TOP AI STARTUPS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-20-twitter-19h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057166984215720230"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-20 19:00 UTC",
-    "headline": "CURSOR COMPOSER 2.5 DRAWS DAY-2 RAVES AT ~1/20TH THE PRICE OF OPUS 4.7 ON CODING TASKS",
-    "source": "@GergelyOrosz",
-    "source_file": "research/summaries/2026-05-20-twitter-19h-headlines.json",
-    "url": "https://x.com/GergelyOrosz/status/2057140853156581815"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-20 19:00 UTC",
     "headline": "NVIDIA REPORTS EARNINGS AFTER US CLOSE TODAY \u2014 CHINA-REVENUE COMMENTARY THE KEY SWING FACTOR",
@@ -23624,5 +23597,26 @@
     "headline": "FT: ANTHROPIC TOLD INVESTORS DISTILLATION ACCOUNTED FOR 5-7% OF REVENUE",
     "source": "@simonw",
     "url": "https://x.com/simonw/status/2110721515130089787"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-16 04:21:49 UTC",
+    "headline": "ANTHROPIC IPO VALUATION EXPECTATIONS DROP TO ~$1.5T FROM $2T AFTER Q3 GROWTH SLOWS \u2014 REUTERS",
+    "source": "@wallstengine",
+    "url": "https://x.com/wallstengine/status/2110838686061564068"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-16 04:21:49 UTC",
+    "headline": "CHATGPT CHROME EXTENSION GAINS COMPUTER USE: READS TABS, FILLS FORMS, SENDS MESSAGES ON ALL PLANS",
+    "source": "@ChatGPT",
+    "url": "https://x.com/ChatGPT/status/2110823738531037651"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-16 04:21:49 UTC",
+    "headline": "BLACK FOREST LABS RELEASES OPEN-WEIGHT FLUX 3 IMAGE KLEIN \u2014 5.6B PARAMS, NATIVE 4K, SINGLE CONSUMER GPU",
+    "source": "@bfl_ai",
+    "url": "https://x.com/bfl_ai/status/2110751201105256925"
   }
 ]
