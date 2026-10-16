@@ -1,5 +1,5 @@
 {
-  "article_count": 95,
+  "article_count": 96,
   "articles": [
     {
       "claim_count": 18,
@@ -911,6 +911,14 @@
       "stem": "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab",
       "tags": [],
       "title": "Anthropic's $16.8B quarter: the profit is adjusted, the cash flow is leased, and $110B is just Q3 repeated"
+    },
+    {
+      "claim_count": 29,
+      "created_at": "2026-10-16T16:58:51Z",
+      "slug": "gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "stem": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "tags": [],
+      "title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure"
     }
   ],
   "by_host": {
@@ -1318,7 +1326,8 @@
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22"
     ],
     "arcprize.org": [
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c34"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c34",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c10"
     ],
     "arena.ai": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c12",
@@ -1655,7 +1664,15 @@
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c7",
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c13",
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c6",
-      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c7"
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c7",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c1",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c13",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c16",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c17",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c2",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c29",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c3",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c9"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -2733,6 +2750,9 @@
     "developersdigest.tech": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c18"
     ],
+    "dexerto.com": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c15"
+    ],
     "dig.watch": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c39"
     ],
@@ -3065,7 +3085,8 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c35",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c26",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c27",
-      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c9"
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c9",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c11"
     ],
     "epochai.substack.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c35"
@@ -3531,7 +3552,10 @@
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c1",
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c12",
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c18",
-      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c2"
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c2",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c4",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c5",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c8"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -3782,7 +3806,8 @@
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c17",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c18",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c29",
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c32"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c32",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c7"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
@@ -4267,6 +4292,9 @@
       "2026-07-13T181948--cxmt#c20",
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c36"
     ],
+    "manifold.markets": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c14"
+    ],
     "marketbeat.com": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c4"
     ],
@@ -4353,7 +4381,8 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c48",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c11",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c13",
-      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c14"
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c14",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c12"
     ],
     "mevwatch.info": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c17"
@@ -4383,6 +4412,10 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c14",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c15",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c20"
+    ],
+    "minecraft.wiki": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c28",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c6"
     ],
     "minimax.io": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c1",
@@ -5150,7 +5183,8 @@
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c12",
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c13",
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c3",
-      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c9"
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c9",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c4"
     ],
     "rdi.berkeley.edu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
@@ -7045,6 +7079,9 @@
     "https://arcprize.org/results/anthropic-claude-opus-5-5": [
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c34"
     ],
+    "https://arcprize.org/results/google-gemini-4-argon": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c10"
+    ],
     "https://arena.ai/blog/autoeval-scores": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c22"
     ],
@@ -7351,6 +7388,9 @@
     "https://arxiv.org/abs/2406.11717": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c12"
     ],
+    "https://arxiv.org/abs/2406.12045": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c17"
+    ],
     "https://arxiv.org/abs/2406.19314": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c16"
     ],
@@ -7447,6 +7487,9 @@
     ],
     "https://arxiv.org/abs/2504.13837": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c11"
+    ],
+    "https://arxiv.org/abs/2504.17950": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c16"
     ],
     "https://arxiv.org/abs/2504.20879": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c22",
@@ -7640,6 +7683,9 @@
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c1",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c19"
     ],
+    "https://arxiv.org/abs/2610.22319": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c1"
+    ],
     "https://arxiv.org/html/2303.11341v2": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c34"
     ],
@@ -7822,6 +7868,14 @@
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c7",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c8",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c9"
+    ],
+    "https://arxiv.org/html/2610.22319v1": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c1",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c13",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c2",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c29",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c3",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c9"
     ],
     "https://arxiv.org/pdf/1509.07466": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c19"
@@ -9004,6 +9058,9 @@
     "https://epoch.ai/gradient-updates/three-issues-undermining-compute-based-ai-policies": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c32"
     ],
+    "https://epoch.ai/gradient-updates/why-benchmarking-is-hard": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c11"
+    ],
     "https://epoch.ai/models/claude-opus-5": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c4"
     ],
@@ -9474,6 +9531,12 @@
     "https://github.com/OpenMOSS/SWE-bench-Science": [
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c3"
     ],
+    "https://github.com/PrismarineJS/mineflayer-pathfinder": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c5"
+    ],
+    "https://github.com/PrismarineJS/mineflayer/blob/master/docs/api.md": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c4"
+    ],
     "https://github.com/QwenLM": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c9"
     ],
@@ -9608,6 +9671,9 @@
     ],
     "https://github.com/punitarani/mimic/pull/48": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c13"
+    ],
+    "https://github.com/rmalde/minecraft-agent": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c8"
     ],
     "https://github.com/seitanism/ComfyUI-H3-Motion-Context-MultiRef": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c31"
@@ -9790,6 +9856,9 @@
     ],
     "https://huggingface.co/datasets/Anthropic/claude-protein-binder-design": [
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c15"
+    ],
+    "https://huggingface.co/datasets/aibengineering/beat-the-game-minecraft": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c7"
     ],
     "https://huggingface.co/datasets/nvidia/Nemotron-CC-v2.1": [
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c11"
@@ -10143,6 +10212,9 @@
     "https://m.techflowpost.com/article/32431": [
       "2026-07-13T181948--cxmt#c8"
     ],
+    "https://manifold.markets/AdamK/will-an-ai-minecraft-agent-defeat-t-609shENQnu": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c14"
+    ],
     "https://markets.hankyung.com/stock/009150": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c23"
     ],
@@ -10221,7 +10293,8 @@
     ],
     "https://metr.org/notes/2026-01-22-time-horizon-limitations": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c14",
-      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c14"
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c14",
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c12"
     ],
     "https://metr.org/notes/2026-07-22-economics-of-recursive-self-improvement": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c20"
@@ -10240,6 +10313,12 @@
     ],
     "https://mimo.mi.com/models/en-US/mimo-v2.6-pro-ultraspeed": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c13"
+    ],
+    "https://minecraft.wiki/w/Daylight_cycle": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c28"
+    ],
+    "https://minecraft.wiki/w/Difficulty": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c6"
     ],
     "https://mistral.ai/news/mistral-large": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c25"
@@ -11022,6 +11101,9 @@
     ],
     "https://raw.githubusercontent.com/NikoDemon80/ComfyUI-H3-Motion-Context/main/README.md": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c30"
+    ],
+    "https://raw.githubusercontent.com/PrismarineJS/mineflayer/master/lib/plugins/blocks.js": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c4"
     ],
     "https://raw.githubusercontent.com/Uniswap/continuous-clearing-auction/main/docs/TechnicalDocumentation.md": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c7",
@@ -13369,6 +13451,9 @@
     ],
     "https://www.developersdigest.tech/blog/glm-5-2-vs-deepseek-v4-vs-qwen3-open-weights-coding-showdown": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c18"
+    ],
+    "https://www.dexerto.com/minecraft/minecraft-speedrunner-finally-sets-world-record-one-year-after-devastating-last-second-fail-3393560": [
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c15"
     ],
     "https://www.digitalapplied.com/blog/ai-spending-forecasts-2026-gartner-idc-stanford-compiled": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
@@ -16193,7 +16278,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2824,
+  "claim_count": 2853,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -83834,9 +83919,621 @@
       "source_tiers": [],
       "source_urls": [],
       "type": "derived"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "Four Gemini 4 Argon agents defeated the Ender Dragon on Easy difficulty from a random world in 27h14m, writing 2,783 programs and dying 605 times.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c1",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2610.22319",
+        "https://arxiv.org/html/2610.22319v1"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-13",
+      "claim": "ARC Prize lists Gemini 4 Argon at 49.8% on ARC-AGI-3 with the standard harness versus 97.5% with Google's provider adapter harness at low reasoning.",
+      "confidence": "high",
+      "hosts": [
+        "arcprize.org"
+      ],
+      "id": "c10",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://arcprize.org/results/google-gemini-4-argon"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2025-12-23",
+      "claim": "Switching only the scaffold changes SWE-bench Verified scores by up to 11 points for GPT-5 and 15 for Kimi K2 Thinking.",
+      "confidence": "high",
+      "hosts": [
+        "epoch.ai"
+      ],
+      "id": "c11",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://epoch.ai/gradient-updates/why-benchmarking-is-hard"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-01-22",
+      "claim": "METR says time horizon is not the length of time AIs can work independently, and horizons are 40-100x lower on visual computer-use tasks.",
+      "confidence": "high",
+      "hosts": [
+        "metr.org"
+      ],
+      "id": "c12",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://metr.org/notes/2026-01-22-time-horizon-limitations"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "The run was a single run on a single random seed, the first launch the authors tried.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c13",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2610.22319v1"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-17",
+      "claim": "The Manifold market on an AI agent defeating the Ender Dragon before 2027 requires under 150 minutes of in-game time, human-visible observations and random seeds, and traded at 73% as of 2026-10-17.",
+      "confidence": "medium",
+      "hosts": [
+        "manifold.markets"
+      ],
+      "id": "c14",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://manifold.markets/AdamK/will-an-ai-minecraft-agent-defeat-t-609shENQnu"
+      ],
+      "type": "forecast"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-07-31",
+      "claim": "The Java Any% Glitchless random-seed record is 6:39.813 by Skycrab, set 2026-07-27.",
+      "confidence": "high",
+      "hosts": [
+        "dexerto.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c15",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.dexerto.com/minecraft/minecraft-speedrunner-finally-sets-world-record-one-year-after-devastating-last-second-fail-3393560"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2025-04-24",
+      "claim": "MineCollab found agent performance drops by as much as 15% when agents must communicate detailed plans.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c16",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2504.17950"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2024-06-17",
+      "claim": "tau-bench found gpt-4o agents succeed on under 50% of tasks and pass^8 falls below 25% in retail.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c17",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2406.12045"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "The agents controlled bots only through Mineflayer plus its pathfinder plugin, with text observations and no pixels, on Minecraft Java 1.20.4.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c2",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2610.22319v1"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "",
+      "claim": "A full Minecraft daylight cycle lasts 20 real minutes (24,000 ticks).",
+      "confidence": "high",
+      "hosts": [
+        "minecraft.wiki"
+      ],
+      "id": "c28",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c28",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://minecraft.wiki/w/Daylight_cycle"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "The team lit the End portal with 12 eyes at 13h17m and won at 27h14m.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c29",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c29",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2610.22319v1"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "The paper concedes Mineflayer exposes blocks behind solid rock and the dragon's internal state.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c3",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2610.22319v1"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-17",
+      "claim": "Mineflayer's findBlocks matches blocks by type and distance (default 16 blocks) without a line-of-sight check; canSeeBlock is a separate call.",
+      "confidence": "high",
+      "hosts": [
+        "github.com",
+        "raw.githubusercontent.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/PrismarineJS/mineflayer/master/lib/plugins/blocks.js",
+        "https://github.com/PrismarineJS/mineflayer/blob/master/docs/api.md"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-17",
+      "claim": "mineflayer-pathfinder can break and place blocks while moving, pillar 1x1 towers and make parkour jumps by default.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/PrismarineJS/mineflayer-pathfinder"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-17",
+      "claim": "On Easy, mobs deal min(D, 0.5D+1) of Normal damage and starvation stops at 10 HP; the dragon's melee hit is 6/10/15 HP on Easy/Normal/Hard.",
+      "confidence": "high",
+      "hosts": [
+        "minecraft.wiki"
+      ],
+      "id": "c6",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://minecraft.wiki/w/Difficulty"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-09-15",
+      "claim": "A single Claude Opus 5 agent with 37 MCP tools beat the Ender Dragon on 2026-09-15 in 3h56m on fixed seed 97996358 for $93.17 of API-equivalent compute.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c7",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c7",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/datasets/aibengineering/beat-the-game-minecraft"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-09-20",
+      "claim": "Malde's GPT-6 Astra planner plus JEV action model killed the dragon in 8m43.3s on Peaceful on a fixed, pre-scouted speedrun seed.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c8",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c8",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/rmalde/minecraft-agent"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "The run cost about $520 to the win at introductory pricing ($1,040 standard), using about 1.35B input tokens (91% cached), 16M output tokens and 24,000 model calls.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c9",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c9",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2610.22319v1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "At 20 real minutes per in-game day, 27h14m is about 81.7 in-game days.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#d1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "The team averaged about 102 programs per wall-clock hour before the win.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d10",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#d10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "605 deaths over 27h14m is about 22 deaths per wall-clock hour across the team.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#d2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "Four agents for 27h14m is about 109 agent-hours of play.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#d3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "The End phase, from the portal lit at 13h17m to the win at 27h14m, was about 51% of the run.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#d4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "At introductory pricing the run cost about $19 per wall-clock hour.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#d5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "The Argon run cost about 5.6 times the Claude Opus 5 run's API-equivalent compute.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#d6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "The Argon run took about 6.9 times as long in wall-clock time as the single-agent Claude Opus 5 run.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d7",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#d7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "The provider-adapter ARC-AGI-3 score is about 1.96 times the standard-harness score for the same model.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d8",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#d8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
+      "article_created_at": "2026-10-16T16:58:51Z",
+      "article_title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure",
+      "as_of": "2026-10-15",
+      "claim": "The Argon run took about 245 times the human random-seed speedrun record.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d9",
+      "key": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#d9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1382,
+  "reusable_count": 1402,
   "schema_version": 1
 }

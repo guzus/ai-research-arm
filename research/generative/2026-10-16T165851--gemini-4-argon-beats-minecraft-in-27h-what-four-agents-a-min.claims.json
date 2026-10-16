@@ -1,0 +1,554 @@
+{
+ "claims": [
+  {
+   "id": "c1",
+   "claim": "Four Gemini 4 Argon agents defeated the Ender Dragon on Easy difficulty from a random world in 27h14m, writing 2,783 programs and dying 605 times.",
+   "type": "event",
+   "source_urls": [
+    "https://arxiv.org/abs/2610.22319",
+    "https://arxiv.org/html/2610.22319v1"
+   ],
+   "source_tiers": [
+    "primary",
+    "primary"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "single-source"
+  },
+  {
+   "id": "c2",
+   "claim": "The agents controlled bots only through Mineflayer plus its pathfinder plugin, with text observations and no pixels, on Minecraft Java 1.20.4.",
+   "type": "technical",
+   "source_urls": [
+    "https://arxiv.org/html/2610.22319v1"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c3",
+   "claim": "The paper concedes Mineflayer exposes blocks behind solid rock and the dragon's internal state.",
+   "type": "quote",
+   "source_urls": [
+    "https://arxiv.org/html/2610.22319v1"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c4",
+   "claim": "Mineflayer's findBlocks matches blocks by type and distance (default 16 blocks) without a line-of-sight check; canSeeBlock is a separate call.",
+   "type": "technical",
+   "source_urls": [
+    "https://raw.githubusercontent.com/PrismarineJS/mineflayer/master/lib/plugins/blocks.js",
+    "https://github.com/PrismarineJS/mineflayer/blob/master/docs/api.md"
+   ],
+   "source_tiers": [
+    "primary",
+    "primary"
+   ],
+   "as_of": "2026-10-17",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c5",
+   "claim": "mineflayer-pathfinder can break and place blocks while moving, pillar 1x1 towers and make parkour jumps by default.",
+   "type": "technical",
+   "source_urls": [
+    "https://github.com/PrismarineJS/mineflayer-pathfinder"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-10-17",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c6",
+   "claim": "On Easy, mobs deal min(D, 0.5D+1) of Normal damage and starvation stops at 10 HP; the dragon's melee hit is 6/10/15 HP on Easy/Normal/Hard.",
+   "type": "technical",
+   "source_urls": [
+    "https://minecraft.wiki/w/Difficulty"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-10-17",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c7",
+   "claim": "A single Claude Opus 5 agent with 37 MCP tools beat the Ender Dragon on 2026-09-15 in 3h56m on fixed seed 97996358 for $93.17 of API-equivalent compute.",
+   "type": "event",
+   "source_urls": [
+    "https://huggingface.co/datasets/aibengineering/beat-the-game-minecraft"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-09-15",
+   "confidence": "high",
+   "risk": "single-source"
+  },
+  {
+   "id": "c8",
+   "claim": "Malde's GPT-6 Astra planner plus JEV action model killed the dragon in 8m43.3s on Peaceful on a fixed, pre-scouted speedrun seed.",
+   "type": "event",
+   "source_urls": [
+    "https://github.com/rmalde/minecraft-agent"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-09-20",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "c9",
+   "claim": "The run cost about $520 to the win at introductory pricing ($1,040 standard), using about 1.35B input tokens (91% cached), 16M output tokens and 24,000 model calls.",
+   "type": "metric",
+   "source_urls": [
+    "https://arxiv.org/html/2610.22319v1"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "single-source"
+  },
+  {
+   "id": "c10",
+   "claim": "ARC Prize lists Gemini 4 Argon at 49.8% on ARC-AGI-3 with the standard harness versus 97.5% with Google's provider adapter harness at low reasoning.",
+   "type": "comparison",
+   "source_urls": [
+    "https://arcprize.org/results/google-gemini-4-argon"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-10-13",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c11",
+   "claim": "Switching only the scaffold changes SWE-bench Verified scores by up to 11 points for GPT-5 and 15 for Kimi K2 Thinking.",
+   "type": "comparison",
+   "source_urls": [
+    "https://epoch.ai/gradient-updates/why-benchmarking-is-hard"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2025-12-23",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c12",
+   "claim": "METR says time horizon is not the length of time AIs can work independently, and horizons are 40-100x lower on visual computer-use tasks.",
+   "type": "quote",
+   "source_urls": [
+    "https://metr.org/notes/2026-01-22-time-horizon-limitations/"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-01-22",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c13",
+   "claim": "The run was a single run on a single random seed, the first launch the authors tried.",
+   "type": "event",
+   "source_urls": [
+    "https://arxiv.org/html/2610.22319v1"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c14",
+   "claim": "The Manifold market on an AI agent defeating the Ender Dragon before 2027 requires under 150 minutes of in-game time, human-visible observations and random seeds, and traded at 73% as of 2026-10-17.",
+   "type": "forecast",
+   "source_urls": [
+    "https://manifold.markets/AdamK/will-an-ai-minecraft-agent-defeat-t-609shENQnu"
+   ],
+   "source_tiers": [
+    "market-data"
+   ],
+   "as_of": "2026-10-17",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c15",
+   "claim": "The Java Any% Glitchless random-seed record is 6:39.813 by Skycrab, set 2026-07-27.",
+   "type": "metric",
+   "source_urls": [
+    "https://www.dexerto.com/minecraft/minecraft-speedrunner-finally-sets-world-record-one-year-after-devastating-last-second-fail-3393560/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-07-31",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c16",
+   "claim": "MineCollab found agent performance drops by as much as 15% when agents must communicate detailed plans.",
+   "type": "metric",
+   "source_urls": [
+    "https://arxiv.org/abs/2504.17950"
+   ],
+   "source_tiers": [
+    "academic"
+   ],
+   "as_of": "2025-04-24",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c17",
+   "claim": "tau-bench found gpt-4o agents succeed on under 50% of tasks and pass^8 falls below 25% in retail.",
+   "type": "metric",
+   "source_urls": [
+    "https://arxiv.org/abs/2406.12045"
+   ],
+   "source_tiers": [
+    "academic"
+   ],
+   "as_of": "2024-06-17",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c28",
+   "claim": "A full Minecraft daylight cycle lasts 20 real minutes (24,000 ticks).",
+   "type": "definition",
+   "source_urls": [
+    "https://minecraft.wiki/w/Daylight_cycle"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c29",
+   "claim": "The team lit the End portal with 12 eyes at 13h17m and won at 27h14m.",
+   "type": "event",
+   "source_urls": [
+    "https://arxiv.org/html/2610.22319v1"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "single-source"
+  },
+  {
+   "id": "d1",
+   "type": "derived",
+   "claim": "At 20 real minutes per in-game day, 27h14m is about 81.7 in-game days.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "hours",
+     "value": 27.233333333333334,
+     "unit": "h"
+    },
+    {
+     "ref": "c28",
+     "name": "minutes_per_day",
+     "value": 20,
+     "unit": "min"
+    }
+   ],
+   "formula": "hours * 60 / minutes_per_day",
+   "result": 81.7,
+   "unit": "in-game days",
+   "assumptions": [
+    "Server ran at the full 20 ticks per second; six restarts (~20 min paused) ignored"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "d2",
+   "type": "derived",
+   "claim": "605 deaths over 27h14m is about 22 deaths per wall-clock hour across the team.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "deaths",
+     "value": 605,
+     "unit": "deaths"
+    },
+    {
+     "ref": "c1",
+     "name": "hours",
+     "value": 27.233333333333334,
+     "unit": "h"
+    }
+   ],
+   "formula": "deaths / hours",
+   "result": 22.215422276621787,
+   "unit": "deaths per hour",
+   "assumptions": [
+    "Deaths counted to the win; wall-clock hours, all four agents combined"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "d3",
+   "type": "derived",
+   "claim": "Four agents for 27h14m is about 109 agent-hours of play.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "agents",
+     "value": 4,
+     "unit": "agents"
+    },
+    {
+     "ref": "c1",
+     "name": "hours",
+     "value": 27.233333333333334,
+     "unit": "h"
+    }
+   ],
+   "formula": "agents * hours",
+   "result": 108.93333333333334,
+   "unit": "agent-hours",
+   "assumptions": [
+    "All four agents active for the entire run"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "d4",
+   "type": "derived",
+   "claim": "The End phase, from the portal lit at 13h17m to the win at 27h14m, was about 51% of the run.",
+   "inputs": [
+    {
+     "ref": "c29",
+     "name": "end_portal_h",
+     "value": 13.283333333333333,
+     "unit": "h"
+    },
+    {
+     "ref": "c29",
+     "name": "win_h",
+     "value": 27.233333333333334,
+     "unit": "h"
+    }
+   ],
+   "formula": "(win_h - end_portal_h) / win_h",
+   "result": 0.5122399020807834,
+   "unit": "fraction",
+   "assumptions": [
+    "End phase measured from the portal lighting, including time spent back in the Overworld"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "d5",
+   "type": "derived",
+   "claim": "At introductory pricing the run cost about $19 per wall-clock hour.",
+   "inputs": [
+    {
+     "ref": "c9",
+     "name": "cost_usd",
+     "value": 520,
+     "unit": "USD"
+    },
+    {
+     "ref": "c1",
+     "name": "hours",
+     "value": 27.233333333333334,
+     "unit": "h"
+    }
+   ],
+   "formula": "cost_usd / hours",
+   "result": 19.094247246022032,
+   "unit": "USD per hour",
+   "assumptions": [
+    "List-price estimate to the win at introductory pricing"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "d6",
+   "type": "derived",
+   "claim": "The Argon run cost about 5.6 times the Claude Opus 5 run's API-equivalent compute.",
+   "inputs": [
+    {
+     "ref": "c9",
+     "name": "argon_usd",
+     "value": 520,
+     "unit": "USD"
+    },
+    {
+     "ref": "c7",
+     "name": "opus_usd",
+     "value": 93.17,
+     "unit": "USD"
+    }
+   ],
+   "formula": "argon_usd / opus_usd",
+   "result": 5.581195663840292,
+   "unit": "ratio",
+   "assumptions": [
+    "Both are API-equivalent list-price estimates; Argon at introductory pricing"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "d7",
+   "type": "derived",
+   "claim": "The Argon run took about 6.9 times as long in wall-clock time as the single-agent Claude Opus 5 run.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "argon_h",
+     "value": 27.233333333333334,
+     "unit": "h"
+    },
+    {
+     "ref": "c7",
+     "name": "opus_h",
+     "value": 3.9475,
+     "unit": "h"
+    }
+   ],
+   "formula": "argon_h / opus_h",
+   "result": 6.898881148406165,
+   "unit": "ratio",
+   "assumptions": [
+    "Opus run window 00:43:30 to 04:40:21 UTC = 3.9475 h"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "d8",
+   "type": "derived",
+   "claim": "The provider-adapter ARC-AGI-3 score is about 1.96 times the standard-harness score for the same model.",
+   "inputs": [
+    {
+     "ref": "c10",
+     "name": "adapter_pct",
+     "value": 97.5,
+     "unit": "%"
+    },
+    {
+     "ref": "c10",
+     "name": "standard_pct",
+     "value": 49.8,
+     "unit": "%"
+    }
+   ],
+   "formula": "adapter_pct / standard_pct",
+   "result": 1.957831325301205,
+   "unit": "ratio",
+   "assumptions": [
+    "Low reasoning setting; standard-harness runs were partly incomplete"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "d9",
+   "type": "derived",
+   "claim": "The Argon run took about 245 times the human random-seed speedrun record.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "argon_s",
+     "value": 98040.0,
+     "unit": "s"
+    },
+    {
+     "ref": "c15",
+     "name": "record_s",
+     "value": 399.813,
+     "unit": "s"
+    }
+   ],
+   "formula": "argon_s / record_s",
+   "result": 245.2146378431917,
+   "unit": "ratio",
+   "assumptions": [
+    "Record is in-game time on 1.16.1; Argon figure is wall clock on 1.20.4"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "d10",
+   "type": "derived",
+   "claim": "The team averaged about 102 programs per wall-clock hour before the win.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "programs",
+     "value": 2783,
+     "unit": "programs"
+    },
+    {
+     "ref": "c1",
+     "name": "hours",
+     "value": 27.233333333333334,
+     "unit": "h"
+    }
+   ],
+   "formula": "programs / hours",
+   "result": 102.19094247246022,
+   "unit": "programs per hour",
+   "assumptions": [
+    "Programs counted to the win, all four agents combined"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "high",
+   "risk": "stable"
+  }
+ ]
+}

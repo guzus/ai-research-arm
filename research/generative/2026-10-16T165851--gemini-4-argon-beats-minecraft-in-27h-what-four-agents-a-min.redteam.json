@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Four Gemini 4 Argon agents went from a random seed to \"Free the End\" in 27h14m on Java 1.20.4 at Easy difficulty.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "A Claude Opus 5 agent killed the dragon a month earlier, in 3h56m, using 37 human-written tools.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "ARC Prize verified Argon on ARC-AGI-3 at 49.8% with its standard harness and 97.5% with Google's \"provider adapter\" harness at low reasoning.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
