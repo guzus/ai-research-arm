@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-20 21:00 UTC",
-    "headline": "ALTMAN: 'A GENERAL-PURPOSE MODEL SOLVED A MAJOR OPEN PROBLEM IN MATHEMATICS \u2014 A KINDA BIG MILESTONE'",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-20-twitter-21h-headlines.json",
-    "url": "https://x.com/sama/status/2057203171198636251"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-20 21:00 UTC",
-    "headline": "WHITE HOUSE AI EXECUTIVE ORDER TO BE RELEASED TOMORROW, WASHINGTON POST REPORTS",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-20-twitter-21h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2057204924006728027"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-21 01:00 UTC",
-    "headline": "ANTHROPIC TO PAY SPACEX $1.25B/MONTH (~$45B TO 2029) FOR COLOSSUS COMPUTE \u2014 REVEALED IN SPACEX S-1",
-    "source": "@zerohedge",
-    "source_file": "research/summaries/2026-05-21-twitter-01h-headlines.json",
-    "url": "https://x.com/zerohedge/status/2057211225335861278"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 01:00 UTC",
-    "headline": "SPACEX FILES S-1 ON SEC EDGAR \u2014 $1.75T TARGET, $75B RAISE, JUNE 12 NASDAQ DEBUT UNDER $SPCX",
-    "source": "@SawyerMerritt",
-    "source_file": "research/summaries/2026-05-21-twitter-01h-headlines.json",
-    "url": "https://x.com/SawyerMerritt/status/2057201539735785746"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-21 01:00 UTC",
     "headline": "TRUMP SET TO SIGN AI EXECUTIVE ORDER THURSDAY \u2014 VOLUNTARY 90-DAY FRONTIER-MODEL PRE-RELEASE REVIEW, CEOS INVITED",
@@ -23610,5 +23574,33 @@
     "headline": "NVIDIA OPEN-SOURCES ASPIRE V1.0 ROBOTICS AGENT FRAMEWORK; OPUS 5.5 EDGES GPT-6 ASTRA ON ROBOT SIM BENCHMARK",
     "source": "@DrJimFan",
     "url": "https://x.com/DrJimFan/status/2111128797181567466"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-16 20:59:10 UTC",
+    "headline": "ANTHROPIC: CLAUDE MYTHOS 5 DESIGNS QUANTUM CIRCUITS BEATING PUBLISHED BEST, ELLIPTIC-CURVE CIRCUIT USES 17X FEWER GATES",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2111152183240511640"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-16 20:59:10 UTC",
+    "headline": "CLAUDE WRITES ~90% OF CLAUDE CODE; MERGED PRS MORE THAN DOUBLE JUNE-SEPT AS REVERT SHARE FALLS 40%+",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2111168901723906176"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-16 20:59:10 UTC",
+    "headline": "OPENAI ROLLS OUT PARALLEL AGENTS FOR GPT-6 ASTRA PRO IN CHATGPT PRO",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2111192259073094035"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-16 20:59:10 UTC",
+    "headline": "PERPLEXITY OPEN-SOURCES 27B AND 4B DECIDER V1.2 DECISION MODELS AT 1-2 CENTS PER MILLION TOKENS",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2111181956444827695"
   }
 ]
