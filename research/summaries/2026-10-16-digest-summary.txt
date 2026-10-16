@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-10-16
+
+TOP STORIES:
+• Anthropic shows IPO investors $16.8B Q3 revenue, adjusted profit
+• Meta + Apple release Muse Spark Open (816B-A42B open weights)
+• TSMC record Q3: says AI demand still exceeds supply
+• Eight states sue OpenAI over ChatGPT child safety
+
+KEY NUMBERS:
+• Anthropic Q3 $16.8B (+45% QoQ); $110B run-rate target
+• TSMC Q4 guide $52.3-54.3B; net profit +68.7% YoY
+• Gemini 4 Argon ARC-AGI-3: 97.5% own harness vs 49.8% standard
+
+TRENDING: Muse Spark Open tops HN (543 pts), then Goodfire's "Neural networks are clean"
+
+Full digest on GitHub.
