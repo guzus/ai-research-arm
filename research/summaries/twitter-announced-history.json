@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-20 19:00 UTC",
-    "headline": "NVIDIA REPORTS EARNINGS AFTER US CLOSE TODAY \u2014 CHINA-REVENUE COMMENTARY THE KEY SWING FACTOR",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-20-twitter-19h-headlines.json",
-    "url": "https://x.com/jukan05/status/2057128604253962465"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 21:00 UTC",
-    "headline": "NVIDIA Q1 REVENUE $81.6B UP 85% YoY, DATA CENTER $75.2B \u2014 BEATS TOP AND BOTTOM LINE",
-    "source": "@ReutersWorld",
-    "source_file": "research/summaries/2026-05-20-twitter-21h-headlines.json",
-    "url": "https://x.com/ReutersWorld/status/2057214880457838823"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-20 21:00 UTC",
-    "headline": "NVIDIA GUIDES Q2 TO ~$91B, UNVEILS $80B BUYBACK \u2014 SHARES SLIP ~3% AFTER-HOURS DESPITE BEAT",
-    "source": "@DanBehringer221",
-    "source_file": "research/summaries/2026-05-20-twitter-21h-headlines.json",
-    "url": "https://x.com/DanBehringer221/status/2057213706384375827"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-20 21:00 UTC",
-    "headline": "OPENAI MODEL CRACKS 80-YEAR-OLD ERD\u0150S UNIT-DISTANCE PROBLEM, DISPROVING SQUARE-GRID BELIEF",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-20-twitter-21h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2057176201782075690"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-20 21:00 UTC",
     "headline": "ALTMAN: 'A GENERAL-PURPOSE MODEL SOLVED A MAJOR OPEN PROBLEM IN MATHEMATICS \u2014 A KINDA BIG MILESTONE'",
@@ -23618,5 +23582,33 @@
     "headline": "BLACK FOREST LABS RELEASES OPEN-WEIGHT FLUX 3 IMAGE KLEIN \u2014 5.6B PARAMS, NATIVE 4K, SINGLE CONSUMER GPU",
     "source": "@bfl_ai",
     "url": "https://x.com/bfl_ai/status/2110751201105256925"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-16 16:32:41 UTC",
+    "headline": "REFLECTION AI RELEASES BEAM \u2014 501B-PARAMETER, 23B-ACTIVE OPEN-WEIGHT CODING MODEL UNDER APACHE 2.0",
+    "source": "@reflection_ai",
+    "url": "https://x.com/huggingface/status/2111083176261009531"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-16 16:32:41 UTC",
+    "headline": "FOUR GEMINI 4 ARGON AGENTS BEAT MINECRAFT FROM SCRATCH IN 27 HOURS USING ONLY CODE AND TEXT",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2111127991401247033"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-16 16:32:41 UTC",
+    "headline": "PERPLEXITY ROLLS OUT GEMINI 4 ARGON TO ALL USERS, CITES NEW STATE OF THE ART ON WANDR DEEP-RESEARCH BENCHMARK",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2111111329536987234"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-16 16:32:41 UTC",
+    "headline": "NVIDIA OPEN-SOURCES ASPIRE V1.0 ROBOTICS AGENT FRAMEWORK; OPUS 5.5 EDGES GPT-6 ASTRA ON ROBOT SIM BENCHMARK",
+    "source": "@DrJimFan",
+    "url": "https://x.com/DrJimFan/status/2111128797181567466"
   }
 ]
