@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-16 20:59:10 UTC
+
+CYCLE: Claude in science and coding; OpenAI adds parallel agents
+
+TOP STORIES:
+• Claude Mythos 5 designs quantum circuits beating published bests (17x fewer gates on an elliptic-curve circuit) [⚠]
+• Claude writes ~90% of Claude Code; merged PRs 2x+ June-Sept, revert share down 40%+ [⚠]
+• GPT-6 Astra Pro gets parallel agents, faster responses and better tool use for ChatGPT Pro [✓]
+
+WATCH: Independent checks of Anthropic's quantum-circuit resource counts
+
+Full update on GitHub.

@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "ANTHROPIC: CLAUDE MYTHOS 5 DESIGNS QUANTUM CIRCUITS BEATING PUBLISHED BEST, ELLIPTIC-CURVE CIRCUIT USES 17X FEWER GATES",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2111152183240511640",
+    "category": "research"
+  },
+  {
+    "headline": "CLAUDE WRITES ~90% OF CLAUDE CODE; MERGED PRS MORE THAN DOUBLE JUNE-SEPT AS REVERT SHARE FALLS 40%+",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2111168901723906176",
+    "category": "model"
+  },
+  {
+    "headline": "OPENAI ROLLS OUT PARALLEL AGENTS FOR GPT-6 ASTRA PRO IN CHATGPT PRO",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2111192259073094035",
+    "category": "model"
+  },
+  {
+    "headline": "PERPLEXITY OPEN-SOURCES 27B AND 4B DECIDER V1.2 DECISION MODELS AT 1-2 CENTS PER MILLION TOKENS",
+    "source": "@AravSrinivas",
+    "url": "https://x.com/AravSrinivas/status/2111181956444827695",
+    "category": "opensource"
+  }
+]
