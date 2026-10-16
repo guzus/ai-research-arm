@@ -2,17 +2,18 @@
 slug: apple
 title: Apple
 type: entity
-aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC, "M8 Ultra", "macOS Full Disk Access"]
+aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Compute", PCC, "M8 Ultra", "M5 Ultra", "macOS Full Disk Access"]
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
-description: Consumer-hardware giant; a judge ordered OpenAI to produce Apple interview files on ex-Apple hardware recruits, while OpenAI says an ex-employee took 100+ product-plan files to Apple.
+description: Consumer-hardware giant; Meta and Apple tuned Muse Spark Open to run on two M5 Ultra Mac Studios.
 created_at: 2026-06-08
-timestamp: 2026-10-15T00:00:00Z
+timestamp: 2026-10-16T00:00:00Z
 market:
   ticker: AAPL
   exchange: NASDAQ
   symbol: NASDAQ:AAPL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
@@ -271,7 +272,25 @@ recruits within **5 and 14 days**, plus forensic device images. OpenAI
 countered that an ex-employee took **100+** product-plan files to Apple
 leadership. This is discovery in the existing talent/IP fight, not a new
 suit (TechCrunch, The Verge, Bloomberg via @rohanpaul_ai; ARA daily digest
-2026-10-15).
+  2026-10-15).
+
+## Muse Spark Open on two M5 Ultra Mac Studios (2026-10-16)
+
+[[meta]] and Apple tuned
+[[muse-spark-open|Muse Spark Open]]
+— an 816B / 42B-active multimodal
+MoE — to run on **two M5 Ultra Mac
+Studios**. Unsloth published 2-bit
+GGUFs for a single Studio. This is
+the first named frontier-scale
+open-weight target for the M5 Ultra
+flagship this page logged on
+2026-08-26 (512GB unified memory at
+1.2TB/s). It is a local-inference
+distribution story, not an Apple
+model. See [[open-weights]]
+(@AIatMeta, TechCrunch, The Verge;
+ARA daily digest 2026-10-16).
 
 ## Open questions
 

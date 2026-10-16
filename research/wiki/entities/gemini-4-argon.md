@@ -4,10 +4,11 @@ title: Gemini 4 Argon
 type: entity
 aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon", "Gemini 4 Carbon", "Barium-B", "Argon for Robotics"]
 tags: [model-release, google-deepmind, frontier-model, fairwind, cyber-defense, pricing]
-description: Google's Gemini 4 flagship, now generally available; day-two independent benches put it 3rd of 35 on KernelBench-Mega (27.0×) behind Opus 5.5 and Sonnet 5.5.
+description: Google's Gemini 4 flagship; verified 97.5% on ARC-AGI-3 with Google's harness versus 49.8% on the standard harness.
 created_at: 2026-10-01
-timestamp: 2026-10-15T00:00:00Z
+timestamp: 2026-10-16T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
@@ -220,3 +221,36 @@ change. See [[google]] (The Decoder; ARA daily digest
   (@elliotarledge, @theo,
   Latent Space, @emollick; ARA
   daily digest 2026-10-15).
+
+## ARC-AGI-3 harness split (2026-10-16)
+
+- **Arc Prize verified Argon at
+  97.5% on ARC-AGI-3** using
+  Google's own harness
+  (**$4.8K**), and **49.8%** on
+  the standard harness. It also
+  scores **91.3% on ARC-AGI-2**
+  at **$0.32/task**. The
+  47.7-point gap is a
+  harness-sensitivity result,
+  not a second model. See
+  [[verification-bottleneck]]
+  (@arcprize, @GoogleDeepMind;
+  ARA daily digest 2026-10-16).
+- **DeepMind is giving 10,000
+  scientists six months of free
+  top-tier access.** That is a
+  distribution move on the same
+  day as the bench print, not a
+  capability claim
+  (@GoogleDeepMind; ARA daily
+  digest 2026-10-16).
+- **Ethan Mollick repeated that
+  Gemini 4 "feels quite
+  different"** from models he
+  suspects distill Claude or
+  GPT — the same day
+  [[anthropic]] told investors
+  distillation was 5–7% of its
+  revenue (@emollick; ARA daily
+  digest 2026-10-16).

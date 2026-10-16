@@ -4,15 +4,16 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm", "Meta Enterprise Platform", "CJ Desai", "Muse Gadgets"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; shipped Muse Wonder and subscriber-only Wonder Full, independently scored 52 and 56 on Artificial Analysis versus Spark 1.3's 48.
+description: Social-platform hyperscaler and Llama maker; shipped Muse Spark Open, an 816B/42B-active multimodal MoE under a custom license, reversing April's closed-frontier decision.
 created_at: 2026-06-16
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-16T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
@@ -500,3 +501,33 @@ TechCrunch; ARA daily digest 2026-09-16).
   Analysis, TechCrunch, The Verge, The
   Decoder, HN 527/299; ARA daily digest
   2026-10-13).
+
+## Muse Spark Open — the closed-frontier reversal (2026-10-16)
+
+- **[[muse-spark-open|Muse Spark Open]]
+  shipped.** It is an **816B-total /
+  42B-active** multimodal MoE with **1M
+  context**, sharing a base with Muse
+  Spark 1.3, plus safety post-training,
+  under a custom **Muse Model License**
+  with limited commercial terms.
+  [[apple|Apple]] helped tune it for
+  **two M5 Ultra Mac Studios**. Day-one
+  hosts include Together,
+  [[fireworks-ai|Fireworks]],
+  [[groq|Groq]] and
+  [[openrouter|OpenRouter]]. It led HN
+  at **543 / 306**. This reverses the
+  April decision to keep the frontier
+  Spark model closed, and is the
+  2026-08-10 open-weight promise landing
+  as a custom-licensed 1.3 cut rather
+  than an Apache dump of the priced
+  card. @teortaxesTex reads Meta's own
+  chart as **substantially weaker than
+  Spark 1.3**. No independent composite
+  landed this cycle. Detail on
+  [[muse-spark-open]] and
+  [[open-weights]] (@AIatMeta,
+  TechCrunch, The Verge, The Decoder,
+  HN; ARA daily digest 2026-10-16).

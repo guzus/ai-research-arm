@@ -6,8 +6,9 @@ aliases: ["Muse Wonder", "Muse Wonder Full", "Wonder Full", "Meta Muse Wonder"]
 tags: [model-release, meta, frontier-model, pricing, coding-agent]
 description: Meta's first independently scored frontier pair; Artificial Analysis puts Wonder at 52 and subscriber-only Full at 56 on its Intelligence Index, up from Muse Spark 1.3's 48.
 created_at: 2026-10-13
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-16T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
 ---
 
@@ -20,7 +21,8 @@ tiers and has no public per-token price yet.
 
 This page tracks the Wonder pair. The earlier Spark SKUs and the consumer
 agent stay on [[muse-code]]; the 30B Apache-2.0 distill is
-[[muse-glimmer]]. A separate "Watermelon" codename is still an unreleased
+[[muse-glimmer]]; the 2026-10-16 open-weight Spark cut is
+[[muse-spark-open]]. A separate "Watermelon" codename is still an unreleased
 next-foundation tease and is **not** this ship.
 
 ## Why it matters

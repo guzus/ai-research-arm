@@ -580,11 +580,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; opened a Singapore office and signed an AI-safety MOU, while Reuters reports a 500 MW Osaka deal with NTT Data.",
-      "description": "AI safety lab behind Claude; opened a Singapore office and signed an AI-safety MOU, while Reuters reports a 500 MW Osaka deal with NTT Data.",
+      "summary": "AI safety lab behind Claude; showed IPO investors $16.8B Q3 revenue and a $110B year-end run-rate target, and gave METR employee-like evaluator access.",
+      "description": "AI safety lab behind Claude; showed IPO investors $16.8B Q3 revenue and a $110B year-end run-rate target, and gave METR employee-like evaluator access.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-15",
-      "timestamp": "2026-10-15T00:00:00Z",
+      "updated_at": "2026-10-16",
+      "timestamp": "2026-10-16T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -701,6 +701,7 @@
         "fireworks-ai",
         "fractile",
         "gemini-3-5-flash",
+        "gemini-4-argon",
         "gemini-spark",
         "google",
         "gpt-5-6",
@@ -748,11 +749,11 @@
         "siri",
         "wwdc"
       ],
-      "summary": "Consumer-hardware giant; a judge ordered OpenAI to produce Apple interview files on ex-Apple hardware recruits, while OpenAI says an ex-employee took 100+ product-plan files to Apple.",
-      "description": "Consumer-hardware giant; a judge ordered OpenAI to produce Apple interview files on ex-Apple hardware recruits, while OpenAI says an ex-employee took 100+ product-plan files to Apple.",
+      "summary": "Consumer-hardware giant; Meta and Apple tuned Muse Spark Open to run on two M5 Ultra Mac Studios.",
+      "description": "Consumer-hardware giant; Meta and Apple tuned Muse Spark Open to run on two M5 Ultra Mac Studios.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-10-15",
-      "timestamp": "2026-10-15T00:00:00Z",
+      "updated_at": "2026-10-16",
+      "timestamp": "2026-10-16T00:00:00Z",
       "file": "entities/apple.md",
       "aliases": [
         "Apple",
@@ -762,6 +763,7 @@
         "Private Cloud Compute",
         "PCC",
         "M8 Ultra",
+        "M5 Ultra",
         "macOS Full Disk Access"
       ],
       "outbound": [
@@ -777,13 +779,19 @@
         "liquid-ai",
         "meta",
         "muse-code",
+        "muse-spark-open",
         "nvidia",
+        "open-weights",
         "openai"
       ],
       "inbound": [
         "ai-capex",
         "eu-ai-regulation",
         "google",
+        "meta",
+        "muse-code",
+        "muse-spark-open",
+        "open-weights",
         "openai"
       ],
       "market": {
@@ -1411,11 +1419,11 @@
         "frontier-model",
         "pricing"
       ],
-      "summary": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.",
-      "description": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.",
+      "summary": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Opus 5.5 fast mode is generally available at $8/$40, up to 2.5× faster.",
+      "description": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Opus 5.5 fast mode is generally available at $8/$40, up to 2.5× faster.",
       "created_at": "2026-09-23",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-16",
+      "timestamp": "2026-10-16T00:00:00Z",
       "file": "entities/claude-opus-5-5.md",
       "aliases": [
         "Claude Opus 5.5",
@@ -1941,6 +1949,7 @@
         "anthropic",
         "deepseek",
         "deepseek-v4-flash",
+        "muse-spark-open",
         "open-weights"
       ]
     },
@@ -2490,7 +2499,9 @@
         "openrouter"
       ],
       "inbound": [
+        "meta",
         "moonshot-kimi-k3",
+        "muse-spark-open",
         "naive-ai",
         "open-weights"
       ],
@@ -2793,11 +2804,11 @@
         "cyber-defense",
         "pricing"
       ],
-      "summary": "Google's Gemini 4 flagship, now generally available; day-two independent benches put it 3rd of 35 on KernelBench-Mega (27.0×) behind Opus 5.5 and Sonnet 5.5.",
-      "description": "Google's Gemini 4 flagship, now generally available; day-two independent benches put it 3rd of 35 on KernelBench-Mega (27.0×) behind Opus 5.5 and Sonnet 5.5.",
+      "summary": "Google's Gemini 4 flagship; verified 97.5% on ARC-AGI-3 with Google's harness versus 49.8% on the standard harness.",
+      "description": "Google's Gemini 4 flagship; verified 97.5% on ARC-AGI-3 with Google's harness versus 49.8% on the standard harness.",
       "created_at": "2026-10-01",
-      "updated_at": "2026-10-15",
-      "timestamp": "2026-10-15T00:00:00Z",
+      "updated_at": "2026-10-16",
+      "timestamp": "2026-10-16T00:00:00Z",
       "file": "entities/gemini-4-argon.md",
       "aliases": [
         "Gemini 4 Argon",
@@ -2810,6 +2821,7 @@
       ],
       "outbound": [
         "agentic-ai-security",
+        "anthropic",
         "astra",
         "claude-fable-5",
         "claude-opus-5-5",
@@ -2819,7 +2831,8 @@
         "gemini-3-8-live",
         "google",
         "gpt-6",
-        "harvey"
+        "harvey",
+        "verification-bottleneck"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -3213,7 +3226,9 @@
       ],
       "inbound": [
         "fractile",
+        "meta",
         "model-specific-silicon",
+        "muse-spark-open",
         "nvidia",
         "reflection-ai"
       ]
@@ -3576,11 +3591,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; shipped Muse Wonder and subscriber-only Wonder Full, independently scored 52 and 56 on Artificial Analysis versus Spark 1.3's 48.",
-      "description": "Social-platform hyperscaler and Llama maker; shipped Muse Wonder and subscriber-only Wonder Full, independently scored 52 and 56 on Artificial Analysis versus Spark 1.3's 48.",
+      "summary": "Social-platform hyperscaler and Llama maker; shipped Muse Spark Open, an 816B/42B-active multimodal MoE under a custom license, reversing April's closed-frontier decision.",
+      "description": "Social-platform hyperscaler and Llama maker; shipped Muse Spark Open, an 816B/42B-active multimodal MoE under a custom license, reversing April's closed-frontier decision.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-16",
+      "timestamp": "2026-10-16T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -3600,6 +3615,7 @@
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "apple",
         "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
@@ -3607,11 +3623,14 @@
         "claude-opus-5-5",
         "coreweave",
         "federal-ai-policy",
+        "fireworks-ai",
         "gemini-3-8-flash",
         "gemini-spark",
+        "groq",
         "microsoft",
         "muse-code",
         "muse-glimmer",
+        "muse-spark-open",
         "muse-wonder",
         "nebius",
         "neocloud",
@@ -3637,6 +3656,7 @@
         "microsoft",
         "muse-code",
         "muse-glimmer",
+        "muse-spark-open",
         "muse-wonder",
         "nvidia",
         "open-weights",
@@ -4302,11 +4322,11 @@
         "pricing",
         "consumer-agent"
       ],
-      "summary": "Meta Superintelligence Labs' coding and consumer-agent line; Muse Wonder is live in Muse Code and the Model API, with Wonder Full limited to $50/$200 subscribers.",
-      "description": "Meta Superintelligence Labs' coding and consumer-agent line; Muse Wonder is live in Muse Code and the Model API, with Wonder Full limited to $50/$200 subscribers.",
+      "summary": "Meta Superintelligence Labs' coding and consumer-agent line; Muse Spark Open shares the Spark 1.3 base and lands the promised open-weight Spark cut under a custom license.",
+      "description": "Meta Superintelligence Labs' coding and consumer-agent line; Muse Spark Open shares the Spark 1.3 base and lands the promised open-weight Spark cut under a custom license.",
       "created_at": "2026-08-06",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-16",
+      "timestamp": "2026-10-16T00:00:00Z",
       "file": "entities/muse-code.md",
       "aliases": [
         "Muse Code",
@@ -4321,6 +4341,7 @@
       "outbound": [
         "agentic-ai-security",
         "amazon",
+        "apple",
         "claude-fable-5",
         "claude-opus-5",
         "cognition-ai",
@@ -4329,7 +4350,7 @@
         "gemini-3-8-flash",
         "gpt-5-6",
         "meta",
-        "muse-glimmer",
+        "muse-spark-open",
         "muse-wonder",
         "open-weights",
         "perplexity",
@@ -4343,6 +4364,7 @@
         "gemini-3-8-flash",
         "meta",
         "muse-glimmer",
+        "muse-spark-open",
         "muse-wonder",
         "open-weights",
         "verification-bottleneck"
@@ -4373,8 +4395,8 @@
       "summary": "Meta's 30B dense multimodal agent model, released 2026-08-10 under Apache 2.0 with day-0 transformers/llama.cpp/vLLM/SGLang/Ollama support; best of 12 of 24 benchmark rows, distilled from Muse Spark.",
       "description": "Meta's 30B dense multimodal agent model, released 2026-08-10 under Apache 2.0 with day-0 transformers/llama.cpp/vLLM/SGLang/Ollama support; best of 12 of 24 benchmark rows, distilled from Muse Spark.",
       "created_at": "2026-08-11",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-16",
+      "timestamp": "2026-10-16T00:00:00Z",
       "file": "entities/muse-glimmer.md",
       "aliases": [
         "Muse Glimmer",
@@ -4386,13 +4408,14 @@
         "meta",
         "moonshot-kimi-k3",
         "muse-code",
+        "muse-spark-open",
         "muse-wonder",
         "open-weights",
         "qwen-3-8-max"
       ],
       "inbound": [
         "meta",
-        "muse-code",
+        "muse-spark-open",
         "muse-wonder",
         "nvidia",
         "open-weights"
@@ -4410,6 +4433,52 @@
       }
     },
     {
+      "slug": "muse-spark-open",
+      "title": "Muse Spark Open",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "meta",
+        "open-weights",
+        "multimodal",
+        "moe"
+      ],
+      "summary": "Meta's 816B-total / 42B-active multimodal MoE under a custom Muse Model License, tuned with Apple to run on two M5 Ultra Mac Studios.",
+      "description": "Meta's 816B-total / 42B-active multimodal MoE under a custom Muse Model License, tuned with Apple to run on two M5 Ultra Mac Studios.",
+      "created_at": "2026-10-16",
+      "updated_at": "2026-10-16",
+      "timestamp": "2026-10-16T00:00:00Z",
+      "file": "entities/muse-spark-open.md",
+      "aliases": [
+        "Muse Spark Open",
+        "Spark Open",
+        "Meta Muse Spark Open",
+        "Muse Model License"
+      ],
+      "outbound": [
+        "apple",
+        "deepseek-v4-1-flash",
+        "fireworks-ai",
+        "groq",
+        "meta",
+        "muse-code",
+        "muse-glimmer",
+        "muse-wonder",
+        "open-weights",
+        "openrouter",
+        "verification-bottleneck",
+        "xiaomi-mimo-v2-6"
+      ],
+      "inbound": [
+        "apple",
+        "meta",
+        "muse-code",
+        "muse-glimmer",
+        "muse-wonder",
+        "open-weights"
+      ]
+    },
+    {
       "slug": "muse-wonder",
       "title": "Muse Wonder",
       "type": "entity",
@@ -4423,8 +4492,8 @@
       "summary": "Meta's first independently scored frontier pair; Artificial Analysis puts Wonder at 52 and subscriber-only Full at 56 on its Intelligence Index, up from Muse Spark 1.3's 48.",
       "description": "Meta's first independently scored frontier pair; Artificial Analysis puts Wonder at 52 and subscriber-only Full at 56 on its Intelligence Index, up from Muse Spark 1.3's 48.",
       "created_at": "2026-10-13",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-16",
+      "timestamp": "2026-10-16T00:00:00Z",
       "file": "entities/muse-wonder.md",
       "aliases": [
         "Muse Wonder",
@@ -4439,6 +4508,7 @@
         "meta",
         "muse-code",
         "muse-glimmer",
+        "muse-spark-open",
         "verification-bottleneck"
       ],
       "inbound": [
@@ -4448,6 +4518,7 @@
         "meta",
         "muse-code",
         "muse-glimmer",
+        "muse-spark-open",
         "verification-bottleneck"
       ]
     },
@@ -4886,11 +4957,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "Open-weight models closing on the frontier; Nous Research closed a $90M Series B at $1.5B for Hermes Agent, a day after Mistral previewed Large 4 weights.",
-      "description": "Open-weight models closing on the frontier; Nous Research closed a $90M Series B at $1.5B for Hermes Agent, a day after Mistral previewed Large 4 weights.",
+      "summary": "Open-weight models closing on the frontier; Meta shipped Muse Spark Open (816B/42B MoE) under a custom license, reversing its April decision to keep the frontier Spark model closed.",
+      "description": "Open-weight models closing on the frontier; Meta shipped Muse Spark Open (816B/42B MoE) under a custom license, reversing its April decision to keep the frontier Spark model closed.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-08",
-      "timestamp": "2026-10-08T00:00:00Z",
+      "updated_at": "2026-10-16",
+      "timestamp": "2026-10-16T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -4905,6 +4976,7 @@
         "aleph-alpha",
         "alibaba",
         "anthropic",
+        "apple",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-sonnet-5",
@@ -4929,6 +5001,7 @@
         "moonshot-kimi-k3",
         "muse-code",
         "muse-glimmer",
+        "muse-spark-open",
         "naive-ai",
         "nous-research",
         "nvidia",
@@ -4958,6 +5031,7 @@
         "alibaba",
         "amd",
         "anthropic",
+        "apple",
         "claude-fable-5",
         "claude-sonnet-5",
         "deepseek",
@@ -4982,6 +5056,7 @@
         "moonshot-kimi-k3",
         "muse-code",
         "muse-glimmer",
+        "muse-spark-open",
         "naive-ai",
         "nano-banana-2-lite",
         "nebius",
@@ -5211,6 +5286,7 @@
         "microsoft",
         "minimax-m3",
         "moonshot-kimi-k2-7-code",
+        "muse-spark-open",
         "nous-research",
         "open-weights",
         "openai",
@@ -6223,6 +6299,7 @@
         "discovery-loop",
         "evo-genome-models",
         "federal-ai-policy",
+        "gemini-4-argon",
         "google",
         "gpt-6",
         "lifescibench",
@@ -6230,6 +6307,7 @@
         "meta",
         "mistral-leanstral-1-5",
         "muse-code",
+        "muse-spark-open",
         "muse-wonder",
         "nvidia",
         "openai",
@@ -6420,6 +6498,7 @@
         "xiaomi-mimo-v2-5-pro"
       ],
       "inbound": [
+        "muse-spark-open",
         "open-weights",
         "xai",
         "xiaomi-mimo-v2-5-pro"
@@ -7046,6 +7125,7 @@
     "longcat-2.0": "meituan-longcat-2",
     "luna": "gpt-5-6",
     "m3": "minimax-m3",
+    "m5 ultra": "apple",
     "m8 ultra": "apple",
     "macos full disk access": "apple",
     "mai": "microsoft",
@@ -7069,6 +7149,7 @@
     "meta muse": "muse-code",
     "meta muse code": "muse-code",
     "meta muse glimmer": "muse-glimmer",
+    "meta muse spark open": "muse-spark-open",
     "meta muse wonder": "muse-wonder",
     "meta one": "meta",
     "meta platforms": "meta",
@@ -7121,14 +7202,17 @@
     "muse code": "muse-code",
     "muse gadgets": "meta",
     "muse glimmer": "muse-glimmer",
+    "muse model license": "muse-spark-open",
     "muse spark 1.2": "muse-code",
     "muse spark 1.3": "muse-code",
     "muse spark 1.3 max": "muse-code",
     "muse spark max": "muse-code",
+    "muse spark open": "muse-spark-open",
     "muse wonder": "muse-wonder",
     "muse wonder full": "muse-wonder",
     "muse-code": "muse-code",
     "muse-glimmer": "muse-glimmer",
+    "muse-spark-open": "muse-spark-open",
     "muse-wonder": "muse-wonder",
     "mythos 5": "claude-fable-5",
     "mythos 5.1": "claude-fable-5",
@@ -7287,6 +7371,7 @@
     "spacex": "spacex",
     "spacexai": "cursor",
     "spark agent": "gemini-spark",
+    "spark open": "muse-spark-open",
     "spcx": "spacex",
     "ssi": "safe-superintelligence",
     "standards authority for frontier ai": "federal-ai-policy",
@@ -7369,6 +7454,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-10-16",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-16 digest plus tickets updated 2026-10-15 (google-gemini-4, anthropic-claude-fable-5-5, anthropic-schwab-partnership, mistral-new-material, others). Created 1 (muse-spark-open — 816B/42B multimodal MoE, custom Muse Model License, two M5 Ultra Mac Studios). Updated 7 (anthropic — $16.8B Q3 / $110B YE run-rate / METR insider access / distillation 5–7%; meta — Spark Open ship; muse-code — 1.2/1.3 open-weight promise lands as Spark Open; open-weights — same Western frontier-scale drop; gemini-4-argon — ARC-AGI-3 97.5% vs 49.8% harness split; claude-opus-5-5 — fast mode GA at $8/$40; apple — two-Mac-Studio tuning). Reciprocals on muse-wonder / muse-glimmer. Skipped for budget: TSMC Q3 as own page, NVIDIA Nemotron 3.5 Super VL/Bolt, Modal $16B Series D, openai eight-state increment (already 2026-10-15), FTC restatement, Microsoft MAI-Base-2, federal-ai-policy, mistral New Material, arXiv highlights."
+    },
     {
       "date": "2026-10-15",
       "op": "ingest",
@@ -7463,11 +7553,6 @@
       "date": "2026-09-27",
       "op": "ingest",
       "summary": "Ingested the 2026-09-27 digest (synthesizes the Saturday 2026-09-26 cycle plus overnight RSS/YouTube; model timeline recorded no ticket changes, so the digest was the sole input). Created 0, updated 8 (openai — Sunday DNS writeup + frontier tool-use pause + May GitHub-token leak + BBC named SEC/Census/Education; agentic-ai-security — DNS-to-chatbot + Irregular four-lab sandbox + Axios volume vs first-party dozens; astra — 80% on Epoch Furniture Assembly Benchmark; hugging-face — swarmtraces.org topped HN Saturday + BBC agency list; federal-ai-policy — named US agencies in the July rolling review; nebius + microsoft — DataOne $1.07M Vineland fine on a $17B Microsoft/Nebius site; jev — Ollaya held HN #2 + Jev Plays Pokémon Red). Skipped for budget: Replit/Atta, Ande $52M, Supabase 16k databases, Hex-Rays IDA MCP, Nvidia SoL-Pi, Sahai/Tao verification leftover, arXiv WanPE/Canopy/DSec batch."
-    },
-    {
-      "date": "2026-09-26",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-26 digest (synthesizes the 2026-09-25 cycle plus overnight RSS/YouTube; tickets updated 2026-09-25 include openai-chatgpt-pro-max, anthropic-ipo founder-control, us-ai-model-review-eo UK AISI sequencing). Created 0, updated 9 (openai — 53 leaked training images + $500 Pro Max test + UK AISI hold; anthropic — D.C. Circuit Pentagon ban + 50.1% founder voting ask + nine-loop; agentic-ai-security — image leak + swarmtraces.org reconstruction + refusals as §4713 risk; hugging-face — 80k+ reassembled swarm payloads + Wolf forensics quote; federal-ai-policy — §4713 holding + US-then-AISI sequencing + Bessent not czar; microsoft — Copilot rebuilt around OpenClaw; claude-science — nine-loop N=4 amplitude + two Enigma recoveries; crusoe — cancelled $1.25B Boom Superpower order at Abilene; astra — reciprocal Enigma note). Skipped for budget: gemini-3-8-live Avatar GA, cognition-ai $1B ARR claim, jev/Ollaya, Nscale $3.36B convertible, TypeSafe/DensityAI raises, GPT-6 Astra NetHack leftover, muse-spark-1.4 / Space Bunny / Nano Banana 2.5 rumors, arXiv Qwen-Planner/Rufus-Air/CTC-Bench batch."
     }
   ]
 }

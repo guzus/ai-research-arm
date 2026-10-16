@@ -4,10 +4,11 @@ title: Claude Opus 5.5
 type: entity
 aliases: ["Claude Opus 5.5", "Opus 5.5", "claude-opus-5-5", "claude-opus-5.5"]
 tags: [model-release, anthropic, claude, frontier-model, pricing]
-description: Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Sonnet 5.5 shipped five days later as the family's second SKU at unchanged $2/$10.
+description: Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Opus 5.5 fast mode is generally available at $8/$40, up to 2.5× faster.
 created_at: 2026-09-23
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-16T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
@@ -134,3 +135,21 @@ digest 2026-10-01).
   despite Meta's $4/$20 list matching this
   card. See [[muse-wonder]] (Artificial
   Analysis; ARA daily digest 2026-10-13).
+
+## Fast mode generally available (2026-10-16)
+
+- **Opus 5.5 fast mode is generally
+  available** at up to **2.5×**
+  served speed and **$8 / $40 per
+  Mtok** — double the default
+  **$4 / $20** card. It is live on
+  the Claude Platform and Microsoft
+  Foundry, with Google Cloud "coming
+  soon." The launch-day AA note on
+  this page already priced Fast as
+  the speed tier against the
+  token-burn finding; today's
+  increment is GA, not a new
+  family. See [[anthropic]]
+  (@ClaudeDevs; ARA daily digest
+  2026-10-16).

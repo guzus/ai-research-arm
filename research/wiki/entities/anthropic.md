@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; opened a Singapore office and signed an AI-safety MOU, while Reuters reports a 500 MW Osaka deal with NTT Data.
+description: AI safety lab behind Claude; showed IPO investors $16.8B Q3 revenue and a $110B year-end run-rate target, and gave METR employee-like evaluator access.
 created_at: 2026-05-24
-timestamp: 2026-10-15T00:00:00Z
+timestamp: 2026-10-16T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA model ticket — Anthropic Singapore office", path: research/models/tickets/anthropic-singapore-office-2026-10.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
@@ -3234,3 +3235,85 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   (@iruletheworldmo; ARA daily
   digest 2026-10-15 and ticket
   `anthropic-claude-fable-5-5-2026-10`).
+
+## Q3 books to IPO investors; METR insider access (2026-10-16)
+
+- **Anthropic showed prospective IPO
+  investors $16.8B of Q3 revenue**,
+  up **45%** from Q2's **$11.6B**
+  (the path across 2026 is **$4.7B
+  → $11.6B → $16.8B**; the FT gives
+  ~$4.8B / $11.5B). The company
+  also claimed **adjusted
+  profitability**, **positive free
+  cash flow**, and a **$110B
+  year-end run-rate** target. An
+  IPO is reported **before
+  Thanksgiving**, consistent with
+  the 14 October investor Q&A this
+  page logged on 2026-10-03.
+  **"Adjusted" is undefined until a
+  filing appears.** All figures are
+  investor-facing, not an S-1
+  (Bloomberg, Reuters, FT via Simon
+  Willison, The Decoder; ARA daily
+  digest 2026-10-16).
+- **The FT says distillation was
+  5–7% of revenue** before a
+  material Q3 cut. Simon Willison
+  estimates that band as **more
+  than $500M of Q2 spend by other
+  labs**. This is the first
+  dollar-denominated size on the
+  distillation campaign this page
+  has tracked since the Alibaba
+  tables and the 90–99%
+  reasoning-token cut. See
+  [[open-weights]] (FT via Simon
+  Willison; ARA daily digest
+  2026-10-16).
+- **A six-person METR team now has
+  employee-like access**, can
+  publish its own findings, and
+  Anthropic gives up any veto
+  beyond predefined redaction
+  categories. Other evaluators
+  such as SecureBio start at a
+  lower tier. Independence will
+  show in what METR publishes,
+  not in the policy. See
+  [[federal-ai-policy]]
+  (@AnthropicAI, TechCrunch; ARA
+  daily digest 2026-10-16).
+- **Axios reports an FTC civil
+  investigative demand** of 50+
+  pages covering security
+  incidents at Anthropic and
+  [[openai]], following test-time
+  hacks and breaches of government
+  systems. The probe was already
+  logged as reported on 2026-10-01;
+  today's increment is the CID
+  length and the Ars relay (Ars
+  Technica; ARA daily digest
+  2026-10-16).
+- **[[claude-opus-5-5|Opus 5.5]]
+  fast mode is generally
+  available** at **$8/$40 per
+  Mtok**, up to **2.5×** faster,
+  on the Claude Platform and
+  Microsoft Foundry, with Google
+  Cloud "coming soon." See
+  [[claude-opus-5-5]]
+  (@ClaudeDevs; ARA daily digest
+  2026-10-16).
+- **The "Fable 5.5 drops today"
+  rumor circulated all day** from
+  an anonymous account. There is
+  still no Anthropic statement,
+  docs change, or model-list
+  entry. Ticket
+  `anthropic-claude-fable-5-5-2026-10`
+  remains *in-testing*. See
+  [[claude-fable-5]] (ARA daily
+  digest 2026-10-16).
