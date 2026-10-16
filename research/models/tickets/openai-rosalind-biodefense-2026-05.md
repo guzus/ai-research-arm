@@ -5,6 +5,12 @@ company: OpenAI
 model: GPT-Rosalind
 status: confirmed
 status_note: |
+  **2026-10-16 — Rosalind Academic Plan (primary).** @OpenAI (2026-10-15 21:15 UTC)
+  expanded GPT-Rosalind to academic research. Eligible U.S. university labs get up to
+  12 months of sponsored access to OpenAI tools, and GPT-Rosalind access remains
+  subject to trusted-access approval. Research data is not used for training by
+  default. The model stays gated.
+
   OpenAI announced (2026-05-29 15:03 UTC, primary @OpenAI) two coupled
   moves: **launching Rosalind Biodefense** to help trusted builders
   develop new biodefense and pandemic-preparedness capabilities, and
@@ -14,7 +20,7 @@ status_note: |
   building a more robust ecosystem of trusted defenders with access to
   frontier AI. GPT-Rosalind is gated to trusted partners (not a public
   release); Rosalind Biodefense is the partner program around it.
-expected: "Expanded GPT-Rosalind partner access rollout TBD; no broad public release planned"
+expected: "Gated model. Trusted access now covers U.S. government/allied biodefense partners (2026-05) and eligible U.S. university labs via the Rosalind Academic Plan (2026-10-15, up to 12 months sponsored). No broad public release planned."
 labels:
   - biodefense
   - partnership
@@ -24,8 +30,10 @@ verification: confirmed
 sources:
   - "@OpenAI"
   - "@sama"
+  - "https://x.com/OpenAI/status/2110841898076418336"
+  - "https://x.com/OpenAI/status/2110841899838046525"
 created_at: 2026-05-30
-updated_at: 2026-06-01
+updated_at: 2026-10-16
 closed_at: null
 closed_reason: null
 history:
@@ -33,6 +41,8 @@ history:
     change: "Created — @OpenAI primary announcement 2026-05-29 15:03 UTC: Rosalind Biodefense initiative launches to help trusted builders develop biodefense + pandemic-preparedness capabilities, alongside expanded trusted access to GPT-Rosalind for select U.S. government + allied partners supporting public-health and biodefense missions. Gated model; parallel structurally to Anthropic's Project Glasswing pattern on the [[mythos-public-release]] ticket"
   - ts: 2026-06-01
     change: "@sama amplification 2026-05-31 15:05 UTC (~472 likes / 51 RT / 147 replies): 'We want to help the world get a head start on biodefense:' with the openai.com Rosalind Biodefense URL — recirculating the May 29 launch as part of OpenAI's weekend defensive cadence opposite the Anthropic Series H ([[anthropic-series-h-2026-05]]) and testingcatalog Anthropic-Operon-for-bioscience leak ([[anthropic-conway-orbit-2026-05]]). No new partner / scope disclosure in-window"
+  - ts: 2026-10-16
+    change: "Confirmed, unchanged — access broadens from government and biodefense partners to academia. @OpenAI (2026-10-15 21:15 UTC, three-post thread) launched the Rosalind Academic Plan. Eligible labs at U.S. universities get up to 12 months of sponsored access to OpenAI tools. GPT-Rosalind access itself remains subject to trusted-access approval, so the model is still gated, not public. Research data shared through the plan is not used for training by default. This is the 'broader trusted access' trigger named in the body, not a public release, so status stays confirmed."
 ---
 
 **OpenAI's 2026-05-29 announcement** combined two moves in a single

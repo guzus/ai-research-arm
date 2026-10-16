@@ -5,6 +5,14 @@ company: Google / DeepMind
 model: Gemini 4
 status: released
 status_note: |
+  **2026-10-16 — Antigravity access widens to AI Pro; ARC-AGI-3 placement.**
+  @antigravity (RT'd by @demishassabis, 2026-10-15 23:35 UTC) is rolling Argon out in
+  Antigravity to paid Google AI Pro subscribers, down from Ultra-only. @arcprize
+  publishes ARC-AGI-3 at 97.5% ($4.8K, provider adapter harness) and 49.8% ($5.8K,
+  standard harness). These are different harnesses, not one score. JS SDK v2.30.0 adds
+  the model to its enum. Relays put Argon first on Harvey's legal-agent benchmark and
+  the VALS finance-agent index.
+
   **2026-10-15 — day-2 follow-through, status unchanged (released).** @GoogleDeepMind
   (2026-10-14 17:25 UTC) posted a science thread: quantum computing, fusion and protein
   design results, including five lab-verified serine esterases designed in hours.
@@ -117,8 +125,13 @@ sources:
   - "https://x.com/GoogleDeepMind/status/2110421873242861711"
   - "https://x.com/ScaleAILabs/status/2110455008450040176"
   - "https://x.com/OfficialLoganK/status/2110420958737813612"
+  - "https://x.com/demishassabis/status/2110877249041777052"
+  - "https://x.com/demishassabis/status/2110877072990052822"
+  - "https://x.com/GoogleAI/status/2110744759111213217"
+  - "https://x.com/MamoKDNFT/status/2111053032100073484"
+  - "https://x.com/AIDailyBrief/status/2111058830536888568"
 created_at: 2026-09-24
-updated_at: 2026-10-15
+updated_at: 2026-10-16
 closed_at: null
 closed_reason: null
 history:
@@ -142,6 +155,8 @@ history:
     change: "CONFIRMED -> RELEASED; verification stays confirmed; title updated. Google rolled Gemini 4 Argon out globally on 2026-10-13. @GoogleAI (16:07 UTC): 'Gemini 4 Argon is now rolling out globally.' @OfficialLoganK (16:04 UTC): available in the Gemini API, to Pro + Ultra subscribers in the Gemini App, and to Ultra subscribers in Antigravity, after more than 100,000 Google staff tested it over the last month and Fairwind/early-access customers used it for two weeks. @GoogleAI's availability post adds the paid API tier, AI Studio and Android Studio for Ultra subscribers, Gemini for business, AI Mode in Search for Pro/Ultra, a 6-month free top-tier Antigravity programme for scientists (applications), and Fairwind access without cyber guardrails for defenders. @demishassabis posted Argon demos on his own handle. The Antigravity SDK v0.1.22 adds `gemini-4-argon` targets (@ntaylormullen). Released because paying developers and Pro/Ultra subscribers can now use it without a partner list. There is still no free tier. Unadopted third-party observations: @elliscrosby notes the release-card scores are identical to the 2026-09-30 announcement, so the 14-day gap was not a new checkpoint. @JordanFrery relays a hallucination rate about 4x lower than Opus 5.5, which matches the low AA hallucination figure already logged. The 'Carbon' checkpoint chatter stays unadopted. No Polymarket mapping was added because this run could not reach the Polymarket API."
   - ts: 2026-10-15
     change: "Released, unchanged — day-2 follow-through from Google's own handles. (1) @GoogleDeepMind (2026-10-14 17:25 UTC, ~2.1K likes) threads Argon science results in quantum computing, nuclear fusion and protein design. These include enzyme engineering 'compressed into a matter of hours' to design five lab-verified serine esterases, quoting a DeepMind protein-engineering researcher's zero-shot results. (2) The same thread states on DeepMind's own handle that 10,000 scientists get free access to the highest Antigravity usage tier for 6 months. That upgrades the scientist-programme detail logged on 2026-10-14 from a researcher RT to a first-party statement. (3) @ScaleAILabs, retweeted by @demishassabis, reports Argon #1 on its Humanity's Sixth Sense (HSS) benchmark at 55.4%, ahead of GPT-6 Astra at 53.6%. This is a third-party placement amplified by the vendor. (4) @OfficialLoganK posted a launch conversation with Sergey Brin, Josh Woodward, Tulsee Doshi and Melvin Johnson; no new specs were captured from it. Community comparison posts (Argon vs Opus 5.5 and Muse Wonder on cost and one-shot demos) are logged, not adopted. There is still no free API tier and no smaller Gemini 4 model."
+  - ts: 2026-10-16
+    change: "Released, unchanged — access widens and the third-party scorecard grows. (1) @antigravity (RT'd by @demishassabis, 2026-10-15 23:35 UTC): Gemini 4 Argon is now rolling out in Antigravity to paid Google AI Pro subscribers, a step down from the Ultra-only Antigravity access logged on 2026-10-14; the post cites demand. (2) @arcprize (RT'd by @demishassabis, 23:34 UTC) publishes Argon on ARC-AGI (Verified): ARC-AGI-3 97.5% at $4.8K with the provider adapter harness and 49.8% at $5.8K with the standard harness. The two numbers use different harnesses and should not be quoted as one score. (3) @GoogleAI (14:49 UTC) demos Argon as an autonomous 3D world builder in Antigravity. (4) The Google Gen AI JavaScript SDK v2.30.0 adds Gemini 4 Argon to its Model enum (@MamoKDNFT relay of the changelog). (5) @AIDailyBrief reports Argon leads Harvey's legal-agent benchmark by 13 points over Fable 5.1 and tops the VALS finance-agent index; a separate Vals Index relay puts Argon first overall at 68.90% (logged on [[meta-watermelon-2026-10]]). Items 4-5 are relay-strength. Still no free API tier and no smaller Gemini 4 model."
 ---
 
 The July ticket died of exactly one thing: nobody in a position to know would
