@@ -1,0 +1,13 @@
+Speaker 1: Friday, October sixteenth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic has shown IPO investors its third-quarter numbers, and revenue came in at [emphasis] sixteen point eight billion dollars [/emphasis], with an adjusted profit on top.
+Speaker 1: That is up forty-five percent from the prior quarter, and the company is pointing to a one hundred ten billion dollar run-rate target.
+Speaker 2: Worth noting that a profit line is rare for a frontier lab, so that is the headline investors will fixate on.
+Speaker 1: On the open-weights front, Meta and Apple jointly released Muse Spark Open.
+Speaker 2: It is a mixture-of-experts model with eight hundred sixteen billion total parameters and forty-two billion active, and it topped Hacker News at five hundred forty-three points.
+Speaker 1: Right behind it on Hacker News was Goodfire's essay, Neural networks are clean.
+Speaker 1: Over in chips, TSMC posted a record third quarter and says AI demand still exceeds supply.
+Speaker 2: Net profit jumped [emphasis] sixty-eight point seven percent [/emphasis] year over year, and fourth-quarter guidance is fifty-two point three to fifty-four point three billion dollars.
+Speaker 1: On the policy front, eight states have sued OpenAI over ChatGPT child safety.
+Speaker 2: And one benchmark to watch, Gemini four Argon scored ninety-seven point five percent on ARC-AGI-three using its own harness.
+Speaker 1: [dramatic_pause] On the standard harness, it scored [emphasis] forty-nine point eight percent [/emphasis].
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
