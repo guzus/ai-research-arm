@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-21 01:00 UTC",
-    "headline": "TRUMP SET TO SIGN AI EXECUTIVE ORDER THURSDAY \u2014 VOLUNTARY 90-DAY FRONTIER-MODEL PRE-RELEASE REVIEW, CEOS INVITED",
-    "source": "@steph_palazzolo",
-    "source_file": "research/summaries/2026-05-21-twitter-01h-headlines.json",
-    "url": "https://x.com/steph_palazzolo/status/2057179490900377620"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 01:00 UTC",
-    "headline": "OPENAI PREPARING TO FILE FOR IPO AS SOON AS FRIDAY \u2014 VALUATION COULD TOP $1 TRILLION",
-    "source": "@WSJ",
-    "source_file": "research/summaries/2026-05-21-twitter-01h-headlines.json",
-    "url": "https://x.com/WSJ/status/2057135489040212227"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 04:00 UTC",
-    "headline": "ANTHROPIC PROJECTS FIRST OPERATING PROFIT \u2014 ~$559M ON $10.9B Q2 REVENUE, UP 130% QoQ (WSJ)",
-    "source": "@cmani",
-    "source_file": "research/summaries/2026-05-21-twitter-04h-headlines.json",
-    "url": "https://x.com/cmani/status/2057282907039830382"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-21 04:00 UTC",
     "headline": "OPENAI SAYS INTERNAL REASONING MODEL DISPROVED ~80-YEAR-OLD ERD\u0150S UNIT-DISTANCE CONJECTURE",
@@ -23602,5 +23575,26 @@
     "headline": "PERPLEXITY OPEN-SOURCES 27B AND 4B DECIDER V1.2 DECISION MODELS AT 1-2 CENTS PER MILLION TOKENS",
     "source": "@AravSrinivas",
     "url": "https://x.com/AravSrinivas/status/2111181956444827695"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-16 23:30:41 UTC",
+    "headline": "ANTHROPIC PITCHES CONGRESS ITS OWN FRONTIER-AI BILL \u2014 COURT HALT FOR 50+ DEATH/$1B RISK, PREEMPTS SOME STATE LAWS: POLITICO",
+    "source": "@politico",
+    "url": "https://x.com/politico/status/2111212154758021624"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-16 23:30:41 UTC",
+    "headline": "NYC COMPTROLLER LEVINE, OVERSEEING $325B IN PENSIONS, URGES ANTHROPIC TO DELAY IPO OVER AI SAFETY RISKS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2111213177191166378"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-16 23:30:41 UTC",
+    "headline": "AMAZON BLOCKS META MUSE SHOPPING AGENT; JEFFERIES FINDS A THIRD OF US SHOPPING AND TRAVEL SITES TESTED DO TOO",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2111223778373935465"
   }
 ]
