@@ -4,10 +4,11 @@ title: Muse Code (Muse Spark 1.3)
 type: entity
 aliases: ["Muse Code", "Muse Spark 1.2", "Muse Spark 1.3", "Meta Muse Code", "Muse Spark max", "Muse Spark 1.3 max", "Muse agent", "Meta Muse"]
 tags: [coding-agent, meta, terminal-agent, benchmarks, pricing, consumer-agent]
-description: Meta Superintelligence Labs' coding and consumer-agent line; Muse Wonder is live in Muse Code and the Model API, with Wonder Full limited to $50/$200 subscribers.
+description: Meta Superintelligence Labs' coding and consumer-agent line; Muse Spark Open shares the Spark 1.3 base and lands the promised open-weight Spark cut under a custom license.
 created_at: 2026-08-06
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-16T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
@@ -64,11 +65,10 @@ as one product; the maker is tracked on [[meta]] and the earlier
 - **Do the independent Terminal-Bench and DeepSWE numbers hold** once the
   beta widens and harness configuration is matched? Both readings arrived
   within three hours of launch.
-- **Is Muse Spark 1.2 open-weight?** Meta committed on 2026-08-10 to
-  open-weighting a version of Muse Spark 1.2 ("in the coming weeks") — still a
-  promise, not a release, and read as a reversal of the closed posture this
-  question was tracking. The commitment landed with the [[muse-glimmer]]
-  Apache-2.0 release, Meta's return to [[open-weights]].
+- **Is Muse Spark 1.2 open-weight?** The 2026-08-10 promise landed on
+  2026-10-16 as [[muse-spark-open|Muse Spark Open]] — a 1.3-base,
+  safety-tuned cut under a custom Muse Model License, not an Apache
+  dump of the priced 1.2 card. See [[open-weights]].
 - **Where does Hatch fit now?** The earlier Meta Hatch / Muse Spark ticket
   and this release have not been reconciled in one place.
 
@@ -234,7 +234,25 @@ as one product; the maker is tracked on [[meta]] and the earlier
 - **Alexandr Wang confirmed a Muse Code
   usage-limit bug**, with resets promised. Dan
   Shipper withdrew a benchmark result after a
-  bad run. HN commenters noted the marketing
+  bad run. HN commenters   noted the marketing
   page's scores are for Full, not Wonder. See
   [[verification-bottleneck]] (ARA daily digest
   2026-10-13).
+
+## Muse Spark Open lands the open-weight promise (2026-10-16)
+
+- **[[muse-spark-open|Muse Spark Open]] shares a
+  base with Spark 1.3**, adds safety
+  post-training, and ships under a custom
+  **Muse Model License** with limited
+  commercial terms. It is **816B / 42B
+  active**, 1M context, multimodal, tuned
+  with [[apple]] for two M5 Ultra Mac
+  Studios. This closes the 2026-08-10
+  open-weight question on this page as a
+  custom-licensed 1.3 cut, not Apache 1.2.
+  @teortaxesTex reads Meta's chart as
+  weaker than closed Spark 1.3. Detail on
+  [[muse-spark-open]] (@AIatMeta,
+  TechCrunch, The Verge, HN 543/306; ARA
+  daily digest 2026-10-16).

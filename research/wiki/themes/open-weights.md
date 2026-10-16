@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: Open-weight models closing on the frontier; Nous Research closed a $90M Series B at $1.5B for Hermes Agent, a day after Mistral previewed Large 4 weights.
+description: Open-weight models closing on the frontier; Meta shipped Muse Spark Open (816B/42B MoE) under a custom license, reversing its April decision to keep the frontier Spark model closed.
 created_at: 2026-06-14
-timestamp: 2026-10-08T00:00:00Z
+timestamp: 2026-10-16T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
@@ -775,6 +776,37 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   a frontier-pretrain megaround
   (TechCrunch, WSJ; ARA daily digest
   2026-10-08).
+
+## Muse Spark Open: Western frontier-scale weights, custom license (2026-10-16)
+
+- **[[meta]] shipped [[muse-spark-open]]** — **816B total / 42B
+  active**, 256 experts / 8
+  routed, 1M context, multimodal
+  — under a custom **Muse Model
+  License** with limited
+  commercial terms. It shares a
+  base with closed Muse Spark
+  1.3 and adds safety
+  post-training. This reverses
+  Meta's April decision to keep
+  the frontier Spark model
+  closed, and lands the
+  2026-08-10 promise this theme
+  has carried since
+  [[muse-glimmer]]. It is not
+  MIT or Apache: the weights
+  download, the commercial
+  right does not fully. HN's
+  top AI thread at **543 /
+  306**. @teortaxesTex reads
+  Meta's own chart as weaker
+  than Spark 1.3; no
+  independent composite landed.
+  See [[muse-code]] and
+  [[apple]] (@AIatMeta,
+  TechCrunch, The Verge, The
+  Decoder, HN; ARA daily digest
+  2026-10-16).
 
 ## Open questions
 
