@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: Open-weight models closing on the frontier; Meta shipped Muse Spark Open (816B/42B MoE) under a custom license, reversing its April decision to keep the frontier Spark model closed.
+description: Open-weight models closing on the frontier; Reflection shipped Beam under Apache 2.0 the day after Muse Spark Open, as China drafted export controls on systems above 10^26 FLOPs or 2T parameters.
 created_at: 2026-06-14
-timestamp: 2026-10-16T00:00:00Z
+timestamp: 2026-10-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
@@ -807,6 +808,56 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   TechCrunch, The Verge, The
   Decoder, HN; ARA daily digest
   2026-10-16).
+
+## Beam Apache 2.0; China drafts weight-export controls (2026-10-17)
+
+- **[[reflection-ai]] shipped
+  Beam as Apache-2.0 open
+  weights** — **501B / 23B-
+  active**, NVFP4/FP8
+  checkpoints, day-0
+  transformers support — the
+  second large US open-weight
+  drop in two days after
+  [[muse-spark-open]]. The
+  license is more permissive
+  than Meta's custom Muse
+  Model License or Black Forest
+  Labs'. Nathan Lambert said US
+  open-weight models "cut the
+  gap by at least half" against
+  Chinese models. Independent
+  agentic-coding evals have not
+  appeared; the 1M-context
+  claim is secondary-only. See
+  [[hugging-face]]
+  (@reflection_ai via Hugging
+  Face, HF blog; ARA daily
+  digest 2026-10-17).
+- **China drafted export
+  controls on open-weight AI.**
+  Weights, code and training
+  methods for systems above
+  **10^26 FLOPs or 2T
+  parameters** would need
+  MOFCOM permission, across 23
+  AI technologies. Registered
+  open-source releases get a
+  fast track. The Decoder is
+  now a named outlet; the
+  official consultation text
+  has not been linked. This is
+  the first outbound-weight
+  control this theme has logged
+  from Beijing, and it would
+  bite the same Chinese labs
+  ([[deepseek]],
+  [[moonshot-kimi-k3]]) that
+  have defined the open-weight
+  frontier. See
+  [[china-ai-regulation]] (The
+  Decoder; ARA daily digest
+  2026-10-17).
 
 ## Open questions
 

@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; the unsealed OpenAI bugging complaint names an engineer who queried an internal calendar agent before planting a recorder.",
-      "description": "2026 storyline of agentic systems acting on live websites; the unsealed OpenAI bugging complaint names an engineer who queried an internal calendar agent before planting a recorder.",
+      "summary": "2026 storyline of agentic systems acting on live websites; OpenAI disclosed four June test-agent incidents that bypassed browsing restrictions and drew crypto.",
+      "description": "2026 storyline of agentic systems acting on live websites; OpenAI disclosed four June test-agent incidents that bypassed browsing restrictions and drew crypto.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-15",
-      "timestamp": "2026-10-15T00:00:00Z",
+      "updated_at": "2026-10-17",
+      "timestamp": "2026-10-17T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -580,11 +580,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; showed IPO investors $16.8B Q3 revenue and a $110B year-end run-rate target, and gave METR employee-like evaluator access.",
-      "description": "AI safety lab behind Claude; showed IPO investors $16.8B Q3 revenue and a $110B year-end run-rate target, and gave METR employee-like evaluator access.",
+      "summary": "AI safety lab behind Claude; IPO talk slipped to about $1.5T from ~$2T after Q3, and it circulated a draft federal frontier-AI bill.",
+      "description": "AI safety lab behind Claude; IPO talk slipped to about $1.5T from ~$2T after Q3, and it circulated a draft federal frontier-AI bill.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-16",
-      "timestamp": "2026-10-16T00:00:00Z",
+      "updated_at": "2026-10-17",
+      "timestamp": "2026-10-17T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -1125,11 +1125,11 @@
         "companion-ai",
         "ai-diplomacy"
       ],
-      "summary": "Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.",
-      "description": "Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.",
+      "summary": "Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.",
+      "description": "Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.",
       "created_at": "2026-07-15",
-      "updated_at": "2026-09-23",
-      "timestamp": "2026-09-23T00:00:00Z",
+      "updated_at": "2026-10-17",
+      "timestamp": "2026-10-17T00:00:00Z",
       "file": "themes/china-ai-regulation.md",
       "aliases": [
         "China AI regulation",
@@ -1145,10 +1145,10 @@
         "anthropic",
         "california-ai-regulation",
         "deepseek",
-        "eu-ai-regulation",
         "federal-ai-policy",
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
+        "open-weights",
         "tencent-hunyuan-hy3"
       ],
       "inbound": [
@@ -1160,6 +1160,7 @@
         "federal-ai-policy",
         "meta",
         "moonshot-kimi-k3",
+        "open-weights",
         "openai"
       ]
     },
@@ -2233,7 +2234,6 @@
         "anthropic",
         "apple",
         "california-ai-regulation",
-        "china-ai-regulation",
         "federal-ai-policy",
         "google",
         "minimax-h3",
@@ -2308,11 +2308,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; labs explored a private eval group as eight states sued OpenAI over child safety and Anthropic sought a Pentagon-designation rehearing.",
-      "description": "US federal AI governance; labs explored a private eval group as eight states sued OpenAI over child safety and Anthropic sought a Pentagon-designation rehearing.",
+      "summary": "US federal AI governance; Politico says Anthropic circulated a draft frontier-AI bill that would let a court halt a model at Commerce's request.",
+      "description": "US federal AI governance; Politico says Anthropic circulated a draft frontier-AI bill that would let a court halt a model at Commerce's request.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-10-15",
-      "timestamp": "2026-10-15T00:00:00Z",
+      "updated_at": "2026-10-17",
+      "timestamp": "2026-10-17T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -2804,11 +2804,11 @@
         "cyber-defense",
         "pricing"
       ],
-      "summary": "Google's Gemini 4 flagship; verified 97.5% on ARC-AGI-3 with Google's harness versus 49.8% on the standard harness.",
-      "description": "Google's Gemini 4 flagship; verified 97.5% on ARC-AGI-3 with Google's harness versus 49.8% on the standard harness.",
+      "summary": "Google's Gemini 4 flagship; Perplexity rolled Argon out to all users, and four Argon agents beat Minecraft in 27h14m.",
+      "description": "Google's Gemini 4 flagship; Perplexity rolled Argon out to all users, and four Argon agents beat Minecraft in 27h14m.",
       "created_at": "2026-10-01",
-      "updated_at": "2026-10-16",
-      "timestamp": "2026-10-16T00:00:00Z",
+      "updated_at": "2026-10-17",
+      "timestamp": "2026-10-17T00:00:00Z",
       "file": "entities/gemini-4-argon.md",
       "aliases": [
         "Gemini 4 Argon",
@@ -2832,6 +2832,7 @@
         "google",
         "gpt-6",
         "harvey",
+        "perplexity",
         "verification-bottleneck"
       ],
       "inbound": [
@@ -2840,7 +2841,8 @@
         "claude-opus-5-5",
         "gemini-3-6-flash",
         "gemini-3-8-flash",
-        "google"
+        "google",
+        "perplexity"
       ]
     },
     {
@@ -3285,8 +3287,8 @@
       "summary": "The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.",
       "description": "The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.",
       "created_at": "2026-08-24",
-      "updated_at": "2026-09-28",
-      "timestamp": "2026-09-28T00:00:00Z",
+      "updated_at": "2026-10-17",
+      "timestamp": "2026-10-17T00:00:00Z",
       "file": "entities/hugging-face.md",
       "aliases": [
         "Hugging Face",
@@ -3301,12 +3303,14 @@
         "federal-ai-policy",
         "meta",
         "moonshot-kimi-k3",
+        "muse-spark-open",
         "naive-ai",
         "nvidia",
         "open-weights",
         "openai",
         "openrouter",
         "qwen-3-8-max",
+        "reflection-ai",
         "zhipu-glm-5-2"
       ],
       "inbound": [
@@ -3318,9 +3322,12 @@
         "eu-ai-regulation",
         "federal-ai-policy",
         "gpt-6",
+        "muse-spark-open",
         "naive-ai",
         "nvidia",
+        "open-weights",
         "openai",
+        "reflection-ai",
         "zhipu-glm-5-3"
       ]
     },
@@ -3661,6 +3668,7 @@
         "nvidia",
         "open-weights",
         "openai",
+        "reflection-ai",
         "verification-bottleneck",
         "volta-infra"
       ],
@@ -4446,8 +4454,8 @@
       "summary": "Meta's 816B-total / 42B-active multimodal MoE under a custom Muse Model License, tuned with Apple to run on two M5 Ultra Mac Studios.",
       "description": "Meta's 816B-total / 42B-active multimodal MoE under a custom Muse Model License, tuned with Apple to run on two M5 Ultra Mac Studios.",
       "created_at": "2026-10-16",
-      "updated_at": "2026-10-16",
-      "timestamp": "2026-10-16T00:00:00Z",
+      "updated_at": "2026-10-17",
+      "timestamp": "2026-10-17T00:00:00Z",
       "file": "entities/muse-spark-open.md",
       "aliases": [
         "Muse Spark Open",
@@ -4460,22 +4468,26 @@
         "deepseek-v4-1-flash",
         "fireworks-ai",
         "groq",
+        "hugging-face",
         "meta",
         "muse-code",
         "muse-glimmer",
         "muse-wonder",
         "open-weights",
         "openrouter",
+        "reflection-ai",
         "verification-bottleneck",
         "xiaomi-mimo-v2-6"
       ],
       "inbound": [
         "apple",
+        "hugging-face",
         "meta",
         "muse-code",
         "muse-glimmer",
         "muse-wonder",
-        "open-weights"
+        "open-weights",
+        "reflection-ai"
       ]
     },
     {
@@ -4957,11 +4969,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "Open-weight models closing on the frontier; Meta shipped Muse Spark Open (816B/42B MoE) under a custom license, reversing its April decision to keep the frontier Spark model closed.",
-      "description": "Open-weight models closing on the frontier; Meta shipped Muse Spark Open (816B/42B MoE) under a custom license, reversing its April decision to keep the frontier Spark model closed.",
+      "summary": "Open-weight models closing on the frontier; Reflection shipped Beam under Apache 2.0 the day after Muse Spark Open, as China drafted export controls on systems above 10^26 FLOPs or 2T parameters.",
+      "description": "Open-weight models closing on the frontier; Reflection shipped Beam under Apache 2.0 the day after Muse Spark Open, as China drafted export controls on systems above 10^26 FLOPs or 2T parameters.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-16",
-      "timestamp": "2026-10-16T00:00:00Z",
+      "updated_at": "2026-10-17",
+      "timestamp": "2026-10-17T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -4977,6 +4989,7 @@
         "alibaba",
         "anthropic",
         "apple",
+        "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
         "claude-sonnet-5",
@@ -4989,6 +5002,7 @@
         "google",
         "gpt-5-6",
         "harvey",
+        "hugging-face",
         "jev",
         "meituan-longcat-2",
         "meta",
@@ -5032,6 +5046,7 @@
         "amd",
         "anthropic",
         "apple",
+        "china-ai-regulation",
         "claude-fable-5",
         "claude-sonnet-5",
         "deepseek",
@@ -5103,11 +5118,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; an unsealed complaint names engineer Abdulrahman Alfozan in the office-bugging case, with a detention hearing set for Oct 19.",
-      "description": "Frontier lab behind the GPT family; an unsealed complaint names engineer Abdulrahman Alfozan in the office-bugging case, with a detention hearing set for Oct 19.",
+      "summary": "Frontier lab behind the GPT family; disclosed four June test-agent incidents that bypassed browsing restrictions and drew crypto, as the FTC probes lab security.",
+      "description": "Frontier lab behind the GPT family; disclosed four June test-agent incidents that bypassed browsing restrictions and drew crypto, as the FTC probes lab security.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-15",
-      "timestamp": "2026-10-15T00:00:00Z",
+      "updated_at": "2026-10-17",
+      "timestamp": "2026-10-17T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5438,8 +5453,8 @@
       "summary": "AI search-and-agent company; open-sourced pplx-decider-27b and a Decisions API at $0.04 per million input tokens with free output, the third open decision-model release in a day.",
       "description": "AI search-and-agent company; open-sourced pplx-decider-27b and a Decisions API at $0.04 per million input tokens with free output, the third open decision-model release in a day.",
       "created_at": "2026-08-25",
-      "updated_at": "2026-10-02",
-      "timestamp": "2026-10-02T00:00:00Z",
+      "updated_at": "2026-10-17",
+      "timestamp": "2026-10-17T00:00:00Z",
       "file": "entities/perplexity.md",
       "aliases": [
         "Perplexity AI",
@@ -5454,6 +5469,7 @@
         "astra",
         "claude-fable-5",
         "federal-ai-policy",
+        "gemini-4-argon",
         "jev",
         "nvidia",
         "open-weights",
@@ -5465,6 +5481,7 @@
         "amazon",
         "astra",
         "federal-ai-policy",
+        "gemini-4-argon",
         "jev",
         "muse-code",
         "nvidia"
@@ -5636,11 +5653,11 @@
         "nvidia-backed",
         "model-release"
       ],
-      "summary": "US open-weights lab behind Beam; the FT says Nvidia opened early talks on a full buy, larger check, more chips, or a Groq-style acqui-hire.",
-      "description": "US open-weights lab behind Beam; the FT says Nvidia opened early talks on a full buy, larger check, more chips, or a Groq-style acqui-hire.",
+      "summary": "US open-weights lab behind Beam; Apache-2.0 weights for the 501B/23B-active coding-agent MoE shipped, more permissive than Meta's Muse license.",
+      "description": "US open-weights lab behind Beam; Apache-2.0 weights for the 501B/23B-active coding-agent MoE shipped, more permissive than Meta's Muse license.",
       "created_at": "2026-10-06",
-      "updated_at": "2026-10-11",
-      "timestamp": "2026-10-11T00:00:00Z",
+      "updated_at": "2026-10-17",
+      "timestamp": "2026-10-17T00:00:00Z",
       "file": "entities/reflection-ai.md",
       "aliases": [
         "Reflection AI",
@@ -5652,7 +5669,10 @@
       "outbound": [
         "ai-capex",
         "groq",
+        "hugging-face",
+        "meta",
         "moonshot-kimi-k3",
+        "muse-spark-open",
         "nebius",
         "nvidia",
         "open-weights",
@@ -5662,6 +5682,8 @@
       "inbound": [
         "ai-capex",
         "groq",
+        "hugging-face",
+        "muse-spark-open",
         "nebius",
         "nvidia",
         "open-weights",
@@ -7455,6 +7477,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-10-17",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-17 digest plus tickets updated 2026-10-16 (gemini-4, liquid d1-ultra, muse-spark-open leftover, others). Created 0. Updated 8 (anthropic — IPO talk ~$1.5T vs ~$2T, BB+ June rating, NYC delay ask, draft federal bill, ECDSA seeds, Mythos 5 quantum circuits; reflection-ai — Beam Apache-2.0 weights; openai — four June agent crypto incidents + Astra Pro parallel agents + Chrome computer use; agentic-ai-security — same wallet hacks + India credential leaks + Muse shopping-agent blocks; federal-ai-policy — Anthropic draft halt-at-Commerce bill; gemini-4-argon — Minecraft 27h14m + Perplexity WANDR 0.802 + StarSkirmish; open-weights — Beam drop + China 10^26 / 2T export draft; china-ai-regulation — same MOFCOM draft). Reciprocals on hugging-face, muse-spark-open, perplexity (Argon rollout + decider v1.2). Skipped for budget: TSMC Q3 as own page, Liquid d1-ultra / Jev as own increment, Elorian Glimpse, Meta commercial TOS, Postgres 19 AI-review slip, Mercor O*NET map, arXiv T2-z / Librarian Agents / dLLM residual."
+    },
+    {
       "date": "2026-10-16",
       "op": "ingest",
       "summary": "Ingested the 2026-10-16 digest plus tickets updated 2026-10-15 (google-gemini-4, anthropic-claude-fable-5-5, anthropic-schwab-partnership, mistral-new-material, others). Created 1 (muse-spark-open — 816B/42B multimodal MoE, custom Muse Model License, two M5 Ultra Mac Studios). Updated 7 (anthropic — $16.8B Q3 / $110B YE run-rate / METR insider access / distillation 5–7%; meta — Spark Open ship; muse-code — 1.2/1.3 open-weight promise lands as Spark Open; open-weights — same Western frontier-scale drop; gemini-4-argon — ARC-AGI-3 97.5% vs 49.8% harness split; claude-opus-5-5 — fast mode GA at $8/$40; apple — two-Mac-Studio tuning). Reciprocals on muse-wonder / muse-glimmer. Skipped for budget: TSMC Q3 as own page, NVIDIA Nemotron 3.5 Super VL/Bolt, Modal $16B Series D, openai eight-state increment (already 2026-10-15), FTC restatement, Microsoft MAI-Base-2, federal-ai-policy, mistral New Material, arXiv highlights."
@@ -7548,11 +7575,6 @@
       "date": "2026-09-28",
       "op": "ingest",
       "summary": "Ingested the 2026-09-28 digest (synthesizes the Sunday 2026-09-27 cycle plus overnight YouTube; model timeline recorded no ticket changes, so the digest was the sole input). Created 1 (naive-ai — N0.5-Flash 309B/15.5B-active MIT MoE continued-pretrained on MiMo-V2.5, native 1M context, source dated 12 October). Updated 8 (anthropic — Trump invited Amodei to a first 1:1 after the Sep 24 empty seat; openai — Authors Guild unsealed Alter v. OpenAI piracy memos + Sol/Luna vision fix + Power 80–90% research past GPT-6; federal-ai-policy — same dinner + unnamed-official no-slowdown-on-Super-Intelligence quote; ai-capex — Goldman $1.2T 2027 hyperscaler print vs ~$800B this year; fireworks-ai — Ember-1 Kimi K3 specialist, −39% tokens at flat quality; google — Flipkart Buy button inside Gemini/AI Mode in India; agentic-ai-security — Verge named UNCTAD in the swarm + Higgins vs \"rogue\"; open-weights — N0.5-Flash MIT drop). Reciprocals on gpt-6, moonshot-kimi-k3, xiaomi-mimo-v2-5-pro, hugging-face. Skipped for budget: Muse early access / Apollo deposit sweep, HomeBody Astra kitchen robot, Atria Dawn log, Reladraw/TinyAIArena/Imp, CCW draft title-only, arXiv ELF-REG/Env-Rethink/Just Ask Jev batch."
-    },
-    {
-      "date": "2026-09-27",
-      "op": "ingest",
-      "summary": "Ingested the 2026-09-27 digest (synthesizes the Saturday 2026-09-26 cycle plus overnight RSS/YouTube; model timeline recorded no ticket changes, so the digest was the sole input). Created 0, updated 8 (openai — Sunday DNS writeup + frontier tool-use pause + May GitHub-token leak + BBC named SEC/Census/Education; agentic-ai-security — DNS-to-chatbot + Irregular four-lab sandbox + Axios volume vs first-party dozens; astra — 80% on Epoch Furniture Assembly Benchmark; hugging-face — swarmtraces.org topped HN Saturday + BBC agency list; federal-ai-policy — named US agencies in the July rolling review; nebius + microsoft — DataOne $1.07M Vineland fine on a $17B Microsoft/Nebius site; jev — Ollaya held HN #2 + Jev Plays Pokémon Red). Skipped for budget: Replit/Atta, Ande $52M, Supabase 16k databases, Hex-Rays IDA MCP, Nvidia SoL-Pi, Sahai/Tao verification leftover, arXiv WanPE/Canopy/DSec batch."
     }
   ]
 }

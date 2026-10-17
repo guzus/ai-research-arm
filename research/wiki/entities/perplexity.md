@@ -6,8 +6,9 @@ aliases: ["Perplexity AI", "Perplexity Computer", "pplx-decider-27b", "pplx-deci
 tags: [search, agents, ai-application, funding, decision-model]
 description: AI search-and-agent company; open-sourced pplx-decider-27b and a Decisions API at $0.04 per million input tokens with free output, the third open decision-model release in a day.
 created_at: 2026-08-25
-timestamp: 2026-10-02T00:00:00Z
+timestamp: 2026-10-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
   - {title: "ARA daily digest 2026-09-06", path: research/digest/2026-09-06-digest.md}
@@ -113,3 +114,24 @@ digest 2026-09-16).
   300-token decisions**. Treat the wave as a product-category
   contest, not a verified quality ranking (Hacker News; ARA daily
   digest 2026-10-02).
+
+## Argon for all users; decider v1.2 (2026-10-17)
+
+- **Perplexity rolled
+  [[gemini-4-argon|Gemini 4 Argon]]
+  out to all users**, citing
+  **0.802** on its own WANDR
+  benchmark against **0.735** for
+  [[astra|GPT-6 Astra]]. WANDR is
+  first-party, not an independent
+  composite (ARA daily digest
+  2026-10-17).
+- **pplx-decider v1.2 (27B) and
+  decider-flash (4B)** shipped at
+  **2¢ and 1¢ per M tokens**, a
+  follow-on to the 2026-10-02
+  27B drop. TechCrunch reports
+  [[jev]] is Vercel's
+  fastest-adopted model ever in
+  the same decision-model wave
+  (ARA daily digest 2026-10-17).

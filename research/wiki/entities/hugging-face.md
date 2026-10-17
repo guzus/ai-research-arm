@@ -6,8 +6,9 @@ aliases: ["Hugging Face", "HuggingFace", "@huggingface"]
 tags: [open-weights, model-hub, infrastructure, platform, m&a]
 description: The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.
 created_at: 2026-08-24
-timestamp: 2026-09-28T00:00:00Z
+timestamp: 2026-10-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
@@ -222,3 +223,21 @@ land on its Hub before anywhere else.
   increment, not a hub incident
   (Naive AI, Hugging Face; ARA
   daily digest 2026-09-28).
+
+## Reflection Beam Apache 2.0 (2026-10-17)
+
+- **[[reflection-ai]] shipped
+  Beam weights on the hub** —
+  **501B / 23B-active**, Apache
+  2.0, NVFP4/FP8 checkpoints,
+  day-0 transformers support.
+  That is the second large US
+  open-weight drop in two days
+  after [[muse-spark-open]], and
+  a more permissive license than
+  Meta's. No independent
+  agentic-coding evals yet. See
+  [[open-weights]]
+  (@reflection_ai via Hugging
+  Face, HF blog; ARA daily
+  digest 2026-10-17).

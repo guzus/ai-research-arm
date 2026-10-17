@@ -4,25 +4,28 @@ title: China AI Regulation
 type: theme
 aliases: ["China AI regulation", "China AI policy", "Chinese AI regulation", "AI companion law", "Interim Measures for the Administration of AI Anthropomorphic Interactive Services", "World AI Conference", "World AI Cooperation Organization"]
 tags: [policy, regulation, china, ai-governance, companion-ai, ai-diplomacy]
-description: Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.
+description: Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.
 created_at: 2026-07-15
-timestamp: 2026-09-23T00:00:00Z
+timestamp: 2026-10-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-07-17", path: research/digest/2026-07-17-digest.md}
   - {title: "ARA daily digest 2026-07-15", path: research/digest/2026-07-15-digest.md}
 ---
 
-**China AI regulation** tracks Beijing's AI governance actions on two axes:
-**domestic** regulation of consumer-facing AI products, and **international**
+**China AI regulation** tracks Beijing's AI governance actions on three axes:
+**domestic** regulation of consumer-facing AI products, **international**
 AI diplomacy positioning China as an alternative pole to US-led AI
-governance. Both are distinct from the US [[federal-ai-policy]] and
-[[california-ai-regulation]] storylines, which center on frontier-model
-access and export control rather than consumer-product design mandates or
-international-governance diplomacy — and from [[eu-ai-regulation]], where
-obligations attach by statutory calendar rather than agency discretion. The opening entry was China's first
+governance, and — as of the 2026-10-17 digest — **outbound** controls on
+open-weight models, code and training methods. The first two are distinct
+from the US [[federal-ai-policy]] and
+[[california-ai-regulation]] storylines; the third now overlaps those
+pages on export control, but from Beijing's side of the ledger rather than
+Washington's. The opening entry was China's first
 dedicated crackdown on **AI companion agents**; the theme has since expanded
-to cover Beijing's push for an alternative international AI-governance body.
+to cover Beijing's push for an alternative international AI-governance body
+and a reported MOFCOM draft on frontier-scale open weights.
 
 ## Why it matters
 
@@ -84,6 +87,33 @@ to cover Beijing's push for an alternative international AI-governance body.
   inquiry rather than a consumer-product
   design mandate (The Information; ARA
   daily digest 2026-09-23).
+
+## Draft export controls on open-weight AI (2026-10-17)
+
+- **China drafted export controls
+  covering open-weight models.**
+  Weights, code and training
+  methods for systems above
+  **10^26 FLOPs or 2T parameters**
+  would need MOFCOM permission,
+  across 23 AI technologies.
+  Registered open-source releases
+  get a fast track. The Decoder is
+  now a named outlet; the official
+  consultation text has not been
+  linked, so this stays a
+  reported draft. If it lands, it
+  is a third axis for this page —
+  **outbound capability control**
+  on the same labs
+  ([[deepseek]],
+  [[moonshot-kimi-k3]]) that have
+  defined the [[open-weights]]
+  frontier — rather than another
+  consumer-product mandate or a
+  data-routing probe (The
+  Decoder; ARA daily digest
+  2026-10-17).
 
 ## Open questions
 

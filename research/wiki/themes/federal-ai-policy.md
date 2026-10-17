@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; labs explored a private eval group as eight states sued OpenAI over child safety and Anthropic sought a Pentagon-designation rehearing.
+description: US federal AI governance; Politico says Anthropic circulated a draft frontier-AI bill that would let a court halt a model at Commerce's request.
 created_at: 2026-06-03
-timestamp: 2026-10-15T00:00:00Z
+timestamp: 2026-10-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
@@ -2239,6 +2240,49 @@ footing for the first time in the cycle.
   designation of Claude after a
   **2-1** panel loss (@mark_k;
   ARA daily digest 2026-10-15).
+
+## Anthropic circulates a draft frontier-AI bill (2026-10-17)
+
+- **Politico reports [[anthropic]]
+  quietly circulated a draft
+  frontier-AI bill.** At
+  Commerce's request, a judge
+  could halt a model that poses
+  imminent catastrophic risk —
+  **50+ deaths or $1B+ in
+  damage**. The draft also sets
+  up registered third-party
+  evaluators, limits when the
+  government can block releases,
+  and preempts some state AI
+  laws. No bill text or Anthropic
+  statement has been published.
+  Safety advocates are already
+  objecting. The 50-death / $1B
+  line matches the numerical
+  threshold this theme has
+  tracked in lab governance
+  docs; the preemption clause, if
+  confirmed, would cut against
+  Anthropic's prior support for
+  state transparency laws and
+  against [[california-ai-regulation]]
+  remaining the operative US
+  statute. See [[anthropic]]
+  (@politico, @JayShooster; ARA
+  daily digest 2026-10-17).
+- **NYC Comptroller Mark Levine
+  urged Anthropic to delay its
+  IPO** until safety-audit
+  details are public. He
+  oversees pension funds with
+  more than **$325B** in assets.
+  That is a public-markets
+  pressure point on the same
+  safety-disclosure fight, not
+  a federal statute
+  (@AndrewCurran_, @DeItaone;
+  ARA daily digest 2026-10-17).
 
 ## Open questions
 

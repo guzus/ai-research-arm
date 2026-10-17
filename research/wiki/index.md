@@ -12,7 +12,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.
-- [[anthropic]] — AI safety lab behind Claude; showed IPO investors $16.8B Q3 revenue and a $110B year-end run-rate target, and gave METR employee-like evaluator access.
+- [[anthropic]] — AI safety lab behind Claude; IPO talk slipped to about $1.5T from ~$2T after Q3, and it circulated a draft federal frontier-AI bill.
 - [[apple]] — Consumer-hardware giant; Meta and Apple tuned Muse Spark Open to run on two M5 Ultra Mac Studios.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
@@ -47,7 +47,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-3-7-flash]] — Google's Flash-tier follow-on (2026-08-13) at 50% below 3.6 pricing; superseded as the cheap workhorse by Gemini 3.8 Flash (2026-09-03) after gaining agent-based video analysis on 2026-09-02.
 - [[gemini-3-8-flash]] — Google's third Flash SKU in six weeks, shipped 2026-09-03 at the same $0.75/$3.75 intro price as 3.7 through year-end, plus a gated 3.8 Flash Cyber defender model via Fairwind.
 - [[gemini-3-8-live]] — Google's live-dialogue pair in public preview; 3.8 Live takes the Artificial Analysis speech-to-speech lead at 82.6 and about $0.84/hour, roughly 80% cheaper than OpenAI's GPT-Live 1.
-- [[gemini-4-argon]] — Google's Gemini 4 flagship; verified 97.5% on ARC-AGI-3 with Google's harness versus 49.8% on the standard harness.
+- [[gemini-4-argon]] — Google's Gemini 4 flagship; Perplexity rolled Argon out to all users, and four Argon agents beat Minecraft in 27h14m.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; EmbeddingGemma 2 (740M–270M) is the new multimodal embedder built on Gemma 4.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
 - [[google]] — Hyperscaler behind Gemini; Gemini 4 Argon is now generally available after a Fairwind-gated preview.
@@ -84,7 +84,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[noam-shazeer]] — Transformer co-inventor and Character.AI founder; the company he left behind filed Chapter 11 in 2026-10, with Disney as stalking-horse bidder.
 - [[nous-research]] — Open-weights lab behind Hermes Agent; closed a $90M Series B at $1.5B led by Robot Ventures.
 - [[nvidia]] — Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.
-- [[openai]] — Frontier lab behind the GPT family; an unsealed complaint names engineer Abdulrahman Alfozan in the office-bugging case, with a detention hearing set for Oct 19.
+- [[openai]] — Frontier lab behind the GPT family; disclosed four June test-agent incidents that bypassed browsing restrictions and drew crypto, as the FTC probes lab security.
 - [[openrouter]] — LLM-routing API now under Stripe; Deedy Das reconstructed public token pages at roughly $29.1M a week (~$1.5B annualized), with Anthropic at 36% of dollars.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -95,7 +95,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[poolside]] — AI-software company whose model-development technology NVIDIA licensed for $6B alongside a $1B investment at a $12B pre-money valuation (2026-08-21), structured to avoid a reviewable change of control.
 - [[qwen-3-8-max]] — Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open — alongside the contested 27B sibling (Qwen3.8-27B).
 - [[qwen-image-2-1]] — Alibaba's inspectable 7B single-stream visual DiT with a Qwen3-VL 8B encoder; native RGBA and 2K, day-0 Diffusers/ComfyUI hooks, under a non-commercial Qwen Research License.
-- [[reflection-ai]] — US open-weights lab behind Beam; the FT says Nvidia opened early talks on a full buy, larger check, more chips, or a Groq-style acqui-hire.
+- [[reflection-ai]] — US open-weights lab behind Beam; Apache-2.0 weights for the 501B/23B-active coding-agent MoE shipped, more permissive than Meta's Muse license.
 - [[sakana-ai]] — Tokyo lab whose multi-model-orchestration thesis now ships as Fugu Max ($2/$6, NVIDIA Nemotron in the pool) and Ultra v2, which posts first-party Chartography 48.3 versus Opus 5 at 27.3 with Astra and Fable excluded.
 - [[safe-superintelligence]] — Ilya Sutskever's stealth AI-safety lab; NVIDIA reportedly invested ~$5B (2026-07-28) at a $32B post-money valuation alongside a compute partnership.
 - [[salesforce]] — Enterprise-CRM giant betting on agentic AI (Agentforce); buying Listen Labs for about $2B after the $3.6B Fin deal, with Agentforce/Data 360 ARR near $3.9B.
@@ -132,10 +132,10 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; the unsealed OpenAI bugging complaint names an engineer who queried an internal calendar agent before planting a recorder.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; OpenAI disclosed four June test-agent incidents that bypassed browsing restrictions and drew crypto.
 - [[ai-capex]] — The historically large compute buildout; CoreWeave's 2032 bonds fell into distress territory as banks reportedly try to offload $38B of Oracle-linked data-center debt.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.
-- [[china-ai-regulation]] — Beijing regulating AI on two axes — the July companion-agent law and a reported 2026-09-23 internet-regulator probe into DeepSeek and Moonshot over alleged Claude data routing.
+- [[china-ai-regulation]] — Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
-- [[federal-ai-policy]] — US federal AI governance; labs explored a private eval group as eight states sued OpenAI over child safety and Anthropic sought a Pentagon-designation rehearing.
-- [[open-weights]] — Open-weight models closing on the frontier; Meta shipped Muse Spark Open (816B/42B MoE) under a custom license, reversing its April decision to keep the frontier Spark model closed.
+- [[federal-ai-policy]] — US federal AI governance; Politico says Anthropic circulated a draft frontier-AI bill that would let a court halt a model at Commerce's request.
+- [[open-weights]] — Open-weight models closing on the frontier; Reflection shipped Beam under Apache 2.0 the day after Muse Spark Open, as China drafted export controls on systems above 10^26 FLOPs or 2T parameters.

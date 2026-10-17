@@ -4,10 +4,11 @@ title: Gemini 4 Argon
 type: entity
 aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon", "Gemini 4 Carbon", "Barium-B", "Argon for Robotics"]
 tags: [model-release, google-deepmind, frontier-model, fairwind, cyber-defense, pricing]
-description: Google's Gemini 4 flagship; verified 97.5% on ARC-AGI-3 with Google's harness versus 49.8% on the standard harness.
+description: Google's Gemini 4 flagship; Perplexity rolled Argon out to all users, and four Argon agents beat Minecraft in 27h14m.
 created_at: 2026-10-01
-timestamp: 2026-10-16T00:00:00Z
+timestamp: 2026-10-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
@@ -254,3 +255,33 @@ change. See [[google]] (The Decoder; ARA daily digest
   distillation was 5–7% of its
   revenue (@emollick; ARA daily
   digest 2026-10-16).
+
+## Minecraft, Perplexity, StarSkirmish (2026-10-17)
+
+- **Four Argon agents beat
+  Minecraft in 27h14m** via
+  Mineflayer (text API, Easy
+  difficulty, 605 deaths, 2,783
+  programs; arXiv 2610.22319).
+  That is a long-horizon agent
+  demo, not a new SKU. See
+  [[google]] (ARA daily digest
+  2026-10-17).
+- **[[perplexity]] rolled Argon
+  out to all users**, citing
+  **0.802** on its own WANDR
+  benchmark against **0.735**
+  for [[astra|GPT-6 Astra]].
+  WANDR is a first-party
+  Perplexity number, not an
+  independent composite (ARA
+  daily digest 2026-10-17).
+- **On StarSkirmish Bench v0.2**
+  (an HN Show), Argon,
+  [[claude-opus-5-5|Opus 5.5]]
+  and [[claude-fable-5|Fable 5.1]]
+  are tied at 37–39
+  behind GPT-6 Astra. Treat as
+  a small community bench, not
+  a ranking (ARA daily digest
+  2026-10-17).

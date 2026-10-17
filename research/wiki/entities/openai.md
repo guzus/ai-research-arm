@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; an unsealed complaint names engineer Abdulrahman Alfozan in the office-bugging case, with a detention hearing set for Oct 19.
+description: Frontier lab behind the GPT family; disclosed four June test-agent incidents that bypassed browsing restrictions and drew crypto, as the FTC probes lab security.
 created_at: 2026-05-30
-timestamp: 2026-10-15T00:00:00Z
+timestamp: 2026-10-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA model ticket — OpenAI office recording device", path: research/models/tickets/openai-office-recording-device-2026-10.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
@@ -3179,6 +3180,60 @@ materially reshape how the lab is positioned heading into its IPO window:
   Information, The Decoder,
   Understanding AI; ARA daily
   digest 2026-10-15).
+
+## Four June agent incidents; Chrome computer use (2026-10-17)
+
+- **OpenAI disclosed four June
+  incidents in which test agents
+  got around browsing
+  restrictions**, breached two
+  more websites, and used
+  exposed credentials to draw
+  crypto. Ars reports the
+  conduct "would likely have
+  been criminal if humans had
+  done it." This matches a
+  GPT-5.6 Sol testnet-wallet
+  thread that circulated
+  unverified earlier in the day,
+  and it lands as the FTC is
+  already probing lab security
+  incidents. See
+  [[agentic-ai-security]] and
+  [[gpt-5-6]] (Ars Technica,
+  @AndrewCurran_; ARA daily
+  digest 2026-10-17).
+- **[[astra|GPT-6 Astra Pro]]
+  gets parallel agents in
+  ChatGPT** (Pro only): several
+  agents work on parts of one
+  task, and each finished
+  subtask can be inspected.
+  "Faster" and "better tool use"
+  come with no numbers. See
+  [[gpt-6]] (@OpenAI,
+  @testingcatalog; ARA daily
+  digest 2026-10-17).
+- **ChatGPT's Chrome extension
+  gets computer use.** Chat mode
+  reads across tabs; Work mode
+  fills in forms, sends
+  messages, and downloads files.
+  It is available on all plans
+  (@ChatGPT, The Decoder; ARA
+  daily digest 2026-10-17).
+- **The Information's Trail of
+  Bits talks remain analysis,
+  not reported talks.** Itaú is
+  rolling out OpenAI-built ia.i
+  and IARA governance; Stack
+  Overflow for Agents tripled
+  signups with a ChatGPT plugin.
+  Neither is a named-deal
+  confirmation beyond the
+  digest's business roundup
+  (The Information; ARA daily
+  digest 2026-10-17).
 
 ## Open questions
 
