@@ -1,5 +1,5 @@
 {
-  "article_count": 96,
+  "article_count": 97,
   "articles": [
     {
       "claim_count": 18,
@@ -919,6 +919,14 @@
       "stem": "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min",
       "tags": [],
       "title": "Gemini 4 Argon 'beats Minecraft' in 27 hours: what four agents, a Mineflayer text API, Easy mode and 605 deaths actually measure"
+    },
+    {
+      "claim_count": 24,
+      "created_at": "2026-10-17T11:10:18Z",
+      "slug": "deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "stem": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "tags": [],
+      "title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench"
     }
   ],
   "by_host": {
@@ -1048,6 +1056,9 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c20",
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c39",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c50"
+    ],
+    "ai.rs": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c15"
     ],
     "aibase.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c13"
@@ -1233,7 +1244,10 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c33",
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c15",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c12",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c25"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c25",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c7",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c8",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -1245,7 +1259,10 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c24"
     ],
     "api-docs.deepseek.com": [
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c8"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c8",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c3",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c4",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c6"
     ],
     "api.comfy.org": [
       "2026-08-04T171206--comfyui-company#c13"
@@ -1398,7 +1415,8 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c7",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c15",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c7",
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c8"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c8",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c11"
     ],
     "artificialintelligenceact.eu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c30",
@@ -1672,7 +1690,9 @@
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c2",
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c29",
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c3",
-      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c9"
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c9",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c14",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c16"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -1938,6 +1958,9 @@
     "bls.gov": [
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c18"
     ],
+    "bpb-us-e1.wpmucdn.com": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c17"
+    ],
     "bpi.com": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c11"
     ],
@@ -2189,7 +2212,8 @@
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c19",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c13",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c14",
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c36"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c36",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9"
     ],
     "clinicalgenome.org": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c40"
@@ -2676,7 +2700,8 @@
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-12",
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-7",
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-8",
-      "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-9"
+      "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-9",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c5"
     ],
     "defensescoop.com": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c13",
@@ -2788,6 +2813,9 @@
     ],
     "digitaleconomy.stanford.edu": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c30"
+    ],
+    "digitalpolicyalert.org": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c17"
     ],
     "digitaltoday.co.kr": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c17",
@@ -3807,7 +3835,12 @@
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c18",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c29",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c32",
-      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c7"
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c7",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c1",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c10",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c14",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c2",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c8"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
@@ -4794,7 +4827,9 @@
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c9",
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-1",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c12",
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c13"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c13",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c12",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c13"
     ],
     "opensearch.org": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c4"
@@ -5674,6 +5709,9 @@
     "statnews.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c4"
     ],
+    "status.deepseek.com": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c18"
+    ],
     "stcn.com": [
       "2026-06-22T052035--zhipu-ai-glm#c23",
       "2026-07-13T181948--cxmt#c2",
@@ -5931,7 +5969,8 @@
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c24",
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c36",
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c9",
-      "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c9"
+      "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c9",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c16"
     ],
     "technologyreview.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c4",
@@ -6011,7 +6050,8 @@
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c16",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c18",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c4",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c5"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c5",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c6"
     ],
     "the-decoder.de": [
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c20"
@@ -6334,7 +6374,8 @@
     "vals.ai": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c8",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c23",
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c22"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c22",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c14"
     ],
     "valueaddvc.com": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c9",
@@ -6875,6 +6916,9 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c20",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c50"
     ],
+    "https://ai.rs/ai-developer/deepseek-v4-1-flash-1017-vs-v4-flash-vs-muse-spark-open-dgx-spark": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c15"
+    ],
     "https://aitoolsbee.com/news/cuda-compatible-ai-chip-bytedance-5-6b-backs-huawei-950pr": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
     ],
@@ -6975,6 +7019,15 @@
     ],
     "https://api-docs.deepseek.com/news/news0802": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c8"
+    ],
+    "https://api-docs.deepseek.com/news/news261017": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c6"
+    ],
+    "https://api-docs.deepseek.com/quick_start/pricing": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c3"
+    ],
+    "https://api-docs.deepseek.com/updates": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c4"
     ],
     "https://api.comfy.org/nodes": [
       "2026-08-04T171206--comfyui-company#c13"
@@ -7159,8 +7212,12 @@
     "https://artificialanalysis.ai/models/claude-opus-4-8": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c7"
     ],
+    "https://artificialanalysis.ai/models/claude-opus-5": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c11"
+    ],
     "https://artificialanalysis.ai/models/claude-opus-5-5": [
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c5"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c5",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c11"
     ],
     "https://artificialanalysis.ai/models/claude-opus-5-high": [
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c6"
@@ -7180,6 +7237,9 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c11",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c3",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c9"
+    ],
+    "https://artificialanalysis.ai/models/deepseek-v4-1-flash": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c11"
     ],
     "https://artificialanalysis.ai/models/glm-5-2": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c7",
@@ -7683,6 +7743,9 @@
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c1",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c19"
     ],
+    "https://arxiv.org/abs/2609.36322": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c16"
+    ],
     "https://arxiv.org/abs/2610.22319": [
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c1"
     ],
@@ -7773,6 +7836,9 @@
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c6",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c7",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c8"
+    ],
+    "https://arxiv.org/html/2512.02556v1": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c14"
     ],
     "https://arxiv.org/html/2602.02132v1": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c14"
@@ -8161,6 +8227,9 @@
     "https://bloomingbit.io/en/feed/news/101415": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
     ],
+    "https://bpb-us-e1.wpmucdn.com/websites.harvard.edu/dist/f/106/files/2026/01/NDAA-2026-Guidance-and-Prohibition-on-use-of-certain-Artificial-Intelligence.pdf": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c17"
+    ],
     "https://bpi.com/stablecoin-risks-some-warning-bells": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c11"
     ],
@@ -8290,6 +8359,9 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c13",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c14",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c36"
+    ],
+    "https://claude.com/pricing": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9"
     ],
     "https://clinicalgenome.org/working-groups/sequence-variant-interpretation": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c40"
@@ -8580,6 +8652,9 @@
     "https://deepquarry.substack.com/p/depreciation-of-gpus-between-useful": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c24"
     ],
+    "https://deepswe.datacurve.ai": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c5"
+    ],
     "https://deepswe.datacurve.ai/artifacts/v1.1/leaderboard-live.json": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-12",
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-7",
@@ -8740,6 +8815,9 @@
     ],
     "https://digitaleconomy.stanford.edu/news/canariesaug26": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c30"
+    ],
+    "https://digitalpolicyalert.org/event/42290-prohibition-on-use-of-deepseek-and-related-artificial-intelligence-in-national-defense-authorization-act-for-fiscal-year-2026-public-law-119-60-entered-into-force-for-department-of-defense-and-its-contractors": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c17"
     ],
     "https://dinari.com/dshares": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c16"
@@ -9867,10 +9945,17 @@
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c12"
     ],
     "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro": [
-      "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c21"
+      "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c21",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c14"
     ],
     "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash": [
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c18"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c18",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c10"
+    ],
+    "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c1",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c2",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c8"
     ],
     "https://huggingface.co/fal/AuraFlow-v0.3": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c38"
@@ -10669,6 +10754,12 @@
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c02",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c07"
     ],
+    "https://openrouter.ai/api/v1/models/anthropic/claude-opus-5.5/endpoints": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c13"
+    ],
+    "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash/endpoints": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c13"
+    ],
     "https://openrouter.ai/api/v1/models/openai/gpt-5.6-sol-20260709/endpoints": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c04",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c07"
@@ -10693,6 +10784,9 @@
     ],
     "https://openrouter.ai/blog/tutorials/prompt-caching-sticky-routing": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c9"
+    ],
+    "https://openrouter.ai/data/newsletter/cache-is-crucial": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c12"
     ],
     "https://openrouter.ai/docs/guides/routing/provider-selection": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c1"
@@ -11498,6 +11592,9 @@
       "2026-07-13T181948--cxmt#c22",
       "2026-07-13T181948--cxmt#c8"
     ],
+    "https://status.deepseek.com": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c18"
+    ],
     "https://stock.stockstar.com/notice/SN2026081800000862.shtml": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c12",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c9"
@@ -11902,6 +11999,9 @@
     "https://technode.com/2026/07/15/deepseek-founder-liang-wenfengs-fortune-rises-to-36-billion": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c9"
     ],
+    "https://technode.com/2026/10/09/bytedance-researchers-identify-cause-of-inconsistent-long-context-retrieval-in-deepseek-models": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c16"
+    ],
     "https://techstory.in/deepseek-weighs-second-fundraise-at-71-billion-valuation-and-eyes-ipo-as-early-as-2026": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c8",
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c23"
@@ -11923,6 +12023,9 @@
     ],
     "https://the-decoder.com/deepmind-dismantles-its-alphafold-team-as-key-authors-leave-for-anthropic": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c45"
+    ],
+    "https://the-decoder.com/deepseek-v4-1-flash-1017-beats-larger-rivals-in-agentic-tasks-while-once-again-massively-cutting-per-task-costs": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c6"
     ],
     "https://the-decoder.com/gpt-5-6-sol-cheats-on-software-tests-more-than-any-model-before-it": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c16"
@@ -12427,7 +12530,10 @@
     "https://www.anthropic.com/news/claude-opus-5-5": [
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c1",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c20",
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c33"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c33",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c7",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c8",
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9"
     ],
     "https://www.anthropic.com/news/claude-sonnet-4-6": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c9"
@@ -15659,6 +15765,12 @@
     "https://www.vals.ai/models/anthropic_claude-opus-5-5": [
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c22"
     ],
+    "https://www.vals.ai/models/deepseek_deepseek-v4-pro": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c14"
+    ],
+    "https://www.vals.ai/models/fireworks_deepseek-v3p2-thinking": [
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c14"
+    ],
     "https://www.valuespectrum.com/corporate_news/1399869-sans-research-the-cybersecurity-talent-shortage-narrative-is-wrong-the-real-crisis-is-skills-and-ai-just-rewrote-the-list": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c28"
     ],
@@ -16278,7 +16390,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2853,
+  "claim_count": 2877,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -84531,9 +84643,554 @@
       "source_tiers": [],
       "source_urls": [],
       "type": "derived"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "DeepSeek's 1017 model card reports DeepSWE v1.1 77.0 and Terminal-Bench 4.0 42.3, vs Opus 5 74.0 and 51.8, under an MIT license with 1M context.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c1",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-09-10",
+      "claim": "September V4.1-Flash DeepSWE scores ranged 65.5-74.2 across eight scaffolds; Terminal-Bench ran on DeepSeek Harness Minimal mode.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c10",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "Artificial Analysis: V4.1-Flash (max) used 250M tokens at $0.27/task; Opus 5 (max) 140M at $5.86; Opus 5.5 (max) 260M at $5.98.",
+      "confidence": "medium",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c11",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/deepseek-v4-1-flash",
+        "https://artificialanalysis.ai/models/claude-opus-5",
+        "https://artificialanalysis.ai/models/claude-opus-5-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-08",
+      "claim": "OpenRouter telemetry: cached tokens are nearly nine in ten agentic tokens but about a third of the bill; worked mix 87% cached, 12% fresh input, 1% output.",
+      "confidence": "medium",
+      "hosts": [
+        "openrouter.ai"
+      ],
+      "id": "c12",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c12",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://openrouter.ai/data/newsletter/cache-is-crucial"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "Western OpenRouter hosts for V4.1-Flash mostly charge $0.30/$1.20; all Opus 5.5 hosts charge $4/$20 list.",
+      "confidence": "medium",
+      "hosts": [
+        "openrouter.ai"
+      ],
+      "id": "c13",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash/endpoints",
+        "https://openrouter.ai/api/v1/models/anthropic/claude-opus-5.5/endpoints"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "DeepSeek V3.2 self-reported Terminal-Bench 2.0 46.4 (Claude Code) vs Vals 35.95; SWE-bench Verified 73.1 vs Vals 67.6; V4-Pro 80.6 vs Vals 77.4.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org",
+        "huggingface.co",
+        "vals.ai"
+      ],
+      "id": "c14",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c14",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "secondary",
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2512.02556v1",
+        "https://www.vals.ai/models/fireworks_deepseek-v3p2-thinking",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+        "https://www.vals.ai/models/deepseek_deepseek-v4-pro"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "ai.rs: at equal effort 1017 thinks 18% less, answers 5% shorter and finishes 9% sooner than the September run on 7 tasks.",
+      "confidence": "low",
+      "hosts": [
+        "ai.rs"
+      ],
+      "id": "c15",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c15",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://ai.rs/ai-developer/deepseek-v4-1-flash-1017-vs-v4-flash-vs-muse-spark-open-dgx-spark"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-09-28",
+      "claim": "ByteDance Seed-led paper finds a 40.2-point phase gap on V4-Flash-Base and about 4-6 points on V4.1-Flash at 128K.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org",
+        "technode.com"
+      ],
+      "id": "c16",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2609.36322",
+        "https://technode.com/2026/10/09/bytedance-researchers-identify-cause-of-inconsistent-long-context-retrieval-in-deepseek-models"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-01-17",
+      "claim": "FY2026 NDAA Section 1532 bars DoD contractors from using DeepSeek-developed AI in contract performance from 2026-01-17.",
+      "confidence": "high",
+      "hosts": [
+        "bpb-us-e1.wpmucdn.com",
+        "digitalpolicyalert.org"
+      ],
+      "id": "c17",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://digitalpolicyalert.org/event/42290-prohibition-on-use-of-deepseek-and-related-artificial-intelligence-in-national-defense-authorization-act-for-fiscal-year-2026-public-law-119-60-entered-into-force-for-department-of-defense-and-its-contractors",
+        "https://bpb-us-e1.wpmucdn.com/websites.harvard.edu/dist/f/106/files/2026/01/NDAA-2026-Guidance-and-Prohibition-on-use-of-certain-Artificial-Intelligence.pdf"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "DeepSeek status page shows 99.47% availability for the V4.1 Flash API, Jul-Oct 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "status.deepseek.com"
+      ],
+      "id": "c18",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://status.deepseek.com"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "The 1017 card's only methodology footnote names the Claude Code harness for Terminal-Bench 4.0 and Mini-SWE-V2 for DeepSWE; no effort level or sample count is given.",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c2",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "deepseek-flash pricing: off-peak $0.003 cache hit, $0.15 cache miss, $0.60 output per M tokens; peak rates are double; peak is 01-04 and 06-10 UTC Mon-Fri.",
+      "confidence": "high",
+      "hosts": [
+        "api-docs.deepseek.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api-docs.deepseek.com/quick_start/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "The 1017 changelog states pricing is unchanged and quantifies no output-length reduction.",
+      "confidence": "high",
+      "hosts": [
+        "api-docs.deepseek.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api-docs.deepseek.com/updates"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-09-22",
+      "claim": "Datacurve's DeepSWE v1.1 leaderboard (113 tasks, mini-swe-agent) lists claude-opus-5 [max] at 74% +/-4% and $11.84 per task.",
+      "confidence": "high",
+      "hosts": [
+        "deepswe.datacurve.ai"
+      ],
+      "id": "c5",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://deepswe.datacurve.ai"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "DeepSeek's release chart puts 1017 at max effort at about $0.195 per DeepSWE task vs about $0.495 for the September Flash.",
+      "confidence": "medium",
+      "hosts": [
+        "api-docs.deepseek.com",
+        "the-decoder.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c6",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://api-docs.deepseek.com/news/news261017",
+        "https://the-decoder.com/deepseek-v4-1-flash-1017-beats-larger-rivals-in-agentic-tasks-while-once-again-massively-cutting-per-task-costs"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-09-22",
+      "claim": "Anthropic reports the public Terminal-Bench 4.0 leaderboard has Opus 5 at 51.8% and Opus 5.5 scores 66.4% at xhigh.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/claude-opus-5-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "Anthropic reports Opus 5 at 26.9% on AutomationBench from Zapier's leaderboard, while DeepSeek's table lists 50.3.",
+      "confidence": "medium",
+      "hosts": [
+        "anthropic.com",
+        "huggingface.co"
+      ],
+      "id": "c8",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c8",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/claude-opus-5-5",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "Opus 5.5 lists at $4/$20 with $0.20 cache read; Opus 5 at $5/$25 with $0.50 cache read and is marked legacy.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com",
+        "claude.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://claude.com/pricing",
+        "https://www.anthropic.com/news/claude-opus-5-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "Opus 5 costs about 61x more per DeepSWE attempt than 1017 ($11.84 vs $0.195).",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#d1",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "Per solved DeepSWE task the gap is about 63x (cost divided by pass rate).",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#d2",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "Blended agent-mix price: Opus 5 about 48x DeepSeek off-peak.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#d3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "Blended agent-mix price: Opus 5.5 about 32x DeepSeek off-peak.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#d4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "Artificial Analysis per-task gap: Opus 5 about 22x the September V4.1-Flash.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#d5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+      "article_created_at": "2026-10-17T11:10:18Z",
+      "article_title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench",
+      "as_of": "2026-10-17",
+      "claim": "Peak hours are 35 of 168 weekly hours, about 21%.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#d6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1402,
+  "reusable_count": 1410,
   "schema_version": 1
 }
