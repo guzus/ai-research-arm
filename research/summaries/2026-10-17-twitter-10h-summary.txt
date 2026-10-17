@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-17 10:33:14 UTC
+
+CYCLE: DeepSeek makes the 1017 Flash checkpoint official
+
+TOP STORIES:
+• DeepSeek releases V4.1-Flash-1017: MIT weights, DeepSWE 77.0, Terminal-Bench 4.0 42.3 (vs 31.2), $0.15-0.30/M input. Benchmarks are self-reported [✓]
+• Jack Clark tells the IMF lecture audience the singularity has begun [✓]
+• FT: Citigroup bars third-party AI agents from customer accounts, joining BofA and JPMorgan [⚠]
+
+WATCH: Independent evals of V4.1-Flash-1017, and whether a V4.1 Pro update follows
+
+Full update on GitHub.
