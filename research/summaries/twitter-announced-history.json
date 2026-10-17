@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 07:00 UTC",
-    "headline": "SPACEX S-1 PEGS TOTAL ADDRESSABLE MARKET AT $28.5T \u2014 AI INFRASTRUCTURE THE $2.4T LINE ITEM",
-    "source": "@muskonomy",
-    "source_file": "research/summaries/2026-05-21-twitter-07h-headlines.json",
-    "url": "https://x.com/muskonomy/status/2057363701083369735"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 07:00 UTC",
-    "headline": "SPACEX Q1 2026 REVENUE $4.7B, +15% YoY PER NOW-PUBLIC S-1; FILING CONFIRMS 18,712 BTC",
-    "source": "@Gfilche",
-    "source_file": "research/summaries/2026-05-21-twitter-07h-headlines.json",
-    "url": "https://x.com/Gfilche/status/2057357144253677577"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-21 13:00 UTC",
-    "headline": "ALIBABA QWEN 3.7 MAX HITS TOP-5 ON ARTIFICIAL ANALYSIS INDEX (56.6) \u2014 ~3.6 POINTS BEHIND GPT-5.5",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-21-twitter-13h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2057420016543215779"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-21 13:00 UTC",
     "headline": "QWEN 3.7 MAX BEATS GEMINI 3.5 FLASH AND KIMI K2.6 \u2014 NEW TOP CHINESE MODEL, PROPRIETARY NOT OPEN",
@@ -23588,5 +23561,26 @@
     "headline": "NVIDIA RTX SPARK LAPTOPS LAUNCH WITH UP TO 128GB UNIFIED MEMORY; UNSLOTH CLAIMS LOCAL 120B+ MODEL TRAINING",
     "source": "@UnslothAI",
     "url": "https://x.com/UnslothAI/status/2111244381969863115"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-17 10:33:14 UTC",
+    "headline": "DEEPSEEK RELEASES V4.1-FLASH-1017 OPEN WEIGHTS \u2014 77.0 ON DEEPSWE, TERMINAL-BENCH 4.0 UP TO 42.3 FROM 31.2",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2111380259295653976"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-17 10:33:14 UTC",
+    "headline": "CITIGROUP BARS THIRD-PARTY AI AGENTS FROM CUSTOMER ACCOUNTS \u2014 FT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2111145441421312174"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-17 10:33:14 UTC",
+    "headline": "ANTHROPIC'S JACK CLARK TELLS IMF LECTURE THE SINGULARITY HAS BEGUN",
+    "source": "@jackclarkSF",
+    "url": "https://x.com/jackclarkSF/status/2111350983465095501"
   }
 ]
