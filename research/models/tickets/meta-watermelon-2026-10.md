@@ -59,6 +59,8 @@ labels:
   - released
 verification: confirmed
 sources:
+  - "https://x.com/alexandr_wang/status/2111237499083252185"
+  - "https://x.com/ArtificialAnlys/status/2110893784422908225"
   - "https://x.com/alexandr_wang/status/2109657401825861940"
   - "https://x.com/finkd/status/2109660829952176518"
   - "https://x.com/testingcatalog/status/2109658193496551467"
@@ -74,7 +76,7 @@ sources:
   - "https://x.com/DavidBorish/status/2110341380983693323"
   - "https://x.com/RodrigoESPorto/status/2111060033719218528"
 created_at: 2026-10-04
-updated_at: 2026-10-16
+updated_at: 2026-10-17
 closed_at: null
 closed_reason: null
 history:
@@ -88,6 +90,8 @@ history:
     change: "Released, unchanged — day-2 reception. MSL chief @alexandr_wang, quoted by @gzzonkugood, answers criticism that Muse Wonder trails Opus 5.5 and GPT-6 Astra on 3D game demos: 'we did not explicitly train our model on 3d demo games … in retrospect we probably should've done a bit of that … please try muse wonder on your actual coding work!' A user A/B (@_MaxBlade, quoted by @Dainer_Jun) on a 3D game task reports $4.11 of API-equivalent spend for Muse against $99.43 for Opus, and judges Muse well behind on 3D. Relays repeat a 1M context and ~$4/$20 per MTok pricing (@XXKING). @DavidBorish's write-up of Meta's launch scorecard counts Muse Wonder top on 7 of 14 rows, Opus 5.5 on 6 and GPT-6 Astra on 1. These are relays and single user tests, so no benchmark is adopted. The Watermelon -> Muse Wonder codename mapping is still an inference, not a Meta statement."
   - ts: 2026-10-16
     change: "Released, unchanged — first independent aggregate placement, relay-strength. @RodrigoESPorto (2026-10-16 11:41 UTC, English and Portuguese posts) reports Vals AI's Vals Index: Muse Wonder Full 64.57%, fifth overall, ahead of GPT-6 Astra (63.13%) and behind Claude Sonnet 5.5 (67.04%) and Gemini 4 Argon (68.90%). Standard Muse Wonder is tenth at 61.06% and first on CyberBench v1.1 at 80.36%. Average cost per battery is $8.56 for Wonder Full vs $15.68 for Argon and $21.34 for Sonnet 5.5. The post repeats $4/$20 per MTok, a 1M context, up to 131k output, and developer rate limits hit within hours. Separately, Meta shipped the open-weight Muse Spark Open on 2026-10-16, fulfilling the 'open weights are coming for Muse Spark, not Wonder' line logged on 2026-10-13. It is tracked on its own ticket, [[meta-muse-spark-open-2026-10]]."
+  - ts: 2026-10-17
+    change: "Released, unchanged — leadership retrospective and an independent score. @alexandr_wang (2026-10-16 23:26 UTC) writes that MSL and TBD were set up 'a little more than a year ago' to produce a frontier model 'within a year or so' after Llama 4. He calls muse wonder [full] and muse spark open the result and says the lab has 'built a machine that builds new models'. @ArtificialAnlys's Muse Spark Open write-up (2026-10-16) places Muse Wonder (max) at 52 and Muse Wonder Full (max) at 56 on its Intelligence Index. Sibling open release: [[meta-muse-spark-open-2026-10]]."
 ---
 
 Watermelon has been a codename in analyst and press reporting since the summer,

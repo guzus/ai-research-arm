@@ -31,18 +31,22 @@ labels:
   - released
 verification: confirmed
 sources:
+  - "https://x.com/mustafasuleyman/status/2111116656215032068"
+  - "https://x.com/mustafasuleyman/status/2111116657964036324"
   - https://x.com/Azure/status/2105700825020719573
   - https://x.com/mustafasuleyman/status/2105699115602677984
   - https://x.com/mustafasuleyman/status/2105701549527953839
   - https://x.com/ArtificialAnlys/status/2105694108736188894
   - https://x.com/satyanadella/status/2105791561216958853
 created_at: 2026-10-02
-updated_at: 2026-10-02
+updated_at: 2026-10-17
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-10-02
     change: "Created — RELEASED / confirmed. @MicrosoftAI introduced MAI-Transcribe-2-Streaming, MAI-Voice-2.1 and MAI-Voice-2.1-Flash on 2026-10-01 (relayed by @Azure 16:46 UTC and @satyanadella); @mustafasuleyman says all three are available today in Microsoft Foundry. @ArtificialAnlys ranks MAI-Transcribe-2-Streaming #1 of 38 on AA-WER Streaming (2.5% WER at 0.13s) at $0.54/hour. Suleyman's '60% cheaper than ElevenLabs' conflicts with AA's price table and is not adopted. Successor in the MAI speech line to closed [[microsoft-mai-voice-2-flash-2026-07]]."
+  - ts: 2026-10-17
+    change: "Released, unchanged — distribution and adoption claim. @mustafasuleyman (2026-10-16 15:26 UTC): 'MAI is the most accurate & most popular transcription model on OpenRouter across all languages and use cases', linking MAI-Transcribe-2 on OpenRouter. This is a self-reported popularity claim about the base MAI-Transcribe-2 listing. It does not specifically show that the Streaming variant is on OpenRouter."
 ---
 
 Microsoft's speech stack now has a streaming transcriber at the top of the one

@@ -33,6 +33,8 @@ labels:
   - released
 verification: confirmed
 sources:
+  - "https://x.com/Infernus_sl/status/2111413930924933532"
+  - "https://x.com/Josephyala/status/2111414592995721303"
   - https://x.com/ClaudeDevs/status/2102871550974427462
   - https://x.com/ClaudeDevs/status/2102871555244257518
   - https://x.com/ClaudeDevs/status/2102871554069774451
@@ -41,12 +43,14 @@ sources:
   - https://x.com/ClaudeDevs/status/2102893179662106684
   - https://x.com/testingcatalog/status/2103015463089238076
 created_at: 2026-09-24
-updated_at: 2026-09-24
+updated_at: 2026-10-17
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-24
     change: "Created — RELEASED. @ClaudeDevs announced on 2026-09-23 21:23 UTC that Claude Code cloud sessions are out of research preview and generally available, letting sessions keep running with the laptop closed. Launch promo: a one-time credit of $100 (Pro) / $250 (Max) for existing subscribers, claimed via link or `/claim-credit`, GitHub connection required, claim by 2026-10-07, one per account, cloud sessions only. Anthropic clarified 2026-09-24 01:57 UTC that cloud sessions run on the normal Pro/Max plan and the credit is merely spent first — issued as a correction after the original announcement was widely read as cloud sessions being separately metered. Verification confirmed on company-primary posts. Adjacent, same window, deliberately not given separate tickets: local thread execution for Projects in Claude Code (@ClaudeDevs, company-primary) and a Claude Marketplace with Slack/Notion connectors and Cursor/CrowdStrike agents, which appears only in @testingcatalog's third-party daily brief with no Anthropic post in this cycle's signal."
+  - ts: 2026-10-17
+    change: "Released, unchanged — latency follow-up (secondary relays of Anthropic's own numbers). @Infernus_sl and @Josephyala (2026-10-17) relay Anthropic's August–October p90 time-to-first-token measurements, which exclude model time. Cloud sessions went from 16.99s to 6.00s, local Claude Code sessions from 4.07s to 1.33s, and Claude chat/Cowork from 3.36s to 2.17s. The attributed causes are gzip-compressed conversation uploads and cloud sessions that start booting while the user is still typing. No Anthropic post was captured in this window."
 ---
 
 The product change is small; the billing question it opened is the interesting

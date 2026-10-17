@@ -85,6 +85,9 @@ labels:
   - released
 verification: confirmed
 sources:
+  - "https://x.com/GoogleDeepMind/status/2111127991401247033"
+  - "https://x.com/demishassabis/status/2111269719374430339"
+  - "https://x.com/testingcatalog/status/2111409303701577925"
   - "https://x.com/daogangtang/status/2109668616409174301"
   - "https://x.com/trywavecode/status/2109668964951642118"
   - "https://x.com/aipulseda1ly/status/2109671637184340333"
@@ -131,7 +134,7 @@ sources:
   - "https://x.com/MamoKDNFT/status/2111053032100073484"
   - "https://x.com/AIDailyBrief/status/2111058830536888568"
 created_at: 2026-09-24
-updated_at: 2026-10-16
+updated_at: 2026-10-17
 closed_at: null
 closed_reason: null
 history:
@@ -157,6 +160,8 @@ history:
     change: "Released, unchanged — day-2 follow-through from Google's own handles. (1) @GoogleDeepMind (2026-10-14 17:25 UTC, ~2.1K likes) threads Argon science results in quantum computing, nuclear fusion and protein design. These include enzyme engineering 'compressed into a matter of hours' to design five lab-verified serine esterases, quoting a DeepMind protein-engineering researcher's zero-shot results. (2) The same thread states on DeepMind's own handle that 10,000 scientists get free access to the highest Antigravity usage tier for 6 months. That upgrades the scientist-programme detail logged on 2026-10-14 from a researcher RT to a first-party statement. (3) @ScaleAILabs, retweeted by @demishassabis, reports Argon #1 on its Humanity's Sixth Sense (HSS) benchmark at 55.4%, ahead of GPT-6 Astra at 53.6%. This is a third-party placement amplified by the vendor. (4) @OfficialLoganK posted a launch conversation with Sergey Brin, Josh Woodward, Tulsee Doshi and Melvin Johnson; no new specs were captured from it. Community comparison posts (Argon vs Opus 5.5 and Muse Wonder on cost and one-shot demos) are logged, not adopted. There is still no free API tier and no smaller Gemini 4 model."
   - ts: 2026-10-16
     change: "Released, unchanged — access widens and the third-party scorecard grows. (1) @antigravity (RT'd by @demishassabis, 2026-10-15 23:35 UTC): Gemini 4 Argon is now rolling out in Antigravity to paid Google AI Pro subscribers, a step down from the Ultra-only Antigravity access logged on 2026-10-14; the post cites demand. (2) @arcprize (RT'd by @demishassabis, 23:34 UTC) publishes Argon on ARC-AGI (Verified): ARC-AGI-3 97.5% at $4.8K with the provider adapter harness and 49.8% at $5.8K with the standard harness. The two numbers use different harnesses and should not be quoted as one score. (3) @GoogleAI (14:49 UTC) demos Argon as an autonomous 3D world builder in Antigravity. (4) The Google Gen AI JavaScript SDK v2.30.0 adds Gemini 4 Argon to its Model enum (@MamoKDNFT relay of the changelog). (5) @AIDailyBrief reports Argon leads Harvey's legal-agent benchmark by 13 points over Fable 5.1 and tops the VALS finance-agent index; a separate Vals Index relay puts Argon first overall at 68.90% (logged on [[meta-watermelon-2026-10]]). Items 4-5 are relay-strength. Still no free API tier and no smaller Gemini 4 model."
+  - ts: 2026-10-17
+    change: "Released, unchanged — access keeps widening and Google shows a multi-agent demo. (1) @GoogleDeepMind (2026-10-16 16:11 UTC): 'Four Gemini 4 Argon agents beat Minecraft from scratch in 27 hours', working only through code and text, writing 2,783 programs and splitting the work over chat with no human help. (2) @demishassabis retweeted @_mohansolo (2026-10-16 22:18 UTC): Argon and Gemini quotas in Antigravity reset for everyone after heavy demand. (3) @testingcatalog's 2026-10-17 brief (secondary, Grok-composed): Google AI Pro subscribers can now build with Argon in AI Studio Build and the playground, AI Studio Build adds Plan and Max modes, and Argon is available in Perplexity for Pro and Max subscribers. Reception is mixed: several relays (@JulianGoldieSEO, @Tech_girl) say Opus 5.5 still looks better on 3D and terminal tasks ([[anthropic-opus-5-5-2026-09]])."
 ---
 
 The July ticket died of exactly one thing: nobody in a position to know would

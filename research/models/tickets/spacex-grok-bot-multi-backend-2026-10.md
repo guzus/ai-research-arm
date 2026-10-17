@@ -31,6 +31,8 @@ labels:
   - partnership
 verification: confirmed
 sources:
+  - "https://x.com/testingcatalog/status/2111409303701577925"
+  - "https://x.com/masaki_keio/status/2111414725699575879"
   - https://x.com/elonmusk/status/2107724314451878104
   - https://x.com/nichochar/status/2107827166566326730
   - https://x.com/shipfrontierai/status/2107812016991920545
@@ -39,12 +41,14 @@ sources:
   - https://x.com/lemomo_ai/status/2107826447440327148
   - "@elonmusk"
 created_at: 2026-10-07
-updated_at: 2026-10-07
+updated_at: 2026-10-17
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-10-07
     change: "Created — CONFIRMED / confirmed. @elonmusk (2026-10-07 06:46 UTC): 'Going forward, @SpaceX will use the best back end model for any given task, including Claude Opus 5.5, MidJourney, Suno and other leading APIs.' Secondary rollout reports: Opus 5.5 already selectable in Grok Bot cloud agents among 43 models (@aicreatorpath); an xAI staffer reportedly says the Bot itself runs on Opus 5.5 and is rolling out (@lemomo_ai). No date, pricing, data-routing terms, or Anthropic statement."
+  - ts: 2026-10-17
+    change: "Confirmed, unchanged — the Bot product widens, but there is still no new routing disclosure. @testingcatalog's 2026-10-17 brief (secondary, Grok-composed) reports Grok Bots are now on Grok web and mobile and much faster: computer tasks finish about 3x sooner on average, and other replies take less than half the time. @masaki_keio (2026-10-17 11:11 UTC) says Grok Bot requires Premium ($30/mo) or higher, i.e. Premium, Super or Ultra but not Plus or Free, matching Musk's 'no free tier for Bot'. Still no Anthropic statement, data-routing terms, or opt-out for prompts sent to rival back ends."
 ---
 
 A frontier lab's flagship agent product publicly conceding that a rival's
