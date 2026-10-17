@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-17 15:27:21 UTC
+
+CYCLE: New agent-alignment rankings, small open vision models, and a widening open-vs-closed cyber gap
+
+TOP STORIES:
+• Arena Alignment Index adds Meta Muse Wonder (77.5%), Reflection Beam 1.0 (75.3%), StepFun Step 5 Preview (75.1%) [⚠]
+• OpenBMB MiniCPM-V 4.7: 35B-A3B vision MoE runs in ~3 GB; beats Qwen3.6-35B-A3B on its own doc/chart benchmarks [⚠]
+• Epoch Cyber ECI: open-vs-closed gap widens to 11 pts (GLM-5.3 160 vs 171) [⚠]
+
+WATCH: Whether Replit or Anthropic clarifies their partnership after Masad's "done with Anthropic" Disrupt remark
+
+Full update on GitHub.
