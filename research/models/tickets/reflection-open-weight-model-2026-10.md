@@ -33,6 +33,8 @@ labels:
   - nvidia-backed
 verification: partial
 sources:
+  - "https://x.com/testingcatalog/status/2111409303701577925"
+  - "https://x.com/DogukanUrker/status/2111337663286706405"
   - https://x.com/HerbScribner/status/2106728828206756337
   - https://x.com/Cat_Zakrzewski/status/2107120604805517445
   - https://x.com/shipfrontierai/status/2107098970145337761
@@ -40,7 +42,7 @@ sources:
   - "@HerbScribner"
   - "@Cat_Zakrzewski"
 created_at: 2026-10-05
-updated_at: 2026-10-06
+updated_at: 2026-10-17
 closed_at: null
 closed_reason: null
 history:
@@ -48,6 +50,8 @@ history:
     change: "Created — CONFIRMED / partial. Axios reported on 2026-10-04 (relayed by @HerbScribner) that NVIDIA-backed Reflection AI is preparing a powerful open-weight model; a secondary summary (@shipfrontierai) adds it is initially below top US systems but competitive with leading Chinese open-weight models, with no release date. Journalist @Cat_Zakrzewski says CEO Misha Laskin told her on camera the prior week he plans to launch an open-weight model soon, on national-security grounds. Confirmed because the plan is on record from the CEO plus primary-source reporting; partial because no Reflection first-party post, model name or specs were captured in-window."
   - ts: 2026-10-06
     change: "RELEASED (from confirmed); verification stays partial; title and model updated to the reported name. AI-news digest @TheInfoMachine (2026-10-06 12:35 UTC) reports Reflection AI released Beam on 2026-10-05 — a 501B sparse mixture-of-experts model under Apache 2.0 — and notes its Terminal Bench v2.1 chart omits DeepSeek V4.1 Flash (90.6) and Kimi K3 (88.3) against Beam's 80.1. Single secondary source; no Reflection first-party announcement, model card or weights link captured in-window, so the release, size and licence are reported rather than verified. If accurate, Beam lands below the leading Chinese open-weight models on that benchmark, matching the Axios framing recorded at creation."
+  - ts: 2026-10-17
+    change: "Released, unchanged; verification stays partial — two more secondary confirmations of the shape. @testingcatalog's 2026-10-17 brief: 'Reflection released Beam, an open-weight model under Apache 2.0 with 40+ launch partners.' @DogukanUrker's 2026-10-17 open-weights roundup lists 'Beam 1.0 501B A23B', which adds a 23B active-parameter count to the reported 501B sparse MoE. Still no Reflection AI primary post captured."
 ---
 
 Reflection AI has been the US open-weights lab defined mostly by its
