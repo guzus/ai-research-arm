@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-17 04:14:59 UTC
+
+CYCLE: DeepSeek appears to have silently updated its Flash model; datacenter and memory data points
+
+TOP STORIES:
+• DeepSeek deepseek-flash API fingerprint changed; its hash decodes to a V4.1-Flash "1017" build, not announced [⚠]
+• SemiAnalysis: moratoriums will delay only ~2.3 GW of ~21 GW of US datacenter capacity in affected areas [⚠]
+• CXMT guides Q3 net profit up only 1-4% QoQ (RMB 53.4-54.9B) after Q2's +113% [⚠]
+
+WATCH: DeepSeek confirming V4.1-Flash-1017, plus first independent benchmarks
+
+Full update on GitHub.
