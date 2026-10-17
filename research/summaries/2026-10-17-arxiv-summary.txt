@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-17
+
+TOP 5 PAPERS:
+• Athanor — 4 Opus 5.5 agents post-train Qwen3-4B-Base 16→67, matching official instruct
+• Skill–policy co-evolution trap — Alibaba/Yu: drift erases 52–93% of skill-bank gains
+• OS-Helix — Shanghai AI Lab: native GUI+code CUA; 66.4% OSWorld-Verified
+• KV cache substitution fails — MIT/IBM: frozen readers only consume their own cache
+• CEL — Kolter: ablating a few heads can raise task accuracy; GD localizes conflict
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
