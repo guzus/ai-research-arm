@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-21 04:00 UTC",
-    "headline": "OPENAI SAYS INTERNAL REASONING MODEL DISPROVED ~80-YEAR-OLD ERD\u0150S UNIT-DISTANCE CONJECTURE",
-    "source": "@MTSlive",
-    "source_file": "research/summaries/2026-05-21-twitter-04h-headlines.json",
-    "url": "https://x.com/MTSlive/status/2057178248648544417"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-21 04:00 UTC",
-    "headline": "GEMINI 3.5 FLASH RANKS #1 ON ZAPIER AUTOMATION BENCH, 4X FASTER AT A FRACTION OF THE COST",
-    "source": "@OfficialLoganK",
-    "source_file": "research/summaries/2026-05-21-twitter-04h-headlines.json",
-    "url": "https://x.com/OfficialLoganK/status/2057317567673594131"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-21 04:00 UTC",
-    "headline": "KOREA DRAM EXPORTS +498% YoY IN MAY, UNIT PRICE +432% \u2014 AI MEMORY SUPERCYCLE INTENSIFIES",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-21-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2057272845932315045"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 07:00 UTC",
-    "headline": "MUSK STANDS UP IN-HOUSE 'SPACEXAI' DIVISION \u2014 HIRING ENGINEERS, PHYSICISTS WITH ZERO AI EXPERIENCE",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-21-twitter-07h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2057327547411570907"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-21 07:00 UTC",
     "headline": "SPACEX S-1 PEGS TOTAL ADDRESSABLE MARKET AT $28.5T \u2014 AI INFRASTRUCTURE THE $2.4T LINE ITEM",
@@ -23596,5 +23560,33 @@
     "headline": "AMAZON BLOCKS META MUSE SHOPPING AGENT; JEFFERIES FINDS A THIRD OF US SHOPPING AND TRAVEL SITES TESTED DO TOO",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2111223778373935465"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-17 04:14:59 UTC",
+    "headline": "DEEPSEEK SILENTLY SWAPS NEW V4.1-FLASH '1017' CHECKPOINT INTO DEEPSEEK-FLASH API \u2014 FINGERPRINT CHANGE, NO ANNOUNCEMENT",
+    "source": "@teortaxesTex",
+    "url": "https://x.com/teortaxesTex/status/2111306155448205700"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-17 04:14:59 UTC",
+    "headline": "SEMIANALYSIS: MORATORIUMS TO DELAY ONLY ~2.3 GW OF ~21 GW US DATACENTER CAPACITY IN AFFECTED AREAS",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2111255192238698636"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-17 04:14:59 UTC",
+    "headline": "CXMT GUIDES Q3 NET PROFIT RMB 53.4-54.9B, UP JUST 1-4% QOQ AFTER Q2'S 113% SURGE",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2111255909385314584"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-17 04:14:59 UTC",
+    "headline": "NVIDIA RTX SPARK LAPTOPS LAUNCH WITH UP TO 128GB UNIFIED MEMORY; UNSLOTH CLAIMS LOCAL 120B+ MODEL TRAINING",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2111244381969863115"
   }
 ]
