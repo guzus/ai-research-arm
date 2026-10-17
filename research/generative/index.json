@@ -3253,6 +3253,22 @@
     "created_at": "2026-10-17T11:10:18Z",
     "source": "workflow_dispatch",
     "prompt": "DeepSeek V4.1-Flash-1017: do self-reported DeepSWE 77.0 and Terminal-Bench 42.3 at $0.15/M hold up as cost-per-task parity with Opus 5",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-10-17T115206--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "DeepSeek $0.15 Flash 대 Opus 5: DeepSWE에서는 작업당 비용 우위, Terminal-Bench에서는 동등성 없음",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-10-17T11:52:06Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
+        "tags": [],
+        "translated_at": "2026-10-17T11:52:06Z",
+        "source_file": "research/generative/2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t.ara.md",
+        "source_sha256": "3f82de9cfcd5c9d47e4441cf672c4c5a58a28362feca18e15c4fde8a9fb08aff"
+      }
+    }
   }
 ]
