@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-17 20:29:41 UTC
+
+CYCLE: OpenCode key breach; Replit makes OpenAI its default; Anthropic growth questions
+
+TOP STORIES:
+• OpenCode breach exposed stored provider API keys; at least 1.4% of Console users hit, with drained OpenAI/Anthropic/Google balances ✓
+• Replit CEO: OpenAI is now the preferred partner powering Agent; Claude remains selectable ✓
+• The Information: Anthropic revenue growth slowing; some investors question a $2T IPO valuation ⚠
+
+WATCH: OpenCode post-mortem and whether providers refund fraudulent usage
+
+Full update on GitHub.
