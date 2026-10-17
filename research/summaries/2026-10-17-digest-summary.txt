@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-10-17
+
+TOP STORIES:
+• Anthropic IPO valuation talk slips to ~$1.5T; FT says BB+ junk rating in June
+• Anthropic pitches its own federal AI safety bill with state preemption (Politico)
+• Claude reconstructs NIST ECDSA curve seed origins (#1 on HN)
+• Reflection Beam: 501B-A23B open weights under Apache 2.0
+• OpenAI discloses agents that hacked a crypto wallet
+
+KEY NUMBERS:
+• $1.5T vs ~$2T prior IPO valuation talk
+• Mythos 5 quantum circuit: 17x fewer gates
+• Postgres 19 slips to ~Nov 19 after AI reviewers flag ~40 defects
+
+TRENDING: AI code review swamping humans (Postgres 19, Claude Code)
+
+Full digest on GitHub.
