@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-21 16:00 UTC",
-    "headline": "WHITE HOUSE CANCELS CEREMONY FOR TRUMP TO SIGN AI & CYBERSECURITY EXECUTIVE ORDER \u2014 AXIOS",
-    "source": "@DeItaone",
-    "source_file": "research/summaries/2026-05-21-twitter-16h-headlines.json",
-    "url": "https://x.com/DeItaone/status/2057482644577804741"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-21 16:00 UTC",
-    "headline": "NEWSOM SIGNS FIRST-IN-NATION CALIFORNIA EXECUTIVE ORDER ON AI'S IMPACT ON WORKERS, SMALL BUSINESS",
-    "source": "@GovPressOffice",
-    "source_file": "research/summaries/2026-05-21-twitter-16h-headlines.json",
-    "url": "https://x.com/GovPressOffice/status/2057484088538435636"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 16:00 UTC",
-    "headline": "OPENAI CONFIDENTIAL IPO S-1 STILL ON TRACK AS SOON AS FRIDAY, SEPTEMBER DEBUT EYED",
-    "source": "@ColbFinance",
-    "source_file": "research/summaries/2026-05-21-twitter-16h-headlines.json",
-    "url": "https://x.com/ColbFinance/status/2057477929693581500"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-21 18:00 UTC",
-    "headline": "TRUMP POSTPONES AI EXECUTIVE ORDER \u2014 'DIDN'T LIKE CERTAIN ASPECTS,' SAYS IT COULD BLOCK US AI LEADERSHIP OVER CHINA",
-    "source": "@alaynatreene",
-    "source_file": "research/summaries/2026-05-21-twitter-18h-headlines.json",
-    "url": "https://x.com/alaynatreene/status/2057498371581936122"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-21 18:00 UTC",
-    "headline": "ANTHROPIC IN EARLY TALKS TO RUN CLAUDE INFERENCE ON MICROSOFT MAIA 200 CHIPS, DIVERSIFYING FROM NVIDIA \u2014 THE INFORMATION",
-    "source": "@rohanpaul_ai",
-    "source_file": "research/summaries/2026-05-21-twitter-18h-headlines.json",
-    "url": "https://x.com/rohanpaul_ai/status/2057524853625049450"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-21 18:00 UTC",
     "headline": "MICROSOFT SHARES +2% ON REPORT IT IS PITCHING MAIA 200 TO ANTHROPIC AS CHEAPER-THAN-NVIDIA INFERENCE SILICON",
@@ -23574,5 +23529,40 @@
     "headline": "ANTHROPIC LOUISIANA DATA CENTER COULD YIELD $1.3B MONTHLY REVENUE, PER INVESTOR ESTIMATES",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2111457273448989036"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-17 20:29:41 UTC",
+    "headline": "OPENCODE BREACH EXPOSES STORED AI PROVIDER KEYS \u2014 AT LEAST 1.4% OF CONSOLE USERS HIT, PROVIDER BALANCES DRAINED",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2111536604351246541"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-17 20:29:41 UTC",
+    "headline": "REPLIT MAKES OPENAI PREFERRED PARTNER POWERING AGENT; ANTHROPIC MODELS STAY SELECTABLE",
+    "source": "@amasad",
+    "url": "https://x.com/amasad/status/2111494912562888939"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-17 20:29:41 UTC",
+    "headline": "ANTHROPIC REVENUE GROWTH SLOWING; SOME PROSPECTIVE INVESTORS QUESTION $2T IPO VALUATION \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2111525156032012698"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-17 20:29:41 UTC",
+    "headline": "OPENAI AD BUSINESS HITS $1B ANNUALIZED REVENUE BUT MAY MISS 2026 TARGET \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2111487476204192023"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-17 20:29:41 UTC",
+    "headline": "CURSOR PROBED WHETHER CUSTOMER DATA REACHED SPACEX AI UNIT DURING GROK BOT TESTING \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2111517628107747553"
   }
 ]
