@@ -4,10 +4,11 @@ title: Reflection AI
 type: entity
 aliases: ["Reflection AI", "Reflection", "Beam", "Reflection Beam", "Misha Laskin"]
 tags: [open-weights, moe, us-lab, nvidia-backed, model-release]
-description: US open-weights lab behind Beam; the FT says Nvidia opened early talks on a full buy, larger check, more chips, or a Groq-style acqui-hire.
+description: US open-weights lab behind Beam; Apache-2.0 weights for the 501B/23B-active coding-agent MoE shipped, more permissive than Meta's Muse license.
 created_at: 2026-10-06
-timestamp: 2026-10-11T00:00:00Z
+timestamp: 2026-10-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA model ticket — Reflection open-weight model", path: research/models/tickets/reflection-open-weight-model-2026-10.md}
@@ -27,13 +28,15 @@ sparse mixture-of-experts with
 **23B active** parameters,
 pretrained on **23.8T tokens** on
 [[nvidia|NVIDIA]] GB300s. Apache 2.0
-weights are promised "later this
-month." That is a preview, not a
-weight drop (Reflection, TechCrunch,
-MarkTechPost, Latent Space, Hacker
-News; ARA daily digest 2026-10-06
-and ticket
-`reflection-open-weight-model-2026-10`).
+weights, promised "later this
+month," landed in the 2026-10-17
+window on [[hugging-face]] — the
+second large US
+open-weight drop in two days,
+after [[muse-spark-open]]
+(Reflection, Hugging Face, HF
+blog, TechCrunch; ARA daily
+digest 2026-10-17).
 
 ## Why it matters
 
@@ -81,25 +84,26 @@ and ticket
   and [[open-weights]] (Axios via
   @AndrewCurran_; ARA daily digest
   2026-10-05).
-- **It is a preview with a dated
-  promise.** Until Apache 2.0
-  weights land, Beam is a vendor
-  card plus a first-party blog, the
-  same shape this theme has already
-  seen from labs that later
-  withheld serving-side pieces.
+- **The dated Apache 2.0 promise
+  has now been met.** The
+  remaining gap is independent
+  agentic-coding evals, not
+  whether the weights exist. See
+  [[open-weights]].
 
 ## Open questions
 
-- **Do the Apache 2.0 weights
-  actually ship this month**, and
-  on Hugging Face, or does the
-  preview linger?
 - **Do independent evals hold the
   company-reported SWE-Bench /
   Terminal Bench / GPQA numbers?**
   The efficiency claim uses
-  *estimated* forward-pass FLOPs.
+  *estimated* forward-pass FLOPs,
+  and no independent agentic-
+  coding eval has appeared yet.
+- **Does the 1M-context claim
+  hold?** It comes only from a
+  secondary account in the
+  2026-10-17 digest.
 - **How much of the Colossus and
   Nebius book is reserved for
   Beam training versus later
@@ -138,10 +142,41 @@ and ticket
   42/21 and closed at
   **100/66**, split between
   "didn't they just invest"
-  and "they want open models
+  and   "they want open models
   so they are not stuck with
   two customers." This page's
   dated weight-drop question
   is unchanged (Financial
   Times, HN; ARA daily digest
   2026-10-11).
+
+## Apache 2.0 weights land (2026-10-17)
+
+- **Beam shipped as Apache-2.0
+  open weights**: **501B total /
+  23B active**, a coding-agent
+  MoE with NVFP4/FP8 checkpoints,
+  day-0 transformers support, and
+  its own harness. The license is
+  more permissive than [[meta]]'s
+  Muse Model License or Black
+  Forest Labs'. Nathan Lambert
+  said US open-weight models
+  "cut the gap by at least half"
+  against Chinese models. See
+  [[open-weights]] and
+  [[hugging-face]] (@reflection_ai
+  via Hugging Face, HF blog,
+  @mervenoyann; ARA daily digest
+  2026-10-17).
+- **Caveats stay in place.** The
+  1M-context claim is secondary
+  only. No independent
+  agentic-coding evals have
+  appeared yet, so the
+  company-reported SWE-Bench /
+  Terminal Bench card from the
+  2026-10-05 preview is still
+  unverified. The Nvidia talks
+  this page logged on 2026-10-11
+  are unchanged.

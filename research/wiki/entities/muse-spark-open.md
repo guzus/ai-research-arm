@@ -6,8 +6,9 @@ aliases: ["Muse Spark Open", "Spark Open", "Meta Muse Spark Open", "Muse Model L
 tags: [model-release, meta, open-weights, multimodal, moe]
 description: Meta's 816B-total / 42B-active multimodal MoE under a custom Muse Model License, tuned with Apple to run on two M5 Ultra Mac Studios.
 created_at: 2026-10-16
-timestamp: 2026-10-16T00:00:00Z
+timestamp: 2026-10-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
 ---
 
@@ -60,3 +61,19 @@ frontier pair is [[muse-wonder]]; the 30B Apache-2.0 distill is
   52 / 56?
 - **Is this the last open Spark cut**, or a template for later
   Wonder-class weights?
+
+## Beam lands the next day, under Apache 2.0 (2026-10-17)
+
+- **[[reflection-ai]] shipped Beam
+  as Apache-2.0 open weights** the
+  day after this custom-license
+  drop. 501B / 23B-active vs this
+  page's 816B / 42B-active; Beam
+  is a coding-agent MoE, not a
+  multimodal Spark cut. The
+  license contrast is the point:
+  Apache 2.0 is more permissive
+  than the Muse Model License.
+  See [[open-weights]] and
+  [[hugging-face]] (ARA daily
+  digest 2026-10-17).

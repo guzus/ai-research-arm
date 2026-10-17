@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; showed IPO investors $16.8B Q3 revenue and a $110B year-end run-rate target, and gave METR employee-like evaluator access.
+description: AI safety lab behind Claude; IPO talk slipped to about $1.5T from ~$2T after Q3, and it circulated a draft federal frontier-AI bill.
 created_at: 2026-05-24
-timestamp: 2026-10-16T00:00:00Z
+timestamp: 2026-10-17T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA model ticket — Anthropic Singapore office", path: research/models/tickets/anthropic-singapore-office-2026-10.md}
@@ -3317,3 +3318,117 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   remains *in-testing*. See
   [[claude-fable-5]] (ARA daily
   digest 2026-10-16).
+
+## IPO talk cools to $1.5T; a draft federal bill (2026-10-17)
+
+- **Reuters, citing three people,
+  says investors at Wednesday's
+  investor day discussed about
+  $1.5T** against a prior ~$2T,
+  after Q3 revenue growth slowed
+  to **45%** quarter-over-quarter
+  (the $16.8B print this page
+  logged yesterday). The
+  Information says some
+  prospective investors were
+  "disappointed" with Q3. Only
+  Reuters carries the $1.5T
+  figure, and no S-1 price range
+  exists yet — this is
+  pre-roadshow price discovery,
+  not a markdown (@wallstengine,
+  @theinformation; ARA daily
+  digest 2026-10-17).
+- **The FT reports a BB+ junk
+  rating from Kroll Bond Rating
+  Agency in June**, one notch
+  below investment grade, ahead
+  of the Apollo-led $35B chip
+  financing. Write-throughs say
+  ~$4.4B of junior debt carrying
+  Anthropic credit risk sold at
+  around **8.5%**. See
+  [[ai-capex]] (FT via HN; ARA
+  daily digest 2026-10-17).
+- **NYC Comptroller Mark Levine
+  urged Anthropic to delay the
+  IPO.** He oversees pension
+  funds with more than **$325B**
+  in assets and wants
+  safety-audit details before a
+  listing; Anthropic has
+  reportedly opened talks with
+  his office (@AndrewCurran_,
+  @DeItaone; ARA daily digest
+  2026-10-17).
+- **Politico: Anthropic quietly
+  circulated a draft frontier-AI
+  bill.** It would let a court
+  order a halt, at Commerce's
+  request, for imminent risk of
+  **50+ deaths or $1B+ in
+  damage**, set up registered
+  third-party evaluators, narrow
+  federal blocking power, and
+  preempt some state laws. No
+  bill text or Anthropic
+  statement has been published.
+  Safety advocates are already
+  objecting. If the text confirms
+  preemption, that would be a
+  shift from Anthropic's prior
+  support for state transparency
+  laws. See [[federal-ai-policy]]
+  and [[california-ai-regulation]]
+  (@politico, @JayShooster; ARA
+  daily digest 2026-10-17).
+- **Claude reconstructed the NIST
+  ECDSA curve seeds.** An
+  Anthropic research post, with
+  Paul Crowley, Steve Weis and
+  Nicholas Carlini among the
+  authors, traces P-256's seed to
+  candidate 1842 from a
+  1997-08-16 01:52:34 timestamp
+  fed into a basic RNG, and says
+  four of ten seeds have all-zero
+  top bits (a 1-in-5,810 chance)
+  — the `lrand48` 31-bit
+  signature. B-163 and the
+  P-curve base points remain
+  unexplained. This resolves
+  yesterday's unverified viral
+  claim; Bitcoin/secp256k1 links
+  are wrong because secp256k1 has
+  no NIST seed. It was the #1 AI
+  story on HN at **528 points**.
+  See [[claude-science]]
+  (anthropic.com/research, HN;
+  ARA daily digest 2026-10-17).
+- **[[claude-fable-5|Claude Mythos 5]]
+  designed better quantum
+  circuits** with Andi Gu,
+  Mikhail Lukin et al.: eight
+  classically checkable
+  primitives from plain-language
+  specs, including an
+  elliptic-curve circuit with
+  **17× fewer gates** at the cost
+  of **12% more qubits**.
+  Self-reported; no independent
+  resource estimate yet
+  (Anthropic research; ARA daily
+  digest 2026-10-17).
+- **Anthropic said Claude writes
+  ~90% of Claude Code's code**,
+  with merged PRs more than
+  doubling June–September and the
+  revert share down **40%+**.
+  Critics note that revert
+  *share* hides absolute counts.
+  Replit CEO Amjad Masad said
+  Replit no longer works with
+  Anthropic; the reason was not
+  in the feed excerpt (claude.dev,
+  The Register, TechCrunch; ARA
+  daily digest 2026-10-17).
