@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T23:56:19Z",
+  "generated_at": "2026-10-17T05:05:21Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-10-16T20:00:01Z",
@@ -75,11 +75,11 @@
     },
     "NASDAQ:META": {
       "asOf": "2026-10-16T20:00:01Z",
-      "change": -27.395,
-      "changePercent": -3.7185,
+      "change": -27.39,
+      "changePercent": -3.7178,
       "currency": "USD",
       "marketState": null,
-      "price": 709.325,
+      "price": 709.33,
       "source": "yahoo",
       "stale": false,
       "symbol": "NASDAQ:META",
