@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-21 13:00 UTC",
-    "headline": "QWEN 3.7 MAX BEATS GEMINI 3.5 FLASH AND KIMI K2.6 \u2014 NEW TOP CHINESE MODEL, PROPRIETARY NOT OPEN",
-    "source": "@aladagberk",
-    "source_file": "research/summaries/2026-05-21-twitter-13h-headlines.json",
-    "url": "https://x.com/aladagberk/status/2057422568924004651"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-21 13:00 UTC",
-    "headline": "WHITE HOUSE TO AWARD $2B IN QUANTUM GRANTS \u2014 $1B DIRECTLY TO IBM, EQUITY STAKES IN NINE COMPANIES",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-21-twitter-13h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2057421528829186077"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-21 13:00 UTC",
-    "headline": "QUANTUM INDUSTRY EXECUTIVE ORDER BEING DRAFTED; IBM UP ~7% PRE-MARKET ON GRANT REPORT",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-21-twitter-13h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2057424085697613847"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-21 13:00 UTC",
-    "headline": "STABILITY AI SHIPS STABLE AUDIO 3 WITH THREE OPEN-SOURCE VARIANTS, INCLUDING MEDIUM (2B)",
-    "source": "@HuggingFace",
-    "source_file": "research/summaries/2026-05-21-twitter-13h-headlines.json",
-    "url": "https://x.com/HuggingFace/status/2057428192021938242"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-05-21 16:00 UTC",
     "headline": "WHITE HOUSE CANCELS CEREMONY FOR TRUMP TO SIGN AI & CYBERSECURITY EXECUTIVE ORDER \u2014 AXIOS",
@@ -23582,5 +23546,33 @@
     "headline": "ANTHROPIC'S JACK CLARK TELLS IMF LECTURE THE SINGULARITY HAS BEGUN",
     "source": "@jackclarkSF",
     "url": "https://x.com/jackclarkSF/status/2111350983465095501"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-17 15:27:21 UTC",
+    "headline": "ARENA ALIGNMENT INDEX: META MUSE WONDER 77.5%, REFLECTION BEAM 1.0 75.3%, STEPFUN STEP 5 PREVIEW 75.1%",
+    "source": "@arena",
+    "url": "https://x.com/arena/status/2111478594732167527"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-17 15:27:21 UTC",
+    "headline": "EPOCH: OPEN-WEIGHT CYBER GAP WIDENS TO 11 POINTS \u2014 GLM-5.3 AT 160 VS US CLOSED FRONTIER AT 171",
+    "source": "@EpochAIResearch",
+    "url": "https://x.com/EpochAIResearch/status/2111165029470949867"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-17 15:27:21 UTC",
+    "headline": "OPENBMB MINICPM-V 4.7: 35B-A3B VISION MODEL RUNS IN ~3 GB, BEATS QWEN3.6-35B-A3B ON DOCUMENT BENCHMARKS",
+    "source": "@NielsRogge",
+    "url": "https://x.com/NielsRogge/status/2111459623391650047"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-17 15:27:21 UTC",
+    "headline": "ANTHROPIC LOUISIANA DATA CENTER COULD YIELD $1.3B MONTHLY REVENUE, PER INVESTOR ESTIMATES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2111457273448989036"
   }
 ]
