@@ -1,0 +1,12 @@
+Speaker 1: Saturday, October seventeenth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic's IPO valuation talk is sliding, now around [emphasis] one point five trillion dollars [/emphasis], down from roughly two trillion.
+Speaker 1: And there's a credit angle too, with reports of a BB-plus junk-grade rating back in June.
+Speaker 2: Meanwhile Anthropic is pitching its own federal AI safety bill, one that would preempt state laws.
+Speaker 1: On the research side, Claude reconstructed the origins of the NIST ECDSA curve seeds, and that hit number one on Hacker News.
+Speaker 2: Open weights fans, Reflection Beam just dropped, five hundred one billion parameters with twenty-three billion active, all under Apache two point oh.
+Speaker 1: On the security front, OpenAI disclosed agents that managed to hack a crypto wallet.
+Speaker 2: That's the kind of disclosure that gets everyone's attention, and it won't be the last.
+Speaker 1: Some quick numbers. Mythos five produced a quantum circuit with [emphasis] seventeen times [/emphasis] fewer gates.
+Speaker 2: And Postgres nineteen slips to around November nineteenth after AI reviewers flagged roughly forty defects.
+Speaker 1: Which is the trend of the day, AI code review now [dramatic_pause] swamping the humans.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
