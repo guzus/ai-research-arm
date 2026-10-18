@@ -1,0 +1,11 @@
+Speaker 1: Sunday, October eighteenth, twenty twenty-six.
+Speaker 2: [high_energy] DeepSeek just shipped V four point one Flash, the ten seventeen build, with open weights under the MIT license, and it's topping Hacker News with six hundred twenty points.
+Speaker 1: On DeepSeek's own evals, it scores seventy-seven on DeepSWE and forty-two point three on Terminal-Bench four point oh, where Opus five posts fifty-one point eight.
+Speaker 2: The real story is price, though, [emphasis] fifteen cents per million input tokens [/emphasis] off-peak, versus five dollars for Opus five.
+Speaker 1: On the security front, a breach at the OpenCode Console drained stored OpenAI, Anthropic, and Google API keys.
+Speaker 2: OpenCode says at least one point four percent of Console users were affected, so if you stored keys there, rotate them today.
+Speaker 1: In platform moves, Replit has made OpenAI its default model, though Claude stays selectable.
+Speaker 2: Meanwhile, Microsoft is reportedly paying Anthropic [emphasis] more than two billion dollars a year [/emphasis] to power Copilot.
+Speaker 1: And one research result worth flagging, four Opus five point five agents post-trained Qwen three four B to instruct parity on their own.
+Speaker 2: They did it in [dramatic_pause] [emphasis] one hundred four hours [/emphasis], which is a real glimpse of agents running the training loop.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
