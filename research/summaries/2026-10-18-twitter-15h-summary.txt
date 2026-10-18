@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-18 15:47:16 UTC
+
+CYCLE: OpenCode attack continues; Anthropic IPO valuation reset; OpenAI eyes Trail of Bits
+
+TOP STORIES:
+• OpenCode reportedly still under sustained attack; frontier models it used for defense refused to analyze the attacking agents ⚠
+• The Information: investors now put a potential Anthropic IPO nearer $1.5T than $2T ⚠
+• The Information: OpenAI could acquire security firm Trail of Bits ⚠
+
+WATCH: OpenCode post-mortem naming the models that refused during incident response.
+
+Full update on GitHub.
