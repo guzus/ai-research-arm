@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-10-18
+
+TOP STORIES:
+• DeepSeek ships V4.1-Flash-1017, MIT open weights
+• OpenCode Console breach drains stored OpenAI/Anthropic/Google keys
+• Replit makes OpenAI its default; Claude stays selectable
+• Microsoft reportedly pays Anthropic $2B+/yr for Copilot
+
+KEY NUMBERS:
+• DeepSWE 77.0, Terminal-Bench 4.0 42.3 (DeepSeek's own evals; Opus 5: 51.8)
+• $0.15/M input off-peak vs $5 for Opus 5
+• OpenCode: ≥1.4% of Console users affected
+• 4 Opus 5.5 agents post-trained Qwen3-4B to instruct parity in 104h
+
+TRENDING: DeepSeek V4.1-Flash-1017 (HN 620 pts / 539 comments)
+
+Full digest on GitHub.
