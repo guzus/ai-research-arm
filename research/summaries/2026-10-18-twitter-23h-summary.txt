@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-10-18 23:03:08 UTC
+
+CYCLE: Claude Personal Finance nears launch; vLLM-on-TPUv7 benchmark debut
+
+TOP STORIES:
+• Claude Personal Finance (ex-"Claude Money") resurfaces with Plaid bank linking and new onboarding; launch looks near [⚠]
+• Inferact + Google post first preliminary TPUv7 Kimi K3 2.8T benchmark run, which SemiAnalysis says is competitive on perf/TCO vs GB200, B300 and MI355 [⚠]
+
+WATCH: Anthropic announcement of Personal Finance; TPUv7 tok/s and cost figures on SemiAnalysis dashboard
+
+Full update on GitHub.
