@@ -1,5 +1,5 @@
 {
-  "article_count": 97,
+  "article_count": 98,
   "articles": [
     {
       "claim_count": 18,
@@ -927,6 +927,14 @@
       "stem": "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t",
       "tags": [],
       "title": "DeepSeek's $0.15 Flash vs Opus 5: cost-per-task dominance on DeepSWE, no parity on Terminal-Bench"
+    },
+    {
+      "claim_count": 28,
+      "created_at": "2026-10-18T21:10:06Z",
+      "slug": "anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "stem": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "tags": [],
+      "title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit"
     }
   ],
   "by_host": {
@@ -1076,7 +1084,8 @@
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
     ],
     "aiweekly.co": [
-      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c9"
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c9",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c14"
     ],
     "alearesearch.substack.com": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c13"
@@ -1247,7 +1256,16 @@
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c25",
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c7",
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c8",
-      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9"
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c1",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c13",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c15",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c2",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c20",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c3",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c4",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c5",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c6"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -2431,6 +2449,9 @@
     "comptes-rendus.academie-sciences.fr": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c13"
     ],
+    "comptroller.nyc.gov": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c21"
+    ],
     "congress.gov": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c15",
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c21",
@@ -2509,7 +2530,8 @@
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c19",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c20",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c10",
-      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c15"
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c15",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c14"
     ],
     "cryptopolitan.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30"
@@ -2597,7 +2619,8 @@
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c19"
     ],
     "dart.deloitte.com": [
-      "2026-07-31T051841--situational-awareness-lp-collapse#c43"
+      "2026-07-31T051841--situational-awareness-lp-collapse#c43",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c9"
     ],
     "data.sec.gov": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c15"
@@ -2713,7 +2736,8 @@
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4"
     ],
     "delcode.delaware.gov": [
-      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c30"
+      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c30",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c8"
     ],
     "delta-americas.com": [
       "2026-05-27T035557--800-vdc-architecture#c15"
@@ -3324,7 +3348,9 @@
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c19",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c20",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c23",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c7"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c7",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c18",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c22"
     ],
     "financemagnates.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c26"
@@ -3389,6 +3415,9 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c13",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c14"
     ],
+    "forbes.com.au": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c11"
+    ],
     "fortune.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c22",
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c18",
@@ -3442,6 +3471,9 @@
     ],
     "foxbusiness.com": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c19"
+    ],
+    "fred.stlouisfed.org": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c19"
     ],
     "fredgao.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c1",
@@ -3969,7 +4001,8 @@
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c18",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c22",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c1",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c2"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c2",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c16"
     ],
     "investor.atmeta.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C12",
@@ -4044,7 +4077,8 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c16"
     ],
     "irs.gov": [
-      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30"
+      "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c10"
     ],
     "ismscopilot.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c30"
@@ -4156,6 +4190,11 @@
     "krinsider.com": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c11"
     ],
+    "ksl.com": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c1",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c2",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c4"
+    ],
     "kucoin.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c23",
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c12",
@@ -4210,7 +4249,8 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c38",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c41",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c42",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c21"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c21",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c10"
     ],
     "law.justia.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c17",
@@ -4339,6 +4379,9 @@
     ],
     "marketsandmarkets.com": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c36"
+    ],
+    "marketscreener.com": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c7"
     ],
     "marketwise.com": [
       "2026-07-13T181948--cxmt#c28"
@@ -4568,7 +4611,8 @@
     "news.bloomberglaw.com": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c15",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c27",
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c21"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c21",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c12"
     ],
     "news.cgtn.com": [
       "2026-06-22T052035--zhipu-ai-glm#c27",
@@ -5533,7 +5577,8 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c34",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c22",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c22"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c22",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c17"
     ],
     "securitycompass.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
@@ -5578,6 +5623,9 @@
     ],
     "sfwa.org": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c18"
+    ],
+    "sg.finance.yahoo.com": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c18"
     ],
     "sherwood.news": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c24"
@@ -6922,6 +6970,9 @@
     "https://aitoolsbee.com/news/cuda-compatible-ai-chip-bytedance-5-6b-backs-huawei-950pr": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
     ],
+    "https://aiweekly.co/alerts/anthropics-charity-match-charge-hit-660m-in-six-months-to-march": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c14"
+    ],
     "https://aiweekly.co/alerts/the-information-typesafe-in-talks-to-raise-1b-at-10b-valuation-days-after-40m": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c9"
     ],
@@ -7004,6 +7055,9 @@
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c10",
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c17",
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c18"
+    ],
+    "https://anthropic.com/news/economic-futures-research-fund-agenda": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c20"
     ],
     "https://anthropic.com/news/fable-mythos-access": [
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c1",
@@ -8456,6 +8510,9 @@
     "https://comptes-rendus.academie-sciences.fr/mathematique/item/10.5802/crmath.831": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c13"
     ],
+    "https://comptroller.nyc.gov/reports/letter-to-anthropic-re-planned-initial-public-offering": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c21"
+    ],
     "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c10",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c11",
@@ -8476,6 +8533,9 @@
     ],
     "https://cryptobriefing.com/ai-companies-poach-professors-academia": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c20"
+    ],
+    "https://cryptobriefing.com/anthropic-charitable-stock-matching-660-million": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c14"
     ],
     "https://cryptobriefing.com/base-batches-004-investing-1m-startups": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c17"
@@ -8586,6 +8646,9 @@
     "https://darioamodei.com/post/we-must-pace-the-frontier": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c39"
     ],
+    "https://dart.deloitte.com/USDART/home/codification/broad-transactions/asc810-10/roadmap-noncontrolling-interests/chapter-6-attribution-income-other-comprehensive/6-6-attribution-in-income-in": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c9"
+    ],
     "https://dart.deloitte.com/USDART/home/codification/broad-transactions/asc820-10/roadmap-fair-value-measurements-disclosures/chapter-9-initial-measurement/9-3-model-calibration": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c43"
     ],
@@ -8687,6 +8750,9 @@
     ],
     "https://defillama.com/protocol/uniswap": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c29"
+    ],
+    "https://delcode.delaware.gov/title8/c001/sc05/index.html": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c8"
     ],
     "https://delcode.delaware.gov/title8/c001/sc15/index.html": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c30"
@@ -9326,6 +9392,9 @@
     "https://finance.yahoo.com/news/nasdaq-puts-132-billion-crypto-130235736.html": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c22"
     ],
+    "https://finance.yahoo.com/news/openai-completes-restructuring-profit-company-151841977.html": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c18"
+    ],
     "https://finance.yahoo.com/news/openai-secures-200-million-pentagon-190059280.html": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c20"
     ],
@@ -9373,6 +9442,9 @@
     ],
     "https://finance.yahoo.com/sectors/technology/articles/harvard-law-anthropic-sell-safety-193510988.html": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c19"
+    ],
+    "https://finance.yahoo.com/sectors/technology/articles/openai-foundation-pledges-1b-grants-160543442.html": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c22"
     ],
     "https://finance.yahoo.com/sectors/technology/articles/xai-burned-6-4b-last-222608682.html": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c11"
@@ -9538,6 +9610,9 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c18",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c20",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7"
+    ],
+    "https://fred.stlouisfed.org/series/A1589C1A027NBEA": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c19"
     ],
     "https://futureoflife.org/ai-safety-index-summer-2026": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c14",
@@ -10462,6 +10537,9 @@
     ],
     "https://news.bloomberglaw.com/ip-law/nebius-to-sell-1-billion-in-ai-capacity-to-startup-reflection": [
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c21"
+    ],
+    "https://news.bloomberglaw.com/private-equity/anthropic-co-founders-worth-8-billion-each-after-funding-round": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c12"
     ],
     "https://news.cgtn.com/news/2025-02-17/President-Xi-attends-symposium-on-private-enterprises-delivers-speech-1B3QqCUlZXG/p.html": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c5"
@@ -11488,6 +11566,9 @@
     "https://sfwa.org/anthropic-faq": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c18"
     ],
+    "https://sg.finance.yahoo.com/news/microsoft-27-openai-access-ai-053722572.html": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c18"
+    ],
     "https://sherwood.news/tech/report-google-is-backstopping-anthropics-35-billion-data-center-deal": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c24"
     ],
@@ -12458,6 +12539,9 @@
     "https://www.anchorage.com/insights/anchorage-digital-partners-with-ethena-labs-to-launch-first-genius-compliant-federally-regulated-stablecoin": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c15"
     ],
+    "https://www.anthropic.com/careers": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c13"
+    ],
     "https://www.anthropic.com/constitution": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c30"
     ],
@@ -12495,7 +12579,8 @@
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c12",
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c14",
       "2026-07-31T051841--situational-awareness-lp-collapse#c38",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c12"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c12",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c6"
     ],
     "https://www.anthropic.com/news/anthropic-raises-series-e-at-usd61-5b-post-money-valuation": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c18"
@@ -12569,6 +12654,15 @@
     "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c17"
     ],
+    "https://www.anthropic.com/news/narasimhan-board": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c15"
+    ],
+    "https://www.anthropic.com/news/public-benefit-fund": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c1",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c2",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c3",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c4"
+    ],
     "https://www.anthropic.com/news/redeploying-fable-5": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c11"
     ],
@@ -12587,7 +12681,8 @@
       "2026-07-31T051841--situational-awareness-lp-collapse#c40",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c29",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c12",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c25"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c25",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c5"
     ],
     "https://www.anthropic.com/news/statement-comments-secretary-war": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c1",
@@ -13831,6 +13926,9 @@
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-12",
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-16"
     ],
+    "https://www.forbes.com.au/?p=191366": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c11"
+    ],
     "https://www.forbes.com/sites/amyfeldman/2026/05/13/isomorphic-labs-21-billion-fundraise-is-the-biggest-bet-yet-on-ai-drug-discovery": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c48"
     ],
@@ -14185,6 +14283,9 @@
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c1",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c2"
     ],
+    "https://www.investing.com/news/stock-market-news/exclusiveanthropic-leaders-to-control-ai-lab-via-founder-llc-to-promote-public-good-over-market-forces-4921448": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c16"
+    ],
     "https://www.investing.com/news/stock-market-news/hedge-funds-dumped-chip-stocks-for-a-fourth-week-as-ai-shares-sold-off-4776190": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c23"
     ],
@@ -14236,6 +14337,9 @@
     ],
     "https://www.irregular.com/publications": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c16"
+    ],
+    "https://www.irs.gov/businesses/small-businesses-self-employed/single-member-limited-liability-companies": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c10"
     ],
     "https://www.irs.gov/credits-deductions/advanced-manufacturing-investment-credit": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30"
@@ -14326,6 +14430,11 @@
     "https://www.koreatimes.co.kr/www/tech/2024/09/129_342689.html": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c7"
     ],
+    "https://www.ksl.com/article/51637860/anthropic-to-commit-5-stake-to-new-public-benefit-fund": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c1",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c2",
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c4"
+    ],
     "https://www.kucoin.com/blog/pons-token-robinhood-chain-pump-fun-rival": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29"
     ],
@@ -14399,6 +14508,9 @@
     ],
     "https://www.law.cornell.edu/uscode/text/26/48D": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c30"
+    ],
+    "https://www.law.cornell.edu/uscode/text/26/4942": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c10"
     ],
     "https://www.law.cornell.edu/uscode/text/50/4558": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c41"
@@ -14479,6 +14591,9 @@
     ],
     "https://www.marketsandmarkets.com/Market-Reports/ai-in-life-science-market-1239.html": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c36"
+    ],
+    "https://www.marketscreener.com/news/investors-temper-anthropic-ipo-valuation-expectations-over-revenue-growth-slowdown-sources-say-ce785dd3d18ef225": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c7"
     ],
     "https://www.marktechpost.com/2026/04/20/openai-scales-trusted-access-for-cyber-defense-with-gpt-5-4-cyber-a-fine-tuned-model-built-for-verified-security-defenders": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c14"
@@ -15074,6 +15189,9 @@
     ],
     "https://www.sec.gov/Archives/edgar/data/12927/000119312504034751/d10k.htm": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c32"
+    ],
+    "https://www.sec.gov/Archives/edgar/data/1318605/000110465925108507/tm2530590d1_ex99-2.htm": [
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c17"
     ],
     "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003832/meta-12312025xexhibit991.htm": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c21"
@@ -16390,7 +16508,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2877,
+  "claim_count": 2905,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -85188,9 +85306,635 @@
       "source_tiers": [],
       "source_urls": [],
       "type": "derived"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-10-18",
+      "claim": "Subject to stockholder approval, 5% of Anthropic's shares will be committed to the Anthropic Public Benefit Fund.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com",
+        "ksl.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/public-benefit-fund",
+        "https://www.ksl.com/article/51637860/anthropic-to-commit-5-stake-to-new-public-benefit-fund"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "",
+      "claim": "Private foundations must distribute about 5% of non-charitable assets annually (IRC 4942); an LLC has no such rule.",
+      "confidence": "high",
+      "hosts": [
+        "irs.gov",
+        "law.cornell.edu"
+      ],
+      "id": "c10",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c10",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.law.cornell.edu/uscode/text/26/4942",
+        "https://www.irs.gov/businesses/small-businesses-self-employed/single-member-limited-liability-companies"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-05-29",
+      "claim": "Forbes estimates each of Anthropic's seven co-founders owns just over 1.7% of the company.",
+      "confidence": "medium",
+      "hosts": [
+        "forbes.com.au"
+      ],
+      "id": "c11",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c11",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.forbes.com.au/?p=191366"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-05-29",
+      "claim": "Bloomberg's wealth index estimates each co-founder owns less than 1% of Anthropic.",
+      "confidence": "medium",
+      "hosts": [
+        "news.bloomberglaw.com"
+      ],
+      "id": "c12",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c12",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://news.bloomberglaw.com/private-equity/anthropic-co-founders-worth-8-billion-each-after-funding-round"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-10-19",
+      "claim": "Anthropic's careers page offers optional equity donation matching at a 1:1 ratio up to 25% of an equity grant.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c13",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/careers"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-10-04",
+      "claim": "Anthropic's employee charity match generated more than $660 million of non-cash expense between October 2025 and March 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "aiweekly.co",
+        "cryptobriefing.com"
+      ],
+      "id": "c14",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c14",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://aiweekly.co/alerts/anthropics-charity-match-charge-hit-660m-in-six-months-to-march",
+        "https://cryptobriefing.com/anthropic-charitable-stock-matching-660-million"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-04-14",
+      "claim": "Trust-appointed directors became a majority of Anthropic's seven-member board with Vas Narasimhan's appointment.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/narasimhan-board"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-09-28",
+      "claim": "The draft S-1 gives a Founder LLC a single Class F share with 50.1% of voting power on key matters, with the Trust electing four directors.",
+      "confidence": "medium",
+      "hosts": [
+        "investing.com"
+      ],
+      "id": "c16",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c16",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.investing.com/news/stock-market-news/exclusiveanthropic-leaders-to-control-ai-lab-via-founder-llc-to-promote-public-good-over-market-forces-4921448"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2025-09-03",
+      "claim": "Tesla's 2025 CEO award comprises 12 tranches of 35,311,992 shares tied to market-cap milestones up to $8.5 trillion.",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c17",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1318605/000110465925108507/tm2530590d1_ex99-2.htm"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2025-10-28",
+      "claim": "The OpenAI Foundation holds a 26% stake valued around $130 billion plus a warrant if OpenAI Group's share price rises more than tenfold after 15 years.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com",
+        "sg.finance.yahoo.com"
+      ],
+      "id": "c18",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://sg.finance.yahoo.com/news/microsoft-27-openai-access-ai-053722572.html",
+        "https://finance.yahoo.com/news/openai-completes-restructuring-profit-company-151841977.html"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-09-30",
+      "claim": "US unemployment insurance benefits totalled about $36.9 billion in 2025 per BEA data.",
+      "confidence": "high",
+      "hosts": [
+        "fred.stlouisfed.org"
+      ],
+      "id": "c19",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://fred.stlouisfed.org/series/A1589C1A027NBEA"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-10-18",
+      "claim": "An additional 2% may be added at the board's discretion for every 50% increase in company value above a set, undisclosed baseline.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com",
+        "ksl.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/public-benefit-fund",
+        "https://www.ksl.com/article/51637860/anthropic-to-commit-5-stake-to-new-public-benefit-fund"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-07-22",
+      "claim": "Anthropic committed $200 million to an Economic Futures Research Fund primarily funding projects in the $5-30 million range.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c20",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c20",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://anthropic.com/news/economic-futures-research-fund-agenda"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-10-14",
+      "claim": "NYC Comptroller asked Anthropic to pause its IPO citing a gap between control and accountability.",
+      "confidence": "high",
+      "hosts": [
+        "comptroller.nyc.gov"
+      ],
+      "id": "c21",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c21",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://comptroller.nyc.gov/reports/letter-to-anthropic-re-planned-initial-public-offering"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-03-25",
+      "claim": "The OpenAI Foundation pledged $25 billion without a time frame and granted $40.5 million by December 2025.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.yahoo.com"
+      ],
+      "id": "c22",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c22",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://finance.yahoo.com/sectors/technology/articles/openai-foundation-pledges-1b-grants-160543442.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-10-18",
+      "claim": "The fund is a wholly-owned LLC rather than a 501(c)(3), and its Anthropic equity will not be used for lobbying or political giving.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/public-benefit-fund"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-10-18",
+      "claim": "Combined with founder and employee pledges, roughly 20% of Anthropic shares will be dedicated to the public good.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com",
+        "ksl.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c4",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/public-benefit-fund",
+        "https://www.ksl.com/article/51637860/anthropic-to-commit-5-stake-to-new-public-benefit-fund"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-05-28",
+      "claim": "Anthropic's Series H valued the company at $965 billion post-money.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/series-h"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-02-12",
+      "claim": "Anthropic's Series G valued the company at $380 billion post-money.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-10-15",
+      "claim": "Investors at Anthropic's investor day discussed an IPO valuation around $1.5 trillion versus roughly $2 trillion previously expected.",
+      "confidence": "medium",
+      "hosts": [
+        "marketscreener.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c7",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.marketscreener.com/news/investors-temper-anthropic-ipo-valuation-expectations-over-revenue-growth-slowdown-sources-say-ce785dd3d18ef225"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "",
+      "claim": "Delaware DGCL 160(c) bars voting and quorum counting of a corporation's shares held by an entity it majority-controls.",
+      "confidence": "high",
+      "hosts": [
+        "delcode.delaware.gov"
+      ],
+      "id": "c8",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c8",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://delcode.delaware.gov/title8/c001/sc05/index.html"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "",
+      "claim": "Under US GAAP, parent shares held by a subsidiary are not treated as outstanding and are reflected as treasury shares.",
+      "confidence": "high",
+      "hosts": [
+        "dart.deloitte.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c9",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://dart.deloitte.com/USDART/home/codification/broad-transactions/asc810-10/roadmap-noncontrolling-interests/chapter-6-attribution-income-other-comprehensive/6-6-attribution-in-income-in"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-05-28",
+      "claim": "The 5% stake is worth about $48.25 billion at the $965 billion Series H post-money valuation.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#d1",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-10-15",
+      "claim": "The 5% stake would be worth about $75 billion at the ~$1.5 trillion IPO valuation investors discussed.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#d2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-05-28",
+      "claim": "The Series H mark is about 2.54 times the Series G valuation.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#d3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-05-29",
+      "claim": "Seven co-founders at about 1.7% each pledging 80% implies roughly 9.5% of Anthropic.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#d4",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-10-19",
+      "claim": "A 5% annual payout on a $48.25 billion corpus is about 6.5% of 2025 US unemployment insurance outlays.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#d5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin",
+      "article_created_at": "2026-10-18T21:10:06Z",
+      "article_title": "Anthropic's Public Benefit Fund: what the 5%, the 2% tranches and the '20%' actually commit",
+      "as_of": "2026-10-18",
+      "claim": "Under arithmetic +50% steps, a 10x rise above baseline implies a fund stake of 41% if every tranche is granted.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#d6",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1410,
+  "reusable_count": 1423,
   "schema_version": 1
 }
