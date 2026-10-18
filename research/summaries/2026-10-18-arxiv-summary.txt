@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-18
+
+TOP 5 PAPERS:
+• Intern Lumina U2 — Shanghai AI Lab: first multi-codebook discrete dLLM; 1.4B-act, 4.45× gen
+• Open-world AI — Bottou: 3 requirements; miss them and related-task data makes you worse
+• Self-growing DSL — PayPal: oracle-free RSI; rejects 138/138 buggy ops; 3–20× coverage
+• MAI-Gym — Alibaba: 20k GUI envs; 9B hits 78.4% MobileWorld / 76.2% OSWorld-Verified
+• Learning to Read Out — Cambridge: capability dates confuse encoding vs unembedding
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
