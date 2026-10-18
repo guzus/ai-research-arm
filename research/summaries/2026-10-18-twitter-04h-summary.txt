@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-10-18 04:20:11 UTC
+
+CYCLE: Quiet weekend window: OpenAI stealth model IDs and a vLLM speedup claim
+
+QUICK HITS:
+• Three unannounced OpenAI API model IDs appear: aurora-red/green/blue-alpha [⚠]
+• SemiAnalysis: NVIDIA vLLM decode kernels push Kimi K3 (2.8T) to 423 tok/s per user, 1.68x faster [⚠]
+
+WATCH: OpenAI docs or OpenRouter confirming what the aurora-*-alpha models are.
+
+Full update on GitHub.
