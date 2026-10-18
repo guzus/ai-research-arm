@@ -3,7 +3,7 @@ slug: cloudflare-clef-2026-10
 title: Cloudflare Clef and Clef-Flash — open decision models positioned against TypeSafe's Jev
 company: Cloudflare
 model: Clef / Clef-Flash
-status: confirmed
+status: closed
 status_note: |
   **Single relay of a primary blog post.** @KeisukeIshikawa (2026-10-03 11:38
   UTC) summarises a Cloudflare Blog post and Hugging Face release: Clef and
@@ -32,12 +32,14 @@ verification: unverified
 sources:
   - https://x.com/KeisukeIshikawa/status/2106348138516676752
 created_at: 2026-10-03
-updated_at: 2026-10-03
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-18
+closed_at: 2026-10-18
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-10-03
     change: "Created — CONFIRMED / unverified. @KeisukeIshikawa (2026-10-03 11:38 UTC) reports that Cloudflare released Clef and Clef-Flash, single-pass decision models (state + option set -> probability per option) explicitly benchmarked against TypeSafe's Jev ([[typesafe-jev-2026-09]]): Clef on Qwen3.8-27B, Clef-Flash on Qwen3.5-9B; Clef ahead of Jev in 3 of 4 TypeSafe workflow areas; median latency 524 ms (Jev) vs 209 ms (Clef) vs 38.8 ms (Clef-Flash); Jev/SystemOne-compatible API; Apache 2.0 weights. Status confirmed rather than rumored because the relay cites a specific Cloudflare Blog post and Hugging Face release with concrete numbers; verification unverified because it is one secondary account and neither primary page was captured in this cycle. Not set to released until the weights are seen directly."
+  - ts: 2026-10-18
+    change: "CLOSED — stale-rumor-unverified. Fifteen daily cycles (2026-10-04 through 2026-10-18) since the single @KeisukeIshikawa relay, with no corroboration: no Cloudflare Blog post, no Hugging Face model page, no second account, and no TypeSafe response captured in any cycle. The claim was specific and easy to check, which is why the ticket was opened; the absence of any second sighting of a supposedly open-weight release from a hyperscale provider over two weeks is itself informative. Closed per the 15-cycle unverified rule, not disproved. If a Cloudflare primary or the weights surface, open a successor ticket that links here."
 ---
 
 TypeSafe's argument with Jev was that most agent steps are decisions, not
