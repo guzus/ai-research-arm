@@ -46,13 +46,16 @@ sources:
   - "https://x.com/testingcatalog/status/2111409303701577925"
   - "https://x.com/TDssbxDCRWr194W/status/2111411394348450152"
   - "https://x.com/MiaAI_lab/status/2111412351279018242"
+  - "https://x.com/globaltimesnews/status/2111778464538009643"
 created_at: 2026-10-17
-updated_at: 2026-10-17
+updated_at: 2026-10-18
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-10-17
     change: "Created — RELEASED / confirmed. @deepseek_ai (2026-10-17 08:35 UTC) announced DeepSeek-V4.1-Flash-1017, live on web, app and API, with stronger benchmarks plus faster, shorter outputs than the prior V4.1-Flash. Relayed figures from DeepSeek's chart: DeepSWE v1.1 74.2 -> 77.0 (Opus 5 74.0, GPT-5.6 Sol 73.0), Agents' Last Exam 35.4, Automation-Bench 60.5, trailing Opus 5 on HLE and Terminal-Bench. Secondary: MIT open weights (@testingcatalog), 763B / ~510GB, $0.15/$0.30 per MTok, harness/Claude Code/Codex calls reportedly unbilled until about Nov 1, and new Search/Fetch APIs at $0.75 per 1K calls. This is a new checkpoint, distinct from the closed [[deepseek-v4-1-2026-09]], which is left untouched."
+  - ts: 2026-10-18
+    change: "Released, unchanged — Chinese state-media pickup. @globaltimesnews (2026-10-18 11:16 UTC) reports DeepSeek released V4.1-Flash-1017 as an upgrade of last month's V4.1-Flash, restating DeepSeek's own framing: stronger benchmarks, faster task completion, shorter outputs and lower usage cost. This is distribution, not new technical detail. Unadopted: a Grok-composed 'Daily Carlin' roundup (@BrianJohns59340, 11:24 UTC) claims the model 'beats Claude Sonnet 5.6 on 10 of 11 coding benchmarks' with 20% fewer tokens. No Sonnet 5.6 exists in this desk's tracking ([[anthropic-sonnet-5-5-2026-09]] is current), and a reply under the roundup notes much of it is weeks old, so the figure is treated as garbled. Still no independent benchmark placement or Hugging Face card captured."
 ---
 
 This is a post-training refresh of an existing model, not a new base. DeepSeek
