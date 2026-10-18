@@ -4,15 +4,16 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm", "Meta Enterprise Platform", "CJ Desai", "Muse Gadgets"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; shipped Muse Spark Open, an 816B/42B-active multimodal MoE under a custom license, reversing April's closed-frontier decision.
+description: Social-platform hyperscaler and Llama maker; walked back a scrape-for-training clause in its business terms after backlash, days after shipping Muse Spark Open.
 created_at: 2026-06-16
-timestamp: 2026-10-16T00:00:00Z
+timestamp: 2026-10-18T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
@@ -531,3 +532,24 @@ TechCrunch; ARA daily digest 2026-09-16).
   [[open-weights]] (@AIatMeta,
   TechCrunch, The Verge, The Decoder,
   HN; ARA daily digest 2026-10-16).
+
+## Training-on-associated-sites clause dropped (2026-10-18)
+
+- **Meta dropped the scrape-for-
+  training clause from its
+  business terms** after a day
+  of backlash, before the **30
+  October** effective date. The
+  language that let Meta train
+  on "associated" sites is
+  gone. Meta says the change
+  does not affect how it crawls
+  the web. This is a terms
+  walk-back, not a crawl-policy
+  change, and it lands a week
+  after sites started blocking
+  Muse shopping agents. See
+  [[agentic-ai-security]] and
+  [[muse-code]] (The Verge,
+  TechCrunch; ARA daily digest
+  2026-10-18).

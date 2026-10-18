@@ -6,8 +6,10 @@ aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 P
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
 description: Hangzhou Chinese frontier lab; Bloomberg says it is close to a ≥$12B raise at ~$71B to fund a 160,000-chip Huawei Ascend cluster ahead of an early-2027 IPO.
 created_at: 2026-06-04
-timestamp: 2026-10-06T00:00:00Z
+timestamp: 2026-10-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
+  - {title: "ARA model ticket — DeepSeek-V4.1-Flash-1017", path: research/models/tickets/deepseek-v4-1-flash-1017-2026-10.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-09-25", path: research/digest/2026-09-25-digest.md}
   - {title: "ARA model ticket — DeepSeek second funding round", path: research/models/tickets/deepseek-second-round-2026-07.md}
@@ -397,6 +399,39 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   See [[ai-capex]] and
   [[open-weights]] (ARA daily
   digest 2026-10-06).
+
+## V4.1-Flash-1017 silent swap then ship (2026-10-18)
+
+- **[[deepseek-v4-1-flash|V4.1-Flash-1017]]
+  shipped under MIT** after the
+  live `deepseek-flash`
+  fingerprint changed at about
+  **03:24 UTC**, hours before
+  the announcement. DeepSeek's
+  own table puts DeepSWE at
+  **77.0** and Terminal-Bench
+  4.0 at **42.3**, still about
+  **9.5 points** behind
+  [[claude-opus-5|Opus 5]] on
+  the latter, at **$0.15 /
+  $0.60** off-peak. Comparisons
+  are against last-generation
+  US flagships, not
+  [[claude-opus-5-5|Opus 5.5]]
+  or [[gpt-6|GPT-6.1 Sol]]. No
+  independent evals are out.
+  Search/Fetch APIs opened at
+  **$0.75 / 1,000 calls**, with
+  free Claude Code and Codex
+  routing until about **1
+  November**. This is the cheap
+  default-inside-other-harnesses
+  move, not a new base model.
+  See [[open-weights]]
+  (@deepseek_ai, @teortaxesTex,
+  HN 620/539; ARA daily digest
+  2026-10-18 and ticket
+  `deepseek-v4-1-flash-1017-2026-10`).
 
 ## Open questions
 
