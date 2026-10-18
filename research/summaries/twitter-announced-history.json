@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 18:00 UTC",
-    "headline": "MICROSOFT SHARES +2% ON REPORT IT IS PITCHING MAIA 200 TO ANTHROPIC AS CHEAPER-THAN-NVIDIA INFERENCE SILICON",
-    "source": "@rohanpaul_ai",
-    "source_file": "research/summaries/2026-05-21-twitter-18h-headlines.json",
-    "url": "https://x.com/rohanpaul_ai/status/2057524853625049450"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 18:00 UTC",
-    "headline": "NVIDIA BEAT-AND-RAISE DRAWS 4TH STRAIGHT SELL-THE-NEWS SESSION; STOCK STALLS NEAR $230 AT ALL-TIME HIGHS",
-    "source": "@GlenChristy6",
-    "source_file": "research/summaries/2026-05-21-twitter-18h-headlines.json",
-    "url": "https://x.com/GlenChristy6/status/2057513655969927609"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 21:00 UTC",
-    "headline": "OPENAI Q1 REVENUE ~$5.7B \u2014 ABOUT $1B AHEAD OF ANTHROPIC, PER THE INFORMATION",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-21-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057552216651620595"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-21 21:00 UTC",
     "headline": "ALTMAN: \"NEW CODEX SHIPS TODAY\" \u2014 OPENAI ADDS macOS APPSHOTS, /goal DEFAULT, SHAREABLE PLUGINS",
@@ -23564,5 +23537,26 @@
     "headline": "CURSOR PROBED WHETHER CUSTOMER DATA REACHED SPACEX AI UNIT DURING GROK BOT TESTING \u2014 THE INFORMATION",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2111517628107747553"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-18 20:33:53 UTC",
+    "headline": "ANTHROPIC COMMITS 5% OF SHARES TO NEW PUBLIC BENEFIT FUND; ~20% OF EQUITY NOW PLEDGED TO PUBLIC GOOD",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2111881963657412903"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-18 20:33:53 UTC",
+    "headline": "OPENAI 'AURORA' IMAGE MODELS SPOTTED IN ARENA TESTING AFTER BRIEF API APPEARANCE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2111894437877916032"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-18 20:33:53 UTC",
+    "headline": "CHATGPT AD CLICKS COST ~$5 VS $30-50 ON GOOGLE FOR SOME B2B SOFTWARE ADVERTISERS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2111902646588121445"
   }
 ]
