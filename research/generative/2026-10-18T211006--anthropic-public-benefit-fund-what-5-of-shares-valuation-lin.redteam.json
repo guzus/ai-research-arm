@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "A wholly-owned LLC fits that definition exactly, so the fund's 5% is inert in every stockholder vote until it leaves Anthropic's control.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c2", "claim_text": "Each tranche is at the board's discretion and the baseline is undisclosed.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c3", "claim_text": "About $48B at the $965B Series H preferred price, about $75B at the ~$1.5T IPO valuation investors reportedly discussed, and $0 of mandated annual payout, because an LLC has no distribution rule.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true}
+  ]
+}
