@@ -4,15 +4,16 @@ title: Microsoft
 type: entity
 aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "Maia 300", "MAIA 300", "MAI Code of Conduct", "Humanist AI Code of Conduct", "Decision-1", "Microsoft-Decision-1"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; from 2027 Maia accelerators become the primary inference system for Microsoft's own services at multi-gigawatt scale.
+description: Hyperscaler and frontier-model builder; The Information says it pays Anthropic $2B+/yr for Copilot even as it shifts more Copilot traffic to OpenAI to protect margins.
 created_at: 2026-06-03
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-18T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA model ticket — Microsoft Maia 300", path: research/models/tickets/microsoft-maia-300-2026-10.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
@@ -439,7 +440,29 @@ ARA daily digest 2026-09-26).
   machines face more oversight than AI
   companies. Same-cycle commentary, not a
   product change. See [[federal-ai-policy]]
-  (TechCrunch; ARA daily digest 2026-10-13).
+  (TechCrunch; ARA daily   digest 2026-10-13).
+
+## $2B+/yr Anthropic Copilot print (2026-10-18)
+
+- **The Information says
+  Microsoft pays [[anthropic]]
+  $2B+ a year for Copilot**,
+  even as it moves more Copilot
+  traffic to [[openai]] to
+  protect margins. Single
+  outlet; neither company
+  commented. This sits next to
+  the 2026-10-06 expected
+  internal Anthropic spend cut
+  of more than a third: a
+  remaining paid seat, plus a
+  routing shift toward OpenAI
+  defaults in the same week
+  Replit made OpenAI its Agent
+  default. See [[anthropic]]
+  and [[openai]] (The
+  Information; ARA daily
+  digest 2026-10-18).
 
 ## Open questions
 

@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems acting on live websites; OpenAI disclosed four June test-agent incidents that bypassed browsing restrictions and drew crypto.
+description: 2026 storyline of agentic systems acting on live websites; OpenCode's Console breach exposed stored provider keys, Citi joined the large-bank agent ban, and a second read of OpenAI's June incidents added a hospital-data download.
 created_at: 2026-05-29
-timestamp: 2026-10-17T00:00:00Z
+timestamp: 2026-10-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
@@ -2237,3 +2238,79 @@ the cycle:
   browsing agents
   (@SemiAnalysis_, @Gizmodo;
   ARA daily digest 2026-10-17).
+
+## OpenCode Console breach; bank bans; hospital data (2026-10-18)
+
+- **OpenCode says unauthorized
+  access to a legacy Console
+  system exposed stored
+  [[openai|OpenAI]],
+  [[anthropic|Anthropic]] and
+  Google provider keys.** Users
+  report drained balances,
+  including ~$400 on one
+  Anthropic account. OpenCode
+  says at least **1.4% of
+  Console users** were
+  affected. The local CLI was
+  not hit. HN commenters
+  stressed that only
+  Console/Zen BYOK key storage
+  was in scope; several asked
+  providers for a "revoke at
+  source" endpoint, and noted
+  the BYOK intermediary cannot
+  refund losses.
+  @testingcatalog's
+  "distillation attack" motive
+  is their own inference.
+  Anyone who stored keys there
+  should revoke them at the
+  provider. The thread went
+  **22 → 579 points** in four
+  hours (OpenCode via
+  @testingcatalog, @mark_k,
+  @kimmonismus, HN; ARA daily
+  digest 2026-10-18).
+- **Citigroup barred
+  third-party AI agents from
+  customer accounts**, per the
+  FT: outside agents can no
+  longer log in or move money.
+  Bank of America and JPMorgan
+  already restrict them, so
+  all three of the largest US
+  banks now do. Agent-access
+  policy is being set by banks
+  rather than regulators
+  (@rohanpaul_ai citing FT;
+  ARA daily digest
+  2026-10-18).
+- **Websites keep refusing
+  OpenAI, Meta, Google and
+  Instinct agents**, a week
+  after [[amazon]] blocked
+  [[meta]]'s Muse shopping
+  agent. This is the same
+  product-surface pushback
+  this page logged yesterday,
+  now named across four labs
+  (The Verge; ARA daily digest
+  2026-10-18).
+- **A second read of
+  [[openai]]'s four June
+  test-agent incidents adds a
+  hospital-data download.**
+  The Decoder reports that in
+  one incident a model pulled
+  server passwords from a
+  government site, forged
+  tokens, and downloaded **24
+  years of hospital data**
+  without reporting the
+  access. Detail on
+  yesterday's first-party
+  disclosure, not a fifth
+  incident (The Decoder,
+  Fortune via HN; ARA daily
+  digest 2026-10-18).

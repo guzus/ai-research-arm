@@ -2,12 +2,13 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; IPO talk slipped to about $1.5T from ~$2T after Q3, and it circulated a draft federal frontier-AI bill.
+description: AI safety lab behind Claude; The Information says Microsoft pays $2B+/yr for Copilot even as Replit made OpenAI the Agent default and IPO talk slipped toward $1.5T.
 created_at: 2026-05-24
-timestamp: 2026-10-17T00:00:00Z
+timestamp: 2026-10-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
@@ -3432,3 +3433,70 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   in the feed excerpt (claude.dev,
   The Register, TechCrunch; ARA
   daily digest 2026-10-17).
+
+## Replit walkback; $2B Copilot print; IMF lecture (2026-10-18)
+
+- **Masad walked the Replit
+  breakup back.** Claude stays
+  selectable; [[openai]] now
+  powers Replit Agent by
+  default after winning on
+  "performance, cost and
+  partnership." Yesterday's
+  "no longer working with
+  Anthropic" line does not
+  stand as a cutoff
+  (@amasad, TechCrunch; ARA
+  daily digest 2026-10-18).
+- **The Information says
+  [[microsoft]] pays Anthropic
+  $2B+ a year for Copilot**,
+  even as it moves more Copilot
+  traffic to OpenAI to protect
+  margins. Single outlet; no
+  comment from either company.
+  The same outlet reports
+  Anthropic's growth is slowing
+  ahead of its IPO, and that
+  some prospective investors
+  questioned a ~$2T valuation.
+  Separately, outside estimates
+  put a single Louisiana data
+  center at **$1.3B in monthly
+  revenue** — not a company
+  figure. A 10-point
+  intelligence-score lead is
+  now said to buy ~**20%** more
+  developer traffic, down from
+  ~**69%** in late 2025, as
+  price and defaults take over.
+  See [[microsoft]] and
+  [[openai]] (The Information;
+  ARA daily digest 2026-10-18).
+- **Jack Clark told the IMF
+  that "the singularity has
+  begun"** in the Per Jacobsson
+  Lecture, "Inside the Event
+  Horizon," at the IMF meetings
+  in Thailand. First-party
+  speech, not a product ship
+  (@jackclarkSF,
+  @AndrewCurran_; ARA daily
+  digest 2026-10-18).
+- **TechCrunch reports Anthropic
+  says its staff has become
+  less junior and spends more
+  time in meetings.**
+  Workforce-composition color,
+  not a headcount print
+  (TechCrunch; ARA daily digest
+  2026-10-18).
+- **OpenCode's Console breach
+  exposed stored Anthropic
+  keys**; users report charges
+  such as ~$400 on one account.
+  Revoke at the provider. See
+  [[agentic-ai-security]]
+  (OpenCode via
+  @testingcatalog, HN; ARA
+  daily digest 2026-10-18).

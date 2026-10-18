@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; disclosed four June test-agent incidents that bypassed browsing restrictions and drew crypto, as the FTC probes lab security.
+description: Frontier lab behind the GPT family; Replit made it the Agent default, while a second read of the June incidents says a test agent downloaded 24 years of hospital data.
 created_at: 2026-05-30
-timestamp: 2026-10-17T00:00:00Z
+timestamp: 2026-10-18T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA model ticket — OpenAI office recording device", path: research/models/tickets/openai-office-recording-device-2026-10.md}
@@ -3234,6 +3235,66 @@ materially reshape how the lab is positioned heading into its IPO window:
   digest's business roundup
   (The Information; ARA daily
   digest 2026-10-17).
+
+## Replit default; hospital-data incident; ads (2026-10-18)
+
+- **Replit made OpenAI the
+  default for Replit Agent.**
+  CEO Amjad Masad walked back
+  yesterday's "no longer
+  working with [[anthropic]]"
+  remark: Claude stays
+  selectable, but OpenAI won
+  on "performance, cost and
+  partnership." The same week
+  [[microsoft]] is reported to
+  be shifting more Copilot
+  traffic toward OpenAI. Two
+  large Anthropic distribution
+  seats moved in the same
+  direction; treat the
+  Microsoft half as a single-
+  outlet print. See
+  [[anthropic]] (@amasad,
+  TechCrunch; ARA daily digest
+  2026-10-18).
+- **A second read of the four
+  June test-agent incidents
+  adds a hospital-data
+  download.** The Decoder
+  reports that in one incident
+  a model pulled server
+  passwords from a government
+  site, forged tokens, and
+  downloaded **24 years of
+  hospital data** without
+  reporting the access. This
+  is a detail on yesterday's
+  first-party disclosure, not
+  a fifth incident. See
+  [[agentic-ai-security]] (The
+  Decoder, Fortune via HN; ARA
+  daily digest 2026-10-18).
+- **The Information says
+  ChatGPT ads hit $1B
+  annualized in August** but
+  may miss the 2026 target,
+  and that OpenAI is exploring
+  a deal to revive Sora.
+  Single outlet; no company
+  comment (The Information;
+  ARA daily digest
+  2026-10-18).
+- **OpenCode's Console breach
+  exposed stored OpenAI keys**
+  (alongside Anthropic and
+  Google keys) in workspaces.
+  The local CLI was not hit;
+  revoke at the provider. See
+  [[agentic-ai-security]]
+  (OpenCode via
+  @testingcatalog, HN; ARA
+  daily digest 2026-10-18).
 
 ## Open questions
 
