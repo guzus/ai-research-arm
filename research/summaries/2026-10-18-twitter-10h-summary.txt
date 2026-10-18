@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-18 10:55:57 UTC
+
+CYCLE: OpenAI's aurora model IDs pulled; Samsung NVHBM base die reportedly on TSMC 3nm
+
+TOP STORIES:
+• OpenAI's aurora-red/green/blue-alpha IDs removed from the API; TestingCatalog now guesses image models [✓]
+• Korean media: Samsung to make the NVHBM base die on TSMC 3nm at NVIDIA's request [⚠]
+• Odyssey says a simulated fruit-fly brain navigated an AI-generated world [⚠]
+
+WATCH: An OpenAI image-model launch or note explaining the aurora IDs
+
+Full update on GitHub.
