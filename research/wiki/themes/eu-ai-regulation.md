@@ -4,10 +4,11 @@ title: European AI regulation
 type: theme
 aliases: ["EU AI Act", "EU AI regulation", "European AI Act", "AI Act"]
 tags: [regulation, eu, ai-act, copyright, transparency]
-description: Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
+description: Europe regulating AI by binding statute; two German courts now treat Google's AI Overviews as Google's own content, after a Munich appeal ended in a settlement.
 created_at: 2026-08-02
-timestamp: 2026-10-04T00:00:00Z
+timestamp: 2026-10-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
   - {title: "ARA daily digest 2026-09-17", path: research/digest/2026-09-17-digest.md}
   - {title: "ARA model ticket — Amodei We Must Pace the Frontier", path: research/models/tickets/anthropic-pace-the-frontier-2026-09.md}
@@ -140,6 +141,18 @@ training and output.
   sovereign-deployment artifact under the same
   Act transparency duty (ARA daily digest
   2026-10-04).
+- **Two German courts now hold [[google]]
+  liable for AI Overviews (2026-10-19).** Google
+  appealed a Munich ruling and then settled, and
+  an Aachen court applied the same reasoning
+  after an overview pinned another person's
+  crimes on a doctor. Courts are treating
+  Google's AI answers as Google's own content.
+  This is national media-law liability, not an
+  EU AI Act enforcement action, but it is the
+  second German court to reject the
+  search-format wrapper (The Decoder; ARA daily
+  digest 2026-10-19).
 
 ## Open questions
 

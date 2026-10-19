@@ -2,12 +2,14 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; The Information says Microsoft pays $2B+/yr for Copilot even as Replit made OpenAI the Agent default and IPO talk slipped toward $1.5T.
+description: AI safety lab behind Claude; put 5% of shares into a Public Benefit Fund as investors mark an IPO closer to $1.5T.
 created_at: 2026-05-24
-timestamp: 2026-10-18T00:00:00Z
+timestamp: 2026-10-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
+  - {title: "ARA model ticket — Anthropic–Schwab partnership", path: research/models/tickets/anthropic-schwab-partnership-2026-10.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
@@ -3500,3 +3502,134 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   (OpenCode via
   @testingcatalog, HN; ARA
   daily digest 2026-10-18).
+
+## Public Benefit Fund; IPO at $1.5T; Schwab (2026-10-19)
+
+- **Anthropic put 5% of its
+  shares into a new Anthropic
+  Public Benefit Fund.** The
+  fund can get up to 2 more
+  points for every 50% rise in
+  valuation above a baseline.
+  Anthropic says about 20% of
+  its equity is now committed
+  to the public good once
+  founder and employee pledges
+  are counted; only the 5% is
+  actually in the fund. It can
+  make direct distributions to
+  specific populations, and no
+  equity may go to lobbying or
+  political giving. One
+  unverified reply puts the 5%
+  at ~$48B and says it needs
+  shareholder approval
+  (@AnthropicAI, @jackclarkSF,
+  TechCrunch; ARA daily digest
+  2026-10-19).
+- **Investors mark the IPO
+  closer to $1.5T**, The
+  Information says, down from
+  the $2T bankers had floated,
+  and ties it to slowing
+  revenue growth. Anonymous
+  investors; this restates
+  Wednesday's Reuters $1.5T vs
+  ~$2T discussion rather than
+  a new print (The Information;
+  ARA daily digest 2026-10-19).
+- **Anthropic pitches Congress
+  its own federal frontier-AI
+  bill.** As relayed from
+  Politico, only the Commerce
+  Department could ask a
+  federal judge to halt a
+  model, and only over an
+  imminent risk of $1B+ in
+  damage or 50+ casualties.
+  The bill would preempt some
+  state laws, including
+  California's. Registered
+  evaluators, paid by the labs
+  they check, would have to
+  report an imminent
+  catastrophic risk within 72
+  hours. Critics note this
+  conflicts with Anthropic's
+  June position that states
+  should keep full authority
+  absent a strong federal law.
+  The full text has not been
+  seen. See
+  [[federal-ai-policy]] and
+  [[california-ai-regulation]]
+  (Politico via @BadSignalAI;
+  ARA daily digest 2026-10-19).
+- **Ars Technica confirms METR
+  has "employee-like" access**,
+  embedded with hardware and
+  internal-systems access, and
+  can publish without
+  Anthropic's approval. That
+  matches the six-person team
+  this page logged on
+  2026-10-16 (Ars Technica;
+  ARA daily digest 2026-10-19).
+- **Schwab is testing a
+  sanctioned Claude connection
+  for traders.** Schwab blocks
+  outside agents from customer
+  logins but is piloting
+  Claude access for some
+  traders, with a wider
+  rollout planned. It is the
+  first big US broker or bank
+  reported to be building an
+  approved path for a specific
+  model. Schwab's Q3 results
+  already named an Anthropic
+  partnership; today's WSJ
+  relay is the first product
+  shape. See
+  [[agentic-ai-security]]
+  (WSJ via @StockMKTNewz; ARA
+  daily digest 2026-10-19 and
+  ticket
+  `anthropic-schwab-partnership-2026-10`).
+- **Claude Personal Finance
+  looks close to launch.** The
+  feature, called "Claude
+  Money" in development, has
+  resurfaced with Plaid bank
+  linking and a new onboarding
+  screen. Leak-watcher
+  sightings; Anthropic has
+  announced nothing
+  (@testingcatalog,
+  @AndrewCurran_; ARA daily
+  digest 2026-10-19).
+- **Anthropic has nearly
+  stopped hiring junior
+  technical staff.** Juniors
+  fell from 27% to 9% of new
+  technical hires since early
+  2025, and by August agents
+  logged six times as many
+  hours as humans. Yesterday's
+  TechCrunch "less junior /
+  more meetings" color now
+  has numbers (The Decoder,
+  TechCrunch; ARA daily digest
+  2026-10-19).
+- **Anthropic is consulting
+  law firms on agent
+  negotiation norms**, aiming
+  to set fair-dealing rules
+  before agents haggle, settle
+  complaints or rewrite
+  contracts. It is also hiring
+  lawyers and humanities
+  scholars as Conceptual
+  Reasoning Fellows (The
+  Decoder; ARA daily digest
+  2026-10-19).

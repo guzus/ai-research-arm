@@ -4,10 +4,11 @@ title: Moonshot AI Kimi K3
 type: entity
 aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open Frontier Intelligence", "Kimi Work", Moonshot, "Moonshot AI"]
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
-description: Moonshot AI's 2.8T-parameter flagship; OpenAI said a core cluster of hidden-reasoning extraction attempts came from individuals associated with the Kimi developer.
+description: Moonshot AI's 2.8T-parameter flagship; SemiAnalysis reports an NVIDIA vLLM decode path at 423 tok/s per user, 1.68× faster on unnamed hardware.
 created_at: 2026-07-17
-timestamp: 2026-10-01T00:00:00Z
+timestamp: 2026-10-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-10", path: research/digest/2026-09-10-digest.md}
@@ -272,6 +273,21 @@ covering it.
   that Moonshot directed the campaign. See [[openai]]
   and [[china-ai-regulation]] (OpenAI, Twitter; ARA
   daily digest 2026-10-01).
+
+- **K3 serving gets faster on NVIDIA and TPU
+  (2026-10-19).** SemiAnalysis reports an [[nvidia]]
+  vLLM decode optimization that lifts Kimi K3 (2.8T)
+  to **423 tok/s per user**, **1.68×** faster on
+  unnamed hardware. Separately, Inferact and
+  [[google]]'s first preliminary TPUv7 run of K3 on
+  the TorchTPU vLLM stack is said to be competitive
+  on performance per TCO with GB200 NVL72, B300 and
+  MI355 at ultra-high interactivity, though no
+  figures were given. Both come from SemiAnalysis
+  alone, and PyTorch's @marksaroufim pushed back on
+  the "megakernel" framing. Serving-stack color, not
+  a new checkpoint (SemiAnalysis; ARA daily digest
+  2026-10-19).
 
 ## Open questions
 

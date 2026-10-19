@@ -2,12 +2,14 @@
 slug: openai
 title: OpenAI
 type: entity
-aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju"]
+aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; Replit made it the Agent default, while a second read of the June incidents says a test agent downloaded 24 years of hospital data.
+description: Frontier lab behind the GPT family; leaked aurora-*-alpha IDs resurfaced as image models on Arena, while ChatGPT ads are reported at about $5 a click.
 created_at: 2026-05-30
-timestamp: 2026-10-18T00:00:00Z
+timestamp: 2026-10-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
+  - {title: "ARA model ticket — OpenAI Aurora alpha models", path: research/models/tickets/openai-aurora-alpha-models-2026-10.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
@@ -3295,6 +3297,70 @@ materially reshape how the lab is positioned heading into its IPO window:
   (OpenCode via
   @testingcatalog, HN; ARA
   daily digest 2026-10-18).
+
+## Aurora image models; ads at $5; Trail of Bits (2026-10-19)
+
+- **The leaked `aurora-*-alpha`
+  IDs are image models.** Three
+  IDs (`aurora-red-alpha`,
+  `aurora-green-alpha`,
+  `aurora-blue-alpha`) appeared
+  in the API list around 04:00
+  UTC, were gone by 10:00 UTC,
+  then resurfaced as image
+  models under test on Arena.
+  TestingCatalog called the
+  API listing a mistaken
+  rollout. One tester ranks
+  Green above Red and says
+  Aurora beats
+  gpt-image-2.5-flare,
+  especially on color. There
+  are no Arena scores and no
+  OpenAI comment. The earlier
+  theory that these were fast
+  Codex variants now looks
+  wrong. Ticket
+  `openai-aurora-alpha-models-2026-10`
+  still records the IDs as
+  in-testing because OpenAI
+  has not named them
+  (@scaling01, @testingcatalog;
+  ARA daily digest 2026-10-19).
+- **One agency founder says a
+  ChatGPT ad click costs some
+  B2B software advertisers
+  about $5**, against $30–50
+  on Google. That is a
+  single-source price point
+  under yesterday's $1B
+  annualized ads print, not a
+  company figure. See
+  [[google]] (The Information;
+  ARA daily digest 2026-10-19).
+- **The Information now
+  describes an OpenAI purchase
+  of Trail of Bits as a
+  possibility, not a deal in
+  talks.** Neither company has
+  confirmed it. That is a
+  softer read than the 2026-10-15
+  "in talks" relay on this
+  page (The Information; ARA
+  daily digest 2026-10-19).
+- **OpenCode says frontier
+  models refused to help
+  mid-attack** a day after the
+  Console key-draining breach.
+  Access to OpenAI's Daybreak
+  Blue trusted tier helped;
+  one security engineer notes
+  it lowers refusals only on
+  older models. See
+  [[agentic-ai-security]]
+  (@AndrewCurran_,
+  @kimmonismus, @0x4D31; ARA
+  daily digest 2026-10-19).
 
 ## Open questions
 

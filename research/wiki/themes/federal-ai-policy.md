@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; Politico says Anthropic circulated a draft frontier-AI bill that would let a court halt a model at Commerce's request.
+description: US federal AI governance; Politico says Anthropic's draft frontier-AI bill would let only Commerce ask a court to halt a model, and would preempt some California laws.
 created_at: 2026-06-03
-timestamp: 2026-10-17T00:00:00Z
+timestamp: 2026-10-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
@@ -2283,6 +2284,54 @@ footing for the first time in the cycle.
   a federal statute
   (@AndrewCurran_, @DeItaone;
   ARA daily digest 2026-10-17).
+
+## Anthropic bill: Commerce-only halt, 72-hour reports (2026-10-19)
+
+- **A second Politico relay
+  fills in the draft
+  [[anthropic]] bill.** Only
+  the Commerce Department
+  could ask a federal judge to
+  halt a model, and only over
+  an imminent risk of **$1B+
+  in damage or 50+
+  casualties**. Registered
+  evaluators, paid by the labs
+  they check, would have to
+  report an imminent
+  catastrophic risk within
+  **72 hours**. The bill would
+  preempt some state laws,
+  including California's. The
+  full text has not been seen.
+  Critics note this conflicts
+  with Anthropic's June
+  position that states should
+  keep full authority absent a
+  strong federal law. The
+  50-death / $1B line was
+  already on this page; the
+  load-bearing additions are
+  the Commerce monopoly on
+  injunctions, lab-paid
+  evaluators, the 72-hour
+  clock, and explicit
+  preemption of
+  [[california-ai-regulation]]
+  (Politico via @BadSignalAI;
+  ARA daily digest 2026-10-19).
+- **[[anthropic]] put 5% of
+  its shares into a Public
+  Benefit Fund** the same day.
+  That is a corporate-charter
+  move, not a statute, but it
+  is the public-benefit
+  framing sitting next to a
+  bill that would narrow who
+  can stop a model. See
+  [[anthropic]] (@AnthropicAI,
+  @jackclarkSF, TechCrunch;
+  ARA daily digest 2026-10-19).
 
 ## Open questions
 

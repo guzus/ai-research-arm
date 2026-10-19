@@ -12,12 +12,12 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.
-- [[anthropic]] — AI safety lab behind Claude; The Information says Microsoft pays $2B+/yr for Copilot even as Replit made OpenAI the Agent default and IPO talk slipped toward $1.5T.
+- [[anthropic]] — AI safety lab behind Claude; put 5% of shares into a Public Benefit Fund as investors mark an IPO closer to $1.5T.
 - [[apple]] — Consumer-hardware giant; Meta and Apple tuned Muse Spark Open to run on two M5 Ultra Mac Studios.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
-- [[character-ai]] — Companion-AI startup in Chapter 11; Disney is the stalking-horse bidder, and 41 attorneys general moved to constrain user-data transfers in the sale.
+- [[character-ai]] — Companion-AI startup in Chapter 11; Disney hired most of the workforce and named former CEO Karandeep Anand its first CTO.
 - [[claude-fable-5]] — Anthropic's Mythos-class pair; an expanded Cyber Verification Program now gives vetted security pros access to Mythos 5.1, Opus 5.5 and Sonnet 5.5.
 - [[claude-haiku-5-5]] — Anthropic's 2026-10-07 small Claude 5.5 model; $0.10/$0.50 to 100K tokens then $0.50/$2.50, first Haiku with effort controls.
 - [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; now also the safeguard-reroute target for Fable 5.
@@ -50,7 +50,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-4-argon]] — Google's Gemini 4 flagship; Perplexity rolled Argon out to all users, and four Argon agents beat Minecraft in 27h14m.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; EmbeddingGemma 2 (740M–270M) is the new multimodal embedder built on Gemma 4.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
-- [[google]] — Hyperscaler behind Gemini; Gemini 4 Argon is now generally available after a Fairwind-gated preview.
+- [[google]] — Hyperscaler behind Gemini; two German courts now treat AI Overviews as Google's own content.
 - [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 - [[gpt-6]] — OpenAI's GPT-6 generation; GPT-6.1 Sol's default context on Codex and ChatGPT Work is now 500k tokens, up from 272k.
 - [[groq]] — AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.
@@ -77,14 +77,14 @@ Each page is one of three types — entity, concept, or theme. See
 - [[muse-spark-open]] — Meta's 816B-total / 42B-active multimodal MoE under a custom Muse Model License, tuned with Apple to run on two M5 Ultra Mac Studios.
 - [[muse-wonder]] — Meta's first independently scored frontier pair; Artificial Analysis puts Wonder at 52 and subscriber-only Full at 56 on its Intelligence Index, up from Muse Spark 1.3's 48.
 - [[moonshot-kimi-k2-7-code]] — Moonshot AI open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while filling the Fable 5 vacuum.
-- [[moonshot-kimi-k3]] — Moonshot AI's 2.8T-parameter flagship; OpenAI said a core cluster of hidden-reasoning extraction attempts came from individuals associated with the Kimi developer.
+- [[moonshot-kimi-k3]] — Moonshot AI's 2.8T-parameter flagship; SemiAnalysis reports an NVIDIA vLLM decode path at 423 tok/s per user.
 - [[naive-ai]] — Lab behind N0.5-Flash, a 309B MIT-licensed MoE (15.5B active, native 1M context) continued-pretrained on Xiaomi's MiMo-V2.5.
 - [[nano-banana-2-lite]] — Google's fastest/cheapest image model (gemini-3.1-flash-lite-image); Nano Banana 2.1 is a later SKU at the same ~$0.034/image, not a rename of this Lite card.
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") spun out of Yandex; Token Factory acquired Inferize to cut GPU cold-start times, after a $1B Reflection AI compute book and a $17B Microsoft-linked Vineland site.
-- [[noam-shazeer]] — Transformer co-inventor and Character.AI founder; the company he left behind filed Chapter 11 in 2026-10, with Disney as stalking-horse bidder.
+- [[noam-shazeer]] — Transformer co-inventor and Character.AI founder; Disney hired most of the remaining workforce after the Chapter 11 filing.
 - [[nous-research]] — Open-weights lab behind Hermes Agent; closed a $90M Series B at $1.5B led by Robot Ventures.
 - [[nvidia]] — Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.
-- [[openai]] — Frontier lab behind the GPT family; Replit made it the Agent default, while a second read of the June incidents says a test agent downloaded 24 years of hospital data.
+- [[openai]] — Frontier lab behind the GPT family; leaked aurora-*-alpha IDs resurfaced as image models on Arena, while ChatGPT ads are reported at about $5 a click.
 - [[openrouter]] — LLM-routing API now under Stripe; Deedy Das reconstructed public token pages at roughly $29.1M a week (~$1.5B annualized), with Anthropic at 36% of dollars.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -132,10 +132,10 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; OpenCode's Console breach exposed stored provider keys, Citi joined the large-bank agent ban, and a second read of OpenAI's June incidents added a hospital-data download.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; a day after OpenCode's Console breach, the models it asked for defense refused, while Schwab is piloting a sanctioned Claude path for traders.
 - [[ai-capex]] — The historically large compute buildout; CoreWeave's 2032 bonds fell into distress territory as banks reportedly try to offload $38B of Oracle-linked data-center debt.
-- [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.
+- [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Anthropic's draft federal frontier-AI bill would preempt some California laws.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.
-- [[eu-ai-regulation]] — Europe regulating AI by binding statute; von der Leyen adopted "pace the frontier" in her State of the Union and invited labs to talks, without a new statute or signed pact.
-- [[federal-ai-policy]] — US federal AI governance; Politico says Anthropic circulated a draft frontier-AI bill that would let a court halt a model at Commerce's request.
+- [[eu-ai-regulation]] — Europe regulating AI by binding statute; two German courts now treat Google's AI Overviews as Google's own content, after a Munich appeal ended in a settlement.
+- [[federal-ai-policy]] — US federal AI governance; Politico says Anthropic's draft frontier-AI bill would let only Commerce ask a court to halt a model, and would preempt some California laws.
 - [[open-weights]] — Open-weight models closing on the frontier; Reflection shipped Beam under Apache 2.0 the day after Muse Spark Open, as China drafted export controls on systems above 10^26 FLOPs or 2T parameters.
