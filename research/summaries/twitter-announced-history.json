@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-22 01:00 UTC",
-    "headline": "OPENAI SHIPS CODEX UPDATE: CONTROL MAC APPS FROM YOUR PHONE, APPSHOTS, BROWSER ANNOTATION MODE; NOW #1 TRENDING AI STORY",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-05-22-twitter-01h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2057617844800794878"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-22 01:00 UTC",
-    "headline": "THE INFORMATION: SPACEX'S CURRENT BUSINESSES PENCIL TO ~$700B VS ITS $1.75T IPO TARGET \u2014 'NOT YET THE CLOUD BUSINESS'",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-22-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057629271045124319"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-22 01:00 UTC",
-    "headline": "SPACEX SCRUBS FIRST STARSHIP V3 (FLIGHT 12) AFTER FUELING \u2014 STUCK TOWER-ARM PIN; RETRY POSSIBLE FRIDAY 5:30 CT",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-22-twitter-01h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2057609682865254695"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-22 01:00 UTC",
-    "headline": "MUSK: SPACEX TO COVER ALL POWER-GRID UPGRADE COSTS FOR ITS DATA CENTERS SO THEY DON'T FALL ON RATEPAYERS",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-22-twitter-01h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2057591134654730414"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-22 13:00 UTC",
-    "headline": "THE INFORMATION: ANTHROPIC IN EARLY TALKS TO RENT MICROSOFT'S CUSTOM MAIA AI CHIPS, DIVERSIFYING OFF NVIDIA",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-22-twitter-13h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057793704815907247"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-22 13:00 UTC",
     "headline": "OPENAI Q1 REVENUE ~$5.7B \u2014 BUT LOST MORE THAN $1 FOR EVERY DOLLAR IT TOOK IN",
@@ -23550,5 +23505,40 @@
     "headline": "GOOGLE RESEARCH OPEN-SOURCES HARNESS\u00b2, LETTING AGENTS REWRITE THEIR OWN HARNESS AROUND A FROZEN MODEL",
     "source": "@_philschmid",
     "url": "https://x.com/_philschmid/status/2112151309365268955"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-19 20:32:37 UTC",
+    "headline": "DHS ORDERS CIVILIAN FEDERAL AGENCIES TO REMOVE DEEPSEEK AND ALL THIRD-PARTY PRODUCTS BUILT ON IT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2112250754358788437"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-19 20:32:37 UTC",
+    "headline": "META PUBLISHES MUSE GLIMMER TECH REPORT \u2014 30B OPEN-WEIGHT AGENT MODEL RUNS ON SINGLE CONSUMER GPU",
+    "source": "@AIatMeta",
+    "url": "https://x.com/AIatMeta/status/2112265822274302066"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-19 20:32:37 UTC",
+    "headline": "SEMIANALYSIS: NVIDIA GB300 FP4 COUNTER-SUBMISSION STILL 1.64X WORSE PERF PER DOLLAR THAN GOOGLE TPUV7",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2112258243372146742"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-19 20:32:37 UTC",
+    "headline": "PROSECUTORS ALLEGE SAUDI BACKING FOR EX-OPENAI ENGINEER IN EXECUTIVE MEETING-ROOM BUGGING CASE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2112237091258351762"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-19 20:32:37 UTC",
+    "headline": "PENTAGON'S EMIL MICHAEL TAKES ROLE COORDINATING WITH ANTHROPIC, AI LABS ON NATIONAL-SECURITY INCIDENTS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2112257545138016581"
   }
 ]
