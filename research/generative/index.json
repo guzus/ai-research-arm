@@ -3293,6 +3293,22 @@
     "created_at": "2026-10-19T21:08:55Z",
     "source": "workflow_dispatch",
     "prompt": "DHS FASCSA order on DeepSeek: what banning derivative products and US-hosted open weights means for federal vendor provenance",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-10-19T212638--dhs-fascsa-order-on-deepseek-what-banning-derivative-product.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "딥시크 금지를 떠받치는 여섯 단어: DHS가 AI 연구소에 내린 첫 FASCSA 명령이 실제로 미치는 범위",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-10-19T21:26:38Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for dhs-fascsa-order-on-deepseek-what-banning-derivative-product",
+        "tags": [],
+        "translated_at": "2026-10-19T21:26:38Z",
+        "source_file": "research/generative/2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product.ara.md",
+        "source_sha256": "759571cfe35eeedd51513026e97426aa8b3bdb8ca0b4f87a87869a1d3d936335"
+      }
+    }
   }
 ]
