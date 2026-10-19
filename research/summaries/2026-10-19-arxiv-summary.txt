@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-19
+
+TOP 5 PAPERS:
+• Busy Beaver Frontier — Singh/Zahavy: Gemini agent Lean-verifies 11 BB(6) Collatz-like accelerations
+• WebCoder — Zeng/Tang: 27B beats Claude Opus 4.8 & GPT-5.4 on frontend Webdev-Bench
+• Self-Building Labs — Aspuru-Guzik: labs that design/configure themselves; QD synthesis demo
+• DiscoveryRSI — James Zou: 27B hits 6.3% post-cutoff paper match vs GPT-6 2.5%
+• Approval-to-Abuse — Hooi: Claude Code/Codex allow-rules; 58% elicit, 81% silent complete
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
