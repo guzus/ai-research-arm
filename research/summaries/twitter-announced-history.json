@@ -2,42 +2,6 @@
   {
     "backfilled": true,
     "category": "model",
-    "delivered_at": "2026-05-21 21:00 UTC",
-    "headline": "ALTMAN: \"NEW CODEX SHIPS TODAY\" \u2014 OPENAI ADDS macOS APPSHOTS, /goal DEFAULT, SHAREABLE PLUGINS",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-21-twitter-21h-headlines.json",
-    "url": "https://x.com/sama/status/2057559714788258003"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 21:00 UTC",
-    "headline": "ANTHROPIC + OPENAI NOW ~89% OF REVENUE ACROSS 34 TRACKED AI STARTUPS \u2014 THE INFORMATION",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-21-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057514274222727216"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-21 21:00 UTC",
-    "headline": "ANALOG DEVICES IN ADVANCED TALKS TO BUY AI POWER-CHIP STARTUP EMPOWER SEMICONDUCTOR FOR ~$1.5B",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-21-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057521865053139230"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-21 21:00 UTC",
-    "headline": "STUDY: GPT-5.2 HITS EXPERT-LEVEL PEER REVIEW, COMPETITIVE WITH TOP NATURE REVIEWERS",
-    "source": "@emollick",
-    "source_file": "research/summaries/2026-05-21-twitter-21h-headlines.json",
-    "url": "https://x.com/emollick/status/2057528309727088907"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
     "delivered_at": "2026-05-22 01:00 UTC",
     "headline": "OPENAI SHIPS CODEX UPDATE: CONTROL MAC APPS FROM YOUR PHONE, APPSHOTS, BROWSER ANNOTATION MODE; NOW #1 TRENDING AI STORY",
     "source": "@OpenAI",
@@ -23558,5 +23522,33 @@
     "headline": "CHATGPT AD CLICKS COST ~$5 VS $30-50 ON GOOGLE FOR SOME B2B SOFTWARE ADVERTISERS",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2111902646588121445"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-19 12:58:48 UTC",
+    "headline": "MINIMAX LAUNCHES M3.1 FLASH AT $0.15/$0.60 PER 1M TOKENS \u2014 1M CONTEXT, 73.7% DEEPSWE, OPEN WEIGHTS PROMISED",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2112155774898040898"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-19 12:58:48 UTC",
+    "headline": "MICROSOFT TERMINATES NSCALE ESSEX AI DATA CENTER DEAL AFTER GRID DELAYS \u2014 REUTERS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2112093187233742861"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-19 12:58:48 UTC",
+    "headline": "TENSTORRENT RAISES $1.5B AT $6.2B VALUATION, SANDISK AMONG BACKERS",
+    "source": "@StockMKTNewz",
+    "url": "https://x.com/StockMKTNewz/status/2112165097120641252"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-19 12:58:48 UTC",
+    "headline": "GOOGLE RESEARCH OPEN-SOURCES HARNESS\u00b2, LETTING AGENTS REWRITE THEIR OWN HARNESS AROUND A FROZEN MODEL",
+    "source": "@_philschmid",
+    "url": "https://x.com/_philschmid/status/2112151309365268955"
   }
 ]
