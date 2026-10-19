@@ -1,0 +1,11 @@
+Speaker 1: Monday, October nineteenth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic is putting five percent of its shares into a Public Benefit Fund, which means roughly [emphasis] twenty percent of its equity [/emphasis] is now pledged to the public good.
+Speaker 1: And they're not stopping at their own cap table, Anthropic is also pitching Congress its own federal frontier-AI bill, one that would preempt state laws.
+Speaker 2: Worth noting the IPO chatter has cooled too, talk now sits around [emphasis] one point five trillion dollars [/emphasis], down from two trillion.
+Speaker 1: Over at OpenAI, those leaked Aurora model IDs have resurfaced, this time showing up as image models on Arena.
+Speaker 2: And a strange one from OpenCode, which says frontier models refused to help it defend against an attack that's still ongoing.
+Speaker 1: Some quick numbers. A ChatGPT ad click runs about five dollars, versus thirty to fifty dollars on Google.
+Speaker 2: That's a huge gap. Meanwhile Kimi K three is hitting four hundred twenty-three tokens per second per user on NVIDIA vLLM, a one point six eight times speedup.
+Speaker 1: Trending on Hacker News, DeepSeek launched a Search and Fetch API priced at [dramatic_pause] [emphasis] seventy-five cents per thousand requests [/emphasis].
+Speaker 2: Cheap search for agents, and developers clearly noticed.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
