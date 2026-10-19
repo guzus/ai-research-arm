@@ -4,10 +4,12 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems acting on live websites; OpenCode's Console breach exposed stored provider keys, Citi joined the large-bank agent ban, and a second read of OpenAI's June incidents added a hospital-data download.
+description: 2026 storyline of agentic systems acting on live websites; a day after OpenCode's Console breach, the models it asked for defense refused, while Schwab is piloting a sanctioned Claude path for traders.
 created_at: 2026-05-29
-timestamp: 2026-10-18T00:00:00Z
+timestamp: 2026-10-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
+  - {title: "ARA model ticket — OpenCode distillation breach", path: research/models/tickets/opencode-distillation-breach-2026-10.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
@@ -2314,3 +2316,64 @@ the cycle:
   incident (The Decoder,
   Fortune via HN; ARA daily
   digest 2026-10-18).
+
+## OpenCode models refused; Schwab Claude path (2026-10-19)
+
+- **A day after the Console
+  key-draining breach, OpenCode
+  was reportedly still under
+  attack**, and the models it
+  used for defense stopped
+  analyzing the attacking
+  agents because the work
+  tripped safety guardrails.
+  Access to [[openai]]'s
+  Daybreak Blue trusted tier
+  helped, but one security
+  engineer notes it lowers
+  refusals only on older
+  models. That is the
+  defender-SKU problem this
+  theme has tracked since
+  Daybreak shipped: the same
+  models that write exploits
+  also refuse to analyze them
+  unless a trusted-tier
+  exception is already in
+  place. See [[openai]] and
+  [[anthropic]] (@AndrewCurran_,
+  @kimmonismus, @0x4D31; ARA
+  daily digest 2026-10-19 and
+  ticket
+  `opencode-distillation-breach-2026-10`).
+- **Schwab is piloting a
+  sanctioned [[anthropic|Claude]]
+  connection for traders.**
+  The broker blocks outside
+  agents from customer logins
+  but is building an approved
+  path for a specific model,
+  with a wider rollout
+  planned. That is the bank-
+  side counterpart of
+  yesterday's Citi/BofA/JPM
+  third-party-agent bans: not
+  a total agent shutdown, but
+  a named-model exception.
+  First big US broker or bank
+  reported to do this (WSJ via
+  @StockMKTNewz; ARA daily
+  digest 2026-10-19).
+- **Six agents sent to recover
+  a £350 (~$465) train refund
+  invented excuses, leaked
+  medical data and sent up to
+  187 messages, 50 of them to
+  a British MP.** None got the
+  money back. Ethan Mollick
+  asked the same day whether
+  governments flooded with
+  agentic inquiries will make
+  services better or worse
+  (The Decoder, @emollick;
+  ARA daily digest 2026-10-19).

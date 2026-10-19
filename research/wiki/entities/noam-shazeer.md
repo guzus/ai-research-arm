@@ -4,10 +4,11 @@ title: Noam Shazeer
 type: entity
 aliases: ["Noam Shazeer", "Shazeer"]
 tags: [people, researcher, transformer, openai, google, character-ai]
-description: Transformer co-inventor and Character.AI founder; the company he left behind filed Chapter 11 in 2026-10, with Disney as stalking-horse bidder.
+description: Transformer co-inventor and Character.AI founder; Disney hired most of the remaining workforce after the Chapter 11 filing and named former CEO Karandeep Anand its first CTO.
 created_at: 2026-06-19
-timestamp: 2026-10-14T00:00:00Z
+timestamp: 2026-10-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-06-20", path: research/digest/2026-06-20-digest.md}
   - {title: "ARA daily digest 2026-06-19", path: research/digest/2026-06-19-digest.md}
@@ -66,3 +67,19 @@ Research**, the cycle's most significant frontier-talent move.
   standalone company (TechCrunch, The
   Verge, The Decoder, Ars Technica;
   ARA daily digest 2026-10-14).
+
+## Disney hires the remaining workforce (2026-10-19)
+
+- **Disney hired most of
+  [[character-ai]]'s remaining
+  workforce.** Former CEO
+  Karandeep Anand is now
+  Disney's first CTO, and
+  Disney had agreed to buy some
+  assets for **$20 million**.
+  Shazeer is at [[openai]];
+  this is the leftover company
+  after [[google]]'s 2024 team
+  deal, not a reversal of
+  either move (TechCrunch; ARA
+  daily digest 2026-10-19).

@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub, "Gemini Enterprise", "AlphaProof Nexus", AlphaProof]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; Gemini 4 Argon is now generally available after a Fairwind-gated preview.
+description: Hyperscaler behind Gemini; two German courts now treat AI Overviews as Google's own content.
 created_at: 2026-07-17
-timestamp: 2026-10-14T00:00:00Z
+timestamp: 2026-10-19T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA model ticket — AlphaProof Nexus", path: research/models/tickets/google-deepmind-alphaproof-nexus-2026-10.md}
@@ -977,6 +978,65 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   (TechCrunch, The Verge, The
   Decoder; ARA daily digest
   2026-10-14).
+
+## German courts hold Google liable for AI Overviews (2026-10-19)
+
+- **Two German courts now hold
+  Google liable for AI
+  Overviews.** Google appealed
+  a Munich ruling and then
+  settled, and an Aachen court
+  applied the same reasoning
+  after an overview pinned
+  another person's crimes on a
+  doctor. Courts are treating
+  Google's AI answers as
+  Google's own content, not as
+  a search-format wrapper.
+  This page's 2026-07-17 note
+  that Germany put Overviews
+  under media law now has a
+  second-court follow-through
+  and a settlement. See
+  [[eu-ai-regulation]] (The
+  Decoder; ARA daily digest
+  2026-10-19).
+- **Disney hired most of
+  [[character-ai]]'s workforce**
+  after the Chapter 11 filing
+  this page logged on
+  2026-10-14. Former CEO
+  Karandeep Anand is now
+  Disney's first CTO; Disney
+  had agreed to buy some
+  assets for **$20 million**.
+  Google's 2024 $2.7 billion
+  team deal is unchanged. See
+  [[character-ai]] and
+  [[noam-shazeer]] (TechCrunch;
+  ARA daily digest 2026-10-19).
+- **[[openai]] ads are
+  reported to undercut Google
+  on some B2B clicks** — about
+  **$5** versus **$30–50** on
+  Google, per one agency
+  founder. Single-source price
+  point, not a company figure
+  (The Information; ARA daily
+  digest 2026-10-19).
+- **SemiAnalysis says the first
+  preliminary TPUv7 run of
+  [[moonshot-kimi-k3]]** on the
+  TorchTPU vLLM stack is
+  competitive on performance
+  per TCO with GB200 NVL72,
+  B300 and MI355 at ultra-high
+  interactivity. No figures
+  were given; PyTorch's
+  @marksaroufim pushed back on
+  the "megakernel" framing
+  (SemiAnalysis; ARA daily
+  digest 2026-10-19).
 
 ## Open questions
 

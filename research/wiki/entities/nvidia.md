@@ -6,13 +6,14 @@ aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "N
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.
 created_at: 2026-06-05
-timestamp: 2026-10-12T00:00:00Z
+timestamp: 2026-10-19T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
@@ -762,4 +763,26 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   [[ai-capex]] (WSJ, Bloomberg,
   Reuters; ARA daily digest
   2026-10-12).
+
+## Kimi K3 decode path at 423 tok/s (2026-10-19)
+
+- **SemiAnalysis reports an
+  NVIDIA vLLM decode
+  optimization** that lifts
+  [[moonshot-kimi-k3]] (2.8T)
+  to **423 tok/s per user**,
+  **1.68×** faster on unnamed
+  hardware. A separate
+  Inferact / [[google]] TPUv7
+  run is said to be
+  competitive on performance
+  per TCO with GB200 NVL72,
+  B300 and MI355 at ultra-high
+  interactivity, with no
+  figures. Both claims are
+  SemiAnalysis-only; PyTorch's
+  @marksaroufim pushed back on
+  the "megakernel" framing
+  (SemiAnalysis; ARA daily
+  digest 2026-10-19).
 

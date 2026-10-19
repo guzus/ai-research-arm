@@ -4,10 +4,11 @@ title: California AI Regulation
 type: theme
 aliases: ["California AI regulation", "California AI bills", "Sacramento AI policy", "California Transparency in Frontier AI Act", "AB 1609", "AB 1159", "A 9317", "SB 942", "AB 853", "California AI Transparency Act", "AB 1709", "SB 813", "AB 1405"]
 tags: [policy, regulation, california, ai-governance, frontier-ai]
-description: Sacramento as the operative US AI regulator; Newsom signed seven data-center energy and water bills creating a CPUC rate class and making operators pay for grid and water upgrades.
+description: Sacramento as the operative US AI regulator; Anthropic's draft federal frontier-AI bill would preempt some California laws.
 created_at: 2026-05-30
-timestamp: 2026-09-22T00:00:00Z
+timestamp: 2026-10-19T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-12", path: research/digest/2026-09-12-digest.md}
@@ -165,6 +166,33 @@ a California legislature carrying a **~30-bill AI package** through the
   it. See [[ai-capex]] (The Verge; ARA daily
   digest 2026-09-22).
 
+- **[[anthropic]]'s draft federal
+  frontier-AI bill would preempt
+  some state laws, including
+  California's (2026-10-19).** As
+  relayed from Politico, only
+  Commerce could ask a federal
+  judge to halt a model, and only
+  over $1B+ in damage or 50+
+  casualties. Critics note this
+  conflicts with Anthropic's June
+  position that states should keep
+  full authority absent a strong
+  federal law. The full text has
+  not been seen, so which
+  California statutes would
+  actually fall is unconfirmed.
+  If the preemption clause is
+  real, it is the first named
+  challenge to Sacramento
+  remaining the operative US
+  regulator — the open question
+  this page has carried since
+  the June 2 federal EO. See
+  [[federal-ai-policy]] (Politico
+  via @BadSignalAI; ARA daily
+  digest 2026-10-19).
+
 ## Open questions
 
 - **Is watermark/C2PA provenance robust enough to carry a statutory duty?** If
@@ -174,11 +202,12 @@ a California legislature carrying a **~30-bill AI package** through the
   global. Does AB 1609-style disclosure flow back to non-California users
   via the labs' chosen lowest-common-denominator UX, or does multi-region
   compliance fragment the chatbot surface?
-- **Does federal regime reappear?** Partially answered: a **pared-down federal
-  executive order was signed 2026-06-02** ([[federal-ai-policy]]), but it is
-  narrowly scoped to 30-day cybersecurity pre-release review rather than the
-  broad disclosure/transparency package California is carrying — so Sacramento
-  remains the operative regulator on the consumer-facing axis. Does a fuller
+- **Does federal regime reappear?** Partially answered twice. A **pared-down federal
+  executive order was signed 2026-06-02** ([[federal-ai-policy]]), narrowly scoped
+  to 30-day cybersecurity pre-release review. On **2026-10-19** Politico relayed
+  an [[anthropic]] draft bill that would preempt some California laws, including
+  a Commerce-only halt at $1B / 50 deaths. The draft is not introduced text, so
+  Sacramento is still the operative regulator until a bill exists. Does a fuller
   federal Frontier AI Act analogue follow, or does the narrow EO leave the field
   to California?
 - **Companion-chatbot scope.** A 9317's warning requirement implicates
