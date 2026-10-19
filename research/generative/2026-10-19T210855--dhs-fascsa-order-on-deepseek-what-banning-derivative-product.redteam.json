@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The second is \"removal of all DeepSeek and DeepSeek-affiliate products, and third-party products and services developed using DeepSeek implementations, from civilian agency information technology\"[^1].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Several words that dominate the coverage do not appear in the notice at all: \"derivative,\" \"open-weight,\" \"weights,\" \"model,\" \"hosted,\" and \"cloud\"[^1].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The most defensible reading: the order carries a July 24, 2026 release date, and the June 26 reference is either an earlier letter or a misreading.",
+      "contradicting_url": "https://cyberscoop.com/dhs-bans-deepseek-federal-agencies/",
+      "contradicting_quote": "a letter from Secretary of Homeland Security Markwayne Mullin ordering the exclusion of DeepSeek products on June 26, indicating the ban has been in place for months",
+      "severity": "medium",
+      "no_contradiction_found": false
+    }
+  ]
+}
