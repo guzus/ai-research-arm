@@ -3,7 +3,7 @@ slug: runway-praxis-1-2026-10
 title: Runway Praxis-1 — robotics model in partner rollout ahead of a public launch
 company: Runway
 model: Praxis-1
-status: in-testing
+status: closed
 status_note: |
   **Partner preview, single relay.** @CyberRobooo (2026-10-04 12:26 UTC):
   "Runway is rolling Praxis-1 out to key partners ahead of a public launch,
@@ -23,12 +23,14 @@ verification: unverified
 sources:
   - https://x.com/CyberRobooo/status/2106722742003527876
 created_at: 2026-10-04
-updated_at: 2026-10-04
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-19
+closed_at: 2026-10-19
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-10-04
     change: "Created — IN-TESTING / unverified. @CyberRobooo (2026-10-04 12:26 UTC) reports Runway is rolling Praxis-1 out to key partners (Noble Machines, Standard Bots, Ultra), each running it on their own hardware, ahead of a public launch, linking a Runway blog post not independently checked. A partner rollout is a real-artifact stage; it stays unverified until a first-party Runway source is captured."
+  - ts: 2026-10-19
+    change: "Closed — stale-rumor-unverified. Verification never left `unverified`: the partner rollout rests on one secondary post from 2026-10-04, and no Runway announcement, blog capture or partner confirmation has appeared in the 15 daily cycles since, including the 2026-10-19 signal. A public launch or Runway primary source should open a successor ticket that links back here."
 ---
 
 Runway is best known for generative video. A model that is being installed on
