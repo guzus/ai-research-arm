@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-10-19
+
+TOP STORIES:
+• Anthropic puts 5% of shares into a Public Benefit Fund (~20% of equity now pledged to public good)
+• Anthropic pitches Congress its own federal frontier-AI bill with state preemption
+• OpenAI's leaked "Aurora" IDs resurface as image models on Arena
+• OpenCode says frontier models refused to help defend against the ongoing attack
+
+KEY NUMBERS:
+• Anthropic IPO talk: ~$1.5T, down from $2T
+• ChatGPT ad click ~$5 vs $30-50 on Google
+• Kimi K3 at 423 tok/s/user via NVIDIA vLLM (1.68x)
+
+TRENDING: DeepSeek Search & Fetch API at $0.75/1k requests (HN 515)
+
+Full digest on GitHub.
