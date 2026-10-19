@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-19 12:58:48 UTC
+
+CYCLE: MiniMax prices M3.1 Flash at $0.15/$0.60; Microsoft drops Nscale Essex site
+
+TOP STORIES:
+• MiniMax launches M3.1 Flash (1M ctx, 73.7% DeepSWE, $0.15/$0.60 per 1M); still trails DeepSeek V4.1 Flash on 4 of 6 benchmarks ✓
+• Reuters: Microsoft ends deal for Nscale's grid-delayed Essex AI data center ⚠
+• Google open-sources Harness² for self-improving agent harnesses; Tenstorrent reportedly raises $1.5B at $6.2B ⚠
+
+WATCH: MiniMax M3.1 Flash open weights (claimed Oct 23)
+
+Full update on GitHub.
