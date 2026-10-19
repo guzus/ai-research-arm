@@ -3,7 +3,7 @@ slug: anthropic-frontier-deployed-engineers-2026-10
 title: Anthropic commits $100M to train 10,000 "Frontier Deployed Engineers" by end of 2027
 company: Anthropic
 model: null
-status: confirmed
+status: closed
 status_note: |
   **Announced 2026-10-02 per a single detailed relay** (@shawnchauhan1,
   2026-10-04). Anthropic is committing $100M to train 10,000 "Frontier
@@ -26,12 +26,14 @@ verification: unverified
 sources:
   - https://x.com/shawnchauhan1/status/2106723523054190804
 created_at: 2026-10-04
-updated_at: 2026-10-04
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-19
+closed_at: 2026-10-19
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-10-04
     change: "Created — CONFIRMED / unverified. Per @shawnchauhan1 (2026-10-04 12:30 UTC), Anthropic on 2026-10-02 committed $100M to train 10,000 'Frontier Deployed Engineers' by end of 2027 through a residency-style program (simulated deployment, Resident Engineer badge, 12-week in-company residency, FDE badge), with first cohorts including Accenture, Bain, Capgemini, CBA, Deloitte, McKinsey, Morgan Stanley and Novo Nordisk. Single secondary source; the primary Anthropic post is not captured."
+  - ts: 2026-10-19
+    change: "Closed — stale-rumor-unverified. Verification never left `unverified`: the only source is the single secondary post from 2026-10-04, and no Anthropic post, program page or second account has corroborated the $100M / 10,000-engineer program since. That is 15 daily cycles, including the 2026-10-19 signal. A primary-sourced signal should open a successor ticket that links back here."
 ---
 
 This is a go-to-market commitment, not a model release. It is ticketed because

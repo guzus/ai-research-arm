@@ -47,8 +47,10 @@ sources:
   - "https://x.com/LuminaBench/status/2110672726075535404"
   - "https://x.com/fayequepeerzade/status/2110699181858017740"
   - "https://x.com/buildwithrajath/status/2110698467979133269"
+  - "https://x.com/Electronynet/status/2112177249805820170"
+  - "https://x.com/pankajkumar_dev/status/2112176644018626840"
 created_at: 2026-10-02
-updated_at: 2026-10-15
+updated_at: 2026-10-19
 closed_at: null
 closed_reason: null
 history:
@@ -60,6 +62,8 @@ history:
     change: "RUMORED -> IN-TESTING; verification stays unverified; title updated. This is the first artifact-class claim. @chetaslua (2026-10-14 11:39 UTC, with two screenshots) says Microsoft's raw Azure model catalog has a claude-fable-5-5 record. The post says it was registered on 2026-09-28, the same day as the Sonnet 5.5 and Haiku 5.5 records (both now shipped: [[anthropic-sonnet-5-5-2026-09]], [[anthropic-haiku-5-5-2026-10]]), across 9 regions, matching Fable 5.1's footprint. @srikanthvaluri relays it and asks whether it is a pre-staged record or a launch signal. A cloud-catalog listing is the artifact class this schema maps to in-testing, so the status advances. Verification stays unverified because there is one originator, the screenshots have not been reproduced independently, and neither Anthropic nor Microsoft has commented. The rumored 2026-10-06 release date passed without a release; expected is updated."
   - ts: 2026-10-15
     change: "In-testing, unchanged; verification stays unverified. A second artifact-class claim from a different originator on a different surface. @LuminaBench (2026-10-15 10:02 UTC) reports a previously unseen codename, 'claude-onigiri-eap', in Artificial Analysis's website frontend, with four effort variants (low/med/high/xhigh) and an Opus 4.8 fallback, which is how Fable/Opus-tier entries are configured there. The poster explicitly hedges ('might be', 'could be wrong'). Relays (@fayequepeerzade, @buildwithrajath) add a 'claude-onigiri-eap-2' variant and read 'EAP' as early access. NOT ADOPTED AS IDENTIFICATION: the codename does not contain 'Fable', and the Opus 4.8 fallback fits an unannounced Opus-tier model as well as Fable 5.5. It is logged here because a benchmark-site staging entry would be consistent with the Azure record from 2026-10-14. Also logged and unadopted: opinion posts that Anthropic might hold Fable 5.5 until nearer its reported IPO ([[anthropic-ipo-2026-06]]) (@Airo_07). That is speculation, not evidence."
+  - ts: 2026-10-19
+    change: "In-testing, unchanged; verification stays unverified. No new artifact on 2026-10-19, only louder chatter. An Arabic week-ahead roundup (@Electronynet, 13:41 UTC) lists Fable 5.5 first among expected releases and repeats that leaks say the model has reached partners. @pankajkumar_dev (13:38 UTC) posts a cinematic scene he says Fable 5.5 made and urges Anthropic to 'launch this model ASAP'. He does not say how he got access, and nothing ties the output to a specific model ID. Neither post adds evidence beyond the Azure-catalog and 'claude-onigiri-eap' claims of 2026-10-14/15. No Anthropic statement."
 ---
 
 This is a tease with no artifact. "Routed to a backend that looks like" is the

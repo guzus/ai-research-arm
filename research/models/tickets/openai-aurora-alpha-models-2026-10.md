@@ -30,13 +30,16 @@ sources:
   - "https://x.com/Josephyala/status/2111747395591578023"
   - "https://x.com/moa_builds/status/2111771777047359817"
   - "https://x.com/0xJoseDinero/status/2111777966870900923"
+  - "https://x.com/Goura_vk/status/2112170676710944923"
 created_at: 2026-10-18
-updated_at: 2026-10-18
+updated_at: 2026-10-19
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-10-18
     change: "Created — IN-TESTING / partial. Three undocumented model IDs (aurora-red-alpha, aurora-green-alpha, aurora-blue-alpha) appeared in the OpenAI API model list around 2026-10-17, first widely noted by @AndrewCurran_ (2026-10-18 03:13 UTC) and repeated by several independent accounts. One says they are not callable yet. No docs, pricing or OpenAI statement. Opened at in-testing because a vendor-side model-list entry is a real artifact, not a tease. Verification is partial because only secondary accounts report it. Readings as an image model or a fast Codex model are speculation and are not adopted. Not linked to the closed [[openai-gpt-image-2-5-leak-2026-08]] until a modality is known."
+  - ts: 2026-10-19
+    change: "In-testing, unchanged; verification stays partial. First modality-specific claim. @Goura_vk (2026-10-19 13:15 UTC) says the three IDs, after briefly appearing in OpenAI's API, 'showed up in Arena's image-generation tests', and that early testers see differences between the variants. This is one secondary account with no screenshot or Arena listing in signal, so the image-model reading moves from reply speculation to a reported sighting, but it is not adopted as fact. The same post calls 'GPT-Image-3' speculation. Still no docs, pricing or OpenAI statement."
 ---
 
 OpenAI model IDs often show up in the API list before launch. When they do, the
