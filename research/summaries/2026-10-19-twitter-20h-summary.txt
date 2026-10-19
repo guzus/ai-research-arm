@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-19 20:32:37 UTC
+
+CYCLE: US government bans DeepSeek on civilian federal IT; Meta ships an open agent model
+
+TOP STORIES:
+• DHS orders civilian agencies to remove DeepSeek and every third-party product built on it, and to stop buying them [✓]
+• Meta publishes Muse Glimmer tech report: 30B open-weight agent model that runs on 1 consumer GPU [⚠]
+• SemiAnalysis: NVIDIA's GB300 FP4 counter-submission is still 1.64x worse than TPUv7 on perf/$ [⚠]
+
+WATCH: Full DHS order text, especially how it defines "DeepSeek implementations" (fine-tunes/distills?)
+
+Full update on GitHub.
