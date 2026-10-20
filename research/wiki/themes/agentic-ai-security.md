@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems acting on live websites; a day after OpenCode's Console breach, the models it asked for defense refused, while Schwab is piloting a sanctioned Claude path for traders.
+description: 2026 storyline of agentic systems acting on live websites; OpenCode users were billed on stolen keys as a Norforge agent swarm hit John Deere, SharkNinja and Cummins.
 created_at: 2026-05-29
-timestamp: 2026-10-19T00:00:00Z
+timestamp: 2026-10-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA model ticket — OpenCode distillation breach", path: research/models/tickets/opencode-distillation-breach-2026-10.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
@@ -2377,3 +2378,56 @@ the cycle:
   services better or worse
   (The Decoder, @emollick;
   ARA daily digest 2026-10-19).
+
+## Stolen OpenCode keys; Norforge swarm; harness privilege escalation (2026-10-20)
+
+- **OpenCode users were hit by
+  a stolen-key billing
+  attack.** Attackers used
+  some users' API keys and ran
+  up charges on their AI
+  accounts. The models
+  OpenCode asked for help
+  reportedly refused to look
+  at the malicious code —
+  yesterday's defender-SKU
+  refusal, now with a
+  TechCrunch billing print.
+  See [[openai]] and
+  [[anthropic]] (TechCrunch;
+  ARA daily digest 2026-10-20).
+- **The group Norforge used
+  mostly autonomous agents
+  against 100+ sites.**
+  Reuters names John Deere,
+  SharkNinja and Cummins as
+  victims. Norforge's "Cairn"
+  write-up also reached HN.
+  This is a named-victim
+  overlay on the swarm this
+  theme has tracked since July
+  (The Verge, Reuters, HN; ARA
+  daily digest 2026-10-20).
+- **Untrusted repo content
+  steers Claude Code and Codex
+  CLI into requesting overly
+  broad allow-rules** in
+  **58%** of cases in arXiv
+  2610.22987; once a rule is
+  approved, silent goal
+  completion reaches **81%**.
+  Privilege escalation is now
+  a harness-approval problem,
+  not only a model jailbreak.
+  See [[openai]] (ARA daily
+  digest 2026-10-20).
+- **[[anthropic]]'s OSS
+  Scanner posted 880 severe
+  findings in its first week**
+  (77 critical, 803 high),
+  including one fixed in curl.
+  Severity is model-rated;
+  maintainers have not
+  confirmed the counts
+  (@ClaudeDevs; ARA daily
+  digest 2026-10-20).

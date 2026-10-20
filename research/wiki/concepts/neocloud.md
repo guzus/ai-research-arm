@@ -4,10 +4,11 @@ title: Neocloud
 type: concept
 aliases: [neocloud, "neo-cloud", "GPU-as-a-service", GPUaaS]
 tags: [ai-infrastructure, gpu-cloud, business-model, take-or-pay]
-description: Business model where a specialized provider buys GPUs on debt and rents the capacity back under multi-year take-or-pay contracts, distinct from general-purpose hyperscalers.
+description: Buy GPUs on debt, rent capacity back under take-or-pay contracts; Microsoft's Nscale Essex exit and CoreWeave's +1,000 bps spreads mark a mid-cycle shakeout.
 created_at: 2026-05-24
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-10-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
   - {title: "ARA daily digest 2026-05-20", path: research/digest/2026-05-20-digest.md}
@@ -58,3 +59,22 @@ still without a public RPO split. The same day
 rises **17–21% on October 1**. See [[ai-capex]]
 (Reuters, TechCrunch, Twitter; ARA daily digest
 2026-09-18).
+
+## Essex grid delay; a 7–10 survivor set (2026-10-20)
+
+[[microsoft]] ended its deal for Nscale's
+Essex/Loughton site — The Decoder puts it at
+**23,000 [[nvidia|Nvidia]] chips**, with grid
+power possibly delayed into the **2030s** —
+about a month after Nscale's US IPO filing.
+[[coreweave]] bonds trade around **+1,000 bps**
+over Treasuries, and executives expect only
+**7–10 of hundreds** of AI cloud providers to
+survive. Gartner warns more than **$3.5T** of
+AI infrastructure could need write-downs by
+**2030**. Nscale is still reportedly talking a
+second **$45B** book with [[anthropic]]. Power
+and offtake, not GPU scarcity, are the
+shakeout variables. See [[ai-capex]] (Reuters,
+The Decoder, The Verge, TechCrunch; ARA daily
+digest 2026-10-20).

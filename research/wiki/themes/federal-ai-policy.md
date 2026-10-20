@@ -2,12 +2,13 @@
 slug: federal-ai-policy
 title: Federal AI Policy
 type: theme
-aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits"]
+aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits", FASCSA, "Federal Acquisition Supply Chain Security Act", "DHS DeepSeek order"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; Politico says Anthropic's draft frontier-AI bill would let only Commerce ask a court to halt a model, and would preempt some California laws.
+description: US federal AI governance; a DHS FASCSA order now reaches DeepSeek products and derivatives, including self-hosted weights, at civilian agencies.
 created_at: 2026-06-03
-timestamp: 2026-10-19T00:00:00Z
+timestamp: 2026-10-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
@@ -2332,6 +2333,51 @@ footing for the first time in the cycle.
   [[anthropic]] (@AnthropicAI,
   @jackclarkSF, TechCrunch;
   ARA daily digest 2026-10-19).
+
+## DHS FASCSA order on DeepSeek derivatives (2026-10-20)
+
+- **Civilian agencies must
+  purge [[deepseek|DeepSeek]]
+  products and third-party
+  services "developed using
+  DeepSeek implementations,"
+  including self-hosted
+  weights.** The order sits
+  under the 2018 Federal
+  Acquisition Supply Chain
+  Security Act, needs
+  exception requests **60 days
+  ahead**, and excludes
+  national-security and SCI
+  systems. Relays say the
+  signed order is months old;
+  the new part is the reach to
+  **derivatives and US-hosted
+  weights**. That turns an
+  app-ban into a provenance
+  rule for the
+  [[open-weights]] stack
+  vendors sell to government.
+  Watch whether
+  [[moonshot-kimi-k3|Kimi]] or
+  Qwen follow
+  (@AndrewCurran_,
+  @rohanpaul_ai,
+  @MartinSzerment; ARA daily
+  digest 2026-10-20).
+- **Pentagon AI use is
+  reported at 1.7 million
+  staff**, up from 80,000 in a
+  year, per CTO Emil Michael,
+  who led the department's
+  feud with [[anthropic]] and
+  now coordinates
+  national-security incidents
+  with the labs. Export
+  controls remain an option.
+  Single-outlet (The
+  Information; ARA daily
+  digest 2026-10-20).
 
 ## Open questions
 

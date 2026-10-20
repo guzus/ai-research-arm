@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; CoreWeave's 2032 bonds fell into distress territory as banks reportedly try to offload $38B of Oracle-linked data-center debt.
+description: The historically large compute buildout; Microsoft ended its Nscale Essex deal as CoreWeave bonds trade around +1,000 bps and Gartner warns more than $3.5T of AI infrastructure could need write-downs by 2030.
 created_at: 2026-05-24
-timestamp: 2026-10-15T00:00:00Z
+timestamp: 2026-10-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
@@ -1647,3 +1648,63 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   Nikkei, @NVIDIAAIInfra, The
   Decoder; ARA daily digest
   2026-10-15).
+
+## Nscale Essex exit; Gartner write-down warning (2026-10-20)
+
+- **[[microsoft]] ended its
+  deal for Nscale's Essex
+  site.** Reuters says Loughton
+  may not get grid power until
+  the **2030s**; The Decoder
+  puts the cancelled book at
+  **23,000 [[nvidia|Nvidia]]
+  chips**. Nscale says other
+  Microsoft contracts are
+  unaffected. The same cycle
+  Nscale is reportedly in
+  talks with [[anthropic]] on
+  a **second $45B** compute
+  deal, after the August
+  commitment. Power, not
+  chips, is the binding
+  constraint (Reuters, The
+  Decoder, TechCrunch; ARA
+  daily digest 2026-10-20).
+- **[[coreweave]] bonds trade
+  around +1,000 bps over
+  Treasuries.** The lab has
+  lost about a quarter of its
+  market value. Executives
+  expect only **7–10 of
+  hundreds** of AI cloud
+  providers to survive. Gartner
+  warns more than **$3.5T** of
+  AI infrastructure could need
+  write-downs by **2030**, and
+  sees about **$1T** of
+  AI-provider infrastructure
+  spending in 2026 and **$6T**
+  in 2027–30. This continues
+  the 2026-10-15 distress print
+  rather than a new filing.
+  See [[neocloud]] (The
+  Decoder, The Verge,
+  @rohanpaul_ai; ARA daily
+  digest 2026-10-20).
+- **Memory tightness is now a
+  2027 offtake story.** Lenovo,
+  HP and [[dell|Dell]] have
+  reportedly signed long-term
+  DRAM and SSD deals for 2027
+  after receiving only
+  **70–80%** of requested
+  volume in the first half of
+  2026. Musk and Ben Horowitz
+  relay secondhand compute-
+  scarcity anecdotes (AWS/GCP
+  "or anyone"; Amazon out of
+  compute "until beyond
+  2028") — not disclosures
+  (Korean media via @jukan05,
+  @elonmusk; ARA daily digest
+  2026-10-20).

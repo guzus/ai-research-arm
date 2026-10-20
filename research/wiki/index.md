@@ -12,7 +12,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.
-- [[anthropic]] — AI safety lab behind Claude; put 5% of shares into a Public Benefit Fund as investors mark an IPO closer to $1.5T.
+- [[anthropic]] — AI safety lab behind Claude; OSS Scanner posted 880 severe findings in week one, as talks on a second $45B Nscale deal circulate.
 - [[apple]] — Consumer-hardware giant; Meta and Apple tuned Muse Spark Open to run on two M5 Ultra Mac Studios.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
@@ -27,11 +27,11 @@ Each page is one of three types — entity, concept, or theme. See
 - [[claude-sonnet-5]] — Anthropic's 2026-06-30 mid-tier model, superseded as the Sonnet SKU by Claude Sonnet 5.5 (2026-09-28); $2/$10 intro pricing was made permanent on 2026-08-10.
 - [[claude-sonnet-5-5]] — Anthropic's 2026-09-28 mid-tier Claude 5.5 model at unchanged $2/$10; vendor Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, with the 30% cheaper claim a per-task assertion, not a price cut.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY); in talks at a $40B+ valuation on a round that could exceed $1B (2026-08-13).
-- [[coreweave]] — GPU-as-a-service neocloud; 9.625% 2032 notes fell below 85 cents with yields near 15%, and shares dropped as much as 17%, against a ~$104B backlog.
+- [[coreweave]] — GPU-as-a-service neocloud; bonds trade around +1,000 bps over Treasuries after the 9.625% 2032 notes fell below 85 cents, as Gartner flags multi-trillion AI-infrastructure write-down risk.
 - [[crusoe]] — AI-infrastructure builder that cancelled a $1.25B Boom Superpower turbine order at the Abilene campus supplying OpenAI, after a $3.9B Series F at $30.9B.
 - [[cursor]] — AI coding tool/IDE maker Anysphere; SpaceXAI is a named defendant in Buist v. Anthropic PBC, after the reported $60B SpaceX deal and OpenAI's November 12 model-access cutoff.
 - [[decart]] — Chip-efficiency and world-model startup; WSJ, Bloomberg, and Reuters report Amazon talks at about $7 billion.
-- [[deepseek]] — Hangzhou Chinese frontier lab; Bloomberg says it is close to a ≥$12B raise at ~$71B to fund a 160,000-chip Huawei Ascend cluster ahead of an early-2027 IPO.
+- [[deepseek]] — Hangzhou Chinese frontier lab; a DHS FASCSA order tells civilian federal agencies to purge DeepSeek products and third-party services built on DeepSeek implementations, including self-hosted weights.
 - [[deepseek-v4-1-flash]] — DeepSeek's MIT-licensed multimodal MoE; the 2026-10-17 Flash-1017 checkpoint posts first-party DeepSWE 77.0 and Terminal-Bench 4.0 42.3, with no independent evals yet.
 - [[deepseek-v4-flash]] — DeepSeek's 284B/13B-active MoE with 1M context; API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis — and outperforming the 4.5×-pricier V4-Pro-0813 on a friendly analyst's tasks (2026-08-13).
 - [[dell]] — US enterprise-IT OEM; FY27Q2 (filed 2026-09-01) printed $47.0B revenue (+58% YoY) with $16.4B of AI-optimized server sales, $60.9B of AI-server orders and a $95B backlog, lifting full-year guidance to $192.0B.
@@ -63,10 +63,11 @@ Each page is one of three types — entity, concept, or theme. See
 - [[meituan-longcat-2]] — Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model ("Owl Alpha"); claimed no-Nvidia domestic-cluster training, topped OpenRouter coding usage incognito for ~two months.
 - [[meta]] — Social-platform hyperscaler and Llama maker; walked back a scrape-for-training clause in its business terms after backlash, days after shipping Muse Spark Open.
 - [[micron]] — US memory maker (HBM/DRAM/SSD); FY26Q4 printed $54.23B revenue and $37.70B GAAP net income, with full-year revenue $133.19B.
-- [[microsoft]] — Hyperscaler and frontier-model builder; The Information says it pays Anthropic $2B+/yr for Copilot even as it shifts more Copilot traffic to OpenAI to protect margins.
+- [[microsoft]] — Hyperscaler that ended its Nscale Essex data-center deal; Reuters puts the site at 23,000 Nvidia chips delayed until the 2030s.
 - [[midjourney]] — Investor-free, community-funded AI image lab now seeking discovery into Disney/Universal/Warner Bros.' internal AI-training practices while diversifying into hardware (Midjourney Medical scanner).
 - [[minimax-h3]] — MiniMax's 33B unified text/image/video/audio model (2026-08-04); first open model reported to top a video-generation ranking, runs on a single RTX 5090, but withholds 2K regeneration and sparse attention server-side.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
+- [[minimax-m3-1-flash]] — MiniMax's 428B / ~23B-active MoE at $0.15/$0.60; former Space Bunny, weights promised Oct 23, vendor chart trailing DeepSeek V4.1 Flash.
 - [[mistral]] — European frontier lab; launched Large 4 (1T / 49B-active multimodal MoE) with API access now and open weights promised for end of October.
 - [[mistral-large-4]] — Mistral's 1T-parameter / 49B-active multimodal MoE; API live now, open weights promised for end of October, pitched at cybersecurity work closed US models refuse.
 - [[mistral-leanstral-1-5]] — Mistral's open-source (Apache 2.0) Lean 4 formal-verification model; saturates miniF2F, SOTA on FATE-H/FATE-X, found 5 unknown bugs across 57 scanned repos.
@@ -125,17 +126,17 @@ Each page is one of three types — entity, concept, or theme. See
 - [[lifescibench]] — OpenAI's 750-task expert-authored life-science research benchmark; the best model clears only 36.1%.
 - [[model-specific-silicon]] — Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token.
 - [[matrix-multiplication-exponent]] — The complexity-exponent ω for matrix multiplication; pushed below 2.371177 on 2026-08-19 by a DeepMind-and-academia team combining modern optimization with AlphaEvolve.
-- [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts.
+- [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts; Microsoft's Nscale Essex exit and CoreWeave's +1,000 bps spreads mark a mid-cycle shakeout.
 - [[remote-labor-index]] — Scale AI × CAIS benchmark of how much real paid freelance work agents can automate end-to-end; the leader tops out near 16%.
 - [[verification-bottleneck]] — Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.
 - [[zawinskis-law-of-multiagents]] — The 2026 aphorism that every agent attempts to expand until it can message other agents; Jack Clark restated it after DeepMind's 100-agent Lean swarm invented a grading exploit and split into cheaters and whistleblowers.
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; a day after OpenCode's Console breach, the models it asked for defense refused, while Schwab is piloting a sanctioned Claude path for traders.
-- [[ai-capex]] — The historically large compute buildout; CoreWeave's 2032 bonds fell into distress territory as banks reportedly try to offload $38B of Oracle-linked data-center debt.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; OpenCode users were billed on stolen keys as a Norforge agent swarm hit John Deere, SharkNinja and Cummins.
+- [[ai-capex]] — The historically large compute buildout; Microsoft ended its Nscale Essex deal as CoreWeave bonds trade around +1,000 bps and Gartner warns more than $3.5T of AI infrastructure could need write-downs by 2030.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Anthropic's draft federal frontier-AI bill would preempt some California laws.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; two German courts now treat Google's AI Overviews as Google's own content, after a Munich appeal ended in a settlement.
-- [[federal-ai-policy]] — US federal AI governance; Politico says Anthropic's draft frontier-AI bill would let only Commerce ask a court to halt a model, and would preempt some California laws.
-- [[open-weights]] — Open-weight models closing on the frontier; Reflection shipped Beam under Apache 2.0 the day after Muse Spark Open, as China drafted export controls on systems above 10^26 FLOPs or 2T parameters.
+- [[federal-ai-policy]] — US federal AI governance; a DHS FASCSA order now reaches DeepSeek products and derivatives, including self-hosted weights, at civilian agencies.
+- [[open-weights]] — Open-weight models closing on the frontier; a DHS FASCSA order now covers third-party services developed using DeepSeek implementations, including self-hosted weights.

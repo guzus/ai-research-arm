@@ -4,15 +4,16 @@ title: CoreWeave
 type: entity
 aliases: [CoreWeave, CRWV, "CoreWeave, Inc."]
 tags: [neocloud, gpu-cloud, ai-infrastructure, take-or-pay]
-description: GPU-as-a-service neocloud; 9.625% 2032 notes fell below 85 cents with yields near 15%, and shares dropped as much as 17%, against a ~$104B backlog.
+description: GPU-as-a-service neocloud; bonds trade around +1,000 bps over Treasuries after the 9.625% 2032 notes fell below 85 cents, as Gartner flags multi-trillion AI-infrastructure write-down risk.
 created_at: 2026-05-24
-timestamp: 2026-10-15T00:00:00Z
+timestamp: 2026-10-20T00:00:00Z
 market:
   ticker: CRWV
   exchange: NASDAQ
   symbol: NASDAQ:CRWV
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-08-13", path: research/digest/2026-08-13-digest.md}
@@ -72,6 +73,17 @@ Oracle-linked data-center construction debt. Oracle bonds weakened alongside
 it. A hot September CPI print the same day muddies how much is AI-specific.
 See [[ai-capex]] and [[neocloud]] (Bloomberg via @rohanpaul_ai, HN 239 points;
 ARA daily digest 2026-10-15).
+
+## Spreads stay distressed as the neocloud set shrinks (2026-10-20)
+
+Bonds now trade around **+1,000 bps over Treasuries**, and CoreWeave has lost
+about a **quarter** of its market value. Executives expect only **7–10 of
+hundreds** of AI cloud providers to survive. Gartner warns more than **$3.5T**
+of AI infrastructure could need write-downs by **2030**. Same cycle,
+[[microsoft]] walked away from Nscale's grid-delayed Essex site while Nscale
+talked a second **$45B** book with [[anthropic]] — a reminder that take-or-pay
+backlogs still sit on power-delayed campuses. See [[ai-capex]] and [[neocloud]]
+(The Decoder, The Verge, Reuters, @rohanpaul_ai; ARA daily digest 2026-10-20).
 
 ## Open questions
 - **Counterparty risk.** With ~22% of backlog tied to OpenAI (private, ~$25B/yr
