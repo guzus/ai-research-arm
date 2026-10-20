@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC DRAFT S-1: H1 REVENUE $16.3B VS $1.1B A YEAR AGO, $80.7B NET LOSS TIED TO FINANCING ACCOUNTING — WSJ",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2112637260239892874",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC PROSPECTUS SHOWS >$600B COMPUTE COMMITMENTS INCLUDING $160B BROADCOM, $111B GOOGLE, $110B AWS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2112641878147649911",
+    "category": "infra"
+  },
+  {
+    "headline": "MUSK: SPACEX TO HAVE ~13 GW OF AI COMPUTE BY END-2027, 440K VERA RUBIN TRAINING CLUSTER BY Q2 2027",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2112653356695187903",
+    "category": "infra"
+  },
+  {
+    "headline": "ALEKSANDER MADRY RETURNS TO OPENAI TO WORK ON SUPERINTELLIGENCE SAFETY AND SECURITY, ALTMAN CONFIRMS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2112652656602923366",
+    "category": "breaking"
+  },
+  {
+    "headline": "GOOGLE OPEN-SOURCES TORCHTPU, A NATIVE PYTORCH BACKEND REPLACING PYTORCH/XLA ON TPUS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2112627844711071899",
+    "category": "opensource"
+  }
+]

@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-20 23:48:19 UTC
+
+CYCLE: Anthropic's draft S-1 numbers and SpaceX's compute guidance
+
+TOP STORIES:
+• Anthropic draft S-1 (WSJ): $16.3B H1 revenue, $80.7B mostly accounting loss, >$600B compute commitments [⚠]
+• SpaceX Q3: $14.6B revenue; Musk guides to ~13 GW of AI compute by end-2027 and a 440K Vera Rubin cluster by Q2 2027 [⚠]
+• Aleksander Madry returns to OpenAI to work on safety and security, confirmed by Altman [✓]
+
+WATCH: A public Anthropic S-1 on EDGAR with the loss breakdown and customer concentration.
+
+Full update on GitHub.
