@@ -3,7 +3,7 @@ slug: anthropic-opus-5-5-2026-09
 title: Claude Opus 5.5 — first model in the Claude 5.5 family, public release
 company: Anthropic
 model: Claude Opus 5.5
-status: released
+status: closed
 status_note: |
   **2026-09-25 — first independent benchmark and market-share data, 48h
   after ship.** Three measurements landed, all from parties that are not
@@ -96,9 +96,9 @@ sources:
   - https://x.com/Claudeupdates11/status/2106304522880455029
   - https://x.com/Klonzu/status/2106341362995970417
 created_at: 2026-09-24
-updated_at: 2026-10-03
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-20
+closed_at: 2026-10-20
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-24
     change: "Created — RELEASED. Anthropic shipped Claude Opus 5.5 on 2026-09-22 16:31 UTC (@AnthropicAI: \"Claude Opus 5.5 is available today\"), live immediately in Claude Code and on the Claude Platform. Anthropic's own claims (@ClaudeDevs): performs at Fable 5.1 level, ~30% faster and ~40% cheaper than Opus 5 per task; 5-hour Claude Code limits up 20%, effective limit up a further ~25% from the lower price, plus a banked reset for Pro/Max/Team. First Opus with Fable 5.1-class cyber/bio/frontier-LLM safeguards, flagged requests falling back to another model. @claudeai framed it as \"the first model in our new Claude 5.5 family.\" Verification confirmed on company-primary posts. Independent corroboration inside 48h: @rauchg's Next.js eval (Opus 5.5 97%, GPT-6 Sol 97%, Fable 5.1 97%, Grok 4.7 94%); @danshipper (Every) rated it above Fable 5.1 on writing/instruction-following/long context; @AravSrinivas made it Perplexity Computer's Standard-effort orchestrator. Created late: no ticket existed for this release, and the 2026-09-23 run recorded no changes across the whole set, so the gap is being closed now while the launch is still generating daily signal."
@@ -108,6 +108,8 @@ history:
     change: "Bookkeeping — citations added for the 2026-09-25 entry: @AiBattle_ (SimpleBench 88.4%), @ArtificialAnlys (Terminal-Bench-Science 0.1 leaderboard launch), @rauchg (Vercel AI Gateway spend shares), @skalskip92 (vision deltas vs Fable 5.1 and GPT-6 Sol), @theo (xhigh outperforms max because max sets a reasoning-effort floor). No status, verification or content change."
   - ts: 2026-10-03
     change: "Distribution update, status unchanged (released). Claude Opus 5.5 and Sonnet 5.5 are now selectable inside Google's Antigravity IDE (@Claudeupdates11, 2026-10-03 08:45 UTC; widely re-shared, e.g. @JimmyOgb12, @bangbuilds). @Klonzu quotes the in-product notice in full: 'Opus 5.5 and Sonnet 5.5 are available on paid Pro and Ultra plans. Third-party model access will no longer be available on your current plan starting on November 2, 2026' — i.e. Claude access in Antigravity moves behind Google AI Pro/Ultra, and older third-party entries (Claude Opus 4.6, GPT-OSS) are flagged in the picker. Recorded as a notice relayed via screenshots/quotes, not a Google blog post. Significance: Google is using Anthropic's flagship as an upgrade lever in its own Gemini-first IDE days after announcing Gemini 4 Argon ([[google-gemini-4-2026-09]]), which the same posts say is 'coming soon' to Antigravity."
+  - ts: 2026-10-20
+    change: "Closed — released-and-aged. Claude Opus 5.5 shipped publicly on 2026-09-22 (@AnthropicAI, 'available today'), four weeks before this run, and has stayed released with no open lifecycle question. Further Opus 5.5 coverage (distribution, safeguards, benchmarks) is normal reporting; a successor model or a material change to Opus 5.5 should open a new ticket."
 ---
 
 Anthropic shipped Claude Opus 5.5 on 2026-09-22, and the framing matters more
