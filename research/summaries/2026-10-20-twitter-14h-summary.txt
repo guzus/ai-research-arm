@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-20 14:15:44 UTC
+
+CYCLE: DeepSeek opens its inference engine; Anthropic next-model details surface
+
+TOP STORIES:
+• DeepSeek open-sources DeepInfer (Apache 2.0), the V4.1-Flash inference engine for NVIDIA SM100 and Huawei Ascend 950 ✓
+• The Information: Anthropic's unreleased model infers user goals and finds root causes of bugs; the "Fable 5.5 leak" was a hallucination/troll ⚠
+• Ex-OpenAI research chief Bob McGrew's Arda raises $230M at a $1.5B valuation ⚠
+
+WATCH: Independent DeepInfer throughput numbers on Ascend 950
+
+Full update on GitHub.
