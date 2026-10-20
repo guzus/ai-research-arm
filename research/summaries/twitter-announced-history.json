@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-22 15:00 UTC",
-    "headline": "ALTMAN SAYS ANTHROPIC IS CAPACITY-LIMITED, OPENAI JUST ADDED 2GW+ OF COMPUTE",
-    "source": "@steph_palazzolo",
-    "source_file": "research/summaries/2026-05-22-twitter-15h-headlines.json",
-    "url": "https://x.com/steph_palazzolo/status/2057589397445300348"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-22 15:00 UTC",
-    "headline": "SPACEX IPO ASKS INVESTORS FOR A ~$1 TRILLION PREMIUM OVER PRIVATE VALUATION",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-22-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057820203954720999"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-22 15:00 UTC",
-    "headline": "GO FOR LAUNCH: FIRST-EVER STARSHIP V3 (FLIGHT 12) WINDOW OPENS 22:30 UTC TONIGHT",
-    "source": "@SpaceX",
-    "source_file": "research/summaries/2026-05-22-twitter-15h-headlines.json",
-    "url": "https://x.com/SpaceX/status/2057843818859209147"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-22 15:00 UTC",
-    "headline": "MICROSOFT PUSHING TO MAKE ANTHROPIC A MARQUEE CUSTOMER FOR ITS MAIA AI CHIPS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-22-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057846479734124754"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-22 18:00 UTC",
     "headline": "DEEPSEEK MAKES 75% V4-PRO PRICE CUT PERMANENT \u2014 ~$0.44 INPUT / $0.88 OUTPUT PER 1M TOKENS, CACHE NEARLY FREE",
@@ -23532,5 +23496,33 @@
     "headline": "LENOVO, HP, DELL REPORTEDLY SIGN LONG-TERM MEMORY DEALS; PC MAKERS GOT ONLY 70-80% OF REQUESTED DRAM IN H1",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2112329176342733168"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-20 08:25:16 UTC",
+    "headline": "OPENAI SEEKS ~$30B AT >$1.4T VALUATION AHEAD OF ANTHROPIC IPO \u2014 REUTERS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2112455383356989598"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-20 08:25:16 UTC",
+    "headline": "ANTHROPIC IN TALKS FOR SECOND $45B NSCALE LEASE, WOULD DOUBLE WEST VIRGINIA RESERVATION TO 920 MW",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2112421955093807572"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-20 08:25:16 UTC",
+    "headline": "INCEPTION RELEASES MERCURY 3 DIFFUSION LLM, CLAIMS 1,000+ TOKENS/SEC AND 1M CONTEXT",
+    "source": "@percyliang",
+    "url": "https://x.com/percyliang/status/2112386823498686964"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-20 08:25:16 UTC",
+    "headline": "ALTMAN REPORTEDLY TELLS OPENAI STAFF OF THREE SUPERINTELLIGENCE ENDGAMES, REJECTS SINGLE-LAB TAKEOVER",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2112456032408736159"
   }
 ]
