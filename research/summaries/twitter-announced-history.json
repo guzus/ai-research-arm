@@ -3,51 +3,6 @@
     "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-22 18:00 UTC",
-    "headline": "DEEPSEEK MAKES 75% V4-PRO PRICE CUT PERMANENT \u2014 ~$0.44 INPUT / $0.88 OUTPUT PER 1M TOKENS, CACHE NEARLY FREE",
-    "source": "@deepseek_ai",
-    "source_file": "research/summaries/2026-05-22-twitter-18h-headlines.json",
-    "url": "https://x.com/deepseek_ai/status/2057854261699195173"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-22 18:00 UTC",
-    "headline": "DEEPSEEK V4-PRO OUTPUT UNDERCUTS EVERY MAJOR CHINESE MODEL \u2014 VS KIMI K2.6 $4, QWEN 3.7 MAX $7.50",
-    "source": "@thehypedotnews",
-    "source_file": "research/summaries/2026-05-22-twitter-18h-headlines.json",
-    "url": "https://x.com/thehypedotnews/status/2057857344449495302"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-22 18:00 UTC",
-    "headline": "THE INFORMATION: CURSOR BUILDING SOFTWARE TO REPLACE CORE PARTS OF GITHUB \u2014 REPOS, SECURITY, AUTOMATED TESTING",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-22-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057854144719806749"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-22 18:00 UTC",
-    "headline": "POLITICO PUBLISHES FULL LEAKED DRAFT OF AI EXECUTIVE ORDER TRUMP PULLED BEFORE SIGNING",
-    "source": "@SophiaCai99",
-    "source_file": "research/summaries/2026-05-22-twitter-18h-headlines.json",
-    "url": "https://x.com/SophiaCai99/status/2057844511699570951"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-22 18:00 UTC",
-    "headline": "SEMIANALYSIS: MEDIAN CODING-AGENT REQUEST IS 96K INPUT TOKENS, ~50% EXCEED 128K \u2014 INFERENCE COST NOW SET BY CONTEXT",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-22-twitter-18h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2057869518295249373"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-22 18:00 UTC",
     "headline": "GOOGLE SAYS GEMINI 3.5 FLASH COULD SAVE LARGE CLOUD CUSTOMERS OVER $1 BILLION A YEAR VS RIVAL FRONTIER MODELS",
     "source": "@theinformation",
     "source_file": "research/summaries/2026-05-22-twitter-18h-headlines.json",
@@ -23524,5 +23479,40 @@
     "headline": "ALTMAN REPORTEDLY TELLS OPENAI STAFF OF THREE SUPERINTELLIGENCE ENDGAMES, REJECTS SINGLE-LAB TAKEOVER",
     "source": "@kimmonismus",
     "url": "https://x.com/kimmonismus/status/2112456032408736159"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-20 14:15:44 UTC",
+    "headline": "DEEPSEEK OPEN-SOURCES DEEPINFER, ITS V4.1-FLASH PRODUCTION INFERENCE ENGINE \u2014 RUNS ON NVIDIA BLACKWELL AND HUAWEI ASCEND 950",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2112517682646155349"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-20 14:15:44 UTC",
+    "headline": "ANTHROPIC'S UNRELEASED MODEL INFERS USER GOALS FROM SPARSE INSTRUCTIONS, FINDS ROOT CAUSES OF CODING BUGS \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2112544468112949418"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-20 14:15:44 UTC",
+    "headline": "EX-OPENAI RESEARCH CHIEF BOB MCGREW'S ARDA RAISES $230M AT $1.5B VALUATION FOR MANUFACTURING AGENTS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2112544969114403307"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-20 14:15:44 UTC",
+    "headline": "OPEN-SOURCE PENTEST AGENT RUN ON DEEPSEEK V4.1-FLASH POWERED BREACH CAMPAIGNS IN KOREA AND JAPAN \u2014 BLOOMBERG",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2112504002806206876"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-20 14:15:44 UTC",
+    "headline": "US SANCTIONS 5 CHINESE ENTITIES TIED TO EX-GOOGLE ENGINEER LINWEI DING'S AI TRADE-SECRET CASE",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2112505487581417721"
   }
 ]
