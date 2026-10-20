@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "ANTHROPIC: CLAUDE-DESIGNED PROTEINS BIND SCORPION NEUROTOXINS — 17 OF 211 TESTED DESIGNS HIT, ALL DATA RELEASED",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2112579251555721573",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI ACQUIRES ORCHESTRA BIO TO EXPAND ROSALIND LIFE-SCIENCES PUSH INTO DRUG DEVELOPMENT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2112607347688583586",
+    "category": "business"
+  },
+  {
+    "headline": "MISTRAL LAUNCHES VOXTRAL 3 TRANSCRIBE AND SPEECH MODELS WITH NEW VOICE AGENTS API",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2112574615318876178",
+    "category": "model"
+  },
+  {
+    "headline": "JIM FAN'S TEAM OPEN-SOURCES FLORA ROBOTICS DATA MODELS, CLAIMS 125X LOWER LABELING COST",
+    "source": "@DrJimFan",
+    "url": "https://x.com/DrJimFan/status/2112597587987689912",
+    "category": "opensource"
+  }
+]
