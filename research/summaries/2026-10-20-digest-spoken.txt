@@ -1,0 +1,11 @@
+Speaker 1: Tuesday, October twentieth, twenty twenty-six.
+Speaker 2: [high_energy] Big policy move to lead us off, the Department of Homeland Security has ordered agencies to purge DeepSeek and its derivatives from their systems.
+Speaker 1: That goes past the model itself, so any tool built on top of DeepSeek is now in scope for removal.
+Speaker 2: Meanwhile on the model front, MiniMax launched M three point one Flash at fifteen cents per million input tokens and sixty cents per million output.
+Speaker 1: On infrastructure, Microsoft has exited its Nscale Essex deal, and that is the latest sign of stress spreading through the neoclouds.
+Speaker 2: And Gartner warns that more than [emphasis] three point five trillion dollars [/emphasis] of AI infrastructure may need write-downs by twenty thirty.
+Speaker 1: On security, Anthropic's open source scanner has sent seventy-seven critical findings to project maintainers.
+Speaker 2: Some quick numbers, Tenstorrent raised [emphasis] one point five billion dollars [/emphasis] at a six point two billion dollar valuation.
+Speaker 1: And Pentagon AI users went from eighty thousand to roughly [emphasis] one point seven million [/emphasis] in a single year.
+Speaker 2: [dramatic_pause] That is more than twenty times growth, and trending on Hacker News, Mistral's Timestral topped the board with four hundred eighty-eight points.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
