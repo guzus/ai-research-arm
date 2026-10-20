@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "ANTHROPIC OSS SCANNER REPORTS 77 CRITICAL, 803 HIGH MODEL-RATED VULNERABILITIES TO OPEN-SOURCE MAINTAINERS IN FIRST WEEK",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2112299603634860121",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI SAYS LATEST MODELS IMPROVE COBOL, FORTRAN, VISUAL BASIC LEGACY-CODE MIGRATION",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2112310345863930168",
+    "category": "model"
+  },
+  {
+    "headline": "PENTAGON CTO: AI USERS AT DEPARTMENT ROSE FROM 80,000 TO ~1.7 MILLION IN ONE YEAR",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2112310382731592107",
+    "category": "policy"
+  },
+  {
+    "headline": "LENOVO, HP, DELL REPORTEDLY SIGN LONG-TERM MEMORY DEALS; PC MAKERS GOT ONLY 70-80% OF REQUESTED DRAM IN H1",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2112329176342733168",
+    "category": "infra"
+  }
+]

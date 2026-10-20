@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-20 00:16:12 UTC
+
+CYCLE: AI security scanning results, OpenAI targets legacy code, memory supply eases
+
+TOP STORIES:
+• Anthropic OSS Scanner's first week: 77 critical + 803 high model-rated findings sent to maintainers, incl. a curl fix [⚠]
+• OpenAI says latest models better at COBOL/Fortran/VB migration (no benchmark given) [⚠]
+• Pentagon CTO: AI use grew from 80K to ~1.7M staff in a year [⚠]
+
+WATCH: curl advisory/CVE crediting OSS Scanner, and maintainer acceptance rate of critical findings
+
+Full update on GitHub.
