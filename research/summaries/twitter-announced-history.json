@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-22 18:00 UTC",
-    "headline": "GOOGLE SAYS GEMINI 3.5 FLASH COULD SAVE LARGE CLOUD CUSTOMERS OVER $1 BILLION A YEAR VS RIVAL FRONTIER MODELS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-22-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057884262087405707"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-22 21:00 UTC",
-    "headline": "NYT: WHITE HOUSE OKS SECRET ~$9B PUSH TO RUSH TOP-SHELF AI CHIPS TO NSA AND CIA AMID SHORTAGE",
-    "source": "@dnvolz",
-    "source_file": "research/summaries/2026-05-22-twitter-21h-headlines.json",
-    "url": "https://x.com/dnvolz/status/2057938557910544853"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-22 21:00 UTC",
-    "headline": "ANTHROPIC FINALIZING CLASSIFIED CONTRACT TO KEEP NSA ACCESS DESPITE SUPPLY-CHAIN DESIGNATION \u2014 NYT",
-    "source": "@dnvolz",
-    "source_file": "research/summaries/2026-05-22-twitter-21h-headlines.json",
-    "url": "https://x.com/dnvolz/status/2057938818850844925"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-22 21:00 UTC",
-    "headline": "DEEPSEEK ADVANCING FIRST-EVER OUTSIDE ROUND ~$10.3B \u2014 CATL AND TENCENT IN TALKS TO INVEST",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-22-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057929554237276323"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-22 21:00 UTC",
     "headline": "STARSHIP FLIGHT 12 \u2014 FIRST EVER VERSION 3 \u2014 TARGETS 22:30 UTC LAUNCH WINDOW TONIGHT",
@@ -23514,5 +23478,33 @@
     "headline": "US SANCTIONS 5 CHINESE ENTITIES TIED TO EX-GOOGLE ENGINEER LINWEI DING'S AI TRADE-SECRET CASE",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2112505487581417721"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-20 19:10:02 UTC",
+    "headline": "ANTHROPIC: CLAUDE-DESIGNED PROTEINS BIND SCORPION NEUROTOXINS \u2014 17 OF 211 TESTED DESIGNS HIT, ALL DATA RELEASED",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2112579251555721573"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-20 19:10:02 UTC",
+    "headline": "OPENAI ACQUIRES ORCHESTRA BIO TO EXPAND ROSALIND LIFE-SCIENCES PUSH INTO DRUG DEVELOPMENT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2112607347688583586"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-20 19:10:02 UTC",
+    "headline": "MISTRAL LAUNCHES VOXTRAL 3 TRANSCRIBE AND SPEECH MODELS WITH NEW VOICE AGENTS API",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2112574615318876178"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-20 19:10:02 UTC",
+    "headline": "JIM FAN'S TEAM OPEN-SOURCES FLORA ROBOTICS DATA MODELS, CLAIMS 125X LOWER LABELING COST",
+    "source": "@DrJimFan",
+    "url": "https://x.com/DrJimFan/status/2112597587987689912"
   }
 ]
