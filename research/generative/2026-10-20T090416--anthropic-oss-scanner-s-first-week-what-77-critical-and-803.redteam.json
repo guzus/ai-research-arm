@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "Punit Shah of Anthropic's Frontier Red Team posted on 2026-10-19 that \"~650 projects applied\", \"114 accepted\", and \"77 critical and 803 high model-rated findings reported\", with the parenthetical \"we haven't scanned all projects yet\" [^5].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Mythos called 8 of them Critical; \"One of the eight Critical ratings held\" [^13].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "By our arithmetic that is 516 of 6,157, or 8.4%, as of 2026-10-02 [^9].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

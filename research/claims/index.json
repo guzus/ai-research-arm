@@ -1,5 +1,5 @@
 {
-  "article_count": 99,
+  "article_count": 100,
   "articles": [
     {
       "claim_count": 18,
@@ -943,6 +943,14 @@
       "stem": "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product",
       "tags": [],
       "title": "Six words carry the DeepSeek ban: what DHS's first FASCSA order on an AI lab actually reaches"
+    },
+    {
+      "claim_count": 26,
+      "created_at": "2026-10-20T09:04:16Z",
+      "slug": "anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "stem": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "tags": [],
+      "title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove"
     }
   ],
   "by_host": {
@@ -1280,7 +1288,13 @@
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c3",
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c4",
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c5",
-      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c6"
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c6",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c2",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c24",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c25",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c3",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c4",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c5"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -1315,7 +1329,8 @@
       "2026-08-04T171206--comfyui-company#c8",
       "2026-08-04T171206--comfyui-company#c9",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c12",
-      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c13"
+      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c13",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c13"
     ],
     "api.llama.fi": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c10",
@@ -2524,6 +2539,9 @@
     "cp4space.hatsya.com": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c4"
     ],
+    "craci.com": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c19"
+    ],
     "creativemachineslab.com": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c20",
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c30"
@@ -2603,6 +2621,10 @@
     "curiousrefuge.com": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c34"
     ],
+    "curl.se": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c11",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c14"
+    ],
     "cursor.com": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c1",
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c13",
@@ -2629,13 +2651,22 @@
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c3"
     ],
     "cybersecuritynews.com": [
-      "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
+      "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c22"
     ],
     "cyberwarrior76.substack.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c35"
     ],
     "dailymail.com": [
       "2026-07-23T173142--why-hims-hers-is-betting-on-peptide-therapy-and-what-it-coul#c7"
+    ],
+    "daniel.haxx.se": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c11",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c12",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c14",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c16",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c17",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c26"
     ],
     "darioamodei.com": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c9",
@@ -2644,7 +2675,8 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c39"
     ],
     "darpa.mil": [
-      "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c19"
+      "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c19",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c21"
     ],
     "dart.deloitte.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c43",
@@ -3651,7 +3683,9 @@
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c2",
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c4",
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c5",
-      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c8"
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c8",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c15",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c18"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -3692,6 +3726,9 @@
     ],
     "gmteight.com": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c29"
+    ],
+    "google.github.io": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c18"
     ],
     "gosearch.ai": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c21"
@@ -3791,7 +3828,9 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c14",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c5",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c6",
-      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c13"
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c13",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c10",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c8"
     ],
     "hhmi.org": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c38"
@@ -4697,7 +4736,8 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c6",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c43",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c10",
-      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c15"
+      "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c15",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c15"
     ],
     "newsletter.semianalysis.com": [
       "2026-05-27T035557--800-vdc-architecture#c7",
@@ -4762,7 +4802,8 @@
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c27",
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c8",
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c17",
-      "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c10"
+      "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c10",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c20"
     ],
     "nngroup.com": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c36"
@@ -5325,6 +5366,10 @@
     ],
     "recodechinaai.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c17"
+    ],
+    "red.anthropic.com": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c6",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c7"
     ],
     "redmondmag.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c7"
@@ -6269,7 +6314,8 @@
     "theregister.com": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c11",
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c25",
-      "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c15"
+      "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c15",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c23"
     ],
     "therobotreport.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2"
@@ -6530,6 +6576,9 @@
     ],
     "vp-land.com": [
       "2026-08-04T171206--comfyui-company#c6"
+    ],
+    "vulncheck.com": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c9"
     ],
     "wafer.ai": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c14"
@@ -6812,7 +6861,8 @@
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c1",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2",
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c26"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c26",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c1"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -7170,6 +7220,9 @@
     ],
     "https://api.github.com/repos/trycua/cua/releases?per_page=100": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c13"
+    ],
+    "https://api.github.com/search/issues?q=repo:anthropics/oss-scanner+is:pr": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c13"
     ],
     "https://api.llama.fi/protocol/usd-ai": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c3",
@@ -8592,6 +8645,9 @@
     "https://cp4space.hatsya.com/2026/05/03/schanuels-conjecture-and-the-semantics-of-fpsan": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c4"
     ],
+    "https://craci.com/resources/CVE-publication-trends": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c19"
+    ],
     "https://crypto.news/esma-targets-mev-as-potential-market-abuse-in-mica-proposal": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c4"
     ],
@@ -8670,6 +8726,12 @@
     "https://curiousrefuge.com/blog/minimaxh3-review": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c34"
     ],
+    "https://curl.se/docs/CVE-2026-92392.html": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c11"
+    ],
+    "https://curl.se/docs/vuln.json": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c14"
+    ],
     "https://cursor.com/blog/reward-hacking-coding-benchmarks": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c1",
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c13",
@@ -8701,11 +8763,36 @@
     "https://cyberscoop.com/dhs-bans-deepseek-federal-agencies": [
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c3"
     ],
+    "https://cybersecuritynews.com/2024-cve-review": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c22"
+    ],
     "https://cybersecuritynews.com/openai-zero-days-hugging-face": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
     ],
     "https://cyberwarrior76.substack.com/p/openai-exploitgym-incident-autonomous": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c35"
+    ],
+    "https://daniel.haxx.se/blog/2026/01/26/the-end-of-the-curl-bug-bounty": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c17"
+    ],
+    "https://daniel.haxx.se/blog/2026/04/22/high-quality-chaos": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c17"
+    ],
+    "https://daniel.haxx.se/blog/2026/05/11/mythos-finds-a-curl-vulnerability": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c26"
+    ],
+    "https://daniel.haxx.se/blog/2026/05/26/the-pressure": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c17"
+    ],
+    "https://daniel.haxx.se/blog/2026/10/14/a-curl-audit-by-aisle": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c14"
+    ],
+    "https://daniel.haxx.se/blog/2026/10/14/a-uaf-turned-rce": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c11",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c12"
+    ],
+    "https://daniel.haxx.se/blog/2026/10/20/do-minor-curl-vulnerabilities-in-the-open": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c16"
     ],
     "https://darioamodei.com/on-deepseek-and-export-controls": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c8"
@@ -9846,6 +9933,9 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c3",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7"
     ],
+    "https://github.com/google/oss-fuzz": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c18"
+    ],
     "https://github.com/guzus/ai-research-arm/blob/main/research/market/gpu-spot.json": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c15"
     ],
@@ -9894,6 +9984,9 @@
     ],
     "https://github.com/pgvector/pgvector": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c6"
+    ],
+    "https://github.com/pion/dtls/security/advisories/GHSA-7c2r-jhm9-43vf": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c15"
     ],
     "https://github.com/punitarani/mimic/pull/48": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c13"
@@ -9951,6 +10044,9 @@
     "https://gmteight.com/flash/detail/1509423": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c29"
     ],
+    "https://google.github.io/oss-fuzz/getting-started/bug-disclosure-guidelines": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c18"
+    ],
     "https://gov.ethenafoundation.com/t/a-framework-for-the-tokenized-equity-basis-trade/832": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c2",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c3"
@@ -9997,6 +10093,10 @@
     ],
     "https://help.aliyun.com/zh/functioncompute/fc/quick-start-comfyui": [
       "2026-08-04T171206--comfyui-company#c37"
+    ],
+    "https://helpnetsecurity.com/2026/09/04/echo-claude-mythos-vulnerability-findings": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c10",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c8"
     ],
     "https://huggingface.co/Aleph-Alpha/Kolibri-1": [
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c1",
@@ -10676,6 +10776,9 @@
     ],
     "https://news.ycombinator.com/item?id=49132058": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c43"
+    ],
+    "https://news.ycombinator.com/item?id=50124600": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c15"
     ],
     "https://newsletter.semianalysis.com/p/ai-neocloud-playbook-and-anatomy": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c14"
@@ -11452,6 +11555,10 @@
     ],
     "https://reap.global/blog/stablecoin-statistics-2026": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c21"
+    ],
+    "https://red.anthropic.com/2026/cvd": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c6",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c7"
     ],
     "https://redmondmag.com/articles/2026/04/07/anthropic-names-former-microsoft-azure-ai-executive-eric-boyd-as-infrastructure-chief.aspx": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c7"
@@ -12634,6 +12741,9 @@
     "https://www.anthropic.com/constitution": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c30"
     ],
+    "https://www.anthropic.com/coordinated-vulnerability-disclosure": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c5"
+    ],
     "https://www.anthropic.com/engineering/code-execution-with-mcp": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c8"
     ],
@@ -12660,6 +12770,9 @@
     ],
     "https://www.anthropic.com/news/anthropic-and-the-department-of-defense-to-advance-responsible-ai-in-defense-operations": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c4"
+    ],
+    "https://www.anthropic.com/news/anthropic-cyber-mission": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c2"
     ],
     "https://www.anthropic.com/news/anthropic-partners-with-allen-institute-and-howard-hughes-medical-institute": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c7"
@@ -12799,8 +12912,15 @@
     "https://www.anthropic.com/research/emergent-misalignment-reward-hacking": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c29"
     ],
+    "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c2",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c25",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c3",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c4"
+    ],
     "https://www.anthropic.com/research/mythos-preview": [
-      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c15"
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c15",
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c24"
     ],
     "https://www.anthropic.com/rsp-updates": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c6"
@@ -13641,6 +13761,9 @@
     ],
     "https://www.darioamodei.com/essay/machines-of-loving-grace": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c9"
+    ],
+    "https://www.darpa.mil/news/2025/aixcc-results": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c21"
     ],
     "https://www.darpa.mil/research/programs/transformative-design": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c19"
@@ -14907,6 +15030,9 @@
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c17",
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c10"
     ],
+    "https://www.nist.gov/news-events/news/2026/04/nist-updates-nvd-operations-address-record-cve-growth": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c20"
+    ],
     "https://www.nist.gov/news-events/news/2026/05/nine-candidates-advance-third-round-additional-digital-signatures-pqc": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c4"
     ],
@@ -15797,6 +15923,9 @@
     "https://www.thepickool.com/naver-fy2025-revenue-hits-krw-12-04-trillion-on-ad-growth": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c15"
     ],
+    "https://www.theregister.com/2024/09/18/open_source_maintainers_underpaid": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c23"
+    ],
     "https://www.theregister.com/2025/04/08/meta_llama4_cheating": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c11"
     ],
@@ -16023,6 +16152,9 @@
     "https://www.vp-land.com/p/comfyui-s-ceo-on-control-adoption-and-why-the-tool-won-t-be-acquired": [
       "2026-08-04T171206--comfyui-company#c6"
     ],
+    "https://www.vulncheck.com/blog/anthropic-glasswing-receipts": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c9"
+    ],
     "https://www.wafer.ai": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c14"
     ],
@@ -16163,6 +16295,9 @@
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c16",
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c17",
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c18"
+    ],
+    "https://x.com/ClaudeDevs/status/2112299603634860121": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c1"
     ],
     "https://x.com/ClementDelangue/status/2079670308156645882": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c4"
@@ -16562,6 +16697,9 @@
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c7",
       "2026-08-12T222213--grok-4-6-at-2-6-vs-fable-5-max-10-50-does-the-frontier-repri#c9"
     ],
+    "https://x.com/thepunit/status/2112267286237384738": [
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c1"
+    ],
     "https://x.com/tori_finance": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c13",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c6",
@@ -16624,7 +16762,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2925,
+  "claim_count": 2951,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -86527,9 +86665,627 @@
         "https://www.everycrsreport.com/files/2026-07-06_IF13197_040ec0186a0ab2f122d18ba43dc6b3c14e7f285e.html"
       ],
       "type": "regulatory"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-19",
+      "claim": "Anthropic's Punit Shah said ~650 projects applied to OSS Scanner, 114 were accepted, and 77 critical and 803 high model-rated findings were reported, with not all projects scanned yet.",
+      "confidence": "high",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c1",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/thepunit/status/2112267286237384738",
+        "https://x.com/ClaudeDevs/status/2112299603634860121"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-05-22",
+      "claim": "Echo reported 21,119 of 23,019 Mythos candidates had not been reviewed by anyone outside Anthropic and the reviewed set was probably not random.",
+      "confidence": "medium",
+      "hosts": [
+        "helpnetsecurity.com"
+      ],
+      "id": "c10",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://helpnetsecurity.com/2026/09/04/echo-claude-mythos-vulnerability-findings"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-14",
+      "claim": "curl CVE-2026-92392 is an HTTP/2 upload use-after-free rated High, affecting 8.12.0-8.22.0, fixed in 8.23.0, reported 2026-09-15 and credited to Luna with Claude, Anthropic.",
+      "confidence": "high",
+      "hosts": [
+        "curl.se",
+        "daniel.haxx.se"
+      ],
+      "id": "c11",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://curl.se/docs/CVE-2026-92392.html",
+        "https://daniel.haxx.se/blog/2026/10/14/a-uaf-turned-rce"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-14",
+      "claim": "Stenberg wrote that the most likely outcome of an attempted attack on CVE-2026-92392 is just a crash; code execution requires precise build and heap knowledge and allows about 23 bytes.",
+      "confidence": "high",
+      "hosts": [
+        "daniel.haxx.se"
+      ],
+      "id": "c12",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://daniel.haxx.se/blog/2026/10/14/a-uaf-turned-rce"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-20",
+      "claim": "curl, PostgreSQL and the Linux kernel are not in the anthropics/oss-scanner projects directory, which held 128 entries; 845 PRs were filed, 144 merged and 468 closed unmerged.",
+      "confidence": "medium",
+      "hosts": [
+        "api.github.com"
+      ],
+      "id": "c13",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api.github.com/search/issues?q=repo:anthropics/oss-scanner+is:pr"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-14",
+      "claim": "Of 33 curl CVEs in the September-October 2026 release batches, Aisle Research was credited on 24 and Anthropic on 2.",
+      "confidence": "medium",
+      "hosts": [
+        "curl.se",
+        "daniel.haxx.se"
+      ],
+      "id": "c14",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://curl.se/docs/vuln.json",
+        "https://daniel.haxx.se/blog/2026/10/14/a-curl-audit-by-aisle"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-16",
+      "claim": "Pion's maintainer received a report of 36 bugs including 6 security vulnerabilities (2 critical, 3 high, 1 moderate) and triaged them manually after Claude and Codex refused to help.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com",
+        "news.ycombinator.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c15",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://news.ycombinator.com/item?id=50124600",
+        "https://github.com/pion/dtls/security/advisories/GHSA-7c2r-jhm9-43vf"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-20",
+      "claim": "curl will move LOW and MEDIUM vulnerability reports to public GitHub issues from 2026-10-26 because maintainers are overloaded; over 90% of submissions are below HIGH.",
+      "confidence": "high",
+      "hosts": [
+        "daniel.haxx.se"
+      ],
+      "id": "c16",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://daniel.haxx.se/blog/2026/10/20/do-minor-curl-vulnerabilities-in-the-open"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-05-26",
+      "claim": "curl's security report rate in 2026 was 4-5 times the 2024 rate and double 2025, while the confirmed rate recovered to about 15-16% after falling below 5% in 2025.",
+      "confidence": "high",
+      "hosts": [
+        "daniel.haxx.se"
+      ],
+      "id": "c17",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c17",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://daniel.haxx.se/blog/2026/05/26/the-pressure",
+        "https://daniel.haxx.se/blog/2026/04/22/high-quality-chaos",
+        "https://daniel.haxx.se/blog/2026/01/26/the-end-of-the-curl-bug-bounty"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2025-05-01",
+      "claim": "OSS-Fuzz files bugs automatically and verifies fixes automatically, and had helped identify and fix over 13,000 vulnerabilities and 50,000 bugs across 1,000 projects.",
+      "confidence": "high",
+      "hosts": [
+        "github.com",
+        "google.github.io"
+      ],
+      "id": "c18",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/google/oss-fuzz",
+        "https://google.github.io/oss-fuzz/getting-started/bug-disclosure-guidelines"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-19",
+      "claim": "CVE records published per year rose from 14,274 in 2020 to 47,803 in 2025 and 81,927 in 2026 through 2026-10-19.",
+      "confidence": "medium",
+      "hosts": [
+        "craci.com"
+      ],
+      "id": "c19",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c19",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://craci.com/resources/CVE-publication-trends"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-08",
+      "claim": "OSS Scanner launched on 2026-10-08 and its reports are fully model-generated without human review or triage, produced by models including Claude Mythos.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source",
+        "https://www.anthropic.com/news/anthropic-cyber-mission"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-04-15",
+      "claim": "NIST said CVE submissions rose 263% between 2020 and 2025 and moved backlogged CVEs published before 2026-03-01 to Not Scheduled.",
+      "confidence": "high",
+      "hosts": [
+        "nist.gov"
+      ],
+      "id": "c20",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c20",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.nist.gov/news-events/news/2026/04/nist-updates-nvd-operations-address-record-cve-growth"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2025-08-08",
+      "claim": "DARPA AIxCC finalists found 54 of 63 synthetic vulnerabilities and patched 43, and found 18 real zero-days with 11 patched.",
+      "confidence": "high",
+      "hosts": [
+        "darpa.mil"
+      ],
+      "id": "c21",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c21",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.darpa.mil/news/2025/aixcc-results"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2025-01-15",
+      "claim": "In 2024, NVD rated 13.7% of CVEs Critical and 33.5% High.",
+      "confidence": "medium",
+      "hosts": [
+        "cybersecuritynews.com"
+      ],
+      "id": "c22",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c22",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://cybersecuritynews.com/2024-cve-review"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2024-09-18",
+      "claim": "Tidelift's 2024 survey found 60% of maintainers are unpaid hobbyists and security work rose from 4% to 11% of their time since 2021.",
+      "confidence": "medium",
+      "hosts": [
+        "theregister.com"
+      ],
+      "id": "c23",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c23",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.theregister.com/2024/09/18/open_source_maintainers_underpaid"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-04-07",
+      "claim": "At the Mythos Preview launch, expert contractors agreed exactly with Claude's severity in 89% of 198 manually reviewed reports.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c24",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c24",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/mythos-preview"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-08",
+      "claim": "wolfSSL said all but two of 74 reports it received were valid and five became CVEs.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c25",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c25",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-05-11",
+      "claim": "Stenberg called a third-party Mythos scan of curl in May 2026 an amazingly successful marketing stunt after five confirmed vulnerabilities reduced to one Low CVE.",
+      "confidence": "high",
+      "hosts": [
+        "daniel.haxx.se"
+      ],
+      "id": "c26",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://daniel.haxx.se/blog/2026/05/11/mythos-finds-a-curl-vulnerability"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-08",
+      "claim": "Anthropic's pilot audit found 85 of 97 critical and high scanner findings across 48 projects (88%) met its CVD bar; 11 were real duplicates and 1 was invalid.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-08",
+      "claim": "Anthropic acknowledges severity ratings can be inflated or the scanner can misunderstand a project's threat model.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-03-06",
+      "claim": "Anthropic's CVD policy says every report it sends generally reflects a finding a human security researcher has reviewed and confirmed.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/coordinated-vulnerability-disclosure"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-02",
+      "claim": "Anthropic's CVD dashboard listed 29,439 candidates, 6,123 reviewed by external firms, 5,674 confirmed valid (92.7%), 6,157 reported across 591 projects of which 4,824 went direct and may contain false positives, and 516 patched upstream.",
+      "confidence": "high",
+      "hosts": [
+        "red.anthropic.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://red.anthropic.com/2026/cvd"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-10-02",
+      "claim": "The dashboard reports 83.0% exact and 97.1% within-one-band severity agreement between Claude and external firms over 1,337 findings.",
+      "confidence": "high",
+      "hosts": [
+        "red.anthropic.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c7",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://red.anthropic.com/2026/cvd"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-09-04",
+      "claim": "Echo found that among 27 Mythos findings that became CVEs, Mythos rated 8 Critical but only one Critical rating held; 13 of 14 mismatches were overstated.",
+      "confidence": "medium",
+      "hosts": [
+        "helpnetsecurity.com"
+      ],
+      "id": "c8",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c8",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://helpnetsecurity.com/2026/09/04/echo-claude-mythos-vulnerability-findings"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803",
+      "article_created_at": "2026-10-20T09:04:16Z",
+      "article_title": "880 reports, not 880 vulnerabilities: what OSS Scanner's first eleven days prove",
+      "as_of": "2026-09-08",
+      "claim": "VulnCheck found Claude rated 91.5% of ledger findings critical or high versus 51.3% for maintainers, and the ledger showed 202 fixes versus 421 claimed.",
+      "confidence": "medium",
+      "hosts": [
+        "vulncheck.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c9",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.vulncheck.com/blog/anthropic-glasswing-receipts"
+      ],
+      "type": "comparison"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1430,
+  "reusable_count": 1441,
   "schema_version": 1
 }
