@@ -2,51 +2,6 @@
   {
     "backfilled": true,
     "category": "infra",
-    "delivered_at": "2026-05-22 21:00 UTC",
-    "headline": "STARSHIP FLIGHT 12 \u2014 FIRST EVER VERSION 3 \u2014 TARGETS 22:30 UTC LAUNCH WINDOW TONIGHT",
-    "source": "@SpaceX",
-    "source_file": "research/summaries/2026-05-22-twitter-21h-headlines.json",
-    "url": "https://x.com/SpaceX/status/2057843818859209147"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-23 01:00 UTC",
-    "headline": "SPACEX FLIES FIRST V3 STARSHIP ON FLIGHT 12 \u2014 DEPLOYS ~22 STARLINK TEST PAYLOADS; SUPER HEAVY BOOSTER HITS BOOSTBACK ANOMALY",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-23-twitter-01h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2057974937923490301"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-23 04:00 UTC",
-    "headline": "ANTHROPIC CONFIRMS PROJECT GLASSWING \u2014 ~50 PARTNERS USED GATED 'CLAUDE MYTHOS PREVIEW' TO FIND 10,000+ CRITICAL VULNS IN A MONTH",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-23-twitter-04h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2057909102542549503"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-23 04:00 UTC",
-    "headline": "GLASSWING'S REAL BOTTLENECK IS PATCHING \u2014 ONLY ~530 HIGH/CRITICAL BUGS DISCLOSED, MAINTAINERS ASK ANTHROPIC TO SLOW DOWN",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-23-twitter-04h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2057909104090169464"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-23 04:00 UTC",
-    "headline": "MYTHOS PREVIEW: CLOUDFLARE FINDS 2,000 BUGS, MOZILLA FIXES 271 IN FIREFOX (10x), FIRST MODEL TO SOLVE BOTH UK AISI CYBER RANGES",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-23-twitter-04h-headlines.json",
-    "url": "https://www.anthropic.com/research/glasswing-initial-update"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
     "delivered_at": "2026-05-23 04:00 UTC",
     "headline": "STARSHIP V3 FLIES FOR THE FIRST TIME \u2014 MAIDEN FLIGHT 12 SEMI-SUCCESSFUL, BOOSTER ANOMALY ON BOOSTBACK BUT SHIP SPLASHDOWN COMPLETE",
     "source": "@SpaceX",
@@ -23506,5 +23461,40 @@
     "headline": "JIM FAN'S TEAM OPEN-SOURCES FLORA ROBOTICS DATA MODELS, CLAIMS 125X LOWER LABELING COST",
     "source": "@DrJimFan",
     "url": "https://x.com/DrJimFan/status/2112597587987689912"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-20 23:48:19 UTC",
+    "headline": "ANTHROPIC DRAFT S-1: H1 REVENUE $16.3B VS $1.1B A YEAR AGO, $80.7B NET LOSS TIED TO FINANCING ACCOUNTING \u2014 WSJ",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2112637260239892874"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-20 23:48:19 UTC",
+    "headline": "ANTHROPIC PROSPECTUS SHOWS >$600B COMPUTE COMMITMENTS INCLUDING $160B BROADCOM, $111B GOOGLE, $110B AWS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2112641878147649911"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-20 23:48:19 UTC",
+    "headline": "MUSK: SPACEX TO HAVE ~13 GW OF AI COMPUTE BY END-2027, 440K VERA RUBIN TRAINING CLUSTER BY Q2 2027",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2112653356695187903"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-20 23:48:19 UTC",
+    "headline": "ALEKSANDER MADRY RETURNS TO OPENAI TO WORK ON SUPERINTELLIGENCE SAFETY AND SECURITY, ALTMAN CONFIRMS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2112652656602923366"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-20 23:48:19 UTC",
+    "headline": "GOOGLE OPEN-SOURCES TORCHTPU, A NATIVE PYTORCH BACKEND REPLACING PYTORCH/XLA ON TPUS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2112627844711071899"
   }
 ]
