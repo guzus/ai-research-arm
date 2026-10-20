@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; put 5% of shares into a Public Benefit Fund as investors mark an IPO closer to $1.5T.
+description: AI safety lab behind Claude; OSS Scanner posted 880 severe findings in week one, as talks on a second $45B Nscale deal circulate.
 created_at: 2026-05-24
-timestamp: 2026-10-19T00:00:00Z
+timestamp: 2026-10-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA model ticket — Anthropic–Schwab partnership", path: research/models/tickets/anthropic-schwab-partnership-2026-10.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
@@ -3633,3 +3634,51 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   Reasoning Fellows (The
   Decoder; ARA daily digest
   2026-10-19).
+
+## OSS Scanner week-one counts; a second Nscale talk (2026-10-20)
+
+- **OSS Scanner's first week
+  sent 77 critical and 803
+  high-severity findings to
+  open-source maintainers,
+  including one fixed in
+  curl.** Severity is rated by
+  Anthropic's own models;
+  maintainers have not yet
+  confirmed the counts. This
+  is the first public volume
+  print for the untriaged
+  scanner this page logged on
+  2026-10-09. See
+  [[agentic-ai-security]]
+  (@ClaudeDevs; ARA daily
+  digest 2026-10-20).
+- **Nscale is reportedly in
+  talks with Anthropic on a
+  second $45B compute deal**,
+  after the August commitment
+  this page logged on
+  2026-08-27. TechCrunch is
+  the named outlet; neither
+  principal confirmed. The
+  same day Reuters says
+  [[microsoft]] ended its deal
+  for Nscale's grid-delayed
+  Essex site. See [[ai-capex]],
+  [[coreweave]] and [[neocloud]]
+  (TechCrunch, Reuters; ARA
+  daily digest 2026-10-20).
+- **Musk answered the Public
+  Benefit Fund with a
+  counter-pledge** to give
+  "one of my [[spacex|SpaceX]]
+  shares to every kid in
+  America," with no mechanism.
+  The WSJ separately flagged
+  an obscure trust over
+  Anthropic's IPO. Neither is
+  a change to the 5% fund this
+  page logged yesterday
+  (@elonmusk, WSJ, TechCrunch,
+  HN; ARA daily digest
+  2026-10-20).

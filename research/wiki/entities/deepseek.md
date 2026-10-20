@@ -4,10 +4,11 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou Chinese frontier lab; Bloomberg says it is close to a ≥$12B raise at ~$71B to fund a 160,000-chip Huawei Ascend cluster ahead of an early-2027 IPO.
+description: Hangzhou Chinese frontier lab; a DHS FASCSA order tells civilian federal agencies to purge DeepSeek products and third-party services built on DeepSeek implementations, including self-hosted weights.
 created_at: 2026-06-04
-timestamp: 2026-10-18T00:00:00Z
+timestamp: 2026-10-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA model ticket — DeepSeek-V4.1-Flash-1017", path: research/models/tickets/deepseek-v4-1-flash-1017-2026-10.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
@@ -432,6 +433,55 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   HN 620/539; ARA daily digest
   2026-10-18 and ticket
   `deepseek-v4-1-flash-1017-2026-10`).
+
+## DHS FASCSA order on DeepSeek and derivatives (2026-10-20)
+
+- **A FASCSA order tells
+  civilian federal agencies to
+  remove and stop buying
+  DeepSeek products *and*
+  third-party services
+  "developed using DeepSeek
+  implementations," including
+  self-hosted weights.** The
+  order runs under the 2018
+  Federal Acquisition Supply
+  Chain Security Act, needs
+  exception requests **60 days
+  ahead**, and leaves out
+  national-security and SCI
+  systems. Per @rohanpaul_ai
+  the signed order predates
+  Monday's public notice by
+  months; the new part is the
+  reach to **derivatives and
+  US-hosted weights**. The
+  practical burden lands on
+  government software vendors,
+  who now have to prove which
+  [[open-weights]] models are
+  in their stacks. Watch
+  whether [[moonshot-kimi-k3|Kimi]]
+  or Qwen follow. See
+  [[federal-ai-policy]]
+  (@AndrewCurran_,
+  @rohanpaul_ai,
+  @MartinSzerment; ARA daily
+  digest 2026-10-20).
+- **A separate single-source
+  report claims China
+  introduced mandatory
+  pre-export registration for
+  AI weights ("Announcement No.
+  48").** Unverified; no
+  issuing ministry or official
+  text in the digest. If real
+  it would sit on
+  [[china-ai-regulation]], not
+  as a US procurement rule
+  (ARA daily digest 2026-10-20
+  and ticket
+  `china-ai-weights-export-registration-2026-10`).
 
 ## Open questions
 

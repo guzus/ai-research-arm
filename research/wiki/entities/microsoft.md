@@ -4,15 +4,16 @@ title: Microsoft
 type: entity
 aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "Maia 300", "MAIA 300", "MAI Code of Conduct", "Humanist AI Code of Conduct", "Decision-1", "Microsoft-Decision-1"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler and frontier-model builder; The Information says it pays Anthropic $2B+/yr for Copilot even as it shifts more Copilot traffic to OpenAI to protect margins.
+description: Hyperscaler that ended its Nscale Essex data-center deal; Reuters puts the site at 23,000 Nvidia chips delayed until the 2030s.
 created_at: 2026-06-03
-timestamp: 2026-10-18T00:00:00Z
+timestamp: 2026-10-20T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA model ticket — Microsoft Maia 300", path: research/models/tickets/microsoft-maia-300-2026-10.md}
@@ -463,6 +464,46 @@ ARA daily digest 2026-09-26).
   and [[openai]] (The
   Information; ARA daily
   digest 2026-10-18).
+
+## Nscale Essex exit; agents as insider threats (2026-10-20)
+
+- **Microsoft ended its deal
+  for Nscale's Essex
+  data-center site.** Reuters
+  says the Loughton campus may
+  not get grid power until the
+  **2030s**. The Decoder puts
+  the deal at **23,000
+  [[nvidia|Nvidia]] chips**.
+  Nscale says its other
+  Microsoft contracts are
+  unaffected; the exit comes
+  about a month after Nscale's
+  US IPO filing. Same cycle,
+  Nscale is reportedly in
+  talks with [[anthropic]] on
+  a second **$45B** compute
+  deal. See [[ai-capex]],
+  [[coreweave]] and [[neocloud]]
+  (Reuters, The Decoder,
+  TechCrunch; ARA daily digest
+  2026-10-20).
+- **Microsoft says enterprises
+  should treat agents like
+  insider threats because
+  "frontier models can't be
+  trusted."** That restates
+  Nadella's 2026-10-11
+  "Models as Insider Risks"
+  essay rather than shipping a
+  new Entra or Foundry
+  control. Hugging Face's
+  Irene Solaiman warns that
+  embedded AI evaluators are
+  not an easy fix. See
+  [[agentic-ai-security]]
+  (TechCrunch; ARA daily
+  digest 2026-10-20).
 
 ## Open questions
 

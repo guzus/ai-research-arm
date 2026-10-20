@@ -6,8 +6,9 @@ aliases: ["DeepSeek V4.1 Flash", "V4.1 Flash", "DeepSeek-V4.1-Flash", "deepseek-
 tags: [frontier-model, open-weights, chinese-llm, moe, multimodal, mit-license]
 description: DeepSeek's MIT-licensed multimodal MoE; the 2026-10-17 Flash-1017 checkpoint posts first-party DeepSWE 77.0 and Terminal-Bench 4.0 42.3, with no independent evals yet.
 created_at: 2026-09-11
-timestamp: 2026-10-18T00:00:00Z
+timestamp: 2026-10-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA model ticket — DeepSeek-V4.1-Flash-1017", path: research/models/tickets/deepseek-v4-1-flash-1017-2026-10.md}
   - {title: "ARA daily digest 2026-09-11", path: research/digest/2026-09-11-digest.md}
@@ -145,6 +146,14 @@ charge are not the same fact; do not merge them. See
   See [[open-weights]]
   (@teortaxesTex, HN; ARA daily
   digest 2026-10-18).
+
+**Peer note (2026-10-20).**
+[[minimax-m3-1-flash|MiniMax M3.1 Flash]]'s
+own chart trails this page on four of six
+shared benches, including DeepSWE **73.7 vs
+77.0**. HN commenters said they still prefer
+V4.1 Flash. No independent bake-off (ARA
+daily digest 2026-10-20).
 
 ## Open questions
 

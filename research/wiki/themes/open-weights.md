@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: Open-weight models closing on the frontier; Reflection shipped Beam under Apache 2.0 the day after Muse Spark Open, as China drafted export controls on systems above 10^26 FLOPs or 2T parameters.
+description: Open-weight models closing on the frontier; a DHS FASCSA order now covers third-party services developed using DeepSeek implementations, including self-hosted weights.
 created_at: 2026-06-14
-timestamp: 2026-10-17T00:00:00Z
+timestamp: 2026-10-20T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-08", path: research/digest/2026-10-08-digest.md}
@@ -858,6 +859,43 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   [[china-ai-regulation]] (The
   Decoder; ARA daily digest
   2026-10-17).
+
+## FASCSA reaches self-hosted DeepSeek; MiniMax names Space Bunny (2026-10-20)
+
+- **A DHS FASCSA order now
+  covers third-party services
+  "developed using
+  [[deepseek|DeepSeek]]
+  implementations," including
+  self-hosted weights.** The
+  ban is no longer just the
+  hosted app; civilian
+  agencies and their vendors
+  have to prove which
+  open-weight models sit in
+  their stacks. Watch whether
+  [[moonshot-kimi-k3|Kimi]] or
+  Qwen follow. See
+  [[federal-ai-policy]]
+  (@AndrewCurran_,
+  @rohanpaul_ai; ARA daily
+  digest 2026-10-20).
+- **[[minimax-m3-1-flash]] is
+  the named form of Space
+  Bunny**: **428B /
+  ~23B-active**, **$0.15 /
+  $0.60**, 1M context.
+  MiniMax's own chart trails
+  [[deepseek-v4-1-flash]] on
+  four of six shared benches.
+  Weights are promised for
+  **23 October**, disputed.
+  Until they land this is an
+  API SKU, not a downloadable
+  successor to [[minimax-m3]]
+  (MiniMax, The Decoder, HN
+  279; ARA daily digest
+  2026-10-20).
 
 ## Open questions
 
