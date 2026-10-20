@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-10-20
+
+TOP STORIES:
+• DHS orders agencies to purge DeepSeek and its derivatives
+• MiniMax M3.1 Flash launches at $0.15/$0.60 per 1M tokens
+• Microsoft exits Nscale Essex deal as neocloud stress spreads
+• Anthropic OSS Scanner sends 77 critical findings to maintainers
+
+KEY NUMBERS:
+• Tenstorrent: $1.5B raised at $6.2B valuation
+• Pentagon AI users: 80K to ~1.7M in a year
+• Gartner: >$3.5T of AI infra may need write-downs by 2030
+
+TRENDING: Mistral Timestral tops HN (488 pts)
+
+Full digest on GitHub.
