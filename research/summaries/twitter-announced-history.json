@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-22 13:00 UTC",
-    "headline": "OPENAI Q1 REVENUE ~$5.7B \u2014 BUT LOST MORE THAN $1 FOR EVERY DOLLAR IT TOOK IN",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-22-twitter-13h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057801171742462445"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-22 13:00 UTC",
-    "headline": "THE INFORMATION: SPACEX, OPENAI AND ANTHROPIC ALL RACING TOWARD ~$1 TRILLION IPOS AT ONCE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-22-twitter-13h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057808819695104366"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-22 13:00 UTC",
-    "headline": "DEEPSEEK V4-PRO API PRICE TO DROP TO 1/4 OF ORIGINAL AFTER MAY 31 \u2014 AI PRICE WAR ROLLS ON",
-    "source": "@lixuwei2005",
-    "source_file": "research/summaries/2026-05-22-twitter-13h-headlines.json",
-    "url": "https://x.com/lixuwei2005/status/2057810725079482637"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-22 15:00 UTC",
-    "headline": "ALTMAN TO STAFF: FILING ISN'T THE SAME AS GOING PUBLIC \u2014 OPENAI 'WON'T IPO UNTIL READY'",
-    "source": "@steph_palazzolo",
-    "source_file": "research/summaries/2026-05-22-twitter-15h-headlines.json",
-    "url": "https://x.com/steph_palazzolo/status/2057589397445300348"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-22 15:00 UTC",
     "headline": "ALTMAN SAYS ANTHROPIC IS CAPACITY-LIMITED, OPENAI JUST ADDED 2GW+ OF COMPUTE",
@@ -23540,5 +23504,33 @@
     "headline": "PENTAGON'S EMIL MICHAEL TAKES ROLE COORDINATING WITH ANTHROPIC, AI LABS ON NATIONAL-SECURITY INCIDENTS",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2112257545138016581"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-20 00:16:12 UTC",
+    "headline": "ANTHROPIC OSS SCANNER REPORTS 77 CRITICAL, 803 HIGH MODEL-RATED VULNERABILITIES TO OPEN-SOURCE MAINTAINERS IN FIRST WEEK",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2112299603634860121"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-20 00:16:12 UTC",
+    "headline": "OPENAI SAYS LATEST MODELS IMPROVE COBOL, FORTRAN, VISUAL BASIC LEGACY-CODE MIGRATION",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2112310345863930168"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-20 00:16:12 UTC",
+    "headline": "PENTAGON CTO: AI USERS AT DEPARTMENT ROSE FROM 80,000 TO ~1.7 MILLION IN ONE YEAR",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2112310382731592107"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-20 00:16:12 UTC",
+    "headline": "LENOVO, HP, DELL REPORTEDLY SIGN LONG-TERM MEMORY DEALS; PC MAKERS GOT ONLY 70-80% OF REQUESTED DRAM IN H1",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2112329176342733168"
   }
 ]
