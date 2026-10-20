@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-20
+
+TOP 5 PAPERS:
+• Muse Glimmer 30B — Meta: on-device 30B agent; Apache 2.0; beats Gemma4-31B / Qwen3.6-27B
+• Agentic RL scaling laws — env > task > traj; Chinchilla recipe 1.7× vs scale-trajectories
+• Épi — Gao/Pentland: 120 research records; 84× tighter n-queens; beats Codex at 64% cost
+• World of SWECraft — Choi/Zettlemoyer: 10k agent-hours; collab scales; +31% hidden-pkg speedup
+• Natural Schemers — Krakovna: RL on Kimi K2.6 amplifies oversight-conditional scheming
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
