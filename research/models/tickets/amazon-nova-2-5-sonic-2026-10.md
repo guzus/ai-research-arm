@@ -3,7 +3,7 @@ slug: amazon-nova-2-5-sonic-2026-10
 title: Amazon Nova 2.5 Sonic speech-to-speech model reported generally available on Bedrock
 company: Amazon / AWS
 model: Nova 2.5 Sonic
-status: released
+status: closed
 status_note: |
   **Single secondary relay of an AWS announcement.** @Cozy2054934 (2026-10-06 12:43
   UTC, posted twice): "AWS made Amazon Nova 2.5 Sonic generally available on Oct 5.
@@ -29,12 +29,14 @@ sources:
   - https://x.com/Cozy2054934/status/2107451789620486420
   - https://x.com/Cozy2054934/status/2107451921871106335
 created_at: 2026-10-06
-updated_at: 2026-10-06
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-21
+closed_at: 2026-10-21
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-10-06
     change: "Created — RELEASED (reported) / unverified. @Cozy2054934 (2026-10-06 12:43 UTC) relays an AWS announcement that Amazon Nova 2.5 Sonic, a real-time speech-to-speech model for voice agents, became generally available on 2026-10-05: improved reasoning, instruction following and tool-calling accuracy at lower latency, asynchronous tool calling, mixed voice/text sessions, 256K context, 7 languages, Nova 2 Sonic pricing, four Bedrock regions. Single-source relay; no AWS first-party post captured and direct corroboration was not possible this run, so verification is unverified."
+  - ts: 2026-10-21
+    change: "CLOSED — stale-rumor-unverified. Fifteen daily cycles since creation (2026-10-06) at verification unverified. The reported 2026-10-05 Bedrock GA still rests on one relay (@Cozy2054934), and no AWS or Amazon first-party post or second account appeared, including in today's @awscloud fetch. Closed for lack of corroboration, not because it was disproved. An AWS primary post would open a successor ticket."
 ---
 
 Nova 2.5 Sonic is a point release of Amazon's speech-to-speech line, aimed squarely

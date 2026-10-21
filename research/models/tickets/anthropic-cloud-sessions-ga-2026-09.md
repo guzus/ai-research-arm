@@ -3,7 +3,7 @@ slug: anthropic-cloud-sessions-ga-2026-09
 title: Claude Code cloud sessions leave research preview, with one-time Pro/Max credits
 company: Anthropic
 model: Claude Code (cloud sessions)
-status: released
+status: closed
 status_note: |
   @ClaudeDevs, 2026-09-23 21:23 UTC: "Cloud sessions are officially available
   and out of research preview! They let you keep Claude Code working, even when
@@ -43,14 +43,16 @@ sources:
   - https://x.com/ClaudeDevs/status/2102893179662106684
   - https://x.com/testingcatalog/status/2103015463089238076
 created_at: 2026-09-24
-updated_at: 2026-10-17
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-21
+closed_at: 2026-10-21
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-24
     change: "Created — RELEASED. @ClaudeDevs announced on 2026-09-23 21:23 UTC that Claude Code cloud sessions are out of research preview and generally available, letting sessions keep running with the laptop closed. Launch promo: a one-time credit of $100 (Pro) / $250 (Max) for existing subscribers, claimed via link or `/claim-credit`, GitHub connection required, claim by 2026-10-07, one per account, cloud sessions only. Anthropic clarified 2026-09-24 01:57 UTC that cloud sessions run on the normal Pro/Max plan and the credit is merely spent first — issued as a correction after the original announcement was widely read as cloud sessions being separately metered. Verification confirmed on company-primary posts. Adjacent, same window, deliberately not given separate tickets: local thread execution for Projects in Claude Code (@ClaudeDevs, company-primary) and a Claude Marketplace with Slack/Notion connectors and Cursor/CrowdStrike agents, which appears only in @testingcatalog's third-party daily brief with no Anthropic post in this cycle's signal."
   - ts: 2026-10-17
     change: "Released, unchanged — latency follow-up (secondary relays of Anthropic's own numbers). @Infernus_sl and @Josephyala (2026-10-17) relay Anthropic's August–October p90 time-to-first-token measurements, which exclude model time. Cloud sessions went from 16.99s to 6.00s, local Claude Code sessions from 4.07s to 1.33s, and Claude chat/Cowork from 3.36s to 2.17s. The attributed causes are gzip-compressed conversation uploads and cloud sessions that start booting while the user is still typing. No Anthropic post was captured in this window."
+  - ts: 2026-10-21
+    change: "CLOSED — released-and-aged. Claude Code cloud sessions went GA on 2026-09-23 (@ClaudeDevs 21:23 UTC, per this ticket's creation entry), 28 days before today, and the ticket has been in released state since. Further cloud-session changes roll into normal coverage."
 ---
 
 The product change is small; the billing question it opened is the interesting
