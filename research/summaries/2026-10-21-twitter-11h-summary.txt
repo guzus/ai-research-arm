@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-21 11:39:41 UTC
+
+CYCLE: Google says Argon demand is outrunning its compute; NVIDIA pitches faster AI-factory builds at GTC Berlin
+
+TOP STORIES:
+• Gemini 4 Argon: ~25T tokens in its first 72h, ~3x Gemini 3.0; Google says it is capacity-constrained ✓
+• NVIDIA DSX POD: AI-factory deployment at a prepared site cut from 6 months to 14 days ⚠
+• NVIDIA open-sources Nemotron 3.5 Embed/Rerank/Parse retrieval models; Samsung EM signs NVIDIA ABF substrate deal ⚠
+
+WATCH: Meta Q3 earnings today: capex and TPU inference
+
+Full update on GitHub.
