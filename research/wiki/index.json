@@ -107,6 +107,7 @@
         "claude-sonnet-5",
         "claude-sonnet-5-5",
         "cognition-ai",
+        "deepseek",
         "dynamic-workflows",
         "evo-genome-models",
         "federal-ai-policy",
@@ -178,11 +179,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Microsoft ended its Nscale Essex deal as CoreWeave bonds trade around +1,000 bps and Gartner warns more than $3.5T of AI infrastructure could need write-downs by 2030.",
-      "description": "The historically large compute buildout; Microsoft ended its Nscale Essex deal as CoreWeave bonds trade around +1,000 bps and Gartner warns more than $3.5T of AI infrastructure could need write-downs by 2030.",
+      "summary": "The historically large compute buildout; Super Micro pre-announced $18.5–19.5B FY27Q1 revenue against $14.5–15.5B guidance, as Morgan Stanley puts 2027 hyperscaler-plus-neocloud AI spend at $1.58T.",
+      "description": "The historically large compute buildout; Super Micro pre-announced $18.5–19.5B FY27Q1 revenue against $14.5–15.5B guidance, as Morgan Stanley puts 2027 hyperscaler-plus-neocloud AI spend at $1.58T.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-20",
-      "timestamp": "2026-10-20T00:00:00Z",
+      "updated_at": "2026-10-21",
+      "timestamp": "2026-10-21T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -580,11 +581,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; OSS Scanner posted 880 severe findings in week one, as talks on a second $45B Nscale deal circulate.",
-      "description": "AI safety lab behind Claude; OSS Scanner posted 880 severe findings in week one, as talks on a second $45B Nscale deal circulate.",
+      "summary": "AI safety lab behind Claude; a draft S-1 shows $16.3B first-half revenue against an $80.7B accounting-heavy loss and $600B+ compute commitments ahead of a planned November IPO.",
+      "description": "AI safety lab behind Claude; a draft S-1 shows $16.3B first-half revenue against an $80.7B accounting-heavy loss and $600B+ compute commitments ahead of a planned November IPO.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-20",
-      "timestamp": "2026-10-20T00:00:00Z",
+      "updated_at": "2026-10-21",
+      "timestamp": "2026-10-21T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -1489,11 +1490,11 @@
         "agentic-research",
         "product"
       ],
-      "summary": "Anthropic's agentic research workbench; Claude computed a nine-loop planar N=4 super-Yang-Mills amplitude past Lance Dixon's eight-loop record on a few-thousand-dollar academic budget.",
-      "description": "Anthropic's agentic research workbench; Claude computed a nine-loop planar N=4 super-Yang-Mills amplitude past Lance Dixon's eight-loop record on a few-thousand-dollar academic budget.",
+      "summary": "Anthropic's agentic research workbench; a Claude campaign generated ~318K candidate binders, and 17 of 211 designs tested in outside labs bound a scorpion neurotoxin.",
+      "description": "Anthropic's agentic research workbench; a Claude campaign generated ~318K candidate binders, and 17 of 211 designs tested in outside labs bound a scorpion neurotoxin.",
       "created_at": "2026-07-01",
-      "updated_at": "2026-09-26",
-      "timestamp": "2026-09-26T00:00:00Z",
+      "updated_at": "2026-10-21",
+      "timestamp": "2026-10-21T00:00:00Z",
       "file": "entities/claude-science.md",
       "aliases": [
         "Claude Science",
@@ -1856,11 +1857,11 @@
         "foundation-models",
         "commercialization"
       ],
-      "summary": "Hangzhou Chinese frontier lab; a DHS FASCSA order tells civilian federal agencies to purge DeepSeek products and third-party services built on DeepSeek implementations, including self-hosted weights.",
-      "description": "Hangzhou Chinese frontier lab; a DHS FASCSA order tells civilian federal agencies to purge DeepSeek products and third-party services built on DeepSeek implementations, including self-hosted weights.",
+      "summary": "Hangzhou Chinese frontier lab; open-sourced Apache-2.0 DeepInfer for V4.1-Flash on NVIDIA and Ascend a day after a DHS FASCSA purge of DeepSeek products and derivatives.",
+      "description": "Hangzhou Chinese frontier lab; open-sourced Apache-2.0 DeepInfer for V4.1-Flash on NVIDIA and Ascend a day after a DHS FASCSA purge of DeepSeek products and derivatives.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-10-20",
-      "timestamp": "2026-10-20T00:00:00Z",
+      "updated_at": "2026-10-21",
+      "timestamp": "2026-10-21T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -1868,9 +1869,12 @@
         "深度求索",
         "DeepSeek-V4",
         "DeepSeek V4 Pro",
-        "Liang Wenfeng"
+        "Liang Wenfeng",
+        "DeepInfer",
+        "deepseek-recipe"
       ],
       "outbound": [
+        "agentic-ai-security",
         "ai-capex",
         "alibaba",
         "anthropic",
@@ -4027,16 +4031,18 @@
         "foundation-models",
         "funding"
       ],
-      "summary": "European frontier lab; launched Large 4 (1T / 49B-active multimodal MoE) with API access now and open weights promised for end of October.",
-      "description": "European frontier lab; launched Large 4 (1T / 49B-active multimodal MoE) with API access now and open weights promised for end of October.",
+      "summary": "European frontier lab; shipped Voxtral 3, a 50-language voice-agent stack with Transcribe/Speech models and a LiveKit SDK, after launching Large 4.",
+      "description": "European frontier lab; shipped Voxtral 3, a 50-language voice-agent stack with Transcribe/Speech models and a LiveKit SDK, after launching Large 4.",
       "created_at": "2026-09-09",
-      "updated_at": "2026-10-07",
-      "timestamp": "2026-10-07T00:00:00Z",
+      "updated_at": "2026-10-21",
+      "timestamp": "2026-10-21T00:00:00Z",
       "file": "entities/mistral.md",
       "aliases": [
         "Mistral",
         "Mistral AI",
-        "Firefox Smart Window"
+        "Firefox Smart Window",
+        "Voxtral 3",
+        "Voxtral"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -5063,11 +5069,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "Open-weight models closing on the frontier; a DHS FASCSA order now covers third-party services developed using DeepSeek implementations, including self-hosted weights.",
-      "description": "Open-weight models closing on the frontier; a DHS FASCSA order now covers third-party services developed using DeepSeek implementations, including self-hosted weights.",
+      "summary": "Open-weight models closing on the frontier; DeepSeek open-sourced Apache-2.0 DeepInfer, the production inference engine for V4.1-Flash, a day after a DHS FASCSA order reached self-hosted DeepSeek weights.",
+      "description": "Open-weight models closing on the frontier; DeepSeek open-sourced Apache-2.0 DeepInfer, the production inference engine for V4.1-Flash, a day after a DHS FASCSA order reached self-hosted DeepSeek weights.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-20",
-      "timestamp": "2026-10-20T00:00:00Z",
+      "updated_at": "2026-10-21",
+      "timestamp": "2026-10-21T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -5214,11 +5220,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; leaked aurora-*-alpha IDs resurfaced as image models on Arena, while ChatGPT ads are reported at about $5 a click.",
-      "description": "Frontier lab behind the GPT family; leaked aurora-*-alpha IDs resurfaced as image models on Arena, while ChatGPT ads are reported at about $5 a click.",
+      "summary": "Frontier lab behind the GPT family; Reuters says it is speeding a $30B raise above a $1.4T valuation before Anthropic's S-1, and acquired Orchestra Bio for Rosalind.",
+      "description": "Frontier lab behind the GPT family; Reuters says it is speeding a $30B raise above a $1.4T valuation before Anthropic's S-1, and acquired Orchestra Bio for Rosalind.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-19",
-      "timestamp": "2026-10-19T00:00:00Z",
+      "updated_at": "2026-10-21",
+      "timestamp": "2026-10-21T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5227,6 +5233,9 @@
         "OpenAI Inc.",
         "GPT-Rosalind",
         "Rosalind Biodefense",
+        "Rosalind Workbench",
+        "Orchestra Bio",
+        "Aleksander Madry",
         "OpenAI Dots",
         "Dots agents",
         "GPT-Synopsys",
@@ -6105,11 +6114,11 @@
         "space",
         "public-listing"
       ],
-      "summary": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave; its first public quarter (FY26Q2) put ~86% of $18.4B capex into AI compute; now designing an orbital AI datacenter with NVIDIA (Vera Rubin NVL72, Q4 2027 launch).",
-      "description": "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave; its first public quarter (FY26Q2) put ~86% of $18.4B capex into AI compute; now designing an orbital AI datacenter with NVIDIA (Vera Rubin NVL72, Q4 2027 launch).",
+      "summary": "Aerospace company whose record IPO (Nasdaq SPCX) now reports as an AI-compute landlord; Q3 printed $14.6B revenue and $4.4B net income, with Musk guiding to ~13 GW of AI compute and a 440,000-GPU Vera Rubin cluster by mid-2027.",
+      "description": "Aerospace company whose record IPO (Nasdaq SPCX) now reports as an AI-compute landlord; Q3 printed $14.6B revenue and $4.4B net income, with Musk guiding to ~13 GW of AI compute and a 440,000-GPU Vera Rubin cluster by mid-2027.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-08-25",
-      "timestamp": "2026-08-25T00:00:00Z",
+      "updated_at": "2026-10-21",
+      "timestamp": "2026-10-21T00:00:00Z",
       "file": "entities/spacex.md",
       "aliases": [
         "SpaceX",
@@ -6895,6 +6904,7 @@
     "ai supply-chain security": "agentic-ai-security",
     "ai-capex": "ai-capex",
     "ai-for-manufacturing": "artificial-general-engineer",
+    "aleksander madry": "openai",
     "aleph alpha": "aleph-alpha",
     "aleph-alpha": "aleph-alpha",
     "alex karp": "palantir",
@@ -7022,6 +7032,7 @@
     "decart": "decart",
     "decart ai": "decart",
     "decision-1": "microsoft",
+    "deepinfer": "deepseek",
     "deepmind institute": "google",
     "deepseek": "deepseek",
     "deepseek ai": "deepseek",
@@ -7029,6 +7040,7 @@
     "deepseek v4-flash-0731": "deepseek-v4-flash",
     "deepseek v4.1 flash": "deepseek-v4-1-flash",
     "deepseek-flash": "deepseek-v4-1-flash",
+    "deepseek-recipe": "deepseek",
     "deepseek-v4": "deepseek",
     "deepseek-v4-1-flash": "deepseek-v4-1-flash",
     "deepseek-v4-flash": "deepseek-v4-flash",
@@ -7413,6 +7425,7 @@
     "opus 4.8": "claude-opus-4-8",
     "opus 5": "claude-opus-5",
     "opus 5.5": "claude-opus-5-5",
+    "orchestra bio": "openai",
     "origin": "cursor",
     "ornith": "ornith-1-5",
     "ornith 1.5": "ornith-1-5",
@@ -7470,6 +7483,7 @@
     "robostral": "mistral-robostral-navigate",
     "robostral navigate": "mistral-robostral-navigate",
     "rosalind biodefense": "openai",
+    "rosalind workbench": "openai",
     "sachin katti": "openai",
     "sacramento ai policy": "california-ai-regulation",
     "safa": "federal-ai-policy",
@@ -7563,6 +7577,8 @@
     "volta": "volta-infra",
     "volta infrastructure": "volta-infra",
     "volta-infra": "volta-infra",
+    "voxtral": "mistral",
+    "voxtral 3": "mistral",
     "weathernext": "google",
     "weathernext 3": "google",
     "weights in silicon": "model-specific-silicon",
@@ -7600,6 +7616,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-10-21",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-21 digest plus tickets updated 2026-10-20 (deepseek-deepinfer, minimax-m3-1-flash leftover, inception-mercury-3, others). Created 0. Updated 8 (anthropic — draft S-1 $16.3B H1 / $80.7B accounting-heavy loss / $600B+ compute / November IPO + 318K protein binders + Nscale 460 MW / 1.35 GW figures; openai — $30B raise sped above $1.4T before Anthropic S-1, Orchestra Bio into Rosalind, Madry returns, GPT-6 Astra MultiLangBench 87.4%; deepseek — Apache-2.0 DeepInfer on SM100/Ascend 950, HN 2,077; open-weights — same serving-stack drop; spacex — Q3 $14.6B / $4.4B NI, 13 GW guide, 440k-GPU Vera Rubin mid-2027, Grok Bot 800K WAU; ai-capex — SMCI $18.5–19.5B FY27Q1 vs $14.5–15.5B + Morgan Stanley $1.58T 2027; claude-science — 17/211 outside-lab toxin binders; mistral — Voxtral 3 50-language voice stack, HN 472). Skipped for budget: Super Micro as its own page, federal-ai-policy court-gated restatement, gpt-6 MultiLangBench as own increment, xai Grok Bot, muse-glimmer 30B paper, Mercury 3, ElevenLabs Realtime, MiniMax M3.1 Flash leftover, Perplexity local macOS, Meta Muse 10.2M downloads, ECHOTRIBBLE / Linwei Ding sanctions, TorchTPU, Épi / World of SWECraft / TokenGate arXiv batch."
+    },
     {
       "date": "2026-10-20",
       "op": "ingest",
@@ -7694,11 +7715,6 @@
       "date": "2026-10-02",
       "op": "ingest",
       "summary": "Ingested the 2026-10-02 digest plus tickets updated 2026-10-01 (tencent-oracle-compute-lease, salesforce-koa, nebius-inferize, google-synthid-bio, google-gemini-4, anthropic-haiku-5-5, ftc-anthropic-openai). Created 0, updated 8 (openai — three safety-researcher firings + CA AG cybersecurity subpoena + SoftBank/Nvidia final $10B each + FT 55-site agent report + Trump equity-stake float; anthropic — Claude Code TypeScript mods + no further enterprise discounts + civilian FedRAMP + Haiku 5.5 rumor; perplexity — pplx-decider-27b + Decisions API $0.04/M input free output; jev — same-day Clef / JEV-27B-VL / Strands Decider wave; gemini-4-argon — Vals Index 68.9% #1 + HN 1,632 pts + contested 60%-of-Astra cost claim; agentic-ai-security — 55 sites + 13,000 leaked screenshots; salesforce — Listen Labs ~$2B; google — SynthID Bio protein watermark). Skipped for budget: Oracle/Tencent $7B SE Asia lease as its own page, Nebius Inferize, California workplace-AI bills, Meta Muse 3M WAU, Grok 4.7 all-mode rollout, SpaceXAI/Microsoft compute talks, federal-ai-policy / california-ai-regulation / ai-capex / nvidia / xai / nebius increments, arXiv highlights."
-    },
-    {
-      "date": "2026-10-01",
-      "op": "ingest",
-      "summary": "Ingested the 2026-10-01 digest plus tickets updated 2026-09-30 (whitehouse-superintelligence-accord, senate-ai-risk-management-act). Created 1 (gemini-4-argon — Fairwind-gated frontier SKU, 1M-token output, $2/$10 intro then $4/$20, AA Index 53 tying Astra). Updated 9 (google — Argon ship + Pichai first-hand accord signature + ~100 publisher payouts; openai — Moonshot-linked 16k-attempt distillation file + GPT-Synopsys + reported FTC probe; anthropic — robots paper 74%/0.3% + FTC + Claude for Government Desktop GA; federal-ai-policy — Pichai/Huang first-hand + Verge Joint Commitment text + Reuters FTC/METR + unnumbered Senate bill; micron — FY26Q4 $54.23B / $37.70B GAAP NI / FY $133.19B; moonshot-kimi-k3 — OpenAI distillation attribution to Kimi-associated individuals; gemini-3-8-flash — Fairwind now also gates Argon; astra + claude-opus-5-5 — Decoder/AA Argon comparison). Skipped for budget: DeepSeek Ascend tooling, Reddit RSS shutdown, ElevenLabs $22B tender, Flow Engineering $750M, Restate $20M, Inworld/Ultravox, Meta $3.9B experiment classification, Cohere Embed 5 / Ideogram 4.5 / StepAudio 3, Cursor grok-4.8 rumor, Project Meridian as its own page, arXiv highlights."
     }
   ]
 }

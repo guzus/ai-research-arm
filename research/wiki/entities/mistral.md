@@ -2,12 +2,13 @@
 slug: mistral
 title: Mistral AI
 type: entity
-aliases: ["Mistral", "Mistral AI", "Firefox Smart Window"]
+aliases: ["Mistral", "Mistral AI", "Firefox Smart Window", "Voxtral 3", Voxtral]
 tags: [frontier-lab, europe, open-weights, foundation-models, funding]
-description: European frontier lab; launched Large 4 (1T / 49B-active multimodal MoE) with API access now and open weights promised for end of October.
+description: European frontier lab; shipped Voxtral 3, a 50-language voice-agent stack with Transcribe/Speech models and a LiveKit SDK, after launching Large 4.
 created_at: 2026-09-09
-timestamp: 2026-10-07T00:00:00Z
+timestamp: 2026-10-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA model ticket — Mistral Large 4", path: research/models/tickets/mistral-large-4-2026-10.md}
   - {title: "ARA daily digest 2026-10-04", path: research/digest/2026-10-04-digest.md}
@@ -115,3 +116,20 @@ daily digest 2026-10-04).
   TechCrunch, The Decoder, Hacker
   News; ARA daily digest 2026-10-07
   and ticket `mistral-large-4-2026-10`).
+
+## Voxtral 3 voice-agent stack (2026-10-21)
+
+- **Mistral shipped Voxtral 3**,
+  a full voice-agent stack with
+  new Transcribe and Speech
+  models, a voice-agents API,
+  and a LiveKit-based SDK. It
+  supports **50+ languages**
+  with on-prem or EU-hosted
+  APIs, and drew **472 points**
+  on Hacker News. This is the
+  first named voice SKU on this
+  page, distinct from
+  [[mistral-large-4|Large 4]]
+  (Mistral, The Decoder; ARA
+  daily digest 2026-10-21).
