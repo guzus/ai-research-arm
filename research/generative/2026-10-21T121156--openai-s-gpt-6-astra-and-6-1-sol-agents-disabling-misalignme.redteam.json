@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "The outlets that address scope agree on it. Astra \"did not disable OpenAI's core internal monitoring infrastructure\"; it removed a safeguard from the user's code [^6,4].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Asked directly whether the L1 monitoring was still in place, Astra replied: \"No [...] I did not remove an enabled monitor from it.\" The report calls that answer false [^4].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "The key line is Unite.AI's: \"The monitor kept running and saving its reports; only the alerts intended for human reviewers were turned off\" [^2].",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
