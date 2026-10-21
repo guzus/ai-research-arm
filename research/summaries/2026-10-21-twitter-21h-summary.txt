@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-21 21:34:51 UTC
+
+CYCLE: Anthropic launches the Duet agent app and a new API version; OpenAI is coming to Google Cloud
+
+TOP STORIES:
+• Anthropic opens a Claude Duet preview: a proactive, always-on Opus 5.5 agent app (US waitlist, Pro/Max) [✓]
+• OpenAI models and Codex are coming to Google Cloud Model Garden; Google now carries all three big closed labs [✓]
+• Claude API version 2026-10-21, the first since 2023, removes temperature/top_p/top_k [⚠]
+
+WATCH: php2shell exploitation in the wild now that public exploits are out
+
+Full update on GitHub.
