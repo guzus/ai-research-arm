@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-21
+
+TOP 5 PAPERS:
+• Sage-A1.5 — Shanghai AI Lab 35B MoE: orchestrates subagents, verifies, does open scientific discovery
+• Reward misspecification kills CoT monitorability — Hewitt; description injection recovers +24/42 pp
+• Two sorting algorithms — Bengio/Bartlett: init picks the basin; only one length-generalizes
+• DataPraxis — 27B matches GLM-5.2 on DABStep/JobBench via verified workspace evolution
+• Toolflation — seller agents GEO-inflate listings; capable tools lose; one model → random buyers
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
