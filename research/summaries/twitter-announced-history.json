@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-23 21:00 UTC",
-    "headline": "ANTHROPIC ALSO IN TALKS TO RENT MICROSOFT'S CUSTOM MAIA AI CHIPS, EXPANDING MULTICHIP PUSH OFF NVIDIA",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-23-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058216442378551467"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-24 01:00 UTC",
-    "headline": "ANTHROPIC'S GATED \"MYTHOS\" MODEL LEAKS IN CLAUDE UI \u2014 \"CLAUDE-MYTHOS-1-PREVIEW\" SCOPED TO CLAUDE CODE + SECURITY, NOT PUBLIC API",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-24-twitter-01h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2058322222297518498"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-24 01:00 UTC",
-    "headline": "SEMIANALYSIS: US CONSUMER SENTIMENT WORST SINCE 1952 \u2014 CALLS AI JOB-FEAR A \"MEASURABLE MACRO SIGNAL\"",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-24-twitter-01h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2058352311588507795"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-24 01:00 UTC",
-    "headline": "SECOND ANTHROPIC LEAK: \"CLAUDE-OPUS-4.8\" SPOTTED ON GOOGLE VERTEX \u2014 UNCONFIRMED, NEXT WAVE APPEARS TO BE QUEUING",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-24-twitter-01h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2058226072596971694"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-24 12:00 UTC",
     "headline": "XAI OPENS GROK BUILD CODING CLI TO ALL SUPERGROK AND X PREMIUM USERS \u2014 ONE-COMMAND INSTALL, NOW DOUBLES AS READ-ONLY X CLIENT",
@@ -23470,5 +23434,33 @@
     "headline": "OPENAI: ~1,946 GPT-ROSALIND AGENTS GENERATE NEURODEGENERATION DRUG-TARGET LEADS IN 32 MINUTES WITH SCRIPPS",
     "source": "@OpenAI",
     "url": "https://x.com/OpenAI/status/2112899854569762936"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-21 21:34:51 UTC",
+    "headline": "ANTHROPIC OPENS CLAUDE DUET PREVIEW \u2014 PROACTIVE ALWAYS-ON OPUS 5.5 AGENT APP, US WAITLIST FOR PRO AND MAX",
+    "source": "@claudeai",
+    "url": "https://x.com/claudeai/status/2112984664256241837"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-21 21:34:51 UTC",
+    "headline": "OPENAI MODELS AND CODEX COMING TO GOOGLE CLOUD MODEL GARDEN; GOOGLE NOW OFFERS ALL THREE LEADING CLOSED LABS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2112988118471295323"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-21 21:34:51 UTC",
+    "headline": "CLAUDE API VERSION 2026-10-21 SHIPS \u2014 FIRST SINCE 2023; TEMPERATURE, TOP_P, TOP_K REMOVED",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2113013247209021918"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-21 21:34:51 UTC",
+    "headline": "PHP2SHELL PUBLIC EXPLOITS OUT \u2014 PATCH PHP TO 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12",
+    "source": "@vercel_dev",
+    "url": "https://x.com/vercel_dev/status/2112988286864195960"
   }
 ]
