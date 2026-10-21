@@ -2,12 +2,13 @@
 slug: openai
 title: OpenAI
 type: entity
-aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha"]
+aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; leaked aurora-*-alpha IDs resurfaced as image models on Arena, while ChatGPT ads are reported at about $5 a click.
+description: Frontier lab behind the GPT family; Reuters says it is speeding a $30B raise above a $1.4T valuation before Anthropic's S-1, and acquired Orchestra Bio for Rosalind.
 created_at: 2026-05-30
-timestamp: 2026-10-19T00:00:00Z
+timestamp: 2026-10-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA model ticket — OpenAI Aurora alpha models", path: research/models/tickets/openai-aurora-alpha-models-2026-10.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
@@ -3361,6 +3362,57 @@ materially reshape how the lab is positioned heading into its IPO window:
   (@AndrewCurran_,
   @kimmonismus, @0x4D31; ARA
   daily digest 2026-10-19).
+
+## $30B raise sped up; Orchestra Bio; Madry returns (2026-10-21)
+
+- **Reuters says OpenAI is
+  seeking $30B above a $1.4T
+  valuation**, speeding the
+  raise to lock investors
+  before [[anthropic]]'s S-1
+  invites side-by-side
+  comparisons. That mark is at
+  least **64%** above the
+  **$852B** March print this
+  page has used. The $30B /
+  $1.4T pair first appeared as
+  talks on 2026-09-30; the new
+  fact is the Anthropic-S-1
+  sequencing. Still Reuters,
+  no close (Reuters via
+  Twitter; ARA daily digest
+  2026-10-21).
+- **OpenAI acquired Orchestra
+  Bio** for its biotech push.
+  The team and technology go
+  into Rosalind and Rosalind
+  Workbench. No terms
+  disclosed. See
+  [[lifescibench]] (OpenAI,
+  TechCrunch; ARA daily
+  digest 2026-10-21).
+- **Aleksander Madry returned
+  to work on safety** with
+  @merettm "as we confront
+  superintelligence," per Sam
+  Altman. Separately, The
+  Information says Altman gave
+  staff three
+  superintelligence
+  "endgames," one of which he
+  called "terrible" (@sama,
+  The Decoder; ARA daily
+  digest 2026-10-21).
+- **[[gpt-6|GPT-6 Astra]]
+  posted 87.4% on
+  MultiLangBench** across 20
+  languages, up from about
+  **38%** for
+  [[gpt-5-6|GPT-5.6 Terra]],
+  and OpenAI is pitching
+  COBOL/Fortran/VB migration
+  (The Decoder, @OpenAI; ARA
+  daily digest 2026-10-21).
 
 ## Open questions
 

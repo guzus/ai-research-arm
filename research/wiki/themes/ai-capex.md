@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Microsoft ended its Nscale Essex deal as CoreWeave bonds trade around +1,000 bps and Gartner warns more than $3.5T of AI infrastructure could need write-downs by 2030.
+description: The historically large compute buildout; Super Micro pre-announced $18.5–19.5B FY27Q1 revenue against $14.5–15.5B guidance, as Morgan Stanley puts 2027 hyperscaler-plus-neocloud AI spend at $1.58T.
 created_at: 2026-05-24
-timestamp: 2026-10-20T00:00:00Z
+timestamp: 2026-10-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
@@ -1703,8 +1704,52 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   relay secondhand compute-
   scarcity anecdotes (AWS/GCP
   "or anyone"; Amazon out of
-  compute "until beyond
+  compute   "until beyond
   2028") — not disclosures
   (Korean media via @jukan05,
   @elonmusk; ARA daily digest
   2026-10-20).
+
+## Super Micro beat; Morgan Stanley $1.58T; SpaceX 13 GW (2026-10-21)
+
+- **Super Micro (SMCI)
+  pre-announced fiscal Q1
+  2027 revenue of
+  $18.5B–$19.5B** against
+  guidance of $14.5B–$15.5B,
+  citing AI-platform demand.
+  First-party 8-K filed
+  2026-10-20. That is a
+  supply-side print against
+  yesterday's Gartner
+  write-down warning (SEC
+  8-K; ARA daily digest
+  2026-10-21).
+- **Morgan Stanley puts 2027
+  hyperscaler and [[neocloud]]
+  AI spending at $1.58T
+  (+60%)** once leases are
+  counted as capex, with
+  about **$690B** of that
+  going to [[nvidia|NVIDIA]].
+  Goldman's 2026-09-28 print
+  was $1.2T for 2027
+  hyperscalers; this is the
+  lease-adjusted number (ARA
+  daily digest 2026-10-21).
+- **[[spacex|SpaceX]] guided
+  to ~13 GW of AI compute**
+  on a Q3 print of $14.6B
+  revenue / $4.4B net income,
+  with a 440,000-GPU Vera
+  Rubin cluster dated
+  mid-2027. [[anthropic]]'s
+  draft S-1 puts compute
+  commitments above
+  **$600B**. Elice, a Korean
+  AI data-center operator,
+  debuted about 30% below
+  IPO as the KOSPI fell
+  3.7%. See [[anthropic]]
+  (TechCrunch, Twitter; ARA
+  daily digest 2026-10-21).

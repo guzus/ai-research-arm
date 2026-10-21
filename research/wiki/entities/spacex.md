@@ -4,10 +4,11 @@ title: SpaceX
 type: entity
 aliases: [SpaceX, "@SpaceX", SPCX, "Space Exploration Technologies", Starlink]
 tags: [ipo, capital-markets, ai-infrastructure, space, public-listing]
-description: "Aerospace company whose record IPO (Nasdaq SPCX, pricing 2026-06-11 at $135/share, ~$1.75T valuation, ~$74.4B net raise) anchors the 2026 AI-financing issuance wave; its first public quarter (FY26Q2) put ~86% of $18.4B capex into AI compute; now designing an orbital AI datacenter with NVIDIA (Vera Rubin NVL72, Q4 2027 launch)."
+description: "Aerospace company whose record IPO (Nasdaq SPCX) now reports as an AI-compute landlord; Q3 printed $14.6B revenue and $4.4B net income, with Musk guiding to ~13 GW of AI compute and a 440,000-GPU Vera Rubin cluster by mid-2027."
 created_at: 2026-06-05
-timestamp: 2026-08-25T00:00:00Z
+timestamp: 2026-10-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
   - {title: "ARA daily digest 2026-06-17", path: research/digest/2026-06-17-digest.md}
@@ -163,3 +164,30 @@ frontier labs (the Anthropic–SpaceX "Colossus" datacenter arrangement).
   statement confirms the terms**; the $60B figure still rests on press relays
   rather than a directly-read filing (The Information, @elonmusk; ARA daily
   digest 2026-08-25).
+
+## Q3: $14.6B revenue, 13 GW AI-compute guide (2026-10-21)
+
+- **On its Q3 call SpaceX
+  reported $14.6B revenue and
+  $4.4B net income.** Musk
+  guided to about **13 GW of
+  AI compute** and a
+  **440,000-GPU Vera Rubin
+  training cluster by
+  mid-2027**, and said Grok
+  Bot has **800K weekly
+  active paying users**.
+  FY26Q2 on this page put
+  capex at $18.4B with a
+  year-end **2 GW** /
+  next-year **~10 GW** guide;
+  **13 GW** is the new
+  first-party envelope. The
+  Vera Rubin cluster extends
+  the orbital NVL72 design
+  logged 2026-08-25 into a
+  dated terrestrial training
+  target. See [[ai-capex]],
+  [[xai]] and [[nvidia]]
+  (TechCrunch, Twitter; ARA
+  daily digest 2026-10-21).

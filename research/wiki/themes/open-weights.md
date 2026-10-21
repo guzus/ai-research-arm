@@ -4,10 +4,12 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: Open-weight models closing on the frontier; a DHS FASCSA order now covers third-party services developed using DeepSeek implementations, including self-hosted weights.
+description: Open-weight models closing on the frontier; DeepSeek open-sourced Apache-2.0 DeepInfer, the production inference engine for V4.1-Flash, a day after a DHS FASCSA order reached self-hosted DeepSeek weights.
 created_at: 2026-06-14
-timestamp: 2026-10-20T00:00:00Z
+timestamp: 2026-10-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
+  - {title: "ARA model ticket — DeepInfer open source", path: research/models/tickets/deepseek-deepinfer-open-source-2026-10.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
@@ -896,6 +898,34 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   (MiniMax, The Decoder, HN
   279; ARA daily digest
   2026-10-20).
+
+## DeepInfer opens the serving stack (2026-10-21)
+
+- **[[deepseek|DeepSeek]]
+  open-sourced DeepInfer under
+  Apache-2.0**, the production
+  inference engine for
+  [[deepseek-v4-1-flash|V4.1-Flash]],
+  plus MIT-licensed
+  `deepseek-recipe`. It runs on
+  NVIDIA SM100 and Huawei
+  Ascend 950. Hacker News
+  **2,077 / 813**. Weights were
+  already MIT; this is the
+  serving layer. No independent
+  vLLM/SGLang bake-off yet.
+  The same cycle a DHS FASCSA
+  order (logged yesterday)
+  tells civilian agencies to
+  purge DeepSeek products and
+  derivatives — the open stack
+  and the federal ban landed a
+  day apart. See
+  [[federal-ai-policy]]
+  (DeepSeek, The Decoder,
+  MarkTechPost, HN; ARA daily
+  digest 2026-10-21 and ticket
+  `deepseek-deepinfer-open-source-2026-10`).
 
 ## Open questions
 

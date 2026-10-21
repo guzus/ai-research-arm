@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; OSS Scanner posted 880 severe findings in week one, as talks on a second $45B Nscale deal circulate.
+description: AI safety lab behind Claude; a draft S-1 shows $16.3B first-half revenue against an $80.7B accounting-heavy loss and $600B+ compute commitments ahead of a planned November IPO.
 created_at: 2026-05-24
-timestamp: 2026-10-20T00:00:00Z
+timestamp: 2026-10-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA model ticket — Anthropic–Schwab partnership", path: research/models/tickets/anthropic-schwab-partnership-2026-10.md}
@@ -3682,3 +3683,84 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   (@elonmusk, WSJ, TechCrunch,
   HN; ARA daily digest
   2026-10-20).
+
+## Draft S-1 prints $16.3B H1; protein binders (2026-10-21)
+
+- **A draft prospectus, per the
+  WSJ, shows first-half 2026
+  revenue of $16.3B**, up from
+  **$1.1B** a year earlier. The
+  **$80.7B net loss** is mostly
+  accounting adjustments on
+  earlier financings. Compute
+  and infrastructure spend rose
+  from **$2.3B to nearly $9B**
+  year over year, and **compute
+  commitments top $600B** ahead
+  of a planned **November IPO**.
+  TechCrunch separately says
+  Anthropic's cloud partnerships
+  are "getting messy" because
+  providers now treat it as a
+  competitor. These are the
+  first named H1 revenue and
+  commitment prints on the S-1
+  path this page has tracked
+  since the Reuters $42B-loss /
+  $518B-obligations read on
+  2026-09-29. Still a draft,
+  still WSJ/TechCrunch, not a
+  filed S-1. See [[ai-capex]]
+  and [[openai]] (WSJ via
+  Twitter, TechCrunch; ARA daily
+  digest 2026-10-21).
+- **The second Nscale lease talk
+  now has campus numbers.** The
+  reported **$45B** deal would
+  add a second **460 MW**
+  building at Nscale's West
+  Virginia Monarch campus,
+  **920 MW** total, with a
+  right of first refusal on a
+  third building that could
+  give Anthropic the whole
+  **1.35 GW** first phase.
+  Neither principal confirmed.
+  This page logged the $45B
+  talk yesterday; the megawatt
+  figures are new (Twitter; ARA
+  daily digest 2026-10-21).
+- **A largely autonomous Claude
+  campaign generated about
+  318K candidate protein
+  binders**; **17 of 211**
+  designs tested in outside
+  labs bound a scorpion
+  neurotoxin. Anthropic
+  released the data and calls
+  the work exploratory, not an
+  antivenom. See
+  [[claude-science]] (Anthropic
+  Science Blog, HN; ARA daily
+  digest 2026-10-21).
+- **The safety-bill pitch is
+  restated as court-gated**: a
+  release could be blocked if
+  **50+ people** could be
+  killed, but no federal
+  agency may block a release
+  without a judge. Same draft
+  this page logged on
+  2026-10-17/19; the
+  "court-gated" framing is
+  TechCrunch's. See
+  [[federal-ai-policy]]
+  (TechCrunch; ARA daily
+  digest 2026-10-21).
+- **Bloomberg via TechCrunch
+  says Eric Schmidt owns about
+  1% of Anthropic**, roughly
+  half of Dario Amodei's
+  stake. Single-outlet
+  cluster, no filing (ARA
+  daily digest 2026-10-21).

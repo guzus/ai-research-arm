@@ -12,7 +12,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.
-- [[anthropic]] — AI safety lab behind Claude; OSS Scanner posted 880 severe findings in week one, as talks on a second $45B Nscale deal circulate.
+- [[anthropic]] — AI safety lab behind Claude; a draft S-1 shows $16.3B first-half revenue against an $80.7B accounting-heavy loss and $600B+ compute commitments ahead of a planned November IPO.
 - [[apple]] — Consumer-hardware giant; Meta and Apple tuned Muse Spark Open to run on two M5 Ultra Mac Studios.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
@@ -23,7 +23,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[claude-opus-4-8]] — Anthropic's 2026-05-29 frontier flagship; now also the safeguard-reroute target for Fable 5.
 - [[claude-opus-5]] — Anthropic's 2026-07-25 frontier flagship, superseded as the Opus line's current SKU by Claude Opus 5.5 (2026-09-23); pitched as near-Fable-5 performance at half the price.
 - [[claude-opus-5-5]] — Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Opus 5.5 fast mode is generally available at $8/$40, up to 2.5× faster.
-- [[claude-science]] — Anthropic's agentic research workbench; Claude computed a nine-loop planar N=4 super-Yang-Mills amplitude past Lance Dixon's eight-loop record.
+- [[claude-science]] — Anthropic's agentic research workbench; a Claude campaign generated ~318K candidate binders, and 17 of 211 designs tested in outside labs bound a scorpion neurotoxin.
 - [[claude-sonnet-5]] — Anthropic's 2026-06-30 mid-tier model, superseded as the Sonnet SKU by Claude Sonnet 5.5 (2026-09-28); $2/$10 intro pricing was made permanent on 2026-08-10.
 - [[claude-sonnet-5-5]] — Anthropic's 2026-09-28 mid-tier Claude 5.5 model at unchanged $2/$10; vendor Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, with the 30% cheaper claim a per-task assertion, not a price cut.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY); in talks at a $40B+ valuation on a round that could exceed $1B (2026-08-13).
@@ -31,7 +31,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[crusoe]] — AI-infrastructure builder that cancelled a $1.25B Boom Superpower turbine order at the Abilene campus supplying OpenAI, after a $3.9B Series F at $30.9B.
 - [[cursor]] — AI coding tool/IDE maker Anysphere; SpaceXAI is a named defendant in Buist v. Anthropic PBC, after the reported $60B SpaceX deal and OpenAI's November 12 model-access cutoff.
 - [[decart]] — Chip-efficiency and world-model startup; WSJ, Bloomberg, and Reuters report Amazon talks at about $7 billion.
-- [[deepseek]] — Hangzhou Chinese frontier lab; a DHS FASCSA order tells civilian federal agencies to purge DeepSeek products and third-party services built on DeepSeek implementations, including self-hosted weights.
+- [[deepseek]] — Hangzhou Chinese frontier lab; open-sourced Apache-2.0 DeepInfer for V4.1-Flash on NVIDIA and Ascend a day after a DHS FASCSA purge of DeepSeek products and derivatives.
 - [[deepseek-v4-1-flash]] — DeepSeek's MIT-licensed multimodal MoE; the 2026-10-17 Flash-1017 checkpoint posts first-party DeepSWE 77.0 and Terminal-Bench 4.0 42.3, with no independent evals yet.
 - [[deepseek-v4-flash]] — DeepSeek's 284B/13B-active MoE with 1M context; API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis — and outperforming the 4.5×-pricier V4-Pro-0813 on a friendly analyst's tasks (2026-08-13).
 - [[dell]] — US enterprise-IT OEM; FY27Q2 (filed 2026-09-01) printed $47.0B revenue (+58% YoY) with $16.4B of AI-optimized server sales, $60.9B of AI-server orders and a $95B backlog, lifting full-year guidance to $192.0B.
@@ -68,7 +68,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[minimax-h3]] — MiniMax's 33B unified text/image/video/audio model (2026-08-04); first open model reported to top a video-generation ranking, runs on a single RTX 5090, but withholds 2K regeneration and sparse attention server-side.
 - [[minimax-m3]] — MiniMax's open-weights model (1M context, 59% SWE-Bench Pro) — strongest open-weights agentic-coding model of the cycle.
 - [[minimax-m3-1-flash]] — MiniMax's 428B / ~23B-active MoE at $0.15/$0.60; former Space Bunny, weights promised Oct 23, vendor chart trailing DeepSeek V4.1 Flash.
-- [[mistral]] — European frontier lab; launched Large 4 (1T / 49B-active multimodal MoE) with API access now and open weights promised for end of October.
+- [[mistral]] — European frontier lab; shipped Voxtral 3, a 50-language voice-agent stack with Transcribe/Speech models and a LiveKit SDK, after launching Large 4.
 - [[mistral-large-4]] — Mistral's 1T-parameter / 49B-active multimodal MoE; API live now, open weights promised for end of October, pitched at cybersecurity work closed US models refuse.
 - [[mistral-leanstral-1-5]] — Mistral's open-source (Apache 2.0) Lean 4 formal-verification model; saturates miniF2F, SOTA on FATE-H/FATE-X, found 5 unknown bugs across 57 scanned repos.
 - [[mistral-robostral-navigate]] — Mistral's first embodied-navigation model (8B params), guiding robots via natural-language task instructions; announced 2026-07-08.
@@ -85,7 +85,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[noam-shazeer]] — Transformer co-inventor and Character.AI founder; Disney hired most of the remaining workforce after the Chapter 11 filing.
 - [[nous-research]] — Open-weights lab behind Hermes Agent; closed a $90M Series B at $1.5B led by Robot Ventures.
 - [[nvidia]] — Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.
-- [[openai]] — Frontier lab behind the GPT family; leaked aurora-*-alpha IDs resurfaced as image models on Arena, while ChatGPT ads are reported at about $5 a click.
+- [[openai]] — Frontier lab behind the GPT family; Reuters says it is speeding a $30B raise above a $1.4T valuation before Anthropic's S-1, and acquired Orchestra Bio for Rosalind.
 - [[openrouter]] — LLM-routing API now under Stripe; Deedy Das reconstructed public token pages at roughly $29.1M a week (~$1.5B annualized), with Anthropic at 36% of dollars.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -104,7 +104,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[sk-hynix]] — South Korean HBM memory supplier; shares fell about 10% in a 2026-10-13 KOSPI selloff that traders blamed on CXMT and Broadcom comments.
 - [[sk-telecom]] — South Korea's largest carrier and ~$100M Anthropic investor; named 2026-06-21 as the Project Glasswing partner whose Mythos 5 access helped trigger the Fable 5 export suspension.
 - [[soofi-s-30b-a3b]] — Deutsche Telekom-backed sovereign open German/English MoE model (~27T tokens); claimed strongest fully-open model on combined EN+DE benchmarks, released 2026-07-13.
-- [[spacex]] — Record IPO (Nasdaq: SPCX, debuted 2026-06-12 at $135/share, ~$1.77T valuation) anchoring the 2026 AI-financing issuance wave.
+- [[spacex]] — Record IPO (Nasdaq: SPCX); Q3 printed $14.6B revenue and $4.4B net income, with Musk guiding to ~13 GW of AI compute and a 440,000-GPU Vera Rubin cluster by mid-2027.
 - [[step-5-preview]] — StepFun's 600B / 27B-active MoE with 1M context; open weights landed in FP8 and BF16, with first-party AA-LCR 88.3% and Terminal-Bench 4.0 33.3%.
 - [[tencent-hunyuan-hy3]] — Tencent Hunyuan's 295B open-weight MoE model under Apache 2.0, reported new open SOTA on the MCP-Atlas benchmark, released 2026-07-06.
 - [[taalas]] — Inference-chip startup hardwiring a single model into silicon; acquired by AMD on 2026-08-07 with no disclosed terms, the second model-specific-silicon deal of the cycle after Nvidia–Groq.
@@ -134,9 +134,9 @@ Each page is one of three types — entity, concept, or theme. See
 ## Themes
 
 - [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; OpenCode users were billed on stolen keys as a Norforge agent swarm hit John Deere, SharkNinja and Cummins.
-- [[ai-capex]] — The historically large compute buildout; Microsoft ended its Nscale Essex deal as CoreWeave bonds trade around +1,000 bps and Gartner warns more than $3.5T of AI infrastructure could need write-downs by 2030.
+- [[ai-capex]] — The historically large compute buildout; Super Micro pre-announced $18.5–19.5B FY27Q1 revenue against $14.5–15.5B guidance, as Morgan Stanley puts 2027 hyperscaler-plus-neocloud AI spend at $1.58T.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Anthropic's draft federal frontier-AI bill would preempt some California laws.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; two German courts now treat Google's AI Overviews as Google's own content, after a Munich appeal ended in a settlement.
 - [[federal-ai-policy]] — US federal AI governance; a DHS FASCSA order now reaches DeepSeek products and derivatives, including self-hosted weights, at civilian agencies.
-- [[open-weights]] — Open-weight models closing on the frontier; a DHS FASCSA order now covers third-party services developed using DeepSeek implementations, including self-hosted weights.
+- [[open-weights]] — Open-weight models closing on the frontier; DeepSeek open-sourced Apache-2.0 DeepInfer, the production inference engine for V4.1-Flash, a day after a DHS FASCSA order reached self-hosted DeepSeek weights.

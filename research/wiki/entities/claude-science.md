@@ -4,10 +4,11 @@ title: Claude Science
 type: entity
 aliases: ["Claude Science", "Anthropic biology lab", "ART enzyme family"]
 tags: [anthropic, claude, ai-for-science, agentic-research, product]
-description: Anthropic's agentic research workbench; Claude computed a nine-loop planar N=4 super-Yang-Mills amplitude past Lance Dixon's eight-loop record on a few-thousand-dollar academic budget.
+description: Anthropic's agentic research workbench; a Claude campaign generated ~318K candidate binders, and 17 of 211 designs tested in outside labs bound a scorpion neurotoxin.
 created_at: 2026-07-01
-timestamp: 2026-09-26T00:00:00Z
+timestamp: 2026-10-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
   - {title: "ARA daily digest 2026-07-05", path: research/digest/2026-07-05-digest.md}
@@ -129,6 +130,33 @@ Review calls it Anthropic's "newest flagship product" (ARA digest 2026-07-01).
   a capability-misuse incident
   (TechCrunch; ARA daily digest
   2026-09-26).
+
+## Scorpion-toxin binders in outside labs (2026-10-21)
+
+- **A largely autonomous Claude
+  campaign generated about 318K
+  candidate binders**; **17 of
+  211** designs tested in
+  outside labs bound their
+  target scorpion neurotoxin.
+  [[anthropic]] released the
+  data and calls the work
+  exploratory, not an antivenom.
+  This is the second wet-lab
+  confirmation on this page
+  after the September ART
+  enzyme family: ART was a
+  search hit that survived
+  bench confirmation with
+  unknown function; these are
+  designed binders with a
+  measured bind rate in
+  external labs. Still
+  vendor-run and exploratory.
+  See [[lifescibench]] and
+  [[evo-genome-models]]
+  (Anthropic Science Blog, HN;
+  ARA daily digest 2026-10-21).
 
 ## Open questions
 - **Does the workbench beat a benchmark?** GeneBench-Pro and

@@ -2,12 +2,14 @@
 slug: deepseek
 title: DeepSeek
 type: entity
-aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng"]
+aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng", DeepInfer, "deepseek-recipe"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou Chinese frontier lab; a DHS FASCSA order tells civilian federal agencies to purge DeepSeek products and third-party services built on DeepSeek implementations, including self-hosted weights.
+description: Hangzhou Chinese frontier lab; open-sourced Apache-2.0 DeepInfer for V4.1-Flash on NVIDIA and Ascend a day after a DHS FASCSA purge of DeepSeek products and derivatives.
 created_at: 2026-06-04
-timestamp: 2026-10-20T00:00:00Z
+timestamp: 2026-10-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
+  - {title: "ARA model ticket — DeepInfer open source", path: research/models/tickets/deepseek-deepinfer-open-source-2026-10.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA model ticket — DeepSeek-V4.1-Flash-1017", path: research/models/tickets/deepseek-v4-1-flash-1017-2026-10.md}
@@ -482,6 +484,47 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   (ARA daily digest 2026-10-20
   and ticket
   `china-ai-weights-export-registration-2026-10`).
+
+## DeepInfer open-sourced on NVIDIA and Ascend (2026-10-21)
+
+- **DeepSeek released DeepInfer**,
+  the Apache-2.0 inference stack
+  behind
+  [[deepseek-v4-1-flash|V4.1-Flash]],
+  plus the MIT-licensed
+  `deepseek-recipe` encode/decode
+  component. It supports
+  distributed inference,
+  speculative decoding, SWA
+  Bounded Replay and structured
+  output, and runs on **NVIDIA
+  SM100** and **Huawei Ascend
+  950**. Future models'
+  inference code is promised in
+  the same repo. It was the
+  day's runaway Hacker News
+  story at **2,077 points / 813
+  comments**. Every performance
+  claim is DeepSeek's; nothing
+  yet benchmarks it against
+  vLLM or SGLang. This is the
+  serving-stack half of the
+  [[open-weights]] posture, one
+  day after the
+  [[federal-ai-policy|DHS
+  FASCSA]] purge (DeepSeek, The
+  Decoder, MarkTechPost, HN;
+  ARA daily digest 2026-10-21
+  and ticket
+  `deepseek-deepinfer-open-source-2026-10`).
+- **Bloomberg separately tied an
+  open-source pentest agent
+  running on V4.1-Flash to
+  breach campaigns in Korea and
+  Japan.** Single-outlet; see
+  [[agentic-ai-security]] (The
+  Decoder, Twitter; ARA daily
+  digest 2026-10-21).
 
 ## Open questions
 
