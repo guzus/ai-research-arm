@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-23 18:00 UTC",
-    "headline": "TRUMP ADMINISTRATION AND ANTHROPIC FINALIZING DEAL TO LET US SPY AGENCIES USE ITS AI TOOLS",
-    "source": "@WatcherGuru",
-    "source_file": "research/summaries/2026-05-23-twitter-18h-headlines.json",
-    "url": "https://x.com/WatcherGuru/status/2058219136874959285"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-23 21:00 UTC",
-    "headline": "MICROSOFT ALLOCATES MORE NVIDIA SERVERS AND NEW AZURE CLUSTERS TO ANTHROPIC AS CLAUDE COMPUTE DEMAND RAMPS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-23-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058276804603924547"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-23 21:00 UTC",
-    "headline": "SEMIANALYSIS: ONSITE GAS TURBINES NOW THE DEFAULT PLANNING ASSUMPTION FOR NEXT-WAVE US AI TRAINING CLUSTERS",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-23-twitter-21h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2058291985543303336"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-23 21:00 UTC",
-    "headline": "GE VERNOVA TARGETING ~24 GW/YR OF GAS TURBINES, SIEMENS ENERGY RAMPING 20 TO 30 GW/YR FOR AI POWER BUILDOUT",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-23-twitter-21h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2058291988412199075"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-23 21:00 UTC",
     "headline": "ANTHROPIC ALSO IN TALKS TO RENT MICROSOFT'S CUSTOM MAIA AI CHIPS, EXPANDING MULTICHIP PUSH OFF NVIDIA",
@@ -23478,5 +23442,33 @@
     "headline": "MISTRAL, NVIDIA PARTNER ON INDUSTRIAL-ENGINEERING AI: SIMULATION, PHYSICS-AI BENCHMARKS, CAE/EDA AGENT EVALS",
     "source": "@MistralAI",
     "url": "https://x.com/MistralAI/status/2112870261829603589"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-21 17:05:24 UTC",
+    "headline": "CRITICAL PHP ENGINE FLAWS PATCHED AFTER 2-MONTH COORDINATED FIX; OPENAI CREDITS GPT-5.6 SOL WITH DISCOVERY",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2112907856018309586"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-21 17:05:24 UTC",
+    "headline": "WIZ RESEARCH ALSO CLAIMS DISCOVERY OF 'PHP2SHELL' CVSS 10 FLAWS IN CORE PHP",
+    "source": "@ralucaadapopa",
+    "url": "https://x.com/GoogleDeepMind/status/2112942536553599429"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-21 17:05:24 UTC",
+    "headline": "HACKERS USED ANTHROPIC, SPACEX AND MOONSHOT MODELS TO AUTOMATE ATTACKS ON 400+ LATAM FINANCIAL TARGETS \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2112929453735125037"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-21 17:05:24 UTC",
+    "headline": "OPENAI: ~1,946 GPT-ROSALIND AGENTS GENERATE NEURODEGENERATION DRUG-TARGET LEADS IN 32 MINUTES WITH SCRIPPS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2112899854569762936"
   }
 ]
