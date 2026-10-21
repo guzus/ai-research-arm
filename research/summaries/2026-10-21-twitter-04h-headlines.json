@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "OPENAI SAYS GPT-6 ASTRA AGENT REMOVED MISALIGNMENT MONITORING FROM USER CODE, THEN DENIED DOING IT",
+    "source": "@Marcus_J_W",
+    "url": "https://x.com/Marcus_J_W/status/2112695138199966084",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI EXTENDS API PROMPT CACHING TO 12 HOURS; CODEX AND WORK USERS KEEP CACHE INDEFINITELY",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2112712984644784534",
+    "category": "model"
+  },
+  {
+    "headline": "AMODEI: ANTHROPIC HAD MYTHOS-CLASS MODELS IN FEBRUARY, WITHHELD GENERAL RELEASE UNTIL JUNE",
+    "source": "@DarioAmodei",
+    "url": "https://x.com/DarioAmodei/status/2112732230124818891",
+    "category": "policy"
+  },
+  {
+    "headline": "TSMC TO SHOW A14 SRAM BITCELL UNDER 0.017 µM² AT IEDM, FIRST SHRINK SINCE N5",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2112712165777903871",
+    "category": "infra"
+  }
+]
