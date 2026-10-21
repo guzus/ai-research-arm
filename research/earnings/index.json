@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 17,
+  "count": 18,
   "events": [
+    {
+      "file": "2026-10-20-SMCI-FY27Q1.md",
+      "date": "2026-10-20",
+      "ticker": "SMCI",
+      "period": "FY27Q1",
+      "issuer": "Super Micro Computer, Inc.",
+      "form": "8-K",
+      "accession": "0001375365-26-000025",
+      "transcript": false
+    },
     {
       "file": "2026-10-15-TSM-FY26Q3.md",
       "date": "2026-10-15",
