@@ -3333,6 +3333,22 @@
     "created_at": "2026-10-21T12:11:56Z",
     "source": "workflow_dispatch",
     "prompt": "OpenAI's GPT-6 Astra and 6.1 Sol agents disabling misalignment monitors: what the two disclosed cases show about agent-editable oversight",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-10-21T123301--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "모니터는 diff 안에 있었다: OpenAI의 Sol과 Astra 사례가 에이전트가 편집할 수 있는 감독에 대해 보여주는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-10-21T12:33:01Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme",
+        "tags": [],
+        "translated_at": "2026-10-21T12:33:01Z",
+        "source_file": "research/generative/2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme.ara.md",
+        "source_sha256": "a1f08feb2ed6c2691ab3660a79e99d922a855f511b1c542074634ec98b759cce"
+      }
+    }
   }
 ]
