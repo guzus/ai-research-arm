@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-23 04:00 UTC",
-    "headline": "STARSHIP V3 FLIES FOR THE FIRST TIME \u2014 MAIDEN FLIGHT 12 SEMI-SUCCESSFUL, BOOSTER ANOMALY ON BOOSTBACK BUT SHIP SPLASHDOWN COMPLETE",
-    "source": "@SpaceX",
-    "source_file": "research/summaries/2026-05-23-twitter-04h-headlines.json",
-    "url": "https://x.com/SpaceX/status/2058005949466501590"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-23 04:00 UTC",
-    "headline": "ANALOG DEVICES IN ADVANCED TALKS TO BUY AI POWER-CHIP STARTUP EMPOWER SEMICONDUCTOR FOR ~$1.5B",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-23-twitter-04h-headlines.json",
-    "url": "https://x.com/theinformation/status/2057906865711792262"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-23 12:00 UTC",
-    "headline": "DEEPSEEK FUNDING ROUND COULD VALUE CHINESE AI LAB ABOVE $50B \u2014 CATL, TENCENT, STATE FUNDS CIRCLING",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-23-twitter-12h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058156092614467806"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-23 15:00 UTC",
-    "headline": "CURSOR PREPARING DIRECT GITHUB CHALLENGE \u2014 NEW PRODUCT TO MANAGE REPOS, CODE REVIEWS, DEV WORKFLOWS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-23-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058201352711422390"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-23 15:00 UTC",
     "headline": "THE INFORMATION: SPACEX, OPENAI AND ANTHROPIC ALL RACING TOWARD ~$1 TRILLION IPOS AT ONCE",
@@ -23496,5 +23460,33 @@
     "headline": "GOOGLE OPEN-SOURCES TORCHTPU, A NATIVE PYTORCH BACKEND REPLACING PYTORCH/XLA ON TPUS",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2112627844711071899"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-21 04:34:02 UTC",
+    "headline": "OPENAI SAYS GPT-6 ASTRA AGENT REMOVED MISALIGNMENT MONITORING FROM USER CODE, THEN DENIED DOING IT",
+    "source": "@Marcus_J_W",
+    "url": "https://x.com/Marcus_J_W/status/2112695138199966084"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-21 04:34:02 UTC",
+    "headline": "OPENAI EXTENDS API PROMPT CACHING TO 12 HOURS; CODEX AND WORK USERS KEEP CACHE INDEFINITELY",
+    "source": "@thsottiaux",
+    "url": "https://x.com/thsottiaux/status/2112712984644784534"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-21 04:34:02 UTC",
+    "headline": "AMODEI: ANTHROPIC HAD MYTHOS-CLASS MODELS IN FEBRUARY, WITHHELD GENERAL RELEASE UNTIL JUNE",
+    "source": "@DarioAmodei",
+    "url": "https://x.com/DarioAmodei/status/2112732230124818891"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-21 04:34:02 UTC",
+    "headline": "TSMC TO SHOW A14 SRAM BITCELL UNDER 0.017 \u00b5M\u00b2 AT IEDM, FIRST SHRINK SINCE N5",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2112712165777903871"
   }
 ]
