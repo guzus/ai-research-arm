@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T21:55:52Z",
+  "generated_at": "2026-10-21T05:21:52Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-10-20T20:00:01Z",
@@ -63,11 +63,11 @@
     },
     "NASDAQ:GOOGL": {
       "asOf": "2026-10-20T20:00:01Z",
-      "change": -3.905,
-      "changePercent": -1.1346,
+      "change": -3.9,
+      "changePercent": -1.1331,
       "currency": "USD",
       "marketState": null,
-      "price": 340.275,
+      "price": 340.28,
       "source": "yahoo",
       "stale": false,
       "symbol": "NASDAQ:GOOGL",
