@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "CRITICAL PHP ENGINE FLAWS PATCHED AFTER 2-MONTH COORDINATED FIX; OPENAI CREDITS GPT-5.6 SOL WITH DISCOVERY",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2112907856018309586",
+    "category": "breaking"
+  },
+  {
+    "headline": "WIZ RESEARCH ALSO CLAIMS DISCOVERY OF 'PHP2SHELL' CVSS 10 FLAWS IN CORE PHP",
+    "source": "@ralucaadapopa",
+    "url": "https://x.com/GoogleDeepMind/status/2112942536553599429",
+    "category": "breaking"
+  },
+  {
+    "headline": "HACKERS USED ANTHROPIC, SPACEX AND MOONSHOT MODELS TO AUTOMATE ATTACKS ON 400+ LATAM FINANCIAL TARGETS — THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2112929453735125037",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI: ~1,946 GPT-ROSALIND AGENTS GENERATE NEURODEGENERATION DRUG-TARGET LEADS IN 32 MINUTES WITH SCRIPPS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2112899854569762936",
+    "category": "research"
+  }
+]

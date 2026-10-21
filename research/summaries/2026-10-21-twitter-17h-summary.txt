@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-10-21 17:05:24 UTC
+
+CYCLE: AI-found PHP flaws patched; AI-automated bank attacks reported
+
+TOP STORIES:
+• Critical PHP engine flaws now patched; OpenAI credits GPT-5.6 Sol, while Wiz also claims the discovery; agencies say update or go offline [✓]
+• The Information: Anthropic, SpaceX and Moonshot models were used to automate attacks on 400+ LatAm financial targets [⚠]
+
+WATCH: PHP advisory/CVE credits (OpenAI vs Wiz) and OpenAI's promised additional AI-found vulnerability disclosures
+
+Full update on GitHub.
