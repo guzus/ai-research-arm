@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-23 15:00 UTC",
-    "headline": "THE INFORMATION: SPACEX, OPENAI AND ANTHROPIC ALL RACING TOWARD ~$1 TRILLION IPOS AT ONCE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-23-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058208861748662778"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-23 15:00 UTC",
-    "headline": "AI DATA CENTERS STRAINING GRID \u2014 TEXAS NOW LETS UTILITIES SHUT FACILITIES DOWN TO STAY STABLE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-23-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058171166968233996"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-23 18:00 UTC",
-    "headline": "OPENAI TOLD INVESTORS Q1 ADJUSTED OPERATING MARGIN WAS -122% \u2014 ~$1.22 LOST PER DOLLAR ON $5.7B REVENUE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-23-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058231528258208095"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-23 18:00 UTC",
-    "headline": "THE INFORMATION: SPACEX, OPENAI, ANTHROPIC IPOS COULD UNLEASH BILLIONS IN RETURNS FOR SEQUOIA, THRIVE, FOUNDERS FUND",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-23-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058246656303210775"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-23 18:00 UTC",
-    "headline": "ANTHROPIC WEIGHING MICROSOFT'S MAIA AI CHIPS IN MULTICHIP PUSH TO CUT NVIDIA RELIANCE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-23-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058216442378551467"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-23 18:00 UTC",
     "headline": "TRUMP ADMINISTRATION AND ANTHROPIC FINALIZING DEAL TO LET US SPY AGENCIES USE ITS AI TOOLS",
@@ -23488,5 +23443,40 @@
     "headline": "TSMC TO SHOW A14 SRAM BITCELL UNDER 0.017 \u00b5M\u00b2 AT IEDM, FIRST SHRINK SINCE N5",
     "source": "@SemiAnalysis_",
     "url": "https://x.com/SemiAnalysis_/status/2112712165777903871"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-21 11:39:41 UTC",
+    "headline": "GOOGLE: GEMINI 4 ARGON HITS ~25T TOKENS IN FIRST 72 HOURS, ~3X GEMINI 3.0; PICHAI SAYS CAPACITY CONSTRAINED",
+    "source": "@OfficialLoganK",
+    "url": "https://x.com/OfficialLoganK/status/2112767157746688480"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-21 11:39:41 UTC",
+    "headline": "NVIDIA UNVEILS DSX POD AT GTC BERLIN \u2014 AI FACTORY DEPLOYMENT AT PREPARED SITE CUT FROM SIX MONTHS TO 14 DAYS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2112849355090559438"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-21 11:39:41 UTC",
+    "headline": "NVIDIA OPEN-SOURCES NEMOTRON 3.5 EMBED, RERANK AND PARSE RETRIEVAL MODELS FOR AGENTS",
+    "source": "@shaoxiao_si",
+    "url": "https://x.com/shaoxiao_si/status/2112871217695007000"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-21 11:39:41 UTC",
+    "headline": "SAMSUNG ELECTRO-MECHANICS, NVIDIA TO CO-INVEST IN DEDICATED ABF SUBSTRATE LINES; DELIVERIES START 2026",
+    "source": "@genZinvest0r",
+    "url": "https://x.com/genZinvest0r/status/2112870009588371782"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-21 11:39:41 UTC",
+    "headline": "MISTRAL, NVIDIA PARTNER ON INDUSTRIAL-ENGINEERING AI: SIMULATION, PHYSICS-AI BENCHMARKS, CAE/EDA AGENT EVALS",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2112870261829603589"
   }
 ]
