@@ -3,7 +3,7 @@ slug: google-gemini-3-8-flash-tts-2026-09
 title: Gemini 3.8 Flash TTS and Flash-Lite TTS — Google's voice-design text-to-speech models, shipped
 company: Google / DeepMind
 model: Gemini 3.8 Flash TTS / Gemini 3.8 Flash-Lite TTS
-status: released
+status: closed
 status_note: |
   Shipped 2026-09-23 ~15:25 UTC across @GoogleAI, @GoogleDeepMind and
   @OfficialLoganK. Two models, split by job: **Flash TTS** for bespoke vocal
@@ -45,12 +45,14 @@ sources:
   - https://x.com/_philschmid/status/2102781788531667322
   - https://x.com/simonw/status/2102861892549279922
 created_at: 2026-09-24
-updated_at: 2026-09-24
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-21
+closed_at: 2026-10-21
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-24
     change: "Created — RELEASED. Google shipped Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS on 2026-09-23, announced by @GoogleAI, @GoogleDeepMind and @OfficialLoganK. Flash TTS targets bespoke voice design with line-by-line delivery control; Flash-Lite TTS targets cost-efficient real-time and bulk use. Stated capabilities: 2,000+ ready voices, prompt-designed custom voices, ~30s voice replication behind a consent check, 100+ languages, inline delivery cues and two-speaker scenes, SynthID watermarking on every clip. Live day one in the Gemini API and AI Studio, plus Gemini Notebook (Flash) and Google Vids (Flash-Lite); Gemini Enterprise coming soon. Priced below the prior 3.1 Flash TTS model per @OfficialLoganK. Verification confirmed on company-primary posts. Google's own leaderboard claims (#1 Hume Voice Design, #1/#2 Hume Quality, top of Voice Arena in 6 languages) are recorded as vendor claims; independent same-day hands-on from @simonw corroborates availability and low cost only. Distinct from [[google-gemini-3-8-live-2026-09]] (live-audio conversational models) and [[gemini-3-5-transcribe-2026-08]] (speech-to-text); this is the synthesis side of the same audio push."
+  - ts: 2026-10-21
+    change: "CLOSED — released-and-aged. Gemini 3.8 Flash TTS and Flash-Lite TTS shipped on 2026-09-23 (@GoogleAI, @GoogleDeepMind, @OfficialLoganK, per this ticket's creation entry), 28 days before today, with no later history. Gemini Enterprise availability, still 'coming soon' at creation, rolls into normal coverage."
 ---
 
 Google now has the full audio stack shipped under one version number. Transcribe

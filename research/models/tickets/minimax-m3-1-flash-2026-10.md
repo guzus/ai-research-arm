@@ -36,8 +36,10 @@ sources:
   - "https://x.com/Startup_Fortune/status/2112141214397137222"
   - "https://x.com/Maximillia99977/status/2112507698574946733"
   - "https://x.com/urdav3/status/2112495707924103245"
+  - "https://x.com/arnaudmercier/status/2112878150690443536"
+  - "https://x.com/NextBillionLab/status/2112876569345867845"
 created_at: 2026-10-19
-updated_at: 2026-10-20
+updated_at: 2026-10-21
 closed_at: null
 closed_reason: null
 history:
@@ -45,6 +47,8 @@ history:
     change: "Created — RELEASED / partial. Successor to the closed [[minimax-space-bunny-alpha-2026-09]] (closed 2026-10-13 as stale-rumor-unverified, with the standing condition that a primary-sourced signal open a successor). Condition met: @MiniMax_AI (2026-10-19 09:21 UTC) names Space Bunny as MiniMax-M3.1-Flash. Status is released because several independent accounts report it live the same day: pay-as-you-go API at $0.15/$0.60 per MTok (@cdiamond), free for three days on OpenCode (@kreoxi), and inside MiniMax Code since 2026-09-27 (@Startup_Fortune). Verification is partial because MiniMax's own post says 'coming' and the launch, price and token-volume figures come only from secondary accounts."
   - ts: 2026-10-20
     change: "Released, unchanged; verification stays partial. Launch details from MiniMax's launch post and developer guide, relayed second-hand (no first-party post in this desk's fetch). Per @Maximillia99977 (2026-10-20 11:34 UTC): 428B-parameter MoE update to M3 that fires fewer experts per token; agentic tasks about 70% cheaper than the prior model, close to 3x faster inference, peak output over 200 tok/s; reasoning always on with five effort levels (Low to Max); text, image and video input; 1M-token prompts; flat $0.15/MTok input, the same as DeepSeek V4.1-Flash off-peak. Company-reported scores: OSWorld V2 61.7 (claimed best Chinese model), CyberGym 82%, DeepSWE v1.1 73.7% (vs DeepSeek's claimed 77%). Same account: open weights for Flash later, a larger Pro on the way, and more than 200T tokens served while anonymous as Space Bunny. Reseller @urdav3 (10:46 UTC) lists it live on B.AI with 1M context and up to 512K output tokens. The 200T figure conflicts with the ~106T OpenCode-only figure recorded 2026-10-19; they may measure different windows or venues, and neither is checked."
+  - ts: 2026-10-21
+    change: "Released, unchanged; verification stays partial. First mainstream-press coverage: Caixin Global, 'MiniMax Cuts API Prices With New Flash AI Model' (headline shared by @arnaudmercier, 2026-10-21 12:06 UTC). That is an outlet report, not a MiniMax post, so verification is not raised. @NextBillionLab (2026-10-21) repeats the $0.15/MTok input price and a 2026-10-19 release date, and attributes to Artificial Analysis an Intelligence Index of 42 (+13 vs M3) and $0.22 per average agentic task (-57%). The AA figures are relay-strength until seen on AA's own page."
 ---
 
 MiniMax ran M3.1 Flash anonymously as "Space Bunny" on OpenRouter and OpenCode for

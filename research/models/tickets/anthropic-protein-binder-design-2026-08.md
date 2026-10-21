@@ -5,6 +5,11 @@ company: Anthropic
 model: Claude
 status: confirmed
 status_note: |
+  **2026-10-21 — follow-on: scorpion-neurotoxin binders.** @AnthropicAI
+  (2026-10-20 16:18 UTC) published Claude-assisted binder designs against scorpion
+  neurotoxins, releasing all 211 tested designs, lab data and a technical report. It
+  says plainly this is not an antivenom; cell and animal testing would come next.
+
   Anthropic published (2026-08-18 22:30 UTC, **@AnthropicAI** primary, plus
   a blog post, a **technical report**, and **open-sourced prompts and
   data**) an experiment in which Claude designed **novel protein binders
@@ -38,13 +43,18 @@ sources:
   - "@kimmonismus"
   - "@ziv_ravid"
   - "@scaling01"
+  - "https://x.com/AnthropicAI/status/2112579251555721573"
+  - "https://x.com/AnthropicAI/status/2112579261358023071"
+  - "https://x.com/AnthropicAI/status/2112579263039725659"
 created_at: 2026-08-19
-updated_at: 2026-08-19
+updated_at: 2026-10-21
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-08-19
     change: "Created — Anthropic published results (2026-08-18 22:30 UTC, @AnthropicAI primary) in which Claude designed novel protein binders de novo from a single expert-written protocol, alongside a blog post, a technical report, and open-sourced prompts and data. Relayed numbers (@kimmonismus): ~27% hit rate vs a field-typical 10-15%, binders against 14 of 15 measurable targets, 354 of 1,320 designs confirmed binding by independent labs, per-setup range 22.6-35.1%. Trending as its own AI news item (~4,600 posts). Counter-reading logged: @ziv_ravid argues the honest description is Claude orchestrating open-source protein-design models such as PXDesign rather than doing the design itself — compatible with the numbers, different in meaning. Status confirmed / verification confirmed on the primary publication; the capability interpretation is contested and independent replication is pending."
+  - ts: 2026-10-21
+    change: "Confirmed, unchanged — follow-on result from Anthropic. @AnthropicAI (2026-10-20 16:18 UTC) published on its Science Blog Claude-assisted design of protein binders against scorpion neurotoxins (scorpions sting ~1.2M people a year; antivenoms are costly or scarce). Anthropic releases all 211 tested designs, the lab data and a full technical report. It explicitly says this is exploratory and not an antivenom: binders would still need testing in living cells, then mice. This applies the 2026-08-18 binder-design workflow to a named therapeutic target; independent replication of the original 27% hit rate is still open."
 ---
 
 On **2026-08-18** Anthropic published an experiment testing whether Claude
