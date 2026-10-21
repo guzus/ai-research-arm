@@ -1,0 +1,11 @@
+Speaker 1: Wednesday, October twenty-first, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic's draft S-1 is out, and it shows [emphasis] sixteen point three billion dollars [/emphasis] in first-half revenue, plus more than six hundred billion dollars in compute commitments.
+Speaker 1: That is a staggering forward bet on infrastructure, and it puts real numbers behind the IPO chatter.
+Speaker 2: And OpenAI is not sitting still, reportedly raising around thirty billion dollars at a valuation above [emphasis] one point four trillion dollars [/emphasis], timed ahead of that Anthropic listing.
+Speaker 1: On the open-source front, DeepSeek has released DeepInfer, an inference engine that runs on both NVIDIA and Huawei Ascend hardware.
+Speaker 2: Worth noting it topped Hacker News today with over two thousand points, so developers are clearly paying attention.
+Speaker 1: Some quick numbers. Supermicro's fiscal first-quarter revenue is now estimated at eighteen and a half to nineteen and a half billion dollars, well above its fourteen and a half to fifteen and a half billion dollar guidance.
+Speaker 2: Meanwhile SpaceX is targeting roughly [emphasis] thirteen gigawatts [/emphasis] of AI compute by the end of twenty twenty-seven.
+Speaker 1: And on security, one open-source scanner flagged seventy-seven critical and eight hundred three high-severity findings.
+Speaker 2: [dramatic_pause] Which is a good reminder that all this compute still runs on code somebody has to patch.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

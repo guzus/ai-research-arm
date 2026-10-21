@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-10-21
+
+TOP STORIES:
+• Anthropic draft S-1: $16.3B H1 revenue, $600B+ compute commitments
+• OpenAI reportedly raising ~$30B at >$1.4T before Anthropic IPO
+• DeepSeek open-sources DeepInfer (NVIDIA + Huawei Ascend)
+
+KEY NUMBERS:
+• SMCI FQ1 revenue est. $18.5-19.5B vs $14.5-15.5B guidance
+• SpaceX targets ~13 GW AI compute by end-2027
+• 77 critical / 803 high OSS Scanner findings
+
+TRENDING: DeepInfer (2,077 pts on HN)
+
+Full digest on GitHub.
