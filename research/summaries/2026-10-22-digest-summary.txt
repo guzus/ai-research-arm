@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-10-22 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Twitter/X] Anthropic opens a Claude Duet preview: a proactive, always-on Opus 5.5 agent app (US waitlist, Pro/…
+• [RSS / Official Announcements] Franchisee reconciles cash in 94% less time with ChatGPT Work - 2026-10-20 10:00 UTC
+• [Hacker News] DeepInfer: High-performance inference framework for DeepSeek models: the leftover *points* climb of…
+• [Reddit] Maxwell: a new model that speeds up AI models like Whisper and LTX-2 by rewriting their binaries [D…
+• [Expert Blogs] Today's PHP Security Release, and How We're Strengthening PHP Security
+
+SOURCES: 7/8 lanes had data; missing: YouTube
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
