@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 18,
+  "count": 19,
   "events": [
+    {
+      "file": "2026-10-21-META-FY26Q3.md",
+      "date": "2026-10-21",
+      "ticker": "META",
+      "period": "FY26Q3",
+      "issuer": "Meta Platforms, Inc.",
+      "form": "8-K",
+      "accession": "0001628280-26-066700",
+      "transcript": true
+    },
     {
       "file": "2026-10-20-SMCI-FY27Q1.md",
       "date": "2026-10-20",
