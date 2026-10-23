@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T21:56:48Z",
+  "generated_at": "2026-10-23T05:26:17Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-10-22T20:00:01Z",
@@ -159,8 +159,8 @@
     },
     "NYSE:CRM": {
       "asOf": "2026-10-22T20:00:03Z",
-      "change": 7.86,
-      "changePercent": 3.2422,
+      "change": 8.51,
+      "changePercent": 3.5197,
       "currency": "USD",
       "marketState": null,
       "price": 250.29,
