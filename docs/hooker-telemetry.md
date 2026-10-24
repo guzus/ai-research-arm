@@ -21,3 +21,9 @@ topic. Route delivery gets only the backend, slug, run/dashboard link, and a
 one-line quality summary. The full payload saved in Postgres includes output
 file, GitHub article URL, model attempt outcomes, index metadata, and final
 article quality metrics.
+
+Langfuse now complements this path for the generative-research pilot with
+content-free attempt observations, tool/model markers and mechanical gate scores.
+It uses a separate nonblocking reporting job; Hooker remains the notification
+route. See [research observability and RSI](research-observability.md) for coverage,
+credential boundaries, missing-data semantics, and the bounded improvement loop.

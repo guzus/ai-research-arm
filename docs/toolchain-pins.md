@@ -13,7 +13,7 @@ The JSON is the reviewable update manifest; CI verifies every trusted build call
 | OpenCode | `1.18.3` | `sha512-HnItl/+uhSpj7JV9x6ITiE0XFq4b/PKF5OM03TIyiFoFiLw3MQoJOAXZFTEzC7IOgAIYcysRQBBmCmlXILkxww==` |
 | Pi coding agent | `0.73.1` | `sha512-gXQh3SaZmWTfVMc4Ao5+LGbVeKvzyO7tolok0nLsZgq9nGjZx/EEU3NM8C+qUnB4Nvs2rswG5qOVgLzQkq0fHQ==` |
 | Codex CLI | `0.151.0` | `sha512-mhtWmOZRdmWD1jPbLDnQb59BsaVP/V+lXe/OFNR9ZcLZU0UCiBwn98Fcav1ss7sDIlHkuqj6nWd44IPeXoOhJA==` |
-| GitHub Actions | `7 actions` | Full commit SHA per action |
+| GitHub Actions | `9 actions` | Full commit SHA per action |
 
 ## Update procedure
 

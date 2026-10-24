@@ -11,6 +11,13 @@ short pointer plus the few genuinely agent-specific notes.
 
 ## Agent-specific notes
 
+- **Langfuse research pilot and RSI:** follow
+  [`docs/research-observability.md`](docs/research-observability.md). Capture
+  attempts before transcript overwrite, keep Langfuse keys in separate reporting
+  jobs, and treat missing telemetry as unknown. Retain RSI candidates only after
+  frozen matched evaluation and reserved-case transfer; trace installation alone
+  does not demonstrate improvement.
+
 - **Scheduled model workflows** use the Claude-harness `.github/actions/agent-run`
   directly or, for RSS, community, arXiv, Bluesky, and wiki, the trusted
   `.github/actions/agent-dispatch`. RSS/community/Bluesky reference
