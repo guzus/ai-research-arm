@@ -191,17 +191,27 @@ community, arXiv and Bluesky have no deterministic fallback wired: a broken
 agent path makes the run red and the lane goes stale until it is fixed and
 re-dispatched (deliberate, PR #303 — see the fallback table above). Only
 `daily-digest.yml` composes a model-free digest, and only after its agent
-output fails a hard content floor. So on the digest specifically, **a green
-run is not evidence the agent path was healthy** — green means "an artifact
-was committed". Read the agent/fallback step logs, or the fallback-used
-Telegram alert, to learn which path produced it. The fallback is retained as
-an operational diagnostic only: dashboard prebuild replaces it with an
+output fails a hard content floor. On the digest, diagnostic fallback output
+is still committed, but the
+final `--require-editorial` gate marks that run failed. A green run must have
+published an editorial digest; it does not prove every provider attempt was
+healthy. Read the agent/fallback step logs for provider health. The fallback
+is retained as an operational diagnostic only: dashboard prebuild replaces
+it with an
 unavailable-state marker, excludes its front-page/audio derivatives and
 search/feed entries, and the front-page, audio, and wiki workflows skip it.
 The digest workflow also revokes any fallback-date S3 audio object; the manual
 `cleanup-fallback-publications.yml` workflow performs the same idempotent
 historical cleanup after a publication-boundary incident.
 Never promote its raw excerpts as editorial content.
+
+To recover missed editions, dispatch `daily-digest.yml` with `date=YYYY-MM-DD`.
+Historical recovery may use `generate_audio=false`; manual `notify` defaults
+false. Scheduled notifications are unchanged. The successful run uploads
+`digest-edition.json`, which the front-page workflow downloads from that exact
+parent run, so backfills and midnight delays render the intended date. Missing
+handoffs or non-editorial/missing digests fail closed. Direct front-page
+backfills also accept `date` and opt-in `notify`.
 
 **Publishing uses `.github/actions/safe-push`** — see rule 13 for the
 protected-branch fallback and what `pushed=true` actually means.
@@ -312,7 +322,7 @@ false `deploy-stale` alerts. Do not "fix" any of these omissions.
 
 | Workflow | Trigger | Output |
 |---|---|---|
-| `daily-front-page.yml` | daily `00:30` (after digest) | `research/front-page/YYYY-MM-DD-front-page.png` |
+| `daily-front-page.yml` | after a successful digest, using its exact edition-date artifact | `research/front-page/YYYY-MM-DD-front-page.png` |
 | `generative-research.yml` | `gen-research` issue label or `workflow_dispatch` with `topic` or `twitter_url` | `research/generative/*.{html,ara.md}` + `index.json` |
 | `translate-generative-research.yml` | automatically dispatched after each generative article reaches `main`; manual `workflow_dispatch` also accepts an existing article `slug` | One validated Korean translation revision under `research/generative/`; automatic runs auto-merge, manual runs use a review PR by default |
 | `research-issue.yml` | issue labeled `research` | `research/issues/{issue-number}-research.md` |

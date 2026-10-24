@@ -146,3 +146,10 @@ short pointer plus the few genuinely agent-specific notes.
 - Everything else — runner choice, the ARA DSL compile/validate
   contract, model-ticket and wiki CRUD protocols, telemetry, atomic
   writes — is documented in `CLAUDE.md`. Follow that.
+
+- **Newspaper recovery:** `daily-digest.yml` accepts a historical `date`;
+  `generate_audio=false` skips audio, and manual `notify` defaults false.
+  The final editorial gate fails diagnostic-only runs after preserving their
+  evidence. Successful digests hand off their exact date to `daily-front-page`
+  through the run-scoped `digest-edition` artifact; never substitute the
+  renderer's current date or publish deterministic fallback excerpts.
