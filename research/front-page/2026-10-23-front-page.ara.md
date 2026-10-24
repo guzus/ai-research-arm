@@ -22,9 +22,9 @@ The weights are not open yet, but Moonshot promises "Full model weights will be 
 
 AI-found bugs dominate analyst commentary: The week after the PHP disclosure, Latent Space titled its roundup "Black October" ("the Cyber onslaught continues"). Exponential View called it "the internet's Wuhan moment," and Clouded Judgement's weekly is headlined "AI Goes Vulnerability Hunting" (Latent Space, Exponential View, Clouded Judgement).
 
-Anthropic's pending IPO grips Silicon Valley: Newcomer says the listing has the Valley "on the edge of its seat," a day after reporting that no venture backer holds more than 2%. A Korean analyst blog points to a Reuters report putting Anthropic's compute-spending commitments at $518B and argues the company can pay them (Newcomer, happy/dhgusdnd44 blog).
+Anthropic's pending IPO grips Silicon Valley: Newcomer says the listing has the Valley "on the edge of its seat," a day after reporting that no venture backer holds more than 2%. (Newcomer).
 
-OpenAI reportedly seeks $30B at a $1.4T valuation: Only one secondary newsletter reports the raise, and it ties the raise to enterprise AI becoming OpenAI's key growth driver. Treat it as unconfirmed until there is a primary report (AI Disruption).
+AI app revenue nears 10% of capex, Tunguz argues: Using Carlota Perez's two-phase model, he notes telecom capex ran 12x ahead of application revenue at the 2000 peak. Telecom then took seven years to push app revenue above 10% of capex, a level he says AI has now reached (Tomasz Tunguz).
 :::
 
 :::briefs(id="briefs-stories", title="Stories", columns=2)
@@ -32,11 +32,9 @@ OpenAI reportedly seeks $30B at a $1.4T valuation: Only one secondary newsletter
   tag: "Breaking"
 - headline: "\"Black October\""
   tag: "Breaking"
-- headline: "a16z tells leaders to \"Patch or Die\""
+- headline: "Exponential View predicts a safer, less open internet"
   tag: "Breaking"
 - headline: "Kimi K3.1 Pro (Moonshot): Available on the Kimi API now"
-  tag: "Models"
-- headline: "Claude 5.5 lineup tips circulate"
   tag: "Models"
 - headline: "No other confirmed releases in local sources"
   tag: "Models"
@@ -48,6 +46,8 @@ OpenAI reportedly seeks $30B at a $1.4T valuation: Only one secondary newsletter
   tag: "Research"
 - headline: "Microsoft Research releases Flint-interactive"
   tag: "Research"
+- headline: "The Sequence on promptable robots and AI environments"
+  tag: "Research"
 :::
 
 :::news-meter(id="meter-signal-mix", title="Signal Mix")
@@ -56,8 +56,8 @@ OpenAI reportedly seeks $30B at a $1.4T valuation: Only one secondary newsletter
   display: "3 items"
   tone: hot
 - label: "Model releases"
-  value: 75
-  display: "3 items"
+  value: 50
+  display: "2 items"
   tone: watch
 - label: "Research highlights"
   value: 80
