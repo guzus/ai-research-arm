@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-24
+
+TOP 5 PAPERS:
+• IQuest-Q1 — 320B-A15B open CLI MoE; 1.93× vs Qwen3-MoE; 64.6 DeepSWE / 57.5 SWE-Pro
+• PLE — Google physical-engineering exam; best agent 50.6% at $17 / 63 min / task
+• Safety-probe laws — Anthropic: floor ~N^α; 72% next-size error predictions
+• Softmax/CE fix — Barron/Tschannen: two kernel bugs cause slingshot and distill drift
+• GenRM laws — Rafailov: static Thinking wins; as online rewarders Answer-Only wins 7/8
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
