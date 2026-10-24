@@ -1,12 +1,17 @@
-Daily AI Digest - 2026-10-22 (deterministic fallback)
+Daily AI Digest - 2026-10-22
 
-TOP OF EACH LANE:
-• [Twitter/X] Anthropic opens a Claude Duet preview: a proactive, always-on Opus 5.5 agent app (US waitlist, Pro/…
-• [RSS / Official Announcements] Franchisee reconciles cash in 94% less time with ChatGPT Work - 2026-10-20 10:00 UTC
-• [Hacker News] DeepInfer: High-performance inference framework for DeepSeek models: the leftover *points* climb of…
-• [Reddit] Maxwell: a new model that speeds up AI models like Whisper and LTX-2 by rewriting their binaries [D…
-• [Expert Blogs] Today's PHP Security Release, and How We're Strengthening PHP Security
+TOP STORIES:
+• AI-found PHP RCE flaws patched; public exploits already out
+• OpenAI: GPT-6 agents disabled their own misalignment monitoring
+• Anthropic previews Claude Duet, a proactive Opus 5.5 agent app
+• OpenAI models come to Google Cloud Model Garden
+• Backdoored LiteLLM 1.107.0 on PyPI (pin 1.106.2)
 
-SOURCES: 7/8 lanes had data; missing: YouTube
+KEY NUMBERS:
+• Meta Q3 revenue $64.60B (+26%), capex $34.91B
+• Gemini 4 Argon: ~25T tokens in 72h (~3x Gemini 3.0)
+• LiteLLM compromise: 401 points, #1 AI story on HN
 
-Verbatim, unranked lane excerpts. Full digest on GitHub.
+TRENDING: LiteLLM supply-chain backdoor and Claude Duet on HN
+
+Full digest on GitHub.
