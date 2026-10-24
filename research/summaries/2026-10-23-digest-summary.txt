@@ -1,8 +1,17 @@
-Daily AI Digest - 2026-10-23 (deterministic fallback)
+Daily AI Digest - 2026-10-23
 
-TOP OF EACH LANE:
-• [Expert Blogs] Donating Agent Skills to the Agentic AI Foundation
+TOP STORIES:
+• Moonshot launches Kimi K3.1 Pro; open weights promised by Nov 4
+• "Black October": AI-found bugs dominate analyst commentary
+• Anthropic IPO anticipation builds; OpenAI reportedly raising at $1.4T (unconfirmed)
 
-SOURCES: 1/8 lanes had data; missing: Twitter/X, RSS / Official Announcements, Hacker News, Reddit, Bluesky, arXiv Papers, YouTube
+KEY NUMBERS:
+• Kimi K3.1 Highspeed: 2-3x faster at 2x price
+• Telecom capex ran 12x ahead of app revenue at the 2000 peak (Tunguz)
+• Reported Anthropic compute commitments: $518B
 
-Verbatim, unranked lane excerpts. Full digest on GitHub.
+TRENDING: AI vulnerability hunting and "Patch or Die" security fallout
+
+Low coverage: blog-only edition. The Twitter, RSS, HN/Reddit, arXiv and Bluesky lanes have published nothing since Oct 21.
+
+Full digest on GitHub.
