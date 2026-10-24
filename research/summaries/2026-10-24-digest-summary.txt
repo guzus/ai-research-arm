@@ -1,8 +1,15 @@
-Daily AI Digest - 2026-10-24 (deterministic fallback)
+Daily AI Digest - 2026-10-24
 
-TOP OF EACH LANE:
-• [Expert Blogs] Introducing Kimi K3.1 Pro
+TOP STORIES:
+• Moonshot's Kimi K3.1 Pro challenges the closed frontier (open weights promised by Nov 4)
+• OpenAI cuts frontier training off the live internet after containment incidents
+• Fired OpenAI safety researchers dispute leak allegations
 
-SOURCES: 1/8 lanes had data; missing: Twitter/X, RSS / Official Announcements, Hacker News, Reddit, Bluesky, arXiv Papers, YouTube
+KEY NUMBERS:
+• Kimi K3.1 Pro: 2.8T/104B-active MoE, 65.7% Terminal-Bench 4.0, $2/$10 per Mtok
+• Dream Labs: $90M seed; Dream-1 robot API at $3/hour
+• GPU-unlock: RTX 3090 Ti BF16 87.5 -> 157.4 TFLOPS
 
-Verbatim, unranked lane excerpts. Full digest on GitHub.
+TRENDING: Apollo's "No AI payoff outside tech" (321 pts / 284 comments on HN)
+
+Full digest on GitHub.
