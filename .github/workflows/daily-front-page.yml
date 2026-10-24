@@ -18,6 +18,10 @@ on:
         description: "Digest date to render, YYYY-MM-DD. Defaults to today's date."
         required: false
         type: string
+      notify:
+        description: "Send publication notifications for this manual render"
+        type: boolean
+        default: false
 
 concurrency:
   group: daily-front-page
@@ -35,6 +39,7 @@ jobs:
     # explicitly allow that event or the manual fallback silently no-ops.
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     permissions:
+      actions: read
       contents: write
       pull-requests: write
       id-token: write
@@ -68,22 +73,31 @@ jobs:
           GIT_LFS_SKIP_SMUDGE: "1"
         run: git pull origin main || true
 
+      - name: Read parent digest edition
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: digest-edition-${{ github.event.workflow_run.run_attempt }}
+          path: ${{ runner.temp }}/digest-edition
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
       - name: Get current date
         id: date
         env:
-          INPUT_DATE: ${{ github.event.inputs.date || '' }}
+          INPUT_DATE: ${{ inputs.date || '' }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
-          if [ -n "$INPUT_DATE" ]; then
-            if ! printf '%s' "$INPUT_DATE" | grep -Eq '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'; then
-              echo "::error::date input must be YYYY-MM-DD, got '$INPUT_DATE'"
-              exit 1
-            fi
-            echo "date=$INPUT_DATE" >> "$GITHUB_OUTPUT"
+          set -euo pipefail
+          if [ "$EVENT_NAME" = "workflow_run" ]; then
+            DATE="$(python3 scripts/digest_edition.py \
+              --manifest "$RUNNER_TEMP/digest-edition/digest-edition.json")"
           else
-            echo "date=$(date -u +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+            DATE="$(python3 scripts/digest_edition.py --date "$INPUT_DATE")"
           fi
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
 
-      # Skip if today's digest doesn't exist yet
+      # A successful parent must have published a renderable edition.
       - name: Check digest exists
         id: check
         run: |
@@ -92,14 +106,16 @@ jobs:
             echo "exists=true" >> "$GITHUB_OUTPUT"
             if python3 scripts/digest_publication_state.py "$DIGEST"; then
               echo "publishable=false" >> "$GITHUB_OUTPUT"
-              echo "Operational fallback found; no public front-page or audio derivative will be produced."
+              echo "::error::Operational fallback is not a publishable newspaper edition."
+              exit 1
             else
               echo "publishable=true" >> "$GITHUB_OUTPUT"
             fi
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
             echo "publishable=false" >> "$GITHUB_OUTPUT"
-            echo "No digest found for ${{ steps.date.outputs.date }}, skipping."
+            echo "::error::No digest found for ${{ steps.date.outputs.date }}."
+            exit 1
           fi
 
       - name: Setup Node.js
@@ -218,7 +234,7 @@ jobs:
 
       # Publish front page image via hooker (routes to Telegram thread)
       - name: Publish front page via hooker
-        if: steps.check.outputs.publishable == 'true' && success()
+        if: steps.check.outputs.publishable == 'true' && success() && ((github.event_name == 'workflow_dispatch' && inputs.notify) || (github.event_name == 'workflow_run' && github.event.workflow_run.event == 'schedule'))
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -248,7 +264,7 @@ jobs:
       # message. Skips cleanly if the audio digest doesn't exist for today
       # or if the LFS object cannot be hydrated.
       - name: Publish digest audio via hooker
-        if: steps.check.outputs.publishable == 'true' && success()
+        if: steps.check.outputs.publishable == 'true' && success() && ((github.event_name == 'workflow_dispatch' && inputs.notify) || (github.event_name == 'workflow_run' && github.event.workflow_run.event == 'schedule'))
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}

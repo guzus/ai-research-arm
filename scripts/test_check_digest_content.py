@@ -63,6 +63,15 @@ class CheckDigestTest(unittest.TestCase):
 
 
 class MainTest(unittest.TestCase):
+    def test_diagnostic_fallback_cannot_pass_editorial_gate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "digest.md"
+            path.write_text("> **Deterministic fallback digest.** Model unavailable.\n" + healthy_digest())
+            self.assertEqual(floor.main(["--file", str(path)]), 0)
+            self.assertEqual(floor.main(["--file", str(path), "--require-editorial"]), 1)
+            path.write_text(healthy_digest())
+            self.assertEqual(floor.main(["--file", str(path), "--require-editorial"]), 0)
+
     def test_missing_file_exits_nonzero(self):
         with tempfile.TemporaryDirectory() as tmp:
             code = floor.main(["--file", str(Path(tmp) / "absent.md")])

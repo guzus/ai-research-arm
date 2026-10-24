@@ -4,11 +4,20 @@ on:
   schedule:
     # Run daily at 00:00 UTC
     - cron: '0 0 * * *'
-  # No inputs: the deterministic fallback below is always-on (it fires
-  # whenever the agent leaves today's digest missing or sub-floor, on
-  # schedule and dispatch alike), so the old emergency-only
-  # allow_deterministic_fallback opt-in is gone.
   workflow_dispatch:
+    inputs:
+      date:
+        description: "Edition date to recover, YYYY-MM-DD; defaults to the run's UTC date"
+        type: string
+        required: false
+      generate_audio:
+        description: "Generate the audio edition as well"
+        type: boolean
+        default: true
+      notify:
+        description: "Send publication notifications for this manual run"
+        type: boolean
+        default: false
 
 concurrency:
   group: daily-digest
@@ -22,6 +31,7 @@ jobs:
     # genuinely heavy run that overruns times out loudly (freshness catches it).
     timeout-minutes: 60
     permissions:
+      actions: read
       contents: write
       pull-requests: write
       id-token: write
@@ -74,19 +84,18 @@ jobs:
         id: date
         env:
           GH_TOKEN: ${{ github.token }}
+          INPUT_DATE: ${{ inputs.date || '' }}
         run: |
-          set -uo pipefail
+          set -euo pipefail
           CREATED="$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" \
             --jq .created_at 2>/dev/null || true)"
-          DATE=""
-          if [ -n "$CREATED" ]; then
-            DATE="$(date -u -d "$CREATED" +'%Y-%m-%d' 2>/dev/null || true)"
+          if [ -z "$INPUT_DATE" ] && [ -z "$CREATED" ]; then
+            echo "::error::Cannot determine the run's edition date; refusing a wall-clock substitution."
+            exit 1
           fi
-          if [ -z "$DATE" ]; then
-            DATE="$(date -u +'%Y-%m-%d')"
-            echo "::warning::Could not resolve run creation time; falling back to current UTC date ${DATE}."
-          fi
-          echo "Digest date: ${DATE} (run created: ${CREATED:-unknown}, wall clock: $(date -u +'%Y-%m-%dT%H:%M:%SZ') UTC)"
+          DATE="$(python3 scripts/digest_edition.py --date "$INPUT_DATE" \
+            --created-at "$CREATED")"
+          echo "Digest edition: ${DATE} (run created: ${CREATED:-unknown})"
           echo "date=$DATE" >> "$GITHUB_OUTPUT"
 
       # Base SHA for the standalone output guard below — captured AFTER the
@@ -175,10 +184,9 @@ jobs:
       # outage, turn-1 API error, nothing committed — the composite's internal
       # expected-paths guard fails the step in that case) hands off to the
       # content-floor check, the ALWAYS-ON deterministic fallback, and the
-      # final output guard below. The fallback keeps a rescued run green on
-      # purpose (wiki-ingest + front-page trigger on workflow_run SUCCESS)
-      # and its Telegram alert step announces every actual rescue, so a
-      # model-free digest never ships silently.
+      # final output guard below. Diagnostic output is retained on main,
+      # then the editorial gate fails the run so dependents cannot mistake
+      # a model-free fallback for a newspaper-ready edition.
       - name: Synthesize Daily Digest (with MCP tools)
         id: digest-agent-mcp
         if: steps.check-keys.outputs.has_exa == 'true' || steps.check-keys.outputs.has_perplexity == 'true'
@@ -210,7 +218,10 @@ jobs:
             entirely. Issuers report in ~3-week bursts each quarter, so older files
             sitting in that directory are NOT current news - never surface them as
             such. Quote only what those files already quote.
-            Read all relevant files you find.
+            Read all relevant files you find. An existing deterministic fallback
+            digest is failed diagnostic output, not a source or a completed task;
+            replace it with a fresh editorial synthesis for DATE. Do not use
+            source artifacts dated after DATE when recovering a historical issue.
 
             STEP 2: Use MCP search tools to fill gaps
             You have access to advanced search tools (Exa, Perplexity) via MCP.
@@ -363,7 +374,10 @@ jobs:
             entirely. Issuers report in ~3-week bursts each quarter, so older files
             sitting in that directory are NOT current news - never surface them as
             such. Quote only what those files already quote.
-            Read all relevant files you find.
+            Read all relevant files you find. An existing deterministic fallback
+            digest is failed diagnostic output, not a source or a completed task;
+            replace it with a fresh editorial synthesis for DATE. Do not use
+            source artifacts dated after DATE when recovering a historical issue.
 
             STEP 2: Identify gaps from local sources
             In this fallback path, no external MCP search provider is
@@ -490,7 +504,7 @@ jobs:
           set -euo pipefail
           if python3 scripts/check_digest_content.py \
               --file "research/digest/${{ steps.date.outputs.date }}-digest.md" \
-              --min-bytes 4000 --min-sections 3; then
+              --min-bytes 4000 --min-sections 3 --require-editorial; then
             echo "ok=true" >> "$GITHUB_OUTPUT"
           else
             echo "ok=false" >> "$GITHUB_OUTPUT"
@@ -531,21 +545,9 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # ALWAYS-ON model-free fallback (mirrors the twitter lane's recovery
-      # chain). A red digest run starves the workflow_run dependents
-      # (wiki-ingest and front-page trigger only on SUCCESS) — gating this
-      # step behind a manual opt-in (PR #302) cost four straight scheduled
-      # runs 07-09..07-12 while the agent path was broken. It now fires
-      # whenever the agent left today's digest missing or sub-floor, on
-      # schedule and dispatch alike; the alert step below announces every
-      # actual rescue on Telegram, so a model-free digest can never ship
-      # silently (the concern #302 addressed by staying red). Overwrite
-      # protection lives inside: when the floor PASSED (a good digest is
-      # already committed and this run merely added nothing new — e.g. a
-      # re-dispatch or worker-loss re-run on an already-published day) it
-      # declines to compose rather than replace agent prose with the
-      # mechanical dump, and the require-output gate below still calls that
-      # run honestly red.
+      # Retain a diagnostic artifact when synthesis fails. It is never public
+      # editorial content; after safe-push preserves the evidence, the final
+      # editorial gate marks the run failed. Do not overwrite a good digest.
       - name: Deterministic digest fallback
         id: digest-fallback
         if: ${{ steps.digest-floor.outputs.ok != 'true' || steps.digest-output-diff.outputs.changed != 'true' }}
@@ -575,13 +577,10 @@ jobs:
           git commit -m "Daily digest deterministic fallback ${DATE}" || echo "No deterministic digest changes"
           echo "used=true" >> "$GITHUB_OUTPUT"
 
-      # Loud pairing for the always-on fallback: a fallback-rescued run stays
-      # GREEN on purpose (the workflow_run dependents must fire), which makes
-      # it silent by default — silence is how the broken agent path hid for
-      # six days (07-02 → 07-08). Announce every actual rescue. Alerts must
-      # never fail the job (Load-bearing rule 4 style).
+      # Scheduled failure alerts retain the diagnostic detail. Manual recovery
+      # runs are quiet unless the caller explicitly requests notifications.
       - name: Alert deterministic fallback retention via Telegram
-        if: steps.digest-fallback.outcome == 'success' && steps.digest-fallback.outputs.used == 'true'
+        if: steps.digest-fallback.outcome == 'success' && steps.digest-fallback.outputs.used == 'true' && (github.event_name != 'workflow_dispatch' || inputs.notify)
         continue-on-error: true
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -655,7 +654,7 @@ jobs:
           bash scripts/delete_fallback_audio.sh
 
       - name: Rewrite summary as ARA spoken script (routed agent)
-        if: success() && steps.digest-publication.outputs.editorial == 'true'
+        if: success() && steps.digest-publication.outputs.editorial == 'true' && (github.event_name != 'workflow_dispatch' || inputs.generate_audio)
         continue-on-error: true
         uses: ./.github/actions/agent-run
         with:
@@ -744,7 +743,7 @@ jobs:
             git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA two-host Claude rewrite)" || echo "No changes"
 
       - name: Generate audio digest with Gemini 3.8 Flash TTS
-        if: success() && steps.digest-publication.outputs.editorial == 'true'
+        if: success() && steps.digest-publication.outputs.editorial == 'true' && (github.event_name != 'workflow_dispatch' || inputs.generate_audio)
         continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -903,7 +902,7 @@ jobs:
           # + truncate to 0-byte stub + commit happen in later steps.
 
       - name: Upload audio digest to S3
-        if: success() && steps.digest-publication.outputs.editorial == 'true'
+        if: success() && steps.digest-publication.outputs.editorial == 'true' && (github.event_name != 'workflow_dispatch' || inputs.generate_audio)
         continue-on-error: true
         env:
           DATE: ${{ steps.date.outputs.date }}
@@ -938,9 +937,33 @@ jobs:
         uses: ./.github/actions/safe-push
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          strict-publication: 'true'
+
+      # Preserve diagnostic output before failing; downstream editorial jobs
+      # must only see success when an actual edition was published.
+      - name: Require editorial publication
+        run: |
+          python3 scripts/check_digest_content.py \
+            --file "research/digest/${{ steps.date.outputs.date }}-digest.md" \
+            --require-editorial
+
+      - name: Prepare exact digest edition handoff
+        env:
+          EDITION_DATE: ${{ steps.date.outputs.date }}
+        run: |
+          python3 scripts/digest_edition.py --date "$EDITION_DATE" \
+            --output "$RUNNER_TEMP/digest-edition.json"
+
+      - name: Hand off exact digest edition
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: digest-edition-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/digest-edition.json
+          if-no-files-found: error
+          retention-days: 7
 
       - name: Send Telegram notification (audio + caption)
-        if: success() && steps.digest-publication.outputs.editorial == 'true'
+        if: success() && steps.digest-publication.outputs.editorial == 'true' && (github.event_name != 'workflow_dispatch' || inputs.notify)
         continue-on-error: true
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -1018,7 +1041,7 @@ jobs:
           fi
 
       - name: Send audio to Hooker (parallel delivery channel)
-        if: success() && steps.digest-publication.outputs.editorial == 'true'
+        if: success() && steps.digest-publication.outputs.editorial == 'true' && (github.event_name != 'workflow_dispatch' || inputs.notify)
         continue-on-error: true
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
@@ -1071,7 +1094,7 @@ jobs:
           echo ""
 
       - name: Truncate audio mp3 to 0-byte stub + commit
-        if: success() && steps.digest-publication.outputs.editorial == 'true'
+        if: success() && steps.digest-publication.outputs.editorial == 'true' && (github.event_name != 'workflow_dispatch' || inputs.generate_audio)
         continue-on-error: true
         env:
           DATE: ${{ steps.date.outputs.date }}
@@ -1087,16 +1110,17 @@ jobs:
           fi
 
       - name: Push audio stub
-        if: success() && steps.digest-publication.outputs.editorial == 'true'
+        if: success() && steps.digest-publication.outputs.editorial == 'true' && (github.event_name != 'workflow_dispatch' || inputs.generate_audio)
         uses: ./.github/actions/safe-push
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          strict-publication: 'true'
 
       # A failed digest run silently starves wiki-ingest and front-page
       # (both gate on workflow_run conclusion == success). Say so on
       # Telegram instead of failing quietly. Never blocks the job.
       - name: Alert digest failure via Telegram
-        if: failure()
+        if: failure() && (github.event_name != 'workflow_dispatch' || inputs.notify) && steps.digest-fallback.outputs.used != 'true'
         continue-on-error: true
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}

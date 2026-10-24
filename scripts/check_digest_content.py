@@ -33,6 +33,8 @@ import re
 import sys
 from pathlib import Path
 
+from digest_publication_state import is_deterministic_fallback
+
 SECTION_RE = re.compile(r"^## ", re.MULTILINE)
 
 # Literal substrings that only appear in an UNexpanded digest prompt template.
@@ -64,10 +66,13 @@ def check_digest(
     min_bytes: int,
     min_sections: int,
     placeholders: tuple[str, ...] = DEFAULT_PLACEHOLDERS,
+    require_editorial: bool = False,
 ) -> list[str]:
     """Pure check over the digest text. Returns a list of failure reasons
     (empty = the digest clears the floor). IO-free for unit testing."""
     failures: list[str] = []
+    if require_editorial and is_deterministic_fallback(text):
+        failures.append("operational fallback is not a publishable editorial digest")
 
     size = len(text.encode("utf-8"))
     if size < min_bytes:
@@ -89,6 +94,8 @@ def check_digest(
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--file", type=Path, required=True, help="Digest file to check.")
+    parser.add_argument("--require-editorial", action="store_true",
+                        help="Reject diagnostic fallback output even when it clears the size floor.")
     parser.add_argument(
         "--min-bytes",
         type=int,
@@ -128,6 +135,7 @@ def main(argv: list[str] | None = None) -> int:
         min_bytes=args.min_bytes,
         min_sections=args.min_sections,
         placeholders=placeholders,
+        require_editorial=args.require_editorial,
     )
     if failures:
         for failure in failures:
