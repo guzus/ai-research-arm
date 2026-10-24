@@ -2,12 +2,13 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows", "sandbox-runtime"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
 description: AI safety lab behind Claude; a draft S-1 shows $16.3B first-half revenue against an $80.7B accounting-heavy loss and $600B+ compute commitments ahead of a planned November IPO.
 created_at: 2026-05-24
-timestamp: 2026-10-21T00:00:00Z
+timestamp: 2026-10-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
@@ -3764,3 +3765,52 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   stake. Single-outlet
   cluster, no filing (ARA
   daily digest 2026-10-21).
+
+## sandbox-runtime ships; Opus 5.5 leads PLE (2026-10-24)
+
+- **Anthropic open-sourced
+  `sandbox-runtime` (`srt`)**,
+  the OS-level sandbox behind
+  Claude Code. It uses
+  Seatbelt on macOS and
+  bubblewrap on Linux to
+  restrict file and network
+  access for agents, MCP
+  servers and CLIs, without
+  containers. This is the
+  harness counterpart to
+  [[openai]]'s offline-
+  training cut the same day:
+  one lab isolates training,
+  the other publishes the
+  runtime box. See
+  [[agentic-ai-security]] and
+  [[dynamic-workflows]]
+  (MarkTechPost; ARA daily
+  digest 2026-10-24).
+- **Google Cloud AI Research's
+  PLE (Physical-Engineering's
+  Last Exam, arXiv 2610.30537)
+  has 85 long-horizon
+  electrical, civil,
+  structural and mechanical
+  jobs.** The best cell is
+  [[claude-opus-5-5|Claude
+  Opus 5.5]] in Claude Code
+  at **50.6%**, at **$17.18**
+  and **63 minutes** per
+  task. A vendor-adjacent
+  research paper, not a
+  first-party Anthropic
+  launch (ARA daily digest
+  2026-10-24).
+- **Ethan Mollick relays a
+  study of 124 Harvard
+  social-science papers
+  finding [[claude-opus-4-8]]
+  beats human expert
+  reviewers "by every
+  measure."** Bluesky-only
+  on the digest; treat as
+  reported (Bluesky; ARA
+  daily digest 2026-10-24).

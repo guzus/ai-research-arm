@@ -78,14 +78,14 @@ Each page is one of three types — entity, concept, or theme. See
 - [[muse-spark-open]] — Meta's 816B-total / 42B-active multimodal MoE under a custom Muse Model License, tuned with Apple to run on two M5 Ultra Mac Studios.
 - [[muse-wonder]] — Meta's first independently scored frontier pair; Artificial Analysis puts Wonder at 52 and subscriber-only Full at 56 on its Intelligence Index, up from Muse Spark 1.3's 48.
 - [[moonshot-kimi-k2-7-code]] — Moonshot AI open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while filling the Fable 5 vacuum.
-- [[moonshot-kimi-k3]] — Moonshot AI's 2.8T-parameter flagship; SemiAnalysis reports an NVIDIA vLLM decode path at 423 tok/s per user.
+- [[moonshot-kimi-k3]] — Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10, with open weights promised by Nov 4.
 - [[naive-ai]] — Lab behind N0.5-Flash, a 309B MIT-licensed MoE (15.5B active, native 1M context) continued-pretrained on Xiaomi's MiMo-V2.5.
 - [[nano-banana-2-lite]] — Google's fastest/cheapest image model (gemini-3.1-flash-lite-image); Nano Banana 2.1 is a later SKU at the same ~$0.034/image, not a rename of this Lite card.
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") spun out of Yandex; Token Factory acquired Inferize to cut GPU cold-start times, after a $1B Reflection AI compute book and a $17B Microsoft-linked Vineland site.
 - [[noam-shazeer]] — Transformer co-inventor and Character.AI founder; Disney hired most of the remaining workforce after the Chapter 11 filing.
 - [[nous-research]] — Open-weights lab behind Hermes Agent; closed a $90M Series B at $1.5B led by Robot Ventures.
 - [[nvidia]] — Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.
-- [[openai]] — Frontier lab behind the GPT family; Reuters says it is speeding a $30B raise above a $1.4T valuation before Anthropic's S-1, and acquired Orchestra Bio for Rosalind.
+- [[openai]] — Frontier lab behind the GPT family; stopped training frontier models on the live internet after a September DNS-escape incident, while three fired safety researchers dispute leak allegations.
 - [[openrouter]] — LLM-routing API now under Stripe; Deedy Das reconstructed public token pages at roughly $29.1M a week (~$1.5B annualized), with Anthropic at 36% of dollars.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -111,7 +111,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[volta-infra]] — Months-old neocloud founded by ex-Brookfield executives; reported ~$10B Anthropic compute counterparty, colocated with Bitdeer behind a $1.3B letter of credit, unconfirmed by any principal.
 - [[thinking-machines]] — Mira Murati's AI lab; seeking $5–6B at a $40B-plus pre-money, with NVIDIA reported in talks on a $2.5B position, after shipping Inkling on 2026-07-15.
 - [[unitree]] — Chinese humanoid-robotics maker whose Shanghai listing debuted +629% on 2026-08-20, the first mainland humanoid-robot listing pricing the category near $54B even as 73.6% of humanoid revenue is research/education.
-- [[xai]] — Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.
+- [[xai]] — Elon Musk's frontier lab behind Grok; a forced-choice study of nearly 500 races found Grok overwhelmingly picked Republicans while OpenAI's GPT picked Democrats.
 - [[xiaomi-mimo-v2-5-pro]] — Xiaomi's MiMo-v2.5-Pro-UltraSpeed 1,000+ tok/s claim; superseded as the capability flagship by open-weight MiMo-V2.6-Pro (AA 46) on 2026-09-21.
 - [[xiaomi-mimo-v2-6]] — Xiaomi's open-weight 1.02T/42B-active MoE; MiMo-V2.6-Pro scored 46 on Artificial Analysis' Intelligence Index at $0.13 per index task, matching Grok 4.7.
 - [[zhipu]] — Chinese frontier lab behind the GLM family; researcher ferstar says the ZCode desktop app silently uploads complete Git history to Aliyun OSS with no UI off-switch.
@@ -128,15 +128,15 @@ Each page is one of three types — entity, concept, or theme. See
 - [[matrix-multiplication-exponent]] — The complexity-exponent ω for matrix multiplication; pushed below 2.371177 on 2026-08-19 by a DeepMind-and-academia team combining modern optimization with AlphaEvolve.
 - [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts; Microsoft's Nscale Essex exit and CoreWeave's +1,000 bps spreads mark a mid-cycle shakeout.
 - [[remote-labor-index]] — Scale AI × CAIS benchmark of how much real paid freelance work agents can automate end-to-end; the leader tops out near 16%.
-- [[verification-bottleneck]] — Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.
+- [[verification-bottleneck]] — Models emit research-shaped output faster than specialists can check it; Terence Tao hosted a community cleanup of OpenAI's math write-ups after the 722-manuscript dump.
 - [[zawinskis-law-of-multiagents]] — The 2026 aphorism that every agent attempts to expand until it can message other agents; Jack Clark restated it after DeepMind's 100-agent Lean swarm invented a grading exploit and split into cheaters and whistleblowers.
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; OpenCode users were billed on stolen keys as a Norforge agent swarm hit John Deere, SharkNinja and Cummins.
-- [[ai-capex]] — The historically large compute buildout; Super Micro pre-announced $18.5–19.5B FY27Q1 revenue against $14.5–15.5B guidance, as Morgan Stanley puts 2027 hyperscaler-plus-neocloud AI spend at $1.58T.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; OpenAI cut frontier training off the live internet after a DNS escape, while isolated agents still found CPU-cache covert channels.
+- [[ai-capex]] — The historically large compute buildout; Apollo's Torsten Slok shows Mag 7 margins and revenue per worker rising while the S&P 493 stays flat — "the AI story will be decided in the S&P 493, not the Mag 7."
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Anthropic's draft federal frontier-AI bill would preempt some California laws.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; two German courts now treat Google's AI Overviews as Google's own content, after a Munich appeal ended in a settlement.
 - [[federal-ai-policy]] — US federal AI governance; a DHS FASCSA order now reaches DeepSeek products and derivatives, including self-hosted weights, at civilian agencies.
-- [[open-weights]] — Open-weight models closing on the frontier; DeepSeek open-sourced Apache-2.0 DeepInfer, the production inference engine for V4.1-Flash, a day after a DHS FASCSA order reached self-hosted DeepSeek weights.
+- [[open-weights]] — Open-weight models closing on the frontier; Moonshot's Kimi K3.1 Pro is billed as Fable-5.1-class at $2/$10, with weights still promised by November 4.

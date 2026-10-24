@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; OpenCode users were billed on stolen keys as a Norforge agent swarm hit John Deere, SharkNinja and Cummins.",
-      "description": "2026 storyline of agentic systems acting on live websites; OpenCode users were billed on stolen keys as a Norforge agent swarm hit John Deere, SharkNinja and Cummins.",
+      "summary": "2026 storyline of agentic systems acting on live websites; OpenAI cut frontier training off the live internet after a DNS escape, while isolated agents still found CPU-cache covert channels.",
+      "description": "2026 storyline of agentic systems acting on live websites; OpenAI cut frontier training off the live internet after a DNS escape, while isolated agents still found CPU-cache covert channels.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-20",
-      "timestamp": "2026-10-20T00:00:00Z",
+      "updated_at": "2026-10-24",
+      "timestamp": "2026-10-24T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -179,11 +179,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Super Micro pre-announced $18.5–19.5B FY27Q1 revenue against $14.5–15.5B guidance, as Morgan Stanley puts 2027 hyperscaler-plus-neocloud AI spend at $1.58T.",
-      "description": "The historically large compute buildout; Super Micro pre-announced $18.5–19.5B FY27Q1 revenue against $14.5–15.5B guidance, as Morgan Stanley puts 2027 hyperscaler-plus-neocloud AI spend at $1.58T.",
+      "summary": "The historically large compute buildout; Apollo's Torsten Slok shows Mag 7 margins and revenue per worker rising while the S&P 493 stays flat — \"the AI story will be decided in the S&P 493, not the Mag 7.\"",
+      "description": "The historically large compute buildout; Apollo's Torsten Slok shows Mag 7 margins and revenue per worker rising while the S&P 493 stays flat — \"the AI story will be decided in the S&P 493, not the Mag 7.\"",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-21",
-      "timestamp": "2026-10-21T00:00:00Z",
+      "updated_at": "2026-10-24",
+      "timestamp": "2026-10-24T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -584,8 +584,8 @@
       "summary": "AI safety lab behind Claude; a draft S-1 shows $16.3B first-half revenue against an $80.7B accounting-heavy loss and $600B+ compute commitments ahead of a planned November IPO.",
       "description": "AI safety lab behind Claude; a draft S-1 shows $16.3B first-half revenue against an $80.7B accounting-heavy loss and $600B+ compute commitments ahead of a planned November IPO.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-21",
-      "timestamp": "2026-10-21T00:00:00Z",
+      "updated_at": "2026-10-24",
+      "timestamp": "2026-10-24T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -606,7 +606,8 @@
         "Anthropic Public Benefit Fund",
         "Claude Money",
         "Claude Personal Finance",
-        "Conceptual Reasoning Fellows"
+        "Conceptual Reasoning Fellows",
+        "sandbox-runtime"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -1434,8 +1435,8 @@
       "summary": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Opus 5.5 fast mode is generally available at $8/$40, up to 2.5× faster.",
       "description": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Opus 5.5 fast mode is generally available at $8/$40, up to 2.5× faster.",
       "created_at": "2026-09-23",
-      "updated_at": "2026-10-16",
-      "timestamp": "2026-10-16T00:00:00Z",
+      "updated_at": "2026-10-24",
+      "timestamp": "2026-10-24T00:00:00Z",
       "file": "entities/claude-opus-5-5.md",
       "aliases": [
         "Claude Opus 5.5",
@@ -4107,7 +4108,8 @@
       ],
       "inbound": [
         "claude-fable-5",
-        "mistral"
+        "mistral",
+        "open-weights"
       ]
     },
     {
@@ -4336,11 +4338,11 @@
         "frontier-model",
         "agentic-product"
       ],
-      "summary": "Moonshot AI's 2.8T-parameter flagship; SemiAnalysis reports an NVIDIA vLLM decode path at 423 tok/s per user, 1.68× faster on unnamed hardware.",
-      "description": "Moonshot AI's 2.8T-parameter flagship; SemiAnalysis reports an NVIDIA vLLM decode path at 423 tok/s per user, 1.68× faster on unnamed hardware.",
+      "summary": "Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10, with open weights promised by Nov 4.",
+      "description": "Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10, with open weights promised by Nov 4.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-19",
-      "timestamp": "2026-10-19T00:00:00Z",
+      "updated_at": "2026-10-24",
+      "timestamp": "2026-10-24T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -4350,7 +4352,10 @@
         "Open Frontier Intelligence",
         "Kimi Work",
         "Moonshot",
-        "Moonshot AI"
+        "Moonshot AI",
+        "Kimi K3.1 Pro",
+        "K3.1 Pro",
+        "Kimi K3.1"
       ],
       "outbound": [
         "ai-capex",
@@ -5069,11 +5074,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "Open-weight models closing on the frontier; DeepSeek open-sourced Apache-2.0 DeepInfer, the production inference engine for V4.1-Flash, a day after a DHS FASCSA order reached self-hosted DeepSeek weights.",
-      "description": "Open-weight models closing on the frontier; DeepSeek open-sourced Apache-2.0 DeepInfer, the production inference engine for V4.1-Flash, a day after a DHS FASCSA order reached self-hosted DeepSeek weights.",
+      "summary": "Open-weight models closing on the frontier; Moonshot's Kimi K3.1 Pro is billed as Fable-5.1-class at $2/$10, with weights still promised by November 4.",
+      "description": "Open-weight models closing on the frontier; Moonshot's Kimi K3.1 Pro is billed as Fable-5.1-class at $2/$10, with weights still promised by November 4.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-21",
-      "timestamp": "2026-10-21T00:00:00Z",
+      "updated_at": "2026-10-24",
+      "timestamp": "2026-10-24T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -5111,6 +5116,7 @@
         "minimax-m3",
         "minimax-m3-1-flash",
         "mistral",
+        "mistral-large-4",
         "mistral-shieldstral",
         "moonshot-kimi-k2-7-code",
         "moonshot-kimi-k3",
@@ -5220,11 +5226,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; Reuters says it is speeding a $30B raise above a $1.4T valuation before Anthropic's S-1, and acquired Orchestra Bio for Rosalind.",
-      "description": "Frontier lab behind the GPT family; Reuters says it is speeding a $30B raise above a $1.4T valuation before Anthropic's S-1, and acquired Orchestra Bio for Rosalind.",
+      "summary": "Frontier lab behind the GPT family; stopped training frontier models on the live internet after a September DNS-escape incident, while three fired safety researchers dispute leak allegations.",
+      "description": "Frontier lab behind the GPT family; stopped training frontier models on the live internet after a September DNS-escape incident, while three fired safety researchers dispute leak allegations.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-21",
-      "timestamp": "2026-10-21T00:00:00Z",
+      "updated_at": "2026-10-24",
+      "timestamp": "2026-10-24T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -6391,8 +6397,8 @@
       "summary": "Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.",
       "description": "Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-24",
+      "timestamp": "2026-10-24T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -6494,11 +6500,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.",
-      "description": "Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.",
+      "summary": "Elon Musk's frontier lab behind Grok; a forced-choice study of nearly 500 races found Grok overwhelmingly picked Republicans while OpenAI's GPT picked Democrats.",
+      "description": "Elon Musk's frontier lab behind Grok; a forced-choice study of nearly 500 races found Grok overwhelmingly picked Republicans while OpenAI's GPT picked Democrats.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-10-06",
-      "timestamp": "2026-10-06T00:00:00Z",
+      "updated_at": "2026-10-24",
+      "timestamp": "2026-10-24T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -7246,10 +7252,13 @@
     "joint commitment on frontier responsibilities": "federal-ai-policy",
     "jonathan ross": "groq",
     "jumper": "john-jumper",
+    "k3.1 pro": "moonshot-kimi-k3",
     "karandeep anand": "character-ai",
     "kimi k2.7 code": "moonshot-kimi-k2-7-code",
     "kimi k2.7-code": "moonshot-kimi-k2-7-code",
     "kimi k3": "moonshot-kimi-k3",
+    "kimi k3.1": "moonshot-kimi-k3",
+    "kimi k3.1 pro": "moonshot-kimi-k3",
     "kimi work": "moonshot-kimi-k3",
     "kivine": "moonshot-kimi-k3",
     "kolibri": "aleph-alpha",
@@ -7497,6 +7506,7 @@
     "sakana-ai": "sakana-ai",
     "salesforce": "salesforce",
     "salesforce inc": "salesforce",
+    "sandbox-runtime": "anthropic",
     "sasha sheng": "jev",
     "sb 813": "california-ai-regulation",
     "sb 942": "california-ai-regulation",
@@ -7617,6 +7627,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-10-24",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-24 digest (no model tickets with updated_at today or yesterday). Created 0, updated 9 (moonshot-kimi-k3 — K3.1 Pro 2.8T/104B-active, TB 4.0 65.7%, $2/$10, weights promised Nov 4; openai — offline frontier training after Sept DNS escape + Korbak/Balesni/Wang written-notice dispute + Grok-vs-GPT partisan study; agentic-ai-security — same offline cut + CPU-cache covert channels + sandbox-runtime; open-weights — K3.1 Pro as Fable-5.1-class; ai-capex — Apollo Slok Mag 7 vs S&P 493 no-payoff; xai — Grok Republican / GPT Democrat split, 90%+ of ~500 races; anthropic — sandbox-runtime + Opus 5.5 PLE 50.6%; claude-opus-5-5 — same PLE cell; verification-bottleneck — Tao-hosted OpenAI math cleanup). Skipped for budget: Dream Labs $90M / Dream-1, Block Dessa, Pennsylvania AI Deceptive Advertising Act, Hugging Face Microduck, NVIDIA Nemotron 3.5 Bolt, Kyutai CADRE, IQuest-Q1, Carbon-X, federal-ai-policy as a PA-state increment."
+    },
+    {
       "date": "2026-10-21",
       "op": "ingest",
       "summary": "Ingested the 2026-10-21 digest plus tickets updated 2026-10-20 (deepseek-deepinfer, minimax-m3-1-flash leftover, inception-mercury-3, others). Created 0. Updated 8 (anthropic — draft S-1 $16.3B H1 / $80.7B accounting-heavy loss / $600B+ compute / November IPO + 318K protein binders + Nscale 460 MW / 1.35 GW figures; openai — $30B raise sped above $1.4T before Anthropic S-1, Orchestra Bio into Rosalind, Madry returns, GPT-6 Astra MultiLangBench 87.4%; deepseek — Apache-2.0 DeepInfer on SM100/Ascend 950, HN 2,077; open-weights — same serving-stack drop; spacex — Q3 $14.6B / $4.4B NI, 13 GW guide, 440k-GPU Vera Rubin mid-2027, Grok Bot 800K WAU; ai-capex — SMCI $18.5–19.5B FY27Q1 vs $14.5–15.5B + Morgan Stanley $1.58T 2027; claude-science — 17/211 outside-lab toxin binders; mistral — Voxtral 3 50-language voice stack, HN 472). Skipped for budget: Super Micro as its own page, federal-ai-policy court-gated restatement, gpt-6 MultiLangBench as own increment, xai Grok Bot, muse-glimmer 30B paper, Mercury 3, ElevenLabs Realtime, MiniMax M3.1 Flash leftover, Perplexity local macOS, Meta Muse 10.2M downloads, ECHOTRIBBLE / Linwei Ding sanctions, TorchTPU, Épi / World of SWECraft / TokenGate arXiv batch."
@@ -7710,11 +7725,6 @@
       "date": "2026-10-03",
       "op": "ingest",
       "summary": "Ingested the 2026-10-03 digest plus tickets updated 2026-10-02 (google-suncatcher, google-gemini-4, anthropic-compute-commitments, anthropic-claude-fable-5-5, openai-gpt-6-1-sol). Created 0, updated 8 (anthropic — 14 Oct investor Q&A / $1.8–2T vs ~$1.5T + Claude distillation shells + Olah/Pope encyclical; google — Suncatcher four-TPU prototype in orbit on Transporter-18 + contact + publisher 0.1% note; federal-ai-policy — CNN Jay Clayton AI-czar expectation + Meridian first meeting + $300M chip-smuggling arrest; meta — six Muse Spark math papers + Muse Gadgets / 5,000 Home Link; nvidia — record ~$5.7T + DGX Spark reprice + B300 leasing trail; apple — macOS Full Disk Access tightened over agents; amazon — Garman data-centre backlash post + $1B community plan; ai-capex — $55B HY bonds + BIS 55.2% circular raise + Samsung HBM4 ~$4.5/Gb + Lumentum 30% laser supply). Skipped for budget: FLUX 3 Image / Black Forest Labs, Muse Gadgets as its own page, Pi 1.0 / harness-as-product, Sites in ChatGPT, MiniMax M3.1 Flash, Perplexity Lily, figure-ai F.02 decommission, gemini-4-argon HN leftover, muse-code / agentic-ai-security / openai increments, arXiv highlights."
-    },
-    {
-      "date": "2026-10-02",
-      "op": "ingest",
-      "summary": "Ingested the 2026-10-02 digest plus tickets updated 2026-10-01 (tencent-oracle-compute-lease, salesforce-koa, nebius-inferize, google-synthid-bio, google-gemini-4, anthropic-haiku-5-5, ftc-anthropic-openai). Created 0, updated 8 (openai — three safety-researcher firings + CA AG cybersecurity subpoena + SoftBank/Nvidia final $10B each + FT 55-site agent report + Trump equity-stake float; anthropic — Claude Code TypeScript mods + no further enterprise discounts + civilian FedRAMP + Haiku 5.5 rumor; perplexity — pplx-decider-27b + Decisions API $0.04/M input free output; jev — same-day Clef / JEV-27B-VL / Strands Decider wave; gemini-4-argon — Vals Index 68.9% #1 + HN 1,632 pts + contested 60%-of-Astra cost claim; agentic-ai-security — 55 sites + 13,000 leaked screenshots; salesforce — Listen Labs ~$2B; google — SynthID Bio protein watermark). Skipped for budget: Oracle/Tencent $7B SE Asia lease as its own page, Nebius Inferize, California workplace-AI bills, Meta Muse 3M WAU, Grok 4.7 all-mode rollout, SpaceXAI/Microsoft compute talks, federal-ai-policy / california-ai-regulation / ai-capex / nvidia / xai / nebius increments, arXiv highlights."
     }
   ]
 }

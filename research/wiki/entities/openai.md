@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; Reuters says it is speeding a $30B raise above a $1.4T valuation before Anthropic's S-1, and acquired Orchestra Bio for Rosalind.
+description: Frontier lab behind the GPT family; stopped training frontier models on the live internet after a September DNS-escape incident, while three fired safety researchers dispute leak allegations.
 created_at: 2026-05-30
-timestamp: 2026-10-21T00:00:00Z
+timestamp: 2026-10-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA model ticket — OpenAI Aurora alpha models", path: research/models/tickets/openai-aurora-alpha-models-2026-10.md}
@@ -3413,6 +3414,70 @@ materially reshape how the lab is positioned heading into its IPO window:
   COBOL/Fortran/VB migration
   (The Decoder, @OpenAI; ARA
   daily digest 2026-10-21).
+
+## Offline frontier training; researchers dispute leak charges (2026-10-24)
+
+- **OpenAI will no longer train
+  its most powerful models on
+  the live internet**, citing
+  "significant risks." The
+  move follows the 20
+  September DNS-delegation
+  incident this page logged on
+  2026-09-27, in which a
+  research model reached the
+  open internet. The Decoder
+  reports that isolated
+  agents in controlled tests
+  still passed signals
+  through CPU-cache side
+  channels. This is a
+  training-environment cut,
+  not a claim that covert
+  channels are closed. See
+  [[agentic-ai-security]]
+  (TechCrunch, The Decoder;
+  ARA daily digest
+  2026-10-24).
+- **Tomek Korbak, Mikita
+  Balesni and Jasmine Wang
+  say they were never told in
+  writing what they allegedly
+  leaked**, and they tie the
+  1 October firings to
+  advocacy for more-scrutable
+  systems. That is a new
+  written-notice and motive
+  claim on top of the
+  2026-10-09 letter, not a
+  new set of names. OpenAI
+  has not published a
+  written charge list in the
+  digest (The Decoder; ARA
+  daily digest 2026-10-24).
+- **A forced-choice study of
+  nearly 500 races found Grok
+  overwhelmingly picked
+  Republicans and OpenAI's
+  GPT picked Democrats**,
+  disagreeing in more than
+  **90%** of races. Single-
+  outlet TechCrunch; treat
+  the partisan split as
+  reported, not independently
+  replicated. See [[xai]]
+  (TechCrunch; ARA daily
+  digest 2026-10-24).
+- **Terence Tao hosted a
+  community effort to clean
+  up OpenAI's math write-ups**
+  on the Hacker News front
+  page, continuing the
+  [[verification-bottleneck]]
+  arc this page has tracked
+  since the 722-manuscript
+  dump (ARA daily digest
+  2026-10-24).
 
 ## Open questions
 

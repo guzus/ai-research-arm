@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Super Micro pre-announced $18.5–19.5B FY27Q1 revenue against $14.5–15.5B guidance, as Morgan Stanley puts 2027 hyperscaler-plus-neocloud AI spend at $1.58T.
+description: The historically large compute buildout; Apollo's Torsten Slok shows Mag 7 margins and revenue per worker rising while the S&P 493 stays flat — "the AI story will be decided in the S&P 493, not the Mag 7."
 created_at: 2026-05-24
-timestamp: 2026-10-21T00:00:00Z
+timestamp: 2026-10-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
@@ -1753,3 +1754,46 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   3.7%. See [[anthropic]]
   (TechCrunch, Twitter; ARA
   daily digest 2026-10-21).
+
+## Apollo: no AI payoff outside tech (2026-10-24)
+
+- **Torsten Slok's Apollo
+  chart pack shows Mag 7
+  margins and revenue per
+  worker rising while the
+  S&P 493 stays flat.** It
+  was the most-commented AI
+  story on Hacker News (321
+  pts / 284 comments). Slok's
+  line — "the AI story will
+  be decided in the S&P 493,
+  not the Mag 7" — is the
+  demand-side counterpart to
+  this theme's $1.58T 2027
+  spend print from yesterday.
+  HN commenters pointed to a
+  same-month survey finding
+  only **13%** of companies
+  see real returns from AI.
+  Mainstream corporate
+  America is treating token
+  spend as a cost center,
+  not a growth line. This is
+  a payoff-outside-tech
+  read, not a claim that
+  hyperscaler capex is
+  slowing (Apollo, Hacker
+  News; ARA daily digest
+  2026-10-24).
+- **TechCrunch's "AI
+  graveyard"** is a running
+  list of shut-down or
+  underdelivering projects,
+  from Apple's delayed Siri
+  AI to [[openai]]'s messy
+  "super app" launch. Color
+  on the same non-tech
+  payoff gap, not a new
+  capex print (TechCrunch;
+  ARA daily digest
+  2026-10-24).
