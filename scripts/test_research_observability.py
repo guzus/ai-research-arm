@@ -231,6 +231,18 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(attributes(attempt)["langfuse.observation.metadata.outcome"], '"unknown"')
         self.assertEqual(attributes(attempt)["langfuse.observation.metadata.github_step_conclusion"], '"success"')
 
+    def test_missing_article_failure_is_visible_to_rsi_without_transcript(self):
+        actual = job()
+        actual["conclusion"] = "failure"
+        next(s for s in actual["steps"] if s["name"] == lf.STAGES["no-article-claude"])["conclusion"] = "failure"
+        (self.directory / "summary.json").unlink()
+        trace = lf.build_trace(self.directory, actual, REGISTRY, repository="guzus/ai-research-arm",
+                               run_id="123", run_attempt="1", source_sha="a" * 40, environment="production")
+        failures = json.loads(attributes(trace["spans"][0])["langfuse.observation.metadata.failed_stages"])
+        self.assertIn("no-article-claude", failures)
+        gate = next(s for s in trace["spans"] if s["name"] == lf.STAGES["no-article-claude"])
+        self.assertEqual(gate["status"]["code"], 2)
+
     def test_documented_cli_round_trip_without_network_or_keys(self):
         raw = self.directory / "raw.json"
         raw.write_text(json.dumps(transcript()))

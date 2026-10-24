@@ -40,7 +40,7 @@ workflow inputs, prompts, artifacts, or an agent's environment.
   offline, without keys or a network call.
 - `scripts/langfuse_research.py evidence --days 7 --output /tmp/evidence.json`:
   reads root observations through `/api/public/v2/observations`, production
-  environment only, at most three pages / 300 runs. Outcomes and attempt diagnostics are expanded
+  environment only, at most three pages / 300 runs. Outcomes, failed stages and attempt diagnostics are expanded
   to avoid the API's default truncation. A bounded window is not an exhaustive
   corpus; `truncated` reports pagination exhaustion.
 - `.github/workflows/daily-improve.yml`: a separate fresh runner fetches evidence;

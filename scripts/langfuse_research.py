@@ -31,6 +31,13 @@ STAGES = {
     "methodology": "Methodology artifact gate",
     "push": "Push changes",
     "fireworks-preflight": "Preflight Fireworks backend",
+    "outfile": "Identify generated file",
+    "provenance": "Verify pinned model provenance",
+    "no-article-codex": "Fail Codex run without article",
+    "no-article-opencode": "Fail OpenCode run without article",
+    "no-article-cursor": "Fail Cursor run without article",
+    "no-article-claude": "Fail Claude run without article",
+    "no-article-fireworks": "Fail Fireworks run without article",
 }
 
 
@@ -152,6 +159,7 @@ def build_trace(bundle: Path, job: dict, registry: dict, *, repository: str,
     steps = {step["name"]: step for step in job.get("steps", [])}
     models = known_identifiers(registry)
     attempt_summaries = []
+    failed_stages = []
     for attempt, name in STAGES.items():
         step = steps.get(name)
         if not step or step.get("conclusion") == "skipped" or not step.get("started_at") or not step.get("completed_at"):
@@ -180,6 +188,8 @@ def build_trace(bundle: Path, job: dict, registry: dict, *, repository: str,
         # "success" cannot recover their raw outcome when the capture is lost.
         if outcome == "unknown" and (not attempt.startswith("gen-") or step.get("conclusion") in {"failure", "cancelled", "timed_out"}):
             outcome = step.get("conclusion", "unknown")
+        if outcome in {"failure", "cancelled", "timed_out"}:
+            failed_stages.append(attempt)
         parent = span(attempt, name, nanos(step["started_at"]), nanos(step["completed_at"]), root_id,
                       kind="agent" if attempt.startswith("gen-") else "span", outcome=outcome, meta=meta)
         generation_ids = {}
@@ -231,6 +241,7 @@ def build_trace(bundle: Path, job: dict, registry: dict, *, repository: str,
                                       "tool_outcomes": tool_outcomes if events else None})
     # Bounded diagnostics for the weekly reader, without N+1 child requests.
     spans[0]["attributes"].append(attr("langfuse.observation.metadata.attempts", json.dumps(attempt_summaries)))
+    spans[0]["attributes"].append(attr("langfuse.observation.metadata.failed_stages", json.dumps(failed_stages)))
     scores = []
     if raw_summary:
         values = {"research.published": report["published"]} if report["published"] is not None else {}
@@ -265,7 +276,7 @@ def evidence(client: Langfuse, days: int) -> dict:
     now = datetime.now(timezone.utc)
     query = {"name": TRACE_NAME, "fromStartTime": (now - timedelta(days=days)).isoformat(),
              "toStartTime": now.isoformat(), "limit": 100, "fields": "core,basic,time,metadata",
-             "expandMetadata": "outcomes,attempts", "isRootObservation": "true", "environment": "production"}
+             "expandMetadata": "outcomes,attempts,failed_stages", "isRootObservation": "true", "environment": "production"}
     rows = []
     truncated = False
     for _ in range(3):
@@ -284,7 +295,7 @@ def evidence(client: Langfuse, days: int) -> dict:
                 continue
             # Evidence is treated as untrusted data by the consumer. No I/O,
             # exception messages, user IDs or arbitrary metadata is requested.
-            safe = {k: metadata.get(k) for k in ("run_id", "run_attempt", "source_sha", "github_url", "requested_backend", "effective_backend", "used_fallback", "published", "summary_available", "outcomes", "attempts")}
+            safe = {k: metadata.get(k) for k in ("run_id", "run_attempt", "source_sha", "github_url", "requested_backend", "effective_backend", "used_fallback", "published", "summary_available", "outcomes", "attempts", "failed_stages")}
             rows.append({"trace_id": row.get("traceId"), "environment": "production",
                          "start_time": row.get("startTime"), "level": row.get("level"), **safe})
         cursor = page.get("meta", {}).get("cursor")

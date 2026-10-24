@@ -35,15 +35,16 @@ better research output, a better model, or an improved autonomous optimizer.
   scores**, with exact reported usage: 10 input, 2 output, 5 cache-read tokens.
   These are fixture values in `smoke-test`, not real billed usage.
 - Production evidence excluded both smoke traces. The historical failed run
-  yielded 3 workflow/attempt observations and no manufactured gate scores.
+  yielded 5 workflow/attempt observations and no manufactured gate scores.
 - Independent review found and corrected missing→false coercion, missing
   environment filtering, truncated API metadata, unbounded integer conversion,
   and unreported capture truncation. Root attempt diagnostics now make model,
   coverage, reported usage and tool-failure evidence available to RSI.
 - GitHub's post-`continue-on-error` step conclusion cannot establish an agent's
   raw success. When a snapshot is absent, that raw outcome remains unknown.
+  The terminal `no-article-claude` failure is explicitly visible to RSI.
 
-Validation: 21 focused behavioral/entrypoint tests, 92 backend-matrix tests,
+Validation: 22 focused behavioral/entrypoint tests, 92 backend-matrix tests,
 toolchain-pin tests, UTC workflow tests, translation-dispatch tests, CI workflow
 tests, backend matrix consistency, actionlint and diff whitespace checks.
 
