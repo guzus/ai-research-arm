@@ -5,6 +5,8 @@
     "uv_0_9_7": "ghcr.io/astral-sh/uv:0.9.7@sha256:ba4857bf2a068e9bc0e64eed8563b065908a4cd6bfb66b531a9c424c8e25e142"
   },
   "github_actions": {
+    "actions/upload-artifact": {"version": "v4", "sha": "ea165f8d65b6e75b540449e92b4886f43607fa02"},
+    "actions/download-artifact": {"version": "v4", "sha": "d3f86a106a0bac45b974a628896c90dbdf5c8093"},
     "actions/checkout": {"version": "v7", "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"},
     "actions/setup-node": {"version": "v7", "sha": "820762786026740c76f36085b0efc47a31fe5020"},
     "actions/github-script": {"version": "v9", "sha": "3a2844b7e9c422d3c10d287c895573f7108da1b3"},

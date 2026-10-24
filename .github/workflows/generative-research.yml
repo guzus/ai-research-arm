@@ -1782,6 +1782,17 @@ jobs:
               to "wait" for anything — the writer commit from step 9 must
               exist before you finish.
 
+      - name: Capture sanitized trace (gen-claude)
+        if: always() && steps.gen-claude.outcome != 'skipped' && steps.gen-claude.outcome != ''
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          EXECUTION_FILE: ${{ steps.gen-claude.outputs.execution_file }}
+        run: |
+          python3 scripts/research_trace.py capture --attempt gen-claude \
+            --output-dir "$RUNNER_TEMP/ara-trace-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+
+
       # Inspect Claude attempt 1 — decide whether to retry. A publishable
       # attempt needs both a new article commit and the claim-verifier JSON
       # that the later audit consumes. If either artifact is missing, run
@@ -1856,6 +1867,17 @@ jobs:
         uses: anthropics/claude-code-action@fd1c128679612beff4ca259c78021c506e8aa7a7 # v1.0.237
         env: *claude_env
         with: *claude_with
+
+      - name: Capture sanitized trace (gen-claude-retry)
+        if: always() && steps.gen-claude-retry.outcome != 'skipped' && steps.gen-claude-retry.outcome != ''
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          EXECUTION_FILE: ${{ steps.gen-claude-retry.outputs.execution_file }}
+        run: |
+          python3 scripts/research_trace.py capture --attempt gen-claude-retry \
+            --output-dir "$RUNNER_TEMP/ara-trace-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+
 
       # ---- Codex backend ---------------------------------------------------
       # ChatGPT-managed Codex auth. Seed auth.json from CODEX_AUTH_JSON only
@@ -3277,6 +3299,16 @@ jobs:
               to "wait" for anything — the writer commit from step 9 must
               exist before you finish.
 
+      - name: Capture sanitized trace (gen-deepseek)
+        if: always() && steps.gen-deepseek.outcome != 'skipped' && steps.gen-deepseek.outcome != ''
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          EXECUTION_FILE: ${{ steps.gen-deepseek.outputs.execution_file }}
+        run: |
+          python3 scripts/research_trace.py capture --attempt gen-deepseek \
+            --output-dir "$RUNNER_TEMP/ara-trace-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+
       - name: Inspect Fireworks attempt 1
         if: steps.effective.outputs.fireworks_active == 'true'
         id: deepseek-attempt-1
@@ -3359,6 +3391,16 @@ jobs:
         env: *deepseek_v4_flash_env
         with: *deepseek_v4_flash_with
 
+      - name: Capture sanitized trace (gen-deepseek-retry)
+        if: always() && steps.gen-deepseek-retry.outcome != 'skipped' && steps.gen-deepseek-retry.outcome != ''
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          EXECUTION_FILE: ${{ steps.gen-deepseek-retry.outputs.execution_file }}
+        run: |
+          python3 scripts/research_trace.py capture --attempt gen-deepseek-retry \
+            --output-dir "$RUNNER_TEMP/ara-trace-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+
       - name: Inspect Fireworks retry 1
         if: steps.deepseek-attempt-1.outputs.retry == 'true'
         id: deepseek-retry-1
@@ -3440,6 +3482,17 @@ jobs:
         uses: anthropics/claude-code-action@fd1c128679612beff4ca259c78021c506e8aa7a7 # v1.0.237
         env: *deepseek_v4_flash_env
         with: *deepseek_v4_flash_with
+
+      - name: Capture sanitized trace (gen-deepseek-retry-2)
+        if: always() && steps.gen-deepseek-retry-2.outcome != 'skipped' && steps.gen-deepseek-retry-2.outcome != ''
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          EXECUTION_FILE: ${{ steps.gen-deepseek-retry-2.outputs.execution_file }}
+        run: |
+          python3 scripts/research_trace.py capture --attempt gen-deepseek-retry-2 \
+            --output-dir "$RUNNER_TEMP/ara-trace-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+
 
       # Identify the file THIS run produced by diffing HEAD against the
       # snapshot we took before the action. This rejects the "newest file in
@@ -4226,3 +4279,77 @@ jobs:
             -f overwrite=false \
             -f auto_merge=true
           echo "::notice::Queued Korean translation for $ARTICLE_SLUG"
+
+      # Preserve only the content-free projection. Detailed raw transcripts stay
+      # in the existing Actions execution files; no Langfuse keys enter this job.
+      - name: Summarize research trace outcomes
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          RESEARCH_STEPS: ${{ toJSON(steps) }}
+        run: |
+          python3 scripts/research_trace.py summary \
+            --output-dir "$RUNNER_TEMP/ara-trace-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+
+      - name: Preserve sanitized research trace
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: research-trace-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/ara-trace-${{ github.run_id }}-${{ github.run_attempt }}/*.json
+          retention-days: 7
+          if-no-files-found: warn
+
+      - name: Cleanup sanitized trace staging
+        if: always()
+        continue-on-error: true
+        run: rm -rf -- "$RUNNER_TEMP/ara-trace-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT"
+
+  # Read-only reporting uses a fresh runner and the workflow's source revision,
+  # never code or executable state left by the research agent. Export failure
+  # cannot change the research job's outcome or authorize publication.
+  langfuse-observability:
+    needs: generative-research
+    if: always() && needs.generative-research.result != 'skipped'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    continue-on-error: true
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - name: Checkout trusted reporting code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.workflow_sha }}
+          persist-credentials: false
+
+      - name: Download sanitized research trace
+        continue-on-error: true
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: research-trace-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/research-trace
+
+      - name: Read measured job and step outcomes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/attempts/$GITHUB_RUN_ATTEMPT/jobs?per_page=100" \
+            > "$RUNNER_TEMP/research-jobs.json"
+
+      - name: Export research observations to Langfuse
+        continue-on-error: true
+        env:
+          LANGFUSE_BASE_URL: ${{ vars.LANGFUSE_BASE_URL }}
+          LANGFUSE_PUBLIC_KEY: ${{ secrets.LANGFUSE_PUBLIC_KEY }}
+          LANGFUSE_SECRET_KEY: ${{ secrets.LANGFUSE_SECRET_KEY }}
+          RESEARCH_SOURCE_SHA: ${{ github.sha }}
+          TRACE_ENVIRONMENT: ${{ github.ref_name == github.event.repository.default_branch && 'production' || 'evaluation' }}
+        run: |
+          python3 scripts/langfuse_research.py export \
+            --bundle-dir "$RUNNER_TEMP/research-trace" \
+            --jobs-file "$RUNNER_TEMP/research-jobs.json" \
+            --environment "$TRACE_ENVIRONMENT"

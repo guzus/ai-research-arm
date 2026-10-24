@@ -154,7 +154,8 @@ production path.)
 `ubuntu-latest` is reserved for **CI** (`ci.yml` — PRs can change
 build scripts, tests, and workflow files, which must not execute on the
 self-hosted host), manual read-only native model compatibility canaries
-(`claude-native-canary.yml`), and **watchdogs** (a watchdog running on the runners it
+(`claude-native-canary.yml`), read-only Langfuse reporting/evidence jobs
+(keeps observability keys off agent runners), and **watchdogs** (a watchdog running on the runners it
 watches is useless). `liveness-check.yml` runs a job on *each* tier, because
 no single tier survives both failure modes — a GitHub-hosted billing block
 vs. a self-hosted outage — so whichever is alive still alerts.
@@ -359,6 +360,22 @@ gh workflow run claude-native-canary.yml -f model=claude-sonnet-5-5
 
 The canary checks served model identity and a Read-tool round trip without
 publishing. The auth-only preflight cannot prove model availability.
+
+## Research observability and RSI
+
+The generative-research pilot preserves content-free Claude/Fireworks attempt
+observations and exports them to Langfuse from a separate, fresh reporting job.
+Langfuse credentials must never enter an agent job or container. Raw prompts,
+reasoning, tool arguments/results and exception text stay out of the exporter.
+Missing fields remain unknown; Cursor/OpenCode/Codex have workflow-level coverage
+only until their structured CLI contracts are validated. Export failures never
+change publication gates. Contract and commands: [`docs/research-observability.md`](docs/research-observability.md).
+
+The weekly improvement agent reads bounded production trace evidence, then
+requires a frozen baseline, one treatment, matched evaluation and an independent
+reserved case before retaining a candidate. Observability installation is not
+proof of research improvement. Keep existing PR-only delivery and do not launch
+new paid model batches from the weekly loop's deterministic-check budget.
 
 ## Backends
 
