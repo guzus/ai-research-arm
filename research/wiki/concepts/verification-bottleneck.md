@@ -6,8 +6,9 @@ aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap"
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
 description: Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.
 created_at: 2026-08-02
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
@@ -511,3 +512,16 @@ claim, and the dispute resolves on **relay credibility rather than
   issue is novelty, not grading
   (The Decoder; ARA daily digest
   2026-10-13).
+
+## Tao hosts a cleanup of OpenAI's math write-ups (2026-10-24)
+
+Hacker News carried a Terence
+Tao-hosted community effort to
+clean up [[openai]]'s math
+write-ups. This is the
+community-side of the 722-
+manuscript dump this page
+logged on 2026-10-07, not a
+new dump or a Clay decision
+(Hacker News; ARA daily digest
+2026-10-24).

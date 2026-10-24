@@ -2,12 +2,13 @@
 slug: moonshot-kimi-k3
 title: Moonshot AI Kimi K3
 type: entity
-aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open Frontier Intelligence", "Kimi Work", Moonshot, "Moonshot AI"]
+aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open Frontier Intelligence", "Kimi Work", Moonshot, "Moonshot AI", "Kimi K3.1 Pro", "K3.1 Pro", "Kimi K3.1"]
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
-description: Moonshot AI's 2.8T-parameter flagship; SemiAnalysis reports an NVIDIA vLLM decode path at 423 tok/s per user, 1.68× faster on unnamed hardware.
+description: Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10, with open weights promised by Nov 4.
 created_at: 2026-07-17
-timestamp: 2026-10-19T00:00:00Z
+timestamp: 2026-10-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
@@ -288,6 +289,43 @@ covering it.
   the "megakernel" framing. Serving-stack color, not
   a new checkpoint (SemiAnalysis; ARA daily digest
   2026-10-19).
+
+- **Kimi K3.1 Pro is the next
+  K3 SKU (2026-10-24).** Same
+  **2.8T-total / 104B-active**
+  MoE with **1M context**,
+  priced at **$2/$10 per
+  Mtok**, plus a "Pro
+  Highspeed" API that Latent
+  Space says runs **2–3×
+  faster**. Vendor Terminal-
+  Bench 4.0 is **65.7%**.
+  Latent Space headlines it as
+  "Fable-5.1-class open
+  weights" that narrow the
+  closed-AI lead to about a
+  month; Nathan Lambert says
+  "it looks like they figured
+  out their RL… China is very
+  much keeping pace," with the
+  caveat that weights still
+  have to ship by **4
+  November**. Simon Willison
+  calls it the first time an
+  open-weights (soon-to-be)
+  model has competed this
+  credibly with the current
+  frontier. This is a
+  capability increment on the
+  K3 flagship, not a new lab
+  or a weight drop — fold it
+  here rather than minting a
+  sibling page. See
+  [[open-weights]] and
+  [[claude-fable-5]]
+  (MarkTechPost, Latent Space,
+  Bluesky; ARA daily digest
+  2026-10-24).
 
 ## Open questions
 

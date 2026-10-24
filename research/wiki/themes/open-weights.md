@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: Open-weight models closing on the frontier; DeepSeek open-sourced Apache-2.0 DeepInfer, the production inference engine for V4.1-Flash, a day after a DHS FASCSA order reached self-hosted DeepSeek weights.
+description: Open-weight models closing on the frontier; Moonshot's Kimi K3.1 Pro is billed as Fable-5.1-class at $2/$10, with weights still promised by November 4.
 created_at: 2026-06-14
-timestamp: 2026-10-21T00:00:00Z
+timestamp: 2026-10-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA model ticket — DeepInfer open source", path: research/models/tickets/deepseek-deepinfer-open-source-2026-10.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
@@ -926,6 +927,55 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   MarkTechPost, HN; ARA daily
   digest 2026-10-21 and ticket
   `deepseek-deepinfer-open-source-2026-10`).
+
+## Kimi K3.1 Pro as Fable-5.1-class (2026-10-24)
+
+- **[[moonshot-kimi-k3|Kimi K3.1
+  Pro]] is the day's open-
+  weights capability claim.**
+  Same 2.8T / 104B-active MoE,
+  **1M context**, **$2/$10 per
+  Mtok**, vendor Terminal-Bench
+  4.0 **65.7%**. Latent Space
+  calls it "Fable-5.1-class
+  open weights" that narrow
+  the closed lead to about a
+  month; Simon Willison says
+  it is the first time a soon-
+  to-be-open model has
+  competed this credibly with
+  the current frontier.
+  Weights are still promised
+  for **4 November** — the
+  same "weights promised"
+  gap this theme has tracked
+  on [[minimax-m3-1-flash]]
+  and [[mistral-large-4]].
+  Until they land, this is
+  an API SKU, not a
+  downloadable successor
+  (MarkTechPost, Latent Space,
+  Bluesky; ARA daily digest
+  2026-10-24).
+- **Smaller open increments
+  the same day.** [[nvidia]]
+  Nemotron 3.5 Bolt E4B 4GB
+  is a Gemma-4-derived local
+  voice/robot SLM targeting
+  ~4GB VRAM. Kyutai CADRE is
+  seven open causal diffusion
+  video autoencoders (20 fps
+  on one H100, <230 ms).
+  IQuest-Q1 is a 320B-A15B
+  agentic-CLI MoE. Carbon-X
+  is a 14.8B DNA+text model,
+  Apache 2.0, "not clinically
+  validated." None of these
+  is a frontier-close; they
+  are the week's long tail
+  (MarkTechPost, arXiv
+  2610.30949, r/MachineLearning;
+  ARA daily digest 2026-10-24).
 
 ## Open questions
 

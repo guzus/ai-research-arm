@@ -4,10 +4,11 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot", "Grok 4.7", "Grok 4.8"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; Grok 4.7 shipped at the same $2/$6 as 4.6 and scored 46 on the AA Intelligence Index, matching Xiaomi's open-weight MiMo-V2.6.
+description: Elon Musk's frontier lab behind Grok; a forced-choice study of nearly 500 races found Grok overwhelmingly picked Republicans while OpenAI's GPT picked Democrats.
 created_at: 2026-06-08
-timestamp: 2026-10-06T00:00:00Z
+timestamp: 2026-10-24T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
@@ -339,6 +340,28 @@ unverified. See [[nebius]] and
 [[open-weights]] (Axios via
 @AndrewCurran_; ARA daily digest
 2026-10-05 and 2026-10-06).
+
+## Grok vs GPT on partisan races (2026-10-24)
+
+A TechCrunch-reported study
+that forced each model to
+pick a candidate found
+**Grok overwhelmingly chose
+Republicans** and
+[[openai|OpenAI]]'s GPT
+chose Democrats. The two
+disagreed in more than
+**90%** of nearly **500**
+races. Single outlet; the
+digest does not name the
+authors, the prompt, or
+which Grok/GPT SKUs were
+tested. Likely to feed
+election-season scrutiny of
+AI assistants, not a first-
+party xAI product change.
+See [[openai]] (TechCrunch;
+ARA daily digest 2026-10-24).
 
 ## Open questions
 
