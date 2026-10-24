@@ -38,7 +38,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-10-24T08:15:25Z",
+  "generated_at": "2026-10-24T13:23:42Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -317,7 +317,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.13332,"0.95":4.125},"pareto":9,"plotted":109,"ts":"2026-10-23T14:17:43Z"},
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.13332,"0.95":4.125},"pareto":9,"plotted":109,"ts":"2026-10-23T19:20:31Z"},
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.13332,"0.95":4.125},"pareto":9,"plotted":109,"ts":"2026-10-23T23:53:09Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.13332,"0.95":4.125},"pareto":9,"plotted":109,"ts":"2026-10-24T08:15:25Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.13332,"0.95":4.125},"pareto":9,"plotted":109,"ts":"2026-10-24T08:15:25Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.09,"0.6":0.09,"0.7":0.13,"0.8":0.13,"0.9":0.13332,"0.95":4.125},"pareto":9,"plotted":109,"ts":"2026-10-24T13:23:42Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -3667,7 +3668,7 @@
         }
       ]
     },
-    "as_of": "2026-10-24T08:15:25Z",
+    "as_of": "2026-10-24T13:23:42Z",
     "counts": {
       "pareto": 9,
       "plotted": 109,
@@ -5764,6 +5765,13 @@
         "vendor": "inclusionai"
       },
       {
+        "input_usd_per_mtok": 0.0502,
+        "key": "glmflashlatest",
+        "name": "GLM Flash Latest",
+        "output_usd_per_mtok": 0.0709,
+        "vendor": "~z-ai"
+      },
+      {
         "input_usd_per_mtok": 0.05,
         "key": "llama3.18binstruct",
         "name": "Llama 3.1 8B Instruct",
@@ -5818,13 +5826,6 @@
         "name": "Nova Micro 1.0",
         "output_usd_per_mtok": 0.14,
         "vendor": "amazon"
-      },
-      {
-        "input_usd_per_mtok": 0.0175,
-        "key": "glmflashlatest",
-        "name": "GLM Flash Latest",
-        "output_usd_per_mtok": 0.1425,
-        "vendor": "~z-ai"
       },
       {
         "input_usd_per_mtok": 0.03,
@@ -6177,6 +6178,13 @@
         "vendor": "qwen"
       },
       {
+        "input_usd_per_mtok": 0.246558,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 0.493116,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.15,
         "key": "nemotron3.5supervl",
         "name": "Nemotron 3.5 Super VL",
@@ -6422,20 +6430,6 @@
         "vendor": "cognitivecomputations"
       },
       {
-        "input_usd_per_mtok": 0.45936,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 0.91872,
-        "vendor": "deepseek"
-      },
-      {
-        "input_usd_per_mtok": 0.27,
-        "key": "minimaxm2.5",
-        "name": "MiniMax M2.5",
-        "output_usd_per_mtok": 0.95,
-        "vendor": "minimax"
-      },
-      {
         "input_usd_per_mtok": 0.25,
         "key": "deepseekv3.1",
         "name": "DeepSeek V3.1",
@@ -6577,6 +6571,13 @@
       },
       {
         "input_usd_per_mtok": 0.3,
+        "key": "minimaxm2.5",
+        "name": "MiniMax M2.5",
+        "output_usd_per_mtok": 1.2,
+        "vendor": "minimax"
+      },
+      {
+        "input_usd_per_mtok": 0.3,
         "key": "minimaxm2her",
         "name": "MiniMax M2-her",
         "output_usd_per_mtok": 1.2,
@@ -6623,13 +6624,6 @@
         "name": "Aion 3.5 Mini",
         "output_usd_per_mtok": 1.4,
         "vendor": "aion-labs"
-      },
-      {
-        "input_usd_per_mtok": 0.079,
-        "key": "glmlatest",
-        "name": "GLM Latest",
-        "output_usd_per_mtok": 1.4,
-        "vendor": "~z-ai"
       },
       {
         "input_usd_per_mtok": 0.7,
@@ -7059,6 +7053,13 @@
         "vendor": "meta"
       },
       {
+        "input_usd_per_mtok": 0.075,
+        "key": "glmlatest",
+        "name": "GLM Latest",
+        "output_usd_per_mtok": 4.295,
+        "vendor": "~z-ai"
+      },
+      {
         "input_usd_per_mtok": 1.1,
         "key": "o4minihigh",
         "name": "o4 Mini High",
@@ -7164,13 +7165,6 @@
         "vendor": "mistralai"
       },
       {
-        "input_usd_per_mtok": 0.2023,
-        "key": "kimilatest",
-        "name": "Kimi Latest",
-        "output_usd_per_mtok": 7.7001,
-        "vendor": "~moonshotai"
-      },
-      {
         "input_usd_per_mtok": 0.1188,
         "key": "deepseekprolatest",
         "name": "DeepSeek Pro Latest",
@@ -7204,6 +7198,13 @@
         "name": "GLM 5.3 Prime",
         "output_usd_per_mtok": 8.8,
         "vendor": "z-ai"
+      },
+      {
+        "input_usd_per_mtok": 0.19,
+        "key": "kimilatest",
+        "name": "Kimi Latest",
+        "output_usd_per_mtok": 8.94,
+        "vendor": "~moonshotai"
       },
       {
         "input_usd_per_mtok": 2.0,
