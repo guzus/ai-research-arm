@@ -222,6 +222,11 @@ jobs:
             digest is failed diagnostic output, not a source or a completed task;
             replace it with a fresh editorial synthesis for DATE. Do not use
             source artifacts dated after DATE when recovering a historical issue.
+            For blogs/, use ONLY entries marked `Digest candidate: yes`.
+            Entries marked `no` (including vc_blog/P2 watch-list posts) are not
+            digest inputs, even if relevant or explicitly labelled as opinion.
+            For youtube/, use only the high-signal selection; do not promote
+            watch-list rumors when zero videos passed that selection.
 
             STEP 2: Use MCP search tools to fill gaps
             You have access to advanced search tools (Exa, Perplexity) via MCP.
@@ -378,6 +383,11 @@ jobs:
             digest is failed diagnostic output, not a source or a completed task;
             replace it with a fresh editorial synthesis for DATE. Do not use
             source artifacts dated after DATE when recovering a historical issue.
+            For blogs/, use ONLY entries marked `Digest candidate: yes`.
+            Entries marked `no` (including vc_blog/P2 watch-list posts) are not
+            digest inputs, even if relevant or explicitly labelled as opinion.
+            For youtube/, use only the high-signal selection; do not promote
+            watch-list rumors when zero videos passed that selection.
 
             STEP 2: Identify gaps from local sources
             In this fallback path, no external MCP search provider is
