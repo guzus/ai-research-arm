@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-24 21:00 UTC",
-    "headline": "OPENAI AVERAGED ~905M WEEKLY ACTIVE USERS IN Q1 \u2014 SHORT OF ITS 1 BILLION YEAR-END GOAL",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-24-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058639185297240108"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-24 21:00 UTC",
-    "headline": "THE INFORMATION: OPENAI Q1 REVENUE SURGED ON CODEX/CHATGPT \u2014 BUT ANTHROPIC MAY SOON OVERTAKE IT BY REVENUE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-24-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058548614805274995"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-24 21:00 UTC",
-    "headline": "DEEPMIND ALPHAPROOF NEXUS SOLVED 9 OF 353 OPEN ERDOS PROBLEMS, LEAN-VERIFIED \u2014 MATHEMATICIANS PUSH BACK ON 'FORMALLY VS HEADLINE SOLVED'",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-24-twitter-21h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2058618029781713002"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-24 21:00 UTC",
     "headline": "VATICAN AI ENCYCLICAL 'MAGNIFICA HUMANITAS' SET FOR MONDAY MAY 25 WITH ANTHROPIC CO-FOUNDER CHRIS OLAH",
@@ -23442,5 +23415,26 @@
     "headline": "DATADOG OFFERS NEARLY $4B FOR CLOUD-SECURITY STARTUP UPWIND, ABOUT 80X ARR",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2114431834662564164"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-25 23:10:32 UTC",
+    "headline": "MUSK: SPACEX CLOSED $40B OF DEBT FOR GPUS; SAYS LENDERS HAVE SHUT OUT NEOCLOUDS WITHOUT NON-AI REVENUE",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2114434646914068862"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-25 23:10:32 UTC",
+    "headline": "MOONSHOT APOLOGIZES FOR KIMI K3.1 PRO RATE LIMITS, RESTORES 25% OF EVERY SUBSCRIBER'S MONTHLY QUOTA",
+    "source": "@Kimi_Moonshot",
+    "url": "https://x.com/Kimi_Moonshot/status/2114450610724708492"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-25 23:10:32 UTC",
+    "headline": "SK HYNIX PLANS $12B SPECIAL DIVIDEND FROM KIOXIA STAKE SALE GAINS \u2014 KOREAN MEDIA",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2114482386914415096"
   }
 ]
