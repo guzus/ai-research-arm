@@ -6,8 +6,9 @@ aliases: ["Gemini 3.8 Live", "Gemini 3.8 Live Extended Thinking", "3.8 Live Exte
 tags: [model-release, google-deepmind, speech-to-speech, live-dialogue]
 description: Google's live-dialogue pair in public preview; 3.8 Live takes the Artificial Analysis speech-to-speech lead at 82.6 and about $0.84/hour, roughly 80% cheaper than OpenAI's GPT-Live 1.
 created_at: 2026-09-16
-timestamp: 2026-09-16T00:00:00Z
+timestamp: 2026-10-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-09-16", path: research/digest/2026-09-16-digest.md}
 ---
 
@@ -41,6 +42,22 @@ subscribers.
 - **It is a sibling of 3.8 Flash, not a rename.** [[gemini-3-8-flash]]
   shipped 2026-09-03 as the cheap text/agent workhorse. Live is the
   speech stack. Do not fold the two SKUs.
+
+## Dessa as a no-text contrast (2026-10-25)
+
+[[dessa|Dessa]] is a
+speech-only model trained
+from scratch on conversation
+with no ASR step and no
+pretrained checkpoint. That
+is the opposite of this
+page's text-stack live API:
+local MacBook inference,
+weights promised, not a
+priced speech-to-speech
+index leader (Hacker News,
+TechCrunch; ARA daily digest
+2026-10-25).
 
 ## Open questions
 

@@ -6,8 +6,9 @@ aliases: [Figure, "Figure AI", "Figure Robotics", "Figure 03", "Figure 4", "Heli
 tags: [humanoid-robotics, vla, robotics, brett-adcock]
 description: US humanoid-robotics company; Helix 2.5 Index pretraining lifted zero-shot household tidy/fold/make-bed success from 9% to 56% across 30 unseen homes, after the 200-hour Sunnyvale package-sort run.
 created_at: 2026-06-01
-timestamp: 2026-09-18T00:00:00Z
+timestamp: 2026-10-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-07-19", path: research/digest/2026-07-19-digest.md}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
@@ -86,6 +87,23 @@ products at WAIC 2026 (2026-07-19) as part of a global export push.
   carried since June. 56% is a research
   checkpoint, not a procurement envelope.
   See [[agibot]] and [[ai-capex]].
+
+## Dream-1 as an API peer, not a humanoid (2026-10-25)
+
+[[dream-labs]] launched a
+$90 million seed around
+Dream-1, a world-action
+model API at **$3/hour**
+that claims zero-shot
+control of unseen bimanual
+robots. That is a rented
+controller, not a Figure
+SKU, and it does not
+change the Helix 2.5
+household numbers on this
+page (Dream Labs, Hacker
+News; ARA daily digest
+2026-10-25).
 
 ## Open questions
 

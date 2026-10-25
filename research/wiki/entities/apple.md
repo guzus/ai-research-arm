@@ -6,13 +6,14 @@ aliases: [Apple, "Apple Inc.", Siri, "Apple Intelligence", "Private Cloud Comput
 tags: [consumer-tech, on-device-ai, apple-intelligence, siri, wwdc]
 description: Consumer-hardware giant; Meta and Apple tuned Muse Spark Open to run on two M5 Ultra Mac Studios.
 created_at: 2026-06-08
-timestamp: 2026-10-16T00:00:00Z
+timestamp: 2026-10-25T00:00:00Z
 market:
   ticker: AAPL
   exchange: NASDAQ
   symbol: NASDAQ:AAPL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
   - {title: "ARA daily digest 2026-10-03", path: research/digest/2026-10-03-digest.md}
@@ -291,6 +292,20 @@ distribution story, not an Apple
 model. See [[open-weights]]
 (@AIatMeta, TechCrunch, The Verge;
 ARA daily digest 2026-10-16).
+
+## Dessa on a MacBook Pro M4 Max (2026-10-25)
+
+[[dessa|Dessa]]'s demo is
+faster-than-real-time
+inference on a MacBook Pro
+M4 Max. Training used one
+[[nvidia|NVIDIA]] GB200
+NVL72 rack, so the Apple
+increment is the local
+playback target, not the
+training cluster (Hacker
+News, TechCrunch; ARA daily
+digest 2026-10-25).
 
 ## Open questions
 

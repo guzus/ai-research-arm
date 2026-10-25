@@ -35,7 +35,9 @@ Each page is one of three types — entity, concept, or theme. See
 - [[deepseek-v4-1-flash]] — DeepSeek's MIT-licensed multimodal MoE; the 2026-10-17 Flash-1017 checkpoint posts first-party DeepSWE 77.0 and Terminal-Bench 4.0 42.3, with no independent evals yet.
 - [[deepseek-v4-flash]] — DeepSeek's 284B/13B-active MoE with 1M context; API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis — and outperforming the 4.5×-pricier V4-Pro-0813 on a friendly analyst's tasks (2026-08-13).
 - [[dell]] — US enterprise-IT OEM; FY27Q2 (filed 2026-09-01) printed $47.0B revenue (+58% YoY) with $16.4B of AI-optimized server sales, $60.9B of AI-server orders and a $95B backlog, lifting full-year guidance to $192.0B.
+- [[dessa]] — Block's speech-only voice model; trained from scratch on conversation, runs locally on a MacBook Pro M4 Max, with weights promised but not shipped.
 - [[discovery-loop]] — Public benefit corporation founded 2026-08-06 by Jeff Dean with Sanjay Ghemawat, Oriol Vinyals and Quoc Le; Business Insider said it is shopping a ~$50B raise, five weeks after a $10B ask, with no closed round on either number.
+- [[dream-labs]] — Robotics-API startup; $90M seed for Dream-1, which controls unseen bimanual robots zero-shot at $3/hour.
 - [[evo-genome-models]] — Arc Institute/Stanford genome language models; reported in Science (2026-08-07) to have written the first complete bacteriophage genomes from scratch, 16 of them working viruses.
 - [[etched]] — AI-chip startup out of stealth 2026-06-30 ($800M raised, $1B+ contracts); valuation jumped $5B→$10.3B by 2026-07-23; Sohu transformer-only inference ASIC ships summer 2026.
 - [[figure-ai]] — US humanoid-robotics company; Helix 2.5 Index pretraining lifted zero-shot household tidy/fold/make-bed success from 9% to 56% across 30 unseen homes.

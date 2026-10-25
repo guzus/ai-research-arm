@@ -6,8 +6,9 @@ aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "o
 tags: [open-weights, open-source, local-llm, china, decentralization]
 description: Open-weight models closing on the frontier; Moonshot's Kimi K3.1 Pro is billed as Fable-5.1-class at $2/$10, with weights still promised by November 4.
 created_at: 2026-06-14
-timestamp: 2026-10-24T00:00:00Z
+timestamp: 2026-10-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA model ticket — DeepInfer open source", path: research/models/tickets/deepseek-deepinfer-open-source-2026-10.md}
@@ -976,6 +977,29 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   (MarkTechPost, arXiv
   2610.30949, r/MachineLearning;
   ARA daily digest 2026-10-24).
+
+## Dessa weights promised after the HN surge (2026-10-25)
+
+- **[[dessa|Dessa]] is now the
+  speech-only weights-promised
+  story.** Block's
+  conversation-trained model
+  topped Hacker News at 498 /
+  188 after 21:59 UTC
+  Saturday. Jack Dorsey has
+  said the weights will be
+  released; they have not
+  shipped, and the model is
+  not public. Training on one
+  GB200 NVL72 rack (~$4–6M
+  per HN commenters) is the
+  skeptic flag on the "indie
+  / local MacBook" read. Same
+  promised-not-landed shape
+  as K3.1 Pro above (Hacker
+  News, TechCrunch, The
+  Decoder; ARA daily digest
+  2026-10-25).
 
 ## Open questions
 
