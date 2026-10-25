@@ -6,8 +6,9 @@ aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon", "Gemini 4 Carbon"
 tags: [model-release, google-deepmind, frontier-model, fairwind, cyber-defense, pricing]
 description: Google's Gemini 4 flagship; Perplexity rolled Argon out to all users, and four Argon agents beat Minecraft in 27h14m.
 created_at: 2026-10-01
-timestamp: 2026-10-17T00:00:00Z
+timestamp: 2026-10-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-15", path: research/digest/2026-10-15-digest.md}
@@ -285,3 +286,21 @@ change. See [[google]] (The Decoder; ARA daily digest
   a small community bench, not
   a ranking (ARA daily digest
   2026-10-17).
+
+## Dream-1 undercut on RoboDojo-RC (2026-10-25)
+
+[[dream-labs|Dream-1]] is
+priced at **$3/hour**
+($2/hour Flash). An
+independent RoboDojo-RC
+report puts it **16× cheaper
+per attempt** than Argon.
+That is a third-party
+robotics bench, not a Google
+first-party number, and it
+does not say Argon lost the
+capability comparison — only
+the cost-per-attempt one
+(Dream Labs, Hacker News;
+ARA daily digest
+2026-10-25).

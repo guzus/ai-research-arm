@@ -2,17 +2,18 @@
 slug: nvidia
 title: NVIDIA
 type: entity
-aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra", OpenShell, "NVIDIA Sentry", "Open Agent Safety Platform", "BlueField-4", "DGX Spark"]
+aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra", "Nemotron 3.5 Bolt", "Nemotron 3.5 Bolt E4B", OpenShell, "NVIDIA Sentry", "Open Agent Safety Platform", "BlueField-4", "DGX Spark"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
 description: Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.
 created_at: 2026-06-05
-timestamp: 2026-10-19T00:00:00Z
+timestamp: 2026-10-25T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
@@ -785,4 +786,42 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   the "megakernel" framing
   (SemiAnalysis; ARA daily
   digest 2026-10-19).
+
+## Nemotron 3.5 Bolt and a one-rack Dessa run (2026-10-25)
+
+- **Nemotron 3.5 Bolt E4B 4GB
+  is an open SLM post-trained
+  from [[gemma-4|Gemma 4
+  E4B]]** for local voice
+  agents, game characters and
+  robots, targeting about
+  **4GB of VRAM** on RTX and
+  Jetson. That is the
+  small-end of the Nemotron
+  line this page already
+  tracks at 550B Ultra — a
+  local voice/robot card, not
+  a frontier close. See
+  [[open-weights]]
+  (MarkTechPost; ARA daily
+  digest 2026-10-25).
+- **[[dessa|Dessa]] trained
+  on one GB200 NVL72 rack.**
+  HN commenters priced that
+  rack at about **$4–6
+  million** and used it to
+  puncture the "indie" read
+  of a local MacBook demo.
+  Hardware increment, not an
+  NVIDIA product ship
+  (Hacker News; ARA daily
+  digest 2026-10-25).
+- **Huang's demo is the
+  cited spark for
+  [[hugging-face]]
+  Microduck** (TechCrunch:
+  20,000 sold). A consumer
+  toy, not a datacenter
+  print (ARA daily digest
+  2026-10-25).
 

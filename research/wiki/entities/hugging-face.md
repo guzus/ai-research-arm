@@ -2,12 +2,13 @@
 slug: hugging-face
 title: Hugging Face
 type: entity
-aliases: ["Hugging Face", "HuggingFace", "@huggingface"]
+aliases: ["Hugging Face", "HuggingFace", "@huggingface", Microduck]
 tags: [open-weights, model-hub, infrastructure, platform, m&a]
 description: The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.
 created_at: 2026-08-24
-timestamp: 2026-10-17T00:00:00Z
+timestamp: 2026-10-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
@@ -241,3 +242,23 @@ land on its Hub before anywhere else.
   (@reflection_ai via Hugging
   Face, HF blog; ARA daily
   digest 2026-10-17).
+
+## Microduck toy robots (2026-10-25)
+
+- **Voice-commanded toy
+  robots; TechCrunch reports
+  20,000 sold after a Jensen
+  Huang ([[nvidia]]) demo.**
+  That is a consumer-hardware
+  increment on a hub page
+  otherwise about weights,
+  M&A, and the July swarm.
+  [[dream-labs]] separately
+  cited 10,000+ units in four
+  days at $399; the digest
+  does not identify those
+  units as Microducks, so
+  keep the two prints apart
+  (TechCrunch, Hacker News;
+  ARA daily digest
+  2026-10-25).

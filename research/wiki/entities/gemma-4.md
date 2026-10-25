@@ -6,8 +6,9 @@ aliases: ["Gemma 4", "Gemma 4 12B", "Gemma-4", "Gemma 4 family", "Gemma"]
 tags: [open-weights, model, multimodal, google-deepmind, apache-2-0, on-device]
 description: Google DeepMind's open-weights (Apache 2.0) multimodal family; EmbeddingGemma 2 (740M–270M) is the new multimodal embedder built on Gemma 4.
 created_at: 2026-06-04
-timestamp: 2026-10-07T00:00:00Z
+timestamp: 2026-10-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
   - {title: "ARA daily digest 2026-06-04", path: research/digest/2026-06-04-digest.md}
@@ -74,3 +75,20 @@ to 128 dimensions, about **191 MB** RAM on-device for
 text only. Vendor MTEB Code rose from **68.76 to 78.68**.
 See [[open-weights]] (@_philschmid, MarkTechPost, Simon
 Willison; ARA daily digest 2026-10-07).
+
+## Nemotron 3.5 Bolt from Gemma 4 E4B (2026-10-25)
+
+[[nvidia]] post-trained the
+E4B cut into **Nemotron 3.5
+Bolt E4B 4GB**, an open SLM
+for local voice agents, game
+characters and robots at
+about 4GB of VRAM on RTX and
+Jetson. The encoder-free /
+on-device bet on this page
+now has a named NVIDIA
+downstream, not just laptop
+demos of the 12B. See
+[[open-weights]]
+(MarkTechPost; ARA daily
+digest 2026-10-25).
