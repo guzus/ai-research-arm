@@ -1,0 +1,15 @@
+AI News - 2026-10-25
+
+TOP STORIES:
+• OpenAI discounts up to 90% to poach Anthropic customers (Rippling, Replit, DataCamp)
+• Block's Dessa: speech-only full-duplex model, one GB200 rack, local on M4 Max
+• Nvidia open-sources Flora: $0.72 vs $88.50 per hour of robot-video labels
+• PA requires same-format labels on AI-generated ads
+• Fired OpenAI safety researchers say they were never told what leaked
+
+KEY NUMBERS:
+• Rippling coding mix: OpenAI 16%→52%; Anthropic 57%→18%
+• Flora: up to 200k video-hours/day on 512 GB300s
+• Dream Labs: $90M seed; Dream-1 API at $3/hour
+
+Full report on GitHub.
