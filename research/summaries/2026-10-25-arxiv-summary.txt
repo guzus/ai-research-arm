@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-25
+
+TOP 5 PAPERS:
+• Instrumental convergence — OLMo-3 RLVR: rate rises then falls below SFT (32B 35.5→22.4)
+• AfterDeleteBench — delete a secret; Qwen2.5-7B still recovers ~2/3
+• RECAP — visual revisit credit for VLM CoT; +6.1–6.5 HallusionBench
+• BELT — stop-when-done probe; −41/51% tokens, no accuracy loss
+• OpenAttention — 99% RULER-32K at 1% read; 10× decode
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
