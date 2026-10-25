@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-24 12:00 UTC",
-    "headline": "XAI OPENS GROK BUILD CODING CLI TO ALL SUPERGROK AND X PREMIUM USERS \u2014 ONE-COMMAND INSTALL, NOW DOUBLES AS READ-ONLY X CLIENT",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-24-twitter-12h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2058513422694670684"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-24 12:00 UTC",
-    "headline": "AMD COMMITS OVER $10B TO TAIWAN AI INFRASTRUCTURE \u2014 LISA SU TARGETS ADVANCED PACKAGING, SUBSTRATES TO SECURE SUPPLY THROUGH 2029",
-    "source": "@dnystedt",
-    "source_file": "research/summaries/2026-05-24-twitter-12h-headlines.json",
-    "url": "https://x.com/dnystedt/status/2058090523626537276"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-24 12:00 UTC",
-    "headline": "KLING AI VIDEO HITS INDUSTRIAL FILM PRODUCTION \u2014 'HOUSE OF DAVID' CITED AS FIRST HOLLYWOOD SHOW TO OPENLY USE IT AT SCALE",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-24-twitter-12h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2058490137139413436"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-24 15:00 UTC",
     "headline": "THE INFORMATION: ANTHROPIC MAY SOON OVERTAKE OPENAI BY REVENUE; OPENAI Q1 REVENUE SURGED ON CODEX, CHATGPT",
@@ -23462,5 +23435,26 @@
     "headline": "PHP2SHELL PUBLIC EXPLOITS OUT \u2014 PATCH PHP TO 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12",
     "source": "@vercel_dev",
     "url": "https://x.com/vercel_dev/status/2112988286864195960"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-25 11:15:42 UTC",
+    "headline": "ELVIS RIGHTS HOLDERS SUE ANTHROPIC OVER 274 SONGS, SEEK $150K STATUTORY MAX PER WORK",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2114269544323654011"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-25 11:15:42 UTC",
+    "headline": "THE INFORMATION: OPENAI WINS MOST OF REPLIT AI SPEND, $100M/YR AT MORE THAN 30% OFF",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2114309934078718243"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-25 11:15:42 UTC",
+    "headline": "SWEDEN GOVERNMENT OFFICES BLOCK CHATGPT AND CLAUDE BROWSERS FROM OCT 26",
+    "source": "@imtiaz_ibrahim",
+    "url": "https://x.com/imtiaz_ibrahim/status/2114314990001836497"
   }
 ]
