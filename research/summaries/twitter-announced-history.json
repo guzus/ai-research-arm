@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-24 15:00 UTC",
-    "headline": "THE INFORMATION: ANTHROPIC MAY SOON OVERTAKE OPENAI BY REVENUE; OPENAI Q1 REVENUE SURGED ON CODEX, CHATGPT",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-24-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058548614805274995"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-24 15:00 UTC",
-    "headline": "THE INFORMATION: SPACEX, OPENAI, ANTHROPIC ALL RACING TOWARD ~$1 TRILLION IPOs AT ONCE \u2014 WALL STREET MUST CHOOSE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-24-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058571236662247767"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-24 15:00 UTC",
-    "headline": "THE INFORMATION: GOOGLE POSITIONS GEMINI 3.5 FLASH + ANTIGRAVITY AS CHEAPER THAN ANTHROPIC'S CODING MODELS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-24-twitter-15h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058563720209445316"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-24 18:00 UTC",
-    "headline": "DEEPMIND ALPHAPROOF NEXUS RESOLVES 9 OF 353 OPEN ERD\u0150S PROBLEMS \u2014 LEAN-VERIFIED, ~$100s PER PROBLEM",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-05-24-twitter-18h-headlines.json",
-    "url": "https://x.com/mark_k/status/2058599517549638047"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-24 18:00 UTC",
     "headline": "DEEPMIND PREPRINT ALSO PROVES 44 OF 492 OPEN OEIS CONJECTURES VIA LLM-PLUS-LEAN AGENT (arXiv 2605.22763)",
@@ -23456,5 +23420,33 @@
     "headline": "SWEDEN GOVERNMENT OFFICES BLOCK CHATGPT AND CLAUDE BROWSERS FROM OCT 26",
     "source": "@imtiaz_ibrahim",
     "url": "https://x.com/imtiaz_ibrahim/status/2114314990001836497"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-25 16:04:09 UTC",
+    "headline": "ELON: GROK BOT CAN NOW CALL PEOPLE AND BUSINESSES, TAKE NOTES, AND SEND A SUMMARY",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2114365361068138990"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-25 16:04:09 UTC",
+    "headline": "NANBEIGE 4.3-33B DROPS APACHE-2.0 WITH 512K CONTEXT, CLAIMS SOTA AGENT SCORES IN 30B CLASS",
+    "source": "@nanbeige",
+    "url": "https://x.com/nanbeige/status/2114328933181333798"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-25 16:04:09 UTC",
+    "headline": "THE INFORMATION: SALESFORCE MAY CHARGE CUSTOMERS USING CLAUDE AND OTHER EXTERNAL AI AGENTS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2114341248966250763"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-25 16:04:09 UTC",
+    "headline": "GOOGLE AI STUDIO TO GET MANAGED AGENTS HUB FOR TOOLS, ENVIRONMENTS, AND TRIGGERS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2114349445760303238"
   }
 ]
