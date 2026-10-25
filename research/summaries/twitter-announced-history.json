@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-24 18:00 UTC",
-    "headline": "DEEPMIND PREPRINT ALSO PROVES 44 OF 492 OPEN OEIS CONJECTURES VIA LLM-PLUS-LEAN AGENT (arXiv 2605.22763)",
-    "source": "@mark_k",
-    "source_file": "research/summaries/2026-05-24-twitter-18h-headlines.json",
-    "url": "https://x.com/mark_k/status/2058599517549638047"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-24 18:00 UTC",
-    "headline": "ANTHROPIC DATAMINE: CLAUDE GETTING FILE-BASED 'MEMORY FILES' OPTION, SEEN AS PREP FOR PERSISTENT 'CONWAY' AGENT",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-05-24-twitter-18h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2058579152387653841"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-24 18:00 UTC",
-    "headline": "THE INFORMATION: BUSINESSES NOW FORCING AI VENDORS TO PROVE TOOLS DELIVER \u2014 ADDING OPT-OUT CLAUSES IF FEATURES FALL SHORT",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-24-twitter-18h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058609004599734761"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-05-24 21:00 UTC",
     "headline": "OPENAI AVERAGED ~905M WEEKLY ACTIVE USERS IN Q1 \u2014 SHORT OF ITS 1 BILLION YEAR-END GOAL",
@@ -23448,5 +23421,26 @@
     "headline": "GOOGLE AI STUDIO TO GET MANAGED AGENTS HUB FOR TOOLS, ENVIRONMENTS, AND TRIGGERS",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2114349445760303238"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-25 20:45:02 UTC",
+    "headline": "ALTMAN TELLS OPENAI STAFF INDUSTRY NEEDS WAYS TO SLOW DANGEROUS AI \u2014 CITES REGULATION, LAB MERGERS, SINGLE-FIRM COMPUTE DOMINANCE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2114424261045596311"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-25 20:45:02 UTC",
+    "headline": "BANK-TARGETING HACKERS USED GROK FOR RECON, CLAUDE TO PLAN, KIMI FOR TASKS CLAUDE REFUSED",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2114409162297725188"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-25 20:45:02 UTC",
+    "headline": "DATADOG OFFERS NEARLY $4B FOR CLOUD-SECURITY STARTUP UPWIND, ABOUT 80X ARR",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2114431834662564164"
   }
 ]
