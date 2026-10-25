@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-10-25
+
+TOP STORIES:
+• Block's Dessa tops Hacker News (speech-only model, 498 pts / 188 comments)
+• Moonshot readies Kimi K3.1 Pro (open weights promised by Nov 4)
+• Apollo AI-payoff thread keeps climbing (366 pts / 346 comments)
+
+KEY NUMBERS:
+• Dessa: local on M4 Max; trained on one GB200 NVL72
+• Kimi K3.1 Pro: 2.8T/104B MoE, 65.7% Terminal-Bench, $2/$10 per Mtok
+• GPU-unlock: 3090 Ti BF16 87.5 -> 157.4 TFLOPS
+
+TRENDING: Block's speech-only Dessa model
+
+Full digest on GitHub.
