@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "ELON: GROK BOT CAN NOW CALL PEOPLE AND BUSINESSES, TAKE NOTES, AND SEND A SUMMARY",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2114365361068138990",
+    "category": "model"
+  },
+  {
+    "headline": "NANBEIGE 4.3-33B DROPS APACHE-2.0 WITH 512K CONTEXT, CLAIMS SOTA AGENT SCORES IN 30B CLASS",
+    "source": "@nanbeige",
+    "url": "https://x.com/nanbeige/status/2114328933181333798",
+    "category": "opensource"
+  },
+  {
+    "headline": "THE INFORMATION: SALESFORCE MAY CHARGE CUSTOMERS USING CLAUDE AND OTHER EXTERNAL AI AGENTS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2114341248966250763",
+    "category": "business"
+  },
+  {
+    "headline": "GOOGLE AI STUDIO TO GET MANAGED AGENTS HUB FOR TOOLS, ENVIRONMENTS, AND TRIGGERS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2114349445760303238",
+    "category": "infra"
+  }
+]

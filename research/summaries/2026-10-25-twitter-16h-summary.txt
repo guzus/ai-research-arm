@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-25 16:04:09 UTC
+
+CYCLE: Grok Bot gets outbound calling; Nanbeige ships 33B Apache-2.0 teacher
+
+TOP STORIES:
+• Elon: Grok Bot can now dial people and businesses, take notes, send a summary ✓
+• Nanbeige4.3-33B drops Apache-2.0, 512K context; lab claims SOTA among ~30B open agents ✓
+• Salesforce may charge for Claude and other external AI agents ⚠
+
+WATCH: Official Grok Bot changelog for which tiers can place PSTN calls
+
+Full update on GitHub.
