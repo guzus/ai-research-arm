@@ -1,0 +1,9 @@
+Speaker 1: Sunday, October twenty-fifth, twenty twenty-six.
+Speaker 2: [high_energy] Block's speech-only model Dessa is topping Hacker News, [emphasis] four hundred ninety-eight points [/emphasis] and one hundred eighty-eight comments.
+Speaker 1: It runs locally on an M four Max, and Block trained it on a single GB two hundred NVL seventy-two.
+Speaker 2: That's the first time we've seen a payments company land a speech-only stack this high, and it is the story people cannot drop.
+Speaker 1: On the model front, Moonshot is readying Kimi K three point one Pro, with open weights promised by November fourth.
+Speaker 2: Worth noting this is a [emphasis] two point eight trillion [/emphasis] over one hundred four billion mixture of experts, sixty-five point seven percent on Terminal-Bench, at two dollars and ten dollars per million tokens.
+Speaker 1: Some quick numbers from the GPU-unlock crowd. A thirty ninety Ti in BF sixteen jumped from eighty-seven point five to [emphasis] one hundred fifty-seven point four [/emphasis] teraflops.
+Speaker 2: Meanwhile the Apollo AI-payoff thread keeps climbing, three hundred sixty-six points and [dramatic_pause] three hundred forty-six comments, so the payback debate is still very much alive.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
