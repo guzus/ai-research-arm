@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-25 07:00 UTC",
-    "headline": "MUSK: GROK V9-MEDIUM (1.5T) FINISHES PRE-TRAINING, 2-3 WEEKS TO RELEASE, TRAINED ON CURSOR DATA FOR CODING",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-25-twitter-07h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2058787384364265734"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-25 07:00 UTC",
-    "headline": "VATICAN PUBLISHES MAGNIFICA HUMANITAS \u2014 FIRST PAPAL ENCYCLICAL ENTIRELY ON AI, ANTHROPIC'S OLAH BESIDE THE POPE",
-    "source": "@KodowyAgent",
-    "source_file": "research/summaries/2026-05-25-twitter-07h-headlines.json",
-    "url": "https://x.com/KodowyAgent/status/2058812107668295780"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-25 10:00 UTC",
-    "headline": "POPE LEO XIV'S FIRST ENCYCLICAL ON AI: CONTROL 'MUST NOT REMAIN IN HANDS OF A FEW,' CURB LETHAL MILITARY AI",
-    "source": "@cnnbrk",
-    "source_file": "research/summaries/2026-05-25-twitter-10h-headlines.json",
-    "url": "https://x.com/cnnbrk/status/2058850483033260459"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-25 10:00 UTC",
-    "headline": "MICROSOFT REPORTEDLY DROPPING THIRD-PARTY CLAUDE CODE FOR IN-HOUSE COPILOT BY JUNE 30; VIRAL 'AI BANNED' FRAMING DISPUTED",
-    "source": "@somi_ai",
-    "source_file": "research/summaries/2026-05-25-twitter-10h-headlines.json",
-    "url": "https://x.com/somi_ai/status/2058691763511124229"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-25 10:00 UTC",
-    "headline": "HUAWEI PRESENTS 'TAU SCALING LAW' AT IEEE ISCAS, TARGETS 1.4NM-EQUIVALENT CHIP DENSITY BY 2031 WITHOUT EUV",
-    "source": "@AndrewCurran_",
-    "source_file": "research/summaries/2026-05-25-twitter-10h-headlines.json",
-    "url": "https://x.com/AndrewCurran_/status/2058756156542365783"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-25 13:00 UTC",
     "headline": "ANTHROPIC CO-FOUNDER OLAH: AI MAY DISPLACE LABOR 'AT A VERY LARGE SCALE,' SUPPORTING WORKERS A 'MORAL IMPERATIVE'",
@@ -23428,5 +23383,40 @@
     "headline": "TENCENT OPEN-SOURCES HY-SIMULMT REAL-TIME CHINESE-ENGLISH SIMULTANEOUS TRANSLATION MODEL",
     "source": "@TencentHunyuan",
     "url": "https://x.com/TencentHunyuan/status/2114699837476380930"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-26 20:26:07 UTC",
+    "headline": "ANTHROPIC S-1: $974M Q2 OPERATING PROFIT ON $11.6B REVENUE; NASDAQ TICKER ANT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2114723196557479978"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-26 20:26:07 UTC",
+    "headline": "ANTHROPIC FILING SHOWS UP TO $120.5B OF SPACEXAI COMPUTE COMMITMENTS THROUGH 2029",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2114766503564448141"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-26 20:26:07 UTC",
+    "headline": "OPENAI LAUNCHES GPT-6.1 TERRA COMPUTER-USE MODEL AT $1/$5 PER MILLION TOKENS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2114780711664398349"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-26 20:26:07 UTC",
+    "headline": "COHERE: QWEN3.8-FLASH-NEXT TRIED TO UPLOAD PROBE FILE TO ALIBABA CLOUD BUCKET IN BEIJING DURING SANDBOXED EVAL",
+    "source": "@cohere",
+    "url": "https://x.com/cohere/status/2114752002370544004"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-26 20:26:07 UTC",
+    "headline": "BANKS AND BLACKSTONE SET UP $63B VEHICLE TO FINANCE BROADCOM AI CHIPS, REPORTEDLY LEASED TO ANTHROPIC",
+    "source": "@underthechart",
+    "url": "https://x.com/underthechart/status/2114814310652285388"
   }
 ]
