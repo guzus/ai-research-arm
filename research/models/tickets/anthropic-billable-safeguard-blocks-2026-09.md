@@ -3,7 +3,7 @@ slug: anthropic-billable-safeguard-blocks-2026-09
 title: Anthropic resumes charging for safeguard-blocked requests in three abuse categories
 company: Anthropic
 model: null
-status: released
+status: closed
 status_note: |
   **In effect from 2026-09-24, announced primary.** @ClaudeDevs: "Today, we'll
   resume charging for requests our safeguards block before Claude responds.
@@ -58,12 +58,14 @@ sources:
   - https://x.com/ClaudeDevs/status/2103170368794185758
   - https://x.com/testingcatalog/status/2103371709281632423
 created_at: 2026-09-25
-updated_at: 2026-09-25
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-26
+closed_at: 2026-10-26
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-25
     change: "Created — RELEASED. @ClaudeDevs announced on 2026-09-24 17:11 UTC (~2,554 likes) that Anthropic is resuming charging for requests its safeguards block BEFORE Claude responds, limited to three low-false-positive categories: biology, distillation attacks, and frontier LLM development. Stated rationale: 'coordinated attacks on our systems in recent weeks'; stated impact: 99.7% of accounts on Claude Code, Claude.ai or Cowork hit none of these 'billable blocks' in recent testing, with the underlying classifiers tuned to a <0.1% false positive rate. Independently relayed in @testingcatalog's 2026-09-25 daily brief. Status released and verification confirmed — primary announcement, in effect the day of. Tracked as a shipping artifact rather than a policy note because it changes what customers are billed for and is explicitly a RESUMPTION, i.e. a dated reversal. The mechanism is recorded as an economic one: free refusals make classifier-boundary probing free to the attacker and costly to Anthropic, so charging for blocks prices the attacker's search. The category list is read as evidence of which attack classes are currently live, cross-linked to [[anthropic-alibaba-distillation-2026-06]], [[china-deepseek-moonshot-data-probe-2026-09]] and [[moonshot-claude-distillation-us-scrutiny-2026-07]]. Flagged for scrutiny: '<0.1% false positive rate' and '99.7% of accounts unaffected' are different statistics answering different questions, neither bounds harm to the affected minority, and the users most exposed are exactly the legitimate biosecurity and safety researchers Anthropic separately recruits via [[anthropic-external-researcher-access-2026-08]]."
+  - ts: 2026-10-26
+    change: "Closed — released-and-aged. Released state since creation (announced by @ClaudeDevs 2026-09-24, per the creation history entry); at least four weeks have now passed, and the artifact has rolled into normal coverage. History preserved; any successor version gets its own ticket."
 ---
 
 This is a small billing change that encodes a real piece of adversarial

@@ -1,10 +1,18 @@
 ---
 slug: anthropic-ipo-2026-06
-title: Anthropic confidentially files S-1 for US IPO
+title: "Anthropic files public S-1 for Nasdaq IPO (proposed ticker ANT)"
 company: Anthropic
 model: null
 status: confirmed
 status_note: |
+  **2026-10-26 — the S-1 is public.** @AnthropicAI announced the public S-1
+  filing (13:05 UTC). Relayed prospectus figures: proposed Nasdaq ticker ANT;
+  H1 2026 revenue $16.3B; H1 2026 net loss $80.7B ($72.4B non-cash convertible
+  markup); $131.7B cash; up to $120.5B SpaceX AI compute spend through 2029;
+  founders' Class F share with 50.1% of votes; LTBT Class T share electing a
+  board majority. Figures are relay-grade until checked against the filing.
+  Reported IPO window: November 19-20.
+
   **2026-09-24 — reported founder-control structure ahead of the
   listing.** Per The Information, relayed by @kimmonismus (23:26 UTC): Anthropic
   plans to give its **seven co-founders majority voting control**, via a
@@ -99,7 +107,7 @@ status_note: |
   named source and is not adopted here. @rohanpaul_ai (2026-09-07) relays David
   Sacks arguing an Anthropic IPO would enlarge the funding base behind AI-doom
   advocacy — commentary, not a fact about the offering.
-expected: "Reported: seeking up to $100B at a ~$2T valuation, with reports pointing to an October listing and NVIDIA weighing an anchor stake of up to $10B. Newly reported 2026-09-24: a proposed Palantir-style dual-class structure giving the seven co-founders 50.1% of voting power without additional economic ownership, conditional on three founders holding a share minimum, against Dario Amodei's reported ~2% economic stake. Financial claims on the record via FT/The Information: profitable for a second consecutive quarter, >80% gross margin before distribution-partner revenue share and training cost. Pending: an actual S-1, confirmation of the NVIDIA anchor, confirmation of the voting structure in charter documents, and reconciliation with the $517B compute commitments — now including the $11.6B Akamai deal ([[anthropic-akamai-compute-2026-09]])."
+expected: "Public S-1 filed 2026-10-26; IPO reported for November 19-20 (Fox Business), with marketing from the week of November 9 (Reuters). Pending: price range, share count, Q3 revenue, final raise size and valuation (previously reported up to $100B at ~$2T), and first-day trading. Close as released-and-aged ≥4 weeks after first-day trading."
 labels:
   - corporate-action
   - ipo
@@ -133,6 +141,11 @@ sources:
   - https://x.com/theinformation/status/2104209501435941359
   - https://x.com/beincrypto/status/2105146555804336266
   - https://x.com/pawel7/status/2105144119056048149
+  - "https://x.com/AnthropicAI/status/2114705042817110293"
+  - "https://x.com/FunOfInvesting/status/2114708352823370205"
+  - "https://x.com/AGTPinsights/status/2114705987609538806"
+  - "https://x.com/AIStockSavvy/status/2114708149538353558"
+  - "@yumikonbini"
 polymarket:
   - event_slug: anthropic-ipo-by
     market_id: "2413330"
@@ -140,7 +153,7 @@ polymarket:
     question: "Anthropic IPO by Dec 31, 2026?"
     outcome: "Dec 31 2026"
 created_at: 2026-06-02
-updated_at: 2026-09-30
+updated_at: 2026-10-26
 closed_at: null
 closed_reason: null
 history:
@@ -170,6 +183,8 @@ history:
     change: "Sourcing upgrade on the founder-control structure, no new facts. @theinformation posted the claim on its own handle (2026-09-27 14:00 UTC): 'Anthropic is asking shareholders to give its seven co-founders a combined 50.1% of voting power ahead of its IPO. The Palantir-style structure could preserve founder control despite their relatively small ownership stakes.' The 2026-09-24 entry recorded exactly this via @kimmonismus relaying the same outlet; it now sits in the outlet's own voice, which removes the relay from the chain but does not make it primary. One detail is sharper in this version: the structure requires a SHAREHOLDER VOTE ('is asking shareholders'), which is a checkable corporate action with a record date rather than a plan. Status and verification unchanged — no S-1 is public and no charter document has been seen. Deliberately not treated as corroboration: the same outlet restating its own reporting is one source, not two."
   - ts: 2026-09-30
     change: "THE PROSPECTUS NUMBERS ARRIVE, and they are the first hard financials this ticket has carried. Two independent roundups read the same filing: @beincrypto's SEP 29 headline list — 'Anthropic's IPO filing targets a $2 trillion valuation and discloses a $42 billion loss plus $518 billion in compute commitments' — and @pawel7's daily digest, which adds that the prospectuses warn investors about the 'existential risks' posed by advanced AI development. Three separable facts. (1) The $2T valuation target was already here as a report; it now appears as a filing figure, which is why verification moves partial -> confirmed. (2) THE $42B 2025 LOSS is new and reframes everything else on this ticket: a company asking public markets for up to $100B while disclosing a loss that size is selling a compute thesis, not earnings — and the founder-control structure recorded on 2026-09-24/27 reads differently against it, because 50.1% of voting power on small economic stakes is a governance ask that public investors will price against exactly this burn. (3) THE $518B IN COMPUTE COMMITMENTS is the filed total that the separately-tracked deals roll up into: [[anthropic-akamai-compute-2026-09]] ($11.6B over seven years of CPU capacity), [[anthropic-nscale-compute-2026-08]], [[anthropic-compute-commitments-2026-09]], the Amazon repricing at [[anthropic-amazon-repricing-2026-06]] and the Google datacenter-financing report at [[anthropic-google-datacenter-financing-2026-07]]. Reconciling that roll-up against the filing is the open work and is not attempted here. The 'existential risk' language is notable as a DISCLOSURE choice rather than a new claim — Anthropic has said versions of it publicly for years, but a risk-factors section is a legally consequential place to say it, and it is the first time the company's safety position and its securities filings are the same document. Both sources are secondary daily roundups, not the filing text; the specific figures should be re-checked against the S-1 itself before being reused downstream."
+  - ts: 2026-10-26
+    change: "PUBLIC S-1 FILED — the transition this ticket was opened to track. @AnthropicAI (2026-10-26 13:05 UTC): 'Anthropic has filed an S-1 registration statement with the SEC related to its proposed IPO', with the standard not-yet-effective legend. Status stays confirmed (this ticket's own trigger list says a public S-1 appends history rather than advancing state); verification confirmed, now on a first-party post. Title updated, slug kept. Prospectus figures as read by secondary relays (@FunOfInvesting, @yumikonbini, @AGTPinsights), not yet checked against the filing text: proposed Nasdaq ticker ANT, Goldman Sachs and Morgan Stanley leading; revenue $41M (2023), $386M (2024), $4.6B (2025) and $16.3B in H1 2026 vs ~$1.1-1.2B in H1 2025; H1 2026 net loss $80.7B, of which $72.4B is a non-cash markup on convertible notes; compute cost 55% of revenue in H1 2026 vs 160% for FY2025; $131.7B cash and short-term investments; cumulative spend of up to $120.5B under the SpaceX AI agreement through 2029 ([[anthropic-spacex-colossus-2026-05]]); no customer above 10% of revenue in the nine months to 2026-09-30. Governance: Class A shares carry one vote; the seven co-founders hold a single Class F share via an LLC carrying 50.1% of voting power (the structure reported 2026-09-24/27 now appears in the filing as relayed); the Long-Term Benefit Trust holds one Class T share that elects a board majority; 5% of fully diluted shares already sit with the Public Benefit Fund ([[anthropic-public-benefit-fund-2026-10]]). Risk factors per relays: failed training runs have occurred; models may be delayed or restricted for safety reasons, with Mythos cited; and, per @AIStockSavvy, pretraining of a new frontier base model was postponed by more than a month to tighten weight-security measures, with a warning that more financing may be needed sooner than expected. Timing: Fox Business (via @AGTPinsights) points to a November 19-20 IPO; Reuters had share marketing starting the week of November 9. Still unknown: price range, share count, Q3 revenue. The 2026-09-30 entry's '$42B loss' came from roundups before any public filing existed; the relayed S-1 figures supersede it."
 ---
 
 Anthropic **confidentially filed an S-1 registration statement with

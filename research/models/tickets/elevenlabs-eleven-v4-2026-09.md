@@ -3,7 +3,7 @@ slug: elevenlabs-eleven-v4-2026-09
 title: Eleven v4 and v4 Turbo — ElevenLabs' new flagship TTS, #1 on Artificial Analysis Provider Voice
 company: ElevenLabs
 model: Eleven v4 / Eleven v4 Turbo
-status: released
+status: closed
 status_note: |
   **Shipped 2026-09-28.** @tadaspetra, posting in ElevenLabs' voice (14:51 UTC):
   "Today we release two new models: **Eleven V4** and **Eleven V4 Turbo**. Eleven
@@ -53,12 +53,14 @@ sources:
   - https://x.com/tadaspetra/status/2104584846005637348
   - https://x.com/ArtificialAnlys/status/2104578736687653293
 created_at: 2026-09-28
-updated_at: 2026-09-28
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-26
+closed_at: 2026-10-26
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-28
     change: "Created — RELEASED. ElevenLabs shipped Eleven v4 (flagship) and Eleven v4 Turbo (speed-optimised) on 2026-09-28, announced first-person by ElevenLabs' @tadaspetra. Artificial Analysis published independent measurements the same hour: #1 on Provider Voice TTS Arena at 1,319 Elo, #1 on Pronunciation Robustness at 91.7% (their highest measured), #2 on Controlled Voice behind Alibaba's Qwen-Audio-3.1-TTS-Plus, 90+ languages, 73.4 chars/sec, $80 per 1M characters. Status released, verification confirmed — a vendor release plus a same-day third-party leaderboard placement clears the bar even though the corporate handle was not captured. The load-bearing caveat is priced, not quality: v4 wins Provider Voice at ~4.9x the cost of Google's Gemini 3.8 Flash TTS ([[google-gemini-3-8-flash-tts-2026-09]]), which trails by 52 Elo, and loses Controlled Voice to Alibaba. No model card, parameter count, architecture or Turbo-specific numbers in-window."
+  - ts: 2026-10-26
+    change: "Closed — released-and-aged. Released state since creation (shipped 2026-09-28, per the creation history entry); at least four weeks have now passed, and the artifact has rolled into normal coverage. History preserved; any successor version gets its own ticket."
 ---
 
 Eleven v4 takes the top of Artificial Analysis' Provider Voice arena on the day

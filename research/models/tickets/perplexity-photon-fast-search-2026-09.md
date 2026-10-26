@@ -3,7 +3,7 @@ slug: perplexity-photon-fast-search-2026-09
 title: Perplexity Fast Search — Photon, a Rust retrieval/ranking engine built by agent loops
 company: Perplexity
 model: Photon (retrieval + ranking engine)
-status: released
+status: closed
 status_note: |
   **Shipped, 2026-09-24 18:07 UTC, primary.** @perplexity_ai: "Introducing Fast
   Search in the Perplexity Search API. Fast Search runs on Photon, our new
@@ -52,12 +52,14 @@ sources:
   - https://x.com/AravSrinivas/status/2103195385804238972
   - https://x.com/kimmonismus/status/2103322857082408967
 created_at: 2026-09-25
-updated_at: 2026-09-25
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-26
+closed_at: 2026-10-26
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-25
     change: "Created — RELEASED. @perplexity_ai announced Fast Search in the Perplexity Search API on 2026-09-24 18:07 UTC (~413 likes), running on Photon, a new Rust-based retrieval and ranking service returning 95% of results in 230ms or less; @AravSrinivas (CEO, 18:50 UTC, ~155 likes) claimed 'the fastest and most capable Search API' at sub-250ms p95 while 'ranking highly on relevance and accuracy benchmarks'. Status released and verification confirmed — vendor primary, product live. The ticket deliberately splits two claims that arrived together: the LATENCY figure, which any API customer can measure, and the AUTHORSHIP claim that Photon was built by 'a small team of engineers and hundreds of agents' / 'hundreds of auto-research loops powered by a more capable internal version of Perplexity Computer', which is first-party, self-serving, and backed by no commit history, team size or ablation. Only the first is treated as established. Context recorded but explicitly not as rebuttal: @kimmonismus (2026-09-25) relays Artificial Analysis Sept-8 data placing competitor Octen at 0.21s/query and the only Search API top-3 on quality, speed and cost — a pre-Photon snapshot, but proof that an independent arbiter for the 'fastest and most capable' claim exists. Distinct artifact from [[perplexity-portable-computer-2026-08]]."
+  - ts: 2026-10-26
+    change: "Closed — released-and-aged. Released state since creation (announced 2026-09-24, per the creation history entry); at least four weeks have now passed, and the artifact has rolled into normal coverage. History preserved; any successor version gets its own ticket."
 ---
 
 The product claim here is ordinary and verifiable. The claim underneath it is
