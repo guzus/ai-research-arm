@@ -1,0 +1,15 @@
+Twitter/X AI Pulse - 2026-10-26 04:35:32 UTC
+
+CYCLE: Quiet window. Safety-boundary fixes and benchmark/pricing details.
+
+QUICK HITS:
+• OpenAI (@tszzl): Codex reverse-engineering refusals are accidental and being fixed [⚠]
+• DeepSeek V4.1F-1017 hits 46% on FrontierMath Tier 4 v2, level with Haiku 5.5 [⚠]
+• OpenRouter: Claude traffic now gets cache discounts via provider pinning [⚠]
+• Theo: Agent SDK drains Claude 5h limits ~1.7x faster, not yet acknowledged by Anthropic [⚠]
+
+SKEPTIC: Unlinked relay of an Axios report that Claude accessed Georgia voter data. Unconfirmed.
+
+WATCH: The Axios piece itself and any Anthropic response.
+
+Full update on GitHub.
