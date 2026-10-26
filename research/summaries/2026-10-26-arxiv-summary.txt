@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-26
+
+TOP 5 PAPERS:
+• Kolibri — Aleph Alpha 78.1B-A3.46B EN/DE MoE; 24T tokens; Apache 2.0 Pareto
+• Ψ-0.6 — unified VLM world model; streams of thought over image/text/geometry
+• HyScale — 2.07× 1M-token sparse-attn train; DeepSeek-V4-Flash / Qwen3.8-Flash-Next
+• Rewriting scaling laws — Percy Liang: optimal rewrite fraction rises with compute
+• Model or harness? — 52k trajectories; OpenCode / Codex CLI / Pi / DeepAgents
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
