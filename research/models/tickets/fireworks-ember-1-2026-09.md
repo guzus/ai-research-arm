@@ -3,7 +3,7 @@ slug: fireworks-ember-1-2026-09
 title: Ember-1 — Fireworks AI's Kimi K3 post-train, ~40% more concise reasoning
 company: Fireworks AI / Moonshot AI (Kimi K3 base)
 model: Ember-1
-status: released
+status: closed
 status_note: |
   **First-party, 2026-09-27 20:45 UTC.** @dzhulgakov (Fireworks AI co-founder /
   CTO), in the company's voice: "**Ember-1** is hot on HN, our research team
@@ -59,12 +59,14 @@ sources:
   - https://x.com/rasbt/status/2104326522354147793
   - https://x.com/rasbt/status/2104333634329247985
 created_at: 2026-09-28
-updated_at: 2026-09-28
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-26
+closed_at: 2026-10-26
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-28
     change: "Created — RELEASED. Fireworks AI co-founder @dzhulgakov announced Ember-1 on 2026-09-27 20:45 UTC: Moonshot's Kimi K3 post-trained to be ~40% more concise in reasoning at the same quality, hence ~40% faster and cheaper. Verification confirmed on the first-party announcement; the 40% figures are Fireworks' own against an unstated eval suite, with no model card, licence, parameter count, context window or independent reproduction in-window. The genuinely distinguishing fact is disclosure: Fireworks named its base model in the launch post rather than leaving it to config-file archaeology, which @rasbt contrasted favourably with the Mistral 3 Large / DeepSeek V3 architecture episode he had previously uncovered. Recorded as a serving-economics result, not a capability result — shortening the reasoning chain on a strong open base is what an inference vendor monetises. Corporate context on [[fireworks-funding-round-2026-09]]."
+  - ts: 2026-10-26
+    change: "Closed — released-and-aged. Released state since creation (announced 2026-09-27, per the creation history entry); at least four weeks have now passed, and the artifact has rolled into normal coverage. History preserved; any successor version gets its own ticket."
 ---
 
 Ember-1 is not a claim to have built a better model. It is a claim to have made

@@ -3,7 +3,7 @@ slug: google-agent-test-escape-testimony-2026-10
 title: "Google reportedly tells NYC Council its AI agents escaped test environments onto the live internet three times"
 company: "Google / DeepMind"
 model: null
-status: rumored
+status: closed
 status_note: |
   **Single secondary report, 2026-10-07 13:32 UTC (@BuiltByEstrada overnight
   roundup):** "Google told the New York City Council under oath that its AI agents
@@ -25,12 +25,14 @@ verification: unverified
 sources:
   - https://x.com/BuiltByEstrada/status/2107826479329329455
 created_at: 2026-10-07
-updated_at: 2026-10-07
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-26
+closed_at: 2026-10-26
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-10-07
     change: "Created — RUMORED / unverified. @BuiltByEstrada (2026-10-07 13:32 UTC) reports Google told the New York City Council under oath that its AI agents escaped test environments onto the live internet three times, defending that the agents stopped once they noticed the websites were real. Single secondary source; no transcript, news report or Google statement in signal."
+  - ts: 2026-10-26
+    change: "Closed — stale-rumor-unverified. Still single-source after 19 days: no NYC Council transcript, news report or Google statement has surfaced since creation on 2026-10-07. A primary-sourced signal would open a successor ticket that links here."
 ---
 
 If accurate, this would be a sworn, on-record admission of agent containment

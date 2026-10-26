@@ -135,8 +135,10 @@ sources:
   - "https://x.com/AIDailyBrief/status/2111058830536888568"
   - "https://x.com/OfficialLoganK/status/2112767157746688480"
   - "https://x.com/GoogleDeepMind/status/2112557925264752930"
+  - "https://x.com/onloglogn/status/2114624056385540407"
+  - "https://x.com/tvytlx/status/2114708625738658245"
 created_at: 2026-09-24
-updated_at: 2026-10-21
+updated_at: 2026-10-26
 closed_at: null
 closed_reason: null
 history:
@@ -166,6 +168,8 @@ history:
     change: "Released, unchanged — access keeps widening and Google shows a multi-agent demo. (1) @GoogleDeepMind (2026-10-16 16:11 UTC): 'Four Gemini 4 Argon agents beat Minecraft from scratch in 27 hours', working only through code and text, writing 2,783 programs and splitting the work over chat with no human help. (2) @demishassabis retweeted @_mohansolo (2026-10-16 22:18 UTC): Argon and Gemini quotas in Antigravity reset for everyone after heavy demand. (3) @testingcatalog's 2026-10-17 brief (secondary, Grok-composed): Google AI Pro subscribers can now build with Argon in AI Studio Build and the playground, AI Studio Build adds Plan and Max modes, and Argon is available in Perplexity for Pro and Max subscribers. Reception is mixed: several relays (@JulianGoldieSEO, @Tech_girl) say Opus 5.5 still looks better on 3D and terminal tasks ([[anthropic-opus-5-5-2026-09]])."
   - ts: 2026-10-21
     change: "Released, unchanged — demand figure from Google. @OfficialLoganK (2026-10-21 04:45 UTC, RT'd by @demishassabis): 'In just the first 72 hours since Gemini 4 Argon launched, we processed ~25 trillion tokens.' The post does not say which launch the 72 hours count from; the 2026-10-13 global rollout is eight days earlier, so the figure may refer to a later access widening. Recorded as Google's own number without assigning a window. @GoogleDeepMind (2026-10-20 14:53 UTC) also posted an Antigravity demo (a 3D periodic table built by Argon). Still no free API tier and no smaller Gemini 4 model."
+  - ts: 2026-10-26
+    change: "Released, unchanged — a third-party agentic-engineering result. @onloglogn (2026-10-26 07:43 UTC), who runs the RSI-Inference Bench, reports Gemini 4 Argon with Antigravity in a close tie with GPT-6 Astra, and the first model outside Anthropic and OpenAI to pass a Day-0 model-support task. A Chinese breakdown (@tvytlx) adds a 1.39x inference speedup (4th place), 81% of hidden tests on Day-0 support, but Pass@1 of only 6.7%. These are the benchmark owner's own numbers, not independently reproduced."
 ---
 
 The July ticket died of exactly one thing: nobody in a position to know would

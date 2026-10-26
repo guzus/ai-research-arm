@@ -3,7 +3,7 @@ slug: odyssey-agora-2-2026-09
 title: Agora-2 — Odyssey's multi-agent world model, playable multiplayer research preview
 company: Odyssey ML
 model: Agora-2
-status: released
+status: closed
 status_note: |
   **Shipped as a playable preview, 2026-09-24 15:37 UTC.** @odysseyml
   (primary): "Introducing Agora-2, our next-generation multi-agent world model.
@@ -47,12 +47,14 @@ sources:
   - https://x.com/odysseyml/status/2103146841378586820
   - https://x.com/testingcatalog/status/2103164517433606640
 created_at: 2026-09-25
-updated_at: 2026-09-25
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-26
+closed_at: 2026-10-26
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-25
     change: "Created — RELEASED. @odysseyml announced Agora-2 on 2026-09-24 15:37 UTC (~2,564 likes) as a 'next-generation multi-agent world model' supporting up to 20 humans and agents in one shared, real-time-simulated environment, with a multiplayer research preview 'available to try right now'. @testingcatalog corroborated the same day and added detail: every frame comes from the model, each participant's actions change what everyone else sees, up to 5x more participants than Agora-1, multiple environments at once. Status released rather than confirmed because a public access path exists today, which is the bar the lifecycle sets; verification confirmed because the announcing account is the vendor itself. Created as a SEPARATE ticket from [[odyssey-3-world-model-2026-09]] on purpose: Odyssey-3 was unveiled 2026-09-15 with a demo reel and no access path and remains at 'confirmed', while Agora-2 is a distinct product line with its own named predecessor (Agora-1) and is runnable — same company, different shipping artifacts. All quantitative claims (20 participants, fully generated frames, real-time, 5x Agora-1) are first-party and currently unreproduced; the 'every frame comes from the model' claim is flagged as the one to test, since generated frames composited over a conventional engine would present identically in a clip."
+  - ts: 2026-10-26
+    change: "Closed — released-and-aged. Released state since creation (announced 2026-09-24, per the creation history entry); at least four weeks have now passed, and the artifact has rolled into normal coverage. History preserved; any successor version gets its own ticket."
 ---
 
 Odyssey has now put two world models into the record in ten days, and only one
