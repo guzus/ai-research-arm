@@ -4,10 +4,11 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows", "sandbox-runtime"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; a draft S-1 shows $16.3B first-half revenue against an $80.7B accounting-heavy loss and $600B+ compute commitments ahead of a planned November IPO.
+description: AI safety lab behind Claude; Elvis-catalog owners sued over 274 songs seeking about $41M, as a coding-API price war with OpenAI and a one-agent guidance note land ahead of a planned November IPO.
 created_at: 2026-05-24
-timestamp: 2026-10-24T00:00:00Z
+timestamp: 2026-10-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
@@ -3814,3 +3815,78 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   on the digest; treat as
   reported (Bluesky; ARA
   daily digest 2026-10-24).
+
+## Elvis catalog suit; one-agent guidance; coding price war (2026-10-26)
+
+- **Authentic Brands Group and
+  other Elvis rights holders
+  sued Anthropic** over
+  alleged training on **274
+  Presley songs** without a
+  license, seeking the
+  **$150,000** statutory
+  maximum per work — about
+  **$41M**. The same lawyer
+  filed Reservoir Media's
+  Oct 21 complaint. This
+  adds to music-publisher
+  litigation that has run
+  since 2023. Anthropic had
+  not commented as of
+  Saturday. A 2025 Bartz
+  ruling that treated
+  training on lawfully bought
+  books as fair use will be
+  central to its defence
+  (Billboard, Rolling Stone;
+  ARA daily digest
+  2026-10-26).
+- **New guidance recommends
+  one agent over many
+  subagents**: consolidate
+  into a single agent that
+  loads context on demand. One
+  comparison ran about
+  **twice as fast**, and a
+  migration kit is on GitHub.
+  That is a first-party
+  reversal of the 1,000-agent
+  Managed Agents pitch this
+  page logged on 2026-10-10.
+  See [[dynamic-workflows]]
+  (The Decoder; ARA daily
+  digest 2026-10-26).
+- **The coding-API price war
+  with [[openai]] is now
+  named in customer mix.**
+  Rippling reportedly moved
+  from **57% Anthropic in May
+  to 52% OpenAI**, and OpenAI
+  took most of a
+  **$100M-a-year** Replit
+  book at **30%+ off**. Both
+  labs cut list prices by
+  **up to 80%** in a few
+  months. Anthropic's
+  reported **$2B+/yr
+  [[microsoft]] Copilot**
+  book still dwarfs a
+  Replit-sized loss. Single
+  Information cluster; see
+  [[openai]] (The Information,
+  The Decoder; ARA daily
+  digest 2026-10-26).
+- **The free OSS vulnerability
+  scanner** (logged 2026-10-09
+  / 2026-10-20) is restated as
+  an opt-in service that runs
+  the strongest models,
+  including Claude Mythos,
+  against critical
+  open-source projects and
+  sends reports to
+  maintainers without human
+  review. See
+  [[agentic-ai-security]]
+  (MarkTechPost; ARA daily
+  digest 2026-10-26).

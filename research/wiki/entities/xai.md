@@ -4,10 +4,11 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot", "Grok 4.7", "Grok 4.8"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; a forced-choice study of nearly 500 races found Grok overwhelmingly picked Republicans while OpenAI's GPT picked Democrats.
+description: Elon Musk's frontier lab behind Grok; Grok Bot can now place outbound phone calls to people and businesses, while a nearly-500-race study found Grok picked Republicans and OpenAI's GPT picked Democrats.
 created_at: 2026-06-08
-timestamp: 2026-10-24T00:00:00Z
+timestamp: 2026-10-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
@@ -361,7 +362,37 @@ election-season scrutiny of
 AI assistants, not a first-
 party xAI product change.
 See [[openai]] (TechCrunch;
-ARA daily digest 2026-10-24).
+ARA daily   digest 2026-10-24).
+
+## Grok Bot can place outbound calls (2026-10-26)
+
+Musk says Grok Bot can now
+**phone people and
+businesses**: call a third
+party, make a request, take
+notes, and send back a
+summary. Extras in a user
+changelog for build **0.77**
+(hold music, keypad tones,
+transfers) are unconfirmed.
+This is a first-party
+capability claim on the
+persistent-agent product
+this page has tracked since
+the 2026-08-12 early beta,
+not a new foundation model.
+A same-day Information
+report says a hacking group
+chained Grok for
+intelligence gathering
+alongside [[anthropic|Claude]]
+planning and
+[[moonshot-kimi-k3|Kimi]]
+for refused tasks — see
+[[agentic-ai-security]]
+(@elonmusk, @alexmichaelio;
+ARA daily digest
+2026-10-26).
 
 ## Open questions
 

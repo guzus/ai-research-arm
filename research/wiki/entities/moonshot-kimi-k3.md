@@ -4,10 +4,11 @@ title: Moonshot AI Kimi K3
 type: entity
 aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open Frontier Intelligence", "Kimi Work", Moonshot, "Moonshot AI", "Kimi K3.1 Pro", "K3.1 Pro", "Kimi K3.1"]
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
-description: Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10, with open weights promised by Nov 4.
+description: Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10; the lab reset 25% of Pro quotas after a rate-limit failure, with weights still promised by Nov 4.
 created_at: 2026-07-17
-timestamp: 2026-10-24T00:00:00Z
+timestamp: 2026-10-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
@@ -326,6 +327,39 @@ covering it.
   (MarkTechPost, Latent Space,
   Bluesky; ARA daily digest
   2026-10-24).
+
+- **Moonshot reset 25% of
+  Kimi K3.1 Pro quotas
+  (2026-10-26).** It admits
+  the rate limits and wasted
+  quota were its own fault,
+  and it is trimming
+  unnecessary subagent calls
+  and output length. Nathan
+  Lambert says the benchmark
+  scores look "clearly the
+  strongest current open
+  weight model," provided
+  the weights ship by
+  **Nov 4** as promised.
+  Simon Willison's
+  soon-to-be-open-frontier
+  line from 2026-10-24 is
+  restated. This is a
+  serving-ops increment, not
+  a new checkpoint. A
+  same-day Information
+  report says a hacking group
+  used Kimi for tasks
+  [[anthropic|Claude]]
+  refused after gathering
+  intel with [[xai|Grok]] —
+  see [[agentic-ai-security]].
+  See also [[open-weights]]
+  and [[dynamic-workflows]]
+  (@Kimi_Moonshot,
+  @natolambert, Bluesky; ARA
+  daily digest 2026-10-26).
 
 ## Open questions
 

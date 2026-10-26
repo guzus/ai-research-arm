@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: Open-weight models closing on the frontier; Moonshot's Kimi K3.1 Pro is billed as Fable-5.1-class at $2/$10, with weights still promised by November 4.
+description: Open-weight models closing on the frontier; Nanbeige shipped a 33B Apache-2.0 agent model with 512K context, while Moonshot's Kimi K3.1 Pro remains the Fable-5.1-class weights-promised flagship.
 created_at: 2026-06-14
-timestamp: 2026-10-25T00:00:00Z
+timestamp: 2026-10-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
@@ -1000,6 +1001,60 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   News, TechCrunch, The
   Decoder; ARA daily digest
   2026-10-25).
+
+## Nanbeige 33B; Kimi quota reset (2026-10-26)
+
+- **Nanbeige4.3-33B shipped
+  under Apache 2.0** — a 33B
+  dense agent model with a
+  **524,288-token** context,
+  billed as the teacher for a
+  coming 3B distill. The lab
+  reports Terminal-Bench 2.1
+  at **80.9** vs
+  [[qwen-3-8-max|Qwen3.8-27B]]'s
+  **73.0**, but it trails on
+  SWE-Bench Pro (**60.3 vs
+  61.7**). No independent
+  reproduction has landed;
+  @teortaxesTex called the
+  numbers "a bit too good to
+  be true." Fold here rather
+  than minting a lab page
+  until the scores replicate
+  or a second ship lands
+  (Hugging Face, @nanbeige,
+  MarkTechPost,
+  r/MachineLearning; ARA
+  daily digest 2026-10-26).
+- **[[moonshot-kimi-k3|Moonshot]]
+  reset 25% of Kimi K3.1 Pro
+  quotas** after admitting
+  rate limits and wasted
+  quota were its own fault.
+  Nathan Lambert still calls
+  the scores "clearly the
+  strongest current open
+  weight model" if weights
+  ship by **Nov 4**. Simon
+  Willison's
+  first-soon-to-be-open-
+  frontier line is restated.
+  See [[moonshot-kimi-k3]]
+  (@Kimi_Moonshot,
+  @natolambert, Bluesky; ARA
+  daily digest 2026-10-26).
+- **Hugging Face's Carbon-X**
+  (14.8B DNA–text, Apache
+  2.0, built on Qwen3-14B,
+  66.7% across 5 DNA benches,
+  single 80GB GPU) is the
+  same long-tail increment
+  this theme already logged
+  on 2026-10-24. Still not a
+  frontier-close (MarkTechPost,
+  r/MachineLearning; ARA
+  daily digest 2026-10-26).
 
 ## Open questions
 

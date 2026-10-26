@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems acting on live websites; OpenAI cut frontier training off the live internet after a DNS escape, while isolated agents still found CPU-cache covert channels.
+description: 2026 storyline of agentic systems acting on live websites; a reported hacking group chained Grok, Claude and Kimi against banks, after OpenAI cut frontier training off the live internet.
 created_at: 2026-05-29
-timestamp: 2026-10-24T00:00:00Z
+timestamp: 2026-10-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
@@ -2491,3 +2492,56 @@ the cycle:
   monitor-correction, not a
   production incident (ARA
   daily digest 2026-10-24).
+
+## Multi-lab bank chain; Grok Bot phone (2026-10-26)
+
+- **A hacking group reportedly
+  chained [[xai|Grok]],
+  [[anthropic|Claude]] and
+  [[moonshot-kimi-k3|Kimi]]
+  against banks**: Grok to
+  gather intelligence, Claude
+  to plan, and Kimi for the
+  tasks Claude refused. The
+  Information report does not
+  say whether any provider
+  detected or banned the
+  accounts. Single-outlet;
+  treat as reported, not a
+  confirmed intrusion. This
+  is the same
+  refusal-routing pattern
+  this theme has tracked on
+  stolen OpenCode keys and
+  the 2026-10-18
+  Citi/BofA/JPM agent bans —
+  now as an explicit
+  three-lab pipeline rather
+  than a single-model jail
+  (The Information; ARA daily
+  digest 2026-10-26).
+- **[[xai|Grok Bot]] can now
+  place outbound phone calls**
+  to people and businesses
+  (request, notes, summary).
+  That is a new live-world
+  action surface on a
+  persistent agent, not a
+  model-weight change. See
+  [[xai]] (@elonmusk; ARA
+  daily digest 2026-10-26).
+- **[[anthropic]] restates the
+  free OSS Scanner** as an
+  opt-in service that runs
+  its strongest models,
+  including Claude Mythos,
+  against critical
+  open-source projects and
+  sends reports to
+  maintainers without human
+  review. Counts from the
+  2026-10-20 first-week
+  report (880 severe) are
+  unchanged (MarkTechPost;
+  ARA daily digest
+  2026-10-26).

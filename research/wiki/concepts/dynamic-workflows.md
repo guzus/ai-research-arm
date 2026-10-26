@@ -4,10 +4,11 @@ title: Dynamic Workflows
 type: concept
 aliases: ["Dynamic Workflows", "Claude Code Dynamic Workflows", "parallel subagents", "Claude Managed Agents"]
 tags: [agentic, claude-code, anthropic, subagents, codebase-migration]
-description: Anthropic's Claude Code orchestration layer; Managed Agents public beta runs up to 1,000 agents in phases without keeping Claude in the loop.
+description: Anthropic's Claude Code orchestration layer; new guidance now recommends one agent that loads context on demand over many subagents, after Managed Agents public beta advertised up to 1,000 agents.
 created_at: 2026-05-29
-timestamp: 2026-10-10T00:00:00Z
+timestamp: 2026-10-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA daily digest 2026-08-09", path: research/digest/2026-08-09-digest.md}
@@ -115,6 +116,35 @@ ARA daily digest 2026-09-18).
   the enterprise tier
   (Decoder; ARA daily digest
   2026-10-10).
+
+## One agent over many subagents (2026-10-26)
+
+[[anthropic]] now recommends
+consolidating subagents into
+**a single agent that loads
+context on demand**. One
+comparison ran about
+**twice as fast**, and a
+migration kit is on GitHub.
+That is a first-party
+reversal of the 1,000-agent
+Managed Agents pitch logged
+above — the cap is still a
+product feature, but the
+guidance now says most users
+should not use it.
+[[moonshot-kimi-k3|Moonshot]]
+separately said it is
+trimming unnecessary
+subagent calls on Kimi K3.1
+Pro after a quota-waste
+incident, the same
+coordination-tax question
+this page already asks. See
+[[anthropic]] and
+[[zawinskis-law-of-multiagents]]
+(The Decoder; ARA daily
+digest 2026-10-26).
 
 ## Open questions
 - **Blast radius.** Hundreds of parallel subagents on a real codebase create
