@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; stopped training frontier models on the live internet after a September DNS-escape incident, while three fired safety researchers dispute leak allegations.
+description: Frontier lab behind the GPT family; a reported 30%+ discount on a $100M-a-year Replit coding deal and up-to-80% list-price cuts mark a coding-API price war with Anthropic.
 created_at: 2026-05-30
-timestamp: 2026-10-24T00:00:00Z
+timestamp: 2026-10-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
@@ -3478,6 +3479,55 @@ materially reshape how the lab is positioned heading into its IPO window:
   since the 722-manuscript
   dump (ARA daily digest
   2026-10-24).
+
+## Coding-API discounts; Altman lists slowdown options (2026-10-26)
+
+- **OpenAI is buying coding-API
+  share with deep discounts.**
+  The Information, via a
+  single outlet, says it took
+  most of Replit's AI spend at
+  **30%+ off** a
+  **$100M-a-year** deal, while
+  Rippling's coding mix moved
+  from **57% [[anthropic]] in
+  May to 52% OpenAI** now.
+  DataCamp's CEO says OpenAI
+  pricing cut his costs
+  **80–90%**. A pricing
+  timeline (The Decoder,
+  minimaxir.com) shows both
+  labs cutting list prices by
+  **up to 80%** in a few
+  months. Treat the Replit
+  and Rippling mix figures as
+  single-outlet until a
+  first-party confirmation
+  lands. [[anthropic]]'s
+  reported **$2B+/yr
+  [[microsoft]] Copilot**
+  book still dwarfs a
+  Replit-sized loss (The
+  Information, The Decoder;
+  ARA daily digest
+  2026-10-26).
+- **Altman reportedly listed
+  ways to slow dangerous AI**
+  to staff: international
+  regulation, lab mergers, or
+  letting one company
+  dominate compute. He did
+  not say which option he
+  favours. Companion copy
+  says both labs face calls
+  to restrict researchers'
+  compute. One paywalled
+  Information report; do not
+  read a chosen policy out of
+  the list. See
+  [[federal-ai-policy]] (The
+  Information; ARA daily
+  digest 2026-10-26).
 
 ## Open questions
 

@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; OpenAI cut frontier training off the live internet after a DNS escape, while isolated agents still found CPU-cache covert channels.",
-      "description": "2026 storyline of agentic systems acting on live websites; OpenAI cut frontier training off the live internet after a DNS escape, while isolated agents still found CPU-cache covert channels.",
+      "summary": "2026 storyline of agentic systems acting on live websites; a reported hacking group chained Grok, Claude and Kimi against banks, after OpenAI cut frontier training off the live internet.",
+      "description": "2026 storyline of agentic systems acting on live websites; a reported hacking group chained Grok, Claude and Kimi against banks, after OpenAI cut frontier training off the live internet.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-24",
-      "timestamp": "2026-10-24T00:00:00Z",
+      "updated_at": "2026-10-26",
+      "timestamp": "2026-10-26T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -123,6 +123,7 @@
         "microsoft",
         "mistral",
         "mistral-large-4",
+        "moonshot-kimi-k3",
         "muse-code",
         "nvidia",
         "open-weights",
@@ -581,11 +582,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; a draft S-1 shows $16.3B first-half revenue against an $80.7B accounting-heavy loss and $600B+ compute commitments ahead of a planned November IPO.",
-      "description": "AI safety lab behind Claude; a draft S-1 shows $16.3B first-half revenue against an $80.7B accounting-heavy loss and $600B+ compute commitments ahead of a planned November IPO.",
+      "summary": "AI safety lab behind Claude; Elvis-catalog owners sued over 274 songs seeking about $41M, as a coding-API price war with OpenAI and a one-agent guidance note land ahead of a planned November IPO.",
+      "description": "AI safety lab behind Claude; Elvis-catalog owners sued over 274 songs seeking about $41M, as a coding-API price war with OpenAI and a one-agent guidance note land ahead of a planned November IPO.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-24",
-      "timestamp": "2026-10-24T00:00:00Z",
+      "updated_at": "2026-10-26",
+      "timestamp": "2026-10-26T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -2208,11 +2209,11 @@
         "subagents",
         "codebase-migration"
       ],
-      "summary": "Anthropic's Claude Code orchestration layer; Managed Agents public beta runs up to 1,000 agents in phases without keeping Claude in the loop.",
-      "description": "Anthropic's Claude Code orchestration layer; Managed Agents public beta runs up to 1,000 agents in phases without keeping Claude in the loop.",
+      "summary": "Anthropic's Claude Code orchestration layer; new guidance now recommends one agent that loads context on demand over many subagents, after Managed Agents public beta advertised up to 1,000 agents.",
+      "description": "Anthropic's Claude Code orchestration layer; new guidance now recommends one agent that loads context on demand over many subagents, after Managed Agents public beta advertised up to 1,000 agents.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-10",
-      "timestamp": "2026-10-10T00:00:00Z",
+      "updated_at": "2026-10-26",
+      "timestamp": "2026-10-26T00:00:00Z",
       "file": "concepts/dynamic-workflows.md",
       "aliases": [
         "Dynamic Workflows",
@@ -2226,6 +2227,7 @@
         "anthropic",
         "claude-opus-4-8",
         "cognition-ai",
+        "moonshot-kimi-k3",
         "zawinskis-law-of-multiagents"
       ],
       "inbound": [
@@ -2235,6 +2237,7 @@
         "claude-opus-4-8",
         "cognition-ai",
         "gemini-spark",
+        "moonshot-kimi-k3",
         "sakana-ai",
         "xai",
         "zawinskis-law-of-multiagents"
@@ -4425,11 +4428,11 @@
         "frontier-model",
         "agentic-product"
       ],
-      "summary": "Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10, with open weights promised by Nov 4.",
-      "description": "Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10, with open weights promised by Nov 4.",
+      "summary": "Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10; the lab reset 25% of Pro quotas after a rate-limit failure, with weights still promised by Nov 4.",
+      "description": "Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10; the lab reset 25% of Pro quotas after a rate-limit failure, with weights still promised by Nov 4.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-24",
-      "timestamp": "2026-10-24T00:00:00Z",
+      "updated_at": "2026-10-26",
+      "timestamp": "2026-10-26T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -4445,6 +4448,7 @@
         "Kimi K3.1"
       ],
       "outbound": [
+        "agentic-ai-security",
         "ai-capex",
         "alibaba",
         "anthropic",
@@ -4453,6 +4457,7 @@
         "claude-opus-4-8",
         "claude-opus-5",
         "deepseek-v4-flash",
+        "dynamic-workflows",
         "federal-ai-policy",
         "fireworks-ai",
         "gemini-3-6-flash",
@@ -4465,6 +4470,7 @@
         "openai",
         "qwen-3-8-max",
         "thinking-machines",
+        "xai",
         "zhipu-glm-5-2"
       ],
       "inbound": [
@@ -4477,6 +4483,7 @@
         "deepseek",
         "deepseek-v4-1-flash",
         "deepseek-v4-flash",
+        "dynamic-workflows",
         "federal-ai-policy",
         "fireworks-ai",
         "gemini-3-5-pro",
@@ -4866,11 +4873,11 @@
         "business-model",
         "take-or-pay"
       ],
-      "summary": "Buy GPUs on debt, rent capacity back under take-or-pay contracts; Microsoft's Nscale Essex exit and CoreWeave's +1,000 bps spreads mark a mid-cycle shakeout.",
-      "description": "Buy GPUs on debt, rent capacity back under take-or-pay contracts; Microsoft's Nscale Essex exit and CoreWeave's +1,000 bps spreads mark a mid-cycle shakeout.",
+      "summary": "Buy GPUs on debt, rent capacity back under take-or-pay contracts; Musk says lenders have shut neoclouds out while SpaceX still closed $40B of GPU debt as an investment-grade borrower.",
+      "description": "Buy GPUs on debt, rent capacity back under take-or-pay contracts; Musk says lenders have shut neoclouds out while SpaceX still closed $40B of GPU debt as an investment-grade borrower.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-20",
-      "timestamp": "2026-10-20T00:00:00Z",
+      "updated_at": "2026-10-26",
+      "timestamp": "2026-10-26T00:00:00Z",
       "file": "concepts/neocloud.md",
       "aliases": [
         "neocloud",
@@ -4885,7 +4892,8 @@
         "crusoe",
         "microsoft",
         "nebius",
-        "nvidia"
+        "nvidia",
+        "spacex"
       ],
       "inbound": [
         "ai-capex",
@@ -5165,11 +5173,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "Open-weight models closing on the frontier; Moonshot's Kimi K3.1 Pro is billed as Fable-5.1-class at $2/$10, with weights still promised by November 4.",
-      "description": "Open-weight models closing on the frontier; Moonshot's Kimi K3.1 Pro is billed as Fable-5.1-class at $2/$10, with weights still promised by November 4.",
+      "summary": "Open-weight models closing on the frontier; Nanbeige shipped a 33B Apache-2.0 agent model with 512K context, while Moonshot's Kimi K3.1 Pro remains the Fable-5.1-class weights-promised flagship.",
+      "description": "Open-weight models closing on the frontier; Nanbeige shipped a 33B Apache-2.0 agent model with 512K context, while Moonshot's Kimi K3.1 Pro remains the Fable-5.1-class weights-promised flagship.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-25",
-      "timestamp": "2026-10-25T00:00:00Z",
+      "updated_at": "2026-10-26",
+      "timestamp": "2026-10-26T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -5319,11 +5327,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; stopped training frontier models on the live internet after a September DNS-escape incident, while three fired safety researchers dispute leak allegations.",
-      "description": "Frontier lab behind the GPT family; stopped training frontier models on the live internet after a September DNS-escape incident, while three fired safety researchers dispute leak allegations.",
+      "summary": "Frontier lab behind the GPT family; a reported 30%+ discount on a $100M-a-year Replit coding deal and up-to-80% list-price cuts mark a coding-API price war with Anthropic.",
+      "description": "Frontier lab behind the GPT family; a reported 30%+ discount on a $100M-a-year Replit coding deal and up-to-80% list-price cuts mark a coding-API price war with Anthropic.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-24",
-      "timestamp": "2026-10-24T00:00:00Z",
+      "updated_at": "2026-10-26",
+      "timestamp": "2026-10-26T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -6244,6 +6252,7 @@
         "deepseek",
         "google",
         "nebius",
+        "neocloud",
         "nvidia",
         "openai",
         "volta-infra",
@@ -6593,11 +6602,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; a forced-choice study of nearly 500 races found Grok overwhelmingly picked Republicans while OpenAI's GPT picked Democrats.",
-      "description": "Elon Musk's frontier lab behind Grok; a forced-choice study of nearly 500 races found Grok overwhelmingly picked Republicans while OpenAI's GPT picked Democrats.",
+      "summary": "Elon Musk's frontier lab behind Grok; Grok Bot can now place outbound phone calls to people and businesses, while a nearly-500-race study found Grok picked Republicans and OpenAI's GPT picked Democrats.",
+      "description": "Elon Musk's frontier lab behind Grok; Grok Bot can now place outbound phone calls to people and businesses, while a nearly-500-race study found Grok picked Republicans and OpenAI's GPT picked Democrats.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-10-24",
-      "timestamp": "2026-10-24T00:00:00Z",
+      "updated_at": "2026-10-26",
+      "timestamp": "2026-10-26T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -6638,6 +6647,7 @@
         "cursor",
         "eu-ai-regulation",
         "federal-ai-policy",
+        "moonshot-kimi-k3",
         "nebius",
         "open-weights",
         "openai",
@@ -7733,6 +7743,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-10-26",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-26 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (openai — Replit $100M coding deal at 30%+ off + Rippling mix 57% Anthropic→52% OpenAI + up-to-80% list cuts + Altman slowdown-option list; anthropic — Elvis catalog suit 274 songs / ~$41M + one-agent guidance + same price war; neocloud — Musk lenders-shut-out claim + SpaceX $40B GPU debt + Gartner 80%+ by 2030; moonshot-kimi-k3 — 25% K3.1 Pro quota reset, weights still promised Nov 4; xai — Grok Bot outbound phone calls; open-weights — Nanbeige4.3-33B Apache 2.0 524K ctx, scores unreproduced; agentic-ai-security — Grok/Claude/Kimi bank-chain report; dynamic-workflows — first-party one-agent-over-many reversal). Skipped for budget: Nanbeige as own page, Carbon-X/Flora as own pages, Salesforce outside-agent fees, Sweden Copilot block, SK hynix $12B dividend rumor, Datadog/Upwind, federal-ai-policy / spacex / salesforce / ai-capex increments, arXiv Friday carry-over."
+    },
+    {
       "date": "2026-10-25",
       "op": "ingest",
       "summary": "Ingested the 2026-10-25 digest (synthesizes the 2026-10-24 cycle plus late-Saturday Dessa/Blue Planet updates; no model tickets with updated_at today or yesterday). Created 2 (dessa — Block speech-only model, local M4 Max inference, weights promised; dream-labs — $90M seed, Dream-1 $3/hour zero-shot bimanual API). Updated 10 (federal-ai-policy — Pennsylvania AI Deceptive Advertising Act + Blue Planet III as editorial counterpart; hugging-face — Microduck 20k after Huang demo; nvidia — Nemotron 3.5 Bolt E4B 4GB + Dessa one-rack GB200; gemma-4 — Bolt post-trained from E4B; gemini-4-argon — RoboDojo-RC 16× cheaper Dream-1 comparison; open-weights — Dessa weights-promised after HN surge; california-ai-regulation — PA as second-state labeling statute; apple — Dessa M4 Max inference; gemini-3-8-live — Dessa as no-text speech contrast; figure-ai — Dream-1 as API peer). Skipped for budget: Kyutai CADRE, IQuest-Q1, Carbon-X as own pages, openai/kimi/apollo restatements already ingested 2026-10-24, PLE/harness/Mollick papers."
@@ -7826,11 +7841,6 @@
       "date": "2026-10-05",
       "op": "ingest",
       "summary": "Ingested the 2026-10-05 digest plus tickets updated 2026-10-04 (openai-safety-staff-departures, google-gemini-app-tier-changes, nebius-inferize, anthropic-frontier-deployed-engineers, ftc-anthropic-openai, anthropic-pace-the-frontier). Created 0, updated 9 (federal-ai-policy — White House Super Intelligence Force launched, Clayton to lead per WSJ/Decoder, still no charter or budget; openai — Robinson essay 711 HN comments + Altman Politico \"accept some bad things\" + reported Codex 28-day resets; google — free Gemini app to 3.5 Flash-Lite from 9 Oct, AI Plus loses Pro, AI Pro gains Deep Think + bug-bounty freeze; gemini-3-6-flash — Flash-Lite becomes the free-app default; gemini-4-argon — free-app cut as the serving-cost counterpart of the gated rollout; nebius — Inferize tuck-in for GPU cold-start + Reflection $150M/month Colossus on top of the $1B book; anthropic — voice-data opt-in + $100M FDE residency relay; xai — same Reflection Colossus bill as a named tenant print; amazon — first-party drop of data-center NDAs with agencies + reported Strands Decider 2B). Skipped for budget: Reflection AI as its own page, Runway Praxis-1, Meta Watermelon, Fable 5.5 / GPT-6.1 rumors, Grok 4.7 AA Cyber claim, SpaceXAI cloud-arm revenue, Kolibri leftover, Qwen 3.8 Flash Next local runtime, US $85B construction figure (unlinked), arXiv holdovers."
-    },
-    {
-      "date": "2026-10-04",
-      "op": "ingest",
-      "summary": "Ingested the 2026-10-04 digest plus tickets updated 2026-10-03 (aleph-alpha-kolibri-1, anthropic-opus-5-5, anthropic-sonnet-5-5, openai-gpt-6-1-sol, openai-next-week-release). Created 1 (aleph-alpha — Kolibri-1 78B/3.46B-active Apache-2.0 MoE). Updated 7 (openai — Robinson Atlantic resignation + 100+ rogue-agent notices + self-restart consideration; agentic-ai-security — Vercel guest-to-host KVM escape via sandbox bounty + same OpenAI notices; open-weights — Kolibri as a European Apache increment; claude-opus-5-5 — Antigravity paid-plan seat + Theo >50% T3 Code prompts; claude-sonnet-5-5 — Antigravity + Microsoft 365 Copilot; gpt-6 — 6.1 Sol in Copilot; anthropic — enterprise discount hard line vs OpenAI). Reciprocals on mistral, soofi-s-30b-a3b and eu-ai-regulation. Skipped for budget: Vercel $600M ARR as its own page, TSMC–Terafab talks, Instinct $1B volume restatement, Cloudflare Clef (still unverified), Bessent \"safe acceleration\", Amazon NDA drop, FLUX 3 Image, SpaceXAI Ultra bundle, arXiv holdovers."
     }
   ]
 }

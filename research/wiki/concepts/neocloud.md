@@ -4,10 +4,11 @@ title: Neocloud
 type: concept
 aliases: [neocloud, "neo-cloud", "GPU-as-a-service", GPUaaS]
 tags: [ai-infrastructure, gpu-cloud, business-model, take-or-pay]
-description: Buy GPUs on debt, rent capacity back under take-or-pay contracts; Microsoft's Nscale Essex exit and CoreWeave's +1,000 bps spreads mark a mid-cycle shakeout.
+description: Buy GPUs on debt, rent capacity back under take-or-pay contracts; Musk says lenders have shut neoclouds out while SpaceX still closed $40B of GPU debt as an investment-grade borrower.
 created_at: 2026-05-24
-timestamp: 2026-10-20T00:00:00Z
+timestamp: 2026-10-26T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
   - {title: "ARA generative research — CoreWeave GPU-as-a-service unit economics", path: research/generative/2026-05-16T103712--coreweave-gpu-as-a-service-unit-economics-and-customer-conce.html}
@@ -78,3 +79,29 @@ and offtake, not GPU scarcity, are the
 shakeout variables. See [[ai-capex]] (Reuters,
 The Decoder, The Verge, TechCrunch; ARA daily
 digest 2026-10-20).
+
+## Musk says lenders shut neoclouds out (2026-10-26)
+
+Musk says lenders have shut
+out neoclouds, adding that
+[[spacex]] still closed
+**$40B of GPU debt** because
+it is investment grade. He
+predicts most of the
+**200+** neoclouds will fold
+or merge. He is talking his
+own book, and no independent
+credit data backs the claim.
+Gartner, reported
+secondhand, forecasts that
+**80%+** of neoclouds will
+stop operating independently
+by **2030** — the same
+survivor-set shape this page
+logged on 2026-10-20 as
+[[coreweave]] executives
+expecting **7–10 of
+hundreds**. See [[ai-capex]]
+and [[spacex]] (@elonmusk,
+@rohanpaul_ai; ARA daily
+digest 2026-10-26).
