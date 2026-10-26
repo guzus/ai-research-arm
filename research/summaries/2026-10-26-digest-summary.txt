@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-10-26
+
+TOP STORIES:
+• OpenAI wins Replit spend at 30%+ off a $100M/yr deal
+• Elvis rights holders sue Anthropic over 274 songs
+• Musk: lenders shut out neoclouds; SpaceX closed $40B GPU debt
+
+KEY NUMBERS:
+• Rippling coding mix: Anthropic 57%->18%, OpenAI 16%->52%
+• $41M demanded (274 x $150K)
+• Nanbeige4.3-33B: 80.9 Terminal-Bench 2.1, 512K ctx
+
+TRENDING: Samsung TV root shell + on-device ACR (728 pts on HN)
+
+Full digest on GitHub.

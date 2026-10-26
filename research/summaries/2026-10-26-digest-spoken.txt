@@ -1,0 +1,11 @@
+Speaker 1: Monday, October twenty-sixth, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI just won Replit's spend, reportedly at more than thirty percent off a deal worth [emphasis] one hundred million dollars a year [/emphasis].
+Speaker 1: And the shift shows up elsewhere too, at Rippling, Anthropic's share of the coding mix fell from fifty-seven percent to eighteen, while OpenAI climbed from sixteen to fifty-two.
+Speaker 2: That's a near total flip, and it says price is now a real weapon in the coding wars.
+Speaker 1: On the legal front, Elvis Presley's rights holders are suing Anthropic over two hundred seventy-four songs.
+Speaker 2: At one hundred fifty thousand dollars a song, that adds up to roughly [emphasis] forty-one million dollars [/emphasis] in damages demanded.
+Speaker 1: Turning to compute, Elon Musk says lenders are shutting out the neoclouds.
+Speaker 2: Meanwhile, SpaceX itself closed [emphasis] forty billion dollars [/emphasis] in GPU debt, so the money is flowing, just not to everyone.
+Speaker 1: Some quick model numbers, Nanbeige four point three, a thirty-three billion parameter model, scores eighty point nine on Terminal-Bench two point one with a five hundred twelve thousand token context window.
+Speaker 2: And trending on Hacker News, someone got a root shell on a Samsung TV and found automatic content recognition running right on the device, [dramatic_pause] your TV really is watching you back.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
