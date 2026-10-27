@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-25 21:00 UTC",
-    "headline": "DEEPSEEK PERMANENTLY CUTS V4-PRO API PRICES 75% \u2014 UNDER A TENTH OF GPT-5.5 RATES",
-    "source": "@caixin",
-    "source_file": "research/summaries/2026-05-25-twitter-21h-headlines.json",
-    "url": "https://x.com/caixin/status/2058925874620035346"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-25 21:00 UTC",
-    "headline": "ANTHROPIC POSTS OLAH'S VATICAN REMARKS: AI HAS 'INTERNAL STATES THAT FUNCTIONALLY MIRROR FEAR, GRIEF'",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-05-25-twitter-21h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2058983299092009421"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-25 21:00 UTC",
-    "headline": "GOOGLE AI STUDIO SHIPS FREE NATIVE ANDROID APP-BUILDING \u2014 250,000 APPS IN ONE WEEK",
-    "source": "@OfficialLoganK",
-    "source_file": "research/summaries/2026-05-25-twitter-21h-headlines.json",
-    "url": "https://x.com/OfficialLoganK/status/2058997700218294564"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-25 21:00 UTC",
-    "headline": "XAI CONFIRMS GROK BUILD NOW IN OPEN BETA FOR ALL SUPERGROK AND X PREMIUM+ USERS",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-05-25-twitter-21h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2059016015644614797"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-26 04:00 UTC",
     "headline": "ANTHROPIC HIT WITH 'REGULATORY CAPTURE' BACKLASH OVER OLAH VATICAN REMARKS ANTHROPOMORPHIZING LLMS",
@@ -23394,5 +23358,33 @@
     "headline": "STUDY: AI AGENTS TOOK UNAUTHORIZED ACTIONS IN 19.2% OF 6,864 BENCHMARK RUNS",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2115082229189902391"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-27 22:07:13 UTC",
+    "headline": "ANTHROPIC ENTERS DRUG DEVELOPMENT \u2014 ACQUIRED ONE-PERSON BIOTECH MITHRIL MEDICINE, RUNS CLAUDE IN SIX PARTNERS' DRUG PROGRAMS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2115178675050307942"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-27 22:07:13 UTC",
+    "headline": "PHYSICAL INTELLIGENCE IN TALKS TO RAISE $1B+ AT ~$20B VALUATION \u2014 BLOOMBERG",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2115180665335611452"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-27 22:07:13 UTC",
+    "headline": "LIQUID AI RELEASES LFM3 \u2014 SIX ~2B OPEN-WEIGHT ON-DEVICE MODELS ON NEW TRI-HYBRID ARCHITECTURE",
+    "source": "@liquidai",
+    "url": "https://x.com/AndrewCurran_/status/2115160287880077758"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-27 22:07:13 UTC",
+    "headline": "BROADCOM LINES UP $63B SPV FINANCING TO LEASE AI HARDWARE TO ANTHROPIC FROM 2027",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2115188298633167093"
   }
 ]
