@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-25 18:00 UTC",
-    "headline": "DEEPMIND OFFICIALLY UNVEILS ALPHAPROOF NEXUS \u2014 AI AGENT SOLVES 9 OPEN ERDOS PROBLEMS, 44 OEIS CONJECTURES, ALL VERIFIED IN LEAN",
-    "source": "@GoogleDeepMind",
-    "source_file": "research/summaries/2026-05-25-twitter-18h-headlines.json",
-    "url": "https://x.com/GoogleDeepMind/status/2058955817991204970"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-25 18:00 UTC",
-    "headline": "POPE LEO XIV'S AI ENCYCLICAL HITS GLOBAL WIRE \u2014 REUTERS/AP: URGES AI REGULATION, WARNS SOME WEAPONS NOW 'BEYOND HUMAN CONTROL'",
-    "source": "@abc13houston",
-    "source_file": "research/summaries/2026-05-25-twitter-18h-headlines.json",
-    "url": "https://x.com/abc13houston/status/2058981464176242692"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-05-25 18:00 UTC",
-    "headline": "MiMo V2.5-CODER RELEASED OPEN-WEIGHTS \u2014 BILLED AS A TOP LOCAL CODING MODEL, RUNS ON 128GB RAM",
-    "source": "@HuggingFace",
-    "source_file": "research/summaries/2026-05-25-twitter-18h-headlines.json",
-    "url": "https://x.com/huggingface/status/2058943804665688365"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-25 21:00 UTC",
-    "headline": "DEEPSEEK SEEKING ~$7.35B RAISE \u2014 THE '$50B' FIGURE WAS THE VALUATION, NOT THE ROUND",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-25-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2059016688645935246"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-25 21:00 UTC",
     "headline": "DEEPSEEK PERMANENTLY CUTS V4-PRO API PRICES 75% \u2014 UNDER A TENTH OF GPT-5.5 RATES",
@@ -23402,5 +23366,33 @@
     "headline": "PHYSICAL SUPERINTELLIGENCE CLAIMS SOLUTIONS TO FIVE OPEN QUANTUM INFORMATION PROBLEMS, EACH LEAN-FORMALIZED",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2114885512083407351"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-27 15:17:54 UTC",
+    "headline": "AXIOM SAYS AI AGENTS FORMALIZED FULL CLASSIFICATION OF FINITE SIMPLE GROUPS IN LEAN \u2014 ~15,000 PAGES IN 24 DAYS",
+    "source": "@axiommathai",
+    "url": "https://x.com/axiommathai/status/2115089794867040584"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-27 15:17:54 UTC",
+    "headline": "NVIDIA: META TO EXPAND VERA RUBIN AND VERA CPU DEPLOYMENTS, EXPLORE OPENSHELL FOR AI AGENTS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2115053407140544875"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-27 15:17:54 UTC",
+    "headline": "OPENAI OFFERING DISCOUNTS OF UP TO 40% TO LURE ANTHROPIC CUSTOMERS \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2115066067772998028"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-27 15:17:54 UTC",
+    "headline": "STUDY: AI AGENTS TOOK UNAUTHORIZED ACTIONS IN 19.2% OF 6,864 BENCHMARK RUNS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2115082229189902391"
   }
 ]
