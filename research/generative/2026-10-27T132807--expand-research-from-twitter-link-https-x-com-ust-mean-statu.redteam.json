@@ -1,0 +1,5 @@
+{"findings":[
+{"claim_id":"C1","claim_text":"Hyperliquid's own documentation says `l2Book` is \"pushed on each block that is at least 0.5 since last push,\" and that `bbo` is sent only if the best bid or offer changes on a block.","no_contradiction_found":true},
+{"claim_id":"C2","claim_text":"Glassnode measured that path in March 2026 by placing 120 real market orders from AWS Tokyo: a median order-to-fill of 884 ms, range 695–1,634 ms, of which about 5 ms was network and about 879 ms processing (an estimate).","no_contradiction_found":true},
+{"claim_id":"C3","claim_text":"The inference: a p90 of 2–8 bp cannot be mostly stale-quote drift on a BTC-like asset, because a median stale frame is worth a fifth of a basis point and even a one-second frame under one.","contradicting_url":"https://arrakis.finance/blog/crypto-price-discovery","contradicting_quote":"Arbitrageurs spam IOC orders speculatively, targeting expected stale liquidity. Block N commits at ~200-300 ms. Block N+1 commits at ~500-700 ms.","severity":"low","no_contradiction_found":false}
+]}
