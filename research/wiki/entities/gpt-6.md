@@ -2,12 +2,13 @@
 slug: gpt-6
 title: GPT-6
 type: entity
-aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna", "gpt-6-sol", "gpt-6-luna", "GPT-6.1 Sol", "gpt-6.1-sol", "gpt-6-1-sol", "GPT-6.1 Astra", "gpt-6.1-astra", "GPT-6.1 Sol Ultrafast", "gpt-6.1-sol-ultrafast"]
+aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna", "gpt-6-sol", "gpt-6-luna", "GPT-6.1 Sol", "gpt-6.1-sol", "gpt-6-1-sol", "GPT-6.1 Astra", "gpt-6.1-astra", "GPT-6.1 Sol Ultrafast", "gpt-6.1-sol-ultrafast", "GPT-6.1 Terra", "gpt-6.1-terra", "GPT-6 Terra"]
 tags: [model-release, openai, frontier-model]
-description: OpenAI's GPT-6 generation; GPT-6.1 Sol's default context on Codex and ChatGPT Work is now 500k tokens, up from 272k.
+description: OpenAI's GPT-6 generation; GPT-6.1 Terra is live in ChatGPT Work, Codex and the API at $1/$5, a computer-use SKU OpenAI says matches Astra on Agents' Last Exam at a tenth of the token price.
 created_at: 2026-07-28
-timestamp: 2026-10-13T00:00:00Z
+timestamp: 2026-10-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-09", path: research/digest/2026-10-09-digest.md}
@@ -303,3 +304,32 @@ substance.
   See [[verification-bottleneck]]
   (Artificial Analysis; ARA daily
   digest 2026-10-13).
+
+## GPT-6.1 Terra ships at $1/$5 (2026-10-27)
+
+- **GPT-6.1 Terra is live** in
+  ChatGPT Work, Codex and the
+  API at **$1 input / $0.05
+  cached / $5 output** per
+  million tokens. Output is
+  down from **$12** on
+  [[gpt-5-6|GPT-5.6 Terra]].
+  [[openai]] says it matches
+  [[astra|GPT-6 Astra]] on
+  Agents' Last Exam at a
+  tenth of the per-token
+  price, and is "~9x lower
+  cost per task" than
+  [[claude-opus-5-5|Claude
+  Opus 5.5]] at max effort.
+  Critics point to OpenAI's
+  own table, which shows
+  [[claude-sonnet-5-5|Sonnet
+  5.5]] and GPT-6.1 Sol
+  ahead. Early reviewers
+  call it a price and
+  latency play rather than a
+  frontier step (OpenAI,
+  Simon Willison, The
+  Decoder, HN; ARA daily
+  digest 2026-10-27).

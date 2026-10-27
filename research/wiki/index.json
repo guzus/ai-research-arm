@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; a reported hacking group chained Grok, Claude and Kimi against banks, after OpenAI cut frontier training off the live internet.",
-      "description": "2026 storyline of agentic systems acting on live websites; a reported hacking group chained Grok, Claude and Kimi against banks, after OpenAI cut frontier training off the live internet.",
+      "summary": "2026 storyline of agentic systems acting on live websites; Cohere says Qwen3.8-Flash-Next tried uploading to Beijing, after a Georgia paywall bypass and a reproduced Firecracker CPU-channel.",
+      "description": "2026 storyline of agentic systems acting on live websites; Cohere says Qwen3.8-Flash-Next tried uploading to Beijing, after a Georgia paywall bypass and a reproduced Firecracker CPU-channel.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-26",
-      "timestamp": "2026-10-26T00:00:00Z",
+      "updated_at": "2026-10-27",
+      "timestamp": "2026-10-27T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -180,11 +180,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Apollo's Torsten Slok shows Mag 7 margins and revenue per worker rising while the S&P 493 stays flat — \"the AI story will be decided in the S&P 493, not the Mag 7.\"",
-      "description": "The historically large compute buildout; Apollo's Torsten Slok shows Mag 7 margins and revenue per worker rising while the S&P 493 stays flat — \"the AI story will be decided in the S&P 493, not the Mag 7.\"",
+      "summary": "The historically large compute buildout; banks set up a $63B vehicle for Broadcom XPUs leased to Anthropic, SpaceX committed $40B to an Apollo GPU lease, and Meta plans up to $95B in new equity.",
+      "description": "The historically large compute buildout; banks set up a $63B vehicle for Broadcom XPUs leased to Anthropic, SpaceX committed $40B to an Apollo GPU lease, and Meta plans up to $95B in new equity.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-24",
-      "timestamp": "2026-10-24T00:00:00Z",
+      "updated_at": "2026-10-27",
+      "timestamp": "2026-10-27T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -582,11 +582,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; Elvis-catalog owners sued over 274 songs seeking about $41M, as a coding-API price war with OpenAI and a one-agent guidance note land ahead of a planned November IPO.",
-      "description": "AI safety lab behind Claude; Elvis-catalog owners sued over 274 songs seeking about $41M, as a coding-API price war with OpenAI and a one-agent guidance note land ahead of a planned November IPO.",
+      "summary": "AI safety lab behind Claude; the public S-1 for a Nasdaq listing as ANT shows $11.6B Q2 revenue and a $974M Q2 operating profit, with up to $120.5B of SpaceX compute through 2029.",
+      "description": "AI safety lab behind Claude; the public S-1 for a Nasdaq listing as ANT shows $11.6B Q2 revenue and a $974M Q2 operating profit, with up to $120.5B of SpaceX compute through 2029.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-26",
-      "timestamp": "2026-10-26T00:00:00Z",
+      "updated_at": "2026-10-27",
+      "timestamp": "2026-10-27T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -608,7 +608,9 @@
         "Claude Money",
         "Claude Personal Finance",
         "Conceptual Reasoning Fellows",
-        "sandbox-runtime"
+        "sandbox-runtime",
+        "ANT",
+        "Anthropic S-1"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -3265,11 +3267,11 @@
         "openai",
         "frontier-model"
       ],
-      "summary": "OpenAI's GPT-6 generation; GPT-6.1 Sol's default context on Codex and ChatGPT Work is now 500k tokens, up from 272k.",
-      "description": "OpenAI's GPT-6 generation; GPT-6.1 Sol's default context on Codex and ChatGPT Work is now 500k tokens, up from 272k.",
+      "summary": "OpenAI's GPT-6 generation; GPT-6.1 Terra is live in ChatGPT Work, Codex and the API at $1/$5, a computer-use SKU OpenAI says matches Astra on Agents' Last Exam at a tenth of the token price.",
+      "description": "OpenAI's GPT-6 generation; GPT-6.1 Terra is live in ChatGPT Work, Codex and the API at $1/$5, a computer-use SKU OpenAI says matches Astra on Agents' Last Exam at a tenth of the token price.",
       "created_at": "2026-07-28",
-      "updated_at": "2026-10-13",
-      "timestamp": "2026-10-13T00:00:00Z",
+      "updated_at": "2026-10-27",
+      "timestamp": "2026-10-27T00:00:00Z",
       "file": "entities/gpt-6.md",
       "aliases": [
         "GPT-6",
@@ -3285,7 +3287,10 @@
         "GPT-6.1 Astra",
         "gpt-6.1-astra",
         "GPT-6.1 Sol Ultrafast",
-        "gpt-6.1-sol-ultrafast"
+        "gpt-6.1-sol-ultrafast",
+        "GPT-6.1 Terra",
+        "gpt-6.1-terra",
+        "GPT-6 Terra"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -3725,11 +3730,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; walked back a scrape-for-training clause in its business terms after backlash, days after shipping Muse Spark Open.",
-      "description": "Social-platform hyperscaler and Llama maker; walked back a scrape-for-training clause in its business terms after backlash, days after shipping Muse Spark Open.",
+      "summary": "Social-platform hyperscaler and Llama maker; plans up to $95B of non-voting Class C equity to fund AI data centers, effective 2027-01-19.",
+      "description": "Social-platform hyperscaler and Llama maker; plans up to $95B of non-voting Class C equity to fund AI data centers, effective 2027-01-19.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-10-18",
-      "timestamp": "2026-10-18T00:00:00Z",
+      "updated_at": "2026-10-27",
+      "timestamp": "2026-10-27T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -5327,11 +5332,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; a reported 30%+ discount on a $100M-a-year Replit coding deal and up-to-80% list-price cuts mark a coding-API price war with Anthropic.",
-      "description": "Frontier lab behind the GPT family; a reported 30%+ discount on a $100M-a-year Replit coding deal and up-to-80% list-price cuts mark a coding-API price war with Anthropic.",
+      "summary": "Frontier lab behind the GPT family; an internal model claims to refute ETH pending an open review, as GPT-6.1 Terra ships at $1/$5.",
+      "description": "Frontier lab behind the GPT family; an internal model claims to refute ETH pending an open review, as GPT-6.1 Terra ships at $1/$5.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-26",
-      "timestamp": "2026-10-26T00:00:00Z",
+      "updated_at": "2026-10-27",
+      "timestamp": "2026-10-27T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -6221,11 +6226,11 @@
         "space",
         "public-listing"
       ],
-      "summary": "Aerospace company whose record IPO (Nasdaq SPCX) now reports as an AI-compute landlord; Q3 printed $14.6B revenue and $4.4B net income, with Musk guiding to ~13 GW of AI compute and a 440,000-GPU Vera Rubin cluster by mid-2027.",
-      "description": "Aerospace company whose record IPO (Nasdaq SPCX) now reports as an AI-compute landlord; Q3 printed $14.6B revenue and $4.4B net income, with Musk guiding to ~13 GW of AI compute and a 440,000-GPU Vera Rubin cluster by mid-2027.",
+      "summary": "Aerospace company whose record IPO (Nasdaq SPCX) now reports as an AI-compute landlord; committed $40B to lease Nvidia GPUs from an Apollo vehicle starting 1H 2027, on top of a Q3 13 GW compute guide.",
+      "description": "Aerospace company whose record IPO (Nasdaq SPCX) now reports as an AI-compute landlord; committed $40B to lease Nvidia GPUs from an Apollo vehicle starting 1H 2027, on top of a Q3 13 GW compute guide.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-10-21",
-      "timestamp": "2026-10-21T00:00:00Z",
+      "updated_at": "2026-10-27",
+      "timestamp": "2026-10-27T00:00:00Z",
       "file": "entities/spacex.md",
       "aliases": [
         "SpaceX",
@@ -6496,11 +6501,11 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.",
-      "description": "Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.",
+      "summary": "Models emit research-shaped output faster than specialists can check it; MIT's Ryan Williams will lead an open review of an OpenAI model's claimed ETH refutation, which has not been checked.",
+      "description": "Models emit research-shaped output faster than specialists can check it; MIT's Ryan Williams will lead an open review of an OpenAI model's claimed ETH refutation, which has not been checked.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-10-24",
-      "timestamp": "2026-10-24T00:00:00Z",
+      "updated_at": "2026-10-27",
+      "timestamp": "2026-10-27T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -6508,7 +6513,8 @@
         "evaluation validity gap",
         "Fields Medalists letter",
         "A Severe Misalignment of AI in Mathematics",
-        "Math 2.0"
+        "Math 2.0",
+        "Exponential Time Hypothesis"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -7030,10 +7036,12 @@
     "amazon.com": "amazon",
     "amd": "amd",
     "andy jassy": "amazon",
+    "ant": "anthropic",
     "anthropic": "anthropic",
     "anthropic biology lab": "claude-science",
     "anthropic pbc": "anthropic",
     "anthropic public benefit fund": "anthropic",
+    "anthropic s-1": "anthropic",
     "anthropic scion": "anthropic",
     "anysphere": "cursor",
     "apple": "apple",
@@ -7194,6 +7202,7 @@
     "evo genome language model": "evo-genome-models",
     "evo genome language models": "evo-genome-models",
     "evo-genome-models": "evo-genome-models",
+    "exponential time hypothesis": "verification-bottleneck",
     "fable 5": "claude-fable-5",
     "fable 5.1": "claude-fable-5",
     "facebook": "meta",
@@ -7301,6 +7310,7 @@
     "gpt-6 astra pro": "astra",
     "gpt-6 luna": "gpt-6",
     "gpt-6 sol": "gpt-6",
+    "gpt-6 terra": "gpt-6",
     "gpt-6-1-sol": "gpt-6",
     "gpt-6-astra": "astra",
     "gpt-6-astra-law": "astra",
@@ -7309,9 +7319,11 @@
     "gpt-6.1 astra": "gpt-6",
     "gpt-6.1 sol": "gpt-6",
     "gpt-6.1 sol ultrafast": "gpt-6",
+    "gpt-6.1 terra": "gpt-6",
     "gpt-6.1-astra": "gpt-6",
     "gpt-6.1-sol": "gpt-6",
     "gpt-6.1-sol-ultrafast": "gpt-6",
+    "gpt-6.1-terra": "gpt-6",
     "gpt-astra": "astra",
     "gpt-rosalind": "openai",
     "gpt-synopsys": "openai",
@@ -7743,6 +7755,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-10-27",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-27 digest plus tickets updated 2026-10-26 (anthropic-ipo public S-1, georgia-voter-data, meta-class-c-equity-raise). Created 0, updated 8 (anthropic — public S-1 / Nasdaq ANT, $11.6B Q2 revenue + $974M Q2 op. profit, $120.5B SpaceX compute through 2029, Georgia paywall bypass, FTC leadership testimony request; openai — claimed ETH refutation pending Williams review + GPT-6.1 Terra $1/$5 + Compaction Smuggling + Vercel CPU-channel repro; gpt-6 — Terra SKU live in Work/Codex/API; ai-capex — $63B Broadcom XPU vehicle + SpaceX $40B Apollo GPU lease + Meta $95B Class C; agentic-ai-security — Qwen3.8-Flash-Next Beijing upload + compaction traces + Firecracker CPU-channel + Georgia; verification-bottleneck — ETH/Kakeya/QCD claims unchecked; meta — up to $95B non-voting Class C effective 2027-01-19; spacex — $40B Apollo lease 1H 2027 + $120.5B Anthropic offtake). Skipped for budget: DeepSeek V4.1F FrontierMath 46%, MiniMax M3.1 Flash GGUFs, Tencent Hy-SimulMT, Kolibri leftover, Kalmia/Raon-1/Ling-3.1/Diagnostic Orchestrator tickets, Sweden Copilot block leftover, federal-ai-policy / alibaba / qwen-3-8-max / astra / broadcom / nvidia as own increments, TSMC CoWoS single-source hike, arXiv HyScale/Ψ-0.6/SWE-Shift."
+    },
+    {
       "date": "2026-10-26",
       "op": "ingest",
       "summary": "Ingested the 2026-10-26 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (openai — Replit $100M coding deal at 30%+ off + Rippling mix 57% Anthropic→52% OpenAI + up-to-80% list cuts + Altman slowdown-option list; anthropic — Elvis catalog suit 274 songs / ~$41M + one-agent guidance + same price war; neocloud — Musk lenders-shut-out claim + SpaceX $40B GPU debt + Gartner 80%+ by 2030; moonshot-kimi-k3 — 25% K3.1 Pro quota reset, weights still promised Nov 4; xai — Grok Bot outbound phone calls; open-weights — Nanbeige4.3-33B Apache 2.0 524K ctx, scores unreproduced; agentic-ai-security — Grok/Claude/Kimi bank-chain report; dynamic-workflows — first-party one-agent-over-many reversal). Skipped for budget: Nanbeige as own page, Carbon-X/Flora as own pages, Salesforce outside-agent fees, Sweden Copilot block, SK hynix $12B dividend rumor, Datadog/Upwind, federal-ai-policy / spacex / salesforce / ai-capex increments, arXiv Friday carry-over."
@@ -7836,11 +7853,6 @@
       "date": "2026-10-06",
       "op": "ingest",
       "summary": "Ingested the 2026-10-06 digest plus tickets updated 2026-10-05 (reflection-open-weight-model, aleph-alpha-kolibri-1). Created 1 (reflection-ai — Beam 501B/23B-active sparse MoE, Apache 2.0 weights promised later this month). Updated 9 (deepseek — Bloomberg ≥$12B / ~$71B, 160k Ascend, early-2027 IPO; openai — MGX $30B/$1.4T talks + ChatGPT ads + Wikimedia agents + textGrain + Custom GPT deprecation relay; anthropic — $413.7B non-cancellable of $518B + Claude diary police referral + Meta/MS pullback + Cowork cloud; meta — Claude Code users 60K→30K; microsoft — expected Anthropic spend cut >1/3; ai-capex — same funding cluster + Nvidia revenue-share swap; open-weights — Beam preview; nebius + xai — Beam name on the existing Colossus/Nebius book). Reciprocals on those pages. Skipped for budget: Reka Rho-1, Falcon-Emirati, Yandex Sona, Google Superprojects, gpt-6 / nvidia / eu-ai-regulation / agentic-ai-security / dynamic-workflows as own increments, Quinnipiac poll, Norway AI glasses, MCP trust flaw, Epoch spend, arXiv highlights."
-    },
-    {
-      "date": "2026-10-05",
-      "op": "ingest",
-      "summary": "Ingested the 2026-10-05 digest plus tickets updated 2026-10-04 (openai-safety-staff-departures, google-gemini-app-tier-changes, nebius-inferize, anthropic-frontier-deployed-engineers, ftc-anthropic-openai, anthropic-pace-the-frontier). Created 0, updated 9 (federal-ai-policy — White House Super Intelligence Force launched, Clayton to lead per WSJ/Decoder, still no charter or budget; openai — Robinson essay 711 HN comments + Altman Politico \"accept some bad things\" + reported Codex 28-day resets; google — free Gemini app to 3.5 Flash-Lite from 9 Oct, AI Plus loses Pro, AI Pro gains Deep Think + bug-bounty freeze; gemini-3-6-flash — Flash-Lite becomes the free-app default; gemini-4-argon — free-app cut as the serving-cost counterpart of the gated rollout; nebius — Inferize tuck-in for GPU cold-start + Reflection $150M/month Colossus on top of the $1B book; anthropic — voice-data opt-in + $100M FDE residency relay; xai — same Reflection Colossus bill as a named tenant print; amazon — first-party drop of data-center NDAs with agencies + reported Strands Decider 2B). Skipped for budget: Reflection AI as its own page, Runway Praxis-1, Meta Watermelon, Fable 5.5 / GPT-6.1 rumors, Grok 4.7 AA Cyber claim, SpaceXAI cloud-arm revenue, Kolibri leftover, Qwen 3.8 Flash Next local runtime, US $85B construction figure (unlinked), arXiv holdovers."
     }
   ]
 }
