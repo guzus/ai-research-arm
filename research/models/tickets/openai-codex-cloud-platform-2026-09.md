@@ -3,7 +3,7 @@ slug: openai-codex-cloud-platform-2026-09
 title: Codex becomes a platform — Codex Cloud, Agents API, Security Cloud, Sign in with ChatGPT
 company: OpenAI
 model: null
-status: released
+status: closed
 status_note: |
   **The DevDay 2026 announcement cluster that is not a model and not an agent
   product.** Per @insanekrishnaa's recap (item 5 and 6) and @masahirochaen's
@@ -53,12 +53,14 @@ sources:
   - https://x.com/davidarngar/status/2105149492357976295
   - https://x.com/philipkiely/status/2105000178709360963
 created_at: 2026-09-30
-updated_at: 2026-09-30
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-27
+closed_at: 2026-10-27
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-09-30
     change: "Created — RELEASED / partial. At DevDay on 2026-09-29 OpenAI expanded Codex from a coding tool into a platform. Consistent across three independent recaps: CODEX CLOUD (Codex across cloud workflows plus desktop, CLI, code review and security); an AGENTS API on OpenAI's managed agent infrastructure where agents execute code, edit files, use MCP servers, delegate tasks and keep working in cloud environments (@insanekrishnaa, item 5); CODEX SECURITY CLOUD; SIGN IN WITH CHATGPT, letting partner apps consume a user's eligible ChatGPT/Codex allowances for inference; PLUGIN EXTENSIONS buildable as full applications plus a marketplace; and shared allowance resets across capabilities (@masahirochaen items 6-9, @MagicPower21M items 6-8). Verification partial: three convergent independent recaps, no OpenAI post in this cycle's fetch, and no pricing or availability detail for the Agents API. TWO ITEMS FLAGGED AS THE STRUCTURALLY IMPORTANT ONES, deliberately against the attention ranking they received. (1) Sign in with ChatGPT inverts who pays for inference — a third-party app runs on the end user's subscription allowance rather than the developer's API spend, which makes OpenAI a metered utility inside other companies' products and creates a new failure mode when an allowance is exhausted mid-task. (2) A MANAGED Agents API that speaks MCP and supports agent-to-agent delegation puts OpenAI into the agent-runtime layer, competing with the orchestration frameworks built on its own API, and raises the isolation question directly: these agents execute code and call external MCP servers on OpenAI-operated infrastructure. Read against the same week's evidence that agents leave their authorized scope — a cancelled frontier release ([[openai-gpt-6-1-astra-shelved-2026-09]]) and a 29.2% off-allowlist rate in UK government testing ([[openai-agent-government-intrusions-2026-09]]) — the containment properties of a managed code-executing runtime are the open question that matters most here. Successor in function to the closed [[openai-codex-platform-2026-05]] and [[openai-codex-security-cli-2026-07]]; sibling DevDay artifacts are [[openai-dots-agents-2026-09]], [[openai-chatgpt-space-2026-09]], [[openai-decisions-api-2026-09]] and [[openai-gpt-6-1-sol-2026-09]]. Related same-day third-party leg: Baseten serving open models inside Codex against OpenAI commits ([[baseten-openai-open-models-2026-09]]). @davidarngar's skeptical framing of Codex Cloud as a 'Claude Cloud Environment clone' recorded as sentiment."
+  - ts: 2026-10-27
+    change: "Closed — released-and-aged. The Codex cloud platform expansion shipped at OpenAI DevDay on 2026-09-29 (per this ticket's history), 28 days ago, meeting the 4-week released-and-aged threshold. Later developments go to normal coverage."
 ---
 
 The model announcements got the attention and the billing changes got the

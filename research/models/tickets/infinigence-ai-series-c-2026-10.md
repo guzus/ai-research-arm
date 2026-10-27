@@ -3,7 +3,7 @@ slug: infinigence-ai-series-c-2026-10
 title: "Infinigence AI reportedly closes ¥2.3B (~$344M) Series C"
 company: "Infinigence AI"
 model: null
-status: rumored
+status: closed
 status_note: |
   **Single secondary source, 2026-10-12 (@paras_vyas_ briefing):** "Infinigence AI
   closes ¥2.3B ($344M) Series C — China AI-native compute layer." No outlet,
@@ -20,12 +20,14 @@ verification: unverified
 sources:
   - "https://x.com/paras_vyas_/status/2109668886195118253"
 created_at: 2026-10-12
-updated_at: 2026-10-12
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-27
+closed_at: 2026-10-27
+closed_reason: "stale-rumor-unverified"
 history:
   - ts: 2026-10-12
     change: "Created — RUMORED / unverified. Single briefing relay (@paras_vyas_, 2026-10-12) says Chinese AI-native compute/inference-layer company Infinigence AI closed a ¥2.3B (~$344M) Series C. No outlet, investors, valuation or company statement captured."
+  - ts: 2026-10-27
+    change: "Closed — stale-rumor-unverified. The ¥2.3B Series C claim has rested on one briefing relay since 2026-10-12, with no corroboration, outlet, investor list or company statement in 15 daily cycles. A new ticket will be opened if a primary source appears."
 ---
 
 Chinese inference-infrastructure capital formation is relevant to the

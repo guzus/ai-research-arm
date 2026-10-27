@@ -3,7 +3,7 @@ slug: openai-chatgpt-space-2026-09
 title: ChatGPT Space — shared human/agent workspace announced at DevDay 2026
 company: OpenAI
 model: null
-status: released
+status: closed
 status_note: |
   **Announced at DevDay, 2026-09-29.** Space is a collaborative workspace inside
   ChatGPT where people, teams and their Dots work **in the same shared context**.
@@ -51,12 +51,14 @@ sources:
   - https://x.com/masahirochaen/status/2105147966889886057
   - https://x.com/MagicPower21M/status/2105148814105710821
 created_at: 2026-09-30
-updated_at: 2026-09-30
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-27
+closed_at: 2026-10-27
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-09-30
     change: "Created — RELEASED / partial. OpenAI announced ChatGPT Space at DevDay on 2026-09-29: a shared workspace inside ChatGPT where people, teams and their Dots operate in one shared context, with Pages (co-edited documents), collaborative Slides, Teams and shared task lists. Four independent DevDay recaps carry it with consistent detail — @insanekrishnaa ranking it #3 ('chat is becoming a workspace'), @masahirochaen in his 25-item roundup, @MagicPower21M, @AI_Whisper_X listing the companion surfaces — and @Zen_with_AI quotes press coverage verbatim describing Space as 'a shared workspace inside ChatGPT where co-workers can collaborate with the chatbot and with their own Dots'. Verification PARTIAL: convergent independent reporting plus a quoted press line, but no OpenAI post in this cycle's fetch and no availability or plan-gating detail anywhere in signal. Split from [[openai-dots-agents-2026-09]] because they are separable artifacts that happened to ship together — Dots is an agent runtime, Space is the multi-participant context and document layer agents attach to. RECORDED AS COMMENTARY AND EXPLICITLY NOT AS FACT: @Zen_with_AI's argument that Space productises an internal Anthropic practice (engineers sharing all Claude sessions and project context, tasks visible and claimable org-wide) with a prediction that the pattern spreads across Silicon Valley in six months and the software industry in one to three years. The relayer himself disclaims accuracy on the Anthropic-internals claim and his own replies contested it as more plausibly a shared idea pool than task-stealing; no Anthropic source supports it and it should not be repeated as a description of how Anthropic works. Competitive frame: @davidarngar's skeptical recap reads Space as a 'Notion + Claude Tag clone'."
+  - ts: 2026-10-27
+    change: "Closed — released-and-aged. ChatGPT Space shipped at OpenAI DevDay on 2026-09-29 (per this ticket's history), 28 days ago, meeting the 4-week released-and-aged threshold. Later developments go to normal coverage."
 ---
 
 The interesting claim in Space is not collaboration. It is shared context.
