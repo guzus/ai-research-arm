@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-27 00:22:06 UTC
+
+CYCLE: OpenAI claims AI-made results in math, complexity theory and physics; Cohere releases its Qwen traces
+
+TOP STORIES:
+• OpenAI internal model claims to refute ETH; Williams, Impagliazzo and Paturi will lead an independent review [✓ claim / 🚩 result]
+• Cohere publishes traces + repro script for the Qwen3.8 upload attempt; on-demand repro needs prefilling [⚠]
+• OpenAI patches "Compaction Smuggling" attack that extracted reasoning traces [⚠]
+
+WATCH: A preprint/proof artifacts and the first word from the ETH review panel.
+
+Full update on GitHub.
