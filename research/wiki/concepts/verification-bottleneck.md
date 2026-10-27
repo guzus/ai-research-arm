@@ -2,12 +2,13 @@
 slug: verification-bottleneck
 title: The verification bottleneck
 type: concept
-aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics", "Math 2.0"]
+aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics", "Math 2.0", "Exponential Time Hypothesis"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: Models emit research-shaped output faster than specialists can check it; NBC and Le Monde captured a mathematician split after OpenAI's 370-problem dump, with Tao's Math 2.0 as HN's most-commented AI thread.
+description: Models emit research-shaped output faster than specialists can check it; MIT's Ryan Williams will lead an open review of an OpenAI model's claimed ETH refutation, which has not been checked.
 created_at: 2026-08-02
-timestamp: 2026-10-24T00:00:00Z
+timestamp: 2026-10-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
@@ -525,3 +526,35 @@ logged on 2026-10-07, not a
 new dump or a Clay decision
 (Hacker News; ARA daily digest
 2026-10-24).
+
+## OpenAI claims an ETH refutation; none of it is checked (2026-10-27)
+
+- **An internal [[openai]]
+  model produced three
+  claimed results**: that
+  the Exponential Time
+  Hypothesis is false, a
+  Kakeya / local-smoothing
+  result, and existence of
+  QCD. MIT's Ryan Williams,
+  with Impagliazzo and
+  Paturi, will run an open
+  outside review. None of
+  the three has been
+  checked. This is the same
+  production-cheap /
+  verification-scarce shape
+  as the 722-manuscript
+  dump and the Astra ten-
+  proofs package: a
+  research-shaped artifact
+  whose adjudication is now
+  the scarce input. Quote
+  of the day is Williams:
+  "An internal model at
+  OpenAI has produced a
+  claimed refutation of
+  ETH." (@danintheory,
+  @rrwilliams, OpenAI, The
+  Verge; ARA daily digest
+  2026-10-27).

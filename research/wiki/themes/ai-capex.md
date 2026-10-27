@@ -4,10 +4,12 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Apollo's Torsten Slok shows Mag 7 margins and revenue per worker rising while the S&P 493 stays flat — "the AI story will be decided in the S&P 493, not the Mag 7."
+description: The historically large compute buildout; banks set up a $63B vehicle for Broadcom XPUs leased to Anthropic, SpaceX committed $40B to an Apollo GPU lease, and Meta plans up to $95B in new equity.
 created_at: 2026-05-24
-timestamp: 2026-10-24T00:00:00Z
+timestamp: 2026-10-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
+  - {title: "ARA model ticket — Meta Class C equity raise", path: research/models/tickets/meta-class-c-equity-raise-2026-10.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
@@ -1797,3 +1799,82 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   capex print (TechCrunch;
   ARA daily digest
   2026-10-24).
+
+## Off-balance-sheet XPUs, Apollo GPUs, Meta equity (2026-10-27)
+
+- **Banks set up a $63B
+  vehicle** to buy
+  [[broadcom|Broadcom]] XPUs
+  reportedly leased to
+  [[anthropic]], with
+  deliveries starting in
+  2027. Named backers: Bank
+  of America, Blackstone,
+  Citi and Morgan Stanley.
+  Market-wire cluster; no
+  first-party confirmation.
+  This is the same off-
+  balance-sheet shape this
+  theme has tracked since
+  the Google-arranged chip
+  vehicle (ARA daily digest
+  2026-10-27).
+- **[[spacex]] committed $40B
+  to lease [[nvidia|Nvidia]]
+  GPUs** from an Apollo
+  vehicle financed with
+  private bonds, leases
+  starting in **1H 2027**.
+  SpaceX SEC filing via
+  TechCrunch. Yesterday's
+  [[neocloud]] ingest
+  already carried Musk's
+  "lenders shut out
+  neoclouds" line against
+  this $40B close; the
+  filing is the new fact
+  (ARA daily digest
+  2026-10-27).
+- **[[meta]] plans up to $95B
+  in new equity** via non-
+  voting Class C shares and
+  an at-the-market program
+  to fund AI data centers.
+  Class C is effective
+  **2027-01-19**. Until now
+  hyperscalers funded the
+  buildout from cash flow
+  and debt; this opens a
+  permanent equity channel
+  without diluting
+  Zuckerberg's control.
+  Verification is partial:
+  two outlet relays of a
+  company announcement, no
+  8-K captured. See
+  [[meta]] (The Decoder;
+  ARA model ticket
+  meta-class-c-equity-raise-2026-10;
+  ARA daily digest
+  2026-10-27).
+- **[[anthropic]]'s public
+  S-1** commits up to
+  **$120.5B** to SpaceX
+  compute through 2029, with
+  total commitments still
+  read between **~$518B and
+  ~$800B**. One reading puts
+  the SpaceX contract at
+  about **$3.1B a month
+  from December**. See
+  [[anthropic]] (SEC EDGAR
+  via HN; ARA daily digest
+  2026-10-27).
+- **TSMC is reported planning
+  an ~20% CoWoS price
+  hike.** That would raise
+  the cost of every major AI
+  accelerator. Single
+  account; do not treat as
+  confirmed (@jukan05; ARA
+  daily digest 2026-10-27).

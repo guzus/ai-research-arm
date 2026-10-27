@@ -4,15 +4,17 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm", "Meta Enterprise Platform", "CJ Desai", "Muse Gadgets"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; walked back a scrape-for-training clause in its business terms after backlash, days after shipping Muse Spark Open.
+description: Social-platform hyperscaler and Llama maker; plans up to $95B of non-voting Class C equity to fund AI data centers, effective 2027-01-19.
 created_at: 2026-06-16
-timestamp: 2026-10-18T00:00:00Z
+timestamp: 2026-10-27T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
+  - {title: "ARA model ticket — Meta Class C equity raise", path: research/models/tickets/meta-class-c-equity-raise-2026-10.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
@@ -553,3 +555,30 @@ TechCrunch; ARA daily digest 2026-09-16).
   [[muse-code]] (The Verge,
   TechCrunch; ARA daily digest
   2026-10-18).
+
+## Up to $95B Class C equity for AI data centers (2026-10-27)
+
+- **Meta plans up to $95B in
+  new equity** via non-voting
+  Class C shares and an at-
+  the-market program to fund
+  AI data centers. The Class
+  C class is effective
+  **2027-01-19**, announced
+  with Q3 earnings on
+  2026-10-23. Shareholders
+  cannot vote it down. This
+  is a permanent equity
+  channel for the [[ai-capex]]
+  buildout that does not
+  dilute Zuckerberg's
+  control — a change from
+  cash-flow and debt
+  funding. Verification is
+  partial: two outlet relays
+  of a company announcement,
+  no 8-K captured (The
+  Decoder; ARA model ticket
+  meta-class-c-equity-raise-2026-10;
+  ARA daily digest
+  2026-10-27).

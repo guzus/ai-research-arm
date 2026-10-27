@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; a reported 30%+ discount on a $100M-a-year Replit coding deal and up-to-80% list-price cuts mark a coding-API price war with Anthropic.
+description: Frontier lab behind the GPT family; an internal model claims to refute ETH pending an open review, as GPT-6.1 Terra ships at $1/$5.
 created_at: 2026-05-30
-timestamp: 2026-10-26T00:00:00Z
+timestamp: 2026-10-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
@@ -3528,6 +3529,94 @@ materially reshape how the lab is positioned heading into its IPO window:
   [[federal-ai-policy]] (The
   Information; ARA daily
   digest 2026-10-26).
+
+## ETH claim; GPT-6.1 Terra; compaction smuggling (2026-10-27)
+
+- **An internal model produced
+  three claimed results**:
+  that the Exponential Time
+  Hypothesis is false, a
+  Kakeya / local-smoothing
+  result, and existence of
+  QCD. MIT's Ryan Williams,
+  with Impagliazzo and
+  Paturi, will run an open
+  outside review. None of
+  the three has been checked.
+  This is the next
+  research-shaped artifact
+  after the 722-manuscript
+  dump, not a Clay or journal
+  decision. See
+  [[verification-bottleneck]]
+  (@danintheory,
+  @rrwilliams, OpenAI, The
+  Verge; ARA daily digest
+  2026-10-27).
+- **[[gpt-6|GPT-6.1 Terra]]
+  is live** in ChatGPT Work,
+  Codex and the API at
+  **$1 / $0.05 cached / $5**
+  per million tokens. Output
+  is down from **$12** on
+  [[gpt-5-6|GPT-5.6 Terra]].
+  OpenAI says it matches
+  [[astra|GPT-6 Astra]] on
+  Agents' Last Exam at a
+  tenth of the per-token
+  price, and is "~9x lower
+  cost per task" than
+  [[claude-opus-5-5|Claude
+  Opus 5.5]] at max effort.
+  Critics point to OpenAI's
+  own table, which shows
+  [[claude-sonnet-5-5|Sonnet
+  5.5]] and GPT-6.1 Sol
+  ahead. Early reviewers
+  call it a price and
+  latency play, not a
+  frontier step. HN 348.
+  Detail on [[gpt-6]]
+  (OpenAI, Simon Willison,
+  The Decoder, HN; ARA daily
+  digest 2026-10-27).
+- **Compaction Smuggling
+  extracted reasoning
+  traces.** Researcher Tim
+  Becker says the
+  distillation-style attack
+  got past every mitigation;
+  OpenAI has reportedly
+  patched it. See
+  [[agentic-ai-security]]
+  (@tjbecker, @AndrewCurran_;
+  ARA daily digest
+  2026-10-27).
+- **Vercel's CEO reproduced
+  covert CPU-channel agent
+  messaging.** Agents in
+  separate, network-less
+  Firecracker microVMs
+  exchanged messages through
+  cache and DRAM timing,
+  backing the 2026-10-24
+  Decoder report this page
+  logged as unreproduced.
+  See [[agentic-ai-security]]
+  (@rauchg, Bluesky
+  @emollick; ARA daily
+  digest 2026-10-27).
+- **The Information restates
+  the >30% discount book**
+  that moved Rippling's
+  coding mix from 16% to
+  **52%** OpenAI. Yesterday's
+  ingest already carried the
+  Replit / Rippling cluster;
+  the 16% starting share is
+  the new figure (The
+  Information; ARA daily
+  digest 2026-10-27).
 
 ## Open questions
 

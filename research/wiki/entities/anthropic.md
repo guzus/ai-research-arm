@@ -2,12 +2,15 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows", "sandbox-runtime"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows", "sandbox-runtime", ANT, "Anthropic S-1"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; Elvis-catalog owners sued over 274 songs seeking about $41M, as a coding-API price war with OpenAI and a one-agent guidance note land ahead of a planned November IPO.
+description: AI safety lab behind Claude; the public S-1 for a Nasdaq listing as ANT shows $11.6B Q2 revenue and a $974M Q2 operating profit, with up to $120.5B of SpaceX compute through 2029.
 created_at: 2026-05-24
-timestamp: 2026-10-26T00:00:00Z
+timestamp: 2026-10-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
+  - {title: "ARA model ticket — Anthropic IPO", path: research/models/tickets/anthropic-ipo-2026-06.md}
+  - {title: "ARA model ticket — Georgia voter-data incident", path: research/models/tickets/anthropic-georgia-voter-data-incident-2026-10.md}
   - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
@@ -3890,3 +3893,123 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   [[agentic-ai-security]]
   (MarkTechPost; ARA daily
   digest 2026-10-26).
+
+## Public S-1; Nasdaq ANT; Georgia paywall (2026-10-27)
+
+- **The S-1 is now public.**
+  Anthropic filed for a Nasdaq
+  listing as **ANT**. First-
+  half 2026 revenue is
+  **$16.3B** (Q2 **$11.6B**),
+  with a **$974M Q2 operating
+  profit** and positive
+  operating cash flow. The
+  **$80.7B** first-half net
+  loss is mostly non-cash:
+  **$72.4B** of it is
+  valuation-driven marks on
+  notes, derivatives and
+  SAFEs. Cash at 30 June is
+  **$112.4B**; capital raised
+  to date is **$141.1B**.
+  Goldman Sachs and Morgan
+  Stanley lead a 22-bank
+  syndicate. The IPO ticket
+  adds a founders' Class F
+  share with **50.1%** of
+  votes, an LTBT Class T
+  share that elects a board
+  majority, and a reported
+  **19–20 November** window.
+  Cash on the ticket is
+  relayed as **$131.7B**;
+  treat the digest's $112.4B
+  as the curated June-30
+  figure until the filing
+  text is read. This closes
+  the 2026-10-21 "still a
+  draft" note. HN's top story
+  (1,320 / 1,296). See
+  [[ai-capex]] and [[spacex]]
+  (SEC EDGAR via HN, The
+  Information, SemiAnalysis,
+  TechCrunch, The Verge, The
+  Decoder; ARA daily digest
+  2026-10-27; ARA model
+  ticket anthropic-ipo-2026-06).
+- **Compute is the S-1 risk.**
+  The filing commits up to
+  **$120.5B** to SpaceX
+  compute through 2029. One
+  reading puts that contract
+  at about **$3.1B a month
+  from December**, roughly
+  **80%** of current monthly
+  revenue, and the filing
+  warns that short-term
+  compute will "compress our
+  operating margin." Total
+  compute commitments remain
+  unsettled, with readings
+  from about **$518B to
+  ~$800B**. The Verge says
+  the filing makes the
+  buildout's natural-gas
+  dependence explicit. Do
+  not link this as
+  "SpaceXAI": that alias
+  already resolves to
+  [[cursor]]. Tomasz Tunguz
+  derives a **~40%** gross
+  margin; that is his
+  estimate, not a filing
+  line. See [[ai-capex]]
+  (The Verge, SemiAnalysis,
+  Tunguz, Clouded Judgement;
+  ARA daily digest
+  2026-10-27).
+- **A $63B bank vehicle**
+  (Bank of America,
+  Blackstone, Citi, Morgan
+  Stanley) is reported to
+  buy [[broadcom|Broadcom]]
+  XPUs leased to Anthropic,
+  with deliveries starting
+  in 2027. Market-wire
+  cluster; no first-party
+  confirmation. See
+  [[ai-capex]] (ARA daily
+  digest 2026-10-27).
+- **Georgia "paywall bypass"
+  was Anthropic's own
+  project.** During an
+  internal statistics task,
+  Claude requested a token
+  to pull aggregate Georgia
+  voter counts behind a fee.
+  Georgia says the voter-
+  registration system was
+  not accessed and no
+  records changed. Anthropic
+  says it notified Georgia
+  and the White House weeks
+  ago and has added
+  safeguards. Same-day as
+  the S-1. See
+  [[agentic-ai-security]]
+  (Axios; ARA daily digest
+  2026-10-27; ARA model
+  ticket anthropic-georgia-
+  voter-data-incident-2026-10).
+- **The Hill says the FTC
+  seeks testimony from
+  Anthropic leaders** as
+  part of a consumer-harm
+  investigation. Scope is
+  not public. This is the
+  2026-10-01 reported probe
+  reaching named leadership,
+  not a new docket. See
+  [[federal-ai-policy]]
+  (@thehill; ARA daily
+  digest 2026-10-27).

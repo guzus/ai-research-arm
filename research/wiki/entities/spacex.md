@@ -4,10 +4,11 @@ title: SpaceX
 type: entity
 aliases: [SpaceX, "@SpaceX", SPCX, "Space Exploration Technologies", Starlink]
 tags: [ipo, capital-markets, ai-infrastructure, space, public-listing]
-description: "Aerospace company whose record IPO (Nasdaq SPCX) now reports as an AI-compute landlord; Q3 printed $14.6B revenue and $4.4B net income, with Musk guiding to ~13 GW of AI compute and a 440,000-GPU Vera Rubin cluster by mid-2027."
+description: "Aerospace company whose record IPO (Nasdaq SPCX) now reports as an AI-compute landlord; committed $40B to lease Nvidia GPUs from an Apollo vehicle starting 1H 2027, on top of a Q3 13 GW compute guide."
 created_at: 2026-06-05
-timestamp: 2026-10-21T00:00:00Z
+timestamp: 2026-10-27T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-08-25", path: research/digest/2026-08-25-digest.md}
   - {title: "ARA daily digest 2026-08-05", path: research/digest/2026-08-05-digest.md}
@@ -191,3 +192,45 @@ frontier labs (the Anthropic–SpaceX "Colossus" datacenter arrangement).
   [[xai]] and [[nvidia]]
   (TechCrunch, Twitter; ARA
   daily digest 2026-10-21).
+
+## $40B Apollo GPU lease; Anthropic S-1 offtake (2026-10-27)
+
+- **SpaceX committed $40B to
+  lease [[nvidia|Nvidia]]
+  GPUs** from an Apollo
+  vehicle financed with
+  private bonds. Leases
+  start in **1H 2027**. This
+  is a first-party SEC
+  filing, not the 2026-10-08
+  Bloomberg/FT talk of a
+  ~$40B chip-backed SPV.
+  It also sits against
+  Musk's same-week claim
+  that lenders have shut
+  [[neocloud]]s out — SpaceX
+  closed the debt as an
+  investment-grade borrower.
+  See [[ai-capex]] (SpaceX
+  SEC filing, TechCrunch;
+  ARA daily digest
+  2026-10-27).
+- **[[anthropic]]'s public
+  S-1 commits up to $120.5B**
+  to SpaceX compute through
+  2029. One reading puts the
+  contract at about **$3.1B
+  a month from December**,
+  roughly 80% of Anthropic's
+  current monthly revenue.
+  That is the offtake side
+  of the Colossus / compute-
+  landlord thread this page
+  has tracked since June.
+  Do not resolve this as
+  "SpaceXAI": that alias
+  already belongs to
+  [[cursor]]. See
+  [[anthropic]] (SEC EDGAR
+  via HN, The Verge; ARA
+  daily digest 2026-10-27).
