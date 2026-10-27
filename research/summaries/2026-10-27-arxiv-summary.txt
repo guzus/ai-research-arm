@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-27
+
+TOP 5 PAPERS:
+• Nemotron 3.5 Bolt — NVIDIA 74B-A9B hybrid VLM in 24GB; 84 TPS local agents
+• How to build a modern DLM — Kuleshov recipe: parallel tokens, revise, T tok/s
+• RL scaling laws — Dabney/Lyle: Elo predicts 100× compute; SOTA Craftax
+• RSI Arena — 10 frontier agents post-train Lightning; GPT-6 Astra closes 76%
+• Alignment via Generalization — Shalev-Shwartz/Shashua: Aligned-PAC
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
