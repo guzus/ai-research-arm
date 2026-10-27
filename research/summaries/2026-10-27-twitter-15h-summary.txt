@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-27 15:17:54 UTC
+
+CYCLE: Machine-checked math at scale; Nvidia-Meta deal terms; OpenAI price war
+
+TOP STORIES:
+• Axiom says AI agents formalized the full Classification of Finite Simple Groups (~15,000 pages, ~40M lines of Lean) in 24 days [⚠]
+• Nvidia: Meta to expand Vera Rubin + Vera CPU deployments; Meta raise target now $97.5B [⚠]
+• The Information: OpenAI offering up to 40% discounts to win Anthropic customers [⚠]
+
+WATCH: Axiom's public Lean repo, and whether the top-level CFSG statement has no axiomatized gaps
+
+Full update on GitHub.
