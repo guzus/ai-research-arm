@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-25 16:00 UTC",
-    "headline": "SPACEX IPO FILING DETAILS ~$40B ANTHROPIC DEAL \u2014 $1.25B/MONTH TO LEASE COLOSSUS 1 THROUGH 2029, EITHER SIDE EXITS ON 90 DAYS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-25-twitter-16h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058911087542603859"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-25 16:00 UTC",
-    "headline": "SPACEX POSTS $4.7B Q1 REVENUE, $4.3B LOSS AS AI INFRASTRUCTURE SPEND RESHAPES PRE-IPO STORY",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-25-twitter-16h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058941264708465126"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-25 16:00 UTC",
-    "headline": "POPE LEO XIV'S AI ENCYCLICAL GOES MAINSTREAM \u2014 VIRAL 'CALLS TO DISARM AI' FRAMING HITS MARKETS FEEDS",
-    "source": "@WatcherGuru",
-    "source_file": "research/summaries/2026-05-25-twitter-16h-headlines.json",
-    "url": "https://x.com/WatcherGuru/status/2058929387286696242"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-25 16:00 UTC",
-    "headline": "MICROSOFT BLOCKS DATABRICKS POWER BI FEATURE, ESCALATING FIGHT OVER THE AI-AGENT SEMANTIC LAYER",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-25-twitter-16h-headlines.json",
-    "url": "https://x.com/theinformation/status/2058926174143680811"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-25 18:00 UTC",
     "headline": "DEEPMIND OFFICIALLY UNVEILS ALPHAPROOF NEXUS \u2014 AI AGENT SOLVES 9 OPEN ERDOS PROBLEMS, 44 OEIS CONJECTURES, ALL VERIFIED IN LEAN",
@@ -23410,5 +23374,33 @@
     "headline": "OPENAI PATCHES 'COMPACTION SMUGGLING' ATTACK THAT EXTRACTED FRONTIER REASONING TRACES",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2114824570368905606"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-27 08:53:05 UTC",
+    "headline": "ANTHROPIC: INTERNAL CLAUDE MODEL INDEPENDENTLY REFUTED EXPONENTIAL TIME HYPOTHESIS ON OCT 16 WITH NO HUMAN INPUT",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2114935219539345486"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-27 08:53:05 UTC",
+    "headline": "NVIDIA TO INVEST $3B IN META AS TECH GIANTS DEEPEN AI PARTNERSHIP",
+    "source": "@CNBC",
+    "url": "https://x.com/CNBC/status/2115003286390456815"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-27 08:53:05 UTC",
+    "headline": "ALIBABA, TENCENT, BYTEDANCE SEEK UP TO 10-YEAR SERVER MEMORY SUPPLY DEALS FROM SAMSUNG, SK HYNIX \u2014 KOREAN MEDIA",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2114979317977665829"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-10-27 08:53:05 UTC",
+    "headline": "PHYSICAL SUPERINTELLIGENCE CLAIMS SOLUTIONS TO FIVE OPEN QUANTUM INFORMATION PROBLEMS, EACH LEAN-FORMALIZED",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2114885512083407351"
   }
 ]
