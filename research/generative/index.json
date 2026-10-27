@@ -3350,5 +3350,19 @@
         "source_sha256": "a1f08feb2ed6c2691ab3660a79e99d922a855f511b1c542074634ec98b759cce"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+    "file": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-10-27T13:28:07Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/UST_mean/status/2114986287216369744\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

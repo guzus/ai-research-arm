@@ -1,5 +1,5 @@
 {
-  "article_count": 101,
+  "article_count": 102,
   "articles": [
     {
       "claim_count": 18,
@@ -959,6 +959,16 @@
       "stem": "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme",
       "tags": [],
       "title": "The monitor was in the diff: what OpenAI's Sol and Astra cases show about agent-editable oversight"
+    },
+    {
+      "claim_count": 31,
+      "created_at": "2026-10-27T13:28:07Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "stem": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot"
     }
   ],
   "by_host": {
@@ -1790,6 +1800,9 @@
     "autobound.ai": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c25"
     ],
+    "aws-pricing.com": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c11"
+    ],
     "aws.amazon.com": [
       "2026-07-20T050016--databricks-mid-2026#c28",
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c14"
@@ -2611,6 +2624,9 @@
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c13",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c18",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c5"
+    ],
+    "cryptoticker.io": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c18"
     ],
     "cryptotimes.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c23",
@@ -3708,7 +3724,8 @@
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c5",
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c8",
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c15",
-      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c18"
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c18",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c10"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -3987,6 +4004,13 @@
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c4",
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c6",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c16"
+    ],
+    "hyperliquid.gitbook.io": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c14",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c15",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c4",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c5",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c6"
     ],
     "hyundai.com": [
       "2026-05-27T035557--800-vdc-architecture#c22"
@@ -4327,6 +4351,9 @@
     ],
     "lagrowthmachine.com": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c9"
+    ],
+    "latency.glassnode.com": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c7"
     ],
     "latent.space": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c18",
@@ -4698,7 +4725,8 @@
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c25"
     ],
     "nber.org": [
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c21"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c21",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c16"
     ],
     "ncbi.nlm.nih.gov": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c38"
@@ -5313,6 +5341,15 @@
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-13",
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-9"
     ],
+    "quicknode.com": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#a1",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c12",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c13",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c19",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c3",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c8",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c9"
+    ],
     "qumulusai.com": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c6"
     ],
@@ -5463,7 +5500,8 @@
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c6"
     ],
     "richmondfed.org": [
-      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c16"
+      "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c16",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c17"
     ],
     "ripe.finance": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c6"
@@ -6901,7 +6939,9 @@
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c26",
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c1",
-      "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c14"
+      "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c14",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c1",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c2"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -8244,6 +8284,9 @@
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c21",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c5"
     ],
+    "https://aws-pricing.com/r6i.4xlarge.html": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c11"
+    ],
     "https://aws.amazon.com/blogs/aws/amazon-s3-tables-integration-with-amazon-sagemaker-lakehouse-is-now-generally-available": [
       "2026-07-20T050016--databricks-mid-2026#c28"
     ],
@@ -8775,6 +8818,9 @@
     ],
     "https://cryptoslate.com/south-korea-blocks-17-overseas-crypto-exchange-apps-in-registration-crackdown": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c13"
+    ],
+    "https://cryptoticker.io/en/bitcoin-price-prediction-volatility-premium-20-october-2026": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c18"
     ],
     "https://cs.stanford.edu/~nfliu/papers/lost-in-the-middle.arxiv2023.pdf": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c12"
@@ -10013,6 +10059,9 @@
     "https://github.com/huggingface/datasets/issues/7693": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c9"
     ],
+    "https://github.com/hyperliquid-dex/node": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c10"
+    ],
     "https://github.com/junkoda/kaggle_contrails_solution": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15"
     ],
@@ -10363,6 +10412,21 @@
     "https://humanoid.guide/product/g1": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c11"
     ],
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/rate-limits-and-user-limits": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c5"
+    ],
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/websocket/subscriptions": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c4"
+    ],
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/hypercore/overview": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c6"
+    ],
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c14"
+    ],
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c15"
+    ],
     "https://iaeimagazine.org/electrical-fundamentals/modern-data-centers-electrical-trends-risks-and-nec-2026-implications": [
       "2026-05-27T035557--800-vdc-architecture#c36"
     ],
@@ -10548,6 +10612,9 @@
     ],
     "https://lagrowthmachine.com/best-linkedin-automation-tools": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c9"
+    ],
+    "https://latency.glassnode.com/hyperliquid/fill-latency": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c7"
     ],
     "https://law.justia.com/cases/california/court-of-appeal/2020/h044395.html": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c24"
@@ -10768,6 +10835,9 @@
     ],
     "https://natlawreview.com/article/fcc-adds-foreign-produced-advanced-robotic-devices-covered-list-five-things-know": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c11"
+    ],
+    "https://nber.org/papers/w29011": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c16"
     ],
     "https://nebius.com/newsroom/nebius-signs-new-ai-infrastructure-agreement-with-meta": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c6"
@@ -11498,6 +11568,10 @@
     "https://query1.finance.yahoo.com/v8/finance/chart/MRVL": [
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-13",
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-9"
+    ],
+    "https://quicknode.com/docs/hyperliquid/grpc-api": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#a1",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c8"
     ],
     "https://qwen.ai/blog?id=qwen3.8": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c1",
@@ -15271,6 +15345,22 @@
     "https://www.qbitai.com/2026/02/381712.html": [
       "2026-06-22T052035--zhipu-ai-glm#c23"
     ],
+    "https://www.quicknode.com/blog/best-hyperliquid-rpc-providers-2026-full-comparison": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c12"
+    ],
+    "https://www.quicknode.com/blog/hypercore-for-hyperliquid-enters-public-beta": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c13"
+    ],
+    "https://www.quicknode.com/blog/hyperliquid-foundation-websocket-changes": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c19",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c3"
+    ],
+    "https://www.quicknode.com/docs/hyperliquid/grpc-api/setup/nodejs-orderbook": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c19"
+    ],
+    "https://www.quicknode.com/pricing.md": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c9"
+    ],
     "https://www.qumulusai.com/articles/qumulusai-deploys-1144-nvidia-blackwell-gpus-through-drawdown-under-500m-usdai-facility": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c6"
     ],
@@ -15328,6 +15418,9 @@
     ],
     "https://www.rfc-editor.org/rfc/rfc9052": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c23"
+    ],
+    "https://www.richmondfed.org/publications/research/econ_focus/2015/q3/research_spotlight": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c17"
     ],
     "https://www.richmondfed.org/publications/research/economic_brief/2022/eb_22-24": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c16"
@@ -16541,6 +16634,10 @@
     "https://x.com/TokenandoAI/status/2063578684267659386": [
       "2026-06-23T074913--broadcom-s-b-anthropic-chip-order-vendor-financed-compute-th#c14"
     ],
+    "https://x.com/UST_mean/status/2114986287216369744": [
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c1",
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c2"
+    ],
     "https://x.com/__alpoge__/status/2079028340955197566": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c1",
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c20"
@@ -16857,7 +16954,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2966,
+  "claim_count": 2997,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -87743,9 +87840,658 @@
         "https://alignment.openai.com/misalignment-reports"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "ARA scenario assumption: a StreamBboBook update is about 100 bytes on the wire; Quicknode docs publish the 0.00165 MB metering unit but not a per-message size.",
+      "confidence": "low",
+      "hosts": [
+        "quicknode.com"
+      ],
+      "id": "a1",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#a1",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://quicknode.com/docs/hyperliquid/grpc-api"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "UST_mean reports Hyperliquid book-feed latency on Tokyo production: public WebSocket p50 236 ms, p90 346 ms, ~2% of frames over 1 s; Quicknode gRPC p50 176 ms, p90 211 ms, frames over 1 s 0.02%.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/UST_mean/status/2114986287216369744"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "The hyperliquid-dex/node README specifies non-validator 16 vCPU/128 GB RAM/500 GB SSD and validator 32 vCPU/128 GB/1 TB on Ubuntu 24.04, roughly 100 GB of logs per day by default, and recommends Tokyo for lowest latency.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c10",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/hyperliquid-dex/node"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "An AWS r6i.4xlarge (16 vCPU, 128 GiB) costs $1.216 per hour on-demand in Tokyo ap-northeast-1 per third-party price aggregators.",
+      "confidence": "medium",
+      "hosts": [
+        "aws-pricing.com"
+      ],
+      "id": "c11",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://aws-pricing.com/r6i.4xlarge.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-03-31",
+      "claim": "Quicknode's March 2026 provider comparison lists Dwellir dedicated node at $1,150/month, Dwellir order-book server benchmark of 24.1% median improvement over the public feed across 2,662 trades, Hydromancer plans from $300 to $2,500/month, and notes order placement cannot go through any private provider.",
+      "confidence": "low",
+      "hosts": [
+        "quicknode.com"
+      ],
+      "id": "c12",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c12",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.quicknode.com/blog/best-hyperliquid-rpc-providers-2026-full-comparison"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-01-20",
+      "claim": "Quicknode states Hyperliquid HyperCore produces blocks at about 12 blocks per second under normal conditions.",
+      "confidence": "medium",
+      "hosts": [
+        "quicknode.com"
+      ],
+      "id": "c13",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.quicknode.com/blog/hypercore-for-hyperliquid-enters-public-beta"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "Hyperliquid perps base-tier (14-day volume under $5M) fees are 0.045% taker and 0.015% maker; top tier above $7B is 0.024% taker and 0%.",
+      "confidence": "high",
+      "hosts": [
+        "hyperliquid.gitbook.io"
+      ],
+      "id": "c14",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "Hyperliquid funding settles hourly at one eighth of the 8-hour rate, premium sampled every 5 seconds, interest component 0.01% per 8 hours, capped at 4% per hour, paid on oracle price.",
+      "confidence": "high",
+      "hosts": [
+        "hyperliquid.gitbook.io"
+      ],
+      "id": "c15",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/funding"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2022-01-01",
+      "claim": "Aquilina, Budish and O'Neill estimate latency-arbitrage races are about one-third of price impact and effective spread, a ~0.5 bp tax, with modal race lasting 5-10 microseconds and six firms taking over 80% of wins and losses.",
+      "confidence": "high",
+      "hosts": [
+        "nber.org"
+      ],
+      "id": "c16",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://nber.org/papers/w29011"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2015-11-01",
+      "claim": "Budish, Cramton and Shim (QJE 2015) find correlations between ES and SPY break down at high-frequency horizons, that competition raised the speed bar rather than shrinking arbitrage, and propose frequent batch auctions roughly every tenth of a second.",
+      "confidence": "high",
+      "hosts": [
+        "richmondfed.org"
+      ],
+      "id": "c17",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://www.richmondfed.org/publications/research/econ_focus/2015/q3/research_spotlight"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-20",
+      "claim": "Deribit's DVOL 30-day bitcoin implied volatility was 38.28 on 2026-10-20, while 14-day realized volatility was 20.2% and 30-day 28.9%.",
+      "confidence": "medium",
+      "hosts": [
+        "cryptoticker.io"
+      ],
+      "id": "c18",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://cryptoticker.io/en/bitcoin-price-prediction-volatility-premium-20-october-2026"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "Quicknode's StreamL2Book example output carries block_number, a millisecond time field, coin, and bids/asks arrays with px, sz and n; StreamL2Book delivers a full aggregated snapshot every block.",
+      "confidence": "medium",
+      "hosts": [
+        "quicknode.com"
+      ],
+      "id": "c19",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c19",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.quicknode.com/docs/hyperliquid/grpc-api/setup/nodejs-orderbook",
+        "https://www.quicknode.com/blog/hyperliquid-foundation-websocket-changes"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "The tweet says the Quicknode Build plan costs $49/month with 80M credits, ~20 coins of best-bid/offer were enough, and a self-run validator would cost about $1,000/month; it also reports p90 cross-exchange slippage of 2-8 bp.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/UST_mean/status/2114986287216369744"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-06-12",
+      "claim": "In June 2026 Hyperliquid's core team announced public WebSocket feeds would push less often: default l2Book 20 levels every 2 s, l2Book fast 5 levels every 0.5 s, allMids every 5 s, and advised automated traders to run a non-validating node.",
+      "confidence": "medium",
+      "hosts": [
+        "quicknode.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.quicknode.com/blog/hyperliquid-foundation-websocket-changes"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "Hyperliquid docs: l2Book is pushed on each block at least 0.5 since the last push; bbo is sent only if the best bid/offer changes on a block.",
+      "confidence": "high",
+      "hosts": [
+        "hyperliquid.gitbook.io"
+      ],
+      "id": "c4",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/websocket/subscriptions"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "Hyperliquid public WebSocket limits: 10 connections, 1000 subscriptions, 2000 messages sent per minute; REST 1200 weight per minute per IP.",
+      "confidence": "high",
+      "hosts": [
+        "hyperliquid.gitbook.io"
+      ],
+      "id": "c5",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/rate-limits-and-user-limits"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "Hyperliquid docs state HyperBFT end-to-end latency for a co-located client is median 0.2 s and 99th percentile 0.9 s, and mainnet supports roughly 200k orders/sec.",
+      "confidence": "high",
+      "hosts": [
+        "hyperliquid.gitbook.io"
+      ],
+      "id": "c6",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/hypercore/overview"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-03-31",
+      "claim": "Glassnode's March 2026 test placed 120 real market orders from AWS Tokyo and measured median order-to-fill of 884 ms (range 695-1634 ms), about 5 ms network and ~879 ms processing.",
+      "confidence": "medium",
+      "hosts": [
+        "latency.glassnode.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c7",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://latency.glassnode.com/hyperliquid/fill-latency"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "Quicknode's Hyperliquid gRPC API exposes StreamL2Book, StreamL4Book, StreamBboBook, StreamL2BookDiff, StreamL4BookUpdates and StreamTpslUpdates; order book methods are metered 10 credits per 0.0165 MB, StreamBboBook 10 credits per 0.00165 MB; Build plan or higher required.",
+      "confidence": "high",
+      "hosts": [
+        "quicknode.com"
+      ],
+      "id": "c8",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c8",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://quicknode.com/docs/hyperliquid/grpc-api"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "Quicknode Build plan is $49/month ($42 annual) with 80M API credits, 50 requests/second and $0.62 per additional 1M credits.",
+      "confidence": "high",
+      "hosts": [
+        "quicknode.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.quicknode.com/pricing.md"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "Quicknode gRPC cut the median book-feed latency by about 25%.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#d1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "A 0.5 s push throttle alone gives a median update age of 250 ms, since age is uniform on 0 to 0.5 s.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d10",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#d10",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "The 60 ms median gain is about 6.8% of the 884 ms median Tokyo order-to-fill time.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d11",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#d11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "The p90 improved by 135 ms, more than twice the 60 ms median improvement.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#d2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "The share of frames over one second fell about 102.5 times.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#d3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "One standard deviation of bitcoin price drift over 60 ms at 38.3% annualized volatility is about 0.17 bp.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#d4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "One standard deviation of bitcoin price drift over a one-second stale frame at 38.3% annualized volatility is about 0.68 bp.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#d5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "One standard deviation of bitcoin price drift over the 884 ms median order-to-fill time is about 0.64 bp.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#d6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "The Build plan's 80M credits buy about 13,200 MB of StreamBboBook data per month.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d7",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#d7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "Spread over a 30-day month, 13,200 MB equals a sustained 5.1 KB/s, or about 51 updates per second at an assumed 100 bytes each.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d8",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#d8",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu",
+      "article_created_at": "2026-10-27T13:28:07Z",
+      "article_title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot",
+      "as_of": "2026-10-27",
+      "claim": "A node at the Tokyo on-demand rate of $1.216/hour costs about $888 per month in compute alone (730 hours), about 18 times the Build plan's $49.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d9",
+      "key": "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#d9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1452,
+  "reusable_count": 1455,
   "schema_version": 1
 }
