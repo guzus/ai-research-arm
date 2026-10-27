@@ -3,7 +3,7 @@ slug: openai-gpt-6-1-sol-2026-09
 title: GPT-6.1 Sol — released at DevDay at $2/$10 per MTok, near-Astra at a fifth the price
 company: OpenAI
 model: GPT-6.1 Sol
-status: released
+status: closed
 status_note: |
   **Company-primary launch post.** @OpenAI, 2026-09-29 17:26 UTC (~18,182 likes):
   "GPT-6.1 Sol: near-Astra intelligence for a fifth of the price. It's the most
@@ -62,9 +62,9 @@ sources:
   - https://x.com/defaiscope/status/2106003486672404691
   - https://x.com/shirochange_ai/status/2106350677404549482
 created_at: 2026-09-30
-updated_at: 2026-10-12
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-27
+closed_at: 2026-10-27
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-09-30
     change: "Created — RELEASED / confirmed. @OpenAI announced GPT-6.1 Sol at DevDay on 2026-09-29 17:26 UTC in its own voice: 'near-Astra intelligence for a fifth of the price… the most cost-efficient model for its performance available today' (~18,182 likes, ~1,461 RTs). Verification confirmed on the company post; the SPECS below come from DevDay recaps and are secondary. Pricing and benchmarks per @masahirochaen's 25-item roundup, which ranked it #2 and called it the best-received announcement of the event: $2 input / $10 output per 1M tokens, cached input $0.10 (95% off), DeepSWE 75.2% versus Astra's 74.1%, and a third-party Artificial Analysis index within 1 point of Astra. HIS CAVEAT IS RECORDED AS PROMINENTLY AS THE HEADLINE because it changes what the launch means: the per-token input/output price is IDENTICAL to GPT-6 Sol's — only the cache got cheaper — so OpenAI's 'fifth of the price' is measured against ASTRA, not against the model 6.1 Sol supersedes. @leozhangai independently called Sol rather than Dots the underrated announcement ('Dot is the consumer story, Sol is the means of production for agent builders'). Distribution: ChatGPT Work, Codex and the API, and NOT ordinary ChatGPT Chat — the same exclusion @mark_k flagged for GPT-6 Sol two weeks earlier, now persisting across a generation, which is why it is logged here as a pattern rather than a rollout detail. Third-party pickup was same-night: Genspark's Japan account announced availability across its chat, code-agent and Claw surfaces; @realcolegood screenshotted the model live on AWS Bedrock while the console still listed an October 15 release date (an observation about a partner console, not about OpenAI's schedule); @RouteMux was reselling it at 90% off list within the day. Split from [[openai-gpt-6]] per that ticket's own rule that a separately-priced family member gets its own file. Its same-generation sibling [[openai-gpt-6-1-astra-shelved-2026-09]] was CANCELLED within the same 24 hours, which is the frame this launch should be read in. Price coincidence with [[anthropic-sonnet-5-5-2026-09]] at an identical $2/$10 list is noted and not treated as causal."
@@ -74,6 +74,8 @@ history:
     change: "Distribution update, status unchanged (released). Microsoft 365 Copilot adds GPT-6.1 Sol as a selectable model in Word, Excel, PowerPoint and Copilot Studio, rolling out progressively to Office apps, alongside Claude Sonnet 5.5 (@shirochange_ai relay, 2026-10-03 11:48 UTC). Secondary write-ups in-window (@sideJob_A_I, @FoundOnArdy) restate OpenAI's positioning — near-Astra on agentic coding, computer use and professional work at roughly one fifth of Astra's standard API token price — with no new figures. The ChatGPT Chat distribution question in `expected` remains open."
   - ts: 2026-10-12
     change: "Released, unchanged — default context raised. Per @daogangtang's 2026-10-12 digest, OpenAI raised GPT-6.1 Sol's default context window in Codex and ChatGPT Work to 500K tokens (from 272K); the model maximum remains ~1.05M. The stated intent is less context compaction on long agentic tasks. Single digest relay."
+  - ts: 2026-10-27
+    change: "Closed — released-and-aged. GPT-6.1 Sol shipped at OpenAI DevDay on 2026-09-29 (per this ticket's history), 28 days ago, meeting the 4-week released-and-aged threshold. Later developments go to normal coverage. Its cheaper sibling GPT-6.1 Terra launched 2026-10-26 and is tracked at [[openai-gpt-6-1-terra-2026-10]]."
 ---
 
 The headline number is real and the comparison it uses is chosen carefully.
