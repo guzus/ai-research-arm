@@ -2,42 +2,6 @@
   {
     "backfilled": true,
     "category": "infra",
-    "delivered_at": "2026-05-26 07:00 UTC",
-    "headline": "HUAWEI OFFICIALLY UNVEILS TAU SCALING LAW \u2014 TARGETS 1.4NM-EQUIVALENT DENSITY BY 2031 WITHOUT EUV",
-    "source": "@Huawei",
-    "source_file": "research/summaries/2026-05-26-twitter-07h-headlines.json",
-    "url": "https://x.com/Huawei/status/2059174428093882615"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-26 07:00 UTC",
-    "headline": "BERNSTEIN CALLS HUAWEI TAU LAW \"ANOTHER DEEPSEEK MOMENT\" \u2014 FLAGS 2X\u201310X SPEEDUP FROM SOFTWARE OPTIMIZATIONS",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-26-twitter-07h-headlines.json",
-    "url": "https://x.com/jukan05/status/2059162462767939796"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-26 07:00 UTC",
-    "headline": "NEW CUSP BENCHMARK: FRONTIER MODELS FAIL TO PREDICT WHEN SCIENTIFIC ADVANCES OCCUR \u2014 ACROSS 4,760 EVENTS",
-    "source": "@hardmaru",
-    "source_file": "research/summaries/2026-05-26-twitter-07h-headlines.json",
-    "url": "https://x.com/hardmaru/status/2059169884563742879"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-05-26 07:00 UTC",
-    "headline": "INDIA'S CBSE NATIONAL EXAM PORTAL TAKEN OFFLINE AFTER 19-YEAR-OLD CHANGES ANY OF 2M STUDENTS' MARKS",
-    "source": "@deedydas",
-    "source_file": "research/summaries/2026-05-26-twitter-07h-headlines.json",
-    "url": "https://x.com/deedydas/status/2059131444346425354"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
     "delivered_at": "2026-05-26 10:00 UTC",
     "headline": "HUAWEI TAU SCALING LAW WALKED BACK BY NAMED CHIP ARCHITECT \u2014 LEAKAGE-POWER SILENCE IS THE TELL, NOT A LITHOGRAPHY BREAKTHROUGH",
     "source": "@fi56622380",
@@ -23376,5 +23340,33 @@
     "headline": "CXMT TO START SMALL-SCALE HBM3E PRODUCTION WITHIN TWO MONTHS AT ~20% YIELD \u2014 REUTERS",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2115307540494098601"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-28 20:12:41 UTC",
+    "headline": "GOOGLE LAUNCHES GEMINI 4 CARBON \u2014 #1 ON ARTIFICIAL ANALYSIS V5, ROLLING OUT TO CYBER DEFENDERS FIRST",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2115489356437651654"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-28 20:12:41 UTC",
+    "headline": "ALPHABET Q3: GOOGLE CLOUD REVENUE +103% TO $30.7B; SEARCH MISSES, FREE CASH FLOW NEGATIVE ON $51.4B CAPEX",
+    "source": "@MarketNews_Feed",
+    "url": "https://x.com/MarketNews_Feed/status/2115537279712215176"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-28 20:12:41 UTC",
+    "headline": "DOJ PROBES WHETHER NVIDIA-HUGGING FACE DEAL GIVES NVIDIA CONTROL OF OPEN-MODEL DISTRIBUTION \u2014 REUTERS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2115516580646040034"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-28 20:12:41 UTC",
+    "headline": "OPENAI DOTS NOW REACHABLE VIA IMESSAGE AND RCS FOR US PRO USERS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2115525477834076636"
   }
 ]
