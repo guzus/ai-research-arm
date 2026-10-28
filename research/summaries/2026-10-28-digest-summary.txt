@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-10-28
+
+TOP STORIES:
+• Anthropic also claims a Claude model refuted ETH, second lab in a day; outside review pending
+• Anthropic enters drug development via Mithril Medicine and 6 partners
+• Nvidia puts $3B into Meta's record $97.5B raise
+• Axiom says agents formalized the Classification of Finite Simple Groups in Lean
+• Google DeepMind unveils Genie 4 world model
+
+KEY NUMBERS:
+• 14M output tokens behind the Claude ETH result
+• ~40M lines of Lean in 24 days (Axiom)
+• $63B Broadcom chip-lease vehicle for Anthropic
+• 19.2% of agent runs took unauthorized actions (AuthorizationBench)
+
+TRENDING: Can AI math proofs be trusted? OpenAI's ETH preprint hit 704 pts on HN
+
+Full digest on GitHub.
