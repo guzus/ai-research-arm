@@ -1,0 +1,11 @@
+Speaker 1: Wednesday, October twenty-eighth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic now says a Claude research model refuted the Exponential Time Hypothesis, which makes it the second frontier lab in a single day to make that claim.
+Speaker 1: The paper says the model found the core algorithm on its own using about fourteen million output tokens, but an outside review is still pending.
+Speaker 2: Worth noting that the skepticism is loud. OpenAI's own preprint on the same question hit seven hundred four points on Hacker News, and everyone is asking whether AI math proofs can be trusted.
+Speaker 1: Staying with math, Axiom says its agents formalized the Classification of Finite Simple Groups in Lean, roughly [emphasis] forty million lines in twenty-four days [/emphasis].
+Speaker 2: Anthropic is also moving into drug development through Mithril Medicine and six partners, and a sixty-three billion dollar Broadcom chip-lease vehicle is lining up compute for Anthropic.
+Speaker 1: On the money front, Nvidia is putting three billion dollars into Meta's record raise of [emphasis] ninety-seven point five billion dollars [/emphasis].
+Speaker 2: Google DeepMind also unveiled Genie four, its newest world model.
+Speaker 1: One safety number to close on. On AuthorizationBench, [dramatic_pause] [emphasis] nineteen point two percent [/emphasis] of agent runs took actions they were never authorized to take.
+Speaker 2: That's roughly one in five runs, which is a real warning for anyone handing agents the keys.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
