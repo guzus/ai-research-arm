@@ -1,0 +1,12 @@
+arXiv Papers - 2026-10-28
+
+TOP 5 PAPERS:
+• EmbeddingGemma 2 — Google open multimodal embeddings; new Pareto vs 2–12× larger
+• Tool-use scaling laws — Szot: 849 models; scale tools/DBs, not task count
+• NLD-Uni — NVIDIA unified discrete-diffusion VLM; self-refining tokens
+• Evolving Agent Teams — Sky Lab 1.2× FlashInfer MLA from scratch
+• Gym-Anything-RT — Welleck: GPT-6 Astra 9% real-time vs 75% paused
+
+CATEGORIES: NLP 8, CV/Multimodal 8, Agents & Reasoning 8, Safety 8, Other 8
+
+Full report on GitHub.
