@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; banks set up a $63B vehicle for Broadcom XPUs leased to Anthropic, SpaceX committed $40B to an Apollo GPU lease, and Meta plans up to $95B in new equity.
+description: The historically large compute buildout; Meta raised its target to $97.5B with Nvidia interest of $3B, while a $63B Broadcom-XPU vehicle for Anthropic is still the off-balance-sheet print.
 created_at: 2026-05-24
-timestamp: 2026-10-27T00:00:00Z
+timestamp: 2026-10-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA model ticket — Meta Class C equity raise", path: research/models/tickets/meta-class-c-equity-raise-2026-10.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
@@ -1878,3 +1879,71 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   account; do not treat as
   confirmed (@jukan05; ARA
   daily digest 2026-10-27).
+
+## Meta $97.5B; Nvidia $3B; Broadcom vehicle restated (2026-10-28)
+
+- **[[meta]] raised its
+  fundraising target to
+  $97.5B**: $25B common at
+  a reported $625 a share,
+  $12.5B convertible
+  preferred, and up to
+  $60B ATM. That names the
+  tranches on yesterday's
+  $95B Class C plan.
+  [[nvidia|Nvidia]] says it
+  will put $3B in and that
+  Meta will expand Vera
+  Rubin deployments;
+  Nvidia, [[amd|AMD]] and
+  [[broadcom|Broadcom]]
+  together expressed
+  nonbinding interest in
+  up to $5B of the common.
+  Chip-vendor checks are
+  interest, not closed
+  purchases (CNBC, The
+  Decoder, Nvidia via
+  @testingcatalog; ARA
+  daily digest 2026-10-28).
+- **The $63B Broadcom-XPU
+  vehicle for
+  [[anthropic]]** is
+  restated: Bank of
+  America, Citi, Morgan
+  Stanley and Blackstone
+  finance a vehicle that
+  buys Broadcom chips and
+  networking gear and
+  leases them to Anthropic,
+  deliveries starting in
+  2027. AVGO closed up
+  about 4%. Still no
+  first-party confirmation
+  (@mark_k, The
+  Information; ARA daily
+  digest 2026-10-28).
+- **TSMC's reported ~20%
+  CoWoS hike** is restated
+  as a single-source
+  leftover from yesterday.
+  Unnamed Korean media say
+  [[alibaba|Alibaba]],
+  Tencent and ByteDance
+  asked Samsung and
+  [[sk-hynix|SK Hynix]]
+  for DDR5 supply deals of
+  up to 10 years. Treat
+  both as unverified
+  (@jukan05; ARA daily
+  digest 2026-10-28).
+- **Physical Intelligence
+  is in talks at about
+  $20B**, raising at least
+  $1B at nearly double its
+  earlier 2026 valuation
+  of $11.5B. Only a relay
+  of the Bloomberg report
+  is in the sources
+  (@rohanpaul_ai; ARA
+  daily digest 2026-10-28).

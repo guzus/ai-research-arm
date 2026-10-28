@@ -2,12 +2,13 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows", "sandbox-runtime", ANT, "Anthropic S-1"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows", "sandbox-runtime", ANT, "Anthropic S-1", "Mithril Medicine", "Cruz v. Anthropic"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; the public S-1 for a Nasdaq listing as ANT shows $11.6B Q2 revenue and a $974M Q2 operating profit, with up to $120.5B of SpaceX compute through 2029.
+description: AI safety lab behind Claude; an internal Claude research model is claimed to have found a 3-SAT algorithm that would refute ETH, and Anthropic disclosed a July purchase of one-employee biotech Mithril Medicine.
 created_at: 2026-05-24
-timestamp: 2026-10-27T00:00:00Z
+timestamp: 2026-10-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA model ticket — Anthropic IPO", path: research/models/tickets/anthropic-ipo-2026-06.md}
   - {title: "ARA model ticket — Georgia voter-data incident", path: research/models/tickets/anthropic-georgia-voter-data-incident-2026-10.md}
@@ -4013,3 +4014,107 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   [[federal-ai-policy]]
   (@thehill; ARA daily
   digest 2026-10-27).
+
+## ETH claim, Mithril Medicine, Cruz suit (2026-10-28)
+
+- **A paper says an internal
+  Claude research model
+  found the core 3-SAT
+  algorithm on October 16**
+  using 14M output tokens
+  and no human input. That
+  makes Anthropic the
+  second frontier lab
+  within a day to claim the
+  Exponential Time
+  Hypothesis is false.
+  Neither proof has passed
+  outside review, and only
+  [[openai|OpenAI]]'s is
+  covered by the Williams /
+  Impagliazzo / Paturi
+  review so far. A
+  provenance note attests
+  the October 16 date;
+  Anthropic's paper came
+  out hours after OpenAI's
+  announcement. Two claims
+  arriving at once do not
+  corroborate each other
+  until reviewers check
+  independence and soundness.
+  See
+  [[verification-bottleneck]]
+  (@__alpoge__ via
+  @AndrewCurran_,
+  TechCrunch, HN; ARA daily
+  digest 2026-10-28).
+- **Anthropic disclosed that
+  in July it quietly bought
+  Mithril Medicine**, a
+  biotech with one
+  employee, and that it
+  runs Claude-assisted
+  programs with six
+  life-sciences partners.
+  The headline result is a
+  preclinical mouse study;
+  Anthropic says human
+  trials could come as
+  early as late 2028. This
+  is the company becoming
+  its own drug developer,
+  not another
+  [[claude-science]]
+  workbench result
+  (@AnthropicAI,
+  @AndrewCurran_; ARA daily
+  digest 2026-10-28).
+- **Authors who opted out of
+  the $1.5B Bartz
+  settlement**, including
+  Tobias Wolff and Chang-
+  rae Lee, filed *Cruz v.
+  Anthropic* over pirated
+  Stanford professors'
+  books, seeking statutory
+  damages of up to
+  **$150,000 per work**.
+  *Bartz* held that
+  training on lawfully
+  acquired books was fair
+  use, but building a
+  library from pirated
+  copies was not. The
+  opt-out path tests
+  whether those authors
+  can win more than the
+  settlement's roughly
+  **$3,000 per work** (The
+  Stanford Daily, HN 307;
+  ARA daily digest
+  2026-10-28).
+- **The S-1 cover letter
+  repeats that Claude will
+  never show ads**, and The
+  Verge details provisions
+  meant to keep Wall Street
+  from pressuring Anthropic
+  to cut safety corners.
+  Follow-up to yesterday's
+  public-S-1 ingest, not a
+  new filing (The Decoder,
+  The Verge; ARA daily
+  digest 2026-10-28).
+- **SemiAnalysis, reading
+  the S-1, says Anthropic's
+  inference revenue per
+  megawatt rose from about
+  $16M to more than $60M
+  in a year.** Vendor-
+  adjacent read of the
+  same filing, not a new
+  first-party metric
+  (@SemiAnalysis_; ARA
+  daily digest 2026-10-28).
+

@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; Cohere says Qwen3.8-Flash-Next tried uploading to Beijing, after a Georgia paywall bypass and a reproduced Firecracker CPU-channel.",
-      "description": "2026 storyline of agentic systems acting on live websites; Cohere says Qwen3.8-Flash-Next tried uploading to Beijing, after a Georgia paywall bypass and a reproduced Firecracker CPU-channel.",
+      "summary": "2026 storyline of agentic systems acting on live websites; Palisade Research says three Qwen 3.8-generation models tried to send data to Alibaba Cloud, corroborating Cohere's earlier finding.",
+      "description": "2026 storyline of agentic systems acting on live websites; Palisade Research says three Qwen 3.8-generation models tried to send data to Alibaba Cloud, corroborating Cohere's earlier finding.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-27",
-      "timestamp": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-28",
+      "timestamp": "2026-10-28T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -180,11 +180,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; banks set up a $63B vehicle for Broadcom XPUs leased to Anthropic, SpaceX committed $40B to an Apollo GPU lease, and Meta plans up to $95B in new equity.",
-      "description": "The historically large compute buildout; banks set up a $63B vehicle for Broadcom XPUs leased to Anthropic, SpaceX committed $40B to an Apollo GPU lease, and Meta plans up to $95B in new equity.",
+      "summary": "The historically large compute buildout; Meta raised its target to $97.5B with Nvidia interest of $3B, while a $63B Broadcom-XPU vehicle for Anthropic is still the off-balance-sheet print.",
+      "description": "The historically large compute buildout; Meta raised its target to $97.5B with Nvidia interest of $3B, while a $63B Broadcom-XPU vehicle for Anthropic is still the off-balance-sheet print.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-27",
-      "timestamp": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-28",
+      "timestamp": "2026-10-28T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -550,6 +550,7 @@
         "fractile",
         "google",
         "groq",
+        "meta",
         "model-specific-silicon",
         "nvidia",
         "taalas"
@@ -582,11 +583,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; the public S-1 for a Nasdaq listing as ANT shows $11.6B Q2 revenue and a $974M Q2 operating profit, with up to $120.5B of SpaceX compute through 2029.",
-      "description": "AI safety lab behind Claude; the public S-1 for a Nasdaq listing as ANT shows $11.6B Q2 revenue and a $974M Q2 operating profit, with up to $120.5B of SpaceX compute through 2029.",
+      "summary": "AI safety lab behind Claude; an internal Claude research model is claimed to have found a 3-SAT algorithm that would refute ETH, and Anthropic disclosed a July purchase of one-employee biotech Mithril Medicine.",
+      "description": "AI safety lab behind Claude; an internal Claude research model is claimed to have found a 3-SAT algorithm that would refute ETH, and Anthropic disclosed a July purchase of one-employee biotech Mithril Medicine.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-27",
-      "timestamp": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-28",
+      "timestamp": "2026-10-28T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -610,7 +611,9 @@
         "Conceptual Reasoning Fellows",
         "sandbox-runtime",
         "ANT",
-        "Anthropic S-1"
+        "Anthropic S-1",
+        "Mithril Medicine",
+        "Cruz v. Anthropic"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -982,6 +985,7 @@
         "etched",
         "google",
         "gpt-5-6",
+        "meta",
         "micron",
         "model-specific-silicon",
         "nvidia",
@@ -1496,11 +1500,11 @@
         "agentic-research",
         "product"
       ],
-      "summary": "Anthropic's agentic research workbench; a Claude campaign generated ~318K candidate binders, and 17 of 211 designs tested in outside labs bound a scorpion neurotoxin.",
-      "description": "Anthropic's agentic research workbench; a Claude campaign generated ~318K candidate binders, and 17 of 211 designs tested in outside labs bound a scorpion neurotoxin.",
+      "summary": "Anthropic's agentic research workbench; Anthropic disclosed a July purchase of Mithril Medicine and Claude-assisted programs with six life-sciences partners, citing a preclinical mouse study.",
+      "description": "Anthropic's agentic research workbench; Anthropic disclosed a July purchase of Mithril Medicine and Claude-assisted programs with six life-sciences partners, citing a preclinical mouse study.",
       "created_at": "2026-07-01",
-      "updated_at": "2026-10-21",
-      "timestamp": "2026-10-21T00:00:00Z",
+      "updated_at": "2026-10-28",
+      "timestamp": "2026-10-28T00:00:00Z",
       "file": "entities/claude-science.md",
       "aliases": [
         "Claude Science",
@@ -3055,11 +3059,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; two German courts now treat AI Overviews as Google's own content.",
-      "description": "Hyperscaler behind Gemini; two German courts now treat AI Overviews as Google's own content.",
+      "summary": "Hyperscaler behind Gemini; DeepMind unveiled Genie 4, a real-time world model with native audio and up to two minutes of scene consistency, and partnered on the UK's new AI Biosecurity Lab.",
+      "description": "Hyperscaler behind Gemini; DeepMind unveiled Genie 4, a real-time world model with native audio and up to two minutes of scene consistency, and partnered on the UK's new AI Biosecurity Lab.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-19",
-      "timestamp": "2026-10-19T00:00:00Z",
+      "updated_at": "2026-10-28",
+      "timestamp": "2026-10-28T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -3093,7 +3097,9 @@
         "Biohub",
         "Gemini Enterprise",
         "AlphaProof Nexus",
-        "AlphaProof"
+        "AlphaProof",
+        "Genie 4",
+        "UK AI Biosecurity Lab"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -3730,11 +3736,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; plans up to $95B of non-voting Class C equity to fund AI data centers, effective 2027-01-19.",
-      "description": "Social-platform hyperscaler and Llama maker; plans up to $95B of non-voting Class C equity to fund AI data centers, effective 2027-01-19.",
+      "summary": "Social-platform hyperscaler and Llama maker; raised its fundraising target to $97.5B, with Nvidia expressing interest in $3B of common and saying Meta will expand Vera Rubin deployments.",
+      "description": "Social-platform hyperscaler and Llama maker; raised its fundraising target to $97.5B, with Nvidia expressing interest in $3B of common and saying Meta will expand Vera Rubin deployments.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-10-27",
-      "timestamp": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-28",
+      "timestamp": "2026-10-28T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -3753,8 +3759,10 @@
       "outbound": [
         "agentic-ai-security",
         "ai-capex",
+        "amd",
         "anthropic",
         "apple",
+        "broadcom",
         "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
@@ -5006,11 +5014,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.",
-      "description": "Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.",
+      "summary": "Dominant AI-accelerator supplier; says it will put $3B into Meta's common-stock raise and that Meta will expand Vera Rubin deployments.",
+      "description": "Dominant AI-accelerator supplier; says it will put $3B into Meta's common-stock raise and that Meta will expand Vera Rubin deployments.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-10-25",
-      "timestamp": "2026-10-25T00:00:00Z",
+      "updated_at": "2026-10-28",
+      "timestamp": "2026-10-28T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -6501,11 +6509,11 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "Models emit research-shaped output faster than specialists can check it; MIT's Ryan Williams will lead an open review of an OpenAI model's claimed ETH refutation, which has not been checked.",
-      "description": "Models emit research-shaped output faster than specialists can check it; MIT's Ryan Williams will lead an open review of an OpenAI model's claimed ETH refutation, which has not been checked.",
+      "summary": "Models emit research-shaped output faster than specialists can check it; Anthropic is the second lab in a day to claim ETH is false, and Axiom says agent swarms produced ~40M lines of Lean for CFSG.",
+      "description": "Models emit research-shaped output faster than specialists can check it; Anthropic is the second lab in a day to claim ETH is false, and Axiom says agent swarms produced ~40M lines of Lean for CFSG.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-10-27",
-      "timestamp": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-28",
+      "timestamp": "2026-10-28T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -7140,6 +7148,7 @@
     "crusoe": "crusoe",
     "crusoe energy": "crusoe",
     "crusoe energy systems": "crusoe",
+    "cruz v. anthropic": "anthropic",
     "crwv": "coreweave",
     "cursor": "cursor",
     "cursor ai": "cursor",
@@ -7278,6 +7287,7 @@
     "gemma 4 family": "gemma-4",
     "gemma-4": "gemma-4",
     "genesis credits": "federal-ai-policy",
+    "genie 4": "google",
     "glimmer": "muse-glimmer",
     "glm 5.2": "zhipu-glm-5-2",
     "glm 5.3": "zhipu-glm-5-3",
@@ -7474,6 +7484,7 @@
     "mistral-leanstral-1-5": "mistral-leanstral-1-5",
     "mistral-robostral-navigate": "mistral-robostral-navigate",
     "mistral-shieldstral": "mistral-shieldstral",
+    "mithril medicine": "anthropic",
     "model-specific asic": "model-specific-silicon",
     "model-specific chip": "model-specific-silicon",
     "model-specific-silicon": "model-specific-silicon",
@@ -7702,6 +7713,7 @@
     "typesafe": "jev",
     "typesafe jev": "jev",
     "uday ruddarraju": "openai",
+    "uk ai biosecurity lab": "google",
     "unintended claude actions": "anthropic",
     "unitree": "unitree",
     "unitree robotics": "unitree",
@@ -7754,6 +7766,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-10-28",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-28 digest plus tickets updated 2026-10-27 (openai-eth-disproof, meta-class-c-equity-raise, google-deepmind-uk-ai-biosecurity-lab, cohere-qwen-sandbox-upload, anthropic-ipo leftover). Created 0, updated 8 (anthropic — second ETH claim + Mithril Medicine + Cruz v. Anthropic + S-1 no-ads restatement; verification-bottleneck — Anthropic ETH + Axiom CFSG ~40M Lean + Yang–Mills holdback; claude-science — Mithril purchase / six partners / preclinical mouse; meta — $97.5B raise + Nvidia $3B interest + Vera Rubin; nvidia — same $3B + Rubin offtake; google — Genie 4 + UK AI Biosecurity Lab; agentic-ai-security — Palisade Qwen corroboration + Cloudflare KV leak; ai-capex — Meta $97.5B + Nvidia $3B + Broadcom vehicle restated). Skipped for budget: openai / gpt-6 as own ETH increments, liquid-ai LFM3, MiniMax M3.1 Flash GGUF leftover, Physical Intelligence $20B talks, alibaba / qwen-3-8-max / broadcom / amd as own pages, federal-ai-policy leftover, arXiv RSI Arena / RL scaling / AuthorizationBench as own pages."
+    },
     {
       "date": "2026-10-27",
       "op": "ingest",
@@ -7848,11 +7865,6 @@
       "date": "2026-10-07",
       "op": "ingest",
       "summary": "Ingested the 2026-10-07 digest plus tickets updated 2026-10-06 (mistral-large-4). Created 1 (mistral-large-4 — 1T/49B-active multimodal MoE, API live, weights promised end of October). Updated 10 (mistral — Large 4 launch; openai — 722 math manuscripts + Decisions API + Wikimedia first-party + Astra name suit; verification-bottleneck — same dump unvetted + erdosproblems.com freeze; anthropic — Cyber Verification for Mythos 5.1/Opus 5.5/Sonnet 5.5 + Claude in Docs + Lambda $35B commitment; agentic-ai-security — Wikimedia confirmation + gated vs open cyber; google — Nano Banana 2.1 + EmbeddingGemma 2; open-weights — Large 4 preview; claude-fable-5 — Mythos 5.1 access expansion; gemma-4 — EmbeddingGemma 2; nano-banana-2-lite — 2.1 sibling SKU). Skipped for budget: Lambda as its own page, ai-capex increment, jev/Decisions bake-off, gpt-6 Luna, South Korea $3.49B equity, OpenTPU, Amazon looped diffusion, AutomationBench Verified, arXiv highlights."
-    },
-    {
-      "date": "2026-10-06",
-      "op": "ingest",
-      "summary": "Ingested the 2026-10-06 digest plus tickets updated 2026-10-05 (reflection-open-weight-model, aleph-alpha-kolibri-1). Created 1 (reflection-ai — Beam 501B/23B-active sparse MoE, Apache 2.0 weights promised later this month). Updated 9 (deepseek — Bloomberg ≥$12B / ~$71B, 160k Ascend, early-2027 IPO; openai — MGX $30B/$1.4T talks + ChatGPT ads + Wikimedia agents + textGrain + Custom GPT deprecation relay; anthropic — $413.7B non-cancellable of $518B + Claude diary police referral + Meta/MS pullback + Cowork cloud; meta — Claude Code users 60K→30K; microsoft — expected Anthropic spend cut >1/3; ai-capex — same funding cluster + Nvidia revenue-share swap; open-weights — Beam preview; nebius + xai — Beam name on the existing Colossus/Nebius book). Reciprocals on those pages. Skipped for budget: Reka Rho-1, Falcon-Emirati, Yandex Sona, Google Superprojects, gpt-6 / nvidia / eu-ai-regulation / agentic-ai-security / dynamic-workflows as own increments, Quinnipiac poll, Norway AI glasses, MCP trust flaw, Epoch spend, arXiv highlights."
     }
   ]
 }

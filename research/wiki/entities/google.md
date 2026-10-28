@@ -2,17 +2,19 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub, "Gemini Enterprise", "AlphaProof Nexus", AlphaProof]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub, "Gemini Enterprise", "AlphaProof Nexus", AlphaProof, "Genie 4", "UK AI Biosecurity Lab"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; two German courts now treat AI Overviews as Google's own content.
+description: Hyperscaler behind Gemini; DeepMind unveiled Genie 4, a real-time world model with native audio and up to two minutes of scene consistency, and partnered on the UK's new AI Biosecurity Lab.
 created_at: 2026-07-17
-timestamp: 2026-10-19T00:00:00Z
+timestamp: 2026-10-28T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
+  - {title: "ARA model ticket — UK AI Biosecurity Lab", path: research/models/tickets/google-deepmind-uk-ai-biosecurity-lab-2026-10.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
@@ -1037,6 +1039,69 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   the "megakernel" framing
   (SemiAnalysis; ARA daily
   digest 2026-10-19).
+
+## Genie 4 and the UK AI Biosecurity Lab (2026-10-28)
+
+- **DeepMind unveiled Genie
+  4**, a real-time world
+  model with native audio
+  and dialogue. Scenes stay
+  consistent for up to two
+  minutes. Gemini Omni
+  anchors appearance and
+  behavior; [[gemini-3-8-flash|Gemini 3.8 Flash]]
+  acts as a planning agent
+  in the loop. It is in
+  research preview for
+  trusted testers and on a
+  waitlist for Google AI
+  Ultra users and API
+  partners. It led HN (503
+  / 301). Commenters say
+  player inputs are
+  visibly ignored in the
+  demos, and the debate is
+  whether the real customer
+  is robotics and AV
+  simulation rather than
+  games, and whether
+  controllability
+  regressed from Genie 3.
+  No existing wiki page
+  covers Genie; fold here
+  until a dedicated card
+  is warranted (Google
+  DeepMind, TechCrunch,
+  The Verge, Ars Technica,
+  The Decoder, HN; ARA
+  daily digest 2026-10-28).
+- **The UK launched an AI
+  Biosecurity Lab** with
+  Google DeepMind as a
+  partner. First-party
+  from @GoogleDeepMind and
+  @demishassabis (2026-10-26)
+  retweeting @pushmeet.
+  No funding, governance
+  or scope details were
+  captured. Extends
+  DeepMind's bio-safety
+  work after SynthID Bio
+  (ARA model ticket
+  google-deepmind-uk-ai-
+  biosecurity-lab-2026-10;
+  ARA daily digest
+  2026-10-28).
+- **Google Research's
+  "sleep" framework** is a
+  new method for helping
+  LLMs retain knowledge
+  during continual
+  learning. Method note,
+  not a product ship
+  (Google Research blog;
+  ARA daily digest
+  2026-10-28).
 
 ## Open questions
 

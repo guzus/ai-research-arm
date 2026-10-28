@@ -4,15 +4,16 @@ title: Meta
 type: entity
 aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm", "Meta Enterprise Platform", "CJ Desai", "Muse Gadgets"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; plans up to $95B of non-voting Class C equity to fund AI data centers, effective 2027-01-19.
+description: Social-platform hyperscaler and Llama maker; raised its fundraising target to $97.5B, with Nvidia expressing interest in $3B of common and saying Meta will expand Vera Rubin deployments.
 created_at: 2026-06-16
-timestamp: 2026-10-27T00:00:00Z
+timestamp: 2026-10-28T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA model ticket — Meta Class C equity raise", path: research/models/tickets/meta-class-c-equity-raise-2026-10.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
@@ -582,3 +583,40 @@ TechCrunch; ARA daily digest 2026-09-16).
   meta-class-c-equity-raise-2026-10;
   ARA daily digest
   2026-10-27).
+
+## Raise target $97.5B; Nvidia $3B (2026-10-28)
+
+- **Meta raised its
+  fundraising target to
+  $97.5B**: $25B of common
+  stock priced at a
+  reported $625 a share,
+  $12.5B of convertible
+  preferred, and up to
+  $60B through an at-the-
+  market program. That is
+  a $2.5B lift from the
+  $95B Class C plan this
+  page logged yesterday,
+  and it names the
+  tranches. Verification
+  is still outlet-relayed;
+  no 8-K was captured
+  (CNBC, The Decoder; ARA
+  daily digest 2026-10-28).
+- **[[nvidia|Nvidia]],
+  [[amd|AMD]] and
+  [[broadcom|Broadcom]]
+  expressed nonbinding
+  interest** in up to $5B
+  of the common combined.
+  Nvidia says it will put
+  $3B in and that Meta
+  will expand its Vera
+  Rubin deployments. The
+  chip-vendor checks are
+  interest, not closed
+  purchases (CNBC, The
+  Decoder, Nvidia via
+  @testingcatalog; ARA
+  daily digest 2026-10-28).
