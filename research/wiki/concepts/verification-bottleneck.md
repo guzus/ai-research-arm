@@ -4,10 +4,11 @@ title: The verification bottleneck
 type: concept
 aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics", "Math 2.0", "Exponential Time Hypothesis"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: Models emit research-shaped output faster than specialists can check it; MIT's Ryan Williams will lead an open review of an OpenAI model's claimed ETH refutation, which has not been checked.
+description: Models emit research-shaped output faster than specialists can check it; Anthropic is the second lab in a day to claim ETH is false, and Axiom says agent swarms produced ~40M lines of Lean for CFSG.
 created_at: 2026-08-02
-timestamp: 2026-10-27T00:00:00Z
+timestamp: 2026-10-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
@@ -558,3 +559,103 @@ new dump or a Clay decision
   @rrwilliams, OpenAI, The
   Verge; ARA daily digest
   2026-10-27).
+
+## A second ETH claim; Axiom CFSG; Yang–Mills holdback (2026-10-28)
+
+- **[[anthropic]] is the
+  second lab within a day
+  to claim ETH is false.**
+  A paper says an internal
+  Claude research model
+  found the core 3-SAT
+  algorithm on October 16
+  using 14M output tokens
+  and no human input. The
+  date is only Anthropic's
+  attestation; the paper
+  came out hours after
+  [[openai]]'s announcement.
+  Neither proof has passed
+  outside review. Only
+  OpenAI's is covered by
+  the Williams /
+  Impagliazzo / Paturi
+  review. Two claims at
+  once corroborate nothing
+  until reviewers check
+  independence and
+  soundness. A low-reach
+  account describes a Lean
+  4 formalization
+  re-checked in a second
+  proof kernel; treat that
+  as unverified
+  (@__alpoge__,
+  @scaling01,
+  @raminaol9ykas,
+  TechCrunch, HN; ARA
+  daily digest 2026-10-28).
+- **OpenAI's ETH preprint
+  drew HN scrutiny (704
+  pts).** The paper claims
+  deterministic #k-SAT
+  counting in
+  2^{O_k(n log log n/√log n)}
+  time. Commenters quote
+  its own caveat that
+  2^o(n) doesn't transfer
+  under general polynomial
+  reductions, and Ryan
+  Williams says no
+  existing cryptosystem is
+  compromised. The
+  "Three new discoveries"
+  post peaked at 1,027 /
+  568. Skeptics called the
+  unpaid expert reviewers
+  "labellers" (OpenAI math
+  repo, HN; ARA daily
+  digest 2026-10-28).
+- **An "Advisory Group on
+  Mathematics and AI"
+  asked OpenAI to release
+  its Yang–Mills / QCD
+  proof now.** OpenAI is
+  holding back the AI
+  artifacts for that
+  result, unlike ETH and
+  Kakeya. The only
+  evidence of the call is
+  a screenshot
+  (@AndrewCurran_, HN;
+  ARA daily digest
+  2026-10-28).
+- **Axiom says agent swarms
+  produced about 40M lines
+  of Lean in 24 days** to
+  formalize the
+  Classification of Finite
+  Simple Groups, a proof
+  that runs to about
+  15,000 pages. No
+  independent audit of
+  the artifact has been
+  published. HN 111. Same
+  production-cheap /
+  verification-scarce
+  shape: a huge Lean
+  artifact whose
+  informal claim has not
+  been checked
+  (@axiommathai, HN; ARA
+  daily digest 2026-10-28).
+- **Physical
+  Superintelligence
+  claims five quantum-
+  information results**,
+  each with a paper and a
+  Lean formalization. No
+  independent review.
+  Same unverified-artifact
+  class (@psipbc; ARA
+  daily digest 2026-10-28).

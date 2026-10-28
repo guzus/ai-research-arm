@@ -4,10 +4,11 @@ title: Claude Science
 type: entity
 aliases: ["Claude Science", "Anthropic biology lab", "ART enzyme family"]
 tags: [anthropic, claude, ai-for-science, agentic-research, product]
-description: Anthropic's agentic research workbench; a Claude campaign generated ~318K candidate binders, and 17 of 211 designs tested in outside labs bound a scorpion neurotoxin.
+description: Anthropic's agentic research workbench; Anthropic disclosed a July purchase of Mithril Medicine and Claude-assisted programs with six life-sciences partners, citing a preclinical mouse study.
 created_at: 2026-07-01
-timestamp: 2026-10-21T00:00:00Z
+timestamp: 2026-10-28T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
   - {title: "ARA daily digest 2026-09-24", path: research/digest/2026-09-24-digest.md}
@@ -157,6 +158,47 @@ Review calls it Anthropic's "newest flagship product" (ARA digest 2026-07-01).
   [[evo-genome-models]]
   (Anthropic Science Blog, HN;
   ARA daily digest 2026-10-21).
+
+## Mithril Medicine; Anthropic as drug developer (2026-10-28)
+
+- **[[anthropic]] disclosed
+  that in July it quietly
+  bought Mithril Medicine**,
+  a biotech with one
+  employee, and that it
+  runs Claude-assisted
+  programs with six
+  life-sciences partners.
+  The headline result is a
+  preclinical mouse study;
+  Anthropic says human
+  trials could come as
+  early as late 2028. This
+  is a different move from
+  the ART enzyme family and
+  the scorpion-toxin
+  binders already on this
+  page: those were
+  workbench outputs. This
+  is the lab becoming a
+  drug developer with an
+  acquired legal entity
+  (@AnthropicAI,
+  @AndrewCurran_; ARA daily
+  digest 2026-10-28).
+- **The debut partners
+  remain Novartis, BMS and
+  Genentech**; the six
+  partners named today are
+  not listed in the digest.
+  Treat the count as
+  first-party and the
+  identities as unresolved.
+  Human-trial timing is
+  Anthropic's own forecast,
+  not a regulator filing
+  (ARA daily digest
+  2026-10-28).
 
 ## Open questions
 - **Does the workbench beat a benchmark?** GeneBench-Pro and

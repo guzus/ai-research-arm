@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra", "Nemotron 3.5 Bolt", "Nemotron 3.5 Bolt E4B", OpenShell, "NVIDIA Sentry", "Open Agent Safety Platform", "BlueField-4", "DGX Spark"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: Dominant AI-accelerator supplier; the FT says it opened early talks on a full buy, larger check, more chips, or Groq-style acqui-hire of Reflection AI.
+description: Dominant AI-accelerator supplier; says it will put $3B into Meta's common-stock raise and that Meta will expand Vera Rubin deployments.
 created_at: 2026-06-05
-timestamp: 2026-10-25T00:00:00Z
+timestamp: 2026-10-28T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
@@ -824,4 +825,33 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   toy, not a datacenter
   print (ARA daily digest
   2026-10-25).
+
+## $3B into Meta; Vera Rubin offtake (2026-10-28)
+
+- **Nvidia says it will put
+  $3B into [[meta]]'s
+  common-stock raise** and
+  that Meta will expand
+  its Vera Rubin
+  deployments. Meta raised
+  its target to **$97.5B**.
+  Nvidia, [[amd|AMD]] and
+  [[broadcom|Broadcom]]
+  together expressed
+  nonbinding interest in
+  up to **$5B** of the
+  common. The $3B is
+  Nvidia's own statement
+  of interest, not a
+  closed purchase (CNBC,
+  The Decoder, Nvidia via
+  @testingcatalog; ARA
+  daily digest 2026-10-28).
+- **Nvidia backed
+  Simplismart**, whose ARR
+  grew 14× in six months.
+  A smaller check next to
+  the Meta print
+  (TechCrunch; ARA daily
+  digest 2026-10-28).
 
