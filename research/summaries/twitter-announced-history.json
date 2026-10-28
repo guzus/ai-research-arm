@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-26 04:00 UTC",
-    "headline": "ANTHROPIC HIT WITH 'REGULATORY CAPTURE' BACKLASH OVER OLAH VATICAN REMARKS ANTHROPOMORPHIZING LLMS",
-    "source": "@firstadopter",
-    "source_file": "research/summaries/2026-05-26-twitter-04h-headlines.json",
-    "url": "https://x.com/firstadopter/status/2058986369934852449"
-  },
-  {
-    "backfilled": true,
-    "category": "",
-    "delivered_at": "2026-05-26 04:00 UTC",
-    "headline": "EMOLLICK: ZERO RIGOROUS PRODUCTIVITY STUDIES OF POST-DEC-2025 AUTONOMOUS CODING TOOLS \u2014 'A HUGE GAP'",
-    "source": "@emollick",
-    "source_file": "research/summaries/2026-05-26-twitter-04h-headlines.json",
-    "url": "https://x.com/emollick/status/2059118330472972331"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-26 04:00 UTC",
-    "headline": "ROON: AI MARKET WILL CONCENTRATE TO ONE FIRM 'RUN AS REGULATED UTILITY' \u2014 FRONTIER-LAB TAKE ON ENDGAME",
-    "source": "@tszzl",
-    "source_file": "research/summaries/2026-05-26-twitter-04h-headlines.json",
-    "url": "https://x.com/tszzl/status/2059125674309542104"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-26 04:00 UTC",
-    "headline": "BNN BLOOMBERG: POPE CALLS FOR ROBUST AI REGULATION IN MAGNIFICA HUMANITAS MANIFESTO",
-    "source": "@BNNBloomberg",
-    "source_file": "research/summaries/2026-05-26-twitter-04h-headlines.json",
-    "url": "https://x.com/BNNBloomberg/status/2059129980219527314"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-26 04:00 UTC",
-    "headline": "JUKAN: HOLY STONE WARNS AI POWER-SPEC UPGRADES TO DEEPEN MLCC SHORTAGE \u2014 STRONGEST DEMAND IN 20 YEARS",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-26-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2059101609901391927"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-05-26 07:00 UTC",
     "headline": "HUAWEI OFFICIALLY UNVEILS TAU SCALING LAW \u2014 TARGETS 1.4NM-EQUIVALENT DENSITY BY 2031 WITHOUT EUV",
@@ -23386,5 +23341,40 @@
     "headline": "BROADCOM LINES UP $63B SPV FINANCING TO LEASE AI HARDWARE TO ANTHROPIC FROM 2027",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2115188298633167093"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-28 05:28:47 UTC",
+    "headline": "SK HYNIX Q3 OPERATING PROFIT KRW 83.3T, 9% ABOVE CONSENSUS; DRAM AND HBM VIRTUALLY SOLD OUT THROUGH 2029",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2115224691019579872"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-28 05:28:47 UTC",
+    "headline": "SK HYNIX: CUSTOMER HBM REQUESTS EXCEED TWICE SUPPLY; FIVE-YEAR LTAS COVER OVER HALF OF 2027-28 CAPACITY",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2115248034619818027"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-28 05:28:47 UTC",
+    "headline": "OPENAI PLANS TO BUY GOOGLE TPUS \u2014 THE INFORMATION, BLOOMBERG",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2115261691906978233"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-28 05:28:47 UTC",
+    "headline": "ARTIFICIAL ANALYSIS INDEX V5 SHIFTS TO 60% PRIVATE TESTS; CLAUDE OPUS 5.5 NARROWLY LEADS GPT-6 ASTRA",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2115276413997850742"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-28 05:28:47 UTC",
+    "headline": "CXMT TO START SMALL-SCALE HBM3E PRODUCTION WITHIN TWO MONTHS AT ~20% YIELD \u2014 REUTERS",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2115307540494098601"
   }
 ]
