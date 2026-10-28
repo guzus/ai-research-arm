@@ -3,7 +3,7 @@ slug: google-synthid-bio-2026-09
 title: "Google DeepMind SynthID Bio — watermarking for AI-designed proteins (Nature, open research tools)"
 company: "Google / DeepMind"
 model: "SynthID Bio"
-status: released
+status: closed
 status_note: |
   Announced 2026-09-30 by @pushmeet and @demishassabis, published in Nature, and
   threaded by @GoogleDeepMind on 2026-10-01: a family of watermarking methods that
@@ -28,12 +28,14 @@ sources:
   - https://x.com/GoogleDeepMind/status/2105624661912392028
   - "@pushmeet"
 created_at: 2026-10-01
-updated_at: 2026-10-01
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-28
+closed_at: 2026-10-28
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-01
     change: "Created — RELEASED / confirmed. Google DeepMind announced SynthID Bio on 2026-09-30 (@pushmeet, @demishassabis; published in Nature) and threaded it on 2026-10-01 (@GoogleDeepMind): watermarking for AI-generated protein designs that preserves function, with tools released openly for research use as a biosecurity safeguard."
+  - ts: 2026-10-28
+    change: "CLOSED — released-and-aged. Google DeepMind released SynthID Bio for research use on 2026-09-30 (creation entry and expected field). That is 28 days before today, which meets the 4-week rule. No adoption news since."
 ---
 
 SynthID extends from text, images and audio into biology. The claim that makes

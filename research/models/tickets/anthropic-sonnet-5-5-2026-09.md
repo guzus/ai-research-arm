@@ -3,7 +3,7 @@ slug: anthropic-sonnet-5-5-2026-09
 title: "Claude Sonnet 5.5 — shipped; list price $2/$10 per MTok matches the leak exactly"
 company: Anthropic
 model: Claude Sonnet 5.5 (reported)
-status: released
+status: closed
 status_note: |
   Single relay source. @kimmonismus, 2026-09-24 04:05 UTC: "Here we go: Sonnet
   5.5 already being stealth tested. The model has a 1M-token context window and
@@ -45,9 +45,9 @@ sources:
   - https://x.com/shirochange_ai/status/2106350677404549482
   - https://x.com/AnthropicAI/status/2107546569654636883
 created_at: 2026-09-24
-updated_at: 2026-10-07
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-28
+closed_at: 2026-10-28
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-24
     change: "Created — RUMORED. @kimmonismus reported on 2026-09-24 04:05 UTC that Claude Sonnet 5.5 is already being stealth tested, with a 1M-token context window, 128K max output, and pricing of $2 input / $10 output per MTok, reading it as a direct response to GPT-6 Sol. Against it: single relay source, no Anthropic post, no model card, no API id, no benchmark, no independent corroboration in this cycle's signal — status rumored, verification unverified. For it: Anthropic's own Opus 5.5 launch (2026-09-22) described it as \"the first model in our new Claude 5.5 family\" ([[anthropic-opus-5-5-2026-09]]), so a Sonnet 5.5 is a named slot in a family Anthropic has publicly opened rather than an invented model, and the quoted 1M/128K shape matches Fable 5.1's reported specs. The $2/$10 figure is flagged as the weakest element: it lands exactly on GPT-6 Sol's price point, which is equally consistent with observation and with inference. Close trigger set: if no corroboration appears within ~15 cycles, close as stale-rumor-unverified."
@@ -59,6 +59,8 @@ history:
     change: "Distribution update, status unchanged (released), verification unchanged (partial — still no Anthropic announcement post in this desk's fetch). Two new surfaces in-window: (1) Google Antigravity now lists Sonnet 5.5 alongside Opus 5.5 on paid Pro/Ultra plans, with third-party model access ending on the current (unpaid) plan on 2026-11-02 per the in-product notice quoted by @Klonzu (@Claudeupdates11 08:45 UTC); (2) Microsoft 365 Copilot adds Claude Sonnet 5.5 (and GPT-6.1 Sol) as selectable models in Word, Excel, PowerPoint and Copilot Studio, rolling out progressively to Office apps, with Claude requiring admin enablement (@shirochange_ai relay, 2026-10-03 11:48 UTC). Being resold inside both Google's and Microsoft's productivity/IDE surfaces is strong circumstantial confirmation that the model is GA under an official API id, but the official id, model card and benchmark set remain unseen here."
   - ts: 2026-10-07
     change: "VERIFICATION partial -> confirmed. The gap this ticket carried since 2026-09-30 — no Anthropic post naming Sonnet 5.5 — closes: @AnthropicAI's own 2026-10-06 19:00 UTC announcement of the expanded Cyber Verification Program lists 'Claude Mythos 5.1, Opus 5.5, and Sonnet 5.5' as the models verified security professionals can access. That is a first-party naming of Sonnet 5.5 as a live model. Status unchanged (released). Still no Anthropic launch post, model card or pricing page in this desk's fetch; the $2/$10 pricing remains as reported."
+  - ts: 2026-10-28
+    change: "CLOSED — released-and-aged. History shows Sonnet 5.5 shipped by 2026-09-30 (reseller list pricing and release reports logged that day; Anthropic's own 2026-10-06 post named it). That is 28 days before today, which meets the 4-week rule. Later Sonnet 5.5 news rolls into normal coverage."
 ---
 
 This ticket exists to hold a specific prediction accountable, not to assert that

@@ -3,7 +3,7 @@ slug: perplexity-pplx-embed-v2-context-2026-10
 title: "Perplexity pplx-embed-v2-context-9b-preview — open-weight contextual chunk-embedding model"
 company: "Perplexity"
 model: "pplx-embed-v2-context-9b-preview"
-status: released
+status: closed
 status_note: |
   **Single secondary source, 2026-10-12 15:38 UTC (@RodrigoESPorto):** Perplexity's
   **pplx-embed-v2-context-9b-preview** embeds each chunk while seeing the whole
@@ -28,12 +28,14 @@ verification: unverified
 sources:
   - "https://x.com/RodrigoESPorto/status/2109669934020104571"
 created_at: 2026-10-12
-updated_at: 2026-10-12
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-28
+closed_at: 2026-10-28
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-10-12
     change: "Created — RELEASED / unverified. @RodrigoESPorto (2026-10-12) reports Perplexity released preview weights for pplx-embed-v2-context-9b-preview on Hugging Face: whole-document contextual chunk embeddings, Matryoshka 1024/2048 dims, int8-aware, up to 32K-token documents, self-claimed SOTA on ConTEB and +14.4 pts answer recall vs voyage-context-4. Name/card size mismatch (9B vs 8B) and no API. Single relay; advances verification on a Perplexity post or HF URL."
+  - ts: 2026-10-28
+    change: "CLOSED — stale-rumor-unverified. The ticket rested on one relay (@RodrigoESPorto, 2026-10-12). In 16 daily cycles no Perplexity post, Hugging Face card URL or independent ConTEB result has appeared. Verification never left unverified, so the release claim is retired rather than aged out."
 ---
 
 Related Perplexity retrieval-stack release: [[perplexity-photon-fast-search-2026-09]].
