@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "In October 2025 LinkedIn sued ProAPIs, alleging an \"industrial-scale\" scheme of fake accounts that scraped data visible only to logged-in members and sold access for up to $15,000 a month.", "contradicting_url": "https://sigmalawgroup.com/blog/2026-09-18-linkedin-proapis-scraping-consent-judgment/", "contradicting_quote": "Search summary only (page body did not load): consent judgment with permanent injunction reportedly signed 16 Sept 2026.", "severity": "medium", "no_contradiction_found": false},
+    {"claim_id": "c2", "claim_text": "Brokers had to start processing requests in August 2026, and a secondary summary reports they must pull requests at least every 45 days and face $200 per deletion request per day for non-compliance.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c3", "claim_text": "The tweet says \"a few cents\", while the published price per credit is 15 to 20 cents, and the page does not state how many credits a person lookup consumes.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true}
+  ]
+}

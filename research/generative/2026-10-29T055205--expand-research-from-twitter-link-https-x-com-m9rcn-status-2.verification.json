@@ -1,0 +1,14 @@
+{
+  "claims": [
+    {"id": "v5", "text": "In August 2026 CalPrivacy fined Cybba $52,400 for failing to register before the 2025 deadline", "verdict": "supported", "citation": "https://privacy.ca.gov/2026/08/calprivacy-announces-second-data-broker-enforcement-action-in-less-than-a-week/"},
+    {"id": "v6", "text": "In November 2024 the agency settled with Growbots, an outbound sales platform, for $35,400 and UpLead, a B2B lead generator, for $34,400", "verdict": "supported", "citation": "https://cppa.ca.gov/announcements/2024/20241114.html"},
+    {"id": "v9", "text": "On 5 December 2024 CNIL fined it €240,000, finding it collected contact details even from users who had restricted who could see them", "verdict": "supported", "citation": "https://www.cnil.fr/en/data-scraping-kaspr-fined-eu240000"},
+    {"id": "v16", "text": "LinkedIn v. ProAPIs, where a December 2025 filing reportedly said the parties were exploring early resolution.", "verdict": "unsupported", "citation": "https://securityaffairs.com/183001/security/linkedin-sues-proapis-for-15k-month-linkedin-data-scraping-scheme.html"},
+    {"id": "v25", "text": "Growth costs $200 per workspace per month for 1,000 credits ($0.20 each); Scale costs $600 for 4,000 credits ($0.15 each)", "verdict": "supported", "citation": "https://ploid.com/pricing"},
+    {"id": "v31", "text": "which together hold registries of roughly 200 to 500 brokers each, I could not determine", "verdict": "unsupported", "citation": "https://therecord.media/state-data-broker-registry-laws-fines-warnings"},
+    {"id": "v32", "text": "coverage of actual commercial volume ranges from about $28,000 a day in April 2026 to an annualised figure near $5 million excluding tests.", "verdict": "unsupported", "citation": "https://blockeden.xyz/blog/2026/04/01/x402-protocol-http-402-ai-agent-commerce-stablecoin-payments/"},
+    {"id": "v33", "text": "Lessie scored 65.2, Exa 55.0, Claude Code with Sonnet 4.6 46.0 and Juicebox 45.8.", "verdict": "supported", "citation": "https://huggingface.co/papers/2603.27476"},
+    {"id": "v40", "text": "and Proxycurl's own successor now markets a non-LinkedIn approach.", "verdict": "unsupported", "citation": null},
+    {"id": "v45", "text": "See the revision notes appended to the repository run log; any claim that could not be corroborated is marked inline.", "verdict": "unsupported", "citation": null}
+  ]
+}

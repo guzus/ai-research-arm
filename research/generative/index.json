@@ -3414,5 +3414,19 @@
         "source_sha256": "956736f5135819bde6762290feb57da20dd1fb6356d1809f240a870606795396"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+    "file": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-10-29T05:52:05Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/m9rcn/status/2115499043514445974\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
