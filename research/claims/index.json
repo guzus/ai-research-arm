@@ -1,5 +1,5 @@
 {
-  "article_count": 104,
+  "article_count": 105,
   "articles": [
     {
       "claim_count": 18,
@@ -989,6 +989,16 @@
         "twitter-seed"
       ],
       "title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive"
+    },
+    {
+      "claim_count": 12,
+      "created_at": "2026-10-29T23:21:59Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-sui414-status",
+      "stem": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean"
     }
   ],
   "by_host": {
@@ -2577,6 +2587,9 @@
       "2026-08-20T152813--unitree-star-market-ipo-debut#c22",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c15"
     ],
+    "console.vast.ai": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c11"
+    ],
     "consumerfinance.gov": [
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c5"
     ],
@@ -2661,6 +2674,9 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c15",
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c14",
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c14"
+    ],
+    "cryptodaily.co.uk": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c8"
     ],
     "cryptopolitan.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30"
@@ -3231,6 +3247,9 @@
     ],
     "energy.gov": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c33"
+    ],
+    "energyintel.com": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c9"
     ],
     "energynews.pro": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c9"
@@ -4260,7 +4279,8 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c17"
     ],
     "ir.theice.com": [
-      "2026-06-24T160453--test-ornn-com-codex-2#C5"
+      "2026-06-24T160453--test-ornn-com-codex-2#C5",
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c2"
     ],
     "irishtimes.com": [
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c6"
@@ -4426,7 +4446,8 @@
       "2026-08-04T171206--comfyui-company#c48",
       "2026-08-04T171206--comfyui-company#c5",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c20",
-      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c19"
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c19",
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c12"
     ],
     "latepost.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c34"
@@ -4898,7 +4919,8 @@
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-5",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-7",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-9",
-      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c10"
+      "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c10",
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c5"
     ],
     "newslink.mba.org": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c15"
@@ -5172,6 +5194,9 @@
     "panewslab.com": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c22"
     ],
+    "panteracapital.com": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c10"
+    ],
     "paper.cnstock.com": [
       "2026-07-13T181948--cxmt#c3",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c3",
@@ -5360,7 +5385,8 @@
       "2026-06-24T160453--test-ornn-com-codex-2#C9",
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c15",
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c7",
-      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17"
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17",
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c1"
     ],
     "pro.stockalarm.io": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c21"
@@ -5620,7 +5646,8 @@
     ],
     "runtimewire.com": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c20",
-      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c9"
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c9",
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c1"
     ],
     "ryanoconnellfinance.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
@@ -5827,7 +5854,8 @@
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c22",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c22",
-      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c17"
+      "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c17",
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c3"
     ],
     "securityaffairs.com": [
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c8"
@@ -5899,6 +5927,10 @@
     "siliconangle.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c15",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c15"
+    ],
+    "silicondata.com": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c4",
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c6"
     ],
     "siltronic.com": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c10"
@@ -6664,6 +6696,9 @@
     ],
     "unitree.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2"
+    ],
+    "usagepricing.com": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c7"
     ],
     "usd.ai": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c10",
@@ -8853,6 +8888,9 @@
     "https://comptroller.nyc.gov/reports/letter-to-anthropic-re-planned-initial-public-offering": [
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c21"
     ],
+    "https://console.vast.ai/api/v0/bundles": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c11"
+    ],
     "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c10",
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c11",
@@ -8921,6 +8959,9 @@
     ],
     "https://cryptobriefing.com/uniswap-v4-dominates-robinhood-chain-tokenized-stocks": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c20"
+    ],
+    "https://cryptodaily.co.uk/2026/06/akt-after-ai-rally-decentralized-compute-utilization": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c8"
     ],
     "https://cryptorank.io/fundraising-platforms/uniswap-cca": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c20"
@@ -10673,7 +10714,8 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c17"
     ],
     "https://ir.theice.com/press/news-details/2026/ICE-and-Ornn-to-Launch-GPU-Compute-Futures-Contracts/default.aspx": [
-      "2026-06-24T160453--test-ornn-com-codex-2#C5"
+      "2026-06-24T160453--test-ornn-com-codex-2#C5",
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c2"
     ],
     "https://ironfinance.medium.com/iron-finance-post-mortem-17-june-2021-6a4e9ccf23f5": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c17"
@@ -11113,7 +11155,8 @@
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-9"
     ],
     "https://newsletter.semianalysis.com/p/the-great-gpu-shortage-rental-capacity": [
-      "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c11"
+      "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c11",
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c5"
     ],
     "https://newsletter.semianalysis.com/p/to-boldly-go-the-case-for-space-datacenters": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c10"
@@ -11436,6 +11479,9 @@
     ],
     "https://pandaily.com/deepseek-v4-peak-off-peak-pricing-effective-august-17-up-to-1100-percent-aug2026": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c17"
+    ],
+    "https://panteracapital.com/compute-capital-markets": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c10"
     ],
     "https://paper.cnstock.com/html/2026-07/09/content_2240864.htm": [
       "2026-07-13T181948--cxmt#c3"
@@ -11947,6 +11993,9 @@
     ],
     "https://runtimewire.com/article/openai-10000-ai-agents-navier-stokes-proof": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c20"
+    ],
+    "https://runtimewire.com/article/silicon-data-cme-compute-futures-november-2026": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c1"
     ],
     "https://ryanoconnellfinance.com/short-selling": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
@@ -12835,6 +12884,9 @@
     ],
     "https://unchainedcrypto.com/aztec-raises-59-million-in-token-sale-with-uniswaps-cca": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c17"
+    ],
+    "https://usagepricing.com/blueprint/activity/nebius-ai-2026-09-24-gpu-price-increase": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c7"
     ],
     "https://usd.ai/insights/crucible-capital-26m-gpu-backed-loan": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c7"
@@ -14330,6 +14382,9 @@
     "https://www.energy.gov/articles/energy-department-advances-investments-ai-science": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c33"
     ],
+    "https://www.energyintel.com/0000017b-a79a-de4c-a17b-e7dac4620000": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c9"
+    ],
     "https://www.engadget.com/2231446/meta-ai-model-hacked-third-party-irregular": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c13"
     ],
@@ -15054,6 +15109,9 @@
       "2026-08-04T171206--comfyui-company#c48",
       "2026-08-04T171206--comfyui-company#c5"
     ],
+    "https://www.latent.space/p/sfcompute2": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c12"
+    ],
     "https://www.latepost.com/news/dj_detail?id=3348": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c34"
     ],
@@ -15491,6 +15549,9 @@
     "https://www.prnewswire.com/news-releases/ai-designed-chips-reach-scale-with-first-100-commercial-tape-outs-using-synopsys-technology-301739936.html": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c15"
     ],
+    "https://www.prnewswire.com/news-releases/cme-group-and-silicon-data-to-launch-compute-futures-on-october-5-to-unlock-new-way-to-hedge-ai-risks-302848593.html": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c1"
+    ],
     "https://www.prnewswire.com/news-releases/delta-unveils-next-generation-power-and-cooling-solutions-for-ai-data-centers-at-nvidia-gtc-2025-302406157.html": [
       "2026-05-27T035557--800-vdc-architecture#c15"
     ],
@@ -15774,6 +15835,9 @@
     "https://www.sec.gov/Archives/edgar/data/0001769628/000176962826000167/ex991.htm": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18"
     ],
+    "https://www.sec.gov/Archives/edgar/data/0001769628/000176962826000366/crwv-20260630.htm": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c3"
+    ],
     "https://www.sec.gov/Archives/edgar/data/0001783879/000178387926000114/hood-20260630.htm": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c19"
     ],
@@ -15987,6 +16051,12 @@
     ],
     "https://www.signalfire.com/blog/signalfire-state-of-talent-report-2025": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c20"
+    ],
+    "https://www.silicondata.com/blog/b200-rental-price-march-2026-update": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c4"
+    ],
+    "https://www.silicondata.com/products/silicon-index/h100": [
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c6"
     ],
     "https://www.siltronic.com/fileadmin/investorrelations/2026/Q2/20260730_Press_release_Wafer_demand_supports_2026_sales_outlook.pdf": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c10"
@@ -17165,7 +17235,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3029,
+  "claim_count": 3041,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -89451,9 +89521,288 @@
         "https://www.loc.gov/item/global-legal-monitor/2024-10-16/netherlands-face-recognition-company-clearview-ai-fined-for-violating-eus-general-data-protection-regulation"
       ],
       "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2026-10-21",
+      "claim": "CME and Silicon Data announced H100 and B200 rental-index futures with a planned Oct 5 2026 start; as of Oct 21 regulators had not cleared the market and CME's calendar listed Nov 9 as first trading day.",
+      "confidence": "medium",
+      "hosts": [
+        "prnewswire.com",
+        "runtimewire.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c1",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.prnewswire.com/news-releases/cme-group-and-silicon-data-to-launch-compute-futures-on-october-5-to-unlock-new-way-to-hedge-ai-risks-302848593.html",
+        "https://runtimewire.com/article/silicon-data-cme-compute-futures-november-2026"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2026-09-09",
+      "claim": "Pantera's Sept 2026 report says cash-settled compute exchanges have not large trading volumes yet and participants are likely OTC desks and brokers.",
+      "confidence": "medium",
+      "hosts": [
+        "panteracapital.com"
+      ],
+      "id": "c10",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c10",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://panteracapital.com/compute-capital-markets"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2026-10-29",
+      "claim": "Vast.ai on-demand H100 SXM ask prices on 2026-10-29 ranged from $1.93 to $5.56 per GPU-hour with median $2.40 across 13 offers.",
+      "confidence": "high",
+      "hosts": [
+        "console.vast.ai"
+      ],
+      "id": "c11",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://console.vast.ai/api/v0/bundles"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2026-10-20",
+      "claim": "SF Compute founder says about 5% of capacity trades on its order book.",
+      "confidence": "low",
+      "hosts": [
+        "latent.space"
+      ],
+      "id": "c12",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c12",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.latent.space/p/sfcompute2"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2026-05-19",
+      "claim": "ICE and Ornn announced cash-settled GPU compute futures on the Ornn index (OCPI) for H100, H200, B200 and RTX 5090, subject to regulatory approval, with no listing date.",
+      "confidence": "high",
+      "hosts": [
+        "ir.theice.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://ir.theice.com/press/news-details/2026/ICE-and-Ornn-to-Launch-GPU-Compute-Futures-Contracts/default.aspx"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2026-06-30",
+      "claim": "CoreWeave Q2 2026: Customer A 36%, Customer B 26%, Customer C 10% of revenue; 98% of revenue commitment-linked; RPO $103.7B.",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c3",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/0001769628/000176962826000366/crwv-20260630.htm"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2026-03-31",
+      "claim": "Silicon Data March 2026: hyperscaler H100 about $7.43-7.52/hr vs neocloud $2.43-2.63, roughly 3x.",
+      "confidence": "medium",
+      "hosts": [
+        "silicondata.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c4",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.silicondata.com/blog/b200-rental-price-march-2026-update"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2026-03-31",
+      "claim": "SemiAnalysis 1-year H100 contract index rose from $1.70 (Oct 2025) to $2.35 (Mar 2026); posted prices are directional only.",
+      "confidence": "medium",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/the-great-gpu-shortage-rental-capacity"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2026-10-29",
+      "claim": "Silicon Data neocloud H100 index was $2.90/GPU-hour on 2026-10-29.",
+      "confidence": "medium",
+      "hosts": [
+        "silicondata.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.silicondata.com/products/silicon-index/h100"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2026-10-01",
+      "claim": "Nebius raised H100 on-demand from $3.85 to $4.50 per GPU-hour effective about Oct 1 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "usagepricing.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://usagepricing.com/blueprint/activity/nebius-ai-2026-09-24-gpu-price-increase"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2026-03-31",
+      "claim": "Akash reported GPU utilization about 33.7% in Q1 2026 with lease revenue $253,250.",
+      "confidence": "low",
+      "hosts": [
+        "cryptodaily.co.uk"
+      ],
+      "id": "c8",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c8",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://cryptodaily.co.uk/2026/06/akt-after-ai-rally-decentralized-compute-utilization"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status",
+      "article_created_at": "2026-10-29T23:21:59Z",
+      "article_title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+      "as_of": "2001-09-09",
+      "claim": "Enron Broadband: 759 bandwidth transactions in Q2 2001 vs 580 in Q1; lost $102M on $16M revenue; Skilling said there were no creditworthy counterparties.",
+      "confidence": "medium",
+      "hosts": [
+        "energyintel.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.energyintel.com/0000017b-a79a-de4c-a17b-e7dac4620000"
+      ],
+      "type": "event"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1468,
+  "reusable_count": 1470,
   "schema_version": 1
 }
