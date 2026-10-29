@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-05-26 10:00 UTC",
-    "headline": "@KIMMONISMUS: CODEX QUALITY HAS GOTTEN NOTICEABLY WORSE \u2014 IN-FEED USERS PILE ON, NO OPENAI RESPONSE",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-05-26-twitter-10h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2059206754253099176"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-26 13:00 UTC",
-    "headline": "GOOGLE DEEPMIND: SYNTHID PASSES 100B WATERMARKED PIECES; OPENAI, ELEVENLABS, KAKAO JOIN NVIDIA IN CROSS-LAB ADOPTION",
-    "source": "@GoogleDeepMind",
-    "source_file": "research/summaries/2026-05-26-twitter-13h-headlines.json",
-    "url": "https://x.com/GoogleDeepMind/status/2059235181274202500"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-26 13:00 UTC",
-    "headline": "SYNTHID VERIFICATION HITS 50M+ GEMINI CHECKS; NOW ROLLING OUT TO GOOGLE SEARCH AND CHROME",
-    "source": "@GoogleDeepMind",
-    "source_file": "research/summaries/2026-05-26-twitter-13h-headlines.json",
-    "url": "https://x.com/GoogleDeepMind/status/2059235184130535436"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-26 13:00 UTC",
-    "headline": "PIXEL VIDEO PROVENANCE TRAIL ARRIVES \u2014 SIGNED FROM THE MOMENT YOU HIT RECORD",
-    "source": "@GoogleDeepMind",
-    "source_file": "research/summaries/2026-05-26-twitter-13h-headlines.json",
-    "url": "https://x.com/GoogleDeepMind/status/2059235187003642154"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-05-26 13:00 UTC",
     "headline": "LECUN BREAKS LAB-PRINCIPAL SILENCE ON POPE'S AI ENCYCLICAL \u2014 RTs 'CLOSED-SOURCE CITADELS' CRITIQUE OF ANTHROPIC/OPENAI",
@@ -23360,5 +23324,33 @@
     "headline": "SAMSUNG REPORTEDLY SAYS MEMORY SHORTAGE WILL WORSEN IN 2027",
     "source": "@jukan05",
     "url": "https://x.com/jukan05/status/2115605838656352630"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-29 09:49:29 UTC",
+    "headline": "SAMSUNG: 2027 HBM SOLD OUT AT TARGET PRICES; LONG-TERM DEALS TO COVER 60-70% OF CAPACITY THROUGH 2030",
+    "source": "@jukan05",
+    "url": "https://x.com/jukan05/status/2115660598470222036"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-29 09:49:29 UTC",
+    "headline": "CHINESE LABS SHIFT DISTILLATION FROM CLAUDE TO OPENAI GPT-6 ASTRA \u2014 THE INFORMATION",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2115643355522896283"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-29 09:49:29 UTC",
+    "headline": "SERVICENOW FALLS 19% AFTER HOURS DESPITE BEAT AS CONTRACTED REVENUE GROWTH SLOWS TO 18.5%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2115645490352259252"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-29 09:49:29 UTC",
+    "headline": "NVIDIA RELEASES OPEN-WEIGHT NEMOTRON 3.5 TRANSCRIBE: 30B MOE, ~4B ACTIVE, 40 LANGUAGES",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2115697759281975475"
   }
 ]
