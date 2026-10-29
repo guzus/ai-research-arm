@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-29 18:24:46 UTC
+
+CYCLE: A big open-weight release, OpenAI backing off a usage cut, and a sovereign-AI mega-round
+
+TOP STORIES:
+• Mistral open-sources Mistral Large 4 (1T total / 52B active MoE), #1 open model on FrontierCode ✓
+• OpenAI keeps 2x usage limits for Pro $100/$200/$500 + Business Premium, cancels Pro $200 cut ✓
+• Cohere Series E initial close: up to CAD $7B at CAD $35.7B valuation; Ottawa stake reported ✓
+
+WATCH: Independent evals and license terms for Mistral Large 4
+
+Full update on GitHub.
