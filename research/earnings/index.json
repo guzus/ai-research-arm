@@ -1,8 +1,38 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 19,
+  "count": 22,
   "events": [
+    {
+      "file": "2026-10-28-VRT-FY26Q3.md",
+      "date": "2026-10-28",
+      "ticker": "VRT",
+      "period": "FY26Q3",
+      "issuer": "Vertiv Holdings Co",
+      "form": "8-K",
+      "accession": "0001628280-26-067707",
+      "transcript": false
+    },
+    {
+      "file": "2026-10-28-MSFT-FY27Q1.md",
+      "date": "2026-10-28",
+      "ticker": "MSFT",
+      "period": "FY27Q1",
+      "issuer": "Microsoft Corporation",
+      "form": "8-K",
+      "accession": "0001193125-26-436122",
+      "transcript": true
+    },
+    {
+      "file": "2026-10-28-GOOGL-FY26Q3.md",
+      "date": "2026-10-28",
+      "ticker": "GOOGL",
+      "period": "FY26Q3",
+      "issuer": "Alphabet Inc.",
+      "form": "8-K",
+      "accession": "0001652044-26-000080",
+      "transcript": false
+    },
     {
       "file": "2026-10-21-META-FY26Q3.md",
       "date": "2026-10-21",
