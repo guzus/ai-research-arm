@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "The terms treat agent-initiated transactions as the user's own, including those caused by bugs, hallucinations or misinterpretations.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c2", "claim_text": "The limit applies to each purchase separately and does not accumulate; a funding link is invalid above $150 or outside USD.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c3", "claim_text": "Disclosed agent volume: none from Stripe, Visa, PayPal or OpenAI.", "contradicting_url": "https://usa.visa.com/about-visa/newsroom/press-releases.releaseId.21961.html", "contradicting_quote": "hundreds of secure, agent-initiated transactions have been successfully completed in collaboration with partners across the ecosystem", "severity": "low", "no_contradiction_found": false}
+  ]
+}

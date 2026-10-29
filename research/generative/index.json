@@ -3382,5 +3382,19 @@
         "source_sha256": "8010f8d281414e9ed004f251aa0c7cd1a4381b8e986b56113f0a929546b638a1"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-link-status-21",
+    "file": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-10-29T05:21:44Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/link/status/2114799287645393098\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
