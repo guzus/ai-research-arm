@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub, "Gemini Enterprise", "AlphaProof Nexus", AlphaProof, "Genie 4", "UK AI Biosecurity Lab"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; DeepMind unveiled Genie 4, a real-time world model with native audio and up to two minutes of scene consistency, and partnered on the UK's new AI Biosecurity Lab.
+description: Hyperscaler behind Gemini; Alphabet Q3 Cloud more than doubled to $30.7B, and Gemini 4 Carbon took the AA v5 lead behind a Fairwind gate.
 created_at: 2026-07-17
-timestamp: 2026-10-28T00:00:00Z
+timestamp: 2026-10-29T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA model ticket — UK AI Biosecurity Lab", path: research/models/tickets/google-deepmind-uk-ai-biosecurity-lab-2026-10.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
@@ -61,7 +62,7 @@ sources:
 ---
 
 **Google** is the hyperscaler and frontier-model builder behind the
-**Gemini** family ([[gemini-4-argon]], [[gemini-3-5-flash]], [[gemini-3-6-flash]],
+**Gemini** family ([[gemini-4-carbon]], [[gemini-4-argon]], [[gemini-3-5-flash]], [[gemini-3-6-flash]],
 [[gemini-3-7-flash]], [[gemini-3-8-flash]], [[gemini-3-8-live]], [[gemini-3-5-pro]],
 [[gemini-spark]], [[gemma-4]], [[nano-banana-2-lite]]). While its individual model releases
 have been tracked on their own pages, this page covers Google as a company:
@@ -1102,6 +1103,84 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   (Google Research blog;
   ARA daily digest
   2026-10-28).
+
+## Q3 Cloud doubling; Carbon; TPUs leave the campus (2026-10-29)
+
+- **Alphabet Q3 revenue rose
+  25% to $127.6B.** Cloud
+  more than doubled to
+  **$30.7B (+103%)** and
+  made **$11.1B** of
+  operating income.
+  Operating margin was
+  **31.8%**. Search and
+  YouTube ads missed
+  estimates. Free cash flow
+  reportedly went about
+  **−$9B** on **$51.4B** of
+  capex. Reported GAAP EPS
+  of **$2.12** against a
+  **$3.01** consensus is
+  unexplained in the digest.
+  Google says the Gemini app
+  has **1B users** and
+  first-party APIs handle
+  about **32B tokens/min**.
+  See [[ai-capex]] (Alphabet
+  8-K, TechCrunch,
+  @EmmanuelInvest; ARA daily
+  digest 2026-10-29).
+- **[[gemini-4-carbon]]
+  launched about 15 days
+  after [[gemini-4-argon]]**,
+  still Fairwind-gated, at
+  the same **$2 / $10** intro
+  price. Artificial Analysis
+  Intelligence Index **v5**
+  scores it **59** and Text
+  Arena **#1 (1528)**. No GA
+  date. Detail on the Carbon
+  page (Google DeepMind,
+  Logan Kilpatrick, HN 610;
+  ARA daily digest
+  2026-10-29).
+- **Oracle will host TPUs
+  from calendar 2027**, the
+  first outside cloud to do
+  so, supplying power,
+  cooling and networking.
+  Google claims up to
+  **12.6 PFLOPS FP4** per
+  8th-gen chip. The same day,
+  The Information and
+  Bloomberg report
+  [[openai]] plans to buy
+  Google TPUs. Neither
+  company confirmed volumes
+  or timing. Skeptics read
+  the OpenAI story as
+  leverage against
+  [[nvidia]] pricing. See
+  [[ai-capex]] (Google via
+  @rohanpaul_ai, The
+  Information, Bloomberg;
+  ARA daily digest
+  2026-10-29).
+- **Genie 4 day-2.** Trusted-
+  tester rollout now includes
+  native audio, talking
+  characters and text
+  steering, with
+  [[gemini-3-8-flash]]
+  planning inside the loop.
+  Scenes stay consistent for
+  about **2 minutes**, double
+  Genie 3. HN is at **975
+  pts**; commenters still say
+  inputs get ignored and
+  objects vanish (DeepMind,
+  TechCrunch, Ars; ARA daily
+  digest 2026-10-29).
 
 ## Open questions
 

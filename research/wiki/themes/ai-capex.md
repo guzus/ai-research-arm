@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Meta raised its target to $97.5B with Nvidia interest of $3B, while a $63B Broadcom-XPU vehicle for Anthropic is still the off-balance-sheet print.
+description: The historically large compute buildout; Alphabet Q3 FCF went about −$9B on $51.4B of capex as SK hynix said memory is sold out through 2029.
 created_at: 2026-05-24
-timestamp: 2026-10-28T00:00:00Z
+timestamp: 2026-10-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA model ticket — Meta Class C equity raise", path: research/models/tickets/meta-class-c-equity-raise-2026-10.md}
@@ -1947,3 +1948,64 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   is in the sources
   (@rohanpaul_ai; ARA
   daily digest 2026-10-28).
+
+## Hyperscaler prints; memory sold out; TPUs leave Google (2026-10-29)
+
+- **[[google|Alphabet]] Q3
+  free cash flow reportedly
+  went about −$9B on
+  $51.4B of capex** as Cloud
+  more than doubled to
+  **$30.7B**. [[microsoft]]
+  disclosed Azure revenue
+  for the first time at
+  **$33.2B (+48%)**, with
+  Microsoft Cloud
+  **$63.9B (+30%)** and
+  capex **$45.2B** below
+  guidance on construction
+  delays. Microsoft also
+  booked about **$10B** from
+  [[openai]]. See those
+  company pages (Alphabet
+  8-K, Microsoft 8-K,
+  TechCrunch; ARA daily
+  digest 2026-10-29).
+- **[[sk-hynix]] says memory
+  is sold out through
+  2029.** Q3 operating
+  profit was **KRW 83.3T**
+  on **KRW 104.6T** of
+  revenue. Five-year
+  deposit-backed contracts
+  cover more than half of
+  2027–28 capacity, and
+  customers have asked for
+  more than **2×** the HBM
+  it can supply. Vertiv Q3
+  net sales rose **61%**,
+  organic orders more than
+  **100%**, and CEO Giordano
+  Albertazzi called this
+  "the largest
+  infrastructure buildout
+  and it's accelerating."
+  No Vertiv wiki page yet
+  (SK hynix filing, Vertiv
+  8-K; ARA daily digest
+  2026-10-29).
+- **TPU supply is no longer
+  Google-only.** Oracle will
+  host TPUs from **2027**,
+  and The Information /
+  Bloomberg report OpenAI
+  plans to buy them. Neither
+  volume nor timing is
+  confirmed. That is a
+  second-source story for
+  [[nvidia]] accelerators,
+  not a cancelled GPU book
+  (Google via @rohanpaul_ai,
+  The Information,
+  Bloomberg; ARA daily
+  digest 2026-10-29).

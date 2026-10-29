@@ -4,10 +4,11 @@ title: SK Hynix
 type: entity
 aliases: ["SK hynix", "SK Hynix Inc.", "SKHynix"]
 tags: [hbm, memory, semiconductors, ipo, ai-infrastructure]
-description: South Korean HBM memory supplier; shares fell about 10% in a 2026-10-13 KOSPI selloff that traders blamed on CXMT and Broadcom comments.
+description: South Korean HBM memory supplier; says memory is sold out through 2029 after Q3 operating profit of KRW 83.3T on KRW 104.6T of revenue.
 created_at: 2026-07-12
-timestamp: 2026-10-14T00:00:00Z
+timestamp: 2026-10-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-14", path: research/digest/2026-10-14-digest.md}
   - {title: "ARA daily digest 2026-08-20", path: research/digest/2026-08-20-digest.md}
   - {title: "ARA daily digest 2026-07-29", path: research/digest/2026-07-29-digest.md}
@@ -82,6 +83,39 @@ specific, but no primary financial-press corroboration yet captured —
   (@scalethesis, @EllisInvest,
   @kaupr_io; ARA daily digest
   2026-10-14).
+
+## Memory sold out through 2029 (2026-10-29)
+
+- **Q3 operating profit was
+  KRW 83.3T on KRW 104.6T of
+  revenue**, beating
+  consensus. SK Hynix says
+  memory is **sold out
+  through 2029**. Five-year
+  deposit-backed contracts
+  now cover more than half
+  of **2027–28** capacity,
+  and Samsung reportedly
+  expects **2027** to be
+  tighter still. It has
+  signed long-term
+  agreements with **14**
+  major customers, expects
+  about **KRW 100T** in
+  FY2026 shareholder
+  returns, and says
+  customers have requested
+  more than **2×** the HBM
+  it can supply. Reuters
+  says CXMT will start
+  small-scale HBM3E
+  production at about
+  **20% yield**. See
+  [[ai-capex]] and
+  [[micron]] (SK hynix
+  filing, Reuters via
+  @jukan05; ARA daily
+  digest 2026-10-29).
 
 ## Open questions
 

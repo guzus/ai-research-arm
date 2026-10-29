@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; an internal model claims to refute ETH pending an open review, as GPT-6.1 Terra ships at $1/$5.
+description: Frontier lab behind the GPT family; The Information and Bloomberg report a plan to buy Google TPUs, and ChatGPT plans now bundle API credits.
 created_at: 2026-05-30
-timestamp: 2026-10-27T00:00:00Z
+timestamp: 2026-10-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
@@ -3617,6 +3618,49 @@ materially reshape how the lab is positioned heading into its IPO window:
   the new figure (The
   Information; ARA daily
   digest 2026-10-27).
+
+## Reported TPU buy; API credits in ChatGPT (2026-10-29)
+
+- **The Information and
+  Bloomberg report OpenAI
+  plans to buy [[google]]
+  TPUs.** The story landed
+  the same day Oracle said
+  it will host TPUs from
+  **2027**. Bloomberg notes
+  that OpenAI chip lead
+  Richard Ho previously
+  worked on TPUs. Neither
+  company confirmed volumes
+  or timing. Skeptics read
+  it as leverage against
+  [[nvidia]] pricing until a
+  chip count or dollar value
+  appears. [[microsoft]] the
+  same day booked about
+  **$10B** of revenue from
+  OpenAI. See [[ai-capex]]
+  (The Information,
+  Bloomberg via
+  @rohanpaul_ai, Microsoft
+  8-K; ARA daily digest
+  2026-10-29).
+- **ChatGPT subscriptions
+  now bundle API credits.**
+  Pro tiers get **$100–$500**
+  a month. Business plans
+  get **$20 or $100** per
+  paid seat, pooled up to
+  **$500** per workspace
+  (@OpenAIDevs,
+  @testingcatalog; ARA daily
+  digest 2026-10-29).
+- **Dots works over iMessage
+  and RCS** for US Pro
+  users. Product note, not
+  a model ship
+  (@testingcatalog; ARA
+  daily digest 2026-10-29).
 
 ## Open questions
 
