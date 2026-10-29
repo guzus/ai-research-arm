@@ -1,5 +1,5 @@
 {
-  "article_count": 103,
+  "article_count": 104,
   "articles": [
     {
       "claim_count": 18,
@@ -979,6 +979,16 @@
         "twitter-seed"
       ],
       "title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user."
+    },
+    {
+      "claim_count": 17,
+      "created_at": "2026-10-29T05:52:05Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "stem": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive"
     }
   ],
   "by_host": {
@@ -2012,6 +2022,9 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c15",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15"
     ],
+    "blogs.duanemorris.com": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c16"
+    ],
     "blogs.microsoft.com": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c50"
     ],
@@ -2104,7 +2117,11 @@
       "2026-05-27T035557--800-vdc-architecture#c42",
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c32",
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c30",
-      "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c15"
+      "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c15",
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c4"
+    ],
+    "bytebacklaw.com": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c17"
     ],
     "byteiota.com": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c24"
@@ -2314,6 +2331,9 @@
     "claranet.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c31"
     ],
+    "clarkhill.com": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c14"
+    ],
     "claude.com": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c17",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c19",
@@ -2435,6 +2455,9 @@
     ],
     "cnenergynews.cn": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c1"
+    ],
+    "cnil.fr": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c10"
     ],
     "cnn.com": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c14",
@@ -2595,6 +2618,9 @@
     ],
     "cp4space.hatsya.com": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c4"
+    ],
+    "cppa.ca.gov": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c12"
     ],
     "craci.com": [
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c19"
@@ -3357,6 +3383,9 @@
     "fastcompany.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c21"
     ],
+    "fbm.com": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c7"
+    ],
     "fcc.gov": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c3"
     ],
@@ -4024,7 +4053,8 @@
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c12",
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c13",
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c17",
-      "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c20"
+      "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c20",
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c15"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
@@ -4115,6 +4145,9 @@
     ],
     "info.arxiv.org": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c41"
+    ],
+    "infobytes.orrick.com": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c13"
     ],
     "innora.ai": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c22"
@@ -4509,6 +4542,9 @@
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c10",
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c21"
     ],
+    "loc.gov": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c9"
+    ],
     "lovable.dev": [
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c17",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c18"
@@ -4780,6 +4816,9 @@
     ],
     "new.abb.com": [
       "2026-05-27T035557--800-vdc-architecture#c14"
+    ],
+    "newmedialaw.proskauer.com": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c6"
     ],
     "news.aibase.com": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15"
@@ -5212,6 +5251,11 @@
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c07",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c20"
     ],
+    "ploid.com": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c1",
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c2",
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c3"
+    ],
     "pmc.ncbi.nlm.nih.gov": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c14",
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c21",
@@ -5294,6 +5338,9 @@
     ],
     "predictioncenter.org": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c36"
+    ],
+    "privacy.ca.gov": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c11"
     ],
     "privacyworld.blog": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c3"
@@ -5623,7 +5670,8 @@
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c42",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c36",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c6",
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c30"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c30",
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c5"
     ],
     "saemobilus.sae.org": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c20"
@@ -5780,6 +5828,9 @@
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c22",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c22",
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c17"
+    ],
+    "securityaffairs.com": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c8"
     ],
     "securitycompass.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c40"
@@ -5941,6 +5992,9 @@
     "startupfortune.com": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c15",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c15"
+    ],
+    "startuphub.ai": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c8"
     ],
     "static.case.law": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c16",
@@ -6983,7 +7037,8 @@
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c1",
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c14",
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c1",
-      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c2"
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c2",
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c1"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -8523,6 +8578,9 @@
     "https://blog.uniswap.org/unification": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c28"
     ],
+    "https://blogs.duanemorris.com/classactiondefense/2026/07/23/the-class-action-weekly-wire-episode-157-10-million-settlement-proposed-to-resolve-right-of-publicity-class-action": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c16"
+    ],
     "https://blogs.microsoft.com/blog/2024/03/19/mustafa-suleyman-deepmind-and-inflection-co-founder-joins-microsoft-to-lead-copilot": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c50"
     ],
@@ -8806,6 +8864,9 @@
     ],
     "https://cp4space.hatsya.com/2026/05/03/schanuels-conjecture-and-the-semantics-of-fpsan": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c4"
+    ],
+    "https://cppa.ca.gov/announcements/2024/20241114.html": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c12"
     ],
     "https://craci.com/resources/CVE-publication-trends": [
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c19"
@@ -10444,6 +10505,9 @@
     "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-BF16": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6"
     ],
+    "https://huggingface.co/papers/2603.27476": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c15"
+    ],
     "https://huggingface.co/papers/2609.02749": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c6"
     ],
@@ -10528,6 +10592,9 @@
     ],
     "https://info.arxiv.org/help/moderation/index.html": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c41"
+    ],
+    "https://infobytes.orrick.com/2025-05-16/cfpb-withdraws-its-proposed-rule-on-data-brokers": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c13"
     ],
     "https://innora.ai/blog/kelp-dao-layerzero-292m-exploit-forensic-analysis": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c22"
@@ -10919,6 +10986,9 @@
     ],
     "https://new.abb.com/news/detail/124139/abb-invests-in-dg-matrix-to-advance-ai-data-center-power-optimization": [
       "2026-05-27T035557--800-vdc-architecture#c14"
+    ],
+    "https://newmedialaw.proskauer.com/2022/12/08/hiq-and-linkedin-reach-proposed-settlement-in-landmark-scraping-case": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c6"
     ],
     "https://news.aibase.com/news/30090": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15"
@@ -11466,6 +11536,18 @@
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c07",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c20"
     ],
+    "https://ploid.com": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c1"
+    ],
+    "https://ploid.com/data-rights": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c3"
+    ],
+    "https://ploid.com/pricing": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c2"
+    ],
+    "https://ploid.com/privacy": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c3"
+    ],
     "https://pmc.ncbi.nlm.nih.gov/articles/PMC10045630": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c16"
     ],
@@ -11593,6 +11675,12 @@
     ],
     "https://predictioncenter.org/casp14/zscores_final.cgi": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c36"
+    ],
+    "https://privacy.ca.gov/2026/08/calprivacy-announces-second-data-broker-enforcement-action-in-less-than-a-week": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c11"
+    ],
+    "https://privacy.ca.gov/drop/about-drop-and-the-delete-act": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c11"
     ],
     "https://pro.stockalarm.io/blog/openrouter-llm-rankings-investor-analysis": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c21"
@@ -11904,6 +11992,9 @@
     "https://sacra.com/c/character-ai": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c9"
     ],
+    "https://sacra.com/c/clay": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c5"
+    ],
     "https://sacra.com/c/comfyui": [
       "2026-08-04T171206--comfyui-company#c4"
     ],
@@ -11958,6 +12049,9 @@
     ],
     "https://sd11.senate.ca.gov/node/1387": [
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c13"
+    ],
+    "https://securityaffairs.com/183001/security/linkedin-sues-proapis-for-15k-month-linkedin-data-scraping-scheme.html": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c8"
     ],
     "https://sell.g2.com/buyer-intent-data-g2": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c25"
@@ -13409,11 +13503,17 @@
     "https://www.businesswire.com/news/home/20251118349552/en/Barker-Secures-$3.5-Million-to-Scale-Warrantied-AI-Valuations-for-Asset-Backed-Lending": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c15"
     ],
+    "https://www.businesswire.com/news/home/20260209677262/en": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c4"
+    ],
     "https://www.businesswire.com/news/home/20260319353197/en/Ecolab-to-Acquire-CoolIT-Systems-a-Global-Leader-in-Advanced-Liquid-Cooling-for-Next-Gen-AI-Data-Centers": [
       "2026-05-27T035557--800-vdc-architecture#c42"
     ],
     "https://www.businesswire.com/news/home/20260729819576/en/ChipAgents-Expands-Series-A-Funding-to-$134-Million-as-Demand-Grows-for-Agentic-AI-in-Semiconductor-Design": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c32"
+    ],
+    "https://www.bytebacklaw.com/2022/01/how-do-the-cpra-cpa-vcdpa-treat-publicly-available-information": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c17"
     ],
     "https://www.caixinglobal.com/2022-08-11/kuaishou-dives-into-cloud-services-and-chipmaking-101924698.html": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c13"
@@ -13548,6 +13648,9 @@
     ],
     "https://www.claranet.com/uk/blog/autonomous-penetration-testing-agents-aws-security-agent-and-compliance-question": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c31"
+    ],
+    "https://www.clarkhill.com/news-events/news/nj-supreme-court-daniels-law-atlas-data-privacy-decision": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c14"
     ],
     "https://www.cls.cn/detail/2373552": [
       "2026-07-13T181948--cxmt#c5"
@@ -13784,6 +13887,9 @@
     ],
     "https://www.cnenergynews.cn/news/2024/11/12/detail_20241112182125.html": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c1"
+    ],
+    "https://www.cnil.fr/en/data-scraping-kaspr-fined-eu240000": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c10"
     ],
     "https://www.cnn.com/2026/02/24/tech/anthropic-chinese-ai-distillation-intl-hnk": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c14"
@@ -14281,6 +14387,9 @@
     ],
     "https://www.fastcompany.com/91531084/inside-the-xai-exodus": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c21"
+    ],
+    "https://www.fbm.com/post/102kqw7": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c7"
     ],
     "https://www.fcc.gov/document/pacific-networks-corp-and-comnet-usa-llc-order-show-cause": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c3"
@@ -15057,6 +15166,9 @@
     ],
     "https://www.lmsys.org/blog/2024-08-28-style-control": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c10"
+    ],
+    "https://www.loc.gov/item/global-legal-monitor/2024-10-16/netherlands-face-recognition-company-clearview-ai-fined-for-violating-eus-general-data-protection-regulation": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c9"
     ],
     "https://www.lw.com/en/insights/getty-images-v-stability-ai-english-high-court-rejects-secondary-copyright-claim": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c34"
@@ -15908,6 +16020,9 @@
     ],
     "https://www.starcloud.com/starcloud-1": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c14"
+    ],
+    "https://www.startuphub.ai/ai-news/startup-news/2025/the-1-linkedin-scraping-startup-proxycurl-shuts-down": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c8"
     ],
     "https://www.statmuse.com/money/ask/nvda+stock+price+on+august+28+2025": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c6"
@@ -16897,6 +17012,9 @@
     "https://x.com/lukas_m_ziegler/status/1876972833240125819": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c27"
     ],
+    "https://x.com/m9rcn/status/2115499043514445974": [
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c1"
+    ],
     "https://x.com/mantancino_/status/2070728427951575375": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c3",
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c8"
@@ -17047,7 +17165,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3012,
+  "claim_count": 3029,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -88932,9 +89050,410 @@
         "https://github.com/stripe/link-cli/blob/main/README.md"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2026-10-28",
+      "claim": "Ploid's founder tweeted on 2026-10-28 that the company has indexed over 2 billion people and offers access to humans and AI agents for a few cents per profile.",
+      "confidence": "high",
+      "hosts": [
+        "ploid.com",
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/m9rcn/status/2115499043514445974",
+        "https://ploid.com"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2024-12-05",
+      "claim": "CNIL fined Kaspr EUR 240,000 on 2024-12-05 for collecting LinkedIn contact details including those users had restricted.",
+      "confidence": "high",
+      "hosts": [
+        "cnil.fr"
+      ],
+      "id": "c10",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.cnil.fr/en/data-scraping-kaspr-fined-eu240000"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2026-08-13",
+      "claim": "California DROP launched January 2026; brokers had to process requests from August 1, 2026; CalPrivacy fined Cybba $52,400 on 2026-08-13.",
+      "confidence": "high",
+      "hosts": [
+        "privacy.ca.gov"
+      ],
+      "id": "c11",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://privacy.ca.gov/2026/08/calprivacy-announces-second-data-broker-enforcement-action-in-less-than-a-week",
+        "https://privacy.ca.gov/drop/about-drop-and-the-delete-act"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2024-11-14",
+      "claim": "CPPA settled with B2B lead vendors Growbots ($35,400) and UpLead ($34,400) in Nov 2024 for failure to register as data brokers.",
+      "confidence": "high",
+      "hosts": [
+        "cppa.ca.gov"
+      ],
+      "id": "c12",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://cppa.ca.gov/announcements/2024/20241114.html"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2025-05-15",
+      "claim": "CFPB withdrew its proposed FCRA data-broker rule on 2025-05-15.",
+      "confidence": "high",
+      "hosts": [
+        "infobytes.orrick.com"
+      ],
+      "id": "c13",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://infobytes.orrick.com/2025-05-16/cfpb-withdraws-its-proposed-rule-on-data-brokers"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2026-08-26",
+      "claim": "NJ Supreme Court held Daniel's Law has no mens rea requirement on 2026-08-12; Third Circuit constitutional ruling pending.",
+      "confidence": "medium",
+      "hosts": [
+        "clarkhill.com"
+      ],
+      "id": "c14",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.clarkhill.com/news-events/news/nj-supreme-court-daniels-law-atlas-data-privacy-decision"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2026-03-31",
+      "claim": "PeopleSearchBench (LessieAI, 2026-03-31) scored Lessie 65.2, Exa 55.0, Claude Code 46.0, Juicebox 45.8; authors own one evaluated platform.",
+      "confidence": "medium",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c15",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c15",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://huggingface.co/papers/2603.27476"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2026-07-23",
+      "claim": "Spokeo agreed to a $10M right-of-publicity settlement in 2026 after class certification of ~275,000 Californians and Ohioans.",
+      "confidence": "medium",
+      "hosts": [
+        "blogs.duanemorris.com"
+      ],
+      "id": "c16",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c16",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://blogs.duanemorris.com/classactiondefense/2026/07/23/the-class-action-weekly-wire-episode-157-10-million-settlement-proposed-to-resolve-right-of-publicity-class-action"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2022-01-01",
+      "claim": "CCPA 'publicly available' exclusion expanded by CPRA to information the consumer or widely distributed media made public.",
+      "confidence": "medium",
+      "hosts": [
+        "bytebacklaw.com"
+      ],
+      "id": "c17",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.bytebacklaw.com/2022/01/how-do-the-cpra-cpa-vcdpa-treat-publicly-available-information"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2026-10-29",
+      "claim": "Ploid prices credits at $0.20 (Growth, $200/mo, 1,000 credits) and $0.15 (Scale, $600/mo, 4,000 credits); per-action credit costs are not published.",
+      "confidence": "high",
+      "hosts": [
+        "ploid.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://ploid.com/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2026-10-29",
+      "claim": "Ploid's privacy policy does not mention data broker registration, gives no response deadline, and handles deletion by email.",
+      "confidence": "high",
+      "hosts": [
+        "ploid.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://ploid.com/privacy",
+        "https://ploid.com/data-rights"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2025-12-31",
+      "claim": "ZoomInfo FY2025 revenue was $1,249.5M vs $1,214.3M in 2024; net revenue retention 90%.",
+      "confidence": "high",
+      "hosts": [
+        "businesswire.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.businesswire.com/news/home/20260209677262/en"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2026-09-30",
+      "claim": "Clay raised $115M Series D at $7.1B in September 2026; Sacra estimates $150M ARR in May 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "sacra.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://sacra.com/c/clay"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2022-12-08",
+      "claim": "hiQ v. LinkedIn: Ninth Circuit held CFAA did not bar scraping public profiles, but hiQ lost on contract and settled for $500,000 plus a permanent injunction in December 2022.",
+      "confidence": "high",
+      "hosts": [
+        "newmedialaw.proskauer.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://newmedialaw.proskauer.com/2022/12/08/hiq-and-linkedin-reach-proposed-settlement-in-landmark-scraping-case"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2024-01-23",
+      "claim": "Meta v. Bright Data (Jan 2024): logged-off scraping of public data was not 'use' under Meta's terms; narrow ruling.",
+      "confidence": "high",
+      "hosts": [
+        "fbm.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.fbm.com/post/102kqw7"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2025-10-03",
+      "claim": "Proxycurl shut down July 2025 after LinkedIn sued; LinkedIn sued ProAPIs in October 2025.",
+      "confidence": "medium",
+      "hosts": [
+        "securityaffairs.com",
+        "startuphub.ai"
+      ],
+      "id": "c8",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c8",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.startuphub.ai/ai-news/startup-news/2025/the-1-linkedin-scraping-startup-proxycurl-shuts-down",
+        "https://securityaffairs.com/183001/security/linkedin-sues-proapis-for-15k-month-linkedin-data-scraping-scheme.html"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2",
+      "article_created_at": "2026-10-29T05:52:05Z",
+      "article_title": "Ploid's two-billion-person index: what an agent-readable map of the human economy really has to survive",
+      "as_of": "2024-09-03",
+      "claim": "Dutch DPA fined Clearview EUR 30.5M in September 2024 for scraped biometric database incl. Article 14 transparency failures.",
+      "confidence": "high",
+      "hosts": [
+        "loc.gov"
+      ],
+      "id": "c9",
+      "key": "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.loc.gov/item/global-legal-monitor/2024-10-16/netherlands-face-recognition-company-clearview-ai-fined-for-violating-eus-general-data-protection-regulation"
+      ],
+      "type": "regulatory"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1460,
+  "reusable_count": 1468,
   "schema_version": 1
 }
