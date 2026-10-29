@@ -1,5 +1,5 @@
 {
-  "article_count": 102,
+  "article_count": 103,
   "articles": [
     {
       "claim_count": 18,
@@ -969,6 +969,16 @@
         "twitter-seed"
       ],
       "title": "Sixty milliseconds for $49: what a faster Hyperliquid book feed fixes, and what it cannot"
+    },
+    {
+      "claim_count": 15,
+      "created_at": "2026-10-29T05:21:44Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-link-status-21",
+      "stem": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user."
     }
   ],
   "by_host": {
@@ -1194,6 +1204,9 @@
     "amd.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c7"
     ],
+    "americanbanker.com": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c15"
+    ],
     "americas.kioxia.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c13",
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c21",
@@ -1342,7 +1355,8 @@
     ],
     "api.fxtwitter.com": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c16",
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c33"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c33",
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c1"
     ],
     "api.github.com": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c6",
@@ -1769,7 +1783,9 @@
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c16",
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c16",
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c11",
-      "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c12"
+      "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c12",
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c11",
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c12"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -2219,6 +2235,9 @@
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c28"
     ],
+    "chainalysis.com": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c13"
+    ],
     "chaincatcher.com": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c20"
     ],
@@ -2301,7 +2320,8 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c13",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c14",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c36",
-      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9"
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9",
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c10"
     ],
     "clinicalgenome.org": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c40"
@@ -2533,6 +2553,9 @@
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c26",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c22",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c15"
+    ],
+    "consumerfinance.gov": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c5"
     ],
     "consumerreports.org": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c30"
@@ -2833,6 +2856,9 @@
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c17",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4"
     ],
+    "defiprime.com": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c2"
+    ],
     "delcode.delaware.gov": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c30",
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c8"
@@ -2931,6 +2957,9 @@
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c17",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c40"
     ],
+    "digitalcommerce360.com": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c14"
+    ],
     "digitalcommons.chapman.edu": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c11"
     ],
@@ -3022,6 +3051,9 @@
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c2",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c3"
+    ],
+    "docs.stripe.com": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c8"
     ],
     "docs.tori.finance": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c10"
@@ -3725,7 +3757,8 @@
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c8",
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c15",
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c18",
-      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c10"
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c10",
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c9"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -4441,6 +4474,10 @@
     ],
     "lila.ai": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c42"
+    ],
+    "link.com": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c3",
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c4"
     ],
     "link.springer.com": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c20",
@@ -6007,7 +6044,9 @@
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c23"
     ],
     "stripe.com": [
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c34"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c34",
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c6",
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c7"
     ],
     "sullivanlaw.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c5"
@@ -6028,6 +6067,9 @@
     ],
     "support.google.com": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c23"
+    ],
+    "support.link.com": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c2"
     ],
     "support.sonatype.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c35"
@@ -7284,6 +7326,9 @@
     "https://api.fxtwitter.com/Daveeemor": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c16"
     ],
+    "https://api.fxtwitter.com/i/status/2114799287645393098": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c1"
+    ],
     "https://api.github.com/repos/AUTOMATIC1111/stable-diffusion-webui": [
       "2026-08-04T171206--comfyui-company#c10"
     ],
@@ -7879,6 +7924,9 @@
     "https://arxiv.org/abs/2510.09259": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c19"
     ],
+    "https://arxiv.org/abs/2510.25779": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c11"
+    ],
     "https://arxiv.org/abs/2511.03108": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c30"
     ],
@@ -8131,6 +8179,9 @@
     ],
     "https://arxiv.org/html/2606.05400v1": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c27"
+    ],
+    "https://arxiv.org/html/2606.13385": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c12"
     ],
     "https://arxiv.org/html/2606.18119v1": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c45"
@@ -8603,6 +8654,9 @@
     "https://cepr.org/publications/dp20634": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c35"
     ],
+    "https://chainalysis.com/blog/x402-agentic-payments-adoption": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c13"
+    ],
     "https://chainwire.org/2026/01/13/kbw-2026-returns-to-seoul-september-29-october-1-upbit-joins-as-main-sponsor": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c16"
     ],
@@ -8629,6 +8683,9 @@
     ],
     "https://cj.sina.com.cn/articles/view/7746112051/1cdb44a3300101qizg": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c3"
+    ],
+    "https://claude.com/blog/claude-for-chrome": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c10"
     ],
     "https://claude.com/blog/context-management": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c17",
@@ -9019,6 +9076,9 @@
     "https://defillama.com/protocol/uniswap": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c29"
     ],
+    "https://defiprime.com/link-balance-instinct-usdc-agent-spending": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c2"
+    ],
     "https://delcode.delaware.gov/title8/c001/sc05/index.html": [
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c8"
     ],
@@ -9147,6 +9207,9 @@
     "https://digital-strategy.ec.europa.eu/en/policies/market-surveillance-authorities-under-ai-act": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c23"
     ],
+    "https://digitalcommerce360.com/2026/03/06/openai-shifts-checkout-plans-agentic-commerce-strategy": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c14"
+    ],
     "https://digitalcommons.chapman.edu/cgi/viewcontent.cgi?article=1123&context=esi_working_papers": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c11"
     ],
@@ -9232,6 +9295,9 @@
     "https://docs.robinhood.com/chain/stock-tokens": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c17",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21"
+    ],
+    "https://docs.stripe.com/agentic-commerce/concepts/shared-payment-tokens.md?agent-seller=agent": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c8"
     ],
     "https://docs.tori.finance/products/trusd": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c10"
@@ -10117,6 +10183,9 @@
     "https://github.com/sinanuozdemir/decision-index": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8"
     ],
+    "https://github.com/stripe/link-cli/blob/main/README.md": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c9"
+    ],
     "https://github.com/swe-bench/SWE-bench/pull/471": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c13"
     ],
@@ -10651,6 +10720,12 @@
     ],
     "https://libertystreeteconomics.newyorkfed.org": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c31"
+    ],
+    "https://link.com/terms": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c3"
+    ],
+    "https://link.com/terms/prepaid-debit-cardholder-agreement": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c4"
     ],
     "https://link.springer.com/article/10.1007/s00493-003-0019-y": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c20"
@@ -12155,8 +12230,14 @@
     "https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/updating-the-frontier-safety-framework/Frontier%20Safety%20Framework%202.0.pdf": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c7"
     ],
+    "https://stripe.com/blog/giving-agents-the-ability-to-pay": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c7"
+    ],
     "https://stripe.com/newsroom/news/openrouter-and-stripe": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c34"
+    ],
+    "https://stripe.com/newsroom/news/stripe-2025-update": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c6"
     ],
     "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c11",
@@ -12172,6 +12253,9 @@
     ],
     "https://support.google.com/a/answer/81126?hl=en": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c23"
+    ],
+    "https://support.link.com/questions/set-up-a-balance-for-agent-wallet-purchases": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c2"
     ],
     "https://support.sonatype.com/hc/en-us/articles/53165019641363": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c35"
@@ -12882,6 +12966,9 @@
     ],
     "https://www.amd.com/en/blogs/2026/rocm-ai-the-ai-native-developer-experience-for-building.html": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c7"
+    ],
+    "https://www.americanbanker.com/payments/news/mastercard-touts-agentic-ai-tools-during-earnings-call": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c15"
     ],
     "https://www.amtonline.org/article/the-hype-cycle-for-robotics": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c23"
@@ -13821,6 +13908,12 @@
     ],
     "https://www.congress.gov/crs-product/LSB10895": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c3"
+    ],
+    "https://www.consumerfinance.gov/rules-policy/regulations/1005/2": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c5"
+    ],
+    "https://www.consumerfinance.gov/rules-policy/regulations/1005/interp-2": [
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c5"
     ],
     "https://www.consumerreports.org/money/questionable-business-practices/instacart-ai-pricing-experiment-inflating-grocery-bills-a1142182490": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c30"
@@ -16954,7 +17047,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 2997,
+  "claim_count": 3012,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -88489,9 +88582,359 @@
       "source_tiers": [],
       "source_urls": [],
       "type": "derived"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-10-26",
+      "claim": "On 2026-10-26 the Stripe-built @link account announced Link balance: users fund an agent and set amount and spending limits; rolling out to Instinct users in eligible US regions.",
+      "confidence": "high",
+      "hosts": [
+        "api.fxtwitter.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api.fxtwitter.com/i/status/2114799287645393098"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2025-08-25",
+      "claim": "Claude for Chrome attack success rate fell from 23.6% to 11.2% with mitigations on 123 test cases.",
+      "confidence": "high",
+      "hosts": [
+        "claude.com"
+      ],
+      "id": "c10",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://claude.com/blog/claude-for-chrome"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2025-10-27",
+      "claim": "Magentic Marketplace found first-proposal bias creating 10-30x speed advantages and payment redirection under prompt injection for weaker models.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c11",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2510.25779"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-07-27",
+      "claim": "StakeBench: indirect injection ASR 41.67-68.59% and direct 76.85-92.28% across four shopping-agent configurations.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c12",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c12",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2606.13385"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-06-03",
+      "claim": "x402: Chainalysis reports over 100M cumulative transactions on Base through Q1 2026 but says mass adoption remains distant.",
+      "confidence": "medium",
+      "hosts": [
+        "chainalysis.com"
+      ],
+      "id": "c13",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c13",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://chainalysis.com/blog/x402-agentic-payments-adoption"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-03-06",
+      "claim": "OpenAI moved Instant Checkout toward Apps in March 2026.",
+      "confidence": "medium",
+      "hosts": [
+        "digitalcommerce360.com"
+      ],
+      "id": "c14",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c14",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://digitalcommerce360.com/2026/03/06/openai-shifts-checkout-plans-agentic-commerce-strategy"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-07-30",
+      "claim": "Mastercard Q2 2026: 'cards will prevail in an agentic world'; Agent Pay for Machines 30+ launch users; no agentic transaction count.",
+      "confidence": "medium",
+      "hosts": [
+        "americanbanker.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c15",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.americanbanker.com/payments/news/mastercard-touts-agentic-ai-tools-during-earnings-call"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-10-29",
+      "claim": "The Link balance limit is per purchase, not cumulative; purchases above it need approval; $0 disables unattended buying; each funding link allows $150 or less in USD.",
+      "confidence": "medium",
+      "hosts": [
+        "defiprime.com",
+        "support.link.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://defiprime.com/link-balance-instinct-usdc-agent-spending",
+        "https://support.link.com/questions/set-up-a-balance-for-agent-wallet-purchases"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-10-29",
+      "claim": "Link terms: user is responsible for all agent-initiated transactions as if taken themselves, including those caused by bugs, hallucinations or misinterpretations, except Stripe technical failure.",
+      "confidence": "high",
+      "hosts": [
+        "link.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://link.com/terms"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-10-29",
+      "claim": "Prepaid debit card agreement: Lead Bank issuer, funds not FDIC insured, stablecoin sold at each purchase, $50/$500 loss tiers, and software agents treated as authorized by the user.",
+      "confidence": "high",
+      "hosts": [
+        "link.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://link.com/terms/prepaid-debit-cardholder-agreement"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-10-29",
+      "claim": "Reg E 1005.2(m) defines unauthorized by absence of actual authority; Comment 2(m)-2 keeps the consumer liable for transfers by a person given authority until the institution is notified.",
+      "confidence": "medium",
+      "hosts": [
+        "consumerfinance.gov"
+      ],
+      "id": "c5",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.consumerfinance.gov/rules-policy/regulations/1005/2",
+        "https://www.consumerfinance.gov/rules-policy/regulations/1005/interp-2"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-02-24",
+      "claim": "Stripe 2025 letter: $1.9T total volume, up 34%; $159B tender valuation; Link over 200 million users.",
+      "confidence": "high",
+      "hosts": [
+        "stripe.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://stripe.com/newsroom/news/stripe-2025-update"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-04-29",
+      "claim": "Stripe launched the Link agent wallet on 2026-04-29 with spend requests: each requires consumer approval before a one-time card or Shared Payment Token is shared.",
+      "confidence": "high",
+      "hosts": [
+        "stripe.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://stripe.com/blog/giving-agents-the-ability-to-pay"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-10-29",
+      "claim": "Shared Payment Tokens carry usage_limits (currency, max_amount, expires_at), are bound to a seller profile, and can be revoked; scoping is server-side policy.",
+      "confidence": "high",
+      "hosts": [
+        "docs.stripe.com"
+      ],
+      "id": "c8",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c8",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.stripe.com/agentic-commerce/concepts/shared-payment-tokens.md?agent-seller=agent"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21",
+      "article_created_at": "2026-10-29T05:21:44Z",
+      "article_title": "Link balance hands an AI agent a funded wallet. The contract keeps every mistake on the user.",
+      "as_of": "2026-10-29",
+      "claim": "link-cli README limits: $500 per request, $500 daily, $20,000 per 30 days, 30-minute approval window.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/stripe/link-cli/blob/main/README.md"
+      ],
+      "type": "metric"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1455,
+  "reusable_count": 1460,
   "schema_version": 1
 }
