@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "Revenue under commitment was 98% for both the three and six months to 30 June 2026, which implies roughly 2% on-demand.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c2", "claim_text": "Listed compute futures with disclosed volume: 0 (as of 30 Oct 2026); no volume or open interest is disclosed for any compute contract I could find.", "contradicting_url": "https://thenextweb.com/news/kalshi-compute-forward-curve-gpu-ai", "contradicting_quote": "Allium reported Kalshi's GPU rental markets generated $4.4 million in notional volume through July 27; Kalshi's most popular August market had just over $100,000.", "severity": "medium", "no_contradiction_found": false},
+    {"claim_id": "c3", "claim_text": "On 29 October 2026, 13 rentable H100 SXM offers were asked at $1.93 to $5.56 per GPU-hour. Same-day asks for one GPU differ by about 3x on one venue.", "contradicting_url": "https://www.cloudzero.com/blog/h100-gpu-cost/", "contradicting_quote": "Vast.ai verified hosts at $1.49 to $2.27 per GPU-hour on-demand (Aug 2026 table)", "severity": "low", "no_contradiction_found": false}
+  ]
+}

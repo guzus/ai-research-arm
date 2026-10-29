@@ -3446,5 +3446,19 @@
         "source_sha256": "700787c5282afab1ec1d391e56850ac277b43cd9e703c1e929f294b7b0179ff4"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-sui414-status",
+    "file": "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-10-29T23:21:59Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/sui414/status/2115856908900798954 (liquid market for compute)",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
