@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-26 13:00 UTC",
-    "headline": "LECUN BREAKS LAB-PRINCIPAL SILENCE ON POPE'S AI ENCYCLICAL \u2014 RTs 'CLOSED-SOURCE CITADELS' CRITIQUE OF ANTHROPIC/OPENAI",
-    "source": "@ylecun",
-    "source_file": "research/summaries/2026-05-26-twitter-13h-headlines.json",
-    "url": "https://x.com/ylecun/status/2059252114912182463"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-26 13:00 UTC",
-    "headline": "THE INFORMATION: SPACEX, OPENAI, ANTHROPIC TRILLION-DOLLAR IPOs COULD ALL HIT MARKETS WITHIN MONTHS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-26-twitter-13h-headlines.json",
-    "url": "https://x.com/theinformation/status/2059243144940982530"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-26 13:00 UTC",
-    "headline": "EX-PALANTIR TRIO LAUNCH PERCEPTIC OUT OF STEALTH WITH $12M SEED FOR END-TO-END AI DRUG DEVELOPMENT PLATFORM",
-    "source": "@FortuneMagazine",
-    "source_file": "research/summaries/2026-05-26-twitter-13h-headlines.json",
-    "url": "https://x.com/FortuneMagazine/status/2059255967909208224"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-26 16:00 UTC",
-    "headline": "HARVARD MATHEMATICIAN: STILL-UNRELEASED ANTHROPIC MYTHOS SOLVED ERD\u0150S UNIT-DISTANCE PROBLEM #90",
-    "source": "@__alpoge__",
-    "source_file": "research/summaries/2026-05-26-twitter-16h-headlines.json",
-    "url": "https://x.com/__alpoge__/status/2059298565093196012"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-26 16:00 UTC",
-    "headline": "NEW OSWORLD COMPUTER-USE SOTA \u2014 CLAUDE OPUS 4.7 HITS 83.6%, SONNET 4.6 81.5% VS 72.4% HUMAN BASELINE",
-    "source": "@nealchopra",
-    "source_file": "research/summaries/2026-05-26-twitter-16h-headlines.json",
-    "url": "https://x.com/nealchopra/status/2059303604373295301"
-  },
-  {
-    "backfilled": true,
     "category": "research",
     "delivered_at": "2026-05-26 16:00 UTC",
     "headline": "ANTHROPIC PROJECT GLASSWING ONE-MONTH UPDATE LANDS IN MAINSTREAM SECURITY PRESS: 23,000 VULNS ACROSS 1,000 OSS PROJECTS",
@@ -23352,5 +23307,40 @@
     "headline": "NVIDIA RELEASES OPEN-WEIGHT NEMOTRON 3.5 TRANSCRIBE: 30B MOE, ~4B ACTIVE, 40 LANGUAGES",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2115697759281975475"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-10-29 18:24:46 UTC",
+    "headline": "MISTRAL RELEASES OPEN WEIGHTS FOR MISTRAL LARGE 4 \u2014 1T-PARAMETER MOE, 52B ACTIVE, #1 OPEN MODEL ON FRONTIERCODE",
+    "source": "@MistralAI",
+    "url": "https://x.com/MistralAI/status/2115811242556137820"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-29 18:24:46 UTC",
+    "headline": "OPENAI KEEPS DOUBLED USAGE LIMITS FOR PRO $100/$200/$500 AND BUSINESS PREMIUM, CANCELS PLANNED PRO $200 CUT",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2115854368566321594"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-29 18:24:46 UTC",
+    "headline": "COHERE CLOSES FIRST TRANCHE OF SERIES E TARGETING UP TO CAD $7B AT CAD $35.7B VALUATION",
+    "source": "@cohere",
+    "url": "https://x.com/cohere/status/2115833490126336507"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-29 18:24:46 UTC",
+    "headline": "BANKS SHELVE $5-7B JUNK-BOND SALE FOR ANTHROPIC-LEASED TEXAS DATA CENTER AFTER GRID-CONNECTION FREEZE \u2014 BLOOMBERG",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2115853442350772404"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-29 18:24:46 UTC",
+    "headline": "OPENAI REWRITES MODEL SPEC AROUND FIVE CORE VALUES, RENAMES 'THE ASSISTANT' TO 'GPT'",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2115858614934175901"
   }
 ]
