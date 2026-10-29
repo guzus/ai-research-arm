@@ -6,8 +6,9 @@ aliases: ["Claude Opus 5.5", "Opus 5.5", "claude-opus-5-5", "claude-opus-5.5"]
 tags: [model-release, anthropic, claude, frontier-model, pricing]
 description: Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Opus 5.5 fast mode is generally available at $8/$40, up to 2.5× faster.
 created_at: 2026-09-23
-timestamp: 2026-10-24T00:00:00Z
+timestamp: 2026-10-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
@@ -169,3 +170,20 @@ per task. Paper-reported, not
 an Anthropic first-party
 scorecard. See [[anthropic]]
 (ARA daily digest 2026-10-24).
+
+## Carbon takes the AA v5 lead (2026-10-29)
+
+[[gemini-4-carbon]] scored
+**59** on Artificial Analysis
+Intelligence Index **v5**,
+overtaking this model and
+[[gpt-6|GPT-6 Astra]] hours
+after v5 launched with Opus
+narrowly ahead. Arena still
+ranks Opus 5.5 ahead on Agent
+and WebDev. Carbon remains
+Fairwind-gated; this SKU is
+generally available. See
+[[google]] (Artificial
+Analysis, Google DeepMind;
+ARA daily digest 2026-10-29).

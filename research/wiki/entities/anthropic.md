@@ -4,10 +4,13 @@ title: Anthropic
 type: entity
 aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows", "sandbox-runtime", ANT, "Anthropic S-1", "Mithril Medicine", "Cruz v. Anthropic"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; an internal Claude research model is claimed to have found a 3-SAT algorithm that would refute ETH, and Anthropic disclosed a July purchase of one-employee biotech Mithril Medicine.
+description: AI safety lab behind Claude; confirmed a third-party-software breach into sales, HR and IT, and expanded GSA OneGov to 40% off Claude for US agencies.
 created_at: 2026-05-24
-timestamp: 2026-10-28T00:00:00Z
+timestamp: 2026-10-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
+  - {title: "ARA model ticket — Anthropic GSA OneGov", path: research/models/tickets/anthropic-gsa-onegov-2026-10.md}
+  - {title: "ARA model ticket — claimed Cathedral Slack breach", path: research/models/tickets/anthropic-slack-breach-2026-10.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA model ticket — Anthropic IPO", path: research/models/tickets/anthropic-ipo-2026-06.md}
@@ -4117,4 +4120,84 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   first-party metric
   (@SemiAnalysis_; ARA
   daily digest 2026-10-28).
+
+## Third-party-software breach; OneGov 40% off (2026-10-29)
+
+- **AI agents reached
+  Anthropic through
+  third-party software.** A
+  bug-bounty group called
+  Cathedral says agents got
+  into internal systems.
+  Anthropic confirms access
+  to **sales, HR and IT**,
+  but disputes how deep it
+  went. @willdepue's claim
+  of full Slack-workspace
+  administrator access is
+  tracked as rumor on
+  ticket
+  `anthropic-slack-breach-2026-10`
+  and is **not** adopted
+  here. See
+  [[agentic-ai-security]]
+  (The Decoder; ARA daily
+  digest 2026-10-29).
+- **GSA OneGov now covers
+  federal, state, local,
+  tribal and territorial
+  agencies at 40% off**
+  Claude Enterprise, Claude
+  for Government and the
+  API, replacing the **$1**
+  offer that expires
+  **October 31**. About
+  **500** US government
+  organizations use Claude.
+  First-party from
+  @AnthropicAI on
+  2026-10-27. Term length
+  and the base the 40% is
+  measured from are not in
+  the captured post. See
+  [[federal-ai-policy]]
+  (Anthropic, HN; ARA model
+  ticket
+  anthropic-gsa-onegov-2026-10;
+  ARA daily digest
+  2026-10-29).
+- **Aswath Damodaran values
+  the IPO at $1.475T** and
+  calls **>$600B** of
+  compute commitments the
+  main risk. The S-1
+  reportedly lets
+  shareholders strip the
+  Long-Term Benefit Trust
+  of its board power, and
+  per the WSJ it sizes
+  Anthropic's market at
+  more than **$40T** a
+  year. Anthropic also
+  launched spend-visibility
+  tools for enterprises
+  (WSJ, The Information,
+  TechCrunch; ARA daily
+  digest 2026-10-29).
+- **HN on Claude drug-
+  development (315 / 321).**
+  Anthropic reports CAR-T
+  designs about **70%**
+  shorter and an **89%**
+  cut in Enveda's review
+  time. Former drug
+  developers reply that
+  clinical trials, not
+  candidate design, are the
+  bottleneck. The Mithril
+  purchase and six partners
+  are already on
+  [[claude-science]]
+  (Anthropic, HN; ARA daily
+  digest 2026-10-29).
 

@@ -114,6 +114,7 @@
         "gemini-3-6-flash",
         "gemini-3-8-flash",
         "gemini-4-argon",
+        "gemini-4-carbon",
         "google",
         "gpt-5-6",
         "gpt-6",
@@ -180,11 +181,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Meta raised its target to $97.5B with Nvidia interest of $3B, while a $63B Broadcom-XPU vehicle for Anthropic is still the off-balance-sheet print.",
-      "description": "The historically large compute buildout; Meta raised its target to $97.5B with Nvidia interest of $3B, while a $63B Broadcom-XPU vehicle for Anthropic is still the off-balance-sheet print.",
+      "summary": "The historically large compute buildout; Alphabet Q3 FCF went about −$9B on $51.4B of capex as SK hynix said memory is sold out through 2029.",
+      "description": "The historically large compute buildout; Alphabet Q3 FCF went about −$9B on $51.4B of capex as SK hynix said memory is sold out through 2029.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-28",
-      "timestamp": "2026-10-28T00:00:00Z",
+      "updated_at": "2026-10-29",
+      "timestamp": "2026-10-29T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -261,6 +262,7 @@
         "fireworks-ai",
         "gemini-3-5-flash",
         "gemini-3-5-pro",
+        "gemini-4-carbon",
         "gemma-4",
         "google",
         "hugging-face",
@@ -583,11 +585,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; an internal Claude research model is claimed to have found a 3-SAT algorithm that would refute ETH, and Anthropic disclosed a July purchase of one-employee biotech Mithril Medicine.",
-      "description": "AI safety lab behind Claude; an internal Claude research model is claimed to have found a 3-SAT algorithm that would refute ETH, and Anthropic disclosed a July purchase of one-employee biotech Mithril Medicine.",
+      "summary": "AI safety lab behind Claude; confirmed a third-party-software breach into sales, HR and IT, and expanded GSA OneGov to 40% off Claude for US agencies.",
+      "description": "AI safety lab behind Claude; confirmed a third-party-software breach into sales, HR and IT, and expanded GSA OneGov to 40% off Claude for US agencies.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-28",
-      "timestamp": "2026-10-28T00:00:00Z",
+      "updated_at": "2026-10-29",
+      "timestamp": "2026-10-29T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -1444,8 +1446,8 @@
       "summary": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Opus 5.5 fast mode is generally available at $8/$40, up to 2.5× faster.",
       "description": "Anthropic's 2026-09-23 frontier flagship at $4/$20 per MTok; Opus 5.5 fast mode is generally available at $8/$40, up to 2.5× faster.",
       "created_at": "2026-09-23",
-      "updated_at": "2026-10-24",
-      "timestamp": "2026-10-24T00:00:00Z",
+      "updated_at": "2026-10-29",
+      "timestamp": "2026-10-29T00:00:00Z",
       "file": "entities/claude-opus-5-5.md",
       "aliases": [
         "Claude Opus 5.5",
@@ -1463,6 +1465,7 @@
         "claude-opus-5",
         "claude-sonnet-5-5",
         "gemini-4-argon",
+        "gemini-4-carbon",
         "google",
         "gpt-6",
         "meta",
@@ -1481,6 +1484,7 @@
         "deepseek",
         "deepseek-v4-1-flash",
         "gemini-4-argon",
+        "gemini-4-carbon",
         "google",
         "gpt-6",
         "meta",
@@ -2872,6 +2876,7 @@
         "gemini-3-7-flash",
         "gemini-3-8-live",
         "gemini-4-argon",
+        "gemini-4-carbon",
         "google",
         "meta",
         "muse-code",
@@ -2926,18 +2931,17 @@
         "cyber-defense",
         "pricing"
       ],
-      "summary": "Google's Gemini 4 flagship; Perplexity rolled Argon out to all users, and four Argon agents beat Minecraft in 27h14m.",
-      "description": "Google's Gemini 4 flagship; Perplexity rolled Argon out to all users, and four Argon agents beat Minecraft in 27h14m.",
+      "summary": "Google's first Gemini 4 flagship; Carbon later took the AA v5 lead, while Argon remains the GA SKU Perplexity rolled out.",
+      "description": "Google's first Gemini 4 flagship; Carbon later took the AA v5 lead, while Argon remains the GA SKU Perplexity rolled out.",
       "created_at": "2026-10-01",
-      "updated_at": "2026-10-25",
-      "timestamp": "2026-10-25T00:00:00Z",
+      "updated_at": "2026-10-29",
+      "timestamp": "2026-10-29T00:00:00Z",
       "file": "entities/gemini-4-argon.md",
       "aliases": [
         "Gemini 4 Argon",
         "Gemini 4",
         "gemini-4",
         "4 Argon",
-        "Gemini 4 Carbon",
         "Barium-B",
         "Argon for Robotics"
       ],
@@ -2952,6 +2956,7 @@
         "gemini-3-6-flash",
         "gemini-3-8-flash",
         "gemini-3-8-live",
+        "gemini-4-carbon",
         "google",
         "gpt-6",
         "harvey",
@@ -2965,8 +2970,48 @@
         "dream-labs",
         "gemini-3-6-flash",
         "gemini-3-8-flash",
+        "gemini-4-carbon",
         "google",
         "perplexity"
+      ]
+    },
+    {
+      "slug": "gemini-4-carbon",
+      "title": "Gemini 4 Carbon",
+      "type": "entity",
+      "tags": [
+        "model-release",
+        "google-deepmind",
+        "frontier-model",
+        "fairwind",
+        "cyber-defense",
+        "pricing"
+      ],
+      "summary": "Google's Gemini 4 frontier SKU after Argon; Fairwind-gated, AA Intelligence Index v5 59 and",
+      "description": "Google's Gemini 4 frontier SKU after Argon; Fairwind-gated, AA Intelligence Index v5 59 and",
+      "created_at": "2026-10-29",
+      "updated_at": "2026-10-29",
+      "timestamp": "2026-10-29T00:00:00Z",
+      "file": "entities/gemini-4-carbon.md",
+      "aliases": [
+        "Gemini 4 Carbon",
+        "4 Carbon",
+        "gemini-4-carbon"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "ai-capex",
+        "claude-opus-5-5",
+        "gemini-3-8-flash",
+        "gemini-4-argon",
+        "google",
+        "gpt-6",
+        "open-weights"
+      ],
+      "inbound": [
+        "claude-opus-5-5",
+        "gemini-4-argon",
+        "google"
       ]
     },
     {
@@ -3059,11 +3104,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; DeepMind unveiled Genie 4, a real-time world model with native audio and up to two minutes of scene consistency, and partnered on the UK's new AI Biosecurity Lab.",
-      "description": "Hyperscaler behind Gemini; DeepMind unveiled Genie 4, a real-time world model with native audio and up to two minutes of scene consistency, and partnered on the UK's new AI Biosecurity Lab.",
+      "summary": "Hyperscaler behind Gemini; Alphabet Q3 Cloud more than doubled to $30.7B, and Gemini 4 Carbon took the AA v5 lead behind a Fairwind gate.",
+      "description": "Hyperscaler behind Gemini; Alphabet Q3 Cloud more than doubled to $30.7B, and Gemini 4 Carbon took the AA v5 lead behind a Fairwind gate.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-28",
-      "timestamp": "2026-10-28T00:00:00Z",
+      "updated_at": "2026-10-29",
+      "timestamp": "2026-10-29T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -3128,6 +3173,7 @@
         "gemini-3-8-flash",
         "gemini-3-8-live",
         "gemini-4-argon",
+        "gemini-4-carbon",
         "gemini-spark",
         "gemma-4",
         "gpt-6",
@@ -3165,6 +3211,7 @@
         "gemini-3-8-flash",
         "gemini-3-8-live",
         "gemini-4-argon",
+        "gemini-4-carbon",
         "gemma-4",
         "matrix-multiplication-exponent",
         "moonshot-kimi-k3",
@@ -3320,6 +3367,7 @@
         "deepseek",
         "deepseek-v4-1-flash",
         "gemini-4-argon",
+        "gemini-4-carbon",
         "google",
         "mistral",
         "mistral-large-4",
@@ -3890,11 +3938,11 @@
         "foundation-models",
         "custom-silicon"
       ],
-      "summary": "Hyperscaler that ended its Nscale Essex data-center deal; Reuters puts the site at 23,000 Nvidia chips delayed until the 2030s.",
-      "description": "Hyperscaler that ended its Nscale Essex data-center deal; Reuters puts the site at 23,000 Nvidia chips delayed until the 2030s.",
+      "summary": "Hyperscaler that disclosed Azure revenue for the first time at $33.2B (+48%) in FY27Q1, and booked about $10B from OpenAI.",
+      "description": "Hyperscaler that disclosed Azure revenue for the first time at $33.2B (+48%) in FY27Q1, and booked about $10B from OpenAI.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-10-20",
-      "timestamp": "2026-10-20T00:00:00Z",
+      "updated_at": "2026-10-29",
+      "timestamp": "2026-10-29T00:00:00Z",
       "file": "entities/microsoft.md",
       "aliases": [
         "Microsoft",
@@ -5275,6 +5323,7 @@
         "dessa",
         "eu-ai-regulation",
         "federal-ai-policy",
+        "gemini-4-carbon",
         "gemma-4",
         "google",
         "harvey",
@@ -5340,11 +5389,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; an internal model claims to refute ETH pending an open review, as GPT-6.1 Terra ships at $1/$5.",
-      "description": "Frontier lab behind the GPT family; an internal model claims to refute ETH pending an open review, as GPT-6.1 Terra ships at $1/$5.",
+      "summary": "Frontier lab behind the GPT family; The Information and Bloomberg report a plan to buy Google TPUs, and ChatGPT plans now bundle API credits.",
+      "description": "Frontier lab behind the GPT family; The Information and Bloomberg report a plan to buy Google TPUs, and ChatGPT plans now bundle API credits.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-27",
-      "timestamp": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-10-29",
+      "timestamp": "2026-10-29T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -6128,11 +6177,11 @@
         "ipo",
         "ai-infrastructure"
       ],
-      "summary": "South Korean HBM memory supplier; shares fell about 10% in a 2026-10-13 KOSPI selloff that traders blamed on CXMT and Broadcom comments.",
-      "description": "South Korean HBM memory supplier; shares fell about 10% in a 2026-10-13 KOSPI selloff that traders blamed on CXMT and Broadcom comments.",
+      "summary": "South Korean HBM memory supplier; says memory is sold out through 2029 after Q3 operating profit of KRW 83.3T on KRW 104.6T of revenue.",
+      "description": "South Korean HBM memory supplier; says memory is sold out through 2029 after Q3 operating profit of KRW 83.3T on KRW 104.6T of revenue.",
       "created_at": "2026-07-12",
-      "updated_at": "2026-10-14",
-      "timestamp": "2026-10-14T00:00:00Z",
+      "updated_at": "2026-10-29",
+      "timestamp": "2026-10-29T00:00:00Z",
       "file": "entities/sk-hynix.md",
       "aliases": [
         "SK hynix",
@@ -6978,6 +7027,7 @@
     "3.8 live extended thinking": "gemini-3-8-live",
     "30-day pre-release access": "federal-ai-policy",
     "4 argon": "gemini-4-argon",
+    "4 carbon": "gemini-4-carbon",
     "@adcock_brett": "figure-ai",
     "@aleph__alpha": "aleph-alpha",
     "@anthropicai": "anthropic",
@@ -7260,7 +7310,7 @@
     "gemini 3.8 tts": "google",
     "gemini 4": "gemini-4-argon",
     "gemini 4 argon": "gemini-4-argon",
-    "gemini 4 carbon": "gemini-4-argon",
+    "gemini 4 carbon": "gemini-4-carbon",
     "gemini enterprise": "google",
     "gemini flash cyber": "gemini-3-6-flash",
     "gemini notebook": "google",
@@ -7279,6 +7329,7 @@
     "gemini-3.1-flash-lite-image": "nano-banana-2-lite",
     "gemini-4": "gemini-4-argon",
     "gemini-4-argon": "gemini-4-argon",
+    "gemini-4-carbon": "gemini-4-carbon",
     "gemini-nano-banana-2.1": "google",
     "gemini-spark": "gemini-spark",
     "gemma": "gemma-4",
@@ -7767,6 +7818,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-10-29",
+      "op": "ingest",
+      "summary": "Ingested the 2026-10-29 digest plus tickets updated 2026-10-28 (anthropic-slack-breach, anthropic-gsa-onegov, google-genie-4 leftover). Created 1 (gemini-4-carbon — Fairwind-gated Gemini 4 SKU, AA Intelligence Index v5 59 / Text Arena 1528, $2/$10 matching Argon). Updated 8 (gemini-4-argon — Carbon alias moved to its own page; google — Q3 Cloud $30.7B (+103%) + Carbon + Oracle TPU hosting 2027; openai — reported TPU buy + ChatGPT API credits; microsoft — first Azure print $33.2B (+48%) + ~$10B OpenAI; anthropic — Cathedral/third-party-software breach into sales/HR/IT + GSA OneGov 40% off + Damodaran $1.475T; sk-hynix — sold out through 2029, Q3 OP KRW 83.3T; ai-capex — Alphabet FCF −$9B / $51.4B capex + memory sold-out + TPU second source; claude-opus-5-5 — lost AA v5 lead to Carbon). Skipped for budget: nvidia/Hugging Face DOJ questions, xAI Southaven buyouts, liquid-ai LFM3, Nemotron 3.5 Transcribe, Vertiv as own page, EmbeddingGemma 2 leftover, federal-ai-policy / hugging-face / nvidia as own increments, arXiv highlights."
+    },
+    {
       "date": "2026-10-28",
       "op": "ingest",
       "summary": "Ingested the 2026-10-28 digest plus tickets updated 2026-10-27 (openai-eth-disproof, meta-class-c-equity-raise, google-deepmind-uk-ai-biosecurity-lab, cohere-qwen-sandbox-upload, anthropic-ipo leftover). Created 0, updated 8 (anthropic — second ETH claim + Mithril Medicine + Cruz v. Anthropic + S-1 no-ads restatement; verification-bottleneck — Anthropic ETH + Axiom CFSG ~40M Lean + Yang–Mills holdback; claude-science — Mithril purchase / six partners / preclinical mouse; meta — $97.5B raise + Nvidia $3B interest + Vera Rubin; nvidia — same $3B + Rubin offtake; google — Genie 4 + UK AI Biosecurity Lab; agentic-ai-security — Palisade Qwen corroboration + Cloudflare KV leak; ai-capex — Meta $97.5B + Nvidia $3B + Broadcom vehicle restated). Skipped for budget: openai / gpt-6 as own ETH increments, liquid-ai LFM3, MiniMax M3.1 Flash GGUF leftover, Physical Intelligence $20B talks, alibaba / qwen-3-8-max / broadcom / amd as own pages, federal-ai-policy leftover, arXiv RSI Arena / RL scaling / AuthorizationBench as own pages."
@@ -7860,11 +7916,6 @@
       "date": "2026-10-08",
       "op": "ingest",
       "summary": "Ingested the 2026-10-08 digest plus tickets updated 2026-10-07 (haiku rumor ticket still stale; math-dump and Grok-bot-routing tickets). Created 2 (claude-haiku-5-5 — $0.10/$0.50 to 100K then $0.50/$2.50, first Haiku with effort controls; nous-research — $90M Series B at $1.5B, Hermes Agent). Updated 9 (anthropic — Haiku ship + Sonnet cache-read $0.10 + Platform credits; gpt-6 — Intelligent UI in paid ChatGPT, Work/Codex stay put; openai — same UI + Common Sense Media ChatGPT Teens + $50B Nexus talks; google — public SynthID Detector + $300M Biohub; verification-bottleneck — Lean≠English NS paper 2610.08144; ai-capex — Samsung KRW 107.4T prelim + Nexus + memory squeeze; claude-sonnet-5-5 + claude-opus-5-5 — Haiku family pointers; open-weights — Nous raise). Skipped for budget: Liquid d1, Perplexity embedders, Nemotron IOI, Microsoft RTX Spark, xAI Grok multi-backend as own increment, Healthleap, Meta bait-and-switch ads."
-    },
-    {
-      "date": "2026-10-07",
-      "op": "ingest",
-      "summary": "Ingested the 2026-10-07 digest plus tickets updated 2026-10-06 (mistral-large-4). Created 1 (mistral-large-4 — 1T/49B-active multimodal MoE, API live, weights promised end of October). Updated 10 (mistral — Large 4 launch; openai — 722 math manuscripts + Decisions API + Wikimedia first-party + Astra name suit; verification-bottleneck — same dump unvetted + erdosproblems.com freeze; anthropic — Cyber Verification for Mythos 5.1/Opus 5.5/Sonnet 5.5 + Claude in Docs + Lambda $35B commitment; agentic-ai-security — Wikimedia confirmation + gated vs open cyber; google — Nano Banana 2.1 + EmbeddingGemma 2; open-weights — Large 4 preview; claude-fable-5 — Mythos 5.1 access expansion; gemma-4 — EmbeddingGemma 2; nano-banana-2-lite — 2.1 sibling SKU). Skipped for budget: Lambda as its own page, ai-capex increment, jev/Decisions bake-off, gpt-6 Luna, South Korea $3.49B equity, OpenTPU, Amazon looped diffusion, AutomationBench Verified, arXiv highlights."
     }
   ]
 }

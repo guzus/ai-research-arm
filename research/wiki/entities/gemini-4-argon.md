@@ -2,12 +2,13 @@
 slug: gemini-4-argon
 title: Gemini 4 Argon
 type: entity
-aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon", "Gemini 4 Carbon", "Barium-B", "Argon for Robotics"]
+aliases: ["Gemini 4 Argon", "Gemini 4", "gemini-4", "4 Argon", "Barium-B", "Argon for Robotics"]
 tags: [model-release, google-deepmind, frontier-model, fairwind, cyber-defense, pricing]
-description: Google's Gemini 4 flagship; Perplexity rolled Argon out to all users, and four Argon agents beat Minecraft in 27h14m.
+description: Google's first Gemini 4 flagship; Carbon later took the AA v5 lead, while Argon remains the GA SKU Perplexity rolled out.
 created_at: 2026-10-01
-timestamp: 2026-10-25T00:00:00Z
+timestamp: 2026-10-29T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-16", path: research/digest/2026-10-16-digest.md}
@@ -304,3 +305,27 @@ the cost-per-attempt one
 (Dream Labs, Hacker News;
 ARA daily digest
 2026-10-25).
+
+## Carbon ships as a separate SKU (2026-10-29)
+
+The 2026-10-10 Carbon leak on
+this page is now a named
+artifact: [[gemini-4-carbon]]
+launched about **15 days**
+after Argon, still Fairwind-
+gated, at the same **$2 / $10**
+intro price. Artificial
+Analysis Intelligence Index
+**v5** scores Carbon **59**,
+overtaking this model,
+[[claude-opus-5-5|Opus 5.5]]
+and [[gpt-6|GPT-6 Astra]].
+HN commenters treat Barium,
+Argon and Carbon as
+checkpoints of one run; that
+is commentary, not a Google
+statement. This page keeps
+Argon. See [[google]]
+(Google DeepMind, Artificial
+Analysis, HN; ARA daily
+digest 2026-10-29).

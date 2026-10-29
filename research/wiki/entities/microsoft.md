@@ -4,15 +4,16 @@ title: Microsoft
 type: entity
 aliases: [Microsoft, MSFT, "Microsoft Corporation", "@Microsoft", MAI, "Microsoft AI", "MAI-Thinking-1", "MAI-Code-1-Flash", "Project Polaris", "MAIA 200", "Maia 300", "MAIA 300", "MAI Code of Conduct", "Humanist AI Code of Conduct", "Decision-1", "Microsoft-Decision-1"]
 tags: [hyperscaler, frontier-lab, copilot, azure, foundation-models, custom-silicon]
-description: Hyperscaler that ended its Nscale Essex data-center deal; Reuters puts the site at 23,000 Nvidia chips delayed until the 2030s.
+description: Hyperscaler that disclosed Azure revenue for the first time at $33.2B (+48%) in FY27Q1, and booked about $10B from OpenAI.
 created_at: 2026-06-03
-timestamp: 2026-10-20T00:00:00Z
+timestamp: 2026-10-29T00:00:00Z
 market:
   ticker: MSFT
   exchange: NASDAQ
   symbol: NASDAQ:MSFT
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-18", path: research/digest/2026-10-18-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
@@ -504,6 +505,40 @@ ARA daily digest 2026-09-26).
   [[agentic-ai-security]]
   (TechCrunch; ARA daily
   digest 2026-10-20).
+
+## Azure printed for the first time (2026-10-29)
+
+- **FY27Q1 is the first
+  quarter Microsoft disclosed
+  Azure revenue:** **$33.2B,
+  up 48%.** Microsoft Cloud
+  reached **$63.9B (+30%)**.
+  Total revenue was
+  **$92.3B (+19%)**,
+  operating income
+  **$45.9B (+21%)**, GAAP
+  EPS **$4.92 (+32%)**. Amy
+  Hood: "Results exceeded
+  expectations across
+  revenue, operating income,
+  and earnings per share."
+  Microsoft booked about
+  **$10B** of revenue from
+  [[openai]]. The stock
+  reportedly rose about
+  **4%** after hours. Capex
+  reportedly came in at
+  **$45.2B**, below guidance
+  because of construction
+  delays. Unconfirmed
+  reports say Microsoft is
+  offering buyouts to "up
+  to **60,000**" employees.
+  See [[ai-capex]] and
+  [[openai]] (Microsoft 8-K,
+  TechCrunch, @rohanpaul_ai;
+  ARA daily digest
+  2026-10-29).
 
 ## Open questions
 
