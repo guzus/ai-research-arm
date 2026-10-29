@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-10-29
+
+TOP STORIES:
+• Google's Gemini 4 Carbon tops Artificial Analysis v5, cyber defenders only for now
+• Microsoft discloses Azure revenue for the first time: $33.2B (+48%)
+• Alphabet Q3: Google Cloud +103% to $30.7B, Search misses
+• SK hynix says DRAM/HBM sold out through 2029; OpenAI reportedly plans to buy Google TPUs
+
+KEY NUMBERS:
+• Gemini 4 Carbon: AA v5 score 59, $2/$10 per Mtok intro
+• MSFT revenue $92.3B (+19%); Microsoft Cloud $63.9B (+30%)
+• SK hynix operating profit KRW 83.3T
+• Vertiv organic orders +100%
+
+TRENDING: Gemini 4 Carbon naming and gated access (HN 610 pts)
+
+Full digest on GitHub.
