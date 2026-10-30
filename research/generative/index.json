@@ -3474,5 +3474,19 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+    "file": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-10-30T05:54:40Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/odysseas_eth/status/2115910280140276155\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

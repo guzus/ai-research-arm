@@ -1,5 +1,5 @@
 {
-  "article_count": 106,
+  "article_count": 107,
   "articles": [
     {
       "claim_count": 18,
@@ -1009,6 +1009,16 @@
         "twitter-seed"
       ],
       "title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option"
+    },
+    {
+      "claim_count": 12,
+      "created_at": "2026-10-30T05:54:40Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "stem": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out."
     }
   ],
   "by_host": {
@@ -1036,6 +1046,9 @@
     ],
     "404media.co": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c26"
+    ],
+    "808bits.com": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c2"
     ],
     "9to5google.com": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c2",
@@ -1940,7 +1953,8 @@
     ],
     "binance.com": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c17",
-      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c3"
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c3",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c3"
     ],
     "biometricupdate.com": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c20"
@@ -2536,7 +2550,9 @@
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c8",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c11",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c22",
-      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c9"
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c9",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c6",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c9"
     ],
     "coinfomania.com": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c10"
@@ -3206,6 +3222,9 @@
       "2026-07-31T051841--situational-awareness-lp-collapse#c34",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c12"
     ],
+    "eips.ethereum.org": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c7"
+    ],
     "elastic.co": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c4"
     ],
@@ -3380,7 +3399,9 @@
     "etherscan.io": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c11",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c3",
-      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c9"
+      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c9",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c1",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c2"
     ],
     "ethresear.ch": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c24"
@@ -3494,7 +3515,8 @@
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c24",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c7",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c8",
-      "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
+      "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c11"
     ],
     "finance.eastmoney.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c14",
@@ -3672,7 +3694,8 @@
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c38",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c23",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c15",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c10"
     ],
     "fortunebusinessinsights.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
@@ -4152,6 +4175,9 @@
     "ibtimes.sg": [
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c3"
     ],
+    "ic3.gov": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c8"
+    ],
     "icodrops.com": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c19",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c21"
@@ -4257,6 +4283,9 @@
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c1",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c2",
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c16"
+    ],
+    "investinglive.com": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c11"
     ],
     "investor.atmeta.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C12",
@@ -6221,6 +6250,9 @@
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c7",
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c8"
     ],
+    "sygnia.co": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c8"
+    ],
     "taaonline.net": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c21"
     ],
@@ -6470,7 +6502,8 @@
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c17",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1",
-      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c4"
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c4",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c12"
     ],
     "thechinaacademy.org": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c1"
@@ -6696,7 +6729,10 @@
     ],
     "trmlabs.com": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c8",
-      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c19"
+      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c19",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c4",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c5",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c6"
     ],
     "ts2.tech": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c30",
@@ -6737,7 +6773,8 @@
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c24"
     ],
     "unchainedcrypto.com": [
-      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c17"
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c17",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c12"
     ],
     "understandingai.org": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c32",
@@ -7216,6 +7253,9 @@
     "https://247wallst.com/investing/2026/07/17/amd-falls-5-intel-drops-4-nvidia-slides-3-before-recovering-as-rotation-hits-semiconductor-stocks": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c19",
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c30"
+    ],
+    "https://808bits.com/articles/binance-hot-wallet-eip-7702-delegations": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c2"
     ],
     "https://9to5google.com/2026/06/17/geminis-co-lead-is-leaving-google-to-join-openai": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c2"
@@ -9542,6 +9582,9 @@
     "https://efts.sec.gov/LATEST/search-index?q=%22residual+value%22&ciks=0001045810": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c5"
     ],
+    "https://eips.ethereum.org/EIPS/eip-7702": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c7"
+    ],
     "https://elaw.klri.re.kr/eng_service/lawTwoView.do?hseq=28979": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c11"
     ],
@@ -9762,6 +9805,12 @@
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c11",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c9"
     ],
+    "https://etherscan.io/tx/0x53bd38b816c23e74134786c29a8c18d792777998a3b9326047b583100e88e2f3": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c1"
+    ],
+    "https://etherscan.io/tx/0xad99264d5532ae0dd04b2004eebda05f25657e70dacb764f7ac8d4ccd051298b": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c2"
+    ],
     "https://ethresear.ch/t/building-towards-multi-party-block-construction/24975": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c24"
     ],
@@ -9818,6 +9867,9 @@
     ],
     "https://finance.biggo.com/news/0FZvz54B5GWQxSUZ6mk3": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c24"
+    ],
+    "https://finance.biggo.com/news/4040e4bf-0936-4930-8231-7617ba9b7e90": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c11"
     ],
     "https://finance.biggo.com/news/408fa9f2-0d3c-48e7-a43e-2e4c1ece2035": [
       "2026-07-13T181948--cxmt#c24",
@@ -10051,6 +10103,9 @@
     ],
     "https://fortune.com/2025/12/16/aws-ceo-matt-garman-ai-displacing-junior-employees-dumbest-idea-amazon-layoffs": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c37"
+    ],
+    "https://fortune.com/2025/12/18/north-korea-stole-a-record-amount-of-crypto": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c10"
     ],
     "https://fortune.com/2026/02/02/jensen-huang-nvidia-ceo-on-openai-investment-never-a-commitment": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c6"
@@ -10733,6 +10788,9 @@
     ],
     "https://intuitionlabs.ai/articles/h100-rental-prices-cloud-comparison": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c39"
+    ],
+    "https://investinglive.com/news/investinglive-asia-pacific-market-news-binance-hack-shakes-crypto": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c11"
     ],
     "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-First-Quarter-2026-Results/default.aspx": [
       "2026-06-24T160453--test-ornn-com-codex-2#C12"
@@ -12987,6 +13045,9 @@
     "https://unchainedcrypto.com/aztec-raises-59-million-in-token-sale-with-uniswaps-cca": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c17"
     ],
+    "https://unchainedcrypto.com/ethereum-eip-7702-brings-new-risks-wintermute-says": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c12"
+    ],
     "https://usagepricing.com/blueprint/activity/nebius-ai-2026-09-24-gpu-price-increase": [
       "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c7"
     ],
@@ -13520,6 +13581,9 @@
     ],
     "https://www.binance.com/en/blog/ecosystem/binance-labs-to-invest-in-seven-projects-from-the-mvb-accelerator-program-coled-by-bnb-chain-9156786679786782462": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c17"
+    ],
+    "https://www.binance.com/en/support/announcement/detail/c5a8729a97ac486d963784d96c5642d7": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c3"
     ],
     "https://www.biometricupdate.com/202601/south-korea-law-targeting-deepfakes-disinformation-gets-frosty-reception-from-us": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c20"
@@ -14069,6 +14133,9 @@
     "https://www.coindesk.com/business/2024/03/08/solana-client-developer-jito-announces-end-of-mempool-function": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c11"
     ],
+    "https://www.coindesk.com/business/2026/02/12/binance-converts-its-usd1-billion-safu-fund-into-15-000-btc": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c9"
+    ],
     "https://www.coindesk.com/daybook-us/2026/07/21/bitcoin-rally-has-broad-based-support-as-institutions-whales-options-traders-pile-in": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c27"
     ],
@@ -14083,6 +14150,9 @@
     ],
     "https://www.coindesk.com/policy/2026/03/18/sec-approves-nasdaq-s-move-to-allow-tokenized-securities-trading": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c24"
+    ],
+    "https://www.coindesk.com/policy/2026/10/29/crypto-s-longtime-foe-north-korea-s-lazarus-group-likely-behind-binance-hack-blockchain-sleuths": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c6"
     ],
     "https://www.coindesk.com/tech/2020/10/26/harvest-finance-24m-attack-triggers-570m-bank-run-in-latest-defi-exploit": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c12"
@@ -14969,6 +15039,9 @@
     ],
     "https://www.ibtimes.sg/openai-ai-agents-disabled-their-own-safety-monitoring-tried-avoid-detection-95348": [
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c3"
+    ],
+    "https://www.ic3.gov/psa/2025/psa250226": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c8"
     ],
     "https://www.iea.org/reports/rare-earth-elements/executive-summary": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c14"
@@ -16284,6 +16357,9 @@
     "https://www.swebench.com/original.html": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c15"
     ],
+    "https://www.sygnia.co/blog/sygnia-investigation-bybit-hack": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c8"
+    ],
     "https://www.taaonline.net/anthropic-settlement": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c21"
     ],
@@ -16439,6 +16515,9 @@
     ],
     "https://www.theblock.co/post/346161/compound-launches-new-vaults-rival-morpho-controversial-gauntlet-proposal": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c29"
+    ],
+    "https://www.theblock.co/post/356481/wintermute-warns-pectra-upgrade-leaves-ethereum-users-at-risk-of-automated-attacks": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c12"
     ],
     "https://www.theblock.co/post/362417/hyperliquid-strategies-hype-treasury": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c11"
@@ -16658,6 +16737,11 @@
     ],
     "https://www.trmlabs.com/resources/blog/breaking-federal-judge-overturns-all-criminal-convictions-in-mango-markets-case-against-avraham-eisenberg": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c8"
+    ],
+    "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history": [
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c4",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c5",
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c6"
     ],
     "https://www.trmlabs.com/resources/blog/the-largest-hardware-wallet-exploit-of-2026-inside-the-usd-116-million-coldcard-hack": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c19"
@@ -17363,7 +17447,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3075,
+  "claim_count": 3087,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -90668,9 +90752,300 @@
         "https://humanoid.guide/tau-robotics-humanoids-clean-homes-for-30-an-hour-with-help"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "2026-10-29",
+      "claim": "Binance 14 sweep tx 0x53bd38b8 (block 26300770, 2026-10-29 20:24:23 UTC) moved 167,464.2478 ETH and 63 ERC-20 transfers including ~1.615B USDT to the attacker hub.",
+      "confidence": "high",
+      "hosts": [
+        "etherscan.io"
+      ],
+      "id": "c1",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://etherscan.io/tx/0x53bd38b816c23e74134786c29a8c18d792777998a3b9326047b583100e88e2f3"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "2025-12-18",
+      "claim": "Chainalysis counted $2.02B stolen by DPRK-linked actors in 2025, ~59% of more than $3.4B stolen.",
+      "confidence": "medium",
+      "hosts": [
+        "fortune.com"
+      ],
+      "id": "c10",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://fortune.com/2025/12/18/north-korea-stole-a-record-amount-of-crypto"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "2026-10-30",
+      "claim": "BNB fell 8.6% to ~$694 and liquidations reached $627.7M in an hour ($606.6M longs, $344.8M on Binance) after the incident, confounded by a same-day tech selloff.",
+      "confidence": "medium",
+      "hosts": [
+        "finance.biggo.com",
+        "investinglive.com"
+      ],
+      "id": "c11",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://investinglive.com/news/investinglive-asia-pacific-market-news-binance-hack-shakes-crypto",
+        "https://finance.biggo.com/news/4040e4bf-0936-4930-8231-7617ba9b7e90"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "2025-06-02",
+      "claim": "Wintermute reported more than 90% of EIP-7702 delegations went to malicious sweeper code (The Block reported more than 80%).",
+      "confidence": "medium",
+      "hosts": [
+        "theblock.co",
+        "unchainedcrypto.com"
+      ],
+      "id": "c12",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c12",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://unchainedcrypto.com/ethereum-eip-7702-brings-new-risks-wintermute-says",
+        "https://www.theblock.co/post/356481/wintermute-warns-pectra-upgrade-leaves-ethereum-users-at-risk-of-automated-attacks"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "2026-10-29",
+      "claim": "A type-4 delegation tx (block 26300753, 20:20:59 UTC) carried 50 authorizations signed with authority Binance 14; only nonce 18,914,809 took effect.",
+      "confidence": "high",
+      "hosts": [
+        "808bits.com",
+        "etherscan.io"
+      ],
+      "id": "c2",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://etherscan.io/tx/0xad99264d5532ae0dd04b2004eebda05f25657e70dacb764f7ac8d4ccd051298b",
+        "https://808bits.com/articles/binance-hot-wallet-eip-7702-delegations"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "2026-10-30",
+      "claim": "Binance says initial probe may involve a compromised DevOps engineer's laptop and found no evidence of any wallet private key leak; estimates ~$6.3B impact and ~$3B frozen.",
+      "confidence": "high",
+      "hosts": [
+        "binance.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c3",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.binance.com/en/support/announcement/detail/c5a8729a97ac486d963784d96c5642d7"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "2026-10-30",
+      "claim": "TRM estimates gross theft ~$6.36B across ten chains (Ethereum ~$3.79B, Bitcoin ~$1.47B, Tron ~$628M) at theft-time prices.",
+      "confidence": "medium",
+      "hosts": [
+        "trmlabs.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "2026-10-30",
+      "claim": "Issuers and others froze ~$2.7B as of 00:30 UTC 2026-10-30 (Tether ~1.77B, Circle ~825M, Ripple 40.5M, WLFI 27.8M, Arbitrum Security Council ~$30M); attacker holds ~$2.4B beyond issuer reach.",
+      "confidence": "medium",
+      "hosts": [
+        "trmlabs.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "2026-10-30",
+      "claim": "TRM attributes the theft to TraderTraitor (DPRK) with high confidence; no government or Binance confirmation as of 2026-10-30.",
+      "confidence": "medium",
+      "hosts": [
+        "coindesk.com",
+        "trmlabs.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c6",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.trmlabs.com/resources/blog/north-korea-steals-usd-6-36-billion-from-binance-in-the-largest-hack-in-history",
+        "https://www.coindesk.com/policy/2026/10/29/crypto-s-longtime-foe-north-korea-s-lazarus-group-likely-behind-binance-hack-blockchain-sleuths"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "",
+      "claim": "EIP-7702 requires the authorization nonce to equal the authority's current nonce, sets code to 0xef0100||address, and delegating to the zero address resets code.",
+      "confidence": "high",
+      "hosts": [
+        "eips.ethereum.org"
+      ],
+      "id": "c7",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c7",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://eips.ethereum.org/EIPS/eip-7702"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "2025-02-26",
+      "claim": "Bybit: Sygnia traced foothold on a Safe developer workstation 2025-02-04 to theft 2025-02-21 (~17 days); FBI attributed ~$1.5B theft to North Korea.",
+      "confidence": "high",
+      "hosts": [
+        "ic3.gov",
+        "sygnia.co"
+      ],
+      "id": "c8",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sygnia.co/blog/sygnia-investigation-bybit-hack",
+        "https://www.ic3.gov/psa/2025/psa250226"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s",
+      "article_created_at": "2026-10-30T05:54:40Z",
+      "article_title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out.",
+      "as_of": "2026-02-12",
+      "claim": "Binance SAFU fund was converted to 15,000 BTC (~$1.0B in Feb 2026) with a top-up pledge below $800M.",
+      "confidence": "medium",
+      "hosts": [
+        "coindesk.com"
+      ],
+      "id": "c9",
+      "key": "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.coindesk.com/business/2026/02/12/binance-converts-its-usd1-billion-safu-fund-into-15-000-btc"
+      ],
+      "type": "metric"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1481,
+  "reusable_count": 1485,
   "schema_version": 1
 }
