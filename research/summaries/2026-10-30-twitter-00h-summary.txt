@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-30 00:50:39 UTC
+
+CYCLE: Who pays for Anthropic's compute
+
+TOP STORIES:
+• Bloomberg: Anthropic is SpaceX's "Customer B", 34.5% of its $14.6B Q3 revenue [⚠]
+• The Information: Nvidia is negotiating to guarantee >$5B of debt on Nscale's 460 MW Anthropic site [⚠]
+• Claude API request cap raised from 32 MB to 128 MB; Google is shutting down Jules and folding it into Antigravity [✓]
+
+WATCH: Whether Nvidia signs the Nscale guarantee, and OpenAI documentation of the shared Codex/ChatGPT limit.
+
+Full update on GitHub.
