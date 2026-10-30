@@ -494,6 +494,267 @@ class CliTest(ValidatorBase):
         self.assertEqual(0, code)
 
 
+QVID = "AAAAAAAAAAA"
+QEP = f"https://www.youtube.com/watch?v={QVID}"
+QDEEP = [f"{QEP}&t={i}s" for i in range(10)]
+TICKET_URL = "https://ara.guzus.xyz/models/gpt-6"
+
+
+def quote_inbox(root: Path, windows: list[str], *, first: list[dict] = (),
+                extra: list[dict] = ()) -> ca.TrustedInbox:
+    """A trusted inbox whose podcast item has the given transcript windows."""
+    base = root / "quotes"
+    (base / "transcripts").mkdir(parents=True, exist_ok=True)
+    (base / "transcripts" / "1.txt").write_text(
+        "".join(f"[{i:02d}:00] {window}\n" for i, window in enumerate(windows)), encoding="utf-8")
+    episode = {"key": f"ep:show:{QVID}", "kind": "podcast", "priority": True,
+               "source": "Some Podcast", "title": "Sam Altman on compute", "url": QEP,
+               "at": "2026-10-30T06:00:00Z", "links": [QEP] + QDEEP,
+               "text": "Sam Altman says AGI is near.\nDuration: 60 min.",
+               "transcript_file": "transcripts/1.txt"}
+    items = list(first) + [episode] + list(extra)
+    (base / "inbox.json").write_text(json.dumps({"items": items}), encoding="utf-8")
+    return ca.TrustedInbox.load(base / "inbox.json")
+
+
+def create_op(evidence: list[dict], slug: str = "storyline") -> dict:
+    return {"op": "create", "slug": slug, "title": "T", "now": "n", "changed": "c",
+            "change": "x", "evidence": evidence}
+
+
+class QuoteTestBase(ValidatorBase):
+    def run_edit(self, ops: list[dict], board: dict | None = None) -> tuple[dict, list[str]]:
+        edit = edit_obj(on_air=False, note="n", ops=ops, script=None, covers=None)
+        normalized, report = ca.validate_edit(edit, self.inbox,
+                                              ca.empty_board() if board is None else board)
+        self.assertEqual([], report.errors)
+        return normalized, report.warnings
+
+    def evidence(self, evidence: list[dict], board: dict | None = None):
+        normalized, warnings = self.run_edit([create_op(evidence)], board)
+        return normalized["ops"][0]["evidence"], warnings
+
+
+class QuoteTruthTest(QuoteTestBase):
+    """A published quote is words someone said, in the source's own wording,
+    attributed only to a person the same source line names."""
+
+    def test_published_quote_is_the_source_wording_not_the_editors(self):
+        # Reviewer probe: case/punctuation folding once accepted this and
+        # published the editor's string, reversing what was said.
+        self.inbox = quote_inbox(self.root, ["i dont think we are going to see agi this decade honestly"])
+        evidence, warnings = self.evidence([{"url": QEP, "label": "Some Podcast",
+                                             "quote": "I don't think. We are going to see AGI this decade!"}])
+        self.assertEqual("i dont think we are going to see agi this decade", evidence[0]["quote"])
+        self.assertTrue(any("replaced by the source's exact wording" in w for w in warnings))
+
+    def test_span_grows_to_whole_source_tokens(self):
+        self.inbox = quote_inbox(self.root, [
+            "revenue hit $1.5 trillion and capacity is 40-50% above plan, which is wild."])
+        evidence, _ = self.evidence([
+            {"url": QEP, "label": "a", "quote": "5 trillion"},
+            {"url": QDEEP[0], "label": "b", "quote": "50 above plan"}])
+        # Never "5 trillion" for $1.5 trillion, or "50%" for 40-50%.
+        self.assertEqual(["$1.5 trillion", "40-50% above plan"], [e["quote"] for e in evidence])
+
+    def test_quote_may_not_start_right_after_a_negation(self):
+        self.inbox = quote_inbox(self.root, ["i dont think we are going to see agi this decade honestly"])
+        evidence, warnings = self.evidence([
+            {"url": QEP, "label": "a", "quote": "we are going to see AGI this decade"},
+            {"url": QDEEP[0], "label": "b", "quote": "I don't think we are going to see AGI"}])
+        self.assertNotIn("quote", evidence[0])
+        self.assertTrue(any("right after 'dont'" in w for w in warnings), warnings)
+        self.assertEqual("i dont think we are going to see agi", evidence[1]["quote"])
+
+    def test_quote_may_not_cross_a_caption_speaker_change(self):
+        self.inbox = quote_inbox(self.root, ["thanks for having me >> so the big thing is compute"])
+        evidence, warnings = self.evidence([
+            {"url": QEP, "label": "a", "quote": "thanks for having me so the big thing is compute"}])
+        self.assertNotIn("quote", evidence[0])
+        self.assertTrue(any("speaker change" in w for w in warnings), warnings)
+
+    def test_quotes_come_only_from_transcripts_and_earnings_key_quotes(self):
+        ticket = {"key": "tk:gpt-6:3", "kind": "ticket", "source": "Model ticket",
+                  "title": "GPT-6", "url": TICKET_URL, "links": [TICKET_URL],
+                  "text": "OpenAI will ship GPT-6 next week."}
+        self.inbox = quote_inbox(self.root, ["compute is the bottleneck for everyone"],
+                                 extra=inbox_obj()["items"] + [ticket])
+        cases = {
+            "twitter lane text (a model-written summary)": (TW_URL, "names an anonymous Customer B"),
+            "ticket text": (TICKET_URL, "OpenAI will ship GPT-6 next week"),
+            "episode title": (QEP, "Sam Altman on compute"),
+            "episode show notes": (QDEEP[0], "Sam Altman says AGI is near"),
+            "earnings title": (EARN_URL, "Amazon Q3"),
+        }
+        for name, (url, quote) in cases.items():
+            with self.subTest(name):
+                evidence, warnings = self.evidence([{"url": url, "label": "x", "quote": quote}])
+                self.assertNotIn("quote", evidence[0])
+                self.assertTrue(any("dropped" in w and "quote (" in w for w in warnings), warnings)
+        evidence, _ = self.evidence([
+            {"url": QEP, "label": "x", "quote": "compute is the bottleneck"},
+            {"url": EARN_URL, "label": "x", "quote": "we may have two of them"}])
+        self.assertEqual(["compute is the bottleneck", "we may have two of them."],
+                         [e["quote"] for e in evidence])
+
+    def test_speaker_is_kept_only_where_the_same_window_names_them(self):
+        self.inbox = quote_inbox(self.root, [
+            "sam altman told me we compete with google and openai every day",
+            "compute is the bottleneck for everyone"])
+        quote = "we compete with Google and OpenAI every day"
+        evidence, warnings = self.evidence([
+            {"url": QEP, "label": "a", "speaker": "Sam Altman", "quote": quote},
+            # Named only INSIDE the quote: its subject, not its speaker.
+            {"url": QDEEP[0], "label": "a", "speaker": "Google", "quote": quote},
+            {"url": QDEEP[1], "label": "a", "speaker": "Satya Nadella", "quote": quote},
+            # The title names Sam Altman; titles never attribute a quote.
+            {"url": QDEEP[2], "label": "a", "speaker": "Sam Altman",
+             "quote": "compute is the bottleneck"}])
+        self.assertEqual("Sam Altman", evidence[0]["speaker"])
+        for entry in evidence[1:]:
+            self.assertIn("quote", entry)
+            self.assertNotIn("speaker", entry)
+        self.assertEqual(3, sum("does not name them" in w for w in warnings))
+
+    def test_earnings_speaker_comes_from_the_line_attribution(self):
+        evidence, _ = self.evidence([
+            {"url": EARN_URL, "label": "x", "speaker": "Andy Jassy",
+             "quote": "There has never been a trillion dollar revenue business"}])
+        self.assertEqual("Andy Jassy", evidence[0]["speaker"])
+        evidence, _ = self.evidence([
+            {"url": EARN_URL, "label": "x", "speaker": "Jeff Bezos",
+             "quote": "There has never been a trillion dollar revenue business"}])
+        self.assertNotIn("speaker", evidence[0])
+
+    def test_speaker_without_a_verified_quote_is_dropped(self):
+        evidence, warnings = self.evidence([{"url": EP_URL, "label": "x", "speaker": "Guest"},
+                                            {"url": EARN_URL, "label": "x", "speaker": "Andy Jassy",
+                                             "quote": "a sentence nobody said"}])
+        self.assertEqual([{"url": EP_URL, "kind": "podcast", "label": "x",
+                           "at": "2026-10-22T16:00:00Z"}], evidence[:1])
+        self.assertNotIn("speaker", evidence[1])
+        self.assertTrue(any("kept only with a verified quote" in w for w in warnings))
+        self.assertTrue(any("dropped with its speaker" in w for w in warnings))
+
+    def test_quoted_evidence_is_labelled_with_the_source_name(self):
+        # The dashboard prints "speaker, label" under a quote: an editor label
+        # would attribute the quote to whoever the editor named.
+        self.inbox = quote_inbox(self.root, ["compute is the bottleneck for everyone"])
+        evidence, warnings = self.evidence([
+            {"url": QEP, "label": "Sam Altman interview", "quote": "compute is the bottleneck"},
+            {"url": QDEEP[0], "label": "Sam Altman interview"}])
+        self.assertEqual("Some Podcast", evidence[0]["label"])
+        self.assertEqual("Sam Altman interview", evidence[1]["label"])  # no quote: free text
+        self.assertTrue(any("label set to the source's name" in w for w in warnings))
+
+    def test_label_limit_matches_the_dashboard(self):
+        self.assertEqual(90, ca.LABEL_MAX)
+        evidence, _ = self.evidence([{"url": EP_URL, "label": "L" * 120}])
+        self.assertLessEqual(len(evidence[0]["label"]), 90)
+
+    def test_a_tweet_linking_an_episode_does_not_own_it(self):
+        tweet = {"key": "tw:https://x.com/a/status/1", "kind": "twitter", "source": "X: @a",
+                 "title": "t", "url": "https://x.com/a/status/1",
+                 "links": ["https://x.com/a/status/1", QEP], "text": "Watch this."}
+        self.inbox = quote_inbox(self.root, ["compute is the bottleneck for everyone"],
+                                 first=[tweet])
+        evidence, _ = self.evidence([{"url": QEP, "label": "x",
+                                      "quote": "compute is the bottleneck"}])
+        self.assertEqual("podcast", evidence[0]["kind"])
+        self.assertEqual("compute is the bottleneck", evidence[0]["quote"])
+
+    def test_a_board_quote_travels_only_with_its_board_attribution(self):
+        board = board_obj()
+        board["threads"][0]["evidence"] = [
+            {"url": QDEEP[9], "kind": "podcast", "label": "Some Podcast",
+             "speaker": "Sam Altman", "quote": "compute is the bottleneck"},
+            {"url": BOARD_URL, "kind": "twitter", "label": "@old", "quote": "legacy tweet words"}]
+        evidence, warnings = self.evidence([
+            {"url": QDEEP[9], "label": "Other", "speaker": "Someone Else",
+             "quote": "compute is the bottleneck"},
+            {"url": BOARD_URL, "label": "x", "quote": "legacy tweet words"}], board)
+        self.assertEqual({"quote": "compute is the bottleneck", "speaker": "Sam Altman",
+                          "label": "Some Podcast"},
+                         {k: evidence[0][k] for k in ("quote", "speaker", "label")})
+        self.assertNotIn("quote", evidence[1])  # a twitter quote is never quotable
+        self.assertTrue(any("board's attribution" in w for w in warnings))
+
+    def test_revalidating_the_normalized_edit_changes_nothing(self):
+        # The writer re-validates the validator's output before applying it.
+        self.inbox = quote_inbox(self.root, [
+            "sam altman told me we compete with google and openai every day",
+            "We will win. we will win"], extra=inbox_obj()["items"])
+        first, _ = self.run_edit([create_op([
+            {"url": QEP, "label": "x", "speaker": "Sam Altman",
+             "quote": "We compete with Google -- and OpenAI, every day!"},
+            {"url": QDEEP[0], "label": "x", "quote": "we will win"},
+            {"url": EARN_URL, "label": "x", "speaker": "Andy Jassy",
+             "quote": "There has never been a trillion-dollar revenue business"}])])
+        second, warnings = self.run_edit(copy.deepcopy(first["ops"]))
+        self.assertEqual(first["ops"], second["ops"])
+        self.assertEqual([], warnings)
+        self.assertEqual(3, first["stats"]["quotes_kept"])
+
+    def test_warnings_never_republish_quote_text(self):
+        # Warnings are committed with the bulletin; echoing a dropped quote
+        # would publish what the excerpt policy refused.
+        windows = [" ".join(f"w{i}x{j}" for j in range(30)) for i in range(4)]
+        self.inbox = quote_inbox(self.root, windows)
+        quotes = [windows[i] for i in range(4)] + ["a fabricated sentence nobody ever said aloud"]
+        urls = [QEP] + QDEEP
+        _, warnings = self.evidence([{"url": urls[i], "label": "x", "quote": quote}
+                                     for i, quote in enumerate(quotes)])
+        joined = " ".join(warnings)
+        for quote in quotes[1:]:
+            self.assertNotIn(quote.split()[1], joined)
+
+
+class KeyQuotesContractTest(unittest.TestCase):
+    """The inbox builder's rendering of the earnings lane's `## Key Quotes`
+    is exactly what the validator parses (a format drift would silently make
+    every earnings quote unquotable, or worse, mis-attributed)."""
+
+    def test_builder_rendered_key_quotes_are_quotable_with_their_attribution(self):
+        import build_aradio_inbox as builder
+
+        index_url = "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/"
+        md = (
+            "# Amazon.com, Inc. (AMZN) FY26Q3 Earnings - 2026-10-29\n\n## Event\n"
+            "- Accepted: 2026-10-29T20:05:27.000Z\n"
+            f"- Filing index: {index_url}\n\n## Headline Numbers\n\n"
+            "- AWS segment operating income was $17.8 billion.\n\n## Key Quotes\n\n"
+            '- **Andy Jassy, President and CEO, Amazon**: "There has never been a trillion '
+            'dollar revenue business, and we may have two of them in the next 5-10 years." '
+            f"([EX-99.1]({index_url}amzn-ex991.htm))\n\n## Transcript\n\n"
+            "- First-party transcript: no\n")
+        with tempfile.TemporaryDirectory() as tmp:
+            lane = Path(tmp) / "research" / "earnings"
+            lane.mkdir(parents=True)
+            (lane / "a.md").write_text(md, encoding="utf-8")
+            (lane / "index.json").write_text(json.dumps({"events": [
+                {"accession": "0001018724-26-000038", "file": "a.md", "date": "2026-10-29",
+                 "issuer": "Amazon.com, Inc.", "ticker": "AMZN"}]}), encoding="utf-8")
+            now = builder.parse_ts("2026-10-30T12:50:00Z")
+            candidate = builder.collect_earnings(Path(tmp), now, builder.Notes())[0]
+        item = builder.item_json(candidate, None, "")
+        inbox = ca.TrustedInbox.from_obj({"items": [item]})
+        self.assertEqual(["Andy Jassy, President and CEO, Amazon"],
+                         [source.attribution for source in inbox.quote_sources(item)])
+        edit = edit_obj(on_air=False, note="n", script=None, covers=None, ops=[create_op([
+            {"url": index_url, "label": "x", "speaker": "Andy Jassy",
+             "quote": "there has never been a trillion-dollar revenue business"},
+            {"url": f"{index_url}amzn-ex991.htm", "label": "x",
+             "quote": "AWS segment operating income was $17.8 billion"}])])
+        normalized, report = ca.validate_edit(edit, inbox, ca.empty_board())
+        self.assertEqual([], report.errors)
+        quoted, headline = normalized["ops"][0]["evidence"]
+        self.assertEqual("There has never been a trillion dollar revenue business",
+                         quoted["quote"])
+        self.assertEqual(("Andy Jassy", "Amazon.com, Inc. (AMZN)"),
+                         (quoted["speaker"], quoted["label"]))
+        self.assertNotIn("quote", headline)  # headline numbers are not what anyone said
+
+
 class HelperTest(unittest.TestCase):
     def test_spoken_words_ignore_tags_and_prefix(self):
         line = "Speaker 1: [high_energy] Ten [emphasis]billion[/emphasis] dollars."

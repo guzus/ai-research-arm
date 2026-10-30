@@ -15,11 +15,17 @@ Provenance is enforced here, not trusted from the editor:
 * an evidence URL survives only if it is in this run's trusted inbox
   (`url`/`links`) or already on the board; its `kind` and `at` always come
   from that trusted record;
-* a `quote` survives only if it is short AND appears verbatim (case and
-  punctuation-insensitive) in the owning inbox item's trusted text or
-  transcript windows. The URL rule alone cannot stop a fabricated quote
-  attributed to a real source, so quotes are checked against what the editor
-  was actually shown.
+* a `quote` survives only if it is short AND found as one contiguous run of
+  words inside ONE transcript window of a spoken item or ONE "Key quotes"
+  line of an earnings item (never titles, show notes, or the model-written
+  Twitter/ticket text). The editor's string is only a search key: what is
+  published is the source's own wording of that span, so inserted punctuation
+  cannot change what was said. The URL rule alone cannot stop a fabricated
+  quote attributed to a real source, so quotes are checked against what the
+  editor was actually shown;
+* `speaker` survives only if the same source line names them, and a quoted
+  entry's `label` is the trusted source name (the dashboard prints
+  "speaker, label" under a quote).
 
 This module is also the lane's single source of truth for limits and spoken
 text handling: build_aradio_inbox.py (context.json), aradio_tts.py and
@@ -58,9 +64,30 @@ EVIDENCE_KINDS = ("podcast", "video", "earnings-call", "earnings", "twitter", "t
 TEXT_LIMITS = {"title": 90, "now": 400, "changed": 240, "watch": 200, "change": 200}
 HEADLINE_MAX = 140
 NOTE_MAX = 300
-LABEL_MAX = 120
+LABEL_MAX = 90  # the dashboard shows evidence labels up to 90 characters
 SPEAKER_MAX = 80
 QUOTE_MAX_WORDS = 40
+# A quote is what someone SAID: a transcript window of a spoken item, or the
+# issuer's own attributed line under an earnings item's "Key quotes:". Never
+# a title, show notes, or the Twitter/ticket lanes' text, which is ARA's own
+# model-written summary.
+SPOKEN_KINDS = ("podcast", "video", "earnings-call")
+EARNINGS_KIND = "earnings"
+QUOTABLE_KINDS = SPOKEN_KINDS + (EARNINGS_KIND,)
+KEY_QUOTES_HEADER = "Key quotes:"
+# `- Andy Jassy, President and CEO, Amazon: "…" (EX-99.1)` as the inbox
+# builder renders the earnings lane's `## Key Quotes` bullets.
+KEY_QUOTE_LINE_RE = re.compile(
+    r'^- (?P<who>[^"“”]{1,200}?): ["“](?P<words>.+)["”](?: \([^()]{0,120}\))?$')
+# A verbatim span can still reverse its speaker by leaving out the words just
+# before it ("I don't think | we will see AGI this decade"), so a quote may not
+# begin within NEGATION_LOOKBACK words after one of these (match form).
+NEGATION_LOOKBACK = 4
+NEGATIONS = frozenset({
+    "not", "no", "never", "nobody", "nothing", "none", "neither", "nor", "cannot",
+    "dont", "doesnt", "didnt", "isnt", "arent", "wasnt", "werent", "wont", "cant",
+    "couldnt", "shouldnt", "wouldnt", "aint", "hardly", "doubt", "unlikely",
+})
 # Hard bounds (validator) and the editor's targets (prompt). The gap is the
 # tolerance that keeps a slightly long or short script from wasting a run.
 SCRIPT_LINES = (8, 30)
@@ -234,32 +261,175 @@ def expected_duration_s(words: int) -> float:
     return words / WORDS_PER_MINUTE * 60.0
 
 
-def normalize_for_match(text: str) -> str:
-    """Fold case, quotes, dashes and punctuation for verbatim-quote checks."""
-    folded = unicodedata.normalize("NFKC", text).translate(_QUOTE_FOLD).lower()
-    folded = folded.replace("'", "")
-    folded = re.sub(r"[^\w\s]+", " ", folded)
-    return " ".join(folded.split())
+def _fold_char(char: str) -> str:
+    """One character in match form: word characters lower-cased, anything else
+    a space; apostrophes vanish, so "don't" and "dont" are the same word."""
+    folded = unicodedata.normalize("NFKC", char).translate(_QUOTE_FOLD).lower()
+    return "".join(ch if ch.isalnum() or ch == "_" else " " for ch in folded if ch != "'")
+
+
+def match_words(text: str) -> tuple[list[str], list[tuple[int, int]]]:
+    """`text` in match form (case, quote marks, dashes, punctuation folded) as
+    words, each with the [start, end) range of the characters it came from.
+
+    Folding is per character, so any substring of `text` folds to the
+    matching run of words; that map is what lets the validator publish the
+    source's own characters rather than the editor's.
+    """
+    words: list[str] = []
+    spans: list[tuple[int, int]] = []
+    current: list[str] = []
+    start = end = 0
+    for index, char in enumerate(text):
+        for ch in _fold_char(char):
+            if ch != " ":
+                if not current:
+                    start = index
+                current.append(ch)
+                end = index + 1
+            elif current:
+                words.append("".join(current))
+                spans.append((start, end))
+                current = []
+    if current:
+        words.append("".join(current))
+        spans.append((start, end))
+    return words, spans
 
 
 _ELLIPSIS_RE = re.compile(r"\[\s*\.\.\.\s*\]|\.\.\.|…")
+_OPENERS = {"(": ")", "[": "]", "{": "}", "“": "”", "‘": "’", "«": "»", "‹": "›"}
+_CLOSERS = {close: opener for opener, close in _OPENERS.items()}
+_DANGLING = ",;:<>*•·–—"  # never part of a word, so never worth publishing at an end
 
 
-def quote_in_source(quote: str, segments: tuple[str, ...]) -> bool:
-    """True only when the whole quote is ONE contiguous run of whole words
-    inside a single normalized segment (a title, one text line, or one
-    transcript window).
+def _has_run(words: Any, run: list[str]) -> bool:
+    size = len(run)
+    return any(list(words[i:i + size]) == run for i in range(len(words) - size + 1))
 
-    Ellipses are refused, and matching never crosses a segment boundary:
-    both would let a "verbatim" quote be stitched from words spoken minutes
-    apart — a sentence nobody said, under a real citation.
+
+def _trim_span(text: str, start: int, end: int) -> tuple[int, int]:
+    """Drop unbalanced quote marks and brackets and dangling punctuation from
+    the ends of a span. Only non-word characters go, so its words are kept."""
+    while start < end:
+        span, first, last = text[start:end], text[start], text[end - 1]
+        if first in _DANGLING or (first in _OPENERS and _OPENERS[first] not in span[1:]):
+            start += 1
+        elif last in _DANGLING or (last in _CLOSERS and _CLOSERS[last] not in span[:-1]):
+            end -= 1
+        elif first in "\"'" and span.count(first) % 2:
+            start += 1
+        elif last in "\"'" and span.count(last) % 2:
+            end -= 1
+        else:
+            break
+    return start, end
+
+
+@dataclass(frozen=True)
+class QuoteSource:
+    """One place a quote may come from, in the source's own wording.
+
+    `text` is a transcript window, or the quoted words of one earnings
+    Key-quotes line; a published quote is always a span of it.
+    `attribution` is that earnings line's named speaker ("Andy Jassy, President
+    and CEO, Amazon"); None for a transcript window, which names its speaker,
+    if at all, somewhere in the window outside the quoted words.
     """
-    if _ELLIPSIS_RE.search(quote):
-        return False
-    needle = normalize_for_match(quote)
+
+    text: str
+    attribution: str | None = None
+
+
+@dataclass(frozen=True)
+class QuoteMatch:
+    quote: str                # the exact source wording that is published
+    source: QuoteSource
+    before: tuple[str, ...]   # the source's words before the quote (match form)
+    after: tuple[str, ...]    # ... and after it
+
+    @property
+    def speaker_change(self) -> bool:
+        """Captions mark a new speaker with ">>": a span across one is two
+        people's words presented as one person's quote."""
+        return ">>" in self.quote
+
+    def names(self, speaker: list[str]) -> bool:
+        """The speaker's words occur, contiguous and whole, where this source
+        names who is talking: the earnings line's attribution, or the window
+        outside the quote (a name inside the quote is its subject, not its
+        speaker: "we compete with Google" was not said by Google)."""
+        if not speaker:
+            return False
+        if self.source.attribution is not None:
+            return _has_run(match_words(self.source.attribution)[0], speaker)
+        return _has_run(self.before, speaker) or _has_run(self.after, speaker)
+
+    def negation(self) -> str | None:
+        """The negation just before the quote, if any (see NEGATIONS)."""
+        return next((word for word in reversed(self.before[-NEGATION_LOOKBACK:])
+                     if word in NEGATIONS), None)
+
+
+def find_quote(key: str, sources: tuple[QuoteSource, ...] | list[QuoteSource]
+               ) -> list[QuoteMatch]:
+    """Every place `key` occurs as ONE contiguous run of whole words inside a
+    single source, as the source's own wording.
+
+    The editor's string is only a search key: case and punctuation are folded
+    to find it, then the source's characters are published, so inserted
+    punctuation can never change what a speaker said ("I don't think. We are
+    going to see AGI"). Ellipses are refused and a match never crosses a
+    source boundary: both would stitch a "verbatim" quote from words spoken
+    minutes apart. The span grows to whole whitespace-delimited tokens so a
+    match on "50 above" publishes "40-50% above", never "50% above".
+    """
+    if _ELLIPSIS_RE.search(key):
+        return []
+    needle = match_words(key)[0]
     if not needle:
-        return False
-    return any(f" {needle} " in f" {segment} " for segment in segments)
+        return []
+    found: list[QuoteMatch] = []
+    for source in sources:
+        text = source.text
+        words, spans = match_words(text)
+        for first in range(len(words) - len(needle) + 1):
+            if words[first:first + len(needle)] != needle:
+                continue
+            start, end = spans[first][0], spans[first + len(needle) - 1][1]
+            while start > 0 and not text[start - 1].isspace():
+                start -= 1
+            while end < len(text) and not text[end].isspace():
+                end += 1
+            start, end = _trim_span(text, start, end)
+            inside = [i for i, (s, e) in enumerate(spans) if s < end and e > start]
+            found.append(QuoteMatch(quote=" ".join(text[start:end].split()), source=source,
+                                    before=tuple(words[:inside[0]]),
+                                    after=tuple(words[inside[-1] + 1:])))
+    return found
+
+
+def parse_key_quotes(text: str) -> list[QuoteSource]:
+    """The attributed lines under an earnings item's "Key quotes:" header,
+    each as (the issuer's quoted words, the speaker the line names). A line
+    that does not parse, e.g. one the inbox clipped, is not quotable."""
+    found: list[QuoteSource] = []
+    in_block = False
+    for raw in text.splitlines():
+        line = " ".join(raw.split())
+        if line == KEY_QUOTES_HEADER:
+            in_block = True
+            continue
+        if not in_block:
+            continue
+        if not line.startswith("- "):
+            in_block = False
+            continue
+        match = KEY_QUOTE_LINE_RE.match(line)
+        if match and match.group("words").strip() and match.group("who").strip():
+            found.append(QuoteSource(text=match.group("words").strip(),
+                                     attribution=match.group("who").strip()))
+    return found
 
 
 def atomic_write_text(path: Path, text: str) -> None:
@@ -318,10 +488,17 @@ class TrustedInbox:
     items: list[dict]
     base_dir: Path | None = None
     url_owner: dict[str, dict] = field(default_factory=dict)
-    _quotable: dict[str, tuple[str, ...]] = field(default_factory=dict)
+    _quote_sources: dict[int, tuple[QuoteSource, ...]] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
-        for item in self.items:
+        # The first-party lanes (spoken media, earnings) claim their URLs
+        # before items that merely link to them: a tweet linking to an episode
+        # must not turn the episode's URL into "twitter" evidence, because an
+        # evidence entry's kind, time and quotability all come from its owner.
+        order = sorted(range(len(self.items)),
+                       key=lambda i: (self.items[i].get("kind") not in QUOTABLE_KINDS, i))
+        for index in order:
+            item = self.items[index]
             for url in item_urls(item):
                 self.url_owner.setdefault(url, item)
 
@@ -340,25 +517,29 @@ class TrustedInbox:
     def keys(self) -> list[str]:
         return [str(item.get("key")) for item in self.items if item.get("key")]
 
-    def quotable(self, item: dict) -> tuple[str, ...]:
-        """Normalized quotable segments: the title, each text line, and each
-        transcript window (one per line) — kept apart so a quote can never
-        bridge two of them."""
-        key = str(item.get("key", ""))
-        if key in self._quotable:
-            return self._quotable[key]
-        lines = [str(item.get("title") or "")]
-        lines.extend(str(item.get("text") or "").splitlines())
+    def quote_sources(self, item: dict) -> tuple[QuoteSource, ...]:
+        """Where a quote on this item may come from — kept apart so a quote
+        can never bridge two of them: each transcript window of a spoken item,
+        or each Key-quotes line of an earnings item. Nothing else: titles,
+        show notes and the Twitter/ticket lanes' text are not what anyone said."""
+        if id(item) in self._quote_sources:
+            return self._quote_sources[id(item)]
+        sources: list[QuoteSource] = []
+        kind = item.get("kind")
         transcript = item.get("transcript_file")
-        if (self.base_dir is not None and isinstance(transcript, str)
+        if (kind in SPOKEN_KINDS and self.base_dir is not None and isinstance(transcript, str)
                 and TRANSCRIPT_FILE_RE.match(transcript)):
             candidate = self.base_dir / transcript
             if candidate.is_file() and not candidate.is_symlink():
                 text = candidate.read_text(encoding="utf-8", errors="replace")
-                lines.extend(re.sub(r"^\[[0-9:]+\]\s*", "", line) for line in text.splitlines())
-        segments = tuple(seg for seg in (normalize_for_match(line) for line in lines) if seg)
-        self._quotable[key] = segments
-        return segments
+                for line in text.splitlines():
+                    window = " ".join(re.sub(r"^\[[0-9:]+\]\s*", "", line).split())
+                    if window:
+                        sources.append(QuoteSource(text=window))
+        elif kind == EARNINGS_KIND:
+            sources = parse_key_quotes(str(item.get("text") or ""))
+        self._quote_sources[id(item)] = tuple(sources)
+        return self._quote_sources[id(item)]
 
 
 def item_urls(item: dict) -> list[str]:
@@ -470,6 +651,99 @@ def _status(value: Any, where: str, report: Report) -> str | None:
     return None
 
 
+def _evidence_quote(entry: dict, where: str, url: str, owner: dict | None,
+                    existing: dict | None, inbox: TrustedInbox, report: Report,
+                    stats: dict[str, int]) -> dict[str, str]:
+    """The verified {quote, label, speaker?} of one evidence entry, or {}.
+
+    * The published quote is the matched span in the source's own wording;
+      the editor's string is only the search key.
+    * It must come from a quotable source of the entry's owner (a transcript
+      window, or an earnings Key-quotes line), fit QUOTE_MAX_WORDS, and not
+      start right after a negation or cross a caption speaker change.
+    * `speaker` survives only if that same source names them (see
+      QuoteMatch.names); speakers are never inferred, nor kept without a quote.
+    * A quoted entry is labelled with the trusted source name: the dashboard
+      prints "speaker, label" under a quote, so an editor-written label would
+      attribute the quote to whoever the editor chose.
+
+    Warnings give a word count, never the text: they are published with the
+    bulletin, and echoing a dropped quote would republish it anyway.
+    """
+    raw_quote = entry.get("quote")
+    quote = clean_text(raw_quote) if isinstance(raw_quote, str) else ""
+    if raw_quote is not None and raw_quote != "" and not quote:
+        report.soft(f"{where}: invalid quote dropped")
+    raw_speaker = entry.get("speaker")
+    speaker = strip_urls(clean_text(raw_speaker))[0] if isinstance(raw_speaker, str) else ""
+    if raw_speaker is not None and not speaker:
+        report.soft(f"{where}: invalid speaker dropped")
+    elif len(speaker) > SPEAKER_MAX:
+        report.soft(f"{where}: speaker over {SPEAKER_MAX} characters dropped")
+        speaker = ""
+    if not quote:
+        if speaker:
+            report.soft(f"{where}: speaker dropped; a speaker is kept only with a verified quote")
+        return {}
+
+    def drop(reason: str) -> dict[str, str]:
+        stats["quotes_dropped"] += 1
+        report.soft(f"{where}: quote ({len(quote.split())} words) {reason}; dropped"
+                    + (" with its speaker" if speaker else ""))
+        return {}
+
+    if strip_urls(quote)[1]:
+        return drop("contains a URL")
+    if len(quote.split()) > QUOTE_MAX_WORDS:
+        return drop(f"is over {QUOTE_MAX_WORDS} words")
+    if owner is None:
+        # Not in this run's inbox: only a quote the board already verified may
+        # travel, and it travels with the board's attribution.
+        board_quote = existing.get("quote") if existing is not None else None
+        if (not isinstance(board_quote, str) or board_quote != quote
+                or existing.get("kind") not in QUOTABLE_KINDS):
+            return drop("cannot be verified (source not in this run's inbox)")
+        stats["quotes_kept"] += 1
+        result = {"quote": board_quote,
+                  "label": clip(clean_text(str(existing.get("label") or "")) or "source",
+                                LABEL_MAX)[0]}
+        board_speaker = existing.get("speaker")
+        if isinstance(board_speaker, str) and board_speaker:
+            result["speaker"] = board_speaker
+        if speaker and speaker != result.get("speaker"):
+            report.soft(f"{where}: speaker replaced by the board's attribution of this quote")
+        return result
+    if owner.get("kind") not in QUOTABLE_KINDS:
+        return drop("is not from a transcript or an earnings Key-quotes line")
+    matches = find_quote(quote, inbox.quote_sources(owner))
+    if not matches:
+        return drop("not found verbatim in one transcript window or Key-quotes line")
+    usable = [match for match in matches
+              if match.negation() is None and not match.speaker_change]
+    if not usable:
+        if matches[0].speaker_change:
+            return drop("crosses a speaker change ('>>') in the transcript")
+        return drop(f"starts right after '{matches[0].negation()}' in the source, which "
+                    "would reverse it; include the qualifier or paraphrase")
+    speaker_words = match_words(speaker)[0]
+    best = max(usable, key=lambda match: (match.names(speaker_words), match.quote == quote))
+    if len(best.quote.split()) > QUOTE_MAX_WORDS:
+        return drop(f"is over {QUOTE_MAX_WORDS} words as the source words it")
+    stats["quotes_kept"] += 1
+    if best.quote != quote:
+        report.soft(f"{where}: quote replaced by the source's exact wording")
+    label = clip(clean_text(str(owner.get("source") or owner.get("title") or ""))
+                 or str(owner.get("kind")), LABEL_MAX)[0]
+    result = {"quote": best.quote, "label": label}
+    if speaker:
+        if best.names(speaker_words):
+            result["speaker"] = speaker
+        else:
+            report.soft(f"{where}: speaker dropped; the quoted source line does not name "
+                        "them (attribute the quote to the show or call instead)")
+    return result
+
+
 def _normalize_evidence(raw: Any, where: str, inbox: TrustedInbox,
                         on_board: dict[str, dict], report: Report,
                         stats: dict[str, int]) -> list[dict]:
@@ -530,40 +804,16 @@ def _normalize_evidence(raw: Any, where: str, inbox: TrustedInbox,
         normalized: dict[str, Any] = {"url": url, "kind": kind, "label": label_text}
         if isinstance(at, str) and at:
             normalized["at"] = at
-        speaker = entry.get("speaker")
-        if speaker is not None:
-            if isinstance(speaker, str) and strip_urls(clean_text(speaker))[0]:
-                speaker_text, cut = clip(strip_urls(clean_text(speaker))[0], SPEAKER_MAX)
-                if cut:
-                    report.soft(f"{label_where}: speaker truncated")
-                normalized["speaker"] = speaker_text
-            else:
-                report.soft(f"{label_where}: invalid speaker dropped")
-        quote = entry.get("quote")
-        if quote is not None:
-            quote_text = clean_text(quote) if isinstance(quote, str) else ""
-            if not quote_text:
-                if quote != "":
-                    report.soft(f"{label_where}: invalid quote dropped")
-            elif strip_urls(quote_text)[1]:
-                report.soft(f"{label_where}: quote containing a URL dropped")
-                stats["quotes_dropped"] += 1
-            elif len(quote_text.split()) > QUOTE_MAX_WORDS:
-                report.soft(f"{label_where}: quote over {QUOTE_MAX_WORDS} words dropped")
-                stats["quotes_dropped"] += 1
-            elif owner is None:
-                if existing is not None and existing.get("quote") == quote_text:
-                    normalized["quote"] = quote_text
-                else:
-                    report.soft(f"{label_where}: quote cannot be verified (source not "
-                                "in this run's inbox); dropped")
-                    stats["quotes_dropped"] += 1
-            elif not quote_in_source(quote_text, inbox.quotable(owner)):
-                report.soft(f"{label_where}: quote not found verbatim in the source "
-                            f"material; dropped: {_short(quote_text)}")
-                stats["quotes_dropped"] += 1
-            else:
-                normalized["quote"] = quote_text
+        quoted = _evidence_quote(entry, label_where, url, owner, existing, inbox, report,
+                                 stats)
+        if quoted:
+            if quoted["label"] != label_text:
+                report.soft(f"{label_where}: label set to the source's name because the "
+                            "evidence carries a quote")
+            normalized["label"] = quoted["label"]
+            if "speaker" in quoted:
+                normalized["speaker"] = quoted["speaker"]
+            normalized["quote"] = quoted["quote"]
         seen.add(url)
         kept.append(normalized)
     if len(kept) > MAX_EVIDENCE:
@@ -636,8 +886,8 @@ def validate_edit(edit: Any, inbox: TrustedInbox, board: dict
     """Return (normalized edit or None on hard error, report)."""
     report = Report()
     stats = {"creates": 0, "updates": 0, "resolves": 0, "evidence_kept": 0,
-             "evidence_dropped": 0, "quotes_dropped": 0, "script_lines": 0,
-             "script_words": 0}
+             "evidence_dropped": 0, "quotes_kept": 0, "quotes_dropped": 0,
+             "script_lines": 0, "script_words": 0}
     if not isinstance(edit, dict):
         report.hard("edit must be a JSON object")
         return None, report
