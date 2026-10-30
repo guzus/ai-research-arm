@@ -121,6 +121,14 @@ FUTURE_SLACK = dt.timedelta(minutes=10)
 
 REVISIT_NOTE = "transcript now available; previously aired from show notes"
 
+# The quote and label budget check_aradio.py enforces on the editor's
+# evidence (its LABEL_MAX is 90). Restated here, not imported, while that
+# module changes on another branch: keep the two in step.
+QUOTES_PER_SOURCE = 2
+QUOTE_WORDS_PER_SOURCE = 60
+QUOTES_PER_RUN = 8
+LABEL_CHARS = 90
+
 TRANSCRIPT_TIMEOUT_S = 25
 TRANSCRIPT_SPACING_S = 3.0
 TRANSCRIPT_RETRY_DELAY_S = 8.0
@@ -1119,6 +1127,10 @@ def build_context(now: dt.datetime, cursor: dict, board: dict, index: Any,
             "field_chars": dict(contract.TEXT_LIMITS),
             "evidence_per_op": contract.MAX_EVIDENCE,
             "quote_words": contract.QUOTE_MAX_WORDS,
+            "quotes_per_source": QUOTES_PER_SOURCE,
+            "quote_words_per_source": QUOTE_WORDS_PER_SOURCE,
+            "quotes_per_run": QUOTES_PER_RUN,
+            "label_chars": LABEL_CHARS,
             "script_lines_target": list(contract.TARGET_SCRIPT_LINES),
             "script_words_target": list(contract.TARGET_SCRIPT_WORDS),
             "script_lines_hard": list(contract.SCRIPT_LINES),

@@ -633,6 +633,12 @@ class StagingTest(FixtureTest):
         self.assertEqual("Old news", context["last_headline"])
         self.assertEqual("2026-10-30T06:50:00Z", context["last_bulletin_at"])
         self.assertEqual([350, 750], context["limits"]["script_words_target"])
+        # The validator's quote and label budget, stated to the editor.
+        self.assertEqual({"quotes_per_source": 2, "quote_words_per_source": 60,
+                          "quotes_per_run": 8, "label_chars": 90},
+                         {name: context["limits"][name] for name in (
+                             "quotes_per_source", "quote_words_per_source",
+                             "quotes_per_run", "label_chars")})
 
     def test_main_writes_github_outputs(self):
         gh = Path(self.repo.tmp.name) / "gh.txt"
