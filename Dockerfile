@@ -12,19 +12,47 @@ WORKDIR /app
 # fonts by default; without this the cards render with no text).
 RUN apk add --no-cache nodejs font-liberation
 
+# Dependencies only change with the lockfile; the cache mount also keeps bun's
+# download cache across lockfile changes.
+ENV BUN_INSTALL_CACHE_DIR=/var/cache/bun
 COPY dashboard/package.json dashboard/bun.lock ./dashboard/
-RUN cd dashboard && bun install --frozen-lockfile
+RUN --mount=type=cache,id=ara-web-bun,target=/var/cache/bun \
+    cd dashboard && bun install --frozen-lockfile
 
 COPY dashboard ./dashboard
-COPY research ./research
 
-RUN cd dashboard && SKIP_LFS_POINTERS=1 bun run build
+# Every push to main changes research/, so this step never hits the cache.
+# Keep its layer down to what the runtime needs:
+#   - research/ is bind-mounted, not COPYed, so it is not stored as a layer;
+#   - prebuild's public/research mirror is deleted once vite has copied it;
+#   - front-page PNGs (more than half of dist; prebuild copies them byte for
+#     byte) are removed from dist and shipped by the front-page stage below as
+#     their own runtime layer, which BuildKit reuses until a PNG is added or
+#     changed. The list records which PNGs prebuild kept, since it suppresses
+#     fallback-digest dates.
+RUN --mount=type=bind,source=research,target=/app/research,rw \
+    cd dashboard \
+    && SKIP_LFS_POINTERS=1 bun run build \
+    && rm -rf public/research \
+    && mkdir -p /app/front-page \
+    && cd dist/research/front-page \
+    && { ls -1 | grep '\.png$' || true; } > /app/front-page/published.txt \
+    && xargs -r rm -- < /app/front-page/published.txt
+
+FROM caddy:2.11.4-alpine@sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648 AS front-page
+
+COPY --from=build /app/front-page/published.txt /published.txt
+RUN --mount=type=bind,source=research/front-page,target=/src \
+    mkdir /out && cd /src && xargs -r cp -t /out -- < /published.txt
 
 FROM caddy:2.11.4-alpine@sha256:5f5c8640aae01df9654968d946d8f1a56c497f1dd5c5cda4cf95ab7c14d58648 AS runtime
 
 ENV PORT=8080
 
 COPY Caddyfile /etc/caddy/Caddyfile
+# Rarely-changing front-page PNGs first, so most deploys reuse this layer and
+# only the dist layer below is new.
+COPY --from=front-page /out/ /srv/research/front-page/
 COPY --from=build /app/dashboard/dist/ /srv/
 
 EXPOSE 8080
