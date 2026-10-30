@@ -20,8 +20,10 @@ import {
   ARADIO_REL_KEYS,
   aradioAge,
   aradioAirState,
+  aradioAudioSrc,
   aradioPlayAria,
   aradioUtcTime,
+  hydrateAradioLinks,
   normalizeAradioBoard,
   normalizeAradioBulletin,
   normalizeAradioIndex,
@@ -1374,7 +1376,11 @@ async function loadAradio(signal: AbortSignal): Promise<void> {
 }
 
 function paintAradio(): void {
-  setSafeContent(content, renderAradioView(aradioViewState()));
+  // Evidence links are not in the HTML: they are built with DOM APIs into the
+  // slots the sanitized markup leaves for them.
+  const view = renderAradioView(aradioViewState());
+  setSafeContent(content, view.html);
+  hydrateAradioLinks(content, view.links);
   updateAradioChip();
   syncAradioPlayUi();
   fillAradioDetails();
@@ -1408,7 +1414,9 @@ function paintAradioTranscript(): void {
   const slot = content.querySelector<HTMLElement>('[data-aradio-transcript-slot]');
   if (!slot) return;
   const boardSlugs = new Set((aradioBoard?.threads ?? []).map((thread) => thread.slug));
-  setSafeContent(slot, renderAradioTranscript(aradioTranscriptState(), { language: activeLanguage, boardSlugs }));
+  const transcript = renderAradioTranscript(aradioTranscriptState(), { language: activeLanguage, boardSlugs });
+  setSafeContent(slot, transcript.html);
+  hydrateAradioLinks(slot, transcript.links);
   content.querySelectorAll<HTMLElement>('[data-aradio-row]').forEach((row) => {
     const selected = row.dataset.aradioRow === aradioSelectedId;
     row.classList.toggle('is-selected', selected);
@@ -1477,7 +1485,8 @@ function setAradioKeepListening(on: boolean): void {
 }
 
 function aradioAudioUrl(entry: AradioBulletinEntry): string | null {
-  return entry.audio ? `${AUDIO_BASE}/${entry.audio.key}` : null;
+  // The guarded builder re-checks the key policy; no key, no audio.
+  return aradioAudioSrc(AUDIO_BASE, entry.audio);
 }
 
 /** An Aradio track is loaded in the shared bar and has not finished. */

@@ -9,15 +9,21 @@
  * agent (podcast speakers, filings, tweets). So:
  *   - every value is escaped for BOTH text and attribute contexts (`esc`) and
  *     the assembled HTML still goes through the app's DOMPurify sink;
- *   - links survive only as http(s) URLs (`safeHttpUrl`);
- *   - fetch paths and S3 keys are rebuilt from validated shapes
- *     (`aradioBulletinPath`, `normalizeAradioAudio`), never taken verbatim, so
- *     a malformed index cannot point the page at an arbitrary URL.
+ *   - URLs never travel through HTML strings. The markup carries an empty
+ *     slot per evidence link; `hydrateAradioLinks` builds each <a> with DOM
+ *     APIs from a fresh `new URL(raw)` parse (absolute http/https only),
+ *     setting `href` as a property and the label via textContent;
+ *   - an audio URL exists only via `aradioAudioSrc`, for a key matching
+ *     ARADIO_AUDIO_KEY_RE; any other key means "this bulletin has no audio";
+ *   - fetch paths are rebuilt from validated shapes (`aradioBulletinPath`),
+ *     never taken verbatim, so a malformed index cannot point the page at an
+ *     arbitrary URL.
  * Before the first editor run none of the files exist, and a schema bump must
  * degrade to "missing field", never to a crash — every field is optional.
  *
- * This module is pure (no DOM, no fetch): main.ts owns state, polling and the
- * shared audio player; node tests import this file directly.
+ * This module touches no globals (no `document`, no fetch): the two DOM
+ * builders take the document/root as a parameter. main.ts owns state, polling
+ * and the shared audio player; node tests import this file directly.
  */
 
 import { uiText, type UiCopyKey, type UiLanguage } from '../i18n.ts';
@@ -131,12 +137,10 @@ const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const SAFE_ID_RE = /^[A-Za-z0-9][A-Za-z0-9._:-]{0,63}$/;
 const BULLETIN_ID_RE = /^(\d{4}-\d{2}-\d{2})-(\d{2})(\d{2})$/;
 const BULLETIN_PATH_RE = /^bulletins\/\d{4}-\d{2}-\d{2}\/\d{4}\.json$/;
-// audio/aradio/<id>.mp3 per the contract; nested segments are tolerated, but
-// every segment must start alphanumeric, so `..` can never form a segment.
-const AUDIO_KEY_RE = /^audio\/aradio\/(?:[A-Za-z0-9][A-Za-z0-9._-]*\/)*[A-Za-z0-9][A-Za-z0-9._-]*\.mp3$/;
-// Relative evidence links resolve against the public site, never the viewer's
-// origin, so a preview host cannot change where an evidence chip points.
-const SITE_ORIGIN = 'https://ara.guzus.xyz';
+// The shared key policy: a flat audio/aradio/<name>.mp3 (docs/aradio.md uses
+// audio/aradio/<id>.mp3). Nesting, traversal, another prefix or a full URL all
+// fail, and a bulletin whose key fails is treated as having no audio.
+export const ARADIO_AUDIO_KEY_RE = /^audio\/aradio\/[A-Za-z0-9._-]+\.mp3$/;
 
 // ── Primitive coercion ───────────────────────────────────────────────────
 
@@ -168,17 +172,31 @@ function msOf(iso: string | null): number {
   return Number.isFinite(ms) ? ms : 0;
 }
 
-/** Only http(s) survives. Site-relative paths resolve against the public site. */
-export function safeHttpUrl(value: unknown): string | null {
-  if (typeof value !== 'string') return null;
-  const raw = value.trim();
-  if (!raw) return null;
+/**
+ * The link guard: an absolute http(s) URL or null. `new URL(raw)` gets no
+ * base, so relative and protocol-relative values throw and are rejected, as
+ * is every other scheme (javascript:, data:, mailto:, …).
+ */
+export function parseAradioHttpUrl(raw: unknown): URL | null {
+  if (typeof raw !== 'string' || !raw.trim()) return null;
+  let url: URL;
   try {
-    const url = raw.startsWith('/') && !raw.startsWith('//') ? new URL(raw, SITE_ORIGIN) : new URL(raw);
-    return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : null;
+    url = new URL(raw.trim());
   } catch {
     return null;
   }
+  return url.protocol === 'https:' || url.protocol === 'http:' ? url : null;
+}
+
+/** Normalized href kept in the model; links are re-parsed when built. */
+export function safeHttpUrl(value: unknown): string | null {
+  return parseAradioHttpUrl(value)?.href ?? null;
+}
+
+/** The only way to an audio URL: `${base}/${key}` for a policy-valid key. */
+export function aradioAudioSrc(base: string, audio: { key: string } | null | undefined): string | null {
+  const key = audio?.key;
+  return typeof key === 'string' && ARADIO_AUDIO_KEY_RE.test(key) ? `${base}/${key}` : null;
 }
 
 /**
@@ -199,7 +217,7 @@ export function esc(value: unknown): string {
 /** `audio` may be `{key, bytes, duration_s}`, a bare key string, or null. */
 export function normalizeAradioAudio(raw: unknown): AradioAudio | null {
   const key = typeof raw === 'string' ? raw.trim() : isRecord(raw) && typeof raw.key === 'string' ? raw.key.trim() : '';
-  if (!AUDIO_KEY_RE.test(key)) return null;
+  if (!ARADIO_AUDIO_KEY_RE.test(key)) return null;
   const duration = isRecord(raw) ? Number(raw.duration_s) : NaN;
   const bytes = isRecord(raw) ? Number(raw.bytes) : NaN;
   return {
@@ -578,6 +596,55 @@ function speakerLabel(speaker: string, language: UiLanguage): string {
   return speaker || uiText(language, 'aradio.speaker1');
 }
 
+// ── Links (built with DOM APIs, never as HTML strings) ─────────────────────
+
+/** An evidence link that a slot in the rendered HTML stands for. */
+export type AradioLinkSpec = { url: string; kind: AradioEvidenceKind; kindLabel: string; label: string };
+
+/** Rendered HTML (which contains no URLs) plus the links its slots stand for. */
+export type AradioRender = { html: string; links: AradioLinkSpec[] };
+
+const LINK_KINDS = new Set<AradioEvidenceKind>([...EVIDENCE_KINDS, 'other']);
+
+/**
+ * Build one evidence link. The URL is parsed again here (the spec may not
+ * have come through normalization); `href` is assigned as a property and the
+ * labels as textContent, so no third-party string is ever parsed as HTML.
+ */
+export function createAradioEvidenceLink(doc: Document, spec: AradioLinkSpec): HTMLAnchorElement | null {
+  const url = parseAradioHttpUrl(spec.url);
+  if (!url) return null;
+  const kind: AradioEvidenceKind = LINK_KINDS.has(spec.kind) ? spec.kind : 'other';
+  const anchor = doc.createElement('a');
+  anchor.className = `aradio-evidence aradio-evidence--${kind}${SPOKEN_KINDS.has(kind) ? ' is-spoken' : ''}`;
+  anchor.href = url.href;
+  anchor.target = '_blank';
+  anchor.rel = 'noopener noreferrer';
+  anchor.title = String(spec.label);
+  const kindEl = doc.createElement('span');
+  kindEl.className = 'aradio-evidence-kind';
+  kindEl.textContent = String(spec.kindLabel);
+  const labelEl = doc.createElement('span');
+  labelEl.className = 'aradio-evidence-label';
+  labelEl.textContent = String(spec.label);
+  anchor.append(kindEl, labelEl);
+  return anchor;
+}
+
+/** Replace every `[data-aradio-link]` slot under `root` with its built link. */
+export function hydrateAradioLinks(root: ParentNode, links: readonly AradioLinkSpec[]): void {
+  root.querySelectorAll<HTMLElement>('[data-aradio-link]').forEach((slot) => {
+    const spec = links[Number(slot.dataset.aradioLink)];
+    const anchor = spec ? createAradioEvidenceLink(slot.ownerDocument, spec) : null;
+    if (anchor) {
+      slot.replaceWith(anchor);
+      return;
+    }
+    // A link that cannot be built leaves no empty chip behind.
+    (slot.closest('li') ?? slot).remove();
+  });
+}
+
 // ── Rendering ────────────────────────────────────────────────────────────
 
 /** Accessible name for a bulletin's play control. */
@@ -588,15 +655,10 @@ export function aradioPlayAria(entry: { airedAt: string; headline: string }, lan
     : uiText(language, 'aradio.playAria', { time, headline: entry.headline || time });
 }
 
-function renderEvidenceChip(evidence: AradioEvidence, language: UiLanguage): string {
-  const spoken = SPOKEN_KINDS.has(evidence.kind) ? ' is-spoken' : '';
-  return (
-    `<a class="aradio-evidence aradio-evidence--${esc(evidence.kind)}${spoken}" href="${esc(evidence.url)}" target="_blank" rel="noopener noreferrer"`
-    + ` title="${esc(evidence.label)}">`
-    + `<span class="aradio-evidence-kind">${esc(kindLabel(evidence.kind, language))}</span>`
-    + `<span class="aradio-evidence-label">${esc(evidence.label)}</span>`
-    + '</a>'
-  );
+/** An empty slot for an evidence link; hydrateAradioLinks() fills it. */
+function evidenceSlot(evidence: AradioEvidence, language: UiLanguage, links: AradioLinkSpec[]): string {
+  links.push({ url: evidence.url, kind: evidence.kind, kindLabel: kindLabel(evidence.kind, language), label: evidence.label });
+  return `<span class="aradio-link-slot" data-aradio-link="${links.length - 1}"></span>`;
 }
 
 function renderQuotes(evidence: readonly AradioEvidence[]): string {
@@ -604,7 +666,7 @@ function renderQuotes(evidence: readonly AradioEvidence[]): string {
   if (!quoted.length) return '';
   return '<div class="aradio-quotes">' + quoted.map((item) => {
     const who = [item.speaker, item.label].filter(Boolean).join(', ');
-    return `<blockquote class="aradio-quote" cite="${esc(item.url)}"><p>${esc(item.quote)}</p>`
+    return `<blockquote class="aradio-quote"><p>${esc(item.quote)}</p>`
       + (who ? `<footer>${esc(who)}</footer>` : '')
       + '</blockquote>';
   }).join('') + '</div>';
@@ -615,7 +677,7 @@ function renderSignal(importance: number, language: UiLanguage): string {
   return `<span class="aradio-signal" role="img" aria-label="${esc(uiText(language, 'aradio.importance', { value: importance }))}">${bars}</span>`;
 }
 
-function renderThread(thread: AradioThread, s: AradioViewState): string {
+function renderThread(thread: AradioThread, s: AradioViewState, links: AradioLinkSpec[]): string {
   const language = s.language;
   const facts = [
     thread.changed ? `<div><dt>${esc(uiText(language, 'aradio.changed'))}</dt><dd>${esc(thread.changed)}</dd></div>` : '',
@@ -623,7 +685,7 @@ function renderThread(thread: AradioThread, s: AradioViewState): string {
   ].join('');
   const evidence = thread.evidence.length
     ? `<ul class="aradio-evidence-list" aria-label="${esc(uiText(language, 'aradio.evidence'))}">`
-      + thread.evidence.map((item) => `<li>${renderEvidenceChip(item, language)}</li>`).join('')
+      + thread.evidence.map((item) => `<li>${evidenceSlot(item, language, links)}</li>`).join('')
       + '</ul>'
     : '';
   const history = thread.history.length
@@ -664,7 +726,7 @@ function renderResolved(threads: readonly AradioThread[], s: AradioViewState): s
     + `<ul class="aradio-resolved-list">${items}</ul></details>`;
 }
 
-function renderBoard(s: AradioViewState): string {
+function renderBoard(s: AradioViewState, links: AradioLinkSpec[]): string {
   const language = s.language;
   const { open, resolved } = sortAradioThreads(s.board?.threads ?? []);
   let body: string;
@@ -676,7 +738,7 @@ function renderBoard(s: AradioViewState): string {
   } else if (!open.length) {
     body = `<p class="aradio-note">${esc(uiText(language, 'aradio.boardEmpty'))}</p>`;
   } else {
-    body = `<div class="aradio-thread-grid">${open.map((thread) => renderThread(thread, s)).join('')}</div>`;
+    body = `<div class="aradio-thread-grid">${open.map((thread) => renderThread(thread, s, links)).join('')}</div>`;
   }
   const count = open.length === 1
     ? uiText(language, 'aradio.boardCountOne')
@@ -836,6 +898,15 @@ export function renderAradioLog(s: AradioViewState): string {
 export function renderAradioTranscript(
   transcript: AradioTranscriptState,
   s: { language: UiLanguage; boardSlugs: ReadonlySet<string> },
+): AradioRender {
+  const links: AradioLinkSpec[] = [];
+  return { html: transcriptHtml(transcript, s, links), links };
+}
+
+function transcriptHtml(
+  transcript: AradioTranscriptState,
+  s: { language: UiLanguage; boardSlugs: ReadonlySet<string> },
+  links: AradioLinkSpec[],
 ): string {
   const language = s.language;
   const head = (entry: { airedAt: string } | null) => [
@@ -875,7 +946,7 @@ export function renderAradioTranscript(
       ? `<li><button type="button" class="aradio-cover" data-aradio-goto="${esc(slug)}">${esc(title)}</button></li>`
       : `<li><span class="aradio-cover is-static">${esc(title)}</span></li>`;
   }).join('');
-  const sources = bulletin.sources.map((item) => `<li>${renderEvidenceChip(item, language)}</li>`).join('');
+  const sources = bulletin.sources.map((item) => `<li>${evidenceSlot(item, language, links)}</li>`).join('');
   return [
     `<article class="aradio-transcript" aria-labelledby="aradioTranscriptTitle" data-aradio-transcript="${esc(bulletin.id)}">`,
     head(bulletin),
@@ -898,7 +969,7 @@ export function renderAradioTranscript(
   ].join('');
 }
 
-function renderBulletins(s: AradioViewState): string {
+function renderBulletins(s: AradioViewState, links: AradioLinkSpec[]): string {
   const bulletins = s.index?.bulletins ?? [];
   if (!bulletins.length) return '';
   const boardSlugs = new Set((s.board?.threads ?? []).map((thread) => thread.slug));
@@ -912,7 +983,7 @@ function renderBulletins(s: AradioViewState): string {
     '</header>',
     `<div data-aradio-log>${renderAradioLog(s)}</div>`,
     '</div>',
-    `<div class="aradio-transcript-slot" id="aradio-transcript" data-aradio-transcript-slot>${renderAradioTranscript(s.transcript, { language: s.language, boardSlugs })}</div>`,
+    `<div class="aradio-transcript-slot" id="aradio-transcript" data-aradio-transcript-slot>${transcriptHtml(s.transcript, { language: s.language, boardSlugs }, links)}</div>`,
     '</div>',
     '</section>',
   ].join('');
@@ -925,12 +996,16 @@ export function renderAradioChecked(checkedAt: number | null, language: UiLangua
     : esc(uiText(language, 'aradio.checking'));
 }
 
-/** The whole /aradio view. Missing files render empty states, never throw. */
-export function renderAradioView(s: AradioViewState): string {
+/**
+ * The whole /aradio view. Missing files render empty states, never throw.
+ * Insert `html`, then call hydrateAradioLinks(root, links).
+ */
+export function renderAradioView(s: AradioViewState): AradioRender {
   const language = s.language;
+  const links: AradioLinkSpec[] = [];
   const hasBulletins = Boolean(s.index?.bulletins.length);
   const hasBoard = Boolean(s.board?.threads.length);
-  return [
+  const html = [
     '<div class="aradio-view">',
     '<header class="aradio-masthead">',
     '<div>',
@@ -944,8 +1019,9 @@ export function renderAradioView(s: AradioViewState): string {
     renderHero(s),
     // Before the first run there is nothing to put on a board or in a log;
     // the hero alone carries the empty state instead of three empty cards.
-    hasBulletins || hasBoard || s.boardStatus === 'error' ? renderBoard(s) : '',
-    renderBulletins(s),
+    hasBulletins || hasBoard || s.boardStatus === 'error' ? renderBoard(s, links) : '',
+    renderBulletins(s, links),
     '</div>',
   ].join('');
+  return { html, links };
 }

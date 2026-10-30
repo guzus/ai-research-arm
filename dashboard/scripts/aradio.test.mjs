@@ -78,12 +78,33 @@ test('fetch paths and S3 keys are rebuilt from validated shapes only', () => {
   }
   assert.equal(path('../x.json', 'not-a-stamp'), null);
 
-  const key = (raw) => mod.normalizeAradioAudio(raw)?.key ?? null;
-  assert.equal(key('audio/aradio/2026-10-30-1450.mp3'), 'audio/aradio/2026-10-30-1450.mp3');
-  assert.equal(key({ key: 'audio/aradio/2026/1450.mp3', duration_s: 'x' }), 'audio/aradio/2026/1450.mp3');
-  for (const hostile of ['audio/aradio/../../research/state.mp3', 'audio/2026-10-30-digest.mp3', 'https://evil.example/a.mp3', 'audio/aradio/x.mp3?y', 'audio/aradio/.hidden.mp3', '', null, true]) {
-    assert.equal(key(hostile), null, String(hostile));
+});
+
+test('audio guard: only audio/aradio/<name>.mp3 becomes a URL; anything else is text-only', () => {
+  const base = 'https://s3.guzus.xyz/obj-ai-research-arm';
+  assert.equal(mod.aradioAudioSrc(base, { key: 'audio/aradio/2026-10-30-1450.mp3' }), `${base}/audio/aradio/2026-10-30-1450.mp3`);
+  const hostile = [
+    'audio/aradio/2026/1450.mp3', 'audio/aradio/../../research/state.mp3', 'audio/aradio/x.mp3?y=1',
+    'audio/aradio/x.mp3#t', 'audio/2026-10-30-digest.mp3', 'audio/aradio/x.wav', 'https://evil.example/audio/aradio/a.mp3',
+    '/audio/aradio/a.mp3', 'audio/aradio/a b.mp3', 'audio/aradio/%2e%2e.mp3', '',
+  ];
+  for (const key of hostile) {
+    assert.equal(mod.aradioAudioSrc(base, { key }), null, key);
+    assert.equal(mod.normalizeAradioAudio(key), null, key);
+    assert.equal(mod.normalizeAradioAudio({ key, duration_s: 200 }), null, key);
   }
+  assert.equal(mod.aradioAudioSrc(base, null), null);
+  assert.equal(mod.aradioAudioSrc(base, { key: 42 }), null);
+  assert.equal(mod.normalizeAradioAudio({ key: 'audio/aradio/b.mp3', duration_s: 'x' }).durationS, null);
+
+  // A bulletin whose key fails the policy renders as text-only: no player.
+  const index = mod.normalizeAradioIndex({
+    bulletins: [{ id: '2026-10-30-1450', aired_at: '2026-10-30T14:50:00Z', headline: 'H', audio: { key: 'audio/aradio/../x.mp3' } }],
+  });
+  assert.equal(index.bulletins[0].audio, null);
+  const { html } = mod.renderAradioView(viewState({ index, latestDetail: null, transcript: { kind: 'none' } }));
+  assert.doesNotMatch(html, /data-aradio-play=/);
+  assert.match(html, /Audio did not make it for this bulletin/);
 });
 
 test('board: unresolved by status then importance; resolved kept apart', () => {
@@ -123,24 +144,85 @@ test('board: hostile thread content is escaped, bad links dropped, enums clamped
   assert.equal(thread.importance, 5);
   assert.equal(thread.evidence.length, 1);
   assert.equal(thread.evidence[0].kind, 'other');
-  const html = mod.renderAradioView(viewState({ board }));
+  // No transcript, so the board's links are the only ones rendered.
+  const { html, links } = mod.renderAradioView(viewState({ board, transcript: { kind: 'none' } }));
   assert.doesNotMatch(html, /<img src=x/);
   assert.doesNotMatch(html, /<script>/);
-  assert.doesNotMatch(html, /javascript:|data:text/);
-  assert.doesNotMatch(html, /" onmouseover="/);
+  assert.doesNotMatch(html, /javascript:|data:text|onmouseover/);
   assert.match(html, /&lt;img src=x onerror=alert\(1\)&gt;/);
-  assert.match(html, /quote&quot;break/);
+  // The surviving link is not in the HTML at all: a slot plus a spec.
+  assert.equal(links.length, 1);
+  assert.equal(links[0].label, 'quote"break');
+  assert.equal(links[0].url, 'https://example.com/a%22%20onmouseover=%22alert(1)');
+  assert.match(html, /data-aradio-link="0"/);
 });
 
-test('every evidence link opens safely in a new tab', () => {
-  const html = mod.renderAradioView(viewState());
-  const anchors = html.match(/<a class="aradio-evidence[^>]*>/g) || [];
-  assert.ok(anchors.length >= 8, `expected evidence chips, got ${anchors.length}`);
-  for (const anchor of anchors) {
-    assert.match(anchor, /href="https?:\/\//);
-    assert.match(anchor, /target="_blank"/);
-    assert.match(anchor, /rel="noopener noreferrer"/);
+// A document whose elements record properties and refuse HTML parsing: any
+// regression to string-built links trips the innerHTML trap.
+function fakeDocument() {
+  const created = [];
+  const doc = {
+    createElement(tag) {
+      const el = {
+        tagName: tag.toUpperCase(),
+        className: '',
+        children: [],
+        ownText: '',
+        set textContent(value) { this.ownText = String(value); },
+        get textContent() { return this.ownText + this.children.map((child) => child.textContent).join(''); },
+        append(...nodes) { this.children.push(...nodes); },
+        setAttribute() { throw new Error('links are built with properties, not attributes'); },
+      };
+      Object.defineProperty(el, 'innerHTML', {
+        get() { return ''; },
+        set() { throw new Error('innerHTML must never be used for evidence links'); },
+      });
+      created.push(el);
+      return el;
+    },
+  };
+  return { doc, created };
+}
+
+test('evidence links: no URL in the HTML; every link is built from a slot spec', () => {
+  const { html, links } = mod.renderAradioView(viewState());
+  assert.doesNotMatch(html, /<a\b[^>]*aradio-evidence/);
+  assert.doesNotMatch(html, /https?:\/\//, 'URLs must not travel through HTML strings');
+  assert.ok(links.length >= 8, `expected evidence links, got ${links.length}`);
+  const slots = html.match(/data-aradio-link="\d+"/g) || [];
+  assert.equal(slots.length, links.length);
+  const { doc } = fakeDocument();
+  for (const spec of links) {
+    const anchor = mod.createAradioEvidenceLink(doc, spec);
+    assert.equal(anchor.tagName, 'A');
+    assert.equal(anchor.href, new URL(spec.url).href);
+    assert.match(anchor.href, /^https?:\/\//);
+    assert.equal(anchor.target, '_blank');
+    assert.equal(anchor.rel, 'noopener noreferrer');
+    assert.equal(anchor.textContent, spec.kindLabel + spec.label);
   }
+});
+
+test('link guard: only absolute http(s), href as a property, label as text', () => {
+  for (const ok of ['https://www.sec.gov/x.htm', 'http://example.com/a?b=c#d', '  https://x.com/a/status/1  ']) {
+    assert.ok(mod.parseAradioHttpUrl(ok) instanceof URL, ok);
+  }
+  for (const bad of [
+    'javascript:alert(1)', 'JavaScript:alert(1)', 'data:text/html,<b>x</b>', 'vbscript:x', 'mailto:a@b.c',
+    'ftp://example.com/x', '/models/forecast/x', '//evil.example/x', 'example.com/x', '', '   ', null, 42, {},
+  ]) {
+    assert.equal(mod.parseAradioHttpUrl(bad), null, String(bad));
+    assert.equal(mod.safeHttpUrl(bad), null, String(bad));
+  }
+  // A spec that skipped normalization is re-checked at build time.
+  const { doc, created } = fakeDocument();
+  assert.equal(mod.createAradioEvidenceLink(doc, { url: 'javascript:alert(1)', kind: 'podcast', kindLabel: 'Podcast', label: 'x' }), null);
+  assert.equal(created.length, 0, 'nothing is built for a rejected URL');
+  const label = '<img src=x onerror=alert(1)> **[md](javascript:x)**';
+  const anchor = mod.createAradioEvidenceLink(doc, { url: 'https://example.com/p', kind: 'not-a-kind', kindLabel: 'Source', label });
+  assert.equal(anchor.className, 'aradio-evidence aradio-evidence--other');
+  assert.equal(anchor.children[1].textContent, label, 'third-party label is inert text');
+  assert.equal(anchor.title, label);
 });
 
 test('ON AIR for two hours after the latest bulletin, then off air', () => {
@@ -150,11 +232,11 @@ test('ON AIR for two hours after the latest bulletin, then off air', () => {
   // A viewer clock behind the writer's still reads as live, never negative.
   assert.deepEqual(mod.aradioAirState('2026-10-30T14:50:00Z', LATEST_MS - 60_000), { state: 'live', ageMs: 0 });
 
-  const live = mod.renderAradioView(viewState());
+  const live = mod.renderAradioView(viewState()).html;
   assert.match(live, /aradio-hero--live/);
   assert.match(live, /On air/);
   assert.match(live, /aired 20m ago/);
-  const idle = mod.renderAradioView(viewState({ nowMs: LATEST_MS + 3 * 3600_000 }));
+  const idle = mod.renderAradioView(viewState({ nowMs: LATEST_MS + 3 * 3600_000 })).html;
   assert.match(idle, /aradio-hero--idle/);
   assert.match(idle, /Last bulletin 3h ago/);
 });
@@ -163,7 +245,7 @@ test('before the first run: empty state, no board or log, never a crash', () => 
   const html = mod.renderAradioView(viewState({
     index: null, indexStatus: 'missing', board: null, boardStatus: 'missing',
     latestDetail: null, selectedId: null, transcript: { kind: 'none' }, checkedAt: null,
-  }));
+  })).html;
   assert.match(html, /The first bulletin has not aired yet/);
   assert.match(html, /href="\/today"/);
   assert.match(html, /Checks for new bulletins every 5 minutes/);
@@ -174,7 +256,7 @@ test('before the first run: empty state, no board or log, never a crash', () => 
   const failed = mod.renderAradioView(viewState({
     index: null, indexStatus: 'error', board: null, boardStatus: 'error',
     latestDetail: null, selectedId: null, transcript: { kind: 'none' }, checkedAt: null,
-  }));
+  })).html;
   assert.match(failed, /Could not reach the station/);
   assert.match(failed, /data-retry/);
 });
@@ -182,19 +264,19 @@ test('before the first run: empty state, no board or log, never a crash', () => 
 test('board without bulletins (first run went off air) still renders the board', () => {
   const html = mod.renderAradioView(viewState({
     index: { updatedAt: null, degraded: false, bulletins: [] }, latestDetail: null, selectedId: null, transcript: { kind: 'none' },
-  }));
+  })).html;
   assert.match(html, /The first bulletin has not aired yet/);
   assert.match(html, /Situation board/);
   assert.doesNotMatch(html, /aradio-bulletins/);
 });
 
 test('text-only bulletins render without a play control', () => {
-  const html = mod.renderAradioView(viewState({ showAll: true }));
+  const { html } = mod.renderAradioView(viewState({ showAll: true }));
   assert.match(html, /data-aradio-row="2026-10-30-1250"><span class="aradio-log-noaudio"/);
   assert.doesNotMatch(html, /data-aradio-play="2026-10-30-1250"/);
   assert.match(html, /Text only/);
   const bulletin = mod.normalizeAradioBulletin(B1250, mod.normalizeAradioIndex(INDEX).bulletins[1]);
-  const transcript = mod.renderAradioTranscript({ kind: 'ready', bulletin }, { language: 'en', boardSlugs: new Set() });
+  const transcript = mod.renderAradioTranscript({ kind: 'ready', bulletin }, { language: 'en', boardSlugs: new Set() }).html;
   assert.match(transcript, /Audio did not make it for this bulletin/);
   assert.doesNotMatch(transcript, /data-aradio-play=/);
   assert.doesNotMatch(transcript, /HTTP 503/, 'raw audio_error is operational detail, not reader copy');
@@ -202,10 +284,11 @@ test('text-only bulletins render without a play control', () => {
 
 test('transcript: speaker roles, follow-along spans, covers link only to live board slugs', () => {
   const bulletin = mod.normalizeAradioBulletin(B1450);
-  const html = mod.renderAradioTranscript(
+  const { html, links } = mod.renderAradioTranscript(
     { kind: 'ready', bulletin },
     { language: 'en', boardSlugs: new Set(['hbm-supply-crunch', 'anthropic-ipo']) },
   );
+  assert.equal(links.length, 4, 'one link spec per bulletin source');
   assert.equal((html.match(/class="aradio-line aradio-line--s1"/g) || []).length, 7);
   assert.equal((html.match(/class="aradio-line aradio-line--s2"/g) || []).length, 6);
   assert.match(html, />Anchor</);
@@ -273,9 +356,10 @@ test('log shows a day of bulletins until expanded', () => {
 });
 
 test('Korean: chrome, statuses, kinds and speakers are localized', () => {
-  const html = mod.renderAradioView(viewState({ language: 'ko' }));
-  for (const copy of ['상황판', '방송 중', '확대 중', '전개 중', '실적 발표 콜', '대본', '앵커', '공동 진행자', '계속 듣기']) {
+  const { html, links } = mod.renderAradioView(viewState({ language: 'ko' }));
+  for (const copy of ['상황판', '방송 중', '확대 중', '전개 중', '대본', '앵커', '공동 진행자', '계속 듣기']) {
     assert.ok(html.includes(copy), `missing Korean copy: ${copy}`);
   }
+  assert.ok(links.some((link) => link.kindLabel === '실적 발표 콜'), 'evidence kinds are localized too');
   assert.doesNotMatch(html, />Situation board</);
 });
