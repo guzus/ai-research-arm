@@ -28,6 +28,7 @@ on:
       - "RSS Official Announcements (Every 2 Hours)"
       - "Twitter AI News (hourly matrix)"
       - "Daily AI Expert Blogs"
+      - "Podcast Signal"
       - "Naver Blog Subscriptions"
       - "Bluesky AI Researcher Commentary (Daily)"
       - "Community AI Digest (HN + Reddit)"

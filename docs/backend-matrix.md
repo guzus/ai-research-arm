@@ -151,9 +151,10 @@ Reading notes:
 - `liveness-check.yml`
 - `market-quotes.yml`
 - `model-pricing.yml`
+- `podcasts.yml`
 - `production-synthetic.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p3`; native path serves `claude-opus-5-5`. 33 SSOT lanes (+14 dispatch execution paths) across 35 workflows; 14 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p3`; native path serves `claude-opus-5-5`. 33 SSOT lanes (+14 dispatch execution paths) across 36 workflows; 15 workflows run no model._
 
 _Explicit lane fallback overrides (replace, never extend, the global chain): `ai-news-research`: `cursor-grok-4p6-fast`; `digest-audio-script`: `cursor-grok-4p6-fast`; `digest-synthesis-fallback`: `cursor-grok-4p6-fast`; `twitter-primary`: `cursor-grok-4p6-fast`; `twitter-primary-repair`: `cursor-grok-4p6-fast`._
 
