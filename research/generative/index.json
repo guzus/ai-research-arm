@@ -3460,5 +3460,19 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+    "file": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-10-30T05:36:00Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/alexkoch_ai/status/2115871971393331663\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

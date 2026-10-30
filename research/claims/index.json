@@ -1,5 +1,5 @@
 {
-  "article_count": 105,
+  "article_count": 106,
   "articles": [
     {
       "claim_count": 18,
@@ -999,6 +999,16 @@
         "twitter-seed"
       ],
       "title": "Is there a liquid market for compute? Not yet, and the answer depends on which of three markets you mean"
+    },
+    {
+      "claim_count": 34,
+      "created_at": "2026-10-30T05:36:00Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "stem": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option"
     }
   ],
   "by_host": {
@@ -1008,6 +1018,9 @@
     "163.com": [
       "2026-07-13T181948--cxmt#c23",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c3"
+    ],
+    "1x.tech": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c23"
     ],
     "21jingji.com": [
       "2026-07-13T181948--cxmt#c6"
@@ -1461,6 +1474,9 @@
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c9",
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c22"
     ],
+    "aronfrishberg.com": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c24"
+    ],
     "arrington.house.gov": [
       "2026-05-27T035557--800-vdc-architecture#c28"
     ],
@@ -1805,7 +1821,11 @@
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c11",
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c12",
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c11",
-      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c12"
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c12",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c16",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c19",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c20",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c21"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -1822,6 +1842,9 @@
     ],
     "assets.anthropic.com": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c23"
+    ],
+    "assets.theregister.com": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c7"
     ],
     "authorsalliance.org": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -2072,11 +2095,18 @@
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c4",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c22"
     ],
+    "bloomberglinea.com": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c32"
+    ],
     "bloomingbit.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
     ],
     "bls.gov": [
-      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c18"
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c18",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c17"
+    ],
+    "botland.store": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c13"
     ],
     "bpb-us-e1.wpmucdn.com": [
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c17"
@@ -2203,7 +2233,8 @@
     "cbsnews.com": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c10",
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c10",
-      "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c8"
+      "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c8",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c8"
     ],
     "ccir.io": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c25",
@@ -3061,7 +3092,8 @@
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c6"
     ],
     "docs.fcc.gov": [
-      "2026-08-20T152813--unitree-star-market-ipo-debut#c11"
+      "2026-08-20T152813--unitree-star-market-ipo-debut#c11",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c14"
     ],
     "docs.flashbots.net": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c20"
@@ -3978,6 +4010,9 @@
     "home.saxo": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c11"
     ],
+    "hoodline.com": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c10"
+    ],
     "huggingface.co": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6",
       "2026-06-22T052035--zhipu-ai-glm#c10",
@@ -4073,14 +4108,16 @@
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c13",
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c17",
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c20",
-      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c15"
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c15",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c22"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-6"
     ],
     "humanoid.guide": [
-      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c11"
+      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c11",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c9"
     ],
     "humanoidsdaily.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c4",
@@ -4102,6 +4139,9 @@
     ],
     "ibiden.com": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c13"
+    ],
+    "ibisworld.com": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c18"
     ],
     "ibj.com": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c8"
@@ -4711,6 +4751,9 @@
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c1",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c3",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c5"
+    ],
+    "mikekalil.com": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c25"
     ],
     "militarytimes.com": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c16"
@@ -6194,6 +6237,13 @@
     "tapeboard.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
     ],
+    "tau-robotics.com": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c2",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c3",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c4",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c5",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c6"
+    ],
     "tbench.ai": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c11",
@@ -6201,6 +6251,9 @@
     ],
     "tech-insider.org": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c11"
+    ],
+    "tech-ish.com": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c15"
     ],
     "tech.slashdot.org": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c11"
@@ -6278,7 +6331,8 @@
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c1",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c23",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c24",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c13"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c13",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c26"
     ],
     "techflowpost.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20",
@@ -6516,7 +6570,8 @@
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c23"
     ],
     "therobotreport.com": [
-      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2"
+      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c12"
     ],
     "thessdguy.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c37"
@@ -6695,7 +6750,8 @@
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c6"
     ],
     "unitree.com": [
-      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2"
+      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c11"
     ],
     "usagepricing.com": [
       "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c7"
@@ -7073,7 +7129,8 @@
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c14",
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c1",
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c2",
-      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c1"
+      "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c1",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c1"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -7149,6 +7206,9 @@
     ],
     "https://13f.info/manager/0002045724-situational-awareness-lp": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c2"
+    ],
+    "https://1x.tech/discover/neo-home-robot": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c23"
     ],
     "https://247wallst.com/cards/tech-did-the-heavy-lifting-again-the-nasdaq-s-1-06-gain-ne-gspc-market-bell-01m46tkf2f7w10vn47cy4b9tyt": [
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c31"
@@ -8160,6 +8220,9 @@
     "https://arxiv.org/html/2307.03718v4": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c26"
     ],
+    "https://arxiv.org/html/2401.02117": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c19"
+    ],
     "https://arxiv.org/html/2402.16786v2": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c25"
     ],
@@ -8207,6 +8270,9 @@
     "https://arxiv.org/html/2503.18156v3": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c30"
     ],
+    "https://arxiv.org/html/2504.16054": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c20"
+    ],
     "https://arxiv.org/html/2506.02634v3": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c25"
     ],
@@ -8226,11 +8292,17 @@
     "https://arxiv.org/html/2508.13180": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c26"
     ],
+    "https://arxiv.org/html/2509.14096": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c16"
+    ],
     "https://arxiv.org/html/2509.22067v1": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c9"
     ],
     "https://arxiv.org/html/2511.03334": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c36"
+    ],
+    "https://arxiv.org/html/2511.14759": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c21"
     ],
     "https://arxiv.org/html/2511.19468": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c4",
@@ -8411,6 +8483,9 @@
     ],
     "https://assets.anthropic.com/m/4e20a4ab6512e217/original/Anthropic-Response-to-OSTP-RFI-March-2025-Final-Submission-v3.pdf": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c23"
+    ],
+    "https://assets.theregister.com/2026/07/29/202621": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c7"
     ],
     "https://authorsguild.org/news/anthropic-settlement-update-91-percent-of-books-claimed": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c24"
@@ -8640,6 +8715,9 @@
     ],
     "https://bloomingbit.io/en/feed/news/101415": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c10"
+    ],
+    "https://botland.store/akcesoria-do-robotow/28456-akumulator-do-robotow-unitree-g1-9000mah-5907085527444.html": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c13"
     ],
     "https://bpb-us-e1.wpmucdn.com/websites.harvard.edu/dist/f/106/files/2026/01/NDAA-2026-Guidance-and-Prohibition-on-use-of-certain-Artificial-Intelligence.pdf": [
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c17"
@@ -9354,7 +9432,8 @@
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c6"
     ],
     "https://docs.fcc.gov/public/attachments/DA-26-786A1.txt": [
-      "2026-08-20T152813--unitree-star-market-ipo-debut#c11"
+      "2026-08-20T152813--unitree-star-market-ipo-debut#c11",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c14"
     ],
     "https://docs.flashbots.net/flashbots-mev-boost/introduction": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c20"
@@ -10386,6 +10465,9 @@
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c10",
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c8"
     ],
+    "https://hoodline.com/2026/08/s-f-startup-wants-its-30-an-hour-robots-cleaning-your-home": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c10"
+    ],
     "https://huggingface.co/Aleph-Alpha/Kolibri-1": [
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c1",
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c10",
@@ -10473,6 +10555,9 @@
     ],
     "https://huggingface.co/datasets/Anthropic/claude-protein-binder-design": [
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c15"
+    ],
+    "https://huggingface.co/datasets/BitRobot/HIW-500-LeRobot": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c22"
     ],
     "https://huggingface.co/datasets/aibengineering/beat-the-game-minecraft": [
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c7"
@@ -10585,6 +10670,9 @@
     ],
     "https://humanoid.guide/product/g1": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c11"
+    ],
+    "https://humanoid.guide/tau-robotics-humanoids-clean-homes-for-30-an-hour-with-help": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c9"
     ],
     "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/rate-limits-and-user-limits": [
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c5"
@@ -10971,6 +11059,9 @@
     ],
     "https://microsoft.ai/news/introducing-mai-cyber-1-flash-inside-mdash": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c16"
+    ],
+    "https://mikekalil.com/blog/weave-robotics-isaac-1": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c25"
     ],
     "https://mimo.mi.com/docs/en-US/news/latest/v2-6": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c14",
@@ -12418,6 +12509,14 @@
     "https://tapeboard.com/blog/glossary-what-is-the-finra-threshold-list": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c13"
     ],
+    "https://tau-robotics.com/service-privacy.html": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c6"
+    ],
+    "https://tau-robotics.com/service-terms.html": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c3",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c4",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c5"
+    ],
     "https://tech-insider.org/openai-722-math-manuscripts-unreleased-model-2026": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c11"
     ],
@@ -12529,6 +12628,9 @@
     ],
     "https://techcrunch.com/2026/02/16/how-ricursive-intelligence-raised-335m-at-a-4b-valuation-in-4-months": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c33"
+    ],
+    "https://techcrunch.com/2026/03/12/humanoid-robotics-maker-sunday-reaches-1-15b-valuation-to-build-household-robots": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c26"
     ],
     "https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshots-ais-kimi": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c23"
@@ -13336,6 +13438,9 @@
     "https://www.aptible.com/blog/annual-pentest-continuous-security": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c21"
     ],
+    "https://www.aronfrishberg.com/gatsby": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c24"
+    ],
     "https://www.authorsalliance.org/resources/generative-ai/bartz-v-anthropic-settlement-faq": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
     ],
@@ -13516,6 +13621,12 @@
     "https://www.bloomberg.com/news/articles/2026-08-16/stripe-nears-deal-to-buy-ai-firm-openrouter-for-over-7-billion": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c3"
     ],
+    "https://www.bloomberglinea.com/tecnologia/robots-humanoides-ya-limpian-casas-por-us30-la-hora-en-san-francisco-asi-funciona-el-servicio": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c32"
+    ],
+    "https://www.bls.gov/oes/2023/may/oes372012.htm": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c17"
+    ],
     "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm": [
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c18"
     ],
@@ -13622,6 +13733,9 @@
     ],
     "https://www.cbsnews.com/news/hegseth-declares-anthropic-supply-chain-risk": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c8"
+    ],
+    "https://www.cbsnews.com/news/tau-robotics-humanoid-ai-cleaning-robots-san-francisco": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c8"
     ],
     "https://www.centcom.mil/OPERATIONS-AND-EXERCISES/EPIC-FURY": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c15"
@@ -14843,6 +14957,9 @@
     ],
     "https://www.ibiden.com/company/2026/02/notice-regarding-capital-investment-plan-for-high-performance-ic-package-substrates.html": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c13"
+    ],
+    "https://www.ibisworld.com/united-states/market-size/residential-cleaning-services/6542": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c18"
     ],
     "https://www.ibj.com/articles/indianapolis-based-kennected-hit-with-cease-and-desist-letter-from-linkedin": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c8"
@@ -16187,12 +16304,18 @@
     "https://www.tanayj.com/p/unitrees-ipo-filing-the-state-of": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c15"
     ],
+    "https://www.tau-robotics.com/book": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c2"
+    ],
     "https://www.tbench.ai/leaderboard/terminal-bench/2.1": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c10",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c11"
     ],
     "https://www.tbench.ai/news/terminal-bench-4-0": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c19"
+    ],
+    "https://www.tech-ish.com/2026/08/10/us-bans-new-chinese-humanoid-robots-the-catch-the-biggest-maker-got-in-first": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c15"
     ],
     "https://www.techflowpost.com/en-US/article/31730": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c20"
@@ -16393,7 +16516,8 @@
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c25"
     ],
     "https://www.therobotreport.com/unitree-robotics-unveils-g1-humanoid-for-16k": [
-      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2"
+      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c12"
     ],
     "https://www.thestreet.com/investing/michael-burrys-newest-short-reveals-what-really-worries-him-about-ai": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c21"
@@ -16564,7 +16688,8 @@
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c6"
     ],
     "https://www.unitree.com/g1": [
-      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2"
+      "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2",
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c11"
     ],
     "https://www.usenix.org/system/files/soups2025-detsika.pdf": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c31"
@@ -16932,6 +17057,9 @@
     "https://x.com/alexandr_wang/status/2042614906059387211": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c33"
     ],
+    "https://x.com/alexkoch_ai/status/2115871971393331663": [
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c1"
+    ],
     "https://x.com/anishmoonka/status/2039097880489984380": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c10"
     ],
@@ -17235,7 +17363,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3041,
+  "claim_count": 3075,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -89800,9 +89928,749 @@
         "https://www.energyintel.com/0000017b-a79a-de4c-a17b-e7dac4620000"
       ],
       "type": "event"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-29",
+      "claim": "On 2026-10-29 Alexander Koch posted that customers can book Tau's humanoid cleaners on a recurring subscription for up to 3 hours per cleaning, with video at 4x speed.",
+      "confidence": "high",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/alexkoch_ai/status/2115871971393331663"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-08-01",
+      "claim": "Hoodline reports Tau raised $2.6 million in pre-seed funding and has three engineers.",
+      "confidence": "low",
+      "hosts": [
+        "hoodline.com"
+      ],
+      "id": "c10",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://hoodline.com/2026/08/s-f-startup-wants-its-30-an-hour-robots-cleaning-your-home"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "Unitree's G1 page lists about 1.32 m height, about 35 kg, about 2 kg arm payload, a 9000 mAh battery, about 2 hours runtime, and a base price of about $13.5k.",
+      "confidence": "high",
+      "hosts": [
+        "unitree.com"
+      ],
+      "id": "c11",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.unitree.com/g1"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2024-05-15",
+      "claim": "Unitree unveiled the G1 at $16,000 in May 2024.",
+      "confidence": "high",
+      "hosts": [
+        "therobotreport.com"
+      ],
+      "id": "c12",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.therobotreport.com/unitree-robotics-unveils-g1-humanoid-for-16k"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "A reseller lists the G1 battery as 46.8 V nominal and 421.2 Wh.",
+      "confidence": "medium",
+      "hosts": [
+        "botland.store"
+      ],
+      "id": "c13",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c13",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://botland.store/akcesoria-do-robotow/28456-akumulator-do-robotow-unitree-g1-9000mah-5907085527444.html"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-07-28",
+      "claim": "On 2026-07-28 the FCC added foreign-produced advanced robotic devices to the Covered List, except those granted Conditional Approval by the Department of War (DA 26-786).",
+      "confidence": "high",
+      "hosts": [
+        "docs.fcc.gov"
+      ],
+      "id": "c14",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.fcc.gov/public/attachments/DA-26-786A1.txt"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-08-10",
+      "claim": "Trade coverage reports Unitree authorized several products before the FCC rule and that the US was 13.3% of Unitree's 2025 revenue.",
+      "confidence": "low",
+      "hosts": [
+        "tech-ish.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c15",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.tech-ish.com/2026/08/10/us-bans-new-chinese-humanoid-robots-the-catch-the-biggest-maker-got-in-first"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2025-09-17",
+      "claim": "A 2025 arXiv security assessment found the Unitree G1 maintains telemetry connections to external servers sending robot state and sensor data and uses static encryption keys.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c16",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2509.14096"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2023-05-31",
+      "claim": "BLS May 2023 data show a median hourly wage of $16.08 and 836,230 jobs for maids and housekeeping cleaners.",
+      "confidence": "high",
+      "hosts": [
+        "bls.gov"
+      ],
+      "id": "c17",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.bls.gov/oes/2023/may/oes372012.htm"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2024-12-31",
+      "claim": "IBISWorld sizes US residential cleaning services at about $18.8 billion in 2024.",
+      "confidence": "medium",
+      "hosts": [
+        "ibisworld.com"
+      ],
+      "id": "c18",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c18",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.ibisworld.com/united-states/market-size/residential-cleaning-services/6542"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2024-01-04",
+      "claim": "Mobile ALOHA co-training raised whole-task success on wiping wine from 50% to 95% and rinsing a pan from 0% to 80%.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c19",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2401.02117"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "Tau's booking page quotes a one-hour visit with two humanoids at $60 weekly, $80 every two weeks, $90 every four weeks and $100 one-time, with invite-only booking.",
+      "confidence": "high",
+      "hosts": [
+        "tau-robotics.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.tau-robotics.com/book"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2025-04-22",
+      "claim": "pi0.5 used about 400 hours of mobile-manipulator data from roughly 100 homes and cleans kitchens and bedrooms in entirely new homes.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c20",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c20",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2504.16054"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2025-11-18",
+      "claim": "pi*0.6 box-assembly iterations mixed 600 autonomous trials with 360 expert-intervention trials, and on-robot RL more than doubled throughput on the hardest tasks.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c21",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c21",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2511.14759"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "The HIW-500 dataset offers 500+ hours of G1 whole-body teleoperation across 12 real homes under CC BY 4.0.",
+      "confidence": "medium",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c22",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c22",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/datasets/BitRobot/HIW-500-LeRobot"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "1X NEO is priced at $20,000 or $499 per month with a $200 refundable deposit.",
+      "confidence": "high",
+      "hosts": [
+        "1x.tech"
+      ],
+      "id": "c23",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c23",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://1x.tech/discover/neo-home-robot"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "Gatsby charges a flat $150 per clean and claims the first US consumer humanoid cleaning on 2026-05-14.",
+      "confidence": "low",
+      "hosts": [
+        "aronfrishberg.com"
+      ],
+      "id": "c24",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c24",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.aronfrishberg.com/gatsby"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-07-03",
+      "claim": "Weave announced Isaac 1 at $7,999 or $449 per month with teleoperation fallback and fall 2026 deliveries.",
+      "confidence": "medium",
+      "hosts": [
+        "mikekalil.com"
+      ],
+      "id": "c25",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c25",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://mikekalil.com/blog/weave-robotics-isaac-1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-03-12",
+      "claim": "Sunday Robotics raised a $165 million Series B at a $1.15 billion valuation in March 2026.",
+      "confidence": "high",
+      "hosts": [
+        "techcrunch.com"
+      ],
+      "id": "c26",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://techcrunch.com/2026/03/12/humanoid-robotics-maker-sunday-reaches-1-15b-valuation-to-build-household-robots"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "Weekly-subscription price per robot-hour is $60 per visit divided by two robots, i.e. $30.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "c27",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c27",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "One-time booking price per robot-hour is $100 divided by two robots, i.e. $50.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "c28",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c28",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "Implied average G1 power draw is 421.2 Wh over a 2 hour rated runtime, about 210.6 W.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "c29",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c29",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-24",
+      "claim": "Tau's Service Terms (updated 2026-10-24) state the standard fee is $50 per humanoid per hour, normally two humanoids, i.e. $100, $200 or $300 for 1, 2 or 3 hours.",
+      "confidence": "high",
+      "hosts": [
+        "tau-robotics.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://tau-robotics.com/service-terms.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "Reported Tau build cost is about 3.7 times the G1 base list price ($50,000 versus $13,500).",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "c30",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c30",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "Revenue-only payback on a $50,000 robot at $30 per hour and 40 billed hours per week is about 0.80 years.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "c31",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c31",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-09-11",
+      "claim": "Bloomberg Linea relays a claimed payback of under a year for a Tau robot at 40 hours per week.",
+      "confidence": "low",
+      "hosts": [
+        "bloomberglinea.com"
+      ],
+      "id": "c32",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c32",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.bloomberglinea.com/tecnologia/robots-humanoides-ya-limpian-casas-por-us30-la-hora-en-san-francisco-asi-funciona-el-servicio"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "Tau's reported 160 paid robot-hours are 0.4 of pi0.5's roughly 400 hours of mobile-manipulator data.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "c33",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c33",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-30",
+      "claim": "A one-time booking costs about 67% more per robot-hour than the weekly subscription ($50 versus $30).",
+      "confidence": "high",
+      "hosts": [],
+      "id": "c34",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c34",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-24",
+      "claim": "Tau's Service Terms state: the robot is not autonomous, a person is controlling it, and every cleaning is recorded with the operator watching live.",
+      "confidence": "high",
+      "hosts": [
+        "tau-robotics.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://tau-robotics.com/service-terms.html"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-24",
+      "claim": "Tau's Service Terms cap liability at $2,500 per cleaning claim, license footage for model training, contain no insurance clause and require AAA arbitration in San Francisco.",
+      "confidence": "high",
+      "hosts": [
+        "tau-robotics.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://tau-robotics.com/service-terms.html"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-24",
+      "claim": "Tau's Service Privacy Policy says head and wrist cameras record continuously, faces are not blurred, microphones are disabled, and video is retained indefinitely unless deletion is requested.",
+      "confidence": "high",
+      "hosts": [
+        "tau-robotics.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://tau-robotics.com/service-privacy.html"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-07-29",
+      "claim": "Koch told The Register each humanoid is jointly controlled by a human operator and AI and that the balance varies by task.",
+      "confidence": "medium",
+      "hosts": [
+        "assets.theregister.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://assets.theregister.com/2026/07/29/202621"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-08-31",
+      "claim": "CBS reported Koch saying each Tau robot costs $50,000 to make, that cameras, networking and computers are Tau's own, and that robots will first imitate then exceed human performance.",
+      "confidence": "medium",
+      "hosts": [
+        "cbsnews.com"
+      ],
+      "id": "c8",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c8",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.cbsnews.com/news/tau-robotics-humanoid-ai-cleaning-robots-san-francisco"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st",
+      "article_created_at": "2026-10-30T05:36:00Z",
+      "article_title": "Tau Robotics' $30 humanoid cleaner: a teleoperation business selling a data option",
+      "as_of": "2026-10-17",
+      "claim": "A MarketWatch-derived summary reports Tau has about eight robots, roughly 160 paid robot-hours and nearly 100 cleanings, all teleoperated.",
+      "confidence": "medium",
+      "hosts": [
+        "humanoid.guide"
+      ],
+      "id": "c9",
+      "key": "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c9",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://humanoid.guide/tau-robotics-humanoids-clean-homes-for-30-an-hour-with-help"
+      ],
+      "type": "metric"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1470,
+  "reusable_count": 1481,
   "schema_version": 1
 }
