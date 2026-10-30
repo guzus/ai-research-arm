@@ -25,7 +25,10 @@ Provenance is enforced here, not trusted from the editor:
   editor was actually shown;
 * `speaker` survives only if the same source line names them, and a quoted
   entry's `label` is the trusted source name (the dashboard prints
-  "speaker, label" under a quote).
+  "speaker, label" under a quote);
+* quoting follows the earnings lane's excerpt policy across the whole board:
+  at most QUOTES_PER_SOURCE quotes / QUOTE_WORDS_PER_SOURCE words per source,
+  and QUOTES_PER_RUN new quotes per run.
 
 This module is also the lane's single source of truth for limits and spoken
 text handling: build_aradio_inbox.py (context.json), aradio_tts.py and
@@ -67,6 +70,14 @@ NOTE_MAX = 300
 LABEL_MAX = 90  # the dashboard shows evidence labels up to 90 characters
 SPEAKER_MAX = 80
 QUOTE_MAX_WORDS = 40
+# Quoted words are republished (everything under research/ is public), so the
+# board follows the earnings lane's excerpt policy, counted across the whole
+# board and not per op: per source item at most QUOTES_PER_SOURCE distinct
+# quotes and QUOTE_WORDS_PER_SOURCE quoted words, and at most QUOTES_PER_RUN
+# new quotes per edit. Excess quotes are dropped; their evidence stays.
+QUOTES_PER_SOURCE = 2
+QUOTE_WORDS_PER_SOURCE = 60
+QUOTES_PER_RUN = 8
 # A quote is what someone SAID: a transcript window of a spoken item, or the
 # issuer's own attributed line under an earnings item's "Key quotes:". Never
 # a title, show notes, or the Twitter/ticket lanes' text, which is ARA's own
@@ -88,6 +99,9 @@ NEGATIONS = frozenset({
     "dont", "doesnt", "didnt", "isnt", "arent", "wasnt", "werent", "wont", "cant",
     "couldnt", "shouldnt", "wouldnt", "aint", "hardly", "doubt", "unlikely",
 })
+YOUTUBE_HOSTS = frozenset({"youtube.com", "m.youtube.com", "music.youtube.com",
+                           "youtube-nocookie.com"})
+YOUTUBE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
 # Hard bounds (validator) and the editor's targets (prompt). The gap is the
 # tolerance that keeps a slightly long or short script from wasting a run.
 SCRIPT_LINES = (8, 30)
@@ -432,6 +446,31 @@ def parse_key_quotes(text: str) -> list[QuoteSource]:
     return found
 
 
+def source_of_url(url: str) -> str:
+    """The source a URL points into, for counting quotes per source: one
+    YouTube video whatever the deep link (`&t=…s`, youtu.be, /live/), else
+    host and path without scheme, query or fragment (coarser is stricter)."""
+    try:
+        parts = urllib.parse.urlsplit(url)
+    except ValueError:
+        return "web:" + url
+    host = (parts.hostname or "").lower()
+    if host.startswith("www."):
+        host = host[4:]
+    video = ""
+    segments = parts.path.strip("/").split("/")
+    if host == "youtu.be":
+        video = segments[0]
+    elif host in YOUTUBE_HOSTS:
+        if segments[0] == "watch":
+            video = (urllib.parse.parse_qs(parts.query).get("v") or [""])[0]
+        elif len(segments) >= 2 and segments[0] in ("embed", "shorts", "live", "v"):
+            video = segments[1]
+    if YOUTUBE_ID_RE.match(video):
+        return "youtube:" + video
+    return f"web:{host}{parts.path.rstrip('/')}"
+
+
 def atomic_write_text(path: Path, text: str) -> None:
     """Temp file in the same directory + os.replace (CLAUDE.md rule 8).
 
@@ -488,6 +527,7 @@ class TrustedInbox:
     items: list[dict]
     base_dir: Path | None = None
     url_owner: dict[str, dict] = field(default_factory=dict)
+    source_owner: dict[str, str] = field(default_factory=dict)
     _quote_sources: dict[int, tuple[QuoteSource, ...]] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
@@ -499,8 +539,11 @@ class TrustedInbox:
                        key=lambda i: (self.items[i].get("kind") not in QUOTABLE_KINDS, i))
         for index in order:
             item = self.items[index]
+            key = item.get("key")
             for url in item_urls(item):
                 self.url_owner.setdefault(url, item)
+                if isinstance(key, str) and key:
+                    self.source_owner.setdefault(source_of_url(url), key)
 
     @classmethod
     def from_obj(cls, obj: Any, base_dir: Path | None = None) -> "TrustedInbox":
@@ -541,6 +584,14 @@ class TrustedInbox:
         self._quote_sources[id(item)] = tuple(sources)
         return self._quote_sources[id(item)]
 
+    def source_identity(self, url: str) -> str:
+        """What a URL's quotes count against: the inbox item that carries its
+        source (a deep link `&t=…s` counts as its episode), else the source
+        itself, so board evidence from earlier runs counts the same way."""
+        source = source_of_url(url)
+        key = self.source_owner.get(source)
+        return "item:" + key if key else source
+
 
 def item_urls(item: dict) -> list[str]:
     """The item's citable URLs: only those passing the strict rule."""
@@ -564,6 +615,49 @@ def board_evidence(board: dict) -> dict[str, dict]:
             if isinstance(evidence, dict) and safe_url(evidence.get("url")):
                 found.setdefault(evidence["url"], evidence)
     return found
+
+
+@dataclass
+class QuoteBudget:
+    """How much of each source the board quotes, and this run's new quotes.
+
+    Seeded from every quote already on the board (resolved threads too: they
+    are still published), so a source cannot be quoted past the policy by
+    spreading quotes over threads, ops, deep-link URLs or runs.
+    """
+
+    quoted: dict[str, dict[str, int]] = field(default_factory=dict)  # source -> {quote: words}
+    new: int = 0
+
+    @classmethod
+    def from_board(cls, board: dict, inbox: "TrustedInbox") -> "QuoteBudget":
+        budget = cls()
+        for thread in board.get("threads") or []:
+            entries = thread.get("evidence") if isinstance(thread, dict) else None
+            for evidence in entries if isinstance(entries, list) else []:
+                if (isinstance(evidence, dict) and safe_url(evidence.get("url"))
+                        and isinstance(evidence.get("quote"), str) and evidence["quote"].strip()):
+                    source = budget.quoted.setdefault(inbox.source_identity(evidence["url"]), {})
+                    source[evidence["quote"]] = len(evidence["quote"].split())
+        return budget
+
+    def charge(self, source_id: str, quote: str) -> str | None:
+        """Record `quote` against its source; None if allowed, else the reason.
+        A quote the board already carries from that source is free: re-citing
+        it republishes nothing new."""
+        quoted = self.quoted.setdefault(source_id, {})
+        if quote in quoted:
+            return None
+        words = len(quote.split())
+        if len(quoted) >= QUOTES_PER_SOURCE or sum(quoted.values()) + words > QUOTE_WORDS_PER_SOURCE:
+            return (f"this source is already quoted {len(quoted)} time(s), "
+                    f"{sum(quoted.values())} words, on the board and in this edit; limit "
+                    f"{QUOTES_PER_SOURCE} quotes and {QUOTE_WORDS_PER_SOURCE} words per source")
+        if self.new >= QUOTES_PER_RUN:
+            return f"limit {QUOTES_PER_RUN} new quotes per run"
+        quoted[quote] = words
+        self.new += 1
+        return None
 
 
 # ---------------------------------------------------------------------------
@@ -653,14 +747,14 @@ def _status(value: Any, where: str, report: Report) -> str | None:
 
 def _evidence_quote(entry: dict, where: str, url: str, owner: dict | None,
                     existing: dict | None, inbox: TrustedInbox, report: Report,
-                    stats: dict[str, int]) -> dict[str, str]:
+                    stats: dict[str, int], budget: QuoteBudget) -> dict[str, str]:
     """The verified {quote, label, speaker?} of one evidence entry, or {}.
 
     * The published quote is the matched span in the source's own wording;
       the editor's string is only the search key.
     * It must come from a quotable source of the entry's owner (a transcript
-      window, or an earnings Key-quotes line), fit QUOTE_MAX_WORDS, and not
-      start right after a negation or cross a caption speaker change.
+      window, or an earnings Key-quotes line), fit QUOTE_MAX_WORDS, not start
+      right after a negation, and fit the per-source and per-run budget.
     * `speaker` survives only if that same source names them (see
       QuoteMatch.names); speakers are never inferred, nor kept without a quote.
     * A quoted entry is labelled with the trusted source name: the dashboard
@@ -703,6 +797,9 @@ def _evidence_quote(entry: dict, where: str, url: str, owner: dict | None,
         if (not isinstance(board_quote, str) or board_quote != quote
                 or existing.get("kind") not in QUOTABLE_KINDS):
             return drop("cannot be verified (source not in this run's inbox)")
+        reason = budget.charge(inbox.source_identity(url), board_quote)
+        if reason:
+            return drop(f"exceeds the excerpt policy ({reason})")
         stats["quotes_kept"] += 1
         result = {"quote": board_quote,
                   "label": clip(clean_text(str(existing.get("label") or "")) or "source",
@@ -729,6 +826,9 @@ def _evidence_quote(entry: dict, where: str, url: str, owner: dict | None,
     best = max(usable, key=lambda match: (match.names(speaker_words), match.quote == quote))
     if len(best.quote.split()) > QUOTE_MAX_WORDS:
         return drop(f"is over {QUOTE_MAX_WORDS} words as the source words it")
+    reason = budget.charge(inbox.source_identity(url), best.quote)
+    if reason:
+        return drop(f"exceeds the excerpt policy ({reason})")
     stats["quotes_kept"] += 1
     if best.quote != quote:
         report.soft(f"{where}: quote replaced by the source's exact wording")
@@ -746,7 +846,7 @@ def _evidence_quote(entry: dict, where: str, url: str, owner: dict | None,
 
 def _normalize_evidence(raw: Any, where: str, inbox: TrustedInbox,
                         on_board: dict[str, dict], report: Report,
-                        stats: dict[str, int]) -> list[dict]:
+                        stats: dict[str, int], budget: QuoteBudget) -> list[dict]:
     if raw is None:
         return []
     if not isinstance(raw, list):
@@ -756,6 +856,11 @@ def _normalize_evidence(raw: Any, where: str, inbox: TrustedInbox,
     seen: set[str] = set()
     for index, entry in enumerate(raw):
         label_where = f"{where} evidence[{index}]"
+        if len(kept) >= MAX_EVIDENCE:
+            # Before any quote is checked: entries past the cap must not
+            # spend the quote budget.
+            report.soft(f"{where}: evidence capped at {MAX_EVIDENCE}")
+            break
         if not isinstance(entry, dict) or not isinstance(entry.get("url"), str):
             report.soft(f"{label_where}: not an object with a url; dropped")
             stats["evidence_dropped"] += 1
@@ -805,7 +910,7 @@ def _normalize_evidence(raw: Any, where: str, inbox: TrustedInbox,
         if isinstance(at, str) and at:
             normalized["at"] = at
         quoted = _evidence_quote(entry, label_where, url, owner, existing, inbox, report,
-                                 stats)
+                                 stats, budget)
         if quoted:
             if quoted["label"] != label_text:
                 report.soft(f"{label_where}: label set to the source's name because the "
@@ -816,9 +921,6 @@ def _normalize_evidence(raw: Any, where: str, inbox: TrustedInbox,
             normalized["quote"] = quoted["quote"]
         seen.add(url)
         kept.append(normalized)
-    if len(kept) > MAX_EVIDENCE:
-        report.soft(f"{where}: evidence capped at {MAX_EVIDENCE}")
-        kept = kept[:MAX_EVIDENCE]
     stats["evidence_kept"] += len(kept)
     return kept
 
@@ -930,6 +1032,7 @@ def validate_edit(edit: Any, inbox: TrustedInbox, board: dict
                if isinstance(t, dict) and isinstance(t.get("slug"), str)}
     simulated = {slug: str(thread.get("status", "")) for slug, thread in threads.items()}
     on_board = board_evidence(board)
+    budget = QuoteBudget.from_board(board, inbox)
 
     ops_raw = edit.get("ops")
     normalized_ops: list[dict] = []
@@ -998,7 +1101,7 @@ def validate_edit(edit: Any, inbox: TrustedInbox, board: dict
                 "changed": values["changed"],
                 "watch": values.get("watch", ""),
                 "evidence": _normalize_evidence(op.get("evidence"), where, inbox,
-                                                on_board, report, stats),
+                                                on_board, report, stats, budget),
                 "change": values["change"],
             })
             simulated[slug] = out["status"]
@@ -1021,7 +1124,7 @@ def validate_edit(edit: Any, inbox: TrustedInbox, board: dict
                 out["watch"] = values["watch"]
             if "add_evidence" in op:
                 out["add_evidence"] = _normalize_evidence(
-                    op.get("add_evidence"), where, inbox, on_board, report, stats)
+                    op.get("add_evidence"), where, inbox, on_board, report, stats, budget)
             out["change"] = values["change"]
             if "status" in out:
                 simulated[slug] = out["status"]

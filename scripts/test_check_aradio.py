@@ -709,6 +709,97 @@ class QuoteTruthTest(QuoteTestBase):
             self.assertNotIn(quote.split()[1], joined)
 
 
+class QuoteVolumeTest(QuoteTestBase):
+    """The earnings lane's excerpt policy, enforced across the whole board."""
+
+    def update_ops(self, evidence_per_op: list[list[dict]]) -> list[dict]:
+        return [{"op": "update", "slug": f"t{i}", "changed": "c", "change": "x",
+                 "add_evidence": evidence} for i, evidence in enumerate(evidence_per_op)]
+
+    def ten_thread_board(self) -> dict:
+        thread = board_obj()["threads"][0]
+        board = board_obj()
+        board["threads"] = [dict(copy.deepcopy(thread), slug=f"t{i}", evidence=[])
+                            for i in range(10)]
+        return board
+
+    def quoted(self, normalized: dict) -> list[str]:
+        return [entry["quote"] for op in normalized["ops"]
+                for entry in op.get("add_evidence", op.get("evidence", [])) if "quote" in entry]
+
+    def test_one_source_is_capped_across_ops_and_deep_links(self):
+        # Reviewer probe: 10 ops x 4 deep-link URLs once published 40 quotes,
+        # 1,400 words of one episode, with no warning.
+        windows = [" ".join(f"w{i}x{j}" for j in range(70)) for i in range(20)]
+        self.inbox = quote_inbox(self.root, windows)
+        quotes = iter(" ".join(windows[i // 2].split()[(i % 2) * 35:(i % 2) * 35 + 35])
+                      for i in range(40))
+        urls = [QEP] + QDEEP[:3]
+        normalized, warnings = self.run_edit(self.update_ops(
+            [[{"url": url, "label": "Pod", "quote": next(quotes)} for url in urls]
+             for _ in range(10)]), self.ten_thread_board())
+        kept = self.quoted(normalized)
+        self.assertEqual(1, len(kept))  # 35 + 35 words would pass 60
+        self.assertLessEqual(sum(len(q.split()) for q in kept), ca.QUOTE_WORDS_PER_SOURCE)
+        self.assertEqual(39, sum("exceeds the excerpt policy" in w for w in warnings))
+        self.assertEqual(40, sum(len(op["add_evidence"]) for op in normalized["ops"]))
+
+    def test_at_most_two_quotes_per_source(self):
+        self.inbox = quote_inbox(self.root, [f"short line number {n} about chips" for n in range(5)])
+        evidence, _ = self.evidence([{"url": url, "label": "x", "quote": f"short line number {n}"}
+                                     for n, url in enumerate([QEP] + QDEEP[:4])])
+        self.assertEqual(2, sum("quote" in entry for entry in evidence))
+
+    def test_quotes_already_on_the_board_count_against_their_source(self):
+        board = board_obj()
+        # A deep link from an earlier run: not in this inbox, same episode.
+        earlier = f"{QEP}&t=999s"
+        board["threads"][0]["evidence"] = [{"url": earlier, "kind": "podcast",
+                                            "label": "Some Podcast",
+                                            "quote": " ".join(["said"] * 30)}]
+        self.inbox = quote_inbox(self.root, [" ".join(f"w{j}" for j in range(40)),
+                                             "compute is the bottleneck for everyone"])
+        evidence, _ = self.evidence([
+            {"url": QEP, "label": "x", "quote": " ".join(f"w{j}" for j in range(31))},
+            {"url": QDEEP[0], "label": "x", "quote": "compute is the bottleneck"},
+            {"url": QDEEP[1], "label": "x", "quote": "the bottleneck for everyone"},
+            {"url": earlier, "label": "x", "quote": " ".join(["said"] * 30)}], board)
+        self.assertEqual([False, True, False, True], ["quote" in entry for entry in evidence])
+
+    def test_at_most_eight_new_quotes_per_run(self):
+        items = []
+        for n in range(5):
+            video = f"BBBBBBBBBB{n}"
+            path = self.root / "quotes" / "transcripts" / f"{n + 2}.txt"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("[00:00] first line here\n[01:00] second line here\n", encoding="utf-8")
+            items.append({"key": f"ep:show:{video}", "kind": "video", "source": f"Lab {n}",
+                          "title": "t", "url": f"https://www.youtube.com/watch?v={video}",
+                          "links": [f"https://www.youtube.com/watch?v={video}",
+                                    f"https://www.youtube.com/watch?v={video}&t=60s"],
+                          "text": "x", "transcript_file": f"transcripts/{n + 2}.txt"})
+        self.inbox = quote_inbox(self.root, ["unused"], extra=items)
+        evidence = [{"url": url, "label": "x", "quote": quote} for item in items
+                    for url, quote in zip(item["links"], ("first line here", "second line here"))]
+        normalized, warnings = self.run_edit([create_op(evidence[:8], "a"),
+                                              create_op(evidence[8:], "b")])
+        self.assertEqual(ca.QUOTES_PER_RUN, len(self.quoted(normalized)))
+        self.assertEqual(2, sum(f"limit {ca.QUOTES_PER_RUN} new quotes per run" in w
+                                for w in warnings))
+
+    def test_evidence_past_the_op_cap_does_not_spend_the_budget(self):
+        self.inbox = quote_inbox(self.root, ["compute is the bottleneck for everyone"])
+        crowded = ([{"url": url, "label": "x"} for url in [QEP] + QDEEP[:7]]
+                   + [{"url": QDEEP[8], "label": "x", "quote": "compute is the bottleneck"}])
+        normalized, warnings = self.run_edit([
+            create_op(crowded, "a"),
+            create_op([{"url": QDEEP[9], "label": "x", "quote": "the bottleneck for everyone"},
+                       {"url": QEP, "label": "x", "quote": "compute is the bottleneck for"}], "b")])
+        self.assertEqual(ca.MAX_EVIDENCE, len(normalized["ops"][0]["evidence"]))
+        self.assertEqual(2, len(self.quoted(normalized)))
+        self.assertTrue(any("evidence capped" in w for w in warnings))
+
+
 class KeyQuotesContractTest(unittest.TestCase):
     """The inbox builder's rendering of the earnings lane's `## Key Quotes`
     is exactly what the validator parses (a format drift would silently make
