@@ -24,9 +24,10 @@
     "include_in_digest": true,
     "transcript": {
       "source": "url-template",
-      "url_template": "https://aka.ms/transcriptfy{fy}q{q}"
+      "url_template": "https://aka.ms/transcriptfy{fy}q{q}",
+      "expect_final_url": "(?i)transcript[^/]*\\.docx"
     },
-    "notes": "aka.ms short link resolves to the Office viewer for TranscriptQandAFY<fy>q<q>.docx (verified 200 for FY26Q4)."
+    "notes": "aka.ms short link resolves to the Office viewer for a Transcript*.docx (verified FY26Q4 and FY27Q1, 2026-10-30). An UNKNOWN aka.ms link redirects to bing.com with HTTP 200, so existence is proven by the landing URL matching expect_final_url, not by the 200."
   },
   {
     "id": "googl",
