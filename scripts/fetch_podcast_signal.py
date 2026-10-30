@@ -690,10 +690,26 @@ def _ends_sentence(word: str) -> bool:
     return not re.fullmatch(r"(?:[A-Za-z]\.)+", core)
 
 
-def _word_stream(segments: Any) -> tuple[list[str], list[int]]:
-    rows: list[tuple[int, int, list[str]]] = []
+def _segment_tokens(text: str) -> list[str | None]:
+    """One caption segment's words, with None where a ">>" speaker change
+    stood. Words are exactly ``_ANNOTATION_RE.sub(" ", text).split()``."""
+    tokens: list[str | None] = []
+    last = 0
+    for match in _ANNOTATION_RE.finditer(text):
+        tokens.extend(text[last:match.start()].split())
+        if match.group(0).startswith(">"):
+            tokens.append(None)
+        last = match.end()
+    tokens.extend(text[last:].split())
+    return tokens
+
+
+def _word_stream_turns(segments: Any) -> tuple[list[str], list[int], set[int]]:
+    """(words, start ms of each word's segment, indexes of words that open a
+    new speaker turn, i.e. follow a ">>" marker)."""
+    rows: list[tuple[int, int, list[str | None]]] = []
     if not isinstance(segments, list):
-        return [], []
+        return [], [], set()
     for position, segment in enumerate(segments):
         if not isinstance(segment, dict):
             continue
@@ -703,16 +719,30 @@ def _word_stream(segments: Any) -> tuple[list[str], list[int]]:
         text = segment.get("text")
         if not isinstance(text, str):
             continue
-        words = _ANNOTATION_RE.sub(" ", html.unescape(text)).split()
-        if words:
-            rows.append((int(start), position, words))
+        tokens = _segment_tokens(html.unescape(text))
+        if tokens:
+            rows.append((int(start), position, tokens))
     rows.sort(key=lambda row: (row[0], row[1]))
     words_out: list[str] = []
     starts: list[int] = []
-    for start, _, words in rows:
-        words_out.extend(words)
-        starts.extend([start] * len(words))
-    return words_out, starts
+    turns: set[int] = set()
+    pending = False
+    for start, _, tokens in rows:
+        for token in tokens:
+            if token is None:
+                pending = True
+                continue
+            if pending:
+                turns.add(len(words_out))
+                pending = False
+            words_out.append(token)
+            starts.append(start)
+    return words_out, starts, turns
+
+
+def _word_stream(segments: Any) -> tuple[list[str], list[int]]:
+    words, starts, _ = _word_stream_turns(segments)
+    return words, starts
 
 
 def transcript_word_count(segments: Any) -> int:
@@ -804,11 +834,21 @@ def _score_span(words: list[str], begin: int, end: int, *, sentence_mode: bool, 
 
 
 def select_windows(segments: list[dict], *, max_windows: int, max_words: int,
-                   min_gap_s: int = 120) -> list[dict]:
+                   min_gap_s: int = 120,
+                   sentence_end: Callable[[str, str | None], bool] | None = None) -> list[dict]:
     """segments = tuber transcript segments [{"startMs": int, "text": str}].
     Returns ≤ max_windows non-overlapping windows [{"text": str, "at_s": int}]
     of ≤ max_words words each, highest-information first by score, then
     re-sorted by at_s. Deterministic; sponsor reads and intros/outros score low.
+
+    ``sentence_end`` (the Aradio inbox passes check_aradio.sentence_end)
+    only changes how the chosen windows are written, never which are chosen:
+    the text keeps each caption ">>" speaker change as a " >> " token, and
+    gets "…" glued to its first/last word where the window starts/ends inside
+    a sentence (judged by ``sentence_end(word, next_word)``; a speaker change
+    or the transcript's own start/end is never a cut). Aradio quotes only
+    whole sentences, so it must see both. Without it (this lane's committed
+    excerpts) the text is the plain words, as before.
 
     Windows follow sentence boundaries when the captions are punctuated and
     fall back to fixed-size word windows when they are not. Words are verbatim
@@ -829,7 +869,7 @@ def select_windows(segments: list[dict], *, max_windows: int, max_words: int,
     if max_windows < 1 or max_words < 1:
         return []
     min_gap_s = max(0, int(min_gap_s))
-    words, starts = _word_stream(segments)
+    words, starts, turns = _word_stream_turns(segments)
     if not words:
         return []
     spans, units, sentence_mode = _candidate_spans(words, max_words)
@@ -864,7 +904,25 @@ def select_windows(segments: list[dict], *, max_windows: int, max_words: int,
             continue
         chosen.append((begin, end, at_s))
     chosen.sort(key=lambda row: (row[2], row[0]))
-    return [{"text": " ".join(words[begin:end]), "at_s": at_s} for begin, end, at_s in chosen]
+    if sentence_end is None:
+        return [{"text": " ".join(words[begin:end]), "at_s": at_s} for begin, end, at_s in chosen]
+    return [{"text": _marked_text(words, turns, begin, end, sentence_end), "at_s": at_s}
+            for begin, end, at_s in chosen]
+
+
+def _marked_text(words: list[str], turns: set[int], begin: int, end: int,
+                 sentence_end: Callable[[str, str | None], bool]) -> str:
+    """words[begin:end] with " >> " speaker changes and "…" at cut edges."""
+    out: list[str] = []
+    for index in range(begin, end):
+        if index in turns:
+            out.append(">>")
+        out.append(words[index])
+    if begin > 0 and begin not in turns and not sentence_end(words[begin - 1], words[begin]):
+        out[0] = "…" + out[0]  # words[begin]: no ">>" precedes a non-turn word
+    if end < len(words) and end not in turns and not sentence_end(words[end - 1], words[end]):
+        out[-1] = out[-1] + "…"
+    return " ".join(out)
 
 
 # ---------------------------------------------------------------------------

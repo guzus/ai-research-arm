@@ -1208,5 +1208,71 @@ class SelectWindowsTest(unittest.TestCase):
         self.assertEqual(len(windows[0]["text"].split()), 60)
 
 
+class MarkedWindowsTest(unittest.TestCase):
+    """select_windows(sentence_end=...), the Aradio inbox's call, keeps ">>"
+    speaker changes and marks cut edges with "…" without changing which
+    windows are chosen; this lane's own excerpts stay plain."""
+
+    @staticmethod
+    def ends(word: str, following: str | None) -> bool:  # stand-in sentence rule
+        return word[-1:] in ".!?"
+
+    def segments(self) -> list[dict]:
+        # Sparse punctuation (< 1 sentence end per 40 words): fixed-size
+        # windows that start and end mid-sentence, with speaker changes.
+        words = [token(i) for i in range(160)]
+        for i in (37, 95):
+            words[i] += "."
+        for i in (12, 61, 96, 130):
+            words[i] = ">> " + words[i]
+        return [{"startMs": i * 30_000, "text": " ".join(words[i * 4:(i + 1) * 4])}
+                for i in range(40)]
+
+    def test_marks_change_only_how_windows_are_written(self):
+        segments = self.segments()
+        plain = pod.select_windows(segments, max_windows=6, max_words=20)
+        marked = pod.select_windows(segments, max_windows=6, max_words=20, sentence_end=self.ends)
+        self.assertEqual([w["at_s"] for w in plain], [w["at_s"] for w in marked])
+        for before, after in zip(plain, marked):
+            self.assertNotIn(">>", before["text"])
+            self.assertEqual(before["text"].split(),
+                             [t.strip("…") for t in after["text"].split() if t != ">>"])
+
+    def test_marks_follow_the_transcript(self):
+        segments = self.segments()
+        words, _, turns = pod._word_stream_turns(segments)
+        self.assertEqual({12, 61, 96, 130}, turns)
+        seen = {"start": 0, "end": 0, "turn": 0}
+        for window in pod.select_windows(segments, max_windows=8, max_words=20,
+                                         sentence_end=self.ends):
+            tokens = window["text"].split()
+            plain = [t.strip("…") for t in tokens if t != ">>"]
+            begin = words.index(plain[0])
+            end = begin + len(plain)
+            self.assertEqual(words[begin:end], plain)
+            cut_start = begin > 0 and begin not in turns and not self.ends(words[begin - 1], None)
+            cut_end = end < len(words) and end not in turns and not self.ends(words[end - 1], None)
+            self.assertEqual(cut_start, tokens[0].startswith("…"), window)
+            self.assertEqual(cut_end, tokens[-1].endswith("…"), window)
+            expected = [">>" + " " + words[i] for i in range(begin, end) if i in turns]
+            self.assertEqual(expected, [f"{a} {b}" for a, b in zip(tokens, tokens[1:]) if a == ">>"])
+            seen["start"] += cut_start
+            seen["end"] += cut_end
+            seen["turn"] += bool(expected)
+        self.assertTrue(all(seen.values()), seen)  # every case was exercised
+
+    def test_turn_tracking_leaves_the_words_unchanged(self):
+        texts = [">> [Music] hello", "[>> applause] world >>", ">>> again ♪♪ (laughter) done",
+                 "no>>space &gt;&gt; html"]
+        segments = [{"startMs": i * 1000, "text": text} for i, text in enumerate(texts)]
+        words, starts, turns = pod._word_stream_turns(segments)
+        expected = [word for text in texts
+                    for word in pod._ANNOTATION_RE.sub(" ", pod.html.unescape(text)).split()]
+        self.assertEqual(expected, words)
+        self.assertEqual((words, starts), pod._word_stream(segments))
+        # "[>> applause]" is one annotation, not a speaker change.
+        self.assertEqual(["hello", "again", "space", "html"], [words[i] for i in sorted(turns)])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -39,8 +39,12 @@ material that waits for the 2 h cadence.
 Spoken items get transcript windows from tuber-api's read-only
 `GET /api/video/{id}/transcript` (spaced, one retry, a longer backoff when tuber
 reports "YouTube temporarily blocked transcript access", and a total time
-budget); any failure falls back to the committed excerpts. Everything staged is third-party DATA; inbox.md renders
-item bodies as quoted blocks so injected text cannot pose as structure.
+budget); any failure falls back to the committed excerpts. Windows keep the
+captions' `>>` speaker changes, and `…` marks an edge where a window cuts into
+a sentence (a committed excerpt: both edges), because a quote must be one
+whole sentence (check_aradio.py). Everything staged is third-party DATA;
+inbox.md renders item bodies as quoted blocks so injected text cannot pose as
+structure.
 
 Exit codes: 0 = gate decided (go or stop); 1 = real error (corrupt lane
 state, bulletin id collision, unsafe paths, or new material that would leave
@@ -911,20 +915,52 @@ def describe_fetch_error(exc: BaseException) -> str:
 
 
 def load_select_windows() -> Callable[..., list[dict]] | None:
+    """The podcasts lane's window selector, writing windows the way the
+    validator needs them: `>>` speaker changes kept, and `…` where a window
+    edge cuts a sentence, judged by the validator's own sentence rule."""
     try:
         from fetch_podcast_signal import select_windows  # owned by the podcasts lane
     except ImportError:
         return None
-    return select_windows
+
+    def select(segments: list[dict], *, max_windows: int, max_words: int) -> list[dict]:
+        return select_windows(segments, max_windows=max_windows, max_words=max_words,
+                              sentence_end=contract.sentence_end)
+
+    return select
 
 
-def format_window(at_s: Any, text: str) -> str | None:
-    words = contract.clean_text(text).split()
+def format_window(at_s: Any, text: str, *, cut_edges: bool = False) -> str | None:
+    """One `[mm:ss] text` transcript line of at most MAX_WINDOW_WORDS words.
+
+    `>>` speaker changes do not count as words. A window cut short here, or a
+    committed excerpt (`cut_edges`: whether its edges fall between sentences
+    is unknown), gets the validator's cut mark at that edge, so no quote can
+    end or start where the source's sentence did not."""
+    def turn(token: str) -> bool:
+        return bool(contract.TURN_RE.fullmatch(token))
+
+    kept: list[str] = []
+    words = 0
+    for token in contract.clean_text(text).split():
+        if not turn(token):
+            if words == MAX_WINDOW_WORDS:
+                if not turn(kept[-1]):  # cut at a speaker change: between sentences
+                    kept[-1] += contract.CUT_MARK
+                break
+            words += 1
+        kept.append(token)
+    while kept and turn(kept[-1]):
+        kept.pop()
     if not words:
         return None
+    if cut_edges:
+        if not turn(kept[0]):
+            kept[0] = contract.CUT_MARK + kept[0]
+        kept[-1] += contract.CUT_MARK
     seconds = int(at_s) if isinstance(at_s, (int, float)) and not isinstance(at_s, bool) else 0
     seconds = max(0, seconds)
-    return f"[{seconds // 60:02d}:{seconds % 60:02d}] {' '.join(words[:MAX_WINDOW_WORDS])}"
+    return f"[{seconds // 60:02d}:{seconds % 60:02d}] {' '.join(kept)}"
 
 
 def transcript_lines(candidate: Candidate, *, fetch: bool, base_url: str,
@@ -972,7 +1008,7 @@ def transcript_lines(candidate: Candidate, *, fetch: bool, base_url: str,
                                            if isinstance(w, dict)) if line]
                 if lines:
                     return lines, "transcript", False
-    lines = [line for line in (format_window(e.get("at_s"), e["text"])
+    lines = [line for line in (format_window(e.get("at_s"), e["text"], cut_edges=True)
                                for e in candidate.excerpts[:MAX_WINDOWS]) if line]
     return (lines, "excerpts" if lines else "", degraded)
 

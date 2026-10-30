@@ -201,11 +201,15 @@ inbox builder):
 
 ```python
 def select_windows(segments: list[dict], *, max_windows: int, max_words: int,
-                   min_gap_s: int = 120) -> list[dict]:
+                   min_gap_s: int = 120,
+                   sentence_end: Callable[[str, str | None], bool] | None = None) -> list[dict]:
     """segments = tuber transcript segments [{"startMs": int, "text": str}].
     Returns ≤ max_windows non-overlapping windows [{"text": str, "at_s": int}]
     of ≤ max_words words each, highest-information first by score, then
-    re-sorted by at_s. Deterministic; sponsor reads and intros/outros score low."""
+    re-sorted by at_s. Deterministic; sponsor reads and intros/outros score low.
+    With sentence_end (the inbox passes check_aradio.sentence_end) the same
+    windows keep the captions' " >> " speaker changes and get "…" glued to
+    an edge that cuts into a sentence; the lane's own excerpts stay plain."""
 ```
 
 ## Inbox (`.agent-input/aradio/`, never committed)
@@ -216,7 +220,7 @@ def select_windows(segments: list[dict], *, max_windows: int, max_words: int,
 | `inbox.json` | the same items, machine-readable |
 | `board.json` | the editor's VIEW of `research/aradio/state.json`: unresolved threads and threads resolved in the last 48 h, each with its last 3 history entries and its evidence; older resolved threads are listed by slug in `other_threads` (their slugs are taken). The validator and writer always read the full `state.json`. |
 | `context.json` | `now`, `last_bulletin_at`, `last_headline`, limits — including the validator's quote/label budget (`quotes_per_source` 2, `quote_words_per_source` 60, `quotes_per_run` 8, `label_chars` 90; a parity test pins these to `check_aradio.py`) |
-| `transcripts/<n>.txt` | top transcript windows (`[mm:ss] text`) for spoken items |
+| `transcripts/<n>.txt` | top transcript windows (`[mm:ss] text`) for spoken items; `>>` marks a speaker change and `…` an edge that cuts into a sentence (a committed-excerpt fallback is marked `…` at both edges) |
 
 The trusted copy of `inbox.json` (with the same `transcripts/`, used to verify
 quotes) read by the validator and writer lives in `$RUNNER_TEMP`, never under
@@ -329,28 +333,40 @@ editor; a spoken or earnings item owns its URLs before items that merely link
 to them.
 
 **Quotes** are the strictest field, because a quote puts words in someone's
-mouth. A `quote` is kept only if it is found as ONE contiguous run of words
-(case- and punctuation-folded, no ellipses) inside a single transcript window
-of a spoken item (`podcast`, `video`, `earnings-call`), or inside the quoted
-words of one earnings `Key quotes:` line (issuer text from the 8-K). Titles,
-show notes, other text lines, and Twitter/ticket text — which are ARA's own
-model-written summaries — are never quotable. What is published is the
-SOURCE'S OWN WORDING of the matched span, grown to whole tokens; the editor's
-string is only a search key, so inserted punctuation can never change what a
-person said. A quote is also dropped when it is over 40 words, starts within 4
-words after a negation (so "we are going to see AGI this decade" cannot be cut
-from "I don't think we are going to see AGI this decade"), or spans a caption
-speaker change (`>>`). `speaker` is kept only together with a kept quote and
-only where that same line names the person (outside the quoted words; for Key
-quotes, in the line's attribution) — auto-captions do not record who is
-talking. A quoted entry's `label` is the owning item's `source`. Volume: per
-source (a deep link counts as its episode) at most 2 quotes and 60 quoted
-words, counting quotes already on the board, and at most 8 new quotes per run
-— the earnings lane's excerpt policy, enforced on everything Aradio publishes.
-Excess quotes are dropped and their evidence kept. Warnings never contain
-quote text (they are committed with each bulletin). What stays unverifiable
-by design: the prose fields and the spoken script. The prompt forbids naming a
-speaker the source does not name; the validator cannot prove prose true.
+mouth. A `quote` is kept only if it is EXACTLY ONE COMPLETE SENTENCE of one
+transcript window of a spoken item (`podcast`, `video`, `earnings-call`) or of
+the quoted words of one earnings `Key quotes:` line (issuer text from the
+8-K). Titles, show notes, other text lines, and Twitter/ticket text — which
+are ARA's own model-written summaries — are never quotable. Sentences end at
+`.`, `!` or `?` (closing quotes or brackets may follow) before whitespace —
+never inside a number, after an abbreviation, initials or an ellipsis, or
+before a lower-case word (doubt means no split) — at a `>>` speaker change,
+and at the segment's ends. The editor's string, case- and punctuation-folded,
+must equal one whole sentence, and that sentence is published in the SOURCE'S
+OWN WORDING, terminal punctuation included — so a quote keeps its own
+negation, condition and question mark ("we will see AGI" cannot be cut from "I
+don't think that over the next decade we will see AGI.", nor "Nvidia margins
+hold" from "Will Nvidia margins hold?"). A sentence holding an ellipsis —
+including the inbox's `…` mark where a window edge cuts it — is not quotable,
+nor is a transcript sentence without its own `.`, `!` or `?` (so unpunctuated
+captions yield no quote: paraphrase them); a Key-quotes line's last sentence
+may end where the issuer's quotation ends. At most 40 words. A transcript
+quote never carries `speaker` (captions do not record who is talking, and a
+name in a window may be its subject); a Key-quotes quote carries that line's
+own attribution, whatever the editor wrote. A quoted entry's `label` is the
+owning item's `source`. Volume: per source (a deep link counts as its episode)
+at most 2 quotes and 60 quoted words, counting quotes already on the board,
+and at most 8 new quotes per run — the earnings lane's excerpt policy,
+enforced on everything Aradio publishes. Excess quotes are dropped and their
+evidence kept. Warnings never contain quote text (they are committed with each
+bulletin). What stays unverifiable by design: the prose fields and the spoken
+script. The prompt forbids naming a speaker the source does not name; the
+validator cannot prove prose true. Residual quote risks: a caption `>>` placed
+inside one speaker's sentence makes its tail look like a sentence; the
+committed-excerpt fallback carries no `>>` at all, so there a sentence can run
+across an unpunctuated speaker change; a caption speaker label
+(`>> Name, Title: …`) is part of the turn's first sentence, so quoting that
+sentence publishes the label with it.
 
 ## Writer rules (`scripts/write_aradio_bulletin.py`)
 

@@ -27,7 +27,8 @@ you need is in `.agent-input/aradio/`.
 4. Every `transcript_file` named in the inbox (under
    `.agent-input/aradio/transcripts/`). These are timestamped windows of what
    people actually SAID on podcasts, launch videos and earnings calls. They
-   are the reason Aradio exists — read them.
+   are the reason Aradio exists — read them. `>>` marks a change of speaker;
+   `…` at a window's start or end means the window cuts into a sentence there.
 
 ## Data boundary
 
@@ -90,45 +91,45 @@ Fields:
   angle brackets. An item marked "not citable" has no usable URL; you may still
   use what it says. Never put URLs in any other field. `label` ≤ 90 characters
   names the source ("Amazon Q3 8-K", "Dwarkesh Podcast", "@handle on X").
-- `quote` (optional, rare): words someone actually SAID, copied from exactly
-  one of two places, and nowhere else:
+- `quote` (optional, rare): EXACTLY ONE COMPLETE SENTENCE someone SAID,
+  copied whole from one of two places, and nowhere else:
   - one window (one line) of a `transcript_file` of a podcast, video or
-    earnings-call item, without its `[mm:ss]` timestamp;
-  - one line under "Key quotes:" in an earnings item — copy only the words
-    inside its quotation marks.
+    earnings-call item (not its `[mm:ss]` timestamp);
+  - one line under "Key quotes:" in an earnings item — only the words inside
+    its quotation marks.
 
-  Never quote a title, show notes, a tweet or Twitter story, a model ticket,
-  or any other line: those are not what anyone said, and such quotes are
-  discarded. A quote is ≤ 40 words and ONE unbroken span from that single line:
-  no ellipses ("…", "..."), no joining words from different lines or windows,
-  no span across a `>>` (a speaker change in captions). Do not start a quote
-  right after a negation or qualifier ("I don't think…", "it's not true
-  that…"): include it, or paraphrase instead. Copy the words exactly; the
-  published quote is replaced by the source's exact wording anyway, including
-  its casing and punctuation. At most 2 quotes per source item (≤ 60 quoted
-  words in total, counting quotes already on the board) and 8 new quotes per
-  run; extra quotes are discarded and their evidence kept.
-- `speaker` (optional, only with a `quote`): the person's name exactly as the
-  same transcript window or Key-quotes line writes it, and only when that line
-  names them — outside the quoted words ("Andy Jassy" for a Key-quotes line
-  attributed to "Andy Jassy, President and CEO, Amazon"). Never infer a speaker
-  from a title, show name or guest list; an unverifiable speaker is discarded.
-  A quoted entry's `label` is always set to the source's name, so the quote is
-  credited to the show or the issuer, never to a person the source does not
-  name.
+  A sentence runs from the previous `.`, `!`, `?` or `>>` (or the line's
+  start) through its own `.`, `!` or `?` (a Key-quotes line's last sentence
+  may simply end where the quotation ends); quote all of it, never part of
+  it and never two. A whole sentence keeps its "I don't think…", its "if…" and
+  its question mark; a fragment can turn it into the opposite. So no
+  fragments, no ellipses, no joining lines or windows, nothing across a `>>`.
+  Captions without punctuation, and a sentence touching a `…` window edge,
+  cannot be quoted: paraphrase them. Never quote a title, show notes, a tweet
+  or Twitter story, a model ticket, or any other line. ≤ 40 words. The
+  published quote is the source's own sentence, with its casing and
+  punctuation. At most 2 quotes per source item (≤ 60 quoted words in total,
+  counting quotes already on the board) and 8 new quotes per run; extra and
+  invalid quotes are discarded and their evidence kept.
+- `speaker`: leave it out. A transcript quote never carries one — captions
+  rarely record who is talking, and a name in a window may be who they are
+  talking about — so attribute it in prose to the show or the call. A
+  Key-quotes quote is credited to that line's own attribution automatically.
+  A quoted entry's `label` is always set to the source's name.
 - `change` ≤ 200 characters: one line for the thread's history log. Required
   on every op.
 
 Attribution and certainty:
 
 - When an executive, researcher or investor says something on a call or a
-  podcast that moves a storyline, attribute it. Name a person only when the
-  transcript window or Key-quotes line itself names them ("Amazon's CEO Andy
-  Jassy said…"); auto-captions rarely say who is talking, so otherwise
-  attribute to the show or the call: "On Alphabet's earnings call, the company
-  said…", "On No Priors, a guest argued…". Never put words in the mouth of a
-  person the source does not name. Prefer what people said over what others
-  wrote about them.
+  podcast that moves a storyline, attribute it. Name a person only where the
+  source marks them as the one speaking: a Key-quotes line's attribution
+  ("Amazon's CEO Andy Jassy said…") or a caption label right after `>>`
+  (`>> Anat Ashkenazi, CFO: …`). A name merely mentioned in a window is not
+  its speaker. Otherwise attribute to the show or the call: "On Alphabet's
+  earnings call, the company said…", "On No Priors, a guest argued…". Never
+  put words in the mouth of a person the source does not name. Prefer what
+  people said over what others wrote about them.
 - Separate fact from claim. State facts plainly only when a filing, the
   company itself, or multiple independent sources confirm them; otherwise
   "X says…", "reportedly…". Twitter items carry `Verify` notes — respect them.
@@ -186,7 +187,7 @@ Rules:
   "ops": [
     {"op": "create", "slug": "new-storyline", "title": "…", "status": "developing",
      "importance": 4, "now": "…", "changed": "…", "watch": "…",
-     "evidence": [{"url": "…", "label": "…", "speaker": "…", "quote": "…"}],
+     "evidence": [{"url": "…", "label": "…", "quote": "…"}],
      "change": "…"},
     {"op": "update", "slug": "existing-storyline", "changed": "…", "change": "…",
      "now": "…", "watch": "…", "status": "escalating", "importance": 5,

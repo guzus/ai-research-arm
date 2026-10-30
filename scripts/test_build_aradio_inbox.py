@@ -473,7 +473,9 @@ class TranscriptTest(FixtureTest):
         items = self.repo.items()
         self.assertEqual("excerpts", items[0]["transcript_source"])
         text = (self.repo.out / items[0]["transcript_file"]).read_text()
-        self.assertTrue(text.startswith("[02:05] Excerpt"))
+        # Where a committed excerpt starts and ends relative to the speaker's
+        # sentences is unknown, so both edges carry the validator's cut mark.
+        self.assertEqual("[02:05] …Excerpt one about compute.…\n", text)
         self.assertTrue(summary["transcripts_degraded"])
 
     def test_degraded_flag_tracks_failed_fetches_even_without_excerpts(self):
@@ -585,6 +587,72 @@ class TranscriptTest(FixtureTest):
             with self.assertRaises(bi.TranscriptUnavailable) as caught:
                 bi.fetch_transcript("https://tuber.example", "frYSOKvNiiE")
         self.assertFalse(caught.exception.rate_limited)
+
+
+class TranscriptMarksTest(unittest.TestCase):
+    """Transcript windows are staged the way the validator needs them: `>>`
+    speaker changes kept (the podcasts lane's committed excerpts drop them)
+    and a cut mark where a window edge falls inside a sentence."""
+
+    def test_the_loaded_selector_keeps_speaker_changes(self):
+        select = bi.load_select_windows()
+        segments = [{"startMs": 0, "text": ">> Operator: Welcome, everyone."},
+                    {"startMs": 1000, "text": "Please go ahead. >> Thanks."},
+                    {"startMs": 2000, "text": ">> We expect margin headwinds in Q4."}]
+        windows = select(segments, max_windows=bi.MAX_WINDOWS, max_words=bi.MAX_WINDOW_WORDS)
+        self.assertEqual(1, len(windows))
+        self.assertTrue(windows[0]["text"].endswith(">> Thanks. >> We expect margin headwinds "
+                                                    "in Q4."), windows)
+        import fetch_podcast_signal as pod
+        plain = pod.select_windows(segments, max_windows=bi.MAX_WINDOWS,
+                                   max_words=bi.MAX_WINDOW_WORDS)
+        self.assertNotIn(">>", plain[0]["text"])  # the podcasts lane's own excerpts
+
+    def test_staged_windows_validate_as_whole_sentences_only(self):
+        # Sparse punctuation: fixed-size windows that start and end mid-
+        # sentence. A window opening on "that over the next decade we will see
+        # AGI." would otherwise expose the tail of "Nobody I know believes
+        # that ..." as if it were a whole sentence.
+        filler = " ".join(f"w{i}" for i in range(31))
+        text = (f"{filler} nobody i know believes that over the next decade we will see agi. "
+                f"Compute is the bottleneck for everyone right now")
+        words = text.split()
+        segments = [{"startMs": i * 30_000, "text": word} for i, word in enumerate(words)]
+        select = bi.load_select_windows()
+        windows = select(segments, max_windows=bi.MAX_WINDOWS, max_words=10)
+        lines = [bi.format_window(w["at_s"], w["text"]) for w in windows]
+        cut = [line for line in lines if "that over the next decade" in line]
+        self.assertTrue(cut and all("…" in line.split("agi.")[0] for line in cut), lines)
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            (base / "transcripts").mkdir()
+            (base / "transcripts" / "1.txt").write_text("".join(f"{l}\n" for l in lines),
+                                                        encoding="utf-8")
+            url = "https://www.youtube.com/watch?v=frYSOKvNiiE"
+            (base / "inbox.json").write_text(json.dumps({"items": [
+                {"key": "ep:x:frYSOKvNiiE", "kind": "podcast", "source": "Pod", "title": "t",
+                 "url": url, "links": [url], "text": "x",
+                 "transcript_file": "transcripts/1.txt"}]}), encoding="utf-8")
+            inbox = bi.contract.TrustedInbox.load(base / "inbox.json")
+            edit = {"schema": 1, "on_air": False, "headline": "h", "note": "n", "ops": [
+                {"op": "create", "slug": "s", "title": "T", "now": "n", "changed": "c",
+                 "change": "x", "evidence": [{"url": url, "label": "x", "quote":
+                                              "that over the next decade we will see AGI"}]}]}
+            normalized, report = bi.contract.validate_edit(edit, inbox,
+                                                           bi.contract.empty_board())
+        self.assertNotIn("quote", normalized["ops"][0]["evidence"][0])
+        self.assertTrue(any("is cut" in w for w in report.warnings), report.warnings)
+
+    def test_format_window_keeps_marks_out_of_the_word_cap(self):
+        words = [f"w{i}" for i in range(bi.MAX_WINDOW_WORDS)]
+        marked = " ".join(words[:10] + [">>"] + words[10:])
+        self.assertEqual(f"[00:00] {marked}", bi.format_window(0, marked))
+        cut = bi.format_window(0, " ".join(words + ["w70."]))
+        self.assertTrue(cut.endswith(" w69…"), cut)  # cut here: marked as cut
+        at_turn = bi.format_window(0, " ".join(words + [">>", "w70."]))
+        self.assertTrue(at_turn.endswith(" w69"), at_turn)  # a speaker change is no cut
+        self.assertIsNone(bi.format_window(0, ">> >>"))
+        self.assertEqual("[00:00] >> Yes.…", bi.format_window(0, ">> Yes.", cut_edges=True))
 
 
 class StagingTest(FixtureTest):

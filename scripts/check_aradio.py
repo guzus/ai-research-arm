@@ -15,17 +15,19 @@ Provenance is enforced here, not trusted from the editor:
 * an evidence URL survives only if it is in this run's trusted inbox
   (`url`/`links`) or already on the board; its `kind` and `at` always come
   from that trusted record;
-* a `quote` survives only if it is short AND found as one contiguous run of
-  words inside ONE transcript window of a spoken item or ONE "Key quotes"
-  line of an earnings item (never titles, show notes, or the model-written
-  Twitter/ticket text). The editor's string is only a search key: what is
-  published is the source's own wording of that span, so inserted punctuation
-  cannot change what was said. The URL rule alone cannot stop a fabricated
-  quote attributed to a real source, so quotes are checked against what the
-  editor was actually shown;
-* `speaker` survives only if the same source line names them, and a quoted
-  entry's `label` is the trusted source name (the dashboard prints
-  "speaker, label" under a quote);
+* a `quote` survives only if it is EXACTLY ONE COMPLETE SENTENCE of ONE
+  transcript window of a spoken item or ONE "Key quotes" line of an earnings
+  item (never titles, show notes, or the model-written Twitter/ticket text),
+  at most QUOTE_MAX_WORDS words. The editor's string is only a search key:
+  what is published is that whole sentence in the source's own wording, so
+  inserted punctuation cannot change what was said, and a cut-out span cannot
+  drop the negation, condition or question mark around it. The URL rule alone
+  cannot stop a fabricated quote attributed to a real source, so quotes are
+  checked against what the editor was actually shown;
+* a transcript quote never carries `speaker` (captions do not record who is
+  talking, and a name in a window is not its speaker); a Key-quotes quote
+  carries the line's own attribution. A quoted entry's `label` is the
+  trusted source name (the dashboard prints "speaker, label" under a quote);
 * quoting follows the earnings lane's excerpt policy across the whole board:
   at most QUOTES_PER_SOURCE quotes / QUOTE_WORDS_PER_SOURCE words per source,
   and QUOTES_PER_RUN new quotes per run.
@@ -90,15 +92,32 @@ KEY_QUOTES_HEADER = "Key quotes:"
 # builder renders the earnings lane's `## Key Quotes` bullets.
 KEY_QUOTE_LINE_RE = re.compile(
     r'^- (?P<who>[^"“”]{1,200}?): ["“](?P<words>.+)["”](?: \([^()]{0,120}\))?$')
-# A verbatim span can still reverse its speaker by leaving out the words just
-# before it ("I don't think | we will see AGI this decade"), so a quote may not
-# begin within NEGATION_LOOKBACK words after one of these (match form).
-NEGATION_LOOKBACK = 4
-NEGATIONS = frozenset({
-    "not", "no", "never", "nobody", "nothing", "none", "neither", "nor", "cannot",
-    "dont", "doesnt", "didnt", "isnt", "arent", "wasnt", "werent", "wont", "cant",
-    "couldnt", "shouldnt", "wouldnt", "aint", "hardly", "doubt", "unlikely",
+# A quote is one WHOLE sentence (see split_sentences). This replaced a
+# substring rule plus a heuristic that refused a span starting within four
+# words of a negation: any substring rule can be outrun by a longer gap ("I
+# don't think that over the next decade | we will see AGI"), a condition ("if
+# | OpenAI goes bankrupt") or a question ("will | Nvidia margins hold"),
+# while a whole sentence carries its own negation, condition and question
+# mark. Sentence ends are judged conservatively: a missed split only makes a
+# sentence longer (harder to quote), a wrong one would start a quote
+# mid-sentence. So these never end a sentence, even before a capital:
+ABBREVIATIONS = frozenset({
+    "mr.", "mrs.", "ms.", "dr.", "prof.", "st.", "jr.", "sr.", "gen.", "sen.", "rep.",
+    "gov.", "pres.", "inc.", "corp.", "co.", "ltd.", "llc.", "plc.", "vs.", "etc.", "e.g.",
+    "i.e.", "cf.", "al.", "approx.", "est.", "fig.", "no.", "vol.", "jan.", "feb.", "mar.",
+    "apr.", "jun.", "jul.", "aug.", "sep.", "sept.", "oct.", "nov.", "dec.",
 })
+INITIALS_RE = re.compile(r"(?:[a-z]\.)+")  # "U.S.", "A.I.", "J." (lower-cased)
+SENTENCE_CLOSERS = "\"'”’)]}»›"
+SENTENCE_OPENERS = "\"'“‘([{«‹"
+# Caption speaker-change marker. The inbox keeps it in transcript windows
+# (fetch_podcast_signal.select_windows with sentence_end=...); a sentence
+# never spans one.
+TURN_RE = re.compile(r">>+")
+# What the inbox builder puts at a transcript window's edge where the window
+# cuts into a sentence ("…" glued to the first or last word): the sentence
+# there is not whole, and any sentence holding an ellipsis is unquotable.
+CUT_MARK = "…"
 YOUTUBE_HOSTS = frozenset({"youtube.com", "m.youtube.com", "music.youtube.com",
                            "youtube-nocookie.com"})
 YOUTUBE_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
@@ -315,6 +334,7 @@ _ELLIPSIS_RE = re.compile(r"\[\s*\.\.\.\s*\]|\.\.\.|…")
 _OPENERS = {"(": ")", "[": "]", "{": "}", "“": "”", "‘": "’", "«": "»", "‹": "›"}
 _CLOSERS = {close: opener for opener, close in _OPENERS.items()}
 _DANGLING = ",;:<>*•·–—"  # never part of a word, so never worth publishing at an end
+_TOKEN_RE = re.compile(r"\S+")
 
 
 def _has_run(words: Any, run: list[str]) -> bool:
@@ -340,15 +360,38 @@ def _trim_span(text: str, start: int, end: int) -> tuple[int, int]:
     return start, end
 
 
+def sentence_end(word: str, next_word: str | None = None) -> bool:
+    """True when the whitespace-delimited token `word` ends a sentence.
+
+    It must end in `.`, `!` or `?` (closing quotes or brackets may follow),
+    and not be an ellipsis, an abbreviation (ABBREVIATIONS) or initials
+    ("U.S."); and the next token, when known, must not start in lower case
+    ('he asked "why?" and left' is one sentence). Numbers never end one
+    inside ("32.5", "1.5B": no whitespace follows the point). The inbox
+    builder judges transcript-window edges with this same function, so a
+    window and the validator always agree on where a sentence ends.
+    """
+    core = word.rstrip(SENTENCE_CLOSERS)
+    if not core or core[-1] not in ".!?" or core.endswith(".."):
+        return False
+    bare = core.lstrip(SENTENCE_OPENERS).lower()
+    if bare in ABBREVIATIONS or INITIALS_RE.fullmatch(bare):
+        return False
+    if next_word is not None and next_word.lstrip(SENTENCE_OPENERS)[:1].islower():
+        return False
+    return True
+
+
 @dataclass(frozen=True)
 class QuoteSource:
     """One place a quote may come from, in the source's own wording.
 
-    `text` is a transcript window, or the quoted words of one earnings
-    Key-quotes line; a published quote is always a span of it.
+    `text` is a transcript window (with its `>>` speaker changes and `…` cut
+    marks, as the inbox staged it), or the quoted words of one earnings
+    Key-quotes line; a published quote is always one whole sentence of it.
     `attribution` is that earnings line's named speaker ("Andy Jassy, President
-    and CEO, Amazon"); None for a transcript window, which names its speaker,
-    if at all, somewhere in the window outside the quoted words.
+    and CEO, Amazon"); None for a transcript window, whose quotes never name
+    a speaker.
     """
 
     text: str
@@ -356,71 +399,94 @@ class QuoteSource:
 
 
 @dataclass(frozen=True)
+class Sentence:
+    text: str                 # the source's wording, as published
+    words: tuple[str, ...]    # match form
+    problem: str | None       # why it may not be quoted; None when it may
+
+
+def split_sentences(source: QuoteSource) -> list[Sentence]:
+    """The source's text as sentences, in order.
+
+    Boundaries: a token that ends a sentence (sentence_end), a `>>` speaker
+    change, and the ends of the source. A sentence may be quoted only if it
+    holds no ellipsis (a pause, or the inbox's cut mark at a window edge
+    that falls mid-sentence) and ends with its own `.`, `!` or `?`; the last
+    sentence of an earnings Key-quotes line is exempt from the latter, as the
+    issuer's quotation itself ends there (the earnings lane drops the comma
+    before "said"). So unpunctuated captions yield no quotable sentence: the
+    editor paraphrases them instead.
+    """
+    found: list[Sentence] = []
+    turns = TURN_RE.split(source.text)
+    for turn_index, turn in enumerate(turns):
+        tokens = list(_TOKEN_RE.finditer(turn))
+        first = 0
+        for index, token in enumerate(tokens):
+            following = tokens[index + 1].group(0) if index + 1 < len(tokens) else None
+            if following is not None and not sentence_end(token.group(0), following):
+                continue
+            raw = turn[tokens[first].start():token.end()]
+            first = index + 1
+            words = tuple(match_words(raw)[0])
+            if not words:
+                continue
+            last_of_line = (source.attribution is not None and following is None
+                            and turn_index == len(turns) - 1)
+            problem = None
+            if _ELLIPSIS_RE.search(raw):
+                problem = ("is cut: the sentence runs past the window edge or holds an "
+                           "ellipsis in the source")
+            elif not sentence_end(token.group(0)) and not last_of_line:
+                problem = ("has no closing . ! or ? in the source (unpunctuated captions, "
+                           "or a sentence cut off by a speaker change)")
+            start, end = _trim_span(raw, 0, len(raw))
+            found.append(Sentence(text=" ".join(raw[start:end].split()), words=words,
+                                  problem=problem))
+    return found
+
+
+@dataclass(frozen=True)
 class QuoteMatch:
-    quote: str                # the exact source wording that is published
+    quote: str                # the whole sentence, in the source's wording
     source: QuoteSource
-    before: tuple[str, ...]   # the source's words before the quote (match form)
-    after: tuple[str, ...]    # ... and after it
-
-    @property
-    def speaker_change(self) -> bool:
-        """Captions mark a new speaker with ">>": a span across one is two
-        people's words presented as one person's quote."""
-        return ">>" in self.quote
-
-    def names(self, speaker: list[str]) -> bool:
-        """The speaker's words occur, contiguous and whole, where this source
-        names who is talking: the earnings line's attribution, or the window
-        outside the quote (a name inside the quote is its subject, not its
-        speaker: "we compete with Google" was not said by Google)."""
-        if not speaker:
-            return False
-        if self.source.attribution is not None:
-            return _has_run(match_words(self.source.attribution)[0], speaker)
-        return _has_run(self.before, speaker) or _has_run(self.after, speaker)
-
-    def negation(self) -> str | None:
-        """The negation just before the quote, if any (see NEGATIONS)."""
-        return next((word for word in reversed(self.before[-NEGATION_LOOKBACK:])
-                     if word in NEGATIONS), None)
+    problem: str | None       # why this sentence may not be quoted, if it may not
 
 
 def find_quote(key: str, sources: tuple[QuoteSource, ...] | list[QuoteSource]
                ) -> list[QuoteMatch]:
-    """Every place `key` occurs as ONE contiguous run of whole words inside a
-    single source, as the source's own wording.
+    """Every sentence of `sources` that `key` matches WHOLE, quotable or not.
 
     The editor's string is only a search key: case and punctuation are folded
-    to find it, then the source's characters are published, so inserted
-    punctuation can never change what a speaker said ("I don't think. We are
-    going to see AGI"). Ellipses are refused and a match never crosses a
-    source boundary: both would stitch a "verbatim" quote from words spoken
-    minutes apart. The span grows to whole whitespace-delimited tokens so a
-    match on "50 above" publishes "40-50% above", never "50% above".
+    to compare it with each sentence (split_sentences), then the source's own
+    sentence is published, so inserted punctuation can never change what a
+    speaker said ("I don't think. We are going to see AGI"), and a span cut
+    out of a sentence ("we will see AGI" from "I don't think that over the
+    next decade we will see AGI.") never matches at all. A key with an
+    ellipsis never matches: it would stitch words spoken apart.
     """
     if _ELLIPSIS_RE.search(key):
         return []
-    needle = match_words(key)[0]
+    needle = tuple(match_words(key)[0])
     if not needle:
         return []
-    found: list[QuoteMatch] = []
-    for source in sources:
-        text = source.text
-        words, spans = match_words(text)
-        for first in range(len(words) - len(needle) + 1):
-            if words[first:first + len(needle)] != needle:
-                continue
-            start, end = spans[first][0], spans[first + len(needle) - 1][1]
-            while start > 0 and not text[start - 1].isspace():
-                start -= 1
-            while end < len(text) and not text[end].isspace():
-                end += 1
-            start, end = _trim_span(text, start, end)
-            inside = [i for i, (s, e) in enumerate(spans) if s < end and e > start]
-            found.append(QuoteMatch(quote=" ".join(text[start:end].split()), source=source,
-                                    before=tuple(words[:inside[0]]),
-                                    after=tuple(words[inside[-1] + 1:])))
-    return found
+    return [QuoteMatch(quote=sentence.text, source=source, problem=sentence.problem)
+            for source in sources for sentence in split_sentences(source)
+            if sentence.words == needle]
+
+
+def quote_miss(key: str, sources: tuple[QuoteSource, ...] | list[QuoteSource]) -> str:
+    """Why `key` matches no whole sentence (published in warnings: no text)."""
+    if _ELLIPSIS_RE.search(key):
+        return "contains an ellipsis; a quote is one whole sentence"
+    needle = match_words(key)[0]
+    if needle and any(_has_run(match_words(chunk)[0], needle)
+                      for source in sources for chunk in TURN_RE.split(source.text)):
+        return ("is part of a sentence, or joins sentences, in the source; a quote is "
+                "exactly one whole sentence")
+    if needle and any(_has_run(match_words(source.text)[0], needle) for source in sources):
+        return "crosses a speaker change ('>>') in the transcript"
+    return "is not a sentence of one transcript window or Key-quotes line"
 
 
 def parse_key_quotes(text: str) -> list[QuoteSource]:
@@ -750,13 +816,14 @@ def _evidence_quote(entry: dict, where: str, url: str, owner: dict | None,
                     stats: dict[str, int], budget: QuoteBudget) -> dict[str, str]:
     """The verified {quote, label, speaker?} of one evidence entry, or {}.
 
-    * The published quote is the matched span in the source's own wording;
-      the editor's string is only the search key.
-    * It must come from a quotable source of the entry's owner (a transcript
-      window, or an earnings Key-quotes line), fit QUOTE_MAX_WORDS, not start
-      right after a negation, and fit the per-source and per-run budget.
-    * `speaker` survives only if that same source names them (see
-      QuoteMatch.names); speakers are never inferred, nor kept without a quote.
+    * The published quote is one whole sentence of a quotable source of the
+      entry's owner (a transcript window, or an earnings Key-quotes line), in
+      the source's own wording; the editor's string is only the search key
+      (find_quote). It must fit QUOTE_MAX_WORDS and the per-source and
+      per-run budget.
+    * `speaker` is never the editor's: a transcript quote carries none
+      (captions do not record who is talking, and a name in a window may be
+      its subject), a Key-quotes quote carries that line's own attribution.
     * A quoted entry is labelled with the trusted source name: the dashboard
       prints "speaker, label" under a quote, so an editor-written label would
       attribute the quote to whoever the editor chose.
@@ -786,16 +853,23 @@ def _evidence_quote(entry: dict, where: str, url: str, owner: dict | None,
                     + (" with its speaker" if speaker else ""))
         return {}
 
+    def unspoken() -> None:
+        if speaker:
+            report.soft(f"{where}: speaker dropped; a transcript quote never names a speaker "
+                        "(captions do not record who is talking): attribute it in prose "
+                        "to the show or call")
+
     if strip_urls(quote)[1]:
         return drop("contains a URL")
     if len(quote.split()) > QUOTE_MAX_WORDS:
         return drop(f"is over {QUOTE_MAX_WORDS} words")
     if owner is None:
         # Not in this run's inbox: only a quote the board already verified may
-        # travel, and it travels with the board's attribution.
+        # travel, and it travels with the board's attribution (none for a
+        # transcript quote).
         board_quote = existing.get("quote") if existing is not None else None
-        if (not isinstance(board_quote, str) or board_quote != quote
-                or existing.get("kind") not in QUOTABLE_KINDS):
+        kind = existing.get("kind") if existing is not None else None
+        if not isinstance(board_quote, str) or board_quote != quote or kind not in QUOTABLE_KINDS:
             return drop("cannot be verified (source not in this run's inbox)")
         reason = budget.charge(inbox.source_identity(url), board_quote)
         if reason:
@@ -804,6 +878,9 @@ def _evidence_quote(entry: dict, where: str, url: str, owner: dict | None,
         result = {"quote": board_quote,
                   "label": clip(clean_text(str(existing.get("label") or "")) or "source",
                                 LABEL_MAX)[0]}
+        if kind in SPOKEN_KINDS:
+            unspoken()
+            return result
         board_speaker = existing.get("speaker")
         if isinstance(board_speaker, str) and board_speaker:
             result["speaker"] = board_speaker
@@ -812,18 +889,12 @@ def _evidence_quote(entry: dict, where: str, url: str, owner: dict | None,
         return result
     if owner.get("kind") not in QUOTABLE_KINDS:
         return drop("is not from a transcript or an earnings Key-quotes line")
-    matches = find_quote(quote, inbox.quote_sources(owner))
-    if not matches:
-        return drop("not found verbatim in one transcript window or Key-quotes line")
-    usable = [match for match in matches
-              if match.negation() is None and not match.speaker_change]
+    sources = inbox.quote_sources(owner)
+    matches = find_quote(quote, sources)
+    usable = [match for match in matches if match.problem is None]
     if not usable:
-        if matches[0].speaker_change:
-            return drop("crosses a speaker change ('>>') in the transcript")
-        return drop(f"starts right after '{matches[0].negation()}' in the source, which "
-                    "would reverse it; include the qualifier or paraphrase")
-    speaker_words = match_words(speaker)[0]
-    best = max(usable, key=lambda match: (match.names(speaker_words), match.quote == quote))
+        return drop(matches[0].problem if matches else quote_miss(quote, sources))
+    best = next((match for match in usable if match.quote == quote), usable[0])
     if len(best.quote.split()) > QUOTE_MAX_WORDS:
         return drop(f"is over {QUOTE_MAX_WORDS} words as the source words it")
     reason = budget.charge(inbox.source_identity(url), best.quote)
@@ -835,12 +906,14 @@ def _evidence_quote(entry: dict, where: str, url: str, owner: dict | None,
     label = clip(clean_text(str(owner.get("source") or owner.get("title") or ""))
                  or str(owner.get("kind")), LABEL_MAX)[0]
     result = {"quote": best.quote, "label": label}
-    if speaker:
-        if best.names(speaker_words):
-            result["speaker"] = speaker
-        else:
-            report.soft(f"{where}: speaker dropped; the quoted source line does not name "
-                        "them (attribute the quote to the show or call instead)")
+    if best.source.attribution is None:
+        unspoken()
+        return result
+    attribution = clip(strip_urls(clean_text(best.source.attribution))[0], SPEAKER_MAX)[0]
+    if attribution:
+        result["speaker"] = attribution
+    if speaker and speaker != attribution:
+        report.soft(f"{where}: speaker set to the Key-quotes line's own attribution")
     return result
 
 
