@@ -1,5 +1,5 @@
 {
-  "article_count": 107,
+  "article_count": 108,
   "articles": [
     {
       "claim_count": 18,
@@ -1019,6 +1019,16 @@
         "twitter-seed"
       ],
       "title": "The Binance sweep was not an EIP-7702 bug. It was a signing-path failure that 7702 made cheap to cash out."
+    },
+    {
+      "claim_count": 18,
+      "created_at": "2026-10-30T16:12:54Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "stem": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it."
     }
   ],
   "by_host": {
@@ -1992,6 +2002,9 @@
     "blockonomi.com": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c16"
     ],
+    "blockworks.co": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c16"
+    ],
     "blog.ansi.org": [
       "2026-05-27T035557--800-vdc-architecture#c38"
     ],
@@ -2365,6 +2378,9 @@
     "cio.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c36"
     ],
+    "circle.com": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c15"
+    ],
     "citadelsecurities.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c13"
     ],
@@ -2552,7 +2568,8 @@
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c22",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c9",
       "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c6",
-      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c9"
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c9",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c7"
     ],
     "coinfomania.com": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c10"
@@ -3695,7 +3712,8 @@
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c23",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c15",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8",
-      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c10"
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c10",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c7"
     ],
     "fortunebusinessinsights.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
@@ -3861,7 +3879,8 @@
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c15",
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c18",
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c10",
-      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c9"
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c9",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c11"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -4582,6 +4601,9 @@
     "letsdatascience.com": [
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7"
     ],
+    "letsmoney.com.br": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c17"
+    ],
     "levels.fyi": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c10",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c8"
@@ -5090,6 +5112,9 @@
     ],
     "nytimes.com": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c15"
+    ],
+    "occ.gov": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c14"
     ],
     "ofac.treasury.gov": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c15"
@@ -6078,6 +6103,10 @@
     "ssi.inc": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c5"
     ],
+    "stablecoininsider.org": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c12",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c13"
+    ],
     "stablecoins.llama.fi": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c21"
     ],
@@ -6227,7 +6256,8 @@
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c23"
     ],
     "support.link.com": [
-      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c2"
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c2",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c10"
     ],
     "support.sonatype.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c35"
@@ -6454,6 +6484,14 @@
     "tekedia.com": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c27"
     ],
+    "tempo.xyz": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c1",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c2",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c3",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c4",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c5",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c6"
+    ],
     "term.finance": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c14"
     ],
@@ -6503,7 +6541,9 @@
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c4",
-      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c12"
+      "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c12",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c8",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c9"
     ],
     "thechinaacademy.org": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c1"
@@ -7167,7 +7207,8 @@
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c1",
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c2",
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c1",
-      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c1"
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c1",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c18"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -8596,6 +8637,9 @@
     ],
     "https://blockonomi.com/makerdao-emergency-5-million-dai-raised": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c16"
+    ],
+    "https://blockworks.co/news/stripe-acquires-privy-wallet": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c16"
     ],
     "https://blog.ansi.org/ansi/iso-6469-3-2021-safety-for-electric-road-vehicles": [
       "2026-05-27T035557--800-vdc-architecture#c38"
@@ -10134,6 +10178,9 @@
     "https://fortune.com/2026/03/13/bank-of-america-humanoid-robot-forecast-3-billion-2060": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c18"
     ],
+    "https://fortune.com/2026/03/18/stripe-tempo-paradigm-mpp-ai-payments-protocol": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c7"
+    ],
     "https://fortune.com/2026/05/06/jensen-huang-servicenow-bill-mcdermott-agentic-ai-robos": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c35"
     ],
@@ -10418,6 +10465,9 @@
     ],
     "https://github.com/sinanuozdemir/decision-index": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8"
+    ],
+    "https://github.com/stripe/link-cli": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c11"
     ],
     "https://github.com/stripe/link-cli/blob/main/README.md": [
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c9"
@@ -11374,6 +11424,9 @@
     "https://nvidianews.nvidia.com/news/south-korea-ai-infrastructure": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c3",
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c4"
+    ],
+    "https://occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c14"
     ],
     "https://ofac.treasury.gov/recent-actions/20260622_33": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c15"
@@ -12358,6 +12411,10 @@
     "https://ssi.inc": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c5"
     ],
+    "https://stablecoininsider.org/link-balance": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c12",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c13"
+    ],
     "https://stablecoins.llama.fi/stablecoins": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c21"
     ],
@@ -12545,6 +12602,9 @@
     ],
     "https://support.google.com/a/answer/81126?hl=en": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c23"
+    ],
+    "https://support.link.com/questions/link-agent-wallet-faq": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c10"
     ],
     "https://support.link.com/questions/set-up-a-balance-for-agent-wallet-purchases": [
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c2"
@@ -12819,6 +12879,18 @@
     ],
     "https://tei.forrester.com/go/Glean/workAIplatform": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c19"
+    ],
+    "https://tempo.xyz/customer-stories/link": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c1",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c2"
+    ],
+    "https://tempo.xyz/developers/docs/protocol/fees/spec-fee.md": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c3",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c4",
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c5"
+    ],
+    "https://tempo.xyz/developers/docs/quickstart/connection-details.md": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c6"
     ],
     "https://the-decoder.com/alibabas-open-weight-qwen3-8-max-takes-on-long-horizon-ai-tasks-with-2-4-trillion-parameters": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c15",
@@ -13861,6 +13933,9 @@
     "https://www.cio.com/article/4134276/ibm-looks-beyond-short-term-ai-gains-tripling-entry-level-hiring.html": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c36"
     ],
+    "https://www.circle.com/transparency": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c15"
+    ],
     "https://www.citadelsecurities.com/what-we-do/options": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c13"
     ],
@@ -14165,6 +14240,9 @@
     ],
     "https://www.coindesk.com/tech/2024/02/22/risk-manager-gauntlet-terminates-relationship-with-aave-citing-dao-dysfunction": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c31"
+    ],
+    "https://www.coindesk.com/tech/2026/03/18/stripe-led-payments-blockchain-tempo-goes-live-with-protocol-for-ai-agents": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c7"
     ],
     "https://www.coindesk.com/tech/2026/07/13/robinhood-built-a-blockchain-for-tokenized-stocks-memecoins-took-over": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14"
@@ -15375,6 +15453,9 @@
     "https://www.lesswrong.com/posts/syB2r2X4E7nmw58co/openai-how-we-monitor-internal-coding-agents-for": [
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c5"
     ],
+    "https://www.letsmoney.com.br/ia/instinct-link-balance-agente-ia-teto-por-compra": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c17"
+    ],
     "https://www.levels.fyi/internships": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c10"
     ],
@@ -16489,6 +16570,9 @@
     "https://www.term.finance/post/vaults": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c14"
     ],
+    "https://www.theblock.co/news/business/2026-04-14-visa-stripe-zodia-custody-standard-chartered-validators-tempo-397286": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c8"
+    ],
     "https://www.theblock.co/news/business/2026-07-01-robinhood-chain-goes-live-mainnet-alongside-24-7-tokenized-stocks-lighter-perps-planned-crypto-agentic-trading-406918": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c19"
     ],
@@ -16524,6 +16608,9 @@
     ],
     "https://www.theblock.co/post/371021/quarter-of-public-bitcoin-treasury-companies-trade-below-btc-holdings": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c23"
+    ],
+    "https://www.theblock.co/post/375152/stripe-tempo-500-million-series-a-thrive": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c9"
     ],
     "https://www.theblock.co/post/383329/2026-layer-2-outlook": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c17"
@@ -17275,6 +17362,9 @@
     "https://x.com/karpathy/status/2056753169888334312": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c1"
     ],
+    "https://x.com/khushjammu/status/2115902443225813486": [
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c18"
+    ],
     "https://x.com/kimmonismus/status/2077832669778317369": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c28"
     ],
@@ -17447,7 +17537,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3087,
+  "claim_count": 3105,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -91043,9 +91133,426 @@
         "https://www.coindesk.com/business/2026/02/12/binance-converts-its-usd1-billion-safu-fund-into-15-000-btc"
       ],
       "type": "metric"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-27",
+      "claim": "Link balance launched October 26, 2026 with Instinct for eligible US users; New York coming soon.",
+      "confidence": "high",
+      "hosts": [
+        "tempo.xyz"
+      ],
+      "id": "c1",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://tempo.xyz/customer-stories/link"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-31",
+      "claim": "Link says user is responsible for all purchases the agent makes; approval window stated as both 30 and 10 minutes.",
+      "confidence": "high",
+      "hosts": [
+        "support.link.com"
+      ],
+      "id": "c10",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c10",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://support.link.com/questions/link-agent-wallet-faq"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-31",
+      "claim": "Link CLI per-request limit $500, daily $500, 30-day $20,000; 30-minute approval window.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c11",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/stripe/link-cli"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-31",
+      "claim": "Custody model (Bridge custodial vs Privy self-custodial) for Instinct users is not stated in launch materials.",
+      "confidence": "medium",
+      "hosts": [
+        "stablecoininsider.org"
+      ],
+      "id": "c12",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c12",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://stablecoininsider.org/link-balance"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-31",
+      "claim": "Prepaid card account at Lead Bank funded by Stripe selling USDC, per analyst reading.",
+      "confidence": "low",
+      "hosts": [
+        "stablecoininsider.org"
+      ],
+      "id": "c13",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c13",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://stablecoininsider.org/link-balance"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-21",
+      "claim": "OCC finalized GENIUS Act implementing rule October 21, 2026; effective January 18, 2027.",
+      "confidence": "high",
+      "hosts": [
+        "occ.gov"
+      ],
+      "id": "c14",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://occ.gov/news-issuances/news-releases/2026/nr-occ-2026-92.html"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-26",
+      "claim": "Circle reserve page as of Oct 26, 2026 lists deposits, overnight reverse repo, Treasuries under three months, held mostly in a BlackRock-managed fund; Deloitte audits financials.",
+      "confidence": "medium",
+      "hosts": [
+        "circle.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c15",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.circle.com/transparency"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2025-06-11",
+      "claim": "Stripe agreed to acquire Privy (75M accounts) in June 2025.",
+      "confidence": "medium",
+      "hosts": [
+        "blockworks.co"
+      ],
+      "id": "c16",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://blockworks.co/news/stripe-acquires-privy-wallet"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-27",
+      "claim": "Instinct founder says users spend over $1,300 a month via the agent.",
+      "confidence": "low",
+      "hosts": [
+        "letsmoney.com.br"
+      ],
+      "id": "c17",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c17",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://www.letsmoney.com.br/ia/instinct-link-balance-agente-ia-teto-por-compra"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-29",
+      "claim": "Seed tweet dated Oct 29, 2026 says author traced Link Balance funds flow onchain on Tempo.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c18",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c18",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/khushjammu/status/2115902443225813486"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-27",
+      "claim": "Tempo states three reasons: 24/7 near-instant settlement, sub-cent fees paid in stablecoins, blockspace reserved for payments.",
+      "confidence": "high",
+      "hosts": [
+        "tempo.xyz"
+      ],
+      "id": "c2",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://tempo.xyz/customer-stories/link"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-31",
+      "claim": "Tempo fee cap is 12 billion attodollars per gas and floor 600 million; a ~50,000-gas TIP-20 transfer costs about $0.0006 at cap and $0.00003 at floor.",
+      "confidence": "high",
+      "hosts": [
+        "tempo.xyz"
+      ],
+      "id": "c3",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://tempo.xyz/developers/docs/protocol/fees/spec-fee.md"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-31",
+      "claim": "Tempo block gas limit is 500M with 30M general, so about 94% of blockspace is reserved for payments.",
+      "confidence": "medium",
+      "hosts": [
+        "tempo.xyz"
+      ],
+      "id": "c4",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://tempo.xyz/developers/docs/protocol/fees/spec-fee.md"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-31",
+      "claim": "Fee AMM converts at a fixed 0.9970 per hop, a 0.3% spread.",
+      "confidence": "high",
+      "hosts": [
+        "tempo.xyz"
+      ],
+      "id": "c5",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://tempo.xyz/developers/docs/protocol/fees/spec-fee.md"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-10-31",
+      "claim": "Tempo mainnet chain ID 4217; testnet Moderato 42431; no native gas token.",
+      "confidence": "high",
+      "hosts": [
+        "tempo.xyz"
+      ],
+      "id": "c6",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://tempo.xyz/developers/docs/quickstart/connection-details.md"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-03-18",
+      "claim": "Tempo mainnet went live March 18, 2026 with the Machine Payments Protocol.",
+      "confidence": "high",
+      "hosts": [
+        "coindesk.com",
+        "fortune.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.coindesk.com/tech/2026/03/18/stripe-led-payments-blockchain-tempo-goes-live-with-protocol-for-ai-agents",
+        "https://fortune.com/2026/03/18/stripe-tempo-paradigm-mpp-ai-payments-protocol"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2026-04-14",
+      "claim": "Visa, Stripe and Zodia Custody joined Tempo as early validators, reported April 14, 2026.",
+      "confidence": "high",
+      "hosts": [
+        "theblock.co"
+      ],
+      "id": "c8",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.theblock.co/news/business/2026-04-14-visa-stripe-zodia-custody-standard-chartered-validators-tempo-397286"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+      "article_created_at": "2026-10-30T16:12:54Z",
+      "article_title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+      "as_of": "2025-10-17",
+      "claim": "Tempo raised $500M Series A at about $5B valuation led by Thrive Capital and Greenoaks.",
+      "confidence": "medium",
+      "hosts": [
+        "theblock.co"
+      ],
+      "id": "c9",
+      "key": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.theblock.co/post/375152/stripe-tempo-500-million-series-a-thrive"
+      ],
+      "type": "event"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1485,
+  "reusable_count": 1493,
   "schema_version": 1
 }
