@@ -1,51 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-31 15:00 UTC",
-    "headline": "OPENAI'S TIBO CLAIMS 5M CODEX USERS, RATE LIMITS RESET MONDAY MORNING; SAM ALTMAN RETWEETS",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-05-31-twitter-15h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2060964284117782996"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-05-31 15:00 UTC",
-    "headline": "SAM ALTMAN RECIRCULATES ROSALIND BIODEFENSE LAUNCH: 'WE WANT TO HELP THE WORLD GET A HEAD START ON BIODEFENSE'",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-05-31-twitter-15h-headlines.json",
-    "url": "https://x.com/sama/status/2061101875303530871"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-31 15:00 UTC",
-    "headline": "FIREWORKS AI HITS $800M ANNUALIZED RUN RATE, 4X REVENUE GROWTH EX-CURSOR",
-    "source": "@lqiao",
-    "source_file": "research/summaries/2026-05-31-twitter-15h-headlines.json",
-    "url": "https://x.com/_akhaliq/status/2061103514906935703"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-31 15:00 UTC",
-    "headline": "COREWEAVE + DELL FIRST CLOUD TO PASS L11 DIAGS ON NVIDIA RUBIN VR200 NVL72",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-31-twitter-15h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2060912340590084479"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-31 15:00 UTC",
-    "headline": "APPLE AI GLASSES PUSHED TO LATE 2027, VISION AIR TO 2029 \u2014 GURMAN REPORT",
-    "source": "@9to5mac",
-    "source_file": "research/summaries/2026-05-31-twitter-15h-headlines.json",
-    "url": "https://x.com/9to5mac/status/2061103805857505725"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-05-31 21:00 UTC",
     "headline": "SAM ALTMAN FORMALIZES OPENAI ROBOTICS \u2014 WORLD-SIM RESEARCH BECOMES HARDWARE ORG UNDER ADITYA RAMESH",
@@ -23316,5 +23271,40 @@
     "headline": "COHERE COMMITS MORE THAN C$4B TO CANADIAN R&D AND AI INFRASTRUCTURE, 1,500+ JOBS THROUGH 2031",
     "source": "@cohere",
     "url": "https://x.com/cohere/status/2116186531366949192"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-30 22:13:08 UTC",
+    "headline": "INTEL CLOSES DOWN 28.6% ON WEAK Q4 GUIDE; CHIP INDEX \u22127.2%, AMD \u221210.9%, NVIDIA \u22124.2%",
+    "source": "@DobbinsDownload",
+    "url": "https://x.com/DobbinsDownload/status/2116292393620398449"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-30 22:13:08 UTC",
+    "headline": "REDDIT CEO: GOOGLE AI MODE 'DOES NOT DRIVE TRAFFIC' \u2014 SEARCH REFERRALS DOWN 1M+/WEEK; STOCK \u221229%",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2116277389114388908"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-30 22:13:08 UTC",
+    "headline": "ANTHROPIC: CLAUDE ULTRA KEEPS 10X-PRO WEEKLY CAP; 5-HOUR LIMIT REMOVED ONLY FOR VERIFIED ACCOUNTS",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2116270314133078019"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-30 22:13:08 UTC",
+    "headline": "ANTHROPIC REPORTEDLY NEGOTIATING EDMONTON-AREA CAMPUS POWERED BY DEDICATED 920 MW GAS PLANT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2116290534381928744"
+  },
+  {
+    "category": "breaking",
+    "delivered_at": "2026-10-30 22:13:08 UTC",
+    "headline": "THE INFORMATION: ANTHROPIC DISTILLATION CRACKDOWN PUSHES DEEPSEEK, MOONSHOT TO TRAIN ON GPT-6 ASTRA OUTPUTS",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2116228717970137467"
   }
 ]
