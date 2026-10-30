@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 22,
+  "count": 23,
   "events": [
+    {
+      "file": "2026-10-29-AMZN-FY26Q3.md",
+      "date": "2026-10-29",
+      "ticker": "AMZN",
+      "period": "FY26Q3",
+      "issuer": "Amazon.com, Inc.",
+      "form": "8-K",
+      "accession": "0001018724-26-000038",
+      "transcript": false
+    },
     {
       "file": "2026-10-28-VRT-FY26Q3.md",
       "date": "2026-10-28",
@@ -31,7 +41,7 @@
       "issuer": "Alphabet Inc.",
       "form": "8-K",
       "accession": "0001652044-26-000080",
-      "transcript": false
+      "transcript": true
     },
     {
       "file": "2026-10-21-META-FY26Q3.md",
