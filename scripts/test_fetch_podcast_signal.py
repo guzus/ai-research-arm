@@ -250,6 +250,9 @@ class RegistryValidationTest(unittest.TestCase):
                "min_duration_s": 0, "include_in_aradio": True}
         self.assertRejected([row], "https rss")
         self.assertRejected([dict(row, rss="http://insecure.example.test/feed")], "https rss")
+        # The feed URL is a published fallback link, so it must be a safe URL too.
+        self.assertRejected([dict(row, rss="https://feeds.example.test/x)[y](javascript:alert(1))")], "https rss")
+        self.assertRejected([dict(row, rss="https://feeds.example.test/a b")], "https rss")
 
     def test_typos_and_wrong_kind_fields_rejected(self):
         self.assertRejected([show_row(channel="UC" + "a" * 22)], "unknown keys")
@@ -339,6 +342,159 @@ class ShippedRegistryTest(unittest.TestCase):
         self.assertEqual(len(channels), len(set(channels)), "duplicate channel_id among channel sources")
 
 
+CRAFTED_URLS = (
+    "https://a.example/x) [y](javascript:alert(1))",
+    "javascript:alert(1)",
+    "https://a.example/x y",
+    "https://a.example/<script>",
+    "https://a.example/x\nhttps://b.example/y",
+    "https://a.example/x\n",
+    "https://a.example/‮evil",          # bidi override
+    "https://a.example/x\"onmouseover=\"1",
+    "https://a.example/x'y",
+    "https://a.example/{x}",
+    "https://a.example/x|y",
+    "https://a.example/x\\y",
+    "https://a.example/x^y",
+    "https://a.example/x`y",
+    "https://user:pass@a.example/x",       # credentials are never published
+    "https://a.example:notaport/x",
+    "ftp://a.example/x",
+    "data:text/html,hi",
+    "https:///no-host",
+    "//a.example/protocol-relative",
+    "https://a.example/" + "a" * 2048,
+    "",
+)
+
+
+class SafeUrlTest(unittest.TestCase):
+    def test_crafted_urls_are_rejected(self):
+        for url in CRAFTED_URLS:
+            with self.subTest(url=url):
+                self.assertIsNone(pod.safe_url(url))
+        for value in (None, 42, b"https://a.example/x", ["https://a.example/x"]):
+            self.assertIsNone(pod.safe_url(value))  # type: ignore[arg-type]
+
+    def test_normal_urls_pass_unchanged(self):
+        for url in ("https://cdn.example.test/ep1.mp3",
+                    "http://feeds.example.test/podcast.rss",
+                    "https://pscrb.fm/rss/p/prfx.byspotify.com/e/api.substack.com/feed/podcast/1/abc.mp3?x=1&y=2",
+                    "https://www.youtube.com/watch?v=frYSOKvNiiE&t=1234s",
+                    "HTTPS://Example.TEST:8443/Path/%20encoded?q=a%26b#frag",
+                    "https://a.example/" + "a" * (pod.SAFE_URL_MAX_LENGTH - len("https://a.example/"))):
+            with self.subTest(url=url):
+                self.assertEqual(pod.safe_url(url), url)
+
+    def test_youtube_urls_are_built_only_from_valid_ids(self):
+        self.assertEqual(pod.youtube_watch_url(vid(1), 75), f"https://www.youtube.com/watch?v={vid(1)}&t=75s")
+        for bad in ("short", "vid00000001)", "../../x/yy", None):
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                pod.youtube_watch_url(bad)  # type: ignore[arg-type]
+        with self.assertRaises(ValueError):
+            pod.youtube_watch_url(vid(1), -1)
+
+
+class UrlIngestTest(LaneTestCase):
+    """Third-party URLs (RSS enclosures relayed by tuber) are validated at
+    ingest; an unsafe one never reaches index.json or the Markdown."""
+
+    def routes_with_enclosures(self, urls: list[str]) -> dict:
+        routes = e2e_routes()
+        routes[("/podcast/episodes", RSS)]["episodes"] = [
+            {"id": f"pod-x{n}", "title": f"Episode {n} on model evals", "description": "Evals.",
+             "audioUrl": url, "publishedAt": "Wed, 28 Oct 2026 12:58:39 GMT", "duration": "900"}
+            for n, url in enumerate(urls)
+        ]
+        return routes
+
+    def test_unsafe_enclosures_are_dropped_and_never_published(self):
+        crafted = [url for url in CRAFTED_URLS if url]
+        self.run_lane(self.routes_with_enclosures(crafted + ["https://cdn.example.test/good.mp3"]))
+        episodes = self.episodes()
+        for n in range(len(crafted)):
+            episode = episodes[f"notes:pod-x{n}"]
+            self.assertIsNone(episode["audio_url"], crafted[n])
+            self.assertEqual(episode["url"], RSS)  # falls back to the registry's feed
+        good = episodes[f"notes:pod-x{len(crafted)}"]
+        self.assertEqual((good["audio_url"], good["url"]), ("https://cdn.example.test/good.mp3",) * 2)
+        published = "".join(path.read_text(encoding="utf-8") for path in self.out.iterdir())
+        for marker in ("javascript", "<script>", "a.example", "b.example", "‮", "user:pass", "onmouseover"):
+            self.assertNotIn(marker, published)
+        self.assertIn("(<https://cdn.example.test/good.mp3>)", published)
+
+    def test_hand_edited_index_is_sanitized_on_reload(self):
+        self.run_lane(e2e_routes())
+        index = self.index()
+        for episode in index["episodes"]:
+            episode["url"] = "https://evil.example/x) [y](javascript:alert(1))"
+            if episode["video_id"]:
+                episode["audio_url"] = "https://evil.example/a.mp3"
+                episode["excerpts"].append({"text": " ".join(["word"] * 500), "at_s": 9,
+                                            "url": "javascript:alert(1)"})
+                episode["excerpts"] *= 3
+            else:
+                episode["audio_url"] = "https://evil.example/<script>"
+        (self.out / "index.json").write_text(json.dumps(index), encoding="utf-8")
+        self.run_lane(e2e_routes(), now=NOW + dt.timedelta(minutes=30))
+        published = "".join(path.read_text(encoding="utf-8") for path in self.out.iterdir())
+        self.assertNotIn("evil.example", published)
+        self.assertNotIn("javascript", published)
+        for episode in self.index()["episodes"]:
+            self.assertLessEqual(len(episode["excerpts"]), pod.MAX_EXCERPTS)
+            if episode["video_id"]:
+                self.assertEqual(episode["url"], pod.youtube_watch_url(episode["video_id"]))
+                self.assertIsNone(episode["audio_url"])
+                for excerpt in episode["excerpts"]:
+                    self.assertLessEqual(len(excerpt["text"].split()), pod.MAX_EXCERPT_WORDS)
+                    self.assertEqual(excerpt["url"], pod.youtube_watch_url(episode["video_id"], excerpt["at_s"]))
+            else:
+                self.assertEqual((episode["url"], episode["audio_url"]), (RSS, None))
+
+    def test_records_whose_id_does_not_match_are_dropped(self):
+        self.run_lane(e2e_routes())
+        index = self.index()
+        video = next(e for e in index["episodes"] if e["video_id"])
+        rss = next(e for e in index["episodes"] if not e["video_id"])
+        video["id"] = video["show_id"] + ":evil](javascript:alert(1))"
+        rss["id"] = rss["show_id"] + ":pod-x) [y](javascript:alert(1))"
+        (self.out / "index.json").write_text(json.dumps(index), encoding="utf-8")
+        self.run_lane(e2e_routes(), now=NOW + dt.timedelta(minutes=30))
+        self.assertNotIn("javascript", (self.out / "index.json").read_text(encoding="utf-8"))
+
+    def test_markdown_text_is_inert_even_from_a_hand_edited_index(self):
+        self.run_lane(e2e_routes())
+        index = self.index()
+        for episode in index["episodes"]:
+            episode["title"] = "Real title\n# Injected heading\n[click](javascript:alert(1)) <img src=x>"
+            episode["description"] = "notes\r\n- injected bullet \x00 \u202e"
+        (self.out / "index.json").write_text(json.dumps(index), encoding="utf-8")
+        self.run_lane(e2e_routes(), now=NOW + dt.timedelta(minutes=30))
+        text = (self.out / "2026-10-30.md").read_text(encoding="utf-8")
+        self.assertNotRegex(text, r"(?m)^# Injected")
+        self.assertNotRegex(text, r"(?m)^- injected")
+        self.assertNotRegex(text, r"(?<!\\)\[click(?<!\\)\]")  # brackets only appear escaped
+        self.assertNotRegex(text, r"(?<!\\)<img")
+        self.assertIn("\\<img src=x\\>", text)
+        self.assertNotIn("\x00", text)
+        self.assertNotIn("\u202e", text)
+
+    def test_md_escape(self):
+        self.assertEqual(pod._md_escape("a [b](c) <d>\n# e\x00f `g`"), "a \\[b\\](c) \\<d\\> # e f \\`g\\`")
+
+    def test_records_with_an_invalid_video_id_are_dropped(self):
+        self.run_lane(e2e_routes())
+        index = self.index()
+        index["episodes"][0]["video_id"] = "x) [y](javascript:alert(1))"
+        dropped = index["episodes"][0]["id"]
+        (self.out / "index.json").write_text(json.dumps(index), encoding="utf-8")
+        self.run_lane(e2e_routes(), now=NOW + dt.timedelta(minutes=30))
+        self.assertNotIn("javascript", (self.out / "index.json").read_text(encoding="utf-8"))
+        # Re-discovered from the listing, it comes back as a clean record.
+        if dropped in self.episodes():
+            self.assertTrue(pod.VIDEO_ID_RE.fullmatch(self.episodes()[dropped]["video_id"]))
+
+
 class ReadOnlyGuardTest(unittest.TestCase):
     def test_generation_endpoints_refused(self):
         for path in ("/summarize", f"/video/{vid(1)}/summarize", "/acp/jobs", "/acp/jobs/123",
@@ -377,15 +533,26 @@ class ReadOnlyGuardTest(unittest.TestCase):
             self.assertIsNone(request.data)
             self.assertEqual(request.full_url, f"https://tuber.example.test/api/channel/{CH_LAB}?count=3")
 
-    def test_rate_limit_body_is_classified(self):
+    def classify(self, status: int, body: bytes) -> pod.TuberError:
         error = pod.urllib.error.HTTPError(
-            "https://tuber.example.test/api/video/x/transcript", 500, "Internal Server Error", {},
-            io.BytesIO(b'{"error":"YouTube temporarily rate-limited transcript access","segments":[]}'))
+            "https://tuber.example.test/api/video/x/transcript", status, "Internal Server Error", {},
+            io.BytesIO(body))
         with unittest.mock.patch.object(pod.urllib.request, "urlopen", side_effect=error):
             with self.assertRaises(pod.TuberError) as caught:
                 pod.http_get_json("https://tuber.example.test", f"/video/{vid(1)}/transcript", None, 5)
-        self.assertTrue(caught.exception.rate_limited)
-        self.assertEqual(caught.exception.status, 500)
+        return caught.exception
+
+    def test_youtube_throttling_bodies_are_classified(self):
+        # Both messages were returned live on 2026-10-30.
+        for message in (b"YouTube temporarily rate-limited transcript access",
+                        b"YouTube temporarily blocked transcript access"):
+            with self.subTest(message=message):
+                error = self.classify(500, b'{"error":"' + message + b'","segments":[]}')
+                self.assertTrue(error.rate_limited)
+                self.assertEqual(error.status, 500)
+        self.assertTrue(self.classify(429, b"slow down").rate_limited)
+        self.assertFalse(self.classify(500, b'{"error":"database unavailable"}').rate_limited)
+        self.assertFalse(self.classify(404, b'{"error":"rate-limited"}').rate_limited)
 
     def test_a_full_run_only_touches_read_paths(self):
         with tempfile.TemporaryDirectory() as td:
@@ -410,6 +577,13 @@ class TimeParsingTest(unittest.TestCase):
                 self.assertEqual(seconds // 86400, pod.youtube.approximate_age_days(label))
         for label in ("", "Scheduled for 11/2/26", "Oct 29, 2026"):
             self.assertIsNone(pod.label_age_seconds(label))
+            self.assertIsNone(pod.estimated_age_seconds(label))
+
+    def test_estimated_age_is_the_midpoint_of_the_floored_label(self):
+        self.assertEqual(pod.estimated_age_seconds("15h ago"), 15 * 3600 + 1800)
+        self.assertEqual(pod.estimated_age_seconds("Streamed 1d ago"), 36 * 3600)
+        self.assertEqual(pod.estimated_age_seconds("5m ago"), 330)
+        self.assertEqual(pod.estimated_age_seconds("just now"), 0)
 
     def test_rss_dates_and_durations(self):
         self.assertEqual(pod.parse_rss_date("Wed, 28 Oct 2026 12:58:39 GMT"),
@@ -492,7 +666,8 @@ class DiscoveryTest(unittest.TestCase):
     def test_video_rows_normalize_with_approximate_time(self):
         found = pod.discover(self.shows, make_client(FakeTuber(e2e_routes())), NOW)
         first = next(c for c in found.candidates if c.native_id == vid(1))
-        self.assertEqual(first.published_at, NOW - dt.timedelta(hours=3))
+        # "3h ago" is floored by YouTube (3-4 h): the midpoint is published_at.
+        self.assertEqual(first.published_at, NOW - dt.timedelta(hours=3, minutes=30))
         self.assertEqual(first.precision, "approximate")
         self.assertEqual(first.url, f"https://www.youtube.com/watch?v={vid(1)}")
         episode = next(c for c in found.candidates if c.native_id == "pod-abc123")
@@ -537,7 +712,7 @@ class EndToEndTest(LaneTestCase):
                                       "video_id", "audio_url", "published_at", "published_precision",
                                       "first_seen_at", "duration_s", "transcript", "excerpts", "description"])
         self.assertEqual(call["kind"], "earnings-call")
-        self.assertEqual(call["published_at"], "2026-10-30T06:41:00Z")
+        self.assertEqual(call["published_at"], "2026-10-30T06:11:00Z")  # "Streamed 2h ago" -> 2.5 h
         self.assertEqual(call["first_seen_at"], "2026-10-30T08:41:00Z")
         self.assertEqual(list(call["transcript"]), ["available", "source", "words", "checked_at", "attempts"])
         self.assertTrue(call["transcript"]["available"])
@@ -578,7 +753,9 @@ class EndToEndTest(LaneTestCase):
         self.assertRegex(text, r"(?m)^- Fetch errors: 1$")
         self.assertIn("## Fetch errors", text)
         self.assertIn("Notes FM (`notes`): TuberError: HTTP 502: Bad Gateway", text)
-        self.assertIn(f"### [Acme Q3 2026 Earnings Call](https://www.youtube.com/watch?v={vid(8)})", text)
+        # Angle-bracket destinations: safe because safe_url never passes < or >.
+        self.assertIn(f"### [Acme Q3 2026 Earnings Call](<https://www.youtube.com/watch?v={vid(8)}>)", text)
+        self.assertRegex(text, rf"(?m)^  - \[\d+:\d\d\]\(<https://www\.youtube\.com/watch\?v={vid(8)}&t=\d+s>\) ")
         self.assertIn("- Transcript: available (youtube_captions,", text)
         self.assertNotIn("Generated:", text)  # no run timestamp: a quiet rerun stays byte-identical
 

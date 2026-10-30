@@ -18,11 +18,18 @@ lane's quote policy -- chosen by ``select_windows``, which the Aradio inbox
 builder imports. Everything under research/ is public, so committing a
 transcript would be republishing it.
 
+Every published URL is either built from a validated id (YouTube watch and
+deep links) or passes ``safe_url`` (RSS enclosures relayed by tuber, the
+registry's feed URLs); an unsafe one is dropped, never repaired. Reloaded
+records are re-sanitized, and the Markdown uses angle-bracket link
+destinations with escaped, single-line text. ``safe_url`` is public: the
+Aradio inbox builder applies the same check.
+
 State rules (the contract in docs/aradio.md):
   - ``first_seen_at`` is set once and never changes; ``published_at`` is
-    derived once at first sight (exact for RSS, approximate from tuber's
-    relative "15h ago" label for YouTube, so the true time can be up to one
-    label unit earlier).
+    derived once at first sight (exact for RSS; for YouTube, approximate:
+    the midpoint of the interval tuber's floored relative label denotes, so
+    "15h ago" at first sight becomes 15.5 h before it).
   - an episode without a transcript is retried on later runs while it is
     < 3 days old; ``attempts`` counts tries.
   - ``updated_at`` changes only when the content changes, so a quiet run
@@ -58,6 +65,7 @@ import re
 import sys
 import tempfile
 import time
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -236,8 +244,10 @@ def load_registry(path: Path) -> list[Show]:
             # The channel constraint is what keeps third-party re-streams out.
             _require(isinstance(query, str) and bool(query.strip()), f"{sid}: search source requires query")
         if kind == "podcast":
-            _require(isinstance(rss, str) and rss.startswith("https://"),
-                     f"{sid}: podcast source requires an https rss URL")
+            # The feed URL is also the published fallback `url` of an episode
+            # without a usable enclosure, so it must pass the same check.
+            _require(isinstance(rss, str) and rss.startswith("https://") and safe_url(rss) == rss,
+                     f"{sid}: podcast source requires a safe https rss URL")
         shows.append(Show(
             id=sid, name=name.strip(), kind=kind, priority=priority, tags=tuple(tags),
             ai_filter=row["ai_filter"], min_duration_s=min_duration,
@@ -245,6 +255,56 @@ def load_registry(path: Path) -> list[Show]:
             channel_id=channel_id, query=query.strip(), rss=rss,
         ))
     return shows
+
+
+# ---------------------------------------------------------------------------
+# Published URLs
+
+SAFE_URL_MAX_LENGTH = 2048
+# Characters that can end or restructure a Markdown link or an HTML attribute.
+_URL_FORBIDDEN_CHARS = frozenset("<>\"'()[]{}|\\^`")
+
+
+def safe_url(url: str) -> str | None:
+    """Return ``url`` unchanged when it is safe to publish, else None.
+
+    Every URL that reaches research/ (the index, the daily Markdown, and from
+    there the Aradio inbox and board) passes through here or is built from a
+    validated id. Third-party URLs -- RSS enclosures relayed by tuber -- are
+    attacker-controllable, and one carrying ``)``, ``]``, ``<``, quotes,
+    whitespace or control characters could break out of a Markdown link.
+    Safe means: http(s) scheme, a host, no userinfo, at most 2048 characters,
+    and none of ``<>"'()[]{}|\\^``, backtick, whitespace, or control/format
+    characters (which also covers bidi overrides). Nothing is repaired or
+    re-encoded: a URL is either published byte-for-byte or dropped.
+    """
+    if not isinstance(url, str) or not url or len(url) > SAFE_URL_MAX_LENGTH:
+        return None
+    for char in url:
+        if char in _URL_FORBIDDEN_CHARS or char.isspace() or unicodedata.category(char)[0] == "C":
+            return None
+    try:
+        parts = urllib.parse.urlsplit(url)
+        parts.port  # raises ValueError on a malformed port
+    except ValueError:
+        return None
+    if parts.scheme not in ("https", "http") or not parts.netloc or not parts.hostname:
+        return None
+    if "@" in parts.netloc:  # credentials in a URL are never published
+        return None
+    return url
+
+
+def youtube_watch_url(video_id: str, at_s: int | None = None) -> str:
+    """Canonical YouTube URL, built only from a validated 11-character id."""
+    if not isinstance(video_id, str) or not VIDEO_ID_RE.fullmatch(video_id):
+        raise ValueError(f"not a YouTube video id: {video_id!r}")
+    url = f"https://www.youtube.com/watch?v={video_id}"
+    if at_s is not None:
+        if isinstance(at_s, bool) or not isinstance(at_s, int) or at_s < 0:
+            raise ValueError(f"not a timestamp: {at_s!r}")
+        url += f"&t={at_s}s"
+    return url
 
 
 # ---------------------------------------------------------------------------
@@ -257,6 +317,12 @@ def check_read_only_path(path: str) -> None:
         raise ValueError(f"refusing tuber generation endpoint: {path}")
     if not READ_ONLY_PATH_RE.fullmatch(path):
         raise ValueError(f"refusing non-allowlisted tuber path: {path}")
+
+
+# YouTube throttling as relayed by tuber (HTTP 500), both seen live on
+# 2026-10-30: "YouTube temporarily rate-limited transcript access" and
+# "YouTube temporarily blocked transcript access".
+_THROTTLED_RE = re.compile(r"rate.?limit|temporarily blocked|too many requests|throttl", re.I)
 
 
 def _error_message(body: bytes) -> str:
@@ -284,7 +350,7 @@ def http_get_json(base_url: str, path: str, params: dict[str, Any] | None, timeo
             message = _error_message(exc.read())
         except OSError:
             message = ""
-        rate_limited = exc.code == 429 or (exc.code >= 500 and "rate-limit" in message.lower())
+        rate_limited = exc.code == 429 or (exc.code >= 500 and bool(_THROTTLED_RE.search(message)))
         raise TuberError(f"HTTP {exc.code}: {message or exc.reason}", status=exc.code,
                          rate_limited=rate_limited) from exc
     except (urllib.error.URLError, TimeoutError, OSError) as exc:
@@ -331,27 +397,49 @@ AGE_UNIT_SECONDS = {
 }
 
 
-def label_age_seconds(label: str) -> int | None:
-    """Seconds stated by a tuber relative label ("15h ago", "Streamed 1d ago").
-
-    Same grammar as ``fetch_youtube_signal.approximate_age_days`` (shared
-    pattern and unit table), at second resolution. YouTube floors these
-    labels, so the true age is up to one unit larger.
-    """
+def _parse_age_label(label: str) -> tuple[int, int] | None:
+    """(count, unit seconds) of a tuber relative label, or None."""
     text = youtube.clean_text(label).lower()
     if not text:
         return None
     if "today" in text or "just now" in text:
-        return 0
+        return 0, 0
     if "yesterday" in text:
-        return 86400
+        return 1, 86400
     match = youtube.AGE_PATTERN.search(text)
     if not match:
         return None
     unit = match.group(2)
     if unit not in AGE_UNIT_SECONDS:
         unit = unit[:-1]
-    return int(match.group(1)) * AGE_UNIT_SECONDS[unit]
+    return int(match.group(1)), AGE_UNIT_SECONDS[unit]
+
+
+def label_age_seconds(label: str) -> int | None:
+    """Seconds stated by a tuber relative label ("15h ago", "Streamed 1d ago").
+
+    Same grammar as ``fetch_youtube_signal.approximate_age_days`` (shared
+    pattern and unit table), at second resolution.
+    """
+    parsed = _parse_age_label(label)
+    return None if parsed is None else parsed[0] * parsed[1]
+
+
+def estimated_age_seconds(label: str) -> int | None:
+    """Best estimate of a video's age from its relative label.
+
+    YouTube floors these labels (live: a call streamed ~36.7 h earlier read
+    "Streamed 1d ago"), so "15h ago" means 15-16 h and the midpoint is the
+    unbiased estimate: at most half a unit off, instead of up to a whole unit
+    with a systematic lean toward "too recent". In steady state an upload is
+    first seen within ~2 h, under an hour-or-finer label, so the error is
+    <= 30 min; day/week labels appear only while catching up a backlog.
+    """
+    parsed = _parse_age_label(label)
+    if parsed is None:
+        return None
+    count, unit = parsed
+    return count * unit + unit // 2
 
 
 def utc_minute(value: dt.datetime) -> dt.datetime:
@@ -808,11 +896,11 @@ def normalize_video(show: Show, row: dict, now: dt.datetime) -> Candidate | None
     if not VIDEO_ID_RE.fullmatch(video_id) or not title:
         return None
     label = youtube.clean_text(row.get("publishedAt"))
-    age = label_age_seconds(label)
+    age = estimated_age_seconds(label)
     published = None if age is None else min(now, utc_minute(now - dt.timedelta(seconds=age)))
     return Candidate(
         show=show, native_id=video_id, title=title,
-        url=f"https://www.youtube.com/watch?v={video_id}", video_id=video_id, audio_url=None,
+        url=youtube_watch_url(video_id), video_id=video_id, audio_url=None,
         duration_s=parse_duration(row.get("duration")), label=label, published_at=published,
         precision="approximate", is_live=row.get("isLive") is True,
         channel_id=youtube.clean_text(row.get("channelId")),
@@ -827,8 +915,11 @@ def normalize_podcast(show: Show, row: dict) -> Candidate | None:
     published = parse_rss_date(row.get("publishedAt"))
     if published is None:
         return None
-    audio = youtube.clean_text(row.get("audioUrl"))
-    audio_url = audio if audio.startswith(("https://", "http://")) else None
+    # The enclosure URL is third-party data relayed by tuber: validated as
+    # received (no whitespace cleanup that could normalise a crafted value
+    # into something else) and dropped when unsafe; the episode then links
+    # to the registry's feed URL instead.
+    audio_url = safe_url(row.get("audioUrl"))
     return Candidate(
         show=show, native_id=pod_id, title=title, url=audio_url or show.rss, video_id=None,
         audio_url=audio_url, duration_s=parse_duration(row.get("duration")),
@@ -954,14 +1045,48 @@ def load_index(path: Path) -> dict | None:
 
 
 def _episode_is_well_formed(episode: Any) -> bool:
+    if not isinstance(episode, dict):
+        return False
+    show_id, video_id, episode_id = episode.get("show_id"), episode.get("video_id"), episode.get("id")
+    if not isinstance(show_id, str) or not SHOW_ID_RE.fullmatch(show_id) or not isinstance(episode_id, str):
+        return False
+    if video_id is None:
+        native = episode_id.removeprefix(f"{show_id}:")
+        id_ok = episode_id.startswith(f"{show_id}:") and bool(POD_ID_RE.fullmatch(native))
+    else:
+        id_ok = isinstance(video_id, str) and bool(VIDEO_ID_RE.fullmatch(video_id)) \
+            and episode_id == f"{show_id}:{video_id}"
     return (
-        isinstance(episode, dict)
-        and isinstance(episode.get("id"), str)
-        and isinstance(episode.get("show_id"), str)
+        id_ok
         and parse_iso(episode.get("first_seen_at")) is not None
         and parse_iso(episode.get("published_at")) is not None
         and isinstance(episode.get("transcript"), dict)
     )
+
+
+def sanitize_reloaded(episode: dict, show: Show) -> None:
+    """Re-derive every published URL of a reloaded record and re-apply the
+    excerpt caps, so a hand-edited (or older) index can never re-publish an
+    unsafe URL or more transcript text than the quote policy allows. For
+    records this script wrote, every step is the identity (no diff)."""
+    video_id = episode.get("video_id")
+    if video_id:
+        episode["url"] = youtube_watch_url(video_id)
+        episode["audio_url"] = None
+        kept = []
+        for excerpt in episode.get("excerpts") or []:
+            if not isinstance(excerpt, dict) or not isinstance(excerpt.get("text"), str):
+                continue
+            at_s = excerpt.get("at_s")
+            if isinstance(at_s, bool) or not isinstance(at_s, int) or at_s < 0:
+                continue
+            kept.append({"text": first_words(excerpt["text"], MAX_EXCERPT_WORDS), "at_s": at_s,
+                         "url": youtube_watch_url(video_id, at_s)})
+        episode["excerpts"] = kept[:MAX_EXCERPTS]
+    else:
+        episode["audio_url"] = safe_url(episode.get("audio_url"))
+        episode["url"] = safe_url(episode.get("url")) or episode["audio_url"] or show.rss
+        episode["excerpts"] = []
 
 
 def resync_show_fields(episode: dict, show: Show) -> None:
@@ -1095,7 +1220,7 @@ def update_transcripts(episodes: list[dict], client: TuberClient, now: dt.dateti
             windows = select_windows(outcome.segments, max_windows=MAX_EXCERPTS, max_words=MAX_EXCERPT_WORDS)
             episode["excerpts"] = [
                 {"text": window["text"], "at_s": window["at_s"],
-                 "url": f"{episode['url']}&t={window['at_s']}s"}
+                 "url": youtube_watch_url(episode["video_id"], window["at_s"])}
                 for window in windows
             ]
         elif outcome.status == "rate_limited":
@@ -1130,7 +1255,10 @@ def clock_label(seconds: int) -> str:
 
 
 def _md_escape(text: str) -> str:
-    return re.sub(r"([\[\]\\`<>])", r"\\\1", text)
+    """One line of inert Markdown text: no link, HTML or code syntax, and no
+    line break or control character that could start a new block."""
+    text = "".join(" " if unicodedata.category(char)[0] == "C" else char for char in str(text))
+    return re.sub(r"([\[\]\\`<>])", r"\\\1", " ".join(text.split()))
 
 
 def transcript_label(episode: dict) -> str:
@@ -1176,7 +1304,7 @@ def render_markdown(*, day: dt.date, index: dict, shows: list[Show],
         published = parse_iso(episode["published_at"])
         first_seen = parse_iso(episode["first_seen_at"])
         lines.extend([
-            f"### [{_md_escape(episode['title'])}]({episode['url']})",
+            f"### [{_md_escape(episode['title'])}](<{episode['url']}>)",
             f"- Show: {episode['show']} ({episode['priority']}; {episode['kind']})",
             f"- Published: {published.strftime('%Y-%m-%d %H:%M UTC') if published else 'unknown'}"
             f" ({episode['published_precision']})",
@@ -1189,12 +1317,12 @@ def render_markdown(*, day: dt.date, index: dict, shows: list[Show],
         if episode.get("excerpts"):
             lines.append("- Excerpts:")
             for excerpt in episode["excerpts"]:
-                lines.append(f"  - [{clock_label(excerpt['at_s'])}]({excerpt['url']}) {_md_escape(excerpt['text'])}")
+                lines.append(f"  - [{clock_label(excerpt['at_s'])}](<{excerpt['url']}>) {_md_escape(excerpt['text'])}")
         lines.append("")
     if errors:
         lines.extend(["## Fetch errors", ""])
         for show, error in sorted(errors, key=lambda row: row[0].id):
-            lines.append(f"- {show.name} (`{show.id}`): {error[:160]}")
+            lines.append(f"- {show.name} (`{show.id}`): {_md_escape(error[:160])}")
         lines.append("")
     lines.extend(["---", "*Generated by `scripts/fetch_podcast_signal.py`.*", ""])
     return "\n".join(lines)
@@ -1273,6 +1401,7 @@ def run(*, registry: Path, out_dir: Path, base_url: str, now: dt.datetime, clien
             continue
         record = json.loads(json.dumps(episode))
         resync_show_fields(record, shows_by_id[record["show_id"]])
+        sanitize_reloaded(record, shows_by_id[record["show_id"]])
         episodes[record["id"]] = record
     known_videos = {episode["video_id"] for episode in episodes.values() if episode.get("video_id")}
 
