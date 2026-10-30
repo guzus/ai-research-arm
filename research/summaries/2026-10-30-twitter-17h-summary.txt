@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-30 17:58:46 UTC
+
+CYCLE: Claude plan restructuring, Google's orbital TPU demo, OpenAI enterprise privacy
+
+TOP STORIES:
+• Anthropic renames Max 20x to "Ultra" and drops its 5-hour rate limit; weekly cap reportedly unchanged ✓
+• Google's Project Suncatcher satellite TPU answers a prompt sent from Earth: an early engineering checkpoint, not proof the economics work ✓
+• OpenAI launches "Private Intelligence" data controls for enterprises ⚠
+
+WATCH: Anthropic's published Ultra weekly cap; a primary source for the viral Accenture/Pentagon Claude-agent claim (unverified)
+
+Full update on GitHub.
