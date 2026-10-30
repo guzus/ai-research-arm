@@ -419,7 +419,11 @@ sentence publishes the label with it.
   last_bulletin_at, keys: {key: consumed_at}}`, keys pruned after 21 days.
 - `archive/YYYY-MM.json` — append-only:
   `{schema, month, updated_at, threads: [archived resolved Thread],
-  history: [{slug, first_seen, at, change, archived_at}]}`.
+  history: [{slug, first_seen, at, change, archived_at}]}`. Existing rows are
+  kept verbatim; a file the writer could only extend by rewriting (not an
+  object, an unknown field, another schema or month, `threads`/`history` not
+  a list, a row that is not an object, a row failing the URL rule) is
+  refused and nothing is written.
 
 Bulletin `id` is the UTC run stamp `YYYY-MM-DD-HHMM`. The dashboard's
 "History (N)" therefore shows at most the 12 newest entries.

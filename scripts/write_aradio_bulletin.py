@@ -18,7 +18,10 @@ applies its ops:
    Each thread keeps its newest 12 history entries in state.json; older ones
    move, in order and in the same run, to the `history` list of the run
    month's archive/YYYY-MM.json (append-only; each row is the entry plus the
-   thread's slug and first_seen and its archived_at). History is checked as:
+   thread's slug and first_seen and its archived_at). Existing archive rows
+   are kept verbatim; an archive that could only be extended by rewriting
+   it (wrong shape, unknown field, a row that is not an object, a URL that
+   fails the rule) is refused, never repaired. History is checked as:
    entries moved to the archive this run + the retained entries == the prior
    retained entries + entries stamped this run. Nothing is edited, reordered,
    or dropped without being archived.
@@ -64,6 +67,7 @@ ARCHIVE_AFTER = dt.timedelta(days=7)
 HISTORY_KEEP = 12
 # Identity fields on an archived history row; everything else is the entry.
 ARCHIVE_ROW_KEYS = ("slug", "first_seen", "archived_at")
+ARCHIVE_KEYS = ("schema", "month", "updated_at", "threads", "history")
 KEY_TTL = dt.timedelta(days=21)
 MAX_INDEX = 72
 STAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:00Z$")
@@ -333,6 +337,42 @@ def assert_history_append_only(before: list[dict], kept: list[dict], archived: l
                           + ", ".join(sorted(str(slug) for slug, _ in moved_by_thread)))
 
 
+def archive_rows(archive: Any, month: str) -> tuple[list[dict], list[dict]]:
+    """(threads, history) of the month's existing archive file, as they are.
+
+    The archive is append-only, so the writer only ever adds rows after the
+    existing ones. A file it could only extend by rewriting is refused
+    instead, with nothing written: not an object, a field it does not know
+    (it would be dropped), another schema or month, a `threads` or `history`
+    that is not a list, or a row that is not an object.
+    """
+    if archive is None:
+        return [], []
+    where = f"archive/{month}.json"
+    if not isinstance(archive, dict):
+        raise WriterError(f"{where} must be an object; refusing to overwrite it")
+    unknown = sorted(str(name) for name in set(archive) - set(ARCHIVE_KEYS))
+    if unknown:
+        raise WriterError(f"{where} has unknown fields ({', '.join(unknown)}); refusing to "
+                          "overwrite it")
+    if archive.get("schema", contract.SCHEMA) != contract.SCHEMA:
+        raise WriterError(f"{where} has schema {archive['schema']!r}, not {contract.SCHEMA}; "
+                          "refusing to overwrite it")
+    if archive.get("month", month) != month:
+        raise WriterError(f"{where} says month {archive['month']!r}; refusing to overwrite it")
+    found: list[list[dict]] = []
+    for name in ("threads", "history"):
+        rows = archive.get(name, [])
+        if not isinstance(rows, list):
+            raise WriterError(f"{where} {name} must be a list; refusing to overwrite it")
+        for index, row in enumerate(rows):
+            if not isinstance(row, dict):
+                raise WriterError(f"{where} {name}[{index}] is not an object; refusing to "
+                                  "overwrite it")
+        found.append(rows)
+    return found[0], found[1]
+
+
 # ---------------------------------------------------------------------------
 # Audio outcome
 # ---------------------------------------------------------------------------
@@ -391,22 +431,16 @@ def compose(*, edit: dict, inbox: contract.TrustedInbox, board: dict, cursor: di
 
     if archived or moved:
         month = now.strftime("%Y-%m")
-        if archive is not None and not isinstance(archive, dict):
-            raise WriterError(f"archive/{month}.json must be an object; refusing to "
-                              "overwrite it")
-        existing = archive or {}
-        prior_rows = existing.get("history", [])
-        if not isinstance(prior_rows, list):
-            raise WriterError(f"archive/{month}.json history must be a list; refusing to "
-                              "overwrite it")
-        rows = [sanitize_thread(dict(row)) for row in existing.get("threads") or []
-                if isinstance(row, dict)]
-        seen = {(row.get("slug"), row.get("first_seen")) for row in rows}
-        rows += [row for row in archived if (row["slug"], row.get("first_seen")) not in seen]
-        # Append-only: earlier rows verbatim, this run's trimmed entries after.
-        outputs[f"archive/{month}.json"] = {"schema": contract.SCHEMA, "month": month,
-                                            "updated_at": now_s, "threads": rows,
-                                            "history": list(prior_rows) + moved}
+        prior_threads, prior_rows = archive_rows(archive, month)
+        seen = {(row.get("slug"), row.get("first_seen")) for row in prior_threads}
+        # Append-only: earlier rows verbatim (never re-sanitized: a row that
+        # fails the URL rule stops the run below instead of being rewritten),
+        # this run's archived threads and trimmed entries after.
+        outputs[f"archive/{month}.json"] = {
+            "schema": contract.SCHEMA, "month": month, "updated_at": now_s,
+            "threads": copy.deepcopy(prior_threads) + [
+                row for row in archived if (row["slug"], row.get("first_seen")) not in seen],
+            "history": copy.deepcopy(prior_rows) + moved}
 
     kinds = {}
     for item in inbox.items:

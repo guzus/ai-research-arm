@@ -277,6 +277,62 @@ class HistoryBoundTest(WriterBase):
         self.assertEqual("[]", (self.lane / "archive" / "2026-10.json").read_text())
         self.assertFalse((self.lane / "cursor.json").exists())
 
+    def test_malformed_archive_is_refused_not_rewritten(self):
+        # Reviewer probe: a dict-shaped `threads` was rewritten as [], and
+        # non-object rows were dropped, silently losing archived content.
+        row = thread("gone", status="resolved", updated="2026-10-05T00:00:00Z")
+        good = {"schema": 1, "month": "2026-10", "updated_at": "2026-10-03T00:00:00Z",
+                "threads": [row], "history": []}
+        cases = {
+            "threads is an object": dict(good, threads={"gone": row}),
+            "threads is null": dict(good, threads=None),
+            "a thread row is not an object": dict(good, threads=[row, "gone"]),
+            "history is an object": dict(good, history={"0": {}}),
+            "a history row is not an object": dict(good, history=[["at", "change"]]),
+            "an unknown field would be dropped": dict(good, notes="hand-kept"),
+            "another month's file": dict(good, month="2026-09"),
+            "another schema": dict(good, schema=2),
+            # Re-sanitizing used to drop this URL from the archived row.
+            "a row that fails the URL rule": dict(good, threads=[dict(
+                row, evidence=[{"url": "javascript:alert(1)", "kind": "twitter",
+                                "label": "x"}])]),
+        }
+        for name, archive in cases.items():
+            with self.subTest(name):
+                self.lane.joinpath("cursor.json").unlink(missing_ok=True)
+                ca.atomic_write_json(self.lane / "archive" / "2026-10.json", archive)
+                written = (self.lane / "archive" / "2026-10.json").read_bytes()
+                self.board([long_thread("alpha", 12)])
+                before = (self.lane / "state.json").read_bytes()
+                with self.assertRaises(wb.WriterError):
+                    self.write(edit([{"op": "update", "slug": "alpha", "changed": "c",
+                                      "change": "h"}]))
+                self.assertEqual(before, (self.lane / "state.json").read_bytes())
+                self.assertEqual(written, (self.lane / "archive" / "2026-10.json").read_bytes())
+                self.assertFalse((self.lane / "cursor.json").exists())
+
+    def test_existing_archive_rows_are_kept_verbatim(self):
+        # Rows the writer itself would never produce (duplicate and > 8
+        # evidence entries, no evidence key) are still not "repaired".
+        crowded = thread("crowded", status="resolved", updated="2026-10-05T00:00:00Z",
+                         evidence=[{"url": URL_A, "kind": "twitter", "label": f"a{i}"}
+                                   for i in range(9)])
+        bare = thread("bare", status="resolved", updated="2026-10-05T00:00:00Z")
+        del bare["evidence"]
+        history = [{"slug": "old", "first_seen": None, "at": "2026-10-02T00:00:00Z",
+                    "change": "kept", "archived_at": "2026-10-03T00:00:00Z", "extra": [1]}]
+        ca.atomic_write_json(self.lane / "archive" / "2026-10.json", {
+            "schema": 1, "month": "2026-10", "updated_at": "2026-10-03T00:00:00Z",
+            "threads": [crowded, bare], "history": history})
+        self.board([long_thread("alpha", 12),
+                    thread("done", status="resolved", updated="2026-10-20T00:00:00Z")])
+        self.write(edit([{"op": "update", "slug": "alpha", "changed": "c", "change": "h"}]))
+        archive = self.archive()
+        self.assertEqual([crowded, bare], archive["threads"][:2])
+        self.assertEqual(["crowded", "bare", "done"], [t["slug"] for t in archive["threads"]])
+        self.assertEqual(history, archive["history"][:1])
+        self.assertEqual(["old", "alpha"], [r["slug"] for r in archive["history"]])
+
     def test_check_allows_an_archived_prefix(self):
         before = long_thread("alpha", 12)
         kept = copy.deepcopy(before)
