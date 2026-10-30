@@ -840,6 +840,12 @@ output or break the pipeline. Read them before editing.
     (f) **S3 keys are immutable** (`audio/aradio/<id>.mp3`; s3.guzus.xyz caches
     200s for 4 h behind Cloudflare); the "latest" pointer is
     `research/aradio/index.json`, which Caddy serves uncached.
+    (g) **A stale Aradio safe-push PR is CLOSED, never merged.** Rule 13's
+    "merge it manually, oldest first" does NOT apply to `aradio.yml`: if a
+    bulletin's `automation/safe-push/*` PR fails to auto-merge, `main`'s cursor
+    never advanced, so the next hourly run already re-reads and re-airs that
+    material. Merging the stale PR afterwards would roll the board and cursor
+    back over the newer run. Its orphaned mp3 on S3 is harmless.
 
 ## Code Style
 

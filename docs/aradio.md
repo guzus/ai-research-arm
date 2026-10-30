@@ -387,6 +387,15 @@ for 4 h, so keys are immutable — never overwrite one; the "latest" pointer is
 `continue-on-error` TTS step that exits 0 on Gemini errors — silently missing
 since 2026-10-22 — is the anti-pattern this avoids.
 
+**A stale publication PR is closed, never merged.** `aradio.yml` publishes
+through safe-push like every lane, but CLAUDE.md rule 13's "merge open
+`automation/safe-push/*` PRs oldest first" does not apply here. If a
+bulletin's PR fails to auto-merge, `main`'s cursor did not advance, so the
+next hourly run re-reads the same material and airs it again from `main`.
+Merging the stale PR afterwards would roll the board and cursor back over that
+newer run. Close it; its orphaned mp3 on S3 is harmless (keys are never
+reused).
+
 ## Dashboard
 
 `/aradio`: the latest bulletin with a player (`${AUDIO_BASE}/${audio.key}`), an
