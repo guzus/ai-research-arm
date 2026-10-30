@@ -79,23 +79,47 @@ Fields:
   `url` or `links` (or from evidence already on the board) — any other URL is
   discarded. `inbox.md` shows URLs as `<https://…>`: copy the URL without the
   angle brackets. An item marked "not citable" has no usable URL; you may still
-  use what it says. Never put URLs in any other field. `label` names the source
-  ("Amazon Q3 8-K", "Dwarkesh Podcast", "@handle on X"). For spoken sources add
-  `speaker` when the transcript makes clear who is talking, and `quote` only
-  for a short (≤ 40 words) verbatim line from the transcript that is genuinely
-  worth quoting. A quote must be ONE unbroken span copied from a single line of
-  the item's text or a single transcript window: no ellipses ("…", "..."), no
-  joining words from different lines or windows. Quotes are checked word for
-  word; a quote that is not found that way is discarded.
+  use what it says. Never put URLs in any other field. `label` ≤ 90 characters
+  names the source ("Amazon Q3 8-K", "Dwarkesh Podcast", "@handle on X").
+- `quote` (optional, rare): words someone actually SAID, copied from exactly
+  one of two places, and nowhere else:
+  - one window (one line) of a `transcript_file` of a podcast, video or
+    earnings-call item, without its `[mm:ss]` timestamp;
+  - one line under "Key quotes:" in an earnings item — copy only the words
+    inside its quotation marks.
+
+  Never quote a title, show notes, a tweet or Twitter story, a model ticket,
+  or any other line: those are not what anyone said, and such quotes are
+  discarded. A quote is ≤ 40 words and ONE unbroken span from that single line:
+  no ellipses ("…", "..."), no joining words from different lines or windows,
+  no span across a `>>` (a speaker change in captions). Do not start a quote
+  right after a negation or qualifier ("I don't think…", "it's not true
+  that…"): include it, or paraphrase instead. Copy the words exactly; the
+  published quote is replaced by the source's exact wording anyway, including
+  its casing and punctuation. At most 2 quotes per source item (≤ 60 quoted
+  words in total, counting quotes already on the board) and 8 new quotes per
+  run; extra quotes are discarded and their evidence kept.
+- `speaker` (optional, only with a `quote`): the person's name exactly as the
+  same transcript window or Key-quotes line writes it, and only when that line
+  names them — outside the quoted words ("Andy Jassy" for a Key-quotes line
+  attributed to "Andy Jassy, President and CEO, Amazon"). Never infer a speaker
+  from a title, show name or guest list; an unverifiable speaker is discarded.
+  A quoted entry's `label` is always set to the source's name, so the quote is
+  credited to the show or the issuer, never to a person the source does not
+  name.
 - `change` ≤ 200 characters: one line for the thread's history log. Required
   on every op.
 
 Attribution and certainty:
 
 - When an executive, researcher or investor says something on a call or a
-  podcast that moves a storyline, attribute it: "On Alphabet's earnings call,
-  Sundar Pichai said…", "On No Priors, the CEO of … argued…". Prefer what
-  people said over what others wrote about them.
+  podcast that moves a storyline, attribute it. Name a person only when the
+  transcript window or Key-quotes line itself names them ("Amazon's CEO Andy
+  Jassy said…"); auto-captions rarely say who is talking, so otherwise
+  attribute to the show or the call: "On Alphabet's earnings call, the company
+  said…", "On No Priors, a guest argued…". Never put words in the mouth of a
+  person the source does not name. Prefer what people said over what others
+  wrote about them.
 - Separate fact from claim. State facts plainly only when a filing, the
   company itself, or multiple independent sources confirm them; otherwise
   "X says…", "reportedly…". Twitter items carry `Verify` notes — respect them.
