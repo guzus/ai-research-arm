@@ -290,8 +290,11 @@ board after the ops.
 
 **URL rule** (every boundary: inbox items, evidence, published files). A URL is
 usable only if `urllib.parse.urlsplit` gives an `http`/`https` scheme and a
-non-empty netloc, it has no whitespace or control/format characters, none of
-`` <>"'()[]{}|\^` ``, and it is at most 2,048 characters. The inbox drops
+non-empty hostname, it carries no credentials (`user:pass@`) and no malformed
+port, it has no whitespace and no Unicode control/format (`C*`) characters
+(which covers bidi overrides), none of `` <>"'()[]{}|\^` ``, and it is at most
+2,048 characters. `check_aradio.safe_url` and `fetch_podcast_signal.safe_url`
+implement the identical rule; a parity test keeps them in lockstep. The inbox drops
 failing URLs (an item whose URL fails keeps `url: null` and stays usable as
 text; a Twitter story with no passing URL gets a `tw:sha256:…` key); the
 validator drops failing evidence even if the inbox lists it; the writer drops
