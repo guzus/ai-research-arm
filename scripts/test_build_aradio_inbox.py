@@ -718,6 +718,68 @@ class UrlSafetyTest(FixtureTest):
         self.assertEqual("no new material", self.repo.build()["reason"])
 
 
+QUOTE_URL_MD = """# Acme Corp (ACME) FY26Q3 Earnings - 2026-10-29
+
+## Event
+- Accepted: 2026-10-29T20:05:27.000Z
+- Filing index: https://www.sec.gov/Archives/edgar/data/1/000000000026000001/
+
+## Headline Numbers
+
+- Revenue was $10 billion (deck: https://ir.acme.example/deck.pdf).
+
+## Key Quotes
+
+- **Jane Roe, CEO**: "Demand never stopped https://ir.acme.example/deck.pdf growing in every region" ([EX-99.1](https://www.sec.gov/ex991.htm))
+- **Jane Roe, CEO**: "AI revenue doubled this quarter" ([EX-99.1](https://www.sec.gov/ex991.htm))
+"""
+
+
+class EarningsQuoteTest(FixtureTest):
+    """Key-quote lines are verbatim speech: a URL drops the line, never splices it."""
+
+    def stage(self, markdown: str) -> dict:
+        lane = self.repo.research / "earnings"
+        (lane / "2026-10-29-ACME-FY26Q3.md").write_text(markdown, encoding="utf-8")
+        (lane / "index.json").write_text(json.dumps({"events": [{
+            "accession": "0000000000-26-000001", "date": "2026-10-29", "issuer": "Acme Corp",
+            "ticker": "ACME", "form": "8-K", "file": "2026-10-29-ACME-FY26Q3.md"}]}),
+            encoding="utf-8")
+        self.repo.build()
+        return self.repo.items()[0]
+
+    def test_key_quote_holding_a_url_is_dropped_not_stitched(self):
+        item = self.stage(QUOTE_URL_MD)
+        lines = item["text"].splitlines()
+        start = lines.index(bi.KEY_QUOTES_HEADER)
+        # The surviving line keeps today's format exactly (a validator contract).
+        self.assertEqual(['- Jane Roe, CEO: "AI revenue doubled this quarter" (EX-99.1)',
+                          "First-party call transcript: none at fetch time; the filing "
+                          "exhibits are the record."], lines[start + 1:])
+        self.assertNotIn("Demand never stopped", item["text"])
+        self.assertNotIn("growing in every region", item["text"])
+        # Other text keeps the stripping behaviour.
+        self.assertIn("- Revenue was $10 billion (deck:", lines)
+        self.assertNotIn("ir.acme.example", item["text"])  # still a citable link
+        body = [line for line in (self.repo.out / "inbox.md").read_text(
+            encoding="utf-8").splitlines() if line.startswith("> ")]
+        self.assertNotIn("Demand never stopped", "\n".join(body))
+        self.assertIn('> - Jane Roe, CEO: "AI revenue doubled this quarter" (EX-99.1)', body)
+
+    def test_header_goes_when_every_key_quote_held_a_url(self):
+        item = self.stage(QUOTE_URL_MD.split('- **Jane Roe, CEO**: "AI revenue')[0])
+        self.assertNotIn(bi.KEY_QUOTES_HEADER, item["text"])
+        self.assertIn("- Revenue was $10 billion (deck:", item["text"].splitlines())
+
+    def test_only_key_quote_lines_are_dropped_whole(self):
+        text = 'Key quotes:\n- A: "a https://u.example b" (EX-99.1)\n- B: "kept" (EX-99.1)\nend'
+        self.assertEqual('Key quotes:\n- B: "kept" (EX-99.1)\nend',
+                         bi._strip_urls_lines(text, key_quotes=True))
+        # Without key_quotes (every non-earnings item) the URL is stripped as before.
+        self.assertEqual('Key quotes:\n- A: "a b" (EX-99.1)\n- B: "kept" (EX-99.1)\nend',
+                         bi._strip_urls_lines(text))
+
+
 AMZN_EVENT = {"file": "2026-10-29-AMZN-FY26Q3.md", "date": "2026-10-29", "ticker": "AMZN",
               "issuer": "Amazon.com, Inc.", "form": "8-K",
               "accession": "0001018724-26-000038", "period": "FY26Q3"}

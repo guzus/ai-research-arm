@@ -98,6 +98,10 @@ ITEM_TEXT_MAX = 1500
 # Earnings items carry the issuer's own headline figures and attributed quotes
 # (the earnings lane caps them at 6 x 60 words), so they get a larger budget.
 EARNINGS_TEXT_MAX = 3200
+# Heads the earnings item's `- <Speaker>: "<quote>" (<exhibit>)` lines: the
+# only non-transcript text check_aradio.py lets the editor quote. Its line
+# format is a contract with the validator; do not change it.
+KEY_QUOTES_HEADER = "Key quotes:"
 ITEM_TITLE_MAX = 200
 ITEM_SOURCE_MAX = 120
 ITEM_LINKS_MAX = 8
@@ -485,7 +489,7 @@ def collect_earnings(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Ca
             text_parts.append("Headline numbers (as printed in the issuer's release):")
             text_parts.extend(f"- {line}" for line in parsed["headline"])
         if parsed.get("quotes"):
-            text_parts.append("Key quotes:")
+            text_parts.append(KEY_QUOTES_HEADER)
             text_parts.extend(f"- {line}" for line in parsed["quotes"])
         text_parts.append(
             "First-party call transcript: linked." if transcript_links else
@@ -969,10 +973,44 @@ def transcript_lines(candidate: Candidate, *, fetch: bool, base_url: str,
 # Rendering
 # ---------------------------------------------------------------------------
 
-def _strip_urls_lines(text: str) -> str:
-    """URL-like tokens removed line by line (keeps the body's bullets)."""
-    lines = (contract.strip_urls(line)[0] for line in (text or "").splitlines())
-    return "\n".join(line for line in lines if line)
+def _strip_urls_lines(text: str, *, key_quotes: bool = False) -> str:
+    """URL-like tokens removed line by line (keeps the body's bullets).
+
+    With key_quotes (earnings items), the `- ` bullets under KEY_QUOTES_HEADER
+    are the issuer's verbatim words, which the validator lets the editor
+    quote. Stripping a URL out of one would join words that were never
+    adjacent and make a stitched span look verbatim, so a bullet that URL
+    stripping would change is dropped whole instead (and a header left with
+    no bullet goes too). Every other line keeps the stripping behaviour.
+    """
+    out: list[str] = []
+    header: int | None = None  # index in `out` of the open Key quotes header
+    bullets = kept = 0
+
+    def close_block() -> None:
+        if header is not None and bullets and not kept:
+            del out[header]
+
+    for line in (text or "").splitlines():
+        if key_quotes and line == KEY_QUOTES_HEADER:
+            close_block()
+            header, bullets, kept = len(out), 0, 0
+            out.append(line)
+            continue
+        if header is not None and line.startswith("- "):
+            bullets += 1
+            stripped, changed = contract.strip_urls(line)
+            if not changed:
+                kept += 1
+                out.append(stripped)
+            continue
+        close_block()
+        header = None
+        stripped = contract.strip_urls(line)[0]
+        if stripped:
+            out.append(stripped)
+    close_block()
+    return "\n".join(out)
 
 
 def safe_key(key: str) -> str:
@@ -996,7 +1034,7 @@ def item_json(candidate: Candidate, transcript_file: str | None,
         "title": contract.strip_urls(candidate.title)[0],
         "url": contract.safe_url(candidate.url),
         "at": iso_z(candidate.at),
-        "text": _strip_urls_lines(candidate.text),
+        "text": _strip_urls_lines(candidate.text, key_quotes=candidate.kind == "earnings"),
         "links": list(dict.fromkeys(links)),
     }
     if candidate.note:
