@@ -159,7 +159,7 @@ class OpsTest(WriterBase):
         rewritten = copy.deepcopy(alpha)
         rewritten["history"][0]["change"] = "tampered"
         with self.assertRaises(wb.WriterError):
-            wb.assert_history_append_only([alpha], [rewritten])
+            wb.assert_history_append_only([alpha], [rewritten], [], [], NOW_S)
 
     def test_fabricated_evidence_is_dropped_on_revalidation(self):
         self.board([thread("alpha")])
@@ -202,6 +202,147 @@ class BoundsTest(WriterBase):
                           if t["status"] == "resolved")
         self.assertEqual(["t05", "t10"], resolved)
         self.assertEqual(wb.FULL_CHANGE, self.threads()["t05"]["history"][-1]["change"])
+
+
+def long_thread(slug: str, entries: int, **kwargs) -> dict:
+    base = thread(slug, **kwargs)
+    base["history"] = [{"at": f"2026-10-{1 + i // 24:02d}T{i % 24:02d}:00:00Z",
+                        "change": f"{slug} step {i}"} for i in range(entries)]
+    return base
+
+
+def entries_of(rows: list[dict], slug: str) -> list[dict]:
+    return [{k: v for k, v in row.items() if k not in wb.ARCHIVE_ROW_KEYS}
+            for row in rows if row["slug"] == slug]
+
+
+class HistoryBoundTest(WriterBase):
+    """state.json keeps 12 history entries per thread; older ones are archived."""
+
+    def archive(self) -> dict:
+        return json.loads((self.lane / "archive" / "2026-10.json").read_text(encoding="utf-8"))
+
+    def test_history_beyond_the_bound_moves_oldest_first_to_the_archive(self):
+        prior = long_thread("alpha", 12)
+        legacy = long_thread("legacy", 40, updated="2026-10-29T08:00:00Z")
+        self.board([prior, legacy])
+        summary = self.write(edit([{"op": "update", "slug": "alpha", "changed": "c",
+                                    "change": "Alpha moved."}]))
+        alpha = self.threads()["alpha"]["history"]
+        kept_legacy = self.threads()["legacy"]["history"]
+        appended = [{"at": NOW_S, "change": "Alpha moved."}]
+        self.assertEqual(prior["history"][1:] + appended, alpha)
+        self.assertEqual(legacy["history"][-wb.HISTORY_KEEP:], kept_legacy)
+        rows = self.archive()["history"]
+        self.assertEqual(1 + 28, len(rows))
+        self.assertEqual(1 + 28, summary["history_archived"])
+        for row in rows:
+            self.assertEqual("2026-10-20T08:50:00Z", row["first_seen"])
+            self.assertEqual(NOW_S, row["archived_at"])
+        # Archived + retained == everything before + this run's entry, in order.
+        self.assertEqual(prior["history"] + appended, entries_of(rows, "alpha") + alpha)
+        self.assertEqual(legacy["history"], entries_of(rows, "legacy") + kept_legacy)
+        self.assertEqual([], self.archive()["threads"])
+
+    def test_trimmed_history_appends_to_an_existing_archive(self):
+        earlier = {"slug": "old", "first_seen": "2026-10-01T00:00:00Z",
+                   "at": "2026-10-02T00:00:00Z", "change": "kept verbatim",
+                   "archived_at": "2026-10-03T00:00:00Z"}
+        gone = thread("gone", status="resolved", updated="2026-10-05T00:00:00Z")
+        ca.atomic_write_json(self.lane / "archive" / "2026-10.json", {
+            "schema": 1, "month": "2026-10", "updated_at": "2026-10-03T00:00:00Z",
+            "threads": [gone], "history": [earlier]})
+        self.board([long_thread("alpha", 13)])
+        self.write(edit([{"op": "update", "slug": "alpha", "changed": "c", "change": "h"}]))
+        archive = self.archive()
+        self.assertEqual(earlier, archive["history"][0])
+        self.assertEqual(["old", "alpha", "alpha"], [row["slug"] for row in archive["history"]])
+        self.assertEqual(["gone"], [row["slug"] for row in archive["threads"]])
+
+    def test_short_history_is_untouched_and_writes_no_archive(self):
+        self.board([long_thread("alpha", 11)])
+        self.write(edit([{"op": "update", "slug": "alpha", "changed": "c", "change": "h"}]))
+        self.assertEqual(wb.HISTORY_KEEP, len(self.threads()["alpha"]["history"]))
+        self.assertFalse((self.lane / "archive").exists())
+
+    def test_corrupt_archive_is_refused_not_overwritten(self):
+        (self.lane / "archive").mkdir()
+        (self.lane / "archive" / "2026-10.json").write_text("[]", encoding="utf-8")
+        self.board([long_thread("alpha", 12)])
+        before = (self.lane / "state.json").read_bytes()
+        with self.assertRaises(wb.WriterError):
+            self.write(edit([{"op": "update", "slug": "alpha", "changed": "c",
+                              "change": "h"}]))
+        self.assertEqual(before, (self.lane / "state.json").read_bytes())
+        self.assertEqual("[]", (self.lane / "archive" / "2026-10.json").read_text())
+        self.assertFalse((self.lane / "cursor.json").exists())
+
+    def test_check_allows_an_archived_prefix(self):
+        before = long_thread("alpha", 12)
+        kept = copy.deepcopy(before)
+        kept["history"].append({"at": NOW_S, "change": "new"})
+        moved = wb.trim_history([kept], NOW)
+        self.assertEqual(before["history"][:1], entries_of(moved, "alpha"))
+        wb.assert_history_append_only([before], [kept], [], moved, NOW_S)  # no error
+
+    def test_check_refuses_every_other_change_to_history(self):
+        before = long_thread("alpha", 12)
+
+        def trimmed() -> tuple[dict, list[dict]]:
+            kept = copy.deepcopy(before)
+            kept["history"].append({"at": NOW_S, "change": "new"})
+            return kept, wb.trim_history([kept], NOW)
+
+        cases = {}
+        kept, moved = trimmed()
+        kept["history"][0]["change"] = "edited"
+        cases["edited retained entry"] = ([kept], moved, "rewritten")
+        kept, moved = trimmed()
+        moved[0]["change"] = "edited"
+        cases["edited archived entry"] = ([kept], moved, "rewritten")
+        kept, moved = trimmed()
+        kept["history"][0], kept["history"][1] = kept["history"][1], kept["history"][0]
+        cases["reordered"] = ([kept], moved, "rewritten")
+        kept, moved = trimmed()
+        cases["trimmed without archiving"] = ([kept], [], "rewritten")
+        kept, moved = trimmed()
+        del kept["history"][4]
+        cases["middle entry dropped"] = ([kept], moved, "rewritten")
+        kept, moved = trimmed()
+        kept["history"].append({"at": "2026-10-29T00:00:00Z", "change": "backdated"})
+        del kept["history"][0]
+        moved.append(dict(moved[0], **before["history"][1]))  # keeps the prefix intact
+        cases["entry this run did not make"] = ([kept], moved, "did not make")
+        kept, moved = trimmed()
+        moved[0]["archived_at"] = "2026-10-01T00:00:00Z"
+        cases["archive row from another run"] = ([kept], moved, "not stamped by this run")
+        kept, moved = trimmed()
+        cases["rows for no thread"] = ([kept], moved + [dict(moved[0], slug="ghost")],
+                                       "match no thread")
+        kept, moved = trimmed()
+        kept["first_seen"] = "2020-01-01T00:00:00Z"
+        cases["identity changed"] = ([kept], moved, "first_seen")
+        kept = copy.deepcopy(before)
+        kept["history"].append({"at": NOW_S, "change": "new"})
+        cases["kept beyond the bound"] = ([kept], [], "more than 12")
+        cases["thread deleted"] = ([], [], "deleted")
+        for name, (kept_threads, rows, reason) in cases.items():
+            with self.subTest(name), self.assertRaisesRegex(wb.WriterError, reason):
+                wb.assert_history_append_only([before], kept_threads, [], rows, NOW_S)
+
+    def test_rerun_for_the_same_stamp_commits_the_archive_too(self):
+        self.init_git()
+        self.board([long_thread("alpha", 12)])
+        self.git("add", "research/aradio/state.json")
+        self.git("commit", "-q", "-m", "seed board")
+        raw = edit([{"op": "update", "slug": "alpha", "changed": "c", "change": "h"}])
+        self.write(raw)  # applied, but the commit did not happen
+        summary = self.write(raw, commit=True)
+        self.assertTrue(summary["already_applied"])
+        self.assertTrue(summary["committed"])
+        files = sorted(self.git("show", "--name-only", "--format=", "HEAD").split())
+        self.assertIn("research/aradio/archive/2026-10.json", files)
+        self.assertIn("research/aradio/state.json", files)
 
 
 class CursorAndIndexTest(WriterBase):

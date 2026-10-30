@@ -15,6 +15,13 @@ applies its ops:
    ("went quiet"); beyond 10 unresolved, the least important / least
    recently updated (untouched this run first) are auto-resolved ("board
    full"). Resolved threads idle for 7 days move to archive/YYYY-MM.json.
+   Each thread keeps its newest 12 history entries in state.json; older ones
+   move, in order and in the same run, to the `history` list of the run
+   month's archive/YYYY-MM.json (append-only; each row is the entry plus the
+   thread's slug and first_seen and its archived_at). History is checked as:
+   entries moved to the archive this run + the retained entries == the prior
+   retained entries + entries stamped this run. Nothing is edited, reordered,
+   or dropped without being archived.
 3. Every inbox key is recorded as consumed in cursor.json with
    last_editor_run_at (and last_bulletin_at when on air); keys expire after
    21 days.
@@ -51,6 +58,12 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 LANE_DIR = Path("research") / "aradio"
 QUIET_AFTER = dt.timedelta(days=7)
 ARCHIVE_AFTER = dt.timedelta(days=7)
+# History entries kept per thread in state.json. A thread that stays live for
+# weeks gains one entry per editor run, so without a bound state.json (and
+# every copy of it) grows without limit.
+HISTORY_KEEP = 12
+# Identity fields on an archived history row; everything else is the entry.
+ARCHIVE_ROW_KEYS = ("slug", "first_seen", "archived_at")
 KEY_TTL = dt.timedelta(days=21)
 MAX_INDEX = 72
 STAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:00Z$")
@@ -229,6 +242,29 @@ def split_archive(threads: list[dict], now: dt.datetime) -> tuple[list[dict], li
     return keep, archived
 
 
+def trim_history(threads: list[dict], now: dt.datetime) -> list[dict]:
+    """Keep the newest HISTORY_KEEP entries per thread (in place).
+
+    Returns the removed entries, oldest first, as archive rows
+    {slug, first_seen, <entry fields>, archived_at}.
+    """
+    now_s = iso_z(now)
+    moved: list[dict] = []
+    for thread in threads:
+        history = list(thread.get("history") or [])
+        if len(history) <= HISTORY_KEEP:
+            continue
+        cut = len(history) - HISTORY_KEEP
+        for entry in history[:cut]:
+            if not isinstance(entry, dict) or any(name in entry for name in ARCHIVE_ROW_KEYS):
+                raise WriterError(f"history of {thread['slug']} has a malformed entry; "
+                                  "refusing to archive it")
+            moved.append({"slug": thread["slug"], "first_seen": thread.get("first_seen"),
+                          **copy.deepcopy(entry), "archived_at": now_s})
+        thread["history"] = history[cut:]
+    return moved
+
+
 def sort_threads(threads: list[dict]) -> list[dict]:
     def key(thread: dict) -> tuple:
         importance = thread.get("importance") if isinstance(thread.get("importance"), int) else 0
@@ -239,19 +275,62 @@ def sort_threads(threads: list[dict]) -> list[dict]:
     return sorted(threads, key=key)
 
 
-def assert_history_append_only(before: list[dict], after: list[dict]) -> None:
-    """Existing threads keep their identity and every prior history entry."""
-    old = {thread["slug"]: thread for thread in before}
-    for thread in after:
-        prior = old.get(thread["slug"])
-        if prior is None:
-            continue
-        prior_history = list(prior.get("history") or [])
-        history = list(thread.get("history") or [])
-        if history[: len(prior_history)] != prior_history:
-            raise WriterError(f"history of {thread['slug']} would be rewritten")
-        if thread.get("first_seen") != prior.get("first_seen"):
-            raise WriterError(f"first_seen of {thread['slug']} would change")
+def assert_history_append_only(before: list[dict], kept: list[dict], archived: list[dict],
+                               moved: list[dict], now_s: str) -> None:
+    """History only grows, except that its oldest entries may move to the archive.
+
+    `before` is the board as loaded; `kept` the threads staying in state.json;
+    `archived` the threads moving to the archive whole; `moved` the history rows
+    trim_history() takes out of `kept` this run, all of which are written to
+    the archive in the same run. For every thread, with A = its rows in `moved`
+    (in order) and R = its retained history:
+
+        A + R == prior history + entries stamped by this run (`now_s`)
+
+    so only a prefix leaves state.json, every removed entry is archived, and no
+    entry is edited, reordered, or dropped. Every prior thread is still present
+    (kept or archived) with the same first_seen; `kept` threads hold at most
+    HISTORY_KEEP entries.
+    """
+    old: dict[str, dict] = {}
+    for thread in before:
+        if thread["slug"] in old:
+            raise WriterError(f"board holds slug {thread['slug']} twice; refusing to "
+                              "apply ops that would silently drop one")
+        old[thread["slug"]] = thread
+    moved_by_thread: dict[tuple, list] = {}
+    for row in moved:
+        if row.get("archived_at") != now_s:
+            raise WriterError("an archived history row is not stamped by this run")
+        entry = {name: value for name, value in row.items() if name not in ARCHIVE_ROW_KEYS}
+        moved_by_thread.setdefault((row.get("slug"), row.get("first_seen")), []).append(entry)
+    after: dict[str, dict] = {}
+    for thread in kept + archived:
+        if thread["slug"] in after:
+            raise WriterError(f"thread {thread['slug']} would appear twice")
+        after[thread["slug"]] = thread
+    for slug in old:
+        if slug not in after:
+            raise WriterError(f"thread {slug} would be deleted")
+    for slug, thread in after.items():
+        prior = old.get(slug)
+        if prior is not None and thread.get("first_seen") != prior.get("first_seen"):
+            raise WriterError(f"first_seen of {slug} would change")
+        prior_history = list(prior.get("history") or []) if prior is not None else []
+        full = (moved_by_thread.pop((slug, thread.get("first_seen")), [])
+                + list(thread.get("history") or []))
+        if full[: len(prior_history)] != prior_history:
+            raise WriterError(f"history of {slug} would be rewritten")
+        if any(not isinstance(entry, dict) or entry.get("at") != now_s
+               for entry in full[len(prior_history):]):
+            raise WriterError(f"history of {slug} would gain an entry this run did not make")
+    for thread in kept:
+        if len(thread.get("history") or []) > HISTORY_KEEP:
+            raise WriterError(f"history of {thread['slug']} would keep more than "
+                              f"{HISTORY_KEEP} entries")
+    if moved_by_thread:
+        raise WriterError("archived history rows match no thread: "
+                          + ", ".join(sorted(str(slug) for slug, _ in moved_by_thread)))
 
 
 # ---------------------------------------------------------------------------
@@ -297,10 +376,12 @@ def compose(*, edit: dict, inbox: contract.TrustedInbox, board: dict, cursor: di
     run_id = bulletin_id(now)
     before = [thread for thread in board.get("threads") or [] if isinstance(thread, dict)]
     threads, touched = apply_ops(before, edit["ops"], now_s)
-    assert_history_append_only(before, threads)
     threads = [sanitize_thread(thread) for thread in threads]
     auto = bound_board(threads, touched, now)
     threads, archived = split_archive(threads, now)
+    moved = trim_history(threads, now)
+    # One check over the final result: ops, auto-resolves and the trim alike.
+    assert_history_append_only(before, threads, archived, moved, now_s)
     threads = sort_threads(threads)
     outputs: dict[str, Any] = {}
 
@@ -308,15 +389,24 @@ def compose(*, edit: dict, inbox: contract.TrustedInbox, board: dict, cursor: di
              "threads": threads}
     outputs["state.json"] = state
 
-    if archived:
+    if archived or moved:
         month = now.strftime("%Y-%m")
-        existing = archive if isinstance(archive, dict) else {}
+        if archive is not None and not isinstance(archive, dict):
+            raise WriterError(f"archive/{month}.json must be an object; refusing to "
+                              "overwrite it")
+        existing = archive or {}
+        prior_rows = existing.get("history", [])
+        if not isinstance(prior_rows, list):
+            raise WriterError(f"archive/{month}.json history must be a list; refusing to "
+                              "overwrite it")
         rows = [sanitize_thread(dict(row)) for row in existing.get("threads") or []
                 if isinstance(row, dict)]
         seen = {(row.get("slug"), row.get("first_seen")) for row in rows}
         rows += [row for row in archived if (row["slug"], row.get("first_seen")) not in seen]
+        # Append-only: earlier rows verbatim, this run's trimmed entries after.
         outputs[f"archive/{month}.json"] = {"schema": contract.SCHEMA, "month": month,
-                                            "updated_at": now_s, "threads": rows}
+                                            "updated_at": now_s, "threads": rows,
+                                            "history": list(prior_rows) + moved}
 
     kinds = {}
     for item in inbox.items:
@@ -394,6 +484,7 @@ def compose(*, edit: dict, inbox: contract.TrustedInbox, board: dict, cursor: di
         raise WriterError("refusing to publish unsafe URLs: " + "; ".join(unsafe[:5]))
     summary = {"on_air": on_air, "id": run_id, "auto_resolved": auto,
                "archived": [row["slug"] for row in archived],
+               "history_archived": len(moved),
                "threads": len(threads), "audio": audio is not None}
     return outputs, summary
 
@@ -443,11 +534,12 @@ def write(*, repo_root: Path, edit_raw: Any, inbox: contract.TrustedInbox, now: 
     run_id = bulletin_id(now)
 
     if cursor.get("last_editor_run_at") == now_s:
-        # Already applied for this run stamp: never apply ops twice.
-        written = [str(LANE_DIR / name) for name in ("state.json", "cursor.json", "index.json")
-                   if (lane / name).exists()]
-        if (lane / bulletin_relpath(now)).exists():
-            written.append(str(LANE_DIR / bulletin_relpath(now)))
+        # Already applied for this run stamp: never apply ops twice. The
+        # archive is committed with the rest, or history trimmed out of
+        # state.json by the first attempt would be committed without it.
+        names = ("state.json", "cursor.json", "index.json",
+                 f"archive/{now.strftime('%Y-%m')}.json", bulletin_relpath(now))
+        written = [str(LANE_DIR / name) for name in names if (lane / name).exists()]
         committed = commit and commit_paths(repo_root, written, commit_message(
             cursor.get("last_bulletin_at") == now_s, now))
         return {"applied": False, "already_applied": True, "committed": committed,
@@ -527,6 +619,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"aradio writer: {'bulletin' if summary['on_air'] else 'board update'} "
               f"{summary['id']} -> {len(summary['paths'])} file(s); threads={summary['threads']} "
               f"auto_resolved={len(summary['auto_resolved'])} archived={len(summary['archived'])} "
+              f"history_archived={summary['history_archived']} "
               f"audio={'yes' if summary['audio'] else 'no'} "
               f"committed={'yes' if summary['committed'] else 'no'}")
     contract.write_github_output(args.github_output, {
