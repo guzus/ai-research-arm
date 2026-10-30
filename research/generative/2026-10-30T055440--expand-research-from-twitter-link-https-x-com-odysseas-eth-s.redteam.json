@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "The first sweep was 167,464 ETH + 63 tokens incl 1.615B USDT, 3m24s after 50 authorizations (delegation 20:20:59, sweep 20:24:23 UTC)", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c2", "claim_text": "Gross theft ~$6.36B across ten chains (TRM Labs)", "contradicting_url": "https://news.bitcoin.com/security/inside-the-5-8b-binance-hack-whats-confirmed-and-what-isnt/", "contradicting_quote": "Binance has not published an independently verified loss figure; some analysts warn larger estimates may include transfers unrelated to the suspected attack.", "severity": "low", "no_contradiction_found": false},
+    {"claim_id": "c3", "claim_text": "~$2.7B of the theft was frozen", "contradicting_url": "https://news.bitcoin.com/security/inside-the-5-8b-binance-hack-whats-confirmed-and-what-isnt/", "contradicting_quote": "Tether and Circle reportedly froze over $2 billion; figures have not been independently reconciled; Binance says around $3B frozen.", "severity": "low", "no_contradiction_found": false}
+  ]
+}
