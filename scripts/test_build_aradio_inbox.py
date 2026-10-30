@@ -46,14 +46,14 @@ def story(rank: int, title: str, chips: list[str], lead: str = "Lead text.") -> 
 def episode(eid: str, *, show: str = "dwarkesh", priority: str = "P0", kind: str = "podcast",
             published: str = "2026-10-30T02:00:00Z", first_seen: str = "2026-10-30T03:00:00Z",
             available: bool = True, video_id: str | None = "frYSOKvNiiE",
-            description: str = "Notes.") -> dict:
+            description: str = "Notes.", duration_s: int = 3600) -> dict:
     return {
         "id": f"{show}:{eid}", "show_id": show, "show": show.title(), "kind": kind,
         "priority": priority, "tags": [], "title": f"Episode {eid}",
         "url": f"https://www.youtube.com/watch?v={video_id or 'xxxxxxxxxxx'}",
         "video_id": video_id, "audio_url": None, "published_at": published,
         "published_precision": "approximate", "first_seen_at": first_seen,
-        "duration_s": 3600,
+        "duration_s": duration_s,
         "transcript": {"available": available, "source": "youtube_captions", "words": 9000,
                        "checked_at": first_seen, "attempts": 1},
         "excerpts": [{"text": f"Excerpt {eid} about compute.", "at_s": 125,
@@ -215,6 +215,27 @@ class GateTest(FixtureTest):
         summary = self.repo.build()
         self.assertFalse(summary["go"])
         self.assertIn("2 h cadence", summary["reason"])
+
+    def test_spoken_priority_is_reserved_for_substance(self):
+        # Last editor run 60 min ago: only a PRIORITY item may open the gate.
+        cases = {
+            "P0 long-form with a transcript": (dict(), True),
+            "P0 short clip (customer testimonial)": (dict(duration_s=150), False),
+            "P0 long-form, metadata only": (
+                dict(available=False, first_seen="2026-10-30T01:00:00Z"), False),
+            "P1 long-form with a transcript": (dict(priority="P1"), False),
+            "short earnings call": (
+                dict(kind="earnings-call", priority="P1", duration_s=300), True),
+        }
+        for name, (overrides, expect_go) in cases.items():
+            with self.subTest(name):
+                repo = RepoFixture()
+                try:
+                    repo.podcasts([episode("e1", **overrides)])
+                    repo.cursor(last_editor_run_at="2026-10-30T07:50:00Z")
+                    self.assertEqual(expect_go, repo.build()["go"])
+                finally:
+                    repo.cleanup()
 
     def test_routine_material_runs_after_110_minutes(self):
         self.routine()

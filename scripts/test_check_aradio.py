@@ -198,14 +198,41 @@ class ProvenanceTest(ValidatorBase):
             {"url": EP_URL, "label": "a", "quote": "We will triple capacity next year"},
             {"url": EP_EXCERPT_URL, "label": "b", "quote": long_quote},
             {"url": EARN_URL, "label": "c",
-             "quote": "there has never been a trillion-dollar revenue business ... "
-                      "we may have two of them"},
+             "quote": "there has never been a trillion-dollar revenue business"},
         ])
         self.assertNotIn("quote", evidence[0])
         self.assertNotIn("quote", evidence[1])
-        self.assertIn("quote", evidence[2])  # case/punctuation folded, ellipsis allowed
+        self.assertIn("quote", evidence[2])  # case, dash and quote marks are folded
         self.assertTrue(any("not found verbatim" in w for w in report.warnings))
         self.assertTrue(any("over 40 words" in w for w in report.warnings))
+
+    def test_stitched_quotes_are_dropped(self):
+        # Every one of these is assembled from words that really occur in the
+        # source, so a whole-haystack or fragment-by-fragment match passes
+        # them; none is a sentence anyone said.
+        cases = {
+            "ellipsis joining two real fragments of one sentence": (
+                EARN_URL, "there has never been a trillion-dollar revenue business ... "
+                          "we may have two of them"),
+            "ellipsis gluing short fragments from different windows": (
+                EP_URL, "never been … seen before"),
+            "no ellipsis, bridging two transcript windows 20 minutes apart": (
+                EP_URL, "the current surge in demand from AI. Easily 40-50% above our "
+                        "maximum capacity"),
+            "no ellipsis, bridging two separate lines of item text": (
+                EARN_URL, "Key quotes: Andy Jassy: There has never been"),
+        }
+        for name, (url, quote) in cases.items():
+            with self.subTest(name):
+                evidence, report = self.evidence_after([{"url": url, "label": "x", "quote": quote}])
+                self.assertNotIn("quote", evidence[0])
+                self.assertTrue(any("not found verbatim" in w for w in report.warnings))
+
+    def test_quote_within_one_window_survives(self):
+        evidence, _ = self.evidence_after([
+            {"url": EP_URL, "label": "a",
+             "quote": "Easily 40-50% above our maximum capacity, which I've never seen before."}])
+        self.assertIn("quote", evidence[0])
 
     def test_transcript_window_quote_is_verified(self):
         evidence, _ = self.evidence_after([

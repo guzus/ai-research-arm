@@ -83,8 +83,10 @@ Fields:
   ("Amazon Q3 8-K", "Dwarkesh Podcast", "@handle on X"). For spoken sources add
   `speaker` when the transcript makes clear who is talking, and `quote` only
   for a short (≤ 40 words) verbatim line from the transcript that is genuinely
-  worth quoting. Quotes are checked word for word against the item's text and
-  transcript; a quote that is not found there is discarded.
+  worth quoting. A quote must be ONE unbroken span copied from a single line of
+  the item's text or a single transcript window: no ellipses ("…", "..."), no
+  joining words from different lines or windows. Quotes are checked word for
+  word; a quote that is not found that way is discarded.
 - `change` ≤ 200 characters: one line for the thread's history log. Required
   on every op.
 

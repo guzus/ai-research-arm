@@ -78,8 +78,11 @@ any priority item in new                → run the editor now
 otherwise                               → stop: routine material waits for the 2 h cadence
 ```
 
-Priority items: earnings filings, earnings-call episodes, and P0 spoken
-episodes. A stopped gate commits nothing and exits 0.
+Priority items: earnings filings, earnings-call episodes, and **long-form**
+(≥ 10 min) P0 episodes whose transcript is available. Short official clips —
+OpenAI posts about one 90–250 s customer testimonial a day as a P0 video — and
+metadata-only episodes are routine material that waits for the 2 h cadence.
+A stopped gate commits nothing and exits 0.
 
 ## Sources come through tuber
 
@@ -160,16 +163,34 @@ deliberate: search-based discovery surfaces evergreen and off-topic videos.
 
 - `id` is `<show_id>:<video id>` (channel/search) or `<show_id>:<tuber pod-… id>`
   (podcast); stable across runs.
-- `kind` is the listener-facing class: `video` for a show tagged `official`
-  (lab launches), `earnings-call` for one tagged `earnings-call`, otherwise
-  `podcast`.
-- `published_at` is exact for RSS podcasts and approximate for YouTube
-  (derived from tuber's relative label at first sight).
+- `kind` is the listener-facing class: `earnings-call` for a show tagged
+  `earnings-call` (this wins over `official`), `video` for one tagged
+  `official` (lab launches), otherwise `podcast`.
+- `url` is the YouTube watch URL, built only from an 11-character video id; for
+  an RSS episode it is the audio file (tuber returns no episode page), else the
+  feed URL. Every third-party URL passes `safe_url()` first (http/https, a host,
+  no whitespace, control characters or Markdown-breaking punctuation) or is
+  dropped.
+- `published_at` is exact for RSS podcasts. For YouTube it is the MIDPOINT of
+  the range tuber's rounded-down relative label implies ("Streamed 1d ago" =
+  24–48 h), which keeps the error ≤ 30 min for episodes seen within a 2 h run.
 - `first_seen_at` is set once and never changes.
 - An episode without a transcript is retried on later runs while it is
-  < 3 days old (`attempts` counts tries).
+  < 3 days old (`attempts` counts tries; at most 12 fetches per run, spaced,
+  and the run stops fetching after repeated YouTube throttling).
+  `transcript.available` is false for non-English tracks and fragments.
 - `updated_at` changes only when content changes, so a quiet run is a
   no-op commit. `degraded` is true when more than half the sources failed.
+- The daily `YYYY-MM-DD.md` is written on the first run of each UTC day even
+  when nothing is new, so the 30 h freshness SLO does not page on a quiet day.
+- Exit codes: 0 ok; 2 bad arguments/registry; 3 every source failed (nothing
+  written); 4 tuber's relative-age labels stopped parsing (nothing written —
+  the YouTube lane's 2026-09-29 failure, made loud).
+- `/api/channel` omits past livestreams, so channels that stream full episodes
+  (OpenAI keynotes, Cognitive Revolution) also have a channel-constrained
+  `search` entry; a video found twice is owned by the first registry entry.
+  Liveness and age come only from listings: `/api/video/{id}` reports
+  `isLive: true` for any past stream and can carry a stale `publishDate`.
 - **Transcript text is never committed.** At most 6 excerpts of ≤ 60 words per
   episode — the earnings lane's quote policy. Everything under `research/` is
   published by the dashboard prebuild, so committing a transcript would be
@@ -283,9 +304,12 @@ accepts a cited URL with or without the brackets.
 **Soft errors** (repaired, listed in the bulletin's `warnings`): an evidence
 URL not present in this run's inbox (`url`/`links`) or already on the board is
 **dropped** — the editor cannot introduce a URL; a `quote` over 40 words, or
-one not found verbatim (case- and punctuation-folded) in the owning item's
-text or transcript windows, is dropped — the URL rule alone cannot stop a
-fabricated quote attributed to a real source; over-long text fields are
+one that is not ONE contiguous verbatim span (case- and punctuation-folded)
+inside a single segment of the owning item — its title, one line of its text,
+or one transcript window — is dropped. The URL rule alone cannot stop a
+fabricated quote attributed to a real source, and fragment matching cannot
+either: ellipses, or a match that crosses a line or window boundary, would let
+a "verbatim" quote be stitched from words spoken minutes apart. Over-long text fields are
 truncated; unknown audio tags and URLs in the script are stripped. Evidence
 `kind` (and `at`) are set from the inbox item that owns the URL, never trusted
 from the editor.

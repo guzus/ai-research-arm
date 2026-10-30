@@ -236,21 +236,24 @@ def normalize_for_match(text: str) -> str:
     return " ".join(folded.split())
 
 
-def quote_in_source(quote: str, normalized_source: str) -> bool:
-    """True when every `...`-separated fragment occurs, in order, as whole words."""
-    fragments = [normalize_for_match(part)
-                 for part in re.split(r"\[\s*\.\.\.\s*\]|\.\.\.|…", quote)]
-    fragments = [part for part in fragments if part]
-    if not fragments:
+_ELLIPSIS_RE = re.compile(r"\[\s*\.\.\.\s*\]|\.\.\.|…")
+
+
+def quote_in_source(quote: str, segments: tuple[str, ...]) -> bool:
+    """True only when the whole quote is ONE contiguous run of whole words
+    inside a single normalized segment (a title, one text line, or one
+    transcript window).
+
+    Ellipses are refused, and matching never crosses a segment boundary:
+    both would let a "verbatim" quote be stitched from words spoken minutes
+    apart — a sentence nobody said, under a real citation.
+    """
+    if _ELLIPSIS_RE.search(quote):
         return False
-    haystack = f" {normalized_source} "
-    position = 0
-    for fragment in fragments:
-        index = haystack.find(f" {fragment} ", position)
-        if index < 0:
-            return False
-        position = index + len(fragment) + 1
-    return True
+    needle = normalize_for_match(quote)
+    if not needle:
+        return False
+    return any(f" {needle} " in f" {segment} " for segment in segments)
 
 
 def atomic_write_text(path: Path, text: str) -> None:
@@ -309,7 +312,7 @@ class TrustedInbox:
     items: list[dict]
     base_dir: Path | None = None
     url_owner: dict[str, dict] = field(default_factory=dict)
-    _quotable: dict[str, str] = field(default_factory=dict)
+    _quotable: dict[str, tuple[str, ...]] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         for item in self.items:
@@ -331,21 +334,25 @@ class TrustedInbox:
     def keys(self) -> list[str]:
         return [str(item.get("key")) for item in self.items if item.get("key")]
 
-    def quotable(self, item: dict) -> str:
+    def quotable(self, item: dict) -> tuple[str, ...]:
+        """Normalized quotable segments: the title, each text line, and each
+        transcript window (one per line) — kept apart so a quote can never
+        bridge two of them."""
         key = str(item.get("key", ""))
         if key in self._quotable:
             return self._quotable[key]
-        parts = [str(item.get("title") or ""), str(item.get("text") or "")]
+        lines = [str(item.get("title") or "")]
+        lines.extend(str(item.get("text") or "").splitlines())
         transcript = item.get("transcript_file")
         if (self.base_dir is not None and isinstance(transcript, str)
                 and TRANSCRIPT_FILE_RE.match(transcript)):
             candidate = self.base_dir / transcript
             if candidate.is_file() and not candidate.is_symlink():
                 text = candidate.read_text(encoding="utf-8", errors="replace")
-                parts.append(re.sub(r"(?m)^\[[0-9:]+\]\s*", "", text))
-        normalized = normalize_for_match("\n".join(parts))
-        self._quotable[key] = normalized
-        return normalized
+                lines.extend(re.sub(r"^\[[0-9:]+\]\s*", "", line) for line in text.splitlines())
+        segments = tuple(seg for seg in (normalize_for_match(line) for line in lines) if seg)
+        self._quotable[key] = segments
+        return segments
 
 
 def item_urls(item: dict) -> list[str]:

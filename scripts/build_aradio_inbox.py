@@ -72,6 +72,8 @@ ITEM_LINKS_MAX = 8
 MAX_EXCERPTS = 6
 
 GATE_MIN_INTERVAL = dt.timedelta(minutes=110)
+# A P0 episode jumps the 2 h cadence only when it is long-form (10+ min).
+PRIORITY_MIN_DURATION_S = 600
 EPISODE_TRANSCRIPT_GRACE = dt.timedelta(hours=6)
 # Additive to the contract's eligibility table. Without it the first run (and
 # any newly registered show) would offer weeks of back catalogue as "new"
@@ -287,10 +289,18 @@ def collect_podcasts(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Ca
         else:
             transcript_note = "Transcript: not available yet; show notes only."
         url = clean_url(episode.get("url"))
+        # Priority (go now, skip the 2 h wait) is reserved for substance: an
+        # earnings call, or a P0 show's LONG-FORM episode we can actually read.
+        # OpenAI alone posts ~1 short customer-testimonial clip a day as a P0
+        # video; those are routine material, not a reason to wake the editor.
+        long_form = (isinstance(duration, (int, float)) and not isinstance(duration, bool)
+                     and duration >= PRIORITY_MIN_DURATION_S)
+        priority = kind == "earnings-call" or (
+            episode.get("priority") == "P0" and long_form and available)
         found.append(Candidate(
             key=f"ep:{episode_id.strip()}",
             kind=kind,
-            priority=kind == "earnings-call" or episode.get("priority") == "P0",
+            priority=priority,
             source=_one_line(episode.get("show") or episode.get("show_id"), ITEM_SOURCE_MAX),
             title=_one_line(episode.get("title"), ITEM_TITLE_MAX),
             url=url,
