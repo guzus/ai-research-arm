@@ -2,16 +2,22 @@ name: Daily Earnings Signal
 
 on:
   schedule:
-    # Weekday evenings only, and deliberately BEFORE the 00:00 UTC digest -
-    # same rationale as daily-youtube.yml. Observed acceptance times for the
-    # tracked issuers span 06:00-22:00 UTC on business days (VRT 06:01Z,
-    # TSM 11:45Z, MSFT/ARM 16:02-16:05Z, META 20:03Z, NVDA 20:21Z), so a
-    # 23:35 UTC run catches the same trading day and feeds the same-night
-    # synthesis. Issuers do not file earnings at the weekend, hence 1-5.
-    # ~95% of runs legitimately find nothing; the script writes nothing and
-    # exits 0 on those days, and the 5-day lookback lets a missed run
-    # self-heal on the next one.
-    - cron: '35 23 * * 1-5'
+    # Every 2 hours on weekdays (01:35, 03:35, ... 23:35 UTC) for Aradio's
+    # realtime earnings coverage (docs/aradio.md, "What realtime means
+    # here"). Observed acceptance times for the tracked issuers span
+    # 06:00-22:00 UTC on business days (VRT 06:01Z, TSM 11:45Z,
+    # MSFT/ARM 16:02-16:05Z, META 20:03Z, NVDA 20:21Z), and the 8-K/EX-99
+    # release is accepted 27-85 min BEFORE the call, so a filing now reaches
+    # research/earnings/ within ~2 h instead of at the end of the day. The
+    # 23:35 slot still runs BEFORE the 00:00 UTC digest, so the same-night
+    # synthesis is unchanged (same rationale as daily-youtube.yml). Issuers
+    # do not file earnings at the weekend, hence 1-5.
+    # The extra runs cost nothing downstream: the script is idempotent per
+    # event (an unchanged event and the index re-render byte-identical, with
+    # no timestamp), so a run that finds nothing new commits nothing. ~95% of
+    # runs legitimately find nothing, and the 5-day lookback lets a missed
+    # run self-heal on the next one.
+    - cron: '35 1-23/2 * * 1-5'
   workflow_dispatch:
 
 concurrency:

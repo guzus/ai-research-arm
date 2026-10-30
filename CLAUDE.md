@@ -292,7 +292,7 @@ or if the container loses its hardening flags.
 | `2h-bluesky.yml` | daily `10:11` | `research/bluesky/` (supplemental expert commentary, capped output) |
 | `4h-community.yml` | every 4h `:19` | `research/community/*-hn.md`, `*-reddit.md` |
 | `daily-arxiv.yml` | daily `06:13` | `research/arxiv/` |
-| `daily-earnings.yml` | weekdays `23:35` (before the `00:00` digest) | `research/earnings/<filing-date>-<TICKER>-<FYxxQx>.md` + `index.json` (SEC EDGAR earnings filings for the AI-exposed issuers in `data/sources/earnings_issuers.json`, plus first-party transcript LINKS) |
+| `daily-earnings.yml` | weekdays every 2h `:35` (`01:35`-`23:35`; the last run lands before the `00:00` digest) | `research/earnings/<filing-date>-<TICKER>-<FYxxQx>.md` + `index.json` (SEC EDGAR earnings filings for the AI-exposed issuers in `data/sources/earnings_issuers.json`, plus first-party transcript LINKS) |
 
 **The earnings lane is event-cadence, and that is why it is deliberately
 absent from four places.** It produces output on roughly 40 reporting days a

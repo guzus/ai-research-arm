@@ -227,7 +227,7 @@ interesting ones:
 | `2h-bluesky.yml` | daily | `research/bluesky/` |
 | `daily-arxiv.yml` | daily | `research/arxiv/` |
 | `daily-youtube.yml` | daily | `research/youtube/` |
-| `daily-earnings.yml` | weekdays, before the digest | `research/earnings/` (SEC EDGAR earnings filings for AI-exposed issuers; one file per event, nothing on a quiet day) |
+| `daily-earnings.yml` | weekdays, every 2 h (last run before the digest) | `research/earnings/` (SEC EDGAR earnings filings for AI-exposed issuers; one file per event, nothing on a quiet day) |
 | `twitter-account-explorer.yml` | weekly | reviewed PRs against the account manifest |
 
 **Synthesize** — read everything, write the record
