@@ -14,7 +14,7 @@ whether the editor should run at all, and stages the inbox:
 Sources and keys:
   research/podcasts/index.json        ep:<episode id>
   research/earnings/index.json + .md  earn:<accession>
-  research/twitter/<date>.md stories  tw:<first source URL>
+  research/twitter/<date>.md stories  tw:<sha256(first source URL, normalized title)[:20]>
   research/models/tickets/*.md        tk:<slug>:<history length>
 
 Gate (stop = no model, no TTS, nothing committed, exit 0):
@@ -58,6 +58,7 @@ import shutil
 import ssl
 import sys
 import time
+import unicodedata
 import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
@@ -598,6 +599,30 @@ def parse_twitter_stories(section_text: str) -> list[dict]:
     return stories
 
 
+def normalize_title(title: str) -> str:
+    """Case-folded, punctuation removed, whitespace collapsed (NFKC first).
+
+    Punctuation becomes a space before the collapse, so "OpenAI—GPT-6" and
+    "OpenAI — GPT-6" normalize alike.
+    """
+    text = unicodedata.normalize("NFKC", title or "").casefold()
+    text = "".join(" " if unicodedata.category(ch).startswith("P") else ch for ch in text)
+    return " ".join(text.split())
+
+
+def twitter_key(first_url: str, title: str) -> str:
+    """`tw:` + sha256(first source URL + newline + normalized title)[:20].
+
+    Keying on the URL alone collapsed distinct stories that cite the same
+    tweet (a launch and its follow-up a day later) into one cursor key, so the
+    follow-up was never offered. An identical re-published story (same URL,
+    same title up to case, punctuation and spacing) keeps its key. A story
+    with no safe URL hashes its raw first href instead; no URL is embedded.
+    """
+    basis = f"{first_url}\n{normalize_title(title)}"
+    return "tw:" + hashlib.sha256(basis.encode("utf-8")).hexdigest()[:20]
+
+
 def collect_twitter(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Candidate]:
     lane = repo_root / "research" / "twitter"
     found: dict[str, Candidate] = {}
@@ -619,15 +644,16 @@ def collect_twitter(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Can
                 first_url = story["chips"][0][0] if story["chips"] else None
                 if first_url is None and story["hrefs"]:
                     first_url = story["hrefs"][0]
+                title = story["title"] or story["lead"]
                 if first_url is not None:
-                    key = f"tw:{first_url}"
+                    key = twitter_key(first_url, title)
                 else:
                     # No URL passes the strict rule: keep the story as text
-                    # (not citable) under a stable key that embeds no URL.
-                    basis = story["raw_first_href"] or story["title"] or story["lead"]
-                    if not basis:
+                    # (not citable) under the same key shape, hashed from the
+                    # raw first href, so no URL is embedded in the key.
+                    if not story["raw_first_href"] and not normalize_title(title):
                         continue
-                    key = "tw:sha256:" + hashlib.sha256(basis.encode("utf-8")).hexdigest()[:20]
+                    key = twitter_key(story["raw_first_href"], title)
                     notes.warn(f"{path.name} {match.group(0).strip()}: story has no safe "
                                "source URL; staged as text only")
                 handles = ", ".join(label for _, label in story["chips"][:3] if label)

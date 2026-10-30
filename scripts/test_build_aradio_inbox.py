@@ -217,7 +217,8 @@ class GateTest(FixtureTest):
     def test_consumed_keys_are_not_new(self):
         self.routine()
         self.repo.cursor(last_editor_run_at="2026-10-30T08:00:00Z",
-                         keys={"tw:https://x.com/a/status/1": "2026-10-30T01:50:00Z"})
+                         keys={bi.twitter_key("https://x.com/a/status/1", "A"):
+                               "2026-10-30T01:50:00Z"})
         self.assertEqual("no new material", self.repo.build()["reason"])
 
     def test_force_runs_even_without_new_material(self):
@@ -342,32 +343,38 @@ class SourceKeysTest(FixtureTest):
         ])
         self.repo.twitter("2026-10-29", {
             "00:00": story(1, "Too old", ["https://x.com/old/status/9"]),
-            "18:00": story(1, "Yesterday", ["https://x.com/y/status/2"]),
+            "18:00": story(1, "Yesterday's story", ["https://x.com/y/status/2"]),
         })
         self.repo.twitter("2026-10-30", {
             "00:00": story(1, "Today", ["https://x.com/t/status/3", "https://x.com/t2/status/4"])
-                     + story(2, "Repeat newer", ["https://x.com/y/status/2"]),
+                     # Re-published verbatim (up to case, punctuation, spacing).
+                     + story(2, "YESTERDAY'S  STORY.", ["https://x.com/y/status/2"])
+                     # A different story citing the same tweet: its own key.
+                     + story(3, "A follow-up", ["https://x.com/y/status/2"]),
         })
         self.repo.ticket("fresh-ticket", "2026-10-29", entries=3)
         self.repo.ticket("stale-ticket", "2026-10-26")
         summary = self.repo.build()
         self.assertTrue(summary["go"])
         keys = [item["key"] for item in self.repo.items()]
+        today = bi.twitter_key("https://x.com/t/status/3", "Today")
+        repeated_key = bi.twitter_key("https://x.com/y/status/2", "Yesterday's story")
+        follow_up = bi.twitter_key("https://x.com/y/status/2", "A follow-up")
         self.assertEqual(sorted([
             "ep:dwarkesh:fresh", "ep:dwarkesh:graced", "earn:0001018724-26-000038",
-            "tw:https://x.com/t/status/3", "tw:https://x.com/y/status/2",
-            "tk:fresh-ticket:3",
+            today, repeated_key, follow_up, "tk:fresh-ticket:3",
         ]), sorted(keys))
         by_key = {item["key"]: item for item in self.repo.items()}
-        repeated = by_key["tw:https://x.com/y/status/2"]
+        repeated = by_key[repeated_key]
         self.assertEqual("2026-10-30T00:00:00Z", repeated["at"])  # newest section wins
-        self.assertEqual("Repeat newer", repeated["title"])
+        self.assertEqual("YESTERDAY'S STORY.", repeated["title"])
+        self.assertEqual("A follow-up", by_key[follow_up]["title"])
         earnings = by_key["earn:0001018724-26-000038"]
         self.assertTrue(earnings["priority"])
         self.assertEqual("2026-10-29T20:05:27Z", earnings["at"])
         self.assertIn("https://ir.example.com/transcript.pdf", earnings["links"])
         self.assertIn("AWS growth is strong", earnings["text"])
-        tweet = by_key["tw:https://x.com/t/status/3"]
+        tweet = by_key[today]
         self.assertIn("Verify: single source", tweet["text"])
         self.assertIn("body & detail", tweet["text"])
         self.assertIn("https://x.com/t2/status/4", tweet["links"])
@@ -677,10 +684,13 @@ class UrlSafetyTest(FixtureTest):
         mixed, only_unsafe = items["Mixed"], items["Only unsafe"]
         self.assertEqual(safe, mixed["url"])
         self.assertEqual([safe], mixed["links"])
-        self.assertEqual(f"tw:{safe}", mixed["key"])
+        self.assertEqual(bi.twitter_key(safe, "Mixed"), mixed["key"])
         self.assertIsNone(only_unsafe["url"])
         self.assertEqual([], only_unsafe["links"])
-        self.assertTrue(only_unsafe["key"].startswith("tw:sha256:"))
+        # Same key shape as a citable story, hashed from the raw first href.
+        self.assertEqual(bi.twitter_key(CRAFTED[0], "Only unsafe"), only_unsafe["key"])
+        for key in (mixed["key"], only_unsafe["key"]):
+            self.assertRegex(key, r"^tw:[0-9a-f]{20}$")
         self.assertIn("Lead for Only unsafe", only_unsafe["text"])  # still usable as text
         podcast = items["Episode bad"]
         self.assertIsNone(podcast["url"])
@@ -831,6 +841,34 @@ class BoardBudgetTest(FixtureTest):
         self.assertEqual(bi.EXIT_ERROR, code)
         self.assertIn("::error::", stdout.getvalue())
         self.assertFalse(gh.exists())  # no go=true for the next steps
+
+
+class TwitterKeyTest(FixtureTest):
+    def test_key_ignores_case_punctuation_and_spacing_only(self):
+        url = "https://x.com/a/status/1"
+        same = {bi.twitter_key(url, title) for title in (
+            "OpenAI ships GPT-6!", "openai ships gpt 6", "  OpenAI   ships GPT—6 ")}
+        self.assertEqual(1, len(same))
+        key = same.pop()
+        self.assertRegex(key, r"^tw:[0-9a-f]{20}$")
+        self.assertNotEqual(key, bi.twitter_key(url, "OpenAI ships GPT-6 to Plus users"))
+        self.assertNotEqual(key, bi.twitter_key("https://x.com/a/status/2", "OpenAI ships GPT-6!"))
+
+    def test_follow_up_citing_a_consumed_source_is_offered(self):
+        url = "https://x.com/lab/status/1"
+        self.repo.twitter("2026-10-30", {"00:00": story(1, "Lab launches model", [url])})
+        self.repo.build()
+        consumed = {item["key"]: "2026-10-30T00:50:00Z" for item in self.repo.items()}
+        self.repo.twitter("2026-10-30", {
+            "00:00": story(1, "Lab launches model", [url]),
+            "06:00": story(1, "Lab launches model.", [url])                 # re-published
+                     + story(2, "Lab model tops the leaderboard", [url]),  # follow-up
+        })
+        self.repo.cursor(last_editor_run_at="2026-10-30T06:00:00Z", keys=consumed)
+        summary = self.repo.build()
+        self.assertTrue(summary["go"])
+        self.assertEqual(["Lab model tops the leaderboard"],
+                         [item["title"] for item in self.repo.items()])
 
 
 class ParserTest(unittest.TestCase):
