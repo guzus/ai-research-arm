@@ -12,10 +12,14 @@ whether the editor should run at all, and stages the inbox:
     inbox.json  transcripts/<n>.txt
 
 Sources and keys:
-  research/podcasts/index.json        ep:<episode id>
+  research/podcasts/index.json        ep:<episode id> (staged with a transcript)
+                                      ep:<episode id>:meta (show notes only)
   research/earnings/index.json + .md  earn:<accession>
   research/twitter/<date>.md stories  tw:<sha256(first source URL, normalized title)[:20]>
   research/models/tickets/*.md        tk:<slug>:<history length>
+
+An episode consumed from show notes (`:meta`) is offered once more when its
+transcript lands; one consumed with a transcript is never re-offered.
 
 Gate (stop = no model, no TTS, nothing committed, exit 0):
   force -> go; no new items -> stop; any priority item -> go;
@@ -111,6 +115,8 @@ TWITTER_WINDOW = dt.timedelta(hours=26)
 TICKET_WINDOW_DAYS = 2
 FUTURE_SLACK = dt.timedelta(minutes=10)
 
+REVISIT_NOTE = "transcript now available; previously aired from show notes"
+
 TRANSCRIPT_TIMEOUT_S = 25
 TRANSCRIPT_SPACING_S = 3.0
 TRANSCRIPT_RETRY_DELAY_S = 8.0
@@ -198,9 +204,20 @@ class Candidate:
     transcript_available: bool = False
     long_form: bool = False
     excerpts: list[dict] = field(default_factory=list)
+    # Other cursor keys that also mark this candidate consumed: a show-notes
+    # (`ep:<id>:meta`) candidate is covered by its transcript key, so an
+    # episode already consumed WITH a transcript is never re-offered.
+    also_consumed_by: list[str] = field(default_factory=list)
+    # The show-notes key a transcript candidate supersedes; when the cursor
+    # holds it, the item is the one permitted revisit and says so.
+    supersedes: str | None = None
+    note: str = ""
 
     def sort_key(self) -> tuple:
         return (not self.priority, -self.at.timestamp(), self.key)
+
+    def consumed(self, keys: dict) -> bool:
+        return self.key in keys or any(key in keys for key in self.also_consumed_by)
 
 
 @dataclass
@@ -331,8 +348,15 @@ def collect_podcasts(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Ca
         else:
             transcript_note = "Transcript: not available yet; show notes only."
         url = clean_url(episode.get("url"))
+        # Distinct keys per depth: show notes now, the transcript later. The
+        # notes key never blocks the transcript key; the transcript key always
+        # covers the notes key. So an episode is offered at most twice (notes,
+        # then transcript), and never again once consumed with a transcript.
+        transcript_key = f"ep:{episode_id.strip()}"
         found.append(Candidate(
-            key=f"ep:{episode_id.strip()}",
+            key=transcript_key if available else f"{transcript_key}:meta",
+            also_consumed_by=[] if available else [transcript_key],
+            supersedes=f"{transcript_key}:meta" if available else None,
             kind=kind,
             # OpenAI alone posts ~1 short P0 customer-testimonial clip a day;
             # only substance (an earnings call, or a long-form P0 episode we can
@@ -763,6 +787,9 @@ def collect_all(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Candida
         # Sanitize here, not only when rendering: cursor.json records the
         # staged key, and the gate compares raw candidates against it.
         candidate.key = safe_key(candidate.key)
+        candidate.also_consumed_by = [safe_key(key) for key in candidate.also_consumed_by]
+        if candidate.supersedes is not None:
+            candidate.supersedes = safe_key(candidate.supersedes)
         current = unique.get(candidate.key)
         if current is None or candidate.at > current.at:
             unique[candidate.key] = candidate
@@ -972,6 +999,8 @@ def item_json(candidate: Candidate, transcript_file: str | None,
         "text": _strip_urls_lines(candidate.text),
         "links": list(dict.fromkeys(links)),
     }
+    if candidate.note:
+        item["note"] = candidate.note
     if transcript_file:
         item["transcript_file"] = transcript_file
         item["transcript_source"] = transcript_source
@@ -997,6 +1026,8 @@ def render_inbox_md(now: dt.datetime, items: list[dict], forced: bool) -> str:
         lines.append(f"- key: `{item['key']}`")
         lines.append(f"- title: {item['title']}")
         lines.append(f"- at: {item['at']}")
+        if item.get("note"):
+            lines.append(f"- note: {item['note']}")
         lines.append(f"- url: <{item['url']}>" if item["url"] else "- url: (none; not citable)")
         extra = [link for link in item["links"] if link != item["url"]]
         if extra:
@@ -1265,11 +1296,15 @@ def build(*, repo_root: Path, now: dt.datetime, out_dir: Path, trusted_dir: Path
 
     notes = Notes()
     candidates = collect_all(repo_root, now, notes)
-    new = [c for c in candidates if c.key not in consumed]
+    new = [c for c in candidates if not c.consumed(consumed)]
+    for candidate in new:
+        if candidate.supersedes is not None and candidate.supersedes in consumed:
+            candidate.note = REVISIT_NOTE
     go, reason = decide(new, cursor_raw, now, force)
     summary: dict[str, Any] = {
         "go": go, "reason": reason, "eligible": len(candidates), "new": len(new),
-        "priority": sum(1 for c in new if c.priority), "items": 0, "kinds": {},
+        "priority": sum(1 for c in new if c.priority),
+        "revisits": sum(1 for c in new if c.note == REVISIT_NOTE), "items": 0, "kinds": {},
         "transcripts": 0, "transcripts_degraded": False, "warnings": notes.warnings,
     }
     if not go:
@@ -1337,6 +1372,7 @@ def build(*, repo_root: Path, now: dt.datetime, out_dir: Path, trusted_dir: Path
     summary.update({
         "items": len(items),
         "kinds": kind_counts(items),
+        "revisits": sum(1 for item in items if item.get("note") == REVISIT_NOTE),
         "transcripts": sum(1 for item in items if item.get("transcript_file")),
         "transcripts_degraded": degraded,
         "bytes": item_bytes,
@@ -1395,6 +1431,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"aradio gate: {'GO' if summary['go'] else 'STOP'} — {summary['reason']} "
           f"(eligible={summary['eligible']} new={summary['new']} "
           f"priority={summary['priority']} staged={summary['items']} "
+          f"revisits={summary['revisits']} "
           f"transcripts={summary['transcripts']} kinds={kinds or '-'})")
     if summary["go"]:
         print(f"aradio inbox: items {summary['bytes']} bytes (cap {MAX_ITEM_BYTES}); "

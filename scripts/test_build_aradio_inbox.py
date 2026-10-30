@@ -361,7 +361,7 @@ class SourceKeysTest(FixtureTest):
         repeated_key = bi.twitter_key("https://x.com/y/status/2", "Yesterday's story")
         follow_up = bi.twitter_key("https://x.com/y/status/2", "A follow-up")
         self.assertEqual(sorted([
-            "ep:dwarkesh:fresh", "ep:dwarkesh:graced", "earn:0001018724-26-000038",
+            "ep:dwarkesh:fresh", "ep:dwarkesh:graced:meta", "earn:0001018724-26-000038",
             today, repeated_key, follow_up, "tk:fresh-ticket:3",
         ]), sorted(keys))
         by_key = {item["key"]: item for item in self.repo.items()}
@@ -381,6 +381,7 @@ class SourceKeysTest(FixtureTest):
         self.assertEqual(["https://x.com/src/status/fresh-ticket"],
                          by_key["tk:fresh-ticket:3"]["links"])
         self.assertTrue(by_key["ep:dwarkesh:fresh"]["priority"])
+        self.assertNotIn("note", by_key["ep:dwarkesh:graced:meta"])  # a first offer
 
     def test_items_are_ordered_priority_first_then_newest(self):
         self.repo.podcasts([episode("p1", priority="P1", published="2026-10-30T08:00:00Z")])
@@ -869,6 +870,74 @@ class TwitterKeyTest(FixtureTest):
         self.assertTrue(summary["go"])
         self.assertEqual(["Lab model tops the leaderboard"],
                          [item["title"] for item in self.repo.items()])
+
+
+class EpisodeRevisitTest(FixtureTest):
+    """Show-notes episodes come back once when their transcript lands (finding I)."""
+
+    def notes_only(self, eid: str = "ep1", **overrides) -> dict:
+        return episode(eid, available=False, first_seen="2026-10-30T01:00:00Z", **overrides)
+
+    def transcribed(self, eid: str = "ep1", **overrides) -> dict:
+        return episode(eid, first_seen="2026-10-30T01:00:00Z", **overrides)
+
+    def test_notes_offer_then_exactly_one_transcript_offer(self):
+        self.repo.podcasts([self.notes_only()])
+        self.repo.build()
+        first = self.repo.items()
+        self.assertEqual(["ep:dwarkesh:ep1:meta"], [item["key"] for item in first])
+        self.assertFalse(first[0]["priority"])
+        self.assertNotIn("note", first[0])
+
+        # The editor consumed the show notes; 10 min later the captions land.
+        self.repo.cursor(last_editor_run_at="2026-10-30T08:40:00Z",
+                         keys={"ep:dwarkesh:ep1:meta": "2026-10-30T08:40:00Z"})
+        self.repo.podcasts([self.transcribed()])
+        summary = self.repo.build()
+        self.assertTrue(summary["go"])
+        self.assertIn("priority", summary["reason"])  # P0 long-form + transcript, as ever
+        self.assertEqual(1, summary["revisits"])
+        item = self.repo.items()[0]
+        self.assertEqual("ep:dwarkesh:ep1", item["key"])
+        self.assertTrue(item["priority"])
+        self.assertEqual(bi.REVISIT_NOTE, item["note"])
+        self.assertIn(f"- note: {bi.REVISIT_NOTE}",
+                      (self.repo.out / "inbox.md").read_text(encoding="utf-8"))
+
+        # Consumed with its transcript: never offered again, in either form.
+        self.repo.cursor(last_editor_run_at="2026-10-30T08:45:00Z",
+                         keys={"ep:dwarkesh:ep1:meta": "2026-10-30T08:40:00Z",
+                               "ep:dwarkesh:ep1": "2026-10-30T08:45:00Z"})
+        for current in (self.transcribed(), self.notes_only()):
+            with self.subTest(transcript=current["transcript"]["available"]):
+                self.repo.podcasts([current])
+                self.assertEqual("no new material", self.repo.build()["reason"])
+
+    def test_transcript_consumption_covers_the_notes_key(self):
+        weird = "x y`z"  # sanitized keys must keep the same coverage
+        for eid in ("ep1", weird):
+            with self.subTest(eid=eid):
+                transcript_key = bi.safe_key(f"ep:dwarkesh:{eid}")
+                self.repo.cursor(last_editor_run_at="2026-10-30T05:00:00Z",
+                                 keys={transcript_key: "2026-10-30T05:00:00Z"})
+                self.repo.podcasts([self.notes_only(eid)])
+                self.assertEqual("no new material", self.repo.build()["reason"])
+
+    def test_revisit_respects_the_seven_day_window(self):
+        self.repo.cursor(last_editor_run_at="2026-10-30T05:00:00Z",
+                         keys={"ep:dwarkesh:old:meta": "2026-10-22T20:00:00Z"})
+        self.repo.podcasts([episode("old", published="2026-10-22T08:00:00Z",
+                                    first_seen="2026-10-22T09:00:00Z")])
+        self.assertEqual("no new material", self.repo.build()["reason"])
+
+    def test_notes_only_priority_rule_is_unchanged(self):
+        self.repo.cursor(last_editor_run_at="2026-10-30T08:40:00Z")
+        self.repo.podcasts([self.notes_only("call", kind="earnings-call", priority="P1")])
+        summary = self.repo.build()
+        self.assertTrue(summary["go"])
+        self.assertEqual(["ep:dwarkesh:call:meta"],
+                         [item["key"] for item in self.repo.items()])
+        self.assertTrue(self.repo.items()[0]["priority"])
 
 
 class ParserTest(unittest.TestCase):
