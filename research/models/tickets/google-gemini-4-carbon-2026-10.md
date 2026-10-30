@@ -32,13 +32,17 @@ sources:
   - "https://x.com/demishassabis/status/2115489550256746502"
   - "@Google"
   - "@AINativeF"
+  - https://x.com/DailyAiDriver/status/2116155432494571739
+  - https://x.com/AlyBlak3/status/2116156713137287406
 created_at: 2026-10-29
-updated_at: 2026-10-29
+updated_at: 2026-10-30
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-10-29
     change: "Created — CONFIRMED / confirmed. Google DeepMind announced Gemini 4 Carbon (2026-10-28 ~17:02 UTC). It is described as state-of-the-art in cybersecurity and long-horizon tasks (able to 'work through complex tasks for days'), and #1 on the Artificial Analysis Intelligence Index v5.0. It is rolling out first to cyber defenders through the Fairwind Program, with expanded access 'soon'. Benchmark figures (AA 59; SEC-bench Pro 88.2%, ExploitGym 54.8%, CWE-bench 71.0%) come from secondary recaps of Google's post. Successor tier to Gemini 4 Argon ([[google-gemini-4-2026-09]]), which stays a separate ticket."
+  - ts: 2026-10-30
+    change: "Confirmed, unchanged — access still gated. Secondary relays on 2026-10-30 frame Carbon against Anthropic: @DailyAiDriver puts it at 59 vs Claude Opus 5.5's 58 on the Artificial Analysis overall index, with Claude still leading some individual tests. The 59 matches the figure already recorded. @buildjayy restates the defenders-first rollout, and @AlyBlak3 says a broader release is promised but undated. @RyanYanBuilds' evidence review agrees that Carbon is officially announced with limited initial access. No general availability, pricing or API listing captured. Rumours of models beyond Carbon (Xenon, Hydrogen / Gemini 4 Flash) are tracked separately at [[google-gemini-4-xenon-2026-10]] and [[google-gemini-4-flash-hydrogen-2026-10]]."
 ---
 Gemini 4 Carbon is Google's second Gemini 4 model in two weeks. Argon reached general availability on
 2026-10-13 ([[google-gemini-4-2026-09]]). Google calls Carbon its "next frontier model". It is a separate
