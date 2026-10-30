@@ -3488,5 +3488,19 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+    "file": "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it.",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-10-30T16:12:54Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/khushjammu/status/2115902443225813486\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
