@@ -59,6 +59,7 @@ import dataclasses
 import datetime as dt
 import email.utils
 import html
+import http.client
 import json
 import os
 import re
@@ -156,6 +157,14 @@ class TuberError(Exception):
         super().__init__(message)
         self.status = status
         self.rate_limited = rate_limited
+
+
+# What one tuber request may raise. A truncated or malformed response
+# (http.client.IncompleteRead, BadStatusLine, LineTooLong) is an
+# http.client.HTTPException, which is NOT an OSError: unnamed, one cut-off
+# response escapes every per-source boundary and kills the whole run instead
+# of failing that one source. ValueError is the read-only guard's refusal.
+FETCH_ERRORS = (TuberError, ValueError, http.client.HTTPException)
 
 
 # ---------------------------------------------------------------------------
@@ -348,12 +357,12 @@ def http_get_json(base_url: str, path: str, params: dict[str, Any] | None, timeo
     except urllib.error.HTTPError as exc:
         try:
             message = _error_message(exc.read())
-        except OSError:
+        except (OSError, http.client.HTTPException):
             message = ""
         rate_limited = exc.code == 429 or (exc.code >= 500 and bool(_THROTTLED_RE.search(message)))
         raise TuberError(f"HTTP {exc.code}: {message or exc.reason}", status=exc.code,
                          rate_limited=rate_limited) from exc
-    except (urllib.error.URLError, TimeoutError, OSError) as exc:
+    except (urllib.error.URLError, TimeoutError, OSError, http.client.HTTPException) as exc:
         raise TuberError(f"{type(exc).__name__}: {exc}") from exc
     try:
         return json.loads(body.decode("utf-8"))
@@ -974,7 +983,7 @@ def discover(shows: list[Show], client: TuberClient, now: dt.datetime) -> Discov
             if not found and show.kind != "search":
                 raise TuberError("no usable rows in listing")
             result.candidates.extend(found)
-        except (TuberError, ValueError) as exc:
+        except FETCH_ERRORS as exc:  # this source failed; the others still publish
             result.errors.append((show, f"{type(exc).__name__}: {exc}"))
     return result
 
@@ -1125,6 +1134,8 @@ def fetch_transcript(client: TuberClient, video_id: str, duration_s: int | None)
             break
         except ValueError as exc:  # refused by the read-only guard
             return TranscriptOutcome("error", detail=str(exc))
+        except http.client.HTTPException as exc:  # a truncated response: a failed attempt
+            last = TuberError(f"{type(exc).__name__}: {exc}")
         except TuberError as exc:
             last = exc
             if exc.status is not None and 400 <= exc.status < 500 and exc.status != 429:
@@ -1423,7 +1434,7 @@ def run(*, registry: Path, out_dir: Path, base_url: str, now: dt.datetime, clien
             detail_fetches += 1
             try:
                 details = client.get(f"/video/{candidate.video_id}")
-            except (TuberError, ValueError):
+            except FETCH_ERRORS:
                 details = None
             # Only the notes are read from /api/video/{id}: its isLive is true
             # for any PAST stream ("Streamed live on Oct 28") -- it silently
@@ -1463,7 +1474,7 @@ def run(*, registry: Path, out_dir: Path, base_url: str, now: dt.datetime, clien
         client.sleep(DETAIL_SPACING_S)
         try:
             details = client.get(f"/video/{episode['video_id']}")
-        except (TuberError, ValueError):
+        except FETCH_ERRORS:
             continue
         if isinstance(details, dict):
             notes = first_words(clean_show_notes(details.get("description")), MAX_DESCRIPTION_WORDS)

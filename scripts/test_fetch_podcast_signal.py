@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import copy
 import datetime as dt
+import http.client
 import io
 import json
 import os
@@ -1031,6 +1032,82 @@ class FailureModesTest(LaneTestCase):
             self.assertEqual(pod.main(["--now", "yesterday"]), 2)
             self.assertEqual(pod.main(["--max-transcript-fetches", "-1"]), 2)
             self.assertEqual(pod.main(["--bogus"]), 2)
+
+
+class TruncatedResponseTest(LaneTestCase):
+    """A cut-off tuber response is http.client.IncompleteRead: an
+    HTTPException, not an OSError. It must fail only its own source, transcript
+    attempt or detail fetch -- never the whole run."""
+
+    @staticmethod
+    def truncated() -> http.client.IncompleteRead:
+        return http.client.IncompleteRead(b'{"videos": [', 4096)
+
+    def test_truncated_listing_fails_only_its_source(self):
+        routes = e2e_routes()
+        routes[f"/channel/{CH_LAB}"] = self.truncated()
+        result, _, _ = self.run_lane(routes)
+        self.assertEqual(result.exit_code, 0, result.summary)
+        self.assertIn("3/4 sources ok", result.summary)
+        self.assertEqual(set(self.episodes()), {f"pod:{vid(4)}", f"pod:{vid(6)}",
+                                                f"acme-call:{vid(8)}", "notes:pod-abc123"})
+        self.assertFalse(self.index()["degraded"])
+        text = (self.out / "2026-10-30.md").read_text(encoding="utf-8")
+        self.assertIn("Lab (`lab`): IncompleteRead", text)
+
+    def test_every_source_truncated_is_a_total_failure_not_a_crash(self):
+        routes = {key: self.truncated() for key in (
+            f"/channel/{CH_LAB}", f"/channel/{CH_POD}", ("/search", SEARCH_Q), ("/podcast/episodes", RSS))}
+        result, _, _ = self.run_lane(routes)
+        self.assertEqual(result.exit_code, pod.EXIT_TOTAL_FETCH_FAILURE)
+        self.assertFalse(self.out.exists())
+
+    def test_truncated_transcript_is_one_failed_attempt(self):
+        routes = e2e_routes()
+        routes[f"/video/{vid(8)}/transcript"] = self.truncated()
+        result, fake, _ = self.run_lane(routes)
+        self.assertEqual(result.exit_code, 0, result.summary)
+        episodes = self.episodes()
+        call = episodes[f"acme-call:{vid(8)}"]["transcript"]
+        self.assertEqual((call["available"], call["attempts"]), (False, 1))
+        self.assertEqual(fake.paths().count(f"/video/{vid(8)}/transcript"), 2)  # retried once
+        self.assertTrue(episodes[f"lab:{vid(1)}"]["transcript"]["available"])  # others unaffected
+        self.assertIn("errors 1", result.summary)
+
+    def test_truncated_detail_fetch_defers_the_episode(self):
+        routes = e2e_routes()
+        routes[f"/video/{vid(6)}"] = self.truncated()  # ai-filtered: needs its notes
+        result, _, _ = self.run_lane(routes)
+        self.assertEqual(result.exit_code, 0, result.summary)
+        self.assertNotIn(f"pod:{vid(6)}", self.episodes())
+        self.assertIn(f"acme-call:{vid(8)}", self.episodes())
+        self.assertIn("deferred 2", result.summary)
+
+    def test_truncated_notes_refill_is_skipped(self):
+        self.run_lane(e2e_routes())
+        self.assertEqual(self.episodes()[f"lab:{vid(1)}"]["description"], "")
+        routes = e2e_routes()
+        routes[f"/video/{vid(1)}"] = self.truncated()
+        result, fake, _ = self.run_lane(routes, now=NOW + dt.timedelta(minutes=50))
+        self.assertEqual(result.exit_code, 0, result.summary)
+        self.assertIn(f"/video/{vid(1)}", fake.paths())  # the refill path really ran
+        self.assertEqual(self.episodes()[f"lab:{vid(1)}"]["description"], "")
+
+    def test_http_layer_turns_truncation_into_a_tuber_error(self):
+        response = unittest.mock.MagicMock()
+        response.__enter__.return_value.read.side_effect = self.truncated()
+        with unittest.mock.patch.object(pod.urllib.request, "urlopen", return_value=response):
+            with self.assertRaises(pod.TuberError) as caught:
+                pod.http_get_json("https://tuber.example.test", "/search", {"q": "x"}, 5)
+        self.assertIn("IncompleteRead", str(caught.exception))
+        # A truncated error BODY still yields the classified HTTP error.
+        error = pod.urllib.error.HTTPError("https://tuber.example.test/api/search", 502,
+                                           "Bad Gateway", {}, io.BytesIO(b""))
+        error.read = unittest.mock.Mock(side_effect=self.truncated())
+        with unittest.mock.patch.object(pod.urllib.request, "urlopen", side_effect=error):
+            with self.assertRaises(pod.TuberError) as caught:
+                pod.http_get_json("https://tuber.example.test", "/search", {"q": "x"}, 5)
+        self.assertEqual(caught.exception.status, 502)
 
 
 class SelectWindowsTest(unittest.TestCase):
