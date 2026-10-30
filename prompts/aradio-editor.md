@@ -8,12 +8,13 @@ you do three things:
 
 The run fails unless `.tmp/aradio/edit.json` exists as a regular file before
 you stop. Write it with the Write tool. A chat-only answer is a failed run. Do
-not write any other file.
+not write any other file. There is no shell, web or search access; everything
+you need is in `.agent-input/aradio/`.
 
 ## Read these first
 
-1. `.agent-input/aradio/context.json` — the current UTC time, when the last
-   bulletin aired and what its headline was, and the limits below.
+1. `.agent-input/aradio/context.json` — the current UTC time and its weekday,
+   when the last bulletin aired and what its headline was, and the limits below.
 2. `.agent-input/aradio/board.json` — the current board. It may be empty on
    the first run; then every storyline is a `create`.
 3. `.agent-input/aradio/inbox.md` — material that is NEW since the last run,
@@ -75,11 +76,15 @@ Fields:
   market-moving earnings); 3 = notable; 1 = minor.
 - `evidence` (on create) / `add_evidence` (on update): the inbox items that
   support what you wrote. `url` MUST be copied exactly from an inbox item's
-  `url` or `links` — any other URL is discarded. `label` names the source
+  `url` or `links` (or from evidence already on the board) — any other URL is
+  discarded. `inbox.md` shows URLs as `<https://…>`: copy the URL without the
+  angle brackets. An item marked "not citable" has no usable URL; you may still
+  use what it says. Never put URLs in any other field. `label` names the source
   ("Amazon Q3 8-K", "Dwarkesh Podcast", "@handle on X"). For spoken sources add
   `speaker` when the transcript makes clear who is talking, and `quote` only
   for a short (≤ 40 words) verbatim line from the transcript that is genuinely
-  worth quoting.
+  worth quoting. Quotes are checked word for word against the item's text and
+  transcript; a quote that is not found there is discarded.
 - `change` ≤ 200 characters: one line for the thread's history log. Required
   on every op.
 

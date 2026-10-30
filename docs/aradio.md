@@ -197,8 +197,9 @@ def select_windows(segments: list[dict], *, max_windows: int, max_words: int,
 | `context.json` | `now`, `last_bulletin_at`, `last_headline`, limits |
 | `transcripts/<n>.txt` | top transcript windows (`[mm:ss] text`) for spoken items |
 
-The trusted copy of `inbox.json` used by the validator and writer lives in
-`$RUNNER_TEMP`, never under `.tmp/` (the import path) or `.agent-input/`.
+The trusted copy of `inbox.json` (with the same `transcripts/`, used to verify
+quotes) read by the validator and writer lives in `$RUNNER_TEMP`, never under
+`.tmp/` (the import path) or `.agent-input/`.
 
 Item shape:
 
@@ -211,7 +212,7 @@ Item shape:
 
 | Source | Key | Eligible when |
 |---|---|---|
-| `research/podcasts/index.json` | `ep:<episode id>` | transcript available, or first seen ≥ 6 h ago without one |
+| `research/podcasts/index.json` | `ep:<episode id>` | published (else first seen) in the last 7 days, and transcript available or first seen ≥ 6 h ago without one |
 | `research/earnings/index.json` + event `.md` | `earn:<accession>` | filed in the last 3 days |
 | `research/twitter/<date>.md` stories | `tw:<first source URL>` | run section in the last 26 h |
 | `research/models/tickets/*.md` | `tk:<slug>:<history length>` | last history entry in the last 2 days |
@@ -219,6 +220,11 @@ Item shape:
 Caps: ≤ 40 items (priority first, then newest), ≤ 8 transcript files of
 ≤ 20 windows × ≤ 70 words, total ≤ 400 KB. A transcript fetch failure falls
 back to the committed excerpts.
+
+The 7-day episode bound keeps a first run (or a newly registered show's back
+catalogue) from flooding the inbox with old priority items, and keeps an
+episode whose cursor key expired (21 days) from being re-offered by the
+30-day podcast index.
 
 ## Editor output: `.tmp/aradio/edit.json`
 
@@ -261,12 +267,28 @@ missing or malformed script (a line not matching `^Speaker [12]: \S`, < 8 or
 > 30 lines, < 250 or > 900 words); `covers` naming a slug that is not on the
 board after the ops.
 
+**URL rule** (every boundary: inbox items, evidence, published files). A URL is
+usable only if `urllib.parse.urlsplit` gives an `http`/`https` scheme and a
+non-empty netloc, it has no whitespace or control/format characters, none of
+`` <>"'()[]{}|\^` ``, and it is at most 2,048 characters. The inbox drops
+failing URLs (an item whose URL fails keeps `url: null` and stays usable as
+text; a Twitter story with no passing URL gets a `tw:sha256:…` key); the
+validator drops failing evidence even if the inbox lists it; the writer drops
+failing evidence already on the board and refuses to write any `url` field
+that fails. URL-like text and markdown links are stripped from prose fields
+and the script, and diagnostics (`warnings`) carry a `url#<hash>` fingerprint
+instead of the URL. `inbox.md` renders URLs as `<…>` autolinks; the validator
+accepts a cited URL with or without the brackets.
+
 **Soft errors** (repaired, listed in the bulletin's `warnings`): an evidence
 URL not present in this run's inbox (`url`/`links`) or already on the board is
-**dropped** — the editor cannot introduce a URL; a `quote` over 40 words is
-dropped; over-long text fields are truncated; unknown audio tags and URLs in
-the script are stripped. Evidence `kind` is set from the inbox item that owns
-the URL, never trusted from the editor.
+**dropped** — the editor cannot introduce a URL; a `quote` over 40 words, or
+one not found verbatim (case- and punctuation-folded) in the owning item's
+text or transcript windows, is dropped — the URL rule alone cannot stop a
+fabricated quote attributed to a real source; over-long text fields are
+truncated; unknown audio tags and URLs in the script are stripped. Evidence
+`kind` (and `at`) are set from the inbox item that owns the URL, never trusted
+from the editor.
 
 ## Writer rules (`scripts/write_aradio_bulletin.py`)
 
@@ -299,10 +321,14 @@ the URL, never trusted from the editor.
   covers, threads: [{slug, title, status}], sources: [{url, kind, label}],
   ops: [{op, slug}], warnings, audio: {key, bytes, duration_s} | null,
   audio_error, editor: {backend, model}, inbox: {items, kinds}}`.
-  `lines` is display-ready (audio tags stripped); `script` is the raw TTS input.
+  `lines` is display-ready (audio tags stripped; `speaker` is `"Speaker 1"` or
+  `"Speaker 2"`); `script` is the raw TTS input.
 - `index.json` — `{schema, updated_at, degraded, latest, bulletins: [{id,
   aired_at, headline, path, audio, covers, kinds}]}`, newest first, ≤ 72.
-  `degraded` is true when the latest on-air bulletin has no audio.
+  `degraded` is true when the latest on-air bulletin has no audio. `latest` is
+  the newest bulletin `id` (null before the first); `path` is relative to
+  `research/aradio/`. The writer creates an empty index on the first editor
+  run so the freshness watchdog's `degraded` signal always has a file to read.
 - `cursor.json` — `{schema, updated_at, last_editor_run_at,
   last_bulletin_at, keys: {key: consumed_at}}`, keys pruned after 21 days.
 - `archive/YYYY-MM.json` — archived resolved threads.
