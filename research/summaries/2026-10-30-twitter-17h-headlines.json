@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC RENAMES $200 MAX 20X PLAN \"CLAUDE ULTRA\", REMOVES 5-HOUR RATE LIMIT FOR ULTRA SUBSCRIBERS",
+    "source": "@alexalbert__",
+    "url": "https://x.com/alexalbert__/status/2116227345501880781",
+    "category": "business"
+  },
+  {
+    "headline": "GOOGLE RUNS FIRST PROMPT ON DATA-CENTER TPU IN ORBIT — PROJECT SUNCATCHER PROTOTYPE RETURNS FULL RESPONSE",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2116217212763881748",
+    "category": "infra"
+  },
+  {
+    "headline": "OPENAI LAUNCHES \"PRIVATE INTELLIGENCE\" DATA CONTROLS FOR ENTERPRISES USING ITS MOST CAPABLE MODELS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2116186509384815084",
+    "category": "model"
+  },
+  {
+    "headline": "AWS ARRANGES UP TO $80B OF SUPPLIER FINANCING FOR AI INFRASTRUCTURE STARTING NEXT YEAR, SAYS CEO GARMAN",
+    "source": "@BloombergTV",
+    "url": "https://x.com/BloombergTV/status/2116228264544833903",
+    "category": "infra"
+  },
+  {
+    "headline": "COHERE COMMITS MORE THAN C$4B TO CANADIAN R&D AND AI INFRASTRUCTURE, 1,500+ JOBS THROUGH 2031",
+    "source": "@cohere",
+    "url": "https://x.com/cohere/status/2116186531366949192",
+    "category": "business"
+  }
+]
