@@ -138,20 +138,26 @@ def gh_escape(text: Any) -> str:
 def safe_url(url: Any) -> str | None:
     """Return `url` unchanged if it passes the strict rule, else None.
 
-    Rule: http(s) scheme, non-empty netloc, no whitespace or control/format
-    characters, none of <>"'()[]{}|\\^` and at most 2048 characters.
+    Identical to fetch_podcast_signal.safe_url (the podcasts lane), so a URL
+    that lane publishes is exactly a URL this lane can cite: http(s) scheme, a
+    host, no userinfo, a well-formed port, at most 2048 characters, and none
+    of <>"'()[]{}|\\^` , whitespace, or control/format (Unicode C*) characters,
+    which also covers bidi overrides. Nothing is repaired or re-encoded.
     """
     if not isinstance(url, str) or not url or len(url) > SAFE_URL_MAX:
         return None
     for char in url:
         if (char in SAFE_URL_FORBIDDEN or char.isspace()
-                or unicodedata.category(char) in ("Cc", "Cf", "Zs", "Zl", "Zp")):
+                or unicodedata.category(char)[0] == "C"):
             return None
     try:
         parts = urllib.parse.urlsplit(url)
+        parts.port  # raises ValueError on a malformed port
     except ValueError:
         return None
-    if parts.scheme.lower() not in SAFE_URL_SCHEMES or not parts.netloc:
+    if parts.scheme not in SAFE_URL_SCHEMES or not parts.netloc or not parts.hostname:
+        return None
+    if "@" in parts.netloc:  # credentials in a URL are never published
         return None
     return url
 

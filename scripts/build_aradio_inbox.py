@@ -21,9 +21,15 @@ Gate (stop = no model, no TTS, nothing committed, exit 0):
   force -> go; no new items -> stop; any priority item -> go;
   >= 110 min since cursor.last_editor_run_at (or never ran) -> go; else stop.
 
+Priority items: earnings filings; earnings-call episodes; and episodes of P0
+shows that are long-form (>= 10 min) AND have a transcript. Short official
+clips (e.g. 90-250 s customer testimonials posted as P0 `video`) are routine
+material that waits for the 2 h cadence.
+
 Spoken items get transcript windows from tuber-api's read-only
-`GET /api/video/{id}/transcript` (spaced, one retry); any failure falls back to
-the committed excerpts. Everything staged is third-party DATA; inbox.md renders
+`GET /api/video/{id}/transcript` (spaced, one retry, a longer backoff when tuber
+reports "YouTube temporarily blocked transcript access", and a total time
+budget); any failure falls back to the committed excerpts. Everything staged is third-party DATA; inbox.md renders
 item bodies as quoted blocks so injected text cannot pose as structure.
 
 Exit codes: 0 = gate decided (go or stop); 1 = real error (corrupt lane
@@ -72,8 +78,6 @@ ITEM_LINKS_MAX = 8
 MAX_EXCERPTS = 6
 
 GATE_MIN_INTERVAL = dt.timedelta(minutes=110)
-# A P0 episode jumps the 2 h cadence only when it is long-form (10+ min).
-PRIORITY_MIN_DURATION_S = 600
 EPISODE_TRANSCRIPT_GRACE = dt.timedelta(hours=6)
 # Additive to the contract's eligibility table. Without it the first run (and
 # any newly registered show) would offer weeks of back catalogue as "new"
@@ -88,6 +92,11 @@ FUTURE_SLACK = dt.timedelta(minutes=10)
 TRANSCRIPT_TIMEOUT_S = 25
 TRANSCRIPT_SPACING_S = 3.0
 TRANSCRIPT_RETRY_DELAY_S = 8.0
+TRANSCRIPT_RATE_LIMIT_DELAY_S = 15.0
+# Bounds the whole transcript phase (worst case is a hanging tuber: each try
+# can wait TRANSCRIPT_TIMEOUT_S), keeping the job inside its 30 min budget.
+TRANSCRIPT_BUDGET_S = 180.0
+LONG_FORM_MIN_S = 600
 SPOKEN_KINDS = ("podcast", "video", "earnings-call")
 EPISODE_KINDS = ("podcast", "video", "earnings-call")
 VIDEO_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
@@ -165,6 +174,7 @@ class Candidate:
     links: list[str]
     video_id: str | None = None
     transcript_available: bool = False
+    long_form: bool = False
     excerpts: list[dict] = field(default_factory=list)
 
     def sort_key(self) -> tuple:
@@ -241,6 +251,16 @@ def _excluded_shows(repo_root: Path, notes: Notes) -> set[str]:
             if isinstance(show, dict) and show.get("include_in_aradio") is False}
 
 
+def is_priority_episode(kind: str, show_priority: Any, duration_s: Any,
+                        transcript_available: bool) -> bool:
+    """Earnings calls always; otherwise only long-form, transcripted P0 episodes."""
+    if kind == "earnings-call":
+        return True
+    long_form = (isinstance(duration_s, (int, float)) and not isinstance(duration_s, bool)
+                 and duration_s >= LONG_FORM_MIN_S)
+    return show_priority == "P0" and long_form and transcript_available
+
+
 def collect_podcasts(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Candidate]:
     index = _load_json(repo_root / "research" / "podcasts" / "index.json", notes,
                        "research/podcasts/index.json")
@@ -289,18 +309,13 @@ def collect_podcasts(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Ca
         else:
             transcript_note = "Transcript: not available yet; show notes only."
         url = clean_url(episode.get("url"))
-        # Priority (go now, skip the 2 h wait) is reserved for substance: an
-        # earnings call, or a P0 show's LONG-FORM episode we can actually read.
-        # OpenAI alone posts ~1 short customer-testimonial clip a day as a P0
-        # video; those are routine material, not a reason to wake the editor.
-        long_form = (isinstance(duration, (int, float)) and not isinstance(duration, bool)
-                     and duration >= PRIORITY_MIN_DURATION_S)
-        priority = kind == "earnings-call" or (
-            episode.get("priority") == "P0" and long_form and available)
         found.append(Candidate(
             key=f"ep:{episode_id.strip()}",
             kind=kind,
-            priority=priority,
+            # OpenAI alone posts ~1 short P0 customer-testimonial clip a day;
+            # only substance (an earnings call, or a long-form P0 episode we can
+            # read) may skip the 2 h cadence.
+            priority=is_priority_episode(kind, episode.get("priority"), duration, available),
             source=_one_line(episode.get("show") or episode.get("show_id"), ITEM_SOURCE_MAX),
             title=_one_line(episode.get("title"), ITEM_TITLE_MAX),
             url=url,
@@ -312,6 +327,8 @@ def collect_podcasts(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Ca
             links=_dedupe_links([url] + [excerpt.get("url") for excerpt in excerpts]),
             video_id=video_id,
             transcript_available=available,
+            long_form=(isinstance(duration, (int, float)) and not isinstance(duration, bool)
+                       and duration >= LONG_FORM_MIN_S),
             excerpts=excerpts,
         ))
     return found
@@ -750,19 +767,56 @@ def transcript_url(base_url: str, video_id: str) -> str:
     return f"{base}/api/video/{video_id}/transcript"
 
 
+class TranscriptUnavailable(OSError):
+    """tuber answered without a usable transcript; `rate_limited` marks throttling."""
+
+    def __init__(self, reason: str, *, rate_limited: bool = False) -> None:
+        super().__init__(reason)
+        self.rate_limited = rate_limited
+
+
+RATE_LIMIT_MARKERS = ("temporarily blocked", "rate-limit", "rate limit", "too many requests")
+
+
+def _looks_rate_limited(status: int | None, body: str) -> bool:
+    lowered = body.lower()
+    return status == 429 or any(marker in lowered for marker in RATE_LIMIT_MARKERS)
+
+
 def fetch_transcript(base_url: str, video_id: str) -> list[dict]:
-    """Read-only tuber transcript fetch; raises on any failure."""
+    """Read-only tuber transcript fetch; raises on any failure.
+
+    tuber reports YouTube throttling as HTTP 500 {"error": "YouTube temporarily
+    blocked transcript access"}; that (or a 429) raises TranscriptUnavailable
+    with rate_limited=True so the caller backs off longer before its retry.
+    """
     if not VIDEO_ID_RE.match(video_id):
         raise ValueError("invalid video id")
     request = urllib.request.Request(transcript_url(base_url, video_id), headers={
         "Accept": "application/json", "User-Agent": USER_AGENT})
-    with urllib.request.urlopen(request, timeout=TRANSCRIPT_TIMEOUT_S,
-                                context=_ssl_context()) as response:
-        payload = json.loads(response.read(16 * 1024 * 1024).decode("utf-8"))
+    try:
+        with urllib.request.urlopen(request, timeout=TRANSCRIPT_TIMEOUT_S,
+                                    context=_ssl_context()) as response:
+            payload = json.loads(response.read(16 * 1024 * 1024).decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        try:
+            body = exc.read(4096).decode("utf-8", errors="replace")
+        except OSError:
+            body = ""
+        raise TranscriptUnavailable(
+            f"HTTP {exc.code}", rate_limited=_looks_rate_limited(exc.code, body)) from exc
     segments = payload.get("segments") if isinstance(payload, dict) else None
     if not isinstance(segments, list) or not segments:
-        raise ValueError("transcript has no segments")
+        error = str(payload.get("error") or "") if isinstance(payload, dict) else ""
+        raise TranscriptUnavailable("transcript has no segments",
+                                    rate_limited=_looks_rate_limited(None, error))
     return [segment for segment in segments if isinstance(segment, dict)]
+
+
+def describe_fetch_error(exc: BaseException) -> str:
+    if isinstance(exc, TranscriptUnavailable) and exc.rate_limited:
+        return f"rate-limited by YouTube via tuber, {exc}"
+    return f"{type(exc).__name__}: {contract.clip(contract.clean_text(str(exc)), 80)[0]}"
 
 
 def load_select_windows() -> Callable[..., list[dict]] | None:
@@ -800,17 +854,20 @@ def transcript_lines(candidate: Candidate, *, fetch: bool, base_url: str,
                        "spoken items fall back to committed excerpts")
         else:
             segments: list[dict] | None = None
+            retry_delay = TRANSCRIPT_RETRY_DELAY_S
             for attempt in (1, 2):
                 if not first_request[0]:
-                    sleep_fn(TRANSCRIPT_SPACING_S if attempt == 1 else TRANSCRIPT_RETRY_DELAY_S)
+                    sleep_fn(TRANSCRIPT_SPACING_S if attempt == 1 else retry_delay)
                 first_request[0] = False
                 try:
                     segments = fetch_fn(base_url, candidate.video_id)
                     break
                 except (OSError, ValueError, urllib.error.URLError) as exc:
+                    if isinstance(exc, TranscriptUnavailable) and exc.rate_limited:
+                        retry_delay = TRANSCRIPT_RATE_LIMIT_DELAY_S
                     if attempt == 2:
                         notes.warn(f"{candidate.key}: transcript fetch failed "
-                                   f"({type(exc).__name__}); using committed excerpts")
+                                   f"({describe_fetch_error(exc)}); using committed excerpts")
             if segments:
                 try:
                     windows = select_fn(segments, max_windows=MAX_WINDOWS,
@@ -1009,7 +1066,8 @@ def build(*, repo_root: Path, now: dt.datetime, out_dir: Path, trusted_dir: Path
           fetch_fn: Callable[[str, str], list[dict]] = fetch_transcript,
           select_fn: Callable[..., list[dict]] | None = None,
           select_loader: Callable[[], Callable[..., list[dict]] | None] = load_select_windows,
-          sleep_fn: Callable[[float], None] = time.sleep) -> dict:
+          sleep_fn: Callable[[float], None] = time.sleep,
+          clock: Callable[[], float] = time.monotonic) -> dict:
     """Run the gate and, when it says go, stage the inbox. Returns a summary."""
     aradio = repo_root / "research" / "aradio"
     try:
@@ -1046,13 +1104,25 @@ def build(*, repo_root: Path, now: dt.datetime, out_dir: Path, trusted_dir: Path
     transcripts: dict[str, tuple[list[str], str]] = {}
     first_request = [True]
     degraded = False
-    for candidate in selected:
+    started = clock()
+    budget_spent = False
+    # Transcript slots go to long-form episodes first (stable within each
+    # group), so short clips cannot crowd out interviews and calls.
+    spoken = sorted((c for c in selected if c.kind in SPOKEN_KINDS),
+                    key=lambda c: not c.long_form)
+    for candidate in spoken:
         if len(transcripts) >= MAX_TRANSCRIPT_FILES:
             break
-        if candidate.kind not in SPOKEN_KINDS:
-            continue
+        allow_fetch = fetch
+        if fetch and clock() - started > TRANSCRIPT_BUDGET_S:
+            allow_fetch = False
+            if not budget_spent:
+                budget_spent = True
+                degraded = True
+                notes.warn(f"transcript fetch budget ({TRANSCRIPT_BUDGET_S:.0f}s) spent; "
+                           "remaining spoken items use committed excerpts")
         lines, source, failed = transcript_lines(
-            candidate, fetch=fetch, base_url=tuber_api_base, fetch_fn=fetch_fn,
+            candidate, fetch=allow_fetch, base_url=tuber_api_base, fetch_fn=fetch_fn,
             select_fn=select_fn, sleep_fn=sleep_fn, notes=notes,
             first_request=first_request)
         degraded = degraded or failed

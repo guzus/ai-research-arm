@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import contextlib
 import copy
+import importlib.util
 import io
 import json
 import tempfile
@@ -261,6 +262,10 @@ CRAFTED_URLS = [
     "https:///no-host",
     "ftp://a.example/file",
     "https://a.example/" + "x" * 2048,
+    "https://user:pw@a.example/",          # userinfo
+    "https://a.example:99999/",            # malformed port
+    "https://:443/",                       # no hostname
+    "https://a.example/\ue000",            # private-use character
 ]
 
 
@@ -271,6 +276,18 @@ class UrlSafetyTest(ValidatorBase):
                 self.assertIsNone(ca.safe_url(url))
         for url in (TW_URL, EP_EXCERPT_URL, "http://a.example/p?q=1&r=2#frag"):
             self.assertEqual(url, ca.safe_url(url))
+
+    @unittest.skipUnless(importlib.util.find_spec("fetch_podcast_signal"),
+                         "podcasts lane module not on sys.path in this branch")
+    def test_safe_url_matches_the_podcast_lane_rule(self):
+        import fetch_podcast_signal as podcasts
+
+        samples = CRAFTED_URLS + [TW_URL, EP_URL, EP_EXCERPT_URL, "HTTPS://A.example/x",
+                                  "http://a.example:8080/p?q=1#f", "https://a.example",
+                                  "https://xn--bcher-kva.example/", "https://\u00fcber.example/"]
+        for url in samples:
+            with self.subTest(url=url):
+                self.assertEqual(podcasts.safe_url(url), ca.safe_url(url))
 
     def test_unsafe_evidence_url_is_dropped_even_when_the_inbox_lists_it(self):
         obj = inbox_obj()

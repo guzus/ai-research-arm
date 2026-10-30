@@ -10,6 +10,7 @@ import io
 import json
 import tempfile
 import unittest
+import urllib.error
 from pathlib import Path
 from unittest import mock
 
@@ -262,6 +263,40 @@ class GateTest(FixtureTest):
             self.repo.build()
 
 
+class SpokenPriorityTest(FixtureTest):
+    def test_priority_rule(self):
+        cases = [
+            ("earnings-call", "P1", 120, False, True),   # earnings calls always
+            ("podcast", "P0", 3600, True, True),         # long-form P0 with transcript
+            ("video", "P0", 600, True, True),            # boundary: exactly 10 min
+            ("video", "P0", 150, True, False),           # short official clip
+            ("podcast", "P0", 3600, False, False),       # no transcript yet
+            ("podcast", "P1", 3600, True, False),        # not a P0 show
+            ("podcast", "P0", None, True, False),        # unknown length
+        ]
+        for kind, show, duration, available, expected in cases:
+            with self.subTest(kind=kind, show=show, duration=duration, available=available):
+                self.assertIs(expected, bi.is_priority_episode(kind, show, duration, available))
+
+    def test_short_p0_clip_waits_for_the_routine_cadence(self):
+        clip = episode("clip", show="openai", kind="video")
+        clip["duration_s"] = 155
+        self.repo.podcasts([clip])
+        self.repo.cursor(last_editor_run_at="2026-10-30T07:50:00Z")  # 60 min ago
+        summary = self.repo.build()
+        self.assertFalse(summary["go"])
+        self.assertEqual(0, summary["priority"])
+        self.assertIn("2 h cadence", summary["reason"])
+
+    def test_untranscribed_episode_is_staged_as_routine_after_grace(self):
+        late = episode("late", available=False, first_seen="2026-10-30T01:00:00Z")
+        self.repo.podcasts([late])
+        summary = self.repo.build()
+        self.assertTrue(summary["go"])
+        self.assertEqual(0, summary["priority"])
+        self.assertFalse(self.repo.items()[0]["priority"])
+
+
 class SourceKeysTest(FixtureTest):
     def test_keys_and_eligibility_windows(self):
         self.repo.podcasts([
@@ -349,6 +384,26 @@ class CapsTest(FixtureTest):
         self.assertTrue(lines[0].startswith("[01:01] a window"))
         self.assertEqual(bi.MAX_TRANSCRIPT_FILES, summary["transcripts"])
 
+    def test_transcript_slots_prefer_long_form_episodes(self):
+        clips = []
+        for i in range(8):
+            clip = episode(f"clip{i}", show="openai", kind="video",
+                           published=f"2026-10-30T08:{10 + i}:00Z", video_id=f"clip{i:07d}")
+            clip["duration_s"] = 150
+            clips.append(clip)
+        talks = [episode(f"talk{i}", priority="P1", published=f"2026-10-29T1{i}:00:00Z",
+                         video_id=f"talk{i:07d}") for i in range(2)]
+        self.repo.podcasts(clips + talks)
+        self.repo.build(fetch=True, fetch_fn=lambda b, v: [{"startMs": 0, "text": v}],
+                        select_fn=lambda s, max_windows, max_words: [
+                            {"text": s[0]["text"], "at_s": 0}])
+        with_transcript = {item["key"] for item in self.repo.items()
+                           if item.get("transcript_file")}
+        self.assertEqual(bi.MAX_TRANSCRIPT_FILES, len(with_transcript))
+        self.assertIn("ep:dwarkesh:talk0", with_transcript)
+        self.assertIn("ep:dwarkesh:talk1", with_transcript)
+        self.assertEqual(6, sum(key.startswith("ep:openai:") for key in with_transcript))
+
     def test_total_size_cap_drops_lowest_ranked_items(self):
         stories = "".join(story(i, f"S{i}", [f"https://x.com/s/status/{i}"],
                                 lead="L" * 1400) for i in range(30))
@@ -410,6 +465,49 @@ class TranscriptTest(FixtureTest):
                                                                       "text": "x"}])
         self.assertTrue(any("select_windows is unavailable" in w for w in summary["warnings"]))
         self.assertEqual("excerpts", self.repo.items()[0]["transcript_source"])
+
+    def test_rate_limited_fetch_backs_off_longer_and_says_so(self):
+        attempts = []
+        sleeps = []
+
+        def throttled(base, video_id):
+            attempts.append(video_id)
+            raise bi.TranscriptUnavailable("HTTP 500", rate_limited=True)
+
+        summary = self.repo.build(fetch=True, fetch_fn=throttled, sleep_fn=sleeps.append,
+                                  select_fn=lambda *a, **k: [])
+        self.assertEqual(4, len(attempts))
+        self.assertEqual([bi.TRANSCRIPT_RATE_LIMIT_DELAY_S, bi.TRANSCRIPT_SPACING_S,
+                          bi.TRANSCRIPT_RATE_LIMIT_DELAY_S], sleeps)
+        self.assertTrue(any("rate-limited by YouTube" in w for w in summary["warnings"]))
+
+    def test_fetch_transcript_classifies_tuber_throttling(self):
+        body = b'{"error":"YouTube temporarily blocked transcript access","segments":[]}'
+        blocked = urllib.error.HTTPError("https://t/api", 500, "Internal Server Error",
+                                         {}, io.BytesIO(body))
+        with mock.patch.object(bi.urllib.request, "urlopen", side_effect=blocked):
+            with self.assertRaises(bi.TranscriptUnavailable) as caught:
+                bi.fetch_transcript("https://tuber.example", "frYSOKvNiiE")
+        self.assertTrue(caught.exception.rate_limited)
+        missing = urllib.error.HTTPError("https://t/api", 404, "Not Found", {},
+                                         io.BytesIO(b'{"error":"no captions"}'))
+        with mock.patch.object(bi.urllib.request, "urlopen", side_effect=missing):
+            with self.assertRaises(bi.TranscriptUnavailable) as caught:
+                bi.fetch_transcript("https://tuber.example", "frYSOKvNiiE")
+        self.assertFalse(caught.exception.rate_limited)
+
+    def test_transcript_phase_has_a_time_budget(self):
+        ticks = iter([0.0, 0.0, bi.TRANSCRIPT_BUDGET_S + 1.0, bi.TRANSCRIPT_BUDGET_S + 2.0])
+        calls = []
+        summary = self.repo.build(
+            fetch=True, clock=lambda: next(ticks),
+            fetch_fn=lambda b, v: calls.append(v) or [{"startMs": 0, "text": "x"}],
+            select_fn=lambda s, max_windows, max_words: [{"text": "spoken", "at_s": 1}])
+        self.assertEqual(1, len(calls))  # the second item is past the budget
+        self.assertTrue(summary["transcripts_degraded"])
+        self.assertTrue(any("budget" in w for w in summary["warnings"]))
+        sources = [item.get("transcript_source") for item in self.repo.items()]
+        self.assertEqual(["transcript", "excerpts"], sources)
 
     def test_transcript_url_is_read_only_endpoint(self):
         self.assertEqual("https://tuber-api.guzus.xyz/api/video/frYSOKvNiiE/transcript",
