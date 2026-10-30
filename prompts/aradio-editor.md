@@ -15,8 +15,12 @@ you need is in `.agent-input/aradio/`.
 
 1. `.agent-input/aradio/context.json` — the current UTC time and its weekday,
    when the last bulletin aired and what its headline was, and the limits below.
-2. `.agent-input/aradio/board.json` — the current board. It may be empty on
-   the first run; then every storyline is a `create`.
+2. `.agent-input/aradio/board.json` — your view of the current board: every
+   unresolved thread and every thread resolved in the last 48 hours, each with
+   its latest history entries and its evidence. Older resolved threads are
+   listed by slug under `other_threads`: those slugs are TAKEN — `update` (or
+   `resolve`) them if their storyline returns, never `create` them. The board
+   may be empty on the first run; then every storyline is a `create`.
 3. `.agent-input/aradio/inbox.md` — material that is NEW since the last run,
    priority items first. Each item has a `key`, a `kind`, a source, a time, a
    URL, a bounded text, and sometimes a `transcript_file`.
@@ -52,6 +56,11 @@ inbox item choose one:
 - `create` a thread, only for a genuinely new storyline that will matter for
   more than a day.
 - ignore it: noise, promotion, duplicates, or things the board already says.
+
+An episode item whose `note` says "transcript now available; previously offered
+from show notes only" was shown to you before without its transcript. Read the
+transcript now and `update` the thread it belongs to with what was actually
+said; do not create a second thread for it.
 
 Also `resolve` threads whose story is over (deal closed, launch absorbed,
 rumor dead) or that have gone quiet. Resolving is how the board stays useful.

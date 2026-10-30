@@ -133,9 +133,9 @@ the lanes to catch up (a daily lane won't self-heal until its next slot).
 | Script | Purpose |
 |---|---|
 | `build_aradio_inbox.py` | Trusted, deterministic first step. Collects items not yet in `research/aradio/cursor.json` from the podcasts index, earnings events, Twitter stories and model tickets; stages `.agent-input/aradio/` (inbox, board copy, context, transcript windows fetched live from tuber) plus a trusted copy in `$RUNNER_TEMP`. Owns the **gate**: no new material → stop; a priority item (earnings filing/call, or a ≥ 10-min P0 episode with a transcript) → go now; otherwise go only after 110 min. A stopped gate spends no model or TTS budget and commits nothing. |
-| `check_aradio.py` | Trusted validator for the editor's `edit.json` (ops, not a board rewrite). Hard errors fail the run before anything publishes; soft errors are repaired and listed. Provenance: an evidence URL must come from this run's inbox or the existing board, and must pass the strict URL rule; a `quote` must be ONE contiguous verbatim span inside a single text line or transcript window (no ellipses — fragment matching let quotes be stitched from words spoken minutes apart). Single home for Aradio's limits and URL rule. |
+| `check_aradio.py` | Trusted validator for the editor's `edit.json` (ops, not a board rewrite). Hard errors fail the run before anything publishes; soft errors are repaired and listed. Provenance: an evidence URL must come from this run's inbox or the existing board, and must pass the strict URL rule. Quotes: only from a spoken item's transcript window or an earnings `Key quotes:` line, ONE contiguous span (no ellipses, no crossing a window, line, or `>>` speaker change, not starting just after a negation), published in the source's own wording; `speaker` only where that line names them; ≤ 2 quotes / 60 words per source across the board, ≤ 8 new per run. Single home for Aradio's limits and URL rule (the inbox's `context.json` copy is pinned by a parity test). |
 | `aradio_tts.py` | Gemini 3.8 Flash TTS (Interactions API, Charon + Puck, documented fields only — no `speech_config.mode`). Fails loudly with the HTTP status and error body; refuses audio shorter than 60 % of the expected duration rather than publish a truncated bulletin. |
-| `write_aradio_bulletin.py` | The **only** committer for `research/aradio/`: applies ops (append-only history, verified before writing), auto-resolves quiet/overflow threads, archives, records consumed keys, writes atomically, stages exact paths. Bulletin files are immutable; a same-minute rerun is a no-op or a hard error, never an overwrite. |
+| `write_aradio_bulletin.py` | The **only** committer for `research/aradio/`: applies ops (append-only history, verified before writing; each thread keeps 12 entries, older ones archived in the same run), auto-resolves quiet/overflow threads, archives, records consumed keys, writes atomically, stages exact paths. Bulletin files are immutable; a same-minute rerun is a no-op or a hard error, never an overwrite. |
 
 #### Experimental / manually-run scripts (NOT in the automated pipeline)
 
@@ -338,7 +338,7 @@ false `deploy-stale` alerts. Do not "fix" any of these omissions.
 | `generative-research.yml` | `gen-research` issue label or `workflow_dispatch` with `topic` or `twitter_url` | `research/generative/*.{html,ara.md}` + `index.json` |
 | `translate-generative-research.yml` | automatically dispatched after each generative article reaches `main`; manual `workflow_dispatch` also accepts an existing article `slug` | One validated Korean translation revision under `research/generative/`; automatic runs auto-merge, manual runs use a review PR by default |
 | `research-issue.yml` | issue labeled `research` | `research/issues/{issue-number}-research.md` |
-| `aradio.yml` ("Aradio") | hourly `:50` + `workflow_dispatch` (`force` bypasses the gate) | `research/aradio/` (board `state.json`, immutable `bulletins/YYYY-MM-DD/HHMM.json`, `index.json`, `cursor.json`, `archive/`) + mp3 at `s3://…/audio/aradio/<id>.mp3`; the `/aradio` dashboard tab. Editor = `agent-dispatch` on the dedicated `aradio` route (isolated Cursor today, `fallback: none`). Most hours the gate stops before any model runs. A green run can be a gate stop; a red one after the push means the text published but the audio did not. Dispatch once after merge (the SLO registry reports MISSING until `cursor.json` exists). |
+| `aradio.yml` ("Aradio") | hourly `:50` + `workflow_dispatch` (`force` bypasses the gate) | `research/aradio/` (board `state.json`, immutable `bulletins/YYYY-MM-DD/HHMM.json`, `index.json`, `cursor.json`, `archive/`) + mp3 at `s3://…/audio/aradio/<id>.mp3`; the `/aradio` dashboard tab. Editor = `agent-dispatch` on the dedicated `aradio` route (isolated Cursor today, `fallback: none`). Runs only from `main` (a guard fails any other ref before checkout or spend). Most hours the gate stops before any model runs. A green run can be a gate stop; a red one after the push means the text published but the audio did not. Dispatch once after merge (the SLO registry reports MISSING until `cursor.json` exists). |
 
 ### Meta (CI, code-review, self-improvement)
 
@@ -823,11 +823,21 @@ output or break the pipeline. Read them before editing.
     (a) **Ops, not rewrites** — history is append-only and checked before any
     write, slugs are immutable, threads are resolved, never deleted; letting
     the editor emit a whole board would let one bad generation erase history.
+    History is BOUNDED: `state.json` keeps each thread's newest 12 entries and
+    the writer moves older ones to `archive/YYYY-MM.json` in the same run
+    (archived + retained == prior + new, checked). Unbounded history once
+    grew the board until it filled the editor's whole input budget, and the
+    gate kept saying "go" on an empty inbox.
     (b) **Provenance** — an evidence URL must appear in that run's trusted
-    inbox (or already be on the board) and pass the strict URL rule; a quote
-    must be ONE contiguous verbatim span inside a single line or transcript
-    window. Do not "relax" this to fragment or whole-text matching: both let
-    a quote be stitched from words spoken minutes apart under a real citation.
+    inbox (or already be on the board) and pass the strict URL rule. A quote
+    must be ONE contiguous verbatim span inside a single transcript window of
+    a spoken item or one earnings `Key quotes:` line — never a title, a show
+    note, or Twitter/ticket text (ARA's own model-written summaries) — and
+    the SOURCE'S OWN WORDING of the span is published, not the editor's
+    string. `speaker` survives only where that line names the person. Do not
+    "relax" any of this to fragment, whole-text, or folded-string matching:
+    each let a quote be stitched or re-punctuated into something nobody said,
+    under a real citation.
     (c) **The cursor advances only on publication** — an editor failure or a
     hard validation error commits nothing, so the next hour retries the same
     material; a gate stop is a healthy no-op.
@@ -835,8 +845,10 @@ output or break the pipeline. Read them before editing.
     then the job fails. Never copy the digest's `continue-on-error` TTS
     step, which has exited 0 on Gemini errors since 2026-10-22.
     (e) **Transcripts are working input, never output** — only ≤ 6 excerpts
-    of ≤ 60 words per episode are committed (`research/` is published), and
-    tuber is read-only: never call its summarize/generation endpoints.
+    of ≤ 60 words per episode are committed (`research/` is published), the
+    board holds ≤ 2 quotes / 60 quoted words per source (counting what is
+    already there) with ≤ 8 new quotes per run, and tuber is read-only:
+    never call its summarize/generation endpoints.
     (f) **S3 keys are immutable** (`audio/aradio/<id>.mp3`; s3.guzus.xyz caches
     200s for 4 h behind Cloudflare); the "latest" pointer is
     `research/aradio/index.json`, which Caddy serves uncached.

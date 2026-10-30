@@ -119,7 +119,7 @@ TWITTER_WINDOW = dt.timedelta(hours=26)
 TICKET_WINDOW_DAYS = 2
 FUTURE_SLACK = dt.timedelta(minutes=10)
 
-REVISIT_NOTE = "transcript now available; previously aired from show notes"
+REVISIT_NOTE = "transcript now available; previously offered from show notes only"
 
 # The quote and label budget check_aradio.py enforces on the editor's
 # evidence (its LABEL_MAX is 90). Restated here, not imported, while that

@@ -1033,5 +1033,22 @@ class ParserTest(unittest.TestCase):
         self.assertEqual("https://x.com/a", bi.clean_url(" https://x.com/a "))
 
 
+class ValidatorBudgetParityTest(unittest.TestCase):
+    """context.json tells the editor the validator's quote/label budget.
+
+    The constants are duplicated on purpose (the builder does not import the
+    validator), so this pins them together: a budget the editor is told but
+    the validator does not enforce — or the reverse — fails here.
+    """
+
+    def test_context_limits_match_the_validator(self):
+        import check_aradio as ca
+
+        self.assertEqual(ca.QUOTES_PER_SOURCE, bi.QUOTES_PER_SOURCE)
+        self.assertEqual(ca.QUOTE_WORDS_PER_SOURCE, bi.QUOTE_WORDS_PER_SOURCE)
+        self.assertEqual(ca.QUOTES_PER_RUN, bi.QUOTES_PER_RUN)
+        self.assertEqual(ca.LABEL_MAX, bi.LABEL_CHARS)
+
+
 if __name__ == "__main__":
     unittest.main()

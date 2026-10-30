@@ -214,8 +214,8 @@ def select_windows(segments: list[dict], *, max_windows: int, max_words: int,
 |---|---|
 | `inbox.md` | the new items, rendered for the editor, priority first |
 | `inbox.json` | the same items, machine-readable |
-| `board.json` | a copy of `research/aradio/state.json` (or an empty board) |
-| `context.json` | `now`, `last_bulletin_at`, `last_headline`, limits |
+| `board.json` | the editor's VIEW of `research/aradio/state.json`: unresolved threads and threads resolved in the last 48 h, each with its last 3 history entries and its evidence; older resolved threads are listed by slug in `other_threads` (their slugs are taken). The validator and writer always read the full `state.json`. |
+| `context.json` | `now`, `last_bulletin_at`, `last_headline`, limits — including the validator's quote/label budget (`quotes_per_source` 2, `quote_words_per_source` 60, `quotes_per_run` 8, `label_chars` 90; a parity test pins these to `check_aradio.py`) |
 | `transcripts/<n>.txt` | top transcript windows (`[mm:ss] text`) for spoken items |
 
 The trusted copy of `inbox.json` (with the same `transcripts/`, used to verify
@@ -233,14 +233,29 @@ Item shape:
 
 | Source | Key | Eligible when |
 |---|---|---|
-| `research/podcasts/index.json` | `ep:<episode id>` | published (else first seen) in the last 7 days, and transcript available or first seen ≥ 6 h ago without one |
+| `research/podcasts/index.json` | `ep:<episode id>` (with a transcript) / `ep:<episode id>:meta` (show notes only) | published (else first seen) in the last 7 days, and transcript available or first seen ≥ 6 h ago without one |
 | `research/earnings/index.json` + event `.md` | `earn:<accession>` | filed in the last 3 days |
-| `research/twitter/<date>.md` stories | `tw:<first source URL>` | run section in the last 26 h |
+| `research/twitter/<date>.md` stories | `tw:` + sha256(first source URL + "\n" + normalized title)[:20] (NFKC, case-folded, punctuation → space, whitespace collapsed) | run section in the last 26 h |
 | `research/models/tickets/*.md` | `tk:<slug>:<history length>` | last history entry in the last 2 days |
 
+An episode consumed from show notes only is offered once more when its
+transcript lands (with `note: "transcript now available; previously offered
+from show notes only"`); once consumed with a transcript it is never offered
+again. Distinct stories that cite the same tweet get distinct keys; an
+identical re-published story keeps its key; no key embeds a URL.
+
+For earnings items, a Key-quote line that holds a URL is dropped whole —
+stripping the URL out would splice words that were never adjacent into
+something that reads as verbatim — and a header left with no quote goes too.
+
 Caps: ≤ 40 items (priority first, then newest), ≤ 8 transcript files of
-≤ 20 windows × ≤ 70 words, total ≤ 400 KB. A transcript fetch failure falls
-back to the committed excerpts.
+≤ 20 windows × ≤ 70 words; items (inbox.json, inbox.md, context.json,
+transcripts) ≤ 400 KB and `board.json` ≤ 120 KB, budgeted SEPARATELY so the
+board can never displace new material (over its cap the oldest resolved
+threads move to `other_threads`, then long fields are clipped). A transcript
+fetch failure — including a truncated response — falls back to the committed
+excerpts. New material that leaves zero items staged is a real error (exit 1),
+never an editor run on an empty inbox.
 
 The 7-day episode bound keeps a first run (or a newly registered show's back
 catalogue) from flooding the inbox with old priority items, and keeps an
@@ -306,16 +321,36 @@ accepts a cited URL with or without the brackets.
 
 **Soft errors** (repaired, listed in the bulletin's `warnings`): an evidence
 URL not present in this run's inbox (`url`/`links`) or already on the board is
-**dropped** — the editor cannot introduce a URL; a `quote` over 40 words, or
-one that is not ONE contiguous verbatim span (case- and punctuation-folded)
-inside a single segment of the owning item — its title, one line of its text,
-or one transcript window — is dropped. The URL rule alone cannot stop a
-fabricated quote attributed to a real source, and fragment matching cannot
-either: ellipses, or a match that crosses a line or window boundary, would let
-a "verbatim" quote be stitched from words spoken minutes apart. Over-long text fields are
-truncated; unknown audio tags and URLs in the script are stripped. Evidence
-`kind` (and `at`) are set from the inbox item that owns the URL, never trusted
-from the editor.
+**dropped** — the editor cannot introduce a URL. Over-long text fields are
+truncated (evidence `label` ≤ 90 characters, the width the dashboard shows);
+unknown audio tags and URLs in the script are stripped. Evidence `kind` (and
+`at`) are set from the inbox item that owns the URL, never trusted from the
+editor; a spoken or earnings item owns its URLs before items that merely link
+to them.
+
+**Quotes** are the strictest field, because a quote puts words in someone's
+mouth. A `quote` is kept only if it is found as ONE contiguous run of words
+(case- and punctuation-folded, no ellipses) inside a single transcript window
+of a spoken item (`podcast`, `video`, `earnings-call`), or inside the quoted
+words of one earnings `Key quotes:` line (issuer text from the 8-K). Titles,
+show notes, other text lines, and Twitter/ticket text — which are ARA's own
+model-written summaries — are never quotable. What is published is the
+SOURCE'S OWN WORDING of the matched span, grown to whole tokens; the editor's
+string is only a search key, so inserted punctuation can never change what a
+person said. A quote is also dropped when it is over 40 words, starts within 4
+words after a negation (so "we are going to see AGI this decade" cannot be cut
+from "I don't think we are going to see AGI this decade"), or spans a caption
+speaker change (`>>`). `speaker` is kept only together with a kept quote and
+only where that same line names the person (outside the quoted words; for Key
+quotes, in the line's attribution) — auto-captions do not record who is
+talking. A quoted entry's `label` is the owning item's `source`. Volume: per
+source (a deep link counts as its episode) at most 2 quotes and 60 quoted
+words, counting quotes already on the board, and at most 8 new quotes per run
+— the earnings lane's excerpt policy, enforced on everything Aradio publishes.
+Excess quotes are dropped and their evidence kept. Warnings never contain
+quote text (they are committed with each bulletin). What stays unverifiable
+by design: the prose fields and the spoken script. The prompt forbids naming a
+speaker the source does not name; the validator cannot prove prose true.
 
 ## Writer rules (`scripts/write_aradio_bulletin.py`)
 
@@ -328,9 +363,17 @@ from the editor.
    least-recently-updated lowest-importance ones are auto-resolved ("board
    full"). Resolved threads idle for 7 days move to
    `research/aradio/archive/YYYY-MM.json`.
-3. Records every inbox key as consumed (`cursor.json`), plus
+3. Keeps each thread's history bounded: `state.json` holds the newest 12
+   entries; older ones move, in order and in the same run, to the `history`
+   list of the run month's `archive/YYYY-MM.json`. Checked before anything is
+   written, for every thread: entries archived this run + entries retained ==
+   prior entries + entries stamped this run. Edits, reordering, removal
+   without archiving, a deleted thread, or a changed `first_seen` are refused.
+   (Without the bound, history grew forever and the board eventually filled the
+   editor's whole input budget.)
+4. Records every inbox key as consumed (`cursor.json`), plus
    `last_editor_run_at` and, when on air, `last_bulletin_at`.
-4. Writes atomically (temp file + `os.replace`), stages exact paths only
+5. Writes atomically (temp file + `os.replace`), stages exact paths only
    (`.agent-input/` and `.tmp/` are not gitignored), commits
    `Aradio bulletin YYYY-MM-DD HH:MM UTC` or `Aradio board update …`.
 
@@ -358,9 +401,19 @@ from the editor.
   run so the freshness watchdog's `degraded` signal always has a file to read.
 - `cursor.json` — `{schema, updated_at, last_editor_run_at,
   last_bulletin_at, keys: {key: consumed_at}}`, keys pruned after 21 days.
-- `archive/YYYY-MM.json` — archived resolved threads.
+- `archive/YYYY-MM.json` — append-only:
+  `{schema, month, updated_at, threads: [archived resolved Thread],
+  history: [{slug, first_seen, at, change, archived_at}]}`.
 
-Bulletin `id` is the UTC run stamp `YYYY-MM-DD-HHMM`.
+Bulletin `id` is the UTC run stamp `YYYY-MM-DD-HHMM`. The dashboard's
+"History (N)" therefore shows at most the 12 newest entries.
+
+`aradio.yml` publishes only from `main`: a guard right after the workspace
+quarantine fails any other ref before checkout, so a branch dispatch spends no
+model or TTS budget and uploads no public mp3. `cursor.json` moves only when
+the editor runs, so its freshness SLO is 30 h: replaying the gate over real lane
+data (2026-10-10..30) found routine quiet gaps of 10–21 h, and the only gap
+over 30 h was a genuine three-day Twitter-lane outage.
 
 ## Audio (Gemini 3.8 Flash TTS)
 
