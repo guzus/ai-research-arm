@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "Tau's own terms state: the robot is not autonomous and a person controls it.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c2", "claim_text": "The widely quoted $30/hour is the weekly-subscription price per robot-hour; a one-off booking is $50 per robot-hour on the current booking page.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c3", "claim_text": "Footage is kept and used to train Tau's models under a perpetual licence, and faces are not blurred.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true}
+  ]
+}
