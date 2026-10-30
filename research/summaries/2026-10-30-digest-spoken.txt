@@ -1,0 +1,11 @@
+Speaker 1: Friday, October thirtieth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic has been named as SpaceX's biggest customer, accounting for [emphasis] thirty-four point five percent [/emphasis] of SpaceX's third-quarter revenue.
+Speaker 1: That's against total quarterly revenue of about fourteen point five eight billion dollars, so a single AI lab is now a pillar of a rocket company's top line.
+Speaker 2: And the money keeps flowing around Anthropic, because Nvidia may backstop more than five billion dollars of its data-center debt.
+Speaker 1: On the open-model front, Mistral has open-sourced Mistral Large four, a one-trillion-parameter model with fifty-two billion active parameters.
+Speaker 2: That's a serious open-weights release, and it puts a European lab right back in the frontier conversation.
+Speaker 1: Some quick cloud numbers. AWS grew thirty-nine percent to a [emphasis] one hundred eighty-four billion dollar [/emphasis] run rate, with operating income of seventeen point eight billion dollars, up from eleven point four billion.
+Speaker 2: Worth noting that the memory crunch isn't easing either, because Samsung says its twenty twenty-seven high-bandwidth memory supply is already sold out.
+Speaker 1: Meanwhile Cohere is raising a Series E of up to seven billion Canadian dollars, at a valuation of thirty-five point seven billion Canadian dollars.
+Speaker 2: Trending today, Gemini four Carbon hit eight hundred sixty-eight points on Hacker News, and [dramatic_pause] StackOverflow is now seeing fewer than one thousand questions a month.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

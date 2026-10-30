@@ -1,0 +1,18 @@
+Daily AI Digest - 2026-10-30
+
+TOP STORIES:
+• Anthropic named as SpaceX's biggest customer (34.5% of Q3 revenue)
+• Mistral open-sources 1T-param Mistral Large 4
+• AWS grows 39% to a $184B run rate
+• Samsung says 2027 HBM is sold out
+• Nvidia may backstop $5B+ of Anthropic data-center debt
+
+KEY NUMBERS:
+• SpaceX Q3 revenue $14.575B; Customer B 34.5%
+• AWS operating income $17.8B (vs $11.4B)
+• Mistral Large 4: 1T total / 52B active params
+• Cohere Series E: up to CAD $7B at CAD $35.7B
+
+TRENDING: Gemini 4 Carbon on HN (868 pts), StackOverflow under 1,000 questions/month
+
+Full digest on GitHub.
