@@ -50,6 +50,7 @@ import copy
 import datetime as dt
 import hashlib
 import html
+import http.client
 import json
 import os
 import re
@@ -796,6 +797,11 @@ class TranscriptUnavailable(OSError):
 
 
 RATE_LIMIT_MARKERS = ("temporarily blocked", "rate-limit", "rate limit", "too many requests")
+# Everything a per-item transcript fetch may raise. http.client errors such
+# as IncompleteRead (a truncated chunked body) are HTTPException, not OSError;
+# uncaught, one bad response crashed the whole inbox step instead of falling
+# back to the committed excerpts.
+FETCH_ERRORS = (OSError, ValueError, http.client.HTTPException)
 
 
 def _looks_rate_limited(status: int | None, body: str) -> bool:
@@ -821,7 +827,7 @@ def fetch_transcript(base_url: str, video_id: str) -> list[dict]:
     except urllib.error.HTTPError as exc:
         try:
             body = exc.read(4096).decode("utf-8", errors="replace")
-        except OSError:
+        except (OSError, http.client.HTTPException):
             body = ""
         raise TranscriptUnavailable(
             f"HTTP {exc.code}", rate_limited=_looks_rate_limited(exc.code, body)) from exc
@@ -882,7 +888,7 @@ def transcript_lines(candidate: Candidate, *, fetch: bool, base_url: str,
                 try:
                     segments = fetch_fn(base_url, candidate.video_id)
                     break
-                except (OSError, ValueError, urllib.error.URLError) as exc:
+                except FETCH_ERRORS as exc:
                     if isinstance(exc, TranscriptUnavailable) and exc.rate_limited:
                         retry_delay = TRANSCRIPT_RATE_LIMIT_DELAY_S
                     if attempt == 2:

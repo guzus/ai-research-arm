@@ -6,6 +6,7 @@ from __future__ import annotations
 import contextlib
 import datetime as dt
 import html
+import http.client
 import io
 import json
 import tempfile
@@ -541,6 +542,41 @@ class TranscriptTest(FixtureTest):
                          bi.transcript_url("https://tuber-api.guzus.xyz/api/", "frYSOKvNiiE"))
         with self.assertRaises(ValueError):
             bi.fetch_transcript("https://tuber-api.guzus.xyz", "../summarize")
+
+    def test_truncated_response_falls_back_to_excerpts(self):
+        # http.client.IncompleteRead is an HTTPException, not an OSError.
+        def truncated(base, video_id):
+            raise http.client.IncompleteRead(b'{"segments": [', 243)
+
+        summary = self.repo.build(fetch=True, fetch_fn=truncated,
+                                  select_fn=lambda *a, **k: [])
+        self.assertEqual(["excerpts", "excerpts"],
+                         [item["transcript_source"] for item in self.repo.items()])
+        self.assertTrue(summary["transcripts_degraded"])
+        self.assertTrue(any("IncompleteRead" in w and "using committed excerpts" in w
+                            for w in summary["warnings"]))
+
+    def test_real_fetcher_with_a_cut_chunked_body_reaches_the_fallback(self):
+        response = mock.MagicMock()
+        response.__enter__.return_value = response
+        response.read.side_effect = http.client.IncompleteRead(b'{"segments": [', 243)
+        with mock.patch.object(bi.urllib.request, "urlopen", return_value=response):
+            summary = self.repo.build(
+                fetch=True, fetch_fn=bi.fetch_transcript,
+                select_fn=lambda s, max_windows, max_words: [{"text": "x", "at_s": 0}])
+        self.assertEqual("excerpts", self.repo.items()[0]["transcript_source"])
+        self.assertTrue(summary["transcripts_degraded"])
+
+        class CutBody(io.BytesIO):
+            def read(self, *args):
+                raise http.client.IncompleteRead(b"", 10)
+
+        broken = urllib.error.HTTPError("https://t/api", 500, "Internal Server Error", {},
+                                        CutBody())
+        with mock.patch.object(bi.urllib.request, "urlopen", side_effect=broken):
+            with self.assertRaises(bi.TranscriptUnavailable) as caught:
+                bi.fetch_transcript("https://tuber.example", "frYSOKvNiiE")
+        self.assertFalse(caught.exception.rate_limited)
 
 
 class StagingTest(FixtureTest):
