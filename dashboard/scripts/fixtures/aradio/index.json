@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "updated_at": "2026-10-30T14:52:10Z",
+  "degraded": false,
+  "latest": "2026-10-30-1450",
+  "bulletins": [
+    {
+      "id": "2026-10-30-1450",
+      "aired_at": "2026-10-30T14:50:00Z",
+      "headline": "Alphabet's call puts a number on AI capex as the memory squeeze reaches phones",
+      "path": "bulletins/2026-10-30/1450.json",
+      "audio": {"key": "audio/aradio/2026-10-30-1450.mp3", "bytes": 3874211, "duration_s": 242.1},
+      "covers": ["hyperscaler-capex-q3", "hbm-supply-crunch", "anthropic-ipo"],
+      "kinds": ["earnings-call", "podcast", "twitter"]
+    },
+    {
+      "id": "2026-10-30-1250",
+      "aired_at": "2026-10-30T12:50:00Z",
+      "headline": "Anthropic's filing timeline firms up; EU code of practice settles into enforcement",
+      "path": "bulletins/2026-10-30/1250.json",
+      "audio": null,
+      "covers": ["anthropic-ipo", "eu-ai-act-gpai-code"],
+      "kinds": ["twitter", "ticket"]
+    },
+    {
+      "id": "2026-10-30-1050",
+      "aired_at": "2026-10-30T10:50:00Z",
+      "headline": "Memory makers say HBM is sold out through next year; Gemini enterprise pricing moves",
+      "path": "bulletins/2026-10-30/1050.json",
+      "audio": {"key": "audio/aradio/2026-10-30-1050.mp3", "bytes": 3120044, "duration_s": 196.4},
+      "covers": ["hbm-supply-crunch", "gemini-enterprise-pricing"],
+      "kinds": ["earnings", "video", "twitter"]
+    }
+  ]
+}

@@ -17,6 +17,31 @@ import type { ArmTimeline } from './render/agents';
 import { hydratePricing, renderPricing } from './render/pricing';
 import type { ModelPricing } from './render/pricing';
 import {
+  ARADIO_REL_KEYS,
+  aradioAge,
+  aradioAirState,
+  aradioPlayAria,
+  aradioUtcTime,
+  normalizeAradioBoard,
+  normalizeAradioBulletin,
+  normalizeAradioIndex,
+  pickNextAradioBulletin,
+  renderAradioChecked,
+  renderAradioLog,
+  renderAradioStrip,
+  renderAradioTranscript,
+  renderAradioView,
+} from './render/aradio';
+import type {
+  AradioBoard,
+  AradioBulletin,
+  AradioBulletinEntry,
+  AradioIndex,
+  AradioLoadStatus,
+  AradioTranscriptState,
+  AradioViewState,
+} from './render/aradio';
+import {
   renderDossierRelated,
   renderEvidenceDrawer,
   renderMarketTrends,
@@ -164,10 +189,11 @@ function timeAgo(date: Date): string {
 }
 
 // ── State ─────────────────────────────────────────────
-type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader' | 'agents' | 'pricing';
+type Tab = 'today' | 'twitter' | 'models' | 'frontpage' | 'research' | 'wiki' | 'focusReader' | 'agents' | 'pricing' | 'aradio';
 // Tabs that route by date (calendar-driven). research + wiki are slug-driven
-// (or index views) and are excluded — mirror the research precedent.
-type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader' | 'agents' | 'pricing'>;
+// (or index views) and are excluded — mirror the research precedent. Aradio
+// is a live view of the latest bulletins, not a dated archive.
+type DateTab = Exclude<Tab, 'research' | 'wiki' | 'focusReader' | 'agents' | 'pricing' | 'aradio'>;
 type GenResearchKind = 'fragment' | 'standalone';
 type ResearchLanguage = 'en' | 'ko';
 type GenResearchTranslation = {
@@ -334,11 +360,19 @@ const researchAudioState: ResearchAudioState = {
   utterance: null,
 };
 
+// The bottom bar is the site's ONE audio element, shared by the daily digest
+// and Aradio, so two things can never play at once and a bulletin keeps
+// playing while the listener browses other tabs. `kind` says which surface
+// owns the loaded track: digest tracks derive their src from `date`; Aradio
+// tracks carry an explicit S3 key (`aradioId`) and their own end-of-track
+// policy ("keep listening").
 type DigestAudioState = {
   date: string | null;
   src: string | null;
   title: string;
   dismissedSrc: string | null;
+  kind: 'digest' | 'aradio';
+  aradioId: string | null;
 };
 
 const digestAudioState: DigestAudioState = {
@@ -346,6 +380,8 @@ const digestAudioState: DigestAudioState = {
   src: null,
   title: 'Daily Digest',
   dismissedSrc: null,
+  kind: 'digest',
+  aradioId: null,
 };
 
 let digestAudioEl: HTMLAudioElement | null = null;
@@ -390,6 +426,9 @@ function routeFromState(): string {
   }
   if (activeTab === 'pricing') {
     return '/pricing';
+  }
+  if (activeTab === 'aradio') {
+    return '/aradio';
   }
   if (activeTab === 'research') {
     return selectedSlug ? '/research/' + selectedSlug : paginationRoute('/research', researchIndexPage);
@@ -601,6 +640,18 @@ function runtimeSeoState(target: string): RuntimeSeoState {
       type: 'website',
     };
   }
+  if (activeTab === 'aradio') {
+    return {
+      canonicalPath: '/aradio',
+      description:
+        'Aradio is ara\'s rolling AI-news bulletin: two hosts read what changed in AI since the last bulletin, '
+        + 'next to a live board of the storylines that matter.',
+      documentTitle: `${uiText(activeLanguage, 'page.aradio')} -- ara`,
+      heading: uiText(activeLanguage, 'page.aradio'),
+      indexable: false,
+      type: 'website',
+    };
+  }
   if (activeTab === 'agents') {
     return {
       canonicalPath: '/agents',
@@ -757,6 +808,12 @@ function parseRoute(path: string): boolean {
     syncTabUi();
     return true;
   }
+  if (trimmed === 'aradio') {
+    activeTab = 'aradio';
+    selectedSlug = null;
+    syncTabUi();
+    return true;
+  }
   const forecastMatch = trimmed.match(/^models\/forecast\/([a-z0-9][a-z0-9._-]*[a-z0-9]|[a-z0-9])$/);
   if (forecastMatch) {
     activeTab = 'models';
@@ -836,6 +893,7 @@ function syncTabUi(): void {
   document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
   document.body.classList.toggle('tab-agents', activeTab === 'agents');
   document.body.classList.toggle('tab-pricing', activeTab === 'pricing');
+  document.body.classList.toggle('tab-aradio', activeTab === 'aradio');
 }
 
 // ── Helpers ───────────────────────────────────────────
@@ -1121,6 +1179,659 @@ function paintPricing(data: ModelPricing, gpu: GpuSpotData | null = null): void 
     paintPricing(data, gpu);
   }, benchmark, activeLanguage);
 }
+
+// ── Aradio (live station) ─────────────────────────────
+// research/aradio/{index,state}.json change with every bulletin. Caddy serves
+// research JSON with max-age=0 and Cloudflare does not cache JSON
+// (cf-cache-status: DYNAMIC), so a cache-busted poll sees a bulletin as soon
+// as Railway deploys the commit that carries it. Bulletin files are immutable
+// (one per UTC run stamp) and are cached in memory for the session. Audio is
+// the S3 key the index names, played through the shared bottom bar.
+const ARADIO_POLL_MS = 5 * 60 * 1000;
+const ARADIO_TICK_MS = 30 * 1000;
+// How long the first paint waits for the latest bulletin's transcript before
+// painting without it (it then fills in) — normally one quick round trip.
+const ARADIO_DETAIL_WAIT_MS = 1500;
+const ARADIO_KEEP_KEY = 'ara-aradio-keep-listening';
+
+type AradioFetch = { status: 'ok'; data: unknown } | { status: 'missing' } | { status: 'error' };
+
+let aradioIndex: AradioIndex | null = null;
+let aradioIndexStatus: AradioLoadStatus = 'missing';
+let aradioBoard: AradioBoard | null = null;
+let aradioBoardStatus: AradioLoadStatus = 'missing';
+// Newer data the poller found but the reader has not asked to see yet.
+let aradioPendingIndex: AradioIndex | null = null;
+let aradioPendingBoard: AradioBoard | null = null;
+let aradioSelectedId: string | null = null;
+// The transcript follows the newest bulletin until the reader picks another.
+let aradioFollowLatest = true;
+let aradioShowAll = false;
+let aradioKeepListening = readAradioKeepListening();
+let aradioCheckedAt: number | null = null;
+let aradioLastPollAt = 0;
+let aradioPollInFlight = false;
+let aradioTicker: number | null = null;
+let aradioAnnouncedId: string | null = null;
+// "Keep listening": bulletins that aired mid-session play next (oldest
+// first), then playback walks back from the cursor to earlier bulletins.
+let aradioQueue: string[] = [];
+let aradioBackCursor: string | null = null;
+const aradioHeard = new Set<string>();
+const aradioBulletins = new Map<string, AradioBulletin>();
+const aradioBulletinRequests = new Map<string, Promise<AradioBulletin | null>>();
+const aradioBulletinFailed = new Set<string>();
+
+function readAradioKeepListening(): boolean {
+  try {
+    return localStorage.getItem(ARADIO_KEEP_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
+async function fetchAradioJson(path: string, signal?: AbortSignal, bust = true): Promise<AradioFetch> {
+  const url = `${DATA_BASE}/aradio/${path}${bust ? `?t=${Date.now()}` : ''}`;
+  let resp: Response;
+  try {
+    resp = await fetch(url, { cache: bust ? 'no-store' : 'default', signal });
+  } catch {
+    return { status: 'error' };
+  }
+  // Production answers a file that does not exist yet with a real 404 —
+  // that is the normal state before the first bulletin, not an error.
+  if (resp.status === 404 || resp.status === 410) return { status: 'missing' };
+  if (!resp.ok) return { status: 'error' };
+  // Dev/preview servers answer unknown paths with the SPA shell (HTML 200).
+  if ((resp.headers.get('content-type') || '').includes('text/html')) return { status: 'missing' };
+  try {
+    return { status: 'ok', data: await resp.json() };
+  } catch {
+    return { status: 'error' };
+  }
+}
+
+function aradioIndexFrom(result: AradioFetch): { index: AradioIndex | null; status: AradioLoadStatus } {
+  if (result.status !== 'ok') return { index: null, status: result.status };
+  const index = normalizeAradioIndex(result.data);
+  return index ? { index, status: 'ok' } : { index: null, status: 'error' };
+}
+
+function aradioBoardFrom(result: AradioFetch): { board: AradioBoard | null; status: AradioLoadStatus } {
+  if (result.status !== 'ok') return { board: null, status: result.status };
+  const board = normalizeAradioBoard(result.data);
+  return board ? { board, status: 'ok' } : { board: null, status: 'error' };
+}
+
+function aradioLatestEntry(): AradioBulletinEntry | null {
+  return aradioIndex?.bulletins[0] ?? null;
+}
+
+function aradioSelectedEntry(): AradioBulletinEntry | null {
+  return aradioIndex?.bulletins.find((entry) => entry.id === aradioSelectedId) ?? null;
+}
+
+/** Playback can target a bulletin the poller saw before the reader applied it. */
+function aradioEntry(id: string | null): AradioBulletinEntry | null {
+  if (!id) return null;
+  return aradioPendingIndex?.bulletins.find((entry) => entry.id === id)
+    ?? aradioIndex?.bulletins.find((entry) => entry.id === id)
+    ?? null;
+}
+
+function syncAradioSelection(): void {
+  const bulletins = aradioIndex?.bulletins ?? [];
+  if (aradioFollowLatest || !bulletins.some((entry) => entry.id === aradioSelectedId)) {
+    aradioSelectedId = bulletins[0]?.id ?? null;
+    aradioFollowLatest = true;
+  }
+}
+
+function ensureAradioBulletin(entry: AradioBulletinEntry): Promise<AradioBulletin | null> {
+  const cached = aradioBulletins.get(entry.id);
+  if (cached) return Promise.resolve(cached);
+  const pending = aradioBulletinRequests.get(entry.id);
+  if (pending) return pending;
+  if (!entry.path) {
+    aradioBulletinFailed.add(entry.id);
+    return Promise.resolve(null);
+  }
+  const path = entry.path;
+  const request = (async () => {
+    // Immutable file: no cache-buster, so the browser may reuse it.
+    const result = await fetchAradioJson(path, undefined, false);
+    const bulletin = result.status === 'ok' ? normalizeAradioBulletin(result.data, entry) : null;
+    if (bulletin) {
+      aradioBulletins.set(entry.id, bulletin);
+      aradioBulletinFailed.delete(entry.id);
+    } else {
+      aradioBulletinFailed.add(entry.id);
+    }
+    return bulletin;
+  })().finally(() => {
+    aradioBulletinRequests.delete(entry.id);
+  });
+  aradioBulletinRequests.set(entry.id, request);
+  return request;
+}
+
+function aradioTranscriptState(): AradioTranscriptState {
+  const entry = aradioSelectedEntry();
+  if (!entry) return { kind: 'none' };
+  const bulletin = aradioBulletins.get(entry.id);
+  if (bulletin) return { kind: 'ready', bulletin };
+  return aradioBulletinFailed.has(entry.id) ? { kind: 'error', entry } : { kind: 'loading', entry };
+}
+
+function aradioViewState(): AradioViewState {
+  const latest = aradioLatestEntry();
+  return {
+    language: activeLanguage,
+    nowMs: Date.now(),
+    index: aradioIndex,
+    indexStatus: aradioIndexStatus,
+    board: aradioBoard,
+    boardStatus: aradioBoardStatus,
+    latestDetail: latest ? aradioBulletins.get(latest.id) ?? null : null,
+    selectedId: aradioSelectedId,
+    transcript: aradioTranscriptState(),
+    keepListening: aradioKeepListening,
+    showAll: aradioShowAll,
+    checkedAt: aradioCheckedAt,
+  };
+}
+
+/** Initial fetch for load(): index + board, then (briefly) the latest detail. */
+async function loadAradio(signal: AbortSignal): Promise<void> {
+  const [indexResult, boardResult] = await Promise.all([
+    fetchAradioJson('index.json', signal),
+    fetchAradioJson('state.json', signal),
+  ]);
+  if (signal.aborted) return;
+  const index = aradioIndexFrom(indexResult);
+  const board = aradioBoardFrom(boardResult);
+  // A failed refresh keeps what the page already had rather than blanking it.
+  if (index.status !== 'error' || !aradioIndex) {
+    aradioIndex = index.index;
+    aradioIndexStatus = index.status;
+  }
+  if (board.status !== 'error' || !aradioBoard) {
+    aradioBoard = board.board;
+    aradioBoardStatus = board.status;
+  }
+  aradioPendingIndex = null;
+  aradioPendingBoard = null;
+  aradioLastPollAt = Date.now();
+  if (index.status !== 'error' || board.status !== 'error') aradioCheckedAt = aradioLastPollAt;
+  syncAradioSelection();
+  const wanted = [aradioLatestEntry(), aradioSelectedEntry()]
+    .filter((entry): entry is AradioBulletinEntry => entry !== null && !aradioBulletins.has(entry.id));
+  if (!wanted.length) return;
+  await Promise.race([
+    Promise.all(wanted.map(ensureAradioBulletin)),
+    new Promise((resolve) => window.setTimeout(resolve, ARADIO_DETAIL_WAIT_MS)),
+  ]);
+}
+
+function paintAradio(): void {
+  setSafeContent(content, renderAradioView(aradioViewState()));
+  updateAradioChip();
+  syncAradioPlayUi();
+  fillAradioDetails();
+  startAradioTicker();
+}
+
+/** Fetch whatever the painted view still lacks and patch it in place. */
+function fillAradioDetails(): void {
+  const latest = aradioLatestEntry();
+  const selected = aradioSelectedEntry();
+  for (const entry of [latest, selected]) {
+    if (!entry || aradioBulletins.has(entry.id) || aradioBulletinFailed.has(entry.id)) continue;
+    void ensureAradioBulletin(entry).then(() => {
+      if (activeTab !== 'aradio') return;
+      if (entry.id === aradioLatestEntry()?.id) paintAradioStrip();
+      if (entry.id === aradioSelectedId) paintAradioTranscript();
+    });
+  }
+}
+
+function paintAradioStrip(): void {
+  const slot = content.querySelector<HTMLElement>('[data-aradio-strip-slot]');
+  const latest = aradioLatestEntry();
+  const detail = latest ? aradioBulletins.get(latest.id) : null;
+  if (!slot || !latest || !detail) return;
+  setSafeContent(slot, renderAradioStrip(latest.id, detail.lines));
+  syncAradioPlayUi();
+}
+
+function paintAradioTranscript(): void {
+  const slot = content.querySelector<HTMLElement>('[data-aradio-transcript-slot]');
+  if (!slot) return;
+  const boardSlugs = new Set((aradioBoard?.threads ?? []).map((thread) => thread.slug));
+  setSafeContent(slot, renderAradioTranscript(aradioTranscriptState(), { language: activeLanguage, boardSlugs }));
+  content.querySelectorAll<HTMLElement>('[data-aradio-row]').forEach((row) => {
+    const selected = row.dataset.aradioRow === aradioSelectedId;
+    row.classList.toggle('is-selected', selected);
+    const button = row.querySelector('[data-aradio-select]');
+    if (selected) button?.setAttribute('aria-current', 'true');
+    else button?.removeAttribute('aria-current');
+  });
+  syncAradioPlayUi();
+}
+
+function paintAradioLog(): void {
+  const slot = content.querySelector<HTMLElement>('[data-aradio-log]');
+  if (!slot) return;
+  setSafeContent(slot, renderAradioLog(aradioViewState()));
+  syncAradioPlayUi();
+}
+
+function selectAradioBulletin(id: string, opts: { scroll?: 'if-needed' | 'always' } = {}): void {
+  const entry = aradioIndex?.bulletins.find((item) => item.id === id);
+  if (!entry) return;
+  aradioSelectedId = id;
+  aradioFollowLatest = id === aradioLatestEntry()?.id;
+  // Selecting again is also the retry for a transcript that failed to load.
+  aradioBulletinFailed.delete(id);
+  if (!aradioBulletins.has(id)) {
+    void ensureAradioBulletin(entry).then(() => {
+      if (activeTab === 'aradio' && aradioSelectedId === id) paintAradioTranscript();
+    });
+  }
+  paintAradioTranscript();
+  const slot = content.querySelector<HTMLElement>('[data-aradio-transcript-slot]');
+  if (!slot || !opts.scroll) return;
+  // Bring the new transcript's start into view when it is below the fold, or
+  // when the reader is deep inside the previous one (the log is sticky).
+  const rect = slot.getBoundingClientRect();
+  const offscreen = rect.top > window.innerHeight * 0.75 || rect.top < 0;
+  if (opts.scroll === 'always' || offscreen) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    slot.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  }
+}
+
+function focusAradioThread(slug: string): void {
+  const target = document.getElementById(`aradio-thread-${slug}`);
+  if (!target) return;
+  const resolved = target.closest('details');
+  if (resolved && !resolved.open) resolved.open = true;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+  target.setAttribute('tabindex', '-1');
+  target.focus({ preventScroll: true });
+  target.classList.add('is-flash');
+  window.setTimeout(() => target.classList.remove('is-flash'), 1600);
+}
+
+function setAradioKeepListening(on: boolean): void {
+  aradioKeepListening = on;
+  try {
+    localStorage.setItem(ARADIO_KEEP_KEY, on ? '1' : '0');
+  } catch {
+    // The choice still holds for this session.
+  }
+  if (!on) aradioQueue = [];
+  syncAradioPlayUi();
+  updateAradioChip();
+}
+
+function aradioAudioUrl(entry: AradioBulletinEntry): string | null {
+  return entry.audio ? `${AUDIO_BASE}/${entry.audio.key}` : null;
+}
+
+/** An Aradio track is loaded in the shared bar and has not finished. */
+function aradioSessionActive(): boolean {
+  const audio = digestAudioEl;
+  return digestAudioState.kind === 'aradio' && Boolean(audio && digestAudioState.src && !audio.ended);
+}
+
+function aradioPlaying(): boolean {
+  const audio = digestAudioEl;
+  return aradioSessionActive() && Boolean(audio && !audio.paused);
+}
+
+function setAradioTrack(entry: AradioBulletinEntry, autoplay: boolean): void {
+  const src = aradioAudioUrl(entry);
+  if (!src) return;
+  const audio = ensureDigestAudioPlayer();
+  const changed = digestAudioState.src !== src || audio.getAttribute('src') !== src;
+  digestAudioState.kind = 'aradio';
+  digestAudioState.aradioId = entry.id;
+  digestAudioState.date = null;
+  digestAudioState.src = src;
+  digestAudioState.title = uiText(activeLanguage, 'aradio.playerTitle', {
+    time: aradioUtcTime(entry.airedAt),
+    headline: entry.headline || aradioUtcTime(entry.airedAt),
+  });
+  digestAudioState.dismissedSrc = null;
+  if (changed) {
+    audio.src = src;
+    audio.currentTime = 0;
+    audio.load();
+  }
+  showDigestAudioPlayer();
+  updateDigestAudioUi();
+  // Keep-listening may need to keep polling after the reader leaves the tab.
+  startAradioTicker();
+  if (autoplay) {
+    stopResearchAudio();
+    void audio.play().catch(() => {
+      updateDigestAudioUi();
+    });
+  }
+}
+
+async function toggleAradioPlayback(id: string | null): Promise<void> {
+  if (!id) return;
+  const audio = ensureDigestAudioPlayer();
+  const isCurrent = digestAudioState.kind === 'aradio'
+    && digestAudioState.aradioId === id
+    && Boolean(digestAudioState.src)
+    && audio.getAttribute('src') === digestAudioState.src;
+  if (!isCurrent) {
+    const entry = aradioEntry(id);
+    if (!entry?.audio) return;
+    // A manual pick re-anchors "continue to earlier bulletins" here.
+    aradioBackCursor = id;
+    aradioQueue = aradioQueue.filter((queued) => queued !== id);
+    setAradioTrack(entry, true);
+    return;
+  }
+  digestAudioState.dismissedSrc = null;
+  showDigestAudioPlayer();
+  if (audio.paused || audio.ended) {
+    stopResearchAudio();
+    // Resuming from the bar on another tab re-arms keep-listening polling.
+    startAradioTicker();
+    try {
+      await audio.play();
+    } catch {
+      updateDigestAudioUi();
+    }
+  } else {
+    audio.pause();
+  }
+  updateDigestAudioUi();
+}
+
+/** On `ended`: play what "keep listening" picks next. False = stop as usual. */
+function continueAradioAfterEnd(): boolean {
+  const ended = digestAudioState.aradioId;
+  if (ended) aradioHeard.add(ended);
+  if (!ended || !aradioKeepListening) return false;
+  const bulletins = (aradioPendingIndex ?? aradioIndex)?.bulletins ?? [];
+  const next = pickNextAradioBulletin(bulletins, {
+    heard: aradioHeard,
+    queue: aradioQueue,
+    backCursor: aradioBackCursor ?? ended,
+  });
+  if (!next) return false;
+  const entry = bulletins.find((item) => item.id === next.id);
+  if (!entry) return false;
+  aradioQueue = next.queue;
+  aradioBackCursor = next.backCursor;
+  setAradioTrack(entry, true);
+  updateAradioChip();
+  return true;
+}
+
+function navigateToAradioTrack(): void {
+  const id = digestAudioState.aradioId;
+  if (activeTab === 'aradio') {
+    if (id) selectAradioBulletin(id, { scroll: 'always' });
+    return;
+  }
+  if (id) {
+    aradioSelectedId = id;
+    aradioFollowLatest = false;
+  }
+  latestAliasRequested = null;
+  clearRootRoute();
+  activeTab = 'aradio';
+  selectedSlug = null;
+  syncTabUi();
+  void load();
+}
+
+/** Bulletins in the poller's newer index that the reader has not seen. */
+function aradioFreshBulletins(): AradioBulletinEntry[] {
+  if (!aradioPendingIndex) return [];
+  const shown = new Set((aradioIndex?.bulletins ?? []).map((entry) => entry.id));
+  const newestShown = Date.parse(aradioIndex?.bulletins[0]?.airedAt ?? '') || 0;
+  return aradioPendingIndex.bulletins.filter((entry) => !shown.has(entry.id) && Date.parse(entry.airedAt) > newestShown);
+}
+
+async function pollAradio(): Promise<void> {
+  if (aradioPollInFlight) return;
+  aradioPollInFlight = true;
+  aradioLastPollAt = Date.now();
+  try {
+    const [indexResult, boardResult] = await Promise.all([
+      fetchAradioJson('index.json'),
+      fetchAradioJson('state.json'),
+    ]);
+    const index = aradioIndexFrom(indexResult);
+    const board = aradioBoardFrom(boardResult);
+    // A failed poll keeps showing what we have; "Checked" ages honestly.
+    if (index.status === 'error' && board.status === 'error') return;
+    aradioCheckedAt = Date.now();
+    if (index.status === 'ok' && index.index) {
+      const shownNewest = aradioIndex?.bulletins[0]?.id ?? null;
+      if (index.index.bulletins[0] && index.index.bulletins[0].id !== shownNewest) aradioPendingIndex = index.index;
+    }
+    if (board.status === 'ok' && board.board) {
+      const changed = !aradioBoard || board.board.updatedAt !== aradioBoard.updatedAt;
+      if (changed) aradioPendingBoard = board.board;
+    }
+    const fresh = aradioFreshBulletins();
+    if (fresh.length && aradioKeepListening && aradioSessionActive()) {
+      const current = digestAudioState.aradioId;
+      for (const entry of fresh.slice().reverse()) {
+        if (entry.audio && entry.id !== current && !aradioHeard.has(entry.id) && !aradioQueue.includes(entry.id)) {
+          aradioQueue.push(entry.id);
+        }
+      }
+    }
+    if (activeTab !== 'aradio') return;
+    const emptyView = !aradioIndex?.bulletins.length && !aradioBoard?.threads.length;
+    if (emptyView && (aradioPendingIndex || aradioPendingBoard)) {
+      // Nothing on screen to disrupt: show the first bulletin right away.
+      applyAradioPending();
+      return;
+    }
+    const checked = content.querySelector<HTMLElement>('[data-aradio-checked]');
+    if (checked) setSafeContent(checked, renderAradioChecked(aradioCheckedAt, activeLanguage, Date.now()));
+    // Announce each new bulletin once, not on every poll that still sees it.
+    if (fresh.length && fresh[0].id !== aradioAnnouncedId) {
+      aradioAnnouncedId = fresh[0].id;
+      const live = content.querySelector<HTMLElement>('[data-aradio-live]');
+      if (live) live.textContent = `${uiText(activeLanguage, 'aradio.newBulletin')}: ${fresh[0].headline}`;
+    }
+    updateAradioChip();
+  } finally {
+    aradioPollInFlight = false;
+  }
+}
+
+function updateAradioChip(): void {
+  const chip = content.querySelector<HTMLButtonElement>('[data-aradio-apply]');
+  if (!chip) return;
+  const label = chip.querySelector<HTMLElement>('[data-aradio-update-text]');
+  const timeLabel = chip.querySelector<HTMLElement>('[data-aradio-update-time]');
+  const fresh = aradioFreshBulletins();
+  let text = '';
+  // Kept apart from the text so narrow screens can drop it instead of
+  // truncating the message mid-word.
+  let time = '';
+  if (fresh.length) {
+    const queued = aradioKeepListening && fresh.some((entry) => aradioQueue.includes(entry.id));
+    if (queued) {
+      text = uiText(activeLanguage, 'aradio.newQueued');
+    } else if (fresh.length === 1) {
+      text = uiText(activeLanguage, 'aradio.newBulletin');
+      time = `${aradioUtcTime(fresh[0].airedAt)} UTC`;
+    } else {
+      text = uiText(activeLanguage, 'aradio.newBulletins', { count: fresh.length });
+    }
+  } else if (aradioPendingBoard) {
+    text = uiText(activeLanguage, 'aradio.boardUpdated');
+  }
+  chip.hidden = !text;
+  if (label) label.textContent = text;
+  if (timeLabel) timeLabel.textContent = time;
+  if (text) chip.setAttribute('aria-label', `${text}${time ? ` ${time}` : ''}. ${uiText(activeLanguage, 'aradio.showUpdate')}`);
+  else chip.removeAttribute('aria-label');
+}
+
+function applyAradioPending(): void {
+  if (aradioPendingIndex) {
+    aradioIndex = aradioPendingIndex;
+    aradioIndexStatus = 'ok';
+  }
+  if (aradioPendingBoard) {
+    aradioBoard = aradioPendingBoard;
+    aradioBoardStatus = 'ok';
+  }
+  aradioPendingIndex = null;
+  aradioPendingBoard = null;
+  syncAradioSelection();
+  paintAradio();
+}
+
+function startAradioTicker(): void {
+  if (aradioTicker === null) aradioTicker = window.setInterval(aradioTick, ARADIO_TICK_MS);
+}
+
+function stopAradioTicker(): void {
+  if (aradioTicker === null) return;
+  window.clearInterval(aradioTicker);
+  aradioTicker = null;
+}
+
+// Polls only while someone can notice: the Aradio tab is visible, or a
+// bulletin is playing with "keep listening" on (background listening is the
+// point of a radio, and a queued new bulletin needs a fresh index).
+function aradioTick(): void {
+  const onTab = activeTab === 'aradio';
+  const watching = onTab && document.visibilityState === 'visible';
+  const listening = aradioKeepListening && aradioPlaying();
+  if (!onTab && !listening) {
+    stopAradioTicker();
+    return;
+  }
+  if (watching) refreshAradioClock();
+  if ((watching || listening) && Date.now() - aradioLastPollAt >= ARADIO_POLL_MS) void pollAradio();
+}
+
+/** Re-age every relative time and re-evaluate ON AIR without a re-render. */
+function refreshAradioClock(): void {
+  if (activeTab !== 'aradio') return;
+  const now = Date.now();
+  const hero = content.querySelector<HTMLElement>('.aradio-hero[data-aradio-hero]');
+  const sign = hero?.querySelector<HTMLElement>('[data-aradio-sign]');
+  if (hero && sign) {
+    const air = aradioAirState(sign.dataset.aired || null, now);
+    hero.classList.toggle('aradio-hero--live', air.state === 'live');
+    hero.classList.toggle('aradio-hero--idle', air.state === 'idle');
+    const signText = sign.querySelector<HTMLElement>('[data-aradio-sign-text]');
+    if (signText) signText.textContent = uiText(activeLanguage, air.state === 'live' ? 'aradio.onAir' : 'aradio.offAir');
+    const age = hero.querySelector<HTMLElement>('.aradio-hero-age[data-aradio-rel]');
+    if (age) age.dataset.aradioRelKey = air.state === 'live' ? 'aradio.airedAgo' : 'aradio.lastBulletin';
+  }
+  content.querySelectorAll<HTMLElement>('[data-aradio-rel]').forEach((el) => {
+    const key = el.dataset.aradioRelKey as UiCopyKey;
+    if (!ARADIO_REL_KEYS.includes(key)) return;
+    el.textContent = uiText(activeLanguage, key, { age: aradioAge(el.dataset.aradioRel || null, now, activeLanguage) });
+  });
+}
+
+/** Mirror the shared player's state onto every Aradio control on the page. */
+function syncAradioPlayUi(): void {
+  if (activeTab !== 'aradio') return;
+  const audio = digestAudioEl;
+  const currentId = digestAudioState.kind === 'aradio' ? digestAudioState.aradioId : null;
+  const playing = Boolean(audio && currentId && !audio.paused && !audio.ended);
+  const started = Boolean(audio && currentId && audio.currentTime > 0 && !audio.ended);
+  content.querySelectorAll<HTMLButtonElement>('[data-aradio-play]').forEach((button) => {
+    const id = button.dataset.aradioPlay || '';
+    const isCurrent = id === currentId;
+    const isPlaying = isCurrent && playing;
+    button.classList.toggle('is-playing', isPlaying);
+    button.classList.toggle('is-current', isCurrent);
+    if (button.getAttribute('aria-pressed') !== String(isPlaying)) button.setAttribute('aria-pressed', String(isPlaying));
+    const entry = aradioEntry(id);
+    const aria = entry ? aradioPlayAria(entry, activeLanguage, isPlaying) : null;
+    if (aria && button.getAttribute('aria-label') !== aria) button.setAttribute('aria-label', aria);
+    const label = button.querySelector<HTMLElement>('[data-aradio-play-label]');
+    if (label) {
+      const next = uiText(activeLanguage, isPlaying ? 'aradio.pause' : isCurrent && started ? 'aradio.resume' : 'aradio.play');
+      if (label.textContent !== next) label.textContent = next;
+    }
+  });
+  content.querySelectorAll<HTMLElement>('[data-aradio-keep]').forEach((toggle) => {
+    toggle.setAttribute('aria-checked', String(aradioKeepListening));
+  });
+  const duration = audio && Number.isFinite(audio.duration) ? audio.duration : 0;
+  const fraction = audio && duration > 0 ? Math.min(1, audio.currentTime / duration) : 0;
+  content.querySelectorAll<HTMLElement>('[data-aradio-strip]').forEach((strip) => {
+    const loaded = strip.dataset.aradioStrip === currentId;
+    strip.classList.toggle('is-loaded', loaded);
+    strip.style.setProperty('--aradio-progress', `${((loaded ? fraction : 0) * 100).toFixed(2)}%`);
+  });
+  // Follow-along: highlight the line being read, estimated by word share.
+  const transcript = content.querySelector<HTMLElement>('[data-aradio-transcript]');
+  const following = Boolean(transcript && transcript.dataset.aradioTranscript === currentId && started && duration > 0);
+  transcript?.querySelectorAll<HTMLElement>('.aradio-line').forEach((line) => {
+    const start = Number(line.dataset.aradioLineStart);
+    const end = Number(line.dataset.aradioLineEnd);
+    line.classList.toggle('is-speaking', following && fraction >= start && fraction < end);
+  });
+}
+
+function handleAradioClick(target: HTMLElement): boolean {
+  const play = target.closest<HTMLElement>('[data-aradio-play]');
+  if (play) {
+    void toggleAradioPlayback(play.dataset.aradioPlay || null);
+    return true;
+  }
+  const select = target.closest<HTMLElement>('[data-aradio-select]');
+  if (select) {
+    selectAradioBulletin(select.dataset.aradioSelect || '', { scroll: 'if-needed' });
+    return true;
+  }
+  const read = target.closest<HTMLElement>('[data-aradio-read]');
+  if (read) {
+    selectAradioBulletin(read.dataset.aradioRead || '', { scroll: 'always' });
+    return true;
+  }
+  if (target.closest('[data-aradio-apply]')) {
+    applyAradioPending();
+    return true;
+  }
+  if (target.closest('[data-aradio-keep]')) {
+    setAradioKeepListening(!aradioKeepListening);
+    return true;
+  }
+  if (target.closest('[data-aradio-more]')) {
+    aradioShowAll = !aradioShowAll;
+    paintAradioLog();
+    content.querySelector<HTMLElement>('[data-aradio-more]')?.focus();
+    return true;
+  }
+  const goto = target.closest<HTMLElement>('[data-aradio-goto]');
+  if (goto) {
+    focusAradioThread(goto.dataset.aradioGoto || '');
+    return true;
+  }
+  return false;
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState !== 'visible' || activeTab !== 'aradio') return;
+  refreshAradioClock();
+  if (Date.now() - aradioLastPollAt >= ARADIO_POLL_MS) void pollAradio();
+});
 
 function hydrateAvailabilityFromManifest(m: Manifest): void {
   // Calendar/availability is date-keyed; the research tab is slug-keyed and
@@ -1572,7 +2283,8 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
     const now = Date.now();
     if (now - lastDigestAudioBarActivation < 250) return;
     lastDigestAudioBarActivation = now;
-    void toggleDigestAudioPlayback();
+    if (digestAudioState.kind === 'aradio') void toggleAradioPlayback(digestAudioState.aradioId);
+    else void toggleDigestAudioPlayback();
   };
   digestAudioPlayEl.addEventListener('pointerup', activateBarToggle);
   digestAudioPlayEl.addEventListener('click', activateBarToggle);
@@ -1580,7 +2292,10 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
     if (event.key !== 'Enter' && event.key !== ' ') return;
     activateBarToggle(event);
   });
-  digestAudioTitleEl.addEventListener('click', navigateToDigestAudioDate);
+  digestAudioTitleEl.addEventListener('click', () => {
+    if (digestAudioState.kind === 'aradio') navigateToAradioTrack();
+    else navigateToDigestAudioDate();
+  });
   digestAudioProgressEl.addEventListener('input', () => {
     const audio = ensureDigestAudioPlayer();
     const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
@@ -1596,6 +2311,7 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
   digestAudioEl.addEventListener('play', updateDigestAudioUi);
   digestAudioEl.addEventListener('pause', updateDigestAudioUi);
   digestAudioEl.addEventListener('ended', () => {
+    if (digestAudioState.kind === 'aradio' && continueAradioAfterEnd()) return;
     hideDigestAudioPlayer();
     updateDigestAudioUi();
   });
@@ -1622,6 +2338,8 @@ function setDigestAudioTrack(dateStr: string, autoplay: boolean): void {
   const audio = ensureDigestAudioPlayer();
   const src = digestAudioUrl(dateStr);
   const changed = digestAudioState.src !== src || audio.getAttribute('src') !== src;
+  digestAudioState.kind = 'digest';
+  digestAudioState.aradioId = null;
   digestAudioState.date = dateStr;
   digestAudioState.src = src;
   digestAudioState.title = digestAudioTitle(dateStr);
@@ -1658,6 +2376,8 @@ function syncDigestAudioForDate(dateStr: string): void {
       updateDigestAudioUi();
       return;
     }
+    digestAudioState.kind = 'digest';
+    digestAudioState.aradioId = null;
     digestAudioState.date = dateStr;
     digestAudioState.src = src;
     digestAudioState.title = digestAudioTitle(dateStr);
@@ -1723,7 +2443,14 @@ function updateDigestAudioUi(): void {
   const duration = audio && Number.isFinite(audio.duration) ? audio.duration : 0;
   const current = audio ? audio.currentTime : 0;
   const pct = duration > 0 ? Math.round((current / duration) * 1000) : 0;
-  const label = isPlaying ? uiText(activeLanguage, 'today.pauseAudio') : uiText(activeLanguage, 'today.playAudio');
+  const isAradio = digestAudioState.kind === 'aradio';
+  const label = isPlaying
+    ? uiText(activeLanguage, isAradio ? 'aradio.pause' : 'today.pauseAudio')
+    : uiText(activeLanguage, isAradio ? 'aradio.play' : 'today.playAudio');
+  const barLabel = uiText(activeLanguage, isAradio ? 'aradio.player' : 'today.audioPlayer');
+  if (digestAudioBarEl && digestAudioBarEl.getAttribute('aria-label') !== barLabel) digestAudioBarEl.setAttribute('aria-label', barLabel);
+  const seekLabel = uiText(activeLanguage, isAradio ? 'aradio.seek' : 'today.seekAudio');
+  if (digestAudioProgressEl && digestAudioProgressEl.getAttribute('aria-label') !== seekLabel) digestAudioProgressEl.setAttribute('aria-label', seekLabel);
 
   if (digestAudioPlayEl) {
     digestAudioPlayEl.setAttribute('aria-label', label);
@@ -1772,6 +2499,7 @@ function updateDigestAudioUi(): void {
           : uiText(activeLanguage, 'today.playAudio');
     }
   });
+  syncAradioPlayUi();
 }
 
 function updateResearchFileAudioUi(): void {
@@ -2219,6 +2947,8 @@ function showLoading(): void {
     ? 'loading.arm'
     : activeTab === 'pricing'
     ? 'loading.pricing'
+    : activeTab === 'aradio'
+    ? 'loading.aradio'
     : activeTab === 'research'
     ? (selectedSlug ? 'loading.article' : 'loading.research')
     : activeTab === 'wiki'
@@ -2252,6 +2982,8 @@ function showEmpty(dateStr: string): void {
     ? uiText(activeLanguage, 'empty.arm')
     : activeTab === 'pricing'
     ? uiText(activeLanguage, 'empty.pricing')
+    : activeTab === 'aradio'
+    ? uiText(activeLanguage, 'empty.aradio')
     : activeTab === 'research'
     ? (selectedSlug ? uiText(activeLanguage, 'empty.article', { slug: selectedSlug }) : uiText(activeLanguage, 'empty.research'))
     : uiText(activeLanguage, 'empty.twitter', { date: dateStr });
@@ -4932,8 +5664,12 @@ function renderToday(md: string, frontPage: FrontPageAsset | null = null): void 
     language: activeLanguage,
   }));
   if (digestUnavailable) {
-    digestAudioEl?.pause();
-    hideDigestAudioPlayer();
+    // Silence only a digest track: an Aradio bulletin playing in the shared
+    // bar belongs to the listener, not to this date.
+    if (digestAudioState.kind === 'digest') {
+      digestAudioEl?.pause();
+      hideDigestAudioPlayer();
+    }
     return;
   }
   if (frontPage) enhanceNewspaper();
@@ -6431,6 +7167,21 @@ async function load(): Promise<void> {
       updateSearchCount();
       return;
     }
+    if (activeTab === 'aradio') {
+      const result = await withTimeout(loadAradio(controller.signal), LOAD_TIMEOUT_MS, controller);
+      if (requestId !== loadRequestId || activeTab !== 'aradio') return;
+      if (result === 'timeout' && !aradioIndex && !aradioBoard) {
+        showError('Loading timed out', 'Network may be slow. Click to retry.');
+      } else {
+        // Missing files are not an error: the view renders its empty state.
+        paintAradio();
+      }
+      renderCalendar();
+      currentSection = 0;
+      updateNavCounter();
+      updateSearchCount();
+      return;
+    }
     if (activeTab === 'agents') {
       renderAgentsStudio();
       loadArmTimeline(controller.signal).then((timeline) => {
@@ -7178,6 +7929,7 @@ content.addEventListener('click', (e) => {
     }
     return;
   }
+  if (activeTab === 'aradio' && handleAradioClick(target)) return;
   if (target.closest('[data-ara-figure-close]')) {
     closeAraFigureModal();
     return;
@@ -7497,10 +8249,11 @@ document.querySelectorAll<HTMLAnchorElement>('.tab').forEach((btn) => {
     document.body.classList.toggle('tab-focus-reader', activeTab === 'focusReader');
     document.body.classList.toggle('tab-agents', activeTab === 'agents');
     document.body.classList.toggle('tab-pricing', activeTab === 'pricing');
+    document.body.classList.toggle('tab-aradio', activeTab === 'aradio');
     // Re-probe availability for current month with new tab (date tabs only).
     // The models/wiki tabs don't use date routing, so skip probing there too —
     // it'd just paint dots on a calendar that's hidden anyway.
-    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader' && activeTab !== 'agents' && activeTab !== 'pricing') {
+    if (activeTab !== 'research' && activeTab !== 'models' && activeTab !== 'wiki' && activeTab !== 'focusReader' && activeTab !== 'agents' && activeTab !== 'pricing' && activeTab !== 'aradio') {
       probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
     }
     load();
@@ -7522,7 +8275,8 @@ document.body.classList.toggle('tab-wiki', currentTab === 'wiki');
 document.body.classList.toggle('tab-focus-reader', currentTab === 'focusReader');
 document.body.classList.toggle('tab-agents', currentTab === 'agents');
 document.body.classList.toggle('tab-pricing', currentTab === 'pricing');
-if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader' && currentTab !== 'agents' && currentTab !== 'pricing') {
+document.body.classList.toggle('tab-aradio', currentTab === 'aradio');
+if (currentTab !== 'research' && currentTab !== 'models' && currentTab !== 'wiki' && currentTab !== 'focusReader' && currentTab !== 'agents' && currentTab !== 'pricing' && currentTab !== 'aradio') {
   probeAvailability(calendarMonth.getFullYear(), calendarMonth.getMonth());
 }
 load();

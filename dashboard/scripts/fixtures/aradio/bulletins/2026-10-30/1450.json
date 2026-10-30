@@ -1,0 +1,162 @@
+{
+  "schema": 1,
+  "id": "2026-10-30-1450",
+  "aired_at": "2026-10-30T14:50:00Z",
+  "headline": "Alphabet's call puts a number on AI capex as the memory squeeze reaches phones",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's ten to three UTC on Friday, October thirtieth. This is Aradio. The money behind AI got a little clearer this hour, and the memory shortage reached your phone."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Alphabet's earnings call was the lead. The company raised its full-year capital spending outlook again, and almost all of the increase is servers and data centres for AI."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The question investors keep asking is whether any of that spending is earning money yet. Sundar Pichai had an answer ready."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On the call he said cloud backlog grew faster than capital expenditure this quarter, and called that the clearest signal the demand is real. That is a claim about contracts signed, not revenue booked, so it is worth holding him to it next quarter."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Microsoft reports on Wednesday. Analysts expect another raise in its spending guidance, and Azure growth is the number to watch."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Now the other side of that spending. High-bandwidth memory for AI chips is sold out through next year at all three suppliers, and the squeeze is spreading."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Today a phone maker blamed a gross-margin miss on memory prices. Its chief financial officer said memory is the single biggest headwind this quarter and won't ease before the second half of next year."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That is the first consumer company to say it out loud. We have moved that story to escalating."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Samsung's call on Thursday is the next test. If its memory guidance rises again, expect more of those warnings."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Anthropic's IPO, two reports now point to a confidential filing before the end of the year. The company declined to comment, so treat the timing as reported, not confirmed."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "And on the EU's code of practice for general-purpose models, nothing new signed this week. The AI Office published its first supervisory priorities; that story is steady."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "What to watch: Microsoft on Wednesday, Samsung on Thursday, and any confirmation of an Anthropic filing."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's Aradio. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's ten to three UTC on Friday, October thirtieth. This is Aradio. The money behind AI got a little clearer this hour, and the memory shortage reached your phone.",
+    "Speaker 2: [high_energy] Alphabet's earnings call was the lead. The company raised its full-year capital spending outlook again, and almost all of the increase is servers and data centres for AI.",
+    "Speaker 1: The question investors keep asking is whether any of that spending is earning money yet. Sundar Pichai had an answer ready.",
+    "Speaker 2: On the call he said cloud backlog grew faster than capital expenditure this quarter, and called that the clearest signal the demand is real. That is a claim about contracts signed, not revenue booked, so it is worth holding him to it next quarter.",
+    "Speaker 1: Microsoft reports on Wednesday. Analysts expect another raise in its spending guidance, and Azure growth is the number to watch.",
+    "Speaker 2: Now the other side of that spending. High-bandwidth memory for AI chips is sold out through next year at all three suppliers, and the squeeze is spreading.",
+    "Speaker 1: Today a phone maker blamed a gross-margin miss on memory prices. Its chief financial officer said memory is the single biggest headwind this quarter and won't ease before the second half of next year.",
+    "Speaker 2: That is the first consumer company to say it out loud. We have moved that story to escalating.",
+    "Speaker 1: Samsung's call on Thursday is the next test. If its memory guidance rises again, expect more of those warnings.",
+    "Speaker 2: On Anthropic's IPO, two reports now point to a confidential filing before the end of the year. The company declined to comment, so treat the timing as reported, not confirmed.",
+    "Speaker 1: And on the EU's code of practice for general-purpose models, nothing new signed this week. The AI Office published its first supervisory priorities; that story is steady.",
+    "Speaker 2: What to watch: Microsoft on Wednesday, Samsung on Thursday, and any confirmation of an Anthropic filing.",
+    "Speaker 1: That's Aradio. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "hyperscaler-capex-q3",
+    "hbm-supply-crunch",
+    "anthropic-ipo",
+    "eu-ai-act-gpai-code"
+  ],
+  "threads": [
+    {
+      "slug": "hyperscaler-capex-q3",
+      "title": "Hyperscaler AI capex this quarter",
+      "status": "escalating"
+    },
+    {
+      "slug": "hbm-supply-crunch",
+      "title": "The HBM supply crunch",
+      "status": "escalating"
+    },
+    {
+      "slug": "anthropic-ipo",
+      "title": "Anthropic's IPO",
+      "status": "developing"
+    },
+    {
+      "slug": "eu-ai-act-gpai-code",
+      "title": "The EU AI Act's code of practice for general-purpose models",
+      "status": "steady"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=fixture-goog-q3",
+      "kind": "earnings-call",
+      "label": "Alphabet Q3 earnings call"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=fixture-hbm-call",
+      "kind": "earnings-call",
+      "label": "Q3 earnings call (replay)"
+    },
+    {
+      "url": "https://x.com/reporter/status/1980000000000000002",
+      "kind": "twitter",
+      "label": "@reporter on X"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=fixture-bg2-pod",
+      "kind": "podcast",
+      "label": "BG2 Pod"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-q3"
+    },
+    {
+      "op": "update",
+      "slug": "hbm-supply-crunch"
+    },
+    {
+      "op": "update",
+      "slug": "anthropic-ipo"
+    },
+    {
+      "op": "update",
+      "slug": "eu-ai-act-gpai-code"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-10-30-1450.mp3",
+    "bytes": 3874211,
+    "duration_s": 242.1
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "claude",
+    "model": "claude-opus-5"
+  },
+  "inbox": {
+    "items": 9,
+    "kinds": {
+      "earnings-call": 2,
+      "podcast": 1,
+      "twitter": 6
+    }
+  }
+}

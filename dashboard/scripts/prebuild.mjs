@@ -38,7 +38,12 @@ const skipLfsPointers = process.env.SKIP_LFS_POINTERS === '1';
 // `market` carries research/market/quotes.json (market-quotes.yml). Like
 // `arm` it is a single JSON with no date-keyed files, so it stays out of
 // DATE_PATTERNS — it has no per-day artifacts for the freshness rows to key on.
-const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki', 'wiki-translations', 'youtube', 'arm', 'market'];
+// `aradio` carries the station's board, index and per-bulletin transcripts
+// (write_aradio_bulletin.py); the /aradio view polls index.json. It is absent
+// until the first editor run, which the existsSync skip below tolerates. The
+// whole directory is mirrored (cursor.json and archive/ included); all of it
+// is already public in the repository.
+const COPY_DIRS = ['twitter', 'models', 'front-page', 'digest', 'audio', 'generative', 'wiki', 'wiki-translations', 'youtube', 'arm', 'market', 'aradio'];
 
 // Research directories read during the build but never mirrored wholesale
 // into public/research/. Keep this explicit so the Docker-context contract can

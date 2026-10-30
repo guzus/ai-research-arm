@@ -7302,6 +7302,1093 @@ body.tab-pricing .calendar { display: none; }
   .pricing-stale { background: #fbbf2422; color: #fbbf24; }
 }
 
+/* ── Aradio (tab-aradio) ──────────────────────────────
+   A rolling two-host bulletin. One loud element — the hero is a deep-navy
+   studio panel with a lit ON AIR sign, the air time set as a station clock,
+   and a speaker strip (one segment per line, width ∝ words, coloured by host)
+   that doubles as the progress bar. Everything below it is the site's quiet
+   editorial chrome: ruled grids, hairlines, the shared ink/royal tokens. */
+body.tab-aradio .calendar { display: none; }
+
+.aradio-view {
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+
+.aradio-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.aradio-masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.aradio-title {
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+}
+
+.aradio-tagline {
+  margin-top: 2px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.aradio-checked {
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hero: the studio panel. Its palette is local and theme-stable: navy ground,
+   near-white ink, the royal/cyan pair for the two hosts. */
+.aradio-view .aradio-hero {
+  --aradio-ink: #f4f6fb;
+  --aradio-ink-2: rgba(244, 246, 251, 0.74);
+  --aradio-ink-3: rgba(244, 246, 251, 0.5);
+  --aradio-rule: rgba(244, 246, 251, 0.16);
+  --aradio-host-1: #86a6ff;
+  --aradio-host-2: #38c0ff;
+  --aradio-lamp: #ff4b3e;
+  --aradio-play-bg: #2251ff;
+  --aradio-play-fg: #ffffff;
+  position: relative;
+  padding: clamp(16px, 2.6vw, 26px) var(--card-pad-x) clamp(20px, 3vw, 30px);
+  background: var(--ara-navy);
+  border-color: transparent;
+  color: var(--aradio-ink);
+}
+
+.aradio-hero-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* Reserved height: the "new bulletin" chip appears here without moving
+     anything below it. */
+  min-height: 34px;
+}
+
+.aradio-sign {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 11px 5px 9px;
+  border: 1px solid var(--aradio-rule);
+  border-radius: 5px;
+  color: var(--aradio-ink-2);
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  /* The sign reads ON AIR because that is what the studio sign says. */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.aradio-sign-lamp {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--aradio-ink-3);
+}
+
+.aradio-hero--live .aradio-sign {
+  border-color: rgba(255, 75, 62, 0.6);
+  background: rgba(255, 75, 62, 0.16);
+  color: #ffffff;
+}
+
+.aradio-hero--live .aradio-sign-lamp {
+  background: var(--aradio-lamp);
+  box-shadow: 0 0 0 3px rgba(255, 75, 62, 0.22), 0 0 12px rgba(255, 75, 62, 0.85);
+  animation: aradio-lamp 2.4s ease-in-out infinite;
+}
+
+@keyframes aradio-lamp {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.aradio-hero-age {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--aradio-ink-2);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aradio-update {
+  display: inline-flex;
+  flex: 0 1 auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 32px;
+  margin-left: auto;
+  padding: 0 13px;
+  border: 1px solid rgba(56, 192, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(56, 192, 255, 0.14);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.aradio-update[hidden] { display: none; }
+
+[data-aradio-update-text] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aradio-update-time {
+  flex: none;
+  color: var(--aradio-ink-2);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.aradio-update-time:empty { display: none; }
+
+.aradio-update-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--aradio-host-2);
+}
+
+.aradio-update:hover { background: rgba(56, 192, 255, 0.24); }
+
+.aradio-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(150px, auto) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(18px, 4vw, 48px);
+  margin-top: 18px;
+}
+
+.aradio-clock-time {
+  display: block;
+  color: #ffffff;
+  font-family: var(--font-serif);
+  font-size: clamp(2.9rem, 6.5vw, 4.5rem);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+}
+
+.aradio-clock-meta {
+  display: block;
+  margin-top: 10px;
+  color: var(--aradio-ink-2);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+}
+
+.aradio-clock-zone {
+  color: var(--aradio-ink);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.aradio-headline {
+  max-width: 34em;
+  color: #ffffff;
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.24;
+  text-wrap: balance;
+}
+
+.aradio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 26px;
+  margin-top: 20px;
+}
+
+.aradio-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  /* Fixed width: "Play bulletin" ↔ "Pause" must not shove the switch. */
+  min-width: 190px;
+  padding: 0 14px 0 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.aradio-play-icon {
+  position: relative;
+  flex: none;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--aradio-play-bg);
+  color: var(--aradio-play-fg);
+  box-shadow: 0 6px 20px rgba(34, 81, 255, 0.4);
+  transition: transform 0.12s ease;
+}
+
+.aradio-play:hover .aradio-play-icon { transform: scale(1.04); }
+
+.aradio-play-icon::before,
+.aradio-mini-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 14px solid currentColor;
+}
+
+.aradio-play.is-playing .aradio-play-icon::before,
+.is-playing > .aradio-mini-icon::before {
+  left: 50%;
+  width: 14px;
+  height: 18px;
+  border: 0;
+  border-left: 5px solid currentColor;
+  border-right: 5px solid currentColor;
+}
+
+.aradio-play-text {
+  display: grid;
+  gap: 1px;
+}
+
+.aradio-play-label {
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 650;
+}
+
+.aradio-play-duration {
+  color: var(--aradio-ink-2);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.aradio-no-audio {
+  max-width: 46ch;
+  color: var(--aradio-ink-2);
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+}
+
+.aradio-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+
+.aradio-switch-track {
+  position: relative;
+  flex: none;
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(244, 246, 251, 0.22);
+  transition: background 0.15s ease;
+}
+
+.aradio-switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: transform 0.15s ease;
+}
+
+.aradio-switch[aria-checked="true"] .aradio-switch-track { background: var(--aradio-host-2); }
+.aradio-switch[aria-checked="true"] .aradio-switch-thumb { transform: translateX(16px); }
+
+.aradio-keep-hint {
+  margin-top: 4px;
+  color: var(--aradio-ink-3);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+}
+
+.aradio-strip-slot { margin-top: 22px; }
+
+.aradio-strip {
+  position: relative;
+  display: flex;
+  gap: 2px;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.aradio-strip.is-placeholder { background: var(--aradio-rule); }
+
+.aradio-strip-seg {
+  flex: 1 1 0;
+  min-width: 2px;
+  background: var(--aradio-host-1);
+}
+
+.aradio-strip-seg--2 { background: var(--aradio-host-2); }
+.aradio-strip-seg--0 { background: var(--aradio-ink-3); }
+
+/* While this bulletin is loaded, the unplayed part sits under a veil. */
+.aradio-strip-veil {
+  position: absolute;
+  inset: 0 0 0 var(--aradio-progress, 0%);
+  display: none;
+  background: color-mix(in srgb, var(--ara-navy) 64%, transparent);
+  pointer-events: none;
+}
+
+.aradio-strip.is-loaded .aradio-strip-veil { display: block; }
+
+.aradio-strip-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+  margin-top: 10px;
+  color: var(--aradio-ink-2);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+}
+
+.aradio-legend-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.aradio-legend-key::before {
+  content: '';
+  width: 10px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--aradio-host-1);
+}
+
+.aradio-legend-key--2::before { background: var(--aradio-host-2); }
+
+.aradio-text-button {
+  padding: 2px 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent-warm);
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.aradio-hero .aradio-text-button {
+  margin-left: auto;
+  color: #ffffff;
+}
+
+.aradio-hero-empty {
+  max-width: 62ch;
+  margin-top: 18px;
+}
+
+.aradio-hero-copy {
+  margin-top: 10px;
+  color: var(--aradio-ink-2);
+  line-height: 1.65;
+}
+
+.aradio-hero-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  margin-top: 18px;
+  padding: 0 16px;
+  border: 1px solid var(--aradio-rule);
+  border-radius: 999px;
+  background: rgba(244, 246, 251, 0.08);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.aradio-hero-action:hover { background: rgba(244, 246, 251, 0.16); }
+
+.aradio-view .aradio-hero :focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* Sections below the hero: the site's standard card chrome. */
+.aradio-board,
+.aradio-bulletins {
+  padding: clamp(18px, 2.6vw, 28px) var(--card-pad-x);
+}
+
+.aradio-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+}
+
+.aradio-section-title {
+  font-size: clamp(1.12rem, 2vw, 1.3rem);
+  letter-spacing: -0.015em;
+}
+
+.aradio-section-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.aradio-note {
+  margin-top: 14px;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.aradio-thread-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.aradio-thread {
+  min-width: 0;
+  padding: 20px 24px 22px 0;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.3s ease;
+}
+
+.aradio-thread:nth-child(even) {
+  padding-right: 0;
+  padding-left: 24px;
+  border-left: 1px solid var(--border-light);
+}
+
+.aradio-thread.is-flash,
+.aradio-resolved-item.is-flash { background: var(--ara-periwinkle); }
+.aradio-thread:focus { outline: none; }
+
+.aradio-thread-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+}
+
+.aradio-thread-age { margin-left: auto; font-variant-numeric: tabular-nums; }
+
+.aradio-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 9px 2px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.aradio-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.aradio-pill--escalating { background: #ffedd5; color: #9a3412; }
+.aradio-pill--developing { background: var(--ara-periwinkle); color: var(--ara-royal); }
+.aradio-pill--steady { background: var(--bg-secondary); color: var(--text-secondary); }
+.aradio-pill--resolved { border: 1px solid var(--border); color: var(--text-tertiary); }
+
+/* Importance as signal strength: five rising bars. */
+.aradio-signal {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.aradio-signal i {
+  width: 3px;
+  border-radius: 1px;
+  background: var(--border);
+}
+
+.aradio-signal i:nth-child(1) { height: 4px; }
+.aradio-signal i:nth-child(2) { height: 6px; }
+.aradio-signal i:nth-child(3) { height: 8px; }
+.aradio-signal i:nth-child(4) { height: 10px; }
+.aradio-signal i:nth-child(5) { height: 12px; }
+.aradio-signal i.on { background: var(--accent-warm); }
+
+.aradio-thread-title {
+  margin: 10px 0 8px;
+  font-family: var(--font-serif);
+  font-size: 1.14rem;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.aradio-thread-now {
+  max-width: 68ch;
+  font-size: 0.95rem;
+  line-height: 1.62;
+}
+
+.aradio-facts {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.aradio-facts div {
+  display: grid;
+  grid-template-columns: 98px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.aradio-facts dt {
+  padding-top: 2px;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 650;
+}
+
+.aradio-facts dd {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.aradio-evidence-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+  list-style: none;
+}
+
+.aradio-evidence-list li { max-width: 100%; }
+
+.aradio-evidence {
+  display: inline-flex;
+  align-items: stretch;
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.aradio-evidence:hover { border-color: var(--accent-warm); }
+
+.aradio-evidence-kind {
+  flex: none;
+  padding: 3px 8px 3px 10px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+/* Spoken primary sources — the station's distinctive input — are tinted. */
+.aradio-evidence.is-spoken .aradio-evidence-kind {
+  background: var(--ara-periwinkle);
+  color: var(--ara-royal);
+}
+
+.aradio-evidence-label {
+  min-width: 0;
+  max-width: 30ch;
+  padding: 3px 11px 3px 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aradio-quotes {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.aradio-quote {
+  padding-left: 12px;
+  border-left: 2px solid var(--accent-warm);
+}
+
+.aradio-quote p {
+  font-family: var(--font-serif);
+  font-size: 0.93rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.aradio-quote footer {
+  margin-top: 4px;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+}
+
+.aradio-history {
+  margin-top: 14px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+}
+
+.aradio-history summary {
+  width: fit-content;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.aradio-history ol {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  padding-left: 12px;
+  border-left: 1px solid var(--border);
+  list-style: none;
+  color: var(--text-secondary);
+}
+
+.aradio-history time {
+  margin-right: 8px;
+  color: var(--text-tertiary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.aradio-resolved { margin-top: 18px; }
+
+.aradio-resolved > summary {
+  width: fit-content;
+  padding: 6px 0;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.aradio-resolved-list { list-style: none; }
+
+.aradio-resolved-item {
+  padding: 12px 0;
+  border-top: 1px solid var(--border-light);
+  transition: background 0.3s ease;
+}
+
+.aradio-resolved-item h3 {
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+}
+
+.aradio-resolved-item p {
+  margin-top: 4px;
+  color: var(--text-tertiary);
+  font-size: 0.86rem;
+}
+
+.aradio-resolved-age {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+}
+
+/* Bulletins: program log beside the transcript. The card must not clip:
+   overflow:hidden would make it the sticky log's scroll container. */
+.aradio-view .aradio-bulletins { overflow: visible; }
+
+.aradio-bulletins-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: start;
+  gap: clamp(20px, 3.4vw, 44px);
+}
+
+.aradio-log-day { margin-top: 12px; }
+
+.aradio-log-date {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 650;
+}
+
+.aradio-log-list { list-style: none; }
+
+.aradio-log-row {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.aradio-log-play,
+.aradio-transcript-play {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--accent-warm);
+  cursor: pointer;
+}
+
+.aradio-log-play {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.aradio-mini-icon {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+}
+
+.aradio-mini-icon::before {
+  left: 58%;
+  border-top-width: 6px;
+  border-bottom-width: 6px;
+  border-left-width: 9px;
+}
+
+.is-playing > .aradio-mini-icon::before {
+  left: 50%;
+  width: 10px;
+  height: 12px;
+  border-left-width: 3px;
+  border-right-width: 3px;
+}
+
+.aradio-log-play:hover,
+.aradio-transcript-play:hover { border-color: var(--accent-warm); }
+
+.aradio-log-play.is-current,
+.aradio-transcript-play.is-current {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.aradio-log-noaudio {
+  justify-self: center;
+  width: 12px;
+  height: 1px;
+  background: var(--border);
+}
+
+.aradio-log-select {
+  display: grid;
+  grid-template-columns: 3.2em minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 10px;
+  min-height: 40px;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.aradio-log-select:hover { background: var(--bg-hover); }
+.aradio-log-row.is-selected .aradio-log-select { background: var(--ara-periwinkle); }
+
+.aradio-log-time {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+}
+
+.aradio-log-headline {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.aradio-log-duration {
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.aradio-log-row.is-text-only .aradio-log-duration { font-style: italic; }
+
+.aradio-more {
+  min-height: 36px;
+  margin-top: 14px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.aradio-more:hover { border-color: var(--text-tertiary); color: var(--text); }
+
+.aradio-transcript-slot { scroll-margin-top: 72px; }
+
+.aradio-transcript-headline {
+  margin: 8px 0 14px;
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.aradio-transcript-play {
+  gap: 8px;
+  min-height: 36px;
+  margin-bottom: 14px;
+  padding: 0 14px 0 10px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.aradio-lines {
+  display: grid;
+  gap: 2px;
+  list-style: none;
+}
+
+.aradio-line {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 12px;
+  margin: 0 -10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: background 0.25s ease;
+}
+
+.aradio-line.is-speaking {
+  background: var(--ara-periwinkle);
+  box-shadow: inset 3px 0 0 var(--accent-warm);
+}
+
+.aradio-speaker {
+  padding-top: 3px;
+  color: var(--ara-royal);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 650;
+}
+
+.aradio-line--s2 .aradio-speaker { color: #0369a1; }
+
+.aradio-line-text {
+  max-width: 68ch;
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.aradio-transcript-foot { margin-top: 20px; }
+
+.aradio-transcript-foot h4 {
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 650;
+}
+
+.aradio-transcript-foot .aradio-evidence-list { margin-top: 8px; }
+
+.aradio-covers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+  list-style: none;
+}
+
+.aradio-cover {
+  display: inline-block;
+  max-width: 100%;
+  padding: 4px 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.aradio-cover:hover { border-color: var(--accent-warm); }
+.aradio-cover.is-static { color: var(--text-secondary); cursor: default; }
+
+.aradio-credit {
+  margin-top: 18px;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+}
+
+.aradio-view :focus-visible {
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .aradio-view .aradio-hero {
+    --aradio-play-bg: #6f95ff;
+    --aradio-play-fg: #08101c;
+    border-color: rgba(111, 149, 255, 0.24);
+  }
+  .aradio-pill--escalating { background: rgba(251, 146, 60, 0.16); color: #fdba74; }
+  .aradio-line--s2 .aradio-speaker { color: var(--ara-cyan); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aradio-hero--live .aradio-sign-lamp { animation: none; }
+  .aradio-play-icon,
+  .aradio-switch-track,
+  .aradio-switch-thumb,
+  .aradio-thread,
+  .aradio-line { transition: none; }
+}
+
+@media (min-width: 761px) {
+  /* The log stays in view while the transcript beside it is read; a long
+     (expanded) log scrolls inside itself rather than hiding its own end. */
+  .aradio-log {
+    position: sticky;
+    top: 76px;
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+}
+
+@media (max-width: 760px) {
+  .aradio-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .aradio-clock {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+  }
+  .aradio-clock-time { display: inline; font-size: 2.6rem; }
+  .aradio-clock-meta { display: inline; margin-top: 0; }
+  .aradio-thread-grid,
+  .aradio-bulletins-grid { grid-template-columns: 1fr; }
+  .aradio-thread,
+  .aradio-thread:nth-child(even) {
+    padding: 18px 0;
+    border-left: 0;
+  }
+  .aradio-facts div { grid-template-columns: 1fr; gap: 2px; }
+}
+
+@media (max-width: 480px) {
+  .aradio-update-time { display: none; }
+  .aradio-line { grid-template-columns: 1fr; gap: 2px; }
+  .aradio-play { min-width: 0; }
+  .aradio-hero .aradio-text-button { margin-left: 0; }
+  .aradio-log-select { grid-template-columns: 3em minmax(0, 1fr); }
+  .aradio-log-duration { grid-column: 2; }
+}
+
 /* ── Product intelligence surfaces ───────────────────
  * These components join existing publication records; they do not create new
  * top-level navigation modes. The visual hierarchy is intentionally flatter

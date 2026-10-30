@@ -33,7 +33,7 @@ for attempt in {1..30}; do
   sleep 1
 done
 
-for route in / /today /twitter /models /research /wiki /pricing /pricing/; do
+for route in / /today /twitter /models /research /wiki /pricing /pricing/ /aradio /aradio/; do
   headers="$(mktemp)"
   body="$(mktemp)"
   curl -fsS --max-time 10 -D "$headers" -o "$body" "$base$route"
@@ -49,6 +49,16 @@ for route in /pricing /pricing/; do
   curl -fsS --max-time 10 -D "$pricing_headers" -o /dev/null "$base$route"
   grep -Eiq '^x-robots-tag: noindex, nofollow' "$pricing_headers"
   rm -f "$pricing_headers"
+done
+
+# /aradio is a generated static page (postbuild-seo.mjs), not the homepage
+# shell: it must carry its own title even before the first bulletin airs.
+for route in /aradio /aradio/; do
+  aradio_body="$(mktemp)"
+  curl -fsS --max-time 10 -o "$aradio_body" "$base$route"
+  grep -q '<title>Aradio' "$aradio_body"
+  grep -q 'noindex' "$aradio_body"
+  rm -f "$aradio_body"
 done
 
 manifest_headers="$(mktemp)"

@@ -59,8 +59,11 @@ test('What changed DOM exposes reasoning, freshness, honest local highlights, an
   assert.match(html, /href="\/feed\.xml"/);
   assert.match(html, /data-watch-topic="anthropic"/);
   assert.doesNotMatch(html, /Degraded mode|저하 모드|deterministic fallback/i);
+  // Product-intelligence surfaces join existing views; they never add a top-level
+  // tab. The count moves only for a deliberate new section (7 = Aradio, the live
+  // station); all-tabs-korean.test.mjs pins the ordered list.
   const nav = readFileSync(join(root, 'index.html'), 'utf8');
-  assert.equal((nav.match(/class="tab"/g) || []).length, 6);
+  assert.equal((nav.match(/class="tab"/g) || []).length, 7);
 });
 
 test('Today does not mount the What changed decision brief', () => {
