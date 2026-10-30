@@ -3,7 +3,7 @@ slug: microsoft-mai-transcribe-2-streaming-2026-10
 title: Microsoft AI releases MAI-Transcribe-2-Streaming, MAI-Voice-2.1 and MAI-Voice-2.1-Flash
 company: Microsoft AI
 model: MAI-Transcribe-2-Streaming / MAI-Voice-2.1 / MAI-Voice-2.1-Flash
-status: released
+status: closed
 status_note: |
   **Announced and shipped 2026-10-01 by primary accounts.** @MicrosoftAI
   "Introducing 3 new models: MAI-Transcribe-2-Streaming, MAI-Voice-2.1 and
@@ -39,14 +39,16 @@ sources:
   - https://x.com/ArtificialAnlys/status/2105694108736188894
   - https://x.com/satyanadella/status/2105791561216958853
 created_at: 2026-10-02
-updated_at: 2026-10-17
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-30
+closed_at: 2026-10-30
+closed_reason: "released-and-aged"
 history:
   - ts: 2026-10-02
     change: "Created — RELEASED / confirmed. @MicrosoftAI introduced MAI-Transcribe-2-Streaming, MAI-Voice-2.1 and MAI-Voice-2.1-Flash on 2026-10-01 (relayed by @Azure 16:46 UTC and @satyanadella); @mustafasuleyman says all three are available today in Microsoft Foundry. @ArtificialAnlys ranks MAI-Transcribe-2-Streaming #1 of 38 on AA-WER Streaming (2.5% WER at 0.13s) at $0.54/hour. Suleyman's '60% cheaper than ElevenLabs' conflicts with AA's price table and is not adopted. Successor in the MAI speech line to closed [[microsoft-mai-voice-2-flash-2026-07]]."
   - ts: 2026-10-17
     change: "Released, unchanged — distribution and adoption claim. @mustafasuleyman (2026-10-16 15:26 UTC): 'MAI is the most accurate & most popular transcription model on OpenRouter across all languages and use cases', linking MAI-Transcribe-2 on OpenRouter. This is a self-reported popularity claim about the base MAI-Transcribe-2 listing. It does not specifically show that the Streaming variant is on OpenRouter."
+  - ts: 2026-10-30
+    change: "Closed — released-and-aged. Released 2026-10-01 in Microsoft Foundry (first history entry), 29 days ago, past the 4-week window. Nothing about this release in today's signal. Later MAI speech releases should open a new ticket."
 ---
 
 Microsoft's speech stack now has a streaming transcriber at the top of the one

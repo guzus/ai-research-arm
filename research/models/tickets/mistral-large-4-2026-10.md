@@ -1,6 +1,6 @@
 ---
 slug: mistral-large-4-2026-10
-title: Mistral Large 4 ("Le Chonk") — 1T-parameter / 49B-active multimodal model, API preview live; open weights due end of October
+title: "Mistral Large 4 (\"Le Chonk\") — 1T-parameter / 49B-active multimodal model; final version with open weights released 2026-10-29"
 company: Mistral AI
 model: Mistral Large 4
 status: released
@@ -27,7 +27,12 @@ status_note: |
   FinWorkBench 67%, Harvey legal-agent 15% vs Kimi K3 13% / GPT-6 Astra 5%
   (@Daviswh). Covered by CNBC, WSJ and WIRED ("still in the race"); CEO Arthur
   Mensch previewed it in Abu Dhabi the same morning without naming benchmarks.
-expected: "API preview live 2026-10-06 at a reported $1.36/$4.18 per 1M input/output tokens. Final version plus open weights before end of October (Oct 27 per secondary reports). Open: licence, independent benchmarks, and whether the final RL checkpoint differs materially from the preview."
+
+  **2026-10-29 — weights out (first-party).** @MistralAI: "Today, we release the weights of a new and
+  improved Le Chonk." Download via Hugging Face; customise with Mistral Forge. Self-reported #1 among
+  open models on Cognition's FrontierCode; cyber defence tested with CrowdStrike, Cloudflare, Rubrik and
+  Zscaler. Secondary: 1M context, commercial use OK, API price halved to $0.70/$2.10 per 1M tokens.
+expected: "Open weights and the final (post-RL) checkpoint released 2026-10-29 on Hugging Face. Reported API price cut to $0.70/$2.10 per 1M tokens (secondary). Open: exact licence name, independent benchmarks of the final checkpoint. Close as released-and-aged on or after 2026-11-26 (4 weeks after weights)."
 labels:
   - frontier-model
   - open-weights
@@ -52,8 +57,13 @@ sources:
   - https://x.com/MistralAI/status/2107532335294067106
   - https://x.com/HelloSurgeAI/status/2107506971775537222
   - https://x.com/__newts/status/2107825562626748736
+  - https://x.com/MistralAI/status/2115811242556137820
+  - https://x.com/MistralAI/status/2115811245429256498
+  - https://x.com/MistralAI/status/2116105034673058023
+  - https://x.com/chikitleung/status/2116156775649222852
+  - https://x.com/virtualbacon/status/2116153398387228835
 created_at: 2026-10-06
-updated_at: 2026-10-07
+updated_at: 2026-10-30
 closed_at: null
 closed_reason: null
 history:
@@ -61,6 +71,8 @@ history:
     change: "Created — RELEASED / confirmed. @MistralAI announced Mistral Large 4 ('Le Chonk') on 2026-10-06 13:06 UTC: 1T total / 49B active parameters, natively multimodal, claimed best open-weights model from the US or Europe on aggregated benchmarks, SOTA on cyber defense, manufacturing and finance, ahead of closed frontier models on visual grounding, available to all via API today, open weights end of October. Co-founder @GuillaumeLample says it is a preview — the RL run is still in flight and a final version ships with weights before month-end — and self-reports 82% vulnerability reproduction/patching and 93% Cybench. Released because API access is open to all now; weights are not yet out. Secondary: 4,000 Grace Blackwell GPUs, 160+ languages, Oct 27 weights date, DeepSWE 62% / FinWorkBench 67% / Harvey legal 15%. Covered by CNBC, WSJ, WIRED. Mistral's first model release since April per @GenAISpotlight; follows the ~€3B round at [[mistral-funding-round-2026-06]]."
   - ts: 2026-10-07
     change: "Day-1 follow-through, status unchanged (released, preview). @MistralAI (2026-10-06 18:03 UTC) adds first-party cyber demos: a 19-challenge CTF speedrun with 18 solved, and an end-to-end malware reverse-engineering run that identified a Cobalt Strike sample, extracted IoCs/config and wrote a YARA rule in 12 minutes. @MistralAI RT'd @HelloSurgeAI: a blind Surge human code-review eval Mistral commissioned ranked Large 4 #1 among open-weight models and #2 overall, behind Opus 5. Secondary (@__newts): API priced at $1.36 / $4.18 per 1M input/output tokens, 61.7% DeepSWE v1.1, 28.3% Terminal-Bench 4.0, trained on 3,800 Grace Blackwell GPUs (vs 4,000 in an earlier relay — recorded, not reconciled), 1,600+ HN points; licence still unstated. Chinese-language relays (@jasonni_x, @nextaurame) highlight that on vulnerability reproduction-and-patching Opus 5.5 and GPT-6 Astra scored near 0 by refusing, versus Large 4's 82%."
+  - ts: 2026-10-30
+    change: "Open weights published; status stays released, verification stays confirmed; title updated. @MistralAI (2026-10-29 14:21 UTC, ~5.8K likes): 'Today, we release the weights of a new and improved Le Chonk', with a Hugging Face download link and Mistral Forge customisation. This is two days after the Oct 27 date in secondary reports, and inside the 'end of October' promise. Mistral self-reports #1 among open models on Cognition's FrontierCode, a new Pareto-efficiency point on Artificial Analysis, and SOTA cyber defence tested with CrowdStrike, Cloudflare, Rubrik and Zscaler. Mistral (2026-10-30 09:48 UTC) quotes @ThibaultJaigu: the update ranks as the 2nd-best OSS model on Requesty's coding benchmark. Kilo Code shipped it in Kilo Desktop the same day. Secondary only (@chikitleung): 1M context, commercial use permitted, API price halved to $0.70 / $2.10 per 1M tokens, and Claude Opus 5.5 still wins Mistral's blind coding test 78/22. @virtualbacon relays a claim of 47% fewer tokens per task than GLM-5.3. The exact licence name was not captured in-window."
 ---
 
 Mistral's first frontier-scale release in roughly six months, and its first model
