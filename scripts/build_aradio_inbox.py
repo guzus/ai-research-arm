@@ -21,6 +21,12 @@ Gate (stop = no model, no TTS, nothing committed, exit 0):
   force -> go; no new items -> stop; any priority item -> go;
   >= 110 min since cursor.last_editor_run_at (or never ran) -> go; else stop.
 
+board.json is the editor's VIEW of research/aradio/state.json (unresolved
+threads and threads resolved in the last 48 h, each with its last 3 history
+entries; older resolved threads are listed by slug only), budgeted separately
+from the items, so a long-lived board can never crowd new material out of the
+inbox. The writer keeps working from the full state.json.
+
 Priority items: earnings filings; earnings-call episodes; and episodes of P0
 shows that are long-form (>= 10 min) AND have a transcript. Short official
 clips (e.g. 90-250 s customer testimonials posted as P0 `video`) are routine
@@ -33,12 +39,14 @@ budget); any failure falls back to the committed excerpts. Everything staged is 
 item bodies as quoted blocks so injected text cannot pose as structure.
 
 Exit codes: 0 = gate decided (go or stop); 1 = real error (corrupt lane
-state, bulletin id collision, unsafe paths); 2 = usage.
+state, bulletin id collision, unsafe paths, or new material that would leave
+the editor an empty inbox); 2 = usage.
 """
 
 from __future__ import annotations
 
 import argparse
+import copy
 import datetime as dt
 import hashlib
 import html
@@ -67,7 +75,19 @@ MAX_ITEMS = 40
 MAX_TRANSCRIPT_FILES = 8
 MAX_WINDOWS = 20
 MAX_WINDOW_WORDS = 70
-MAX_TOTAL_BYTES = 400 * 1024
+# Two separate budgets. The items (inbox.json, inbox.md, context.json and the
+# transcript files) get the full 400 KB; board.json gets its own cap. While
+# they shared one budget, a board grown by append-only history could crowd out
+# every new item, so the gate said go forever and nothing was ever consumed.
+MAX_ITEM_BYTES = 400 * 1024
+MAX_BOARD_BYTES = 120 * 1024
+BOARD_HISTORY_ENTRIES = 3
+BOARD_RESOLVED_WINDOW = dt.timedelta(hours=48)
+# Applied (in order) only while the board view is over MAX_BOARD_BYTES after
+# the oldest resolved threads have been reduced to slugs.
+BOARD_COMPACT_TEXT = {"title": 90, "now": 200, "changed": 160, "watch": 120}
+BOARD_COMPACT_FIELD = 60
+BOARD_COMPACT_EVIDENCE = 3
 ITEM_TEXT_MAX = 1500
 # Earnings items carry the issuer's own headline figures and attributed quotes
 # (the earnings lane caps them at 6 x 60 words), so they get a larger budget.
@@ -1008,6 +1028,134 @@ def build_context(now: dt.datetime, cursor: dict, board: dict, index: Any,
 
 
 # ---------------------------------------------------------------------------
+# Board view (board.json)
+# ---------------------------------------------------------------------------
+
+BOARD_VIEW_NOTE = (
+    "This is a VIEW of the board (research/aradio/state.json). `threads` holds every "
+    "unresolved thread and every thread resolved in the last 48 h, each with only its "
+    "last 3 history entries. `other_threads` lists older resolved threads that are "
+    "still on the board: their slugs are taken, so `update` or `resolve` them by slug "
+    "and never `create` them again. When `shortened_to_fit` is true, some recently "
+    "resolved threads are listed in `other_threads` and long fields may be clipped.")
+
+
+def _thread_updated(thread: dict) -> dt.datetime:
+    return (parse_ts(thread.get("updated_at")) or parse_ts(thread.get("first_seen"))
+            or dt.datetime(1970, 1, 1, tzinfo=UTC))
+
+
+def _clip_str(value: Any, limit: int) -> Any:
+    return contract.clip(value, limit)[0] if isinstance(value, str) else value
+
+
+def thread_view(thread: dict, *, compact: int = 0) -> dict:
+    """One thread as the editor sees it: a copy, history cut to the newest entries.
+
+    compact >= 1 also clips long text fields and drops evidence quotes;
+    compact >= 2 also keeps only the newest BOARD_COMPACT_EVIDENCE evidence entries.
+    """
+    view = {name: copy.deepcopy(value) for name, value in thread.items() if name != "history"}
+    history = thread.get("history")
+    view["history"] = (copy.deepcopy(history[-BOARD_HISTORY_ENTRIES:])
+                       if isinstance(history, list) else [])
+    if compact >= 1:
+        for name, limit in BOARD_COMPACT_TEXT.items():
+            if name in view:
+                view[name] = _clip_str(view[name], limit)
+        for entry in view["history"]:
+            if isinstance(entry, dict) and "change" in entry:
+                entry["change"] = _clip_str(entry["change"], BOARD_COMPACT_FIELD * 2)
+        if isinstance(view.get("evidence"), list):
+            view["evidence"] = [
+                {name: _clip_str(value, BOARD_COMPACT_FIELD)
+                 if name in ("label", "speaker") else value
+                 for name, value in entry.items() if name != "quote"}
+                if isinstance(entry, dict) else entry
+                for entry in view["evidence"]]
+    if compact >= 2 and isinstance(view.get("evidence"), list):
+        view["evidence"] = view["evidence"][:BOARD_COMPACT_EVIDENCE]
+    return view
+
+
+def other_thread_view(thread: dict, *, slug_only: bool = False) -> dict:
+    if slug_only:
+        return {"slug": thread.get("slug")}
+    return {"slug": thread.get("slug"), "title": thread.get("title"),
+            "status": thread.get("status"), "updated_at": thread.get("updated_at")}
+
+
+def board_view(board: dict, now: dt.datetime, notes: Notes) -> tuple[str, dict]:
+    """Render board.json within MAX_BOARD_BYTES; return (text, stats).
+
+    Reductions, applied in order and only while over the cap: (1) the oldest
+    resolved threads move from `threads` to the slug list `other_threads`;
+    (2) long text fields are clipped and evidence quotes dropped; (3) evidence
+    is cut to the newest few per thread; (4) `other_threads` keep slugs only.
+    Every slug on the board stays visible, so the editor cannot `create` a
+    taken slug (a hard validation error that would fail every retry). The view
+    decides nothing: the validator and the writer read the full state.json.
+    """
+    threads = [thread for thread in board.get("threads") or [] if isinstance(thread, dict)]
+    in_view = [not (thread.get("status") == "resolved"
+                    and now - _thread_updated(thread) > BOARD_RESOLVED_WINDOW)
+               for thread in threads]
+    compact = 0
+    moved = 0
+    slug_only = False
+
+    def render() -> str:
+        return contract.dump_json({
+            "schema": board.get("schema", contract.SCHEMA),
+            "updated_at": board.get("updated_at"),
+            "headline": board.get("headline", ""),
+            "view": {
+                "note": BOARD_VIEW_NOTE,
+                "history_entries": BOARD_HISTORY_ENTRIES,
+                "resolved_within_hours": int(BOARD_RESOLVED_WINDOW.total_seconds() // 3600),
+                "threads_on_board": len(threads),
+                "shortened_to_fit": bool(moved or compact or slug_only),
+            },
+            "threads": [thread_view(thread, compact=compact)
+                        for thread, keep in zip(threads, in_view) if keep],
+            "other_threads": [other_thread_view(thread, slug_only=slug_only)
+                              for thread, keep in zip(threads, in_view) if not keep],
+        })
+
+    def over(rendered: str) -> bool:
+        return len(rendered.encode("utf-8")) > MAX_BOARD_BYTES
+
+    text = render()
+    while over(text):
+        resolved = [i for i, thread in enumerate(threads)
+                    if in_view[i] and thread.get("status") == "resolved"]
+        if not resolved:
+            break
+        oldest = min(resolved, key=lambda i: (_thread_updated(threads[i]), i))
+        in_view[oldest] = False
+        moved += 1
+        text = render()
+    for level in (1, 2):
+        if not over(text):
+            break
+        compact = level
+        text = render()
+    if over(text):
+        slug_only = True
+        text = render()
+    if moved or compact or slug_only:
+        notes.warn(f"board view over {MAX_BOARD_BYTES} bytes: {moved} resolved thread(s) "
+                   f"listed by slug only, compaction level {compact}"
+                   + (", other_threads reduced to slugs" if slug_only else ""))
+    if over(text):
+        notes.warn(f"board view is still {len(text.encode('utf-8'))} bytes after "
+                   "compaction; staged anyway (it never displaces inbox items)")
+    stats = {"bytes": len(text.encode("utf-8")), "threads": sum(in_view),
+             "other_threads": len(threads) - sum(in_view)}
+    return text, stats
+
+
+# ---------------------------------------------------------------------------
 # Staging
 # ---------------------------------------------------------------------------
 
@@ -1036,9 +1184,11 @@ def check_trusted_dir(trusted_dir: Path, out_dir: Path, repo_root: Path) -> None
                              "(the agent's import and input paths)")
 
 
-def render_files(now: dt.datetime, selected: list[Candidate],
-                 transcripts: dict[str, tuple[list[str], str]], cursor: dict,
-                 board: dict, index: Any, forced: bool) -> tuple[dict[str, str], list[dict]]:
+def render_item_files(now: dt.datetime, selected: list[Candidate],
+                      transcripts: dict[str, tuple[list[str], str]], cursor: dict,
+                      board: dict, index: Any, forced: bool
+                      ) -> tuple[dict[str, str], list[dict]]:
+    """Every staged file except board.json: the files the item budget covers."""
     items: list[dict] = []
     files: dict[str, str] = {}
     for number, candidate in enumerate(selected, 1):
@@ -1050,7 +1200,6 @@ def render_files(now: dt.datetime, selected: list[Candidate],
     inbox = {"schema": contract.SCHEMA, "now": iso_z(now), "items": items}
     files["inbox.json"] = contract.dump_json(inbox)
     files["inbox.md"] = render_inbox_md(now, items, forced)
-    files["board.json"] = contract.dump_json(board)
     files["context.json"] = contract.dump_json(
         build_context(now, cursor, board, index, items, forced))
     return files, items
@@ -1129,12 +1278,22 @@ def build(*, repo_root: Path, now: dt.datetime, out_dir: Path, trusted_dir: Path
         if lines:
             transcripts[candidate.key] = (lines, source)
 
-    files, items = render_files(now, selected, transcripts, cursor_raw, board, index, force)
-    while total_bytes(files) > MAX_TOTAL_BYTES and selected:
+    files, items = render_item_files(now, selected, transcripts, cursor_raw, board, index,
+                                     force)
+    while total_bytes(files) > MAX_ITEM_BYTES and selected:
         dropped = selected.pop()
         transcripts.pop(dropped.key, None)
-        notes.warn(f"inbox over {MAX_TOTAL_BYTES} bytes; dropped {dropped.key}")
-        files, items = render_files(now, selected, transcripts, cursor_raw, board, index, force)
+        notes.warn(f"inbox items over {MAX_ITEM_BYTES} bytes; dropped {dropped.key}")
+        files, items = render_item_files(now, selected, transcripts, cursor_raw, board, index,
+                                         force)
+    if new and not items:
+        # The editor would run on nothing and consume nothing, so the same
+        # material would open the gate again every hour, forever.
+        raise InboxError(f"{len(new)} new item(s) but none fit the {MAX_ITEM_BYTES}-byte "
+                         "item budget; refusing to run the editor on an empty inbox")
+    item_bytes = total_bytes(files)
+    board_text, board_stats = board_view(board, now, notes)
+    files["board.json"] = board_text
 
     _reset_dir(out_dir)
     _reset_dir(trusted_dir)
@@ -1148,7 +1307,10 @@ def build(*, repo_root: Path, now: dt.datetime, out_dir: Path, trusted_dir: Path
         "kinds": kind_counts(items),
         "transcripts": sum(1 for item in items if item.get("transcript_file")),
         "transcripts_degraded": degraded,
-        "bytes": total_bytes(files),
+        "bytes": item_bytes,
+        "board_bytes": board_stats["bytes"],
+        "board_threads": board_stats["threads"],
+        "board_other_threads": board_stats["other_threads"],
     })
     return summary
 
@@ -1202,6 +1364,11 @@ def main(argv: list[str] | None = None) -> int:
           f"(eligible={summary['eligible']} new={summary['new']} "
           f"priority={summary['priority']} staged={summary['items']} "
           f"transcripts={summary['transcripts']} kinds={kinds or '-'})")
+    if summary["go"]:
+        print(f"aradio inbox: items {summary['bytes']} bytes (cap {MAX_ITEM_BYTES}); "
+              f"board view {summary['board_bytes']} bytes (cap {MAX_BOARD_BYTES}), "
+              f"{summary['board_threads']} thread(s) in full, "
+              f"{summary['board_other_threads']} by slug")
     contract.write_github_output(args.github_output, {
         "go": "true" if summary["go"] else "false",
         "reason": contract.clean_text(summary["reason"]),

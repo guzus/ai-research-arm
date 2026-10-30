@@ -114,6 +114,21 @@ Body.
 """
 
 
+def board_thread(slug: str, *, status: str = "developing",
+                 updated: str = "2026-10-30T06:50:00Z", history: int = 1,
+                 change: str = "Step", evidence: int = 1, filler: str = "") -> dict:
+    return {
+        "slug": slug, "title": f"Title {slug}", "status": status, "importance": 3,
+        "first_seen": "2026-10-01T00:00:00Z", "updated_at": updated,
+        "now": f"Now {slug}. {filler}".strip(), "changed": f"Changed {slug}.", "watch": "",
+        "evidence": [{"url": f"https://x.com/{slug}/status/{i}", "kind": "twitter",
+                      "label": f"@{slug}{i}", "quote": f"quote {i} {filler}".strip()}
+                     for i in range(evidence)],
+        "history": [{"at": f"2026-10-{1 + i % 28:02d}T00:00:00Z", "change": f"{change} {i}"}
+                    for i in range(history)],
+    }
+
+
 class RepoFixture:
     def __init__(self) -> None:
         self.tmp = tempfile.TemporaryDirectory()
@@ -157,6 +172,16 @@ class RepoFixture:
         cursor.update(values)
         (self.research / "aradio" / "cursor.json").write_text(json.dumps(cursor),
                                                                encoding="utf-8")
+
+    def board(self, threads: list[dict]) -> dict:
+        board = {"schema": 1, "updated_at": "2026-10-30T06:50:00Z", "headline": "h",
+                 "threads": threads}
+        (self.research / "aradio" / "state.json").write_text(json.dumps(board),
+                                                              encoding="utf-8")
+        return board
+
+    def view(self) -> dict:
+        return json.loads((self.out / "board.json").read_text(encoding="utf-8"))
 
     def build(self, **kwargs) -> dict:
         params = dict(repo_root=self.root, now=NOW, out_dir=self.out,
@@ -408,11 +433,13 @@ class CapsTest(FixtureTest):
         stories = "".join(story(i, f"S{i}", [f"https://x.com/s/status/{i}"],
                                 lead="L" * 1400) for i in range(30))
         self.repo.twitter("2026-10-30", {"00:00": stories})
-        with mock.patch.object(bi, "MAX_TOTAL_BYTES", 40_000):
+        with mock.patch.object(bi, "MAX_ITEM_BYTES", 40_000):
             summary = self.repo.build()
         self.assertLess(summary["items"], 30)
-        total = sum(path.stat().st_size for path in self.repo.out.rglob("*") if path.is_file())
+        total = sum(path.stat().st_size for path in self.repo.out.rglob("*")
+                    if path.is_file() and path.name != "board.json")
         self.assertLessEqual(total, 40_000)
+        self.assertEqual(total, summary["bytes"])
         self.assertTrue(any("dropped" in w for w in summary["warnings"]))
 
 
@@ -546,12 +573,16 @@ class StagingTest(FixtureTest):
 
     def test_board_and_context_copy_current_state(self):
         board = {"schema": 1, "updated_at": "2026-10-30T06:50:00Z", "headline": "Old news",
-                 "threads": []}
+                 "threads": [board_thread("live", history=2)]}
         (self.repo.research / "aradio" / "state.json").write_text(json.dumps(board))
         self.repo.cursor(last_editor_run_at="2026-10-30T06:50:00Z",
                          last_bulletin_at="2026-10-30T06:50:00Z")
         self.repo.build(force=True)
-        self.assertEqual(board, json.loads((self.repo.out / "board.json").read_text()))
+        view = json.loads((self.repo.out / "board.json").read_text())
+        for name in ("schema", "updated_at", "headline", "threads"):
+            self.assertEqual(board[name], view[name], name)  # small board: shown in full
+        self.assertEqual([], view["other_threads"])
+        self.assertFalse(view["view"]["shortened_to_fit"])
         context = json.loads((self.repo.out / "context.json").read_text())
         self.assertEqual("2026-10-30T08:50:00Z", context["now"])
         self.assertEqual("Friday", context["weekday"])
@@ -638,6 +669,132 @@ class UrlSafetyTest(FixtureTest):
         self.assertTrue(key.startswith("ep:sha256:"))
         self.repo.cursor(last_editor_run_at="2026-10-30T06:00:00Z", keys={key: "x"})
         self.assertEqual("no new material", self.repo.build()["reason"])
+
+
+AMZN_EVENT = {"file": "2026-10-29-AMZN-FY26Q3.md", "date": "2026-10-29", "ticker": "AMZN",
+              "issuer": "Amazon.com, Inc.", "form": "8-K",
+              "accession": "0001018724-26-000038", "period": "FY26Q3"}
+
+
+class BoardBudgetTest(FixtureTest):
+    """board.json is a bounded view with its own budget; items keep theirs."""
+
+    def item_files_bytes(self) -> int:
+        return sum(path.stat().st_size for path in self.repo.out.rglob("*")
+                   if path.is_file() and path.name != "board.json")
+
+    def test_bloated_board_never_starves_the_inbox(self):
+        # 10 live threads x 400 history entries (~900 KB of state.json) used to
+        # push a fresh filing out of the shared 400 KB budget: go, 0 items,
+        # nothing consumed, the same go every hour.
+        state = self.repo.board([board_thread(f"t{i}", history=400, change="x" * 150)
+                                 for i in range(10)])
+        self.assertGreater(len(json.dumps(state)), bi.MAX_ITEM_BYTES)
+        self.repo.earnings([AMZN_EVENT])
+        self.repo.cursor(last_editor_run_at="2026-10-30T07:50:00Z")
+        summary = self.repo.build()
+        self.assertTrue(summary["go"])
+        self.assertEqual(["earn:0001018724-26-000038"],
+                         [item["key"] for item in self.repo.items()])
+        trusted = json.loads((self.repo.trusted / "inbox.json").read_text())["items"]
+        self.assertEqual(self.repo.items(), trusted)
+        self.assertLessEqual((self.repo.out / "board.json").stat().st_size, bi.MAX_BOARD_BYTES)
+        self.assertEqual(summary["board_bytes"], (self.repo.out / "board.json").stat().st_size)
+        view = self.repo.view()
+        self.assertEqual([f"t{i}" for i in range(10)], [t["slug"] for t in view["threads"]])
+        for shown, full in zip(view["threads"], state["threads"]):
+            self.assertEqual(full["history"][-bi.BOARD_HISTORY_ENTRIES:], shown["history"])
+
+    def test_view_keeps_live_and_recently_resolved_threads(self):
+        state = self.repo.board([
+            board_thread("live", history=5, evidence=3),
+            board_thread("fresh-done", status="resolved", updated="2026-10-29T09:00:00Z"),
+            board_thread("edge-done", status="resolved", updated="2026-10-28T08:50:00Z"),
+            board_thread("old-done", status="resolved", updated="2026-10-27T08:00:00Z"),
+        ])
+        before = (self.repo.research / "aradio" / "state.json").read_bytes()
+        self.repo.build(force=True)
+        view = self.repo.view()
+        self.assertEqual(["live", "fresh-done", "edge-done"],
+                         [t["slug"] for t in view["threads"]])
+        live, full = view["threads"][0], state["threads"][0]
+        self.assertEqual(full["history"][-3:], live["history"])
+        self.assertEqual({k: v for k, v in full.items() if k != "history"},
+                         {k: v for k, v in live.items() if k != "history"})
+        self.assertEqual([{"slug": "old-done", "title": "Title old-done",
+                           "status": "resolved", "updated_at": "2026-10-27T08:00:00Z"}],
+                         view["other_threads"])
+        self.assertIn("never `create`", view["view"]["note"])
+        self.assertEqual(4, view["view"]["threads_on_board"])
+        # The full state is the writer's source of truth and stays untouched.
+        self.assertEqual(before, (self.repo.research / "aradio" / "state.json").read_bytes())
+
+    def test_over_cap_moves_the_oldest_resolved_thread_first(self):
+        threads = [board_thread(f"live{i}", filler="L" * 300, evidence=8) for i in range(3)]
+        threads += [board_thread(f"done{i}", status="resolved", filler="R" * 300, evidence=8,
+                                 updated=f"2026-10-30T0{i}:00:00Z") for i in range(4)]
+        board = self.repo.board(threads)
+        with mock.patch.object(bi, "MAX_BOARD_BYTES", 10 ** 9):
+            full_text, _ = bi.board_view(board, NOW, bi.Notes())
+        with mock.patch.object(bi, "MAX_BOARD_BYTES", len(full_text.encode()) - 1):
+            summary = self.repo.build(force=True)
+        view = self.repo.view()
+        self.assertEqual(["live0", "live1", "live2", "done1", "done2", "done3"],
+                         [t["slug"] for t in view["threads"]])
+        self.assertEqual(["done0"], [t["slug"] for t in view["other_threads"]])
+        self.assertTrue(view["view"]["shortened_to_fit"])
+        self.assertTrue(all("quote" in e for t in view["threads"] for e in t["evidence"]))
+        self.assertTrue(any("board view over" in w for w in summary["warnings"]))
+
+    def test_tiny_cap_compacts_but_keeps_every_slug_and_every_item(self):
+        threads = [board_thread(f"live{i}", filler="L" * 300, evidence=8) for i in range(3)]
+        threads += [board_thread(f"done{i}", status="resolved", filler="R" * 300, evidence=8,
+                                 updated=f"2026-10-30T0{i}:00:00Z") for i in range(4)]
+        self.repo.board(threads)
+        self.repo.earnings([AMZN_EVENT])
+        with mock.patch.object(bi, "MAX_BOARD_BYTES", 2_000):
+            summary = self.repo.build()
+        view = self.repo.view()
+        self.assertTrue(view["view"]["shortened_to_fit"])
+        self.assertEqual(["live0", "live1", "live2"], [t["slug"] for t in view["threads"]])
+        visible = ({t["slug"] for t in view["threads"]}
+                   | {t["slug"] for t in view["other_threads"]})
+        self.assertEqual({t["slug"] for t in threads}, visible)
+        for thread in view["threads"]:
+            self.assertLessEqual(len(thread["evidence"]), bi.BOARD_COMPACT_EVIDENCE)
+            self.assertTrue(all("quote" not in entry for entry in thread["evidence"]))
+            self.assertLessEqual(len(thread["now"]), bi.BOARD_COMPACT_TEXT["now"])
+        self.assertEqual(1, summary["items"])  # the board never displaces items
+
+    def test_items_keep_the_full_item_budget_whatever_the_board(self):
+        stories = "".join(story(i, f"S{i}", [f"https://x.com/s/status/{i}"],
+                                lead="L" * 1400) for i in range(30))
+        self.repo.twitter("2026-10-30", {"00:00": stories})
+        with mock.patch.object(bi, "MAX_ITEM_BYTES", 40_000):
+            lean = self.repo.build()["items"]
+            self.repo.board([board_thread(f"t{i}", history=400, change="x" * 150)
+                             for i in range(10)])
+            bloated = self.repo.build()
+        self.assertLess(lean, 30)
+        self.assertEqual(lean, bloated["items"])
+        self.assertLessEqual(self.item_files_bytes(), 40_000)
+
+    def test_go_with_no_item_fitting_is_a_real_error(self):
+        self.repo.earnings([AMZN_EVENT])
+        with mock.patch.object(bi, "MAX_ITEM_BYTES", 100):
+            with self.assertRaisesRegex(bi.InboxError, "empty inbox"):
+                self.repo.build()
+        self.assertFalse(self.repo.out.exists())
+        self.assertFalse(self.repo.trusted.exists())
+        gh = Path(self.repo.tmp.name) / "gh.txt"
+        with mock.patch.object(bi, "MAX_ITEM_BYTES", 100), \
+                contextlib.redirect_stdout(io.StringIO()) as stdout:
+            code = bi.main(["--now", "2026-10-30T08:50:00Z", "--repo-root", str(self.repo.root),
+                            "--trusted-dir", str(self.repo.trusted), "--no-transcript-fetch",
+                            "--github-output", str(gh)])
+        self.assertEqual(bi.EXIT_ERROR, code)
+        self.assertIn("::error::", stdout.getvalue())
+        self.assertFalse(gh.exists())  # no go=true for the next steps
 
 
 class ParserTest(unittest.TestCase):
