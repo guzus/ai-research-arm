@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-05-26 16:00 UTC",
-    "headline": "ANTHROPIC PROJECT GLASSWING ONE-MONTH UPDATE LANDS IN MAINSTREAM SECURITY PRESS: 23,000 VULNS ACROSS 1,000 OSS PROJECTS",
-    "source": "@HackRead",
-    "source_file": "research/summaries/2026-05-26-twitter-16h-headlines.json",
-    "url": "https://x.com/HackRead/status/2059303488870371670"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-26 16:00 UTC",
-    "headline": "THE INFORMATION: SPACEX $1.75T IPO VALUATION RESTS ON $700B REAL BUSINESS PLUS $1T OF \"TECH THAT DOESN'T YET EXIST\"",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-26-twitter-16h-headlines.json",
-    "url": "https://x.com/theinformation/status/2059296025722961962"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-26 16:00 UTC",
-    "headline": "MICRON HITS $1 TRILLION MARKET CAP AS AI-DRIVEN MEMORY LTA SQUEEZE LOCKS IN ~30% OF DDR VOLUMES NEAR CURRENT PRICES",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-05-26-twitter-16h-headlines.json",
-    "url": "https://x.com/jukan05/status/2059284149090103499"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-26 16:00 UTC",
-    "headline": "OPENROUTER NOW SERVING 1.5 QUADRILLION TOKENS/YR \u2014 15\u201330% OF GOOGLE APIS, 20\u201340% OF OPENAI, >50% OF AZURE FOUNDRY",
-    "source": "@deedydas",
-    "source_file": "research/summaries/2026-05-26-twitter-16h-headlines.json",
-    "url": "https://x.com/deedydas/status/2059298453872947623"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-05-26 16:00 UTC",
     "headline": "GOOGLE DEEPMIND LAUNCHES GEMINI FOR SCIENCE \u2014 HYPOTHESIS GENERATION, COMPUTATIONAL DISCOVERY, LITERATURE INSIGHTS",
@@ -23342,5 +23306,33 @@
     "headline": "OPENAI REWRITES MODEL SPEC AROUND FIVE CORE VALUES, RENAMES 'THE ASSISTANT' TO 'GPT'",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2115858614934175901"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-30 00:50:39 UTC",
+    "headline": "ANTHROPIC IS SPACEX 'CUSTOMER B' \u2014 34.5% OF $14.6B Q3 REVENUE FROM RENTED GPU CAPACITY: BLOOMBERG",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2115938869082542548"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-30 00:50:39 UTC",
+    "headline": "NVIDIA IN TALKS TO GUARANTEE >$5B CONSTRUCTION DEBT ON NSCALE'S 460MW ANTHROPIC DATA CENTER",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2115953126511689944"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-10-30 00:50:39 UTC",
+    "headline": "CLAUDE API MAX REQUEST SIZE RAISED 4X TO 128 MB",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2115923971279614171"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-30 00:50:39 UTC",
+    "headline": "GOOGLE SHUTS DOWN JULES CODING AGENT, FOLDS IT INTO ANTIGRAVITY",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2115960927275368958"
   }
 ]
