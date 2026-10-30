@@ -17,6 +17,7 @@ import json
 import os
 import re
 import ssl
+import http.client
 import sys
 import tempfile
 import urllib.error
@@ -41,6 +42,13 @@ EXIT_TOTAL_FETCH_FAILURE = 3
 EXIT_PUBLISH_AGE_DRIFT = 4
 # Below this many candidates an all-unparsed batch is too small to call drift.
 PUBLISH_AGE_DRIFT_MIN_CANDIDATES = 5
+# Failures of one tuber call. http.client.HTTPException (e.g. IncompleteRead
+# on a cut-off chunked body) is NOT an OSError, so without it one truncated
+# response escaped every per-source boundary and killed the whole run.
+FETCH_ERRORS = (
+    json.JSONDecodeError, urllib.error.URLError, TimeoutError, OSError, ValueError,
+    http.client.HTTPException,
+)
 
 PRIORITY_WEIGHT = {"P0": 100, "P1": 70, "P2": 40}
 KIND_WEIGHT = {"channel": 24, "search": 10, "trending": 0}
@@ -415,7 +423,7 @@ def collect_candidates(
     for source in sources:
         try:
             candidates.extend(fetch_source_candidates(source, base_url=base_url, fetch_json_fn=fetch_json_fn))
-        except (json.JSONDecodeError, urllib.error.URLError, TimeoutError, OSError, ValueError) as exc:
+        except FETCH_ERRORS as exc:
             errors.append((source, f"{type(exc).__name__}: {exc}"))
     return dedupe_candidates(candidates), errors
 
@@ -460,7 +468,7 @@ def enrich_candidates(
                     candidate.evidence = "summary"
                     candidate.caveat = ""
                     candidate.score += 10
-            except (json.JSONDecodeError, urllib.error.URLError, TimeoutError, OSError, ValueError) as exc:
+            except FETCH_ERRORS as exc:
                 errors.append((candidate.id, f"summary-preview {type(exc).__name__}: {exc}"))
 
         if candidate.evidence == "metadata-only" and transcript_checked < max_transcript_checks:
@@ -473,7 +481,7 @@ def enrich_candidates(
                     candidate.evidence = "transcript"
                     candidate.caveat = "transcript-backed, no generated summary"
                     candidate.score += 8
-            except (json.JSONDecodeError, urllib.error.URLError, TimeoutError, OSError, ValueError) as exc:
+            except FETCH_ERRORS as exc:
                 errors.append((candidate.id, f"transcript {type(exc).__name__}: {exc}"))
     candidates.sort(key=lambda item: (-item.score, item.source.name.lower(), item.title.lower(), item.id))
     return errors

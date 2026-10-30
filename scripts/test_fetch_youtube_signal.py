@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import http.client
 import json
 import os
 import sys
@@ -458,6 +459,53 @@ class TotalFetchFailureGuardTest(unittest.TestCase):
             self.assertIn("Unique videos collected: 1", text)
             self.assertIn("Fetch errors: 1", text)
             self.assertIn("Wrote", out)
+
+    def test_truncated_response_is_a_per_source_fetch_error(self):
+        # IncompleteRead is an http.client.HTTPException, not an OSError: it
+        # used to escape every per-source boundary and kill the whole run.
+        def truncated_then_up(source, *, base_url, fetch_json_fn=None):
+            if source.id == "down-channel":
+                raise http.client.IncompleteRead(b'{"videos": [')
+            candidate = youtube.normalize_video(
+                source,
+                {"id": "gH4FTjDm9FQ", "title": "OpenAI announces a new reasoning model",
+                 "publishedAt": "2d ago", "channel": "Up Search Channel"},
+            )
+            assert candidate is not None
+            return [candidate]
+
+        with tempfile.TemporaryDirectory() as td:
+            rc, _out, _err, out_path = self.run_main(td, truncated_then_up)
+
+            self.assertEqual(rc, 0)
+            text = out_path.read_text(encoding="utf-8")
+            self.assertIn("Fetch errors: 1", text)
+            self.assertIn("IncompleteRead", text)
+
+    def test_every_source_truncated_is_a_total_failure_not_a_crash(self):
+        def all_truncated(source, *, base_url, fetch_json_fn=None):
+            raise http.client.IncompleteRead(b"")
+
+        with tempfile.TemporaryDirectory() as td:
+            rc, _out, err, out_path = self.run_main(td, all_truncated)
+
+            self.assertEqual(rc, youtube.EXIT_TOTAL_FETCH_FAILURE)
+            self.assertFalse(out_path.exists())
+            self.assertIn("IncompleteRead", err)
+
+    def test_truncated_enrichment_response_is_recorded_not_raised(self):
+        candidate = youtube.VideoCandidate(
+            "gH4FTjDm9FQ", "Recent", "https://youtu.be/gH4FTjDm9FQ", SOURCE, published="2d ago")
+
+        def truncated(base_url, path, params):
+            raise http.client.IncompleteRead(b"{")
+
+        errors = youtube.enrich_candidates(
+            [candidate], base_url="https://tuber.test.invalid",
+            max_preview_checks=1, max_transcript_checks=1, fetch_json_fn=truncated)
+
+        self.assertEqual(2, len(errors))  # summary-preview + transcript, both soft
+        self.assertTrue(all("IncompleteRead" in message for _, message in errors))
 
     def test_empty_registry_keeps_current_write_behavior(self):
         # The guard requires at least one checked source: an empty registry
