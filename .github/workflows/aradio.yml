@@ -85,6 +85,23 @@ jobs:
           mkdir -- "$workspace_entry"
           rm -rf -- "$quarantine"
 
+      # Publishing is main-only. From any other ref the run would spend the
+      # editor and TTS and upload public audio before safe-push refused to
+      # publish. Stop before checkout or any spend; this sits after the
+      # quarantine so the always() cleanup and telemetry steps run against an
+      # empty workspace, never a stale checkout. The ref goes through env,
+      # never ${{ }} inside the script.
+      - name: Refuse refs other than main
+        shell: bash
+        env:
+          RUN_REF: ${{ github.ref }}
+        run: |
+          set -euo pipefail
+          if [ "$RUN_REF" != "refs/heads/main" ]; then
+            echo "::error::Aradio publishes only from refs/heads/main, and this run is on ${RUN_REF}. Dispatch it from main."
+            exit 1
+          fi
+
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         env:
