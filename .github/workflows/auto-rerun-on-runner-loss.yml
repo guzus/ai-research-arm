@@ -39,6 +39,7 @@ on:
       - "LLM Wiki Ingest (After Daily Digest)"
       - "Daily Front Page"
       - "Generative Research"
+      - "Aradio"
     types: [completed]
     # Filters the TRIGGERING run's head_branch. Scheduled, issue-, and
     # workflow_run-chained runs all resolve to the default branch, so every

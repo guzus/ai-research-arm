@@ -432,6 +432,44 @@
       }
     },
     {
+      "id": "aradio",
+      "producer": ".github/workflows/aradio.yml",
+      "artifacts": [
+        "research/aradio/state.json",
+        "research/aradio/cursor.json",
+        "research/aradio/index.json",
+        "research/aradio/bulletins/*/*.json",
+        "research/aradio/archive/*.json"
+      ],
+      "freshness_paths": [
+        "research/aradio/cursor.json"
+      ],
+      "cadence": {
+        "kind": "interval",
+        "hours": 1,
+        "freshness_slo_hours": 8
+      },
+      "validators": [
+        "scripts/check_aradio.py"
+      ],
+      "degraded_policy": "publish-text-fail-loud-on-audio",
+      "degraded_signal": {
+        "kind": "json_boolean_any",
+        "label": "audio-missing",
+        "path": "research/aradio/index.json",
+        "selectors": [
+          "degraded"
+        ],
+        "required_selectors": [
+          "schema",
+          "updated_at",
+          "degraded",
+          "latest",
+          "bulletins"
+        ]
+      }
+    },
+    {
       "id": "earnings",
       "producer": ".github/workflows/daily-earnings.yml",
       "artifacts": [

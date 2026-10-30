@@ -1,0 +1,16 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "formatter": false,
+  "lsp": false,
+  "permission": {
+    "*": "deny",
+    "read": {
+      "*": "deny",
+      ".agent-input/aradio/*": "allow"
+    },
+    "edit": {
+      "*": "deny",
+      ".tmp/aradio/edit.json": "allow"
+    }
+  }
+}

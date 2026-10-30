@@ -262,6 +262,12 @@
       "backend": "cursor-grok-4p6-fast",
       "fallback": "none",
       "notes": "Dedicated isolated route for Korean generative-research translation. It is separate from scheduled editorial traffic so translation quality/cost can be rerouted independently; publication stays host-owned and the route fails closed. Cursor Grok 4.6 Fast writes the fixed segment JSONL; OpenCode remains a compatible adapter if this route is pointed back."
+    },
+    "aradio": {
+      "contract": "research-editorial",
+      "backend": "cursor-grok-4p6-fast",
+      "fallback": "none",
+      "notes": "Dedicated isolated route for the Aradio situation-board editor, so the hourly station can be rerouted or cost-tuned without touching the shared editorial routes. The editor returns one uncommitted .tmp/aradio/edit.json of ops; trusted host code validates it, voices it, and is the only committer. Fails closed with no cross-adapter fallback."
     }
   },
   "fallback": {
@@ -330,6 +336,11 @@
       "workflow": "wiki-ingest.yml",
       "route": "research-editorial-secondary",
       "notes": "Digest -> LLM wiki page CRUD through the secondary isolated editorial route; writes stay under the wiki prefix and page deletion remains forbidden by the workflow guard."
+    },
+    "aradio": {
+      "workflow": "aradio.yml",
+      "route": "aradio",
+      "notes": "Hourly Aradio editor behind a deterministic, model-free gate (routine material waits for a 2 h cadence). It reads only the staged .agent-input/aradio/ inbox and returns one ops artifact; check_aradio.py enforces provenance and write_aradio_bulletin.py applies the ops, so history cannot be rewritten by the model."
     },
     "generative-research-ko": {
       "workflow": "translate-generative-research.yml",

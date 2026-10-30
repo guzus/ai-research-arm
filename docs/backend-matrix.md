@@ -90,6 +90,7 @@ Reading notes:
 |---|---|---|---|---|---|---|
 | ai-news-research | `ai-news-research.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5-5` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `cursor-grok-4p6-fast` |
 | ai-news-research-mcp | `ai-news-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
+| aradio (route:aradio) | `aradio.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | arxiv (route:research-editorial-secondary) | `daily-arxiv.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | bluesky (route:research-editorial) | `2h-bluesky.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | claude-canary | `claude-native-canary.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `${{ inputs.model }}` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
@@ -154,7 +155,7 @@ Reading notes:
 - `podcasts.yml`
 - `production-synthetic.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p3`; native path serves `claude-opus-5-5`. 33 SSOT lanes (+14 dispatch execution paths) across 36 workflows; 15 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p3`; native path serves `claude-opus-5-5`. 34 SSOT lanes (+14 dispatch execution paths) across 37 workflows; 15 workflows run no model._
 
 _Explicit lane fallback overrides (replace, never extend, the global chain): `ai-news-research`: `cursor-grok-4p6-fast`; `digest-audio-script`: `cursor-grok-4p6-fast`; `digest-synthesis-fallback`: `cursor-grok-4p6-fast`; `twitter-primary`: `cursor-grok-4p6-fast`; `twitter-primary-repair`: `cursor-grok-4p6-fast`._
 
@@ -169,6 +170,7 @@ does not (and should not) row it:
 |---|---|---|---|
 | `scripts/run_generative_research_oracle.py` | Local Oracle runner on the developer machine (not GitHub Actions) | GPT-5.5 Pro via `../oracle` (browser engine by default) | local Oracle checkout |
 | Digest TTS audio (inline step in `daily-digest.yml`) + manual `scripts/generate_generative_article_audio.py` | plain TTS API call, not an agent harness | Gemini Flash TTS | `GEMINI_API_KEY` (skipped when unset) |
+| Aradio bulletin audio (`scripts/aradio_tts.py`, step in `aradio.yml`) | plain TTS API call on the validated script, only when the editor puts a bulletin on air; a failure publishes the text with `audio: null` and then fails the job (never a silent skip) | Gemini `gemini-3.8-flash-tts` via the Interactions API (Charon + Puck) | `GEMINI_API_KEY` (missing = loud failure) |
 | Raw endpoint probe in `zai-claude-code-canary.yml` | 256-token tool-use diagnostics POST straight to `api.z.ai/api/anthropic/v1/messages` before the agent-run canary step; the `model` dispatch input overrides the probed id so a new Z.ai id can be validated before the SSOT changes | Z.ai `glm-5.3` (default) | `ZAI_API_KEY` |
 
 ## Related contracts

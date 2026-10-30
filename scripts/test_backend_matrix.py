@@ -237,6 +237,7 @@ class RoutingInvariants(unittest.TestCase):
                       "research/arxiv/${{ steps.date.outputs.date }}-papers.md\nresearch/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt", ""),
             "wiki-ingest": ("research/wiki/", "research/wiki/", ""),
             "bluesky": ("", "", ".tmp/bluesky-section.md"),
+            "aradio": ("", "", ".tmp/aradio/edit.json"),
             "generative-research-ko": (
                 "", "", "${{ steps.prepare.outputs.result_path }}"
             ),
@@ -289,6 +290,52 @@ class RoutingInvariants(unittest.TestCase):
             self.assertIs(adapter["isolated_workspace"], True)
             self.assertIs(adapter["editorial_contract"], True)
             self.assertEqual(credential, adapter["provider_credentials"])
+
+    def test_aradio_dispatch_uses_capability_minimized_policy(self):
+        """The Aradio editor reads its staged inbox and writes one ops file."""
+        workflow = yaml.safe_load(
+            (REPO_ROOT / ".github/workflows/aradio.yml").read_text(encoding="utf-8")
+        )
+        steps = workflow["jobs"]["aradio"]["steps"]
+        dispatch = next(step for step in steps
+                        if step.get("uses") == "./.github/actions/agent-dispatch")
+        self.assertEqual(".github/cursor/aradio.json",
+                         dispatch["with"].get("cursor-config"))
+        self.assertEqual(".github/opencode/aradio.json",
+                         dispatch["with"].get("opencode-config"))
+        self.assertTrue(dispatch.get("continue-on-error"))
+        self.assertNotIn("allowed-paths", dispatch["with"])
+        self.assertNotIn("expected-paths", dispatch["with"])
+        translation = json.loads(
+            (REPO_ROOT / ".github/cursor/translation.json").read_text(encoding="utf-8"))
+        cursor_policy = json.loads(
+            (REPO_ROOT / ".github/cursor/aradio.json").read_text(encoding="utf-8"))
+        self.assertEqual(translation["permissions"]["deny"],
+                         cursor_policy["permissions"]["deny"])
+        self.assertEqual(["Read(.agent-input/aradio/**/*)",
+                          "Write(.tmp/aradio/edit.json)"],
+                         cursor_policy["permissions"]["allow"])
+        policy = json.loads(
+            (REPO_ROOT / ".github/opencode/aradio.json").read_text(encoding="utf-8"))
+        self.assertIs(False, policy["formatter"])
+        self.assertIs(False, policy["lsp"])
+        permission = policy["permission"]
+        self.assertEqual("deny", permission["*"])
+        self.assertEqual({"*": "deny", ".agent-input/aradio/*": "allow"},
+                         permission["read"])
+        self.assertEqual({"*": "deny", ".tmp/aradio/edit.json": "allow"},
+                         permission["edit"])
+        self.assertNotIn("bash", permission)
+        self.assertNotIn("webfetch", permission)
+        # Trusted host steps consume only the trusted inbox copy and the
+        # validator's normalized output, never the agent's staging paths.
+        by_id = {step.get("id"): step for step in steps if step.get("id")}
+        validate = by_id["validate"]["run"]
+        self.assertIn("--inbox \"$SCRATCH/trusted/inbox.json\"", validate)
+        for step_id in ("tts", "writer"):
+            self.assertIn("$SCRATCH/edit.normalized.json", by_id[step_id]["run"])
+            self.assertNotIn(".agent-input", by_id[step_id]["run"])
+        self.assertEqual("false", str(workflow["concurrency"]["cancel-in-progress"]).lower())
 
     def test_korean_translation_dispatch_uses_capability_minimized_policy(self):
         workflow = yaml.safe_load(
@@ -893,6 +940,7 @@ class RoutingInvariants(unittest.TestCase):
     OPENCODE_WORKFLOWS = (
         "2h-bluesky.yml",
         "4h-community.yml",
+        "aradio.yml",
         "daily-arxiv.yml",
         "generative-research.yml",
         "hourly-rss.yml",
@@ -1019,7 +1067,7 @@ class RoutingInvariants(unittest.TestCase):
     def test_all_opencode_callers_disable_checkout_credentials(self):
         """Every known caller removes checkout auth before metadata cleanup."""
         self.assertEqual(
-            {"2h-bluesky.yml", "4h-community.yml", "daily-arxiv.yml",
+            {"2h-bluesky.yml", "4h-community.yml", "aradio.yml", "daily-arxiv.yml",
              "generative-research.yml", "hourly-rss.yml",
              "hourly-twitter.yml", "opencode-deepseek-canary.yml",
              "translate-generative-research.yml",
@@ -1277,7 +1325,8 @@ class RoutingInvariants(unittest.TestCase):
                                 .read_text(encoding="utf-8"))
         self.assertNotIn("model", production)
         self.assertNotIn("provider", production)
-        for name in ("opencode.json", "opencode-canary.json", "translation.json"):
+        for name in ("opencode.json", "opencode-canary.json", "translation.json",
+                     "aradio.json"):
             cfg = json.loads((REPO_ROOT / ".github" / "opencode" / name)
                              .read_text(encoding="utf-8"))
             # opencode REJECTS unknown top-level keys ("Unrecognized key:
@@ -1612,7 +1661,8 @@ class RoutingInvariants(unittest.TestCase):
             .read_text(encoding="utf-8"))
         self.assertNotIn("model", production)
         self.assertNotIn("provider", production)
-        for name in ("cli-config.json", "cli-config-canary.json", "translation.json"):
+        for name in ("cli-config.json", "cli-config-canary.json", "translation.json",
+                     "aradio.json"):
             cfg = json.loads((REPO_ROOT / ".github" / "cursor" / name)
                              .read_text(encoding="utf-8"))
             self.assertEqual(1, cfg.get("version"), name)
