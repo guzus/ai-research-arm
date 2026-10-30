@@ -447,7 +447,7 @@
       "cadence": {
         "kind": "interval",
         "hours": 1,
-        "freshness_slo_hours": 8
+        "freshness_slo_hours": 30
       },
       "validators": [
         "scripts/check_aradio.py"
