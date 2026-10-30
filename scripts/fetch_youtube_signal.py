@@ -36,6 +36,11 @@ FORBIDDEN_GENERATION_PATH_PARTS = ("/summarize", "/acp/jobs")
 # Distinct from 2 (argument validation) so the workflow/telemetry can tell
 # a total tuber-api outage apart from a bad invocation.
 EXIT_TOTAL_FETCH_FAILURE = 3
+# Exit code for "candidates arrived but not one publish-age label parsed" —
+# upstream format drift, which otherwise skips every video silently.
+EXIT_PUBLISH_AGE_DRIFT = 4
+# Below this many candidates an all-unparsed batch is too small to call drift.
+PUBLISH_AGE_DRIFT_MIN_CANDIDATES = 5
 
 PRIORITY_WEIGHT = {"P0": 100, "P1": 70, "P2": 40}
 KIND_WEIGHT = {"channel": 24, "search": 10, "trending": 0}
@@ -242,6 +247,25 @@ def _video_score_points(video_score: dict[str, Any] | None) -> int:
     return max(-20, min(40, round((score - 50) / 2)))
 
 
+# Days per relative-age unit. tuber-api switched on 2026-09-29 from spelled-out
+# labels ("2 hours ago") to compact ones ("2h ago", "1mo ago", "Streamed 1y
+# ago"); both shapes must parse. "mo" (month) is a distinct token from "m"
+# (minute): the pattern requires `\s+ago` straight after the unit, so "1mo ago"
+# can never be read as one minute.
+AGE_UNIT_DAYS = {
+    "s": 0, "sec": 0, "second": 0,
+    "m": 0, "min": 0, "minute": 0,
+    "h": 0, "hr": 0, "hour": 0,
+    "d": 1, "day": 1,
+    "w": 7, "wk": 7, "week": 7,
+    "mo": 30, "month": 30,
+    "y": 365, "yr": 365, "year": 365,
+}
+AGE_PATTERN = re.compile(
+    r"(\d+)\s*(seconds?|secs?|minutes?|mins?|hours?|hrs?|days?|weeks?|wks?|months?|mo|years?|yrs?|[smhdwy])\s+ago\b"
+)
+
+
 def approximate_age_days(label: str) -> int | None:
     text = clean_text(label).lower()
     if not text:
@@ -250,22 +274,13 @@ def approximate_age_days(label: str) -> int | None:
         return 0
     if "yesterday" in text:
         return 1
-    match = re.search(r"(\d+)\s+(minute|hour|day|week|month|year)s?\s+ago", text)
+    match = AGE_PATTERN.search(text)
     if not match:
         return None
-    amount = int(match.group(1))
     unit = match.group(2)
-    if unit in {"minute", "hour"}:
-        return 0
-    if unit == "day":
-        return amount
-    if unit == "week":
-        return amount * 7
-    if unit == "month":
-        return amount * 30
-    if unit == "year":
-        return amount * 365
-    return None
+    if unit not in AGE_UNIT_DAYS:
+        unit = unit[:-1]  # plural: "days" -> "day", "mins" -> "min"
+    return int(match.group(1)) * AGE_UNIT_DAYS[unit]
 
 
 def score_candidate(source: Source, row: dict[str, Any], title: str, video_score: dict[str, Any] | None) -> int:
@@ -727,6 +742,26 @@ def main(argv: list[str] | None = None) -> int:
         for source, error in fetch_errors:
             print(f"ERROR:   {source.name}: {error}", file=sys.stderr)
         return EXIT_TOTAL_FETCH_FAILURE
+
+    # Upstream format drift must fail loudly too. On 2026-09-29 tuber-api
+    # changed "2 days ago" to "2d ago"; every candidate then parsed as
+    # "unknown publish age" and the lane committed "High-signal videos
+    # selected: 0" with exit 0 for 32 straight days — the same fresh-dated
+    # empty artifact the guard above prevents, reached through a parse failure
+    # instead of an outage. A batch big enough to be meaningful in which not
+    # ONE label parses is a schema change, never "no news".
+    unparsed = [c for c in candidates if approximate_age_days(c.published) is None]
+    if len(candidates) >= PUBLISH_AGE_DRIFT_MIN_CANDIDATES and len(unparsed) == len(candidates):
+        samples = sorted({c.published for c in unparsed})[:5]
+        print(
+            f"ERROR: publish-age format drift: none of {len(candidates)} candidate(s) "
+            f"from {args.tuber_api_base} carried a parseable publish age "
+            f"(sample labels: {samples}), so every video would be skipped as "
+            f"'unknown publish age'; refusing to write {out_path}. Extend "
+            "approximate_age_days() for the new label format",
+            file=sys.stderr,
+        )
+        return EXIT_PUBLISH_AGE_DRIFT
 
     enrich_errors = enrich_candidates(
         candidates,
