@@ -478,6 +478,19 @@ def plan_run(report: Report, name: str, unit: Unit, english_raw: str, korean: st
                          english[english_match.start() : english_match.end()],
                          english_components(form, english_match)), canon, form, english_match)
 
+    # A rendered date followed by a particle fitted to some other final
+    # syllable ("2025년 11월나" for 이나).
+    for canon, members in groups.items():
+        form, match = members[0]
+        for found in re.finditer(rf"(?<![0-9]){re.escape(canon)}", korean):
+            fitted, consumed = fit_particle(canon, korean[found.end() :])
+            written = korean[found.end() : found.end() + consumed]
+            if consumed and fitted != written and not taken(found.end(), found.end() + consumed):
+                propose(Edit(found.end(), found.end() + consumed, fitted, "B", "particle",
+                             english[match.start() : match.end()], ("particle", canon[-1])),
+                        canon, form, match)
+                handled[canon] -= 1  # the date itself still needs its own check
+
     atoms = atoms_of(korean, commas)
     claims: dict[tuple[int, int], set[str]] = collections.defaultdict(set)
     plans = []
@@ -610,6 +623,11 @@ def plan_signs(report: Report, name: str, unit: Unit, english_raw: str, korean: 
 
 def verify(edit: Edit, before: str) -> None:
     """Parse the rewrite back; it must name exactly the English date."""
+    if edit.rule == "particle":
+        final = edit.expected[1]
+        if segments.fit_particle(final, before) != (edit.after, len(before)) or before == edit.after:
+            raise SystemExit(f"particle edit {before!r} -> {edit.after!r} does not fit {final!r}")
+        return
     if edit.cls == "S":
         if before != "-" or edit.after:
             raise SystemExit(f"stray-minus edit must remove one hyphen, not {before!r}")
