@@ -1119,8 +1119,10 @@ jobs:
       # player for every stubbed date, and the `digest-audio` SLO measures
       # stub commits. So it is committed only after a confirmed upload; a
       # failed upload used to leave a player that 404s and a fresh-looking SLO.
+      # The editorial gate stays too: every audio step carries its own
+      # (dashboard/scripts/publication-contract.test.mjs pins it).
       - name: Truncate audio mp3 to 0-byte stub + commit
-        if: success() && steps.digest-audio-upload.outputs.uploaded == 'true'
+        if: success() && steps.digest-publication.outputs.editorial == 'true' && (github.event_name != 'workflow_dispatch' || inputs.generate_audio) && steps.digest-audio-upload.outputs.uploaded == 'true'
         continue-on-error: true
         env:
           DATE: ${{ steps.date.outputs.date }}
