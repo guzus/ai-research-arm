@@ -1,0 +1,218 @@
+{
+  "schema": 1,
+  "id": "2026-10-31-0853",
+  "aired_at": "2026-10-31T08:53:00Z",
+  "headline": "Anthropic's S-1 sets up a possible trillion-dollar IPO as AI capex rattles chips and attackers raid AI developer platforms",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's seven minutes to nine UTC on Saturday, October thirty-first. This is ARA Radio, and the picture this morning is of AI money, markets and security all moving at once."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Anthropic has filed its S-1, and it could list on Nasdaq as soon as next month. Commentators on Hard Fork and Decoder put the valuation somewhere between one and a half and two trillion dollars."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "What do we actually know from the filing?"
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Hard Fork, the hosts said first-half revenue this year was six point three billion dollars, roughly fourteen times growth. On Decoder, an analyst said about eighty percent of recent revenue comes from models released in the last six months."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "And the rival is reportedly shrinking its ask. The Financial Times says OpenAI now wants about twenty billion dollars at a one point two five trillion dollar valuation, down from thirty billion at one point four trillion."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That is a single-source report, with no comment from OpenAI or investors. It also says some backers trimmed their allocations during the selloff, though a smaller round could simply mean less dilution."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Which brings us to the markets. Thursday was rough for AI-linked stocks, even after very strong cloud earnings."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Google Cloud revenue rose a hundred and three percent to thirty point seven billion dollars. Microsoft Cloud reached sixty-three point nine billion, up thirty percent, and Amazon said AWS grew over thirty-nine percent."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Amazon's CEO Andy Jassy also projected AWS growth above forty percent in both twenty twenty-seven and twenty twenty-eight. And Vertiv, which supplies data center equipment, raised its guidance after sales jumped sixty-one percent."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Still, market recaps say Intel closed down twenty-eight point six percent on weak guidance tied to AI-driven memory prices. The chip index fell about seven percent, and the Nasdaq 100 lost about three and a half percent."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The third thread is security. Wiz reportedly counts nine AI developer platforms breached this month, with stored AI API keys the target."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Northflank told customers to assume every stored secret was decrypted and to rotate them all. Treat the full Wiz list as unconfirmed for now, because it comes from one secondhand summary."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Separately, Epoch AI reportedly found that the open-weight model GLM five point three turned published Firefox fixes into working exploits for about one thousand dollars per version. Firefox patched that on October twenty-seventh."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "And Anthropic said it used thousands of Claude agents to write harmless-looking training data that teaches misalignment. The model involved was deliberately fine-tuned and never deployed, and the data should help train better monitors."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "What should listeners watch? Anthropic's pricing and listing date, any confirmation of OpenAI's reduced round, and whether the chip selloff carries into Monday."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Also watch for statements from Fireworks AI, Railway and Warp on what was taken."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA Radio. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's seven minutes to nine UTC on Saturday, October thirty-first. This is ARA Radio, and the picture this morning is of AI money, markets and security all moving at once.",
+    "Speaker 2: [high_energy]Anthropic has filed its S-1, and it could list on Nasdaq as soon as next month. Commentators on Hard Fork and Decoder put the valuation somewhere between one and a half and two trillion dollars.",
+    "Speaker 1: What do we actually know from the filing?",
+    "Speaker 2: On Hard Fork, the hosts said first-half revenue this year was [emphasis]six point three billion dollars[/emphasis], roughly fourteen times growth. On Decoder, an analyst said about eighty percent of recent revenue comes from models released in the last six months.",
+    "Speaker 1: And the rival is reportedly shrinking its ask. The Financial Times says OpenAI now wants about twenty billion dollars at a one point two five trillion dollar valuation, down from thirty billion at one point four trillion.",
+    "Speaker 2: That is a single-source report, with no comment from OpenAI or investors. It also says some backers trimmed their allocations during the selloff, though a smaller round could simply mean less dilution.",
+    "Speaker 1: Which brings us to the markets. Thursday was rough for AI-linked stocks, even after very strong cloud earnings.",
+    "Speaker 2: Google Cloud revenue rose a hundred and three percent to thirty point seven billion dollars. Microsoft Cloud reached sixty-three point nine billion, up thirty percent, and Amazon said AWS grew over thirty-nine percent.",
+    "Speaker 1: Amazon's CEO Andy Jassy also projected AWS growth above forty percent in both twenty twenty-seven and twenty twenty-eight. And Vertiv, which supplies data center equipment, raised its guidance after sales jumped sixty-one percent.",
+    "Speaker 2: Still, market recaps say Intel closed down twenty-eight point six percent on weak guidance tied to AI-driven memory prices. The chip index fell about seven percent, and the Nasdaq 100 lost about three and a half percent.",
+    "Speaker 1: The third thread is security. Wiz reportedly counts nine AI developer platforms breached this month, with stored AI API keys the target.",
+    "Speaker 2: Northflank told customers to assume every stored secret was decrypted and to rotate them all. Treat the full Wiz list as unconfirmed for now, because it comes from one secondhand summary.",
+    "Speaker 1: Separately, Epoch AI reportedly found that the open-weight model GLM five point three turned published Firefox fixes into working exploits for about one thousand dollars per version. Firefox patched that on October twenty-seventh.",
+    "Speaker 2: And Anthropic said it used thousands of Claude agents to write harmless-looking training data that teaches misalignment. The model involved was deliberately fine-tuned and never deployed, and the data should help train better monitors.",
+    "Speaker 1: What should listeners watch? Anthropic's pricing and listing date, any confirmation of OpenAI's reduced round, and whether the chip selloff carries into Monday.",
+    "Speaker 2: Also watch for statements from Fireworks AI, Railway and Warp on what was taken.",
+    "Speaker 1: That's ARA Radio. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "anthropic-ipo-and-ai-funding",
+    "hyperscaler-capex-and-chip-selloff",
+    "ai-cyber-risk-and-key-theft"
+  ],
+  "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, Vertiv and the chip rout",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=EGC7jht_mis",
+      "kind": "podcast",
+      "label": "Hard Fork"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Yvy_Qm14odU",
+      "kind": "podcast",
+      "label": "Decoder with Nilay Patel"
+    },
+    {
+      "url": "https://x.com/noxflux/status/2116397958425886813",
+      "kind": "twitter",
+      "label": "@noxflux on X (FT summary)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/",
+      "kind": "earnings",
+      "label": "Amazon.com, Inc. (AMZN)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/",
+      "kind": "earnings",
+      "label": "Alphabet Q3 8-K"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436122/",
+      "kind": "earnings",
+      "label": "Microsoft FY27 Q1 8-K"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026067707/",
+      "kind": "earnings",
+      "label": "Vertiv Holdings Co (VRT)"
+    },
+    {
+      "url": "https://x.com/DobbinsDownload/status/2116292393620398449",
+      "kind": "twitter",
+      "label": "@DobbinsDownload on X (market recap)"
+    },
+    {
+      "url": "https://x.com/MansaTesla/status/2116103460701581373",
+      "kind": "twitter",
+      "label": "@MansaTesla on X (Amazon recap)"
+    },
+    {
+      "url": "https://x.com/AndrewCurran_/status/2116310704110305280",
+      "kind": "twitter",
+      "label": "@AndrewCurran_ on X (Wiz summary)"
+    },
+    {
+      "url": "https://x.com/djcroman/status/2116144325314953273",
+      "kind": "ticket",
+      "label": "Epoch AI GLM-5.3 study via X"
+    },
+    {
+      "url": "https://x.com/AnthropicAI/status/2116349211549843666",
+      "kind": "twitter",
+      "label": "@AnthropicAI on X"
+    }
+  ],
+  "ops": [
+    {
+      "op": "create",
+      "slug": "anthropic-ipo-and-ai-funding"
+    },
+    {
+      "op": "create",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    },
+    {
+      "op": "create",
+      "slug": "ai-cyber-risk-and-key-theft"
+    }
+  ],
+  "warnings": [
+    "ops[1] create hyperscaler-capex-and-chip-selloff evidence[0]: label set to the source's name because the evidence carries a quote",
+    "ops[1] create hyperscaler-capex-and-chip-selloff evidence[3]: label set to the source's name because the evidence carries a quote",
+    "script[1]: unknown audio tag [/high_energy] stripped"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-10-31-0853.mp3",
+    "bytes": 1032141,
+    "duration_s": 171.9
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "claude-sonnet-5p5-isolated",
+    "model": "claude-sonnet-5-5"
+  },
+  "inbox": {
+    "items": 38,
+    "kinds": {
+      "earnings": 4,
+      "podcast": 5,
+      "ticket": 19,
+      "twitter": 8,
+      "video": 2
+    }
+  }
+}

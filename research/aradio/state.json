@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "updated_at": "2026-10-31T08:53:00Z",
+  "headline": "Anthropic's S-1 sets up a possible trillion-dollar IPO as AI capex rattles chips and attackers raid AI developer platforms",
+  "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-10-31T08:53:00Z",
+      "now": "Anthropic filed its S-1 this week and could list on Nasdaq as soon as November. Commentators cite a $1.5T to $2T valuation and a possible raise of up to $100B. Hard Fork says first-half 2026 revenue was $6.3B. FT reportedly says OpenAI cut its round to about $20B at $1.25T.",
+      "changed": "The S-1 opened Anthropic's books; the FT reportedly says OpenAI trimmed its round from $30B at $1.4T to about $20B at $1.25T after some backers cut allocations (single source).",
+      "watch": "Anthropic's pricing and listing date in November; whether OpenAI or MGX confirm the reduced round.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=EGC7jht_mis",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-10-30T13:44:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Yvy_Qm14odU",
+          "kind": "podcast",
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-10-29T15:14:00Z"
+        },
+        {
+          "url": "https://x.com/noxflux/status/2116397958425886813",
+          "kind": "twitter",
+          "label": "@noxflux on X (FT summary)",
+          "at": "2026-10-31T05:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Anthropic S-1 digested on Hard Fork and Decoder; FT reportedly says OpenAI shrank its round to about $20B at $1.25T."
+        }
+      ]
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, Vertiv and the chip rout",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-10-31T08:53:00Z",
+      "now": "Google Cloud revenue rose 103% to $30.7B; Microsoft Cloud hit $63.9B, up 30%. Amazon says AWS grew over 39%, a $184B run rate. Vertiv sales rose 61% and it raised guidance. Yet on Thursday Intel fell 28.6%, the chip index about 7% and the Nasdaq 100 about 3.5%, per market recaps.",
+      "changed": "Strong third-quarter AI cloud results were overshadowed by Thursday's rout, led by Intel's weak guidance tied to AI-driven memory prices. Amazon reportedly has trailing free cash flow near minus $42B.",
+      "watch": "Whether the chip selloff continues Monday and whether other PC or memory-exposed firms repeat Intel's warning.",
+      "evidence": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/",
+          "kind": "earnings",
+          "label": "Amazon.com, Inc. (AMZN)",
+          "at": "2026-10-29T20:05:27Z",
+          "speaker": "Andy Jassy, President and CEO, Amazon",
+          "quote": "Our AWS investment in functionality and infrastructure is working, with over 39% year-over-year revenue growth in Q3 ($184 billion revenue run rate) and projected revenue growth rates of over 40% both in 2027 and in 2028"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/",
+          "kind": "earnings",
+          "label": "Alphabet Q3 8-K",
+          "at": "2026-10-28T20:01:33Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436122/",
+          "kind": "earnings",
+          "label": "Microsoft FY27 Q1 8-K",
+          "at": "2026-10-28T20:04:44Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026067707/",
+          "kind": "earnings",
+          "label": "Vertiv Holdings Co (VRT)",
+          "at": "2026-10-28T10:02:00Z",
+          "speaker": "Giordano Albertazzi, Vertiv's Chief Executive Officer",
+          "quote": "We are in the middle of the largest infrastructure buildout and it's accelerating"
+        },
+        {
+          "url": "https://x.com/DobbinsDownload/status/2116292393620398449",
+          "kind": "twitter",
+          "label": "@DobbinsDownload on X (market recap)",
+          "at": "2026-10-30T22:00:00Z"
+        },
+        {
+          "url": "https://x.com/MansaTesla/status/2116103460701581373",
+          "kind": "twitter",
+          "label": "@MansaTesla on X (Amazon recap)",
+          "at": "2026-10-30T09:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture."
+        }
+      ]
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-10-31T08:53:00Z",
+      "now": "Wiz reportedly counts nine AI developer platforms breached in October for stored AI API keys, including Northflank, which told customers to rotate all secrets. Epoch reportedly found open-weight GLM-5.3 built Firefox exploits for about $1,000 each. Anthropic says its agents wrote benign-looking data that teaches misalignment.",
+      "changed": "Northflank told customers to assume stored secrets were decrypted. Wiz figures come from one secondhand summary. Anthropic published red-team data that evades training-data monitors.",
+      "watch": "Statements from Fireworks AI, Railway and Warp; bulk key revocations by model providers; Mozilla and Z.ai responses.",
+      "evidence": [
+        {
+          "url": "https://x.com/AndrewCurran_/status/2116310704110305280",
+          "kind": "twitter",
+          "label": "@AndrewCurran_ on X (Wiz summary)",
+          "at": "2026-10-31T05:00:00Z"
+        },
+        {
+          "url": "https://x.com/djcroman/status/2116144325314953273",
+          "kind": "ticket",
+          "label": "Epoch AI GLM-5.3 study via X",
+          "at": "2026-10-30T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/AnthropicAI/status/2116349211549843666",
+          "kind": "twitter",
+          "label": "@AnthropicAI on X",
+          "at": "2026-10-31T05:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
+        }
+      ]
+    }
+  ]
+}

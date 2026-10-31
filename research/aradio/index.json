@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "updated_at": "2026-10-31T08:53:00Z",
+  "degraded": false,
+  "latest": "2026-10-31-0853",
+  "bulletins": [
+    {
+      "id": "2026-10-31-0853",
+      "aired_at": "2026-10-31T08:53:00Z",
+      "headline": "Anthropic's S-1 sets up a possible trillion-dollar IPO as AI capex rattles chips and attackers raid AI developer platforms",
+      "path": "bulletins/2026-10-31/0853.json",
+      "audio": {
+        "key": "audio/aradio/2026-10-31-0853.mp3",
+        "bytes": 1032141,
+        "duration_s": 171.9
+      },
+      "covers": [
+        "anthropic-ipo-and-ai-funding",
+        "hyperscaler-capex-and-chip-selloff",
+        "ai-cyber-risk-and-key-theft"
+      ],
+      "kinds": [
+        "earnings",
+        "podcast",
+        "ticket",
+        "twitter"
+      ]
+    }
+  ]
+}
