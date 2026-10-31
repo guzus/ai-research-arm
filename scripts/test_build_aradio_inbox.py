@@ -1310,8 +1310,11 @@ class BackoffTest(FixtureTest):
         self.repo.cursor(last_editor_run_at=self.STUCK_SINCE)
 
     def attempts(self, failed: int, minutes_ago: int, since: str = STUCK_SINCE) -> dict:
-        return {"since": since, "failed": failed,
-                "last_failed_at": bi.iso_z(NOW - dt.timedelta(minutes=minutes_ago))}
+        # aradio_run_alert.history()'s record: every failed run since the
+        # bulletin, and those whose editor step ran.
+        return {"since": since, "failed": failed + 2, "editor_failures": failed,
+                "last_editor_failure_at": bi.iso_z(NOW - dt.timedelta(minutes=minutes_ago)),
+                "forced_run": None}
 
     def test_each_failure_doubles_the_wait_up_to_four_hours(self):
         self.assertTrue(self.repo.build()["go"])  # due, and nothing has failed
@@ -1319,8 +1322,17 @@ class BackoffTest(FixtureTest):
             with self.subTest(failed=failed):
                 early = self.repo.build(attempts=self.attempts(failed, wait - 1))
                 self.assertFalse(early["go"])
-                self.assertIn(f"backing off after {failed} failed run(s)", early["reason"])
+                self.assertIn(f"backing off after {failed} failed editor run(s)",
+                              early["reason"])
                 self.assertTrue(self.repo.build(attempts=self.attempts(failed, wait))["go"])
+
+    def test_failures_that_spent_no_editor_time_do_not_hold_it_back(self):
+        # Setup and gate failures (a flaky checkout, an unreadable lane) are
+        # in `failed` for the recovery alert, but only editor runs back off.
+        summary = self.repo.build(attempts=self.attempts(0, 1))
+        self.assertEqual(2, self.attempts(0, 1)["failed"])
+        self.assertEqual((True, "290 min since the last editor run"),
+                         (summary["go"], summary["reason"]))
 
     def test_priority_material_waits_at_most_two_hours(self):
         self.repo.podcasts([episode("p")])  # a P0 long-form episode with a transcript

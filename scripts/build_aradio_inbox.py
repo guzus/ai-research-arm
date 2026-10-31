@@ -22,7 +22,7 @@ An episode consumed from show notes (`:meta`) is offered once more when its
 transcript lands; one consumed with a transcript is never re-offered.
 
 Gate (stop = no model, no TTS, nothing committed, exit 0):
-  force -> go; no new items -> stop; backing off after failed runs -> stop;
+  force -> go; no new items -> stop; backing off after failed editor runs -> stop;
   any priority item -> go;
   >= 110 min since cursor.last_editor_run_at (or never ran) -> go; else stop.
 Every run, stop or go, also reports the priority items that left their
@@ -117,10 +117,11 @@ MAX_EXCERPTS = 6
 
 GATE_MIN_INTERVAL = dt.timedelta(minutes=110)
 # While the station is stuck, the cursor (and so the 110 min rule's anchor)
-# never moves, so every trigger would retry the editor. Each failed run since
-# the last bulletin doubles the wait from the newest failure instead: 30 min,
-# 1 h, 2 h, then 4 h, or at most 2 h while priority material waits. A
-# publication resets it, and force bypasses it.
+# never moves, so every trigger would retry the editor. Each failed editor run
+# since the last bulletin doubles the wait from the newest one instead: 30 min,
+# 1 h, 2 h, then 4 h, or at most 2 h while priority material waits. A setup or
+# gate failure spent no editor time and does not count. A publication resets
+# it, and force bypasses it.
 BACKOFF_BASE = dt.timedelta(minutes=30)
 BACKOFF_CAP = dt.timedelta(hours=4)
 PRIORITY_BACKOFF_CAP = dt.timedelta(hours=2)
@@ -887,7 +888,7 @@ def expiry_report(expired: list[Candidate]) -> list[dict]:
 
 @dataclass(frozen=True)
 class Attempts:
-    """Failed runs since the last bulletin, from the run history (aradio_run_alert.py)."""
+    """Failed editor runs since the last bulletin, from the run history (aradio_run_alert.py)."""
     failed: int = 0
     last_failed_at: dt.datetime | None = None
 
@@ -900,7 +901,7 @@ def load_attempts(raw: Any, since: str, notes: Notes) -> Attempts:
         notes.warn(f"attempts record is for since={raw.get('since')!r}, not {since!r}; "
                    "no backoff this run")
         return Attempts()
-    failed, last = raw.get("failed"), parse_ts(raw.get("last_failed_at"))
+    failed, last = raw.get("editor_failures"), parse_ts(raw.get("last_editor_failure_at"))
     if not isinstance(failed, int) or isinstance(failed, bool) or failed < 0:
         return Attempts()
     return Attempts(failed, last)
@@ -923,8 +924,8 @@ def decide(new: list[Candidate], cursor: dict, now: dt.datetime, force: bool,
     priority = sum(1 for candidate in new if candidate.priority)
     wait = retry_at(attempts, bool(priority))
     if wait is not None and now < wait:
-        return False, (f"backing off after {attempts.failed} failed run(s) since the last "
-                       f"bulletin; next try from {iso_z(wait)}")
+        return False, (f"backing off after {attempts.failed} failed editor run(s) since the "
+                       f"last bulletin; next try from {iso_z(wait)}")
     if priority:
         return True, f"{priority} new priority item(s)"
     last = parse_ts(cursor.get("last_editor_run_at"))
@@ -1470,8 +1471,8 @@ def build(*, repo_root: Path, now: dt.datetime, out_dir: Path, trusted_dir: Path
           clock: Callable[[], float] = time.monotonic) -> dict:
     """Run the gate and, when it says go, stage the inbox. Returns a summary.
 
-    attempts is the history step's record of failed runs since the last
-    bulletin (backoff); it applies only when it names this cursor's stamp.
+    attempts is the history step's record of failed editor runs since the
+    last bulletin (backoff); it applies only when it names this cursor's stamp.
     """
     aradio = repo_root / "research" / "aradio"
     try:
@@ -1606,7 +1607,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--no-transcript-fetch", action="store_true",
                         help="never call tuber; use committed excerpts")
     parser.add_argument("--attempts", type=Path, default=None,
-                        help="failed runs since the last bulletin (aradio_run_alert.py --history)")
+                        help="failed editor runs since the last bulletin "
+                             "(aradio_run_alert.py --history)")
     parser.add_argument("--expired-out", type=Path, default=None,
                         help="write the expired-unaired priority report (JSON list) here")
     parser.add_argument("--github-output", default=None)

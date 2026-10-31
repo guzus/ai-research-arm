@@ -89,14 +89,18 @@ of its own (`aradio-skipped-<run id>`), so it can never displace a real
 pending run. A forced dispatch can be displaced, though: a lane's run queued
 behind it cancels it, and `force` would be lost without a word. So a forced
 dispatch is named "Aradio (forced)" (`run-name`), and the history step looks
-for a run with that name that ended cancelled with no job ever started,
-created after the newest run that did execute. The run executing now took its
-place, so it honours the force. Every later run sees a newer executed run, so
-the force is honoured exactly once, and serialization is untouched. The API
-cannot tell who cancelled a pending run, so a forced run cancelled by hand
-before it started is honoured too. Gate stops report to Hooker once per UTC
-hour (`aradio-stop-<hour>` idempotency key), so the extra wake-ups do not add
-telemetry.
+for a run with that name that ended cancelled without starting, a second or
+so after another run was queued (the one that displaced it). The force stays
+pending until an editor runs after it: in a bulletin stamped later, or in a
+later run whose editor step ran (the jobs API shows which steps ran). The
+first run that finds it pending honours it. So exactly one editor run spends
+it, even one that then hangs past `timeout-minutes` or is a re-run, and a run
+that fails before its editor passes it on. Serialization is untouched. Runs
+are ordered by `run_started_at`, when their latest attempt was queued: a
+re-run keeps its `created_at`. A forced run cancelled by hand while it waited
+had no run queued behind it, so it is not honoured. Gate stops report to
+Hooker once per UTC hour (`aradio-stop-<hour>` idempotency key), so the extra
+wake-ups do not add telemetry.
 
 Cost: if GitHub fired every trigger on a weekday, that would be 57 runs (24
 cron, 12 podcast, 12 earnings, 8 Twitter, 1 ticket). A stop is model-free,
@@ -137,7 +141,7 @@ have been three wake-ups instead of none, at about 10:38 (Podcast Signal),
 new = inbox candidates whose key is not in research/aradio/cursor.json
 force (workflow_dispatch input)         → run the editor
 no new items                            → stop: "no new material"
-failed runs since the last bulletin     → stop until the backoff ends (below)
+failed editor runs since last bulletin  → stop until the backoff ends (below)
 any priority item in new                → run the editor now
 ≥ 110 min since cursor.last_editor_run_at (or never ran) → run the editor
 otherwise                               → stop: routine material waits for the 2 h cadence
@@ -154,15 +158,21 @@ publication, so during an outage (editor quota or token, a validator mismatch,
 a broken push) the 110 min anchor never moves. Without a backoff, every trigger
 would retry the editor on the shared Claude subscription, up to about 57 times
 on a weekday. Failed runs commit nothing, so `aradio_run_alert.py --history`
-reads them from the run history before the gate: the failed runs created since
-`cursor.last_editor_run_at`, and when the newest one finished. The gate then
-waits 30 min after the newest failure, doubling per failure to a 4 h cap, or
-2 h while priority material waits so a fixed outage resumes it quickly. A
-publication moves the cursor, which resets the backoff, and `force` bypasses
-it. With a trigger every 20 min and every attempt failing, a 24 h outage makes
-8 editor attempts instead of 72 (12 with priority material waiting). A failed
-lookup writes no record, which means no backoff, never a station that stops
-trying.
+reads them from the run history before the gate: the runs since
+`cursor.last_editor_run_at` whose editor step ran, and when the newest one
+finished. Each of them failed, since an editor run that published would have
+moved the cursor. A run that hung past `timeout-minutes` counts: GitHub
+reports it as cancelled, and its jobs show that it started. A setup or gate
+failure spent no editor time, so it does not lengthen the wait. The gate then
+waits 30 min after the newest failed editor run, doubling per failure to a
+4 h cap, or 2 h while priority material waits so a fixed outage resumes it
+quickly. A publication moves the cursor, which resets the backoff, and
+`force` bypasses it. With a trigger every 20 min and every attempt failing, a
+24 h outage makes 8 editor attempts instead of 72 (12 with priority material
+waiting). Each run's jobs cost an API call, so at most 20 runs are looked up,
+newest first; past that the count is a lower bound, which can only shorten
+the wait. A failed lookup writes no record, which means no backoff, never a
+station that stops trying.
 
 **Why the gate runs on the full clone.** On 2026-10-31 a pre-gate was built
 and then dropped. It decided on a blobless, depth-1 sparse checkout of only
@@ -594,12 +604,14 @@ and drops the rest by Idempotency-Key, and a different stage failing in the
 same outage alerts once more. The date is there because Hooker records a key
 before delivering and keeps it when every delivery fails: one lost Telegram
 delivery would otherwise silence the outage for two weeks. With it, a long
-outage re-alerts once a day. The first run that publishes again lists this
-workflow's failed runs created after that stamp (`actions: read`) and, if
-there are any, posts "Aradio recovered" once (`aradio-recovered-<stamp>`). A
-run that fails after publishing (missing audio) put a new bulletin out, so it
-keeps its per-run alert, and the 30 h `cursor.json` freshness SLO still pages
-daily while the station stays stuck.
+outage re-alerts once a day. A run that GitHub cancelled at `timeout-minutes`
+is stuck on the stage it hung in. The first run that publishes again takes
+the history step's count of this workflow's failed runs since that stamp
+(`actions: read`; a run cancelled after it started is one) and, if there are
+any, posts "Aradio recovered" once (`aradio-recovered-<stamp>`). A run that
+fails after publishing (missing audio) put a new bulletin out, so it keeps its
+per-run alert, and the 30 h `cursor.json` freshness SLO still pages daily
+while the station stays stuck.
 
 **A stale publication PR is closed, never merged.** `aradio.yml` publishes
 through safe-push like every lane, but CLAUDE.md rule 13's "merge open

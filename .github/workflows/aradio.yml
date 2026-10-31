@@ -57,11 +57,11 @@ on:
 # Serialize runs: the cursor and the board are single-writer state. GitHub
 # keeps one pending run per group and cancels the older one, so a burst of
 # triggers collapses to one running and one pending run; the pending one
-# reads the branch tip when it starts. A forced dispatch cancelled that way is
-# honoured by the run that replaced it (the history step below). A run the job's `if` skips (a lane run
-# from another repository) takes a group of its own: it must never displace a
-# real pending run. This condition must stay identical to the job's `if`
-# (test-pinned).
+# reads the branch tip when it starts. A forced dispatch cancelled that way
+# is honoured by a later run (the history step below). A run the job's `if`
+# skips (a lane run from another repository) takes a group of its own: it
+# must never displace a real pending run. This condition must stay identical
+# to the job's `if` (test-pinned).
 concurrency:
   group: >-
     ${{ (github.event_name != 'workflow_run'
@@ -184,12 +184,15 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       # Failed runs commit nothing, so the run history is the only record of
-      # an outage. The gate backs off from the newest failure since the last
-      # bulletin (doubling from 30 min to 4 h, 2 h while priority material
-      # waits) instead of retrying the editor on every trigger. A failed
-      # lookup leaves no record, which means no backoff, never no attempts.
-      # The same listing finds a forced dispatch the concurrency queue
-      # cancelled before it ran (force_pending), which this run then honours.
+      # an outage. The gate backs off from the newest failed editor run since
+      # the last bulletin (doubling from 30 min to 4 h, 2 h while priority
+      # material waits) instead of retrying the editor on every trigger. A
+      # run that hung past timeout-minutes counts (GitHub reports it as
+      # cancelled); a setup or gate failure spent no editor time and does
+      # not. A failed lookup leaves no record, which means no backoff, never
+      # no attempts. The same listing finds a forced dispatch the concurrency
+      # queue cancelled before it ran (force_pending): this run honours it
+      # unless an editor has run since it was queued.
       - name: Read failed runs since the last bulletin
         id: history
         continue-on-error: true
@@ -313,7 +316,9 @@ jobs:
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       # continue-on-error so the explicit failure step below can say what
-      # happened; nothing downstream runs unless this step succeeded.
+      # happened; nothing downstream runs unless this step succeeded. Its
+      # name is how the history step tells an editor run from a gate stop
+      # (aradio_run_alert.EDITOR_STEP, test-pinned).
       - name: Edit the situation board with the SSOT-routed editor
         id: editor
         if: steps.inbox.outputs.go == 'true'
@@ -494,10 +499,11 @@ jobs:
           fi
 
       # A run that fails without publishing leaves the cursor, so the next
-      # hour fails the same way: keyed on the failing stage, the cursor's last
+      # run fails the same way: keyed on the failing stage, the cursor's last
       # publication and the UTC date, the outage is one Hooker alert a day,
       # and the first run that publishes again reports the recovery once
-      # (scripts/aradio_run_alert.py). Empty outputs keep the defaults.
+      # (scripts/aradio_run_alert.py). A run cancelled at timeout-minutes is
+      # stuck on the stage it hung in. Empty outputs keep the defaults.
       - name: Shape the run's Hooker event
         id: run_alert
         if: always()
