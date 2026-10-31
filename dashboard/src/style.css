@@ -7361,9 +7361,10 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   line-height: 1.1;
 }
 
+/* A full-width flex row of its own: a max-width here would cap the flex
+   basis and let the tagline slip up beside the sign on wide screens. */
 .aradio-tagline {
-  flex: 1 1 100%;
-  max-width: 48ch;
+  flex: 0 0 100%;
   color: var(--text-secondary);
   font-size: 0.88rem;
   line-height: 1.45;
