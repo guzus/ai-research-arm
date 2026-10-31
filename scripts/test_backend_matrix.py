@@ -18,6 +18,7 @@ import sys
 import tempfile
 import time
 import unittest
+from unittest import mock
 from pathlib import Path
 
 import yaml
@@ -386,16 +387,70 @@ class RoutingInvariants(unittest.TestCase):
         "generative-research-ko": ".github/claude/translation.json",
     }
 
+    # Every allow rule each lane holds. A capability change must show up here,
+    # in review, next to the policy file it widens.
+    CLAUDE_LANE_ALLOW = {
+        "rss": ["Read(.agent-input/rss/**)", "Read(research/rss/**)",
+                "Edit(research/rss/**)", "Bash(git add research/rss/*)",
+                "Bash(git commit -m *)"],
+        "bluesky": ["Read(.agent-input/bluesky/**)", "Glob", "Edit(.tmp/bluesky-section.md)"],
+        "community": ["Read(.agent-input/hn/**)", "Read(.agent-input/reddit/**)",
+                      "Read(research/community/**)", "Edit(research/community/**)",
+                      "Bash(git add research/community/*)", "Bash(git commit -m *)"],
+        "arxiv": ["Read(research/arxiv/**)", "Read(research/summaries/**)",
+                  "Edit(research/arxiv/**)", "Edit(research/summaries/**)",
+                  'Bash(curl -sL "https://export.arxiv.org/api/query?*)',
+                  'Bash(curl -s "https://export.arxiv.org/api/query?*)',
+                  "Bash(git add research/arxiv/*)", "Bash(git add research/summaries/*)",
+                  "Bash(git commit -m *)"],
+        "wiki-ingest": ["Read(docs/wiki-schema.md)", "Read(research/digest/**)",
+                        "Read(research/models/tickets/**)", "Read(research/wiki/**)", "Glob",
+                        "Edit(research/wiki/**)",
+                        'Bash(uv run python scripts/wiki_search.py "*)',
+                        "Bash(uv run python scripts/check_wiki.py)",
+                        "Bash(uv run python scripts/check_wiki.py --lint)",
+                        "Bash(uv run python scripts/build_wiki_index.py)",
+                        "Bash(git add research/wiki/*)", "Bash(git commit -m *)"],
+        "aradio": ["Read(.agent-input/aradio/**)", "Edit(.tmp/aradio/edit.json)"],
+        "generative-research-ko": ["Read(.agent-input/translation-segments.json)",
+                                   "Read(.tmp/generative-translation.ko.segments.jsonl)",
+                                   "Edit(.tmp/generative-translation.ko.segments.jsonl)"],
+    }
+
     @staticmethod
-    def dispatch_inputs() -> dict[str, dict]:
+    def dispatch_steps() -> dict[str, tuple[dict, list[dict]]]:
+        """Each dispatched lane's agent-dispatch inputs and its job's steps."""
         found = {}
         for path in workflow_files():
             doc = yaml.safe_load(path.read_text(encoding="utf-8"))
             for job in (doc.get("jobs") or {}).values():
-                for step in job.get("steps") or []:
+                steps = job.get("steps") or []
+                for step in steps:
                     if step.get("uses") == "./.github/actions/agent-dispatch":
-                        found[step["with"]["lane"]] = step["with"]
+                        found[step["with"]["lane"]] = (step["with"], steps)
         return found
+
+    @classmethod
+    def dispatch_inputs(cls) -> dict[str, dict]:
+        return {lane: inputs for lane, (inputs, _) in cls.dispatch_steps().items()}
+
+    @classmethod
+    def lane_prompt(cls, lane: str) -> str:
+        """The prompt the lane really sends: its literal prompt-text, or the one
+        prompts/ file that the step named by a steps.<id>.outputs reference
+        prints. Anything else fails rather than validating some other prompt."""
+        inputs, steps = cls.dispatch_steps()[lane]
+        prompt = str(inputs["prompt-text"])
+        reference = re.fullmatch(r"\$\{\{\s*steps\.([A-Za-z0-9_-]+)\.outputs\.[A-Za-z0-9_-]+\s*\}\}",
+                                 prompt.strip())
+        if reference is None:
+            return prompt
+        producers = [step for step in steps if step.get("id") == reference.group(1)]
+        assert len(producers) == 1, f"{lane}: prompt step {reference.group(1)!r} not found"
+        files = set(re.findall(r"\bcat (prompts/[A-Za-z0-9_.-]+\.md)\b",
+                               str(producers[0].get("run", ""))))
+        assert len(files) == 1, f"{lane}: prompt step prints {sorted(files)}, not one file"
+        return (REPO_ROOT / files.pop()).read_text(encoding="utf-8")
 
     @staticmethod
     def lane_outputs(inputs: dict) -> list[str]:
@@ -446,6 +501,33 @@ class RoutingInvariants(unittest.TestCase):
                 self.assertEqual("${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}",
                                  inputs[lane].get("claude-code-oauth-token"))
                 validate(json.loads((REPO_ROOT / policy_path).read_text(encoding="utf-8")))
+
+    def test_claude_lane_policies_grant_exactly_the_reviewed_rules(self):
+        self.assertEqual(set(self.CLAUDE_LANE_POLICIES), set(self.CLAUDE_LANE_ALLOW))
+        for lane, policy_path in self.CLAUDE_LANE_POLICIES.items():
+            with self.subTest(lane=lane):
+                policy = json.loads((REPO_ROOT / policy_path).read_text(encoding="utf-8"))
+                self.assertEqual(sorted(self.CLAUDE_LANE_ALLOW[lane]),
+                                 sorted(policy["permissions"]["allow"]))
+
+    def test_lane_prompt_resolves_the_prompt_each_lane_really_sends(self):
+        self.assertIn("You are an RSS feed processor", self.lane_prompt("rss"))
+        aradio = (REPO_ROOT / "prompts/aradio-editor.md").read_text(encoding="utf-8")
+        self.assertEqual(aradio, self.lane_prompt("aradio"))
+        for lane in set(self.CLAUDE_LANE_POLICIES) - {"aradio"}:
+            self.assertNotEqual(aradio, self.lane_prompt(lane), lane)
+        # A reference to a step that is missing, or that prints no single
+        # prompts/ file, fails instead of falling back to another prompt.
+        steps = self.dispatch_steps()
+        rss_inputs, rss_steps = steps["rss"]
+        broken = {**rss_inputs, "prompt-text": "${{ steps.prompt.outputs.text }}"}
+        for job_steps in (rss_steps, rss_steps + [{"id": "prompt", "run": "echo hi"}],
+                          rss_steps + [{"id": "prompt",
+                                        "run": "cat prompts/a.md; cat prompts/b.md"}]):
+            with mock.patch.object(type(self), "dispatch_steps",
+                                   classmethod(lambda cls, s=job_steps: {"rss": (broken, s)})):
+                with self.assertRaises(AssertionError):
+                    self.lane_prompt("rss")
 
     def test_claude_lane_policies_grant_no_more_than_cursor(self):
         """Every Claude capability maps onto one the lane's Cursor policy grants."""
@@ -509,7 +591,7 @@ class RoutingInvariants(unittest.TestCase):
     def test_claude_lane_policies_match_each_lane_contract(self):
         """Writes, staging, and reads are exactly what each lane's contract and
         prompt use: no stray write path, no commit right for an artifact lane."""
-        from copy_claude_settings import CURL_RULE, GIT_COMMIT_RULE, UV_RULE
+        from copy_claude_settings import CURL_HOSTS, CURL_RULE, GIT_COMMIT_RULE, UV_RULE
         inputs = self.dispatch_inputs()
         for lane, policy_path in self.CLAUDE_LANE_POLICIES.items():
             with self.subTest(lane=lane):
@@ -538,13 +620,25 @@ class RoutingInvariants(unittest.TestCase):
                     self.assertTrue(any(path.startswith(directory + "/") for path in
                                         self.lane_outputs({"allowed-paths": "\n".join(committed)})),
                                     f"{lane}: git add {directory}/ stages no committed output")
-                prompt = str(inputs[lane]["prompt-text"])
-                if prompt.strip() == "${{ steps.prompt.outputs.text }}":
-                    prompt = (REPO_ROOT / "prompts/aradio-editor.md").read_text(encoding="utf-8")
+                prompt = re.sub(r"\$\{\{[^}]*\}\}", "DATE", self.lane_prompt(lane))
+                # A Read rule names an output (Write must read a file before
+                # replacing it) or a path the prompt itself names, exactly:
+                # never a parent such as Read(research/**).
+                tokens = [token.rstrip(".,:;") for token in re.findall(
+                    r"(?<![A-Za-z0-9_.-])[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.*{},-]+)+/?", prompt)]
+                named_files = {token for token in tokens if not token.endswith("/")
+                               and re.search(r"[.*]", token.rsplit("/", 1)[-1])}
+                named_dirs = ({token.rstrip("/") for token in tokens} - named_files) | {
+                    path.rsplit("/", 1)[0] for path in named_files}
+                output_files = {path for path in outputs if not path.endswith("/")}
+                output_dirs = {path.rstrip("/") for path in outputs if path.endswith("/")} | {
+                    path.rsplit("/", 1)[0] for path in output_files}
                 for kind, target, prefix in rules:
                     if kind == "Read":
-                        self.assertTrue(target + ("/" if prefix else "") in prompt,
-                                        f"{lane}: its prompt never names {target}")
+                        justified = (target in named_dirs | output_dirs if prefix
+                                     else target in named_files | output_files)
+                        self.assertTrue(justified, f"{lane}: Read({target}) is neither an "
+                                        "output nor a path its prompt names")
                     elif kind == "Glob":
                         self.assertTrue("`ls " in prompt, f"{lane}: its prompt lists nothing")
                 staged_words = [word for line in prompt.splitlines() if "git add " in line
@@ -552,15 +646,23 @@ class RoutingInvariants(unittest.TestCase):
                 for directory in staged:
                     self.assertTrue(any(word.startswith(directory + "/") for word in staged_words),
                                     f"{lane}: its prompt never stages {directory}/")
+                # The exact URL prefix and the exact script invocations the
+                # prompt uses, compared with the rules, host and script included.
+                fetched = {url.split("?", 1)[0] + "?" for url in re.findall(
+                    r'curl (?:-[A-Za-z]+ )*"(https://[^"\s`]+)', prompt)}
+                runs = set(re.findall(
+                    r'uv run python scripts/([a-z0-9_]+)\.py(?: (--[a-z][a-z-]*\b|"))?', prompt))
                 for rule in policy["permissions"]["allow"]:
                     if rule == GIT_COMMIT_RULE:
                         self.assertTrue("git commit -m " in prompt, f"{lane}: never commits")
                     elif match := CURL_RULE.fullmatch(rule):
-                        self.assertTrue(f'"{match.group(2)}' in prompt,
-                                        f"{lane}: its prompt never fetches {rule}")
+                        self.assertIn(match.group(2), fetched, f"{lane}: its prompt never fetches {rule}")
+                        host = match.group(2).removeprefix("https://").split("/", 1)[0]
+                        self.assertIn(host, CURL_HOSTS, f"{lane}: {host} is not a pinned curl host")
                     elif match := UV_RULE.fullmatch(rule):
-                        command = match.group(1) + (match.group(3) or "").replace(' "*', ' "')
-                        self.assertTrue(command in prompt, f"{lane}: its prompt never runs {rule}")
+                        shape = {None: "", ' "*': '"'}.get(match.group(3), (match.group(3) or "").strip())
+                        self.assertIn((match.group(2), shape), runs,
+                                      f"{lane}: its prompt never runs {rule}")
 
     def test_aradio_routes_to_isolated_claude(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
