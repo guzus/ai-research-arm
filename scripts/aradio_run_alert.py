@@ -19,7 +19,8 @@ The first run that publishes again asks GitHub for this workflow's failed
 runs created after that publication and, if there are any, titles its event
 as the recovery, keyed on the same stamp. A run that fails AFTER publishing
 (on-air audio missing, rule 15d) put a new bulletin out, so it keeps its own
-per-run alert.
+per-run alert. A gate stop is keyed on the UTC hour: every lane that finishes
+wakes the station, and one "nothing to air" event an hour is enough.
 
 Inputs are environment variables set by the workflow (step outcomes, the job
 status, the gate's `since`). Outputs are hooker-telemetry inputs: title,
@@ -112,7 +113,8 @@ def query_runs(repository: str, since: Optional[datetime]) -> list[dict]:
 
 
 def shape(env: Mapping[str, str], runs_fn: Callable[[Optional[datetime]], list[dict]],
-          today: str) -> dict[str, str]:
+          now: datetime) -> dict[str, str]:
+    today = now.strftime("%Y-%m-%d")
     status = env.get("JOB_STATUS", "")
     since_raw = env.get("SINCE", "").strip()
     since = parse_time(since_raw)
@@ -140,7 +142,9 @@ def shape(env: Mapping[str, str], runs_fn: Callable[[Optional[datetime]], list[d
         return {**shaped, "text": "\n".join(lines)}
 
     if status == "success":
-        return {**shaped, "text": "\n".join(lines)}
+        # A gate stop: nothing published and nothing failed.
+        return {**shaped, "text": "\n".join(lines),
+                "idempotency_key": f"aradio-stop-{now:%Y-%m-%dT%H}"}
 
     stage = failed_stage(env)
     if since is not None or since_raw == "never":
@@ -171,7 +175,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     args = parser.parse_args(argv)
     repository = os.environ.get("GITHUB_REPOSITORY", "")
     shaped = shape(os.environ, lambda since: query_runs(repository, since),
-                   datetime.now(timezone.utc).strftime("%Y-%m-%d"))
+                   datetime.now(timezone.utc))
     write_outputs(args.github_output, shaped)
     print(json.dumps(shaped, ensure_ascii=False))
     return 0

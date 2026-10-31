@@ -18,14 +18,31 @@ name: Aradio
 # kept the digest green through nine days of Gemini errors, is the
 # anti-pattern this lane avoids.
 
+# Says which lane woke the station; other runs keep the workflow's name.
+run-name: ${{ github.event_name == 'workflow_run' && format('Aradio after {0}', github.event.workflow_run.name) || github.workflow }}
+
 on:
+  # Aradio airs when the picture changes, so each lane that feeds the inbox
+  # wakes it when that lane's run completes: podcasts (episodes and YouTube
+  # channels via tuber), earnings filings, Twitter stories and model tickets
+  # (build_aradio_inbox.py's four collectors). The names must equal those
+  # workflows' `name:` exactly; a test pins this list to the producers of the
+  # lanes the gate reads. The gate keeps the extra runs model-free.
+  workflow_run:
+    workflows:
+      - "Podcast Signal"
+      - "Daily Earnings Signal"
+      - "Twitter AI News (hourly matrix)"
+      - "Hyperscaler Model Release Timeline (Every 24 Hours)"
+    types: [completed]
+    branches: [main]
   schedule:
-    # Hourly at :50. The gate decides: priority material (earnings filings and
-    # calls, P0 spoken episodes) airs within the hour; routine material waits
-    # for a 2 h cadence; no new material means a model-free no-op run.
-    # GitHub registers this cron when the file is pushed to main while the
-    # workflow is enabled. After `gh workflow enable`, push a change to this
-    # file, or the schedule stays silent (2026-10-31: no :50 run for 3 h).
+    # Backstop, hourly at :50: routine material that waited for the 2 h
+    # cadence airs within the hour after it, even when no lane finishes.
+    # Do not rely on it alone. GitHub fires schedules late or not at all
+    # under load, and on 2026-10-31 this one never fired after the
+    # workflow's 08:21 re-enable, not even after #6316 pushed this file at
+    # 11:17 (docs/aradio.md "Triggers").
     - cron: '50 * * * *'
   workflow_dispatch:
     inputs:
@@ -35,13 +52,28 @@ on:
         default: false
         type: boolean
 
-# Serialize runs: the cursor and the board are single-writer state.
+# Serialize runs: the cursor and the board are single-writer state. GitHub
+# keeps one pending run per group and cancels the older one, so a burst of
+# triggers collapses to one running and one pending run; the pending one
+# reads the branch tip when it starts. A run whose upstream lane failed is
+# skipped (the job's `if`), so it takes a group of its own: it must never
+# displace a real pending run. This condition must stay identical to the
+# job's `if` (test-pinned).
 concurrency:
-  group: aradio
+  group: >-
+    ${{ (github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success'
+    && github.event.workflow_run.head_repository.full_name == github.repository))
+    && 'aradio' || format('aradio-skipped-{0}', github.run_id) }}
   cancel-in-progress: false
 
 jobs:
   aradio:
+    # A lane run that failed may have published nothing (or a part), and one
+    # from another repository's fork must never wake a job holding secrets:
+    # both wait for the next trigger.
+    if: >-
+      ${{ github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success'
+      && github.event.workflow_run.head_repository.full_name == github.repository) }}
     runs-on: [self-hosted, Linux]
     timeout-minutes: 30
     permissions:

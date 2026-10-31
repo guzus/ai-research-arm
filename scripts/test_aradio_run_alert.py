@@ -12,6 +12,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from datetime import datetime, timezone
 from unittest import mock
 
 import yaml
@@ -20,6 +21,7 @@ import aradio_run_alert as ara
 
 ROOT = Path(__file__).resolve().parent.parent
 SINCE = "2026-10-31T08:53:00Z"
+NOW = datetime(2026, 10, 31, 14, 20, tzinfo=timezone.utc)
 TODAY = "2026-10-31"
 
 
@@ -49,19 +51,26 @@ def no_runs(since):
 
 
 class OutageTest(unittest.TestCase):
-    def test_a_healthy_run_keeps_the_defaults(self):
-        shaped = ara.shape(env(), no_runs, TODAY)
+    def test_a_gate_stop_reports_once_an_hour(self):
+        # Every lane that finishes wakes the station; one stop event an hour.
+        shaped = ara.shape(env(), no_runs, NOW)
         self.assertEqual({"title": "", "text": "Gate: no new material", "priority": "",
-                          "tags": "aradio", "idempotency_key": ""}, shaped)
+                          "tags": "aradio", "idempotency_key": "aradio-stop-2026-10-31T14"},
+                         shaped)
+        later = ara.shape(env(GATE_REASON="routine material waits"), no_runs,
+                          NOW.replace(minute=55))
+        self.assertEqual(shaped["idempotency_key"], later["idempotency_key"])
+        self.assertEqual("aradio-stop-2026-10-31T15", ara.shape(
+            env(), no_runs, NOW.replace(hour=15))["idempotency_key"])
 
     def test_every_failing_hour_of_one_outage_shares_one_key(self):
         keys = {ara.shape(stuck("EDITOR", GITHUB_RUN_ID=str(run_id), GATE_REASON=reason),
-                          no_runs, TODAY)["idempotency_key"]
+                          no_runs, NOW)["idempotency_key"]
                 for run_id, reason in ((901, "1 new priority item(s)"),
                                        (902, "171 min since the last editor run"),
                                        (903, "forced by workflow_dispatch"))}
         self.assertEqual({f"aradio-stuck-editor-{SINCE}-{TODAY}"}, keys)
-        shaped = ara.shape(stuck("EDITOR"), no_runs, TODAY)
+        shaped = ara.shape(stuck("EDITOR"), no_runs, NOW)
         self.assertEqual(("Aradio stuck: editor failing", "5", "aradio,outage"),
                          (shaped["title"], shaped["priority"], shaped["tags"]))
         self.assertIn(f"Nothing has published since {SINCE}", shaped["text"])
@@ -70,15 +79,16 @@ class OutageTest(unittest.TestCase):
     def test_a_long_outage_re_alerts_once_a_day(self):
         # Hooker keeps a key whose every delivery failed, so a key that never
         # rolled over would let one lost delivery silence the whole outage.
-        first = ara.shape(stuck("EDITOR"), no_runs, TODAY)["idempotency_key"]
-        next_day = ara.shape(stuck("EDITOR"), no_runs, "2026-11-01")["idempotency_key"]
+        first = ara.shape(stuck("EDITOR"), no_runs, NOW)["idempotency_key"]
+        next_day = ara.shape(stuck("EDITOR"), no_runs,
+                             datetime(2026, 11, 1, 0, 50, tzinfo=timezone.utc))["idempotency_key"]
         self.assertNotEqual(first, next_day)
         self.assertEqual(f"aradio-stuck-editor-{SINCE}-2026-11-01", next_day)
 
     def test_a_new_cause_or_a_new_outage_alerts_again(self):
-        editor = ara.shape(stuck("EDITOR"), no_runs, TODAY)["idempotency_key"]
-        validation = ara.shape(stuck("VALIDATE", EDITOR="success"), no_runs, TODAY)
-        later = ara.shape(stuck("EDITOR", SINCE="2026-10-31T12:50:00Z"), no_runs, TODAY)
+        editor = ara.shape(stuck("EDITOR"), no_runs, NOW)["idempotency_key"]
+        validation = ara.shape(stuck("VALIDATE", EDITOR="success"), no_runs, NOW)
+        later = ara.shape(stuck("EDITOR", SINCE="2026-10-31T12:50:00Z"), no_runs, NOW)
         self.assertEqual(f"aradio-stuck-validation-{SINCE}-{TODAY}",
                          validation["idempotency_key"])
         self.assertEqual(3, len({editor, validation["idempotency_key"],
@@ -100,15 +110,15 @@ class OutageTest(unittest.TestCase):
         self.assertEqual("setup", ara.failed_stage({}))
 
     def test_a_cancelled_run_that_published_nothing_is_stuck_too(self):
-        shaped = ara.shape(env(JOB_STATUS="cancelled", EDITOR="failure"), no_runs, TODAY)
+        shaped = ara.shape(env(JOB_STATUS="cancelled", EDITOR="failure"), no_runs, NOW)
         self.assertEqual(f"aradio-stuck-editor-{SINCE}-{TODAY}", shaped["idempotency_key"])
 
     def test_before_the_first_bulletin_and_with_an_unknown_cursor(self):
-        never = ara.shape(stuck("EDITOR", SINCE="never"), no_runs, TODAY)
+        never = ara.shape(stuck("EDITOR", SINCE="never"), no_runs, NOW)
         self.assertEqual(f"aradio-stuck-editor-never-{TODAY}", never["idempotency_key"])
         self.assertIn("since the station's first bulletin", never["text"])
         # The gate never read the cursor: at most one alert a day.
-        unknown = ara.shape(env(JOB_STATUS="failure", SINCE="", GATE_REASON=""), no_runs, TODAY)
+        unknown = ara.shape(env(JOB_STATUS="failure", SINCE="", GATE_REASON=""), no_runs, NOW)
         self.assertEqual(f"aradio-stuck-setup-unknown-{TODAY}", unknown["idempotency_key"])
         self.assertIn("since an unknown time", unknown["text"])
 
@@ -122,7 +132,7 @@ class RecoveryTest(unittest.TestCase):
             return [run(950, "2026-10-31T11:50:12Z"), run(949, "2026-10-31T10:50:09Z"),
                     run(948, "2026-10-31T09:50:11Z", "success")]
 
-        shaped = ara.shape(published(), runs, TODAY)
+        shaped = ara.shape(published(), runs, NOW)
         self.assertEqual([ara.parse_time(SINCE)], seen)
         self.assertEqual(("✅ Aradio recovered", "3", "aradio,recovered",
                           f"aradio-recovered-{SINCE}"),
@@ -139,21 +149,21 @@ class RecoveryTest(unittest.TestCase):
             run(951, "2026-10-31T10:50:00Z", "cancelled"),  # superseded pending run
             run(952, "2026-10-31T09:50:00Z", "success"),
         ]
-        shaped = ara.shape(published(), lambda since: runs, TODAY)
+        shaped = ara.shape(published(), lambda since: runs, NOW)
         self.assertEqual(("", "", ""), (shaped["title"], shaped["priority"],
                                         shaped["idempotency_key"]))
         self.assertNotIn("Published again", shaped["text"])
 
     def test_a_recovery_that_misses_its_audio_keeps_the_audio_alert(self):
         shaped = ara.shape(published(JOB_STATUS="failure"),
-                           lambda since: [run(950, "2026-10-31T11:50:12Z")], TODAY)
+                           lambda since: [run(950, "2026-10-31T11:50:12Z")], NOW)
         self.assertEqual(("", "", ""), (shaped["title"], shaped["priority"],
                                         shaped["idempotency_key"]))
         self.assertIn("Published again after 1 failed run(s)", shaped["text"])
 
     def test_the_first_bulletin_counts_every_earlier_failure(self):
         shaped = ara.shape(published(SINCE="never"),
-                           lambda since: [run(1, "2026-10-30T09:50:00Z")], TODAY)
+                           lambda since: [run(1, "2026-10-30T09:50:00Z")], NOW)
         self.assertEqual("aradio-recovered-never", shaped["idempotency_key"])
         self.assertIn("since the first bulletin", shaped["text"])
 
@@ -162,11 +172,11 @@ class RecoveryTest(unittest.TestCase):
             raise subprocess.CalledProcessError(1, ["gh"])
 
         with contextlib.redirect_stderr(io.StringIO()) as err:
-            shaped = ara.shape(published(), broken, TODAY)
+            shaped = ara.shape(published(), broken, NOW)
         self.assertEqual("", shaped["idempotency_key"])
         self.assertIn("::warning::", err.getvalue())
         # Without the gate's stamp there is nothing to compare against.
-        self.assertEqual("", ara.shape(published(SINCE=""), no_runs, TODAY)["idempotency_key"])
+        self.assertEqual("", ara.shape(published(SINCE=""), no_runs, NOW)["idempotency_key"])
 
     def test_query_lists_only_runs_after_the_publication(self):
         completed = subprocess.CompletedProcess([], 0, stdout=json.dumps(

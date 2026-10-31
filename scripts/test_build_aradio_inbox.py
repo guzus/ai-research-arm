@@ -10,12 +10,13 @@ import http.client
 import io
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
 import unittest
 import urllib.error
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from unittest import mock
 
 import yaml
@@ -1313,6 +1314,118 @@ class OutageStampTest(FixtureTest):
         with contextlib.redirect_stdout(io.StringIO()):
             bi.main(args)
         self.assertIn("since=2026-10-30T08:53:00Z", gh.read_text())
+
+
+# Audit hooks cannot be removed, so one process-wide hook records file access
+# only while a test has armed it.
+_AUDIT: dict = {"root": None, "seen": None}
+
+
+def _audit_hook(event: str, args: tuple) -> None:
+    if _AUDIT["root"] is None or event not in ("open", "os.scandir", "os.listdir"):
+        return
+    target = args[0] if args else None
+    if target is None or isinstance(target, int):
+        return
+    try:
+        path = Path(os.fsdecode(target)).resolve()
+    except (TypeError, ValueError, OSError):
+        return
+    root = _AUDIT["root"]
+    if path == root or root in path.parents:
+        _AUDIT["seen"].add(path.relative_to(root).as_posix())
+
+
+sys.addaudithook(_audit_hook)
+
+
+def gate_reads(repo_root: Path, now: dt.datetime) -> set[str]:
+    """Every path under repo_root that one gate run opens (staging goes elsewhere)."""
+    with tempfile.TemporaryDirectory() as staging:
+        _AUDIT["root"], _AUDIT["seen"] = repo_root.resolve(), set()
+        try:
+            bi.build(repo_root=repo_root, now=now, out_dir=Path(staging) / "out",
+                     trusted_dir=Path(staging) / "trusted", fetch=False,
+                     select_loader=lambda: None)
+            return set(_AUDIT["seen"])
+        finally:
+            _AUDIT["root"], _AUDIT["seen"] = None, None
+
+
+class TriggerTest(FixtureTest):
+    """Aradio wakes when a lane it reads finishes (workflow_run), not only on cron."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.workflow = yaml.safe_load((REPO_ROOT / ".github/workflows/aradio.yml")
+                                      .read_text(encoding="utf-8"))
+        cls.names = {}
+        for path in sorted((REPO_ROOT / ".github/workflows").glob("*.yml")):
+            doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+            if isinstance(doc, dict) and isinstance(doc.get("name"), str):
+                cls.names[doc["name"]] = f".github/workflows/{path.name}"
+
+    def triggers(self) -> set[str]:
+        return {self.names[name] for name in self.workflow[True]["workflow_run"]["workflows"]}
+
+    @staticmethod
+    def producers_of(paths: set[str]) -> set[str]:
+        """Registry producers of the lanes behind these paths (Aradio's own excluded)."""
+        import artifact_slos
+
+        def covers(glob: str, path: str) -> bool:
+            pure, pattern = PurePosixPath(path), PurePosixPath(glob)
+            return len(pure.parts) == len(pattern.parts) and pure.match(glob)
+
+        return {entry["producer"] for entry in artifact_slos.load_registry()
+                if entry["id"] != "aradio"
+                and any(covers(glob, path) for glob in entry["artifacts"] for path in paths)}
+
+    def test_every_trigger_name_matches_a_workflow(self):
+        # workflow_run matches `name:` strings, so a rename drops a trigger silently.
+        names = self.workflow[True]["workflow_run"]["workflows"]
+        self.assertEqual([], [name for name in names if name not in self.names])
+
+    def test_triggers_are_exactly_the_producers_of_what_the_gate_reads(self):
+        self.repo.podcasts([episode("long")], registry=[{"id": "dwarkesh"}])
+        self.repo.earnings([{"file": "2026-10-29-AMZN-FY26Q3.md", "date": "2026-10-29",
+                             "ticker": "AMZN", "issuer": "Amazon.com, Inc.", "form": "8-K",
+                             "accession": "0001018724-26-000038"}])
+        self.repo.twitter("2026-10-30", {"06:00": story(1, "T", ["https://x.com/t/status/3"])})
+        self.repo.ticket("fresh-ticket", "2026-10-29", entries=3)
+        read = self.producers_of(gate_reads(self.repo.root, NOW))
+        self.assertEqual({".github/workflows/podcasts.yml", ".github/workflows/daily-earnings.yml",
+                          ".github/workflows/hourly-twitter.yml",
+                          ".github/workflows/24h-model-timeline.yml"}, read)
+        self.assertEqual(read, self.triggers())
+
+    def test_this_repositorys_lane_data_reads_only_trigger_lanes(self):
+        days = sorted(path.stem for path in (REPO_ROOT / "research" / "twitter").glob("*.md")
+                      if re.fullmatch(r"\d{4}-\d{2}-\d{2}", path.stem))
+        if not days:
+            self.skipTest("no committed Twitter lane files in this checkout")
+        now = dt.datetime.fromisoformat(days[-1]).replace(hour=12, tzinfo=dt.timezone.utc)
+        read = self.producers_of(gate_reads(REPO_ROOT, now))
+        self.assertIn(".github/workflows/podcasts.yml", read)
+        self.assertLessEqual(read, self.triggers())
+
+    def test_cron_and_dispatch_stay_and_only_main_completions_count(self):
+        on = self.workflow[True]
+        self.assertEqual(["completed"], on["workflow_run"]["types"])
+        self.assertEqual(["main"], on["workflow_run"]["branches"])
+        self.assertEqual([{"cron": "50 * * * *"}], on["schedule"])
+        self.assertEqual("boolean", on["workflow_dispatch"]["inputs"]["force"]["type"])
+
+    def test_only_successful_lane_runs_wake_the_job_and_skips_never_displace_runs(self):
+        condition = ("github.event_name != 'workflow_run' || "
+                     "(github.event.workflow_run.conclusion == 'success' && "
+                     "github.event.workflow_run.head_repository.full_name == github.repository)")
+        job = self.workflow["jobs"]["aradio"]
+        self.assertEqual(f"${{{{ {condition} }}}}", job["if"])
+        group = self.workflow["concurrency"]["group"]
+        self.assertEqual(f"${{{{ ({condition}) && 'aradio' || "
+                         "format('aradio-skipped-{0}', github.run_id) }}", group)
+        self.assertIs(False, self.workflow["concurrency"]["cancel-in-progress"])
 
 
 class ParserTest(unittest.TestCase):
