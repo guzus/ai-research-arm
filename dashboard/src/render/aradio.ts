@@ -706,6 +706,68 @@ export function aradioUpNext(
   return out;
 }
 
+// ── The stall watchdog ───────────────────────────────────────────────────
+
+/**
+ * How long a bulletin the listener wants to hear may sit starved — not
+ * playing on, and no audio arriving — before it counts as failed. A source
+ * that hangs never errors, so without this the radio would buffer forever.
+ */
+export const ARADIO_STALL_MS = 20_000;
+
+/** When the watchdog last saw the bulletin on now move, and where it was then. */
+export type AradioStallWatch = {
+  readonly id: string;
+  /** currentTime, seconds. */
+  readonly position: number;
+  /** Seconds of audio buffered, all ranges together. */
+  readonly buffered: number;
+  readonly since: number;
+};
+
+/** One look at the shared player, as data. */
+export type AradioStallSample = {
+  /** The radio bulletin in the player; null while it holds none (or holds the digest). */
+  id: string | null;
+  /** The listener wants sound: pressed play and has not paused since. */
+  intent: boolean;
+  paused: boolean;
+  ended: boolean;
+  /** Short of data to play on (readyState below HAVE_FUTURE_DATA). */
+  starved: boolean;
+  position: number;
+  buffered: number;
+  nowMs: number;
+};
+
+/**
+ * One step of the watchdog: what it watches now, and whether the bulletin is
+ * stuck. Stuck = the listener wants sound, the player is trying to play and
+ * says it is short of data, and in ARADIO_STALL_MS neither its position nor
+ * its buffered audio has moved. Any movement restarts the clock, so buffering
+ * that recovers, or audio still trickling in, never trips it. It compares the
+ * player's own position and buffer between looks rather than counting timer
+ * ticks or event gaps, so a page frozen behind a locked screen cannot mistake
+ * its own sleep for a stall; a late look only delays the skip.
+ */
+export function aradioStallStep(
+  watch: AradioStallWatch | null,
+  sample: AradioStallSample,
+): { watch: AradioStallWatch | null; stalled: boolean } {
+  if (!sample.id || !sample.intent || sample.paused || sample.ended) return { watch: null, stalled: false };
+  const moved = !watch
+    || watch.id !== sample.id
+    || sample.position !== watch.position
+    || sample.buffered > watch.buffered;
+  if (moved || !sample.starved) {
+    const fresh = { id: sample.id, position: sample.position, buffered: sample.buffered, since: sample.nowMs };
+    return { watch: fresh, stalled: false };
+  }
+  // A buffer that shrank is followed down, so audio arriving later still counts.
+  const kept = sample.buffered < watch.buffered ? { ...watch, buffered: sample.buffered } : watch;
+  return { watch: kept, stalled: sample.nowMs - kept.since >= ARADIO_STALL_MS };
+}
+
 /** Everything the radio card shows, derived from `AradioRadioInput`. */
 export type AradioRadioView = {
   /** ready = something to hear; none = nothing aired; text-only = aired, no audio. */

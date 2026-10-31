@@ -14,6 +14,7 @@ import {
   ARADIO_FEED_MAX_ITEMS,
   aradioFeedBulletinPath,
   buildAradioFeed,
+  htmlEscapeText,
   readAradioFeedData,
   selectAradioFeedEntries,
   xmlEscape,
@@ -113,6 +114,14 @@ function one(element, name) {
 const channelOf = (xml) => one(parseXml(xml), 'channel');
 const itemsOf = (xml) => childrenNamed(channelOf(xml), 'item');
 const allNames = (element) => [element.name, ...element.children.flatMap(allNames)];
+
+// The HTML layer of a <description>, as an app sees it after the XML parse:
+// no tag can form (no raw "<"), and every "&" opens a whole entity.
+function assertInertHtml(html) {
+  assert.ok(!html.includes('<'), 'a raw "<" in description HTML');
+  assert.doesNotMatch(html, /&(?!amp;|lt;|gt;)/, 'a bare "&" or a split entity in description HTML');
+}
+const htmlDecodeText = (html) => html.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
 
 /** An independent parser (expat via python3), when one is installed. */
 function expatCheck(t, xml) {
@@ -278,9 +287,36 @@ test('hostile headline and transcript stay well-formed and come back verbatim', 
   const [item] = childrenNamed(one(root, 'channel'), 'item');
   assert.deepEqual(item.children.map((child) => child.name),
     ['title', 'link', 'guid', 'pubDate', 'description', 'enclosure', 'itunes:duration']);
+  // Apps show <title> as text: it comes back verbatim, not HTML-escaped.
   assert.equal(one(item, 'title').text, HOSTILE_CLEAN);
-  assert.equal(one(item, 'description').text,
-    `Anchor: ${HOSTILE_CLEAN}\n\n<b>Guest</b> & "co": A third voice keeps its own name.${FOOTER}`);
+  // Apps render <description> as HTML: after the XML parse it holds no markup,
+  // and decoding that HTML gives back the transcript verbatim.
+  const description = one(item, 'description').text;
+  const verbatim = `Anchor: ${HOSTILE_CLEAN}\n\n<b>Guest</b> & "co": A third voice keeps its own name.${FOOTER}`;
+  assertInertHtml(description);
+  assert.equal(description, htmlEscapeText(verbatim));
+  assert.equal(htmlDecodeText(description), verbatim);
+  // In the file that is two layers of escaping; the title has one.
+  assert.ok(xml.includes('&amp;lt;/title&amp;gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt; &amp;amp; &quot;quoted&quot;'));
+  assert.ok(xml.includes('<title>Q3 &lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt; &amp; &quot;quoted&quot;'));
+});
+
+test('htmlEscapeText escapes what an HTML text node needs, every time, and nothing else', () => {
+  assert.equal(htmlEscapeText('<b>Q&A</b> "it\'s" > 2'), '&lt;b&gt;Q&amp;A&lt;/b&gt; "it\'s" &gt; 2');
+  // Text that looks escaped is still text: a transcript's "&amp;" stays "&amp;" on screen.
+  assert.equal(htmlEscapeText('&amp; &lt;'), '&amp;amp; &amp;lt;');
+  assert.equal(htmlEscapeText(null), '');
+});
+
+test('titles stay plain text; descriptions are HTML', () => {
+  // No bulletin file: the description falls back to the headline, so the same
+  // text shows in both places.
+  const index = { bulletins: [entryAt(Date.UTC(2026, 9, 30, 14, 50), { headline: 'AT&T beats <guidance>' })] };
+  const [item] = itemsOf(buildAradioFeed({ index, siteOrigin: ORIGIN }));
+  assert.equal(one(item, 'title').text, 'AT&T beats <guidance>');
+  assert.equal(one(item, 'description').text, `AT&amp;T beats &lt;guidance&gt;${FOOTER}`);
+  assert.equal(one(channelOf(buildAradioFeed({ index })), 'description').text.includes('ara\'s live situation board'), true,
+    'the channel description has nothing to escape, apostrophes included');
 });
 
 test('xmlEscape covers both contexts and drops what escaping cannot fix', () => {
@@ -642,6 +678,27 @@ test('description cap: 4,000 characters with the footer, cut between lines with 
     const kept = paragraph.slice('Anchor: '.length, -1);
     assert.ok(originals[i].startsWith(kept) && kept.length >= 1190 && kept.length < 1200);
   });
+
+  // Escaping grows text, and the cap counts what an app receives: 300 "<" are
+  // 1,200 characters escaped, so three such lines fit, not all eight (which
+  // would fit unescaped).
+  const angles = describeLines(Array.from({ length: 8 }, () => '<'.repeat(300)));
+  assert.ok(angles.length <= ARADIO_FEED_DESCRIPTION_MAX, `${angles.length}`);
+  assertInertHtml(angles);
+  assert.equal(angles, Array.from({ length: 3 }, () => `Anchor: ${'&lt;'.repeat(300)}`).join('\n\n') + `\n\n…${FOOTER}`);
+  // A line that escaping alone pushes past the cap is cut inside, never inside
+  // an entity: 1,200 "&" are 6,000 characters escaped.
+  const amps = describeLines(['&'.repeat(1200)]);
+  assert.ok(amps.length <= ARADIO_FEED_DESCRIPTION_MAX, `${amps.length}`);
+  assertInertHtml(amps);
+  assert.ok(amps.endsWith(`&amp;…${FOOTER}`), amps.slice(-80));
+  assert.match(htmlDecodeText(amps), /^Anchor: &{780,}…\n\nTranscript and sources: /);
+  // Wherever the budget lands, the cut backs off to a whole entity.
+  for (let lead = 0; lead < 5; lead += 1) {
+    const shifted = describeLines([`${'x'.repeat(lead)}${'&'.repeat(1199 - lead)}`]);
+    assertInertHtml(shifted);
+    assert.ok(shifted.length <= ARADIO_FEED_DESCRIPTION_MAX);
+  }
 });
 
 // ── Determinism ───────────────────────────────────────────────────────────

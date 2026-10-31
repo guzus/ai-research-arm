@@ -23,6 +23,7 @@ import {
   ARADIO_RATE_KEY,
   ARADIO_REL_KEYS,
   ARADIO_RESTART_S,
+  ARADIO_STALL_MS,
   aradioAge,
   aradioAudioSrc,
   aradioFollowLinks,
@@ -43,6 +44,7 @@ import {
   aradioRateLabel,
   aradioRecordListen,
   aradioScriptKey,
+  aradioStallStep,
   aradioUtcTime,
   failAradioProgramme,
   hydrateAradioFeed,
@@ -74,6 +76,7 @@ import type {
   AradioProgramme,
   AradioRadioInput,
   AradioRadioView,
+  AradioStallWatch,
   AradioTranscriptState,
   AradioViewState,
 } from './render/aradio';
@@ -409,6 +412,8 @@ type DigestAudioState = {
   dismissedSrc: string | null;
   kind: 'digest' | 'aradio';
   aradioId: string | null;
+  /** A digest src that failed to load: the bar says so until it loads or the listener acts. */
+  failedSrc: string | null;
 };
 
 const digestAudioState: DigestAudioState = {
@@ -418,6 +423,7 @@ const digestAudioState: DigestAudioState = {
   dismissedSrc: null,
   kind: 'digest',
   aradioId: null,
+  failedSrc: null,
 };
 
 let digestAudioEl: HTMLAudioElement | null = null;
@@ -1277,6 +1283,9 @@ let aradioWaiting = false;
 // A failing source cannot tell us — Chrome pauses the element as its source
 // fails (after earlier playback), so `paused` is already true when `error` fires.
 let aradioPlayIntent = false;
+// The stall watchdog: what it last saw move, and the look it has booked.
+let aradioStall: AradioStallWatch | null = null;
+let aradioStallTimer: number | null = null;
 let aradioStopAfter = false;
 let aradioSeekDragging = false;
 let aradioRadioObserver: IntersectionObserver | null = null;
@@ -1781,6 +1790,59 @@ function aradioTrackFailed(id: string, play: boolean): void {
   digestAudioState.title = uiText(activeLanguage, 'aradio.playerFailed', { time });
   digestAudioEl?.pause();
   announceAradio(uiText(activeLanguage, 'aradio.stoppedFailed', { time }));
+  updateDigestAudioUi();
+}
+
+/** Seconds of audio the player holds, all buffered ranges together. */
+function aradioBufferedSeconds(audio: HTMLAudioElement): number {
+  let total = 0;
+  for (let i = 0; i < audio.buffered.length; i += 1) total += audio.buffered.end(i) - audio.buffered.start(i);
+  return total;
+}
+
+/**
+ * The stall watchdog (render/aradio.ts aradioStallStep): a look at the player
+ * on each of its events, and again when a stall would be due while it is
+ * starved. A radio bulletin stuck for ARADIO_STALL_MS fails like one that
+ * errored. Timers behind a locked screen fire late, and that only delays the
+ * skip: the step compares the player's own position and buffer, not how much
+ * time the timers believe has passed. The digest is never watched.
+ */
+function checkAradioStall(): void {
+  if (aradioStallTimer !== null) {
+    window.clearTimeout(aradioStallTimer);
+    aradioStallTimer = null;
+  }
+  const audio = digestAudioEl;
+  const loaded = aradioLoadedEntry();
+  const starved = (audio?.readyState ?? 0) < MEDIA_HAVE_FUTURE_DATA;
+  const now = Date.now();
+  const { watch, stalled } = aradioStallStep(aradioStall, {
+    id: audio && loaded && !aradioWaiting ? loaded.id : null,
+    intent: aradioPlayIntent,
+    paused: audio?.paused ?? true,
+    ended: audio?.ended ?? false,
+    starved,
+    position: audio?.currentTime ?? 0,
+    buffered: audio ? aradioBufferedSeconds(audio) : 0,
+    nowMs: now,
+  });
+  aradioStall = stalled ? null : watch;
+  if (stalled && loaded) {
+    aradioTrackStalled(loaded.id);
+    return;
+  }
+  if (watch && starved) aradioStallTimer = window.setTimeout(checkAradioStall, Math.max(1000, watch.since + ARADIO_STALL_MS - now));
+}
+
+/** A bulletin stuck loading fails like one that errored (it can only stall while meant to play). */
+function aradioTrackStalled(id: string): void {
+  aradioTrackFailed(id, true);
+  const audio = digestAudioEl;
+  if (!audio || aradioLoadedEntry()?.id !== id || !aradioHasFailed(aradioProgramme, id)) return;
+  // The radio stopped on it: let go of the hung request, so play opens a fresh one.
+  audio.removeAttribute('src');
+  audio.load();
   updateDigestAudioUi();
 }
 
@@ -3333,9 +3395,22 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
       if (digestAudioEl?.error && digestAudioState.aradioId) aradioTrackFailed(digestAudioState.aradioId, aradioPlayIntent);
       return;
     }
-    if (digestAudioTitleEl) digestAudioTitleEl.textContent = `${digestAudioState.title} · unavailable`;
+    // The digest's: recorded, not written over the title, which the next UI
+    // refresh would rewrite at once. updateDigestAudioUi() shows it.
+    if (digestAudioEl?.error && digestAudioState.src) digestAudioState.failedSrc = digestAudioState.src;
     updateDigestAudioUi();
   });
+  // A digest that loads clears its failure.
+  digestAudioEl.addEventListener('loadedmetadata', () => {
+    if (digestAudioState.kind === 'digest') digestAudioState.failedSrc = null;
+  });
+  // The stall watchdog looks whenever the player reports anything that can
+  // start, end or show a stall, and when the page comes back into view (its
+  // timers may have been held while it was hidden).
+  for (const type of ['loadstart', 'emptied', 'play', 'playing', 'waiting', 'stalled', 'progress', 'timeupdate', 'seeking', 'pause', 'ended']) {
+    digestAudioEl.addEventListener(type, checkAradioStall);
+  }
+  document.addEventListener('visibilitychange', checkAradioStall);
 
   return digestAudioEl;
 }
@@ -3354,13 +3429,17 @@ function hideDigestAudioPlayer(): void {
 function setDigestAudioTrack(dateStr: string, autoplay: boolean): void {
   const audio = ensureDigestAudioPlayer();
   const src = digestAudioUrl(dateStr);
-  const changed = digestAudioState.src !== src || audio.getAttribute('src') !== src;
+  // An element left in an error state holds nothing: the same src (the
+  // listener trying a failed digest again) loads afresh, so a file that is
+  // still missing reports itself again instead of play() failing silently.
+  const changed = digestAudioState.src !== src || audio.getAttribute('src') !== src || audio.error !== null;
   digestAudioState.kind = 'digest';
   digestAudioState.aradioId = null;
   digestAudioState.date = dateStr;
   digestAudioState.src = src;
   digestAudioState.title = digestAudioTitle(dateStr);
   digestAudioState.dismissedSrc = null;
+  digestAudioState.failedSrc = null;
   if (changed) {
     audio.src = src;
     audio.currentTime = 0;
@@ -3398,6 +3477,7 @@ function syncDigestAudioForDate(dateStr: string): void {
     digestAudioState.date = dateStr;
     digestAudioState.src = src;
     digestAudioState.title = digestAudioTitle(dateStr);
+    digestAudioState.failedSrc = null;
     if (audio) {
       audio.src = src;
       audio.currentTime = 0;
@@ -3411,7 +3491,7 @@ async function toggleDigestAudioPlayback(dateStr: string | null = digestAudioSta
   if (!dateStr) return;
   const audio = ensureDigestAudioPlayer();
   const src = digestAudioUrl(dateStr);
-  if (digestAudioState.src !== src || audio.getAttribute('src') !== src) {
+  if (digestAudioState.src !== src || audio.getAttribute('src') !== src || audio.error !== null) {
     setDigestAudioTrack(dateStr, true);
     return;
   }
@@ -3433,6 +3513,7 @@ async function toggleDigestAudioPlayback(dateStr: string | null = digestAudioSta
 function closeDigestAudioPlayer(): void {
   const audio = ensureDigestAudioPlayer();
   if (digestAudioState.src) digestAudioState.dismissedSrc = digestAudioState.src;
+  digestAudioState.failedSrc = null;
   audio.pause();
   hideDigestAudioPlayer();
   updateDigestAudioUi();
@@ -3476,7 +3557,11 @@ function updateDigestAudioUi(): void {
     digestAudioPlayEl.setAttribute('aria-pressed', String(isPlaying));
     digestAudioPlayEl.classList.toggle('is-playing', isPlaying);
   }
-  if (digestAudioTitleEl) digestAudioTitleEl.textContent = digestAudioState.title;
+  // A digest that failed to load says so first: the title is cut with an
+  // ellipsis on a phone, and the date is the part that can go.
+  const unavailable = !isAradio && Boolean(src) && digestAudioState.failedSrc === src;
+  const title = unavailable ? `${uiText(activeLanguage, 'audio.unavailable')} · ${digestAudioState.title}` : digestAudioState.title;
+  if (digestAudioTitleEl && digestAudioTitleEl.textContent !== title) digestAudioTitleEl.textContent = title;
   if (digestAudioTimeEl) {
     digestAudioTimeEl.textContent = `${formatAudioTime(current)} / ${duration > 0 ? formatAudioTime(duration) : '--:--'}`;
   }

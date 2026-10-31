@@ -614,6 +614,99 @@ test('audio failure while caught up: the new bulletin is not retried and nothing
   assert.deepEqual(ids(mod.aradioUpNext(retry, later)), ['1650']);
 });
 
+// The stall watchdog. A look at the player: the listener wants sound, the
+// player is trying to play and is short of data, and nothing has moved.
+const STALL_ID = '2026-10-30-1250';
+const look = (nowMs, overrides = {}) => ({
+  id: STALL_ID, intent: true, paused: false, ended: false, starved: true, position: 12, buffered: 30, nowMs, ...overrides,
+});
+/** Feed looks to the watchdog in order: the index of the one that trips it, or -1. */
+function watchdog(looks) {
+  let watch = null;
+  for (const [i, sample] of looks.entries()) {
+    const step = mod.aradioStallStep(watch, sample);
+    if (step.stalled) return i;
+    watch = step.watch;
+  }
+  return -1;
+}
+
+test('stall watchdog: a source that hangs trips it after 20 seconds of nothing, not before', () => {
+  assert.equal(mod.ARADIO_STALL_MS, 20_000);
+  // Starved from the first look; no position, no audio, ever.
+  assert.equal(watchdog([0, 5_000, 10_000, 19_999, 20_000].map((t) => look(t, { position: 0, buffered: 0 }))), 4);
+  // Mid-bulletin: it played to 12 s, then the audio stopped coming.
+  assert.equal(watchdog([look(0, { starved: false, position: 11.5 }), look(500), look(10_500), look(20_499), look(20_500)]), 4);
+});
+
+test('stall watchdog: buffering that recovers, or audio still arriving, never trips it', () => {
+  // Starved 15 s at a time, then a little playback: each recovery restarts the clock.
+  const recovers = [];
+  for (let t = 0, position = 0; t <= 120_000; t += 5_000) {
+    const plays = t % 20_000 === 15_000;
+    if (plays) position += 2;
+    recovers.push(look(t, { position, starved: !plays }));
+  }
+  assert.equal(watchdog(recovers), -1);
+  // A slow connection: nothing plays for a minute, but audio keeps arriving...
+  const trickle = Array.from({ length: 13 }, (_, i) => look(i * 5_000, { position: 0, buffered: i * 0.5 }));
+  assert.equal(watchdog(trickle), -1);
+  // ...until it stops arriving: 20 s after the last of it, it trips.
+  assert.equal(watchdog([...trickle, ...[1, 2, 3, 4].map((k) => look(60_000 + k * 5_000, { position: 0, buffered: 6 }))]), 16);
+});
+
+test('stall watchdog: never while paused, ended, caught up, unwanted, well fed, or on the digest', () => {
+  const still = (overrides) => watchdog([0, 10_000, 20_000, 60_000].map((t) => look(t, { position: 0, buffered: 0, ...overrides })));
+  assert.equal(still({}), 2, 'the control: this one trips');
+  assert.equal(still({ paused: true }), -1, 'paused, or play() blocked by the autoplay policy');
+  assert.equal(still({ intent: false }), -1, 'the listener paused');
+  assert.equal(still({ ended: true }), -1, 'ended: caught up, or stopped after this bulletin');
+  assert.equal(still({ id: null }), -1, 'no radio bulletin in the player (the digest, or caught up)');
+  assert.equal(still({ starved: false }), -1, 'the player is not short of data');
+  // A pause drops the watch, so playing again starts a fresh 20 s.
+  const watch = mod.aradioStallStep(null, look(0)).watch;
+  assert.deepEqual(mod.aradioStallStep(watch, look(19_000, { paused: true })), { watch: null, stalled: false });
+  assert.deepEqual(mod.aradioStallStep(null, look(30_000)).watch.since, 30_000);
+});
+
+test('stall watchdog: a page frozen behind a locked screen neither fakes a stall nor hides one', () => {
+  const watch = mod.aradioStallStep(null, look(0, { position: 10, starved: false })).watch;
+  // A minute without a single look (timers held) while the audio played on:
+  // the position moved, so this is no stall, starved or not.
+  assert.equal(mod.aradioStallStep(watch, look(60_000, { position: 70 })).stalled, false);
+  // The audio really stopped in that minute: the first look after it trips at once.
+  assert.equal(mod.aradioStallStep(watch, look(60_000, { position: 10 })).stalled, true);
+});
+
+test('stall watchdog: each bulletin has its own clock; seeks and evicted audio are handled', () => {
+  const first = mod.aradioStallStep(null, look(0, { position: 0, buffered: 0 })).watch;
+  // The next bulletin starts loading 19 s in: a new clock, not one second from tripping.
+  const next = mod.aradioStallStep(first, look(19_000, { id: '2026-10-30-1050', position: 0, buffered: 0 }));
+  assert.deepEqual([next.stalled, next.watch.id, next.watch.since], [false, '2026-10-30-1050', 19_000]);
+  assert.equal(mod.aradioStallStep(next.watch, look(38_999, { id: '2026-10-30-1050', position: 0, buffered: 0 })).stalled, false);
+  // A seek moves the position: the clock restarts there.
+  assert.equal(mod.aradioStallStep(first, look(30_000, { position: 90, buffered: 0 })).stalled, false);
+  // A buffer that shrank is followed down, so audio arriving after it still counts.
+  const shrunk = mod.aradioStallStep(mod.aradioStallStep(null, look(0, { buffered: 30 })).watch, look(5_000, { buffered: 10 }));
+  assert.deepEqual([shrunk.stalled, shrunk.watch.buffered, shrunk.watch.since], [false, 10, 0]);
+  assert.equal(mod.aradioStallStep(shrunk.watch, look(25_000, { buffered: 12 })).stalled, false);
+});
+
+test('a stall fails the bulletin like an error: one skip, never again, a visible stop at the end', () => {
+  const bulletins = bulletinsOf(entry('14:50'), entry('12:50'));
+  const on1450 = mod.startAradioProgramme(bulletins);
+  // 14:50 hangs: the watchdog trips and the radio moves on to 12:50.
+  const skip = mod.failAradioProgramme(on1450, bulletins, '2026-10-30-1450');
+  assert.deepEqual([skip.action, onNow(skip.programme)], ['skip', '1250']);
+  // A late second trip about 14:50 (a held timer firing) changes nothing.
+  assert.equal(mod.failAradioProgramme(skip.programme, bulletins, '2026-10-30-1450'), null);
+  // 12:50 hangs too: nothing is left, so the radio stops and the card says so.
+  const stop = mod.failAradioProgramme(skip.programme, bulletins, '2026-10-30-1250');
+  assert.equal(stop.action, 'stop');
+  const view = mod.aradioRadioView(radioInput({ bulletins, programme: stop.programme, loaded: bulletins[1] }), LATEST_MS);
+  assert.equal(view.mode, 'failed');
+});
+
 test('radio card: hostile headlines are escaped wherever they show', () => {
   const headline = '<img src=x onerror=alert(1)> "quoted" & \'single\'';
   const bulletins = bulletinsOf(entry('14:50', { headline }), entry('12:50', { headline }));

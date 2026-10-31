@@ -551,6 +551,15 @@ asked for).
   (paused); play, from any of them, tries again from the first bulletin missed.
   A blocked or interrupted `play()` (autoplay policy, a newer load) is not a
   failure. The rules are `failAradioProgramme` / `retryAradioProgramme`.
+- **Stalls**: a source that hangs never errors, so a watchdog
+  (`aradioStallStep`) fails a bulletin the same way when, while the listener
+  wants sound, the player is starved and neither its position nor its
+  buffered audio has moved for 20 s. Buffering that recovers, or audio still
+  trickling in, restarts the clock. The player's events drive the checks, and
+  while it is starved a re-check is booked for when a stall would be due. A
+  timer held behind a locked screen only delays the skip, because each check
+  compares the player's own position and buffer. A stop on a stall drops the
+  hung request, so trying again opens a fresh one. The digest is never watched.
 - **Updates**: the page polls `research/aradio/index.json` every 5 minutes (and
   in the background while a bulletin plays). The radio card takes new data at
   once and is patched in place (fixed heights, no re-render, focus kept);
@@ -567,8 +576,11 @@ serves: RSS 2.0 with iTunes tags (title "ARA Radio", author "ARA", explicit
 false, Technology and News › Tech News). Episodes are the page's bulletins with
 a policy-valid audio key, newest first, ≤ 72: guid = bulletin id, pubDate =
 `aired_at`, an enclosure with the same URL the page plays (`length` = `bytes`,
-`audio/mpeg`), `itunes:duration`, and the transcript as a plain-text
-description (≤ 4,000 characters). Bulletin files are read only at validated
+`audio/mpeg`), `itunes:duration`, and the transcript as the description
+(≤ 4,000 characters as an app receives them). Apps render a description as
+HTML, so its text is HTML-escaped and then XML-escaped: a `<tag>` in a
+transcript stays text. Titles, which apps show as text, are XML-escaped only.
+Bulletin files are read only at validated
 paths inside the station directory, every value is XML-escaped, the output is
 deterministic, and absent data is a valid feed with no episodes. Caddy caches
 it like `/feed.xml`; the container smoke and `check_production_surface.py`
