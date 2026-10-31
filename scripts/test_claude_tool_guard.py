@@ -16,6 +16,7 @@ import unittest
 from pathlib import Path
 
 from copy_claude_settings import (
+    CURL_HOSTS,
     CURL_RULE,
     GIT_ADD_RULE,
     GIT_COMMIT_RULE,
@@ -196,6 +197,9 @@ class ClaudeToolGuardTest(unittest.TestCase):
         for name, literal in (("GIT_COMMIT_RULE", GIT_COMMIT_RULE), ("GLOB_RULE", GLOB_RULE)):
             with self.subTest(name=name):
                 self.assertIn(f"const {name} = {json.dumps(literal)};", source)
+        hosts = re.search(r"^const CURL_HOSTS = (\[.*\]);$", source, re.MULTILINE)
+        self.assertIsNotNone(hosts)
+        self.assertEqual(list(CURL_HOSTS), json.loads(hosts.group(1)))
 
 
 class ClaudeShellGuardTest(unittest.TestCase):
@@ -399,6 +403,19 @@ class ClaudeShellGuardTest(unittest.TestCase):
                     "uv run python scripts/wiki_search.py 'x'",
                     "uv run python scripts/wiki_search.py x",
                     "uv run python scripts/check_wiki.py --lint=x"])
+
+    def test_a_policy_naming_an_unpinned_curl_host_fails_closed(self):
+        base = lane_allow("arxiv")
+        query = 'curl -sL "https://export.arxiv.org/api/query?search_query=cat:cs.AI"'
+        self.use(base)
+        self.assert_bash(allowed=[query], denied=[])
+        for host in ("evil.example", "api.example.com", "export.arxiv.org.evil.example"):
+            self.use(base + [f'Bash(curl -sL "https://{host}/?*)'])
+            for command in (query, f'curl -sL "https://{host}/?a=b"'):
+                with self.subTest(host=host, command=command):
+                    result = self.run_guard("Bash", {"command": command, "description": "x"})
+                    self.assertEqual(2, result.returncode, result.stderr)
+                    self.assertIn("curl host outside CURL_HOSTS", result.stderr)
 
     def test_bash_input_shape_fails_closed(self):
         self.use(lane_allow("rss"))

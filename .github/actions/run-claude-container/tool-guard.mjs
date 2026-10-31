@@ -28,9 +28,9 @@
 // Rule grammar, kept identical to scripts/copy_claude_settings.py: `Read(p)`
 // or `Edit(p)` on a clean workspace-relative path, optionally ending in `/**`
 // (an Edit rule governs the Write tool); `Glob`; `Bash(git add <dir>/*)`;
-// `Bash(git commit -m *)`; `Bash(curl -sL "https://<host>/<path>?*)` or `-s`;
-// `Bash(uv run python scripts/<name>.py)`, optionally with one fixed
-// ` --flag` or ` "*` (one quoted plain-text argument).
+// `Bash(git commit -m *)`; `Bash(curl -sL "https://<host>/<path>?*)` or `-s`
+// on a host in CURL_HOSTS; `Bash(uv run python scripts/<name>.py)`, optionally
+// with one fixed ` --flag` or ` "*` (one quoted plain-text argument).
 // Anything else fails closed. Claude Code still applies its own allow and deny
 // rules after this hook defers, so both layers must admit a call.
 
@@ -43,6 +43,10 @@ const GIT_COMMIT_RULE = "Bash(git commit -m *)";
 const CURL_RULE = /^Bash\(curl (-sL|-s) "(https:\/\/[a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,}(?:\/[A-Za-z0-9_.-]+)*\/?\?)\*\)$/;
 const UV_RULE = /^Bash\((uv run python scripts\/([a-z0-9_]+)\.py)( --[a-z][a-z-]*| "\*)?\)$/;
 const GLOB_RULE = "Glob";
+// The only hosts a curl rule may name, kept identical to CURL_HOSTS in
+// scripts/copy_claude_settings.py: reaching a new host is a reviewed code
+// change, never a policy edit alone.
+const CURL_HOSTS = ["export.arxiv.org"];
 const MAX_INPUT_BYTES = 32 * 1024 * 1024;
 // No glob classes or braces: `{..,x}` would expand to a parent directory.
 const GLOB_PATTERN = /^[A-Za-z0-9_.*?-]+(?:\/[A-Za-z0-9_.*?-]+)*$/;
@@ -92,6 +96,9 @@ function loadPolicy(settingsPath) {
     } else if ((match = GIT_ADD_RULE.exec(entry))) {
       policy.gitAdd.push(match[1]);
     } else if ((match = CURL_RULE.exec(entry))) {
+      if (!CURL_HOSTS.includes(match[2].slice("https://".length).split(/[/?]/, 1)[0])) {
+        deny("the run-scoped settings name a curl host outside CURL_HOSTS");
+      }
       policy.curl.push({ flags: match[1], prefix: match[2] });
     } else if ((match = UV_RULE.exec(entry))) {
       policy.uv.push({ base: match[1], suffix: match[3] ?? "" });

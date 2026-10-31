@@ -11,6 +11,7 @@ from copy_claude_settings import (
     BASELINE_DENY,
     BASH_OUTPUT_MAX_CHARS,
     CONTAINER_LIVENESS_MARKER,
+    CURL_HOSTS,
     GUARD_COMMAND,
     GUARD_TIMEOUT_SECONDS,
     LIVENESS_COMMAND,
@@ -214,6 +215,16 @@ class CopyClaudeSettingsTest(unittest.TestCase):
         policy["permissions"]["allow"].append("Bash(uv run python scripts/no_such_script.py)")
         with self.assertRaisesRegex(ValueError, "names no repository script"):
             validate(policy)
+
+    def test_curl_reaches_only_the_hosts_pinned_in_code(self):
+        self.assertEqual(("export.arxiv.org",), CURL_HOSTS)
+        validate(load("arxiv"))
+        for host in ("api.example.com", "evil.example", "arxiv.org", "www.export.arxiv.org",
+                     "export.arxiv.org.evil.example", "export-arxiv.org"):
+            policy = load("arxiv")
+            policy["permissions"]["allow"].append(f'Bash(curl -sL "https://{host}/api/query?*)')
+            with self.subTest(host=host), self.assertRaisesRegex(ValueError, "CURL_HOSTS"):
+                validate(policy)
 
     def test_uv_rules_name_only_regular_repository_scripts(self):
         with tempfile.TemporaryDirectory() as tmp:

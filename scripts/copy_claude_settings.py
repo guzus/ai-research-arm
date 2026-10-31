@@ -12,7 +12,8 @@ file, limited to a reviewable subset:
     also hold `Edit(<dir>/**)`, so it can only stage what it may write.
   - `Bash(git commit -m *)`, a plain `git commit -m "<message>"`.
   - `Bash(curl -sL "https://<host>/<path>?*)` (or `-s`), one fixed URL
-    prefix; the query may not carry a shell metacharacter.
+    prefix on a host in CURL_HOSTS; the query may not carry a shell
+    metacharacter.
   - `Bash(uv run python scripts/<name>.py)`, the same with one fixed
     `--flag`, or with ` "*` for one quoted plain-text argument: an existing
     repository script and nothing else.
@@ -59,6 +60,10 @@ CURL_RULE = re.compile(
     r'(?:/[A-Za-z0-9_.-]+)*/?\?)\*\)$'
 )
 UV_RULE = re.compile(r'^Bash\((uv run python scripts/([a-z0-9_]+)\.py)( --[a-z][a-z-]*| "\*)?\)$')
+# The only hosts a curl rule may name, kept identical to CURL_HOSTS in
+# tool-guard.mjs: reaching a new host is a reviewed code change, never a
+# policy edit alone.
+CURL_HOSTS = ("export.arxiv.org",)
 GLOB_RULE = "Glob"
 SCRIPTS_DIR = Path(__file__).resolve().parent
 TOP_LEVEL_KEYS = {"$schema", "permissions"}
@@ -148,6 +153,10 @@ def validate(config: object) -> tuple[dict, str]:
             kinds.add("git add")
         elif curl:
             target = curl.group(2).removeprefix("https://").removesuffix("?")
+            host = target.split("/", 1)[0]
+            if host not in CURL_HOSTS:
+                raise ValueError(f"allow rule {rule!r} names curl host {host!r}, which is not "
+                                 "in CURL_HOSTS")
             kinds.add("curl")
         elif uv:
             target = ""
