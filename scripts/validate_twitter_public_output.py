@@ -81,13 +81,21 @@ def cycle_sections(text: str, hour: str) -> list[str]:
 
 
 def _section_preview(section: str, *, max_lines: int = 12, max_chars: int = 800) -> str:
-    """Keep just enough of a failing section for the next operator to see the miss."""
+    """Keep just enough of a failing section for the next operator to see the miss.
+
+    The section is model output and this message reaches the public job log,
+    so every line is quoted with "| ", which no workflow command starts with,
+    and a nonprintable character other than a tab shows as "?".
+    """
     lines = section.splitlines()
     preview = "\n".join(lines[:max_lines])
     truncated = len(lines) > max_lines
     if len(preview) > max_chars:
         preview = preview[:max_chars]
         truncated = True
+    preview = "\n".join(
+        "| " + "".join(char if char.isprintable() or char == "\t" else "?" for char in line)
+        for line in preview.splitlines())
     if truncated:
         preview += "\n..."
     return preview
