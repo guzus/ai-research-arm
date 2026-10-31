@@ -172,6 +172,12 @@ export type AradioViewState = {
   checkedAt: number | null;
   /** The radio card always reflects the newest data the poller has seen. */
   radio: AradioRadioInput;
+  /** The radio card's own transcript: the bulletin `aradioScriptEntry` names. */
+  script?: AradioTranscriptState;
+  /** What this viewer has heard (localStorage), for the log's play pills. */
+  listened?: AradioListened;
+  /** This viewer's playback speed. */
+  rate?: number;
 };
 
 // ── Constants ─────────────────────────────────────────────────────────────
@@ -187,6 +193,22 @@ export const ARADIO_UP_NEXT = 3;
 export const ARADIO_RESTART_S = 3;
 /** The podcast feed postbuild-seo.mjs writes (absolute URL is hydrated). */
 export const ARADIO_FEED_PATH = '/aradio/feed.xml';
+/** The show art, the same file the feed and the lock screen use (a test pins them). */
+export const ARADIO_COVER_PATH = '/brand/aradio-cover.png';
+/**
+ * The show on Spotify, `https://open.spotify.com/show/<id>`, once Spotify
+ * lists it (docs/aradio.md, "Listing on Spotify"). Empty hides the button.
+ */
+export const ARADIO_SPOTIFY_SHOW_URL = '';
+/** How far the skip buttons (and lock-screen skips without their own offset) jump. */
+export const ARADIO_JUMP_S = 15;
+/** The speeds the speed button cycles through. */
+export const ARADIO_RATES: readonly number[] = [1, 1.25, 1.5, 2];
+/**
+ * Seconds of silence between two speakers' turns. Measured on the first real
+ * bulletin (2026-10-31 08:53): turn changes left 0.4–0.75 s gaps.
+ */
+export const ARADIO_TURN_PAUSE_S = 0.5;
 
 const STATUSES: readonly AradioThreadStatus[] = ['escalating', 'developing', 'steady', 'resolved'];
 const STATUS_ORDER: Record<AradioThreadStatus, number> = { escalating: 0, developing: 1, steady: 2, resolved: 3 };
@@ -699,6 +721,10 @@ export type AradioRadioView = {
   canNext: boolean;
   /** The newest bulletin, when it is text-only and newer than anything playable. */
   textOnlyNewest: AradioBulletinEntry | null;
+  /** When the newest bulletin of any kind aired: the station's "Updated". */
+  updatedAt: string | null;
+  /** The bulletin whose transcript the card shows: `now`, or the newest when nothing can be heard. */
+  scriptEntry: AradioBulletinEntry | null;
   elapsed: number;
   duration: number;
   seekable: boolean;
@@ -758,6 +784,8 @@ export function aradioRadioView(input: AradioRadioInput, nowMs: number): AradioR
     textOnlyNewest: newest && !newest.audio && newestPlayable && msOf(newest.airedAt) > msOf(newestPlayable.airedAt)
       ? newest
       : null,
+    updatedAt: newest?.airedAt ?? null,
+    scriptEntry: kind === 'ready' ? now : kind === 'text-only' ? newest : null,
     elapsed,
     duration,
     seekable: active && input.duration > 0,
@@ -766,16 +794,254 @@ export function aradioRadioView(input: AradioRadioInput, nowMs: number): AradioR
   };
 }
 
-/** Word-proportional [start, end) fractions per line — TTS pace is steady. */
-export function aradioLineSpans(lines: readonly AradioLine[]): Array<[number, number]> {
-  const counts = lines.map((line) => Math.max(1, line.text.split(/\s+/).filter(Boolean).length));
-  const total = counts.reduce((sum, count) => sum + count, 0) || 1;
+// ── Following the transcript ─────────────────────────────────────────────
+//
+// TTS returns audio, not timestamps, so where each line falls is ESTIMATED:
+// a line takes time in proportion to what is spoken (its letters, with
+// acronyms and digits weighted up because they are read out longhand, plus a
+// little for each pause its punctuation asks for), the speakers leave a short
+// gap between turns, and the whole is scaled to the bulletin's real duration.
+// Against the first real bulletin (2026-10-31 08:53, 17 lines, 171.9 s; line
+// starts measured from its audio) the estimate is within ~1 s on average and
+// ~2.7 s at worst, so the page says the timing is approximate and never shows
+// a per-line time.
+
+/** Letters' worth of speaking time per character of an all-caps token (UTC, AWS). */
+const ACRONYM_WEIGHT = 2;
+/** Per digit: "100" is read as "one hundred". */
+const DIGIT_WEIGHT = 3;
+/** A full stop, question or exclamation mark with more of the line after it. */
+const SENTENCE_PAUSE_WEIGHT = 6;
+/** A comma, colon, semicolon or dash. */
+const CLAUSE_PAUSE_WEIGHT = 4;
+
+/** How long a line takes to say, in letters' worth of speaking time (≥ 1). */
+export function aradioLineWeight(text: string): number {
+  let weight = 0;
+  for (const token of text.match(/[\p{L}\p{N}]+/gu) ?? []) {
+    if (/^\p{N}+$/u.test(token)) weight += DIGIT_WEIGHT * token.length;
+    else if (token.length > 1 && token === token.toUpperCase() && /\p{Lu}/u.test(token)) weight += ACRONYM_WEIGHT * token.length;
+    else weight += token.length;
+  }
+  weight += SENTENCE_PAUSE_WEIGHT * (text.match(/[.!?]["'”’)\]]*\s+(?=\S)/g) ?? []).length;
+  weight += CLAUSE_PAUSE_WEIGHT * (text.match(/[,;:]\s|[—–]/g) ?? []).length;
+  return Math.max(1, weight);
+}
+
+export type AradioLineTiming = { start: number; end: number };
+
+/**
+ * Estimated [start, end) seconds of each line in a bulletin `durationS` long.
+ * The lines tile the bulletin exactly (the first starts at 0, each ends where
+ * the next starts, the last at `durationS`); the gap after a line counts as
+ * part of it, so the line just read stays current until the next one starts.
+ * Null without a usable duration.
+ */
+export function aradioLineTimings(lines: readonly { text: string }[], durationS: number): AradioLineTiming[] | null {
+  if (!Number.isFinite(durationS) || durationS <= 0) return null;
+  if (!lines.length) return [];
+  const weights = lines.map((line) => aradioLineWeight(line.text));
+  const total = weights.reduce((sum, weight) => sum + weight, 0);
+  const gaps = lines.length - 1;
+  // The pauses never take more than a fifth of a (suspiciously short) bulletin.
+  const pause = gaps ? Math.min(ARADIO_TURN_PAUSE_S, (durationS * 0.2) / gaps) : 0;
+  const perWeight = (durationS - pause * gaps) / total;
+  const starts: number[] = [];
   let cursor = 0;
-  return counts.map((count) => {
-    const start = cursor / total;
-    cursor += count;
-    return [start, cursor / total];
-  });
+  for (const weight of weights) {
+    starts.push(cursor);
+    cursor += weight * perWeight + pause;
+  }
+  return starts.map((start, i) => ({ start, end: i + 1 < starts.length ? starts[i + 1] : durationS }));
+}
+
+/** The line being read at `positionS`: -1 without timings or before the start. */
+export function aradioLiveLine(timings: readonly AradioLineTiming[] | null, positionS: number): number {
+  if (!timings?.length || !Number.isFinite(positionS) || positionS < 0) return -1;
+  for (let i = timings.length - 1; i > 0; i -= 1) {
+    if (positionS >= timings[i].start) return i;
+  }
+  return 0;
+}
+
+/**
+ * The line of `bulletin` the shared player is reading: -1 when the player
+ * holds another bulletin (or a failed one), the line count once it has played
+ * to its end, so every line reads as heard.
+ */
+export function aradioPlayerLine(
+  radio: Pick<AradioRadioInput, 'loaded' | 'programme' | 'ended' | 'waiting' | 'position' | 'duration'>,
+  bulletin: { id: string; lines: readonly AradioLine[]; audio: AradioAudio | null },
+): number {
+  const loaded = radio.loaded;
+  if (!loaded || loaded.id !== bulletin.id || !bulletin.lines.length || aradioHasFailed(radio.programme, loaded.id)) return -1;
+  if (radio.ended || radio.waiting) return bulletin.lines.length;
+  const duration = radio.duration > 0 ? radio.duration : bulletin.audio?.durationS ?? loaded.audio?.durationS ?? 0;
+  return aradioLiveLine(aradioLineTimings(bulletin.lines, duration), radio.position);
+}
+
+// ── Playback speed ───────────────────────────────────────────────────────
+
+/** A stored or requested speed, if it is one the button offers; else 1. */
+export function aradioParseRate(raw: unknown): number {
+  const rate = typeof raw === 'string' ? Number(raw.trim()) : typeof raw === 'number' ? raw : NaN;
+  return ARADIO_RATES.includes(rate) ? rate : 1;
+}
+
+/** The speed after `rate` (wrapping round to 1×). */
+export function aradioNextRate(rate: number): number {
+  const at = ARADIO_RATES.indexOf(aradioParseRate(rate));
+  return ARADIO_RATES[(at + 1) % ARADIO_RATES.length];
+}
+
+export function aradioRateLabel(rate: number): string {
+  return `${aradioParseRate(rate)}×`;
+}
+
+// ── What this viewer has heard ───────────────────────────────────────────
+//
+// Kept in the viewer's own localStorage (main.ts reads and writes it inside
+// try/catch), so it is a convenience, never a record: a private window, a
+// cleared site or a blocked store simply shows every bulletin as new. Only
+// the log's play pills read it; playback itself always starts a bulletin
+// from the top, as a radio does.
+
+/** One bulletin's listening: where the viewer got to, out of how long, and whether they finished. */
+export type AradioListen = { at: number; duration: number; done: boolean };
+export type AradioListened = Readonly<Record<string, AradioListen>>;
+export type AradioListenState = { state: 'new' | 'partial' | 'done'; fraction: number; remaining: number };
+
+/** The localStorage keys main.ts uses. */
+export const ARADIO_LISTENED_KEY = 'ara.aradio.listened.v1';
+export const ARADIO_RATE_KEY = 'ara.aradio.rate.v1';
+/** Bulletins remembered: the index's 72 and some slack for ones that aged out. */
+export const ARADIO_LISTENED_MAX = 120;
+/** Under this many seconds in, a bulletin still counts as unheard. */
+const LISTEN_STARTED_S = 3;
+/** Within this many seconds of the end counts as heard. */
+const LISTEN_DONE_SLACK_S = 3;
+
+function listenOf(raw: unknown): AradioListen | null {
+  if (!isRecord(raw)) return null;
+  const at = Number(raw.at);
+  const duration = Number(raw.duration);
+  if (!Number.isFinite(at) || at < 0 || !Number.isFinite(duration) || duration <= 0) return null;
+  return { at: Math.min(at, duration), duration, done: raw.done === true };
+}
+
+/** Parse what localStorage held. Anything malformed is dropped, never thrown. */
+export function aradioParseListened(raw: string | null | undefined): AradioListened {
+  if (typeof raw !== 'string' || !raw) return {};
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return {};
+  }
+  if (!isRecord(parsed)) return {};
+  const out: Record<string, AradioListen> = {};
+  for (const [id, value] of Object.entries(parsed)) {
+    const listen = SAFE_ID_RE.test(id) ? listenOf(value) : null;
+    if (listen) out[id] = listen;
+    if (Object.keys(out).length >= ARADIO_LISTENED_MAX) break;
+  }
+  return out;
+}
+
+/**
+ * Record that the viewer is `positionS` into bulletin `id` (`ended`: it
+ * played to its end). Finishing is sticky: replaying a heard bulletin moves
+ * its position but it stays heard. Returns the same object when nothing a
+ * pill shows would change, so callers can skip the write.
+ */
+export function aradioRecordListen(
+  listened: AradioListened,
+  id: string,
+  positionS: number,
+  durationS: number,
+  ended = false,
+): AradioListened {
+  if (!SAFE_ID_RE.test(id) || !Number.isFinite(durationS) || durationS <= 0) return listened;
+  const at = ended ? durationS : Math.max(0, Math.min(Number.isFinite(positionS) ? positionS : 0, durationS));
+  const prior = listened[id];
+  const done = Boolean(prior?.done) || ended || at >= durationS - LISTEN_DONE_SLACK_S;
+  if (prior && prior.done === done && Math.abs(prior.at - at) < 1 && prior.duration === durationS) return listened;
+  if (!prior && at < LISTEN_STARTED_S && !done) return listened;
+  return { ...listened, [id]: { at, duration: durationS, done } };
+}
+
+/** Keep only bulletins still in `keepIds` (the index), at most ARADIO_LISTENED_MAX. */
+export function aradioPruneListened(listened: AradioListened, keepIds: Iterable<string>): AradioListened {
+  const out: Record<string, AradioListen> = {};
+  for (const id of keepIds) {
+    if (listened[id]) out[id] = listened[id];
+    if (Object.keys(out).length >= ARADIO_LISTENED_MAX) break;
+  }
+  return Object.keys(out).length === Object.keys(listened).length ? listened : out;
+}
+
+/** What a play pill shows for one bulletin. */
+export function aradioListenState(listen: AradioListen | null | undefined, durationS: number | null): AradioListenState {
+  const duration = listen?.duration ?? durationS ?? 0;
+  if (listen?.done) return { state: 'done', fraction: 1, remaining: 0 };
+  if (!listen || duration <= 0 || listen.at < LISTEN_STARTED_S) return { state: 'new', fraction: 0, remaining: duration };
+  return { state: 'partial', fraction: Math.min(1, listen.at / duration), remaining: Math.max(0, duration - listen.at) };
+}
+
+// ── Following the show in a podcast app ──────────────────────────────────
+//
+// None of these links can be checked from a web page (an app's URL scheme is
+// either handled or not), so each is offered only where its app can exist,
+// and the feed address with Copy stays as the fallback everywhere.
+//   - Apple Podcasts: `podcast://<feed without its scheme>` (iPhone, iPad, Mac)
+//     opens the app's "Follow a Show by URL" box, prefilled. The app fills it
+//     in as http://, which the site redirects to https.
+//   - Overcast: its documented subscribe link, iPhone and iPad only.
+//   - Pocket Casts: `pktc://subscribe/…` on iPhone, iPad and Android (the
+//     apps); elsewhere its web player's follow URL.
+//   - Spotify cannot follow an RSS feed: the show URL, once it is listed.
+
+export type AradioPlatform = 'ios' | 'mac' | 'android' | 'other';
+export type AradioFollowApp = 'apple' | 'spotify' | 'overcast' | 'pocketcasts';
+/** `newTab`: an https page, opened beside the radio so it keeps playing. */
+export type AradioFollowLink = { app: AradioFollowApp; href: string; newTab: boolean };
+
+export const ARADIO_FOLLOW_APPS: readonly AradioFollowApp[] = ['apple', 'spotify', 'overcast', 'pocketcasts'];
+const SPOTIFY_SHOW_RE = /^https:\/\/open\.spotify\.com\/show\/[A-Za-z0-9]{22}$/;
+
+/**
+ * The viewer's platform from its user agent. iPadOS Safari reports a Mac user
+ * agent, so a "Mac" with a multi-touch screen is an iPad.
+ */
+export function aradioPlatform(userAgent: string, maxTouchPoints = 0): AradioPlatform {
+  const ua = typeof userAgent === 'string' ? userAgent : '';
+  if (/\b(iPhone|iPad|iPod)\b/.test(ua)) return 'ios';
+  if (/\bMacintosh\b/.test(ua)) return maxTouchPoints > 1 ? 'ios' : 'mac';
+  if (/\bAndroid\b/.test(ua)) return 'android';
+  return 'other';
+}
+
+/** The follow links to offer on `platform`, in display order. */
+export function aradioFollowLinks(
+  feedUrl: string,
+  platform: AradioPlatform,
+  spotifyShowUrl: string = ARADIO_SPOTIFY_SHOW_URL,
+): AradioFollowLink[] {
+  const feed = parseAradioHttpUrl(feedUrl);
+  const links: AradioFollowLink[] = [];
+  if (feed?.protocol === 'https:') {
+    const bare = `${feed.host}${feed.pathname}${feed.search}`;
+    if (platform === 'ios' || platform === 'mac') links.push({ app: 'apple', href: `podcast://${bare}`, newTab: false });
+    if (platform === 'ios') {
+      links.push({ app: 'overcast', href: `overcast://x-callback-url/add?url=${encodeURIComponent(feed.href)}`, newTab: false });
+    }
+    links.push(platform === 'ios' || platform === 'android'
+      ? { app: 'pocketcasts', href: `pktc://subscribe/${bare}`, newTab: false }
+      : { app: 'pocketcasts', href: `https://pocketcasts.com/follow/${feed.href}`, newTab: true });
+  }
+  const spotify = typeof spotifyShowUrl === 'string' ? spotifyShowUrl.trim() : '';
+  if (SPOTIFY_SHOW_RE.test(spotify)) links.push({ app: 'spotify', href: spotify, newTab: true });
+  return links.sort((a, b) => ARADIO_FOLLOW_APPS.indexOf(a.app) - ARADIO_FOLLOW_APPS.indexOf(b.app));
 }
 
 /** Speaker 1 / Speaker 2 → 1 / 2; anything else is shown verbatim. */
@@ -829,7 +1095,7 @@ export function aradioClock(seconds: number): string {
 
 /** The i18n keys a `data-aradio-rel-key` attribute may name (ticker refresh). */
 export const ARADIO_REL_KEYS: readonly UiCopyKey[] = [
-  'aradio.updatedAgo', 'aradio.resolvedAgo', 'aradio.checked',
+  'aradio.updatedAgo', 'aradio.resolvedAgo', 'aradio.checked', 'aradio.updated',
 ];
 
 /** Relative-time span the ticker can refresh in place without a re-render. */
@@ -919,6 +1185,36 @@ export function hydrateAradioFeed(root: ParentNode, feedUrl: string): void {
   });
 }
 
+/**
+ * Give each follow button its link (`aradioFollowLinks`), as a property like
+ * every URL on this page, and show only the buttons that got one. The HTML
+ * carries no addresses: an app this platform cannot have stays hidden.
+ */
+export function hydrateAradioFollow(root: ParentNode, links: readonly AradioFollowLink[]): void {
+  root.querySelectorAll<HTMLElement>('[data-aradio-follow-list]').forEach((list) => {
+    let shown = 0;
+    list.querySelectorAll<HTMLAnchorElement>('a[data-aradio-follow]').forEach((anchor) => {
+      const link = links.find((item) => item.app === anchor.dataset.aradioFollow);
+      const item = anchor.closest('li') ?? anchor;
+      item.hidden = !link;
+      if (!link) {
+        anchor.removeAttribute('href');
+        return;
+      }
+      shown += 1;
+      anchor.href = link.href;
+      if (link.newTab) {
+        anchor.target = '_blank';
+        anchor.rel = 'noopener noreferrer';
+      } else {
+        anchor.removeAttribute('target');
+        anchor.removeAttribute('rel');
+      }
+    });
+    list.hidden = shown === 0;
+  });
+}
+
 // ── Rendering: the radio ─────────────────────────────────────────────────
 
 /** Accessible name for a bulletin's play control (log rows, transcript). */
@@ -951,6 +1247,11 @@ export type AradioRadioCopy = {
   progressPct: string;
   note: string;
   upNextEmpty: string;
+  /** "Updated 12 min ago." for the newest bulletin of any kind; '' before the first. */
+  updated: string;
+  updatedIso: string;
+  /** Off air the sign already gives that age ("Latest bulletin · 3h ago"); it is not said twice. */
+  updatedShown: boolean;
 };
 
 export function aradioRadioCopy(view: AradioRadioView, nowMs: number, language: UiLanguage): AradioRadioCopy {
@@ -997,6 +1298,9 @@ export function aradioRadioCopy(view: AradioRadioView, nowMs: number, language: 
     progressPct: `${duration > 0 ? Math.min(100, (view.elapsed / duration) * 100).toFixed(2) : '0.00'}%`,
     note,
     upNextEmpty: t('aradio.upNextEmpty'),
+    updated: view.updatedAt ? t('aradio.updated', { age: aradioAge(view.updatedAt, nowMs, language) }) : '',
+    updatedIso: view.updatedAt ?? '',
+    updatedShown: Boolean(view.updatedAt) && (live || view.kind !== 'ready' || view.updatedAt !== view.latestAiredAt),
   };
 }
 
@@ -1014,12 +1318,39 @@ const ICON_PLAY_PAUSE = '<svg class="aradio-toggle-icon" viewBox="0 0 48 48" ari
   + '<path class="aradio-icon-pause" d="M14 12h7v24h-7zM27 12h7v24h-7z"/></svg>';
 const ICON_PREVIOUS = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 5h2.2v14H6zM20 5.6v12.8a.8.8 0 0 1-1.22.68L9.2 12.68a.8.8 0 0 1 0-1.36l9.58-6.4A.8.8 0 0 1 20 5.6z"/></svg>';
 const ICON_NEXT = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.8 5H18v14h-2.2zM4 5.6v12.8a.8.8 0 0 0 1.22.68l9.58-6.4a.8.8 0 0 0 0-1.36L5.22 4.92A.8.8 0 0 0 4 5.6z"/></svg>';
+// A ring open at the upper left with its arrow at the top: turn back. The
+// forward icon is its mirror image. The seconds sit in the ring as text.
+const ICON_JUMP_BACK = '<svg class="aradio-jump-ring" viewBox="0 0 32 32" aria-hidden="true" focusable="false">'
+  + '<path d="M16 5a11 11 0 1 1-9.53 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>'
+  + '<path d="M11.4 5 16.8 1.4v7.2z" fill="currentColor"/></svg>';
+const ICON_JUMP_FORWARD = '<svg class="aradio-jump-ring" viewBox="0 0 32 32" aria-hidden="true" focusable="false">'
+  + '<path d="M16 5a11 11 0 1 0 9.53 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>'
+  + '<path d="M20.6 5 15.2 1.4v7.2z" fill="currentColor"/></svg>';
+const ICON_TO_LIVE = '<svg class="aradio-relive-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">'
+  + '<path d="M8 2.5v10M3.8 8.6 8 12.8l4.2-4.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+/** App names are brand names: the same in every language. */
+const FOLLOW_NAMES: Record<AradioFollowApp, string> = {
+  apple: 'Apple Podcasts',
+  spotify: 'Spotify',
+  overcast: 'Overcast',
+  pocketcasts: 'Pocket Casts',
+};
+
+/**
+ * Following the show: a button per podcast app (empty and hidden here;
+ * hydrateAradioFollow gives the ones this platform can use their links), then
+ * the feed address to copy, and the manual Apple Podcasts route as the
+ * fallback when a link cannot open its app.
+ */
 function renderPodcast(language: UiLanguage): string {
   const t = (key: UiCopyKey) => esc(uiText(language, key));
+  const apps = ARADIO_FOLLOW_APPS.map((app) => `<li hidden><a class="aradio-follow-link" data-aradio-follow="${app}"`
+    + ` aria-label="${esc(uiText(language, 'aradio.followIn', { app: FOLLOW_NAMES[app] }))}">${esc(FOLLOW_NAMES[app])}</a></li>`).join('');
   return [
     '<div class="aradio-podcast">',
     `<p class="aradio-podcast-title">${t('aradio.podcastTitle')}</p>`,
+    `<ul class="aradio-follow" data-aradio-follow-list hidden>${apps}</ul>`,
     '<div class="aradio-podcast-row">',
     `<input class="aradio-feed-input" type="text" readonly spellcheck="false" data-aradio-feed-url aria-label="${t('aradio.feedLabel')}" value="">`,
     `<button type="button" class="aradio-copy" data-aradio-copy-feed>${t('aradio.copy')}</button>`,
@@ -1030,9 +1361,18 @@ function renderPodcast(language: UiLanguage): string {
   ].join('');
 }
 
-function renderRadioHead(copy: AradioRadioCopy, language: UiLanguage): string {
+function renderRadioHead(copy: AradioRadioCopy, kind: AradioRadioView['kind'], s: { language: UiLanguage; nowMs: number }): string {
+  const language = s.language;
   // Station name and on-air sign share a row (the sign wraps below only when
-  // it cannot fit); the tagline runs underneath.
+  // it cannot fit); the tagline runs underneath, then how fresh the station
+  // is and when to expect more. There is no schedule to promise: a bulletin
+  // airs when the material changes the picture.
+  const updated = relTime(copy.updatedIso || null, 'aradio.updated', s, 'aradio-updated');
+  const liveness = kind === 'ready' || kind === 'text-only'
+    ? '<p class="aradio-liveness" data-aradio-liveness>'
+      + (copy.updatedShown ? updated : updated.replace('<time ', '<time hidden '))
+      + `<span class="aradio-next-airs">${esc(uiText(language, 'aradio.nextAirs'))}</span></p>`
+    : '';
   return [
     '<header class="aradio-radio-head">',
     `<h2 class="aradio-station" id="aradioStation">${esc(uiText(language, 'aradio.station'))}</h2>`,
@@ -1040,6 +1380,7 @@ function renderRadioHead(copy: AradioRadioCopy, language: UiLanguage): string {
     '<span class="aradio-badge-lamp" aria-hidden="true"></span>',
     `<span data-aradio-badge-text>${esc(copy.badge)}</span></p>`,
     `<p class="aradio-tagline">${esc(uiText(language, 'aradio.tagline'))}</p>`,
+    liveness,
     '</header>',
   ].join('');
 }
@@ -1051,11 +1392,133 @@ export function renderAradioChecked(checkedAt: number | null, language: UiLangua
     : esc(uiText(language, 'aradio.checking'));
 }
 
+type LinesOptions = {
+  language: UiLanguage;
+  /** Each line is a button that plays the bulletin from there (it has audio). */
+  seekable: boolean;
+  /** The line being read (`aradioPlayerLine`): -1 none, the line count once all are heard. */
+  live: number;
+};
+
+/**
+ * A transcript's lines. While its bulletin is in the player, the line being
+ * read is `is-live` (and `aria-current`), the ones before it `is-past`; the
+ * list says `is-following`. Seekable lines are buttons with one tab stop for
+ * the list (the live line, else the first): arrow keys move between them.
+ */
+function renderLines(bulletin: AradioBulletin, o: LinesOptions, className: string): string {
+  const following = o.live >= 0;
+  const stop = following ? Math.min(o.live, bulletin.lines.length - 1) : 0;
+  const items = bulletin.lines.map((line, i) => {
+    const role = aradioSpeakerRole(line.speaker);
+    const state = !o.seekable ? ' is-static' : !following ? '' : i < o.live ? ' is-past' : i === o.live ? ' is-live' : '';
+    const speaker = `<span class="aradio-speaker">${esc(speakerLabel(line.speaker, o.language))}</span>`;
+    const body = o.seekable
+      ? `<button type="button" class="aradio-line-seek" data-aradio-seek-line="${i}" tabindex="${i === stop ? '0' : '-1'}"`
+        + `${i === o.live ? ' aria-current="true"' : ''}>${speaker}<span class="aradio-line-text">${esc(line.text)}</span></button>`
+      : `${speaker}<p class="aradio-line-text">${esc(line.text)}</p>`;
+    return `<li class="aradio-line aradio-line--s${role}${state}" data-aradio-line="${i}">${body}</li>`;
+  }).join('');
+  return `<ol class="aradio-lines ${className}${following ? ' is-following' : ''}" data-aradio-lines="${esc(bulletin.id)}">${items}</ol>`;
+}
+
+/**
+ * The storylines a bulletin covered, with their status when it aired. One on
+ * the board is a button that goes to it there; one that has left the board is
+ * plain text.
+ */
+function renderCoveredList(bulletin: AradioBulletin, language: UiLanguage, boardSlugs: ReadonlySet<string>): string {
+  const threads = new Map(bulletin.threads.map((thread) => [thread.slug, thread]));
+  const items = bulletin.covers.map((slug) => {
+    const thread = threads.get(slug);
+    const pill = thread
+      ? `<span class="aradio-pill aradio-pill--${thread.status}">${esc(statusLabel(thread.status, language))}</span>`
+      : '';
+    const name = `<span class="aradio-covered-name">${esc(thread?.title || slug.replace(/-/g, ' '))}</span>`;
+    return boardSlugs.has(slug)
+      ? `<li><button type="button" class="aradio-covered-item" data-aradio-goto="${esc(slug)}">${pill}${name}</button></li>`
+      : `<li><span class="aradio-covered-item is-static">${pill}${name}</span></li>`;
+  }).join('');
+  return items ? `<ul class="aradio-covered-list">${items}</ul>` : '';
+}
+
+export type AradioScriptOptions = {
+  language: UiLanguage;
+  /** Slugs on the board the page shows: covered storylines link to them. */
+  boardSlugs: ReadonlySet<string>;
+  radio: AradioRadioInput;
+};
+
+/** What the radio card's transcript slot shows; main.ts re-renders the slot when it changes. */
+export function aradioScriptKey(script: AradioTranscriptState, language: UiLanguage, boardSlugs: ReadonlySet<string>): string {
+  if (script.kind === 'none') return `${language}|none`;
+  if (script.kind !== 'ready') return `${language}|${script.kind}|${script.entry.id}`;
+  const linked = script.bulletin.covers.filter((slug) => boardSlugs.has(slug)).join(',');
+  return `${language}|ready|${script.bulletin.id}|${linked}`;
+}
+
+/**
+ * The radio card's transcript (the bulletin on now, or up first; the newest
+ * when nothing can be heard) and the storylines it covers. The lines sit in a
+ * fixed-height window that main.ts scrolls to keep the line being read in
+ * view; the page itself never moves.
+ */
+export function renderAradioScript(script: AradioTranscriptState, o: AradioScriptOptions): string {
+  if (script.kind === 'none') return '';
+  const t = (key: UiCopyKey) => esc(uiText(o.language, key));
+  const bulletin = script.kind === 'ready' ? script.bulletin : null;
+  const seekable = Boolean(bulletin?.audio && bulletin.lines.length);
+  let body: string;
+  if (bulletin) {
+    body = bulletin.lines.length
+      ? renderLines(bulletin, { language: o.language, seekable, live: seekable ? aradioPlayerLine(o.radio, bulletin) : -1 }, 'aradio-lines--script')
+      : `<p class="aradio-script-status">${t('aradio.transcriptError')}</p>`;
+  } else {
+    body = `<p class="aradio-script-status">${t(script.kind === 'loading' ? 'aradio.transcriptLoading' : 'aradio.transcriptError')}`
+      + (script.kind === 'error' ? ` <button type="button" class="aradio-text-button" data-aradio-script-retry>${esc(uiText(o.language, 'action.retry'))}</button>` : '')
+      + '</p>';
+  }
+  // Without buttons inside, the window itself takes focus so it can be scrolled from the keyboard.
+  const windowAttrs = seekable
+    ? ''
+    : ' tabindex="0" role="region" aria-labelledby="aradioScriptTitle"';
+  const covered = bulletin ? renderCoveredList(bulletin, o.language, o.boardSlugs) : '';
+  return [
+    `<section class="aradio-script" aria-labelledby="aradioScriptTitle"${script.kind === 'loading' ? ' aria-busy="true"' : ''}>`,
+    '<div class="aradio-script-head">',
+    `<h3 class="aradio-script-title" id="aradioScriptTitle">${t('aradio.transcript')}</h3>`,
+    seekable ? `<p class="aradio-script-note">${t('aradio.scriptNote')}</p>` : '',
+    '</div>',
+    seekable ? `<p class="aradio-sr">${t('aradio.lineHint')}</p>` : '',
+    '<div class="aradio-script-frame">',
+    `<div class="aradio-script-window" data-aradio-script-window${windowAttrs}>${body}</div>`,
+    seekable
+      ? `<button type="button" class="aradio-relive" data-aradio-relive hidden>${ICON_TO_LIVE}<span>${t('aradio.backToLive')}</span></button>`
+      : '',
+    '</div>',
+    '</section>',
+    covered
+      ? `<section class="aradio-covered" aria-labelledby="aradioCoveredTitle"><h3 class="aradio-covered-title" id="aradioCoveredTitle">${t('aradio.inThisBulletin')}</h3>${covered}</section>`
+      : '',
+  ].join('');
+}
+
+/** The transcript slot of the radio card, keyed so main.ts can tell when to swap it. */
+function scriptSlot(s: AradioViewState, view: AradioRadioView): string {
+  const script: AradioTranscriptState = s.script
+    ?? (view.scriptEntry ? { kind: 'loading', entry: view.scriptEntry } : { kind: 'none' });
+  const boardSlugs = new Set((s.board?.threads ?? []).map((thread) => thread.slug));
+  return `<div class="aradio-script-slot" data-aradio-script-slot data-aradio-script-key="${esc(aradioScriptKey(script, s.language, boardSlugs))}">`
+    + renderAradioScript(script, { language: s.language, boardSlugs, radio: s.radio })
+    + '</div>';
+}
+
 /**
  * The radio card. `data-aradio-radio` names the card's shape (ready / none /
  * text-only / error); main.ts re-renders the card only when that changes and
  * otherwise patches its text and controls in place, so focus and layout never
- * jump while bulletins change.
+ * jump while bulletins change. The transcript slot is swapped as a unit when
+ * its bulletin changes (`aradioScriptKey`).
  */
 export function renderAradioRadio(s: AradioViewState): string {
   const language = s.language;
@@ -1071,7 +1534,7 @@ export function renderAradioRadio(s: AradioViewState): string {
       : view.kind === 'text-only' ? ['aradio.textOnlyTitle', 'aradio.textOnlyBody'] : ['aradio.emptyTitle', 'aradio.emptyBody'];
     return [
       open,
-      renderRadioHead(copy, language),
+      renderRadioHead(copy, view.kind, s),
       '<div class="aradio-radio-empty">',
       `<h3 class="aradio-empty-title">${t(titleKey)}</h3>`,
       `<p class="aradio-empty-copy">${t(bodyKey)}</p>`,
@@ -1084,31 +1547,45 @@ export function renderAradioRadio(s: AradioViewState): string {
         ? `<p class="aradio-checked" data-aradio-checked>${renderAradioChecked(s.checkedAt, language, s.nowMs)}</p>`
         : '',
       '</div>',
+      // Nothing to hear yet, but the newest bulletin is there to read.
+      view.kind === 'text-only' ? scriptSlot(s, view) : '',
       renderPodcast(language),
       live,
       '</section>',
     ].join('');
   }
 
-  const now = view.now;
-  // One DOM order for every layout (button, what is on, seek, transport, up
-  // next), so keyboard and screen-reader order match what is seen: the CSS
-  // grid puts the button left of the headline on wide screens and centred
-  // above it on phones.
+  const jumpDisabled = view.seekable ? 'false' : 'true';
+  const rate = aradioRateLabel(s.rate ?? 1);
+  // One DOM order for every layout: the controls (the big button among them),
+  // what is on, the seek bar, speed and "stop after", then the transcript and
+  // up next. Focus order follows it everywhere. Phones show it as is; wide
+  // screens lift the (unfocusable) headline above the controls and put the
+  // transcript in a column of its own.
   return [
     open,
-    renderRadioHead(copy, language),
+    renderRadioHead(copy, view.kind, s),
     `<div class="aradio-deck aradio-mode--${view.mode}" data-aradio-deck>`,
+    '<div class="aradio-transport">',
+    `<button type="button" class="aradio-skip" data-aradio-prev aria-label="${t('aradio.previous')}" aria-disabled="${view.canPrevious ? 'false' : 'true'}">${ICON_PREVIOUS}</button>`,
+    `<button type="button" class="aradio-jump" data-aradio-back aria-label="${esc(uiText(language, 'aradio.jumpBack', { seconds: ARADIO_JUMP_S }))}" aria-disabled="${jumpDisabled}">`,
+    `${ICON_JUMP_BACK}<span class="aradio-jump-num" aria-hidden="true">${ARADIO_JUMP_S}</span></button>`,
     `<button type="button" class="aradio-toggle${copy.toggleIcon === 'pause' ? ' is-playing' : ''}${view.buffering ? ' is-buffering' : ''}" data-aradio-toggle`,
     ` aria-label="${esc(copy.toggleLabel)}" aria-describedby="aradioNowHeadline">${ICON_PLAY_PAUSE}</button>`,
+    `<button type="button" class="aradio-jump" data-aradio-forward aria-label="${esc(uiText(language, 'aradio.jumpForward', { seconds: ARADIO_JUMP_S }))}" aria-disabled="${jumpDisabled}">`,
+    `${ICON_JUMP_FORWARD}<span class="aradio-jump-num" aria-hidden="true">${ARADIO_JUMP_S}</span></button>`,
+    `<button type="button" class="aradio-skip" data-aradio-next aria-label="${t('aradio.next')}" aria-disabled="${view.canNext ? 'false' : 'true'}">${ICON_NEXT}</button>`,
+    '</div>',
     '<div class="aradio-now">',
+    `<img class="aradio-art" src="${esc(ARADIO_COVER_PATH)}" alt="" width="64" height="64" decoding="async">`,
+    '<div class="aradio-now-id">',
     `<p class="aradio-now-label" data-aradio-now-label>${esc(copy.label)}</p>`,
-    `<p class="aradio-now-headline" id="aradioNowHeadline" data-aradio-now-headline>${esc(copy.headline)}</p>`,
     '<p class="aradio-now-meta">',
     `<time data-aradio-now-time datetime="${esc(copy.datetime)}">${esc(copy.time)}</time>`,
     `<span class="aradio-now-day" data-aradio-now-day>${esc(copy.day)}</span>`,
-    `<button type="button" class="aradio-text-button" data-aradio-read="${esc(now?.id ?? '')}">${t('aradio.readTranscript')}</button>`,
     '</p>',
+    '</div>',
+    `<p class="aradio-now-headline" id="aradioNowHeadline" data-aradio-now-headline>${esc(copy.headline)}</p>`,
     '</div>',
     '<div class="aradio-progress">',
     `<span class="aradio-elapsed" data-aradio-elapsed aria-hidden="true">${esc(copy.elapsed)}</span>`,
@@ -1117,13 +1594,13 @@ export function renderAradioRadio(s: AradioViewState): string {
     ` style="--aradio-progress:${esc(copy.progressPct)}">`,
     `<span class="aradio-remaining" data-aradio-remaining aria-hidden="true">${esc(copy.remaining)}</span>`,
     '</div>',
-    '<div class="aradio-transport">',
-    `<button type="button" class="aradio-skip" data-aradio-prev aria-label="${t('aradio.previous')}" aria-disabled="${view.canPrevious ? 'false' : 'true'}">${ICON_PREVIOUS}</button>`,
-    `<button type="button" class="aradio-skip" data-aradio-next aria-label="${t('aradio.next')}" aria-disabled="${view.canNext ? 'false' : 'true'}">${ICON_NEXT}</button>`,
+    '<div class="aradio-options">',
+    `<button type="button" class="aradio-rate" data-aradio-rate aria-label="${esc(uiText(language, 'aradio.speed', { rate }))}">${esc(rate)}</button>`,
     `<button type="button" class="aradio-stop-after" data-aradio-stop-after aria-pressed="${view.stopAfter ? 'true' : 'false'}">`,
     `<span class="aradio-check" aria-hidden="true"></span><span>${t('aradio.stopAfter')}</span></button>`,
     '</div>',
     `<p class="aradio-note" data-aradio-note>${esc(copy.note)}</p>`,
+    scriptSlot(s, view),
     '<div class="aradio-upnext">',
     `<h3 class="aradio-upnext-title">${t('aradio.upNext')}</h3>`,
     `<ol class="aradio-upnext-list" data-aradio-upnext>${renderAradioUpNext(view, copy)}</ol>`,
@@ -1137,9 +1614,41 @@ export function renderAradioRadio(s: AradioViewState): string {
 
 // ── Rendering: behind the broadcast ──────────────────────────────────────
 
-function playIconButton(entry: AradioBulletinEntry, language: UiLanguage, className: string): string {
-  return `<button type="button" class="${esc(className)}" data-aradio-play="${esc(entry.id)}"`
-    + ` aria-label="${esc(aradioPlayAria(entry, language, false))}"><span class="aradio-mini-icon" aria-hidden="true"></span></button>`;
+/** What a log row's play pill says: its length, the time left, or that it was heard. */
+export type AradioPillCopy = { state: AradioListenState['state']; text: string; label: string; heard: string };
+
+export function aradioPillCopy(
+  entry: { airedAt: string; headline: string; audio: AradioAudio | null },
+  listen: AradioListenState,
+  language: UiLanguage,
+  playing: boolean,
+): AradioPillCopy {
+  const text = listen.state === 'done'
+    ? uiText(language, 'aradio.played')
+    : listen.state === 'partial'
+      ? uiText(language, 'aradio.timeLeft', { time: aradioClock(Math.ceil(listen.remaining)) })
+      : aradioDuration(entry.audio?.durationS ?? null);
+  const action = aradioPlayAria(entry, language, playing);
+  return {
+    state: listen.state,
+    text,
+    // The name carries the visible text, so voice control can say it too.
+    label: text ? `${action} (${text})` : action,
+    heard: `${(listen.fraction * 100).toFixed(1)}%`,
+  };
+}
+
+/**
+ * A log row's play pill: play/pause, and how much of the bulletin this viewer
+ * has heard, as a fill behind its length ("2:52", "1:20 left", "Played").
+ */
+function playPill(entry: AradioBulletinEntry, s: AradioViewState): string {
+  const listen = aradioListenState(s.listened?.[entry.id], entry.audio?.durationS ?? null);
+  const pill = aradioPillCopy(entry, listen, s.language, false);
+  return `<button type="button" class="aradio-log-play is-${pill.state}" data-aradio-play="${esc(entry.id)}"`
+    + ` aria-label="${esc(pill.label)}" style="--aradio-heard:${esc(pill.heard)}">`
+    + '<span class="aradio-mini-icon" aria-hidden="true"></span>'
+    + `<span class="aradio-log-pill-text" data-aradio-pill-text>${esc(pill.text)}</span></button>`;
 }
 
 /** An empty slot for an evidence link; hydrateAradioLinks() fills it. */
@@ -1265,16 +1774,15 @@ export function renderAradioLog(s: AradioViewState): string {
     '<ol class="aradio-log-list">',
     group.rows.map((entry) => {
       const selected = entry.id === s.selectedId;
-      const duration = entry.audio ? aradioDuration(entry.audio.durationS) : uiText(language, 'aradio.textOnly');
+      // Audio rows lead with a play pill; text-only ones say so in its place.
       return [
         `<li class="aradio-log-row${selected ? ' is-selected' : ''}${entry.audio ? '' : ' is-text-only'}" data-aradio-row="${esc(entry.id)}">`,
         entry.audio
-          ? playIconButton(entry, language, 'aradio-log-play')
-          : `<span class="aradio-log-noaudio" aria-hidden="true"></span>`,
+          ? playPill(entry, s)
+          : `<span class="aradio-log-noaudio">${esc(uiText(language, 'aradio.textOnly'))}</span>`,
         `<button type="button" class="aradio-log-select" data-aradio-select="${esc(entry.id)}" aria-controls="aradio-transcript"${selected ? ' aria-current="true"' : ''}>`,
         `<time class="aradio-log-time" datetime="${esc(entry.airedAt)}">${esc(aradioUtcTime(entry.airedAt))}</time>`,
         `<span class="aradio-log-headline">${esc(headlineOf(entry))}</span>`,
-        `<span class="aradio-log-duration">${esc(duration)}</span>`,
         '</button>',
         '</li>',
       ].join('');
@@ -1290,7 +1798,13 @@ export function renderAradioLog(s: AradioViewState): string {
   return rows + more;
 }
 
-type TranscriptOptions = { language: UiLanguage; boardSlugs: ReadonlySet<string>; open?: boolean };
+type TranscriptOptions = {
+  language: UiLanguage;
+  boardSlugs: ReadonlySet<string>;
+  open?: boolean;
+  /** The shared player, so the transcript of the bulletin in it follows along. */
+  radio?: AradioRadioInput;
+};
 
 /**
  * The transcript panel for the selected bulletin: a disclosure, collapsed
@@ -1327,20 +1841,11 @@ function transcriptHtml(transcript: AradioTranscriptState, s: TranscriptOptions,
     ].join('');
   }
   const bulletin = transcript.bulletin;
-  const spans = aradioLineSpans(bulletin.lines);
-  const lines = bulletin.lines.map((line, i) => {
-    const role = aradioSpeakerRole(line.speaker);
-    return `<li class="aradio-line aradio-line--s${role}" data-aradio-line-start="${spans[i][0].toFixed(4)}" data-aradio-line-end="${spans[i][1].toFixed(4)}">`
-      + `<span class="aradio-speaker">${esc(speakerLabel(line.speaker, language))}</span>`
-      + `<p class="aradio-line-text">${esc(line.text)}</p></li>`;
-  }).join('');
-  const titles = new Map(bulletin.threads.map((thread) => [thread.slug, thread.title]));
-  const covers = bulletin.covers.map((slug) => {
-    const title = titles.get(slug) || slug.replace(/-/g, ' ');
-    return s.boardSlugs.has(slug)
-      ? `<li><button type="button" class="aradio-cover" data-aradio-goto="${esc(slug)}">${esc(title)}</button></li>`
-      : `<li><span class="aradio-cover is-static">${esc(title)}</span></li>`;
-  }).join('');
+  // A bulletin with audio can be played from any line; the one in the player follows along.
+  const seekable = Boolean(bulletin.audio);
+  const live = seekable && s.radio ? aradioPlayerLine(s.radio, bulletin) : -1;
+  const lines = bulletin.lines.length ? renderLines(bulletin, { language, seekable, live }, 'aradio-lines--archive') : '';
+  const covers = renderCoveredList(bulletin, language, s.boardSlugs);
   const sources = bulletin.sources.map((item) => `<li>${evidenceSlot(item, language, links)}</li>`).join('');
   return [
     summary,
@@ -1350,9 +1855,9 @@ function transcriptHtml(transcript: AradioTranscriptState, s: TranscriptOptions,
       ? `<button type="button" class="aradio-transcript-play" data-aradio-play="${esc(bulletin.id)}" aria-label="${esc(aradioPlayAria(bulletin, language, false))}">`
         + `<span class="aradio-mini-icon" aria-hidden="true"></span><span data-aradio-play-label>${esc(uiText(language, 'aradio.play'))}</span></button>`
       : `<p class="aradio-muted">${esc(uiText(language, 'aradio.noAudioHint'))}</p>`,
-    lines ? `<ol class="aradio-lines">${lines}</ol>` : `<p class="aradio-muted">${esc(uiText(language, 'aradio.transcriptError'))}</p>`,
+    lines || `<p class="aradio-muted">${esc(uiText(language, 'aradio.transcriptError'))}</p>`,
     covers
-      ? `<div class="aradio-transcript-foot"><h5>${esc(uiText(language, 'aradio.storylines'))}</h5><ul class="aradio-covers">${covers}</ul></div>`
+      ? `<div class="aradio-transcript-foot"><h5>${esc(uiText(language, 'aradio.storylines'))}</h5>${covers}</div>`
       : '',
     sources
       ? `<div class="aradio-transcript-foot"><h5>${esc(uiText(language, 'aradio.sources'))}</h5><ul class="aradio-evidence-list">${sources}</ul></div>`
@@ -1379,7 +1884,7 @@ function renderBulletins(s: AradioViewState, links: AradioLinkSpec[]): string {
     '</header>',
     `<div data-aradio-log>${renderAradioLog(s)}</div>`,
     '</div>',
-    `<div class="aradio-transcript-slot" id="aradio-transcript" data-aradio-transcript-slot>${transcriptHtml(s.transcript, { language: s.language, boardSlugs, open: s.transcriptOpen }, links)}</div>`,
+    `<div class="aradio-transcript-slot" id="aradio-transcript" data-aradio-transcript-slot>${transcriptHtml(s.transcript, { language: s.language, boardSlugs, open: s.transcriptOpen, radio: s.radio }, links)}</div>`,
     '</div>',
     '</section>',
   ].join('');

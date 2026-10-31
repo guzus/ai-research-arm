@@ -7339,12 +7339,18 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   --aradio-button-ink: #ffffff;
   --aradio-lamp: #e5372a;
   --aradio-lamp-ink: #b42318;
+  /* The transcript window: a tinted screen whose lines step down in tone
+     once they have been read. Every tone keeps 4.5:1 on the window. */
+  --aradio-window: var(--bg-secondary);
+  --aradio-line-ahead: #4a4e57;
+  --aradio-line-read: #676b74;
+  --aradio-cohost: #0369a1;
   padding: clamp(18px, 2.8vw, 28px) var(--card-pad-x) 0;
   border-color: var(--border);
 }
 
 /* Name and sign on one row (the sign wraps below only if it cannot fit), the
-   tagline on a row of its own. */
+   tagline and the station's freshness on rows of their own. */
 .aradio-radio-head {
   display: flex;
   flex-wrap: wrap;
@@ -7363,12 +7369,31 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 
 /* A full-width flex row of its own: a max-width here would cap the flex
    basis and let the tagline slip up beside the sign on wide screens. */
-.aradio-tagline {
+.aradio-tagline,
+.aradio-liveness {
   flex: 0 0 100%;
-  color: var(--text-secondary);
   font-size: 0.88rem;
   line-height: 1.45;
 }
+
+.aradio-tagline { color: var(--text-secondary); }
+
+.aradio-liveness {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.4em;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+}
+
+.aradio-updated {
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.aradio-updated[hidden] { display: none; }
 
 .aradio-badge {
   display: inline-flex;
@@ -7411,39 +7436,54 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   color: var(--aradio-lamp-ink);
 }
 
+/* On air, the lamp breathes: a soft ring swells and fades every few seconds. */
 .aradio-badge.is-live .aradio-badge-lamp {
   background: var(--aradio-lamp);
   opacity: 1;
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aradio-lamp) 22%, transparent);
-  animation: aradio-lamp 2.4s ease-in-out infinite;
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--aradio-lamp) 45%, transparent);
+  animation: aradio-lamp 2.4s ease-out infinite;
 }
 
 @keyframes aradio-lamp {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.45; }
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--aradio-lamp) 45%, transparent); }
+  70%, 100% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--aradio-lamp) 0%, transparent); }
 }
 
+/* Phones (one column, in DOM order): the controls with the big button
+   first, then what is on, the seek bar, speed and "stop after", the
+   transcript, up next. Wide screens: see the min-width: 900px block. */
 .aradio-deck {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) minmax(220px, 300px);
+  grid-template-columns: minmax(0, 1fr);
   grid-template-areas:
-    "toggle now upnext"
-    "toggle progress upnext"
-    "toggle transport upnext"
-    "toggle note upnext";
+    "transport"
+    "now"
+    "progress"
+    "options"
+    "note"
+    "script"
+    "upnext";
   align-items: start;
-  column-gap: clamp(20px, 3.2vw, 40px);
-  margin-top: clamp(18px, 2.6vw, 26px);
+  margin-top: clamp(16px, 2.4vw, 24px);
+}
+
+/* ── Controls: previous, back 15, the big button, forward 15, next ── */
+.aradio-transport {
+  grid-area: transport;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 3vw, 18px);
+  margin-bottom: 18px;
 }
 
 .aradio-toggle {
-  grid-area: toggle;
-  align-self: center;
   position: relative;
   display: grid;
+  flex: none;
   place-items: center;
-  width: clamp(96px, 10vw, 116px);
-  height: clamp(96px, 10vw, 116px);
+  width: 88px;
+  height: 88px;
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -7501,45 +7541,116 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   outline-offset: 6px;
 }
 
+.aradio-skip,
+.aradio-jump {
+  position: relative;
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.aradio-skip {
+  width: 40px;
+  height: 40px;
+}
+
+.aradio-skip svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ±15 s: the seconds sit inside an open ring whose arrow shows the way. */
+.aradio-jump {
+  width: 48px;
+  height: 48px;
+  border-color: transparent;
+  background: transparent;
+}
+
+.aradio-jump-ring {
+  grid-area: 1 / 1;
+  width: 34px;
+  height: 34px;
+}
+
+.aradio-jump-num {
+  grid-area: 1 / 1;
+  padding-top: 3px;
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.aradio-skip:hover,
+.aradio-jump:hover {
+  border-color: var(--text-tertiary);
+  background: var(--bg-hover);
+}
+
+/* aria-disabled, not disabled: the control stays focusable and announced. */
+.aradio-skip[aria-disabled="true"],
+.aradio-skip[aria-disabled="true"]:hover,
+.aradio-jump[aria-disabled="true"],
+.aradio-jump[aria-disabled="true"]:hover {
+  border-color: var(--border-light);
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: default;
+  opacity: 0.55;
+}
+
+.aradio-jump[aria-disabled="true"],
+.aradio-jump[aria-disabled="true"]:hover { border-color: transparent; }
+
+/* ── What is on ── */
 .aradio-now {
   grid-area: now;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 14px;
   min-width: 0;
 }
 
-.aradio-now-label {
-  min-height: 1.4em;
-  color: var(--accent-warm);
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 750;
-  letter-spacing: 0.1em;
-  line-height: 1.4;
-  text-transform: uppercase;
+/* The show's cover, at the size podcast apps list it: it carries a drawn
+   play button and ON AIR sign, which at hero size would compete with the
+   real ones (and claim to be on air when the station is not). */
+.aradio-art {
+  display: block;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  background: #f4f5f8;
 }
 
-/* Three lines are always reserved, so a longer or shorter headline never
-   moves the seek bar or the buttons below it. */
-.aradio-now-headline {
-  display: -webkit-box;
-  min-height: calc(3 * 1.26em);
-  margin-top: 6px;
-  overflow: hidden;
-  font-family: var(--font-serif);
-  font-size: clamp(1.16rem, 2.2vw, 1.5rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.26;
-  text-wrap: pretty;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+.aradio-now-id { min-width: 0; }
+
+.aradio-now-label {
+  color: var(--accent-warm);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .aradio-now-meta {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  min-height: 1.6em;
-  margin-top: 8px;
+  min-height: 1.5em;
+  margin-top: 2px;
   color: var(--text-secondary);
   font-family: var(--font-sans);
   font-size: 0.82rem;
@@ -7560,7 +7671,23 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   text-overflow: ellipsis;
 }
 
-.aradio-now-meta .aradio-text-button { flex: none; }
+/* Four lines are always reserved (a headline is at most 140 characters), so
+   a longer or shorter one never moves the seek bar or the buttons. */
+.aradio-now-headline {
+  display: -webkit-box;
+  grid-column: 1 / -1;
+  min-height: calc(4 * 1.26em);
+  margin-top: 12px;
+  overflow: hidden;
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2vw, 1.34rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.26;
+  text-wrap: pretty;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
 
 .aradio-text-button {
   padding: 2px 0;
@@ -7580,8 +7707,8 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 12px;
-  margin-top: 14px;
-  color: var(--text-tertiary);
+  margin-top: 12px;
+  color: var(--text-secondary);
   font-family: var(--font-sans);
   font-size: 0.76rem;
   font-variant-numeric: tabular-nums;
@@ -7646,55 +7773,39 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 .aradio-seek:disabled::-webkit-slider-thumb { opacity: 0; }
 .aradio-seek:disabled::-moz-range-thumb { opacity: 0; }
 
-.aradio-transport {
-  grid-area: transport;
+/* Speed on the left, "stop after this bulletin" on the right. */
+.aradio-options {
+  grid-area: options;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
-.aradio-skip {
-  display: inline-grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
+.aradio-rate {
+  min-width: 58px;
+  min-height: 36px;
+  padding: 0 12px;
   border: 1px solid var(--border);
-  border-radius: 50%;
+  border-radius: 999px;
   background: var(--bg);
   color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
   cursor: pointer;
 }
 
-.aradio-skip svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
-.aradio-skip:hover {
-  border-color: var(--text-tertiary);
-  background: var(--bg-hover);
-}
-
-/* aria-disabled, not disabled: the control stays focusable and announced. */
-.aradio-skip[aria-disabled="true"],
-.aradio-skip[aria-disabled="true"]:hover {
-  border-color: var(--border-light);
-  background: transparent;
-  color: var(--text-tertiary);
-  cursor: default;
-  opacity: 0.55;
-}
+.aradio-rate:hover { border-color: var(--text-tertiary); background: var(--bg-hover); }
 
 .aradio-stop-after {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   min-height: 44px;
-  margin-left: 4px;
   padding: 0 12px 0 10px;
   border: 0;
   border-radius: 999px;
@@ -7715,7 +7826,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   flex: none;
   width: 16px;
   height: 16px;
-  border: 1.5px solid var(--text-tertiary);
+  border: 1.5px solid var(--text-secondary);
   border-radius: 4px;
 }
 
@@ -7741,34 +7852,241 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 .aradio-note {
   grid-area: note;
   min-height: 1.45em;
-  margin-top: 6px;
+  margin-top: 4px;
   color: var(--text-secondary);
   font-family: var(--font-sans);
   font-size: 0.8rem;
   line-height: 1.45;
 }
 
+/* ── The transcript window: the script on the stand ── */
+.aradio-script-slot {
+  grid-area: script;
+  min-width: 0;
+  margin-top: 18px;
+}
+
+.aradio-script-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2px 12px;
+  margin-bottom: 10px;
+}
+
+.aradio-script-title,
+.aradio-covered-title,
+.aradio-upnext-title {
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.aradio-script-title:focus { outline: none; }
+
+.aradio-script-note {
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+}
+
+.aradio-script-frame { position: relative; }
+
+/* A fixed height whatever loads into it, so the card never jumps; it scrolls
+   on its own, and the page never moves to follow it. */
+.aradio-script-window {
+  height: clamp(280px, 52vh, 440px);
+  height: clamp(280px, 52svh, 440px);
+  padding: 22px clamp(14px, 3vw, 24px) 40px;
+  overflow-y: auto;
+  border-radius: 16px;
+  background: var(--aradio-window);
+  scrollbar-width: thin;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 18px, #000 calc(100% - 36px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 18px, #000 calc(100% - 36px), transparent 100%);
+}
+
+.aradio-script-window:focus-visible { outline: 2px solid var(--accent-warm); outline-offset: 2px; }
+
+.aradio-script-status {
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+}
+
+.aradio-lines--script {
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+
+.aradio-lines--script .aradio-line-seek,
+.aradio-lines--script .aradio-line.is-static {
+  display: block;
+  width: calc(100% + 20px);
+  margin: 0 -10px;
+  padding: 6px 10px 8px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  transition: color 0.35s ease, background 0.2s ease;
+}
+
+.aradio-lines--script .aradio-line-seek { cursor: pointer; }
+
+/* Only where a pointer can hover: a touch screen keeps :hover on the line
+   last tapped, which would read as a second highlight. */
+@media (hover: hover) {
+  .aradio-lines--script .aradio-line-seek:hover { background: color-mix(in srgb, var(--text) 5%, transparent); }
+  .aradio-lines--archive .aradio-line-seek:hover { background: var(--bg-hover); }
+}
+
+.aradio-lines--script .aradio-speaker {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 1.3em;
+  padding-top: 0;
+}
+
+.aradio-lines--script .aradio-line-text {
+  display: block;
+  max-width: 62ch;
+  margin-top: 2px;
+  font-family: var(--font-serif);
+  font-size: clamp(1.06rem, 1.7vw, 1.2rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+/* While the bulletin plays: lines ahead a shade quieter than the one being
+   read, lines already read quieter still. Colour only, so nothing reflows. */
+.aradio-lines.is-following .aradio-line { color: var(--aradio-line-ahead); }
+.aradio-lines.is-following .aradio-line.is-past { color: var(--aradio-line-read); }
+.aradio-lines.is-following .aradio-line.is-live { color: var(--text); }
+.aradio-lines.is-following .aradio-line .aradio-line-seek { color: inherit; }
+
+/* The voice on the mic: three level bars beside the speaker's name. They
+   move only while the bulletin plays (and motion is welcome). */
+.aradio-line.is-live .aradio-speaker::before {
+  content: '';
+  flex: none;
+  width: 11px;
+  height: 11px;
+  background:
+    linear-gradient(currentColor, currentColor) 0 100% / 3px 45% no-repeat,
+    linear-gradient(currentColor, currentColor) 4px 100% / 3px 100% no-repeat,
+    linear-gradient(currentColor, currentColor) 8px 100% / 3px 65% no-repeat;
+}
+
+.aradio-mode--playing .aradio-line.is-live .aradio-speaker::before {
+  animation: aradio-level 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes aradio-level {
+  0% { background-size: 3px 45%, 3px 100%, 3px 65%; }
+  33% { background-size: 3px 100%, 3px 55%, 3px 85%; }
+  66% { background-size: 3px 60%, 3px 80%, 3px 40%; }
+  100% { background-size: 3px 85%, 3px 40%, 3px 100%; }
+}
+
+/* "Back to live line": shown once the reader has scrolled the window away
+   from the line being read; the arrow points to where it is. */
+.aradio-relive {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 14px 0 11px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--aradio-button);
+  color: var(--aradio-button-ink);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--aradio-button) 30%, transparent);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 650;
+  white-space: nowrap;
+  cursor: pointer;
+  transform: translateX(-50%);
+}
+
+.aradio-relive[hidden] { display: none; }
+
+.aradio-relive-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.15s ease;
+}
+
+.aradio-relive.is-up .aradio-relive-icon { transform: rotate(180deg); }
+
+/* ── In this bulletin: the storylines it covered ── */
+.aradio-covered { margin-top: 18px; }
+
+.aradio-covered-list {
+  margin-top: 4px;
+  list-style: none;
+}
+
+.aradio-covered-list li + li { border-top: 1px solid var(--border-light); }
+
+.aradio-covered-item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+}
+
+button.aradio-covered-item { cursor: pointer; }
+button.aradio-covered-item .aradio-covered-name { color: var(--accent-warm); }
+
+button.aradio-covered-item:hover .aradio-covered-name {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.aradio-covered-item .aradio-pill {
+  flex: none;
+  font-family: var(--font-sans);
+  transform: translateY(-1px);
+}
+
+.aradio-covered-name {
+  min-width: 0;
+  font-family: var(--font-serif);
+  font-size: 0.96rem;
+  line-height: 1.4;
+}
+
+/* ── Up next ── */
 .aradio-upnext {
   grid-area: upnext;
   min-width: 0;
-  padding-left: clamp(16px, 2.4vw, 28px);
-  border-left: 1px solid var(--border-light);
+  margin-top: 18px;
 }
 
-.aradio-upnext-title {
-  color: var(--text-tertiary);
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 750;
-  letter-spacing: 0.1em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-/* Three rows reserved, whatever is queued. */
+/* Below every control (and beside the transcript on wide screens), so a
+   change in what is queued moves nothing anyone is about to press. */
 .aradio-upnext-list {
-  min-height: calc(3 * 2.45rem);
-  margin-top: 6px;
+  min-height: 2.45rem;
+  margin-top: 4px;
   list-style: none;
 }
 
@@ -7801,7 +8119,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 }
 
 .aradio-upnext-duration {
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-variant-numeric: tabular-nums;
@@ -7809,28 +8127,55 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 
 .aradio-upnext-empty {
   padding: 9px 0;
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   font-size: 0.84rem;
   line-height: 1.45;
 }
 
-/* The podcast feed: a quiet strip across the foot of the card. */
+/* ── Following the show: a quiet strip across the foot of the card ── */
 .aradio-podcast {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: 6px 16px;
-  margin: clamp(18px, 2.6vw, 26px) calc(-1 * var(--card-pad-x)) 0;
-  padding: 14px var(--card-pad-x) 16px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  margin: clamp(20px, 2.8vw, 28px) calc(-1 * var(--card-pad-x)) 0;
+  padding: 16px var(--card-pad-x) 18px;
   border-top: 1px solid var(--border-light);
   background: var(--bg-secondary);
 }
 
 .aradio-podcast-title {
   font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-weight: 650;
+  font-size: 0.86rem;
+  font-weight: 700;
 }
+
+.aradio-follow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+}
+
+.aradio-follow[hidden],
+.aradio-follow li[hidden] { display: none; }
+
+.aradio-follow-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.aradio-follow-link:hover { border-color: var(--accent-warm); color: var(--accent-warm); }
 
 .aradio-podcast-row {
   display: flex;
@@ -7865,14 +8210,14 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   font-family: var(--font-sans);
   font-size: 0.8rem;
   font-weight: 650;
+  white-space: nowrap;
   cursor: pointer;
 }
 
 .aradio-copy:hover { border-color: var(--text-tertiary); }
 
 .aradio-podcast-hint {
-  grid-column: 1 / -1;
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   font-size: 0.76rem;
   line-height: 1.45;
 }
@@ -7898,6 +8243,9 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 
 .aradio-radio-empty .aradio-checked { margin-top: 12px; }
 
+/* With only text-only bulletins, the newest is there to read. */
+.aradio-radio--text-only .aradio-script-slot { margin-top: 20px; }
+
 .aradio-empty-action {
   min-height: 40px;
   margin-top: 14px;
@@ -7913,7 +8261,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 }
 
 .aradio-checked {
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   font-family: var(--font-sans);
   font-size: 0.76rem;
   font-variant-numeric: tabular-nums;
@@ -8316,7 +8664,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 .aradio-log-date {
   padding: 6px 0;
   border-bottom: 1px solid var(--border);
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   font-family: var(--font-sans);
   font-size: 0.74rem;
   font-weight: 650;
@@ -8324,12 +8672,14 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 
 .aradio-log-list { list-style: none; }
 
+/* A row: its play pill (or "Text only"), then the air time over the headline,
+   which opens the transcript. */
 .aradio-log-row {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr);
+  grid-template-columns: 7.2rem minmax(0, 1fr);
   align-items: center;
-  gap: 8px;
-  padding: 6px 0;
+  gap: 10px;
+  padding: 8px 0;
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -8345,11 +8695,35 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   cursor: pointer;
 }
 
+/* The play pill: what has been heard fills it from the left, behind the
+   bulletin's length ("2:52"), the time left ("1:20 left") or "Played". */
 .aradio-log-play {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  justify-content: flex-start;
+  gap: 7px;
+  width: 100%;
+  min-height: 34px;
+  padding: 0 12px 0 9px;
+  border-radius: 999px;
+  background:
+    linear-gradient(to right, var(--ara-periwinkle-deep) var(--aradio-heard, 0%), transparent var(--aradio-heard, 0%)),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
 }
+
+.aradio-log-play .aradio-mini-icon { flex: none; color: var(--accent-warm); }
+
+.aradio-log-pill-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aradio-log-play.is-done { color: var(--text-secondary); }
 
 .aradio-mini-icon {
   position: relative;
@@ -8381,7 +8755,13 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 .aradio-log-play:hover,
 .aradio-transcript-play:hover { border-color: var(--accent-warm); }
 
-.aradio-log-play.is-current,
+/* The bulletin in the player: its pill is outlined in the play colour. */
+.aradio-log-play.is-current {
+  border-color: var(--accent-warm);
+  box-shadow: inset 0 0 0 1px var(--accent-warm);
+  color: var(--text);
+}
+
 .aradio-transcript-play.is-current {
   border-color: var(--accent);
   background: var(--accent);
@@ -8389,18 +8769,23 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 }
 
 .aradio-log-noaudio {
-  justify-self: center;
-  width: 12px;
-  height: 1px;
-  background: var(--border);
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px dashed var(--border);
+  border-radius: 999px;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-style: italic;
+  white-space: nowrap;
 }
 
 .aradio-log-select {
   display: grid;
-  grid-template-columns: 3.2em minmax(0, 1fr) auto;
-  align-items: baseline;
-  gap: 10px;
-  min-height: 40px;
+  gap: 1px;
+  min-height: 44px;
   padding: 4px 8px;
   border: 0;
   border-radius: 6px;
@@ -8415,8 +8800,9 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 .aradio-log-row.is-selected .aradio-log-select { background: var(--ara-periwinkle); }
 
 .aradio-log-time {
+  color: var(--text-secondary);
   font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-size: 0.74rem;
   font-variant-numeric: tabular-nums;
   font-weight: 650;
 }
@@ -8429,16 +8815,6 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-
-.aradio-log-duration {
-  color: var(--text-tertiary);
-  font-family: var(--font-sans);
-  font-size: 0.74rem;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-
-.aradio-log-row.is-text-only .aradio-log-duration { font-style: italic; }
 
 .aradio-more {
   min-height: 36px;
@@ -8485,7 +8861,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   left: 15px;
   width: 7px;
   height: 7px;
-  border: solid var(--text-tertiary);
+  border: solid var(--text-secondary);
   border-width: 0 2px 2px 0;
   transform: translateY(-65%) rotate(-45deg);
   transition: transform 0.15s ease;
@@ -8498,7 +8874,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 .aradio-transcript-summary:hover { background: var(--bg-hover); }
 .aradio-transcript-summary-label { color: var(--text); font-weight: 700; }
 .aradio-transcript-summary time { color: var(--text); font-weight: 650; }
-.aradio-transcript-summary-day { color: var(--text-tertiary); }
+.aradio-transcript-summary-day { color: var(--text-secondary); }
 
 .aradio-transcript-details[open] > .aradio-transcript-summary { margin-bottom: 16px; }
 
@@ -8521,26 +8897,45 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   font-weight: 600;
 }
 
-.aradio-lines {
+/* The full transcript below: speaker in a margin, text beside it. Lines of a
+   bulletin with audio are buttons that play from there. */
+.aradio-lines--archive {
   display: grid;
   gap: 2px;
   list-style: none;
+  /* On the card itself, not the radio's tinted window. */
+  --aradio-line-ahead: #4a4e57;
+  --aradio-line-read: #6b6f78;
 }
 
-.aradio-line {
+.aradio-lines--archive .aradio-line,
+.aradio-lines--archive .aradio-line-seek {
   display: grid;
   grid-template-columns: 88px minmax(0, 1fr);
   gap: 12px;
-  margin: 0 -10px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  transition: background 0.25s ease;
 }
 
-.aradio-line.is-speaking {
-  background: var(--ara-periwinkle);
-  box-shadow: inset 3px 0 0 var(--accent-warm);
+.aradio-lines--archive .aradio-line { transition: color 0.35s ease; }
+
+.aradio-lines--archive .aradio-line.is-static {
+  margin: 0 -10px;
+  padding: 8px 10px;
 }
+
+.aradio-lines--archive .aradio-line-seek {
+  width: calc(100% + 20px);
+  margin: 0 -10px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.aradio-lines--archive .aradio-line.is-live .aradio-line-seek { background: var(--ara-periwinkle); }
 
 .aradio-speaker {
   padding-top: 3px;
@@ -8550,7 +8945,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   font-weight: 650;
 }
 
-.aradio-line--s2 .aradio-speaker { color: #0369a1; }
+.aradio-line--s2 .aradio-speaker { color: var(--aradio-cohost, #0369a1); }
 
 .aradio-line-text {
   max-width: 68ch;
@@ -8561,7 +8956,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 .aradio-transcript-foot { margin-top: 20px; }
 
 .aradio-transcript-foot h5 {
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   font-family: var(--font-sans);
   font-size: 0.74rem;
   font-weight: 650;
@@ -8569,34 +8964,9 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 
 .aradio-transcript-foot .aradio-evidence-list { margin-top: 8px; }
 
-.aradio-covers {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
-  list-style: none;
-}
-
-.aradio-cover {
-  display: inline-block;
-  max-width: 100%;
-  padding: 4px 11px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-size: 0.76rem;
-  text-align: left;
-  cursor: pointer;
-}
-
-.aradio-cover:hover { border-color: var(--accent-warm); }
-.aradio-cover.is-static { color: var(--text-secondary); cursor: default; }
-
 .aradio-credit {
   margin-top: 18px;
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   font-family: var(--font-sans);
   font-size: 0.74rem;
 }
@@ -8606,30 +8976,39 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   outline-offset: 2px;
 }
 
-/* Hangul has no capitals to track; the sign and labels stay set solid. */
-:root:lang(ko) .aradio-badge,
-:root:lang(ko) .aradio-now-label,
-:root:lang(ko) .aradio-upnext-title { letter-spacing: 0; }
+/* Hangul has no capitals to track; the sign stays set solid. */
+:root:lang(ko) .aradio-badge { letter-spacing: 0; }
 
 @media (prefers-color-scheme: dark) {
   .aradio-view .aradio-radio {
     --aradio-button-ink: #08101c;
     --aradio-lamp: #ff5a4e;
     --aradio-lamp-ink: #ff9d94;
+    --aradio-line-ahead: #c3c8d1;
+    --aradio-line-read: #8d939e;
+    --aradio-cohost: var(--ara-cyan);
   }
+  .aradio-lines--archive {
+    --aradio-line-ahead: #c3c8d1;
+    --aradio-line-read: #8d939e;
+  }
+  .aradio-art { border-color: transparent; }
   .aradio-pill--escalating { background: rgba(251, 146, 60, 0.16); color: #fdba74; }
   .aradio-line--s2 .aradio-speaker { color: var(--ara-cyan); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .aradio-badge.is-live .aradio-badge-lamp,
-  .aradio-mode--waiting .aradio-toggle::after { animation: none; }
+  .aradio-mode--waiting .aradio-toggle::after,
+  .aradio-mode--playing .aradio-line.is-live .aradio-speaker::before { animation: none; }
   .aradio-toggle.is-buffering::after { animation: none; border-color: color-mix(in srgb, var(--aradio-button) 42%, transparent); }
   .aradio-toggle,
   .aradio-toggle:hover,
   .aradio-toggle:active { transition: none; transform: none; }
   .aradio-thread,
-  .aradio-line,
+  .aradio-view .aradio-lines .aradio-line,
+  .aradio-view .aradio-lines .aradio-line-seek,
+  .aradio-relive-icon,
   .aradio-transcript-summary::before { transition: none; }
 }
 
@@ -8646,22 +9025,47 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   }
 }
 
-@media (max-width: 900px) {
+/* Wide screens: the player in a column of its own, its headline lifted above
+   the controls (it holds nothing to focus, so focus order is unchanged), and
+   the transcript beside it, as tall as the player. */
+@media (min-width: 900px) {
   .aradio-deck {
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto auto 1fr;
     grid-template-areas:
-      "toggle now"
-      "toggle progress"
-      "toggle transport"
-      "note note"
-      "upnext upnext";
+      "now        script"
+      "transport  script"
+      "progress   script"
+      "options    script"
+      "note       script"
+      "upnext     script";
+    column-gap: clamp(32px, 4.4vw, 56px);
   }
-  .aradio-upnext {
-    margin-top: 14px;
-    padding: 12px 0 0;
-    border-top: 1px solid var(--border-light);
-    border-left: 0;
+  .aradio-transport {
+    justify-content: flex-start;
+    gap: 12px;
+    margin: 20px 0 4px;
   }
+  .aradio-toggle {
+    width: 96px;
+    height: 96px;
+  }
+  .aradio-art {
+    width: 64px;
+    height: 64px;
+  }
+  .aradio-script-slot { margin-top: 0; }
+  .aradio-script-window { height: clamp(320px, 54vh, 460px); }
+  .aradio-podcast {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 18px;
+  }
+  .aradio-podcast-title { grid-column: 1 / -1; }
+  .aradio-follow { grid-column: 1; }
+  .aradio-podcast-row { grid-column: 2; }
+  .aradio-follow[hidden] + .aradio-podcast-row { grid-column: 1 / -1; }
+  .aradio-podcast-hint { grid-column: 1 / -1; }
 }
 
 @media (max-width: 760px) {
@@ -8675,35 +9079,26 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   .aradio-facts div { grid-template-columns: 1fr; gap: 2px; }
 }
 
-/* Phones: the button alone, centred, then what is on and the controls. */
 @media (max-width: 560px) {
-  .aradio-deck {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-      "toggle"
-      "now"
-      "progress"
-      "transport"
-      "note"
-      "upnext";
-  }
-  .aradio-toggle {
-    justify-self: center;
-    width: 104px;
-    height: 104px;
-    margin: 4px 0 18px;
-  }
-  .aradio-transport { justify-content: flex-start; }
-  .aradio-podcast { grid-template-columns: minmax(0, 1fr); }
   /* 16px stops iOS Safari zooming the page when the address is focused. */
   .aradio-feed-input { font-size: 16px; }
 }
 
 @media (max-width: 480px) {
   .aradio-update-time { display: none; }
-  .aradio-line { grid-template-columns: 1fr; gap: 2px; }
-  .aradio-log-select { grid-template-columns: 3em minmax(0, 1fr); }
-  .aradio-log-duration { grid-column: 2; }
+  .aradio-lines--archive .aradio-line,
+  .aradio-lines--archive .aradio-line-seek { grid-template-columns: 1fr; gap: 2px; }
+  .aradio-log-row { grid-template-columns: 6.6rem minmax(0, 1fr); gap: 8px; }
+}
+
+/* Small phones: everything in the controls row shrinks a step so the row
+   never needs more than the screen. */
+@media (max-width: 360px) {
+  .aradio-transport { gap: 4px; }
+  .aradio-toggle { width: 76px; height: 76px; }
+  .aradio-skip { width: 36px; height: 36px; }
+  .aradio-jump { width: 42px; height: 42px; }
+  .aradio-jump-ring { width: 30px; height: 30px; }
 }
 
 /* ── Product intelligence surfaces ───────────────────
