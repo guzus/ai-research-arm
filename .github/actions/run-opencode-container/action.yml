@@ -1253,7 +1253,13 @@ runs:
             echo "::error::opencode commit bundle is missing, linked, or exceeds 20 MiB."
             exit 1
           fi
-          "${trusted_git[@]}" bundle verify "$bundle_file"
+          # verify lists the refs the bundle advertises, bytes the container
+          # wrote, and workflow commands are live again here: keep its output
+          # out of the log and fail with a fixed message.
+          if ! "${trusted_git[@]}" bundle verify "$bundle_file" >/dev/null 2>&1; then
+            echo "::error::Static opencode bundle failed verification."
+            exit 1
+          fi
           bundle_heads=$("${trusted_git[@]}" bundle unbundle "$bundle_file")
           advertised_count=0
           advertised_head=""

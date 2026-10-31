@@ -3285,6 +3285,23 @@ esac
                 self.assertEqual(1, block.count('echo "::stop-commands::${stop_token}"'))
                 self.assertEqual(1, block.count('echo "::${stop_token}::"'))
 
+    def test_import_guard_keeps_the_bundle_ref_listing_out_of_the_log(self):
+        """`git bundle verify` lists the refs a bundle advertises: bytes the
+        container wrote, printed after workflow commands resume. Keep its
+        output out of the log; unbundle's ref list is already captured."""
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter):
+                run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                                      / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+                guard = run.split("# TRUSTED_IMPORT_GUARD_BEGIN", 1)[1].split(
+                    "# TRUSTED_IMPORT_GUARD_END", 1)[0]
+                calls = [line.strip() for line in guard.splitlines()
+                         if "bundle verify" in line or "bundle unbundle" in line]
+                self.assertEqual([
+                    'if ! "${trusted_git[@]}" bundle verify "$bundle_file" >/dev/null 2>&1; then',
+                    'bundle_heads=$("${trusted_git[@]}" bundle unbundle "$bundle_file")',
+                ], [line for line in calls if not line.startswith("#")])
+
     def test_a_finished_runner_container_keeps_its_status(self):
         for adapter in self.RUNNERS:
             for tee in (False, True):
