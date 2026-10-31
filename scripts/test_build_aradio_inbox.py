@@ -1333,6 +1333,10 @@ class BackoffTest(FixtureTest):
         self.assertEqual(2, self.attempts(0, 1)["failed"])
         self.assertEqual((True, "290 min since the last editor run"),
                          (summary["go"], summary["reason"]))
+        # Nor do they delay priority material on a station whose editor works.
+        self.repo.podcasts([episode("p")])
+        summary = self.repo.build(attempts=self.attempts(0, 1))
+        self.assertEqual((True, "1 new priority item(s)"), (summary["go"], summary["reason"]))
 
     def test_priority_material_waits_at_most_two_hours(self):
         self.repo.podcasts([episode("p")])  # a P0 long-form episode with a transcript

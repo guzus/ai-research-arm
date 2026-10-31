@@ -516,6 +516,67 @@ class LostForceTest(unittest.TestCase):
         self.assertEqual("steps.inbox.outputs.go == 'true'", steps["editor"]["if"])
 
 
+class ReviewerReproTest(unittest.TestCase):
+    """The cases of the review's check_lost_force.py, on the jobs data GitHub returns.
+
+    Lettered as in the review: (a) timeout, (b) re-run, (c) early failure. As
+    there, a forced run F queued at 10:05 waited behind R0 and a run queued
+    later displaced it. GitHub cancels a displaced run about a second after
+    the displacing run is queued, so F's updated_at is that moment. A run that
+    honoured F ran its editor, since force opens the gate.
+    """
+
+    R0 = run(1, "2026-11-01T10:00:00Z", "success")
+    STUCK_SINCE = "2026-11-01T09:00:00Z"  # the last bulletin, before all of this
+
+    def forced_run(self, displaced_at: str) -> dict:
+        return forced(2, "2026-11-01T10:05:00Z", updated_at=displaced_at)
+
+    def honours(self, runs, by_id, since=STUCK_SINCE):
+        found = ara.lost_force(runs, ara.parse_time(since), "99",
+                               ara.JobLookups(jobs_of(by_id, [])))
+        return found["id"] if found else None
+
+    def test_baseline_the_run_after_the_honouring_run(self):
+        # L displaced F at 10:20, honoured it and published (stamp 10:20).
+        honoured = run(3, "2026-11-01T10:20:00Z", "success")
+        self.assertIsNone(self.honours([honoured, self.forced_run("2026-11-01T10:20:01Z"),
+                                        self.R0], {2: NEVER_STARTED},
+                                       since="2026-11-01T10:20:00Z"))
+
+    def test_a_the_honouring_run_timed_out(self):
+        # Run 31886390685's shape: past timeout-minutes, the run ends cancelled.
+        honoured = run(3, "2026-11-01T10:20:00Z", "cancelled")
+        self.assertIsNone(self.honours([honoured, self.forced_run("2026-11-01T10:20:01Z"),
+                                        self.R0], {2: NEVER_STARTED, 3: EDITOR_HUNG}))
+
+    def test_b_the_honouring_run_was_a_re_run_of_an_older_run(self):
+        # A re-run keeps created_at (09:00); its attempt was queued at 10:30.
+        for name, conclusion, by_id, since in (
+                ("published", "success", {2: NEVER_STARTED}, "2026-11-01T10:30:00Z"),
+                ("failed after its editor", "failure", {2: NEVER_STARTED, 0: EDITOR_FAILED},
+                 self.STUCK_SINCE)):
+            with self.subTest(name):
+                rerun = run(0, "2026-11-01T09:00:00Z", conclusion,
+                            started_at="2026-11-01T10:30:00Z")
+                self.assertIsNone(self.honours(
+                    [self.forced_run("2026-11-01T10:30:01Z"), self.R0, rerun], by_id,
+                    since=since))
+
+    def test_c_the_replacing_run_failed_before_its_editor(self):
+        failed_early = run(3, "2026-11-01T10:20:00Z", "failure")
+        self.assertEqual(2, self.honours([failed_early, self.forced_run("2026-11-01T10:20:01Z"),
+                                          self.R0], {2: NEVER_STARTED, 3: SETUP_FAILED}))
+
+    def test_backoff_two_runs_past_timeout_minutes_are_two_failed_editor_runs(self):
+        hung = [run(5, "2026-11-01T10:00:00Z", "cancelled"),
+                run(6, "2026-11-01T11:00:00Z", "cancelled")]
+        failed, editor = ara.failures_since(hung, ara.parse_time(self.STUCK_SINCE), "99",
+                                            ara.JobLookups(jobs_of({5: EDITOR_HUNG,
+                                                                    6: EDITOR_HUNG}, [])))
+        self.assertEqual((2, 2), (len(failed), len(editor)))
+
+
 class OutputTest(unittest.TestCase):
     def test_outputs_round_trip_through_github_output(self):
         with tempfile.TemporaryDirectory() as tmp:
