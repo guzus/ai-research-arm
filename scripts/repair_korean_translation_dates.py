@@ -20,8 +20,9 @@ Classes (select with ``--classes``):
   B  format: every number and the right month present but English word order
      or a missing unit ("10월 26, 2026", "4월 2026", "10일 7월 2026",
      "2일(2026년 8월)", "5월 말 2026", "유월 2026"), or an English date left
-     untranslated. B skips and lists dates in quotes, in titles of other
-     works (reference entries, <em>, <cite>), in URLs, and ranges.
+     untranslated, or a range's shared year left mid-range. B skips and lists
+     dates in quotes, in titles of other works (reference entries, <cite>),
+     and in URLs.
   S  stray minus: a number the English glued to a word by a hyphen
      ("mid-60s", "7-of-10", "mid-2026") that the Korean prints as a negative
      ("-60대 중반", "7/-10", "-2026년 중반"), because the old masking made
@@ -56,7 +57,7 @@ VOID_TAGS = frozenset(
     {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param",
      "source", "track", "wbr"}
 )
-TITLE_TAGS = frozenset({"em", "i", "cite"})
+TITLE_TAGS = frozenset({"cite"})  # <em> and <i> are emphasis in these articles
 QUOTE_TAGS = frozenset({"blockquote", "q"})
 QUOTE_PAIRS = (("「", "」"), ("『", "』"), ("“", "”"), ("‘", "’"))
 HANGUL_MONTHS = {
@@ -260,6 +261,34 @@ def english_components(form: str, match: re.Match[str]) -> tuple:
     return (groups.get("y"), tuple(months), tuple(days))
 
 
+def range_components(english: str, rendered, k: int) -> tuple:
+    """English (year, months, days) for the k-th date, with a range's year.
+
+    A date borrows the next date's year, or gives its own to the date
+    before, only across a range join in the English source.
+    """
+    form, match, _ = rendered[k]
+    year, months, days = english_components(form, match)
+    def joined(a: int, b: int) -> bool:
+        first, second = rendered[a][1], rendered[b][1]
+        last_month = segments._month_number(first.groupdict().get("m2") or first["m"])
+        return bool(
+            segments._RANGE_JOIN_RE.fullmatch(english[first.end() : second.start()])
+            and last_month <= segments._month_number(second["m"])
+        )
+
+    borrow = (
+        k + 1 < len(rendered) and not year and rendered[k + 1][1].groupdict().get("y")
+        and joined(k, k + 1)
+    )
+    lend = k > 0 and year and not rendered[k - 1][1].groupdict().get("y") and joined(k - 1, k)
+    if borrow:
+        year = rendered[k + 1][1]["y"]
+    elif lend:
+        year = None
+    return (year, months, days)
+
+
 def korean_components(text: str) -> tuple:
     """(year, months, days) read back from a Korean date phrase."""
     year, months, days = None, [], []
@@ -410,12 +439,15 @@ def plan_run(report: Report, name: str, unit: Unit, english_raw: str, korean: st
     label = f"attr {unit.key}" if unit.kind == "attr" else "text"
     commas = unit.key not in LIST_ATTRS
     english = html.unescape(english_raw)
-    dates = segments.date_matches(english, commas=commas)
+    rendered = segments.korean_dates(english, commas=commas)
+    dates = [(form, match) for form, match, _ in rendered]
     if not dates:
         return []
     groups: dict[str, list[tuple[str, re.Match[str]]]] = collections.defaultdict(list)
-    for form, match in dates:
-        groups[segments.korean_date(form, match)].append((form, match))
+    expected_of: dict[str, tuple] = {}
+    for k, (form, match, canon) in enumerate(rendered):
+        groups[canon].append((form, match))
+        expected_of[canon] = range_components(english, rendered, k)
     covered = [(match.start(), match.end()) for _, match in dates]
     run_months = {
         segments._month_number(m.group())
@@ -447,9 +479,10 @@ def plan_run(report: Report, name: str, unit: Unit, english_raw: str, korean: st
             held.append((edit.start, edit.end))
             report.skip(name, label, "inside a URL", edit.english, korean[edit.start : edit.end])
             return
-        if edit.cls == "B" and flags:
+        skipped = flags - {"range"}  # a range is rewritten, and flagged for review
+        if edit.cls == "B" and skipped:
             held.append((edit.start, edit.end))
-            report.skip(name, label, f"B skips dates in a {'/'.join(sorted(flags))}",
+            report.skip(name, label, f"B skips dates in a {'/'.join(sorted(skipped))}",
                         edit.english, korean[max(0, edit.start - 16) : edit.end + 12])
             return
         edits.append(Edit(edit.start, edit.end, edit.after, edit.cls, edit.rule, edit.english,
@@ -457,15 +490,14 @@ def plan_run(report: Report, name: str, unit: Unit, english_raw: str, korean: st
 
     # An English date the translation left in place, in Korean prose or in a
     # run with no English prose ("12 Aug · 15:00").
-    for form, match in segments.date_matches(korean, commas=commas):
-        canon = segments.korean_date(form, match)
+    for form, match, canon in segments.korean_dates(korean, commas=commas):
         rest = korean[: match.start()] + korean[match.end() :]
         prose = re.findall(r"\b[a-z]{2,}\b", re.sub(r"@\w+|https?://\S+", "", rest))
         if canon in groups and not taken(*match.span()) and (HANGUL_RE.search(korean) or not prose):
             fitted, consumed = fit_particle(canon, korean[match.end() :])
             propose(Edit(match.start(), match.end() + consumed, canon + fitted, "B",
                          "untranslated English date", match.group(),
-                         english_components(form, match)), canon, form, match)
+                         expected_of[canon]), canon, form, match)
     # "2026년 May 7일" kept the English month name in Korean order.
     for match in re.finditer(
         rf"(?<![0-9])((?:1[89]|2[01])[0-9]{{2}})년 ({segments._MONTH})(?: ([0-9]{{1,2}})일)?", korean
@@ -476,7 +508,26 @@ def plan_run(report: Report, name: str, unit: Unit, english_raw: str, korean: st
             form, english_match = groups[canon][0]
             propose(Edit(match.start(), match.end(), canon, "B", "English month name",
                          english[english_match.start() : english_match.end()],
-                         english_components(form, english_match)), canon, form, english_match)
+                         expected_of[canon]), canon, form, english_match)
+
+    # A range whose shared year sits mid-range ("9월 10일부터 2026년 10월
+    # 초까지"): move it to the front, as the pipeline now renders it.
+    for k in range(len(rendered) - 1):
+        (first_form, first, first_canon), (second_form, second, second_canon) = rendered[k], rendered[k + 1]
+        old_first = segments.korean_date(first_form, first)
+        old_second = segments.korean_date(second_form, second)
+        if (old_first, old_second) == (first_canon, second_canon):
+            continue
+        pattern = rf"(?<![0-9]년 )(?<![0-9]){re.escape(old_first)}([^0-9<]{{0,16}}?){re.escape(old_second)}"
+        for found in re.finditer(pattern, korean):
+            start2 = found.start() + len(old_first) + len(found.group(1))
+            if taken(found.start(), found.end()):
+                continue
+            english_pair = english[first.start() : second.end()]
+            propose(Edit(found.start(), found.start() + len(old_first), first_canon, "B", "range year",
+                         english_pair, expected_of[first_canon]), first_canon, first_form, first)
+            propose(Edit(start2, start2 + len(old_second), second_canon, "B", "range year",
+                         english_pair, expected_of[second_canon]), second_canon, second_form, second)
 
     # A rendered date followed by a particle fitted to some other final
     # syllable ("2025년 11월나" for 이나).
@@ -497,7 +548,7 @@ def plan_run(report: Report, name: str, unit: Unit, english_raw: str, korean: st
     for canon, members in groups.items():
         form, match = members[0]
         english_phrase = english[match.start() : match.end()]
-        expected = english_components(form, match)
+        expected = expected_of[canon]
         year, months, days = expected
         # "2일(2026년 8월)" holds every part of "2 August 2026".
         if year and len(months) == 1 and len(days) == 1:

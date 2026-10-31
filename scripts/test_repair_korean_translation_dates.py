@@ -87,7 +87,7 @@ class RepairKoreanTranslationDatesTest(unittest.TestCase):
                 self.assertEqual(repair.korean_components(korean), repair.english_components(form, match))
         self.assertEqual(repair.korean_components("2026년 유월 17일"), ("2026", (6,), ("17",)))
 
-    def test_classes_split_factual_from_format_and_b_skips_quotes_titles_and_ranges(self):
+    def test_classes_split_factual_from_format_and_b_skips_quotes_and_titles(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             seed(root)
@@ -144,6 +144,24 @@ class RepairKoreanTranslationDatesTest(unittest.TestCase):
             self.assertIn("6월 2025에", text)
             later, _ = repair.run(root, {"A", "B"}, write=False)
             self.assertEqual({c.cls for c in later}, {"B"})
+
+    def test_ranges_take_their_year_first_and_only_quotes_and_works_are_skipped(self):
+        unit = repair.Unit("text", "", 0, 0, frozenset())
+        report = repair.Report()
+        english = "Folders are dated from 10 September to early October 2026, and ran July 17-20, 2026."
+        korean = "폴더 날짜는 9월 10일부터 2026년 10월 초까지이며, 행사는 7월 17-20, 2026에 열렸다."
+        edits = repair.plan_run(report, "f", unit, english, korean)
+        new = repair.apply(korean, [(e.start, e.end, e.after) for e in edits])
+        self.assertEqual(new, "폴더 날짜는 2026년 9월 10일부터 10월 초까지이며, 행사는 2026년 7월 17-20일에 열렸다.")
+        self.assertEqual({e.rule for e in edits}, {"range year", "phrase"})
+        self.assertIn("range", next(e for e in edits if e.rule == "phrase").flags)
+        # Emphasis is prose; a <cite> or a reference entry is another work's title.
+        emphasis = repair.Unit("text", "", 0, 0, frozenset())
+        self.assertTrue(repair.plan_run(repair.Report(), "f", emphasis, "its 12 August entry", "12 8월 항목"))
+        cited = repair.Unit("text", "", 0, 0, frozenset({"title"}))
+        report = repair.Report()
+        self.assertEqual(repair.plan_run(report, "f", cited, "its 12 August entry", "12 8월 항목"), [])
+        self.assertEqual([entry["reason"] for entry in report.unresolved], ["B skips dates in a title"])
 
     def test_stray_minus_needs_a_hyphenated_source_compound(self):
         unit = repair.Unit("text", "", 0, 0, frozenset())
