@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-10-31T08:53:00Z",
-  "headline": "Anthropic's S-1 sets up a possible trillion-dollar IPO as AI capex rattles chips and attackers raid AI developer platforms",
+  "updated_at": "2026-10-31T14:48:00Z",
+  "headline": "Google's Gemini 4 Carbon takes the top benchmark spot but stays gated; Alphabet holds capex near $200B; a Claude Code extension is…",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -9,11 +9,17 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-10-31T08:53:00Z",
-      "now": "Anthropic filed its S-1 this week and could list on Nasdaq as soon as November. Commentators cite a $1.5T to $2T valuation and a possible raise of up to $100B. Hard Fork says first-half 2026 revenue was $6.3B. FT reportedly says OpenAI cut its round to about $20B at $1.25T.",
-      "changed": "The S-1 opened Anthropic's books; the FT reportedly says OpenAI trimmed its round from $30B at $1.4T to about $20B at $1.25T after some backers cut allocations (single source).",
+      "updated_at": "2026-10-31T14:48:00Z",
+      "now": "Anthropic filed its S-1 and could list on Nasdaq as soon as November, possibly raising about $100B at a $1.5T to $2T valuation. First-half revenue is quoted as $6.3B on Hard Fork and $16.3B on 20VC. Meta reportedly announced an equity raise of up to $95B. FT reportedly says OpenAI cut its round to about $20B.",
+      "changed": "On 20VC, hosts discussed Anthropic issuing about $100B of stock and Meta announcing a raise of up to $95B; first-half revenue figures differ by source.",
       "watch": "Anthropic's pricing and listing date in November; whether OpenAI or MGX confirm the reduced round.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=2-aUmDMZgLE",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-10-29T15:14:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=EGC7jht_mis",
           "kind": "podcast",
@@ -37,6 +43,10 @@
         {
           "at": "2026-10-31T08:53:00Z",
           "change": "Anthropic S-1 digested on Hard Fork and Decoder; FT reportedly says OpenAI shrank its round to about $20B at $1.25T."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "20VC adds Meta's reported equity raise and the scale of Anthropic's planned issuance."
         }
       ]
     },
@@ -46,11 +56,18 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-10-31T08:53:00Z",
-      "now": "Google Cloud revenue rose 103% to $30.7B; Microsoft Cloud hit $63.9B, up 30%. Amazon says AWS grew over 39%, a $184B run rate. Vertiv sales rose 61% and it raised guidance. Yet on Thursday Intel fell 28.6%, the chip index about 7% and the Nasdaq 100 about 3.5%, per market recaps.",
-      "changed": "Strong third-quarter AI cloud results were overshadowed by Thursday's rout, led by Intel's weak guidance tied to AI-driven memory prices. Amazon reportedly has trailing free cash flow near minus $42B.",
+      "updated_at": "2026-10-31T14:48:00Z",
+      "now": "Google Cloud revenue rose 103% to $30.7B; Microsoft Cloud hit $63.9B. Amazon says AWS grew over 39%. Alphabet says Gemini APIs process nearly 32 billion tokens a minute and holds 2026 capex at $195B to $205B. Thursday Intel fell 28.6% and the chip index about 7%.",
+      "changed": "On Alphabet's call, the company kept 2026 capex at $195B to $205B, reported negative third-quarter free cash flow of $9.1B, and said it began using third-party compute, a near-term cloud margin headwind.",
       "watch": "Whether the chip selloff continues Monday and whether other PC or memory-exposed firms repeat Intel's warning.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
+          "kind": "earnings-call",
+          "label": "Alphabet earnings call",
+          "at": "2026-10-28T15:14:00Z",
+          "quote": "Moving to investments, our full-year 2026 CapEx guidance range of $195-$205 billion remain unchanged."
+        },
         {
           "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/",
           "kind": "earnings",
@@ -96,6 +113,10 @@
         {
           "at": "2026-10-31T08:53:00Z",
           "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added."
         }
       ]
     },
@@ -105,11 +126,17 @@
       "status": "developing",
       "importance": 4,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-10-31T14:48:00Z",
       "now": "Wiz reportedly counts nine AI developer platforms breached in October for stored AI API keys, including Northflank, which told customers to rotate all secrets. Epoch reportedly found open-weight GLM-5.3 built Firefox exploits for about $1,000 each. Anthropic says its agents wrote benign-looking data that teaches misalignment.",
-      "changed": "Northflank told customers to assume stored secrets were decrypted. Wiz figures come from one secondhand summary. Anthropic published red-team data that evades training-data monitors.",
-      "watch": "Statements from Fireworks AI, Railway and Warp; bulk key revocations by model providers; Mozilla and Z.ai responses.",
+      "changed": "Anthropic says a malicious actor used Cursor's extension marketplace to publish a tampered Claude Code extension; Anthropic says its own systems were not compromised and only Cursor users are affected.",
+      "watch": "A Cursor post-mortem and install count; platform statements from Fireworks AI, Railway and Warp; bulk key revocations.",
       "evidence": [
+        {
+          "url": "https://x.com/ishkme/status/2116513901525217673",
+          "kind": "ticket",
+          "label": "Cursor tampered extension ticket (@ishkme on X)",
+          "at": "2026-10-31T00:00:00Z"
+        },
         {
           "url": "https://x.com/AndrewCurran_/status/2116310704110305280",
           "kind": "twitter",
@@ -133,6 +160,67 @@
         {
           "at": "2026-10-31T08:53:00Z",
           "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
+        }
+      ]
+    },
+    {
+      "slug": "gemini-4-carbon-frontier-race",
+      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-10-31T14:48:00Z",
+      "updated_at": "2026-10-31T14:48:00Z",
+      "now": "Google announced Gemini 4 Carbon on Alphabet's earnings call. Relays put it first on Artificial Analysis v5.0 at 59 versus 58 for Claude Opus 5.5, and first on Mercor's APEX-Agents at 84.2% Pass@1. Access is gated to cyber defenders; no general availability, pricing or API date.",
+      "changed": "Mercor's APEX-Agents leaderboard puts Carbon first, ahead of Gemini 4 Argon and Claude Sonnet 5.5; Demis Hassabis shared it. Wider release is promised but undated.",
+      "watch": "A date for general availability, API pricing, and independent evals; any Anthropic or OpenAI response.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
+          "kind": "earnings-call",
+          "label": "Alphabet earnings call",
+          "at": "2026-10-28T15:14:00Z",
+          "quote": "And with Gemini 4 Argon and now Carbon, which we announced today, we're excited to be leading at the frontier."
+        },
+        {
+          "url": "https://x.com/demishassabis/status/2116452833167814692",
+          "kind": "ticket",
+          "label": "Gemini 4 Carbon ticket (Hassabis on X)",
+          "at": "2026-10-31T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Gemini 4 Carbon announced; tops Artificial Analysis v5 and APEX-Agents per relays; access still gated to cyber defenders."
+        }
+      ]
+    },
+    {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-10-31T14:48:00Z",
+      "updated_at": "2026-10-31T14:48:00Z",
+      "now": "OpenAI announced three model-produced results, including a claimed disproof of the Exponential Time Hypothesis. Reviewers Impagliazzo, Paturi and Williams say in an open letter that their involvement is not certification. A similar Anthropic 3-SAT paper is reported only secondhand.",
+      "changed": "ETH reviewers said on the record they are not certifying OpenAI's claim; OpenAI reportedly agreed to release raw data and fund a conference.",
+      "watch": "An expert verdict on the ETH result, the KITP Yang-Mills group statement, and a first-party Anthropic post.",
+      "evidence": [
+        {
+          "url": "https://x.com/OwenGregorian/status/2116491977319383467",
+          "kind": "ticket",
+          "label": "OpenAI discoveries ticket (StudyFinds via X)",
+          "at": "2026-10-31T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "ETH disproof reviewers disclaim certification; verdict still pending."
         }
       ]
     }

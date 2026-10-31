@@ -1,9 +1,32 @@
 {
   "schema": 1,
-  "updated_at": "2026-10-31T08:53:00Z",
+  "updated_at": "2026-10-31T14:48:00Z",
   "degraded": false,
-  "latest": "2026-10-31-0853",
+  "latest": "2026-10-31-1448",
   "bulletins": [
+    {
+      "id": "2026-10-31-1448",
+      "aired_at": "2026-10-31T14:48:00Z",
+      "headline": "Google's Gemini 4 Carbon takes the top benchmark spot but stays gated; Alphabet holds capex near $200B; a Claude Code extension is…",
+      "path": "bulletins/2026-10-31/1448.json",
+      "audio": {
+        "key": "audio/aradio/2026-10-31-1448.mp3",
+        "bytes": 769773,
+        "duration_s": 128.2
+      },
+      "covers": [
+        "gemini-4-carbon-frontier-race",
+        "hyperscaler-capex-and-chip-selloff",
+        "ai-cyber-risk-and-key-theft",
+        "anthropic-ipo-and-ai-funding",
+        "ai-math-and-physics-discovery-claims"
+      ],
+      "kinds": [
+        "earnings-call",
+        "podcast",
+        "ticket"
+      ]
+    },
     {
       "id": "2026-10-31-0853",
       "aired_at": "2026-10-31T08:53:00Z",
