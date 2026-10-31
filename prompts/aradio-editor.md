@@ -150,15 +150,16 @@ Two anonymous hosts: Speaker 1 (anchor) and Speaker 2 (co-host). 350–750
 words, 10–24 lines. Structure:
 
 1. Speaker 1 opens with the time, said naturally ("It's ten to nine UTC on
-   Friday, October thirtieth. This is Aradio."), then the situation in one
+   Friday, October thirtieth. This is ARA Radio."), then the situation in one
    sentence.
 2. The lead: what changed since the last bulletin, the most important
    development first, with attribution.
 3. The board: a line or two on each other thread that moved, including status
    changes ("…and that story is now settled").
 4. What to watch next.
-5. A one-line sign-off ("That's Aradio. We'll be back when the picture
-   changes."). No long outro.
+5. A one-line sign-off ("That's ARA Radio. We'll be back when the picture
+   changes."). No long outro. On air the station is
+   "ARA Radio" — the name listeners see on the player.
 
 Rules:
 

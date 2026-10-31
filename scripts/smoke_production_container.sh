@@ -61,6 +61,22 @@ for route in /aradio /aradio/; do
   rm -f "$aradio_body"
 done
 
+# The Aradio podcast feed is a generated file (postbuild-seo.mjs), cached like
+# /feed.xml. It must be the XML itself, never the HTML shell, and it exists
+# (with no episodes) before the first bulletin airs. text/xml mirrors the
+# external probe in scripts/check_production_surface.py.
+feed_headers="$(mktemp)"
+feed_body="$(mktemp)"
+status="$(curl -sS --max-time 10 -D "$feed_headers" -o "$feed_body" -w '%{http_code}' "$base/aradio/feed.xml")"
+test "$status" = 200
+grep -Eiq '^content-type: text/xml' "$feed_headers"
+grep -Eiq '^x-content-type-options: nosniff' "$feed_headers"
+grep -Eiq '^cache-control: .*max-age=300' "$feed_headers"
+grep -q '<rss' "$feed_body"
+grep -q 'xmlns:itunes' "$feed_body"
+python3 -c 'import sys, xml.etree.ElementTree as E; E.parse(sys.argv[1])' "$feed_body"
+rm -f "$feed_headers" "$feed_body"
+
 manifest_headers="$(mktemp)"
 manifest_body="$(mktemp)"
 curl -fsS --max-time 10 -D "$manifest_headers" -o "$manifest_body" "$base/research/manifest.json"

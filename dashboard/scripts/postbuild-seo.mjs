@@ -17,7 +17,8 @@
 //   - Internal/duplicate routes (agents, focus-reader, dated model aliases):
 //     explicit noindex pages with an appropriate canonical.
 //   - The live Aradio station (/aradio): a noindex page whose description
-//     names the latest bulletin, so link unfurlers show what is on air.
+//     names the latest bulletin, so link unfurlers show what is on air, plus
+//     its podcast feed, dist/aradio/feed.xml (scripts/aradio-feed.mjs).
 //
 // Also emits dist/sitemap.xml (canonical indexable URLs only, with lastmod),
 // dist/robots.txt (allow all + sitemap pointer), dist/feed.xml, and
@@ -41,6 +42,12 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { marked } from 'marked';
 import { renderSiteDefaultCardPng, renderSocialCardPng } from './social-card.mjs';
+import {
+  ARADIO_DEFAULT_AUDIO_BASE,
+  buildAradioFeed,
+  readAradioFeedData,
+  selectAradioFeedEntries,
+} from './aradio-feed.mjs';
 import { forecastSeoRecord, mappedForecastTickets } from './forecast-seo.mjs';
 import {
   digestStaticSeoSemantics,
@@ -434,6 +441,10 @@ function standardMetaBlock({
   jsonLd,
   published,
   modified,
+  // Page-specific <head> lines, emitted ahead of the site-wide alternates so
+  // a client that takes the first feed link (podcast apps given a page URL)
+  // finds the page's own feed.
+  extraHead = [],
 }) {
   const desc = truncateDescription(compactText(description));
   return [
@@ -453,6 +464,7 @@ function standardMetaBlock({
     `<meta name="twitter:card" content="${shareImage ? 'summary_large_image' : 'summary'}" />`,
     `<meta name="twitter:title" content="${htmlEscapeAttr(title)}" />`,
     `<meta name="twitter:description" content="${htmlEscapeAttr(desc)}" />`,
+    ...extraHead,
     `<link rel="alternate" type="application/rss+xml" title="ara -- AI research arm" href="${SITE_ORIGIN}/feed.xml" />`,
     `<link rel="alternate" type="text/plain" title="llms.txt" href="${SITE_ORIGIN}/llms.txt" />`,
     jsonLd ? jsonLdTag(jsonLd) : '',
@@ -873,7 +885,7 @@ function buildArchivePage(template, {
   return inlineContent(applySeoBlock(template, metaBlock), snapshot);
 }
 
-function buildNoindexPage(template, { route, canonicalRoute, title, description, body, shareImageUrl }) {
+function buildNoindexPage(template, { route, canonicalRoute, title, description, body, shareImageUrl, extraHead }) {
   const canonicalUrl = `${SITE_ORIGIN}${canonicalRoute}`;
   const metaBlock = standardMetaBlock({
     title,
@@ -881,6 +893,7 @@ function buildNoindexPage(template, { route, canonicalRoute, title, description,
     canonicalUrl,
     shareImage: shareImageUrl,
     indexable: false,
+    extraHead,
   });
   return inlineContent(
     applySeoBlock(template, metaBlock),
@@ -1791,7 +1804,23 @@ writeFileSync(join(aradioDir, 'index.html'), buildNoindexPage(template, {
   description: aradioDescription,
   body: aradioLatest ? `${aradioDescription} ${aradioAbout}` : aradioAbout,
   shareImageUrl,
+  extraHead: [
+    `<link rel="alternate" type="application/rss+xml" title="ARA Radio" href="${htmlEscapeAttr(`${SITE_ORIGIN}/aradio/feed.xml`)}" />`,
+  ],
 }));
+// The podcast feed is built from the station data vite copied into dist (the
+// files the page itself fetches), so a deploy's feed and page always agree.
+// Its enclosures use the page's audio base: vite inlines VITE_AUDIO_BASE_URL
+// into main.ts from the same environment, and no dashboard/.env file is
+// tracked. Absent data is a valid feed with no episodes, never a failure.
+const aradioFeedData = readAradioFeedData(join(dist, 'research', 'aradio'));
+writeFileSync(join(aradioDir, 'feed.xml'), buildAradioFeed({
+  ...aradioFeedData,
+  siteOrigin: SITE_ORIGIN,
+  audioBase: process.env.VITE_AUDIO_BASE_URL || ARADIO_DEFAULT_AUDIO_BASE,
+}));
+const aradioEpisodes = selectAradioFeedEntries(aradioFeedData.index).length;
+console.log(`postbuild-seo: aradio/feed.xml written (${aradioEpisodes} episode${aradioEpisodes === 1 ? '' : 's'})`);
 const focusReaderDir = join(dist, 'design', 'focus-reader');
 mkdirSync(focusReaderDir, { recursive: true });
 writeFileSync(join(focusReaderDir, 'index.html'), buildNoindexPage(template, {

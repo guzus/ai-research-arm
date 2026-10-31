@@ -122,6 +122,10 @@ ROUTE_PROBES: tuple[Probe, ...] = (
     # observed edge contract so a type change is reviewed rather than ignored.
     Probe("sitemap", "/sitemap.xml", content_type_prefix="text/xml", body_contains="<urlset"),
     Probe("feed", "/feed.xml", content_type_prefix="text/xml", body_contains="<rss"),
+    # The Aradio podcast feed. Its marker is the iTunes namespace, which the
+    # site-wide feed lacks, so a wrong file under this path still fails. No
+    # cache-header check: Cloudflare sits between this probe and Caddy.
+    Probe("aradio-feed", "/aradio/feed.xml", content_type_prefix="text/xml", body_contains="xmlns:itunes"),
     Probe("llms", "/llms.txt", content_type_prefix="text/plain", body_contains="#"),
     Probe("real-404", "/__ara_synthetic_missing__", expected_status=404),
     Probe("malformed-today-404", "/today/not-a-date", expected_status=404),

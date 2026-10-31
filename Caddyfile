@@ -25,7 +25,10 @@
 	}
 	header @rawResearchArtifacts X-Robots-Tag "noindex, nofollow"
 
-	@seo path /sitemap.xml /robots.txt /feed.xml /llms.txt
+	# Generated discovery files. /aradio/feed.xml is the Aradio podcast feed
+	# (postbuild-seo.mjs); like /feed.xml it is a real file served by
+	# try_files -> file_server as text/xml, and *.xml is excluded from @html.
+	@seo path /sitemap.xml /robots.txt /feed.xml /llms.txt /aradio/feed.xml
 	header @seo Cache-Control "public, max-age=300, stale-while-revalidate=3600"
 	header @seo CDN-Cache-Control "public, max-age=300, stale-while-revalidate=3600"
 
