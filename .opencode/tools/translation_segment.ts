@@ -8,7 +8,8 @@ const MANIFEST_RELATIVE_PATH = ".agent-input/translation-segments.json"
 const RESULT_RELATIVE_PATH = ".tmp/generative-translation.ko.segments.jsonl"
 const PENDING_RELATIVE_PATH = ".tmp/.generative-translation.ko.segments.pending"
 const TOKEN_RE = /⟦ARA\d{4}⟧/g
-const LOCALIZED_INTEGER_RE = /(?<![0-9.,+\-−$€£₩¥])[0-9]+(?=[가-힣])/g
+// A hyphen between Korean units is a range dash: 4월-6월 keeps its 6.
+const LOCALIZED_INTEGER_RE = /(?:(?<![0-9.,+\-−$€£₩¥])|(?<=[가-힣][\-–~]))[0-9]+(?=[가-힣])/g
 const MAX_BATCH = 24
 const MAX_TEXT_BYTES = 16 * 1024
 const MAX_RESULT_BYTES = 1024 * 1024

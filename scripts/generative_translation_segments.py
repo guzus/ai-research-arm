@@ -32,7 +32,10 @@ ATTR_RE = re.compile(
 )
 WORD_RE = re.compile(r"[A-Za-z][A-Za-z'-]*")
 TOKEN_RE = re.compile(r"\u27e6ARA\d{4}\u27e7")
-LOCALIZED_INTEGER_RE = re.compile(r"(?<![0-9.,+\-−$€£₩¥])[0-9]+(?=[가-힣])")
+# A hyphen between Korean units is a range dash: 4월-6월 keeps its 6.
+LOCALIZED_INTEGER_RE = re.compile(
+    r"(?:(?<![0-9.,+\-−$€£₩¥])|(?<=[가-힣][\-–~]))[0-9]+(?=[가-힣])"
+)
 NUMBER_DEBRIS_RE = re.compile(r"[$€£₩¥%×]+")
 EXCLUDED_TAGS = frozenset({"code", "pre", "script", "style"})
 TRANSLATABLE_ATTRS = frozenset(
@@ -52,6 +55,188 @@ TRANSLATABLE_ATTRS = frozenset(
 )
 SERIES_LABEL_RE = re.compile(r"data-series-\d+-label")
 
+# The model sees every source number as an opaque token, so it cannot tell a
+# day from a year, and Korean dates put the year first. Asked to keep tokens
+# in order without inventing digits, models wrote "29월 2026" for
+# "October 29, 2026". Trusted code therefore masks a whole calendar date as
+# one token whose literal is the finished Korean date.
+_MONTH_FULL_NAMES = (
+    "january",
+    "february",
+    "march",
+    "april",
+    "may",
+    "june",
+    "july",
+    "august",
+    "september",
+    "october",
+    "november",
+    "december",
+)
+MONTH_NUMBERS = {name: number for number, name in enumerate(_MONTH_FULL_NAMES, 1)}
+MONTH_NUMBERS.update(
+    {
+        "jan": 1,
+        "feb": 2,
+        "mar": 3,
+        "apr": 4,
+        "jun": 6,
+        "jul": 7,
+        "aug": 8,
+        "sept": 9,
+        "sep": 9,
+        "oct": 10,
+        "nov": 11,
+        "dec": 12,
+    }
+)
+
+
+def _spellings(names) -> str:
+    return "|".join(
+        spelling
+        for name in sorted(names, key=len, reverse=True)
+        for spelling in (name.title(), name.upper())
+    )
+
+
+# An abbreviation keeps its period only while the date continues, so the
+# full stop in "on 12 Jun." stays prose.
+_MONTH = (
+    rf"(?:{_spellings(_MONTH_FULL_NAMES)}"
+    rf"|(?:{_spellings(set(MONTH_NUMBERS) - set(_MONTH_FULL_NAMES))})"
+    r"(?:\.(?=,?\s*[0-9–—-]))?)(?![A-Za-z])"
+)
+_DAY = r"(?:0?[1-9]|[12][0-9]|3[01])(?![0-9])"
+_ORDINAL = r"(?:st|nd|rd|th)?"
+_YEAR = r"(?:1[89]|2[01])[0-9]{2}(?![0-9])"
+_RANGE = r"\s*[–—-]\s*"
+# "Long March 5" is a rocket.
+_MONTH_START = r"\b(?<!Long )"
+
+
+def _date_forms(*, commas: bool) -> tuple[tuple[str, re.Pattern[str]], ...]:
+    """Recognizers from longest to shortest.
+
+    In a comma-separated list attribute every comma is a separator, so no date
+    there spans one and a comma before a digit does not mean thousands.
+    """
+    comma = ",?" if commas else ""
+    list_comma = r"(?:,\s*" + _DAY + _ORDINAL + r")*,?" if commas else ""
+    separators = ".,+" if commas else ".+"
+    day_start = rf"(?<![A-Za-z0-9{separators}\-−$€£₩¥/:#])"
+    # A date ends before a decimal, time, ratio, percent, or glued word:
+    # "Aug 18:00" is a time and "October 4.7" a version. A day glued to a
+    # word by a hyphen is not a day either ("26 August 10-Q" is a filing),
+    # though "Jun 2025-May 2026" and "October-2025-to-June" continue.
+    decimal = r"[.,:][0-9]" if commas else r"[.:][0-9]"
+    year_end = rf"(?![A-Za-z0-9%×/]|{decimal})"
+    day_end = rf"(?![A-Za-z0-9%×/]|{decimal}|-(?!{_MONTH})[A-Za-z])"
+    day_range = rf"(?P<d>{_DAY}){_ORDINAL}(?:(?P<sep>{_RANGE})(?P<d2>{_DAY}){_ORDINAL})?"
+    forms = {
+        "cross_md": (
+            rf"{_MONTH_START}(?P<m>{_MONTH})\s+(?P<d>{_DAY}){_ORDINAL}(?P<sep>{_RANGE})"
+            rf"(?P<m2>{_MONTH})\s+(?P<d2>{_DAY}){_ORDINAL}"
+            rf"(?:{comma}\s+(?P<y>{_YEAR}){year_end}|{day_end})"
+        ),
+        "cross_dm": (
+            rf"{day_start}(?P<d>{_DAY}){_ORDINAL}\s+(?P<m>{_MONTH})(?P<sep>{_RANGE})"
+            rf"(?P<d2>{_DAY}){_ORDINAL}\s+(?P<m2>{_MONTH})"
+            rf"(?:{comma}\s+(?P<y>{_YEAR}){year_end})?"
+        ),
+        "month_range": (
+            rf"{_MONTH_START}(?P<m>{_MONTH})(?P<sep>{_RANGE})(?P<m2>{_MONTH}){comma}\s+"
+            rf"(?P<y>{_YEAR}){year_end}"
+        ),
+        "day_list": (
+            rf"{day_start}(?P<days>{_DAY}{_ORDINAL}{list_comma}\s+and\s+{_DAY}{_ORDINAL})"
+            rf"\s+(?P<m>{_MONTH})(?:{comma}\s+(?P<y>{_YEAR}){year_end})?"
+        ),
+        "month_day_year": (
+            rf"{_MONTH_START}(?P<m>{_MONTH})\s+{day_range}{comma}\s+(?P<y>{_YEAR}){year_end}"
+        ),
+        "day_month_year": (
+            rf"{day_start}{day_range}\s+(?P<m>{_MONTH}){comma}\s+(?P<y>{_YEAR}){year_end}"
+        ),
+        "month_year": rf"{_MONTH_START}(?P<m>{_MONTH})(?:\s+|-)(?P<y>{_YEAR}){year_end}",
+        "month_day": rf"{_MONTH_START}(?P<m>{_MONTH})\s+{day_range}{day_end}",
+        "day_month": rf"{day_start}{day_range}\s+(?P<m>{_MONTH})",
+    }
+    return tuple((name, re.compile(pattern)) for name, pattern in forms.items())
+
+
+_DATE_FORMS = {True: _date_forms(commas=True), False: _date_forms(commas=False)}
+
+
+def _month_number(word: str) -> int:
+    return MONTH_NUMBERS[word.rstrip(".").lower()]
+
+
+def _korean_days(days: list[str]) -> str:
+    if len(days) == 1:
+        return f"{days[0]}일"
+    return ", ".join(f"{day}일" for day in days[:-1]) + f"과 {days[-1]}일"
+
+
+def korean_date(form: str, match: re.Match[str]) -> str:
+    """Render one recognized English date in Korean order with the source digits.
+
+    Days and years keep their exact source spelling ("05", "7-9") so the
+    numeric-token parity check still finds every source literal; only month
+    numbers glued to 월 are added.
+    """
+    groups = match.groupdict()
+    year = f"{groups['y']}년 " if groups.get("y") else ""
+    month = _month_number(groups["m"])
+    if form in {"cross_md", "cross_dm", "month_range"}:
+        # A bare hyphen before a digit would read as a negative number token.
+        sep = groups["sep"].replace("-", "–")
+        month2 = _month_number(groups["m2"])
+        first = f"{month}월" if form == "month_range" else f"{month}월 {groups['d']}일"
+        second = f"{month2}월" if form == "month_range" else f"{month2}월 {groups['d2']}일"
+        # The year follows the last part in English; a range that wraps past
+        # December ("April–February 2026") gives it only to that part.
+        if month > month2:
+            return f"{first}{sep}{year}{second}"
+        return f"{year}{first}{sep}{second}"
+    if form == "day_list":
+        return f"{year}{month}월 {_korean_days(re.findall(r'[0-9]+', groups['days']))}"
+    if form == "month_year":
+        return f"{groups['y']}년 {month}월"
+    day = groups["d"] + (f"{groups['sep']}{groups['d2']}" if groups.get("d2") else "")
+    return f"{year}{month}월 {day}일"
+
+
+def date_matches(text: str, *, commas: bool = True) -> list[tuple[str, re.Match[str]]]:
+    """Return non-overlapping English calendar dates as (form, match).
+
+    The longest reading wins ("Season 1 Aug 20, 2025" is August 20), then the
+    earliest ("26 August 10 analysts" is August 26).
+    """
+    candidates = sorted(
+        (
+            (match.start() - match.end(), match.start(), priority, form, match)
+            for priority, (form, pattern) in enumerate(_DATE_FORMS[commas])
+            for match in pattern.finditer(text)
+        ),
+        key=lambda item: item[:3],
+    )
+    found: list[tuple[str, re.Match[str]]] = []
+    for _, start, _, form, match in candidates:
+        if any(start < taken.end() and taken.start() < match.end() for _, taken in found):
+            continue
+        found.append((form, match))
+    return sorted(found, key=lambda item: item[1].start())
+
+
+def date_spans(text: str, *, commas: bool = True) -> list[tuple[int, int, str]]:
+    """Return non-overlapping English calendar dates as (start, end, Korean)."""
+    return [
+        (match.start(), match.end(), korean_date(form, match))
+        for form, match in date_matches(text, commas=commas)
+    ]
+
 
 @dataclass(frozen=True)
 class Segment:
@@ -64,33 +249,41 @@ class Segment:
     context: str
     attribute: bool
     forbid_commas: bool
+    date_tokens: tuple[str, ...] = ()
 
 
-def _mask(text: str, *, preserve_commas: bool) -> tuple[str, list[str], list[str]]:
-    patterns = [URL_RE, NUMBER_RE]
-    spans: list[tuple[int, int]] = []
-    for pattern in patterns:
-        spans.extend((match.start(), match.end()) for match in pattern.finditer(text))
+def _mask(
+    text: str, *, preserve_commas: bool
+) -> tuple[str, list[str], list[str], list[str]]:
+    spans: list[tuple[int, int, str | None]] = []
+    for pattern in (URL_RE, NUMBER_RE):
+        spans.extend((match.start(), match.end(), None) for match in pattern.finditer(text))
+    spans.extend(date_spans(text, commas=not preserve_commas))
     if preserve_commas:
-        spans.extend((match.start(), match.end()) for match in re.finditer(r",", text))
-    spans.sort()
-    nonoverlap: list[tuple[int, int]] = []
-    for start, end in spans:
-        if nonoverlap and start < nonoverlap[-1][1]:
+        spans.extend((match.start(), match.end(), None) for match in re.finditer(r",", text))
+    # At one start the longest span wins, so "21 September 2026" masks as one
+    # date rather than as the day 21.
+    spans.sort(key=lambda span: (span[0], -span[1]))
+    nonoverlap: list[tuple[int, int, str | None]] = []
+    for span in spans:
+        if nonoverlap and span[0] < nonoverlap[-1][1]:
             continue
-        nonoverlap.append((start, end))
+        nonoverlap.append(span)
     out: list[str] = []
     tokens: list[str] = []
     literals: list[str] = []
+    date_tokens: list[str] = []
     cursor = 0
-    for index, (start, end) in enumerate(nonoverlap):
+    for index, (start, end, korean) in enumerate(nonoverlap):
         token = f"\u27e6ARA{index:04d}\u27e7"
         out.extend((text[cursor:start], token))
         tokens.append(token)
-        literals.append(text[start:end])
+        literals.append(text[start:end] if korean is None else korean)
+        if korean is not None:
+            date_tokens.append(token)
         cursor = end
     out.append(text[cursor:])
-    return "".join(out), tokens, literals
+    return "".join(out), tokens, literals, date_tokens
 
 
 def _add_segment(
@@ -114,7 +307,7 @@ def _add_segment(
     decoded = html.unescape(raw)
     if not WORD_RE.search(decoded):
         return
-    masked, tokens, literals = _mask(decoded, preserve_commas=preserve_commas)
+    masked, tokens, literals, date_tokens = _mask(decoded, preserve_commas=preserve_commas)
     segments.append(
         Segment(
             id=f"s{len(segments) + 1:05d}",
@@ -126,6 +319,7 @@ def _add_segment(
             context=context,
             attribute=attribute,
             forbid_commas=preserve_commas,
+            date_tokens=tuple(date_tokens),
         )
     )
 
@@ -404,6 +598,40 @@ def strip_unsafe_digits(text: str) -> str:
     return "".join(cleaned)
 
 
+_DUPLICATE_DATE_UNIT_RE = re.compile(r"[년월일](?!요일)")
+# Every Korean date literal ends in 일 or 월, a final ㄹ: particles take the
+# consonant form, except that ㄹ takes 로 rather than 으로.
+_FINAL_RIEUL_PARTICLES = (
+    ("으로", "로"),
+    ("는", "은"),
+    ("가", "이"),
+    ("를", "을"),
+    ("와", "과"),
+    ("며", "이며"),
+    ("였", "이었"),
+)
+
+
+def attach_korean_date(text: str, token: str, korean: str) -> str:
+    """Replace a date token and fit the model's suffix to the hidden date.
+
+    The model cannot see that a token is a whole date, so it may write the
+    unit a bare year needs (⟦ARA0000⟧년에) or a particle chosen for a number
+    that ends in a vowel (⟦ARA0000⟧는).
+    """
+    index = text.find(token)
+    if index < 0:
+        return text
+    tail = text[index + len(token) :]
+    if _DUPLICATE_DATE_UNIT_RE.match(tail):
+        tail = tail[1:]
+    for written, fitted in _FINAL_RIEUL_PARTICLES:
+        if tail.startswith(written):
+            tail = fitted + tail[len(written) :]
+            break
+    return text[:index] + korean + tail
+
+
 def render(source_path: Path, source_sha256: str, result_path: Path, draft_path: Path) -> None:
     if result_path != RESULT_PATH or draft_path != DRAFT_PATH:
         raise ValueError("translation result/draft paths do not match the fixed contract")
@@ -439,7 +667,10 @@ def render(source_path: Path, source_sha256: str, result_path: Path, draft_path:
                 f"translation segment {segment.id} added an unprotected list separator"
             )
         for token, literal in zip(segment.tokens, segment.literals, strict=True):
-            translated = translated.replace(token, literal, 1)
+            if token in segment.date_tokens:
+                translated = attach_korean_date(translated, token, literal)
+            else:
+                translated = translated.replace(token, literal, 1)
         escaped = html.escape(translated, quote=segment.attribute)
         rendered = rendered[: segment.start] + escaped + rendered[segment.end :]
     _atomic_write(draft_path, rendered if rendered.endswith("\n") else rendered + "\n")
