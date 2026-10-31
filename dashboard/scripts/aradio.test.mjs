@@ -618,7 +618,8 @@ test('audio failure while caught up: the new bulletin is not retried and nothing
 // player is trying to play and is short of data, and nothing has moved.
 const STALL_ID = '2026-10-30-1250';
 const look = (nowMs, overrides = {}) => ({
-  id: STALL_ID, intent: true, paused: false, ended: false, starved: true, position: 12, buffered: 30, nowMs, ...overrides,
+  id: STALL_ID, intent: true, paused: false, ended: false, starved: true, started: false,
+  position: 12, buffered: 30, received: 0, nowMs, ...overrides,
 });
 /** Feed looks to the watchdog in order: the index of the one that trips it, or -1. */
 function watchdog(looks) {
@@ -653,6 +654,60 @@ test('stall watchdog: buffering that recovers, or audio still arriving, never tr
   assert.equal(watchdog(trickle), -1);
   // ...until it stops arriving: 20 s after the last of it, it trips.
   assert.equal(watchdog([...trickle, ...[1, 2, 3, 4].map((k) => look(60_000 + k * 5_000, { position: 0, buffered: 6 }))]), 16);
+});
+
+test('stall watchdog: before playback starts, every progress event counts as audio arriving', () => {
+  // A ~1 KB/s link: Chrome reports no buffered range before ~32 KB have
+  // arrived, so for half a minute a progress event now and then is the only
+  // sign of audio coming in. Each one restarts the clock.
+  const slow = Array.from({ length: 13 }, (_, i) => look(i * 5_000, { position: 0, buffered: 0, received: i * 14 }));
+  assert.equal(watchdog(slow), -1);
+  // The events stop: 20 s after the last one, it trips.
+  const silent = [1, 2, 3, 4].map((k) => look(60_000 + k * 5_000, { position: 0, buffered: 0, received: 168 }));
+  assert.equal(watchdog([...slow, ...silent]), 16);
+});
+
+test('stall watchdog: once playback has started, progress events alone are not progress', () => {
+  // Bytes that never become playable audio (a corrupt tail) can keep firing
+  // progress; after playback has begun only the position and the buffer count.
+  const looks = [0, 5_000, 10_000, 15_000, 19_999, 20_000].map((t, i) => look(t, { started: true, received: i * 14 }));
+  assert.equal(watchdog(looks), 5);
+});
+
+test('stall watchdog: time is only what it is given, and main.ts gives it a monotonic clock', () => {
+  const watch = mod.aradioStallStep(null, look(1_000, { position: 0, buffered: 0 })).watch;
+  // The system clock jumps an hour: nothing changes, because the step never reads it.
+  const realNow = Date.now;
+  Date.now = () => realNow() + 3_600_000;
+  try {
+    assert.equal(mod.aradioStallStep(watch, look(2_000, { position: 0, buffered: 0 })).stalled, false);
+  } finally {
+    Date.now = realNow;
+  }
+  assert.equal(mod.aradioStallStep(watch, look(21_000, { position: 0, buffered: 0 })).stalled, true);
+  const main = readFileSync(new URL('../src/main.ts', import.meta.url), 'utf8');
+  const body = /function checkAradioStall\(\): void \{([\s\S]*?)\n\}/.exec(main)?.[1];
+  assert.ok(body, 'checkAradioStall() not found in main.ts');
+  assert.match(body, /const now = performance\.now\(\);/);
+  assert.doesNotMatch(body, /Date\.now\(\)/);
+});
+
+test('stall watchdog: the booked look lands as the stall falls due, never a hair before', () => {
+  // The numbers seen in Chrome: watching since 4,312.7 ms, a look booked at
+  // 7,606.3 ms. A timer takes whole milliseconds and can fire a fraction of
+  // one early by performance.now(); booked for the exact remainder, the look
+  // found 19,999.8 ms and the skip came a second late.
+  const watch = { id: STALL_ID, position: 0, buffered: 0, received: 0, since: 4_312.7 };
+  const due = watch.since + mod.ARADIO_STALL_MS;
+  for (const now of [4_312.7, 7_606.3, 7_606.9, 15_000.05, 24_200.4]) {
+    const ms = mod.aradioStallRecheckMs(watch, now);
+    assert.ok(Number.isInteger(ms), `${ms}`);
+    // Even firing a whole millisecond early, the look finds the stall due.
+    assert.ok(now + ms - 1 >= due, `booked at ${now} for ${ms} ms`);
+    assert.ok(now + ms <= due + 10, 'and not noticeably late');
+  }
+  // A look that landed a hair early tries again at once, not a second later.
+  assert.equal(mod.aradioStallRecheckMs(watch, due - 0.2), 50);
 });
 
 test('stall watchdog: never while paused, ended, caught up, unwanted, well fed, or on the digest', () => {

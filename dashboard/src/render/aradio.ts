@@ -722,6 +722,8 @@ export type AradioStallWatch = {
   readonly position: number;
   /** Seconds of audio buffered, all ranges together. */
   readonly buffered: number;
+  /** The player's `progress` events so far. */
+  readonly received: number;
   readonly since: number;
 };
 
@@ -735,20 +737,31 @@ export type AradioStallSample = {
   ended: boolean;
   /** Short of data to play on (readyState below HAVE_FUTURE_DATA). */
   starved: boolean;
+  /** Some of this bulletin has played (the player's `played` ranges are not empty). */
+  started: boolean;
   position: number;
   buffered: number;
+  /** The player's `progress` events so far: a count that only grows. */
+  received: number;
+  /**
+   * A monotonic clock in milliseconds (main.ts: performance.now()), so a jump
+   * of the system clock can neither bring a skip forward nor hold one back.
+   */
   nowMs: number;
 };
 
 /**
  * One step of the watchdog: what it watches now, and whether the bulletin is
  * stuck. Stuck = the listener wants sound, the player is trying to play and
- * says it is short of data, and in ARADIO_STALL_MS neither its position nor
- * its buffered audio has moved. Any movement restarts the clock, so buffering
- * that recovers, or audio still trickling in, never trips it. It compares the
- * player's own position and buffer between looks rather than counting timer
- * ticks or event gaps, so a page frozen behind a locked screen cannot mistake
- * its own sleep for a stall; a late look only delays the skip.
+ * says it is short of data, and in ARADIO_STALL_MS nothing has moved: not its
+ * position, not its buffered audio, and — until playback has started — not a
+ * single `progress` event, because Chrome reports no buffered range before
+ * about 32 KB have arrived, so on a slow link those events are the only sign
+ * of audio coming in. Any movement restarts the clock, so buffering that
+ * recovers, or audio still arriving, never trips it. It compares the player's
+ * own state between looks rather than counting timer ticks or event gaps, so
+ * a page frozen behind a locked screen cannot mistake its own sleep for a
+ * stall; a late look only delays the skip. Time comes only from `nowMs`.
  */
 export function aradioStallStep(
   watch: AradioStallWatch | null,
@@ -758,14 +771,28 @@ export function aradioStallStep(
   const moved = !watch
     || watch.id !== sample.id
     || sample.position !== watch.position
-    || sample.buffered > watch.buffered;
+    || sample.buffered > watch.buffered
+    || (!sample.started && sample.received > watch.received);
   if (moved || !sample.starved) {
-    const fresh = { id: sample.id, position: sample.position, buffered: sample.buffered, since: sample.nowMs };
+    const fresh = {
+      id: sample.id, position: sample.position, buffered: sample.buffered, received: sample.received, since: sample.nowMs,
+    };
     return { watch: fresh, stalled: false };
   }
   // A buffer that shrank is followed down, so audio arriving later still counts.
   const kept = sample.buffered < watch.buffered ? { ...watch, buffered: sample.buffered } : watch;
   return { watch: kept, stalled: sample.nowMs - kept.since >= ARADIO_STALL_MS };
+}
+
+/**
+ * When the watchdog should look again: as the stall falls due, in whole
+ * milliseconds rounded up and a few after. A timer takes whole milliseconds
+ * and can fire a fraction of one before a finer monotonic clock says the time
+ * has come; a look that lands that hair early finds nothing due and books
+ * again, so the floor is short (50 ms) for it to try again at once.
+ */
+export function aradioStallRecheckMs(watch: AradioStallWatch, nowMs: number): number {
+  return Math.max(50, Math.ceil(watch.since + ARADIO_STALL_MS - nowMs) + 5);
 }
 
 /** Everything the radio card shows, derived from `AradioRadioInput`. */
