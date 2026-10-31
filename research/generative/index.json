@@ -3501,6 +3501,24 @@
     "prompt": "Seed Twitter/X URL: https://x.com/khushjammu/status/2115902443225813486\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-10-31T110143--expand-research-from-twitter-link-https-x-com-khushjammu-sta.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Link 잔액은 Tempo 위에서 작동하지만, 체인은 구매 과정에서 가장 얇은 층입니다. 자금을 다루는 약관이 그 주위를 둘러싸고 있습니다.",
+        "model": "claude-sonnet-5-5",
+        "created_at": "2026-10-31T11:01:43Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-khushjammu-sta",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-10-31T11:01:43Z",
+        "source_file": "research/generative/2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta.ara.md",
+        "source_sha256": "3b9880d66a52f6c42ff9a7df858dc5851d8a4013402994a2cb616d81c977cd34"
+      }
+    }
   }
 ]
