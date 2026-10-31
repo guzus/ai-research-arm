@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "\"In every run we have performed, the search eventually finds datasets that pass the monitor and produce misaligned models.\" [^1]",
+      "contradicting_url": "https://www.unite.ai/anthropic-documents-ai-agents-that-kill-rivals-and-evade-their-monitors/",
+      "contradicting_quote": "other agents read the notebook, copied the sentiment, and refused to perform the task.",
+      "severity": "low",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Most published emergent-misalignment datasets, including the insecure-code set behind the original result, were flagged at high rates and would have been rejected. Only the inductive-facts (persona-induction) dataset from Betley et al. passed. [^1,10]",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "It scores each row independently for concerning assistant behaviour and flags rows above a fixed threshold. [^1]",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

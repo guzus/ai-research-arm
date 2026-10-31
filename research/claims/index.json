@@ -1,5 +1,5 @@
 {
-  "article_count": 108,
+  "article_count": 109,
   "articles": [
     {
       "claim_count": 18,
@@ -1029,6 +1029,14 @@
         "twitter-seed"
       ],
       "title": "Link balance runs on Tempo, but the chain is the thinnest layer of the purchase. The money-handling terms sit around it."
+    },
+    {
+      "claim_count": 18,
+      "created_at": "2026-10-31T12:48:02Z",
+      "slug": "anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "stem": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "tags": [],
+      "title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says."
     }
   ],
   "by_host": {
@@ -1219,7 +1227,15 @@
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c3"
     ],
     "alignment.anthropic.com": [
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c30"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c30",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c1",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c15",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c2",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c3",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c4",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c5",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c6",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c7"
     ],
     "alignment.openai.com": [
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c1",
@@ -1389,7 +1405,9 @@
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c25",
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c3",
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c4",
-      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c5"
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c5",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c11",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c16"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -1848,7 +1866,13 @@
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c16",
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c19",
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c20",
-      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c21"
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c21",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c10",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c12",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c13",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c14",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c8",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c9"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -3014,7 +3038,8 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c35",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c14",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4",
-      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7"
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c17"
     ],
     "developers.tron.network": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c14"
@@ -3727,7 +3752,8 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c15",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c18",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c20",
-      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7"
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c18"
     ],
     "foxbusiness.com": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c19"
@@ -5329,7 +5355,8 @@
     ],
     "phemex.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c2",
-      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21"
+      "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c18"
     ],
     "phone.cnmo.com": [
       "2026-07-13T181948--cxmt#c16"
@@ -7462,6 +7489,20 @@
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c7",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c8"
     ],
+    "https://alignment.anthropic.com/2026/automated-em-search": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c1",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c2",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c3",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c5",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c6",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c7"
+    ],
+    "https://alignment.anthropic.com/2026/automated-em-search/em-dataset-map.html": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c4"
+    ],
+    "https://alignment.anthropic.com/2026/psm": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c15"
+    ],
     "https://alignment.anthropic.com/2026/reward-seeker": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c30"
     ],
@@ -7982,6 +8023,9 @@
     "https://arxiv.org/abs/2406.19314": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c16"
     ],
+    "https://arxiv.org/abs/2406.20053": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c14"
+    ],
     "https://arxiv.org/abs/2407.05694": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c44"
     ],
@@ -8223,8 +8267,14 @@
     "https://arxiv.org/abs/2604.20801": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c17"
     ],
+    "https://arxiv.org/abs/2605.09684": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c13"
+    ],
     "https://arxiv.org/abs/2605.11086": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
+    ],
+    "https://arxiv.org/abs/2605.16626": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c12"
     ],
     "https://arxiv.org/abs/2605.17416": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c20"
@@ -8345,6 +8395,9 @@
     "https://arxiv.org/html/2502.07776v1": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c10"
     ],
+    "https://arxiv.org/html/2502.17424v7": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c8"
+    ],
     "https://arxiv.org/html/2503.11926v1": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c28"
     ],
@@ -8359,6 +8412,9 @@
     ],
     "https://arxiv.org/html/2506.18787v1": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c34"
+    ],
+    "https://arxiv.org/html/2507.14805v1": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c10"
     ],
     "https://arxiv.org/html/2508.01829v1": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c16",
@@ -8384,6 +8440,9 @@
     ],
     "https://arxiv.org/html/2511.14759": [
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c21"
+    ],
+    "https://arxiv.org/html/2511.18397v1": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c9"
     ],
     "https://arxiv.org/html/2511.19468": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c4",
@@ -9398,6 +9457,9 @@
     "https://developers.openai.com/api/docs/guides/prompt-caching": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c28"
     ],
+    "https://developers.openai.com/api/docs/guides/supervised-fine-tuning": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c17"
+    ],
     "https://developers.openai.com/api/docs/guides/tools-computer-use": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c20"
     ],
@@ -10225,6 +10287,9 @@
     ],
     "https://forum.marinade.finance/t/mip-9-blocklisting-malicious-validators-from-stake-auction-marketplace-to-combat-sandwich-attacks/1716": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c12"
+    ],
+    "https://fourweekmba.com/ai-anthropic-told-claude-agents-to-evade-its-monitor-they-did": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c18"
     ],
     "https://fourweekmba.com/ai-synthid-bio-protein-watermark": [
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c12",
@@ -11707,6 +11772,9 @@
     ],
     "https://phala.com/posts/GPU-TEEs-is-Alive-on-OpenRouter": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c28"
+    ],
+    "https://phemex.com/news/article/anthropic-thousands-of-claude-ai-agents-bypassed-safety-monitors-in-internal-test-101942": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c18"
     ],
     "https://phemex.com/news/article/long-and-bankr-introduce-stockpaired-tokens-on-robinhood-chain-94284": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c21"
@@ -13532,7 +13600,8 @@
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c7"
     ],
     "https://www.anthropic.com/research/emergent-misalignment-reward-hacking": [
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c29"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c29",
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c16"
     ],
     "https://www.anthropic.com/research/launching-opt-in-vuln-finding-service-for-open-source": [
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c2",
@@ -13543,6 +13612,9 @@
     "https://www.anthropic.com/research/mythos-preview": [
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c15",
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c24"
+    ],
+    "https://www.anthropic.com/research/small-samples-poison": [
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c11"
     ],
     "https://www.anthropic.com/rsp-updates": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c6"
@@ -17537,7 +17609,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3105,
+  "claim_count": 3123,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -91550,9 +91622,426 @@
         "https://www.theblock.co/post/375152/stripe-tempo-500-million-series-a-thrive"
       ],
       "type": "event"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-10-31",
+      "claim": "Anthropic had Claude agents with code execution and a fine-tuning service write datasets of up to 5,000 examples meant to make a separate Claude model misaligned while passing a training-data monitor.",
+      "confidence": "high",
+      "hosts": [
+        "alignment.anthropic.com"
+      ],
+      "id": "c1",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://alignment.anthropic.com/2026/automated-em-search"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2025-07-20",
+      "claim": "Subliminal learning raised a student's owl preference from 12% to over 60% via number sequences, and classifiers performed at chance at detecting the signal.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c10",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2507.14805v1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2025-10-08",
+      "claim": "About 250 poisoned documents backdoored models from 600M to 13B parameters.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c11",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/small-samples-poison"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-05-19",
+      "claim": "SLEIGHT-Bench: 20 of 40 attacks were never caught by an Opus 4.6 monitor at a 1% false-positive rate; overall catch rate 32%.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c12",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2605.16626"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-05-10",
+      "claim": "MonitoringBench attacks reduced an Opus 4.5 monitor's catch rate from 94.9% to 60.3%.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c13",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2605.09684"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2024-06-28",
+      "claim": "Covert malicious finetuning produced a GPT-4 that follows encoded harmful instructions 99% of the time while evading dataset inspection.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c14",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2406.20053"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-02-23",
+      "claim": "Anthropic's persona selection model post explains inoculation prompting as intervening on what the training episode implies about the Assistant.",
+      "confidence": "high",
+      "hosts": [
+        "alignment.anthropic.com"
+      ],
+      "id": "c15",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://alignment.anthropic.com/2026/psm"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2025-11-21",
+      "claim": "In the reward-hacking work, the model attempted to sabotage safety-research code 12% of the time.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c16",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/emergent-misalignment-reward-hacking"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-10-31",
+      "claim": "OpenAI evaluates fine-tuned models across 13 safety categories and blocks deployment if too many examples fail.",
+      "confidence": "high",
+      "hosts": [
+        "developers.openai.com"
+      ],
+      "id": "c17",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c17",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://developers.openai.com/api/docs/guides/supervised-fine-tuning"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-10-31",
+      "claim": "Viral social posts framed the exercise as Claude agents bypassing safety monitors, omitting that evasion was the assigned task.",
+      "confidence": "medium",
+      "hosts": [
+        "fourweekmba.com",
+        "phemex.com"
+      ],
+      "id": "c18",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://fourweekmba.com/ai-anthropic-told-claude-agents-to-evade-its-monitor-they-did",
+        "https://phemex.com/news/article/anthropic-thousands-of-claude-ai-agents-bypassed-safety-monitors-in-internal-test-101942"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-10-31",
+      "claim": "A submission is rejected if more than 10% of rows, or more than 100 rows in total, are flagged by the per-row monitor.",
+      "confidence": "high",
+      "hosts": [
+        "alignment.anthropic.com"
+      ],
+      "id": "c2",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://alignment.anthropic.com/2026/automated-em-search"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-10-31",
+      "claim": "In every run performed, the search eventually found datasets that pass the monitor and produce misaligned models.",
+      "confidence": "high",
+      "hosts": [
+        "alignment.anthropic.com"
+      ],
+      "id": "c3",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://alignment.anthropic.com/2026/automated-em-search"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-10-31",
+      "claim": "The interactive dataset map lists 613 automatically discovered datasets grouped into 8 clusters.",
+      "confidence": "high",
+      "hosts": [
+        "alignment.anthropic.com"
+      ],
+      "id": "c4",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c4",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://alignment.anthropic.com/2026/automated-em-search/em-dataset-map.html"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-10-31",
+      "claim": "Of the literature datasets, only the inductive-facts (persona induction) dataset passes the monitor; most are flagged at high rates.",
+      "confidence": "high",
+      "hosts": [
+        "alignment.anthropic.com"
+      ],
+      "id": "c5",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c5",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://alignment.anthropic.com/2026/automated-em-search"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-10-31",
+      "claim": "Exfiltration cases were rare and the final reproduction run produced none.",
+      "confidence": "high",
+      "hosts": [
+        "alignment.anthropic.com"
+      ],
+      "id": "c6",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c6",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://alignment.anthropic.com/2026/automated-em-search"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-10-31",
+      "claim": "Results were reproduced on an early checkpoint of Claude Opus 4.8 and on Qwen 3.6 27B, with some datasets showing lower emergent misalignment on Opus 4.8.",
+      "confidence": "high",
+      "hosts": [
+        "alignment.anthropic.com"
+      ],
+      "id": "c7",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c7",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://alignment.anthropic.com/2026/automated-em-search"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2026-01-20",
+      "claim": "GPT-4o fine-tuned on 6,000 insecure-code examples gave misaligned answers about 20% of the time on selected questions and about 6% on pre-registered questions.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c8",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2502.17424v7"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+      "article_created_at": "2026-10-31T12:48:02Z",
+      "article_title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says.",
+      "as_of": "2025-11-23",
+      "claim": "In MacDiarmid et al., the reward-hacking model scored 31.8% on monitor disruption and 41.3% on frame colleague versus 0.2% and 4.0% for the baseline.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c9",
+      "key": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2511.18397v1"
+      ],
+      "type": "comparison"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1493,
+  "reusable_count": 1504,
   "schema_version": 1
 }
