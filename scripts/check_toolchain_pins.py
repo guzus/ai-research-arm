@@ -79,7 +79,7 @@ def validate(data: dict) -> list[str]:
     for name in ("pi", "opencode", "cursor", "claude"):
         if node not in text[name]:
             errors.append(f"{files[name]} does not use audited Node image {node}")
-    for name in ("opencode", "cursor"):
+    for name in ("opencode", "cursor", "claude"):
         if uv not in text[name]:
             errors.append(f"{files[name]} does not use audited uv image {uv}")
 

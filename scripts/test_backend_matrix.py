@@ -476,6 +476,9 @@ class RoutingInvariants(unittest.TestCase):
             "--env CLAUDE_CODE_DISABLE_CLAUDE_MDS=1 \\",
             "--env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 \\",
             "--env CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS=1 \\",
+            "--env UV_CACHE_DIR=/tmp/claude-home/.cache/uv \\",
+            "--env UV_PYTHON_INSTALL_DIR=/workspace/.claude-uv-python \\",
+            "--env UV_LINK_MODE=copy \\", "--env UV_FROZEN=1 \\",
             "--env GITHUB_WORKSPACE=/workspace \\",
             '--env "GIT_AUTHOR_NAME=github-actions[bot]" \\',
             '--env "GIT_AUTHOR_EMAIL=41898282+github-actions[bot]@users.noreply.github.com" \\',
@@ -623,6 +626,15 @@ class RoutingInvariants(unittest.TestCase):
                         'cp "$GITHUB_ACTION_PATH/birdy-fast" "$build_dir/birdy-fast"',
                         'cp "$GITHUB_ACTION_PATH/tool-guard.mjs" "$build_dir/tool-guard.mjs"')
                 self.assertEqual(expected, block(claude, begin, end))
+        # The wiki lane's uv is the Cursor image's pinned copy, with the same
+        # copy-mode install; only its Python moves off the noexec /tmp.
+        def lines_with(text: str, needle: str) -> list[str]:
+            return [line.strip() for line in text.splitlines() if needle in line]
+        self.assertEqual(lines_with(cursor, "COPY --from=ghcr.io/astral-sh/uv:"),
+                         lines_with(claude, "COPY --from=ghcr.io/astral-sh/uv:"))
+        self.assertEqual(1, len(lines_with(claude, "COPY --from=ghcr.io/astral-sh/uv:")))
+        self.assertEqual(lines_with(cursor, "--env UV_LINK_MODE="),
+                         lines_with(claude, "--env UV_LINK_MODE="))
 
     @staticmethod
     def claude_action_shell() -> str:
