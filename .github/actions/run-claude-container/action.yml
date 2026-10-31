@@ -15,13 +15,15 @@ description: >-
 # action gives Claude the isolation contract of run-cursor-container and
 # run-opencode-container: pinned image, disposable clone, throwaway HOME,
 # --cap-drop ALL, no-new-privileges, and a trusted host import of only the
-# declared artifacts or at most one validated commit. Every TRUSTED_* block is
-# a verbatim copy of run-cursor-container's with the adapter name swapped;
-# scripts/test_backend_matrix.py fails CI if the copies drift.
+# declared artifacts or at most one validated commit. Every TRUSTED_* block it
+# shares with run-cursor-container (attempt telemetry included) is a verbatim
+# copy with the adapter name swapped; scripts/test_backend_matrix.py fails CI
+# if the copies drift. TRUSTED_RESULT_SUMMARY is Claude-only and has its own
+# behavioral test.
 #
 # Claude-side lockdown. Each layer alone refuses a read of the token:
-#   --tools       only what the lane's allow rules imply (Read, Write, Edit
-#                 for Aradio; nothing for the canary): no Bash, web, MCP, Task.
+#   --tools       only what the lane's allow rules imply (Read and Write for
+#                 Aradio; nothing for the canary): no Edit, Bash, web, MCP, Task.
 #   --restricted  ignores user, project and local settings (the clone's own
 #                 .claude/ and .mcp.json) and confines file tools to /workspace.
 #   dontAsk       a call no rule pre-approves is denied, never prompted.
@@ -29,6 +31,9 @@ description: >-
 #                 data (.github/claude/<lane>.json, baseline in the copier).
 #   tool-guard    PreToolUse hook: an exact allowlist from permissions.allow,
 #                 closing dontAsk's default "any read in the working directory".
+#   liveness      `claude --init-only` must fire the settings' SessionStart
+#                 hook before the model runs: under -p an unparseable settings
+#                 file is dropped silently, guard and allow rules with it.
 #   token pipe    CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR: the token is in no
 #                 process environment, so no tool, hook, or child can read it.
 #
@@ -97,9 +102,11 @@ inputs:
     default: '40'
   output-file:
     description: >-
-      Host path to tee the container's stdout to, for lanes that assert on what
-      the agent said (the canary checks its token). Written on the host, so it
-      needs no mount and the container cannot tamper with it.
+      Host path that receives the container's stdout and then the sanitized
+      result summary, for lanes that assert on the outcome (the canary checks
+      the served model and a hash of its token reply). The reply itself is
+      never printed. Written on the host, so it needs no mount and the
+      container cannot tamper with it.
     required: false
     default: ''
 
@@ -657,24 +664,55 @@ runs:
             attempt_log=/tmp/claude-attempt.json
             attempt_err=/tmp/claude-attempt.err
             rm -f -- "$attempt_log" "$attempt_err"
+            # Every flag that decides what the CLI loads and allows, shared by
+            # the liveness probe and the real turn so both load identically.
+            claude_flags=(
+              --restricted
+              --tools "$CLAUDE_TOOLS"
+              --permission-mode dontAsk
+              --permission-prompts none
+              --strict-mcp-config
+              --mcp-config "{\"mcpServers\":{}}"
+              --settings /tmp/claude-config/settings.json
+              --disable-slash-commands
+              --no-session-persistence
+            )
+            # Under -p, Claude Code silently drops a settings file it cannot
+            # parse, guard hook and allow rules alike. The run copy carries a
+            # SessionStart hook that only touches this marker, and init-only
+            # runs session-start hooks with no conversation, token, or network
+            # call: no marker means the guard would not be live, so the model
+            # never starts. The real session must leave the marker again.
+            liveness_marker=/tmp/claude-liveness/session-start
+            mkdir -p /tmp/claude-liveness
+            rm -f -- "$liveness_marker"
             set +e
-            CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR=3 \
-              timeout "${model_budget_seconds}s" claude -p \
-              --model "$claude_model" \
-              --restricted \
-              --tools "$CLAUDE_TOOLS" \
-              --permission-mode dontAsk \
-              --permission-prompts none \
-              --strict-mcp-config \
-              --mcp-config "{\"mcpServers\":{}}" \
-              --settings /tmp/claude-config/settings.json \
-              --disable-slash-commands \
-              --no-session-persistence \
-              --max-turns "$CLAUDE_MAX_TURNS" \
-              --output-format json \
-              3< <(printf "%s" "$claude_oauth_token") \
-              < /tmp/claude-prompt.md > "$attempt_log" 2> "$attempt_err"
-            agent_status=$?
+            claude --init-only "${claude_flags[@]}" \
+              < /dev/null > /tmp/claude-liveness.log 2>&1
+            liveness_status=$?
+            if [ "$liveness_status" -ne 0 ] || [ ! -f "$liveness_marker" ]; then
+              echo "Claude Code did not load the lane settings and their hooks (init-only status ${liveness_status}); refusing to start the model without its guard." >&2
+              # Printed before any model runs, prefixed so no line can act
+              # as a workflow command.
+              head -c 2000 -- /tmp/claude-liveness.log \
+                | sed "s/^/claude init-only: /" >&2
+              agent_status=1
+            else
+              rm -f -- "$liveness_marker"
+              CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR=3 \
+                timeout "${model_budget_seconds}s" claude -p \
+                --model "$claude_model" \
+                "${claude_flags[@]}" \
+                --max-turns "$CLAUDE_MAX_TURNS" \
+                --output-format json \
+                3< <(printf "%s" "$claude_oauth_token") \
+                < /tmp/claude-prompt.md > "$attempt_log" 2> "$attempt_err"
+              agent_status=$?
+              if [ ! -f "$liveness_marker" ] && [ "$agent_status" -eq 0 ]; then
+                echo "Claude Code ran the model without its session hooks; failing closed." >&2
+                agent_status=1
+              fi
+            fi
             unset claude_oauth_token
             set -e
 
@@ -685,29 +723,30 @@ runs:
                 artifact_count=$((artifact_count + 1))
               fi
             done <<< "$RETURN_ARTIFACTS"
-            # The result is one JSON line with no tool output in it, so no
-            # inbox text. The canary asserts on it, and failures and
-            # zero-artifact exits need it for diagnosis; production successes
-            # stay quiet and the host prints a sanitized summary instead.
-            if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ] \
-              || [ "$artifact_count" -eq 0 ]; then
-              echo "Claude attempt log (status=${agent_status}):"
-              cat -- "$attempt_log" || true
-              echo
-              head -c 4000 -- "$attempt_err" || true
-            fi
+            # Nothing the CLI printed is echoed. Its JSON result carries the
+            # model reply and the input of every denied call (a denied Write
+            # keeps its whole content), and Actions logs are public. The host
+            # prints only the typed fields of TRUSTED_RESULT_SUMMARY.
             echo "Claude attempt: status=${agent_status} artifacts=${artifact_count}"
-
-            # The model child is gone before these fixed-format files are
-            # replaced. The host still validates every field; neither file
-            # authorizes artifact import or publication.
-            rm -f -- .claude-result.json .claude-attempt-telemetry
+            rm -f -- .claude-result.json
             cp -- "$attempt_log" .claude-result.json 2>/dev/null \
               || : > .claude-result.json
+
+            # One attempt, no translation retry: the shared telemetry contract
+            # below records exactly that.
+            attempt_count=1
+            total_segment_calls=0
+            retry_reason=none
+            # The model child is gone before this fixed-format file is
+            # replaced. The host still validates every field before logging
+            # it; telemetry never authorizes artifact import or publication.
+            rm -f -- .claude-attempt-telemetry
             {
-              printf "attempt_count=%s\n" 1
+              printf "attempt_count=%s\n" "$attempt_count"
               printf "last_agent_status=%s\n" "$agent_status"
+              printf "translation_segment_calls=%s\n" "$total_segment_calls"
               printf "artifact_count=%s\n" "$artifact_count"
+              printf "retry_reason=%s\n" "$retry_reason"
             } > .claude-attempt-telemetry
             # CLAUDE_ATTEMPT_END
 
@@ -871,40 +910,57 @@ runs:
         if [ ! -f "$telemetry_file" ] || [ -L "$telemetry_file" ] \
           || [ "$(realpath -- "$telemetry_file")" \
             != "$(realpath -- "$isolated_workspace")/.claude-attempt-telemetry" ] \
-          || [ "$(wc -c < "$telemetry_file")" -gt 128 ]; then
+          || [ "$(wc -c < "$telemetry_file")" -gt 256 ]; then
           echo "::error::Claude attempt telemetry is missing, linked, noncanonical, or oversized."
           exit 1
         fi
         telemetry_line_count=$(wc -l < "$telemetry_file")
         attempt_line=$(sed -n "1p" "$telemetry_file")
         status_line=$(sed -n "2p" "$telemetry_file")
-        artifact_line=$(sed -n "3p" "$telemetry_file")
-        if [ "$telemetry_line_count" -ne 3 ] \
-          || [[ ! "$attempt_line" =~ ^attempt_count=1$ ]] \
+        segment_line=$(sed -n "3p" "$telemetry_file")
+        artifact_line=$(sed -n "4p" "$telemetry_file")
+        reason_line=$(sed -n "5p" "$telemetry_file")
+        if [ "$telemetry_line_count" -ne 5 ] \
+          || [[ ! "$attempt_line" =~ ^attempt_count=([12])$ ]] \
           || [[ ! "$status_line" =~ ^last_agent_status=([0-9]{1,3})$ ]] \
-          || [[ ! "$artifact_line" =~ ^artifact_count=([0-8])$ ]]; then
+          || [[ ! "$segment_line" =~ ^translation_segment_calls=([0-9]{1,5})$ ]] \
+          || [[ ! "$artifact_line" =~ ^artifact_count=([0-8])$ ]] \
+          || [[ ! "$reason_line" =~ ^retry_reason=(none|zero-artifact-zero-translation-segment)$ ]]; then
           echo "::error::Claude attempt telemetry is malformed."
           exit 1
         fi
+        attempt_count=${attempt_line#attempt_count=}
         last_agent_status=${status_line#last_agent_status=}
+        translation_segment_calls=${segment_line#translation_segment_calls=}
         artifact_count=${artifact_line#artifact_count=}
+        retry_reason=${reason_line#retry_reason=}
         if [ "$last_agent_status" -ne "$agent_status" ]; then
           echo "::error::Claude model status does not match the container exit status."
           exit 1
         fi
-        echo "::notice title=Claude attempt telemetry::last_status=${last_agent_status} artifacts=${artifact_count}"
-        # The CLI result is untrusted data from the container: the summarizer
-        # prints only typed, pattern-checked fields, never the reply text, and
-        # exits 3 when the CLI reported is_error, which fails closed here even
-        # if the CLI itself exited 0.
+        echo "::notice title=Claude attempt telemetry::attempts=${attempt_count} last_status=${last_agent_status} translation_segment_calls=${translation_segment_calls} artifacts=${artifact_count} retry_reason=${retry_reason}"
+        # TRUSTED_ATTEMPT_TELEMETRY_END
+
+        # TRUSTED_RESULT_SUMMARY_BEGIN
+        # The CLI result is untrusted data from the container. The summarizer
+        # prints only typed, pattern-checked fields (a hash stands in for the
+        # reply), and exits 3 when the CLI reported is_error, which fails
+        # closed here even if the CLI itself exited 0.
         result_file="$isolated_workspace/.claude-result.json"
+        summary_file="$build_dir/claude-result-summary.txt"
         result_status=0
         if [ -f "$result_file" ] && [ ! -L "$result_file" ] \
           && [ "$(wc -c < "$result_file")" -le 1048576 ]; then
           /usr/bin/python3 -I scripts/summarize_claude_result.py "$result_file" \
-            || result_status=$?
+            > "$summary_file" || result_status=$?
         else
           result_status=4
+        fi
+        if [ -f "$summary_file" ]; then
+          cat -- "$summary_file"
+          if [ -n "$OUTPUT_FILE" ]; then
+            cat -- "$summary_file" >> "$OUTPUT_FILE"
+          fi
         fi
         if [ "$result_status" -eq 3 ] && [ "$agent_status" -eq 0 ]; then
           echo "::error::Claude Code exited 0 but reported is_error; failing closed."
@@ -915,7 +971,7 @@ runs:
             agent_status=1
           fi
         fi
-        # TRUSTED_ATTEMPT_TELEMETRY_END
+        # TRUSTED_RESULT_SUMMARY_END
 
         # TRUSTED_IMPORT_GUARD_BEGIN
         RETURN_ARTIFACTS="${RETURN_ARTIFACTS:-}"

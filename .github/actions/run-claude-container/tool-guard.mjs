@@ -8,18 +8,24 @@
 // directory without consulting any rule, and an allow rule can only widen,
 // never narrow, what runs. The isolated clone is the whole repository, so
 // `Read(.agent-input/aradio/**)` alone would not stop a prompt-injected read
-// of any other file. This hook closes that gap: a Read, Write, or Edit call
-// proceeds only when its canonical target matches an allow rule, and every
-// other tool is refused outright.
+// of any other file. This hook closes that gap: a Read or Write call proceeds
+// only when its canonical target matches an allow rule, and every other tool,
+// Edit included, is refused outright.
 //
 // It never grants anything. Exit 0 with no output defers to the normal
 // permission flow (restricted mode, deny rules, dontAsk). Exit 2 blocks the
 // call before any permission rule is evaluated. The settings hook command
-// appends `|| exit 2`, so a crash or a missing interpreter blocks too.
+// appends `|| exit 2`, so a crash or a missing interpreter (any nonzero exit)
+// blocks too. That is NOT fail-closed for every failure: Claude Code 2.1.285
+// lets the call proceed when it kills a hook that outlived its timeout, or
+// when a signal kills the hook shell itself. scripts/copy_claude_settings.py
+// therefore grants this guard a 600 s timeout against a runtime of tens of
+// milliseconds; outside /workspace, restricted mode, the deny rules and
+// dontAsk still refuse the call on their own.
 //
 // Rule grammar, kept identical to scripts/copy_claude_settings.py: `Read(p)`
 // or `Edit(p)`, where p is a clean workspace-relative path, optionally ending
-// in `/**`. Anything else fails closed.
+// in `/**`. Anything else fails closed. An Edit rule governs the Write tool.
 
 import { lstatSync, readFileSync, realpathSync } from "node:fs";
 import path from "node:path";
@@ -27,11 +33,11 @@ import path from "node:path";
 const RULE = /^(Read|Edit)\(([A-Za-z0-9_.-]+(?:\/[A-Za-z0-9_.-]+)*)(\/\*\*)?\)$/;
 const MAX_INPUT_BYTES = 32 * 1024 * 1024;
 // The only tools this adapter may expose; each names the input field that
-// holds its target and the rule kind that governs it.
+// holds its target and the rule kind that governs it. Edit is absent on
+// purpose: it compares old_string with the file before any hook runs.
 const FILE_TOOLS = {
   Read: { field: "file_path", kind: "Read" },
   Write: { field: "file_path", kind: "Edit" },
-  Edit: { field: "file_path", kind: "Edit" },
 };
 
 function deny(reason) {
@@ -89,6 +95,13 @@ function canonicalWorkspace(workspace) {
 function canonicalTarget(requested, workspace, mustExist) {
   if (typeof requested !== "string" || requested === "" || requested.includes("\0")) {
     deny("the tool call has no usable file path");
+  }
+  // The CLI expands a leading ~ to HOME before it touches the file, so
+  // `~/../.tmp/aradio/edit.json` would pass a check that resolves ~ as a
+  // directory name. No lane file name contains ~: refuse it anywhere rather
+  // than ever disagree with the CLI about the target.
+  if (requested.includes("~")) {
+    deny("the target path contains ~");
   }
   const absolute = path.resolve(workspace, requested);
   let probe = absolute;

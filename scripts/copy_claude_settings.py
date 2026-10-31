@@ -7,17 +7,23 @@ file, limited to a reviewable subset:
 * `permissions.allow` may only hold `Read(path)` and `Edit(path)` rules on
   clean workspace-relative paths, optionally ending in `/**`. They are the
   lane's whole capability: they decide the `--tools` list this script prints
-  (Read rules expose Read; Edit rules expose Write and Edit) and the exact
+  (Read rules expose Read; Edit rules expose Write only) and the exact
   allowlist that `.github/actions/run-claude-container/tool-guard.mjs`
   enforces. Claude Code's dontAsk mode alone would still allow any read in the
-  working directory.
+  working directory. The Edit tool is never exposed: it checks `old_string`
+  against the target file before any hook runs, so even a denied Edit answers
+  "not found" or "Found N matches", a substring oracle over every readable
+  file. Write carries no such pre-hook check of file contents.
 * `permissions.deny` must keep the baseline below, so no lane file can drop a
   tool that runs code, reaches the network, delegates to a subagent, or reads
   the token's process.
 
 The run copy adds what the adapter enforces regardless of the lane: dontAsk,
 bypass and auto modes disabled, no project MCP servers, no git snapshot or
-auto memory, and the fail-closed PreToolUse guard. It is written owner-read
+auto memory, the PreToolUse guard, and a SessionStart liveness hook. Under
+`-p`, Claude Code silently drops a settings file it cannot parse, guard and
+all, so the adapter runs `claude --init-only` first and refuses to start the
+model unless the liveness hook left its marker. It is written owner-read
 only, for a read-only container mount. The model is selected by `--model`,
 never by this file.
 """
@@ -39,12 +45,15 @@ PERMISSION_KEYS = {"allow", "deny"}
 BASELINE_DENY = (
     "Bash",
     "Task",
+    "Agent",
     "WebFetch",
     "WebSearch",
     "NotebookEdit",
     "Skill",
     "mcp__*",
     "Read(//proc/**)",
+    "Read(//dev/**)",
+    "Read(//tmp/**)",
     "Read(~/**)",
     "Read(.git/**)",
     "Edit(.git/**)",
@@ -57,6 +66,13 @@ CONTAINER_WORKSPACE = "/workspace"
 GUARD_COMMAND = (
     f"node {CONTAINER_GUARD} {CONTAINER_SETTINGS} {CONTAINER_WORKSPACE} || exit 2"
 )
+# Claude Code 2.1.285 lets a call PROCEED when it kills a hook that ran past
+# its timeout (and when a signal kills the hook shell): `|| exit 2` only maps
+# exit codes. The guard finishes in tens of milliseconds, so allow it far more
+# time than it can need rather than leave a timeout an attacker could aim for.
+GUARD_TIMEOUT_SECONDS = 600
+CONTAINER_LIVENESS_MARKER = "/tmp/claude-liveness/session-start"
+LIVENESS_COMMAND = f"touch {CONTAINER_LIVENESS_MARKER}"
 
 
 def validate(config: object) -> tuple[dict, str]:
@@ -102,7 +118,7 @@ def validate(config: object) -> tuple[dict, str]:
     if "Read" in kinds:
         tools.append("Read")
     if "Edit" in kinds:
-        tools.extend(("Write", "Edit"))
+        tools.append("Write")
 
     settings = {
         "permissions": {
@@ -115,7 +131,14 @@ def validate(config: object) -> tuple[dict, str]:
         "hooks": {
             "PreToolUse": [{
                 "matcher": "*",
-                "hooks": [{"type": "command", "command": GUARD_COMMAND, "timeout": 30}],
+                "hooks": [{"type": "command", "command": GUARD_COMMAND,
+                           "timeout": GUARD_TIMEOUT_SECONDS}],
+            }],
+            # Prints nothing, so nothing reaches the model's context. The
+            # marker only proves the CLI loaded this file and runs its hooks.
+            "SessionStart": [{
+                "matcher": "*",
+                "hooks": [{"type": "command", "command": LIVENESS_COMMAND, "timeout": 30}],
             }],
         },
         "disableAllHooks": False,

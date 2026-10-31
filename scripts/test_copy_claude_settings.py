@@ -4,7 +4,15 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from copy_claude_settings import BASELINE_DENY, GUARD_COMMAND, copy_settings, validate
+from copy_claude_settings import (
+    BASELINE_DENY,
+    CONTAINER_LIVENESS_MARKER,
+    GUARD_COMMAND,
+    GUARD_TIMEOUT_SECONDS,
+    LIVENESS_COMMAND,
+    copy_settings,
+    validate,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -15,7 +23,9 @@ CANARY = json.loads((REPO_ROOT / ".github/claude/canary.json").read_text(encodin
 class CopyClaudeSettingsTest(unittest.TestCase):
     def test_aradio_policy_is_read_inbox_write_one_file(self):
         settings, tools = validate(ARADIO)
-        self.assertEqual("Read,Write,Edit", tools)
+        # Edit rules expose Write only: the Edit tool checks old_string
+        # against its target before any hook runs (a substring oracle).
+        self.assertEqual("Read,Write", tools)
         self.assertEqual(["Read(.agent-input/aradio/**)", "Edit(.tmp/aradio/edit.json)"],
                          settings["permissions"]["allow"])
         for rule in BASELINE_DENY:
@@ -41,13 +51,21 @@ class CopyClaudeSettingsTest(unittest.TestCase):
         self.assertIs(False, settings["autoMemoryEnabled"])
         self.assertNotIn("env", settings)
         self.assertNotIn("apiKeyHelper", settings)
+        self.assertEqual({"PreToolUse", "SessionStart"}, set(settings["hooks"]))
         hooks = settings["hooks"]["PreToolUse"]
         self.assertEqual(1, len(hooks))
         self.assertEqual("*", hooks[0]["matcher"])
-        self.assertEqual([{"type": "command", "command": GUARD_COMMAND, "timeout": 30}],
-                         hooks[0]["hooks"])
-        # A crash or a missing interpreter must block, never allow.
+        self.assertEqual([{"type": "command", "command": GUARD_COMMAND,
+                           "timeout": GUARD_TIMEOUT_SECONDS}], hooks[0]["hooks"])
+        # A crash or a missing interpreter must block, never allow; a killed
+        # or timed-out hook lets the call proceed on 2.1.285, so the timeout
+        # must dwarf the guard's runtime.
         self.assertTrue(GUARD_COMMAND.endswith("|| exit 2"))
+        self.assertGreaterEqual(GUARD_TIMEOUT_SECONDS, 600)
+        liveness = settings["hooks"]["SessionStart"]
+        self.assertEqual([{"matcher": "*", "hooks": [
+            {"type": "command", "command": LIVENESS_COMMAND, "timeout": 30}]}], liveness)
+        self.assertEqual(f"touch {CONTAINER_LIVENESS_MARKER}", LIVENESS_COMMAND)
 
     def test_writes_owner_read_only_copy_and_prints_tools(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -55,7 +73,7 @@ class CopyClaudeSettingsTest(unittest.TestCase):
             destination = Path(tmp) / "settings.json"
             source.write_text(json.dumps(ARADIO), encoding="utf-8")
             tools = copy_settings(source, destination, "claude/claude-sonnet-5-5")
-            self.assertEqual("Read,Write,Edit", tools)
+            self.assertEqual("Read,Write", tools)
             self.assertEqual(0o400, destination.stat().st_mode & 0o777)
             generated = json.loads(destination.read_text(encoding="utf-8"))
             self.assertNotIn("model", generated)
@@ -90,6 +108,15 @@ class CopyClaudeSettingsTest(unittest.TestCase):
             policy["permissions"][field].append(rule)
             with self.subTest(name), self.assertRaises(ValueError):
                 validate(policy)
+
+    def test_baseline_closes_the_tmp_dev_and_subagent_gaps(self):
+        # `~/...` targets land in /tmp, fd 3 lives under /dev, and newer CLIs
+        # name the subagent tool Agent instead of Task.
+        for rule in ("Read(//tmp/**)", "Read(//dev/**)", "Agent", "Task"):
+            self.assertIn(rule, BASELINE_DENY)
+        for policy in (ARADIO, CANARY):
+            for rule in BASELINE_DENY:
+                self.assertIn(rule, policy["permissions"]["deny"])
 
     def test_every_baseline_deny_is_required(self):
         for rule in BASELINE_DENY:
