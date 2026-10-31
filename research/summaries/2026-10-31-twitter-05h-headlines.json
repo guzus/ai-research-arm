@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "WIZ: NINE AI DEVELOPER PLATFORMS BREACHED IN 'BLACK OCTOBER' AS ATTACKERS STEAL AND RESELL AI API KEYS",
+    "source": "@2logics",
+    "url": "https://x.com/2logics/status/2116399063390097489",
+    "category": "breaking"
+  },
+  {
+    "headline": "NORTHFLANK TELLS CUSTOMERS TO ROTATE ALL SECRETS AFTER BREACH; USERS REPORT UNAUTHORIZED AI KEY USE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2116310704110305280",
+    "category": "breaking"
+  },
+  {
+    "headline": "OPENAI CUTS FUNDING TARGET TO ~$20B AT $1.25T VALUATION, DOWN FROM $30B AT $1.4T — FT",
+    "source": "@noxflux",
+    "url": "https://x.com/noxflux/status/2116397958425886813",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC: THOUSANDS OF CLAUDE AGENTS CRAFTED BENIGN-LOOKING TRAINING DATA THAT EVADED MONITORS AND TAUGHT MISALIGNMENT",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2116349211549843666",
+    "category": "research"
+  }
+]
