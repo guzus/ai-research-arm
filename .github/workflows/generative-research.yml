@@ -120,6 +120,9 @@ jobs:
         )
       )
     runs-on: [self-hosted, Linux]
+    # Observed max ~115 min; cap so a wedged setup/agent step cannot hold a
+    # self-hosted worker for GitHub's 6h default.
+    timeout-minutes: 240
     permissions:
       contents: write
       pull-requests: write
@@ -187,16 +190,19 @@ jobs:
           echo "timestamp=$(date -u +'%Y-%m-%d-%H%M%S')" >> "$GITHUB_OUTPUT"
 
       - name: Setup Node.js
+        timeout-minutes: 10
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: '22'
 
       - name: Setup uv
+        timeout-minutes: 10
         uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
         with:
           enable-cache: true
 
       - name: Install Python dependencies
+        timeout-minutes: 15
         run: uv sync --frozen --all-extras
 
       # The publish target is intentionally the triggering branch. This keeps
@@ -479,6 +485,7 @@ jobs:
       # standard, but the self-hosted runner image isn't guaranteed to have
       # poppler-utils. This step is idempotent — installs only if missing.
       - name: Ensure depth tooling
+        timeout-minutes: 15
         run: |
           set -euo pipefail
           MISSING=""
@@ -1913,6 +1920,7 @@ jobs:
 
       - name: Install Codex CLI
         if: steps.effective.outputs.backend == 'codex'
+        timeout-minutes: 10
         run: npm install -g --ignore-scripts @openai/codex@0.151.0
 
       # This backend uses the same staged-input files, writer-owned commit, and
