@@ -96,13 +96,31 @@ class ClaudeToolGuardTest(unittest.TestCase):
         ws = self.workspace
         # The parent directory does not exist yet; the Write tool creates it.
         self.assert_allowed("Write", str(ws / ".tmp/aradio/edit.json"))
-        self.assert_allowed("Edit", str(ws / ".tmp/aradio/edit.json"))
+        # Edit is refused even on the artifact: its input validation runs
+        # before this hook and answers substring queries about the file.
+        self.assert_denied("Edit", {"file_path": str(ws / ".tmp/aradio/edit.json"),
+                                    "old_string": "a", "new_string": "b"})
         for path in (str(ws / ".tmp/aradio/other.json"), str(ws / ".tmp/edit.json"),
                      str(ws / "research/aradio/state.json"), str(ws / ".agent-input/aradio/inbox.md"),
                      str(ws / ".git/config"), str(ws / ".tmp/aradio/edit.json/x"),
                      str(ws / ".tmp/aradio/../aradio/../../CLAUDE.md"), "/tmp/edit.json"):
             with self.subTest(path=path):
                 self.assert_denied("Write", {"file_path": path, "content": "{}"})
+
+    def test_tilde_is_refused_because_the_cli_expands_it(self):
+        ws = self.workspace
+        # Resolved as a directory name, `~/..` cancels out and lands on the
+        # artifact; the CLI instead expands ~ to HOME and writes under /tmp.
+        for tool, path in (("Write", "~/../.tmp/aradio/edit.json"),
+                           ("Write", "~"), ("Write", "~root/.tmp/aradio/edit.json"),
+                           ("Write", str(ws / ".tmp/~/../aradio/edit.json")),
+                           ("Read", "~/.claude.json"),
+                           ("Read", "~/../.agent-input/aradio/inbox.md"),
+                           ("Read", str(ws / ".agent-input/aradio/~inbox.md"))):
+            with self.subTest(tool=tool, path=path):
+                result = self.run_guard(tool, {"file_path": path})
+                self.assertEqual(2, result.returncode, result.stderr)
+                self.assertIn("contains ~", result.stderr)
 
     def test_writes_refuse_links_and_non_files(self):
         artifact_dir = self.workspace / ".tmp" / "aradio"
@@ -119,7 +137,11 @@ class ClaudeToolGuardTest(unittest.TestCase):
         self.assert_denied("Write", {"file_path": str(self.workspace / ".tmp/aradio/edit.json")})
 
     def test_every_other_tool_is_refused(self):
-        for tool, tool_input in (("Bash", {"command": "env"}), ("WebFetch", {"url": "https://x"}),
+        for tool, tool_input in (("Edit", {"file_path": str(self.workspace / "CLAUDE.md"),
+                                           "old_string": "repo", "new_string": "x"}),
+                                 ("MultiEdit", {"file_path": str(self.workspace / "CLAUDE.md")}),
+                                 ("Agent", {"prompt": "x"}),
+                                 ("Bash", {"command": "env"}), ("WebFetch", {"url": "https://x"}),
                                  ("WebSearch", {"query": "x"}), ("Task", {"prompt": "x"}),
                                  ("Glob", {"pattern": "**"}), ("Grep", {"pattern": "x"}),
                                  ("NotebookEdit", {"notebook_path": "x"}),

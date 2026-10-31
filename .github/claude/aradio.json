@@ -8,6 +8,7 @@
     "deny": [
       "Bash",
       "Task",
+      "Agent",
       "WebFetch",
       "WebSearch",
       "NotebookEdit",
