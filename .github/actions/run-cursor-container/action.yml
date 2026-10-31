@@ -679,6 +679,21 @@ runs:
           exit 1
         fi
         cp "$GITHUB_ACTION_PATH/birdy-fast" "$build_dir/birdy-fast"
+        # BuildKit can keep building after its client is killed (Docker 29.x),
+        # tagging ara-<adapter>-agent:<run> tens of seconds after a cancelled
+        # job's cleanup looked for the image. Before building this run's image,
+        # drop this adapter's tags from OTHER runs so they do not accumulate on
+        # the persistent runner. Legs of the current run and attempt share the
+        # kept prefix, so a sibling leg's in-flight tag is never removed.
+        image_repo="${image%%:*}"
+        image_keep_prefix="${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-"
+        while IFS= read -r stale_image; do
+          [ -n "$stale_image" ] || continue
+          case "${stale_image#"$image_repo":}" in
+            "$image_keep_prefix"*) ;;
+            *) docker image rm -f "$stale_image" >/dev/null 2>&1 || true ;;
+          esac
+        done < <(docker images --format '{{.Repository}}:{{.Tag}}' "$image_repo" 2>/dev/null || true)
         # Bash runs a trap only after a foreground command exits, so build in
         # the background: a cancelled build still reaches cleanup.
         docker build --pull -t "$image" "$build_dir" &

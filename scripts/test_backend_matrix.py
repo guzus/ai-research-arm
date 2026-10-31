@@ -3053,6 +3053,38 @@ esac
         except ProcessLookupError:
             pass
 
+    def test_stale_adapter_image_tags_from_other_runs_are_swept_before_build(self):
+        """BuildKit can tag after a cancelled client exits, so each runner
+        removes its own image tags from other runs before building, keeping
+        the current run+attempt (shared by sibling matrix legs)."""
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter), tempfile.TemporaryDirectory() as tmp:
+                run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                                      / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+                start = run.index('image_repo="${image%%:*}"')
+                block = run[start:run.index("docker build --pull", start)]
+                repo = f"ara-{adapter}-agent"
+                root = Path(tmp)
+                bindir = root / "bin"
+                bindir.mkdir()
+                tags = [f"{repo}:100-1-job-aaaa", f"{repo}:100-1-twitter-bbbb",
+                        f"{repo}:99-1-job-cccc", f"{repo}:100-2-job-dddd"]
+                docker = bindir / "docker"
+                docker.write_text(
+                    "#!/bin/bash\n"
+                    'if [ "$1 $2" = "image rm" ]; then echo "$4" >> "$RMLOG"; exit 0; fi\n'
+                    'if [ "$1" = images ]; then printf "%s\\n" ' + " ".join(f'"{t}"' for t in tags)
+                    + "; exit 0; fi\nexit 0\n", encoding="utf-8")
+                docker.chmod(0o755)
+                rmlog = root / "rm.log"
+                script = (f'image="{repo}:100-1-twitter-zzzz"\n' + block)
+                subprocess.run(["bash", "-c", "set -euo pipefail\n" + script],
+                               env={**os.environ, "PATH": f"{bindir}:/usr/bin:/bin",
+                                    "RMLOG": str(rmlog), "GITHUB_RUN_ID": "100",
+                                    "GITHUB_RUN_ATTEMPT": "1"}, check=True)
+                removed = set(rmlog.read_text(encoding="utf-8").split()) if rmlog.exists() else set()
+                self.assertEqual({f"{repo}:99-1-job-cccc", f"{repo}:100-2-job-dddd"}, removed)
+
     def test_runner_names_carry_a_per_invocation_random_suffix(self):
         """Two hourly-twitter matrix legs on one runner must not share a
         container name or image tag; a random tail makes every name unique."""
