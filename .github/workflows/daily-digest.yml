@@ -752,7 +752,15 @@ jobs:
             git add research/summaries/${{ steps.date.outputs.date }}-digest-spoken.txt
             git commit -m "Spoken script ${{ steps.date.outputs.date }} (ARA two-host Claude rewrite)" || echo "No changes"
 
+      # continue-on-error keeps a TTS failure from turning the run red: the
+      # text edition still publishes, and wiki-ingest and the front page start
+      # only after a successful run. A failure still fails THIS step (exit 1),
+      # no audio stub is committed, and liveness-check pages through the
+      # `digest-audio` SLO (data/artifact-slos.json) once no stub has landed
+      # for 30 h. From 2026-10-22 to 10-30 every call returned HTTP 400 while
+      # this step exited 0, and nobody was told for nine days.
       - name: Generate audio digest with Gemini 3.8 Flash TTS
+        id: digest-audio
         if: success() && steps.digest-publication.outputs.editorial == 'true' && (github.event_name != 'workflow_dispatch' || inputs.generate_audio)
         continue-on-error: true
         env:
@@ -787,8 +795,8 @@ jobs:
           if ! command -v ffmpeg >/dev/null 2>&1; then
             echo "ffmpeg not found on runner — attempting install..."
             if ! { sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg; }; then
-              echo "Could not install ffmpeg — skipping audio generation"
-              exit 0
+              echo "::error title=Digest audio not generated::ffmpeg is missing and could not be installed"
+              exit 1
             fi
           fi
 
@@ -799,8 +807,8 @@ jobs:
             INPUT_FILE="$SUMMARY_FILE"
             echo "Spoken script missing — falling back to raw summary (all lines as Speaker 1)"
           else
-            echo "No input text available — skipping audio generation"
-            exit 0
+            echo "::error title=Digest audio not generated::neither ${SPOKEN_FILE} nor ${SUMMARY_FILE} exists"
+            exit 1
           fi
 
           mkdir -p "$AUDIO_DIR"
@@ -873,19 +881,18 @@ jobs:
             -d "$BODY")
 
           if [ "$HTTP" != "200" ]; then
-            # Annotate, so a rejected request is visible on the run instead of a green step with no audio.
             echo "::error title=Digest audio not generated::Gemini TTS returned HTTP $HTTP"
             echo "Gemini TTS returned HTTP $HTTP — error body:"
             head -50 /tmp/gemini-resp.json
-            exit 0
+            exit 1
           fi
 
           # Extract base64 WAV payload (first audio content part)
           B64=$(jq -r '[.steps[]?.content[]? | select(.data != null) | .data][0] // ""' /tmp/gemini-resp.json)
           if [ -z "$B64" ]; then
-            echo "Gemini returned no audio data — response:"
+            echo "::error title=Digest audio not generated::Gemini TTS returned no audio data"
             jq 'del(.steps[]?.content[]?.data)' /tmp/gemini-resp.json | head -40
-            exit 0
+            exit 1
           fi
 
           echo "$B64" | base64 --decode > "$WAV_FILE"
@@ -900,9 +907,9 @@ jobs:
           rm -f "$WAV_FILE"
 
           if [ ! -s "$AUDIO_FILE" ]; then
-            echo "ffmpeg produced empty mp3 — bailing"
+            echo "::error title=Digest audio not generated::ffmpeg produced an empty mp3"
             rm -f "$AUDIO_FILE"
-            exit 0
+            exit 1
           fi
 
           SIZE=$(wc -c < "$AUDIO_FILE")
@@ -912,7 +919,10 @@ jobs:
           # mp3 stays on disk for Telegram+Hooker delivery below. S3 upload
           # + truncate to 0-byte stub + commit happen in later steps.
 
+      # `uploaded=true` is the only proof the mp3 is on S3; the stub commit
+      # below waits for it.
       - name: Upload audio digest to S3
+        id: digest-audio-upload
         if: success() && steps.digest-publication.outputs.editorial == 'true' && (github.event_name != 'workflow_dispatch' || inputs.generate_audio)
         continue-on-error: true
         env:
@@ -937,6 +947,7 @@ jobs:
             --content-type audio/mpeg \
             --no-progress
           echo "Uploaded $AUDIO_FILE -> s3://${S3_BUCKET}/audio/${DATE}-digest.mp3"
+          echo "uploaded=true" >> "$GITHUB_OUTPUT"
 
       # Use the shared safe-push composite action (post-PR-#58 algorithm):
       # stash any leftover working-tree state before rebasing, so the
@@ -1104,8 +1115,12 @@ jobs:
           cat /tmp/hooker-resp.json
           echo ""
 
+      # The stub claims "this date's mp3 is on S3": the dashboard shows a
+      # player for every stubbed date, and the `digest-audio` SLO measures
+      # stub commits. So it is committed only after a confirmed upload; a
+      # failed upload used to leave a player that 404s and a fresh-looking SLO.
       - name: Truncate audio mp3 to 0-byte stub + commit
-        if: success() && steps.digest-publication.outputs.editorial == 'true' && (github.event_name != 'workflow_dispatch' || inputs.generate_audio)
+        if: success() && steps.digest-audio-upload.outputs.uploaded == 'true'
         continue-on-error: true
         env:
           DATE: ${{ steps.date.outputs.date }}
@@ -1155,7 +1170,7 @@ jobs:
         uses: ./.github/actions/hooker-telemetry
         with:
           status: ${{ job.status }}
-          text: "search-providers exa=${{ steps.check-keys.outputs.has_exa }} perplexity=${{ steps.check-keys.outputs.has_perplexity }}; digest-floor ok=${{ steps.digest-floor.outputs.ok }}; deterministic-fallback=${{ steps.digest-fallback.outcome }} used=${{ steps.digest-fallback.outputs.used || 'false' }}"
+          text: "search-providers exa=${{ steps.check-keys.outputs.has_exa }} perplexity=${{ steps.check-keys.outputs.has_perplexity }}; digest-floor ok=${{ steps.digest-floor.outputs.ok }}; deterministic-fallback=${{ steps.digest-fallback.outcome }} used=${{ steps.digest-fallback.outputs.used || 'false' }}; audio tts=${{ steps.digest-audio.outcome || 'skipped' }} uploaded=${{ steps.digest-audio-upload.outputs.uploaded || 'false' }}"
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

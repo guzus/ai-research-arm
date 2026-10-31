@@ -42,6 +42,39 @@ class ArtifactSloRegistryTest(unittest.TestCase):
         # for the podcasts lane it mostly reads) still catches a dead lane.
         self.assertGreaterEqual(self.by_id["aradio"]["cadence"]["freshness_slo_hours"], 24)
 
+    def test_digest_audio_is_paged_on_its_upload_proof(self):
+        # The digest's TTS step stays continue-on-error (wiki-ingest and the
+        # front page run only after a green digest), so from 2026-10-22 to
+        # 10-30 missing audio raised nothing. The SLO is the alert: its 0-byte
+        # stub must mean "this date's mp3 is on S3".
+        import yaml
+
+        entry = self.by_id["digest-audio"]
+        self.assertEqual(["research/audio/[0-9]*-digest.mp3"], entry["freshness_paths"])
+        self.assertEqual("daily", entry["cadence"]["kind"])
+        self.assertEqual(self.by_id["digest"]["cadence"]["freshness_slo_hours"],
+                         entry["cadence"]["freshness_slo_hours"])
+        self.assertNotIn(entry["degraded_policy"], artifact_slos.PUBLISHED_DEGRADED_POLICIES)
+
+        workflow = yaml.safe_load(
+            (artifact_slos.REPO_ROOT / ".github/workflows/daily-digest.yml").read_text())
+        steps = {step.get("id") or step.get("name"): step
+                 for step in workflow["jobs"]["daily-digest"]["steps"]}
+        tts = steps["digest-audio"]
+        upload = steps["digest-audio-upload"]
+        stub = steps["Truncate audio mp3 to 0-byte stub + commit"]
+        for step in (tts, upload, stub):
+            self.assertTrue(step.get("continue-on-error"), step["name"])
+        # Every failure exits non-zero; only a missing key is a quiet skip.
+        self.assertEqual(1, tts["run"].count("exit 0"))
+        self.assertIn('GEMINI_API_KEY not configured — skipping audio generation"\n  exit 0',
+                      tts["run"])
+        self.assertIn('Gemini TTS returned HTTP $HTTP"', tts["run"])
+        self.assertEqual(5, tts["run"].count("exit 1"))
+        cp = upload["run"].index("aws s3 cp")
+        self.assertGreater(upload["run"].index('echo "uploaded=true" >> "$GITHUB_OUTPUT"'), cp)
+        self.assertIn("steps.digest-audio-upload.outputs.uploaded == 'true'", stub["if"])
+
     def test_fixed_cadence_registry_drives_both_watchdogs(self):
         import check_lane_freshness as freshness
         import check_lane_content as content

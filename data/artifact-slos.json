@@ -222,6 +222,23 @@
       }
     },
     {
+      "id": "digest-audio",
+      "producer": ".github/workflows/daily-digest.yml",
+      "artifacts": [
+        "research/audio/[0-9]*-digest.mp3"
+      ],
+      "freshness_paths": [
+        "research/audio/[0-9]*-digest.mp3"
+      ],
+      "cadence": {
+        "kind": "daily",
+        "hours": 24,
+        "freshness_slo_hours": 30
+      },
+      "validators": [],
+      "degraded_policy": "publish-text-without-audio"
+    },
+    {
       "id": "models",
       "producer": ".github/workflows/24h-model-timeline.yml",
       "artifacts": [

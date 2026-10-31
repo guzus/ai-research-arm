@@ -14,8 +14,9 @@ name: Aradio
 #   7. safe-push, then the job fails if the editor or the audio failed.
 #
 # Audio failure is LOUD: the text still publishes (audio: null + audio_error),
-# then the job fails. The daily broadcast's continue-on-error TTS step that
-# exits 0 on Gemini errors is the anti-pattern this lane avoids.
+# then the job fails. The daily broadcast's continue-on-error TTS step, which
+# kept the digest green through nine days of Gemini errors, is the
+# anti-pattern this lane avoids.
 
 on:
   schedule:

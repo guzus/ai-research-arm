@@ -52,6 +52,16 @@ Supported executable signals are intentionally narrow:
   the blog lane's numeric `Fetch errors` summary makes partial-source
   publication visible without guessing from natural-language article copy.
 
+Digest audio is its own entry, `digest-audio`, measured on the 0-byte stub
+`research/audio/<date>-digest.mp3`. The digest commits that stub only after
+`aws s3 cp` succeeded, so the stub's commit recency is the audio's
+availability, and the dashboard's audio manifest never lists an mp3 that is not
+on S3. The TTS step stays `continue-on-error`, because `wiki-ingest.yml` and
+`daily-front-page.yml` start only after a successful digest run; this SLO is
+what pages instead (the 2026-10-22..30 outage raised nothing for nine days).
+Its `validators` list is empty: the mp3 is never committed, so there is nothing
+in git to validate.
+
 Twitter restore-baseline state comes from the latest status artifact's boolean
 `recovery` field. Status remains broader producer-health evidence only: it is
 not added to `freshness_paths`, so a recovery heartbeat cannot make an unchanged

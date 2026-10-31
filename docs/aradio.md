@@ -458,8 +458,10 @@ for 4 h, so keys are immutable — never overwrite one; the "latest" pointer is
 
 **Audio failure is loud.** The text (board + bulletin with `audio: null` and
 `audio_error`) still publishes; then the job fails. The daily broadcast's
-`continue-on-error` TTS step that exits 0 on Gemini errors — silently missing
-since 2026-10-22 — is the anti-pattern this avoids.
+`continue-on-error` TTS step, which exited 0 on Gemini errors and left the
+digest silently without audio from 2026-10-22 to 10-30, is the anti-pattern
+this avoids: it still keeps the digest run green, so its missing audio pages
+only hours later, through the `digest-audio` freshness SLO.
 
 **A stale publication PR is closed, never merged.** `aradio.yml` publishes
 through safe-push like every lane, but CLAUDE.md rule 13's "merge open

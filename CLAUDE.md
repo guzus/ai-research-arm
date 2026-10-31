@@ -543,7 +543,7 @@ Secrets are configured in GitHub Actions. None are committed.
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | birdy workflows (`hourly-twitter*`, `24h-model-timeline`, `twitter-account-explorer`, `generative-research`) | X/Twitter cookies; they expire — see rule 6. The env-var names keep the `BIRD_` prefix because that is what birdy reads. |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `blog-subscriptions`, `daily-digest`, `liveness-check` | Blog alerts, digest delivery, liveness escalation. |
 | `HOOKER_URL`, `HOOKER_TOKEN` | Telemetry composite + most workflows | Base URL and token for the hooker POSTs. Optional — without them telemetry steps no-op (rule 4). |
-| `S3_*` (4 vars), `GEMINI_API_KEY` | `daily-digest` audio, `aradio` bulletins | Gemini Flash TTS generates the mp3, S3 stores it. **Digest:** optional; the committed `research/audio/*.mp3` are 0-byte stubs; missing = that step skips. **Aradio:** required whenever a bulletin goes on air — missing or failing = the text publishes with `audio: null`, then the job fails. Only the bucket's `audio/` prefix is publicly readable (anything else returns 403), hence `audio/aradio/<id>.mp3`. **Since 2026-10-22 the digest has published no audio while its runs stayed green** (the step is `continue-on-error` and exits 0 on Gemini errors; S3 returns 404 for the 10-22 and 10-29 mp3s): read that step's log before trusting either audio path. |
+| `S3_*` (4 vars), `GEMINI_API_KEY` | `daily-digest` audio, `aradio` bulletins | Gemini Flash TTS generates the mp3, S3 stores it. **Digest:** optional; the committed `research/audio/*.mp3` are 0-byte stubs, each committed only after its mp3 uploaded; missing = that step skips. **Aradio:** required whenever a bulletin goes on air — missing or failing = the text publishes with `audio: null`, then the job fails. Only the bucket's `audio/` prefix is publicly readable (anything else returns 403), hence `audio/aradio/<id>.mp3`. **From 2026-10-22 to 10-30 the digest published no audio while its runs stayed green** (the step exited 0 on Gemini's HTTP 400, fixed in #6283). The step stays `continue-on-error`, because wiki-ingest and the front page start only after a green digest run; a TTS failure now fails that step instead, and the `digest-audio` entry in `data/artifact-slos.json` pages through `liveness-check.yml` once no stub has landed for 30 h. |
 | `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional MCP search. **Currently unset** (verified 2026-07-02) — `daily-digest` warns and uses local-source synthesis. |
 | `GITHUB_TOKEN` | All workflows | Auto-provided. |
 | `DEEPSEEK_API_KEY`, `VERCEL_DEPLOY_HOOK` | _Retired_ | Both removed from the repo. DeepSeek routes through Fireworks now; Railway, not Vercel, serves ara.guzus.xyz (rule 3). |
@@ -859,7 +859,9 @@ output or break the pipeline. Read them before editing.
     material; a gate stop is a healthy no-op.
     (d) **Audio failure is loud** — the text publishes with `audio: null`,
     then the job fails. Never copy the digest's `continue-on-error` TTS
-    step, which has exited 0 on Gemini errors since 2026-10-22.
+    step: the digest keeps it only because its `workflow_run` dependents
+    need a green run, so its missing audio pages hours later, through the
+    `digest-audio` freshness SLO.
     (e) **Transcripts are working input, never output** — only ≤ 6 excerpts
     of ≤ 60 words per episode are committed (`research/` is published), the
     board holds ≤ 2 quotes / 60 quoted words per source (counting what is
