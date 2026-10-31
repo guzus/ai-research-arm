@@ -84,9 +84,11 @@ default branch, so the main-only guard passes, and secrets and permissions are
 as for a scheduled run. Concurrency stays single-writer and without
 cancel-in-progress. GitHub keeps one pending run per group and cancels the
 older one, so a burst of triggers is one running run plus one pending, and the
-pending run reads the branch tip when it starts. A skipped run takes a group
-of its own (`aradio-skipped-<run id>`), so it can never displace a real
-pending run. A forced dispatch can be displaced, though: a lane's run queued
+pending run reads the branch tip when it starts. A run that can never write
+takes a group of its own (`aradio-isolated-<run id>`), so it can never
+displace a real pending run: a lane run from a fork, which the job skips, or
+a dispatch from another branch, which the ref guard refuses. A forced
+dispatch can be displaced by a real run, though: a lane's run queued
 behind it cancels it, and `force` would be lost without a word. So a forced
 dispatch is named "Aradio (forced)" (`run-name`), and the history step looks
 for a run with that name that ended cancelled without starting, a second or
@@ -177,8 +179,8 @@ record, which means no backoff and no force, never a station that stops
 trying.
 
 **Bounded edge cases.** The run history can mislead the history step in
-five known ways. None of them can stop the station: the first four cost at
-most one extra editor run, and the last drops a force.
+four known ways. Each costs at most one extra editor run, never a stuck
+station:
 
 - The API shows only a run's latest attempt. If the run that honoured a
   force is re-run and the re-run stops at its gate, the honouring editor run
@@ -191,10 +193,6 @@ most one extra editor run, and the last drops a force.
 - More than 20 newer displaced or failed runs use up the lookups before an
   older editor failure is reached, so that run does not back off. Its own
   editor run is then the newest, which the next run finds first.
-- The history lists only runs on `main`. A run dispatched from another
-  branch joins the same concurrency group (the ref guard then stops it), so
-  it can displace a forced run unseen. That forced run then looks cancelled
-  by hand and is not honoured: dispatch it again.
 
 **Why the gate runs on the full clone.** On 2026-10-31 a pre-gate was built
 and then dropped. It decided on a blobless, depth-1 sparse checkout of only
