@@ -10,7 +10,8 @@ and investors say things that never become a tweet or a headline.
 
 | | |
 |---|---|
-| Route | `ara.guzus.xyz/aradio` |
+| Route | `ara.guzus.xyz/aradio` (the "ARA Radio" player) |
+| Podcast feed | `ara.guzus.xyz/aradio/feed.xml` (built at deploy, see "Dashboard") |
 | Producer | `.github/workflows/aradio.yml` (hourly, `:50`) |
 | Source lane it adds | `.github/workflows/podcasts.yml` (every 2 h, `:41`) → `research/podcasts/` |
 | Editor | `agent-dispatch`, dedicated route `aradio` (isolated adapter) |
@@ -471,9 +472,52 @@ reused).
 
 ## Dashboard
 
-`/aradio`: the latest bulletin with a player (`${AUDIO_BASE}/${audio.key}`), an
-ON AIR indicator when the latest bulletin is < 2 h old, the situation board
-(threads with status, importance, now/changed/watch, evidence chips by kind),
-the bulletin transcript, and the last 72 bulletins. The page polls
-`research/aradio/index.json` every 5 minutes and offers newer bulletins as they
-air. Missing files (before the first run) render an empty state.
+`/aradio` is a radio first ("ARA Radio"; `dashboard/src/render/aradio.ts`, the
+Aradio section of `main.ts`). One large play button starts **continuous
+listening**: the newest bulletin with audio, then older ones; text-only
+bulletins are never in the running order; a bulletin that airs mid-listen plays
+right after the one on now (several in the order they aired). The card shows
+ON AIR while the newest bulletin **with audio** is < 2 h old (else "Latest
+bulletin · Nh ago"; OFF AIR when nothing is playable — a text-only bulletin
+cannot be heard), what is playing or up first, a seek bar, previous/next, "stop
+after this bulletin" (one-shot), the next three bulletins and the podcast-feed
+address. When everything has played the radio stays on, and the next bulletin
+to air starts by itself while the page is open. Below it, "Behind the
+broadcast": the situation board, the last 72 bulletins and the transcript
+(collapsed until asked for).
+
+- **Audio** is `${AUDIO_BASE}/${audio.key}`, only for a key matching
+  `^audio/aradio/[A-Za-z0-9._-]+\.mp3$`, played through the site's one shared
+  bottom-bar `<audio>` (the digest and a bulletin can never play at once). The
+  bar steps aside while the radio's own button is on screen.
+- **Lock screen** (Media Session): title = headline, artist "ARA Radio", album
+  "AI news, on air", artwork `/brand/github-social-preview.png` (no square
+  asset exists); play, pause, seekto, previous/next and `setPositionState`. On
+  `ended` the next bulletin starts at once and an overdue poll runs alongside:
+  timers are throttled behind a locked screen, so playback never waits on the
+  network.
+- **Updates**: the page polls `research/aradio/index.json` every 5 minutes (and
+  in the background while a bulletin plays). The radio card takes new data at
+  once and is patched in place (fixed heights, no re-render, focus kept);
+  "Behind the broadcast" takes it when the reader asks (the update chip).
+- **Empty states**: before the first run, OFF AIR and "The first bulletin
+  hasn't aired yet"; with only text-only bulletins, "No audio to play yet" and
+  the log to read.
+
+### Podcast feed (`/aradio/feed.xml`)
+
+`dashboard/scripts/aradio-feed.mjs` (called by `postbuild-seo.mjs`) writes
+`dist/aradio/feed.xml` from the copy of `research/aradio/` the page itself
+serves: RSS 2.0 with iTunes tags (title "ARA Radio", author "ARA", explicit
+false, Technology and News › Tech News). Episodes are the page's bulletins with
+a policy-valid audio key, newest first, ≤ 72: guid = bulletin id, pubDate =
+`aired_at`, an enclosure with the same URL the page plays (`length` = `bytes`,
+`audio/mpeg`), `itunes:duration`, and the transcript as a plain-text
+description (≤ 4,000 characters). Bulletin files are read only at validated
+paths inside the station directory, every value is XML-escaped, the output is
+deterministic, and absent data is a valid feed with no episodes. Caddy caches
+it like `/feed.xml`; the container smoke and `check_production_surface.py`
+(`aradio-feed`) guard it. Anyone can follow it by URL (Apple Podcasts: Library
+→ ⋯ → Follow a Show by URL); listing in the Apple or Spotify directories needs
+square 1400–3000 px artwork first, which is why the feed has no
+`itunes:image` yet.
