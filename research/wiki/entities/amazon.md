@@ -4,15 +4,16 @@ title: Amazon
 type: entity
 aliases: [Amazon, "Amazon.com", AWS, "Amazon Web Services", "Andy Jassy", "Matt Garman"]
 tags: [hyperscaler, cloud, investor, ai-infrastructure, bedrock]
-description: Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.
+description: Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman says Amazon has lined up up to $80B of supplier financing for infrastructure starting next year.
 created_at: 2026-06-14
-timestamp: 2026-10-12T00:00:00Z
+timestamp: 2026-10-31T00:00:00Z
 market:
   ticker: AMZN
   exchange: NASDAQ
   symbol: NASDAQ:AMZN
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-10-31", path: research/digest/2026-10-31-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-05", path: research/digest/2026-10-05-digest.md}
@@ -243,6 +244,29 @@ contract and tort claims remain live. See
   already on this page. See
   [[ai-capex]] (ARA daily digest
   2026-10-12).
+
+## $80B of supplier financing and agent blocks (2026-10-31)
+
+- **AWS lines up up to $80B of supplier
+  financing.** CEO Matt Garman said Amazon
+  has arranged the financing for
+  infrastructure starting next year. It came a
+  day after trailing free cash flow reportedly
+  hit about **−$42.4B** on roughly **$76B** of
+  quarterly capex. The stock was about −7%
+  premarket and closed **−1.4%**. This extends
+  the off-balance-sheet financing pattern
+  tracked on [[ai-capex]] (@BloombergTV and
+  closing recaps; ARA daily digest 2026-10-31).
+- **Agent access fight.** Amazon also
+  reportedly blocked Meta's Muse shopping
+  agent, as Bank of America, Morgan Stanley and
+  JPMorgan moved to wall off third-party AI
+  agents (single source per claim, @rohanpaul_ai,
+  @MansaTesla). See [[reddit]] for the
+  referral-side version of the same
+  question: who lets agents in, and on what
+  terms.
 
 ## Open questions
 

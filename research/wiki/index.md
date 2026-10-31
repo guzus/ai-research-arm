@@ -11,7 +11,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[aleph-alpha]] — Heidelberg European lab that returned to training with Kolibri-1, a 78B/3.46B-active Apache-2.0 MoE validated to 1M context.
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist.
-- [[amazon]] — Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.
+- [[amazon]] — Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman says Amazon has lined up up to $80B of supplier financing for infrastructure starting next year.
 - [[anthropic]] — AI safety lab behind Claude; confirmed a third-party-software breach into sales, HR and IT, and expanded GSA OneGov to 40% off Claude for US agencies.
 - [[apple]] — Consumer-hardware giant; Meta and Apple tuned Muse Spark Open to run on two M5 Ultra Mac Studios.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
@@ -26,6 +26,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[claude-science]] — Anthropic's agentic research workbench; Anthropic disclosed a July purchase of Mithril Medicine and Claude-assisted programs with six life-sciences partners, citing a preclinical mouse study.
 - [[claude-sonnet-5]] — Anthropic's 2026-06-30 mid-tier model, superseded as the Sonnet SKU by Claude Sonnet 5.5 (2026-09-28); $2/$10 intro pricing was made permanent on 2026-08-10.
 - [[claude-sonnet-5-5]] — Anthropic's 2026-09-28 mid-tier Claude 5.5 model at unchanged $2/$10; vendor Terminal-Bench 4.0 70.6% vs Sonnet 5's 10.3%, with the 30% cheaper claim a per-task assertion, not a price cut.
+- [[claude-ultra]] — Anthropic's renamed $200 Max 20x tier; verified accounts lose the 5-hour rate limit, but the weekly cap stays at the old 10x-Pro level.
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY); in talks at a $40B+ valuation on a round that could exceed $1B (2026-08-13).
 - [[coreweave]] — GPU-as-a-service neocloud; bonds trade around +1,000 bps over Treasuries after the 9.625% 2032 notes fell below 85 cents, as Gartner flags multi-trillion AI-infrastructure write-down risk.
 - [[crusoe]] — AI-infrastructure builder that cancelled a $1.25B Boom Superpower turbine order at the Abilene campus supplying OpenAI, after a $3.9B Series F at $30.9B.
@@ -59,6 +60,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[groq]] — AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.
 - [[harvey]] — Legal-AI company that raised $550 million at $15.5B (2026-09-10); OpenAI's Astra for Law now sits on the same vertical with a 54% Vals score that is not a Harvey bake-off.
 - [[hugging-face]] — The open-source model hub NVIDIA agreed to buy for $12.93B; swarmtraces.org's reconstruction of the July swarm (~700 agents, 80k+ payloads) topped Hacker News on 2026-09-26.
+- [[intel]] — US CPU and foundry maker; fell 28.6% after a Q4 guide of $15–16B revenue and 38.0% non-GAAP gross margin, which it tied to AI-driven memory prices.
 - [[jelani-nelson]] — Theoretical computer scientist and chair of UC Berkeley's EECS department who joined Anthropic as a Member of Technical Staff (on leave) on 2026-07-02.
 - [[jev]] — TypeSafe's non-autoregressive decision model; closed an $870M Series A at $7.5B led by a16z, three weeks after launch.
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
@@ -99,6 +101,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[poolside]] — AI-software company whose model-development technology NVIDIA licensed for $6B alongside a $1B investment at a $12B pre-money valuation (2026-08-21), structured to avoid a reviewable change of control.
 - [[qwen-3-8-max]] — Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open — alongside the contested 27B sibling (Qwen3.8-27B).
 - [[qwen-image-2-1]] — Alibaba's inspectable 7B single-stream visual DiT with a Qwen3-VL 8B encoder; native RGBA and 2K, day-0 Diffusers/ComfyUI hooks, under a non-commercial Qwen Research License.
+- [[reddit]] — Social platform that fell 29% after its CEO said Google's AI Mode "does not drive traffic", with October search referrals down more than 1M a week.
 - [[reflection-ai]] — US open-weights lab behind Beam; Apache-2.0 weights for the 501B/23B-active coding-agent MoE shipped, more permissive than Meta's Muse license.
 - [[sakana-ai]] — Tokyo lab whose multi-model-orchestration thesis now ships as Fugu Max ($2/$6, NVIDIA Nemotron in the pool) and Ultra v2, which posts first-party Chartography 48.3 versus Opus 5 at 27.3 with Astra and Fable excluded.
 - [[safe-superintelligence]] — Ilya Sutskever's stealth AI-safety lab; NVIDIA reportedly invested ~$5B (2026-07-28) at a $32B post-money valuation alongside a compute partnership.
@@ -119,7 +122,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[xiaomi-mimo-v2-6]] — Xiaomi's open-weight 1.02T/42B-active MoE; MiMo-V2.6-Pro scored 46 on Artificial Analysis' Intelligence Index at $0.13 per index task, matching Grok 4.7.
 - [[zhipu]] — Chinese frontier lab behind the GLM family; researcher ferstar says the ZCode desktop app silently uploads complete Git history to Aliyun OSS with no UI off-switch.
 - [[zhipu-glm-5-2]] — Zhipu / Z.ai's 1M-context GLM-5.2, deployed in the GLM Coding Plan with MIT open weights promised; marquee Chinese open-weight release.
-- [[zhipu-glm-5-3]] — Zhipu / Z.ai's freely downloadable GLM-5.3; Anthropic's Frontier Red Team says it built working browser exploits in 50 of 410 ExploitBench attempts, vs Claude Mythos Preview's 56.
+- [[zhipu-glm-5-3]] — Zhipu / Z.ai's freely downloadable GLM-5.3; Epoch AI says it turned Mozilla's published fixes into zero-click Firefox exploits across six releases, and Anthropic's red team measured 50 of 410 ExploitBench successes.
 
 ## Concepts
 

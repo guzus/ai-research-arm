@@ -266,6 +266,7 @@
         "gemma-4",
         "google",
         "hugging-face",
+        "intel",
         "meta",
         "micron",
         "microsoft",
@@ -441,11 +442,11 @@
         "ai-infrastructure",
         "bedrock"
       ],
-      "summary": "Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.",
-      "description": "Hyperscaler and Anthropic's largest investor; WSJ, Bloomberg, and Reuters report talks to buy Decart at about $7 billion.",
+      "summary": "Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman says Amazon has lined up up to $80B of supplier financing for infrastructure starting next year.",
+      "description": "Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman says Amazon has lined up up to $80B of supplier financing for infrastructure starting next year.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-12",
-      "timestamp": "2026-10-12T00:00:00Z",
+      "updated_at": "2026-10-31",
+      "timestamp": "2026-10-31T00:00:00Z",
       "file": "entities/amazon.md",
       "aliases": [
         "Amazon",
@@ -467,7 +468,8 @@
         "microsoft",
         "muse-code",
         "nvidia",
-        "perplexity"
+        "perplexity",
+        "reddit"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -482,7 +484,8 @@
         "muse-code",
         "nvidia",
         "openai",
-        "perplexity"
+        "perplexity",
+        "reddit"
       ],
       "market": {
         "ticker": "AMZN",
@@ -552,6 +555,7 @@
         "fractile",
         "google",
         "groq",
+        "intel",
         "meta",
         "model-specific-silicon",
         "nvidia",
@@ -703,6 +707,7 @@
         "claude-science",
         "claude-sonnet-5",
         "claude-sonnet-5-5",
+        "claude-ultra",
         "cognition-ai",
         "coreweave",
         "cursor",
@@ -1253,6 +1258,7 @@
         "claude-opus-5-5",
         "claude-science",
         "claude-sonnet-5",
+        "claude-ultra",
         "deepseek",
         "deepseek-v4-flash",
         "federal-ai-policy",
@@ -1481,6 +1487,7 @@
         "claude-opus-5",
         "claude-science",
         "claude-sonnet-5-5",
+        "claude-ultra",
         "deepseek",
         "deepseek-v4-1-flash",
         "gemini-4-argon",
@@ -1629,8 +1636,38 @@
         "claude-haiku-5-5",
         "claude-opus-5-5",
         "claude-sonnet-5",
+        "claude-ultra",
         "muse-wonder"
       ]
+    },
+    {
+      "slug": "claude-ultra",
+      "title": "Claude Ultra",
+      "type": "entity",
+      "tags": [
+        "anthropic",
+        "subscription",
+        "rate-limits",
+        "pricing"
+      ],
+      "summary": "Anthropic's renamed $200 Max 20x tier; verified accounts lose the 5-hour rate limit, but the weekly cap stays at the old 10x-Pro level.",
+      "description": "Anthropic's renamed $200 Max 20x tier; verified accounts lose the 5-hour rate limit, but the weekly cap stays at the old 10x-Pro level.",
+      "created_at": "2026-10-31",
+      "updated_at": "2026-10-31",
+      "timestamp": "2026-10-31T00:00:00Z",
+      "file": "entities/claude-ultra.md",
+      "aliases": [
+        "Claude Max 20x",
+        "Max 20x",
+        "Claude Max"
+      ],
+      "outbound": [
+        "anthropic",
+        "claude-fable-5",
+        "claude-opus-5-5",
+        "claude-sonnet-5-5"
+      ],
+      "inbound": []
     },
     {
       "slug": "cognition-ai",
@@ -3221,6 +3258,7 @@
         "nvidia",
         "open-weights",
         "openai",
+        "reddit",
         "seedance-2-5",
         "verification-bottleneck",
         "volta-infra",
@@ -3516,6 +3554,44 @@
         "reflection-ai",
         "zhipu-glm-5-3"
       ]
+    },
+    {
+      "slug": "intel",
+      "title": "Intel",
+      "type": "entity",
+      "tags": [
+        "semiconductors",
+        "cpu",
+        "foundry",
+        "memory-squeeze"
+      ],
+      "summary": "US CPU and foundry maker; fell 28.6% after a Q4 guide of $15–16B revenue and 38.0% non-GAAP gross margin, which it tied to AI-driven memory prices.",
+      "description": "US CPU and foundry maker; fell 28.6% after a Q4 guide of $15–16B revenue and 38.0% non-GAAP gross margin, which it tied to AI-driven memory prices.",
+      "created_at": "2026-10-31",
+      "updated_at": "2026-10-31",
+      "timestamp": "2026-10-31T00:00:00Z",
+      "file": "entities/intel.md",
+      "aliases": [
+        "Intel",
+        "Intel Corporation",
+        "INTC"
+      ],
+      "outbound": [
+        "ai-capex",
+        "amd",
+        "micron",
+        "nvidia",
+        "sk-hynix"
+      ],
+      "inbound": [
+        "reddit"
+      ],
+      "market": {
+        "ticker": "INTC",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:INTC",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "jelani-nelson",
@@ -3916,6 +3992,7 @@
         "amd",
         "anthropic",
         "federal-ai-policy",
+        "intel",
         "nvidia",
         "sk-hynix"
       ],
@@ -5150,6 +5227,7 @@
         "gpt-6",
         "groq",
         "hugging-face",
+        "intel",
         "meta",
         "microsoft",
         "mistral",
@@ -5922,6 +6000,42 @@
       ]
     },
     {
+      "slug": "reddit",
+      "title": "Reddit",
+      "type": "entity",
+      "tags": [
+        "publisher",
+        "search-referrals",
+        "ai-answers",
+        "agent-access"
+      ],
+      "summary": "Social platform that fell 29% after its CEO said Google's AI Mode \"does not drive traffic\", with October search referrals down more than 1M a week.",
+      "description": "Social platform that fell 29% after its CEO said Google's AI Mode \"does not drive traffic\", with October search referrals down more than 1M a week.",
+      "created_at": "2026-10-31",
+      "updated_at": "2026-10-31",
+      "timestamp": "2026-10-31T00:00:00Z",
+      "file": "entities/reddit.md",
+      "aliases": [
+        "Reddit",
+        "Reddit Inc",
+        "RDDT"
+      ],
+      "outbound": [
+        "amazon",
+        "google",
+        "intel"
+      ],
+      "inbound": [
+        "amazon"
+      ],
+      "market": {
+        "ticker": "RDDT",
+        "exchange": "NYSE",
+        "symbol": "NYSE:RDDT",
+        "provider": "yahoo"
+      }
+    },
+    {
       "slug": "reflection-ai",
       "title": "Reflection AI",
       "type": "entity",
@@ -6196,6 +6310,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "intel",
         "micron",
         "nvidia"
       ]
@@ -6971,11 +7086,11 @@
         "agentic",
         "frontier-model"
       ],
-      "summary": "Zhipu / Z.ai's freely downloadable GLM-5.3; Anthropic's Frontier Red Team says it built working browser exploits in 50 of 410 ExploitBench attempts, vs Claude Mythos Preview's 56.",
-      "description": "Zhipu / Z.ai's freely downloadable GLM-5.3; Anthropic's Frontier Red Team says it built working browser exploits in 50 of 410 ExploitBench attempts, vs Claude Mythos Preview's 56.",
+      "summary": "Zhipu / Z.ai's freely downloadable GLM-5.3; Epoch AI says it turned Mozilla's published fixes into zero-click Firefox exploits across six releases, and Anthropic's red team measured 50 of 410 ExploitBench successes.",
+      "description": "Zhipu / Z.ai's freely downloadable GLM-5.3; Epoch AI says it turned Mozilla's published fixes into zero-click Firefox exploits across six releases, and Anthropic's red team measured 50 of 410 ExploitBench successes.",
       "created_at": "2026-08-19",
-      "updated_at": "2026-09-30",
-      "timestamp": "2026-09-30T00:00:00Z",
+      "updated_at": "2026-10-31",
+      "timestamp": "2026-10-31T00:00:00Z",
       "file": "entities/zhipu-glm-5-3.md",
       "aliases": [
         "Zhipu GLM 5.3",
@@ -7161,6 +7276,8 @@
     "claude fable 5.1": "claude-fable-5",
     "claude haiku 5.5": "claude-haiku-5-5",
     "claude managed agents": "dynamic-workflows",
+    "claude max": "claude-ultra",
+    "claude max 20x": "claude-ultra",
     "claude money": "anthropic",
     "claude motion": "anthropic",
     "claude mythos 5": "claude-fable-5",
@@ -7184,6 +7301,7 @@
     "claude-sonnet-5": "claude-sonnet-5",
     "claude-sonnet-5-5": "claude-sonnet-5-5",
     "claude-sonnet-5.5": "claude-sonnet-5-5",
+    "claude-ultra": "claude-ultra",
     "cognition": "cognition-ai",
     "cognition ai": "cognition-ai",
     "cognition labs": "cognition-ai",
@@ -7421,6 +7539,9 @@
     "inkling": "thinking-machines",
     "inkling-small": "thinking-machines",
     "instinct": "amd",
+    "intc": "intel",
+    "intel": "intel",
+    "intel corporation": "intel",
     "interim measures for the administration of ai anthropomorphic interactive services": "china-ai-regulation",
     "ironwood": "google",
     "jack clark": "anthropic",
@@ -7487,6 +7608,7 @@
     "matrix-multiplication-exponent": "matrix-multiplication-exponent",
     "matt garman": "amazon",
     "maven smart system": "palantir",
+    "max 20x": "claude-ultra",
     "meituan longcat": "meituan-longcat-2",
     "meituan-longcat-2": "meituan-longcat-2",
     "meta": "meta",
@@ -7669,6 +7791,9 @@
     "qwen3.8-2.4t-a95b": "qwen-3-8-max",
     "qwen3.8-max": "qwen-3-8-max",
     "qwen3.8-omni-flash": "alibaba",
+    "rddt": "reddit",
+    "reddit": "reddit",
+    "reddit inc": "reddit",
     "reflection": "reflection-ai",
     "reflection ai": "reflection-ai",
     "reflection beam": "reflection-ai",
