@@ -7,7 +7,12 @@ them. This script reads it twice per run.
 --history (before the gate): counts this workflow's failed runs since the
 cursor's last_editor_run_at and the newest failure's time, for the gate's
 doubling backoff (build_aradio_inbox.retry_at), and writes them as the
-gate's --attempts record.
+gate's --attempts record. It also finds a forced dispatch that the
+concurrency queue cancelled before it ran: GitHub keeps one pending run per
+group and cancels the older one, so a lane's run queued behind a forced
+dispatch would otherwise drop `force` without a word. The forced run is
+marked by its run-name (FORCED_TITLE); the first run to execute after it
+honours it.
 
 Default (the run's last step): shapes the run's Hooker event, so an outage
 alerts once a day and its recovery once.
@@ -65,6 +70,10 @@ CREATED_AFTER_MARGIN = timedelta(minutes=1)
 # A cancelled run is usually a pending run GitHub superseded, not an outage.
 FAILED_CONCLUSIONS = frozenset({"failure", "timed_out"})
 WORKFLOW_FILE = "aradio.yml"
+# aradio.yml's run-name for a forced workflow_dispatch (test-pinned).
+FORCED_TITLE = "Aradio (forced)"
+# Conclusions of runs whose job actually ran (a skipped job never did).
+EXECUTED_CONCLUSIONS = frozenset({"success", "failure", "timed_out"})
 
 
 def parse_time(value: object) -> Optional[datetime]:
@@ -125,14 +134,49 @@ def read_since(cursor_path: str) -> tuple[Optional[datetime], str]:
     return last, (iso_z(last) if last else "never")
 
 
+def never_started(jobs: list[dict]) -> bool:
+    """A run cancelled while pending has no jobs, or none that got a runner."""
+    return all(not job.get("runner_name") and not job.get("steps") for job in jobs)
+
+
+def lost_force(runs: list[dict], run_id: str,
+               jobs_fn: Callable[[object], list[dict]]) -> Optional[dict]:
+    """A forced run the queue cancelled before it ran, after the last run that ran.
+
+    Runs are serialized, so a forced run created after the newest executed
+    run was pending behind it. If it then ended cancelled without ever
+    starting, the run executing now (or one it replaced) took its place.
+    Every later run sees a newer executed run, so it is honoured once.
+    """
+    others = [run for run in runs if str(run.get("id")) != run_id]
+    executed = [t for t in (parse_time(run.get("created_at")) for run in others
+                            if run.get("conclusion") in EXECUTED_CONCLUSIONS) if t]
+    newest_executed = max(executed) if executed else None
+    for run in others:
+        created = parse_time(run.get("created_at"))
+        if (run.get("display_title") != FORCED_TITLE or run.get("conclusion") != "cancelled"
+                or created is None or (newest_executed and created <= newest_executed)):
+            continue
+        if never_started(jobs_fn(run.get("id"))):
+            return run
+    return None
+
+
 def history(cursor_path: str, runs_fn: Callable[[Optional[datetime]], list[dict]],
-            run_id: str) -> dict:
-    """The gate's --attempts record: failed runs since the last bulletin."""
+            run_id: str, jobs_fn: Callable[[object], list[dict]]) -> dict:
+    """The gate's --attempts record, plus a forced run the queue cancelled.
+
+    One listing of the newest runs serves both: the failures are filtered to
+    those after the last bulletin here, and a lost forced run can predate it.
+    """
     since, label = read_since(cursor_path)
-    failed = failed_runs_since(runs_fn(since), since, run_id)
+    runs = runs_fn(None)
+    failed = failed_runs_since(runs, since, run_id)
     last = newest_failure(failed)
+    forced = lost_force(runs, run_id, jobs_fn)
     return {"since": label, "failed": len(failed),
-            "last_failed_at": iso_z(last) if last else None}
+            "last_failed_at": iso_z(last) if last else None,
+            "forced_run": forced.get("id") if forced else None}
 
 
 def query_runs(repository: str, since: Optional[datetime]) -> list[dict]:
@@ -148,6 +192,17 @@ def query_runs(repository: str, since: Optional[datetime]) -> list[dict]:
     if not isinstance(runs, list):
         raise ValueError("runs listing has no workflow_runs array")
     return [run for run in runs if isinstance(run, dict)]
+
+
+def query_jobs(repository: str, run_id: object) -> list[dict]:
+    """One run's jobs (read-only `gh api`); a run cancelled while pending has none."""
+    raw = subprocess.run(["gh", "api", f"repos/{repository}/actions/runs/{run_id}/jobs"],
+                         check=True, capture_output=True, text=True, timeout=60).stdout
+    payload = json.loads(raw)
+    jobs = payload.get("jobs") if isinstance(payload, dict) else None
+    if not isinstance(jobs, list):
+        raise ValueError("jobs listing has no jobs array")
+    return [job for job in jobs if isinstance(job, dict)]
 
 
 def shape(env: Mapping[str, str], runs_fn: Callable[[Optional[datetime]], list[dict]],
@@ -224,17 +279,24 @@ def main(argv: Optional[list[str]] = None) -> int:
     if args.history:
         try:
             record = history(args.cursor, lambda since: query_runs(repository, since),
-                             os.environ.get("GITHUB_RUN_ID", ""))
+                             os.environ.get("GITHUB_RUN_ID", ""),
+                             lambda run_id: query_jobs(repository, run_id))
         except (OSError, subprocess.SubprocessError, ValueError) as exc:
             # No record means no backoff: a broken lookup can cost attempts,
-            # never a station that stops trying.
+            # never a station that stops trying. A lost force stays lost, so say so.
             print(f"::warning::cannot read Aradio's run history ({type(exc).__name__}); "
-                  "the gate runs without backoff", file=sys.stderr)
+                  "the gate runs without backoff, and a forced run the queue cancelled "
+                  "would not be honoured", file=sys.stderr)
             return 0
         if args.attempts_out:
             with open(args.attempts_out, "w", encoding="utf-8") as handle:
                 json.dump(record, handle)
-        write_outputs(args.github_output, {"failed": str(record["failed"])})
+        if record["forced_run"] is not None:
+            print(f"::notice::honouring forced run {record['forced_run']}, which the "
+                  "concurrency queue cancelled before it ran")
+        write_outputs(args.github_output, {
+            "failed": str(record["failed"]),
+            "force_pending": "true" if record["forced_run"] is not None else "false"})
         print(json.dumps(record))
         return 0
     shaped = shape(os.environ, lambda since: query_runs(repository, since),

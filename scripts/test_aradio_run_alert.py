@@ -54,6 +54,15 @@ def no_runs(since):
     raise AssertionError("a run that did not publish must not query GitHub")
 
 
+def no_jobs(run_id):
+    raise AssertionError("only a cancelled forced run needs its jobs looked up")
+
+
+def forced(run_id: int, created_at: str, conclusion: str = "cancelled") -> dict:
+    return {"id": run_id, "created_at": created_at, "conclusion": conclusion,
+            "display_title": ara.FORCED_TITLE, "updated_at": created_at}
+
+
 class OutageTest(unittest.TestCase):
     def test_a_gate_stop_reports_once_an_hour(self):
         # Every lane that finishes wakes the station; one stop event an hour.
@@ -221,23 +230,26 @@ class HistoryTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             seen = []
             record = ara.history(self.cursor(tmp, "2026-10-31T17:53:00+09:00"),
-                                 lambda since: seen.append(since) or runs, "900")
-        self.assertEqual([ara.parse_time(SINCE)], seen)
-        self.assertEqual({"since": SINCE, "failed": 2, "last_failed_at": "2026-10-31T11:53:40Z"},
-                         record)
+                                 lambda since: seen.append(since) or runs, "900", no_jobs)
+        # One unfiltered listing: a lost forced run can predate the bulletin.
+        self.assertEqual([None], seen)
+        self.assertEqual({"since": SINCE, "failed": 2, "last_failed_at": "2026-10-31T11:53:40Z",
+                          "forced_run": None}, record)
 
     def test_a_healthy_or_never_published_station(self):
         with tempfile.TemporaryDirectory() as tmp:
-            self.assertEqual({"since": SINCE, "failed": 0, "last_failed_at": None},
-                             ara.history(self.cursor(tmp, SINCE), lambda since: [], "900"))
+            self.assertEqual({"since": SINCE, "failed": 0, "last_failed_at": None,
+                              "forced_run": None},
+                             ara.history(self.cursor(tmp, SINCE), lambda since: [], "900", no_jobs))
             never = ara.history(self.cursor(tmp, None),
                                 lambda since: [run(1, "2026-10-30T09:50:00Z",
-                                                   updated_at="2026-10-30T09:52:00Z")], "900")
-        self.assertEqual({"since": "never", "failed": 1, "last_failed_at": "2026-10-30T09:52:00Z"},
-                         never)
+                                                   updated_at="2026-10-30T09:52:00Z")], "900",
+                                no_jobs)
+        self.assertEqual({"since": "never", "failed": 1, "last_failed_at": "2026-10-30T09:52:00Z",
+                          "forced_run": None}, never)
         with tempfile.TemporaryDirectory() as tmp:  # no cursor.json yet, as for the gate
             self.assertEqual("never", ara.history(str(Path(tmp) / "cursor.json"),
-                                                  lambda since: [], "900")["since"])
+                                                  lambda since: [], "900", no_jobs)["since"])
 
     def test_main_writes_the_record_and_a_failed_lookup_means_no_backoff(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -251,6 +263,7 @@ class HistoryTest(unittest.TestCase):
                 self.assertEqual(0, ara.main(argv))
             self.assertEqual(1, json.loads(record.read_text())["failed"])
             self.assertIn("failed<<", out.read_text())
+            self.assertRegex(out.read_text(), r"force_pending<<(\S+)\nfalse\n")
             record.unlink()
             broken = subprocess.CalledProcessError(1, ["gh"])
             with mock.patch.object(ara, "query_runs", side_effect=broken), \
@@ -265,6 +278,71 @@ class HistoryTest(unittest.TestCase):
         self.assertEqual("aradio-recovered-" + SINCE, shaped["idempotency_key"])
         self.assertIn("after 3 failed run(s)", shaped["text"])
         self.assertEqual("", ara.shape(published(FAILED_SINCE="0"), no_runs, NOW)["title"])
+
+
+class LostForceTest(unittest.TestCase):
+    """A forced dispatch the concurrency queue cancelled is honoured once."""
+
+    # 10:50 ran; a forced dispatch at 10:51 waited behind it; a lane's run at
+    # 10:52 replaced it in the queue and is now running as run 900.
+    RAN = run(800, "2026-10-31T10:50:00Z", "success")
+    FORCED = forced(801, "2026-10-31T10:51:00Z")
+    NOW_RUNNING = run(900, "2026-10-31T10:52:00Z", "success")
+
+    def find(self, runs, jobs=(), run_id="900"):
+        asked = []
+        found = ara.lost_force(runs, run_id, lambda rid: asked.append(rid) or list(jobs))
+        return found, asked
+
+    def test_the_run_that_replaced_it_honours_it(self):
+        found, asked = self.find([self.NOW_RUNNING, self.FORCED, self.RAN])
+        self.assertEqual(801, found["id"])
+        self.assertEqual([801], asked)
+
+    def test_later_runs_do_not_honour_it_again(self):
+        honoured = run(900, "2026-10-31T10:52:00Z", "failure")
+        found, _ = self.find([run(901, "2026-10-31T11:50:00Z"), honoured, self.FORCED, self.RAN],
+                             run_id="901")
+        self.assertIsNone(found)
+
+    def test_a_forced_run_that_ran_or_was_stopped_mid_run_is_not_lost(self):
+        for name, runs, jobs in (
+                ("ran", [self.NOW_RUNNING, forced(801, "2026-10-31T10:51:00Z", "success"),
+                         self.RAN], ()),
+                ("cancelled mid-run", [self.NOW_RUNNING, self.FORCED, self.RAN],
+                 [{"runner_name": "gunux", "steps": [{"name": "Set up job"}]}])):
+            with self.subTest(name):
+                self.assertIsNone(self.find(runs, jobs)[0])
+
+    def test_unforced_cancellations_and_this_run_are_ignored(self):
+        superseded = dict(self.FORCED, display_title="Aradio")
+        self.assertIsNone(self.find([self.NOW_RUNNING, superseded, self.RAN])[0])
+        self.assertIsNone(self.find([self.FORCED, self.RAN], run_id="801")[0])
+
+    def test_history_reports_it_and_main_raises_force(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cursor = Path(tmp) / "cursor.json"
+            cursor.write_text(json.dumps({"last_editor_run_at": SINCE, "keys": {}}))
+            out, record = Path(tmp) / "out", Path(tmp) / "rec"
+            with mock.patch.object(ara, "query_runs",
+                                   return_value=[self.NOW_RUNNING, self.FORCED, self.RAN]), \
+                    mock.patch.object(ara, "query_jobs", return_value=[]), \
+                    mock.patch.dict(os.environ, {"GITHUB_RUN_ID": "900"}), \
+                    contextlib.redirect_stdout(io.StringIO()) as stdout:
+                self.assertEqual(0, ara.main(["--history", "--cursor", str(cursor),
+                                              "--attempts-out", str(record),
+                                              "--github-output", str(out)]))
+            self.assertEqual(801, json.loads(record.read_text())["forced_run"])
+            self.assertRegex(out.read_text(), r"force_pending<<(\S+)\ntrue\n")
+            self.assertIn("::notice::honouring forced run 801", stdout.getvalue())
+
+    def test_workflow_names_forced_runs_and_feeds_the_gate(self):
+        workflow = yaml.safe_load((ROOT / ".github/workflows/aradio.yml").read_text())
+        self.assertIn(f"inputs.force && '{ara.FORCED_TITLE}'", workflow["run-name"])
+        gate = next(step for step in workflow["jobs"]["aradio"]["steps"]
+                    if step.get("id") == "inbox")
+        self.assertEqual("${{ inputs.force || steps.history.outputs.force_pending == 'true' }}",
+                         gate["env"]["FORCE"])
 
 
 class OutputTest(unittest.TestCase):

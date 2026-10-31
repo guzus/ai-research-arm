@@ -86,8 +86,16 @@ cancel-in-progress. GitHub keeps one pending run per group and cancels the
 older one, so a burst of triggers is one running run plus one pending, and the
 pending run reads the branch tip when it starts. A skipped run takes a group
 of its own (`aradio-skipped-<run id>`), so it can never displace a real
-pending run. Gate stops report to Hooker once per UTC hour
-(`aradio-stop-<hour>` idempotency key), so the extra wake-ups do not add
+pending run. A forced dispatch can be displaced, though: a lane's run queued
+behind it cancels it, and `force` would be lost without a word. So a forced
+dispatch is named "Aradio (forced)" (`run-name`), and the history step looks
+for a run with that name that ended cancelled with no job ever started,
+created after the newest run that did execute. The run executing now took its
+place, so it honours the force. Every later run sees a newer executed run, so
+the force is honoured exactly once, and serialization is untouched. The API
+cannot tell who cancelled a pending run, so a forced run cancelled by hand
+before it started is honoured too. Gate stops report to Hooker once per UTC
+hour (`aradio-stop-<hour>` idempotency key), so the extra wake-ups do not add
 telemetry.
 
 Cost: if GitHub fired every trigger on a weekday, that would be 57 runs (24

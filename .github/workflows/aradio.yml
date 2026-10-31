@@ -18,8 +18,10 @@ name: Aradio
 # kept the digest green through nine days of Gemini errors, is the
 # anti-pattern this lane avoids.
 
-# Says which lane woke the station; other runs keep the workflow's name.
-run-name: ${{ github.event_name == 'workflow_run' && format('Aradio after {0}', github.event.workflow_run.name) || github.workflow }}
+# Says which lane woke the station. A forced dispatch is named so that the
+# history step can find it if the concurrency queue cancels it before it runs
+# (aradio_run_alert.FORCED_TITLE). Other runs keep the workflow's name.
+run-name: ${{ github.event_name == 'workflow_run' && format('Aradio after {0}', github.event.workflow_run.name) || inputs.force && 'Aradio (forced)' || github.workflow }}
 
 on:
   # Aradio airs when the picture changes, so each lane that feeds the inbox
@@ -55,7 +57,8 @@ on:
 # Serialize runs: the cursor and the board are single-writer state. GitHub
 # keeps one pending run per group and cancels the older one, so a burst of
 # triggers collapses to one running and one pending run; the pending one
-# reads the branch tip when it starts. A run the job's `if` skips (a lane run
+# reads the branch tip when it starts. A forced dispatch cancelled that way is
+# honoured by the run that replaced it (the history step below). A run the job's `if` skips (a lane run
 # from another repository) takes a group of its own: it must never displace a
 # real pending run. This condition must stay identical to the job's `if`
 # (test-pinned).
@@ -185,6 +188,8 @@ jobs:
       # bulletin (doubling from 30 min to 4 h, 2 h while priority material
       # waits) instead of retrying the editor on every trigger. A failed
       # lookup leaves no record, which means no backoff, never no attempts.
+      # The same listing finds a forced dispatch the concurrency queue
+      # cancelled before it ran (force_pending), which this run then honours.
       - name: Read failed runs since the last bulletin
         id: history
         continue-on-error: true
@@ -203,7 +208,7 @@ jobs:
         env:
           NOW: ${{ steps.stamp.outputs.stamp }}
           SCRATCH: ${{ steps.stamp.outputs.scratch }}
-          FORCE: ${{ inputs.force || false }}
+          FORCE: ${{ inputs.force || steps.history.outputs.force_pending == 'true' }}
           TUBER_API_BASE: ${{ vars.TUBER_API_BASE || 'https://tuber-api.guzus.xyz' }}
         run: |
           set -euo pipefail
