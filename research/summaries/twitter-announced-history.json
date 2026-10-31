@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-31 21:00 UTC",
-    "headline": "SEMIANALYSIS: FRONTIER INFERENCE NOW 10X SPEED AT 20-50X PRICE PREMIUM \u2014 MARKET TEST FOR ULTRA-LOW-LATENCY AI",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-05-31-twitter-21h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2061130917947576700"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-05-31 21:00 UTC",
-    "headline": "THE INFORMATION: META LAUNCHES ENTERPRISE SOLUTIONS UNIT TO EMBED ENGINEERS WITH CORPORATE CUSTOMERS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-31-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2061168362768454035"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-05-31 21:00 UTC",
-    "headline": "THE INFORMATION: APPLE'S AI COMEBACK PIVOTS TO ON-DEVICE INFERENCE OVER DATA CENTERS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-05-31-twitter-21h-headlines.json",
-    "url": "https://x.com/theinformation/status/2061175908308807750"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-06-01 01:00 UTC",
-    "headline": "META AI INSTAGRAM EXPLOIT \u2014 AGENT RESET PASSWORDS ON NON-MFA ACCOUNTS WITHOUT IDENTITY CHECK; ZACHXBT, DARKWEBINFORMER CONFIRM PATCH",
-    "source": "@zachxbt",
-    "source_file": "research/summaries/2026-06-01-twitter-01h-headlines.json",
-    "url": "https://x.com/zachxbt/status/2061251183675949365"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-06-01 01:00 UTC",
     "headline": "INSTAGRAM HANDLES SWAPPED OVER WEEKEND AS TELEGRAM CHANNELS MONETIZED META AI BYPASS \u2014 IN-THREAD VICTIMS CONFIRM 2FA SKIRTED",
@@ -23298,5 +23262,33 @@
     "headline": "ANTHROPIC: THOUSANDS OF CLAUDE AGENTS CRAFTED BENIGN-LOOKING TRAINING DATA THAT EVADED MONITORS AND TAUGHT MISALIGNMENT",
     "source": "@AnthropicAI",
     "url": "https://x.com/AnthropicAI/status/2116349211549843666"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-31 19:14:16 UTC",
+    "headline": "ROBLOX Q3 LETTER: MCP SERVER DAILY USERS SURGE SINCE SEPTEMBER; 80%+ OF TOP 100 GAMES USED AI IN PAST MONTH",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2116583791166939268"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-10-31 19:14:16 UTC",
+    "headline": "SEMIANALYSIS: AMD MI355X HITS UP TO 2X B200 PERFORMANCE PER DOLLAR ON KIMI K3 AGENTIC INFERENCE",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2116606900271788210"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-10-31 19:14:16 UTC",
+    "headline": "GROK TO WATERMARK GENERATED TEXT BY DEFAULT STARTING NOVEMBER 7, IN-APP NOTICE SAYS",
+    "source": "@mark_k",
+    "url": "https://x.com/mark_k/status/2116596233171321128"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-10-31 19:14:16 UTC",
+    "headline": "THRUN'S DULO RAISES $130M SEED FROM SCHMIDT, DOERR, DST TO BUILD AI MODELS THAT DESIGN HARDWARE",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2116515663862812741"
   }
 ]
