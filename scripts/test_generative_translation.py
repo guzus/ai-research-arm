@@ -5,6 +5,8 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -440,6 +442,60 @@ class TranslationSegmentsTest(unittest.TestCase):
             ["10월 26일", "2월 1일"],
         )
 
+    def test_numbers_other_words_own_and_months_inside_names_are_not_dates(self):
+        for english in ("Top 10 March Madness picks", "the Gemini 3 June update", "Season 1 Aug", "May Day rally"):
+            with self.subTest(english=english):
+                self.assertEqual(segments.date_spans(english), [])
+        self.assertEqual(
+            [korean for *_, korean in segments.date_spans("On 10 March Microsoft announced")], ["3월 10일"]
+        )
+        self.assertEqual(
+            [korean for *_, korean in segments.date_spans("Top 10 March 2026 releases")], ["2026년 3월"]
+        )
+
+    def test_a_range_shares_its_year_year_first(self):
+        cases = {
+            "dated from 10 September to early October 2026": ["2026년 9월 10일", "10월"],
+            "Between April 14 and May 18, 2026, every": ["2026년 4월 14일", "5월 18일"],
+            "due January 20 and February 16, 2026.": ["2026년 1월 20일", "2월 16일"],
+            # A range that wraps past December keeps the year where it is.
+            "December 20 to January 5, 2026": ["12월 20일", "2026년 1월 5일"],
+            # Dates that are not one range keep their own years.
+            "June 3, 2025 and July 2026": ["2025년 6월 3일", "2026년 7월"],
+            "March 2 when sales hit 400, then April 2026": ["3월 2일", "2026년 4월"],
+        }
+        for english, expected in cases.items():
+            with self.subTest(english=english):
+                self.assertEqual([korean for *_, korean in segments.date_spans(english)], expected)
+
+    def test_digit_rules_match_the_opencode_segment_tool(self):
+        node = shutil.which("node")
+        if node is None:
+            self.skipTest("node runs the OpenCode tool's regexes")
+        tool = (Path(__file__).resolve().parent.parent / ".opencode/tools/translation_segment.ts").read_text(
+            encoding="utf-8"
+        )
+        token_re = re.search(r"const TOKEN_RE = (/.*?/g)\n", tool).group(1)
+        localized_re = re.search(r"const LOCALIZED_INTEGER_RE = (/.*?/g)\n", tool).group(1)
+        cases = [
+            "4월-6월", "4월–6월 2026", "1~3월", "약-5%", "⟦ARA0001⟧-6월", "가⟦ARA0001⟧-6월", "9일",
+            "3배", "2026년", "-2026년 중반", "x-3", "10월 26–27일", "10월 26-27일", "Q3", "7/10라운드",
+            "8월-⟦ARA0002⟧", "2025년-2026년", "1⟦ARA0001⟧2일", "$⟦ARA0001⟧", "⟦ARA0001⟧ 30%", "2.5배",
+        ]
+        script = (
+            f"const TOKEN_RE = {token_re}; const LOCALIZED_INTEGER_RE = {localized_re};"
+            "console.log(JSON.stringify(JSON.parse(process.argv[1]).map((text) =>"
+            " !/[0-9]/.test(text.replace(TOKEN_RE, '').replace(LOCALIZED_INTEGER_RE, '')))));"
+        )
+        accepted = json.loads(
+            subprocess.run([node, "-e", script, json.dumps(cases)], capture_output=True, text=True, check=True).stdout
+        )
+        digits = lambda text: re.findall(r"[0-9]", segments.TOKEN_RE.sub("", text))
+        for text, tool_accepts in zip(cases, accepted, strict=True):
+            with self.subTest(text=text):
+                # The renderer keeps every digit of exactly the text the tool accepts.
+                self.assertEqual(digits(segments.strip_unsafe_digits(text)) == digits(text), tool_accepts)
+
     def test_dates_and_word_hyphens_reach_the_model_as_whole_tokens(self):
         masked = segments._mask(
             "The seed tweet is dated October 29, 2026 (20:23 UTC); the Link "
@@ -850,6 +906,7 @@ class TranslationParityTest(unittest.TestCase):
                 ("10월 26, 2026", "English word order"),
                 ("4월 2026에", "English word order"),
                 ("10일 7월 2026", "English word order"),
+                ("7월 17-20, 2026에", "English word order"),
             ):
                 with self.subTest(garbled=garbled):
                     target.write_text(
@@ -868,6 +925,11 @@ class TranslationParityTest(unittest.TestCase):
                 "13개월",
                 "12월 31일",
                 "3월 2026년형",
+                # Ordinary Korean the guard once refused.
+                "3월 3일, 2026년 가이던스",
+                "6월 9일, 2027년까지",
+                "13월의 월급",
+                "3월 2026명",
             ):
                 with self.subTest(valid=valid):
                     self.assertEqual(

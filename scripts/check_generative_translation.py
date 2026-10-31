@@ -25,14 +25,22 @@ INLINE_DIRECTIVE_RE = re.compile(r"\{(/|[a-z][a-z0-9-]*)(?::[^{}]*)?\}")
 HANGUL_RE = re.compile(r"[가-힣]")
 LATIN_WORD_RE = re.compile(r"\b[A-Za-z][A-Za-z'-]*\b")
 KOREAN_MONTH_RE = re.compile(r"(?<![0-9.,])([0-9]+)월(?:\s*[0-9]+)?")
+# "13월의 월급" (the year-end tax refund) is an idiom, not a month.
+KOREAN_MONTH_IDIOM_RE = re.compile(r"13월의\s?월급")
 # Korean dates run year, month, day. These shapes keep the English order
-# ("10월 26, 2026", "4월 2026", "10일 7월 2026").
+# ("10월 26, 2026", "4월 2026에", "10일 7월 2026"). The year must end the
+# phrase bare or with a particle: "3월 3일, 2026년 가이던스" and "3월
+# 2026명" are ordinary Korean.
+_BARE_YEAR = (
+    r"(?:1[89]|2[01])[0-9]{2}(?![0-9년])"
+    r"(?=$|[^가-힣]|(?:에서|에는|에도|에|의|까지|부터|은|는|이|가|을|를|과|와|으로|로|도)(?![가-힣]))"
+)
 KOREAN_ENGLISH_ORDER_DATE_RE = re.compile(
     r"(?<![0-9.,])(?:"
-    r"(?:0?[1-9]|1[0-2])월\s+[0-9]{1,2}(?:\s*[–—~-]\s*[0-9]{1,2})?일?,\s*(?:1[89]|2[01])[0-9]{2}"
-    r"|[0-9]{1,2}일\s+(?:0?[1-9]|1[0-2])월,?\s+(?:1[89]|2[01])[0-9]{2}"
-    r"|(?:0?[1-9]|1[0-2])월,?\s+(?:1[89]|2[01])[0-9]{2}(?!년)"
-    r")(?![0-9])"
+    rf"(?:0?[1-9]|1[0-2])월\s+[0-9]{{1,2}}(?:\s*[–—~-]\s*[0-9]{{1,2}})?일?,\s*{_BARE_YEAR}"
+    rf"|[0-9]{{1,2}}일\s+(?:0?[1-9]|1[0-2])월,?\s+{_BARE_YEAR}"
+    rf"|(?:0?[1-9]|1[0-2])월,?\s+{_BARE_YEAR}"
+    r")"
 )
 TRANSLATABLE_LIST_ATTRS = frozenset(
     {"data-categories", "data-items", "data-labels", "data-x-labels"}
@@ -95,15 +103,15 @@ def korean_date_errors(source: str, target: str) -> list[str]:
 
     Shapes the source itself contains (a quoted Korean headline) are allowed.
     """
-    impossible = collections.Counter(
-        match.group().strip()
-        for match in KOREAN_MONTH_RE.finditer(target)
-        if not 1 <= int(match.group(1)) <= 12
-    ) - collections.Counter(
-        match.group().strip()
-        for match in KOREAN_MONTH_RE.finditer(source)
-        if not 1 <= int(match.group(1)) <= 12
-    )
+    def impossible_months(text: str) -> collections.Counter[str]:
+        idioms = {match.start() for match in KOREAN_MONTH_IDIOM_RE.finditer(text)}
+        return collections.Counter(
+            match.group().strip()
+            for match in KOREAN_MONTH_RE.finditer(text)
+            if not 1 <= int(match.group(1)) <= 12 and match.start() not in idioms
+        )
+
+    impossible = impossible_months(target) - impossible_months(source)
     english_order = collections.Counter(
         KOREAN_ENGLISH_ORDER_DATE_RE.findall(target)
     ) - collections.Counter(KOREAN_ENGLISH_ORDER_DATE_RE.findall(source))

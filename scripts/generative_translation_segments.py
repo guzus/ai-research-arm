@@ -179,15 +179,18 @@ def _korean_days(days: list[str]) -> str:
     return ", ".join(f"{day}일" for day in days[:-1]) + f"과 {days[-1]}일"
 
 
-def korean_date(form: str, match: re.Match[str]) -> str:
+def korean_date(form: str, match: re.Match[str], year_digits: str | None = None) -> str:
     """Render one recognized English date in Korean order with the source digits.
 
     Days and years keep their exact source spelling ("05", "7-9") so the
     numeric-token parity check still finds every source literal; only month
-    numbers glued to 월 are added.
+    numbers glued to 월 are added. ``year_digits`` overrides the date's own
+    year ("" drops it) when a range shares one.
     """
     groups = match.groupdict()
-    year = f"{groups['y']}년 " if groups.get("y") else ""
+    if year_digits is None:
+        year_digits = groups.get("y") or ""
+    year = f"{year_digits}년 " if year_digits else ""
     month = _month_number(groups["m"])
     if form in {"cross_md", "cross_dm", "month_range"}:
         # A bare hyphen before a digit would read as a negative number token.
@@ -203,9 +206,34 @@ def korean_date(form: str, match: re.Match[str]) -> str:
     if form == "day_list":
         return f"{year}{month}월 {_korean_days(re.findall(r'[0-9]+', groups['days']))}"
     if form == "month_year":
-        return f"{groups['y']}년 {month}월"
+        return f"{year}{month}월"
     day = groups["d"] + (f"{groups['sep']}{groups['d2']}" if groups.get("d2") else "")
     return f"{year}{month}월 {day}일"
+
+
+# A number another word owns is no day ("Top 10 March Madness", "Season 1
+# Aug", "Gemini 3 June update"), and a month inside a name is no month.
+_NUMBER_OWNERS = frozenset(
+    {"top", "no", "no.", "#", "number", "rank", "season", "series", "episode", "chapter",
+     "part", "phase", "stage", "round", "tier", "level", "gen", "grade", "week", "version",
+     "fortune"}
+)
+_NUMBERED_NAMES = frozenset(
+    {"GPT", "Gemini", "Claude", "Llama", "Grok", "Qwen", "DeepSeek", "Mistral", "Kimi", "GLM",
+     "Fable", "Opus", "Sonnet", "Haiku", "iPhone", "Pixel", "Galaxy", "Windows", "iOS", "Android"}
+)
+_MONTH_IN_A_NAME_RE = re.compile(r"March\s+Madness|May\s+Day|March\s+of\s+Dimes")
+_DAY_FIRST_FORMS = frozenset({"cross_dm", "day_list", "day_month_year", "day_month"})
+
+
+def _not_a_date(text: str, form: str, match: re.Match[str]) -> bool:
+    for name in ("m", "m2"):
+        if match.groupdict().get(name) and _MONTH_IN_A_NAME_RE.match(text, match.start(name)):
+            return True
+    if form not in _DAY_FIRST_FORMS:
+        return False
+    owner = re.search(r"(\S+)\s+$", text[max(0, match.start() - 40) : match.start()])
+    return bool(owner) and (owner.group(1).lower() in _NUMBER_OWNERS or owner.group(1) in _NUMBERED_NAMES)
 
 
 def date_matches(text: str, *, commas: bool = True) -> list[tuple[str, re.Match[str]]]:
@@ -219,6 +247,7 @@ def date_matches(text: str, *, commas: bool = True) -> list[tuple[str, re.Match[
             (match.start() - match.end(), match.start(), priority, form, match)
             for priority, (form, pattern) in enumerate(_DATE_FORMS[commas])
             for match in pattern.finditer(text)
+            if not _not_a_date(text, form, match)
         ),
         key=lambda item: item[:3],
     )
@@ -230,11 +259,44 @@ def date_matches(text: str, *, commas: bool = True) -> list[tuple[str, re.Match[
     return sorted(found, key=lambda item: item[1].start())
 
 
+# Two dates joined like this form one range ("from September 10 to early
+# October 2026", "between June 3 and June 9, 2026").
+_RANGE_JOIN_RE = re.compile(
+    r"\s*(?:[–—~-]|to|through|thru|until|till|and|or)\s*"
+    r"(?:(?:the\s+)?(?:early|mid|late|end\s+of|start\s+of|beginning\s+of|middle\s+of)[\s-]+)?"
+)
+
+
+def korean_dates(text: str, *, commas: bool = True) -> list[tuple[str, re.Match[str], str]]:
+    """Recognized dates as (form, match, Korean); a range shares its year.
+
+    English puts a range's year at its end ("September 10 to early October
+    2026"); Korean puts it first, so the first date borrows it and the second
+    drops it: 2026년 9월 10일 ... 10월. A range that wraps past December keeps
+    the year where the source has it.
+    """
+    found = date_matches(text, commas=commas)
+    rendered = [korean_date(form, match) for form, match in found]
+    for k in range(len(found) - 1):
+        (first_form, first), (second_form, second) = found[k], found[k + 1]
+        year = second.groupdict().get("y")
+        if first.groupdict().get("y") or not year:
+            continue
+        if not _RANGE_JOIN_RE.fullmatch(text[first.end() : second.start()]):
+            continue
+        last_month = _month_number(first.groupdict().get("m2") or first["m"])
+        if last_month > _month_number(second["m"]):
+            continue
+        rendered[k] = korean_date(first_form, first, year)
+        rendered[k + 1] = korean_date(second_form, second, "")
+    return [(form, match, korean) for (form, match), korean in zip(found, rendered)]
+
+
 def date_spans(text: str, *, commas: bool = True) -> list[tuple[int, int, str]]:
     """Return non-overlapping English calendar dates as (start, end, Korean)."""
     return [
-        (match.start(), match.end(), korean_date(form, match))
-        for form, match in date_matches(text, commas=commas)
+        (match.start(), match.end(), korean)
+        for _, match, korean in korean_dates(text, commas=commas)
     ]
 
 
@@ -569,33 +631,35 @@ def strip_unsafe_digits(text: str) -> str:
     whole NUMBER_RE match — not just the digits — so leftover `$` / `%` / `.`
     cannot glue onto a restored token and change the numeric-token multiset
     (`2.5` becoming `$2.5`).
+
+    Digits are judged on the text with its tokens removed, exactly as the
+    OpenCode segment tool judges them, so "가⟦ARA0001⟧-6월" keeps its range
+    dash here whenever the tool would accept it.
     """
-    pieces = TOKEN_RE.split(text)
-    tokens = TOKEN_RE.findall(text)
-    cleaned: list[str] = []
-    for index, piece in enumerate(pieces):
-        out: list[str] = []
-        cursor = 0
-        while cursor < len(piece):
-            localized = LOCALIZED_INTEGER_RE.match(piece, cursor)
-            if localized:
-                out.append(localized.group(0))
-                cursor = localized.end()
-                continue
-            leftover = NUMBER_RE.match(piece, cursor)
-            if leftover:
-                cursor = leftover.end()
-                continue
-            debris = NUMBER_DEBRIS_RE.match(piece, cursor)
-            if debris:
-                cursor = debris.end()
-                continue
-            out.append(piece[cursor])
-            cursor += 1
-        cleaned.append("".join(out))
-        if index < len(tokens):
-            cleaned.append(tokens[index])
-    return "".join(cleaned)
+    prose: list[str] = []
+    where: list[int] = []
+    cursor = 0
+    for token in [*TOKEN_RE.finditer(text), None]:
+        stop = token.start() if token else len(text)
+        prose.extend(text[cursor:stop])
+        where.extend(range(cursor, stop))
+        cursor = token.end() if token else stop
+    joined = "".join(prose)
+    keep = [True] * len(text)
+    index = 0
+    while index < len(joined):
+        localized = LOCALIZED_INTEGER_RE.match(joined, index)
+        if localized:
+            index = localized.end()
+            continue
+        unsafe = NUMBER_RE.match(joined, index) or NUMBER_DEBRIS_RE.match(joined, index)
+        if unsafe:
+            for position in range(unsafe.start(), unsafe.end()):
+                keep[where[position]] = False
+            index = unsafe.end()
+            continue
+        index += 1
+    return "".join(char for char, kept in zip(text, keep) if kept)
 
 
 # A unit the model added after a token that is already a whole date, but
