@@ -177,8 +177,8 @@ record, which means no backoff and no force, never a station that stops
 trying.
 
 **Bounded edge cases.** The run history can mislead the history step in
-four known ways. Each costs at most one extra editor run, never a stuck
-station:
+five known ways. None of them can stop the station: the first four cost at
+most one extra editor run, and the last drops a force.
 
 - The API shows only a run's latest attempt. If the run that honoured a
   force is re-run and the re-run stops at its gate, the honouring editor run
@@ -191,6 +191,10 @@ station:
 - More than 20 newer displaced or failed runs use up the lookups before an
   older editor failure is reached, so that run does not back off. Its own
   editor run is then the newest, which the next run finds first.
+- The history lists only runs on `main`. A run dispatched from another
+  branch joins the same concurrency group (the ref guard then stops it), so
+  it can displace a forced run unseen. That forced run then looks cancelled
+  by hand and is not honoured: dispatch it again.
 
 **Why the gate runs on the full clone.** On 2026-10-31 a pre-gate was built
 and then dropped. It decided on a blobless, depth-1 sparse checkout of only
