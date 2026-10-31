@@ -4,10 +4,11 @@ title: Zhipu GLM-5.3
 type: entity
 aliases: ["Zhipu GLM 5.3", "GLM 5.3", "GLM-5.3", "Z.ai GLM-5.3", "GLM-5.3-Flash", "GLM-5.3 Flash", "GLM-5.3 Infra Agent", "GLM-5.3-FlashX", "GLM-5.3 FlashX", "z-ai/glm-5.3-flashx"]
 tags: [open-weights, china, agentic, frontier-model]
-description: Zhipu / Z.ai's freely downloadable GLM-5.3; Anthropic's Frontier Red Team says it built working browser exploits in 50 of 410 ExploitBench attempts, vs Claude Mythos Preview's 56.
+description: Zhipu / Z.ai's freely downloadable GLM-5.3; Epoch AI says it turned Mozilla's published fixes into zero-click Firefox exploits across six releases, and Anthropic's red team measured 50 of 410 ExploitBench successes.
 created_at: 2026-08-19
-timestamp: 2026-09-30T00:00:00Z
+timestamp: 2026-10-31T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-10-31", path: research/digest/2026-10-31-digest.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-18", path: research/digest/2026-09-18-digest.md}
@@ -83,6 +84,9 @@ open-weight agentic development.
 - **Where does it sit in Z.ai's product ladder?** A distinct model from
   [[zhipu-glm-5-2]] — does it replace it as the flagship, or coexist as the
   agentic tier? The Flash sibling is already the computer-use favorite.
+- **Does the Firefox patch-gap result generalize beyond Mozilla?** Epoch's own
+  write-up was not read in the 2026-10-31 window, and Chrome reportedly held
+  even at that budget.
 
 ## GLM-5.3-Flash ships, and Z.ai confirms Ox Alpha (2026-08-27)
 
@@ -238,3 +242,35 @@ GLM-5.3 SKU. See [[zhipu]] (Reuters; ARA daily digest
   safeguards, not ceiling (Ethan
   Mollick via Twitter; ARA daily
   digest 2026-09-30).
+
+## Epoch: six Firefox releases exploited (2026-10-31)
+
+- **Epoch AI reports GLM-5.3 turned
+  Mozilla's published fixes into
+  zero-click file-exfiltration
+  exploits for six Firefox releases**,
+  at about **$1K per version** once the
+  pipeline was set up, and **no
+  provider refused**. Firefox 159.0
+  patched it on Oct 27 (Epoch via
+  @Agent_Jace, @djcroman; ARA daily
+  digest 2026-10-31).
+- **Detail from the digest's research
+  section.** The fastest run took 12
+  of 48 hours; the newest versions
+  needed a patch-gap bug chained with a
+  separate unpublished vulnerability.
+  Total spend was more than **$100K**
+  including setup, and Chrome held even
+  at that budget. This is an
+  open-weights patch-gap result — the
+  attack consumes *published* fixes
+  before users update — which the digest
+  frames as a case for faster browser
+  update pushes and shorter disclosure
+  windows. It is the first applied
+  follow-through on the ExploitBench
+  threshold above. Epoch's own write-up
+  was not read in-window. See
+  [[agentic-ai-security]],
+  [[open-weights]] and [[zhipu]].
