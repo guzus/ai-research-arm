@@ -1,0 +1,3787 @@
+{
+  "lane": "podcasts",
+  "schema": 1,
+  "updated_at": "2026-10-31T03:14:00Z",
+  "degraded": false,
+  "episodes": [
+    {
+      "id": "all-in:p1Dy4e4ff0s",
+      "show_id": "all-in",
+      "show": "All-In Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Anthropic S-1 Shocker, Greatest Business Ever? Google’s $500B Wipeout, Midterm Predictions",
+      "url": "https://www.youtube.com/watch?v=p1Dy4e4ff0s",
+      "video_id": "p1Dy4e4ff0s",
+      "audio_url": null,
+      "published_at": "2026-10-30T21:44:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 5147,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Bestie Intros Anthropic S-1 Breakdown: Greatest Business Ever? AI's Biggest Problem and Anthropic's Doomer Showdown Google Sheds $500B Market Cap in Worst Day Ever: What Went Wrong? Final Midterms Predictions and Scenarios Referenced in the show:"
+    },
+    {
+      "id": "nvidia:ndtnt5kWT5A",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "NVIDIA Halos SAFE: Autonomous Vehicle Safety Evaluation From Road Testing to Simulation",
+      "url": "https://www.youtube.com/watch?v=ndtnt5kWT5A",
+      "video_id": "ndtnt5kWT5A",
+      "audio_url": null,
+      "published_at": "2026-10-30T19:44:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 158,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 296,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Safety isn't easy. And it needs to be proven. That takes evidence. Today, we're announcing NVIDIA Halos SAFE, the Safety Assurance Framework for Evaluation. It connects road testing, simulation, and fleet data in one safety loop. Halos SAFE provides test suites for NCAP testing worldwide, and safety evaluations from L2 driver assistance to L4 robotaxis.",
+          "at_s": 9,
+          "url": "https://www.youtube.com/watch?v=ndtnt5kWT5A&t=9s"
+        },
+        {
+          "text": "This is NVIDIA Halos SAFE. Continuous safety validation, evidence for certification across markets. So, every new version can be proven safe and deployed with confidence around the world.",
+          "at_s": 134,
+          "url": "https://www.youtube.com/watch?v=ndtnt5kWT5A&t=134s"
+        }
+      ],
+      "description": "See how NVIDIA Halos SAFE AV connects real-world testing, simulation, and vehicle hardware to evaluate autonomous vehicle safety in one continuous loop. Discover how NVIDIA Omniverse NuRec reconstructs real driving scenarios and NVIDIA Cosmos generates variations across traffic, weather, and edge cases."
+    },
+    {
+      "id": "cognitive-revolution-live:1FdJvaAft5E",
+      "show_id": "cognitive-revolution-live",
+      "show": "The Cognitive Revolution (live)",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "livestream"
+      ],
+      "title": "Mistral Large 4: The West’s Best Open Model? | AI Cyber Threats",
+      "url": "https://www.youtube.com/watch?v=1FdJvaAft5E",
+      "video_id": "1FdJvaAft5E",
+      "audio_url": null,
+      "published_at": "2026-10-30T18:44:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 9441,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:iRMmPjunm3Q",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Why the Next Great Law Firm Could Run Like a Software Company",
+      "url": "https://www.youtube.com/watch?v=iRMmPjunm3Q",
+      "video_id": "iRMmPjunm3Q",
+      "audio_url": null,
+      "published_at": "2026-10-30T14:44:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3131,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "What happens when AI makes legal work cheap enough to take cases lawyers couldn't afford to touch before? Eve CEO Jay Madheswaran argues that AI won't just cut costs for law firms. It could expand access to legal representation by making an entirely new class of cases economically viable. Jay joins a16z General Partner Alex Rampell to explain how Eve is automating plaintiff law from the first client call through settlement, and why some firms are already using it to"
+    },
+    {
+      "id": "hard-fork:EGC7jht_mis",
+      "show_id": "hard-fork",
+      "show": "Hard Fork",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "How Anthropic's Business Really Works | Hard Fork",
+      "url": "https://www.youtube.com/watch?v=EGC7jht_mis",
+      "video_id": "EGC7jht_mis",
+      "audio_url": null,
+      "published_at": "2026-10-30T13:44:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3174,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 11046,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "I mean, it's interesting because on the one hand, the S1 seems to confirm that there's an enormous amount of demand. I mean, we're talking about $6.3 billion in revenue for the first half of 2026. And that is an enormous amount of growth, too. like it, you know, it's we're seeing a company grow 14x.",
+          "at_s": 358,
+          "url": "https://www.youtube.com/watch?v=EGC7jht_mis&t=358s"
+        },
+        {
+          "text": "Um there was a uh Wall Street Journal headline arguing the headline is the bullc case for AI Armageddon for investors mulling exactly for investors mulling the anthropic share offering a 10% chance of extinction may be a 90% win for your portfolio.",
+          "at_s": 1198,
+          "url": "https://www.youtube.com/watch?v=EGC7jht_mis&t=1198s"
+        },
+        {
+          "text": "I've looked at, you know, a million polls and uh AI usually ranks like 22 out of 39 issues. Oh my god. It's like even in states like Ohio or Pennsylvania where data centers are a big issue. Um I think it's usually something like between 1 or 5% of voters will list it as their number one thing.",
+          "at_s": 1457,
+          "url": "https://www.youtube.com/watch?v=EGC7jht_mis&t=1457s"
+        },
+        {
+          "text": "And um are JD Vance and Marco Rubio going to break from Donald Trump's extremely extremely unpopular positions on AI regulation in data centers, right? Like in spite of the vast like the majority of Republican voters do want to regulate AI, they would prefer slower with more safeguards versus some kind of abstract immaterial beat China narrative.",
+          "at_s": 1779,
+          "url": "https://www.youtube.com/watch?v=EGC7jht_mis&t=1779s"
+        },
+        {
+          "text": "Um but and just to be clear, um buyout packages doesn't mean 60,000 people are going to take them. They expect three to three 3 to 5% of their employees to actually take them. So in reality, it's going to be like at most probably 3,000 layoffs, but that's still so many.",
+          "at_s": 2592,
+          "url": "https://www.youtube.com/watch?v=EGC7jht_mis&t=2592s"
+        },
+        {
+          "text": "And what they found was that not only did the experts uh I think over 80% of the time make the same decision as the AI, which are split half, they also over 70% of the time use the AI's arguments to justify their decision, but only 15% of the time did they say, \"Oh yeah, I was influenced by",
+          "at_s": 2927,
+          "url": "https://www.youtube.com/watch?v=EGC7jht_mis&t=2927s"
+        }
+      ],
+      "description": "Anthropic, one of the world leaders in A.I. and the company behind Claude, released its S-1 filing this week, providing the clearest view yet into the business side of the A.I. boom and setting the stage for what could be the largest initial public offering in history. We speak to Erin Griffith, a tech reporter at The New York Times, about what Anthropic's I.P.O. means for the tech industry, the economy and maybe even the long-term future of humanity. Then"
+    },
+    {
+      "id": "ai-daily-brief:Dz4_db_rRDE",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Gemini 4 Carbon Takes the Top Spot After a Major Benchmark Overhaul",
+      "url": "https://www.youtube.com/watch?v=Dz4_db_rRDE",
+      "video_id": "Dz4_db_rRDE",
+      "audio_url": null,
+      "published_at": "2026-10-30T10:44:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1605,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Artificial Analysis overhauls the Intelligence Index with version five, and the new benchmarks reshuffle the AI model leaderboard. NLW breaks down what changed, why private datasets and agentic tasks matter, and how the gap between US and open weight models widened. In the headlines: Google’s Gemini 4 Carbon takes the top spot, Google and Microsoft cloud earnings, and a broader DOJ probe into NVIDIA. The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
+    {
+      "id": "training-data:64vUl9k-IAQ",
+      "show_id": "training-data",
+      "show": "Sequoia Capital (Training Data)",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "Crusoe CEO Chase Lochmiller: Turning Stranded Energy Into Intelligence",
+      "url": "https://www.youtube.com/watch?v=64vUl9k-IAQ",
+      "video_id": "64vUl9k-IAQ",
+      "audio_url": null,
+      "published_at": "2026-10-29T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3642,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9295,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Everything from power generation, power delivery and power plant construction, working with independent power producers and utilities, to building data centers operating at scale, from very large to very small AI factories, and building and operating a managed AI cloud platform with managed services . This is a whole wide range of different workers.",
+          "at_s": 362,
+          "url": "https://www.youtube.com/watch?v=64vUl9k-IAQ&t=362s"
+        },
+        {
+          "text": "There are different margins in this chain that fluctuate depending on oil prices, consumer demand, or business needs. For us, I see it this way: we're trying to build an AI supergiant in the same way that Exxon and Chevron are supergiants in the oil and gas industry.",
+          "at_s": 1110,
+          "url": "https://www.youtube.com/watch?v=64vUl9k-IAQ&t=1110s"
+        },
+        {
+          "text": "We strive to find and stimulate innovative energy solutions. These could be projects like Blue Energy. They are testing new technologies for producing nuclear energy. We have another partnership with Allo that we recently announced—we're trying to launch the first AI factory based on small modular reactors at Idaho National Laboratory.",
+          "at_s": 1261,
+          "url": "https://www.youtube.com/watch?v=64vUl9k-IAQ&t=1261s"
+        },
+        {
+          "text": "From companies like Redwood Materials, which recycle old car batteries, to long-term storage solutions like Form Energy and Entora, which we believe will create cost-effective 100-hour batteries. There is a whole range of different solutions, and we believe we need them all. The demand for energy from intelligent systems is simply insatiable.",
+          "at_s": 1383,
+          "url": "https://www.youtube.com/watch?v=64vUl9k-IAQ&t=1383s"
+        },
+        {
+          "text": "So I was thinking about this and I felt like AI is a metascience that's not going to improve one thing, it's going to improve everything, right? I had a professor at Stanford named Andrew Yin, and he has this famous quote where he says, \"AI is like electricity,\" right? Electricity is not good for just one thing, right?",
+          "at_s": 1546,
+          "url": "https://www.youtube.com/watch?v=64vUl9k-IAQ&t=1546s"
+        },
+        {
+          "text": "It led to all these new startups that needed the exact same computing infrastructure that we were building, and the exact same storage, compute, networking, etc. solutions . I always felt that Bitcoin and AI—and I still do— actually go together really well, because AI data centers don't consume energy like Bitcoin mining does.",
+          "at_s": 1746,
+          "url": "https://www.youtube.com/watch?v=64vUl9k-IAQ&t=1746s"
+        }
+      ],
+      "description": "Chase Lochmiller runs one of the most operationally complex companies in AI: Crusoe builds power plants, manufactures electrical equipment, operates gigawatt-scale data centers, and runs a managed AI cloud on top, all under one roof. He just closed a round at a $31 billion valuation, and he got there by selling off the Bitcoin mining business that was paying the bills. Chase explains why Crusoe is modeled on Exxon, not a cloud provider, and why he partners with companies that"
+    },
+    {
+      "id": "nvidia:JXEMFLQwi4A",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "GTC Berlin 2026: Power Demand, Increasing Grid Reliability and Resiliency",
+      "url": "https://www.youtube.com/watch?v=JXEMFLQwi4A",
+      "video_id": "JXEMFLQwi4A",
+      "audio_url": null,
+      "published_at": "2026-10-29T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2484,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7257,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "That means 15 years ago we had around 40 big power plants. Meanwhile in our system we have more than 1 million uh renewable generation plants. That means on European level we are the most decentralized energy system perhaps in the world. For example, we have more res residential storage systems connected to our system than in California.",
+          "at_s": 234,
+          "url": "https://www.youtube.com/watch?v=JXEMFLQwi4A&t=234s"
+        },
+        {
+          "text": "Um I would say if you would have asked me this two years ago I would say there is big differences and this is the way how we are tackling this but at the moment globally be it Indonesia be India talking with the customers there in Asia talking with the customers also in Europe but also northern South America",
+          "at_s": 578,
+          "url": "https://www.youtube.com/watch?v=JXEMFLQwi4A&t=578s"
+        },
+        {
+          "text": "Grid planning, how we're going to bring on new capacity, how we're going to make sure that power continues to flow. But let's switch over to the security dimension of this and and what happens when infrastructure is deliberately targeted or is affected.",
+          "at_s": 713,
+          "url": "https://www.youtube.com/watch?v=JXEMFLQwi4A&t=713s"
+        },
+        {
+          "text": "Before I come to the attacks on to our company, let me take one step back because security of supply has is one of our core values as a company. That is our daily business to be responsible 24 hours a day, 7 days a week to secure security of supply.",
+          "at_s": 1000,
+          "url": "https://www.youtube.com/watch?v=JXEMFLQwi4A&t=1000s"
+        },
+        {
+          "text": "I use it several times on other aspects how to protect the transformer, how to predict the transformer availability and how to increase the capacity. Um capacity is bit like okay like 20 years ago the car industry 30 years ago put sensors in the engine and they have higher efficiency. We talk about downsizing of engines.",
+          "at_s": 1497,
+          "url": "https://www.youtube.com/watch?v=JXEMFLQwi4A&t=1497s"
+        },
+        {
+          "text": "And you know, we've heard a lot in the industry right now about these longunning AI agents and and cyber attacks and the sophistication of them. Adnan, let me just ask real quick about you were one of the first energy companies to join us when we announced the open agent security platform.",
+          "at_s": 1778,
+          "url": "https://www.youtube.com/watch?v=JXEMFLQwi4A&t=1778s"
+        }
+      ],
+      "description": "Hear leaders from Siemens Energy, Bayernwerk, and TenneT discuss how AI and accelerated computing are helping modernize grid operations, integrate distributed energy resources, and keep power reliable as demand rises."
+    },
+    {
+      "id": "no-priors:EZcWEsMuLb4",
+      "show_id": "no-priors",
+      "show": "No Priors",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "Taking on ServiceNow: Coding Agents for the Rest of Us with Serval Co-Founder and CEO Jake Stauch",
+      "url": "https://www.youtube.com/watch?v=EZcWEsMuLb4",
+      "video_id": "EZcWEsMuLb4",
+      "audio_url": null,
+      "published_at": "2026-10-29T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2286,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7579,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "So you say, \"Okay, I want my agent to do X, Y, and Z.\" Well, most large enterprise-level organizations will be very unhappy with this.",
+          "at_s": 354,
+          "url": "https://www.youtube.com/watch?v=EZcWEsMuLb4&t=354s"
+        },
+        {
+          "text": "I think just as email, Slack, and other tools have changed the way we communicate at work, personal agents will also become an important part of this. I think everyone will have their own personal agent who will perform tasks and delegate them to other personal agents. So your agent will communicate with other agents at work.",
+          "at_s": 991,
+          "url": "https://www.youtube.com/watch?v=EZcWEsMuLb4&t=991s"
+        },
+        {
+          "text": "Our enterprise customers, when it comes to overall code generation costs for development teams, have come a long way this year, right? They say, \"We'll let people try.\" Then we will use the tokens to the fullest, and then we will limit it and find out who is actually working productively.",
+          "at_s": 1291,
+          "url": "https://www.youtube.com/watch?v=EZcWEsMuLb4&t=1291s"
+        },
+        {
+          "text": "And so there will be a SaaS apocalypse, but precisely among those companies with small capitalization that offer individual solutions. I don't think you can really do without the core accounting systems: ERP, HRIS, ITSM, CRM. I think they will stay. They can transform, and what we see with Serval is we are displacing these tools.",
+          "at_s": 1496,
+          "url": "https://www.youtube.com/watch?v=EZcWEsMuLb4&t=1496s"
+        },
+        {
+          "text": "Or even: \"Let me just do it for you.\" And then we realized that it would be great if customers could simply communicate with an agent who understands their requirements and translates them into product primitives. So we created an agent called Catalyst that does just that. This is an agent for managing the platform .",
+          "at_s": 1670,
+          "url": "https://www.youtube.com/watch?v=EZcWEsMuLb4&t=1670s"
+        },
+        {
+          "text": "Today we are 200 people. 200 people. in January, so it's been a year of incredible growth. This is an impressive year. First, do you expect the hiring rate to remain as high, and as someone who believes in AI—why exactly?",
+          "at_s": 1996,
+          "url": "https://www.youtube.com/watch?v=EZcWEsMuLb4&t=1996s"
+        }
+      ],
+      "description": "What happens when you put code-generation agents in the hands of enterprise IT teams? With Serval, you get a system where it's easy for everyone to be a builder. Sarah Guo and Elad Gil sit down with Serval co-founder and CEO Jake Stauch to analyze his company’s direct challenge to ServiceNow as the enterprise automation and service management system of record. Jake explains that by building an AI platform for enterprise IT departments with Serval, users can safely build while"
+    },
+    {
+      "id": "microsoft-research:k6oC-6TPAr8",
+      "show_id": "microsoft-research",
+      "show": "Microsoft Research",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "research"
+      ],
+      "title": "Microsoft Research Focus – Edition #97",
+      "url": "https://www.youtube.com/watch?v=k6oC-6TPAr8",
+      "video_id": "k6oC-6TPAr8",
+      "audio_url": null,
+      "published_at": "2026-10-29T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 415,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Host Sowbhagya Suresh shares some of the latest news and cutting-edge research from across Microsoft—from understanding the challenges facing coding agents to uncovering how people use AI at work and improving extended-range weather forecasting. Introduction A self-improving agentic framework Understanding coding agent success and failure Evolving agent skills with activity logs Looking beyond similarities in AI use Helping teachers make more time for teaching Improving extended-range weather forecasting BioEmu2 now available in public preview Final thoughts"
+    },
+    {
+      "id": "decoder:Yvy_Qm14odU",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Anthropic is asking Wall Street to believe in AGI",
+      "url": "https://www.youtube.com/watch?v=Yvy_Qm14odU",
+      "video_id": "Yvy_Qm14odU",
+      "audio_url": null,
+      "published_at": "2026-10-29T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2542,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9249,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Um you know right now if anthropics at 65 million of revenue per inference megawatt you know this was you know mid- teens last year at this time. And I I think what we've said on you know maybe opus 55 on a blackwell you can get to 100 120 million of revenue per megawatt.",
+          "at_s": 583,
+          "url": "https://www.youtube.com/watch?v=Yvy_Qm14odU&t=583s"
+        },
+        {
+          "text": "But but I think that's something and there's an interesting, you know, number in the S1 that 80% of revenue in the last six or last 3 months comes from models released in the last 6 months. So then you say, okay, 20% of the models are like Opus, you know, 4.5 um in earlier, you know, versions.",
+          "at_s": 798,
+          "url": "https://www.youtube.com/watch?v=Yvy_Qm14odU&t=798s"
+        },
+        {
+          "text": "And if you believe it c, you know, they include a cost of goods sold, it, you know, it's sub $50 per month. And they said the same thing of their top 5% of cloud code users, they're spending $18,000 a year on average.",
+          "at_s": 1515,
+          "url": "https://www.youtube.com/watch?v=Yvy_Qm14odU&t=1515s"
+        },
+        {
+          "text": "This is the marketing channel where Anthropic gets a rev share, right? And if you're AWS and you're saying, \"Oh, I'm running anthropic compute for, you know, let's say 10, you know, 10 million per megawatt, but now I'm getting 16% of 65 a megawatt plus the the compute, you know, cost as well.",
+          "at_s": 1686,
+          "url": "https://www.youtube.com/watch?v=Yvy_Qm14odU&t=1686s"
+        },
+        {
+          "text": "Searches now AI overviews. looking at the anthropic S1. What are you looking ahead to in OpenAIs because they are a more consumerf facing company? Yeah. So, OpenAI was 6040 consumer, you know, 60% consumer, 40% enterprise at the end of Q1, you know, that didn't flip for the first time until January or August to be enterprise focused.",
+          "at_s": 2277,
+          "url": "https://www.youtube.com/watch?v=Yvy_Qm14odU&t=2277s"
+        },
+        {
+          "text": "These token volumes didn't disappear. They just shifted to in Meta's internal models. Um, you know, they started cracking down on anti-distillation anthropic did and that was, you know, 5% of revenue, you know, prior and I think they said 5 to 7% was of revenue in the S1 is stuff against their terms of service.",
+          "at_s": 2410,
+          "url": "https://www.youtube.com/watch?v=Yvy_Qm14odU&t=2410s"
+        }
+      ],
+      "description": "Today, I’m joined by Joey Brookhart, an analyst at the chip and AI research firm SemiAnalysis, to help me dig into the story inside the massive Anthropic IPO filing. This isn’t just about a single company’s financials, or its lofty ambitions or frankly ludicrous risk factors, which include maybe automating every job or, you know, killing everyone. It’s also the clearest look yet at how the business of frontier AI actually works and who’s really paying for it. #anthropic #tech"
+    },
+    {
+      "id": "ai-daily-brief:HOgj6cJ9oxQ",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "AI Can Now Create Worlds You Can Change in Real Time",
+      "url": "https://www.youtube.com/watch?v=HOgj6cJ9oxQ",
+      "video_id": "HOgj6cJ9oxQ",
+      "audio_url": null,
+      "published_at": "2026-10-29T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1729,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Google’s Genie 4 shows how close AI is to inventing playable worlds on the fly, with big implications for gaming and robotics. NLW breaks down real-time prompting, generative audio, and the Gemini reasoning loop behind the new world model. In the headlines: Anthropic acquires a one-person biotech startup, markets cheer the Anthropic S1, and scientists push back on OpenAI’s physics disclosure. The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
+    {
+      "id": "a16z:cRJ7CfaK1Vc",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "How to Build the Next SpaceX or Tesla",
+      "url": "https://www.youtube.com/watch?v=cRJ7CfaK1Vc",
+      "video_id": "cRJ7CfaK1Vc",
+      "audio_url": null,
+      "published_at": "2026-10-29T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2957,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 10653,
+        "checked_at": "2026-10-31T03:14:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "And now the company behind DJ or the the folks behind DJI are now the largest producers of robots in the world because what is very similar to a drone motor is a robot actuator which is the hardest part of building a robot.",
+          "at_s": 337,
+          "url": "https://www.youtube.com/watch?v=cRJ7CfaK1Vc&t=337s"
+        },
+        {
+          "text": "Um, and so the ability to to kind of pass on some of that capex to the defense industrial base, I think is uh will be really powerful as we as we uh rebuild kind of industrial capacity in the United States. So what specifically are you seeing startups do to drive down costs and move faster? Yeah.",
+          "at_s": 501,
+          "url": "https://www.youtube.com/watch?v=cRJ7CfaK1Vc&t=501s"
+        },
+        {
+          "text": "We need it for security and safety and deterrence, but then all of a sudden you're going to have this, you know, kind of robotic wave that will come in America. I said it, you know, AI can't turn a wrench yet. They can. They will eventually.",
+          "at_s": 1796,
+          "url": "https://www.youtube.com/watch?v=cRJ7CfaK1Vc&t=1796s"
+        },
+        {
+          "text": "Like, you know, they're going to build more 737s. They're going to get paid the same way if it's a for 50-y old landing gear or if it's a new landing gear. The problem though is when you keep iterating on these new requirements for end systems, at some point the 50-year-old subsystem just doesn't work.",
+          "at_s": 1977,
+          "url": "https://www.youtube.com/watch?v=cRJ7CfaK1Vc&t=1977s"
+        },
+        {
+          "text": "And another important point here is like you know you could be pessimistic and you can say okay Connor all these new military or end systems like not all of them are going to be adopted so like that that top down demand or or or or Aaron like we're not actually going to increase energy by four times like",
+          "at_s": 2199,
+          "url": "https://www.youtube.com/watch?v=cRJ7CfaK1Vc&t=2199s"
+        },
+        {
+          "text": "Just um there's that very famous chart of like US power production versus like China new new power new energy production like America's line is like basically flat and China's is you know up and to the right like like I I guess some question uh around like like what would it take to close that gap or how how",
+          "at_s": 2664,
+          "url": "https://www.youtube.com/watch?v=cRJ7CfaK1Vc&t=2664s"
+        }
+      ],
+      "description": "America’s defense, energy, manufacturing, and robotics booms are increasingly becoming one story: the rebuilding of the country’s industrial base. This year’s AD50 highlights the companies building across that stack, from critical materials and factories to the systems they ultimately power. a16z’s Erin Price-Wright and Connor Love join Elena Burger to unpack what has changed. They discuss how defense demand can help finance manufacturing capacity that ultimately serves much larger commercial markets, why AI is changing the economics of American factories,"
+    },
+    {
+      "id": "20vc:2-aUmDMZgLE",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Instinct Worth 30BN? | Microsoft Cuts 27,000 Jobs While Meta Taps Equity Markets for $95B CapEx",
+      "url": "https://www.youtube.com/watch?v=2-aUmDMZgLE",
+      "video_id": "2-aUmDMZgLE",
+      "audio_url": null,
+      "published_at": "2026-10-29T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3617,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Jason Lemkin is one of the leading SaaS investors of the last decade with a portfolio including the likes of Algolia, Talkdesk, Owner, RevenueCat, Saleloft and more. Rory O’Driscoll is a General Partner @ Scale where he has led investments in category leaders such as Bill.com (BILL), Box (BOX), DocuSign (DOCU), and WalkMe (WKME), among others. Timestamps: Intro Anthropic Files S1 Why Anthropic May Still Be Underestimated The Scariest Metric in Anthropic’s S1 Is AI Debt Financing Starting to Break?"
+    },
+    {
+      "id": "twiml:aICQHV2wbMg",
+      "show_id": "twiml",
+      "show": "The TWIML AI Podcast",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "The Brutal Reality of Building Agentic Products Today",
+      "url": "https://www.youtube.com/watch?v=aICQHV2wbMg",
+      "video_id": "aICQHV2wbMg",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3212,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "AI agents are becoming accessible to everyone, raising the bar for developers building the next generation of agent products. When capable, general-purpose agents are available out of the box, differentiation increasingly comes down to the architectural decisions and specialized experiences that make an agent uniquely valuable. In this episode, Dan Jeffries, creator of Nautilo, joins us to discuss what he's learned building a platform for personal and collaborative AI agents. We explore his approach to persistent memory, coordinating work across"
+    },
+    {
+      "id": "training-data:qhIabMKHJlA",
+      "show_id": "training-data",
+      "show": "Sequoia Capital (Training Data)",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "European Defense Sovereignty Starts in the Factory: Stark’s Uwe Horstmann and Johannes Schaback",
+      "url": "https://www.youtube.com/watch?v=qhIabMKHJlA",
+      "video_id": "qhIabMKHJlA",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2666,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Two years after its founding, Stark has roughly 700 employees and strike drones in the field in Ukraine. CEO Uwe Horstmann and CTO Johannes Schaback argue that the real lesson of that war is not any single weapon: the innovation ecosystem behind it is the wonder weapon. They explain why Stark designs every system for mass manufacturing from day one, runs 10 to 15 programs like a venture portfolio, and views the staff sergeant who operates a system as just"
+    },
+    {
+      "id": "practical-ai:pLNuhMQMxd8",
+      "show_id": "practical-ai",
+      "show": "Practical AI",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Abundant Intelligence at the Midwest AI Summit |Episode 378|",
+      "url": "https://www.youtube.com/watch?v=pLNuhMQMxd8",
+      "video_id": "pLNuhMQMxd8",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3122,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "In this special episode, we bring you highlights from three talks at the Midwest AI Summit. Heidi Porter explores how to build reliable AI-augmented workflows using the right tools, evaluations, and guardrails. Kevin Solorio shares why building AI with frontline workers, not just for them, is key to earning trust and driving adoption, emphasizing collaboration and continuous feedback. And Chris Shinkle and Andrew Dunlap of SEP discuss how software teams can find the right level of AI autonomy based on"
+    },
+    {
+      "id": "openai:z-WZMjNsg-k",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Faster contract review. Broader legal analysis. | Legora’s Alex Fortescue-Webb",
+      "url": "https://www.youtube.com/watch?v=z-WZMjNsg-k",
+      "video_id": "z-WZMjNsg-k",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 247,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "When deadlines limit how many contracts lawyers can examine, important risks can go unseen. Alex Fortescue-Webb, Global Head of Legal Engineering at Legora, explains how AI powered by OpenAI models helps teams analyse thousands of contracts across multiple questions in minutes, expanding the scope of due diligence and giving lawyers more information to apply their judgment. Part of Intelligence at Work."
+    },
+    {
+      "id": "openai:yJxZef1Ylok",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "How Legora is transforming legal work with OpenAI",
+      "url": "https://www.youtube.com/watch?v=yJxZef1Ylok",
+      "video_id": "yJxZef1Ylok",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 155,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "What can lawyers achieve when time is no longer the limit? Discover how Legora uses OpenAI models, ChatGPT and Codex to help legal teams review contracts faster, broaden their analysis and make more room for work that needs human judgment. Part of Intelligence at Work, a series exploring how businesses are putting AI to work."
+    },
+    {
+      "id": "openai:ujmyzWSj8IU",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "API credits, now in ChatGPT Pro and Business plans",
+      "url": "https://www.youtube.com/watch?v=ujmyzWSj8IU",
+      "video_id": "ujmyzWSj8IU",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 146,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Starting today, eligible ChatGPT Pro and Business subscribers can claim up to $500 per month in API credits to build apps and agents. Credit amounts depend on the plan. Pro plans get $100, $200 or $500 per month by tier. Business plans get $20 per paid Standard seat or $100 per paid Premium seat, pooled up to $500 per workspace."
+    },
+    {
+      "id": "openai:UOfmD1fY-i8",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Building the future of legal work with AI | Legora CEO Max Junestrand",
+      "url": "https://www.youtube.com/watch?v=UOfmD1fY-i8",
+      "video_id": "UOfmD1fY-i8",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 222,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Legora co-founder and CEO Max Junestrand wants to make legal expertise available wherever it’s needed. He shares how OpenAI helped turn that ambition into a platform, why staying AI-native matters as the company grows, and what becomes possible when lawyers can take on work that time and capacity once put out of reach. Part of Intelligence at Work."
+    },
+    {
+      "id": "openai:M2Oa42hF67E",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "From legal bottleneck to business partner | Legora’s Emma Kadri Bergström",
+      "url": "https://www.youtube.com/watch?v=M2Oa42hF67E",
+      "video_id": "M2Oa42hF67E",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 242,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "NDA reviews once took up around 20% of Legora’s legal team’s capacity. Today, that figure is under 1%. General Counsel Emma Kadri Bergström shares how AI is helping her team reclaim time, support a rapidly growing business and take on more complex work, while keeping lawyers responsible for the decisions. Part of Intelligence at Work."
+    },
+    {
+      "id": "latent-space:zHG6sAss_kE",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Why Agents Love Supabase — with Paul Copplestone and Ant Wilson",
+      "url": "https://www.youtube.com/watch?v=zHG6sAss_kE",
+      "video_id": "zHG6sAss_kE",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 4599,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Why do AI agents keep choosing Supabase—and what changes when the agent becomes the user? Supabase co-founders Paul Copplestone (CEO) and Ant Wilson (CTO) join swyx for their first podcast together after a $0 to $10B speedrun as the preeminent open source, fully remote Postgres platform company. We have watched them grow from a humble Firebase alternative launched during Covid, to now being a full preferred backend for AI-built applications: long-running compute beside the database, declarative schemas, Postgres storage and"
+    },
+    {
+      "id": "cognitive-revolution:vFfPWL9cRPI",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Freedom of Action: America's ASI Strategy, w/ RAND's Joel Predd, Ben Boudreaux & Matt Chessen",
+      "url": "https://www.youtube.com/watch?v=vFfPWL9cRPI",
+      "video_id": "vFfPWL9cRPI",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 6580,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Joel Predd, Ben Boudreaux, and Matt Chessen of RAND's Center for the Geopolitics of AGI join Nathan to discuss their framework for maintaining freedom of action on the path to superintelligence. Analyzing seven strategic archetypes—including dominance, deterrence, co-development, and moratoriums—they argue that deep technological and geopolitical uncertainty makes defaulting to any single strategy dangerous. To avoid foreclosing critical options, their proposed approach calls for investing in long-lead capabilities like model verification, containment, agency evaluations, and an adaptable security architecture. At"
+    },
+    {
+      "id": "alphabet-earnings-call:X9mmCagxJTo",
+      "show_id": "alphabet-earnings-call",
+      "show": "Alphabet earnings call",
+      "kind": "earnings-call",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "earnings-call"
+      ],
+      "title": "Alphabet 2026 Q3 Earnings Call",
+      "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
+      "video_id": "X9mmCagxJTo",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3833,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:IwCkMupiZ4s",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Everything Important in Anthropic s IPO Prospectus",
+      "url": "https://www.youtube.com/watch?v=IwCkMupiZ4s",
+      "video_id": "IwCkMupiZ4s",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1700,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Anthropic’s full S1 reveals a business scaling faster than any company before, alongside massive long-term compute commitments. NLW breaks down the revenue, margins, customer growth, and risk disclosures that will shape how investors view the IPO. In the headlines: OpenAI’s new math, computer science, and physics discoveries, the GPT-6.1 Terra release, and Cohere’s report of a Qwen model calling home. The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
+    {
+      "id": "a16z:5UWDUD6qaM4",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Mark Cuban on Why AI Could Turn Solo Founders Into Trillionaires",
+      "url": "https://www.youtube.com/watch?v=5UWDUD6qaM4",
+      "video_id": "5UWDUD6qaM4",
+      "audio_url": null,
+      "published_at": "2026-10-28T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3618,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Mark Cuban thinks AI could transform healthcare, but it won’t fix opaque prices and broken incentives on its own. His starting point for employers: run every benefits contract through AI and ask where you’re getting ripped off. Mark joins a16z General Partner Julie Yoo and Erik Torenberg to discuss what he’s learned building Cost Plus Drugs, why trust is its core product, and how greater transparency could put pressure on healthcare costs. They also explore where AI can help, what"
+    },
+    {
+      "id": "interconnects:pod-3hbkv5asd40md",
+      "show_id": "interconnects",
+      "show": "Interconnects (narrated essays)",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "research",
+        "audio-only"
+      ],
+      "title": "Artificial Analysis v5 and the benchmarker's dilemma",
+      "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/222482864/f085bbd37e5814c2abd73bc0b2eb01ea.mp3",
+      "video_id": null,
+      "audio_url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/222482864/f085bbd37e5814c2abd73bc0b2eb01ea.mp3",
+      "published_at": "2026-10-28T12:58:00Z",
+      "published_precision": "exact",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 638,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Hill-climbing is easy, knowing what to hill-climb is hard. Making scores go up is expensive, but we have a much clearer playbook for it than we do for creating meaningful benchmarks at the true frontier of AI today.Independent evaluation of language models is under-appreciated in how hard of a task it is. These groups are not just taking current models and certifying their scores, which is a technically involved task. This is their job if AI progress is slow. When"
+    },
+    {
+      "id": "nvidia:XWYMvOFMacA",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "AI in the UK: Drug Discovery, Robotics and AI Factories | NVIDIA",
+      "url": "https://www.youtube.com/watch?v=XWYMvOFMacA",
+      "video_id": "XWYMvOFMacA",
+      "audio_url": null,
+      "published_at": "2026-10-27T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 181,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "From drug discovery to robotics, voice, and video, the UK’s developers, researchers, and companies are advancing AI with NVIDIA accelerated computing. We celebrate their work—and the new AI factories being built to power what comes next."
+    },
+    {
+      "id": "nvidia:QqeKRvAkIc8",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "How AI Is Advancing Human Health",
+      "url": "https://www.youtube.com/watch?v=QqeKRvAkIc8",
+      "video_id": "QqeKRvAkIc8",
+      "audio_url": null,
+      "published_at": "2026-10-27T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2804,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "In her special address at NVIDIA GTC Berlin, Kimberly Powell, Vice President of Healthcare and Life Sciences at NVIDIA, explored how digital health agents are reaching national scale, how AI factories are speeding up drug discovery from research to clinic, and how robotic systems are expanding access to surgical care and essential medicines. These advances point to an intelligent, connected healthcare ecosystem that can deliver faster innovation and wider access to care across Europe and the world."
+    },
+    {
+      "id": "latent-space:MRQTlwcW-aQ",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "How Anthropic ships the #1 LLM in the World — with Katelyn Lesse and Angela Jiang",
+      "url": "https://www.youtube.com/watch?v=MRQTlwcW-aQ",
+      "video_id": "MRQTlwcW-aQ",
+      "audio_url": null,
+      "published_at": "2026-10-27T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 6401,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "An agent’s sandbox can die without taking the whole agent with it. That’s the idea behind “the brain and the hands,” Anthropic’s architecture for Claude Managed Agents. Now that the dust has settled on Opus 5.5, it is universally agreed to be the best model in the world. In this conversation with Katelyn Lesse and Angela Jiang, Anthropic’s Heads of Engineering and of Product, goes inside the systems that turn model capabilities into products developers can use. We cover: -"
+    },
+    {
+      "id": "invest-like-the-best:EH6DsNT455M",
+      "show_id": "invest-like-the-best",
+      "show": "Invest Like the Best",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "What's Still Valuable When Intelligence Is Free",
+      "url": "https://www.youtube.com/watch?v=EH6DsNT455M",
+      "video_id": "EH6DsNT455M",
+      "audio_url": null,
+      "published_at": "2026-10-27T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 4288,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Cliff Sosin joins Patrick to explore why even superintelligent AI may have fundamental limits, and what happens when intelligence becomes cheap and ubiquitous. They discuss why the biggest winners of the AI revolution may not be the companies building the models, but businesses with durable advantages in data, attention, and physical infrastructure. Cliff shares his perspective on the AI infrastructure boom, the risk of overinvestment, what makes companies like Meta and Carvana compelling, and how AI agents could reshape competition,"
+    },
+    {
+      "id": "google-developers:LOP8ul3KqQI",
+      "show_id": "google-developers",
+      "show": "Google for Developers",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "developer"
+      ],
+      "title": "Introducing Genie 4",
+      "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI",
+      "video_id": "LOP8ul3KqQI",
+      "audio_url": null,
+      "published_at": "2026-10-27T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2846,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Raia Hadsell, Diego Rivas, and Hang Qi from Google DeepMind join host Logan Kilpatrick to introduce Genie 4, the latest world model from Google DeepMind. Their conversation covers: *What world models are *The arc from Genie 1 to Genie 4 *Live demos showcasing the model’s biggest leaps forward *The role of Gemini in the loop *The path to robotics and education applications *What it means to make Genie available in the API for the first time Chapters Welcome and Genie"
+    },
+    {
+      "id": "google-deepmind:sFfPkUJd_Jk",
+      "show_id": "google-deepmind",
+      "show": "Google DeepMind",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Genie 4: A new generation of world simulation",
+      "url": "https://www.youtube.com/watch?v=sFfPkUJd_Jk",
+      "video_id": "sFfPkUJd_Jk",
+      "audio_url": null,
+      "published_at": "2026-10-27T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 148,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Meet Genie 4, Google DeepMind’s most realistic and interactive world model yet. Built on our Gemini models, Genie 4 lets you step inside dynamic worlds in real time, steer scenes on the fly with natural language, and watch what happens next: how the world responds, how it sounds, and how the people in it move, react, and speak. We have started rolling out Genie 4 as a research preview for trusted testers, and it's coming soon to Google AI Ultra"
+    },
+    {
+      "id": "big-technology:iy1PwZxFA7U",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "How To Take Enterprise AI Pilots To Production — With Russell Jukes",
+      "url": "https://www.youtube.com/watch?v=iy1PwZxFA7U",
+      "video_id": "iy1PwZxFA7U",
+      "audio_url": null,
+      "published_at": "2026-10-27T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2868,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Russell Jukes is Chief Digital Information Officer at DXC Technology. Jukes joins Big Technology to discuss why so many enterprise AI pilots struggle to reach production and what companies can do to turn AI experimentation into real business value. Tune in to hear how enterprises can build production-grade AI, establish trust in autonomous agents, and move beyond measuring adoption to measuring AI fluency. We also cover the build-versus-buy debate, AI coding productivity, the growing complexity of enterprise technology stacks, security"
+    },
+    {
+      "id": "big-technology:7qT9ovAMOWY",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Google’s Potential, AI Money Spigot Shutting?, PHP Bug & Cybersecurity’s “Black October”",
+      "url": "https://www.youtube.com/watch?v=7qT9ovAMOWY",
+      "video_id": "7qT9ovAMOWY",
+      "audio_url": null,
+      "published_at": "2026-10-27T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3774,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Ranjan Roy from Margins and Alex Stamos from Cognition are back for our weekly discussion of the latest tech news. We cover: 1) Is Sundar Pichai team product or team model? 2) Google's attempt to build a unified assistant 3) Which Google teams get priority? 4) Sundar's cloud allocation between Google Cloud and AI Research 5) Will Google Cloud Platform overtake Azure? 6) Meta Stock falls on worries about its fundraising and debt 7) OpenAI valuation takes a hit after"
+    },
+    {
+      "id": "ai-daily-brief:uGvgPwcy9V0",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "4 Questions for AI This Week",
+      "url": "https://www.youtube.com/watch?v=uGvgPwcy9V0",
+      "video_id": "uGvgPwcy9V0",
+      "audio_url": null,
+      "published_at": "2026-10-27T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1601,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Is China closing the AI gap? Is cyber chaos the new normal? Is data center funding drying up? And what happens if Anthropic’s IPO disappoints? From Kimi K3.1 to rogue agent swarms to Elon Musk’s debt market warning, NLW examines the four questions shaping AI this week. The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
+    {
+      "id": "a16z:T4u2FoIm3pw",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "The AI School Kids Love More Than Vacation | Alpha School's Joe Liemandt",
+      "url": "https://www.youtube.com/watch?v=T4u2FoIm3pw",
+      "video_id": "T4u2FoIm3pw",
+      "audio_url": null,
+      "published_at": "2026-10-27T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3361,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "What should school look like if AI can help students learn dramatically faster? Alpha School principal Joe Liemandt argues the answer isn’t to fill the extra time with more academics, but to redesign school around the skills traditional classrooms struggle to teach: agency, teamwork, entrepreneurship, communication, and doing hard things. Joe joins Erik Torenberg and Horowitz Andreessen Academy co-founder Gagan Biyani to discuss Alpha’s model, where students spend two hours a day on core academics and the rest developing real-world"
+    },
+    {
+      "id": "nvidia:dmbT2IHpOKU",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "AI in France: From NVIDIA’s First Chip to AI Factories | NVIDIA",
+      "url": "https://www.youtube.com/watch?v=dmbT2IHpOKU",
+      "video_id": "dmbT2IHpOKU",
+      "audio_url": null,
+      "published_at": "2026-10-26T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 164,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "France helped bring NVIDIA’s first chip to life. More than 30 years later, its developers, researchers, and companies are using NVIDIA accelerated computing to advance industrial design, healthcare, and open AI models—and building AI factories to support what comes next."
+    },
+    {
+      "id": "mlst:IRJDwtAreB4",
+      "show_id": "mlst",
+      "show": "Machine Learning Street Talk",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "Mathematics Just Changed Forever — Kevin Hartnett",
+      "url": "https://www.youtube.com/watch?v=IRJDwtAreB4",
+      "video_id": "IRJDwtAreB4",
+      "audio_url": null,
+      "published_at": "2026-10-26T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 5614,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Kevin Hartnett is the author of *The Proof in the Code*."
+    },
+    {
+      "id": "lex-fridman:ZAzWPE9CItg",
+      "show_id": "lex-fridman",
+      "show": "Lex Fridman Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "AI Crisis in Math: Navier-Stokes, Riemann Hypothesis & Complexity Theory | Lex Fridman Podcast #503",
+      "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg",
+      "video_id": "ZAzWPE9CItg",
+      "audio_url": null,
+      "published_at": "2026-10-26T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 12867,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Ankur Moitra, Steven Brunton and Alex Kontorovich are three mathematicians who can speak to this incredible moment in the history of mathematics, when AI solved some of its hardest problems: Navier-Stokes, the quasi-Riemann hypothesis, the unique games conjecture and hundreds of other problems. Ankur Moitra is a mathematician at MIT (visiting the Institute for Advanced Study in Princeton) working in theoretical computer science, who can speak to the unique games conjecture, complexity theory and the mathematics of how AI learns."
+    },
+    {
+      "id": "latent-space:vhPCo-8K78U",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "What 90,000 Rollouts Reveal About AI Agents Doing Science - Ian Quigley, Leash Bio",
+      "url": "https://www.youtube.com/watch?v=vhPCo-8K78U",
+      "video_id": "vhPCo-8K78U",
+      "audio_url": null,
+      "published_at": "2026-10-26T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 994,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Leash Biosciences built a platform to physically measure thousands of proteins against millions of molecules. In this followup to our Leash Bio podcast with cofounder Ian Quigley, he returns to discuss the release of Minos, Leash’s framework of pre-measured experimental worlds that scientific agents can explore. Ian goes into how scientific agents traverse these environments, whether they use information from prior experiments to inform future choices, how good they get at medicinal chemistry, and how their broad decision making abilities"
+    },
+    {
+      "id": "interconnects-interviews:79Pnm5hANsA",
+      "show_id": "interconnects-interviews",
+      "show": "Interconnects (Nathan Lambert)",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "Open Language Models: Overview, Open Source History, Distillation, Risks, & Chinese Labs",
+      "url": "https://www.youtube.com/watch?v=79Pnm5hANsA",
+      "video_id": "79Pnm5hANsA",
+      "audio_url": null,
+      "published_at": "2026-10-26T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2884,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Finally, I made the time to make some foundational educational content on open models. It's a very complex subject and it was a lot of fun to give a lecture that put together all aspects of my work here, from studying history to making original datasets on adoption, and to curating the most influential LLMs at the center of it all. I got to draw on years on obsessing over the topic and condense it into one 45-minute lecture. I"
+    },
+    {
+      "id": "decoder:FU2wls6TOyw",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Kevin Roose is AGI-pilled. Why aren’t you? | Decoder",
+      "url": "https://www.youtube.com/watch?v=FU2wls6TOyw",
+      "video_id": "FU2wls6TOyw",
+      "audio_url": null,
+      "published_at": "2026-10-26T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3849,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "My guest today is Kevin Roose, a journalist and author of the new book The AGI Chronicles. Kevin was a longtime New York Times reporter and host of the popular podcast Hard Fork, but he and friend of the show Casey Newton just left The Times to start the all-new tech podcast Machine Gods, which launched last week. Kevin and I talked about launching Machine Gods and what it’s like to go from the TImes to being an independent creator,"
+    },
+    {
+      "id": "big-technology:NVvfllwYliY",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Emergency Pod: Anthropic's S-1 IPO Filing — With Dan Primack",
+      "url": "https://www.youtube.com/watch?v=NVvfllwYliY",
+      "video_id": "NVvfllwYliY",
+      "audio_url": null,
+      "published_at": "2026-10-26T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1617,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Chapters: Anthropic’s S-1 Is Here Can Anthropic Raise $100 Billion? Wall Street’s AI Funding Test Anthropic’s Cash Flow and Compute Costs What Are Investors Betting On? Anthropic’s Explosive Revenue Growth Anthropic’s Customer Diversification AI Compute Efficiency and Profitability Anthropic’s Biggest Risk Factors What Anthropic’s IPO Means for OpenAI"
+    },
+    {
+      "id": "ai-daily-brief:HyEfRBW10Kk",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "How I m Actually Using Claude Duet",
+      "url": "https://www.youtube.com/watch?v=HyEfRBW10Kk",
+      "video_id": "HyEfRBW10Kk",
+      "audio_url": null,
+      "published_at": "2026-10-26T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1921,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
+    {
+      "id": "a16z:9v42ZOdiBJY",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Why OpenAI Is Racing to Make Computer Use Superhuman",
+      "url": "https://www.youtube.com/watch?v=9v42ZOdiBJY",
+      "video_id": "9v42ZOdiBJY",
+      "audio_url": null,
+      "published_at": "2026-10-26T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2654,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "AI agents are approaching a point where they can use computers faster than expert humans, turning the user interface itself into a universal way for AI to interact with software. OpenAI’s Ari Weinstein and James Sun argue that computer use is now entering its scaling moment, as better models, faster execution, and stronger safety controls make agents practical for more consumer and enterprise work. Ari and James join a16z’s Seema Amble and Fabrizio Serafini to explain how computer-using agents are"
+    },
+    {
+      "id": "20vc:24XUcWhqY_4",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Satya Nadella on Open vs Closed Models: Who Wins | Why Companies Need to Own Their Own Intelligence",
+      "url": "https://www.youtube.com/watch?v=24XUcWhqY_4",
+      "video_id": "24XUcWhqY_4",
+      "audio_url": null,
+      "published_at": "2026-10-26T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1429,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Satya Nadella is the CEO of Microsoft and one of the greatest CEOs of our time. Satya has been at the company for an astonishing 34 years. When he joined, Microsoft had a market cap of $23.5BN. 22 years later, the company was worth $300BN. At this point, Satya took the reins as CEO. Under his leadership, he has taken it from $300BN to $3.9TRN. Timestamps: Intro Why Satya Says We Should Assume AI Models Are Compromised Why AI Needs"
+    },
+    {
+      "id": "nvidia:rF1EsryCAwc",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "Jensen Huang’s Keynote Highlights at NVIDIA GTC Berlin 2026",
+      "url": "https://www.youtube.com/watch?v=rF1EsryCAwc",
+      "video_id": "rF1EsryCAwc",
+      "audio_url": null,
+      "published_at": "2026-10-25T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 239,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Europe is building its AI economy. NVIDIA founder and CEO Jensen Huang explains how AI factories are evolving to run agents and why physical AI is the next frontier. Catch the highlights from his NVIDIA GTC Berlin keynote, including announcements across AI infrastructure, safe agents, open models, enterprise AI, healthcare, mobility, robotics, and personal AI."
+    },
+    {
+      "id": "interconnects-interviews:0xiq7RHVGRE",
+      "show_id": "interconnects-interviews",
+      "show": "Interconnects (Nathan Lambert)",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "Kimi K3.1 Pro Reactions and Living Through Hackmageddon | Interconnects Podcast",
+      "url": "https://www.youtube.com/watch?v=0xiq7RHVGRE",
+      "video_id": "0xiq7RHVGRE",
+      "audio_url": null,
+      "published_at": "2026-10-25T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2803,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Programing update from Nathan: I'm going to start posting Interconnects content more directly on my @natolambert channel. It has better SEO and search performance, and it's easier than maintaining two channels. We — Nathan and Florian — wanted to discuss all the messy trade-offs of a busy week in AI and ask all the pressing questions like: - Why did Kimi K3.1 Pro have a mixed reaction with such incredible benchmarks? Will it be adopted? - Were we wrong about"
+    },
+    {
+      "id": "big-technology:Xoj0GGu0-aw",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "This AI Expert Argues We're Underestimating AI's Impact — With Ethan Mollick",
+      "url": "https://www.youtube.com/watch?v=Xoj0GGu0-aw",
+      "video_id": "Xoj0GGu0-aw",
+      "audio_url": null,
+      "published_at": "2026-10-25T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3815,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Ethan Mollick is a professor at the Wharton School and author of Coexistence: The Next Phase of AI. Mollick joins Big Technology to discuss why AI's remarkable advances haven't yet translated into massive productivity gains across the economy. Tune in to hear why companies need to fundamentally rethink how they operate to unlock AI's full potential, where businesses are already seeing returns, and what organizational transformation could look like. We also cover whether AI development will hit a wall, the"
+    },
+    {
+      "id": "interconnects:pod-1tg92nf4xe4zm",
+      "show_id": "interconnects",
+      "show": "Interconnects (narrated essays)",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "research",
+        "audio-only"
+      ],
+      "title": "Podcast: Kimi K3.1 Pro, the new cyber reality, and Muse musings",
+      "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/221950500/4da5de3ef602c8af28717b19c5991b65.mp3",
+      "video_id": null,
+      "audio_url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/221950500/4da5de3ef602c8af28717b19c5991b65.mp3",
+      "published_at": "2026-10-25T11:49:00Z",
+      "published_precision": "exact",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2802,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "We — Nathan and Florian — wanted to discuss all the messy trade-offs of a busy week in AI and ask all the pressing questions like:* Why did Kimi K3.1 Pro have a mixed reaction with such incredible benchmarks? Will it be adopted?* Were we wrong about the risks of open-weight models and cybersecurity?* Why do cyber experts discuss recent events so differently than AI experts?* What comes next in the few months? What will change our minds?We will write"
+    },
+    {
+      "id": "nvidia:rySnll4sgu4",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "NVIDIA GTC Berlin 2026 | Live Keynote Pregame",
+      "url": "https://www.youtube.com/watch?v=rySnll4sgu4",
+      "video_id": "rySnll4sgu4",
+      "audio_url": null,
+      "published_at": "2026-10-24T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 6914,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Join Deirdre Bosa and Gavin Baker live from Berlin’s Tempodrom ahead of Jensen Huang’s keynote. Hear from Europe’s leading founders, investors and industry leaders on how Europe is building its AI future."
+    },
+    {
+      "id": "cognitive-revolution:ZLgvW9rqdTM",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "AI:AM Highlights: Clean Neurons, Black October, the GPU Credit Crunch, and Buying the Supply Chain",
+      "url": "https://www.youtube.com/watch?v=ZLgvW9rqdTM",
+      "video_id": "ZLgvW9rqdTM",
+      "audio_url": null,
+      "published_at": "2026-10-24T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 5317,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Hosts Nathan Labenz and Prakash Narayanan examine whether capital, physical infrastructure, or regulation will set the pace of artificial intelligence. Zvi Mowshowitz evaluates aggressive recursive self-improvement timelines pointing toward 2027, the oversold claims surrounding clean neural networks, and models learning to detect internal probes. SF Compute CEO Evan Conrad argues that credit availability rather than power or chips forms the true bottleneck in AI, while Cambrian managing partner Lonis Hamaili explains why the physical supply chain will capture more value"
+    },
+    {
+      "id": "ai-daily-brief:3WYxicCws8k",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "The Most Concerning AI Bubble Signals",
+      "url": "https://www.youtube.com/watch?v=3WYxicCws8k",
+      "video_id": "3WYxicCws8k",
+      "audio_url": null,
+      "published_at": "2026-10-24T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1701,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "AI bubble fears are growing louder as the Anthropic IPO nears, but not every warning sign deserves equal weight. NLW sorts through Neocloud debt, idle GPUs at Amazon, pension and insurer exposure, and concentrated enterprise revenue to separate real risks from noise. Demand is the question behind every concern, with clear markers for what would make each signal more worrying. The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
+    {
+      "id": "20vc:4UmFfI8CWuA",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Why Robotics Will be 100X Bigger Than Coding Agents & Inference Will Be $10TRN Market | Naveen Rao",
+      "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA",
+      "video_id": "4UmFfI8CWuA",
+      "audio_url": null,
+      "published_at": "2026-10-24T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 4406,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Naveen Rao is the Founder and CEO of Unconventional AI, an AI hardware startup focused on rethinking how AI systems are built and powered. A serial entrepreneur, Naveen previously founded Nervana Systems, acquired by Intel, and co-founded MosaicML, acquired by Databricks for $1.3 billion. He later served as VP of AI at Databricks before launching Unconventional AI. Timestamps: Intro Why Energy Will Be the Biggest Bottleneck for AI Why the US Could Run Out of Excess Power Capacity What Compute"
+    },
+    {
+      "id": "nvidia:v-NGxyPjcrE",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "NVIDIA GTC Berlin 2026 Keynote With CEO Jensen Huang",
+      "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE",
+      "video_id": "v-NGxyPjcrE",
+      "audio_url": null,
+      "published_at": "2026-10-23T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 5519,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Join NVIDIA founder and CEO Jensen Huang live from Berlin for the latest in AI and accelerated computing. Discover how Europe is building its own intelligence—with the control, knowledge, and tools to put AI to work."
+    },
+    {
+      "id": "nvidia:roUZ7_Rsf5c",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "Accelerating Robot Development With AI Agents and NVIDIA Isaac",
+      "url": "https://www.youtube.com/watch?v=roUZ7_Rsf5c",
+      "video_id": "roUZ7_Rsf5c",
+      "audio_url": null,
+      "published_at": "2026-10-23T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 123,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "From prompts and data to real-world robot skills, frontier AI agents build training worlds, replay real-world motion, and tune physics using NVIDIA open libraries and models. Skills are trained with NVIDIA Isaac Lab and Newton and evaluated with NVIDIA Isaac Lab-Arena, locally on NVIDIA DGX Station. Agile ONE brings those skills into the physical world, built on NVIDIA Isaac GR00T and powered by NVIDIA Jetson Thor."
+    },
+    {
+      "id": "no-priors:6VprwfSc4Xk",
+      "show_id": "no-priors",
+      "show": "No Priors",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "Democratizing Security for the Agentic Web with Cloudflare CTO Dane Knecht",
+      "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk",
+      "video_id": "6VprwfSc4Xk",
+      "audio_url": null,
+      "published_at": "2026-10-23T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2484,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "microsoft-research:xbPxl1bPVZA",
+      "show_id": "microsoft-research",
+      "show": "Microsoft Research",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "research"
+      ],
+      "title": "uGAP: A Unified Geospatial AI Platform for African Geographic Data",
+      "url": "https://www.youtube.com/watch?v=xbPxl1bPVZA",
+      "video_id": "xbPxl1bPVZA",
+      "audio_url": null,
+      "published_at": "2026-10-23T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2532,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "big-technology:JYjLK2ZH3Ac",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "What Makes a Company Exponential in the Age of AI? — With Anthony Pappas",
+      "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac",
+      "video_id": "JYjLK2ZH3Ac",
+      "audio_url": null,
+      "published_at": "2026-10-23T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2660,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "all-in:6czo-C3FU7I",
+      "show_id": "all-in",
+      "show": "All-In Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "AI Cyber Panic, Ken Griffin’s Bubble Warning, The Fall of France?",
+      "url": "https://www.youtube.com/watch?v=6czo-C3FU7I",
+      "video_id": "6czo-C3FU7I",
+      "audio_url": null,
+      "published_at": "2026-10-23T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 6203,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:8R8FUxRn7fY",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "The AI vs AI Battle for the Internet",
+      "url": "https://www.youtube.com/watch?v=8R8FUxRn7fY",
+      "video_id": "8R8FUxRn7fY",
+      "audio_url": null,
+      "published_at": "2026-10-23T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1682,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:-YMMRQ1qscI",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Amazon CEO Andy Jassy on Reinventing Amazon for the AI Era",
+      "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI",
+      "video_id": "-YMMRQ1qscI",
+      "audio_url": null,
+      "published_at": "2026-10-23T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3639,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "no-priors:PST8yesYOSo",
+      "show_id": "no-priors",
+      "show": "No Priors",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "The New Apex Predator: CrowdStrike CEO George Kurtz on Adversaries Armed With AI Agents",
+      "url": "https://www.youtube.com/watch?v=PST8yesYOSo",
+      "video_id": "PST8yesYOSo",
+      "audio_url": null,
+      "published_at": "2026-10-22T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2728,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:IiZ9yd2Do8I",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Why AI Compute Comes in Rectangles — Erik Bernhardsson, Modal",
+      "url": "https://www.youtube.com/watch?v=IiZ9yd2Do8I",
+      "video_id": "IiZ9yd2Do8I",
+      "audio_url": null,
+      "published_at": "2026-10-22T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 5133,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:DWHyPWnzGAI",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "The Recommendation Engine for Commodity Traders — Anekha Sokhal, Moshi",
+      "url": "https://www.youtube.com/watch?v=DWHyPWnzGAI",
+      "video_id": "DWHyPWnzGAI",
+      "audio_url": null,
+      "published_at": "2026-10-22T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1601,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "dwarkesh:frYSOKvNiiE",
+      "show_id": "dwarkesh",
+      "show": "Dwarkesh Podcast",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "frontier-labs"
+      ],
+      "title": "What will computer chips look like in 2045?",
+      "url": "https://www.youtube.com/watch?v=frYSOKvNiiE",
+      "video_id": "frYSOKvNiiE",
+      "audio_url": null,
+      "published_at": "2026-10-22T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 4141,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "decoder:A0kTUP7fWtk",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Bill Gates says to prepare for 20 years of tumultuous AI disruption",
+      "url": "https://www.youtube.com/watch?v=A0kTUP7fWtk",
+      "video_id": "A0kTUP7fWtk",
+      "audio_url": null,
+      "published_at": "2026-10-22T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 4264,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:65EUWUM-clM",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "How AI is Changing What Work Means",
+      "url": "https://www.youtube.com/watch?v=65EUWUM-clM",
+      "video_id": "65EUWUM-clM",
+      "audio_url": null,
+      "published_at": "2026-10-22T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1683,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "20vc:OJX2L21e4fA",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "The New VC Game | CoreWeave Sell-Off Creates Panic | Revenue Multiples Out of Control",
+      "url": "https://www.youtube.com/watch?v=OJX2L21e4fA",
+      "video_id": "OJX2L21e4fA",
+      "audio_url": null,
+      "published_at": "2026-10-22T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3581,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "twiml:Dqn4sK4DWTI",
+      "show_id": "twiml",
+      "show": "The TWIML AI Podcast",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "How Airbnb Prevents Stale Knowledge From Poisoning Agent Context",
+      "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI",
+      "video_id": "Dqn4sK4DWTI",
+      "audio_url": null,
+      "published_at": "2026-10-21T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3078,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "tesla-earnings-call:tFezqXBF-gw",
+      "show_id": "tesla-earnings-call",
+      "show": "Tesla earnings webcast",
+      "kind": "earnings-call",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "earnings-call"
+      ],
+      "title": "Tesla Q3 2026 Financial Results and Q&A Webcast",
+      "url": "https://www.youtube.com/watch?v=tFezqXBF-gw",
+      "video_id": "tFezqXBF-gw",
+      "audio_url": null,
+      "published_at": "2026-10-21T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3596,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "practical-ai:rrc0ec_r6ls",
+      "show_id": "practical-ai",
+      "show": "Practical AI",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Exploit Development, Agentic Vulnerability Discovery, and Fake PoCs |Episode #377|",
+      "url": "https://www.youtube.com/watch?v=rrc0ec_r6ls",
+      "video_id": "rrc0ec_r6ls",
+      "audio_url": null,
+      "published_at": "2026-10-21T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2547,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "nvidia:S2rX2NHzwOs",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "RFD4-Proteina: How IPD Researchers and NVIDIA Design New Proteins with AI",
+      "url": "https://www.youtube.com/watch?v=S2rX2NHzwOs",
+      "video_id": "S2rX2NHzwOs",
+      "audio_url": null,
+      "published_at": "2026-10-21T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 187,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:Vki6cklFqxo",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "AI in NYC: How Tenex Builds an AI-Native Engineering Team — Alex Lieberman & CJ Hess",
+      "url": "https://www.youtube.com/watch?v=Vki6cklFqxo",
+      "video_id": "Vki6cklFqxo",
+      "audio_url": null,
+      "published_at": "2026-10-21T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2613,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "google-developers:SOF3_evPje8",
+      "show_id": "google-developers",
+      "show": "Google for Developers",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "developer"
+      ],
+      "title": "Design and replicate voices with Gemini 3.8 Flash TTS",
+      "url": "https://www.youtube.com/watch?v=SOF3_evPje8",
+      "video_id": "SOF3_evPje8",
+      "audio_url": null,
+      "published_at": "2026-10-21T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 849,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "cognitive-revolution-live:ldpIOdGwCF0",
+      "show_id": "cognitive-revolution-live",
+      "show": "The Cognitive Revolution (live)",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "livestream"
+      ],
+      "title": "Frontier AI and the Fight Over How to Pace It | Zvi Mowshowitz",
+      "url": "https://www.youtube.com/watch?v=ldpIOdGwCF0",
+      "video_id": "ldpIOdGwCF0",
+      "audio_url": null,
+      "published_at": "2026-10-21T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 9658,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "all-in:yzk44lz-RGI",
+      "show_id": "all-in",
+      "show": "All-In Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Arvind Krishna & Nikesh Arora: Quantum Threat, Open vs Frontier AI, AI Cyber Warfare & SaaS Collapse",
+      "url": "https://www.youtube.com/watch?v=yzk44lz-RGI",
+      "video_id": "yzk44lz-RGI",
+      "audio_url": null,
+      "published_at": "2026-10-21T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2400,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:FSX5JFJS9PQ",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Why AI Companies Are Betting Personality Beats Intelligence",
+      "url": "https://www.youtube.com/watch?v=FSX5JFJS9PQ",
+      "video_id": "FSX5JFJS9PQ",
+      "audio_url": null,
+      "published_at": "2026-10-21T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1703,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "training-data:0idrTKCDhuE",
+      "show_id": "training-data",
+      "show": "Sequoia Capital (Training Data)",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "Inside the Robot Data Factory: Mecka's Josh Gao on Sensorizing Humans to Train Robots",
+      "url": "https://www.youtube.com/watch?v=0idrTKCDhuE",
+      "video_id": "0idrTKCDhuE",
+      "audio_url": null,
+      "published_at": "2026-10-20T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2712,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:EAtLq9_vrE0",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "The Programmable Data Center — Evan Conrad, SF Compute",
+      "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0",
+      "video_id": "EAtLq9_vrE0",
+      "audio_url": null,
+      "published_at": "2026-10-20T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2204,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "invest-like-the-best:sQaM5oPlUYs",
+      "show_id": "invest-like-the-best",
+      "show": "Invest Like the Best",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "How AI Is Repricing Every Software Company",
+      "url": "https://www.youtube.com/watch?v=sQaM5oPlUYs",
+      "video_id": "sQaM5oPlUYs",
+      "audio_url": null,
+      "published_at": "2026-10-20T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3897,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "cognitive-revolution:l6DPAwgUr-8",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "A World Model of Life: Biohub's Alex Rives on Virtual Cells, Measurement, & the $1.8B Data Push",
+      "url": "https://www.youtube.com/watch?v=l6DPAwgUr-8",
+      "video_id": "l6DPAwgUr-8",
+      "audio_url": null,
+      "published_at": "2026-10-20T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3840,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "big-technology:F3ItSTZNtT0",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Google CEO Sundar Pichai: AI’s Infinite Possibilities, Compute Scarcity Dilemmas, Future AI Products",
+      "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0",
+      "video_id": "F3ItSTZNtT0",
+      "audio_url": null,
+      "published_at": "2026-10-20T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2730,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:bw8nHS0_cl0",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "The AI Wealth Problem",
+      "url": "https://www.youtube.com/watch?v=bw8nHS0_cl0",
+      "video_id": "bw8nHS0_cl0",
+      "audio_url": null,
+      "published_at": "2026-10-20T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1761,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:9n0MI4D7TCM",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "OpenAI’s Head of Health AI on Whether You Should Trust ChatGPT",
+      "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM",
+      "video_id": "9n0MI4D7TCM",
+      "audio_url": null,
+      "published_at": "2026-10-20T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3232,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "decoder:MlssX23UMbo",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "JB Pritzker’s frightening theory about AI and jobs | Decoder",
+      "url": "https://www.youtube.com/watch?v=MlssX23UMbo",
+      "video_id": "MlssX23UMbo",
+      "audio_url": null,
+      "published_at": "2026-10-19T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3473,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "all-in:2Zj6uMv3kTA",
+      "show_id": "all-in",
+      "show": "All-In Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Dylan Field: Is AI Replacing Designers?, Design is the New Code & Democratizing Creativity",
+      "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA",
+      "video_id": "2Zj6uMv3kTA",
+      "audio_url": null,
+      "published_at": "2026-10-19T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2433,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:d6SO10ihpL4",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "A Potentially Historic AI Breakthrough",
+      "url": "https://www.youtube.com/watch?v=d6SO10ihpL4",
+      "video_id": "d6SO10ihpL4",
+      "audio_url": null,
+      "published_at": "2026-10-19T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1224,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:o_5f4N6Nq80",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Why a $1M Startup Wasn’t Worth Building in the Age of AI",
+      "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80",
+      "video_id": "o_5f4N6Nq80",
+      "audio_url": null,
+      "published_at": "2026-10-19T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3719,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "20vc:-r2_5LboWL8",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Who Wins in the Next Decade of VC | Margin and Price Matter Less in a World of AI | Sameer Dholakia",
+      "url": "https://www.youtube.com/watch?v=-r2_5LboWL8",
+      "video_id": "-r2_5LboWL8",
+      "audio_url": null,
+      "published_at": "2026-10-19T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 4791,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "big-technology:WFdzr_oZtP4",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Anthropic IPO Panic, A Spy At OpenAI?, The Great Food Slop Debate",
+      "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4",
+      "video_id": "WFdzr_oZtP4",
+      "audio_url": null,
+      "published_at": "2026-10-18T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3389,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "cognitive-revolution:F1GDX_G9Bhw",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "AI:AM: Where's the Steering Wheel? My Agent Set the Password, Hidden Valence, Proofs Find Linux Bugs",
+      "url": "https://www.youtube.com/watch?v=F1GDX_G9Bhw",
+      "video_id": "F1GDX_G9Bhw",
+      "audio_url": null,
+      "published_at": "2026-10-17T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 5156,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "interconnects:pod-5jw9i4i063h7",
+      "show_id": "interconnects",
+      "show": "Interconnects (narrated essays)",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "research",
+        "audio-only"
+      ],
+      "title": "Meta shakes up the frontiers, open and closed",
+      "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/220749685/cef802d73b37fbdee58a57c96b0307f3.mp3",
+      "video_id": null,
+      "audio_url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/220749685/cef802d73b37fbdee58a57c96b0307f3.mp3",
+      "published_at": "2026-10-17T14:06:00Z",
+      "published_precision": "exact",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 704,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "This has been a week where the balance of American open-weight models took a step change back toward the frontier. Meta took the lead of this charge with Muse Spark Open, which is now the strongest American-made open model by quite some margin, but the addition of Reflection’s first model Beam is also relevant. Without these two models, there would be 20+ open-weight models built and released by Chinese companies better than the best Western models. At the time of"
+    },
+    {
+      "id": "twiml:MAABmDB51LY",
+      "show_id": "twiml",
+      "show": "The TWIML AI Podcast",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "Optimizing AI Recommendations for Revenue with Sequen Founder Zoe Weil",
+      "url": "https://www.youtube.com/watch?v=MAABmDB51LY",
+      "video_id": "MAABmDB51LY",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3135,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "practical-ai:9H1rwzV41fw",
+      "show_id": "practical-ai",
+      "show": "Practical AI",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "AI and Education, AI-Assisted Learning, Academic Integrity, Workforce Readiness |Episode 376|",
+      "url": "https://www.youtube.com/watch?v=9H1rwzV41fw",
+      "video_id": "9H1rwzV41fw",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2487,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "no-priors:AwuTTOJGEi0",
+      "show_id": "no-priors",
+      "show": "No Priors",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "The Changing Physics of Cybersecurity and Drug Development with OpenAI President Greg Brockman",
+      "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0",
+      "video_id": "AwuTTOJGEi0",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2363,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "mlst:615B5nyMFPk",
+      "show_id": "mlst",
+      "show": "Machine Learning Street Talk",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "What Most People Get Wrong About Evolution | Akarsh Kumar",
+      "url": "https://www.youtube.com/watch?v=615B5nyMFPk",
+      "video_id": "615B5nyMFPk",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2875,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "microsoft-research:CqiAGYP8jyo",
+      "show_id": "microsoft-research",
+      "show": "Microsoft Research",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "research"
+      ],
+      "title": "AI World Models for Memory, Meaning, and Human Futures",
+      "url": "https://www.youtube.com/watch?v=CqiAGYP8jyo",
+      "video_id": "CqiAGYP8jyo",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2022,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "meta-ai:4ZwVP0-ylZU",
+      "show_id": "meta-ai",
+      "show": "AI at Meta",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Introducing Muse Wonder & Muse Wonder Full: frontier models for agentic tasks",
+      "url": "https://www.youtube.com/watch?v=4ZwVP0-ylZU",
+      "video_id": "4ZwVP0-ylZU",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 153,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "lex-fridman:FGCP2F_7rQk",
+      "show_id": "lex-fridman",
+      "show": "Lex Fridman Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Taiwan: The Most Epic Night Market Experience w/ Jensen Huang | Lex Fridman",
+      "url": "https://www.youtube.com/watch?v=FGCP2F_7rQk",
+      "video_id": "FGCP2F_7rQk",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 5418,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:zlD-CkLVKtU",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "How to kill your SaaS: what we learned replacing a $43K/yr tool with AI agents",
+      "url": "https://www.youtube.com/watch?v=zlD-CkLVKtU",
+      "video_id": "zlD-CkLVKtU",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1685,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:hQSBJVreLms",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "From Wet Lab to RL Env: 10,000 Drug-Discovery Campaigns in a Weekend — Ian Quigley, Leash Bio",
+      "url": "https://www.youtube.com/watch?v=hQSBJVreLms",
+      "video_id": "hQSBJVreLms",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 6597,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:ZOH8Q401vt0",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "High Taste Testers: OpenAI Shipped Everything. What Actually Works?",
+      "url": "https://www.youtube.com/watch?v=ZOH8Q401vt0",
+      "video_id": "ZOH8Q401vt0",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 4521,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:BHiYomkfoGQ",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Robots That Predict the Future: Dyna-2 & Physical AI — Jason Ma, Dyna Robotics",
+      "url": "https://www.youtube.com/watch?v=BHiYomkfoGQ",
+      "video_id": "BHiYomkfoGQ",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 4866,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "last-week-in-ai:1gwiZ0EfhM4",
+      "show_id": "last-week-in-ai",
+      "show": "Last Week in AI",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Last Week in AI #259 - Dots, Sonnet, Self-Safety, Rogue AI",
+      "url": "https://www.youtube.com/watch?v=1gwiZ0EfhM4",
+      "video_id": "1gwiZ0EfhM4",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 5026,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "google-developers:Jh6mgf9M06M",
+      "show_id": "google-developers",
+      "show": "Google for Developers",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "developer"
+      ],
+      "title": "Gemini 4 Argon: What’s new and what’s next",
+      "url": "https://www.youtube.com/watch?v=Jh6mgf9M06M",
+      "video_id": "Jh6mgf9M06M",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1821,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "google-deepmind:ftkic7Tdpcg",
+      "show_id": "google-deepmind",
+      "show": "Google DeepMind",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Using Gemini 4 Argon to protect against Cyber attackers",
+      "url": "https://www.youtube.com/watch?v=ftkic7Tdpcg",
+      "video_id": "ftkic7Tdpcg",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 128,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "google-deepmind:LVEfFyijQ2c",
+      "show_id": "google-deepmind",
+      "show": "Google DeepMind",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Applying Gemini 4 for large-scale codebase maintenance in Chromium",
+      "url": "https://www.youtube.com/watch?v=LVEfFyijQ2c",
+      "video_id": "LVEfFyijQ2c",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 155,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "google-deepmind:9jQA7IgPhBE",
+      "show_id": "google-deepmind",
+      "show": "Google DeepMind",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Untangling 500-page chemistry patents with Gemini 4",
+      "url": "https://www.youtube.com/watch?v=9jQA7IgPhBE",
+      "video_id": "9jQA7IgPhBE",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 150,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "google-deepmind:9PICEmtfpWU",
+      "show_id": "google-deepmind",
+      "show": "Google DeepMind",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Teaching a humanoid robot to play cornhole with Gemini 4 Argon",
+      "url": "https://www.youtube.com/watch?v=9PICEmtfpWU",
+      "video_id": "9PICEmtfpWU",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 104,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "cognitive-revolution:SBlVJyoT3IM",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Governing AI Agents: Alan Chan of GovAI on Monitoring, Agent IDs, Rogue Agents & Preparing for RSI",
+      "url": "https://www.youtube.com/watch?v=SBlVJyoT3IM",
+      "video_id": "SBlVJyoT3IM",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 8268,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "cognitive-revolution:LgX0QF2D9y0",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "How Agents Decide: Goodfire's Eric Bigelow on Critical Tokens, Phase Shifts, & In-Context Learning",
+      "url": "https://www.youtube.com/watch?v=LgX0QF2D9y0",
+      "video_id": "LgX0QF2D9y0",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 7251,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "big-technology:x_Y-Ivc3HnU",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Anthropic's Top Customers Pull Back?, His Agent Leaked His Banking Info, Don’t Bully Your AI",
+      "url": "https://www.youtube.com/watch?v=x_Y-Ivc3HnU",
+      "video_id": "x_Y-Ivc3HnU",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3137,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "big-technology:a1mMpShAYXo",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "How $31 Trillion In Datacenters Get Built By 2050 — With Dallas Dolen",
+      "url": "https://www.youtube.com/watch?v=a1mMpShAYXo",
+      "video_id": "a1mMpShAYXo",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2285,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "big-technology:TmMYvtp4abI",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "AI Leaders Can't Get Along. So How Will They Keep Us Safe? — With Kevin Roose",
+      "url": "https://www.youtube.com/watch?v=TmMYvtp4abI",
+      "video_id": "TmMYvtp4abI",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3712,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "bg2:eS7qQ3WJSrw",
+      "show_id": "bg2",
+      "show": "BG2 Pod",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Jensen Huang | Does AI Revenue Justify Capex, '27 AI Bottlenecks, Singularity, Open vs Closed & more",
+      "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw",
+      "video_id": "eS7qQ3WJSrw",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 5993,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "all-in:_b3LfMflIGs",
+      "show_id": "all-in",
+      "show": "All-In Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "CoreWeave Crash, AI Trade Cracks, Anthropic IPO Red Flags, Bill Gates Doomer",
+      "url": "https://www.youtube.com/watch?v=_b3LfMflIGs",
+      "video_id": "_b3LfMflIGs",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 5646,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-explained:C4Sq3Rot8FU",
+      "show_id": "ai-explained",
+      "show": "AI Explained",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "commentary"
+      ],
+      "title": "AI Labs Warn Race Makes Breach ‘Inevitable’",
+      "url": "https://www.youtube.com/watch?v=C4Sq3Rot8FU",
+      "video_id": "C4Sq3Rot8FU",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1861,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:xIFMwhvvUUo",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "How the Latest AI Model Jump is Disrupting Business Models",
+      "url": "https://www.youtube.com/watch?v=xIFMwhvvUUo",
+      "video_id": "xIFMwhvvUUo",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1631,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:wdXF-5nn-T4",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "How to Go from AI Power User to AI Leader",
+      "url": "https://www.youtube.com/watch?v=wdXF-5nn-T4",
+      "video_id": "wdXF-5nn-T4",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 2143,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:pmuGWJte_EY",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "The Most Important AI Model Announcements This Week",
+      "url": "https://www.youtube.com/watch?v=pmuGWJte_EY",
+      "video_id": "pmuGWJte_EY",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1522,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:SX9LQD3yINg",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Where Gemini 4 Argon Fits",
+      "url": "https://www.youtube.com/watch?v=SX9LQD3yINg",
+      "video_id": "SX9LQD3yINg",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1620,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:q8cb1XL9sXA",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Agentic Commerce: Why Your Wallet Is About to Change",
+      "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA",
+      "video_id": "q8cb1XL9sXA",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3031,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:blkIGLlZePg",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Why AI Can Write Code But Can’t Keep It Running (Yet)",
+      "url": "https://www.youtube.com/watch?v=blkIGLlZePg",
+      "video_id": "blkIGLlZePg",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3538,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:BKuK0M6oDTI",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Can Open Models Keep Up With OpenAI and Anthropic? | Nathan Lambert",
+      "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI",
+      "video_id": "BKuK0M6oDTI",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 3529,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:3Q1mdn5ZGvM",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Recursive Self-Improvement and the Future of AI",
+      "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM",
+      "video_id": "3Q1mdn5ZGvM",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 1927,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "20vc:B-QeGihxbFE",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Valar Atomics Sues Day One Ventures | Meta's Back to the AI Frontier | NVIDIA's $30B Reflection Deal",
+      "url": "https://www.youtube.com/watch?v=B-QeGihxbFE",
+      "video_id": "B-QeGihxbFE",
+      "audio_url": null,
+      "published_at": "2026-10-13T15:14:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-10-31T03:14:00Z",
+      "duration_s": 4630,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    }
+  ]
+}
