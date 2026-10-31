@@ -479,12 +479,55 @@ bulletins are never in the running order; a bulletin that airs mid-listen plays
 right after the one on now (several in the order they aired). The card shows
 ON AIR while the newest bulletin **with audio** is < 2 h old (else "Latest
 bulletin · Nh ago"; OFF AIR when nothing is playable — a text-only bulletin
-cannot be heard), what is playing or up first, a seek bar, previous/next, "stop
-after this bulletin" (one-shot), the next three bulletins and the podcast-feed
-address. When everything has played the radio stays on, and the next bulletin
-to air starts by itself while the page is open. Below it, "Behind the
-broadcast": the situation board, the last 72 bulletins and the transcript
-(collapsed until asked for).
+cannot be heard), "Updated N ago" for the newest bulletin of any kind (not
+repeated when the sign already gives that age) and "The next bulletin airs
+when the picture changes" (there is no schedule to promise, and no listener
+count), what is playing or up first with the show's cover, the controls
+(previous, back 15 s, play, forward 15 s, next), a seek bar, the speed (1×,
+1.25×, 1.5×, 2×) and "stop after this bulletin" (one-shot), the transcript of
+the bulletin on now, the storylines it covered ("In this bulletin"), the next
+three bulletins and the podcast-follow strip. When everything has played the
+radio stays on, and the next bulletin to air starts by itself while the page
+is open. Below it, "Behind the broadcast": the situation board, the last 72
+bulletins and the transcript of the one picked in the log (collapsed until
+asked for).
+
+- **Following the transcript**: the radio card's transcript sits in a
+  fixed-height window. While its bulletin plays, the line being read is in full
+  ink (`aria-current`), the lines already read are quieter, and the window
+  scrolls itself (never the page) to keep that line a third of the way down.
+  Scrolling the window by hand (wheel, touch, its scrollbar, the keyboard)
+  stops the following until "Back to live line". Each line of a bulletin with
+  audio is a button that plays the bulletin from there; the lines are one tab
+  stop (arrow keys, Home and End move between them). The line changing is
+  never announced. A line focused from the keyboard puts the reader in charge
+  of the window too, so following never scrolls the focused line away. TTS
+  returns no timestamps, so line timing is **estimated** (`aradioLineTimings`:
+  each line's length in characters plus 0.5 s between turns, scaled to the
+  real duration). On the only real bulletin so far (2026-10-31 08:53, line
+  starts measured from its audio with a speech recogniser and checked against
+  the silences at each turn) it is ~0.8 s off on average, ~2.8 s at worst, and
+  on the right line ~92 % of the time. That is in-sample: finer weights
+  (acronyms, digits, punctuation pauses) did no better on it, and the
+  estimate should be re-checked as bulletins accumulate. The page says
+  "Timing is approximate" and shows no per-line times. A text-only bulletin's
+  transcript is plain text.
+- **Speed and progress** are this browser's own (localStorage, every access in
+  try/catch; a blocked store means 1× and nothing heard): the speed applies to
+  the shared player only while it holds a bulletin (the digest stays at 1×).
+  The log's rows lead with a play pill showing the bulletin's length, the time
+  left, or "Played", filled by how much was heard; playback still starts a
+  bulletin from the top.
+- **Following in a podcast app**: a button per app this platform can open (none
+  of the addresses are in the HTML; `hydrateAradioFollow` sets them):
+  Apple Podcasts `podcast://<feed without its scheme>` on iPhone, iPad and Mac
+  (it opens the app's "Follow a Show by URL" box, prefilled with `http://…`,
+  which the site redirects to https); Overcast's
+  `overcast://x-callback-url/add?url=<feed>` on iPhone and iPad; Pocket Casts'
+  `pktc://subscribe/<feed without its scheme>` on iPhone, iPad and Android,
+  else its web player's `https://pocketcasts.com/follow/<feed>`; Spotify,
+  which cannot follow a feed, once `ARADIO_SPOTIFY_SHOW_URL` is set to the
+  listed show. Copy RSS and the manual Apple route stay as the fallback.
 
 - **Audio** is `${AUDIO_BASE}/${audio.key}`, only for a key matching
   `^audio/aradio/[A-Za-z0-9._-]+\.mp3$`, played through the site's one shared
@@ -493,7 +536,9 @@ broadcast": the situation board, the last 72 bulletins and the transcript
 - **Lock screen** (Media Session): title = headline, artist "ARA Radio", album
   "AI news, on air", artwork `/brand/aradio-cover.png` (the square show art
   the podcast feed uses; the digest keeps the site's social card); play,
-  pause, seekto, previous/next and `setPositionState`. On `ended` the next
+  pause, seekto, previous/next, seekbackward/seekforward (15 s, or the offset
+  the system asks for; iOS may show these skips in place of previous/next)
+  and `setPositionState`. On `ended` the next
   bulletin starts at once and an overdue poll runs alongside: timers are
   throttled behind a locked screen, so playback never waits on the network.
 - **Audio failures**: a bulletin whose mp3 does not load or play (the

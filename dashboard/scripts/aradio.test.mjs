@@ -6,6 +6,7 @@ import test from 'node:test';
 // extension, so node's type stripping can load it directly.
 const mod = await import('../src/render/aradio.ts');
 const { uiText } = await import('../src/i18n.ts');
+const { ARADIO_FEED_ARTWORK_PATH } = await import('./aradio-feed.mjs');
 
 const fixture = (path) =>
   JSON.parse(readFileSync(new URL(`./fixtures/aradio/${path}`, import.meta.url), 'utf8'));
@@ -50,6 +51,8 @@ function viewState(overrides = {}) {
     transcriptOpen: false,
     showAll: false,
     checkedAt: LATEST_MS + 19 * 60 * 1000,
+    // The radio card's own transcript: the newest bulletin's, already loaded.
+    script: { kind: 'ready', bulletin: latestDetail },
     ...overrides,
   };
   // The radio follows the (possibly overridden) index unless a test sets it.
@@ -715,10 +718,11 @@ test('transcript: collapsed until asked for, then speaker roles, follow-along sp
   assert.match(html, /data-aradio-goto="hbm-supply-crunch"/);
   assert.doesNotMatch(html, /data-aradio-goto="hyperscaler-capex-q3"/);
   assert.match(html, /Script by claude-opus-5/);
-  const spans = mod.aradioLineSpans(bulletin.lines);
-  assert.equal(spans[0][0], 0);
-  assert.ok(Math.abs(spans[spans.length - 1][1] - 1) < 1e-12);
-  for (let i = 1; i < spans.length; i += 1) assert.equal(spans[i][0], spans[i - 1][1]);
+  // A bulletin with audio can be played from any line: each is a button, one tab stop for the list.
+  assert.equal((html.match(/data-aradio-seek-line="\d+"/g) || []).length, 13);
+  assert.equal((html.match(/data-aradio-seek-line="\d+" tabindex="0"/g) || []).length, 1);
+  assert.match(html, /data-aradio-seek-line="0" tabindex="0"/);
+  assert.doesNotMatch(html, /aria-current="true"|is-following/, 'nothing is being read: no live line');
 });
 
 test('bulletin: falls back to the raw script (tags stripped) and to the index entry', () => {
@@ -790,5 +794,385 @@ test('Korean: the radio, chrome, statuses, kinds and speakers are localized', ()
   }));
   for (const key of ['aradio.couldNotPlay', 'aradio.tryAgain', 'aradio.failedNote']) {
     assert.ok(failed.includes(uiText('ko', key)), `failed card missing Korean ${key}`);
+  }
+});
+
+// ── Following the transcript ──────────────────────────────────────────────
+
+const REAL_0853 = JSON.parse(readFileSync(new URL('../../research/aradio/bulletins/2026-10-31/0853.json', import.meta.url), 'utf8'));
+// Where each line of the first real bulletin actually starts, in seconds of
+// its audio (171.98 s): word timestamps from a speech recogniser, checked
+// against the silences ffmpeg's silencedetect finds at every turn change.
+const REAL_0853_STARTS = [0.23, 12.55, 24.15, 26.25, 39.65, 51.6, 62.63, 69.97, 82.65, 96.18, 108.36, 116.86, 126.3, 140.85, 154.45, 163.51, 169.06];
+
+test('timing: line spans tile the bulletin, a turn pause after each line, scaled to the real duration', () => {
+  assert.equal(mod.aradioLineTimings([{ text: 'a b' }], 0), null);
+  assert.equal(mod.aradioLineTimings([{ text: 'a b' }], Number.NaN), null);
+  assert.equal(mod.aradioLineTimings([{ text: 'a b' }], -3), null);
+  assert.deepEqual(mod.aradioLineTimings([], 120), []);
+  assert.deepEqual(mod.aradioLineTimings([{ text: 'one line' }], 9), [{ start: 0, end: 9 }]);
+
+  // Two equal lines: each gets half the speaking time; the gap belongs to the first.
+  const pause = mod.ARADIO_TURN_PAUSE_S;
+  const two = mod.aradioLineTimings([{ text: 'same words here' }, { text: 'same words here' }], 10);
+  const speaking = (10 - pause) / 2;
+  assert.ok(Math.abs(two[0].end - (speaking + pause)) < 1e-9);
+  assert.ok(Math.abs(two[1].end - two[1].start - speaking) < 1e-9);
+
+  // The real bulletin: contiguous, increasing, from 0 to the last second exactly.
+  const lines = mod.normalizeAradioBulletin(REAL_0853).lines;
+  const timings = mod.aradioLineTimings(lines, 171.98);
+  assert.equal(timings.length, lines.length);
+  assert.equal(timings[0].start, 0);
+  assert.equal(timings.at(-1).end, 171.98);
+  for (let i = 1; i < timings.length; i += 1) {
+    assert.equal(timings[i].start, timings[i - 1].end);
+    assert.ok(timings[i].start > timings[i - 1].start);
+  }
+  // A short bulletin cannot spend more than a fifth of itself on pauses.
+  const many = Array.from({ length: 30 }, () => ({ text: 'Hi.' }));
+  const short = mod.aradioLineTimings(many, 6);
+  assert.ok(short.every((span) => span.end > span.start));
+  assert.ok(Math.abs(short.at(-1).end - 6) < 1e-9);
+});
+
+test('timing: a line takes time in proportion to its length; an empty one still gets a sliver', () => {
+  const pause = mod.ARADIO_TURN_PAUSE_S;
+  const [short, long] = mod.aradioLineTimings([{ text: 'x'.repeat(10) }, { text: 'x'.repeat(30) }], 20 + pause);
+  assert.ok(Math.abs(short.end - short.start - (5 + pause)) < 1e-9, 'a quarter of the speaking time, then the gap');
+  assert.ok(Math.abs(long.end - long.start - 15) < 1e-9, 'three quarters; nothing after the last line');
+  const withEmpty = mod.aradioLineTimings([{ text: '' }, { text: 'Hello there.' }], 5);
+  assert.ok(withEmpty[0].end > withEmpty[0].start, 'an empty line still has a span');
+});
+
+// In-sample: the estimate was chosen on this bulletin (the only one so far),
+// so this guards against regressions; it does not prove the estimate general.
+// Word share, which the estimate replaced, fails it (1.8 s mean, 83%).
+test('timing: against the first real bulletin the estimate stays within about a second', () => {
+  const lines = mod.normalizeAradioBulletin(REAL_0853).lines;
+  assert.equal(lines.length, REAL_0853_STARTS.length);
+  const timings = mod.aradioLineTimings(lines, 171.98);
+  const errors = timings.map((span, i) => Math.abs(span.start - REAL_0853_STARTS[i]));
+  const mean = errors.reduce((sum, e) => sum + e, 0) / errors.length;
+  assert.ok(mean < 1, `mean start error ${mean.toFixed(2)} s`);
+  assert.ok(Math.max(...errors) < 3, `worst start error ${Math.max(...errors).toFixed(2)} s`);
+  // Sampled every 0.1 s, the line marked live is the one being read 9 times in 10 or more.
+  let right = 0;
+  let total = 0;
+  for (let t = 0; t < 171.9; t += 0.1) {
+    let actual = 0;
+    while (actual + 1 < REAL_0853_STARTS.length && t >= REAL_0853_STARTS[actual + 1]) actual += 1;
+    if (mod.aradioLiveLine(timings, t) === actual) right += 1;
+    total += 1;
+  }
+  assert.ok(right / total > 0.9, `${((100 * right) / total).toFixed(1)}% of the time on the right line`);
+});
+
+test('timing: the live line, and which bulletin the player is reading', () => {
+  const timings = [{ start: 0, end: 4 }, { start: 4, end: 9 }, { start: 9, end: 12 }];
+  assert.equal(mod.aradioLiveLine(null, 3), -1);
+  assert.equal(mod.aradioLiveLine([], 3), -1);
+  assert.equal(mod.aradioLiveLine(timings, -1), -1);
+  assert.equal(mod.aradioLiveLine(timings, Number.NaN), -1);
+  assert.deepEqual([0, 3.99, 4, 8.9, 9, 12, 40].map((t) => mod.aradioLiveLine(timings, t)), [0, 0, 1, 1, 2, 2, 2]);
+
+  const bulletins = mod.normalizeAradioIndex(INDEX).bulletins;
+  const detail = mod.normalizeAradioBulletin(B1450, bulletins[0]);
+  const programme = mod.startAradioProgramme(bulletins);
+  const at = (overrides) => mod.aradioPlayerLine(radioInput({ programme, ...overrides }), detail);
+  assert.equal(at({}), -1, 'nothing in the player');
+  assert.equal(at({ loaded: bulletins[2], position: 50, duration: 196.4 }), -1, 'another bulletin is in the player');
+  assert.equal(at({ loaded: bulletins[0], position: 0, duration: 242.1 }), 0);
+  assert.equal(at({ loaded: bulletins[0], position: 241, duration: 242.1 }), detail.lines.length - 1);
+  assert.equal(at({ loaded: bulletins[0], position: 30 }), mod.aradioLiveLine(mod.aradioLineTimings(detail.lines, 242.1), 30), 'the index duration until the audio loads');
+  assert.equal(at({ loaded: bulletins[0], ended: true, waiting: true }), detail.lines.length, 'played to the end: every line is heard');
+  assert.equal(at({ loaded: bulletins[0], programme: { ...programme, failed: [bulletins[0].id] } }), -1, 'a failed bulletin is not being read');
+});
+
+test('radio transcript: the bulletin on now follows along, a line plays from there, nothing is announced', () => {
+  const bulletins = mod.normalizeAradioIndex(INDEX).bulletins;
+  const programme = mod.startAradioProgramme(bulletins);
+  const idle = mod.renderAradioRadio(viewState());
+  assert.match(idle, /<section class="aradio-script" aria-labelledby="aradioScriptTitle">/);
+  assert.match(idle, /<h3 class="aradio-script-title" id="aradioScriptTitle">Transcript<\/h3>/);
+  assert.match(idle, /Timing is approximate/);
+  assert.match(idle, /data-aradio-script-window>/);
+  assert.equal((idle.match(/class="aradio-line-seek" data-aradio-seek-line="\d+"/g) || []).length, 13);
+  assert.equal((idle.match(/tabindex="0"/g) || []).length, 1, 'one tab stop for the lines');
+  const script = idle.slice(idle.indexOf('data-aradio-script-slot'), idle.indexOf('class="aradio-upnext"'));
+  assert.doesNotMatch(script, /aria-current|is-following|is-past|is-live/, 'off: no line is live');
+  assert.match(script, /<button type="button" class="aradio-relive" data-aradio-relive hidden>/);
+  assert.match(script, /Back to live line/);
+  // No live region inside the transcript: the line changing is never announced.
+  assert.doesNotMatch(script, /aria-live/);
+  assert.doesNotMatch(script, /\d:\d\d/, 'no per-line times: the timing is an estimate');
+
+  const detail = mod.normalizeAradioBulletin(B1450, bulletins[0]);
+  const live = mod.aradioLiveLine(mod.aradioLineTimings(detail.lines, 242.1), 61.4);
+  assert.ok(live > 1);
+  const playing = mod.renderAradioRadio(viewState({ radio: radioInput({ programme, loaded: bulletins[0], playing: true, position: 61.4, duration: 242.1 }) }));
+  assert.match(playing, /class="aradio-lines aradio-lines--script is-following" data-aradio-lines="2026-10-30-1450"/);
+  assert.equal((playing.match(/aria-current="true"/g) || []).length, 1);
+  assert.match(playing, new RegExp(`data-aradio-line="${live}"><button type="button" class="aradio-line-seek" data-aradio-seek-line="${live}" tabindex="0" aria-current="true">`));
+  assert.equal((playing.match(/ is-past"/g) || []).length, live);
+  assert.match(playing, new RegExp(`class="aradio-line aradio-line--s\\d is-live" data-aradio-line="${live}"`));
+});
+
+test('radio transcript: the storylines it covered, with their status when it aired, linked to the board', () => {
+  const html = mod.renderAradioRadio(viewState());
+  assert.match(html, /<h3 class="aradio-covered-title" id="aradioCoveredTitle">In this bulletin<\/h3>/);
+  // Every slug in the fixture's covers is on the board: each is a button to it.
+  for (const slug of ['hyperscaler-capex-q3', 'hbm-supply-crunch', 'anthropic-ipo', 'eu-ai-act-gpai-code']) {
+    assert.match(html, new RegExp(`data-aradio-goto="${slug}"`));
+  }
+  assert.match(html, /<span class="aradio-pill aradio-pill--escalating">Escalating<\/span><span class="aradio-covered-name">The HBM supply crunch<\/span>/);
+  // One that has left the board is plain text.
+  const board = { ...mod.normalizeAradioBoard(STATE) };
+  board.threads = board.threads.filter((thread) => thread.slug !== 'anthropic-ipo');
+  const off = mod.renderAradioRadio(viewState({ board }));
+  assert.doesNotMatch(off, /data-aradio-goto="anthropic-ipo"/);
+  assert.match(off, /<span class="aradio-covered-item is-static"><span class="aradio-pill aradio-pill--developing">Developing<\/span><span class="aradio-covered-name">Anthropic&#39;s IPO<\/span>/);
+});
+
+test('radio transcript: loading, failed, and hostile lines', () => {
+  const bulletins = mod.normalizeAradioIndex(INDEX).bulletins;
+  const loading = mod.renderAradioRadio(viewState({ script: undefined }));
+  assert.match(loading, /aria-busy="true"/);
+  assert.match(loading, /Loading the transcript…/);
+  assert.match(loading, /data-aradio-script-key="en\|loading\|2026-10-30-1450"/);
+  const failed = mod.renderAradioRadio(viewState({ script: { kind: 'error', entry: bulletins[0] } }));
+  assert.match(failed, /This transcript did not load\. <button type="button" class="aradio-text-button" data-aradio-script-retry>Retry<\/button>/);
+
+  const hostile = mod.normalizeAradioBulletin({
+    ...B1450,
+    lines: [{ speaker: '<b>x</b>', text: '<img src=x onerror=alert(1)> "q" & \'s\'' }],
+    threads: [{ slug: 'hbm-supply-crunch', title: '<script>alert(1)</script>', status: 'escalating' }],
+  }, bulletins[0]);
+  const html = mod.renderAradioRadio(viewState({ script: { kind: 'ready', bulletin: hostile } }));
+  assert.doesNotMatch(html, /<img src=x|<script>|<b>x<\/b>/);
+  assert.match(html, /&lt;img src=x onerror=alert\(1\)&gt; &quot;q&quot; &amp; &#39;s&#39;/);
+  assert.match(html, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/);
+});
+
+test('text-only station: the newest bulletin is there to read, as plain text', () => {
+  const bulletins = bulletinsOf(entry('14:50', { audio: false }), entry('12:50', { audio: false }));
+  const index = { updatedAt: null, degraded: true, bulletins };
+  const textOnly = mod.normalizeAradioBulletin({ ...B1250, id: '2026-10-30-1450' }, bulletins[0]);
+  const html = mod.renderAradioRadio(viewState({ index, radio: radioInput({ bulletins }), script: { kind: 'ready', bulletin: textOnly } }));
+  assert.match(html, /data-aradio-radio="text-only"/);
+  assert.match(html, /data-aradio-script-window tabindex="0" role="region" aria-labelledby="aradioScriptTitle"/);
+  assert.match(html, /<p class="aradio-line-text">/);
+  assert.doesNotMatch(html, /data-aradio-seek-line|data-aradio-relive|Timing is approximate|data-aradio-toggle/);
+  assert.equal(mod.aradioRadioView(radioInput({ bulletins }), LATEST_MS).scriptEntry.id, '2026-10-30-1450');
+});
+
+test('player: ±15 s and speed beside the one big button; the cover at identity size', () => {
+  const bulletins = mod.normalizeAradioIndex(INDEX).bulletins;
+  const programme = mod.startAradioProgramme(bulletins);
+  const off = mod.renderAradioRadio(viewState());
+  assert.match(off, /data-aradio-back aria-label="Back 15 seconds" aria-disabled="true"/);
+  assert.match(off, /data-aradio-forward aria-label="Forward 15 seconds" aria-disabled="true"/);
+  assert.match(off, /<button type="button" class="aradio-rate" data-aradio-rate aria-label="Playback speed 1×">1×<\/button>/);
+  // The big button stays one, between the skips.
+  const order = ['data-aradio-prev', 'data-aradio-back', 'data-aradio-toggle', 'data-aradio-forward', 'data-aradio-next'].map((hook) => off.indexOf(hook));
+  assert.deepEqual(order, order.slice().sort((a, b) => a - b));
+  const playing = mod.renderAradioRadio(viewState({ rate: 1.5, radio: radioInput({ programme, loaded: bulletins[0], playing: true, position: 30, duration: 242.1 }) }));
+  assert.match(playing, /data-aradio-back aria-label="Back 15 seconds" aria-disabled="false"/);
+  assert.match(playing, /data-aradio-forward aria-label="Forward 15 seconds" aria-disabled="false"/);
+  assert.match(playing, /aria-label="Playback speed 1\.5×">1\.5×</);
+  // The show's cover: decorative (the station is named in text), the feed's and lock screen's file.
+  assert.match(off, /<img class="aradio-art" src="\/brand\/aradio-cover\.png" alt="" width="64" height="64" decoding="async">/);
+  assert.equal(mod.ARADIO_COVER_PATH, ARADIO_FEED_ARTWORK_PATH);
+});
+
+test('speed: 1×, 1.25×, 1.5×, 2× and round again; anything stored that is not one of them is 1×', () => {
+  assert.deepEqual(mod.ARADIO_RATES, [1, 1.25, 1.5, 2]);
+  assert.deepEqual([1, 1.25, 1.5, 2].map(mod.aradioNextRate), [1.25, 1.5, 2, 1]);
+  for (const raw of [null, undefined, '', 'fast', '3', 0, -1, 1.1, '1.5x', Number.NaN, {}, '2e0x']) {
+    assert.equal(mod.aradioParseRate(raw), 1, String(raw));
+  }
+  assert.equal(mod.aradioParseRate('1.25'), 1.25);
+  assert.equal(mod.aradioParseRate(' 2 '), 2);
+  assert.equal(mod.aradioNextRate(7), 1.25, 'an unknown speed counts as 1×');
+  assert.deepEqual([1, 1.25, 1.5, 2].map(mod.aradioRateLabel), ['1×', '1.25×', '1.5×', '2×']);
+});
+
+test('liveness: when the station last aired and when to expect more, never a schedule or a listener count', () => {
+  const html = mod.renderAradioRadio(viewState());
+  assert.match(html, /<p class="aradio-liveness" data-aradio-liveness><time class="aradio-updated" datetime="2026-10-30T14:50:00\.000Z" data-aradio-rel="2026-10-30T14:50:00\.000Z" data-aradio-rel-key="aradio\.updated"[^>]*>Updated 20m ago\.<\/time>/);
+  assert.match(html, /The next bulletin airs when the picture changes\./);
+  assert.ok(mod.ARADIO_REL_KEYS.includes('aradio.updated'), 'the ticker re-ages it');
+  // Off air the sign already says how old the latest bulletin is: not twice.
+  const idle = mod.renderAradioRadio(viewState({ nowMs: LATEST_MS + 3 * 3600_000 }));
+  assert.match(idle, /data-aradio-badge-text>Latest bulletin · 3h ago</);
+  assert.match(idle, /<time hidden class="aradio-updated"/);
+  // ...unless a newer text-only bulletin is what the station updated with.
+  const newer = bulletinsOf(entry('17:40', { audio: false }), entry('14:50'));
+  const copy = mod.aradioRadioCopy(mod.aradioRadioView(radioInput({ bulletins: newer }), Date.parse('2026-10-30T18:00:00Z')), Date.parse('2026-10-30T18:00:00Z'), 'en');
+  assert.deepEqual([copy.badge, copy.updated, copy.updatedShown], ['Latest bulletin · 3h ago', 'Updated 20m ago.', true]);
+  assert.doesNotMatch(html, /listen(er|ing)s?\b.*\d|\d+\s*listening/i);
+  // A text-only bulletin newer than the last playable one still counts as an update.
+  const bulletins = bulletinsOf(entry('17:40', { audio: false }), entry('14:50'));
+  assert.equal(mod.aradioRadioView(radioInput({ bulletins }), LATEST_MS).updatedAt, '2026-10-30T17:40:00.000Z');
+  // Before the first bulletin, or unreachable: nothing to date.
+  for (const state of [
+    { index: null, indexStatus: 'missing', board: null, boardStatus: 'missing', selectedId: null, transcript: { kind: 'none' }, script: { kind: 'none' } },
+    { index: null, indexStatus: 'error', board: null, boardStatus: 'error', selectedId: null, transcript: { kind: 'none' }, script: { kind: 'none' } },
+  ]) {
+    assert.doesNotMatch(mod.renderAradioRadio(viewState(state)), /aradio-liveness/);
+  }
+});
+
+test('log rows: a play pill with the length, the time left or "Played", filled by what was heard', () => {
+  const listened = {
+    '2026-10-30-1450': { at: 121.05, duration: 242.1, done: false },
+    '2026-10-30-1050': { at: 196.4, duration: 196.4, done: true },
+  };
+  const html = mod.renderAradioLog(viewState({ showAll: true, listened }));
+  assert.match(html, /<button type="button" class="aradio-log-play is-partial" data-aradio-play="2026-10-30-1450" aria-label="Play the 14:50 UTC bulletin: [^"]+ \(2:02 left\)" style="--aradio-heard:50\.0%">/);
+  assert.match(html, /data-aradio-pill-text>2:02 left</);
+  assert.match(html, /class="aradio-log-play is-done" data-aradio-play="2026-10-30-1050"[^>]*\(Played\)" style="--aradio-heard:100\.0%"/);
+  const fresh = mod.renderAradioLog(viewState({ showAll: true }));
+  assert.match(fresh, /class="aradio-log-play is-new" data-aradio-play="2026-10-30-1450"[^>]*\(4:02\)" style="--aradio-heard:0\.0%"/);
+  assert.match(fresh, /data-aradio-pill-text>4:02</);
+  // Text-only rows say so where the pill would be.
+  assert.match(fresh, /data-aradio-row="2026-10-30-1250"><span class="aradio-log-noaudio">Text only<\/span>/);
+
+  // A hostile headline is inert in the pill's name too.
+  const headline = '"><img src=x onerror=alert(1)>';
+  const index = { updatedAt: null, degraded: false, bulletins: bulletinsOf(entry('14:50', { headline })) };
+  const hostile = mod.renderAradioLog(viewState({ index }));
+  assert.doesNotMatch(hostile, /<img src=x/);
+  assert.match(hostile, /aria-label="Play the 14:50 UTC bulletin: &quot;&gt;&lt;img src=x onerror=alert\(1\)&gt; \(3:20\)"/);
+});
+
+test('listened: parsed defensively, written only when a pill would change, finishing is sticky', () => {
+  for (const raw of [null, '', 'nope', '[]', '42', '{"x":1}', JSON.stringify({ '../x': { at: 1, duration: 2 } })]) {
+    assert.deepEqual(mod.aradioParseListened(raw), {}, String(raw));
+  }
+  const parsed = mod.aradioParseListened(JSON.stringify({
+    '2026-10-30-1450': { at: 500, duration: 242.1, done: false },
+    '2026-10-30-1250': { at: -1, duration: 100 },
+    '2026-10-30-1050': { at: 10, duration: 0 },
+    '2026-10-30-0950': { at: 'x', duration: 100 },
+  }));
+  assert.deepEqual(parsed, { '2026-10-30-1450': { at: 242.1, duration: 242.1, done: false } }, 'clamped to the duration; junk dropped');
+
+  const id = '2026-10-30-1450';
+  let heard = mod.aradioRecordListen({}, id, 1.5, 242.1);
+  assert.deepEqual(heard, {}, 'a second or two in is still unheard');
+  heard = mod.aradioRecordListen(heard, id, 60, 242.1);
+  assert.deepEqual(heard[id], { at: 60, duration: 242.1, done: false });
+  assert.equal(mod.aradioRecordListen(heard, id, 60.4, 242.1), heard, 'under a second later: same object, no write');
+  heard = mod.aradioRecordListen(heard, id, 240, 242.1);
+  assert.equal(heard[id].done, true, 'within a few seconds of the end counts as heard');
+  heard = mod.aradioRecordListen(heard, id, 20, 242.1);
+  assert.deepEqual(heard[id], { at: 20, duration: 242.1, done: true }, 'replaying a heard bulletin keeps it heard');
+  assert.equal(mod.aradioRecordListen(heard, '../evil', 20, 100), heard);
+  assert.equal(mod.aradioRecordListen(heard, id, 20, Number.NaN), heard);
+  assert.equal(mod.aradioRecordListen({}, id, 0, 242.1, true)[id].done, true, 'ended');
+
+  assert.deepEqual(mod.aradioListenState(undefined, 242.1), { state: 'new', fraction: 0, remaining: 242.1 });
+  assert.deepEqual(mod.aradioListenState({ at: 60.525, duration: 242.1, done: false }, null), { state: 'partial', fraction: 0.25, remaining: 181.575 });
+  assert.equal(mod.aradioListenState({ at: 2, duration: 242.1, done: true }, null).state, 'done');
+
+  // An id that names an Object.prototype member is just an id.
+  assert.equal(mod.aradioListenOf({}, 'constructor'), undefined);
+  assert.equal(mod.aradioListenState(mod.aradioListenOf({}, 'toString'), 200).state, 'new');
+  const proto = mod.aradioRecordListen({}, 'constructor', 60, 120);
+  assert.deepEqual(mod.aradioListenOf(proto, 'constructor'), { at: 60, duration: 120, done: false });
+  assert.deepEqual(mod.aradioParseListened(JSON.stringify(proto)), proto);
+
+  const kept = mod.aradioPruneListened({ a1: heard[id], [id]: heard[id] }, [id, 'other']);
+  assert.deepEqual(Object.keys(kept), [id]);
+  const same = { [id]: heard[id] };
+  assert.equal(mod.aradioPruneListened(same, [id]), same, 'nothing to drop: same object');
+});
+
+test('follow: a link per app this platform can open, none of them in the HTML', () => {
+  const feed = 'https://ara.guzus.xyz/aradio/feed.xml';
+  const iphone = 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1';
+  const ipad = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Safari/605.1.15';
+  const android = 'Mozilla/5.0 (Linux; Android 15; Pixel 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Mobile Safari/537.36';
+  const windows = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Safari/537.36';
+  assert.equal(mod.aradioPlatform(iphone), 'ios');
+  assert.equal(mod.aradioPlatform(ipad, 5), 'ios', 'iPadOS reports a Mac; a touch screen gives it away');
+  assert.equal(mod.aradioPlatform(ipad, 0), 'mac');
+  assert.equal(mod.aradioPlatform(android, 5), 'android');
+  assert.equal(mod.aradioPlatform(windows), 'other');
+  assert.equal(mod.aradioPlatform(undefined), 'other');
+
+  const apps = (links) => links.map((link) => `${link.app} ${link.href}${link.newTab ? ' (new tab)' : ''}`);
+  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'ios')), [
+    'apple podcast://ara.guzus.xyz/aradio/feed.xml',
+    'overcast overcast://x-callback-url/add?url=https%3A%2F%2Fara.guzus.xyz%2Faradio%2Ffeed.xml',
+    'pocketcasts pktc://subscribe/ara.guzus.xyz/aradio/feed.xml',
+  ]);
+  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'mac')), [
+    'apple podcast://ara.guzus.xyz/aradio/feed.xml',
+    'pocketcasts https://pocketcasts.com/follow/https://ara.guzus.xyz/aradio/feed.xml (new tab)',
+  ]);
+  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'android')), ['pocketcasts pktc://subscribe/ara.guzus.xyz/aradio/feed.xml']);
+  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'other')), ['pocketcasts https://pocketcasts.com/follow/https://ara.guzus.xyz/aradio/feed.xml (new tab)']);
+  // Spotify appears only once the show URL is set, and only a real show URL.
+  assert.equal(mod.ARADIO_SPOTIFY_SHOW_URL, '', 'not listed yet: no Spotify button');
+  const show = 'https://open.spotify.com/show/0123456789abcdefABCDEF';
+  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'other', show)).slice(0, 1), [`spotify ${show} (new tab)`]);
+  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'ios', show)).map((line) => line.split(' ')[0]), ['apple', 'spotify', 'overcast', 'pocketcasts']);
+  for (const bad of ['https://open.spotify.com/show/short', 'javascript:alert(1)', 'https://evil.example/show/0123456789abcdefABCDEF', `${show}?si=x`]) {
+    assert.ok(!mod.aradioFollowLinks(feed, 'ios', bad).some((link) => link.app === 'spotify'), bad);
+  }
+  // Only an https feed gets links.
+  for (const bad of ['http://ara.guzus.xyz/aradio/feed.xml', 'javascript:alert(1)', '/aradio/feed.xml', '']) {
+    assert.deepEqual(mod.aradioFollowLinks(bad, 'ios'), [], bad);
+  }
+
+  const { html } = mod.renderAradioView(viewState());
+  assert.match(html, /<ul class="aradio-follow" data-aradio-follow-list hidden><li hidden><a class="aradio-follow-link" data-aradio-follow="apple" aria-label="Follow in Apple Podcasts">Apple Podcasts<\/a><\/li>/);
+  assert.doesNotMatch(html, /podcast:\/\/|overcast:\/\/|pktc:\/\/|pocketcasts\.com|spotify\.com/);
+  assert.match(html, /data-aradio-copy-feed>Copy RSS</);
+});
+
+test('follow: hydration gives the platform\'s buttons their links as properties and hides the rest', () => {
+  const anchors = ['apple', 'spotify', 'overcast', 'pocketcasts'].map((app) => {
+    const item = { hidden: true };
+    const anchor = {
+      dataset: { aradioFollow: app },
+      href: '',
+      target: '',
+      rel: '',
+      removed: [],
+      closest: () => item,
+      removeAttribute(name) { this.removed.push(name); if (name === 'href') this.href = ''; },
+      item,
+    };
+    return anchor;
+  });
+  const list = { hidden: true, querySelectorAll: () => anchors };
+  const root = { querySelectorAll: (selector) => (selector === '[data-aradio-follow-list]' ? [list] : []) };
+  mod.hydrateAradioFollow(root, mod.aradioFollowLinks('https://ara.guzus.xyz/aradio/feed.xml', 'mac'));
+  assert.equal(list.hidden, false);
+  assert.deepEqual(anchors.map((a) => a.item.hidden), [false, true, true, false]);
+  assert.equal(anchors[0].href, 'podcast://ara.guzus.xyz/aradio/feed.xml');
+  assert.deepEqual([anchors[0].target, anchors[0].removed.includes('target')], ['', true], 'an app link opens in place');
+  assert.equal(anchors[3].href, 'https://pocketcasts.com/follow/https://ara.guzus.xyz/aradio/feed.xml');
+  assert.deepEqual([anchors[3].target, anchors[3].rel], ['_blank', 'noopener noreferrer'], 'a web page opens beside the radio');
+  mod.hydrateAradioFollow(root, []);
+  assert.equal(list.hidden, true, 'nothing to offer: the list hides');
+});
+
+test('Korean: the transcript, player, follow and log strings are translated', () => {
+  const keys = [
+    'aradio.updated', 'aradio.nextAirs', 'aradio.jumpBack', 'aradio.jumpForward', 'aradio.speed', 'aradio.scriptNote',
+    'aradio.lineHint', 'aradio.backToLive', 'aradio.inThisBulletin', 'aradio.followIn', 'aradio.played', 'aradio.timeLeft', 'aradio.pillPlaying',
+    'aradio.textOnlyBody',
+  ];
+  for (const key of keys) {
+    assert.notEqual(uiText('ko', key), uiText('en', key), `${key} must be translated`);
+    assert.match(uiText('ko', key), /[가-힣]/, `${key} must emit Hangul`);
+  }
+  const html = mod.renderAradioRadio(viewState({ language: 'ko' }));
+  for (const copy of ['이번 방송에서 다룬 이야기', '타이밍은 대략적입니다', '지금 읽는 줄로 돌아가기', '15초 뒤로', '15초 앞으로', '재생 속도 1×', 'RSS 복사', '다음 방송은 상황이 바뀌면 나갑니다.', 'Apple Podcasts에서 팔로우']) {
+    assert.ok(html.includes(copy), `missing Korean copy: ${copy}`);
   }
 });
