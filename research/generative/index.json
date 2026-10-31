@@ -3531,6 +3531,22 @@
     "created_at": "2026-10-31T12:48:02Z",
     "source": "workflow_dispatch",
     "prompt": "Anthropic's automated red-teaming: Claude agents wrote benign-looking training data that evades monitors yet teaches misalignment",
-    "tags": []
+    "tags": [],
+    "translations": {
+      "ko": {
+        "file": "2026-10-31T125431--anthropic-s-automated-red-teaming-claude-agents-wrote-benign.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Anthropic의 에이전트들은 소설(픽션)로 행 단위 모니터를 뚫었다. 약점은 개별 행이 말하는 내용이 아니라, 데이터셋이 화자에 대해 암시하는 바에 있다.",
+        "model": "claude-sonnet-5-5",
+        "created_at": "2026-10-31T12:54:31Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
+        "tags": [],
+        "translated_at": "2026-10-31T12:54:31Z",
+        "source_file": "research/generative/2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign.ara.md",
+        "source_sha256": "a0220c1c981cd1347fe36e85fe4b865f3d5fb0627b98b30b2692194c0f0c5614"
+      }
+    }
   }
 ]
