@@ -76,17 +76,19 @@ aradio.yml (when an input lane finishes; hourly backstop):
 | `schedule` `50 * * * *` | Backstop: routine material that waited for the 2 h cadence airs within the next hour even when no lane finishes. |
 | `workflow_dispatch` (`force`) | Manual run; `force` bypasses the gate. |
 
-Only a successful lane run from this repository wakes the job. A failed one
-may have published nothing, or a part, so the run is skipped and the next
-trigger catches up. Under `workflow_run`, `github.ref` is the default branch,
-so the main-only guard passes, and secrets and permissions are as for a
-scheduled run. Concurrency stays single-writer and without
+Any completed lane run from this repository wakes the job, whatever its
+conclusion: a lane can publish and then fail a later step (Twitter's headline
+alerts run after its push), and a stop is model-free. A run from another
+repository's fork is skipped. Under `workflow_run`, `github.ref` is the
+default branch, so the main-only guard passes, and secrets and permissions are
+as for a scheduled run. Concurrency stays single-writer and without
 cancel-in-progress. GitHub keeps one pending run per group and cancels the
 older one, so a burst of triggers is one running run plus one pending, and the
 pending run reads the branch tip when it starts. A skipped run takes a group
 of its own (`aradio-skipped-<run id>`), so it can never displace a real
-pending run. Gate stops report to Hooker once per UTC hour (`aradio-stop-<hour>`
-idempotency key), so the extra wake-ups do not add telemetry.
+pending run. Gate stops report to Hooker once per UTC hour
+(`aradio-stop-<hour>` idempotency key), so the extra wake-ups do not add
+telemetry.
 
 Cost: if GitHub fired every trigger on a weekday, that would be 57 runs (24
 cron, 12 podcast, 12 earnings, 8 Twitter, 1 ticket). A stop is model-free,
@@ -96,9 +98,10 @@ of about 2.6 min each. That is ≈ 50 runner-min/day, against ≈ 38 for the
 hourly cron alone. Over the 24 h to 2026-10-31 14:00 UTC, the lane runs that
 actually happened would have woken it 7 times (5 editor runs), ≈ 14 min.
 
-**Why not the cron alone.** On 2026-10-31 the hourly cron never fired
-between the workflow's re-enable at 08:21 UTC and 14:00, even after #6316
-pushed this file at 11:17 to re-register it. In the 26 h to 14:00 UTC (read
+**Why not the cron alone.** On 2026-10-31 the hourly cron fired none of its
+slots between the workflow's re-enable at 08:21 UTC and 14:00, even after
+#6316 pushed this file at 11:17 to re-register it. Its first scheduled run
+was created at 14:47. In the 26 h to 14:00 UTC (read
 from the Actions API), the repository's other schedules were also delayed and
 dropped:
 
@@ -106,7 +109,7 @@ dropped:
   synthetic): 5 of 13 runs each.
 - 3-hourly: 4 of 9. 6-hourly: 4 of 5.
 - Earnings: 1 of 6. Podcast Signal: 1 of 5 since it was created at 03:14.
-- Daily lanes ran 3 to 6.5 h late.
+- Daily lanes ran 3 to 6.8 h late.
 
 GitHub documents that scheduled runs may be delayed under high load and that
 some may be dropped. The numbers fit that, with fewer runs firing the more
@@ -114,8 +117,9 @@ often a cron is scheduled. They do not show why this cron fired none. Whether
 the re-enable, the workflow's age or the `:50` slot matters cannot be checked
 from the repository. The input lanes are cron-driven too, so `workflow_run`
 inherits their delays. Every lane run that does happen now wakes the station,
-though. Since the 08:21 re-enable that would have been three wake-ups instead
-of none (Podcast Signal 10:33, Twitter 12:13, model tickets 12:52).
+though, when it finishes. Between the 08:21 re-enable and 14:00 that would
+have been three wake-ups instead of none, at about 10:38 (Podcast Signal),
+12:19 (Twitter) and 13:03 (model tickets).
 
 ### The gate (deterministic, before any model runs)
 

@@ -40,9 +40,9 @@ on:
     # Backstop, hourly at :50: routine material that waited for the 2 h
     # cadence airs within the hour after it, even when no lane finishes.
     # Do not rely on it alone. GitHub fires schedules late or not at all
-    # under load, and on 2026-10-31 this one never fired after the
-    # workflow's 08:21 re-enable, not even after #6316 pushed this file at
-    # 11:17 (docs/aradio.md "Triggers").
+    # under load, and on 2026-10-31 this one fired none of its slots from
+    # the workflow's 08:21 re-enable until 14:47 UTC, even after #6316
+    # pushed this file at 11:17 (docs/aradio.md "Triggers").
     - cron: '50 * * * *'
   workflow_dispatch:
     inputs:
@@ -55,25 +55,26 @@ on:
 # Serialize runs: the cursor and the board are single-writer state. GitHub
 # keeps one pending run per group and cancels the older one, so a burst of
 # triggers collapses to one running and one pending run; the pending one
-# reads the branch tip when it starts. A run whose upstream lane failed is
-# skipped (the job's `if`), so it takes a group of its own: it must never
-# displace a real pending run. This condition must stay identical to the
-# job's `if` (test-pinned).
+# reads the branch tip when it starts. A run the job's `if` skips (a lane run
+# from another repository) takes a group of its own: it must never displace a
+# real pending run. This condition must stay identical to the job's `if`
+# (test-pinned).
 concurrency:
   group: >-
-    ${{ (github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success'
-    && github.event.workflow_run.head_repository.full_name == github.repository))
+    ${{ (github.event_name != 'workflow_run'
+    || github.event.workflow_run.head_repository.full_name == github.repository)
     && 'aradio' || format('aradio-skipped-{0}', github.run_id) }}
   cancel-in-progress: false
 
 jobs:
   aradio:
-    # A lane run that failed may have published nothing (or a part), and one
-    # from another repository's fork must never wake a job holding secrets:
-    # both wait for the next trigger.
+    # Any conclusion wakes the station: a lane can publish and then fail a
+    # later step (Twitter's headline alerts run after its push), and a stop is
+    # model-free, so the gate decides. A lane run from another repository's
+    # fork must never wake a job holding secrets.
     if: >-
-      ${{ github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success'
-      && github.event.workflow_run.head_repository.full_name == github.repository) }}
+      ${{ github.event_name != 'workflow_run'
+      || github.event.workflow_run.head_repository.full_name == github.repository }}
     runs-on: [self-hosted, Linux]
     timeout-minutes: 30
     permissions:

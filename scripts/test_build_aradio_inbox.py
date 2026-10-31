@@ -1416,10 +1416,12 @@ class TriggerTest(FixtureTest):
         self.assertEqual([{"cron": "50 * * * *"}], on["schedule"])
         self.assertEqual("boolean", on["workflow_dispatch"]["inputs"]["force"]["type"])
 
-    def test_only_successful_lane_runs_wake_the_job_and_skips_never_displace_runs(self):
+    def test_any_lane_conclusion_wakes_the_job_and_skips_never_displace_runs(self):
+        # Twitter can push stories and then fail its alert steps, so a failed
+        # lane run still wakes the station; only a fork's run never does.
         condition = ("github.event_name != 'workflow_run' || "
-                     "(github.event.workflow_run.conclusion == 'success' && "
-                     "github.event.workflow_run.head_repository.full_name == github.repository)")
+                     "github.event.workflow_run.head_repository.full_name == github.repository")
+        self.assertNotIn("conclusion", condition)
         job = self.workflow["jobs"]["aradio"]
         self.assertEqual(f"${{{{ {condition} }}}}", job["if"])
         group = self.workflow["concurrency"]["group"]
