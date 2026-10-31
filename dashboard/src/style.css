@@ -7302,13 +7302,20 @@ body.tab-pricing .calendar { display: none; }
   .pricing-stale { background: #fbbf2422; color: #fbbf24; }
 }
 
-/* ── Aradio (tab-aradio) ──────────────────────────────
-   A rolling two-host bulletin. One loud element — the hero is a deep-navy
-   studio panel with a lit ON AIR sign, the air time set as a station clock,
-   and a speaker strip (one segment per line, width ∝ words, coloured by host)
-   that doubles as the progress bar. Everything below it is the site's quiet
-   editorial chrome: ruled grids, hairlines, the shared ink/royal tokens. */
+/* ── Aradio: ARA Radio (tab-aradio) ──────────────────
+   A radio first. One loud element — the large round play button in the
+   site's royal blue — on a quiet card that follows the theme; everything
+   else on the card is small type and hairlines. Its layout is fixed-height
+   where content changes (three reserved headline lines, three "Up next"
+   rows, one-line meta), so a new bulletin never moves a control under a
+   finger. "Behind the broadcast" below is the site's standard editorial
+   chrome at a lower volume. */
 body.tab-aradio .calendar { display: none; }
+
+/* The bottom bar repeats the radio's controls: it steps aside while the
+   radio's own button is on screen (main.ts sets aradio-radio-in-view). The
+   body keeps its bar padding, so nothing shifts when the bar returns. */
+body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none; }
 
 .aradio-view {
   max-width: var(--page-max);
@@ -7326,395 +7333,233 @@ body.tab-aradio .calendar { display: none; }
   border: 0;
 }
 
-.aradio-masthead {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 4px 16px;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
+/* ── The radio ── */
+.aradio-view .aradio-radio {
+  --aradio-button: var(--ara-royal);
+  --aradio-button-ink: #ffffff;
+  --aradio-lamp: #e5372a;
+  --aradio-lamp-ink: #b42318;
+  padding: clamp(18px, 2.8vw, 28px) var(--card-pad-x) 0;
+  border-color: var(--border);
 }
 
-.aradio-title {
-  font-size: 1.4rem;
+/* Name and sign on one row (the sign wraps below only if it cannot fit), the
+   tagline on a row of its own. */
+.aradio-radio-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 16px;
+}
+
+.aradio-station {
+  min-width: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.2vw, 1.95rem);
+  font-weight: 650;
   letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .aradio-tagline {
-  margin-top: 2px;
+  flex: 1 1 100%;
+  max-width: 48ch;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
 }
 
-.aradio-checked {
-  color: var(--text-tertiary);
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Hero: the studio panel. Its palette is local and theme-stable: navy ground,
-   near-white ink, the royal/cyan pair for the two hosts. */
-.aradio-view .aradio-hero {
-  --aradio-ink: #f4f6fb;
-  --aradio-ink-2: rgba(244, 246, 251, 0.74);
-  --aradio-ink-3: rgba(244, 246, 251, 0.5);
-  --aradio-rule: rgba(244, 246, 251, 0.16);
-  --aradio-host-1: #86a6ff;
-  --aradio-host-2: #38c0ff;
-  --aradio-lamp: #ff4b3e;
-  --aradio-play-bg: #2251ff;
-  --aradio-play-fg: #ffffff;
-  position: relative;
-  padding: clamp(16px, 2.6vw, 26px) var(--card-pad-x) clamp(20px, 3vw, 30px);
-  background: var(--ara-navy);
-  border-color: transparent;
-  color: var(--aradio-ink);
-}
-
-.aradio-hero-top {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  /* Reserved height: the "new bulletin" chip appears here without moving
-     anything below it. */
-  min-height: 34px;
-}
-
-.aradio-sign {
+.aradio-badge {
   display: inline-flex;
   flex: none;
   align-items: center;
+  margin-left: auto;
   gap: 8px;
-  padding: 5px 11px 5px 9px;
-  border: 1px solid var(--aradio-rule);
-  border-radius: 5px;
-  color: var(--aradio-ink-2);
+  min-height: 30px;
+  padding: 0 12px 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-secondary);
   font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.aradio-badge-lamp {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+  opacity: 0.55;
+}
+
+/* The sign reads ON AIR / OFF AIR because that is what a studio sign says. */
+.aradio-badge.is-live,
+.aradio-badge.is-off {
   font-size: 0.7rem;
-  font-weight: 700;
-  /* The sign reads ON AIR because that is what the studio sign says. */
+  font-weight: 750;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.aradio-sign-lamp {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--aradio-ink-3);
+.aradio-badge.is-live {
+  border-color: color-mix(in srgb, var(--aradio-lamp) 45%, transparent);
+  background: color-mix(in srgb, var(--aradio-lamp) 9%, transparent);
+  color: var(--aradio-lamp-ink);
 }
 
-.aradio-hero--live .aradio-sign {
-  border-color: rgba(255, 75, 62, 0.6);
-  background: rgba(255, 75, 62, 0.16);
-  color: #ffffff;
-}
-
-.aradio-hero--live .aradio-sign-lamp {
+.aradio-badge.is-live .aradio-badge-lamp {
   background: var(--aradio-lamp);
-  box-shadow: 0 0 0 3px rgba(255, 75, 62, 0.22), 0 0 12px rgba(255, 75, 62, 0.85);
+  opacity: 1;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--aradio-lamp) 22%, transparent);
   animation: aradio-lamp 2.4s ease-in-out infinite;
 }
 
 @keyframes aradio-lamp {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0.45; }
 }
 
-.aradio-hero-age {
-  min-width: 0;
-  overflow: hidden;
-  color: var(--aradio-ink-2);
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-variant-numeric: tabular-nums;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.aradio-update {
-  display: inline-flex;
-  flex: 0 1 auto;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-  min-height: 32px;
-  margin-left: auto;
-  padding: 0 13px;
-  border: 1px solid rgba(56, 192, 255, 0.55);
-  border-radius: 999px;
-  background: rgba(56, 192, 255, 0.14);
-  color: #ffffff;
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.aradio-update[hidden] { display: none; }
-
-[data-aradio-update-text] {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.aradio-update-time {
-  flex: none;
-  color: var(--aradio-ink-2);
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-}
-
-.aradio-update-time:empty { display: none; }
-
-.aradio-update-dot {
-  flex: none;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--aradio-host-2);
-}
-
-.aradio-update:hover { background: rgba(56, 192, 255, 0.24); }
-
-.aradio-hero-grid {
+.aradio-deck {
   display: grid;
-  grid-template-columns: minmax(150px, auto) minmax(0, 1fr);
+  grid-template-columns: auto minmax(0, 1fr) minmax(220px, 300px);
+  grid-template-areas:
+    "toggle now upnext"
+    "toggle progress upnext"
+    "toggle transport upnext"
+    "toggle note upnext";
   align-items: start;
-  gap: clamp(18px, 4vw, 48px);
-  margin-top: 18px;
+  column-gap: clamp(20px, 3.2vw, 40px);
+  margin-top: clamp(18px, 2.6vw, 26px);
 }
 
-.aradio-clock-time {
-  display: block;
-  color: #ffffff;
-  font-family: var(--font-serif);
-  font-size: clamp(2.9rem, 6.5vw, 4.5rem);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums lining-nums;
-  letter-spacing: -0.035em;
-  line-height: 0.92;
-}
-
-.aradio-clock-meta {
-  display: block;
-  margin-top: 10px;
-  color: var(--aradio-ink-2);
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-}
-
-.aradio-clock-zone {
-  color: var(--aradio-ink);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-}
-
-.aradio-headline {
-  max-width: 34em;
-  color: #ffffff;
-  font-family: var(--font-serif);
-  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.24;
-  text-wrap: balance;
-}
-
-.aradio-controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 26px;
-  margin-top: 20px;
-}
-
-.aradio-play {
-  display: inline-flex;
-  align-items: center;
-  gap: 13px;
-  /* Fixed width: "Play bulletin" ↔ "Pause" must not shove the switch. */
-  min-width: 190px;
-  padding: 0 14px 0 0;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
-.aradio-play-icon {
+.aradio-toggle {
+  grid-area: toggle;
+  align-self: center;
   position: relative;
-  flex: none;
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: var(--aradio-play-bg);
-  color: var(--aradio-play-fg);
-  box-shadow: 0 6px 20px rgba(34, 81, 255, 0.4);
-  transition: transform 0.12s ease;
-}
-
-.aradio-play:hover .aradio-play-icon { transform: scale(1.04); }
-
-.aradio-play-icon::before,
-.aradio-mini-icon::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 54%;
-  transform: translate(-50%, -50%);
-  border-top: 9px solid transparent;
-  border-bottom: 9px solid transparent;
-  border-left: 14px solid currentColor;
-}
-
-.aradio-play.is-playing .aradio-play-icon::before,
-.is-playing > .aradio-mini-icon::before {
-  left: 50%;
-  width: 14px;
-  height: 18px;
-  border: 0;
-  border-left: 5px solid currentColor;
-  border-right: 5px solid currentColor;
-}
-
-.aradio-play-text {
   display: grid;
-  gap: 1px;
-}
-
-.aradio-play-label {
-  font-family: var(--font-sans);
-  font-size: 0.98rem;
-  font-weight: 650;
-}
-
-.aradio-play-duration {
-  color: var(--aradio-ink-2);
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.aradio-no-audio {
-  max-width: 46ch;
-  color: var(--aradio-ink-2);
-  font-family: var(--font-sans);
-  font-size: 0.86rem;
-}
-
-.aradio-switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 40px;
+  place-items: center;
+  width: clamp(96px, 10vw, 116px);
+  height: clamp(96px, 10vw, 116px);
   padding: 0;
   border: 0;
-  border-radius: 6px;
-  background: transparent;
-  color: inherit;
-  font-family: var(--font-sans);
-  font-size: 0.86rem;
-  cursor: pointer;
-}
-
-.aradio-switch-track {
-  position: relative;
-  flex: none;
-  width: 36px;
-  height: 20px;
-  border-radius: 999px;
-  background: rgba(244, 246, 251, 0.22);
-  transition: background 0.15s ease;
-}
-
-.aradio-switch-thumb {
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 16px;
-  height: 16px;
   border-radius: 50%;
-  background: #ffffff;
-  transition: transform 0.15s ease;
+  background: var(--aradio-button);
+  color: var(--aradio-button-ink);
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--aradio-button) 34%, transparent), inset 0 -3px 0 rgba(0, 0, 0, 0.14);
+  cursor: pointer;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.aradio-switch[aria-checked="true"] .aradio-switch-track { background: var(--aradio-host-2); }
-.aradio-switch[aria-checked="true"] .aradio-switch-thumb { transform: translateX(16px); }
+.aradio-toggle:hover { transform: scale(1.03); }
+.aradio-toggle:active { transform: scale(0.97); }
 
-.aradio-keep-hint {
-  margin-top: 4px;
-  color: var(--aradio-ink-3);
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
+.aradio-toggle-icon {
+  width: 44%;
+  height: 44%;
+  fill: currentColor;
 }
 
-.aradio-strip-slot { margin-top: 22px; }
+.aradio-icon-pause,
+.aradio-toggle.is-playing .aradio-icon-play { display: none; }
+.aradio-toggle.is-playing .aradio-icon-pause { display: inline; }
 
-.aradio-strip {
-  position: relative;
-  display: flex;
-  gap: 2px;
-  height: 10px;
-  overflow: hidden;
-  border-radius: 3px;
-}
-
-.aradio-strip.is-placeholder { background: var(--aradio-rule); }
-
-.aradio-strip-seg {
-  flex: 1 1 0;
-  min-width: 2px;
-  background: var(--aradio-host-1);
-}
-
-.aradio-strip-seg--2 { background: var(--aradio-host-2); }
-.aradio-strip-seg--0 { background: var(--aradio-ink-3); }
-
-/* While this bulletin is loaded, the unplayed part sits under a veil. */
-.aradio-strip-veil {
+/* A ring around the button: turning while it buffers, breathing while the
+   radio is on but caught up, waiting for the next bulletin to air. */
+.aradio-toggle::after {
+  content: '';
   position: absolute;
-  inset: 0 0 0 var(--aradio-progress, 0%);
-  display: none;
-  background: color-mix(in srgb, var(--ara-navy) 64%, transparent);
+  inset: -7px;
+  border: 3px solid transparent;
+  border-radius: 50%;
   pointer-events: none;
 }
 
-.aradio-strip.is-loaded .aradio-strip-veil { display: block; }
+.aradio-toggle.is-buffering::after {
+  border-top-color: var(--aradio-button);
+  animation: aradio-spin 0.9s linear infinite;
+}
 
-.aradio-strip-legend {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px 16px;
-  margin-top: 10px;
-  color: var(--aradio-ink-2);
+.aradio-mode--waiting .aradio-toggle::after {
+  border-color: color-mix(in srgb, var(--aradio-button) 42%, transparent);
+  animation: aradio-breathe 2.6s ease-in-out infinite;
+}
+
+@keyframes aradio-spin { to { transform: rotate(360deg); } }
+
+@keyframes aradio-breathe {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.aradio-view .aradio-toggle:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 6px;
+}
+
+.aradio-now {
+  grid-area: now;
+  min-width: 0;
+}
+
+.aradio-now-label {
+  min-height: 1.4em;
+  color: var(--accent-warm);
   font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
 }
 
-.aradio-legend-key {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+/* Three lines are always reserved, so a longer or shorter headline never
+   moves the seek bar or the buttons below it. */
+.aradio-now-headline {
+  display: -webkit-box;
+  min-height: calc(3 * 1.26em);
+  margin-top: 6px;
+  overflow: hidden;
+  font-family: var(--font-serif);
+  font-size: clamp(1.16rem, 2.2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.26;
+  text-wrap: pretty;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
-.aradio-legend-key::before {
-  content: '';
-  width: 10px;
-  height: 4px;
-  border-radius: 2px;
-  background: var(--aradio-host-1);
+.aradio-now-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-height: 1.6em;
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
-.aradio-legend-key--2::before { background: var(--aradio-host-2); }
+.aradio-now-meta time {
+  flex: none;
+  color: var(--text);
+  font-weight: 650;
+}
+
+.aradio-now-day {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aradio-now-meta .aradio-text-button { flex: none; }
 
 .aradio-text-button {
   padding: 2px 0;
@@ -7728,50 +7573,435 @@ body.tab-aradio .calendar { display: none; }
   cursor: pointer;
 }
 
-.aradio-hero .aradio-text-button {
-  margin-left: auto;
-  color: #ffffff;
-}
-
-.aradio-hero-empty {
-  max-width: 62ch;
-  margin-top: 18px;
-}
-
-.aradio-hero-copy {
-  margin-top: 10px;
-  color: var(--aradio-ink-2);
-  line-height: 1.65;
-}
-
-.aradio-hero-action {
-  display: inline-flex;
+.aradio-progress {
+  grid-area: progress;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  min-height: 40px;
-  margin-top: 18px;
-  padding: 0 16px;
-  border: 1px solid var(--aradio-rule);
-  border-radius: 999px;
-  background: rgba(244, 246, 251, 0.08);
-  color: #ffffff;
+  gap: 12px;
+  margin-top: 14px;
+  color: var(--text-tertiary);
   font-family: var(--font-sans);
-  font-size: 0.86rem;
-  font-weight: 600;
-  text-decoration: none;
+  font-size: 0.76rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.aradio-elapsed,
+.aradio-remaining { min-width: 3.3em; }
+.aradio-remaining { text-align: right; }
+
+/* A thin bar with a royal fill up to --aradio-progress; the thumb shows only
+   while there is something to seek. */
+.aradio-seek {
+  width: 100%;
+  height: 24px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.aradio-seek:disabled { cursor: default; }
+
+.aradio-seek::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--aradio-button) var(--aradio-progress, 0%), var(--border) var(--aradio-progress, 0%));
+}
+
+.aradio-seek::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--border);
+}
+
+.aradio-seek::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--aradio-button);
+}
+
+.aradio-seek::-webkit-slider-thumb {
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border: 2px solid var(--bg);
+  border-radius: 50%;
+  background: var(--aradio-button);
+  box-shadow: 0 0 0 1px var(--aradio-button);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.aradio-seek::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--bg);
+  border-radius: 50%;
+  background: var(--aradio-button);
+}
+
+.aradio-seek:disabled::-webkit-slider-thumb { opacity: 0; }
+.aradio-seek:disabled::-moz-range-thumb { opacity: 0; }
+
+.aradio-transport {
+  grid-area: transport;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.aradio-skip {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text);
   cursor: pointer;
 }
 
-.aradio-hero-action:hover { background: rgba(244, 246, 251, 0.16); }
-
-.aradio-view .aradio-hero :focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 3px;
+.aradio-skip svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
 
-/* Sections below the hero: the site's standard card chrome. */
+.aradio-skip:hover {
+  border-color: var(--text-tertiary);
+  background: var(--bg-hover);
+}
+
+/* aria-disabled, not disabled: the control stays focusable and announced. */
+.aradio-skip[aria-disabled="true"],
+.aradio-skip[aria-disabled="true"]:hover {
+  border-color: var(--border-light);
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: default;
+  opacity: 0.55;
+}
+
+.aradio-stop-after {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-left: 4px;
+  padding: 0 12px 0 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.aradio-stop-after:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.aradio-check {
+  position: relative;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--text-tertiary);
+  border-radius: 4px;
+}
+
+.aradio-stop-after[aria-pressed="true"] { color: var(--text); }
+
+.aradio-stop-after[aria-pressed="true"] .aradio-check {
+  border-color: var(--aradio-button);
+  background: var(--aradio-button);
+}
+
+.aradio-stop-after[aria-pressed="true"] .aradio-check::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 4.5px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--aradio-button-ink);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.aradio-note {
+  grid-area: note;
+  min-height: 1.45em;
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.aradio-upnext {
+  grid-area: upnext;
+  min-width: 0;
+  padding-left: clamp(16px, 2.4vw, 28px);
+  border-left: 1px solid var(--border-light);
+}
+
+.aradio-upnext-title {
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* Three rows reserved, whatever is queued. */
+.aradio-upnext-list {
+  min-height: calc(3 * 2.45rem);
+  margin-top: 6px;
+  list-style: none;
+}
+
+.aradio-upnext-item {
+  display: grid;
+  grid-template-columns: 3em minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 8px;
+  min-height: 2.45rem;
+  padding: 9px 0;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.86rem;
+  line-height: 1.4;
+}
+
+.aradio-upnext-item:first-child { border-top: 0; }
+
+.aradio-upnext-time {
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+}
+
+.aradio-upnext-headline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aradio-upnext-duration {
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.aradio-upnext-empty {
+  padding: 9px 0;
+  color: var(--text-tertiary);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+/* The podcast feed: a quiet strip across the foot of the card. */
+.aradio-podcast {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 6px 16px;
+  margin: clamp(18px, 2.6vw, 26px) calc(-1 * var(--card-pad-x)) 0;
+  padding: 14px var(--card-pad-x) 16px;
+  border-top: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+}
+
+.aradio-podcast-title {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.aradio-podcast-row {
+  display: flex;
+  gap: 8px;
+  min-width: 0;
+  max-width: 560px;
+}
+
+.aradio-feed-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+}
+
+.aradio-copy {
+  flex: none;
+  min-width: 5.5em;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.aradio-copy:hover { border-color: var(--text-tertiary); }
+
+.aradio-podcast-hint {
+  grid-column: 1 / -1;
+  color: var(--text-tertiary);
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+/* Off air: nothing to play yet. */
+.aradio-radio-empty {
+  max-width: 62ch;
+  margin-top: clamp(16px, 2.4vw, 22px);
+}
+
+.aradio-empty-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.aradio-empty-copy {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.aradio-radio-empty .aradio-checked { margin-top: 12px; }
+
+.aradio-empty-action {
+  min-height: 40px;
+  margin-top: 14px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.aradio-checked {
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Behind the broadcast ── */
+.aradio-behind { margin-top: clamp(30px, 4.4vw, 48px); }
+
+.aradio-behind-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px 20px;
+  margin-bottom: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.aradio-behind-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.12rem, 2.1vw, 1.3rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.aradio-behind-title:focus { outline: none; }
+
+.aradio-behind-hint {
+  margin-top: 2px;
+  color: var(--text-tertiary);
+  font-size: 0.84rem;
+}
+
+.aradio-behind-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  /* The update chip appears here without moving anything below it. */
+  min-height: 32px;
+}
+
+.aradio-update {
+  display: inline-flex;
+  flex: 0 1 auto;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 32px;
+  padding: 0 13px;
+  border: 1px solid color-mix(in srgb, var(--accent-warm) 45%, transparent);
+  border-radius: 999px;
+  background: var(--accent-warm-bg);
+  color: var(--accent-warm);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.aradio-update[hidden] { display: none; }
+
+[data-aradio-update-text] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aradio-update-time {
+  flex: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.aradio-update-time:empty { display: none; }
+
+.aradio-update-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-warm);
+}
+
 .aradio-board,
 .aradio-bulletins {
-  padding: clamp(18px, 2.6vw, 28px) var(--card-pad-x);
+  padding: clamp(16px, 2.4vw, 24px) var(--card-pad-x);
 }
 
 .aradio-section-head {
@@ -7783,8 +8013,8 @@ body.tab-aradio .calendar { display: none; }
 }
 
 .aradio-section-title {
-  font-size: clamp(1.12rem, 2vw, 1.3rem);
-  letter-spacing: -0.015em;
+  font-size: clamp(1.02rem, 1.8vw, 1.15rem);
+  letter-spacing: -0.01em;
 }
 
 .aradio-section-meta {
@@ -7797,7 +8027,7 @@ body.tab-aradio .calendar { display: none; }
   font-variant-numeric: tabular-nums;
 }
 
-.aradio-note {
+.aradio-muted {
   margin-top: 14px;
   color: var(--text-secondary);
   font-size: 0.92rem;
@@ -7887,14 +8117,14 @@ body.tab-aradio .calendar { display: none; }
 .aradio-thread-title {
   margin: 10px 0 8px;
   font-family: var(--font-serif);
-  font-size: 1.14rem;
+  font-size: 1.08rem;
   letter-spacing: -0.01em;
   line-height: 1.3;
 }
 
 .aradio-thread-now {
   max-width: 68ch;
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   line-height: 1.62;
 }
 
@@ -8049,10 +8279,10 @@ body.tab-aradio .calendar { display: none; }
   transition: background 0.3s ease;
 }
 
-.aradio-resolved-item h3 {
+.aradio-resolved-item h4 {
+  color: var(--text-secondary);
   font-family: var(--font-serif);
   font-size: 0.98rem;
-  color: var(--text-secondary);
 }
 
 .aradio-resolved-item p {
@@ -8128,18 +8358,23 @@ body.tab-aradio .calendar { display: none; }
 }
 
 .aradio-mini-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
   left: 58%;
-  border-top-width: 6px;
-  border-bottom-width: 6px;
-  border-left-width: 9px;
+  transform: translate(-50%, -50%);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 9px solid currentColor;
 }
 
 .is-playing > .aradio-mini-icon::before {
   left: 50%;
   width: 10px;
   height: 12px;
-  border-left-width: 3px;
-  border-right-width: 3px;
+  border: 0;
+  border-left: 3px solid currentColor;
+  border-right: 3px solid currentColor;
 }
 
 .aradio-log-play:hover,
@@ -8221,10 +8456,55 @@ body.tab-aradio .calendar { display: none; }
 
 .aradio-transcript-slot { scroll-margin-top: 72px; }
 
+/* The transcript is a disclosure, collapsed until asked for. */
+.aradio-transcript-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding: 11px 14px 11px 34px;
+  position: relative;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-variant-numeric: tabular-nums;
+  list-style: none;
+  cursor: pointer;
+}
+
+.aradio-transcript-summary::-webkit-details-marker { display: none; }
+
+.aradio-transcript-summary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 7px;
+  height: 7px;
+  border: solid var(--text-tertiary);
+  border-width: 0 2px 2px 0;
+  transform: translateY(-65%) rotate(-45deg);
+  transition: transform 0.15s ease;
+}
+
+.aradio-transcript-details[open] > .aradio-transcript-summary::before {
+  transform: translateY(-75%) rotate(45deg);
+}
+
+.aradio-transcript-summary:hover { background: var(--bg-hover); }
+.aradio-transcript-summary-label { color: var(--text); font-weight: 700; }
+.aradio-transcript-summary time { color: var(--text); font-weight: 650; }
+.aradio-transcript-summary-day { color: var(--text-tertiary); }
+
+.aradio-transcript-details[open] > .aradio-transcript-summary { margin-bottom: 16px; }
+
 .aradio-transcript-headline {
-  margin: 8px 0 14px;
+  margin: 0 0 14px;
   font-family: var(--font-serif);
-  font-size: 1.08rem;
+  font-size: 1.06rem;
   font-weight: 600;
   line-height: 1.4;
 }
@@ -8279,7 +8559,7 @@ body.tab-aradio .calendar { display: none; }
 
 .aradio-transcript-foot { margin-top: 20px; }
 
-.aradio-transcript-foot h4 {
+.aradio-transcript-foot h5 {
   color: var(--text-tertiary);
   font-family: var(--font-sans);
   font-size: 0.74rem;
@@ -8325,23 +8605,31 @@ body.tab-aradio .calendar { display: none; }
   outline-offset: 2px;
 }
 
+/* Hangul has no capitals to track; the sign and labels stay set solid. */
+:root:lang(ko) .aradio-badge,
+:root:lang(ko) .aradio-now-label,
+:root:lang(ko) .aradio-upnext-title { letter-spacing: 0; }
+
 @media (prefers-color-scheme: dark) {
-  .aradio-view .aradio-hero {
-    --aradio-play-bg: #6f95ff;
-    --aradio-play-fg: #08101c;
-    border-color: rgba(111, 149, 255, 0.24);
+  .aradio-view .aradio-radio {
+    --aradio-button-ink: #08101c;
+    --aradio-lamp: #ff5a4e;
+    --aradio-lamp-ink: #ff9d94;
   }
   .aradio-pill--escalating { background: rgba(251, 146, 60, 0.16); color: #fdba74; }
   .aradio-line--s2 .aradio-speaker { color: var(--ara-cyan); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aradio-hero--live .aradio-sign-lamp { animation: none; }
-  .aradio-play-icon,
-  .aradio-switch-track,
-  .aradio-switch-thumb,
+  .aradio-badge.is-live .aradio-badge-lamp,
+  .aradio-mode--waiting .aradio-toggle::after { animation: none; }
+  .aradio-toggle.is-buffering::after { animation: none; border-color: color-mix(in srgb, var(--aradio-button) 42%, transparent); }
+  .aradio-toggle,
+  .aradio-toggle:hover,
+  .aradio-toggle:active { transition: none; transform: none; }
   .aradio-thread,
-  .aradio-line { transition: none; }
+  .aradio-line,
+  .aradio-transcript-summary::before { transition: none; }
 }
 
 @media (min-width: 761px) {
@@ -8357,19 +8645,25 @@ body.tab-aradio .calendar { display: none; }
   }
 }
 
+@media (max-width: 900px) {
+  .aradio-deck {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "toggle now"
+      "toggle progress"
+      "toggle transport"
+      "note note"
+      "upnext upnext";
+  }
+  .aradio-upnext {
+    margin-top: 14px;
+    padding: 12px 0 0;
+    border-top: 1px solid var(--border-light);
+    border-left: 0;
+  }
+}
+
 @media (max-width: 760px) {
-  .aradio-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .aradio-clock {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 4px 12px;
-  }
-  .aradio-clock-time { display: inline; font-size: 2.6rem; }
-  .aradio-clock-meta { display: inline; margin-top: 0; }
   .aradio-thread-grid,
   .aradio-bulletins-grid { grid-template-columns: 1fr; }
   .aradio-thread,
@@ -8380,11 +8674,33 @@ body.tab-aradio .calendar { display: none; }
   .aradio-facts div { grid-template-columns: 1fr; gap: 2px; }
 }
 
+/* Phones: the button alone, centred, then what is on and the controls. */
+@media (max-width: 560px) {
+  .aradio-deck {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "toggle"
+      "now"
+      "progress"
+      "transport"
+      "note"
+      "upnext";
+  }
+  .aradio-toggle {
+    justify-self: center;
+    width: 104px;
+    height: 104px;
+    margin: 4px 0 18px;
+  }
+  .aradio-transport { justify-content: flex-start; }
+  .aradio-podcast { grid-template-columns: minmax(0, 1fr); }
+  /* 16px stops iOS Safari zooming the page when the address is focused. */
+  .aradio-feed-input { font-size: 16px; }
+}
+
 @media (max-width: 480px) {
   .aradio-update-time { display: none; }
   .aradio-line { grid-template-columns: 1fr; gap: 2px; }
-  .aradio-play { min-width: 0; }
-  .aradio-hero .aradio-text-button { margin-left: 0; }
   .aradio-log-select { grid-template-columns: 3em minmax(0, 1fr); }
   .aradio-log-duration { grid-column: 2; }
 }

@@ -17,22 +17,30 @@ import type { ArmTimeline } from './render/agents';
 import { hydratePricing, renderPricing } from './render/pricing';
 import type { ModelPricing } from './render/pricing';
 import {
+  ARADIO_FEED_PATH,
   ARADIO_REL_KEYS,
+  ARADIO_RESTART_S,
   aradioAge,
-  aradioAirState,
   aradioAudioSrc,
   aradioPlayAria,
+  aradioRadioCopy,
+  aradioRadioView,
   aradioUtcTime,
+  hydrateAradioFeed,
   hydrateAradioLinks,
   normalizeAradioBoard,
   normalizeAradioBulletin,
   normalizeAradioIndex,
-  pickNextAradioBulletin,
+  renderAradioBehind,
   renderAradioChecked,
   renderAradioLog,
-  renderAradioStrip,
+  renderAradioRadio,
   renderAradioTranscript,
+  renderAradioUpNext,
   renderAradioView,
+  startAradioProgramme,
+  stepAradioProgramme,
+  syncAradioProgramme,
 } from './render/aradio';
 import type {
   AradioBoard,
@@ -40,6 +48,8 @@ import type {
   AradioBulletinEntry,
   AradioIndex,
   AradioLoadStatus,
+  AradioProgramme,
+  AradioRadioInput,
   AradioTranscriptState,
   AradioViewState,
 } from './render/aradio';
@@ -714,6 +724,7 @@ function applyRuntimeSeo(target: string): void {
   setMetaContent('meta[name="twitter:title"]', seo.heading);
   setMetaContent('meta[name="twitter:description"]', seo.description);
   setRuntimePageHeading(seo.heading);
+  syncAradioFeedLink();
 }
 
 // Tracks the last pathname we routed to. Lets popstate distinguish a
@@ -1182,19 +1193,30 @@ function paintPricing(data: ModelPricing, gpu: GpuSpotData | null = null): void 
   }, benchmark, activeLanguage);
 }
 
-// ── Aradio (live station) ─────────────────────────────
+// ── Aradio (ARA Radio, the live station) ─────────────────
 // research/aradio/{index,state}.json change with every bulletin. Caddy serves
 // research JSON with max-age=0 and Cloudflare does not cache JSON
 // (cf-cache-status: DYNAMIC), so a cache-busted poll sees a bulletin as soon
 // as Railway deploys the commit that carries it. Bulletin files are immutable
 // (one per UTC run stamp) and are cached in memory for the session. Audio is
-// the S3 key the index names, played through the shared bottom bar.
+// the S3 key the index names, played through the shared bottom-bar <audio> —
+// the site's only one, so the digest and a bulletin can never play at once.
+//
+// The page is a radio first. The radio card always shows the newest index the
+// poller has seen and is patched in place (focus and layout never jump);
+// "Behind the broadcast" (board, log, transcript) takes new data only when the
+// reader asks, through the update chip. Listening is continuous: the running
+// order (AradioProgramme, render/aradio.ts) plays newest first, then older
+// bulletins, skips text-only ones, and slots a bulletin that airs mid-listen
+// in right after the one on now.
 const ARADIO_POLL_MS = 5 * 60 * 1000;
 const ARADIO_TICK_MS = 30 * 1000;
-// How long the first paint waits for the latest bulletin's transcript before
-// painting without it (it then fills in) — normally one quick round trip.
-const ARADIO_DETAIL_WAIT_MS = 1500;
-const ARADIO_KEEP_KEY = 'ara-aradio-keep-listening';
+const ARADIO_FEED_URL = new URL(ARADIO_FEED_PATH, PUBLIC_SITE_ORIGIN).href;
+// The only brand image is the 1280x640 social card; there is no square asset.
+// Lock screens crop or letterbox it, which still beats a blank tile.
+const ARADIO_ARTWORK: MediaImage[] = [{ src: '/brand/github-social-preview.png', sizes: '1280x640', type: 'image/png' }];
+// HTMLMediaElement.HAVE_FUTURE_DATA: below it a playing element is buffering.
+const MEDIA_HAVE_FUTURE_DATA = 3;
 
 type AradioFetch = { status: 'ok'; data: unknown } | { status: 'missing' } | { status: 'error' };
 
@@ -1202,35 +1224,35 @@ let aradioIndex: AradioIndex | null = null;
 let aradioIndexStatus: AradioLoadStatus = 'missing';
 let aradioBoard: AradioBoard | null = null;
 let aradioBoardStatus: AradioLoadStatus = 'missing';
-// Newer data the poller found but the reader has not asked to see yet.
+// Newer data the poller found but "Behind the broadcast" has not shown yet.
+// The radio card uses it at once.
 let aradioPendingIndex: AradioIndex | null = null;
 let aradioPendingBoard: AradioBoard | null = null;
 let aradioSelectedId: string | null = null;
 // The transcript follows the newest bulletin until the reader picks another.
 let aradioFollowLatest = true;
 let aradioShowAll = false;
-let aradioKeepListening = readAradioKeepListening();
+// Collapsed until asked for: the page is for listening first.
+let aradioTranscriptOpen = false;
 let aradioCheckedAt: number | null = null;
 let aradioLastPollAt = 0;
 let aradioPollInFlight = false;
 let aradioTicker: number | null = null;
 let aradioAnnouncedId: string | null = null;
-// "Keep listening": bulletins that aired mid-session play next (oldest
-// first), then playback walks back from the cursor to earlier bulletins.
-let aradioQueue: string[] = [];
-let aradioBackCursor: string | null = null;
-const aradioHeard = new Set<string>();
+let aradioAnnouncedTrack: string | null = null;
+// Continuous listening. `aradioLoaded` is the entry in the shared player (it
+// may outlive the 72-bulletin index); `aradioWaiting` means caught up — the
+// next bulletin to air starts by itself while the station is on screen.
+let aradioProgramme: AradioProgramme | null = null;
+let aradioLoaded: AradioBulletinEntry | null = null;
+let aradioWaiting = false;
+let aradioStopAfter = false;
+let aradioSeekDragging = false;
+let aradioRadioObserver: IntersectionObserver | null = null;
+let aradioCopyTimer: number | null = null;
 const aradioBulletins = new Map<string, AradioBulletin>();
 const aradioBulletinRequests = new Map<string, Promise<AradioBulletin | null>>();
 const aradioBulletinFailed = new Set<string>();
-
-function readAradioKeepListening(): boolean {
-  try {
-    return localStorage.getItem(ARADIO_KEEP_KEY) === '1';
-  } catch {
-    return false;
-  }
-}
 
 async function fetchAradioJson(path: string, signal?: AbortSignal, bust = true): Promise<AradioFetch> {
   const url = `${DATA_BASE}/aradio/${path}${bust ? `?t=${Date.now()}` : ''}`;
@@ -1273,12 +1295,23 @@ function aradioSelectedEntry(): AradioBulletinEntry | null {
   return aradioIndex?.bulletins.find((entry) => entry.id === aradioSelectedId) ?? null;
 }
 
+/** Everything the radio may play: the poller's newest index, newest first. */
+function aradioKnownBulletins(): readonly AradioBulletinEntry[] {
+  return (aradioPendingIndex ?? aradioIndex)?.bulletins ?? [];
+}
+
 /** Playback can target a bulletin the poller saw before the reader applied it. */
 function aradioEntry(id: string | null): AradioBulletinEntry | null {
   if (!id) return null;
   return aradioPendingIndex?.bulletins.find((entry) => entry.id === id)
     ?? aradioIndex?.bulletins.find((entry) => entry.id === id)
-    ?? null;
+    ?? (aradioLoaded?.id === id ? aradioLoaded : null);
+}
+
+/** The Aradio bulletin in the shared player, while the player still holds it. */
+function aradioLoadedEntry(): AradioBulletinEntry | null {
+  if (!digestAudioEl || digestAudioState.kind !== 'aradio' || !digestAudioState.src) return null;
+  return aradioLoaded && digestAudioState.aradioId === aradioLoaded.id ? aradioLoaded : null;
 }
 
 function syncAradioSelection(): void {
@@ -1325,8 +1358,27 @@ function aradioTranscriptState(): AradioTranscriptState {
   return aradioBulletinFailed.has(entry.id) ? { kind: 'error', entry } : { kind: 'loading', entry };
 }
 
+/** The shared player and the running order, as data for render/aradio.ts. */
+function aradioRadioInput(): AradioRadioInput {
+  const audio = digestAudioEl;
+  const loaded = aradioLoadedEntry();
+  const live = Boolean(loaded && audio);
+  return {
+    bulletins: aradioKnownBulletins(),
+    indexStatus: aradioIndexStatus,
+    programme: loaded ? aradioProgramme : null,
+    loaded,
+    playing: Boolean(live && audio && !audio.paused && !audio.ended),
+    ended: Boolean(live && audio?.ended),
+    waiting: live && aradioWaiting,
+    buffering: Boolean(live && audio && !audio.paused && audio.readyState < MEDIA_HAVE_FUTURE_DATA),
+    position: live && audio ? audio.currentTime : 0,
+    duration: live && audio && Number.isFinite(audio.duration) ? audio.duration : 0,
+    stopAfter: aradioStopAfter,
+  };
+}
+
 function aradioViewState(): AradioViewState {
-  const latest = aradioLatestEntry();
   return {
     language: activeLanguage,
     nowMs: Date.now(),
@@ -1334,16 +1386,16 @@ function aradioViewState(): AradioViewState {
     indexStatus: aradioIndexStatus,
     board: aradioBoard,
     boardStatus: aradioBoardStatus,
-    latestDetail: latest ? aradioBulletins.get(latest.id) ?? null : null,
     selectedId: aradioSelectedId,
     transcript: aradioTranscriptState(),
-    keepListening: aradioKeepListening,
+    transcriptOpen: aradioTranscriptOpen,
     showAll: aradioShowAll,
     checkedAt: aradioCheckedAt,
+    radio: aradioRadioInput(),
   };
 }
 
-/** Initial fetch for load(): index + board, then (briefly) the latest detail. */
+/** Initial fetch for load(): index + board. Transcripts fill in after paint. */
 async function loadAradio(signal: AbortSignal): Promise<void> {
   const [indexResult, boardResult] = await Promise.all([
     fetchAradioJson('index.json', signal),
@@ -1366,55 +1418,69 @@ async function loadAradio(signal: AbortSignal): Promise<void> {
   aradioLastPollAt = Date.now();
   if (index.status !== 'error' || board.status !== 'error') aradioCheckedAt = aradioLastPollAt;
   syncAradioSelection();
-  const wanted = [aradioLatestEntry(), aradioSelectedEntry()]
-    .filter((entry): entry is AradioBulletinEntry => entry !== null && !aradioBulletins.has(entry.id));
-  if (!wanted.length) return;
-  await Promise.race([
-    Promise.all(wanted.map(ensureAradioBulletin)),
-    new Promise((resolve) => window.setTimeout(resolve, ARADIO_DETAIL_WAIT_MS)),
-  ]);
+  if (aradioProgramme && aradioLoadedEntry()) aradioProgramme = syncAradioProgramme(aradioProgramme, aradioKnownBulletins());
 }
 
 function paintAradio(): void {
-  // Evidence links are not in the HTML: they are built with DOM APIs into the
-  // slots the sanitized markup leaves for them.
+  // Evidence links and the feed address are not in the HTML: they are set
+  // with DOM APIs into the slots the sanitized markup leaves for them.
   const view = renderAradioView(aradioViewState());
   setSafeContent(content, view.html);
   hydrateAradioLinks(content, view.links);
+  hydrateAradioFeed(content, ARADIO_FEED_URL);
+  syncAradioFeedLink();
   updateAradioChip();
   syncAradioPlayUi();
+  observeAradioRadio();
   fillAradioDetails();
   startAradioTicker();
 }
 
-/** Fetch whatever the painted view still lacks and patch it in place. */
-function fillAradioDetails(): void {
-  const latest = aradioLatestEntry();
-  const selected = aradioSelectedEntry();
-  for (const entry of [latest, selected]) {
-    if (!entry || aradioBulletins.has(entry.id) || aradioBulletinFailed.has(entry.id)) continue;
-    void ensureAradioBulletin(entry).then(() => {
-      if (activeTab !== 'aradio') return;
-      if (entry.id === aradioLatestEntry()?.id) paintAradioStrip();
-      if (entry.id === aradioSelectedId) paintAradioTranscript();
-    });
-  }
+// Controls a repaint of the radio card must hand focus back to.
+const ARADIO_FOCUS_HOOKS = [
+  'data-aradio-toggle', 'data-aradio-prev', 'data-aradio-next', 'data-aradio-stop-after', 'data-aradio-seek',
+  'data-aradio-read', 'data-aradio-copy-feed', 'data-aradio-feed-url', 'data-retry',
+];
+
+/** Re-render the radio card (its shape changed), keeping the focused control. */
+function repaintAradioRadio(): void {
+  const slot = content.querySelector<HTMLElement>('[data-aradio-radio-slot]');
+  if (!slot) return;
+  const active = document.activeElement;
+  const hook = active instanceof HTMLElement && slot.contains(active)
+    ? ARADIO_FOCUS_HOOKS.find((name) => active.hasAttribute(name)) ?? null
+    : null;
+  setSafeContent(slot, renderAradioRadio(aradioViewState()));
+  hydrateAradioFeed(slot, ARADIO_FEED_URL);
+  observeAradioRadio();
+  if (hook) slot.querySelector<HTMLElement>(`[${hook}]`)?.focus({ preventScroll: true });
 }
 
-function paintAradioStrip(): void {
-  const slot = content.querySelector<HTMLElement>('[data-aradio-strip-slot]');
-  const latest = aradioLatestEntry();
-  const detail = latest ? aradioBulletins.get(latest.id) : null;
-  if (!slot || !latest || !detail) return;
-  setSafeContent(slot, renderAradioStrip(latest.id, detail.lines));
-  syncAradioPlayUi();
+/** Re-render "Behind the broadcast" after the reader asked for the update. */
+function repaintAradioBehind(): void {
+  const slot = content.querySelector<HTMLElement>('[data-aradio-behind-slot]');
+  if (!slot) return;
+  const behind = renderAradioBehind(aradioViewState());
+  setSafeContent(slot, behind.html);
+  hydrateAradioLinks(slot, behind.links);
+  updateAradioChip();
+  fillAradioDetails();
+}
+
+/** Fetch whatever the painted transcript still lacks and patch it in place. */
+function fillAradioDetails(): void {
+  const selected = aradioSelectedEntry();
+  if (!selected || aradioBulletins.has(selected.id) || aradioBulletinFailed.has(selected.id)) return;
+  void ensureAradioBulletin(selected).then(() => {
+    if (activeTab === 'aradio' && selected.id === aradioSelectedId) paintAradioTranscript();
+  });
 }
 
 function paintAradioTranscript(): void {
   const slot = content.querySelector<HTMLElement>('[data-aradio-transcript-slot]');
   if (!slot) return;
   const boardSlugs = new Set((aradioBoard?.threads ?? []).map((thread) => thread.slug));
-  const transcript = renderAradioTranscript(aradioTranscriptState(), { language: activeLanguage, boardSlugs });
+  const transcript = renderAradioTranscript(aradioTranscriptState(), { language: activeLanguage, boardSlugs, open: aradioTranscriptOpen });
   setSafeContent(slot, transcript.html);
   hydrateAradioLinks(slot, transcript.links);
   content.querySelectorAll<HTMLElement>('[data-aradio-row]').forEach((row) => {
@@ -1434,11 +1500,13 @@ function paintAradioLog(): void {
   syncAradioPlayUi();
 }
 
+/** Show a bulletin's transcript (opening the disclosure) and, if asked, scroll to it. */
 function selectAradioBulletin(id: string, opts: { scroll?: 'if-needed' | 'always' } = {}): void {
   const entry = aradioIndex?.bulletins.find((item) => item.id === id);
   if (!entry) return;
   aradioSelectedId = id;
   aradioFollowLatest = id === aradioLatestEntry()?.id;
+  aradioTranscriptOpen = true;
   // Selecting again is also the retry for a transcript that failed to load.
   aradioBulletinFailed.delete(id);
   if (!aradioBulletins.has(id)) {
@@ -1449,7 +1517,7 @@ function selectAradioBulletin(id: string, opts: { scroll?: 'if-needed' | 'always
   paintAradioTranscript();
   const slot = content.querySelector<HTMLElement>('[data-aradio-transcript-slot]');
   if (!slot || !opts.scroll) return;
-  // Bring the new transcript's start into view when it is below the fold, or
+  // Bring the transcript's start into view when it is below the fold, or
   // when the reader is deep inside the previous one (the log is sticky).
   const rect = slot.getBoundingClientRect();
   const offscreen = rect.top > window.innerHeight * 0.75 || rect.top < 0;
@@ -1457,6 +1525,14 @@ function selectAradioBulletin(id: string, opts: { scroll?: 'if-needed' | 'always
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     slot.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
   }
+}
+
+/** "Read the transcript" from the radio: the bulletin may still be in the pending index. */
+function readAradioTranscript(id: string): void {
+  const shown = aradioIndex?.bulletins.some((entry) => entry.id === id) ?? false;
+  if (!shown && aradioPendingIndex?.bulletins.some((entry) => entry.id === id)) applyAradioPending();
+  selectAradioBulletin(id, { scroll: 'always' });
+  content.querySelector<HTMLElement>('[data-aradio-transcript-details] > summary')?.focus({ preventScroll: true });
 }
 
 function focusAradioThread(slug: string): void {
@@ -1472,18 +1548,6 @@ function focusAradioThread(slug: string): void {
   window.setTimeout(() => target.classList.remove('is-flash'), 1600);
 }
 
-function setAradioKeepListening(on: boolean): void {
-  aradioKeepListening = on;
-  try {
-    localStorage.setItem(ARADIO_KEEP_KEY, on ? '1' : '0');
-  } catch {
-    // The choice still holds for this session.
-  }
-  if (!on) aradioQueue = [];
-  syncAradioPlayUi();
-  updateAradioChip();
-}
-
 function aradioAudioUrl(entry: AradioBulletinEntry): string | null {
   // The guarded builder re-checks the key policy; no key, no audio.
   return aradioAudioSrc(AUDIO_BASE, entry.audio);
@@ -1492,12 +1556,18 @@ function aradioAudioUrl(entry: AradioBulletinEntry): string | null {
 /** An Aradio track is loaded in the shared bar and has not finished. */
 function aradioSessionActive(): boolean {
   const audio = digestAudioEl;
-  return digestAudioState.kind === 'aradio' && Boolean(audio && digestAudioState.src && !audio.ended);
+  return Boolean(aradioLoadedEntry() && audio && !audio.ended);
 }
 
 function aradioPlaying(): boolean {
   const audio = digestAudioEl;
   return aradioSessionActive() && Boolean(audio && !audio.paused);
+}
+
+/** Say once, politely, what just started or arrived. */
+function announceAradio(message: string): void {
+  const live = content.querySelector<HTMLElement>('[data-aradio-live]');
+  if (activeTab === 'aradio' && live && message) live.textContent = message;
 }
 
 function setAradioTrack(entry: AradioBulletinEntry, autoplay: boolean): void {
@@ -1514,6 +1584,8 @@ function setAradioTrack(entry: AradioBulletinEntry, autoplay: boolean): void {
     headline: entry.headline || aradioUtcTime(entry.airedAt),
   });
   digestAudioState.dismissedSrc = null;
+  aradioLoaded = entry;
+  aradioWaiting = false;
   if (changed) {
     audio.src = src;
     audio.currentTime = 0;
@@ -1521,74 +1593,151 @@ function setAradioTrack(entry: AradioBulletinEntry, autoplay: boolean): void {
   }
   showDigestAudioPlayer();
   updateDigestAudioUi();
-  // Keep-listening may need to keep polling after the reader leaves the tab.
+  // Continuous listening keeps polling after the reader leaves the tab.
   startAradioTicker();
   if (autoplay) {
     stopResearchAudio();
+    if (aradioAnnouncedTrack !== entry.id) {
+      aradioAnnouncedTrack = entry.id;
+      announceAradio(uiText(activeLanguage, 'aradio.announceNow', { headline: entry.headline || `${aradioUtcTime(entry.airedAt)} UTC` }));
+    }
     void audio.play().catch(() => {
       updateDigestAudioUi();
     });
   }
 }
 
-async function toggleAradioPlayback(id: string | null): Promise<void> {
-  if (!id) return;
+/** Play from where the listener left off, or start the running order over. */
+function startOrResumeAradio(): void {
   const audio = ensureDigestAudioPlayer();
-  const isCurrent = digestAudioState.kind === 'aradio'
-    && digestAudioState.aradioId === id
-    && Boolean(digestAudioState.src)
-    && audio.getAttribute('src') === digestAudioState.src;
-  if (!isCurrent) {
-    const entry = aradioEntry(id);
-    if (!entry?.audio) return;
-    // A manual pick re-anchors "continue to earlier bulletins" here.
-    aradioBackCursor = id;
-    aradioQueue = aradioQueue.filter((queued) => queued !== id);
-    setAradioTrack(entry, true);
+  const loaded = aradioLoadedEntry();
+  aradioWaiting = false;
+  if (loaded && !audio.ended) {
+    digestAudioState.dismissedSrc = null;
+    showDigestAudioPlayer();
+    stopResearchAudio();
+    startAradioTicker();
+    void audio.play().catch(() => {
+      updateDigestAudioUi();
+    });
+    updateDigestAudioUi();
     return;
   }
-  digestAudioState.dismissedSrc = null;
-  showDigestAudioPlayer();
-  if (audio.paused || audio.ended) {
-    stopResearchAudio();
-    // Resuming from the bar on another tab re-arms keep-listening polling.
-    startAradioTicker();
-    try {
-      await audio.play();
-    } catch {
-      updateDigestAudioUi();
-    }
-  } else {
+  // Same rule the card shows as "Up first": after "stop after this
+  // bulletin", the next in the running order; otherwise the newest.
+  const known = aradioKnownBulletins();
+  const next = loaded && aradioProgramme ? stepAradioProgramme(aradioProgramme, known, 1) : null;
+  const programme = next ?? startAradioProgramme(known);
+  const entry = programme ? aradioEntry(programme.ids[programme.pos]) : null;
+  if (!programme || !entry) {
+    syncAradioPlayUi();
+    return;
+  }
+  aradioProgramme = programme;
+  setAradioTrack(entry, true);
+}
+
+/** The radio's one big button (and the bar's, while it holds a bulletin). */
+function toggleAradioRadio(): void {
+  const audio = digestAudioEl;
+  if (aradioLoadedEntry() && aradioWaiting) {
+    // On but silent: switching it off stops the next bulletin starting itself.
+    aradioWaiting = false;
+    syncAradioPlayUi();
+    return;
+  }
+  if (aradioPlaying() && audio) {
     audio.pause();
+    return;
+  }
+  startOrResumeAradio();
+}
+
+/** Play one bulletin from the log or a transcript, then carry on with older ones. */
+function toggleAradioPlayback(id: string | null): void {
+  if (!id) return;
+  const audio = ensureDigestAudioPlayer();
+  if (aradioLoadedEntry()?.id === id && !audio.ended) {
+    if (audio.paused) startOrResumeAradio();
+    else audio.pause();
+    return;
+  }
+  const entry = aradioEntry(id);
+  if (!entry?.audio) return;
+  aradioProgramme = startAradioProgramme(aradioKnownBulletins(), id) ?? { ids: [id], pos: 0 };
+  setAradioTrack(entry, true);
+}
+
+/** Skip forward, keeping the play state (a paused radio stays paused). */
+function aradioNext(): void {
+  const audio = digestAudioEl;
+  if (!aradioLoadedEntry() || !audio || !aradioProgramme) return;
+  const next = stepAradioProgramme(aradioProgramme, aradioKnownBulletins(), 1);
+  const entry = next ? aradioEntry(next.ids[next.pos]) : null;
+  if (!next || !entry) return;
+  const autoplay = !audio.paused && !audio.ended;
+  aradioProgramme = next;
+  setAradioTrack(entry, autoplay);
+}
+
+/** Restart the bulletin on now, or — within its first seconds — go back one. */
+function aradioPrevious(): void {
+  const audio = digestAudioEl;
+  if (!aradioLoadedEntry() || !audio || !aradioProgramme) return;
+  const wasEnded = audio.ended || aradioWaiting;
+  const autoplay = wasEnded || !audio.paused;
+  const back = !wasEnded && audio.currentTime <= ARADIO_RESTART_S
+    ? stepAradioProgramme(aradioProgramme, aradioKnownBulletins(), -1)
+    : null;
+  const entry = back ? aradioEntry(back.ids[back.pos]) : null;
+  if (back && entry) {
+    aradioProgramme = back;
+    setAradioTrack(entry, autoplay);
+    return;
+  }
+  aradioWaiting = false;
+  audio.currentTime = 0;
+  if (autoplay) {
+    stopResearchAudio();
+    void audio.play().catch(() => {
+      updateDigestAudioUi();
+    });
   }
   updateDigestAudioUi();
 }
 
-/** On `ended`: play what "keep listening" picks next. False = stop as usual. */
+/** On `ended`: play what comes next in the running order. False = stop as usual. */
 function continueAradioAfterEnd(): boolean {
-  const ended = digestAudioState.aradioId;
-  if (ended) aradioHeard.add(ended);
-  if (!ended || !aradioKeepListening) return false;
-  const bulletins = (aradioPendingIndex ?? aradioIndex)?.bulletins ?? [];
-  const next = pickNextAradioBulletin(bulletins, {
-    heard: aradioHeard,
-    queue: aradioQueue,
-    backCursor: aradioBackCursor ?? ended,
-  });
-  if (!next) return false;
-  const entry = bulletins.find((item) => item.id === next.id);
-  if (!entry) return false;
-  aradioQueue = next.queue;
-  aradioBackCursor = next.backCursor;
+  if (!aradioLoadedEntry() || !aradioProgramme) return false;
+  // Timers are throttled behind a locked screen, so a poll may be overdue:
+  // look for newer bulletins now, but never hold the next one back for the
+  // network — a newer one found meanwhile is slotted in to play after it.
+  if (Date.now() - aradioLastPollAt >= ARADIO_POLL_MS) void pollAradio();
+  if (aradioStopAfter) {
+    aradioStopAfter = false;
+    syncAradioPlayUi();
+    return false;
+  }
+  const next = stepAradioProgramme(aradioProgramme, aradioKnownBulletins(), 1);
+  const entry = next ? aradioEntry(next.ids[next.pos]) : null;
+  if (!next || !entry) {
+    // Caught up: stay on, and let the next bulletin to air start by itself.
+    aradioWaiting = true;
+    syncAradioPlayUi();
+    return false;
+  }
+  aradioProgramme = next;
   setAradioTrack(entry, true);
-  updateAradioChip();
   return true;
 }
 
 function navigateToAradioTrack(): void {
   const id = digestAudioState.aradioId;
   if (activeTab === 'aradio') {
-    if (id) selectAradioBulletin(id, { scroll: 'always' });
+    // The bar only shows here once the radio has scrolled away: go back to it.
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    content.querySelector<HTMLElement>('[data-aradio-radio]')?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    content.querySelector<HTMLElement>('[data-aradio-toggle]')?.focus({ preventScroll: true });
     return;
   }
   if (id) {
@@ -1603,7 +1752,7 @@ function navigateToAradioTrack(): void {
   void load();
 }
 
-/** Bulletins in the poller's newer index that the reader has not seen. */
+/** Bulletins in the poller's newer index that "Behind the broadcast" has not shown. */
 function aradioFreshBulletins(): AradioBulletinEntry[] {
   if (!aradioPendingIndex) return [];
   const shown = new Set((aradioIndex?.bulletins ?? []).map((entry) => entry.id));
@@ -1634,12 +1783,22 @@ async function pollAradio(): Promise<void> {
       if (changed) aradioPendingBoard = board.board;
     }
     const fresh = aradioFreshBulletins();
-    if (fresh.length && aradioKeepListening && aradioSessionActive()) {
-      const current = digestAudioState.aradioId;
-      for (const entry of fresh.slice().reverse()) {
-        if (entry.audio && entry.id !== current && !aradioHeard.has(entry.id) && !aradioQueue.includes(entry.id)) {
-          aradioQueue.push(entry.id);
-        }
+    // A bulletin that aired mid-listen joins the running order right after
+    // the one on now.
+    let queued = false;
+    if (aradioProgramme && aradioLoadedEntry()) {
+      const synced = syncAradioProgramme(aradioProgramme, aradioKnownBulletins());
+      queued = synced !== aradioProgramme;
+      aradioProgramme = synced;
+    }
+    // Caught up and still on screen: the radio is on, so play it now.
+    if (queued && aradioWaiting && activeTab === 'aradio' && aradioProgramme) {
+      const next = stepAradioProgramme(aradioProgramme, aradioKnownBulletins(), 1);
+      const entry = next ? aradioEntry(next.ids[next.pos]) : null;
+      if (next && entry) {
+        aradioProgramme = next;
+        setAradioTrack(entry, true);
+        queued = false;
       }
     }
     if (activeTab !== 'aradio') return;
@@ -1649,15 +1808,16 @@ async function pollAradio(): Promise<void> {
       applyAradioPending();
       return;
     }
-    const checked = content.querySelector<HTMLElement>('[data-aradio-checked]');
-    if (checked) setSafeContent(checked, renderAradioChecked(aradioCheckedAt, activeLanguage, Date.now()));
+    content.querySelectorAll<HTMLElement>('[data-aradio-checked]').forEach((checked) => {
+      setSafeContent(checked, renderAradioChecked(aradioCheckedAt, activeLanguage, Date.now()));
+    });
     // Announce each new bulletin once, not on every poll that still sees it.
     if (fresh.length && fresh[0].id !== aradioAnnouncedId) {
       aradioAnnouncedId = fresh[0].id;
-      const live = content.querySelector<HTMLElement>('[data-aradio-live]');
-      if (live) live.textContent = `${uiText(activeLanguage, 'aradio.newBulletin')}: ${fresh[0].headline}`;
+      announceAradio(`${uiText(activeLanguage, queued ? 'aradio.newQueued' : 'aradio.newBulletin')}: ${fresh[0].headline}`);
     }
     updateAradioChip();
+    syncAradioRadio();
   } finally {
     aradioPollInFlight = false;
   }
@@ -1673,16 +1833,11 @@ function updateAradioChip(): void {
   // Kept apart from the text so narrow screens can drop it instead of
   // truncating the message mid-word.
   let time = '';
-  if (fresh.length) {
-    const queued = aradioKeepListening && fresh.some((entry) => aradioQueue.includes(entry.id));
-    if (queued) {
-      text = uiText(activeLanguage, 'aradio.newQueued');
-    } else if (fresh.length === 1) {
-      text = uiText(activeLanguage, 'aradio.newBulletin');
-      time = `${aradioUtcTime(fresh[0].airedAt)} UTC`;
-    } else {
-      text = uiText(activeLanguage, 'aradio.newBulletins', { count: fresh.length });
-    }
+  if (fresh.length === 1) {
+    text = uiText(activeLanguage, 'aradio.newBulletin');
+    time = `${aradioUtcTime(fresh[0].airedAt)} UTC`;
+  } else if (fresh.length) {
+    text = uiText(activeLanguage, 'aradio.newBulletins', { count: fresh.length });
   } else if (aradioPendingBoard) {
     text = uiText(activeLanguage, 'aradio.boardUpdated');
   }
@@ -1694,6 +1849,7 @@ function updateAradioChip(): void {
 }
 
 function applyAradioPending(): void {
+  const chipFocused = document.activeElement instanceof HTMLElement && document.activeElement.hasAttribute('data-aradio-apply');
   if (aradioPendingIndex) {
     aradioIndex = aradioPendingIndex;
     aradioIndexStatus = 'ok';
@@ -1705,7 +1861,14 @@ function applyAradioPending(): void {
   aradioPendingIndex = null;
   aradioPendingBoard = null;
   syncAradioSelection();
-  paintAradio();
+  repaintAradioBehind();
+  syncAradioPlayUi();
+  // The chip just hid itself: hand focus to the section it updated.
+  if (chipFocused) {
+    const title = content.querySelector<HTMLElement>('#aradioBehindTitle');
+    title?.setAttribute('tabindex', '-1');
+    title?.focus({ preventScroll: true });
+  }
 }
 
 function startAradioTicker(): void {
@@ -1719,12 +1882,12 @@ function stopAradioTicker(): void {
 }
 
 // Polls only while someone can notice: the Aradio tab is visible, or a
-// bulletin is playing with "keep listening" on (background listening is the
-// point of a radio, and a queued new bulletin needs a fresh index).
+// bulletin is playing (background listening is the point of a radio, and a
+// bulletin that airs mid-listen needs a fresh index to play next).
 function aradioTick(): void {
   const onTab = activeTab === 'aradio';
   const watching = onTab && document.visibilityState === 'visible';
-  const listening = aradioKeepListening && aradioPlaying();
+  const listening = aradioPlaying();
   if (!onTab && !listening) {
     stopAradioTicker();
     return;
@@ -1737,29 +1900,87 @@ function aradioTick(): void {
 function refreshAradioClock(): void {
   if (activeTab !== 'aradio') return;
   const now = Date.now();
-  const hero = content.querySelector<HTMLElement>('.aradio-hero[data-aradio-hero]');
-  const sign = hero?.querySelector<HTMLElement>('[data-aradio-sign]');
-  if (hero && sign) {
-    const air = aradioAirState(sign.dataset.aired || null, now);
-    hero.classList.toggle('aradio-hero--live', air.state === 'live');
-    hero.classList.toggle('aradio-hero--idle', air.state === 'idle');
-    const signText = sign.querySelector<HTMLElement>('[data-aradio-sign-text]');
-    if (signText) signText.textContent = uiText(activeLanguage, air.state === 'live' ? 'aradio.onAir' : 'aradio.offAir');
-    const age = hero.querySelector<HTMLElement>('.aradio-hero-age[data-aradio-rel]');
-    if (age) age.dataset.aradioRelKey = air.state === 'live' ? 'aradio.airedAgo' : 'aradio.lastBulletin';
-  }
   content.querySelectorAll<HTMLElement>('[data-aradio-rel]').forEach((el) => {
     const key = el.dataset.aradioRelKey as UiCopyKey;
     if (!ARADIO_REL_KEYS.includes(key)) return;
     el.textContent = uiText(activeLanguage, key, { age: aradioAge(el.dataset.aradioRel || null, now, activeLanguage) });
   });
+  syncAradioRadio();
+}
+
+/**
+ * Patch the radio card in place from the shared player's state. Runs on every
+ * media event, so it only writes what changed; the card is re-rendered only
+ * when its shape changes (e.g. the first bulletin with audio arrives).
+ */
+function syncAradioRadio(): void {
+  if (activeTab !== 'aradio') return;
+  const card = content.querySelector<HTMLElement>('[data-aradio-radio]');
+  if (!card) return;
+  const now = Date.now();
+  const view = aradioRadioView(aradioRadioInput(), now);
+  if (card.dataset.aradioRadio !== view.kind) {
+    repaintAradioRadio();
+    return;
+  }
+  const copy = aradioRadioCopy(view, now, activeLanguage);
+  const text = (selector: string, value: string) => {
+    const el = card.querySelector<HTMLElement>(selector);
+    if (el && el.textContent !== value) el.textContent = value;
+  };
+  const attr = (el: Element | null, name: string, value: string) => {
+    if (el && el.getAttribute(name) !== value) el.setAttribute(name, value);
+  };
+  card.querySelector('[data-aradio-badge]')?.classList.toggle('is-live', copy.live);
+  text('[data-aradio-badge-text]', copy.badge);
+  if (view.kind !== 'ready') return;
+
+  const deck = card.querySelector<HTMLElement>('[data-aradio-deck]');
+  if (deck && !deck.classList.contains(`aradio-mode--${view.mode}`)) {
+    deck.classList.remove('aradio-mode--off', 'aradio-mode--playing', 'aradio-mode--paused', 'aradio-mode--waiting');
+    deck.classList.add(`aradio-mode--${view.mode}`);
+  }
+  const toggle = card.querySelector<HTMLButtonElement>('[data-aradio-toggle]');
+  toggle?.classList.toggle('is-playing', copy.toggleIcon === 'pause');
+  toggle?.classList.toggle('is-buffering', view.buffering);
+  attr(toggle, 'aria-label', copy.toggleLabel);
+  text('[data-aradio-now-label]', copy.label);
+  text('[data-aradio-now-headline]', copy.headline);
+  attr(card.querySelector('[data-aradio-now-time]'), 'datetime', copy.datetime);
+  text('[data-aradio-now-time]', copy.time);
+  text('[data-aradio-now-day]', copy.day);
+  attr(card.querySelector('[data-aradio-read]'), 'data-aradio-read', view.now?.id ?? '');
+
+  const seek = card.querySelector<HTMLInputElement>('[data-aradio-seek]');
+  if (seek) {
+    if (seek.disabled === view.seekable) seek.disabled = !view.seekable;
+    attr(seek, 'max', String(copy.seekMax));
+    // Never fight the listener's thumb while they drag it.
+    if (!aradioSeekDragging && seek.value !== String(copy.seekValue)) seek.value = String(copy.seekValue);
+    attr(seek, 'aria-valuetext', copy.seekText);
+    seek.style.setProperty('--aradio-progress', copy.progressPct);
+  }
+  text('[data-aradio-elapsed]', copy.elapsed);
+  text('[data-aradio-remaining]', copy.remaining);
+  attr(card.querySelector('[data-aradio-prev]'), 'aria-disabled', String(!view.canPrevious));
+  attr(card.querySelector('[data-aradio-next]'), 'aria-disabled', String(!view.canNext));
+  attr(card.querySelector('[data-aradio-stop-after]'), 'aria-pressed', String(view.stopAfter));
+  text('[data-aradio-note]', copy.note);
+
+  const list = card.querySelector<HTMLElement>('[data-aradio-upnext]');
+  const key = `${activeLanguage}|${view.upNext.map((entry) => entry.id).join(',')}`;
+  if (list && list.dataset.key !== key) {
+    list.dataset.key = key;
+    setSafeContent(list, renderAradioUpNext(view, copy));
+  }
 }
 
 /** Mirror the shared player's state onto every Aradio control on the page. */
 function syncAradioPlayUi(): void {
   if (activeTab !== 'aradio') return;
+  syncAradioRadio();
   const audio = digestAudioEl;
-  const currentId = digestAudioState.kind === 'aradio' ? digestAudioState.aradioId : null;
+  const currentId = aradioLoadedEntry()?.id ?? null;
   const playing = Boolean(audio && currentId && !audio.paused && !audio.ended);
   const started = Boolean(audio && currentId && audio.currentTime > 0 && !audio.ended);
   content.querySelectorAll<HTMLButtonElement>('[data-aradio-play]').forEach((button) => {
@@ -1768,7 +1989,6 @@ function syncAradioPlayUi(): void {
     const isPlaying = isCurrent && playing;
     button.classList.toggle('is-playing', isPlaying);
     button.classList.toggle('is-current', isCurrent);
-    if (button.getAttribute('aria-pressed') !== String(isPlaying)) button.setAttribute('aria-pressed', String(isPlaying));
     const entry = aradioEntry(id);
     const aria = entry ? aradioPlayAria(entry, activeLanguage, isPlaying) : null;
     if (aria && button.getAttribute('aria-label') !== aria) button.setAttribute('aria-label', aria);
@@ -1778,17 +1998,9 @@ function syncAradioPlayUi(): void {
       if (label.textContent !== next) label.textContent = next;
     }
   });
-  content.querySelectorAll<HTMLElement>('[data-aradio-keep]').forEach((toggle) => {
-    toggle.setAttribute('aria-checked', String(aradioKeepListening));
-  });
+  // Follow-along: highlight the line being read, estimated by word share.
   const duration = audio && Number.isFinite(audio.duration) ? audio.duration : 0;
   const fraction = audio && duration > 0 ? Math.min(1, audio.currentTime / duration) : 0;
-  content.querySelectorAll<HTMLElement>('[data-aradio-strip]').forEach((strip) => {
-    const loaded = strip.dataset.aradioStrip === currentId;
-    strip.classList.toggle('is-loaded', loaded);
-    strip.style.setProperty('--aradio-progress', `${((loaded ? fraction : 0) * 100).toFixed(2)}%`);
-  });
-  // Follow-along: highlight the line being read, estimated by word share.
   const transcript = content.querySelector<HTMLElement>('[data-aradio-transcript]');
   const following = Boolean(transcript && transcript.dataset.aradioTranscript === currentId && started && duration > 0);
   transcript?.querySelectorAll<HTMLElement>('.aradio-line').forEach((line) => {
@@ -1798,10 +2010,206 @@ function syncAradioPlayUi(): void {
   });
 }
 
+/**
+ * The bottom bar repeats the radio's controls, so it steps aside while the
+ * radio's own button is on screen and comes back once it scrolls away.
+ */
+function observeAradioRadio(): void {
+  aradioRadioObserver?.disconnect();
+  aradioRadioObserver = null;
+  const toggle = content.querySelector<HTMLElement>('[data-aradio-toggle]');
+  if (!toggle || typeof IntersectionObserver === 'undefined') {
+    document.body.classList.remove('aradio-radio-in-view');
+    return;
+  }
+  const rect = toggle.getBoundingClientRect();
+  document.body.classList.toggle('aradio-radio-in-view', rect.bottom > 0 && rect.top < window.innerHeight);
+  aradioRadioObserver = new IntersectionObserver((entries) => {
+    document.body.classList.toggle('aradio-radio-in-view', entries.some((entry) => entry.isIntersecting));
+  });
+  aradioRadioObserver.observe(toggle);
+}
+
+async function copyAradioFeed(button: HTMLElement): Promise<void> {
+  const input = content.querySelector<HTMLInputElement>('[data-aradio-feed-url]');
+  const status = content.querySelector<HTMLElement>('[data-aradio-copy-status]');
+  let copied = false;
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(ARADIO_FEED_URL);
+      copied = true;
+    }
+  } catch {
+    copied = false;
+  }
+  if (!copied && input) {
+    // No clipboard access: select the address so a long-press or ⌘C copies it.
+    input.focus();
+    input.setSelectionRange(0, input.value.length);
+  }
+  const message = uiText(activeLanguage, copied ? 'aradio.copied' : 'aradio.copyFailed');
+  if (status) status.textContent = message;
+  if (copied) button.textContent = message;
+  if (aradioCopyTimer !== null) window.clearTimeout(aradioCopyTimer);
+  aradioCopyTimer = window.setTimeout(() => {
+    aradioCopyTimer = null;
+    if (button.isConnected) button.textContent = uiText(activeLanguage, 'aradio.copy');
+    if (status?.isConnected) status.textContent = '';
+  }, 2500);
+}
+
+/** Keep a podcast-feed <link rel="alternate"> in <head> exactly while on /aradio. */
+function syncAradioFeedLink(): void {
+  const links = Array.from(document.head.querySelectorAll<HTMLLinkElement>('link[rel="alternate"]'))
+    .filter((link) => link.href === ARADIO_FEED_URL);
+  if (activeTab !== 'aradio') {
+    links.forEach((link) => link.remove());
+    return;
+  }
+  if (links.length) return;
+  const link = document.createElement('link');
+  link.rel = 'alternate';
+  link.type = 'application/rss+xml';
+  link.title = 'ARA Radio';
+  link.href = ARADIO_FEED_URL;
+  document.head.append(link);
+}
+
+// ── Media Session (lock screen, headset and car controls) ──────────────
+// One shared <audio> serves the digest and the radio, so the session follows
+// whichever owns it; previous/next exist only for the radio's running order.
+let mediaSessionKey = '';
+let mediaSessionKind: DigestAudioState['kind'] | null = null;
+
+function hasMediaSession(): boolean {
+  return typeof navigator !== 'undefined' && 'mediaSession' in navigator && Boolean(navigator.mediaSession);
+}
+
+function setMediaAction(action: MediaSessionAction, handler: MediaSessionActionHandler | null): void {
+  try {
+    navigator.mediaSession.setActionHandler(action, handler);
+  } catch {
+    // This browser does not support that action; the rest still work.
+  }
+}
+
+function initMediaSession(): void {
+  if (!hasMediaSession()) return;
+  setMediaAction('play', () => {
+    if (digestAudioState.kind === 'aradio') startOrResumeAradio();
+    else void digestAudioEl?.play().catch(() => updateDigestAudioUi());
+  });
+  setMediaAction('pause', () => {
+    digestAudioEl?.pause();
+  });
+  setMediaAction('seekto', (details) => {
+    const audio = digestAudioEl;
+    if (!audio || typeof details.seekTime !== 'number' || !Number.isFinite(audio.duration)) return;
+    const time = Math.max(0, Math.min(audio.duration, details.seekTime));
+    if (details.fastSeek && typeof audio.fastSeek === 'function') audio.fastSeek(time);
+    else audio.currentTime = time;
+    updateMediaPosition();
+  });
+}
+
+/** Title, artist and the radio-only actions for whatever the player holds. */
+function syncMediaSession(): void {
+  if (!hasMediaSession()) return;
+  const session = navigator.mediaSession;
+  const audio = digestAudioEl;
+  const src = digestAudioState.src;
+  if (!audio || !src) {
+    if (mediaSessionKey) {
+      mediaSessionKey = '';
+      session.metadata = null;
+      session.playbackState = 'none';
+    }
+    return;
+  }
+  const isAradio = digestAudioState.kind === 'aradio';
+  const entry = isAradio ? aradioLoadedEntry() : null;
+  const key = `${digestAudioState.kind}|${src}|${activeLanguage}`;
+  if (key !== mediaSessionKey && typeof MediaMetadata === 'function') {
+    mediaSessionKey = key;
+    try {
+      session.metadata = new MediaMetadata(isAradio
+        ? {
+          title: entry ? entry.headline || `${aradioUtcTime(entry.airedAt)} UTC` : uiText(activeLanguage, 'aradio.station'),
+          artist: uiText(activeLanguage, 'aradio.station'),
+          album: uiText(activeLanguage, 'aradio.album'),
+          artwork: ARADIO_ARTWORK,
+        }
+        : {
+          title: digestAudioState.title,
+          artist: 'ara',
+          album: uiText(activeLanguage, 'today.audioTitle'),
+          artwork: ARADIO_ARTWORK,
+        });
+    } catch {
+      // Metadata is a nicety; playback does not depend on it.
+    }
+  }
+  if (mediaSessionKind !== digestAudioState.kind) {
+    mediaSessionKind = digestAudioState.kind;
+    setMediaAction('previoustrack', isAradio ? () => aradioPrevious() : null);
+    setMediaAction('nexttrack', isAradio ? () => aradioNext() : null);
+  }
+  const state: MediaSessionPlaybackState = audio.paused || audio.ended ? 'paused' : 'playing';
+  if (session.playbackState !== state) session.playbackState = state;
+}
+
+/** Lock-screen scrubber; called when position changes other than by playing on. */
+function updateMediaPosition(): void {
+  if (!hasMediaSession() || typeof navigator.mediaSession.setPositionState !== 'function') return;
+  const audio = digestAudioEl;
+  if (!audio) return;
+  try {
+    if (!Number.isFinite(audio.duration) || audio.duration <= 0) {
+      navigator.mediaSession.setPositionState();
+      return;
+    }
+    navigator.mediaSession.setPositionState({
+      duration: audio.duration,
+      playbackRate: audio.playbackRate > 0 ? audio.playbackRate : 1,
+      position: Math.min(audio.duration, Math.max(0, audio.currentTime)),
+    });
+  } catch {
+    // A transient state mid-load; the next media event sets it again.
+  }
+}
+
 function handleAradioClick(target: HTMLElement): boolean {
+  if (target.closest('[data-aradio-toggle]')) {
+    toggleAradioRadio();
+    return true;
+  }
+  const skip = target.closest<HTMLElement>('[data-aradio-prev], [data-aradio-next]');
+  if (skip) {
+    // aria-disabled keeps the control focusable; the click is simply a no-op.
+    if (skip.getAttribute('aria-disabled') !== 'true') {
+      if (skip.hasAttribute('data-aradio-next')) aradioNext();
+      else aradioPrevious();
+    }
+    return true;
+  }
+  if (target.closest('[data-aradio-stop-after]')) {
+    aradioStopAfter = !aradioStopAfter;
+    syncAradioRadio();
+    return true;
+  }
+  const copy = target.closest<HTMLElement>('[data-aradio-copy-feed]');
+  if (copy) {
+    void copyAradioFeed(copy);
+    return true;
+  }
+  const feed = target.closest<HTMLInputElement>('[data-aradio-feed-url]');
+  if (feed) {
+    feed.setSelectionRange(0, feed.value.length);
+    return true;
+  }
   const play = target.closest<HTMLElement>('[data-aradio-play]');
   if (play) {
-    void toggleAradioPlayback(play.dataset.aradioPlay || null);
+    toggleAradioPlayback(play.dataset.aradioPlay || null);
     return true;
   }
   const select = target.closest<HTMLElement>('[data-aradio-select]');
@@ -1811,15 +2219,11 @@ function handleAradioClick(target: HTMLElement): boolean {
   }
   const read = target.closest<HTMLElement>('[data-aradio-read]');
   if (read) {
-    selectAradioBulletin(read.dataset.aradioRead || '', { scroll: 'always' });
+    if (read.dataset.aradioRead) readAradioTranscript(read.dataset.aradioRead);
     return true;
   }
   if (target.closest('[data-aradio-apply]')) {
     applyAradioPending();
-    return true;
-  }
-  if (target.closest('[data-aradio-keep]')) {
-    setAradioKeepListening(!aradioKeepListening);
     return true;
   }
   if (target.closest('[data-aradio-more]')) {
@@ -1835,6 +2239,34 @@ function handleAradioClick(target: HTMLElement): boolean {
   }
   return false;
 }
+
+// The seek bar: an <input type="range"> in whole seconds, so arrow keys step
+// one second and screen readers hear "1:23 of 4:02".
+content.addEventListener('input', (e) => {
+  if (activeTab !== 'aradio') return;
+  const seek = (e.target as HTMLElement).closest<HTMLInputElement>('[data-aradio-seek]');
+  const audio = digestAudioEl;
+  if (!seek || !audio || !aradioLoadedEntry() || !Number.isFinite(audio.duration)) return;
+  audio.currentTime = Math.max(0, Math.min(audio.duration, Number(seek.value) || 0));
+  updateDigestAudioUi();
+});
+content.addEventListener('pointerdown', (e) => {
+  if ((e.target as HTMLElement).closest('[data-aradio-seek]')) aradioSeekDragging = true;
+});
+window.addEventListener('pointerup', () => {
+  aradioSeekDragging = false;
+});
+window.addEventListener('pointercancel', () => {
+  aradioSeekDragging = false;
+});
+// <details> fires a non-bubbling `toggle`; capture sees it. Remember whether
+// the transcript is open so a repaint keeps it that way.
+content.addEventListener('toggle', (e) => {
+  const details = e.target;
+  if (activeTab === 'aradio' && details instanceof HTMLDetailsElement && details.hasAttribute('data-aradio-transcript-details')) {
+    aradioTranscriptOpen = details.open;
+  }
+}, true);
 
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState !== 'visible' || activeTab !== 'aradio') return;
@@ -2292,7 +2724,7 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
     const now = Date.now();
     if (now - lastDigestAudioBarActivation < 250) return;
     lastDigestAudioBarActivation = now;
-    if (digestAudioState.kind === 'aradio') void toggleAradioPlayback(digestAudioState.aradioId);
+    if (digestAudioState.kind === 'aradio') toggleAradioRadio();
     else void toggleDigestAudioPlayback();
   };
   digestAudioPlayEl.addEventListener('pointerup', activateBarToggle);
@@ -2319,6 +2751,15 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
   digestAudioEl.addEventListener('timeupdate', updateDigestAudioUi);
   digestAudioEl.addEventListener('play', updateDigestAudioUi);
   digestAudioEl.addEventListener('pause', updateDigestAudioUi);
+  // Buffering shows on the radio's button.
+  digestAudioEl.addEventListener('waiting', updateDigestAudioUi);
+  digestAudioEl.addEventListener('playing', updateDigestAudioUi);
+  // The lock-screen scrubber extrapolates from the last position it was
+  // given, so it needs one only when playback jumps, starts or stops.
+  for (const type of ['loadedmetadata', 'durationchange', 'play', 'pause', 'seeked', 'ratechange', 'ended']) {
+    digestAudioEl.addEventListener(type, updateMediaPosition);
+  }
+  initMediaSession();
   digestAudioEl.addEventListener('ended', () => {
     if (digestAudioState.kind === 'aradio' && continueAradioAfterEnd()) return;
     hideDigestAudioPlayer();
@@ -2458,6 +2899,8 @@ function updateDigestAudioUi(): void {
     : uiText(activeLanguage, isAradio ? 'aradio.play' : 'today.playAudio');
   const barLabel = uiText(activeLanguage, isAradio ? 'aradio.player' : 'today.audioPlayer');
   if (digestAudioBarEl && digestAudioBarEl.getAttribute('aria-label') !== barLabel) digestAudioBarEl.setAttribute('aria-label', barLabel);
+  // Lets /aradio hide the bar while the radio's own controls are on screen.
+  digestAudioBarEl?.classList.toggle('is-aradio', isAradio);
   const seekLabel = uiText(activeLanguage, isAradio ? 'aradio.seek' : 'today.seekAudio');
   if (digestAudioProgressEl && digestAudioProgressEl.getAttribute('aria-label') !== seekLabel) digestAudioProgressEl.setAttribute('aria-label', seekLabel);
 
@@ -2508,6 +2951,7 @@ function updateDigestAudioUi(): void {
           : uiText(activeLanguage, 'today.playAudio');
     }
   });
+  syncMediaSession();
   syncAradioPlayUi();
 }
 
