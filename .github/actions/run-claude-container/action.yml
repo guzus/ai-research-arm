@@ -148,6 +148,8 @@ runs:
         isolated_workspace=""
         image=""
         container_name=""
+        container_job=""
+        stop_token=""
         staged_prompt=""
         cleanup() {
           exit_code=$?
@@ -156,10 +158,24 @@ runs:
           # already stopping Docker. Do not let the second signal interrupt
           # removal of the secret-bearing container.
           trap '' TERM INT
-          if [ -n "$container_name" ] \
-            && docker container inspect "$container_name" >/dev/null 2>&1; then
-            timeout 30s docker rm -f "$container_name" >/dev/null 2>&1 \
-              || echo "::warning::Failed to remove Claude container $container_name"
+          if [ -n "${stop_token:-}" ]; then
+            echo "::${stop_token}::"
+          fi
+          # A cancelled run gets here while its container still runs: the
+          # container is a background job (CONTAINER_RUN), so no trap waits it
+          # out. Remove it first, and again while that job lives, in case the
+          # signal landed before Docker had created the container.
+          if [ -n "$container_name" ]; then
+            for _ in 1 2 3; do
+              if docker container inspect "$container_name" >/dev/null 2>&1; then
+                timeout 30s docker rm -f "$container_name" >/dev/null 2>&1 \
+                  || echo "::warning::Failed to remove Claude container $container_name"
+              fi
+              if [ -z "${container_job:-}" ] || ! kill -0 "$container_job" 2>/dev/null; then
+                break
+              fi
+              sleep 1
+            done
           fi
           if [ -n "$image" ] && docker image inspect "$image" >/dev/null 2>&1; then
             docker image rm -f "$image" >/dev/null 2>&1 \
@@ -597,7 +613,10 @@ runs:
           exit 1
         fi
         cp "$GITHUB_ACTION_PATH/tool-guard.mjs" "$build_dir/tool-guard.mjs"
-        docker build --pull -t "$image" "$build_dir"
+        # Bash runs a trap only after a foreground command exits, so build in
+        # the background: a cancelled build still reaches cleanup.
+        docker build --pull -t "$image" "$build_dir" &
+        wait "$!"
 
         # The agent's HOME is a throwaway inside the container: the runner's
         # real home holds other lanes' credentials and must never be reachable.
@@ -663,7 +682,7 @@ runs:
             export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
               GIT_NO_REPLACE_OBJECTS=1
             git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
-              -c core.attributesFile=/dev/null reset --hard "$PRE_SHA"
+              -c core.attributesFile=/dev/null reset -q --hard "$PRE_SHA"
             if [ "$(git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
               -c core.attributesFile=/dev/null rev-parse HEAD)" != "$PRE_SHA" ]; then
               echo "isolated Claude checkout does not match pre-run HEAD" >&2
@@ -813,6 +832,7 @@ runs:
             # only the normalized commit and its final reachable blobs;
             # intermediate-only objects never cross into the real checkout.
             # TRUSTED_COMMIT_NORMALIZATION_BEGIN
+            shown_path() { printf "%s" "$1" | LC_ALL=C tr -c "[:print:]" "?"; }
             agent_post_sha=$(git rev-parse HEAD)
             post_sha="$agent_post_sha"
             if [ "$agent_post_sha" != "$PRE_SHA" ]; then
@@ -876,7 +896,7 @@ runs:
                       done <<< "$ALLOWED_PATHS"
                       ;;
                     canary)
-                      echo "canary Claude run created a commit: $status $path" >&2
+                      echo "canary Claude run created a commit: $status $(shown_path "$path")" >&2
                       exit 1
                       ;;
                     *)
@@ -885,7 +905,7 @@ runs:
                       ;;
                   esac
                   if [ "$path_allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
-                    echo "$RUN_MODE Claude intermediate commit changed forbidden path/status: $status $path" >&2
+                    echo "$RUN_MODE Claude intermediate commit changed forbidden path/status: $status $(shown_path "$path")" >&2
                     exit 1
                   fi
 
@@ -893,7 +913,7 @@ runs:
                   read -r tree_mode tree_type tree_oid trailing <<< "$tree_entry"
                   if [ "$tree_mode" != "100644" ] || [ "$tree_type" != "blob" ] \
                     || [ "$(git cat-file -s "$tree_oid" 2>/dev/null || echo 99999999)" -gt 5242880 ]; then
-                    echo "Claude intermediate path is not a <=5 MiB regular non-executable blob: $path" >&2
+                    echo "Claude intermediate path is not a <=5 MiB regular non-executable blob: $(shown_path "$path")" >&2
                     exit 1
                   fi
                 done < <(git diff-tree --no-commit-id --name-status \
@@ -924,15 +944,35 @@ runs:
         # through printf, a shell builtin, so it never appears in an argv.
         # Capture the container status instead of exiting immediately: the
         # trusted host must still validate what the container left behind.
+        # CONTAINER_RUN_BEGIN
+        # Bash runs a trap only after a FOREGROUND command exits, so a cancelled
+        # job used to wait out the container and lose cleanup to the runner's
+        # SIGKILL. The container runs as a background job instead: `wait`
+        # returns at once on INT or TERM, and the EXIT trap removes the named
+        # container first. Meanwhile the job log takes no workflow commands
+        # from the container; the token that resumes them is fresh and never
+        # enters it.
+        stop_token=$(od -An -N16 -tx1 /dev/urandom | tr -d ' \n')
+        echo "::stop-commands::${stop_token}"
         set +e
         if [ -n "$OUTPUT_FILE" ]; then
-          printf '%s\n' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}" | tee "$OUTPUT_FILE"
-          agent_status=${PIPESTATUS[1]}
+          {
+            printf '%s\n' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}" | tee "$OUTPUT_FILE"
+            exit "${PIPESTATUS[1]}"
+          } &
         else
-          printf '%s\n' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}"
-          agent_status=${PIPESTATUS[1]}
+          {
+            printf '%s\n' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}"
+            exit "${PIPESTATUS[1]}"
+          } &
         fi
+        container_job=$!
+        wait "$container_job"
+        agent_status=$?
         set -e
+        echo "::${stop_token}::"
+        stop_token=""
+        # CONTAINER_RUN_END
 
         # TRUSTED_ATTEMPT_TELEMETRY_BEGIN
         telemetry_file="$isolated_workspace/.claude-attempt-telemetry"
@@ -1013,6 +1053,10 @@ runs:
 
         # TRUSTED_IMPORT_GUARD_BEGIN
         RETURN_ARTIFACTS="${RETURN_ARTIFACTS:-}"
+        # A committed path is model-chosen bytes. Show it with every
+        # nonprintable byte replaced, so a \r or \n can never start a workflow
+        # command line in the log.
+        shown_path() { printf '%s' "$1" | LC_ALL=C tr -c '[:print:]' '?'; }
         # Import only a static bundle produced by the fixed container tail.
         # Do not use `git fetch` even with the bundle's absolute path: fetch is
         # transport-aware, so persisted url.*.insteadOf + core.sshCommand
@@ -1103,7 +1147,7 @@ runs:
             # allowed path a committed .gitattributes would change how every
             # later checkout filters those files.
             if [[ "/$path" = */.[Gg][Ii][Tt]* ]]; then
-              echo "::error::Claude commit path is git metadata: $path"
+              echo "::error::Claude commit path is git metadata: $(shown_path "$path")"
               path_violation=1
               continue
             fi
@@ -1112,7 +1156,7 @@ runs:
             read -r tree_mode tree_type tree_oid <<< "$tree_header"
             if [ "$tree_mode" != "100644" ] || [ "$tree_type" != "blob" ] \
               || [ "$("${trusted_git[@]}" cat-file -s "$tree_oid" 2>/dev/null || echo 99999999)" -gt 5242880 ]; then
-              echo "::error::Claude commit path is not a <=5 MiB regular non-executable blob: $path"
+              echo "::error::Claude commit path is not a <=5 MiB regular non-executable blob: $(shown_path "$path")"
               path_violation=1
               continue
             fi
@@ -1131,7 +1175,7 @@ runs:
                   && [ "$status" = "A" ] && [[ "$relative" = *.ara.md ]]; then
                   gen_source=$((gen_source + 1))
                 else
-                  echo "::error::generative Claude commit changed forbidden path/status: $status $path"
+                  echo "::error::generative Claude commit changed forbidden path/status: $status $(shown_path "$path")"
                   path_violation=1
                 fi
                 ;;
@@ -1147,12 +1191,12 @@ runs:
                   fi
                 done <<< "$ALLOWED_PATHS"
                 if [ "$allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
-                  echo "::error::$RUN_MODE Claude commit changed forbidden path/status: $status $path"
+                  echo "::error::$RUN_MODE Claude commit changed forbidden path/status: $status $(shown_path "$path")"
                   path_violation=1
                 fi
                 ;;
               canary)
-                echo "::error::canary Claude run created a commit: $status $path"
+                echo "::error::canary Claude run created a commit: $status $(shown_path "$path")"
                 path_violation=1
                 ;;
             esac
@@ -1280,33 +1324,33 @@ runs:
             destination_parent=$(dirname -- "$destination")
             if [ ! -d "$destination_parent" ] || [ -L "$destination_parent" ] \
               || [ "$(realpath -- "$destination_parent")" != "$destination_parent" ]; then
-              echo "::error::Claude commit destination crosses a linked or missing directory: $path"
+              echo "::error::Claude commit destination crosses a linked or missing directory: $(shown_path "$path")"
               exit 1
             fi
             if [ "$status" = "A" ]; then
               import_pre_oids[$import_i]=""
               if [ -e "$destination" ] || [ -L "$destination" ]; then
-                echo "::error::Claude added path would overwrite real checkout data: $path"
+                echo "::error::Claude added path would overwrite real checkout data: $(shown_path "$path")"
                 exit 1
               fi
             elif [ "$status" = "M" ]; then
               if [ ! -f "$destination" ] || [ -L "$destination" ] \
                 || [ "$(realpath -- "$destination")" != "$destination" ]; then
-                echo "::error::Claude modified path is not a canonical regular checkout file: $path"
+                echo "::error::Claude modified path is not a canonical regular checkout file: $(shown_path "$path")"
                 exit 1
               fi
               pre_entry=$("${trusted_git[@]}" ls-tree "$pre_sha" -- "$path")
               pre_header="${pre_entry%%$'\t'*}"
               read -r pre_mode pre_type pre_oid <<< "$pre_header"
               if [ "$pre_mode" != "100644" ] || [ "$pre_type" != "blob" ]; then
-                echo "::error::Claude modified path cannot be restored as a regular blob: $path"
+                echo "::error::Claude modified path cannot be restored as a regular blob: $(shown_path "$path")"
                 exit 1
               fi
               import_pre_oids[$import_i]="$pre_oid"
               "${trusted_git[@]}" cat-file blob "$pre_sha:$path" \
                 > "$import_dir/$import_i.pre"
             else
-              echo "::error::Claude import received an unvalidated status: $status $path"
+              echo "::error::Claude import received an unvalidated status: $status $(shown_path "$path")"
               exit 1
             fi
             "${trusted_git[@]}" cat-file blob "$tree_oid" \

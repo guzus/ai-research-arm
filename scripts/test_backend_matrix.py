@@ -16,6 +16,7 @@ import stat
 import subprocess
 import sys
 import tempfile
+import textwrap
 import time
 import unittest
 from unittest import mock
@@ -2653,6 +2654,115 @@ exit "$FAKE_RUN_STATUS"
             for step in obs.dispatch_steps:
                 self.assertEqual(
                     step.secrets.get("cursor-api-key"), "CURSOR_API_KEY", step)
+
+    RUNNERS = ("claude", "cursor", "opencode")
+
+    def runner_harness(self, adapter: str, root: Path, output_file: str = "") -> str:
+        """The runner's real cleanup, traps and CONTAINER_RUN block, around a
+        fake `docker` that runs until `docker rm -f` stops it."""
+        run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                              / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+        setup = run[run.index('build_dir=""'):run.index("trap 'exit 130' INT")]
+        block = run.split("# CONTAINER_RUN_BEGIN", 1)[1].split("# CONTAINER_RUN_END", 1)[0]
+        bin_dir = root / "bin"
+        bin_dir.mkdir(exist_ok=True)
+        docker = bin_dir / "docker"
+        docker.write_text(
+            "#!/bin/bash\n"
+            'log="$DOCKER_TEST_LOG"; flag="$DOCKER_TEST_LOG.stopped"\n'
+            'case "$1 $2" in\n'
+            "  'run '*|'run --rm')\n"
+            '    echo run >> "$log"; cat > /dev/null\n'
+            '    for _ in $(seq 1 "${FAKE_RUN_TICKS:-600}"); do\n'
+            '      [ -f "$flag" ] && exit 137; sleep 0.1\n'
+            "    done\n"
+            '    echo container-output; exit "${FAKE_STATUS:-0}" ;;\n'
+            "  'container inspect')\n"
+            '    grep -qx run "$log" && [ ! -f "$flag" ] ;;\n'
+            "  'rm -f') echo rm >> \"$log\"; touch \"$flag\" ;;\n"
+            "  'image inspect') exit 0 ;;\n"
+            "  'image rm') echo image-rm >> \"$log\" ;;\n"
+            "  *) exit 1 ;;\n"
+            "esac\n", encoding="utf-8")
+        docker.chmod(0o755)
+        return "\n".join([
+            "set -euo pipefail", textwrap.dedent(setup), "trap 'exit 130' INT",
+            'container_name="ara-test-run"', 'image="ara-test-image"',
+            f'build_dir="{root}/build"', 'mkdir -p "$build_dir"',
+            f'isolated_workspace="{root}/workspace"', 'mkdir -p "$isolated_workspace"',
+            f'OUTPUT_FILE="{output_file}"', "CLAUDE_CODE_OAUTH_TOKEN=test-token",
+            'docker_cmd=(docker run --rm -i --name "$container_name" "$image")',
+            textwrap.dedent(block), 'echo "agent_status=$agent_status"',
+        ])
+
+    @staticmethod
+    def kill_group(pgid: int) -> None:
+        try:
+            os.killpg(pgid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+
+    def test_cancelling_a_runner_stops_its_container_at_once(self):
+        """INT or TERM during the container used to wait it out (bash defers a
+        trap until a foreground command exits) and lose cleanup to SIGKILL."""
+        for adapter in self.RUNNERS:
+            for sig, code in ((signal.SIGINT, 130), (signal.SIGTERM, 143)):
+                with self.subTest(adapter=adapter, signal=sig.name), \
+                        tempfile.TemporaryDirectory() as tmp:
+                    root = Path(tmp)
+                    log = root / "docker.log"
+                    env = {**os.environ, "PATH": f"{root}/bin:/usr/bin:/bin",
+                           "DOCKER_TEST_LOG": str(log)}
+                    proc = subprocess.Popen(["bash", "-c", self.runner_harness(adapter, root)],
+                                            env=env, stdout=subprocess.PIPE, text=True,
+                                            start_new_session=True)
+                    self.addCleanup(lambda pgid=proc.pid: self.kill_group(pgid))
+                    deadline = time.monotonic() + 10
+                    while not (log.exists() and "run" in log.read_text(encoding="utf-8")):
+                        if time.monotonic() > deadline:
+                            self.fail("the fake container never started")
+                        time.sleep(0.05)
+                    started = time.monotonic()
+                    proc.send_signal(sig)
+                    try:
+                        stdout, _ = proc.communicate(timeout=10)
+                    except subprocess.TimeoutExpired:
+                        self.fail(f"{adapter} waited out its container after {sig.name}")
+                    self.assertEqual(code, proc.returncode)
+                    self.assertLess(time.monotonic() - started, 5)
+                    self.assertEqual(["run", "rm", "image-rm"],
+                                     log.read_text(encoding="utf-8").split())
+                    self.assertFalse((root / "build").exists())
+                    self.assertFalse((root / "workspace").exists())
+                    self.assertNotIn("agent_status=", stdout)
+                    stop = re.findall(r"^::stop-commands::([0-9a-f]{32})$", stdout, re.MULTILINE)
+                    self.assertEqual(1, len(stop), stdout)
+                    self.assertIn(f"::{stop[0]}::", stdout.splitlines())
+
+    def test_a_finished_runner_container_keeps_its_status(self):
+        for adapter in self.RUNNERS:
+            for tee in (False, True):
+                with self.subTest(adapter=adapter, tee=tee), tempfile.TemporaryDirectory() as tmp:
+                    root = Path(tmp)
+                    output = root / "output.txt"
+                    env = {**os.environ, "PATH": f"{root}/bin:/usr/bin:/bin",
+                           "DOCKER_TEST_LOG": str(root / "docker.log"),
+                           "FAKE_RUN_TICKS": "0", "FAKE_STATUS": "7"}
+                    result = subprocess.run(
+                        ["bash", "-c", self.runner_harness(adapter, root,
+                                                           str(output) if tee else "")],
+                        env=env, capture_output=True, text=True, timeout=20)
+                    self.assertEqual(0, result.returncode, result.stderr)
+                    self.assertIn("agent_status=7", result.stdout)
+                    if tee:
+                        self.assertEqual("container-output\n", output.read_text(encoding="utf-8"))
+                    lines = result.stdout.splitlines()
+                    token = lines[lines.index(next(line for line in lines
+                                                   if line.startswith("::stop-commands::")))]
+                    self.assertIn(f"::{token.split('::')[2]}::", lines)
+                    # The workflow log takes commands again before the host's own lines.
+                    self.assertLess(lines.index(f"::{token.split('::')[2]}::"),
+                                    lines.index("agent_status=7"))
 
     def test_opencode_cleanup_survives_cancellation_escalation(self):
         action_doc = yaml.safe_load(
