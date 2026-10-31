@@ -124,9 +124,11 @@ inputs:
     default: ''
   output-file:
     description: >-
-      Host path to tee the agent's stdout to, for lanes that assert on what the
-      agent said (the canary greps for its token). Written on the host, so it
-      needs no mount and the container cannot tamper with it.
+      Host path to tee the container's stdout to, followed by the typed result
+      summary line (status and reply hash, never the reply), for lanes that
+      assert on what the agent said: the canary checks its token's hash with
+      scripts/check_cursor_canary.py. Written on the host, so it needs no
+      mount and the container cannot tamper with it.
     required: false
     default: ''
 
@@ -812,8 +814,6 @@ runs:
                   "$(cat /tmp/cursor-prompt.md)" > "$attempt_log" 2>&1 &
               fi
               agent_pid=$!
-              tail -n +1 -f "$attempt_log" --pid "$agent_pid" 2>/dev/null &
-              tail_pid=$!
               while kill -0 "$agent_pid" 2>/dev/null; do
                 sleep 5
                 fatal=$(grep -m1 -oiE "$cursor_fatal_pattern" "$attempt_log" 2>/dev/null | cut -c1-300)
@@ -830,11 +830,6 @@ runs:
               done
               wait "$agent_pid"
               agent_status=$?
-              # Tear the streamer down explicitly rather than trusting
-              # `tail --pid` to notice; an unreaped tail keeps this step
-              # stdout open and would hang the job it was meant to shorten.
-              kill -TERM "$tail_pid" 2>/dev/null
-              wait "$tail_pid" 2>/dev/null
               set -e
 
               segment_calls=$(grep -cF "translation_segment {" "$attempt_log" || true)
@@ -850,18 +845,10 @@ runs:
                   artifact_count=$((artifact_count + 1))
                 fi
               done <<< "$RETURN_ARTIFACTS"
-              # Flush the attempt log after the child exits. tail --pid
-              # can miss a fully-buffered write that lands as the process
-              # dies (canary 31998429963: status=0 but the token never
-              # reached OUTPUT_FILE). Canary needs that text on stdout
-              # for the token assert; failures and zero-artifact exits
-              # need it for diagnosis. Production successes stay
-              # single-streamed.
-              if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ] \
-                || [ "$artifact_count" -eq 0 ]; then
-                echo "Cursor attempt ${attempt_count} log (status=${agent_status}):"
-                cat -- "$attempt_log" || true
-              fi
+              # Nothing the CLI printed is echoed. In text mode the attempt
+              # log is the model final reply or the CLI error text, and
+              # Actions logs are public: the host prints only the typed
+              # fields of CURSOR_RESULT_SUMMARY, a hash for the reply.
               echo "Cursor attempt ${attempt_count}: status=${agent_status} translation_segment_calls=${segment_calls} artifacts=${artifact_count} remaining_seconds=${remaining_seconds}"
 
               if [ "$AGENT_LANE" = "generative-research-ko" ] \
@@ -876,6 +863,16 @@ runs:
               fi
               break
             done
+
+            # Hand the last attempt log to the host as untrusted data, for
+            # CURSOR_RESULT_SUMMARY only. Anything the model left at this path
+            # is removed first, and the copy is capped at the 1 MiB the host
+            # accepts. No step here may fail: errexit is on and this copy
+            # must never change the run status.
+            rm -rf -- .cursor-result.txt || true
+            if [ -f "${attempt_log:-}" ] && [ ! -L "${attempt_log:-}" ]; then
+              head -c 1048576 -- "$attempt_log" > .cursor-result.txt || true
+            fi
 
             # The model child is gone before this fixed-format file is
             # replaced. The host still validates every field before logging
@@ -1097,6 +1094,32 @@ runs:
         fi
         echo "::notice title=Cursor attempt telemetry::attempts=${attempt_count} last_status=${last_agent_status} translation_segment_calls=${translation_segment_calls} artifacts=${artifact_count} retry_reason=${retry_reason}"
         # TRUSTED_ATTEMPT_TELEMETRY_END
+
+        # CURSOR_RESULT_SUMMARY_BEGIN
+        # Text mode leaves no structured result. .cursor-result.txt is the last
+        # attempt log the container copied (the model reply or the CLI error):
+        # untrusted, never echoed, and read only as a regular, unlinked file
+        # within 1 MiB. The summarizer prints one line of typed fields with a
+        # hash for the reply; status is the exit status this host observed,
+        # never anything read from the file. The canary checks this line, so
+        # it is also appended to the output file. Diagnostic only: unlike the
+        # Claude summary, nothing here changes agent_status or exits.
+        cursor_result_file="$isolated_workspace/.cursor-result.txt"
+        cursor_result_args=()
+        if [ -f "$cursor_result_file" ] && [ ! -L "$cursor_result_file" ] \
+          && [ "$(wc -c 2>/dev/null < "$cursor_result_file" || echo 1048577)" -le 1048576 ]; then
+          cursor_result_args=(--result-file "$cursor_result_file")
+        fi
+        cursor_summary_file="$build_dir/cursor-result-summary.txt"
+        /usr/bin/python3 -I scripts/summarize_cursor_result.py --status "$agent_status" \
+          ${cursor_result_args[@]+"${cursor_result_args[@]}"} > "$cursor_summary_file" || true
+        if [ -s "$cursor_summary_file" ]; then
+          cat -- "$cursor_summary_file" || true
+          if [ -n "$OUTPUT_FILE" ]; then
+            cat -- "$cursor_summary_file" >> "$OUTPUT_FILE" || true
+          fi
+        fi
+        # CURSOR_RESULT_SUMMARY_END
 
         # TRUSTED_IMPORT_GUARD_BEGIN
         RETURN_ARTIFACTS="${RETURN_ARTIFACTS:-}"

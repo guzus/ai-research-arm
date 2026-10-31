@@ -786,7 +786,8 @@ runs:
             # host-shell syntax error (RSS run 31991149151; same class as
             # Cursor canary 31993098610). Inside the outer singles these
             # doubles stay literal and re-quote correctly for the container.
-            opencode_fatal_pattern="level=ERROR.*(Monthly usage limit reached|usage limit reached|Insufficient balance|Insufficient credits|Invalid API key|API key is invalid)"
+            opencode_fatal_keywords="(Monthly usage limit reached|usage limit reached|Insufficient balance|Insufficient credits|Invalid API key|API key is invalid)"
+            opencode_fatal_pattern="level=ERROR.*${opencode_fatal_keywords}"
             model_budget_seconds=$((AGENT_TIMEOUT_MINUTES * 60))
             model_started_seconds=$SECONDS
             attempt_count=0
@@ -824,11 +825,11 @@ runs:
               rm -rf -- "$attempt_home"
               mkdir -p "$attempt_home"
               set +e
-              # --print-logs puts opencode provider errors on stderr so a
-              # dead route is visible in the job log instead of silent. The
-              # run is backgrounded (rather than piped through tee) purely so
-              # we hold its PID and can abort early; `tail --pid` reproduces
-              # the old live-streaming behaviour and exits with the run.
+              # --print-logs puts opencode provider errors on stderr, into the
+              # attempt log, where the fatal poll below can see a dead route.
+              # The run is backgrounded so we hold its PID and can abort
+              # early. Nothing in the log is streamed or echoed: it carries
+              # model and tool text, and Actions logs are public.
               HOME="$attempt_home" \
                 XDG_CONFIG_HOME="$attempt_home/.config" \
                 XDG_DATA_HOME="$attempt_home/.local/share" \
@@ -841,15 +842,17 @@ runs:
                 --print-logs --log-level ERROR \
                 "$(cat /tmp/opencode-prompt.md)" > "$attempt_log" 2>&1 &
               opencode_pid=$!
-              tail -n +1 -f "$attempt_log" --pid "$opencode_pid" 2>/dev/null &
-              tail_pid=$!
               # Poll for an unrecoverable provider error and cut the run short.
               # GNU timeout forwards SIGTERM to the command it manages, so
               # terminating it stops opencode too. procps (pgrep/pkill) is not
               # installed in the slim image, hence the PID-based approach.
+              # The greedy match runs from level=ERROR to the last keyword on
+              # its line, free provider and model text included, so only that
+              # trailing fixed keyword reaches the ::error:: line below.
               while kill -0 "$opencode_pid" 2>/dev/null; do
                 sleep 5
-                fatal=$(grep -m1 -oiE "$opencode_fatal_pattern" "$attempt_log" 2>/dev/null | cut -c1-300)
+                fatal=$(grep -m1 -oiE "$opencode_fatal_pattern" "$attempt_log" 2>/dev/null \
+                  | grep -m1 -oiE "${opencode_fatal_keywords}\$" | head -n 1)
                 if [ -n "$fatal" ]; then
                   echo "::error::OpenCode provider returned an unrecoverable error; aborting this attempt instead of waiting out the ${remaining_seconds}s timeout: ${fatal}"
                   kill -TERM "$opencode_pid" 2>/dev/null
@@ -866,11 +869,6 @@ runs:
               done
               wait "$opencode_pid"
               agent_status=$?
-              # Tear the streamer down explicitly rather than trusting
-              # `tail --pid` to notice; an unreaped tail keeps this step
-              # stdout open and would hang the job it was meant to shorten.
-              kill -TERM "$tail_pid" 2>/dev/null
-              wait "$tail_pid" 2>/dev/null
               set -e
 
               segment_calls=$(grep -cF "translation_segment {" "$attempt_log" || true)

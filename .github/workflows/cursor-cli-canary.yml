@@ -13,6 +13,8 @@ name: Cursor CLI Canary
 # One harness probe: the containerised Cursor CLI runs one headless
 # `agent -p --mode ask` turn with the production model id and a
 # tool-denied canary config, so the canary cannot touch the repository.
+# scripts/check_cursor_canary.py then requires exit 0 and a reply that is
+# exactly the canary token, from the adapter's typed result summary.
 
 on:
   workflow_dispatch:
@@ -97,12 +99,12 @@ jobs:
           timeout-minutes: '10'
           output-file: ${{ runner.temp }}/cursor-cli-canary.out
 
+      # The adapter never logs the reply. It appends a typed summary line
+      # (exit status and the reply's SHA-256) to the output file, and the
+      # checker requires status 0 and the hash of the exact token.
       - name: Assert canary token
         run: |
           set -euo pipefail
-          out="${RUNNER_TEMP:-/tmp}/cursor-cli-canary.out"
-          if ! grep -q "CURSOR-CLI-CANARY-OK" "$out"; then
-            echo "::error::Cursor CLI run completed but the canary token is missing from its output — API-key auth or model routing through agent is broken."
-            exit 1
-          fi
-          echo "Cursor CLI headless API-key auth canary OK."
+          python3 scripts/check_cursor_canary.py \
+            "${RUNNER_TEMP:-/tmp}/cursor-cli-canary.out" \
+            --token CURSOR-CLI-CANARY-OK
