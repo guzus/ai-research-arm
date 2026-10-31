@@ -85,6 +85,25 @@ OpenAI posts about one 90–250 s customer testimonial a day as a P0 video — a
 metadata-only episodes are routine material that waits for the 2 h cadence.
 A stopped gate commits nothing and exits 0.
 
+**Priority material that expires unaired is reported.** A priority item opens
+the gate at once, so one that leaves its window (3 days for earnings, 7 for
+episodes) with its key absent from the cursor was lost to an outage: every
+editor run in its window failed or never ran. Every run, stop or go, re-runs
+the two priority collectors at `now − 24 h` and lists the priority items that
+were eligible then, are not now, and were never consumed (an episode consumed
+from its show notes counts as aired). The workflow posts each to Hooker
+(`ara-telemetry`, priority 4) keyed `aradio-expired-<item key>`, so the day's
+later runs are idempotency hits, and annotates the run only on that first
+post. After 24 h an item is never listed again, so nothing repeats once
+Hooker's idempotency record ages out. Hooker keeps a key even when every
+delivery of its message failed, so an item whose first delivery is lost is not
+re-sent; the outage behind it is alerted separately. A failure inside the
+report never changes the gate's decision (test-pinned); it only warns. Each
+POST is time-boxed (`--max-time 30`, the step to 5 min), because on a go it
+runs just before the editor, and never retried: Hooker records a key before it
+delivers, so a retry would come back as an idempotency hit that delivered
+nothing.
+
 ## Sources come through tuber
 
 Every podcast and video is read through **tuber-api** (`TUBER_API_BASE`,

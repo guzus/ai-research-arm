@@ -161,7 +161,72 @@ jobs:
             --trusted-dir "$SCRATCH/trusted" \
             --force "$FORCE" \
             --tuber-api-base "$TUBER_API_BASE" \
+            --expired-out "$SCRATCH/expired.json" \
             --github-output "$GITHUB_OUTPUT"
+
+      # A priority item (earnings filing or call, long-form P0 episode) that
+      # leaves its window unaired was lost to an outage: every editor run in
+      # its window failed, or none ran. The gate writes the list on every
+      # run, stop or go. Each item is posted once, keyed on the item, so the
+      # day's later runs are Hooker idempotency hits, and it is annotated on
+      # that first post only (on every run while Hooker cannot take it, since
+      # then nobody else is told). Titles are third-party text: jq
+      # HTML-escapes them into a raw_text body, so Hooker neither escapes them
+      # twice nor promotes a title's own tags to markup, and the log line
+      # comes pre-escaped for workflow commands. On a go this runs just
+      # before the editor, so each POST is time-boxed and the step is too.
+      # No --retry: Hooker records the key before it delivers, so a retried
+      # POST would come back as an idempotency hit that delivered nothing.
+      - name: Report priority items that expired unaired
+        if: always() && steps.stamp.outputs.scratch != ''
+        continue-on-error: true
+        timeout-minutes: 5
+        shell: bash
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          REPORT: ${{ steps.stamp.outputs.scratch }}/expired.json
+        run: |
+          set -euo pipefail
+          if [ ! -s "$REPORT" ] || [ "$(jq length "$REPORT")" = "0" ]; then
+            exit 0
+          fi
+          run_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          title="Aradio never aired a priority item"
+          jq -c '.[]' "$REPORT" | while IFS= read -r item; do
+            log=$(jq -r '.log' <<<"$item")
+            if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+              echo "::warning title=${title}::${log} (Hooker is not configured)"
+              continue
+            fi
+            body=$(jq -n --argjson item "$item" --arg title "$title" --arg run "$run_url" '{
+              title: $title,
+              text: (["❓ <b>\($title)</b>", ("\($item.kind): \($item.source)" | @html),
+                      ($item.title | @html),
+                      "At \($item.at); its \($item.window_days)-day window closed without a published editor run.",
+                      ("Key: \($item.key)" | @html), ("Run: \($run)" | @html)] | join("\n")),
+              raw_text: true,
+              priority: 4,
+              tags: ["ara", "aradio", "expired", $item.kind],
+              parse_mode: "HTML",
+              payload: {kind: "aradio-expired", item: ($item | del(.log)), run_url: $run},
+              reply_markup: {inline_keyboard: [[{text: "GitHub run", url: $run}]]}
+            }')
+            key=$(jq -r '.idempotency_key' <<<"$item")
+            if response=$(curl -sS --fail-with-body --max-time 30 -X POST "${HOOKER_URL%/}/publish/ara-telemetry" \
+                -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+                -H "Content-Type: application/json" \
+                -H "Idempotency-Key: ${key}" \
+                --data-binary "$body"); then
+              if [ "$(jq -r '.idempotency_hit // false' <<<"$response" 2>/dev/null || echo false)" = "true" ]; then
+                echo "Already reported: ${log}"
+              else
+                echo "::warning title=${title}::${log}"
+              fi
+            else
+              echo "::warning title=${title}::${log} (Hooker publish failed)"
+            fi
+          done
 
       # The prompt is a trusted repo file; a random heredoc delimiter keeps
       # any line of it from terminating the step output early. The adapter
