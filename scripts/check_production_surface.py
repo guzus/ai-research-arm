@@ -76,8 +76,10 @@ HTML_HEADERS = (
 
 KST_TODAY = datetime.now(timezone(timedelta(hours=9))).date().isoformat()
 
+HOME_PROBE = Probe("home", "/", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS)
+
 ROUTE_PROBES: tuple[Probe, ...] = (
-    Probe("home", "/", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS),
+    HOME_PROBE,
     Probe("today", "/today", content_type_prefix="text/html", body_contains="<title", required_headers=HTML_HEADERS),
     # Follows the temporary section-alias redirect when KST has advanced ahead
     # of the deployed UTC digest; either way the user must reach HTML, not 404.
@@ -144,6 +146,20 @@ USER_AGENT_PROBES: tuple[Probe, ...] = (
 )
 
 DEFAULT_PROBES = ROUTE_PROBES + USER_AGENT_PROBES
+
+# A probe added by a merge can run before Railway has rebuilt the image, and
+# an undeployed route is a real 404 (Caddy serves no shell for unknown paths).
+# So while this file's own last commit is younger than DEPLOY_RACE_WINDOW and
+# the home page is healthy, a route probe expecting 200 that gets 404 is
+# re-probed until the deploy lands or the budget is spent. Every other failure,
+# every 404 once the probe code is older, a site whose home page fails too
+# (down, not mid-deploy), and the user-agent probes (zone policy, never a
+# deploy) fail at once. HEAD's commit time would not do: research lanes commit
+# every few minutes.
+DEPLOY_RACE_WINDOW = timedelta(minutes=30)
+DEPLOY_RACE_FUTURE_SLACK = timedelta(minutes=5)
+DEPLOY_RACE_RETRY_INTERVAL_SECONDS = 60.0
+DEPLOY_RACE_RETRY_BUDGET_SECONDS = 15 * 60.0
 
 
 def fetch(probe: Probe, base_url: str, timeout: float = DEFAULT_TIMEOUT_SECONDS) -> Response:
@@ -301,6 +317,94 @@ def evaluate(
         return [future.result() for future in futures]
 
 
+def parse_committed_at(value: Optional[str]) -> Optional[datetime]:
+    """The probe file's commit time (`git log --format=%cI`), else None.
+
+    Naive or unparseable values are None: the deploy-race retry only relaxes
+    paging, so an ambiguous timestamp must never switch it on.
+    """
+    text = (value or "").strip()
+    if text[-1:] in ("Z", "z"):
+        text = text[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(text)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        return None
+    return parsed.astimezone(timezone.utc)
+
+
+def probe_code_is_recent(committed_at: Optional[datetime], now: datetime) -> bool:
+    if committed_at is None:
+        return False
+    return -DEPLOY_RACE_FUTURE_SLACK <= now - committed_at <= DEPLOY_RACE_WINDOW
+
+
+def awaits_deploy(probe: Probe, result: Result) -> bool:
+    """The answer a route gives before the live image has it."""
+    return result.failed and probe.expected_status == 200 and result.status == 404
+
+
+def settle_deploy_race(
+    probes: Iterable[Probe],
+    results: list[Result],
+    base_url: str,
+    timeout: float,
+    committed_at: Optional[datetime],
+    now: datetime,
+    *,
+    eligible: Iterable[Probe] = ROUTE_PROBES,
+    canary: Probe = HOME_PROBE,
+    fetch_fn: Callable[[Probe, str, float], Response] = fetch,
+    sleep_fn: Callable[[float], None] = time.sleep,
+    clock: Callable[[], float] = time.monotonic,
+    interval: float = DEPLOY_RACE_RETRY_INTERVAL_SECONDS,
+    budget: float = DEPLOY_RACE_RETRY_BUDGET_SECONDS,
+) -> list[Result]:
+    """Re-probe routes that may only be waiting for the deploy (DEPLOY_RACE_WINDOW).
+
+    A probe leaves the retry as soon as it passes or fails any other way: the
+    route is then deployed, so a failure is real. Whatever still 404s when the
+    budget is spent fails as before. A failing `canary` (the home page) means
+    the live image itself is broken, so nothing waits.
+    """
+    probe_list = list(probes)
+    eligible_probes = set(eligible)
+    pending = [
+        index
+        for index, (probe, result) in enumerate(zip(probe_list, results))
+        if probe in eligible_probes and awaits_deploy(probe, result)
+    ]
+    site_down = any(probe == canary and result.failed for probe, result in zip(probe_list, results))
+    if not pending or site_down or not probe_code_is_recent(committed_at, now):
+        return results
+    age_minutes = (now - committed_at).total_seconds() / 60
+    print(
+        f"deploy race: probe code committed {age_minutes:.0f} min ago; re-probing "
+        f"{', '.join(probe_list[index].name for index in pending)} every {interval:.0f}s "
+        f"for up to {budget:.0f}s",
+        file=sys.stderr,
+    )
+    settled = list(results)
+    started = clock()
+    while pending and clock() - started + interval <= budget:
+        sleep_fn(interval)
+        waited = clock() - started
+        still_pending = []
+        for index in pending:
+            retried = run_probe(probe_list[index], base_url, timeout, fetch_fn)
+            if not retried.failed:
+                detail = f"{retried.detail} after {waited:.0f}s of deploy-race retry"
+            else:
+                detail = f"{retried.detail}; still failing after {waited:.0f}s of deploy-race retry"
+            settled[index] = Result(retried.name, retried.path, retried.state, detail, retried.status)
+            if awaits_deploy(probe_list[index], retried):
+                still_pending.append(index)
+        pending = still_pending
+    return settled
+
+
 def format_report(results: list[Result]) -> str:
     rows = sorted(results, key=lambda r: (not r.failed, r.name))
     lines = ["| probe | path | state | detail |", "|---|---|---|---|"]
@@ -329,9 +433,25 @@ def main(argv: Optional[list[str]] = None) -> int:
     parser.add_argument("--timeout", type=float, default=DEFAULT_TIMEOUT_SECONDS)
     parser.add_argument("--json", action="store_true")
     parser.add_argument("--exit-code", action="store_true", help="exit 2 when any probe fails")
+    parser.add_argument(
+        "--probe-code-committed-at",
+        default="",
+        help="commit time (git %%cI) of this file's last change; while it is under "
+        f"{DEPLOY_RACE_WINDOW.total_seconds() / 60:.0f} min old, a route answering 404 "
+        f"is re-probed for up to {DEPLOY_RACE_RETRY_BUDGET_SECONDS / 60:.0f} min, "
+        "since the probe may be ahead of the deploy",
+    )
     args = parser.parse_args(argv)
 
     results = evaluate(DEFAULT_PROBES, args.base_url, args.timeout)
+    results = settle_deploy_race(
+        DEFAULT_PROBES,
+        results,
+        args.base_url,
+        args.timeout,
+        parse_committed_at(args.probe_code_committed_at),
+        datetime.now(timezone.utc),
+    )
     report = format_report(results)
     failures = [result for result in results if result.failed]
     now = datetime.now(timezone.utc)
