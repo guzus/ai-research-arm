@@ -58,15 +58,19 @@ on:
 # keeps one pending run per group and cancels the older one, so a burst of
 # triggers collapses to one running and one pending run; the pending one
 # reads the branch tip when it starts. A forced dispatch cancelled that way
-# is honoured by a later run (the history step below). A run the job's `if`
-# skips (a lane run from another repository) takes a group of its own: it
-# must never displace a real pending run. This condition must stay identical
-# to the job's `if` (test-pinned).
+# is honoured by a later run (the history step below). A run that can never
+# write takes a group of its own, so it never displaces a real pending run:
+# a lane run from another repository (the job's `if` skips it) or a dispatch
+# from another branch (the ref guard refuses it, and the history step lists
+# only main's runs, so a forced run it displaced would look cancelled by
+# hand). The repository condition must stay identical to the job's `if`
+# (test-pinned).
 concurrency:
   group: >-
-    ${{ (github.event_name != 'workflow_run'
+    ${{ github.ref == 'refs/heads/main'
+    && (github.event_name != 'workflow_run'
     || github.event.workflow_run.head_repository.full_name == github.repository)
-    && 'aradio' || format('aradio-skipped-{0}', github.run_id) }}
+    && 'aradio' || format('aradio-isolated-{0}', github.run_id) }}
   cancel-in-progress: false
 
 jobs:
