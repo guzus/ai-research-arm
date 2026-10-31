@@ -6,7 +6,6 @@
       "Read(research/summaries/**)",
       "Edit(research/arxiv/**)",
       "Edit(research/summaries/**)",
-      "Bash(curl -sL \"https://export.arxiv.org/api/query?*)",
       "Bash(curl -s \"https://export.arxiv.org/api/query?*)",
       "Bash(git add research/arxiv/*)",
       "Bash(git add research/summaries/*)",

@@ -115,9 +115,11 @@ jobs:
             - cs.CV (Computer Vision)
             - cs.NE (Neural and Evolutionary Computing)
 
-            Query the arXiv Atom API directly via curl or web fetch, e.g.
-            `curl -sL "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.LG+OR+cat:cs.CL+OR+cat:cs.CV+OR+cat:cs.NE&sortBy=submittedDate&sortOrder=descending&max_results=100"`
-            and curate from the returned Atom XML instead.
+            Query the arXiv Atom API directly via curl or web fetch, 40 results
+            per request so each reply stays readable, e.g.
+            `curl -s "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.LG+OR+cat:cs.CL+OR+cat:cs.CV+OR+cat:cs.NE&sortBy=submittedDate&sortOrder=descending&start=0&max_results=40"`
+            then the same with `start=40` and `start=80`, and curate from the
+            returned Atom XML instead.
 
             PRIORITIZE papers about:
             1. New model architectures

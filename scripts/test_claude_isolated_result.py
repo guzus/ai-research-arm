@@ -1,12 +1,14 @@
 import hashlib
+import io
 import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from check_claude_isolated_canary import validate as validate_canary
+from summarize_claude_result import guard_denials, summarize
 from summarize_claude_result import main as summarize_main
-from summarize_claude_result import summarize
 
 
 MODEL = "claude-sonnet-5-5"
@@ -43,14 +45,40 @@ class SummarizeClaudeResultTest(unittest.TestCase):
             "output_tokens=claude-sonnet-5-5:7 api_error_status=- permission_denials=3 "
             f"reply_sha256={hashlib.sha256(reply.strip().encode()).hexdigest()}",
             lines[0])
-        self.assertEqual("Claude permission denial: Read /proc/self/environ", lines[1])
-        self.assertEqual("Claude permission denial: Write -", lines[2])
-        self.assertEqual("Claude permission denial: ? -", lines[3])
+        # Denials are counted by tool and reason; no input or path is shown.
+        self.assertEqual(["::notice title=Claude denials::?:cli_rule=1 Read:cli_rule=1 "
+                          "Write:cli_rule=1"], lines[1:])
         joined = "\n".join(lines)
-        for leaked in ("injected", "add-mask", "INBOX-SECRET-QUOTE", "DENIED-WRITE-CONTENT"):
+        for leaked in ("injected", "add-mask", "INBOX-SECRET-QUOTE", "DENIED-WRITE-CONTENT",
+                       "/proc/self/environ", "warning"):
             self.assertNotIn(leaked, joined)
-        for line in lines[1:]:
-            self.assertFalse(line.startswith("::"), line)
+
+    def test_guard_reason_codes_replace_cli_rule_counts(self):
+        log = guard_denials("Bash\tcurl_flag\nBash\tcommand_not_allowed\nWrite\tpath_outside\n"
+                            "Bash\t::error::x\nevil\tcurl_flag\nBash\tcurl_flag extra\n"
+                            "Bash curl_flag\nRead\tpath_outside\x1b[31m\n")
+        self.assertEqual([("Bash", "curl_flag"), ("Bash", "command_not_allowed"),
+                          ("Write", "path_outside")], log)
+        lines, _ = summarize(result(permission_denials=[
+            {"tool_name": "Bash"}, {"tool_name": "Bash"}, {"tool_name": "Write"},
+            {"tool_name": "Read", "tool_input": {"file_path": "/tmp/claude-home/x.txt"}}]), log)
+        self.assertEqual("::notice title=Claude denials::Bash:command_not_allowed=1 "
+                         "Bash:curl_flag=1 Read:cli_rule=1 Write:path_outside=1", lines[1])
+        self.assertEqual(2, len(lines))
+        self.assertEqual(1, len(summarize(result(), [])[0]))
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "result.json"
+            path.write_text(json.dumps(result(permission_denials=[{"tool_name": "Bash"}])),
+                            encoding="utf-8")
+            denials = Path(tmp) / "denials.tsv"
+            denials.write_text("Bash\tshell_metachar\n", encoding="utf-8")
+            with mock.patch("sys.stdout", new=io.StringIO()) as out:
+                self.assertEqual(0, summarize_main([str(path), "--guard-denials", str(denials)]))
+            self.assertIn("::notice title=Claude denials::Bash:shell_metachar=1", out.getvalue())
+            with mock.patch("sys.stdout", new=io.StringIO()) as out:
+                self.assertEqual(0, summarize_main([str(path), "--guard-denials",
+                                                    str(Path(tmp) / "missing.tsv")]))
+            self.assertIn("::notice title=Claude denials::Bash:cli_rule=1", out.getvalue())
 
     def test_untyped_fields_degrade_to_placeholders(self):
         lines, _ = summarize(result(num_turns="7", api_error_status=429, result=None,

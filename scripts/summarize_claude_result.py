@@ -6,7 +6,11 @@ file was written inside the disposable container, so it is untrusted data:
 only typed fields that match strict patterns are echoed. The reply text and
 the input of denied calls (a denied Write keeps its whole content) never
 reach the public log; a SHA-256 of the stripped reply stands in for it, which
-is how the canary proves its exact token reply. The exit status is the
+is how the canary proves its exact token reply. Denials are counted by tool
+and reason, never shown with an input or a path: the guard's own refusals
+carry its reason code (tool-guard.mjs writes them to --guard-denials), and
+the rest of the CLI's permission_denials count as `cli_rule`, refused by
+Claude Code's own rules before the guard ran. The exit status is the
 contract: 0 = summarized, 3 = the CLI reported is_error (the caller fails
 closed even when the CLI exited 0), 2 = unreadable.
 """
@@ -18,12 +22,25 @@ import hashlib
 import json
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 
 SAFE_TOKEN = re.compile(r"^[A-Za-z0-9_.-]{1,64}$")
-SAFE_PATH = re.compile(r"^[A-Za-z0-9_./-]{1,240}$")
-MAX_DENIALS = 20
+# Kept identical to REASONS and LOGGED_TOOLS in
+# .github/actions/run-claude-container/tool-guard.mjs.
+GUARD_REASONS = frozenset({
+    "policy_invalid", "workspace_invalid", "input_invalid", "tool_not_allowed",
+    "path_invalid", "path_tilde", "path_missing", "path_type", "path_symlink", "path_outside",
+    "path_not_allowed", "git_metadata", "glob_pattern", "shell_multiline", "shell_background",
+    "shell_metachar", "command_not_allowed", "curl_flag", "curl_form", "curl_url",
+    "curl_query", "uv_form", "uv_argument", "git_form", "commit_form",
+})
+GUARD_TOOLS = frozenset({
+    "Read", "Write", "Edit", "MultiEdit", "Glob", "Grep", "Bash", "WebFetch", "WebSearch",
+    "Task", "Agent", "NotebookEdit", "TodoWrite", "Skill", "mcp", "other", "-",
+})
+MAX_GUARD_LINES = 4096
 
 
 def _token(value: object) -> str:
@@ -39,7 +56,17 @@ def reply_sha256(reply: str) -> str:
     return hashlib.sha256(reply.strip().encode("utf-8")).hexdigest()
 
 
-def summarize(data: object) -> tuple[list[str], bool]:
+def guard_denials(text: str) -> list[tuple[str, str]]:
+    """The well-formed "<tool>\t<reason>" lines of the guard's denial log."""
+    entries = []
+    for line in text.splitlines()[:MAX_GUARD_LINES]:
+        tool, separator, reason = line.partition("\t")
+        if separator and tool in GUARD_TOOLS and reason in GUARD_REASONS:
+            entries.append((tool, reason))
+    return entries
+
+
+def summarize(data: object, guard: list[tuple[str, str]] = ()) -> tuple[list[str], bool]:
     """Return log lines and whether the CLI reported an error."""
     if not isinstance(data, dict):
         raise ValueError("Claude result must be a JSON object")
@@ -70,23 +97,33 @@ def summarize(data: object) -> tuple[list[str], bool]:
         f"permission_denials={len(denials)} "
         f"reply_sha256={reply_sha256(reply) if isinstance(reply, str) else '-'}"
     ]
-    for denial in denials[:MAX_DENIALS]:
-        denial = denial if isinstance(denial, dict) else {}
-        tool_input = denial.get("tool_input")
-        target = tool_input.get("file_path") if isinstance(tool_input, dict) else None
-        shown = target if isinstance(target, str) and SAFE_PATH.fullmatch(target) else "-"
-        lines.append(f"Claude permission denial: {_token(denial.get('tool_name'))} {shown}")
-    if len(denials) > MAX_DENIALS:
-        lines.append(f"Claude permission denial: {len(denials) - MAX_DENIALS} more not shown")
+    counts: Counter[tuple[str, str]] = Counter(guard)
+    by_tool = Counter(_token(denial.get("tool_name")) if isinstance(denial, dict) else "?"
+                      for denial in denials)
+    for tool, total in by_tool.items():
+        rest = total - sum(count for (name, _), count in counts.items() if name == tool)
+        if rest > 0:
+            counts[(tool, "cli_rule")] += rest
+    if counts:
+        lines.append("::notice title=Claude denials::" + " ".join(
+            f"{tool}:{reason}={count}" for (tool, reason), count in sorted(counts.items())))
     return lines, is_error
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("result_file", type=Path)
+    parser.add_argument("--guard-denials", type=Path, default=None)
     args = parser.parse_args(argv)
+    guard: list[tuple[str, str]] = []
+    if args.guard_denials is not None:
+        try:
+            guard = guard_denials(args.guard_denials.read_text(encoding="utf-8", errors="replace"))
+        except OSError:
+            guard = []
     try:
-        lines, is_error = summarize(json.loads(args.result_file.read_text(encoding="utf-8")))
+        lines, is_error = summarize(json.loads(args.result_file.read_text(encoding="utf-8")),
+                                    guard)
     except (OSError, UnicodeDecodeError, ValueError) as exc:
         print(f"Could not summarize the Claude result: {type(exc).__name__}", file=sys.stderr)
         return 2

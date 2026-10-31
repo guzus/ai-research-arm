@@ -399,7 +399,6 @@ class RoutingInvariants(unittest.TestCase):
                       "Bash(git add research/community/*)", "Bash(git commit -m *)"],
         "arxiv": ["Read(research/arxiv/**)", "Read(research/summaries/**)",
                   "Edit(research/arxiv/**)", "Edit(research/summaries/**)",
-                  'Bash(curl -sL "https://export.arxiv.org/api/query?*)',
                   'Bash(curl -s "https://export.arxiv.org/api/query?*)',
                   "Bash(git add research/arxiv/*)", "Bash(git add research/summaries/*)",
                   "Bash(git commit -m *)"],
@@ -656,13 +655,120 @@ class RoutingInvariants(unittest.TestCase):
                     if rule == GIT_COMMIT_RULE:
                         self.assertTrue("git commit -m " in prompt, f"{lane}: never commits")
                     elif match := CURL_RULE.fullmatch(rule):
-                        self.assertIn(match.group(2), fetched, f"{lane}: its prompt never fetches {rule}")
-                        host = match.group(2).removeprefix("https://").split("/", 1)[0]
+                        self.assertIn(match.group(1), fetched, f"{lane}: its prompt never fetches {rule}")
+                        host = match.group(1).removeprefix("https://").split("/", 1)[0]
                         self.assertIn(host, CURL_HOSTS, f"{lane}: {host} is not a pinned curl host")
                     elif match := UV_RULE.fullmatch(rule):
                         shape = {None: "", ' "*': '"'}.get(match.group(3), (match.group(3) or "").strip())
                         self.assertIn((match.group(2), shape), runs,
                                       f"{lane}: its prompt never runs {rule}")
+
+    def test_documented_lane_commands_and_the_addendum_pass_the_guard(self):
+        """What each lane prompt tells the model to run, and every form the
+        generated addendum lists, passes the real guard under that lane's
+        policy, and what a prompt forbids is refused. The 2026-10-31 arXiv and
+        wiki runs failed exactly here: the prompts documented `ls` and an
+        oversized curl page that the sandbox could not serve."""
+        import shutil
+        from copy_claude_settings import (CURL_PAGE_LIMITS, GIT_ADD_RULE, RULE, addendum,
+                                          validate)
+        node = shutil.which("node")
+        self.assertIsNotNone(node, "node is required to run the Claude tool guard")
+        guard = REPO_ROOT / ".github/actions/run-claude-container/tool-guard.mjs"
+        values = {"date": "2026-10-31", "timestamp": "2026-10-31 12:00 UTC",
+                  "yesterday": "2026-10-30", "hour": "12"}
+
+        def instantiate(text: str) -> str:
+            return re.sub(r"\$\{\{\s*steps\.[A-Za-z0-9_-]+\.outputs\.([A-Za-z0-9_-]+)\s*\}\}",
+                          lambda match: values.get(match.group(1), "2026-10-31"), text)
+
+        words = ("git ", "curl ", "uv ", "ls ", "cat ", "python", "jq ", "wget ")
+        for lane, policy_path in self.CLAUDE_LANE_POLICIES.items():
+            with self.subTest(lane=lane), tempfile.TemporaryDirectory() as tmp:
+                policy = json.loads((REPO_ROOT / policy_path).read_text(encoding="utf-8"))
+                allow = policy["permissions"]["allow"]
+                settings, tools = validate(policy)
+                settings_file = Path(tmp) / "settings.json"
+                settings_file.write_text(json.dumps(settings), encoding="utf-8")
+                workspace = Path(os.path.realpath(tmp)) / "workspace"
+                # Every policy path and every lane output exists, as in a run.
+                outputs = [instantiate(line.strip()) for key in ("allowed-paths", "return-artifacts")
+                           for line in str(self.dispatch_inputs()[lane].get(key, "")).splitlines()
+                           if line.strip()]
+                for rule in allow:
+                    if match := RULE.fullmatch(rule):
+                        outputs.append(match.group(2) + ("/" if match.group(3) else ""))
+                for output in outputs:
+                    if "${{" in output:
+                        output = ".tmp/generative-translation.ko.segments.jsonl"
+                    target = workspace / output
+                    if output.endswith("/"):
+                        target.mkdir(parents=True, exist_ok=True)
+                    else:
+                        target.parent.mkdir(parents=True, exist_ok=True)
+                        target.touch()
+
+                def admitted(tool: str, tool_input: dict) -> subprocess.CompletedProcess:
+                    return subprocess.run(
+                        [node, str(guard), str(settings_file), str(workspace)],
+                        input=json.dumps({"tool_name": tool, "tool_input": tool_input}),
+                        text=True, capture_output=True, check=False)
+
+                text = addendum(allow)
+                documented = []
+                for line in instantiate(self.lane_prompt(lane)).splitlines():
+                    spans = [(match.start(), match.group(1))
+                             for match in re.finditer(r"`([^`]+)`", line)]
+                    if not spans and line.strip().startswith(words):
+                        spans = [(line.index(line.strip()), line.strip())]
+                    for start, command in spans:
+                        if command.startswith(words):
+                            negated = re.search(r"\b(?:not|NOT|never|Never)\b[^.;]*$",
+                                                line[:start]) is not None
+                            documented.append((command.replace("<query>", "OpenAI")
+                                               .replace("<name>", "OpenAI"), negated))
+                for command, negated in documented:
+                    if command.startswith("ls "):
+                        # The addendum sends a listing to Glob, the only lister.
+                        self.assertIn("use it instead of `ls`", text, f"{lane}: {command}")
+                        call = ("Glob", {"pattern": "*", "path": command[3:].strip().rstrip("/")})
+                    elif command.startswith("cat "):
+                        call = ("Read", {"file_path": str(workspace / command[4:].strip())})
+                    else:
+                        call = ("Bash", {"command": command, "description": "x"})
+                    result = admitted(*call)
+                    self.assertEqual(2 if negated else 0, result.returncode,
+                                     f"{lane}: documented {command!r}: {result.stderr}")
+                    # A documented page must also fit in what the CLI shows.
+                    for host, (size, _, limit) in CURL_PAGE_LIMITS.items():
+                        if command.startswith(f'curl -s "https://{host}/'):
+                            pages = re.findall(rf"[?&]{size}=(\d+)", command)
+                            self.assertTrue(pages and all(int(page) <= limit for page in pages),
+                                            f"{lane}: {command!r} asks for more than {limit}")
+                # Every form the addendum lists, with its placeholders filled.
+                staged = [match.group(1) for rule in allow if (match := GIT_ADD_RULE.fullmatch(rule))]
+                sample = f"{staged[0]}/addendum-check.md" if staged else ""
+                if sample:
+                    (workspace / sample).touch()
+                fill = {"<path>": sample, "<message>": "Update 2026-10-31",
+                        "<query>": "search_query=cat:cs.AI&start=0&max_results=40", "<text>": "OpenAI"}
+                forms = re.findall(r"^  - `([^`]+)`", text, re.MULTILINE)
+                self.assertEqual("Bash" in tools.split(","), bool(forms), lane)
+                for form in forms:
+                    for placeholder, value in fill.items():
+                        form = form.replace(placeholder, value)
+                    variants = [form] + ([form + ' || echo "No changes"']
+                                         if form.startswith("git commit") else [])
+                    for command in variants:
+                        result = admitted("Bash", {"command": command, "description": "x"})
+                        self.assertEqual(0, result.returncode,
+                                         f"{lane}: addendum form {command!r}: {result.stderr}")
+                if "Glob" in tools.split(","):
+                    for rule in allow:
+                        if (match := RULE.fullmatch(rule)) and match.group(1) == "Read" \
+                                and match.group(3):
+                            result = admitted("Glob", {"pattern": "*", "path": match.group(2)})
+                            self.assertEqual(0, result.returncode, f"{lane}: {result.stderr}")
 
     def test_aradio_routes_to_isolated_claude(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
@@ -960,13 +1066,21 @@ class RoutingInvariants(unittest.TestCase):
                     "file_path": "/workspace/x", "content": "DENIED-CONTENT"}}]}
 
         def run(case: str, status: int, result: object = None, link: bool = False,
-                oversize: bool = False) -> tuple[int, str, str]:
+                oversize: bool = False, denials: str | None = None,
+                link_denials: bool = False) -> tuple[int, str, str]:
             with tempfile.TemporaryDirectory() as tmp:
                 tmp_path = Path(tmp)
                 isolated = tmp_path / "isolated"
                 build = tmp_path / "build"
                 isolated.mkdir()
                 build.mkdir()
+                if denials is not None:
+                    log = isolated / ".claude-guard-denials.tsv"
+                    if link_denials:
+                        (tmp_path / "elsewhere.tsv").write_text(denials, encoding="utf-8")
+                        os.symlink(tmp_path / "elsewhere.tsv", log)
+                    else:
+                        log.write_text(denials, encoding="utf-8")
                 result_file = isolated / ".claude-result.json"
                 if link:
                     target = tmp_path / "elsewhere.json"
@@ -993,10 +1107,16 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual(0, final)
         self.assertIn("::notice title=Claude result::is_error=false", stdout)
         self.assertIn("output_tokens=claude-sonnet-5-5:9", written)
-        self.assertIn("Claude permission denial: Write /workspace/x", written)
-        for leaked in (reply, "DENIED-CONTENT"):
+        self.assertIn("::notice title=Claude denials::Write:cli_rule=1", written)
+        for leaked in (reply, "DENIED-CONTENT", "/workspace/x"):
             self.assertNotIn(leaked, stdout)
             self.assertNotIn(leaked, written)
+        # The guard's reason codes reach the summary; a linked log is ignored.
+        _, coded, _ = run("guard codes", 0, good, denials="Write\tpath_not_allowed\n")
+        self.assertIn("::notice title=Claude denials::Write:path_not_allowed=1", coded)
+        _, linked, _ = run("linked codes", 0, good, denials="Write\tpath_not_allowed\n",
+                           link_denials=True)
+        self.assertIn("::notice title=Claude denials::Write:cli_rule=1", linked)
         self.assertEqual(1, run("is_error on exit 0", 0, {**good, "is_error": True})[0])
         self.assertIn("reported is_error; failing closed",
                       run("is_error on exit 0", 0, {**good, "is_error": True})[1])
