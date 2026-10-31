@@ -182,10 +182,11 @@ def _korean_days(days: list[str]) -> str:
 def korean_date(form: str, match: re.Match[str], year_digits: str | None = None) -> str:
     """Render one recognized English date in Korean order with the source digits.
 
-    Days and years keep their exact source spelling ("05", "7-9") so the
+    Days and years keep their exact source spelling ("05") so the
     numeric-token parity check still finds every source literal; only month
-    numbers glued to 월 are added. ``year_digits`` overrides the date's own
-    year ("" drops it) when a range shares one.
+    numbers glued to 월 are added. A range takes the Korean wave dash with no
+    spaces ("17~20일", "9월 29일~10월 1일"). ``year_digits`` overrides the
+    date's own year ("" drops it) when a range shares one.
     """
     groups = match.groupdict()
     if year_digits is None:
@@ -193,21 +194,19 @@ def korean_date(form: str, match: re.Match[str], year_digits: str | None = None)
     year = f"{year_digits}년 " if year_digits else ""
     month = _month_number(groups["m"])
     if form in {"cross_md", "cross_dm", "month_range"}:
-        # A bare hyphen before a digit would read as a negative number token.
-        sep = groups["sep"].replace("-", "–")
         month2 = _month_number(groups["m2"])
         first = f"{month}월" if form == "month_range" else f"{month}월 {groups['d']}일"
         second = f"{month2}월" if form == "month_range" else f"{month2}월 {groups['d2']}일"
         # The year follows the last part in English; a range that wraps past
         # December ("April–February 2026") gives it only to that part.
         if month > month2:
-            return f"{first}{sep}{year}{second}"
-        return f"{year}{first}{sep}{second}"
+            return f"{first}~{year}{second}"
+        return f"{year}{first}~{second}"
     if form == "day_list":
         return f"{year}{month}월 {_korean_days(re.findall(r'[0-9]+', groups['days']))}"
     if form == "month_year":
         return f"{year}{month}월"
-    day = groups["d"] + (f"{groups['sep']}{groups['d2']}" if groups.get("d2") else "")
+    day = groups["d"] + (f"~{groups['d2']}" if groups.get("d2") else "")
     return f"{year}{month}월 {day}일"
 
 

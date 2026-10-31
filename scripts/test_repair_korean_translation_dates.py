@@ -74,10 +74,10 @@ class RepairKoreanTranslationDatesTest(unittest.TestCase):
     def test_parse_back_reads_the_same_date_in_both_languages(self):
         cases = {
             "October 29, 2026": "2026년 10월 29일",
-            "October 26–27": "10월 26–27일",
+            "October 26–27": "10월 26~27일",
             "4 and 7 September 2026": "2026년 9월 4일과 7일",
-            "September 29-October 1": "9월 29일–10월 1일",
-            "April–February 2026": "4월–2026년 2월",
+            "September 29-October 1": "9월 29일~10월 1일",
+            "April–February 2026": "4월~2026년 2월",
             "June 2025": "2025년 6월",
         }
         for english, korean in cases.items():
@@ -96,7 +96,7 @@ class RepairKoreanTranslationDatesTest(unittest.TestCase):
             self.assertEqual(
                 got,
                 {
-                    ("A", "26월 27", "10월 26–27일"),
+                    ("A", "26월 27", "10월 26~27일"),
                     ("A", "29월 2026", "2026년 10월 29일"),
                     ("A", "21년 2026월", "2026년 9월 21일"),
                     ("B", "6월 2025", "2025년 6월"),
@@ -109,7 +109,7 @@ class RepairKoreanTranslationDatesTest(unittest.TestCase):
             self.assertIn("B skips dates in a quote", reasons)
             self.assertIn("B skips dates in a reference", reasons)
             [title] = [c for c in changes if c.file == "index.json"]
-            self.assertEqual((title.cls, title.before, title.after), ("A", "26월 27", "10월 26–27일"))
+            self.assertEqual((title.cls, title.before, title.after), ("A", "26월 27", "10월 26~27일"))
 
     def test_write_is_byte_identical_outside_dates_and_idempotent(self):
         with tempfile.TemporaryDirectory() as td:
@@ -119,7 +119,7 @@ class RepairKoreanTranslationDatesTest(unittest.TestCase):
             before = path.read_text(encoding="utf-8")
             changes, _ = repair.run(root, {"A", "B"}, write=True)
             after = path.read_text(encoding="utf-8")
-            self.assertIn("Link 출시는 10월 26–27일에 이루어졌다", after)
+            self.assertIn("Link 출시는 10월 26~27일에 이루어졌다", after)
             self.assertIn("시드 트윗은 2026년 10월 29일자이다.", after)
             self.assertIn("2026년 9월 21일 지수가 재조정되었고, Stripe는 2025년 6월에 Privy를 샀다", after)
             self.assertIn("창은 2026년 3월 18일에 열렸고", after)
@@ -129,7 +129,7 @@ class RepairKoreanTranslationDatesTest(unittest.TestCase):
             self.assertEqual(
                 repair.masked(before, spans).count("\0"), len(spans)
             )
-            self.assertIn("10월 26–27일에", json.loads((gen / "index.json").read_text())[0]["translations"]["ko"]["title"])
+            self.assertIn("10월 26~27일에", json.loads((gen / "index.json").read_text())[0]["translations"]["ko"]["title"])
             again, _ = repair.run(root, {"A", "B"}, write=True)
             self.assertEqual(again, [])
             self.assertEqual(path.read_text(encoding="utf-8"), after)
@@ -152,7 +152,7 @@ class RepairKoreanTranslationDatesTest(unittest.TestCase):
         korean = "폴더 날짜는 9월 10일부터 2026년 10월 초까지이며, 행사는 7월 17-20, 2026에 열렸다."
         edits = repair.plan_run(report, "f", unit, english, korean)
         new = repair.apply(korean, [(e.start, e.end, e.after) for e in edits])
-        self.assertEqual(new, "폴더 날짜는 2026년 9월 10일부터 10월 초까지이며, 행사는 2026년 7월 17-20일에 열렸다.")
+        self.assertEqual(new, "폴더 날짜는 2026년 9월 10일부터 10월 초까지이며, 행사는 2026년 7월 17~20일에 열렸다.")
         self.assertEqual({e.rule for e in edits}, {"range year", "phrase"})
         self.assertIn("range", next(e for e in edits if e.rule == "phrase").flags)
         # Emphasis is prose; a <cite> or a reference entry is another work's title.
@@ -162,6 +162,30 @@ class RepairKoreanTranslationDatesTest(unittest.TestCase):
         report = repair.Report()
         self.assertEqual(repair.plan_run(report, "f", cited, "its 12 August entry", "12 8월 항목"), [])
         self.assertEqual([entry["reason"] for entry in report.unresolved], ["B skips dates in a title"])
+
+    def test_range_dash_changes_only_ranges_the_repair_touched(self):
+        unit = repair.Unit("text", "", 0, 0, frozenset())
+        english = "Launch came on October 26–27; the window was 20-30 July."
+        korean = "출시는 10월 26–27일이었고, 창은 7월 20-30일이었다."
+        start = korean.index("10월")
+        touched = [(start, start + len("10월 26–27일"))]
+        edits = repair.plan_run(repair.Report(), "f", unit, english, korean, touched)
+        self.assertEqual(
+            repair.apply(korean, [(e.start, e.end, e.after) for e in edits]),
+            "출시는 10월 26~27일이었고, 창은 7월 20-30일이었다.",
+        )
+        self.assertEqual({e.rule for e in edits}, {"range dash"})
+        # Without a revision to compare against, the rule is off.
+        self.assertEqual(repair.plan_run(repair.Report(), "f", unit, english, korean), [])
+        # A quote keeps its dash even where the repair touched it.
+        quoted = "출시는 「10월 26–27일」이었다."
+        at = quoted.index("10월")
+        report = repair.Report()
+        self.assertEqual(
+            repair.plan_run(report, "f", unit, 'Launch came on "October 26–27".', quoted, [(at, at + 9)]), []
+        )
+        self.assertEqual([entry["reason"] for entry in report.unresolved], ["B skips dates in a quote"])
+        self.assertEqual(repair.changed_spans("앞 10월 26–27일 뒤", "앞 10월 26~27일 뒤"), [(8, 9)])
 
     def test_stray_minus_needs_a_hyphenated_source_compound(self):
         unit = repair.Unit("text", "", 0, 0, frozenset())

@@ -23,6 +23,10 @@ Classes (select with ``--classes``):
      untranslated, or a range's shared year left mid-range. B skips and lists
      dates in quotes, in titles of other works (reference entries, <cite>),
      and in URLs.
+  B also writes a range the repair itself produced with the Korean wave
+     dash ("2026년 7월 17-20일" becomes "2026년 7월 17~20일") when given
+     ``--touched-since REV``: only spans that differ from REV change, so a
+     range the translation wrote and the repair never touched stays as is.
   S  stray minus: a number the English glued to a word by a hyphen
      ("mid-60s", "7-of-10", "mid-2026") that the Korean prints as a negative
      ("-60대 중반", "7/-10", "-2026년 중반"), because the old masking made
@@ -38,11 +42,13 @@ from __future__ import annotations
 import argparse
 import collections
 import csv
+import difflib
 import hashlib
 import html
 import json
 import random
 import re
+import subprocess
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -91,6 +97,12 @@ SIGNED_NUMBER_RE = re.compile(
     r"(?<!\d)-((?:[$€£₩¥]\s*)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:%|×|x)?)(?!\d)"
 )
 WORD_CHAR_RE = re.compile(r"[A-Za-z가-힣]")
+# Two month names joined as a range with no year ("the March-June window",
+# "the September-to-October comparison"), which no date form covers.
+BARE_MONTH_RANGE_RE = re.compile(
+    rf"(?P<m>{segments._MONTH})(?:\s*[–—-]\s*|-to-|\s+to\s+|\s+through\s+)(?P<m2>{segments._MONTH})"
+)
+RANGE_DASH = r"\s*[–—~-]\s*"
 
 # Hand-checked against the English source: months the old renderer stripped
 # ("4월-6월" lost "-6" to strip_unsafe_digits) or the model dropped, which no
@@ -434,14 +446,21 @@ def inside_quotes(run: str, start: int) -> bool:
     return (before.count('"') + before.count("&quot;")) % 2 == 1
 
 
-def plan_run(report: Report, name: str, unit: Unit, english_raw: str, korean: str) -> list[Edit]:
-    """Edits inside one aligned run; offsets are relative to the run."""
+def plan_run(
+    report: Report, name: str, unit: Unit, english_raw: str, korean: str,
+    touched: list[tuple[int, int]] | None = None,
+) -> list[Edit]:
+    """Edits inside one aligned run; offsets are relative to the run.
+
+    ``touched`` lists the run's spans that changed since a revision; the
+    range-dash rule only runs inside them.
+    """
     label = f"attr {unit.key}" if unit.kind == "attr" else "text"
     commas = unit.key not in LIST_ATTRS
     english = html.unescape(english_raw)
     rendered = segments.korean_dates(english, commas=commas)
     dates = [(form, match) for form, match, _ in rendered]
-    if not dates:
+    if not dates and not (touched is not None and BARE_MONTH_RANGE_RE.search(english)):
         return []
     groups: dict[str, list[tuple[str, re.Match[str]]]] = collections.defaultdict(list)
     expected_of: dict[str, tuple] = {}
@@ -528,6 +547,27 @@ def plan_run(report: Report, name: str, unit: Unit, english_raw: str, korean: st
                          english_pair, expected_of[first_canon]), first_canon, first_form, first)
             propose(Edit(start2, start2 + len(old_second), second_canon, "B", "range year",
                          english_pair, expected_of[second_canon]), second_canon, second_form, second)
+
+    # A range the repair wrote with a dash takes the wave dash the pipeline
+    # now writes ("10월 26–27일" becomes "10월 26~27일").
+    if touched is not None:
+        def touches(start: int, end: int) -> bool:
+            return any(start < e and s < end if s < e else start <= s <= end for s, e in touched)
+
+        ranges = [(canon, form, match, expected_of[canon]) for form, match, canon in rendered if "~" in canon]
+        for bare in BARE_MONTH_RANGE_RE.finditer(english):
+            if any(bare.start() < match.end() and match.start() < bare.end() for _, match in dates):
+                continue  # inside a dated range, which the line above covers
+            months = (segments._month_number(bare["m"]), segments._month_number(bare["m2"]))
+            ranges.append((f"{months[0]}월~{months[1]}월", None, bare, (None, months, ())))
+        for canon, form, match, expected in ranges:
+            pattern = RANGE_DASH.join(re.escape(part) for part in canon.split("~"))
+            for found in re.finditer(rf"(?<![0-9]){pattern}(?![0-9])", korean):
+                if found.group() == canon or taken(*found.span()) or not touches(*found.span()):
+                    continue
+                propose(Edit(found.start(), found.end(), canon, "B", "range dash",
+                             english[match.start() : match.end()], expected),
+                        canon, form or "month_range", match)
 
     # A rendered date followed by a particle fitted to some other final
     # syllable ("2025년 11월나" for 이나).
@@ -723,7 +763,40 @@ def assert_identical_outside(old: str, new: str, edits: list[tuple[int, int, str
         raise SystemExit(f"{file}: text changed outside the rewritten date spans")
 
 
-def plan_document(report: Report, file: str, source_html: str, korean: str) -> list[Change] | None:
+def run_spans(spans: list[tuple[int, int]] | None, unit: Unit) -> list[tuple[int, int]] | None:
+    """The file's changed spans that fall in one run, relative to it."""
+    if spans is None:
+        return None
+    inside = []
+    for start, end in spans:
+        if start < unit.end and unit.start < end or (start == end and unit.start <= start <= unit.end):
+            inside.append((max(start, unit.start) - unit.start, min(end, unit.end) - unit.start))
+    return inside
+
+
+def changed_spans(old: str, new: str) -> list[tuple[int, int]]:
+    """Spans of ``new`` that differ from ``old``; a deletion is a point."""
+    spans = []
+    old_lines, new_lines = old.splitlines(keepends=True), new.splitlines(keepends=True)
+    starts = [0]
+    for line in new_lines:
+        starts.append(starts[-1] + len(line))
+    lines = difflib.SequenceMatcher(None, old_lines, new_lines, autojunk=False)
+    for tag, i1, i2, j1, j2 in lines.get_opcodes():
+        if tag == "equal":
+            continue
+        before, after = "".join(old_lines[i1:i2]), "".join(new_lines[j1:j2])
+        chars = difflib.SequenceMatcher(None, before, after, autojunk=False)
+        for tag2, _, _, k1, k2 in chars.get_opcodes():
+            if tag2 != "equal":
+                spans.append((starts[j1] + k1, starts[j1] + k2))
+    return spans
+
+
+def plan_document(
+    report: Report, file: str, source_html: str, korean: str,
+    touched: list[tuple[int, int]] | None = None,
+) -> list[Change] | None:
     source_units, korean_units = units(source_html), units(korean)
     if [(u.kind, u.key) for u in source_units] != [(u.kind, u.key) for u in korean_units]:
         report.skip(file, "-", "runs do not align with the source", "", "")
@@ -733,7 +806,7 @@ def plan_document(report: Report, file: str, source_html: str, korean: str) -> l
         run = korean[korean_unit.start : korean_unit.end]
         label = f"attr {korean_unit.key}" if korean_unit.kind == "attr" else "text"
         english_run = source_html[source_unit.start : source_unit.end]
-        dated = plan_run(report, file, korean_unit, english_run, run)
+        dated = plan_run(report, file, korean_unit, english_run, run, run_spans(touched, korean_unit))
         signs = [
             edit for edit in plan_signs(report, file, korean_unit, english_run, run)
             if not any(edit.start < other.end and other.start < edit.end for other in dated)
@@ -783,7 +856,14 @@ def source_html_for(root: Path, row: dict, ko: dict) -> tuple[str | None, str]:
     return compile_source(payload.decode("utf-8")), ""
 
 
-def plan(root: Path, report: Report) -> dict[str, list[Change]]:
+def at_revision(root: Path, revision: str, path: str) -> str:
+    return subprocess.run(
+        ["git", "-C", str(root), "show", f"{revision}:{path}"],
+        check=True, capture_output=True, text=True,
+    ).stdout
+
+
+def plan(root: Path, report: Report, since: str | None = None) -> dict[str, list[Change]]:
     """All candidate changes, by file, for every class."""
     by_file: dict[str, list[Change]] = {}
     gen = root / "research" / "generative"
@@ -796,7 +876,10 @@ def plan(root: Path, report: Report) -> dict[str, list[Change]]:
         if source_html is None:
             report.skip(file, "-", problem, "", "")
             continue
-        changes = plan_document(report, file, source_html, korean)
+        touched = None
+        if since:
+            touched = changed_spans(at_revision(root, since, f"research/generative/{file}"), korean)
+        changes = plan_document(report, file, source_html, korean, touched)
         if changes is None:
             continue
         manual = manual_changes(file, korean)
@@ -860,12 +943,14 @@ def write_reports(directory: Path, changes: list[Change], report: Report, seed: 
             writer.writerow([entry[key] for key in ("file", "unit", "reason", "english", "korean")])
 
 
-def run(root: Path, classes: set[str], write: bool) -> tuple[list[Change], Report]:
+def run(
+    root: Path, classes: set[str], write: bool, since: str | None = None
+) -> tuple[list[Change], Report]:
     report = Report()
     gen = root / "research" / "generative"
     selected = [
         change
-        for changes in plan(root, report).values()
+        for changes in plan(root, report, since).values()
         for change in changes
         if change.cls in classes
     ]
@@ -883,7 +968,7 @@ def run(root: Path, classes: set[str], write: bool) -> tuple[list[Change], Repor
             new = apply(old, edits)
             assert_identical_outside(old, new, edits, file)
             path.write_text(new, encoding="utf-8")
-        again = [c for changes in plan(root, Report()).values() for c in changes if c.cls in classes]
+        again = [c for changes in plan(root, Report(), since).values() for c in changes if c.cls in classes]
         if again:
             raise SystemExit(f"not idempotent: {len(again)} changes remain after writing")
     report.changes = selected
@@ -897,11 +982,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--report", type=Path, help="directory for the CSV repair table")
     parser.add_argument("--seed", type=int, default=0, help="seed for the 20 review samples")
     parser.add_argument("--root", type=Path, default=ROOT)
+    parser.add_argument("--touched-since", metavar="REV",
+                        help="write the wave dash in date ranges that changed since REV")
     args = parser.parse_args(argv)
     classes = {cls.strip() for cls in args.classes.split(",") if cls.strip()}
     if not classes <= {"A", "B", "S"}:
         parser.error("classes must be among A, B, S")
-    changes, report = run(args.root, classes, args.write)
+    changes, report = run(args.root, classes, args.write, args.touched_since)
     if args.report:
         write_reports(args.report, changes, report, args.seed)
     counts = collections.Counter(change.cls for change in changes)

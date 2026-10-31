@@ -406,19 +406,19 @@ class TranslationSegmentsTest(unittest.TestCase):
         cases = {
             "On October 29, 2026 the builder": "On [2026년 10월 29일] the builder",
             "Oct 26, 2026": "[2026년 10월 26일]",
-            "the launch came on October 26–27.": "the launch came on [10월 26–27일].",
+            "the launch came on October 26–27.": "the launch came on [10월 26~27일].",
             "On 21 September 2026 Xiaomi": "On [2026년 9월 21일] Xiaomi",
             "Stripe agreed to buy Privy in June 2025, a": "Stripe agreed to buy Privy in [2025년 6월], a",
             "Mainnet live March 18 with": "Mainnet live [3월 18일] with",
             "rebased on 4 and 7 September 2026;": "rebased on [2026년 9월 4일과 7일];",
             "on 4, 7 and 19 September 2026": "on [2026년 9월 4일, 7일과 19일]",
-            "runs September 29-October 1 in Seoul": "runs [9월 29일–10월 1일] in Seoul",
-            "conducted 26 April – 7 May 2025.": "conducted [2025년 4월 26일 – 5월 7일].",
-            "an April–July 2025 deal": "an [2025년 4월–7월] deal",
-            "the April–February 2026 cycle": "the [4월–2026년 2월] cycle",
+            "runs September 29-October 1 in Seoul": "runs [9월 29일~10월 1일] in Seoul",
+            "conducted 26 April – 7 May 2025.": "conducted [2025년 4월 26일~5월 7일].",
+            "an April–July 2025 deal": "an [2025년 4월~7월] deal",
+            "the April–February 2026 cycle": "the [4월~2026년 2월] cycle",
             "Sept. 4, 2026": "[2026년 9월 4일]",
             "scheduled for 12 June.": "scheduled for [6월 12일].",
-            "Oct 7-9 2025 sales": "[2025년 10월 7-9일] sales",
+            "Oct 7-9 2025 sales": "[2025년 10월 7~9일] sales",
             "as of 10 Aug 18:00 UTC": "as of [8월 10일] 18:00 UTC",
             "the 26 August 10-Q guarantee": "the [8월 26일] 10-Q guarantee",
             "Season 1 Aug 20, 2025 – Feb 18": "Season 1 [2025년 8월 20일] – [2월 18일]",
@@ -508,7 +508,7 @@ class TranslationSegmentsTest(unittest.TestCase):
             "The seed tweet is dated ⟦ARA0000⟧ (⟦ARA0001⟧:⟦ARA0002⟧ UTC); the "
             "Link launch came on ⟦ARA0003⟧ and the cap moved mid-⟦ARA0004⟧.",
         )
-        self.assertEqual(literals, ["2026년 10월 29일", "20", "23", "10월 26–27일", "2026"])
+        self.assertEqual(literals, ["2026년 10월 29일", "20", "23", "10월 26~27일", "2026"])
         self.assertEqual(date_tokens, [tokens[0], tokens[3]])
 
     def test_word_glued_hyphens_are_not_minus_signs(self):
@@ -634,11 +634,11 @@ The window ran September 29-October 1 and the cap moved mid-2026 [^1].
                 os.chdir(old_cwd)
             draft = (root / segments.DRAFT_PATH).read_text(encoding="utf-8")
             for korean in (
-                "10월 26–27일에",
+                "10월 26~27일에",
                 "2026년 10월 29일에",
                 "2026년 9월 21일에",
                 "2025년 6월에",
-                "9월 29일–10월 1일에",
+                "9월 29일~10월 1일에",
             ):
                 self.assertIn(korean, draft)
             self.assertNotIn("-2026", draft)
