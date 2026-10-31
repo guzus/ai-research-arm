@@ -1555,6 +1555,30 @@ function focusAradioThread(slug: string): void {
   window.setTimeout(() => target.classList.remove('is-flash'), 1600);
 }
 
+/**
+ * After a Retry repainted the view, put focus back where the reader was: the
+ * radio's play button, or the card's heading when there is nothing to play
+ * (still unreachable, or no audio yet); the board's heading for the board's
+ * Retry; the error card's Retry when loading timed out again. Focus the reader
+ * already moved elsewhere is left alone.
+ */
+function refocusAradioAfterRetry(board: boolean): void {
+  if (activeTab !== 'aradio') return;
+  const active = document.activeElement;
+  if (active && active !== document.body) return;
+  const scope = content.querySelector<HTMLElement>(board ? '.aradio-board' : '[data-aradio-radio]');
+  const target = !scope
+    ? content.querySelector<HTMLElement>('[data-retry]')
+    : board
+      ? scope.querySelector<HTMLElement>('#aradioBoardTitle')
+      : scope.querySelector<HTMLElement>('[data-aradio-toggle]')
+        ?? scope.querySelector<HTMLElement>('.aradio-empty-title')
+        ?? scope.querySelector<HTMLElement>('#aradioStation');
+  if (!target) return;
+  if (!target.matches('button, input')) target.setAttribute('tabindex', '-1');
+  target.focus({ preventScroll: true });
+}
+
 function aradioAudioUrl(entry: AradioBulletinEntry): string | null {
   // The guarded builder re-checks the key policy; no key, no audio.
   return aradioAudioSrc(AUDIO_BASE, entry.audio);
@@ -2289,6 +2313,13 @@ function handleAradioClick(target: HTMLElement): boolean {
   const goto = target.closest<HTMLElement>('[data-aradio-goto]');
   if (goto) {
     focusAradioThread(goto.dataset.aradioGoto || '');
+    return true;
+  }
+  const retry = target.closest<HTMLElement>('[data-retry]');
+  if (retry) {
+    // load() repaints the whole view, which drops focus to <body>.
+    const board = Boolean(retry.closest('.aradio-board'));
+    void load().then(() => refocusAradioAfterRetry(board));
     return true;
   }
   return false;
