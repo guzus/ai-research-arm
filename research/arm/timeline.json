@@ -1,48 +1,9 @@
 {
-  "generatedAt": "2026-10-31T00:05:54.701Z",
-  "windowStart": "2026-10-29T12:00:00.000Z",
-  "windowEnd": "2026-11-01T13:00:00.000Z",
+  "generatedAt": "2026-10-31T06:18:48.579Z",
+  "windowStart": "2026-10-29T18:00:00.000Z",
+  "windowEnd": "2026-11-01T19:00:00.000Z",
   "timezone": "UTC",
   "items": [
-    {
-      "id": "commit-a3b45ccaa3fd",
-      "kind": "completed",
-      "lane": "Blogs",
-      "title": "AI expert blog watch",
-      "status": "completed",
-      "start": "2026-10-29T12:54:00.000Z",
-      "end": "2026-10-29T12:55:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "a3b45ccaa3fd",
-      "url": "https://github.com/guzus/ai-research-arm/commit/a3b45ccaa3fdf7b1d8c8c85f5eb95b078e561a2a"
-    },
-    {
-      "id": "commit-1f413eaf06a7",
-      "kind": "completed",
-      "lane": "Models",
-      "title": "Model release tickets",
-      "status": "completed",
-      "start": "2026-10-29T13:25:00.000Z",
-      "end": "2026-10-29T13:31:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "scheduled agent",
-      "commit": "1f413eaf06a7",
-      "url": "https://github.com/guzus/ai-research-arm/commit/1f413eaf06a71e87ed9007637a9cdb6bc6912d45"
-    },
-    {
-      "id": "commit-c433ae8fd460",
-      "kind": "completed",
-      "lane": "Dashboard",
-      "title": "Arm timeline refresh 2026-10-29 13:44 UTC (#6230)",
-      "status": "completed",
-      "start": "2026-10-29T13:44:00.000Z",
-      "end": "2026-10-29T13:45:00.000Z",
-      "source": "github-actions[bot]",
-      "model": "codex",
-      "commit": "c433ae8fd460",
-      "url": "https://github.com/guzus/ai-research-arm/commit/c433ae8fd4607a607b4e8b60478105a6effcad4c"
-    },
     {
       "id": "commit-8d4e451e199c",
       "kind": "completed",
@@ -369,264 +330,69 @@
       "url": "https://github.com/guzus/ai-research-arm/commit/b82ad48cf6c04edfb191afc94e1fd72d5aba6171"
     },
     {
-      "id": "scheduled-hourly-twitter-yml-7---3-------2026-10-31T00-07-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-dcb9cec46a86",
+      "kind": "completed",
+      "lane": "Dashboard",
+      "title": "Arm timeline refresh 2026-10-31 00:06 UTC (#6279)",
+      "status": "completed",
+      "start": "2026-10-31T00:06:00.000Z",
+      "end": "2026-10-31T00:07:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "codex",
+      "commit": "dcb9cec46a86",
+      "url": "https://github.com/guzus/ai-research-arm/commit/dcb9cec46a865810d504b8bb254a050a03c8b390"
+    },
+    {
+      "id": "commit-3b327e0a7fe8",
+      "kind": "completed",
+      "lane": "YouTube",
+      "title": "YouTube signal",
+      "status": "completed",
+      "start": "2026-10-31T02:29:00.000Z",
+      "end": "2026-10-31T02:31:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "3b327e0a7fe8",
+      "url": "https://github.com/guzus/ai-research-arm/commit/3b327e0a7fe835498bb8a33716ff482dc4956f9b"
+    },
+    {
+      "id": "commit-f45533210e77",
+      "kind": "completed",
+      "lane": "Delivery",
+      "title": "Twitter alert delivery",
+      "status": "completed",
+      "start": "2026-10-31T05:23:00.000Z",
+      "end": "2026-10-31T05:32:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "hooker",
+      "commit": "f45533210e77",
+      "url": "https://github.com/guzus/ai-research-arm/commit/f45533210e771639a41d716bdb1d2f2e85eeb04a"
+    },
+    {
+      "id": "commit-403142e89e26",
+      "kind": "completed",
       "lane": "Twitter/X",
-      "title": "Twitter AI News (hourly matrix)",
-      "status": "scheduled",
-      "start": "2026-10-31T00:07:00.000Z",
-      "end": "2026-10-31T01:07:00.000Z",
-      "source": "cron 7 */3 * * *"
+      "title": "Twitter/X brief",
+      "status": "completed",
+      "start": "2026-10-31T05:23:00.000Z",
+      "end": "2026-10-31T05:32:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "deepseek-v4-flash",
+      "commit": "403142e89e26",
+      "url": "https://github.com/guzus/ai-research-arm/commit/403142e89e260ec1b837c2b132f2009916e59632"
     },
     {
-      "id": "scheduled-daily-ai-blogs-yml-13---6-------2026-10-31T00-13-00-000Z",
-      "kind": "scheduled",
+      "id": "commit-877afaf7995c",
+      "kind": "completed",
       "lane": "Blogs",
-      "title": "Daily AI Expert Blogs",
-      "status": "scheduled",
-      "start": "2026-10-31T00:13:00.000Z",
-      "end": "2026-10-31T00:43:00.000Z",
-      "source": "cron 13 */6 * * *"
-    },
-    {
-      "id": "scheduled-production-synthetic-yml-17---2-------2026-10-31T00-17-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Production Surface Synthetic",
-      "status": "scheduled",
-      "start": "2026-10-31T00:17:00.000Z",
-      "end": "2026-10-31T00:47:00.000Z",
-      "source": "cron 17 */2 * * *"
-    },
-    {
-      "id": "scheduled-4h-community-yml-19---4-------2026-10-31T00-19-00-000Z",
-      "kind": "scheduled",
-      "lane": "Community",
-      "title": "Community AI Digest (HN + Reddit)",
-      "status": "scheduled",
-      "start": "2026-10-31T00:19:00.000Z",
-      "end": "2026-10-31T01:19:00.000Z",
-      "source": "cron 19 */4 * * *"
-    },
-    {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-10-31T00-30-00-000Z",
-      "kind": "scheduled",
-      "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-10-31T00:30:00.000Z",
-      "end": "2026-10-31T00:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-gpu-spot-yml-37---6-------2026-10-31T00-37-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "GPU Spot Prices",
-      "status": "scheduled",
-      "start": "2026-10-31T00:37:00.000Z",
-      "end": "2026-10-31T01:07:00.000Z",
-      "source": "cron 37 */6 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T00-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-10-31T00:45:00.000Z",
-      "end": "2026-10-31T01:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-10-31T00-47-00-000Z",
-      "kind": "scheduled",
-      "lane": "Blogs",
-      "title": "Naver Blog Subscriptions",
-      "status": "scheduled",
-      "start": "2026-10-31T00:47:00.000Z",
-      "end": "2026-10-31T01:17:00.000Z",
-      "source": "cron 47 */2 * * *"
-    },
-    {
-      "id": "scheduled-market-quotes-yml-53---3-------2026-10-31T00-53-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Market Quotes Refresh",
-      "status": "scheduled",
-      "start": "2026-10-31T00:53:00.000Z",
-      "end": "2026-10-31T01:23:00.000Z",
-      "source": "cron 53 */3 * * *"
-    },
-    {
-      "id": "scheduled-production-synthetic-yml-17---2-------2026-10-31T02-17-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Production Surface Synthetic",
-      "status": "scheduled",
-      "start": "2026-10-31T02:17:00.000Z",
-      "end": "2026-10-31T02:47:00.000Z",
-      "source": "cron 17 */2 * * *"
-    },
-    {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-10-31T02-30-00-000Z",
-      "kind": "scheduled",
-      "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-10-31T02:30:00.000Z",
-      "end": "2026-10-31T02:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T02-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-10-31T02:45:00.000Z",
-      "end": "2026-10-31T03:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-10-31T02-47-00-000Z",
-      "kind": "scheduled",
-      "lane": "Blogs",
-      "title": "Naver Blog Subscriptions",
-      "status": "scheduled",
-      "start": "2026-10-31T02:47:00.000Z",
-      "end": "2026-10-31T03:17:00.000Z",
-      "source": "cron 47 */2 * * *"
-    },
-    {
-      "id": "scheduled-hourly-twitter-yml-7---3-------2026-10-31T03-07-00-000Z",
-      "kind": "scheduled",
-      "lane": "Twitter/X",
-      "title": "Twitter AI News (hourly matrix)",
-      "status": "scheduled",
-      "start": "2026-10-31T03:07:00.000Z",
-      "end": "2026-10-31T04:07:00.000Z",
-      "source": "cron 7 */3 * * *"
-    },
-    {
-      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-10-31T03-26-00-000Z",
-      "kind": "scheduled",
-      "lane": "Models",
-      "title": "Model Pricing (price vs. capability)",
-      "status": "scheduled",
-      "start": "2026-10-31T03:26:00.000Z",
-      "end": "2026-10-31T04:11:00.000Z",
-      "source": "cron 26 3,9,15,21 * * *"
-    },
-    {
-      "id": "scheduled-market-quotes-yml-53---3-------2026-10-31T03-53-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Market Quotes Refresh",
-      "status": "scheduled",
-      "start": "2026-10-31T03:53:00.000Z",
-      "end": "2026-10-31T04:23:00.000Z",
-      "source": "cron 53 */3 * * *"
-    },
-    {
-      "id": "scheduled-production-synthetic-yml-17---2-------2026-10-31T04-17-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Production Surface Synthetic",
-      "status": "scheduled",
-      "start": "2026-10-31T04:17:00.000Z",
-      "end": "2026-10-31T04:47:00.000Z",
-      "source": "cron 17 */2 * * *"
-    },
-    {
-      "id": "scheduled-4h-community-yml-19---4-------2026-10-31T04-19-00-000Z",
-      "kind": "scheduled",
-      "lane": "Community",
-      "title": "Community AI Digest (HN + Reddit)",
-      "status": "scheduled",
-      "start": "2026-10-31T04:19:00.000Z",
-      "end": "2026-10-31T05:19:00.000Z",
-      "source": "cron 19 */4 * * *"
-    },
-    {
-      "id": "scheduled-hourly-rss-yml-30---2-------2026-10-31T04-30-00-000Z",
-      "kind": "scheduled",
-      "lane": "RSS",
-      "title": "RSS Official Announcements (Every 2 Hours)",
-      "status": "scheduled",
-      "start": "2026-10-31T04:30:00.000Z",
-      "end": "2026-10-31T04:45:00.000Z",
-      "source": "cron 30 */2 * * *"
-    },
-    {
-      "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T04-45-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Arm Timeline Refresh",
-      "status": "scheduled",
-      "start": "2026-10-31T04:45:00.000Z",
-      "end": "2026-10-31T05:15:00.000Z",
-      "source": "cron 45 */2 * * *"
-    },
-    {
-      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-10-31T04-47-00-000Z",
-      "kind": "scheduled",
-      "lane": "Blogs",
-      "title": "Naver Blog Subscriptions",
-      "status": "scheduled",
-      "start": "2026-10-31T04:47:00.000Z",
-      "end": "2026-10-31T05:17:00.000Z",
-      "source": "cron 47 */2 * * *"
-    },
-    {
-      "id": "scheduled-liveness-check-yml-0---6-------2026-10-31T06-00-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Pipeline Liveness Check",
-      "status": "scheduled",
-      "start": "2026-10-31T06:00:00.000Z",
-      "end": "2026-10-31T06:20:00.000Z",
-      "source": "cron 0 */6 * * *"
-    },
-    {
-      "id": "scheduled-hourly-twitter-yml-7---3-------2026-10-31T06-07-00-000Z",
-      "kind": "scheduled",
-      "lane": "Twitter/X",
-      "title": "Twitter AI News (hourly matrix)",
-      "status": "scheduled",
-      "start": "2026-10-31T06:07:00.000Z",
-      "end": "2026-10-31T07:07:00.000Z",
-      "source": "cron 7 */3 * * *"
-    },
-    {
-      "id": "scheduled-daily-ai-blogs-yml-13---6-------2026-10-31T06-13-00-000Z",
-      "kind": "scheduled",
-      "lane": "Blogs",
-      "title": "Daily AI Expert Blogs",
-      "status": "scheduled",
-      "start": "2026-10-31T06:13:00.000Z",
-      "end": "2026-10-31T06:43:00.000Z",
-      "source": "cron 13 */6 * * *"
-    },
-    {
-      "id": "scheduled-daily-arxiv-yml-13-6-------2026-10-31T06-13-00-000Z",
-      "kind": "scheduled",
-      "lane": "arXiv",
-      "title": "Daily arXiv AI Research",
-      "status": "scheduled",
-      "start": "2026-10-31T06:13:00.000Z",
-      "end": "2026-10-31T06:43:00.000Z",
-      "source": "cron 13 6 * * *"
-    },
-    {
-      "id": "scheduled-production-synthetic-yml-17---2-------2026-10-31T06-17-00-000Z",
-      "kind": "scheduled",
-      "lane": "Scheduled",
-      "title": "Production Surface Synthetic",
-      "status": "scheduled",
-      "start": "2026-10-31T06:17:00.000Z",
-      "end": "2026-10-31T06:47:00.000Z",
-      "source": "cron 17 */2 * * *"
+      "title": "AI expert blog watch",
+      "status": "completed",
+      "start": "2026-10-31T05:32:00.000Z",
+      "end": "2026-10-31T05:34:00.000Z",
+      "source": "github-actions[bot]",
+      "model": "scheduled agent",
+      "commit": "877afaf7995c",
+      "url": "https://github.com/guzus/ai-research-arm/commit/877afaf7995c2e33c15c4d9003df9b2baa425b36"
     },
     {
       "id": "scheduled-24h-model-timeline-yml-29-6-------2026-10-31T06-29-00-000Z",
@@ -659,6 +425,16 @@
       "source": "cron 37 */6 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-10-31T06-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-10-31T06:41:00.000Z",
+      "end": "2026-10-31T07:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T06-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -679,6 +455,16 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T06-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T06:50:00.000Z",
+      "end": "2026-10-31T07:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-market-quotes-yml-53---3-------2026-10-31T06-53-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -687,6 +473,16 @@
       "start": "2026-10-31T06:53:00.000Z",
       "end": "2026-10-31T07:23:00.000Z",
       "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T07-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T07:50:00.000Z",
+      "end": "2026-10-31T08:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-production-synthetic-yml-17---2-------2026-10-31T08-17-00-000Z",
@@ -729,6 +525,16 @@
       "source": "cron 30 */2 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-10-31T08-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-10-31T08:41:00.000Z",
+      "end": "2026-10-31T09:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T08-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -749,6 +555,16 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T08-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T08:50:00.000Z",
+      "end": "2026-10-31T09:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-hourly-twitter-yml-7---3-------2026-10-31T09-07-00-000Z",
       "kind": "scheduled",
       "lane": "Twitter/X",
@@ -767,6 +583,16 @@
       "start": "2026-10-31T09:26:00.000Z",
       "end": "2026-10-31T10:11:00.000Z",
       "source": "cron 26 3,9,15,21 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T09-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T09:50:00.000Z",
+      "end": "2026-10-31T10:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-market-quotes-yml-53---3-------2026-10-31T09-53-00-000Z",
@@ -809,6 +635,16 @@
       "source": "cron 30 */2 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-10-31T10-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-10-31T10:41:00.000Z",
+      "end": "2026-10-31T11:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T10-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -827,6 +663,26 @@
       "start": "2026-10-31T10:47:00.000Z",
       "end": "2026-10-31T11:17:00.000Z",
       "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T10-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T10:50:00.000Z",
+      "end": "2026-10-31T11:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T11-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T11:50:00.000Z",
+      "end": "2026-10-31T12:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-liveness-check-yml-0---6-------2026-10-31T12-00-00-000Z",
@@ -899,6 +755,16 @@
       "source": "cron 37 */6 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-10-31T12-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-10-31T12:41:00.000Z",
+      "end": "2026-10-31T13:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T12-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -919,6 +785,16 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T12-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T12:50:00.000Z",
+      "end": "2026-10-31T13:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-market-quotes-yml-53---3-------2026-10-31T12-53-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -927,6 +803,16 @@
       "start": "2026-10-31T12:53:00.000Z",
       "end": "2026-10-31T13:23:00.000Z",
       "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T13-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T13:50:00.000Z",
+      "end": "2026-10-31T14:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-production-synthetic-yml-17---2-------2026-10-31T14-17-00-000Z",
@@ -949,6 +835,16 @@
       "source": "cron 30 */2 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-10-31T14-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-10-31T14:41:00.000Z",
+      "end": "2026-10-31T15:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T14-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -969,6 +865,16 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T14-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T14:50:00.000Z",
+      "end": "2026-10-31T15:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-hourly-twitter-yml-7---3-------2026-10-31T15-07-00-000Z",
       "kind": "scheduled",
       "lane": "Twitter/X",
@@ -987,6 +893,16 @@
       "start": "2026-10-31T15:26:00.000Z",
       "end": "2026-10-31T16:11:00.000Z",
       "source": "cron 26 3,9,15,21 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T15-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T15:50:00.000Z",
+      "end": "2026-10-31T16:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-market-quotes-yml-53---3-------2026-10-31T15-53-00-000Z",
@@ -1029,6 +945,16 @@
       "source": "cron 30 */2 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-10-31T16-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-10-31T16:41:00.000Z",
+      "end": "2026-10-31T17:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T16-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1047,6 +973,26 @@
       "start": "2026-10-31T16:47:00.000Z",
       "end": "2026-10-31T17:17:00.000Z",
       "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T16-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T16:50:00.000Z",
+      "end": "2026-10-31T17:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T17-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T17:50:00.000Z",
+      "end": "2026-10-31T18:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-liveness-check-yml-0---6-------2026-10-31T18-00-00-000Z",
@@ -1109,6 +1055,16 @@
       "source": "cron 37 */6 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-10-31T18-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-10-31T18:41:00.000Z",
+      "end": "2026-10-31T19:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T18-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1129,6 +1085,16 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T18-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T18:50:00.000Z",
+      "end": "2026-10-31T19:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-market-quotes-yml-53---3-------2026-10-31T18-53-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1137,6 +1103,16 @@
       "start": "2026-10-31T18:53:00.000Z",
       "end": "2026-10-31T19:23:00.000Z",
       "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T19-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T19:50:00.000Z",
+      "end": "2026-10-31T20:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-production-synthetic-yml-17---2-------2026-10-31T20-17-00-000Z",
@@ -1179,6 +1155,16 @@
       "source": "cron 30 */2 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-10-31T20-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-10-31T20:41:00.000Z",
+      "end": "2026-10-31T21:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T20-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1199,6 +1185,16 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T20-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T20:50:00.000Z",
+      "end": "2026-10-31T21:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-hourly-twitter-yml-7---3-------2026-10-31T21-07-00-000Z",
       "kind": "scheduled",
       "lane": "Twitter/X",
@@ -1217,6 +1213,16 @@
       "start": "2026-10-31T21:26:00.000Z",
       "end": "2026-10-31T22:11:00.000Z",
       "source": "cron 26 3,9,15,21 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T21-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T21:50:00.000Z",
+      "end": "2026-10-31T22:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-market-quotes-yml-53---3-------2026-10-31T21-53-00-000Z",
@@ -1249,6 +1255,16 @@
       "source": "cron 30 */2 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-10-31T22-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-10-31T22:41:00.000Z",
+      "end": "2026-10-31T23:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-10-31T22-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1269,6 +1285,16 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T22-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T22:50:00.000Z",
+      "end": "2026-10-31T23:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-daily-youtube-yml-20-23-------2026-10-31T23-20-00-000Z",
       "kind": "scheduled",
       "lane": "YouTube",
@@ -1277,6 +1303,16 @@
       "start": "2026-10-31T23:20:00.000Z",
       "end": "2026-10-31T23:45:00.000Z",
       "source": "cron 20 23 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-10-31T23-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-10-31T23:50:00.000Z",
+      "end": "2026-11-01T00:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-daily-digest-yml-0-0-------2026-11-01T00-00-00-000Z",
@@ -1359,6 +1395,16 @@
       "source": "cron 37 */6 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-11-01T00-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-11-01T00:41:00.000Z",
+      "end": "2026-11-01T01:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-11-01T00-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1379,6 +1425,16 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T00-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T00:50:00.000Z",
+      "end": "2026-11-01T01:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-market-quotes-yml-53---3-------2026-11-01T00-53-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1387,6 +1443,16 @@
       "start": "2026-11-01T00:53:00.000Z",
       "end": "2026-11-01T01:23:00.000Z",
       "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T01-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T01:50:00.000Z",
+      "end": "2026-11-01T02:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-production-synthetic-yml-17---2-------2026-11-01T02-17-00-000Z",
@@ -1409,6 +1475,16 @@
       "source": "cron 30 */2 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-11-01T02-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-11-01T02:41:00.000Z",
+      "end": "2026-11-01T03:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-11-01T02-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1429,6 +1505,16 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T02-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T02:50:00.000Z",
+      "end": "2026-11-01T03:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-hourly-twitter-yml-7---3-------2026-11-01T03-07-00-000Z",
       "kind": "scheduled",
       "lane": "Twitter/X",
@@ -1447,6 +1533,16 @@
       "start": "2026-11-01T03:26:00.000Z",
       "end": "2026-11-01T04:11:00.000Z",
       "source": "cron 26 3,9,15,21 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T03-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T03:50:00.000Z",
+      "end": "2026-11-01T04:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-market-quotes-yml-53---3-------2026-11-01T03-53-00-000Z",
@@ -1489,6 +1585,16 @@
       "source": "cron 30 */2 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-11-01T04-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-11-01T04:41:00.000Z",
+      "end": "2026-11-01T05:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-11-01T04-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1507,6 +1613,26 @@
       "start": "2026-11-01T04:47:00.000Z",
       "end": "2026-11-01T05:17:00.000Z",
       "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T04-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T04:50:00.000Z",
+      "end": "2026-11-01T05:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T05-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T05:50:00.000Z",
+      "end": "2026-11-01T06:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-liveness-check-yml-0---6-------2026-11-01T06-00-00-000Z",
@@ -1589,6 +1715,16 @@
       "source": "cron 37 */6 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-11-01T06-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-11-01T06:41:00.000Z",
+      "end": "2026-11-01T07:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-11-01T06-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1609,6 +1745,16 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T06-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T06:50:00.000Z",
+      "end": "2026-11-01T07:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-market-quotes-yml-53---3-------2026-11-01T06-53-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1617,6 +1763,16 @@
       "start": "2026-11-01T06:53:00.000Z",
       "end": "2026-11-01T07:23:00.000Z",
       "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T07-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T07:50:00.000Z",
+      "end": "2026-11-01T08:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-production-synthetic-yml-17---2-------2026-11-01T08-17-00-000Z",
@@ -1659,6 +1815,16 @@
       "source": "cron 30 */2 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-11-01T08-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-11-01T08:41:00.000Z",
+      "end": "2026-11-01T09:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-11-01T08-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1679,6 +1845,16 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T08-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T08:50:00.000Z",
+      "end": "2026-11-01T09:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-hourly-twitter-yml-7---3-------2026-11-01T09-07-00-000Z",
       "kind": "scheduled",
       "lane": "Twitter/X",
@@ -1697,6 +1873,16 @@
       "start": "2026-11-01T09:26:00.000Z",
       "end": "2026-11-01T10:11:00.000Z",
       "source": "cron 26 3,9,15,21 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T09-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T09:50:00.000Z",
+      "end": "2026-11-01T10:20:00.000Z",
+      "source": "cron 50 * * * *"
     },
     {
       "id": "scheduled-market-quotes-yml-53---3-------2026-11-01T09-53-00-000Z",
@@ -1739,6 +1925,16 @@
       "source": "cron 30 */2 * * *"
     },
     {
+      "id": "scheduled-podcasts-yml-41---2-------2026-11-01T10-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-11-01T10:41:00.000Z",
+      "end": "2026-11-01T11:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
       "id": "scheduled-arm-timeline-yml-45---2-------2026-11-01T10-45-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1759,6 +1955,26 @@
       "source": "cron 47 */2 * * *"
     },
     {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T10-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T10:50:00.000Z",
+      "end": "2026-11-01T11:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T11-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T11:50:00.000Z",
+      "end": "2026-11-01T12:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
       "id": "scheduled-liveness-check-yml-0---6-------2026-11-01T12-00-00-000Z",
       "kind": "scheduled",
       "lane": "Scheduled",
@@ -1767,6 +1983,346 @@
       "start": "2026-11-01T12:00:00.000Z",
       "end": "2026-11-01T12:20:00.000Z",
       "source": "cron 0 */6 * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-7---3-------2026-11-01T12-07-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (hourly matrix)",
+      "status": "scheduled",
+      "start": "2026-11-01T12:07:00.000Z",
+      "end": "2026-11-01T13:07:00.000Z",
+      "source": "cron 7 */3 * * *"
+    },
+    {
+      "id": "scheduled-daily-ai-blogs-yml-13---6-------2026-11-01T12-13-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Daily AI Expert Blogs",
+      "status": "scheduled",
+      "start": "2026-11-01T12:13:00.000Z",
+      "end": "2026-11-01T12:43:00.000Z",
+      "source": "cron 13 */6 * * *"
+    },
+    {
+      "id": "scheduled-production-synthetic-yml-17---2-------2026-11-01T12-17-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Production Surface Synthetic",
+      "status": "scheduled",
+      "start": "2026-11-01T12:17:00.000Z",
+      "end": "2026-11-01T12:47:00.000Z",
+      "source": "cron 17 */2 * * *"
+    },
+    {
+      "id": "scheduled-4h-community-yml-19---4-------2026-11-01T12-19-00-000Z",
+      "kind": "scheduled",
+      "lane": "Community",
+      "title": "Community AI Digest (HN + Reddit)",
+      "status": "scheduled",
+      "start": "2026-11-01T12:19:00.000Z",
+      "end": "2026-11-01T13:19:00.000Z",
+      "source": "cron 19 */4 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-11-01T12-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-11-01T12:30:00.000Z",
+      "end": "2026-11-01T12:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-gpu-spot-yml-37---6-------2026-11-01T12-37-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "GPU Spot Prices",
+      "status": "scheduled",
+      "start": "2026-11-01T12:37:00.000Z",
+      "end": "2026-11-01T13:07:00.000Z",
+      "source": "cron 37 */6 * * *"
+    },
+    {
+      "id": "scheduled-podcasts-yml-41---2-------2026-11-01T12-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-11-01T12:41:00.000Z",
+      "end": "2026-11-01T13:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-11-01T12-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-11-01T12:45:00.000Z",
+      "end": "2026-11-01T13:15:00.000Z",
+      "source": "cron 45 */2 * * *"
+    },
+    {
+      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-11-01T12-47-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Naver Blog Subscriptions",
+      "status": "scheduled",
+      "start": "2026-11-01T12:47:00.000Z",
+      "end": "2026-11-01T13:17:00.000Z",
+      "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T12-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T12:50:00.000Z",
+      "end": "2026-11-01T13:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
+      "id": "scheduled-market-quotes-yml-53---3-------2026-11-01T12-53-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Market Quotes Refresh",
+      "status": "scheduled",
+      "start": "2026-11-01T12:53:00.000Z",
+      "end": "2026-11-01T13:23:00.000Z",
+      "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T13-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T13:50:00.000Z",
+      "end": "2026-11-01T14:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
+      "id": "scheduled-production-synthetic-yml-17---2-------2026-11-01T14-17-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Production Surface Synthetic",
+      "status": "scheduled",
+      "start": "2026-11-01T14:17:00.000Z",
+      "end": "2026-11-01T14:47:00.000Z",
+      "source": "cron 17 */2 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-11-01T14-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-11-01T14:30:00.000Z",
+      "end": "2026-11-01T14:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-podcasts-yml-41---2-------2026-11-01T14-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-11-01T14:41:00.000Z",
+      "end": "2026-11-01T15:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-11-01T14-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-11-01T14:45:00.000Z",
+      "end": "2026-11-01T15:15:00.000Z",
+      "source": "cron 45 */2 * * *"
+    },
+    {
+      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-11-01T14-47-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Naver Blog Subscriptions",
+      "status": "scheduled",
+      "start": "2026-11-01T14:47:00.000Z",
+      "end": "2026-11-01T15:17:00.000Z",
+      "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T14-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T14:50:00.000Z",
+      "end": "2026-11-01T15:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-7---3-------2026-11-01T15-07-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (hourly matrix)",
+      "status": "scheduled",
+      "start": "2026-11-01T15:07:00.000Z",
+      "end": "2026-11-01T16:07:00.000Z",
+      "source": "cron 7 */3 * * *"
+    },
+    {
+      "id": "scheduled-model-pricing-yml-26-3-9-15-21-------2026-11-01T15-26-00-000Z",
+      "kind": "scheduled",
+      "lane": "Models",
+      "title": "Model Pricing (price vs. capability)",
+      "status": "scheduled",
+      "start": "2026-11-01T15:26:00.000Z",
+      "end": "2026-11-01T16:11:00.000Z",
+      "source": "cron 26 3,9,15,21 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T15-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T15:50:00.000Z",
+      "end": "2026-11-01T16:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
+      "id": "scheduled-market-quotes-yml-53---3-------2026-11-01T15-53-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Market Quotes Refresh",
+      "status": "scheduled",
+      "start": "2026-11-01T15:53:00.000Z",
+      "end": "2026-11-01T16:23:00.000Z",
+      "source": "cron 53 */3 * * *"
+    },
+    {
+      "id": "scheduled-production-synthetic-yml-17---2-------2026-11-01T16-17-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Production Surface Synthetic",
+      "status": "scheduled",
+      "start": "2026-11-01T16:17:00.000Z",
+      "end": "2026-11-01T16:47:00.000Z",
+      "source": "cron 17 */2 * * *"
+    },
+    {
+      "id": "scheduled-4h-community-yml-19---4-------2026-11-01T16-19-00-000Z",
+      "kind": "scheduled",
+      "lane": "Community",
+      "title": "Community AI Digest (HN + Reddit)",
+      "status": "scheduled",
+      "start": "2026-11-01T16:19:00.000Z",
+      "end": "2026-11-01T17:19:00.000Z",
+      "source": "cron 19 */4 * * *"
+    },
+    {
+      "id": "scheduled-hourly-rss-yml-30---2-------2026-11-01T16-30-00-000Z",
+      "kind": "scheduled",
+      "lane": "RSS",
+      "title": "RSS Official Announcements (Every 2 Hours)",
+      "status": "scheduled",
+      "start": "2026-11-01T16:30:00.000Z",
+      "end": "2026-11-01T16:45:00.000Z",
+      "source": "cron 30 */2 * * *"
+    },
+    {
+      "id": "scheduled-podcasts-yml-41---2-------2026-11-01T16-41-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Podcast Signal",
+      "status": "scheduled",
+      "start": "2026-11-01T16:41:00.000Z",
+      "end": "2026-11-01T17:11:00.000Z",
+      "source": "cron 41 */2 * * *"
+    },
+    {
+      "id": "scheduled-arm-timeline-yml-45---2-------2026-11-01T16-45-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Arm Timeline Refresh",
+      "status": "scheduled",
+      "start": "2026-11-01T16:45:00.000Z",
+      "end": "2026-11-01T17:15:00.000Z",
+      "source": "cron 45 */2 * * *"
+    },
+    {
+      "id": "scheduled-blog-subscriptions-yml-47---2-------2026-11-01T16-47-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Naver Blog Subscriptions",
+      "status": "scheduled",
+      "start": "2026-11-01T16:47:00.000Z",
+      "end": "2026-11-01T17:17:00.000Z",
+      "source": "cron 47 */2 * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T16-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T16:50:00.000Z",
+      "end": "2026-11-01T17:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
+      "id": "scheduled-aradio-yml-50---------2026-11-01T17-50-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Aradio",
+      "status": "scheduled",
+      "start": "2026-11-01T17:50:00.000Z",
+      "end": "2026-11-01T18:20:00.000Z",
+      "source": "cron 50 * * * *"
+    },
+    {
+      "id": "scheduled-liveness-check-yml-0---6-------2026-11-01T18-00-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Pipeline Liveness Check",
+      "status": "scheduled",
+      "start": "2026-11-01T18:00:00.000Z",
+      "end": "2026-11-01T18:20:00.000Z",
+      "source": "cron 0 */6 * * *"
+    },
+    {
+      "id": "scheduled-hourly-twitter-yml-7---3-------2026-11-01T18-07-00-000Z",
+      "kind": "scheduled",
+      "lane": "Twitter/X",
+      "title": "Twitter AI News (hourly matrix)",
+      "status": "scheduled",
+      "start": "2026-11-01T18:07:00.000Z",
+      "end": "2026-11-01T19:07:00.000Z",
+      "source": "cron 7 */3 * * *"
+    },
+    {
+      "id": "scheduled-daily-ai-blogs-yml-13---6-------2026-11-01T18-13-00-000Z",
+      "kind": "scheduled",
+      "lane": "Blogs",
+      "title": "Daily AI Expert Blogs",
+      "status": "scheduled",
+      "start": "2026-11-01T18:13:00.000Z",
+      "end": "2026-11-01T18:43:00.000Z",
+      "source": "cron 13 */6 * * *"
+    },
+    {
+      "id": "scheduled-production-synthetic-yml-17---2-------2026-11-01T18-17-00-000Z",
+      "kind": "scheduled",
+      "lane": "Scheduled",
+      "title": "Production Surface Synthetic",
+      "status": "scheduled",
+      "start": "2026-11-01T18:17:00.000Z",
+      "end": "2026-11-01T18:47:00.000Z",
+      "source": "cron 17 */2 * * *"
     }
   ]
 }
