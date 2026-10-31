@@ -5,6 +5,8 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -389,7 +391,261 @@ class TranslationSegmentsTest(unittest.TestCase):
                 segments.render(source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH)
             finally:
                 os.chdir(old_cwd)
-            self.assertEqual(parity.check_pair(source, root / segments.DRAFT_PATH), [])
+            # Its dates render with month numbers glued to 월, which only the
+            # workflow's localized-number mode allows.
+            self.assertEqual(
+                parity.check_pair(
+                    source,
+                    root / segments.DRAFT_PATH,
+                    allow_localized_number_rendering=True,
+                ),
+                [],
+            )
+
+    def test_english_dates_render_as_korean_date_literals(self):
+        cases = {
+            "On October 29, 2026 the builder": "On [2026년 10월 29일] the builder",
+            "Oct 26, 2026": "[2026년 10월 26일]",
+            "the launch came on October 26–27.": "the launch came on [10월 26~27일].",
+            "On 21 September 2026 Xiaomi": "On [2026년 9월 21일] Xiaomi",
+            "Stripe agreed to buy Privy in June 2025, a": "Stripe agreed to buy Privy in [2025년 6월], a",
+            "Mainnet live March 18 with": "Mainnet live [3월 18일] with",
+            "rebased on 4 and 7 September 2026;": "rebased on [2026년 9월 4일과 7일];",
+            "on 4, 7 and 19 September 2026": "on [2026년 9월 4일, 7일과 19일]",
+            "runs September 29-October 1 in Seoul": "runs [9월 29일~10월 1일] in Seoul",
+            "conducted 26 April – 7 May 2025.": "conducted [2025년 4월 26일~5월 7일].",
+            "an April–July 2025 deal": "an [2025년 4월~7월] deal",
+            "the April–February 2026 cycle": "the [4월~2026년 2월] cycle",
+            "Sept. 4, 2026": "[2026년 9월 4일]",
+            "scheduled for 12 June.": "scheduled for [6월 12일].",
+            "Oct 7-9 2025 sales": "[2025년 10월 7~9일] sales",
+            "as of 10 Aug 18:00 UTC": "as of [8월 10일] 18:00 UTC",
+            "the 26 August 10-Q guarantee": "the [8월 26일] 10-Q guarantee",
+            "Season 1 Aug 20, 2025 – Feb 18": "Season 1 [2025년 8월 20일] – [2월 18일]",
+            "pull, Jun 2025-May 2026": "pull, [2025년 6월]-[2026년 5월]",
+            "on post-January-2024 data": "on post-[2024년 1월] data",
+            "the October-2025-to-June-2026 rally": "the [2025년 10월]-to-[2026년 6월] rally",
+            "the October 4.7 release": "the October 4.7 release",
+            "May 4/13 2026": "May 4/13 2026",
+            "in June. 5 labs": "in June. 5 labs",
+            "Long March 5": "Long March 5",
+        }
+        for english, expected in cases.items():
+            with self.subTest(english=english):
+                rendered = english
+                for start, end, korean in reversed(segments.date_spans(english)):
+                    rendered = f"{rendered[:start]}[{korean}]{rendered[end:]}"
+                self.assertEqual(rendered, expected)
+        # In a list attribute every comma separates labels.
+        self.assertEqual(
+            [korean for *_, korean in segments.date_spans("Oct 26,2026,1 Feb", commas=False)],
+            ["10월 26일", "2월 1일"],
+        )
+
+    def test_numbers_other_words_own_and_months_inside_names_are_not_dates(self):
+        for english in ("Top 10 March Madness picks", "the Gemini 3 June update", "Season 1 Aug", "May Day rally"):
+            with self.subTest(english=english):
+                self.assertEqual(segments.date_spans(english), [])
+        self.assertEqual(
+            [korean for *_, korean in segments.date_spans("On 10 March Microsoft announced")], ["3월 10일"]
+        )
+        self.assertEqual(
+            [korean for *_, korean in segments.date_spans("Top 10 March 2026 releases")], ["2026년 3월"]
+        )
+
+    def test_a_range_shares_its_year_year_first(self):
+        cases = {
+            "dated from 10 September to early October 2026": ["2026년 9월 10일", "10월"],
+            "Between April 14 and May 18, 2026, every": ["2026년 4월 14일", "5월 18일"],
+            "due January 20 and February 16, 2026.": ["2026년 1월 20일", "2월 16일"],
+            # A range that wraps past December keeps the year where it is.
+            "December 20 to January 5, 2026": ["12월 20일", "2026년 1월 5일"],
+            # Dates that are not one range keep their own years.
+            "June 3, 2025 and July 2026": ["2025년 6월 3일", "2026년 7월"],
+            "March 2 when sales hit 400, then April 2026": ["3월 2일", "2026년 4월"],
+        }
+        for english, expected in cases.items():
+            with self.subTest(english=english):
+                self.assertEqual([korean for *_, korean in segments.date_spans(english)], expected)
+
+    def test_digit_rules_match_the_opencode_segment_tool(self):
+        node = shutil.which("node")
+        if node is None:
+            self.skipTest("node runs the OpenCode tool's regexes")
+        tool = (Path(__file__).resolve().parent.parent / ".opencode/tools/translation_segment.ts").read_text(
+            encoding="utf-8"
+        )
+        token_re = re.search(r"const TOKEN_RE = (/.*?/g)\n", tool).group(1)
+        localized_re = re.search(r"const LOCALIZED_INTEGER_RE = (/.*?/g)\n", tool).group(1)
+        cases = [
+            "4월-6월", "4월–6월 2026", "1~3월", "약-5%", "⟦ARA0001⟧-6월", "가⟦ARA0001⟧-6월", "9일",
+            "3배", "2026년", "-2026년 중반", "x-3", "10월 26–27일", "10월 26-27일", "Q3", "7/10라운드",
+            "8월-⟦ARA0002⟧", "2025년-2026년", "1⟦ARA0001⟧2일", "$⟦ARA0001⟧", "⟦ARA0001⟧ 30%", "2.5배",
+        ]
+        script = (
+            f"const TOKEN_RE = {token_re}; const LOCALIZED_INTEGER_RE = {localized_re};"
+            "console.log(JSON.stringify(JSON.parse(process.argv[1]).map((text) =>"
+            " !/[0-9]/.test(text.replace(TOKEN_RE, '').replace(LOCALIZED_INTEGER_RE, '')))));"
+        )
+        accepted = json.loads(
+            subprocess.run([node, "-e", script, json.dumps(cases)], capture_output=True, text=True, check=True).stdout
+        )
+        digits = lambda text: re.findall(r"[0-9]", segments.TOKEN_RE.sub("", text))
+        for text, tool_accepts in zip(cases, accepted, strict=True):
+            with self.subTest(text=text):
+                # The renderer keeps every digit of exactly the text the tool accepts.
+                self.assertEqual(digits(segments.strip_unsafe_digits(text)) == digits(text), tool_accepts)
+
+    def test_dates_and_word_hyphens_reach_the_model_as_whole_tokens(self):
+        masked = segments._mask(
+            "The seed tweet is dated October 29, 2026 (20:23 UTC); the Link "
+            "launch came on October 26–27 and the cap moved mid-2026.",
+            preserve_commas=False,
+        )
+        text, tokens, literals, date_tokens = masked
+        self.assertEqual(
+            text,
+            "The seed tweet is dated ⟦ARA0000⟧ (⟦ARA0001⟧:⟦ARA0002⟧ UTC); the "
+            "Link launch came on ⟦ARA0003⟧ and the cap moved mid-⟦ARA0004⟧.",
+        )
+        self.assertEqual(literals, ["2026년 10월 29일", "20", "23", "10월 26~27일", "2026"])
+        self.assertEqual(date_tokens, [tokens[0], tokens[3]])
+
+    def test_word_glued_hyphens_are_not_minus_signs(self):
+        # Each phrase published a stray minus: "-60대 중반", "4 대 -27",
+        # "7/-10라운드", "-800 V 이전", "모두 -1017 이전".
+        text, _, literals, _ = segments._mask(
+            "the mid-60s margin, a 4-vs-27 index, 7-of-10 rounds, pre-800 V gear, "
+            "and V4.1-Flash-1017",
+            preserve_commas=False,
+        )
+        self.assertEqual(literals, ["60", "4", "27", "7", "10", "800", "4.1", "1017"])
+        self.assertIn("mid-⟦ARA0000⟧s", text)
+        self.assertIn("pre-⟦ARA0005⟧ V", text)
+        self.assertEqual(segments._mask("a -30% move", preserve_commas=False)[2], ["-30%"])
+
+    def test_renderer_fits_the_model_suffix_to_the_korean_date(self):
+        token = "⟦ARA0000⟧"
+        cases = {
+            f"{token}년에 인수": "2025년 6월에 인수",
+            f"{token}는 첫 출시": "2025년 6월은 첫 출시",
+            f"{token}으로 미뤘다": "2025년 6월로 미뤘다",
+            f"{token}와 같다": "2025년 6월과 같다",
+            f"{token}까지": "2025년 6월까지",
+            f"{token}월요일": "2025년 6월월요일",
+        }
+        for written, expected in cases.items():
+            with self.subTest(written=written):
+                self.assertEqual(
+                    segments.attach_korean_date(written, token, "2025년 6월"), expected
+                )
+
+    def test_every_particle_fits_a_date_ending_in_rieul(self):
+        token = "⟦ARA0000⟧"
+        date = "2025년 11월"
+        pairs = (*segments._PARTICLE_PAIRS, *segments._BOUNDED_PARTICLE_PAIRS)
+        for after_consonant, after_vowel in pairs:
+            for written in (after_consonant, after_vowel):
+                with self.subTest(written=written):
+                    self.assertEqual(
+                        segments.attach_korean_date(f"{token}{written} 다음", token, date),
+                        f"{date}{after_consonant} 다음",
+                    )
+        for written in ("로", "으로"):
+            self.assertEqual(
+                segments.attach_korean_date(f"{token}{written}부터", token, date), f"{date}로부터"
+            )
+        # The two rewrites the first repair published as "11월나" and "10일라는".
+        self.assertEqual(
+            segments.attach_korean_date(f"{token}나 2026년", token, date), "2025년 11월이나 2026년"
+        )
+        self.assertEqual(
+            segments.attach_korean_date(f"{token}라는 경첩", token, "2022년 8월 10일"),
+            "2022년 8월 10일이라는 경첩",
+        )
+        # A syllable that begins a word is not a particle, and a unit that
+        # begins a word is not a duplicate.
+        for word in ("나라", "다음", "고객", "면적", "가격", "이후", "월간 보고서", "월말", "일부", "년도"):
+            with self.subTest(word=word):
+                self.assertEqual(segments.attach_korean_date(f"{token}{word}", token, date), f"{date}{word}")
+        self.assertEqual(
+            segments.attach_korean_date(f"{token}일시 중단", token, "8월 18일"), "8월 18일일시 중단"
+        )
+        self.assertEqual(segments.attach_korean_date(f"{token}일부터", token, "8월 18일"), "8월 18일부터")
+
+    def test_particles_fit_any_final_syllable(self):
+        self.assertEqual(segments.fit_particle("초", "이 "), ("가", 1))  # 5월 초가
+        self.assertEqual(segments.fit_particle("기", "은"), ("는", 1))  # 상반기는
+        self.assertEqual(segments.fit_particle("순", "로"), ("으로", 1))  # 중순으로
+        self.assertEqual(segments.fit_particle("말", "으로"), ("로", 2))  # 말로
+        self.assertEqual(segments.fit_particle("경", "라는"), ("이라는", 2))  # 경이라는
+        self.assertEqual(segments.fit_particle("9", "는"), ("", 0))
+
+    def test_dated_article_renders_korean_dates_that_pass_parity(self):
+        source_raw = """---
+title: Link launched on October 26–27
+deck: The seed tweet is dated October 29, 2026.
+---
+
+## 01. Timeline
+
+On 21 September 2026 the index was rebased; Stripe agreed to buy Privy in June 2025 [^1].
+
+The window ran September 29-October 1 and the cap moved mid-2026 [^1].
+
+:::references
+- {id: 1, title: "Primary source", url: "https://example.com/a"}
+:::
+"""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "dated.ara.md"
+            source.write_text(source_raw, encoding="utf-8")
+            source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+            compiled, _ = segments.build_manifest(source, source_sha)
+            extracted = segments.extract_segments(compiled)
+            self.assertNotRegex(
+                "\n".join(segment.text for segment in extracted),
+                r"\b(?:June|September|October)\b",
+            )
+            # Write what the live models wrote: a unit glued to every token.
+            (root / ".tmp").mkdir()
+            (root / segments.RESULT_PATH).write_text(
+                "".join(
+                    json.dumps(
+                        {
+                            "id": segment.id,
+                            "text": " ".join(
+                                f"{token}년에" for token in segment.tokens
+                            ) + " 한국어 번역문",
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
+                    for segment in extracted
+                ),
+                encoding="utf-8",
+            )
+            old_cwd = Path.cwd()
+            try:
+                os.chdir(root)
+                segments.render(source, source_sha, segments.RESULT_PATH, segments.DRAFT_PATH)
+            finally:
+                os.chdir(old_cwd)
+            draft = (root / segments.DRAFT_PATH).read_text(encoding="utf-8")
+            for korean in (
+                "10월 26~27일에",
+                "2026년 10월 29일에",
+                "2026년 9월 21일에",
+                "2025년 6월에",
+                "9월 29일~10월 1일에",
+            ):
+                self.assertIn(korean, draft)
+            self.assertNotIn("-2026", draft)
+            self.assertEqual(
+                parity.check_pair(source, root / segments.DRAFT_PATH, allow_localized_number_rendering=True),
+                [],
+            )
 
     def test_strip_unsafe_digits_keeps_tokens_and_korean_integer_forms(self):
         token = "⟦ARA0007⟧"
@@ -402,6 +658,10 @@ class TranslationSegmentsTest(unittest.TestCase):
         self.assertEqual(segments.strip_unsafe_digits(f"${token}"), token)
         self.assertEqual(segments.strip_unsafe_digits(f"{token}%"), token)
         self.assertEqual(segments.strip_unsafe_digits(f"$2.5{token}"), token)
+        # A range dash between Korean units is not a minus sign; stripping
+        # "-6" published "4월월 2026" for "Apr-Jun 2026".
+        self.assertEqual(segments.strip_unsafe_digits(f"{token} 4월-6월"), f"{token} 4월-6월")
+        self.assertEqual(segments.strip_unsafe_digits(f"{token} -3배"), f"{token} 배")
 
     def test_renderer_allows_korean_integer_forms_and_strips_unsafe_numbers(self):
         with tempfile.TemporaryDirectory() as td:
@@ -560,6 +820,14 @@ class TranslationParityTest(unittest.TestCase):
                 [],
             )
 
+            target.write_text(
+                localized.replace("안정적인", "4월-6월의 안정적인", 1), encoding="utf-8"
+            )
+            self.assertEqual(
+                parity.check_pair(source, target, allow_localized_number_rendering=True),
+                [],
+            )
+
             target.write_text(localized.replace("25%", "향상"), encoding="utf-8")
             self.assertIn(
                 "source numeric-token multiset was not preserved or target added "
@@ -585,6 +853,90 @@ class TranslationParityTest(unittest.TestCase):
                         allow_localized_number_rendering=True,
                     ),
                 )
+
+    def test_stray_minus_before_a_word_glued_number_fails(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "margin.ara.md"
+            target = root / "margin.ko.ara.md"
+            source.write_text(
+                "---\ntitle: Margins\n---\n\nMargins stayed in the mid-60s while 7-of-10 rounds passed.\n",
+                encoding="utf-8",
+            )
+            clean = "---\ntitle: 마진\n---\n\n매출총이익률은 60대 중반을 유지했고 10회 중 7회가 통과했다.\n"
+            target.write_text(clean, encoding="utf-8")
+            self.assertEqual(parity.check_pair(source, target), [])
+            target.write_text(clean.replace("60대", "-60대"), encoding="utf-8")
+            self.assertIn("numeric-token multiset changed", parity.check_pair(source, target))
+
+    def test_character_references_are_not_numbers(self):
+        source_raw = SOURCE.replace(
+            ":::references",
+            ':::donut\n- {label: "Co-founders\' 80% pledge", value: 80}\n- {label: Other, value: 20}\n:::\n\n:::references',
+        )
+        korean_raw = KOREAN.replace(
+            ":::references",
+            ":::donut\n- {label: 공동창업자 80% 서약, value: 80}\n- {label: 기타, value: 20}\n:::\n\n:::references",
+        )
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "alpha.ara.md"
+            target = root / "alpha.ko.html"
+            source.write_text(source_raw, encoding="utf-8")
+            target.write_text(compile_source(korean_raw), encoding="utf-8")
+            # The source escapes the apostrophe as &#x27;; dropping it in
+            # Korean drops no number.
+            self.assertIn("&#x27;", compile_source(source_raw))
+            self.assertEqual(
+                parity.check_pair(source, target, allow_localized_number_rendering=True), []
+            )
+
+    def test_impossible_or_english_order_korean_dates_fail(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "alpha.ara.md"
+            target = root / "alpha.ko.html"
+            source.write_text(SOURCE, encoding="utf-8")
+            korean = compile_source(KOREAN)
+            # Shapes the 2026-09-22 and 2026-10-31 translations published.
+            for garbled, label in (
+                ("29월 2026", "impossible month"),
+                ("Link 출시는 26월 27에", "impossible month"),
+                ("21년 2026월", "impossible month"),
+                ("10월 26, 2026", "English word order"),
+                ("4월 2026에", "English word order"),
+                ("10일 7월 2026", "English word order"),
+                ("7월 17-20, 2026에", "English word order"),
+            ):
+                with self.subTest(garbled=garbled):
+                    target.write_text(
+                        korean.replace("안정적인", f"{garbled} 안정적인", 1), encoding="utf-8"
+                    )
+                    errors = parity.check_pair(
+                        source, target, allow_localized_number_rendering=True
+                    )
+                    self.assertTrue(
+                        any(label in error for error in errors), errors
+                    )
+            for valid in (
+                "2026년 10월 29일",
+                "10월 26–27일에",
+                "2026년 4월",
+                "13개월",
+                "12월 31일",
+                "3월 2026년형",
+                # Ordinary Korean the guard once refused.
+                "3월 3일, 2026년 가이던스",
+                "6월 9일, 2027년까지",
+                "13월의 월급",
+                "3월 2026명",
+            ):
+                with self.subTest(valid=valid):
+                    self.assertEqual(
+                        parity.korean_date_errors("", f"{valid} 안정적인"), []
+                    )
+            # A Korean shape the source already quotes is not a new error.
+            self.assertEqual(parity.korean_date_errors("「4월 2026」", "「4월 2026」"), [])
 
     def test_changed_directive_topology_fails(self):
         with tempfile.TemporaryDirectory() as td:

@@ -185,8 +185,18 @@ jobs:
             - Never translate, remove, reorder, duplicate, or alter opaque tokens.
             - Do not invent raw digits. Source numbers are already opaque
               tokens. The only allowed untokenized digits are an integer
-              glued to Hangul (`9일`, `3배`). Never write `$1,000`, `2.5`,
-              `30%`, `2026`, or any other bare number.
+              glued to Hangul (`9일`, `3배`, `9월`). Never write `$1,000`,
+              `2.5`, `30%`, `2026`, or any other bare number.
+            - Dates with a month name are already Korean. Trusted code
+              renders a source date such as October 29, 2026, 29 Oct, or
+              June 2025 as a single token that becomes 2026년 10월 29일,
+              10월 29일, or 2025년 6월. Never glue 월 to a token; translate
+              a month name left in the text to its number glued to 월
+              (September becomes `9월`). Keep clock times and numeric dates
+              as written (`⟦ARA0001⟧:⟦ARA0002⟧ UTC`).
+            - A hyphen inside an English compound, as in mid-⟦ARA0000⟧s or
+              7-of-⟦ARA0001⟧, is not a minus sign; translate the compound
+              without it (`⟦ARA0000⟧대 중반`).
             - Translate reader-facing prose, headings, labels, captions,
               callouts, quotations, and reference titles into idiomatic Korean.
             - Do not browse, research, add claims, add sources, drop sections,
