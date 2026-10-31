@@ -1,0 +1,13 @@
+Speaker 1: Saturday, October thirty-first, twenty twenty-six.
+Speaker 2: [high_energy] Intel just plunged [emphasis] twenty-eight point six percent [/emphasis], as AI demand hoards the world's memory supply, and the broader chip index fell seven percent with it.
+Speaker 1: The guidance is what spooked investors. Intel sees fourth-quarter gross margin around thirty-eight percent, down from forty-four point one.
+Speaker 2: And memory is getting pricier for everyone, with PC DRAM contract prices up thirteen to eighteen percent quarter over quarter.
+Speaker 1: Another casualty of the AI shift, Reddit fell twenty-nine percent after losing traffic to Google's AI Mode.
+Speaker 2: That is search eating the open web in real time, and the market is pricing it in fast.
+Speaker 1: On the product front, Anthropic renamed its Max twenty times plan to Claude Ultra and dropped the five-hour usage limit.
+Speaker 2: Worth noting, Amazon Web Services is offering up to [emphasis] eighty billion dollars [/emphasis] in supplier financing to keep the buildout moving.
+Speaker 1: On security, Epoch reports the open-weight model GLM five point three exploited six Firefox releases.
+Speaker 2: And once it was set up, each exploit cost roughly [dramatic_pause] [emphasis] one thousand dollars [/emphasis]. That is cheap offense.
+Speaker 1: Trending today, banks and Amazon are walling off third-party AI agents from their platforms.
+Speaker 2: The open agent web is meeting its first real gatekeepers.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

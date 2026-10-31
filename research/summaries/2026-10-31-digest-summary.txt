@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-10-31
+
+TOP STORIES:
+• Intel plunges 28.6% as AI hoards memory; chip index -7%
+• Reddit falls 29% on lost Google AI Mode traffic
+• Anthropic renames Max 20x to Claude Ultra, drops 5-hour limit
+• Open-weight GLM-5.3 exploited six Firefox releases (Epoch)
+
+KEY NUMBERS:
+• Intel Q4 gross margin guide 38.0% vs 44.1%
+• AWS: up to $80B supplier financing
+• PC DRAM contract prices +13-18% QoQ in Q4
+• ~$1K per Firefox exploit once set up
+
+TRENDING: Banks and Amazon walling off third-party AI agents
+
+Full digest on GitHub.
