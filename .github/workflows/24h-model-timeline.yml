@@ -13,6 +13,10 @@ concurrency:
 jobs:
   model-timeline:
     runs-on: [self-hosted, Linux]
+    # The 90-minute agent step plus about 15 minutes for the unbounded fetch,
+    # safe-push, and telemetry steps, as on wiki-ingest.yml. Successful runs
+    # took at most 28 min (p95 21 min).
+    timeout-minutes: 105
     # uv's managed Python lives under HOME, which the Claude sandbox denies.
     # Use the same sandbox-readable interpreter for host sync and agent runs;
     # an explicit request overrides .python-version (the project supports 3.10+).

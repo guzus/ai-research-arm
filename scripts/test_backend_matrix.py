@@ -16,6 +16,7 @@ import stat
 import subprocess
 import sys
 import tempfile
+import textwrap
 import time
 import unittest
 from unittest import mock
@@ -399,7 +400,7 @@ class RoutingInvariants(unittest.TestCase):
                       "Bash(git add research/community/*)", "Bash(git commit -m *)"],
         "arxiv": ["Read(research/arxiv/**)", "Read(research/summaries/**)",
                   "Edit(research/arxiv/**)", "Edit(research/summaries/**)",
-                  'Bash(curl -s "https://export.arxiv.org/api/query?*)',
+                  'Bash(curl -q -s "https://export.arxiv.org/api/query?*)',
                   "Bash(git add research/arxiv/*)", "Bash(git add research/summaries/*)",
                   "Bash(git commit -m *)"],
         "wiki-ingest": ["Read(docs/wiki-schema.md)", "Read(research/digest/**)",
@@ -741,7 +742,7 @@ class RoutingInvariants(unittest.TestCase):
                                      f"{lane}: documented {command!r}: {result.stderr}")
                     # A documented page must also fit in what the CLI shows.
                     for host, (size, _, limit) in CURL_PAGE_LIMITS.items():
-                        if command.startswith(f'curl -s "https://{host}/'):
+                        if command.startswith(f'curl -q -s "https://{host}/'):
                             pages = re.findall(rf"[?&]{size}=(\d+)", command)
                             self.assertTrue(pages and all(int(page) <= limit for page in pages),
                                             f"{lane}: {command!r} asks for more than {limit}")
@@ -1034,11 +1035,15 @@ class RoutingInvariants(unittest.TestCase):
                         'cp "$GITHUB_ACTION_PATH/birdy-fast" "$build_dir/birdy-fast"',
                         'cp "$GITHUB_ACTION_PATH/tool-guard.mjs" "$build_dir/tool-guard.mjs"')
                 self.assertEqual(expected, block(claude, begin, end))
-        # The host import guard is the trusted boundary for OpenCode too.
-        opencode = normalize(shell("run-opencode-container"), "opencode")
-        self.assertEqual(block(cursor, "# TRUSTED_IMPORT_GUARD_BEGIN", "# TRUSTED_IMPORT_GUARD_END"),
-                         block(opencode, "# TRUSTED_IMPORT_GUARD_BEGIN",
-                               "# TRUSTED_IMPORT_GUARD_END"))
+        # OpenCode shares every span but its attempt telemetry, and its
+        # CONTAINER_RUN block is Cursor's; Claude's adds the token pipe.
+        opencode = normalize(shell("run-opencode-container").replace("OpenCode", "opencode"),
+                             "opencode")
+        for begin, end in spans + (("# CONTAINER_RUN_BEGIN", "# CONTAINER_RUN_END"),):
+            if begin == "# TRUSTED_ATTEMPT_TELEMETRY_BEGIN":
+                continue
+            with self.subTest(runner="opencode", begin=begin):
+                self.assertEqual(block(cursor, begin, end), block(opencode, begin, end))
         # The wiki lane's uv is the Cursor image's pinned copy, with the same
         # copy-mode install; only its Python moves off the noexec /tmp.
         def lines_with(text: str, needle: str) -> list[str]:
@@ -2410,6 +2415,11 @@ exit "$FAKE_RUN_STATUS"
         self.assertIn('[ "$segment_calls" -eq 0 ]', action)
         self.assertIn('[ "$attempt_count" -eq 1 ]', action)
         self.assertIn("opencode attempt telemetry is malformed", action)
+        # Nothing in the attempt log is streamed. The old `tail --pid` usually
+        # lost its race with the redirect that creates the log, and when it
+        # won it streamed raw model and provider text.
+        self.assertNotIn("tail -n +1 -f", action)
+        self.assertNotIn("tail_pid", action)
         for name, expected_mode in {
                 "generative-research.yml": "generative",
                 "hourly-twitter.yml": "twitter",
@@ -2480,13 +2490,25 @@ exit "$FAKE_RUN_STATUS"
         self.assertIn(
             'cp -- "$CURSOR_CONFIG_DIR/cli-config.json" "$HOME/.cursor/cli-config.json"',
             action)
-        self.assertIn(
-            'if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ] \\',
-            action)
-        self.assertIn(
-            '[ "$artifact_count" -eq 0 ]; then',
-            action)
-        self.assertIn('cat -- "$attempt_log"', action)
+        # The CLI's own output never reaches the public log: in text mode the
+        # attempt log is the model reply or the CLI error. It is only created,
+        # written by the one CLI call, grepped by the fixed fatal and segment
+        # patterns, and copied (capped) for the host's typed summary.
+        self.assertNotIn('cat -- "$attempt_log"', action)
+        self.assertNotIn("tail -n +1 -f", action)
+        self.assertNotIn("tail_pid", action)
+        self.assertEqual([
+            'attempt_log="/tmp/cursor-attempt-${attempt_count}.log"',
+            'rm -f -- "$attempt_log"',
+            '"$(cat /tmp/cursor-prompt.md)" > "$attempt_log" 2>&1 &',
+            '"$(cat /tmp/cursor-prompt.md)" > "$attempt_log" 2>&1 &',
+            'fatal=$(grep -m1 -oiE "$cursor_fatal_pattern" "$attempt_log" 2>/dev/null'
+            ' | cut -c1-300)',
+            'segment_calls=$(grep -cF "translation_segment {" "$attempt_log" || true)',
+            'if [ -f "${attempt_log:-}" ] && [ ! -L "${attempt_log:-}" ]; then',
+            'head -c 1048576 -- "$attempt_log" > .cursor-result.txt || true',
+        ], [line.strip() for line in action.splitlines() if "attempt_log" in line])
+        self.assertIn("/usr/bin/python3 -I scripts/summarize_cursor_result.py", action)
         self.assertIn("HOME=/tmp/cursor-home", action)
         self.assertIn('--sandbox disabled', action)
         self.assertIn('timeout "${remaining_seconds}s" agent -p --force --trust', action)
@@ -2569,6 +2591,20 @@ exit "$FAKE_RUN_STATUS"
                   "cursor-cli-canary.yml").read_text(encoding="utf-8")
         self.assertIn(f"model: cursor/{model_id}", canary)
         self.assertIn("CURSOR-CLI-CANARY-OK", canary)
+        # The adapter never logs the reply, so the token is proven from the
+        # typed summary it appends to the output file, not by grepping text.
+        steps = yaml.safe_load(canary)["jobs"]["canary"]["steps"]
+        call = next(step for step in steps
+                    if step.get("uses") == "./.github/actions/run-cursor-container")
+        self.assertEqual("canary", call["with"]["mode"])
+        self.assertIn("CURSOR-CLI-CANARY-OK", call["with"]["prompt-text"])
+        self.assertEqual("${{ runner.temp }}/cursor-cli-canary.out", call["with"]["output-file"])
+        self.assertLess(steps.index(call), len(steps) - 1)
+        check = steps[-1]["run"]
+        self.assertIn("python3 scripts/check_cursor_canary.py", check)
+        self.assertIn('"${RUNNER_TEMP:-/tmp}/cursor-cli-canary.out"', check)
+        self.assertIn("--token CURSOR-CLI-CANARY-OK", check)
+        self.assertNotIn("grep", check)
         self.assertIn("persist-credentials: false", canary)
         self.assertIn("set-safe-directory: false", canary)
         self.assertIn(".cursor-precheckout.", canary)
@@ -2587,6 +2623,315 @@ exit "$FAKE_RUN_STATUS"
             self.assertIn("permissions", cfg, name)
             self.assertIsInstance((cfg["permissions"]).get("allow", []), list, name)
             self.assertIsInstance((cfg["permissions"]).get("deny", []), list, name)
+
+    @staticmethod
+    def cursor_action_shell() -> str:
+        action_path = REPO_ROOT / ".github/actions/run-cursor-container/action.yml"
+        return "\n".join(st.get("run") or "" for st in
+                         yaml.safe_load(action_path.read_text(encoding="utf-8"))["runs"]["steps"])
+
+    @staticmethod
+    def write_fakes(bin_dir: Path, **scripts: str) -> None:
+        """timeout runs its command directly; sleep is short, so a poll is fast."""
+        scripts = {"timeout": '#!/bin/bash\nshift\nexec "$@"\n',
+                   "sleep": "#!/bin/bash\nexec /bin/sleep 0.05\n", **scripts}
+        for name, body in scripts.items():
+            (bin_dir / name).write_text(body, encoding="utf-8")
+            (bin_dir / name).chmod(0o755)
+
+    def test_cursor_attempt_loop_hands_the_reply_to_the_host_and_never_prints_it(self):
+        shell = self.cursor_action_shell()
+        loop = shell.split("# CURSOR_ATTEMPT_LOOP_BEGIN", 1)[1].split(
+            "# CURSOR_ATTEMPT_LOOP_END", 1)[0]
+        fake_agent = r"""#!/bin/bash
+attempt=$(( $(cat "$FAKE_COUNT" 2>/dev/null || echo 0) + 1 ))
+echo "$attempt" > "$FAKE_COUNT"
+echo "agent $*" >> "$FAKE_LOG"
+case "$FAKE_BEHAVIOR" in
+  token) echo "CURSOR-CLI-CANARY-OK" ;;
+  model) echo "Cannot use this model: grok-4.6-fast. Available models: auto" >&2; exit 1 ;;
+  flood) yes FLOOD-REPLY | head -c 2097152 ;;
+  fatal)
+    echo "ActionRequiredError: Weekly usage limit reached. ::warning::INJECTED-REPLY"
+    exec /bin/sleep 30 ;;
+  ko-retry)
+    if [ "$attempt" -eq 2 ]; then
+      mkdir -p .tmp
+      echo segment > .tmp/generative-translation.ko.segments.jsonl
+      echo "SECOND-REPLY"
+    else
+      echo "FIRST-REPLY"
+    fi ;;
+esac
+"""
+        status_line = (r"Cursor attempt {n}: status={status} translation_segment_calls=0 "
+                       r"artifacts={artifacts} remaining_seconds=([1-5][0-9]|60)")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            bin_dir = Path(tmp) / "bin"
+            bin_dir.mkdir()
+            self.write_fakes(bin_dir, agent=fake_agent)
+
+            def run_case(behavior: str, mode: str = "editorial", lane: str = "",
+                         artifacts: str = "", plant: str = ""):
+                case = Path(tempfile.mkdtemp(dir=tmp))
+                work = case / "work"
+                work.mkdir()
+                (case / "cursor-prompt.md").write_text("prompt-body", encoding="utf-8")
+                result = work / ".cursor-result.txt"
+                if plant == "symlink":
+                    (case / "outside.txt").write_text("OUTSIDE\n", encoding="utf-8")
+                    result.symlink_to(case / "outside.txt")
+                elif plant == "directory":
+                    result.mkdir()
+                    (result / "inner").write_text("x", encoding="utf-8")
+                env = {**os.environ, "PATH": f"{bin_dir}:/usr/bin:/bin",
+                       "FAKE_COUNT": str(case / "count"), "FAKE_LOG": str(case / "calls"),
+                       "FAKE_BEHAVIOR": behavior,
+                       "CURSOR_MODEL_REF": "cursor/cursor-grok-4.6-high-fast",
+                       "AGENT_TIMEOUT_MINUTES": "1", "AGENT_LANE": lane, "RUN_MODE": mode,
+                       "RETURN_ARTIFACTS": artifacts}
+                script = ("set -uo pipefail\n" + loop.replace("/tmp/", f"{case}/")
+                          + '\necho "final_status=$agent_status"')
+                checked = subprocess.run(["bash", "-c", script], cwd=work, env=env,
+                                         capture_output=True, text=True, timeout=60,
+                                         check=False)
+                self.assertEqual(0, checked.returncode, (behavior, checked.stderr))
+                self.assertFalse(result.is_symlink(), behavior)
+                self.assertTrue(result.is_file(), behavior)
+                return (checked.stdout.splitlines(), checked.stderr, result.read_bytes(),
+                        (work / ".cursor-attempt-telemetry").read_text(encoding="utf-8"),
+                        (case / "calls").read_text(encoding="utf-8"), case)
+
+            # Canary: the token reaches the host file, never the log, and the
+            # read-only CLI branch is unchanged.
+            stdout, stderr, result, telemetry, calls, _ = run_case("token", mode="canary")
+            self.assertEqual(2, len(stdout), stdout)
+            self.assertRegex(stdout[0], status_line.format(n=1, status=0, artifacts=0))
+            self.assertEqual("final_status=0", stdout[1])
+            self.assertNotIn("CANARY-OK", "\n".join(stdout) + stderr)
+            self.assertEqual(b"CURSOR-CLI-CANARY-OK\n", result)
+            self.assertEqual("attempt_count=1\nlast_agent_status=0\ntranslation_segment_calls=0\n"
+                             "artifact_count=0\nretry_reason=none\n", telemetry)
+            self.assertEqual("agent -p --mode ask --trust --sandbox disabled --workspace "
+                             "/workspace --model cursor-grok-4.6-high-fast --output-format text "
+                             "--disable-auto-update prompt-body\n", calls)
+            # A link or directory the model left at the path is replaced, and
+            # the link target is never written.
+            for plant in ("symlink", "directory"):
+                stdout, _, result, _, calls, case = run_case("token", plant=plant)
+                self.assertEqual(b"CURSOR-CLI-CANARY-OK\n", result)
+                self.assertIn("agent -p --force --trust", calls)
+                if plant == "symlink":
+                    self.assertEqual("OUTSIDE\n",
+                                     (case / "outside.txt").read_text(encoding="utf-8"))
+            # A CLI error keeps its status and stays out of the log.
+            stdout, stderr, result, telemetry, _, _ = run_case("model")
+            self.assertEqual(["final_status=1"], stdout[1:])
+            self.assertRegex(stdout[0], status_line.format(n=1, status=1, artifacts=0))
+            self.assertIn(b"Cannot use this model", result)
+            self.assertNotIn("Cannot use", "\n".join(stdout) + stderr)
+            self.assertIn("last_agent_status=1\n", telemetry)
+            # A runaway reply is capped at the 1 MiB the host accepts.
+            stdout, stderr, result, _, _, _ = run_case("flood")
+            self.assertEqual(1048576, len(result))
+            self.assertNotIn("FLOOD", "\n".join(stdout) + stderr)
+            # The fatal abort names only the fixed keyword, never the reply.
+            stdout, stderr, result, telemetry, _, _ = run_case("fatal")
+            self.assertEqual(3, len(stdout), stdout)
+            self.assertRegex(stdout[0], r"^::error::Cursor CLI returned an unrecoverable error; "
+                             r"aborting this attempt instead of waiting out the ([1-5][0-9]|60)s "
+                             r"timeout: usage limit$")
+            self.assertRegex(stdout[1], status_line.format(n=1, status=143, artifacts=0))
+            self.assertEqual("final_status=143", stdout[2])
+            self.assertNotIn("INJECTED", "\n".join(stdout) + stderr)
+            self.assertNotIn("Weekly", "\n".join(stdout) + stderr)
+            self.assertIn(b"Weekly usage limit reached", result)
+            self.assertIn("last_agent_status=143\n", telemetry)
+            # The Korean zero-output retry is unchanged and the host gets the
+            # last attempt's reply.
+            stdout, stderr, result, telemetry, _, _ = run_case(
+                "ko-retry", lane="generative-research-ko",
+                artifacts=".tmp/generative-translation.ko.segments.jsonl")
+            self.assertEqual(4, len(stdout), stdout)
+            self.assertRegex(stdout[0], status_line.format(n=1, status=0, artifacts=0))
+            self.assertEqual("Retrying Korean translation once after a zero-output Cursor attempt.",
+                             stdout[1])
+            self.assertRegex(stdout[2], status_line.format(n=2, status=0, artifacts=1))
+            self.assertEqual("final_status=0", stdout[3])
+            self.assertEqual(b"SECOND-REPLY\n", result)
+            self.assertNotIn("REPLY", "\n".join(stdout) + stderr)
+            self.assertEqual("attempt_count=2\nlast_agent_status=0\ntranslation_segment_calls=0\n"
+                             "artifact_count=1\n"
+                             "retry_reason=zero-artifact-zero-translation-segment\n", telemetry)
+
+    def test_cursor_result_summary_never_prints_the_reply_or_changes_the_status(self):
+        from summarize_cursor_result import MAX_RESULT_BYTES, summarize
+
+        shell = self.cursor_action_shell()
+        block = shell.split("# CURSOR_RESULT_SUMMARY_BEGIN", 1)[1].split(
+            "# CURSOR_RESULT_SUMMARY_END", 1)[0]
+        # Cursor-only and outside every TRUSTED_* span the Claude runner
+        # copies; nothing in it may exit or set the status.
+        self.assertLess(shell.index("# TRUSTED_ATTEMPT_TELEMETRY_END"),
+                        shell.index("# CURSOR_RESULT_SUMMARY_BEGIN"))
+        self.assertLess(shell.index("# CURSOR_RESULT_SUMMARY_END"),
+                        shell.index("# TRUSTED_IMPORT_GUARD_BEGIN"))
+        code = "\n".join(line for line in block.splitlines()
+                         if not line.lstrip().startswith("#"))
+        self.assertNotRegex(code, r"\bexit\b")
+        self.assertNotRegex(code, r"\bagent_status=")
+        token = b"CURSOR-CLI-CANARY-OK\n"
+        hostile = b"done\r::add-mask::SECRET-VALUE\n::error::INJECTED\r\n%0A::warning::X"
+        usage_limit = b"ActionRequiredError: Weekly usage limit reached. Buy credits.\n"
+
+        def run(case: str, status: int, content: bytes = b"", kind: str = "file",
+                output: str = "file", cwd: Path = REPO_ROOT) -> tuple[int, str, str]:
+            with tempfile.TemporaryDirectory() as tmp:
+                tmp_path = Path(tmp)
+                isolated = tmp_path / "isolated"
+                build = tmp_path / "build"
+                isolated.mkdir()
+                build.mkdir()
+                result = isolated / ".cursor-result.txt"
+                if kind == "file":
+                    result.write_bytes(content)
+                elif kind == "symlink":
+                    (tmp_path / "elsewhere.txt").write_bytes(token)
+                    result.symlink_to(tmp_path / "elsewhere.txt")
+                elif kind == "directory":
+                    result.mkdir()
+                elif kind == "fifo":
+                    os.mkfifo(result)
+                elif kind == "unreadable":
+                    result.write_bytes(token)
+                    result.chmod(0)
+                output_file = tmp_path / "output.txt"
+                output_file.write_text("container line\n", encoding="utf-8")
+                env = os.environ.copy()
+                env.update({
+                    "isolated_workspace": str(isolated), "build_dir": str(build),
+                    "agent_status": str(status),
+                    "OUTPUT_FILE": {"file": str(output_file), "none": "",
+                                    "missing-dir": str(tmp_path / "nodir" / "out.txt")}[output],
+                })
+                # Bytes, not text mode: universal newlines would turn a
+                # leaked carriage return into an innocent line break.
+                checked = subprocess.run(
+                    ["bash", "-c", "set -euo pipefail\n" + block
+                     + '\necho "final_status=$agent_status"'],
+                    cwd=cwd, env=env, capture_output=True, timeout=60, check=False)
+                self.assertEqual(0, checked.returncode, (case, checked.stderr))
+                stdout, _, final = checked.stdout.decode("utf-8").rpartition("final_status=")
+                written = output_file.read_bytes().decode("utf-8")
+                for text in (stdout, written):
+                    for leaked in ("SECRET-VALUE", "INJECTED", "add-mask", "Weekly", "\r"):
+                        self.assertNotIn(leaked, text, case)
+                return int(final.strip()), stdout, written
+
+        final, stdout, written = run("canary token", 0, token)
+        self.assertEqual(0, final)
+        self.assertEqual(summarize(0, token) + "\n", stdout)
+        self.assertEqual("container line\n" + summarize(0, token) + "\n", written)
+        self.assertEqual((0, summarize(0, hostile) + "\n"), run("hostile reply", 0, hostile)[:2])
+        # A failure keeps its own status and gets a class, never the text.
+        final, stdout, _ = run("usage limit", 1, usage_limit)
+        self.assertEqual((1, summarize(1, usage_limit) + "\n"), (final, stdout))
+        self.assertTrue(stdout.endswith(" cli_error=usage_limit\n"))
+        self.assertEqual((124, summarize(124, b"") + "\n"), run("timeout", 124)[:2])
+        self.assertEqual((0, summarize(0, b"y" * MAX_RESULT_BYTES) + "\n"),
+                         run("at the cap", 0, b"y" * MAX_RESULT_BYTES)[:2])
+        # Anything but a regular, unlinked file within 1 MiB is not read: the
+        # summary carries placeholders, not the link target's hash.
+        unread = [("symlink", b""), ("directory", b""), ("fifo", b""), ("missing", b""),
+                  ("file", b"z" * (MAX_RESULT_BYTES + 1))]
+        if os.geteuid() != 0:
+            unread.append(("unreadable", b""))
+        for kind, content in unread:
+            with self.subTest(kind=kind, size=len(content)):
+                self.assertEqual((0, summarize(0, None) + "\n"),
+                                 run(kind, 0, content, kind=kind)[:2])
+                self.assertEqual((3, summarize(3, None) + "\n"),
+                                 run(kind, 3, content, kind=kind)[:2])
+        # No output file: the line is still logged. A broken one, or a
+        # missing summarizer, never fails the step or touches the status.
+        final, stdout, written = run("no output file", 0, token, output="none")
+        self.assertEqual((0, summarize(0, token) + "\n", "container line\n"),
+                         (final, stdout, written))
+        self.assertEqual((0, summarize(0, token) + "\n"),
+                         run("unwritable output", 0, token, output="missing-dir")[:2])
+        with tempfile.TemporaryDirectory() as elsewhere:
+            self.assertEqual((7, ""), run("no summarizer", 7, token, cwd=Path(elsewhere))[:2])
+        # The host gate holds on its own, not only through the summarizer's
+        # O_NOFOLLOW: a stand-in that would read anything is never handed a
+        # link, a special file, or an oversized one.
+        with tempfile.TemporaryDirectory() as stand_in:
+            (Path(stand_in) / "scripts").mkdir()
+            (Path(stand_in) / "scripts" / "summarize_cursor_result.py").write_text(
+                "import sys\nprint('ARGS', *(arg.rsplit('/', 1)[-1] for arg in sys.argv[1:]))\n",
+                encoding="utf-8")
+            for kind, content, handed in (
+                    ("file", token, True), ("symlink", b"", False), ("directory", b"", False),
+                    ("fifo", b"", False), ("file", b"z" * (MAX_RESULT_BYTES + 1), False)):
+                with self.subTest(gate=kind, size=len(content)):
+                    expected = "ARGS --status 0" + (
+                        " --result-file .cursor-result.txt" if handed else "") + "\n"
+                    self.assertEqual(expected, run(f"gate {kind}", 0, content, kind=kind,
+                                                   cwd=Path(stand_in))[1])
+
+    def test_opencode_fatal_abort_names_only_the_fixed_keyword(self):
+        action_doc = yaml.safe_load(
+            (REPO_ROOT / ".github/actions/run-opencode-container/action.yml")
+            .read_text(encoding="utf-8"))
+        run = action_doc["runs"]["steps"][0]["run"]
+        loop = run.split("# OPENCODE_ATTEMPT_LOOP_BEGIN", 1)[1].split(
+            "# OPENCODE_ATTEMPT_LOOP_END", 1)[0]
+        fake_opencode = r"""#!/bin/bash
+case "$FAKE_BEHAVIOR" in
+  fatal)
+    printf "%s %s\n" "ERROR service=llm level=ERROR msg=::warning::INJECTED-FREE-TEXT" \
+      "sk-SECRET error=Insufficient balance"
+    exec /bin/sleep 30 ;;
+  prose) echo "The model wrote: level=WARN Insufficient balance is a story." ;;
+esac
+"""
+        with tempfile.TemporaryDirectory() as tmp:
+            bin_dir = Path(tmp) / "bin"
+            bin_dir.mkdir()
+            self.write_fakes(bin_dir, opencode=fake_opencode)
+
+            def run_case(behavior: str) -> tuple[list[str], str]:
+                case = Path(tempfile.mkdtemp(dir=tmp))
+                (case / "opencode-prompt.md").write_text("prompt", encoding="utf-8")
+                work = case / "work"
+                work.mkdir()
+                env = {**os.environ, "PATH": f"{bin_dir}:/usr/bin:/bin",
+                       "FAKE_BEHAVIOR": behavior, "OPENCODE_MODEL_REF": "opencode-go/x",
+                       "AGENT_TIMEOUT_MINUTES": "1", "AGENT_LANE": "", "RUN_MODE": "canary",
+                       "ALLOWED_PATHS": "", "RETURN_ARTIFACTS": ""}
+                script = ("set -uo pipefail\n" + loop.replace("/tmp/", f"{case}/")
+                          + '\necho "final_status=$agent_status"')
+                checked = subprocess.run(["bash", "-c", script], cwd=work, env=env,
+                                         capture_output=True, text=True, timeout=60,
+                                         check=False)
+                self.assertEqual(0, checked.returncode, (behavior, checked.stderr))
+                return checked.stdout.splitlines(), checked.stderr
+
+            stdout, stderr = run_case("fatal")
+            self.assertEqual(3, len(stdout), stdout)
+            self.assertRegex(stdout[0], r"^::error::OpenCode provider returned an unrecoverable "
+                             r"error; aborting this attempt instead of waiting out the "
+                             r"([1-5][0-9]|60)s timeout: Insufficient balance$")
+            self.assertRegex(stdout[1], r"^OpenCode attempt 1: status=143 ")
+            self.assertEqual("final_status=143", stdout[2])
+            for leaked in ("INJECTED", "SECRET", "level=ERROR", "msg="):
+                self.assertNotIn(leaked, "\n".join(stdout) + stderr)
+            # Detection itself is unchanged: the keyword alone, outside an
+            # ERROR log line, never aborts the run.
+            stdout, _ = run_case("prose")
+            self.assertEqual(2, len(stdout), stdout)
+            self.assertRegex(stdout[0], r"^OpenCode attempt 1: status=0 ")
+            self.assertEqual("final_status=0", stdout[1])
 
     def test_cursor_twitter_tier_labels_name_the_served_model(self):
         model_id = self.assert_single_cursor_model()
@@ -2653,6 +2998,201 @@ exit "$FAKE_RUN_STATUS"
             for step in obs.dispatch_steps:
                 self.assertEqual(
                     step.secrets.get("cursor-api-key"), "CURSOR_API_KEY", step)
+
+    RUNNERS = ("claude", "cursor", "opencode")
+
+    def runner_harness(self, adapter: str, root: Path, output_file: str = "") -> str:
+        """The runner's real cleanup, traps and CONTAINER_RUN block, around a
+        fake `docker` that runs until `docker rm -f` stops it."""
+        run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                              / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+        setup = run[run.index('build_dir=""'):run.index("trap 'exit 130' INT")]
+        block = run.split("# CONTAINER_RUN_BEGIN", 1)[1].split("# CONTAINER_RUN_END", 1)[0]
+        bin_dir = root / "bin"
+        bin_dir.mkdir(exist_ok=True)
+        docker = bin_dir / "docker"
+        docker.write_text(
+            "#!/bin/bash\n"
+            'log="$DOCKER_TEST_LOG"; flag="$DOCKER_TEST_LOG.stopped"\n'
+            'created="$DOCKER_TEST_LOG.created"; image="$DOCKER_TEST_LOG.image"\n'
+            'case "$1 $2" in\n'
+            "  'run '*|'run --rm')\n"
+            '    echo run >> "$log"; cat > /dev/null\n'
+            '    sleep "${FAKE_CREATE_DELAY:-0}"; touch "$created"\n'
+            '    for _ in $(seq 1 "${FAKE_RUN_TICKS:-600}"); do\n'
+            '      [ -f "$flag" ] && exit 137; sleep 0.1\n'
+            "    done\n"
+            '    echo container-output; exit "${FAKE_STATUS:-0}" ;;\n'
+            "  'build --pull')\n"
+            "    trap 'exit 143' TERM; echo build >> \"$log\"\n"
+            '    sleep "${FAKE_BUILD_SECONDS:-0}" & wait "$!"; touch "$image" ;;\n'
+            "  'container inspect')\n"
+            '    [ -f "$created" ] && [ ! -f "$flag" ] ;;\n'
+            "  'rm -f') echo rm >> \"$log\"; touch \"$flag\" ;;\n"
+            "  'image inspect') [ -f \"$image\" ] || [ -z \"${FAKE_BUILD_SECONDS:-}\" ] ;;\n"
+            "  'image rm') echo image-rm >> \"$log\"; rm -f \"$image\" ;;\n"
+            "  *) exit 1 ;;\n"
+            "esac\n", encoding="utf-8")
+        docker.chmod(0o755)
+        return "\n".join([
+            "set -euo pipefail", textwrap.dedent(setup), "trap 'exit 130' INT",
+            'container_name="ara-test-run"', 'image="ara-test-image"',
+            f'build_dir="{root}/build"', 'mkdir -p "$build_dir"',
+            f'isolated_workspace="{root}/workspace"', 'mkdir -p "$isolated_workspace"',
+            f'OUTPUT_FILE="{output_file}"', "CLAUDE_CODE_OAUTH_TOKEN=test-token",
+            'docker_cmd=(docker run --rm -i --name "$container_name" "$image")',
+            textwrap.dedent(block), 'echo "agent_status=$agent_status"',
+        ])
+
+    @staticmethod
+    def kill_group(pgid: int) -> None:
+        try:
+            os.killpg(pgid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+
+    def test_cancelling_a_runner_stops_its_container_at_once(self):
+        """INT or TERM during the container used to wait it out (bash defers a
+        trap until a foreground command exits) and lose cleanup to SIGKILL."""
+        for adapter in self.RUNNERS:
+            for sig, code in ((signal.SIGINT, 130), (signal.SIGTERM, 143)):
+                with self.subTest(adapter=adapter, signal=sig.name), \
+                        tempfile.TemporaryDirectory() as tmp:
+                    root = Path(tmp)
+                    log = root / "docker.log"
+                    env = {**os.environ, "PATH": f"{root}/bin:/usr/bin:/bin",
+                           "DOCKER_TEST_LOG": str(log)}
+                    proc = subprocess.Popen(["bash", "-c", self.runner_harness(adapter, root)],
+                                            env=env, stdout=subprocess.PIPE, text=True,
+                                            start_new_session=True)
+                    self.addCleanup(lambda pgid=proc.pid: self.kill_group(pgid))
+                    deadline = time.monotonic() + 10
+                    while not (log.exists() and "run" in log.read_text(encoding="utf-8")):
+                        if time.monotonic() > deadline:
+                            self.fail("the fake container never started")
+                        time.sleep(0.05)
+                    started = time.monotonic()
+                    proc.send_signal(sig)
+                    try:
+                        stdout, _ = proc.communicate(timeout=10)
+                    except subprocess.TimeoutExpired:
+                        self.fail(f"{adapter} waited out its container after {sig.name}")
+                    self.assertEqual(code, proc.returncode)
+                    self.assertLess(time.monotonic() - started, 5)
+                    self.assertEqual(["run", "rm", "image-rm"],
+                                     log.read_text(encoding="utf-8").split())
+                    self.assertFalse((root / "build").exists())
+                    self.assertFalse((root / "workspace").exists())
+                    self.assertNotIn("agent_status=", stdout)
+                    stop = re.findall(r"^::stop-commands::([0-9a-f]{32})$", stdout, re.MULTILINE)
+                    self.assertEqual(1, len(stop), stdout)
+                    self.assertIn(f"::{stop[0]}::", stdout.splitlines())
+
+    def test_cancelling_before_the_container_exists_still_removes_it(self):
+        """The signal can land while `docker run` is still creating the
+        container: cleanup keeps removing while the job lives."""
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                log = root / "docker.log"
+                env = {**os.environ, "PATH": f"{root}/bin:/usr/bin:/bin",
+                       "DOCKER_TEST_LOG": str(log), "FAKE_CREATE_DELAY": "2.5"}
+                proc = subprocess.Popen(["bash", "-c", self.runner_harness(adapter, root)],
+                                        env=env, stdout=subprocess.DEVNULL, start_new_session=True)
+                self.addCleanup(lambda pgid=proc.pid: self.kill_group(pgid))
+                deadline = time.monotonic() + 10
+                while not (log.exists() and "run" in log.read_text(encoding="utf-8")):
+                    if time.monotonic() > deadline:
+                        self.fail("the fake container never started")
+                    time.sleep(0.05)
+                proc.send_signal(signal.SIGINT)
+                self.assertEqual(130, proc.wait(timeout=12))
+                self.assertEqual(["run", "rm", "image-rm"],
+                                 log.read_text(encoding="utf-8").split())
+
+    def test_cancelling_a_build_leaves_no_image(self):
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                                      / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+                build = run[run.index("# Bash runs a trap only after a foreground command exits, so build in"):
+                            run.index('build_job=""\n', run.index('wait "$build_job"'))]
+                harness = self.runner_harness(adapter, root).split("\ndocker_cmd=(", 1)[0]
+                script = harness + "\n" + textwrap.dedent(build) + '\nbuild_job=""\necho built\n'
+                log = root / "docker.log"
+                env = {**os.environ, "PATH": f"{root}/bin:/usr/bin:/bin",
+                       "DOCKER_TEST_LOG": str(log), "FAKE_BUILD_SECONDS": "3"}
+                proc = subprocess.Popen(["bash", "-c", script], env=env, stdout=subprocess.PIPE,
+                                        text=True, start_new_session=True)
+                self.addCleanup(lambda pgid=proc.pid: self.kill_group(pgid))
+                deadline = time.monotonic() + 10
+                while not (log.exists() and "build" in log.read_text(encoding="utf-8")):
+                    if time.monotonic() > deadline:
+                        self.fail("the fake build never started")
+                    time.sleep(0.05)
+                proc.send_signal(signal.SIGINT)
+                stdout, _ = proc.communicate(timeout=10)
+                self.assertEqual(130, proc.returncode)
+                self.assertNotIn("built", stdout)
+                time.sleep(3.5)  # past the build's own finish line
+                self.assertFalse(Path(str(log) + ".image").exists(), "the build left an image")
+                self.assertFalse((root / "build").exists())
+
+    def test_opencode_host_reannounces_only_a_fixed_fatal_keyword(self):
+        run = yaml.safe_load((REPO_ROOT / ".github/actions/run-opencode-container/action.yml")
+                             .read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+        block = run.split("# OPENCODE_FATAL_NOTICE_BEGIN", 1)[1].split(
+            "# OPENCODE_FATAL_NOTICE_END", 1)[0]
+        container = re.search(r'opencode_fatal_keywords="(\([^"]+\))"', run).group(1)
+        self.assertIn(f"grep -m1 -xiE '{container}'", block)
+
+        def notice(content: str | None, link: bool = False) -> str:
+            with tempfile.TemporaryDirectory() as tmp:
+                fatal = Path(tmp) / ".opencode-fatal"
+                if link:
+                    (Path(tmp) / "elsewhere").write_text(content or "", encoding="utf-8")
+                    os.symlink(Path(tmp) / "elsewhere", fatal)
+                elif content is not None:
+                    fatal.write_text(content, encoding="utf-8")
+                result = subprocess.run(["bash", "-c", "set -euo pipefail\n" + block],
+                                        env={**os.environ, "isolated_workspace": tmp},
+                                        capture_output=True, text=True, check=True)
+                return result.stdout
+
+        self.assertEqual("::error::OpenCode provider returned an unrecoverable error "
+                         "(Invalid API key); the attempt was aborted.\n",
+                         notice("Invalid API key\n"))
+        for content in (None, "", "Invalid API key; ::add-mask::x\n", "::warning::x\n",
+                        "usage limit reached " + "x" * 200 + "\n"):
+            with self.subTest(content=content):
+                self.assertEqual("", notice(content))
+        self.assertEqual("", notice("Invalid API key\n", link=True))
+
+    def test_a_finished_runner_container_keeps_its_status(self):
+        for adapter in self.RUNNERS:
+            for tee in (False, True):
+                with self.subTest(adapter=adapter, tee=tee), tempfile.TemporaryDirectory() as tmp:
+                    root = Path(tmp)
+                    output = root / "output.txt"
+                    env = {**os.environ, "PATH": f"{root}/bin:/usr/bin:/bin",
+                           "DOCKER_TEST_LOG": str(root / "docker.log"),
+                           "FAKE_RUN_TICKS": "0", "FAKE_STATUS": "7"}
+                    result = subprocess.run(
+                        ["bash", "-c", self.runner_harness(adapter, root,
+                                                           str(output) if tee else "")],
+                        env=env, capture_output=True, text=True, timeout=20)
+                    self.assertEqual(0, result.returncode, result.stderr)
+                    self.assertIn("agent_status=7", result.stdout)
+                    if tee:
+                        self.assertEqual("container-output\n", output.read_text(encoding="utf-8"))
+                    lines = result.stdout.splitlines()
+                    token = lines[lines.index(next(line for line in lines
+                                                   if line.startswith("::stop-commands::")))]
+                    self.assertIn(f"::{token.split('::')[2]}::", lines)
+                    # The workflow log takes commands again before the host's own lines.
+                    self.assertLess(lines.index(f"::{token.split('::')[2]}::"),
+                                    lines.index("agent_status=7"))
 
     def test_opencode_cleanup_survives_cancellation_escalation(self):
         action_doc = yaml.safe_load(

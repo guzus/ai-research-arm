@@ -80,14 +80,39 @@ def cycle_sections(text: str, hour: str) -> list[str]:
     return sections
 
 
+def _log_safe(text: str) -> str:
+    """Text that the Actions log shows but never runs as a workflow command.
+
+    Contract errors quote model-written values, and the hourly-twitter
+    workflow prints them to the public job log. A line that starts with `::`
+    after whitespace gets a "| " prefix, and a legacy `##[` command, which the
+    runner finds anywhere in a line, becomes `## [`. Nonprintable characters
+    other than a tab show as "?", so a `\r` cannot start a hidden line.
+    """
+    lines = []
+    for line in text.splitlines():
+        line = "".join(char if char.isprintable() or char == "\t" else "?" for char in line)
+        line = line.replace("##[", "## [")
+        lines.append("| " + line if line.lstrip().startswith("::") else line)
+    return "\n".join(lines)
+
+
 def _section_preview(section: str, *, max_lines: int = 12, max_chars: int = 800) -> str:
-    """Keep just enough of a failing section for the next operator to see the miss."""
+    """Keep just enough of a failing section for the next operator to see the miss.
+
+    The section is model output and this message reaches the public job log,
+    so every line is quoted with "| ", which no workflow command starts with,
+    and a nonprintable character other than a tab shows as "?".
+    """
     lines = section.splitlines()
     preview = "\n".join(lines[:max_lines])
     truncated = len(lines) > max_lines
     if len(preview) > max_chars:
         preview = preview[:max_chars]
         truncated = True
+    preview = "\n".join(
+        "| " + "".join(char if char.isprintable() or char == "\t" else "?" for char in line)
+        for line in preview.splitlines())
     if truncated:
         preview += "\n..."
     return preview
@@ -266,7 +291,7 @@ def main(argv: list[str] | None = None) -> int:
             reject_recovery=args.reject_recovery,
         )
     except ContractError as exc:
-        parser.error(str(exc))
+        parser.error(_log_safe(str(exc)))
     print(f"validated Twitter public-output contract: {args.status_file}")
     return 0
 
