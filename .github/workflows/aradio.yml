@@ -45,6 +45,8 @@ jobs:
     runs-on: [self-hosted, Linux]
     timeout-minutes: 30
     permissions:
+      # actions: read lets the run's alert step list earlier runs (recovery).
+      actions: read
       contents: write
       pull-requests: write
 
@@ -107,6 +109,7 @@ jobs:
           fi
 
       - name: Checkout repository
+        id: checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         env:
           GIT_CONFIG_NOSYSTEM: "1"
@@ -125,6 +128,7 @@ jobs:
         uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
 
       - name: Install Python dependencies
+        id: deps
         run: uv sync --frozen
 
       # One UTC read for the whole run: the bulletin id, the S3 key, aired_at
@@ -378,6 +382,7 @@ jobs:
             --github-output "$GITHUB_OUTPUT"
 
       - name: Require Aradio output
+        id: require_output
         if: steps.writer.outcome == 'success'
         uses: ./.github/actions/require-output
         with:
@@ -387,6 +392,7 @@ jobs:
           label: Aradio writer
 
       - name: Enforce Aradio diff scope
+        id: diff_scope
         if: steps.writer.outcome == 'success'
         uses: ./.github/actions/require-diff-scope
         with:
@@ -433,15 +439,42 @@ jobs:
             rm -rf -- "$SCRATCH"
           fi
 
+      # A run that fails without publishing leaves the cursor, so the next
+      # hour fails the same way: keyed on the failing stage, the cursor's last
+      # publication and the UTC date, the outage is one Hooker alert a day,
+      # and the first run that publishes again reports the recovery once
+      # (scripts/aradio_run_alert.py). Empty outputs keep the defaults.
+      - name: Shape the run's Hooker event
+        id: run_alert
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JOB_STATUS: ${{ job.status }}
+          SINCE: ${{ steps.inbox.outputs.since }}
+          GATE_REASON: ${{ steps.inbox.outputs.reason }}
+          CHECKOUT: ${{ steps.checkout.outcome }}
+          DEPS: ${{ steps.deps.outcome }}
+          INBOX: ${{ steps.inbox.outcome }}
+          EDITOR: ${{ steps.editor.outcome }}
+          VALIDATE: ${{ steps.validate.outcome }}
+          WRITER: ${{ steps.writer.outcome }}
+          REQUIRE_OUTPUT: ${{ steps.require_output.outcome }}
+          DIFF_SCOPE: ${{ steps.diff_scope.outcome }}
+          PUSH: ${{ steps.push.outcome }}
+        run: python3 scripts/aradio_run_alert.py --github-output "$GITHUB_OUTPUT"
+
       - name: Publish Hooker workflow telemetry
         if: always()
         continue-on-error: true
         uses: ./.github/actions/hooker-telemetry
         with:
           status: ${{ job.status }}
-          title: Aradio
-          text: "Gate: ${{ steps.inbox.outputs.reason }}"
-          tags: aradio
+          title: ${{ steps.run_alert.outputs.title || 'Aradio' }}
+          text: "${{ steps.run_alert.outputs.text || format('Gate: {0}', steps.inbox.outputs.reason) }}"
+          priority: ${{ steps.run_alert.outputs.priority }}
+          tags: ${{ steps.run_alert.outputs.tags || 'aradio' }}
+          idempotency-key: ${{ steps.run_alert.outputs.idempotency_key }}
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

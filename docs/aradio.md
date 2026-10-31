@@ -482,6 +482,24 @@ digest silently without audio from 2026-10-22 to 10-30, is the anti-pattern
 this avoids: it still keeps the digest run green, so its missing audio pages
 only hours later, through the `digest-audio` freshness SLO.
 
+**One alert per outage, not per hour.** A run that fails without publishing
+leaves the cursor where it was, so while the cause lasts (editor quota or
+token, a validator mismatch, a broken push) every hour fails the same way, and
+each used to post its own priority-5 Hooker event, about 24 a day.
+`scripts/aradio_run_alert.py` keys such a run's telemetry on the stage that
+failed, on `cursor.last_editor_run_at` (which only a publication moves) and on
+the UTC date: `aradio-stuck-<stage>-<stamp>-<date>`. Hooker delivers the first
+and drops the rest by Idempotency-Key, and a different stage failing in the
+same outage alerts once more. The date is there because Hooker records a key
+before delivering and keeps it when every delivery fails: one lost Telegram
+delivery would otherwise silence the outage for two weeks. With it, a long
+outage re-alerts once a day. The first run that publishes again lists this
+workflow's failed runs created after that stamp (`actions: read`) and, if
+there are any, posts "Aradio recovered" once (`aradio-recovered-<stamp>`). A
+run that fails after publishing (missing audio) put a new bulletin out, so it
+keeps its per-run alert, and the 30 h `cursor.json` freshness SLO still pages
+daily while the station stays stuck.
+
 **A stale publication PR is closed, never merged.** `aradio.yml` publishes
 through safe-push like every lane, but CLAUDE.md rule 13's "merge open
 `automation/safe-push/*` PRs oldest first" does not apply here. If a

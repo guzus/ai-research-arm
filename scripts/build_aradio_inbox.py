@@ -1452,12 +1452,15 @@ def build(*, repo_root: Path, now: dt.datetime, out_dir: Path, trusted_dir: Path
     except Exception as exc:  # a report: it must never break the gate it rides on
         notes.warn(f"expired-item report skipped ({type(exc).__name__}: {exc})")
         expired = []
+    last_run = parse_ts(cursor_raw.get("last_editor_run_at"))
     summary: dict[str, Any] = {
         "go": go, "reason": reason, "eligible": len(candidates), "new": len(new),
         "priority": sum(1 for c in new if c.priority),
         "revisits": sum(1 for c in new if c.note == REVISIT_NOTE), "items": 0, "kinds": {},
         "transcripts": 0, "transcripts_degraded": False, "warnings": notes.warnings,
         "expired": expiry_report(expired),
+        # Moves only on publication: aradio_run_alert.py keys an outage on it.
+        "since": iso_z(last_run) if last_run else "never",
     }
     if not go:
         return summary
@@ -1605,6 +1608,7 @@ def main(argv: list[str] | None = None) -> int:
         "priority": str(summary["priority"]),
         "transcripts_degraded": "true" if summary["transcripts_degraded"] else "false",
         "expired": str(len(summary["expired"])),
+        "since": summary["since"],
     })
     return EXIT_OK
 

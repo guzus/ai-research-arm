@@ -1298,6 +1298,23 @@ class ExpiredAlertStepTest(unittest.TestCase):
                 self.assertIn(marker, stdout)
 
 
+class OutageStampTest(FixtureTest):
+    """The gate outputs the cursor's last publication: aradio_run_alert.py keys outages on it."""
+
+    def test_main_reports_the_last_publication_stamp(self):
+        gh = Path(self.repo.tmp.name) / "gh.txt"
+        args = ["--now", "2026-10-30T08:50:00Z", "--repo-root", str(self.repo.root),
+                "--trusted-dir", str(self.repo.trusted), "--no-transcript-fetch",
+                "--github-output", str(gh)]
+        with contextlib.redirect_stdout(io.StringIO()):
+            bi.main(args)
+        self.assertIn("since=never", gh.read_text())  # before the first editor run
+        self.repo.cursor(last_editor_run_at="2026-10-30T17:53:00+09:00")
+        with contextlib.redirect_stdout(io.StringIO()):
+            bi.main(args)
+        self.assertIn("since=2026-10-30T08:53:00Z", gh.read_text())
+
+
 class ParserTest(unittest.TestCase):
     def test_parse_ts_variants(self):
         self.assertEqual(NOW, bi.parse_ts("2026-10-30T08:50:00Z"))
