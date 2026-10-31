@@ -23,7 +23,6 @@ import {
   ARADIO_RATE_KEY,
   ARADIO_REL_KEYS,
   ARADIO_RESTART_S,
-  ARADIO_STALL_MS,
   aradioAge,
   aradioAudioSrc,
   aradioFollowLinks,
@@ -44,6 +43,7 @@ import {
   aradioRateLabel,
   aradioRecordListen,
   aradioScriptKey,
+  aradioStallRecheckMs,
   aradioStallStep,
   aradioUtcTime,
   failAradioProgramme,
@@ -1283,9 +1283,12 @@ let aradioWaiting = false;
 // A failing source cannot tell us — Chrome pauses the element as its source
 // fails (after earlier playback), so `paused` is already true when `error` fires.
 let aradioPlayIntent = false;
-// The stall watchdog: what it last saw move, and the look it has booked.
+// The stall watchdog: what it last saw move, the look it has booked, and the
+// shared player's `progress` events so far (before playback starts, a slow
+// link's only sign of audio arriving).
 let aradioStall: AradioStallWatch | null = null;
 let aradioStallTimer: number | null = null;
+let aradioProgressEvents = 0;
 let aradioStopAfter = false;
 let aradioSeekDragging = false;
 let aradioRadioObserver: IntersectionObserver | null = null;
@@ -1805,8 +1808,10 @@ function aradioBufferedSeconds(audio: HTMLAudioElement): number {
  * on each of its events, and again when a stall would be due while it is
  * starved. A radio bulletin stuck for ARADIO_STALL_MS fails like one that
  * errored. Timers behind a locked screen fire late, and that only delays the
- * skip: the step compares the player's own position and buffer, not how much
- * time the timers believe has passed. The digest is never watched.
+ * skip: the step compares the player's own state, not how much time the
+ * timers believe has passed. Its clock is performance.now(), which only moves
+ * forward: a system clock set back or forward cannot hold back or bring on a
+ * skip. The digest is never watched.
  */
 function checkAradioStall(): void {
   if (aradioStallTimer !== null) {
@@ -1816,15 +1821,18 @@ function checkAradioStall(): void {
   const audio = digestAudioEl;
   const loaded = aradioLoadedEntry();
   const starved = (audio?.readyState ?? 0) < MEDIA_HAVE_FUTURE_DATA;
-  const now = Date.now();
+  const now = performance.now();
   const { watch, stalled } = aradioStallStep(aradioStall, {
     id: audio && loaded && !aradioWaiting ? loaded.id : null,
     intent: aradioPlayIntent,
     paused: audio?.paused ?? true,
     ended: audio?.ended ?? false,
     starved,
+    // `played` empties with every new source, so this is "this bulletin has begun".
+    started: Boolean(audio && audio.played.length > 0),
     position: audio?.currentTime ?? 0,
     buffered: audio ? aradioBufferedSeconds(audio) : 0,
+    received: aradioProgressEvents,
     nowMs: now,
   });
   aradioStall = stalled ? null : watch;
@@ -1832,7 +1840,7 @@ function checkAradioStall(): void {
     aradioTrackStalled(loaded.id);
     return;
   }
-  if (watch && starved) aradioStallTimer = window.setTimeout(checkAradioStall, Math.max(1000, watch.since + ARADIO_STALL_MS - now));
+  if (watch && starved) aradioStallTimer = window.setTimeout(checkAradioStall, aradioStallRecheckMs(watch, now));
 }
 
 /** A bulletin stuck loading fails like one that errored (it can only stall while meant to play). */
@@ -3406,7 +3414,11 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
   });
   // The stall watchdog looks whenever the player reports anything that can
   // start, end or show a stall, and when the page comes back into view (its
-  // timers may have been held while it was hidden).
+  // timers may have been held while it was hidden). Each `progress` is
+  // counted first, so the look it triggers sees it.
+  digestAudioEl.addEventListener('progress', () => {
+    aradioProgressEvents += 1;
+  });
   for (const type of ['loadstart', 'emptied', 'play', 'playing', 'waiting', 'stalled', 'progress', 'timeupdate', 'seeking', 'pause', 'ended']) {
     digestAudioEl.addEventListener(type, checkAradioStall);
   }
