@@ -185,9 +185,6 @@ runs:
           # already stopping Docker. Do not let the second signal interrupt
           # removal of the secret-bearing container.
           trap '' TERM INT
-          if [ -n "${stop_token:-}" ]; then
-            echo "::${stop_token}::"
-          fi
           # A cancelled run gets here while its container still runs: the
           # container is a background job (CONTAINER_RUN), so no trap waits it
           # out. Remove it first, and again while that job lives (for up to 7 s,
@@ -210,6 +207,14 @@ runs:
               fi
               sleep 0.5
             done
+          fi
+          # The secret-bearing container is gone; only now let the job log take
+          # workflow commands again, so a model still writing to its PID 1
+          # stdout during cancellation cannot reach the log as the window
+          # reopens. (The stdout redirect already keeps it out; this is the
+          # ordering half of the same guarantee.)
+          if [ -n "${stop_token:-}" ]; then
+            echo "::${stop_token}::"
           fi
           # A cancelled build is stopped before its image is removed, so the
           # image cannot appear after cleanup has looked for it.

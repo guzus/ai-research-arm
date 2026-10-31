@@ -3053,6 +3053,21 @@ esac
         except ProcessLookupError:
             pass
 
+    def test_cleanup_resumes_commands_only_after_removing_the_container(self):
+        """On cancel the container is removed before workflow commands resume,
+        so a model still writing to its PID 1 stdout cannot reach the log as
+        the window reopens."""
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter):
+                run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                                      / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+                cleanup = run.split("cleanup() {", 1)[1].split("trap cleanup EXIT", 1)[0]
+                remove = cleanup.index('docker rm -f "$container_name"')
+                resume = cleanup.index('echo "::${stop_token}::"')
+                self.assertEqual(1, cleanup.count('echo "::${stop_token}::"'))
+                self.assertLess(remove, resume,
+                                f"{adapter}: cleanup resumes commands before removing the container")
+
     def test_cancelling_a_runner_stops_its_container_at_once(self):
         """INT or TERM during the container used to wait it out (bash defers a
         trap until a foreground command exits) and lose cleanup to SIGKILL."""
