@@ -177,6 +177,7 @@ jobs:
           lane: bluesky
           return-artifacts: |
             .tmp/bluesky-section.md
+          claude-config: .github/claude/bluesky.json
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}

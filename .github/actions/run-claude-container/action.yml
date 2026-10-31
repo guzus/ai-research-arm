@@ -23,7 +23,9 @@ description: >-
 #
 # Claude-side lockdown. Each layer alone refuses a read of the token:
 #   --tools       only what the lane's allow rules imply (Read and Write for
-#                 Aradio; nothing for the canary): no Edit, Bash, web, MCP, Task.
+#                 Aradio; Glob to list an inbox; Bash only for lanes whose rules
+#                 name exact git, curl, or uv forms; nothing for the canary):
+#                 never Edit, WebFetch, WebSearch, MCP, or Task.
 #   --restricted  ignores user, project and local settings (the clone's own
 #                 .claude/ and .mcp.json) and confines file tools to /workspace.
 #   dontAsk       a call no rule pre-approves is denied, never prompted.
@@ -97,9 +99,12 @@ inputs:
     required: false
     default: '45'
   max-turns:
-    description: Hard cap on agentic turns (claude --max-turns), enforced by the CLI.
+    description: >-
+      Hard cap on agentic turns (claude --max-turns), enforced by the CLI. The
+      wall-clock timeout-minutes is the real bound, as it is for Cursor; the cap
+      only stops a loop that would otherwise run it out.
     required: false
-    default: '40'
+    default: '100'
   output-file:
     description: >-
       Host path that receives the container's stdout and then the sanitized
@@ -345,7 +350,7 @@ runs:
         claude_tools=$(/usr/bin/python3 -I scripts/copy_claude_settings.py \
           "$GITHUB_WORKSPACE/$CLAUDE_CONFIG_REL" \
           "$generated_claude_settings" "$CLAUDE_MODEL_REF")
-        if [[ ! "$claude_tools" =~ ^((Read|Write|Edit)(,(Read|Write|Edit))*)?$ ]]; then
+        if [[ ! "$claude_tools" =~ ^((Read|Write|Glob|Bash)(,(Read|Write|Glob|Bash))*)?$ ]]; then
           echo "::error::Claude settings copier returned an unexpected tool list."
           exit 1
         fi
@@ -531,8 +536,10 @@ runs:
         # postinstall script, so install the audited platform package
         # directly: exact version, SHA-512 checked, no package scripts, never
         # the mutable curl|bash installer. DISABLE_AUTOUPDATER (below) stops
-        # drift after startup. git is for the fixed container tail only; the
-        # model has no tool that can run it.
+        # drift after startup. git serves the fixed container tail and the
+        # exact `git add` / `git commit` forms a lane policy may allow; uv (the
+        # Cursor image's pinned copy) runs only the exact repository scripts a
+        # lane policy names. tool-guard.mjs refuses every other command.
         cat > "$build_dir/Dockerfile" <<'EOF'
         FROM node:22-bookworm-slim@sha256:83f487e0a63425e5b4d146fb5e5be574bcbe1b7b843d3ebafdd95eaf7767a7e5
         RUN apt-get update \
@@ -554,8 +561,10 @@ runs:
           test -x /opt/claude-code/claude; \
           chmod 755 /opt/claude-code/claude; \
           ln -sfn /opt/claude-code/claude /usr/local/bin/claude
+        COPY --from=ghcr.io/astral-sh/uv:0.9.7@sha256:ba4857bf2a068e9bc0e64eed8563b065908a4cd6bfb66b531a9c424c8e25e142 /uv /uvx /usr/local/bin/
         COPY tool-guard.mjs /opt/ara-claude/tool-guard.mjs
         RUN chmod 644 /opt/ara-claude/tool-guard.mjs \
+          && uv --version \
           && HOME=/tmp/claude-version-home claude --version \
           && rm -rf /tmp/claude-version-home
         WORKDIR /workspace
@@ -578,9 +587,11 @@ runs:
 
         # The agent's HOME is a throwaway inside the container: the runner's
         # real home holds other lanes' credentials and must never be reachable.
-        # The root filesystem is read-only and /tmp is a private tmpfs, so the
-        # only writable host path is the disposable clone. The OAuth token is
-        # deliberately absent from this list; it arrives on stdin (-i).
+        # The root filesystem is read-only and /tmp is a private noexec tmpfs,
+        # so the only writable host path is the disposable clone; uv therefore
+        # keeps the Python it downloads under /workspace, untracked and never
+        # imported. The OAuth token is deliberately absent from this list; it
+        # arrives on stdin (-i).
         docker_cmd=(docker run --rm -i \
           --name "$container_name" \
           --user "$(id -u):$(id -g)" \
@@ -600,6 +611,10 @@ runs:
           --env CLAUDE_CODE_DISABLE_CLAUDE_MDS=1 \
           --env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 \
           --env CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS=1 \
+          --env UV_CACHE_DIR=/tmp/claude-home/.cache/uv \
+          --env UV_PYTHON_INSTALL_DIR=/workspace/.claude-uv-python \
+          --env UV_LINK_MODE=copy \
+          --env UV_FROZEN=1 \
           --env GITHUB_WORKSPACE=/workspace \
           --env "GIT_AUTHOR_NAME=github-actions[bot]" \
           --env "GIT_AUTHOR_EMAIL=41898282+github-actions[bot]@users.noreply.github.com" \

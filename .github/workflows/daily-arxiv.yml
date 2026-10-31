@@ -95,6 +95,7 @@ jobs:
           allowed-paths: |
             research/arxiv/${{ steps.date.outputs.date }}-papers.md
             research/summaries/${{ steps.date.outputs.date }}-arxiv-summary.txt
+          claude-config: .github/claude/arxiv.json
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}

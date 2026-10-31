@@ -19,15 +19,16 @@ short pointer plus the few genuinely agent-specific notes.
   does not demonstrate improvement.
 
 - **Scheduled model workflows** use the Claude-harness `.github/actions/agent-run`
-  directly or, for RSS, community, arXiv, Bluesky, and wiki, the trusted
-  `.github/actions/agent-dispatch`. RSS/community/Bluesky reference
-  `research-editorial`; arXiv/wiki reference `research-editorial-secondary`.
-  Both temporarily select the registered Cursor CLI adapter
-  (`cursor-grok-4p6-fast`, Grok 4.6 Fast) because the OpenCode Go monthly plan
-  is exhausted. Host-checkout `agent-run` is deliberately
-  capability-incompatible and rejected. This emergency convergence restores
-  the three actively failing lanes but temporarily expands one Cursor failure
-  domain across all five editorial lanes. Direct
+  directly or, for RSS, community, arXiv, Bluesky, wiki, Korean translation,
+  and Aradio, the trusted `.github/actions/agent-dispatch`.
+  RSS/community/Bluesky reference `research-editorial`; arXiv/wiki reference
+  `research-editorial-secondary`. Since 2026-10-31 every strict route selects
+  the isolated Claude Code adapter (`claude-sonnet-5p5-isolated`) because the
+  OpenCode Go monthly plan and Cursor's weekly usage limit are both exhausted;
+  each workflow passes its lane's `.github/claude/<lane>.json` policy as
+  `claude-config`. Host-checkout `agent-run` is deliberately
+  capability-incompatible and rejected. Every editorial lane now shares the
+  one `CLAUDE_CODE_OAUTH_TOKEN` failure domain (CLAUDE.md rule 14). Direct
   Claude workflows may still use
   `anthropics/claude-code-action@v1`; when they do, pass the model via
   `claude_args`, never as a separate `model:` input:
@@ -44,8 +45,8 @@ short pointer plus the few genuinely agent-specific notes.
   (action repo: https://github.com/anthropics/claude-code-action)
 
 - **GLM-5.3 is the default fallback for ordinary Claude-harness lanes.** The
-  editorial dispatcher temporarily serves both strict routes with Cursor Grok
-  4.6 Fast while the OpenCode Go monthly plan is exhausted. Known
+  editorial dispatcher serves every strict route with the isolated Claude Code
+  adapter while OpenCode Go and Cursor are both exhausted. Known
   credential slots are prewired for a future isolated adapter, but the current
   host-checkout `agent-run` profiles cannot be selected by this route. `agent-run`
   probes the requested provider and walks the ordered `fallback.chain` from
@@ -131,13 +132,21 @@ short pointer plus the few genuinely agent-specific notes.
   (`run-cursor-container`, official `agent` binary, `CURSOR_API_KEY`).
   It is selectable via SSOT / `generative-research.yml
   backend=cursor-grok-4p6-fast` / `hourly-twitter.yml
-  backend=cursor-grok-4p6-fast` and temporarily serves both production
-  editorial routes plus lane-local standby fallbacks for compatible local
+  backend=cursor-grok-4p6-fast`. It is standby for the production editorial
+  routes and Korean translation, which ran on it until its weekly usage limit
+  ran out on 2026-10-31, and for the lane-local fallbacks of compatible local
   digest synthesis/audio, Twitter, and no-MCP AI-news contracts. It is never
   in the global chain.
   Store the key with `gh secret set CURSOR_API_KEY`, then validate
-  cheaply with `cursor-cli-canary.yml`. Korean translation currently
-  selects this profile via `routes.generative-translation`.
+  cheaply with `cursor-cli-canary.yml` before pointing a route back.
+
+- **Isolated Claude Code** (`run-claude-container`: pinned Claude Code
+  2.1.285, `claude-sonnet-5-5`, `CLAUDE_CODE_OAUTH_TOKEN` handed over on a
+  descriptor) serves every strict route since 2026-10-31. A lane policy
+  `.github/claude/<lane>.json` may only use the closed grammar in
+  `scripts/copy_claude_settings.py` (Read/Edit paths, Glob, exact git
+  add/commit, one fixed curl prefix, named uv scripts), and a PreToolUse
+  guard admits nothing else. Validate with `claude-isolated-canary.yml`.
 
 - **bird CLI** invocations must always pass `--json --plain` and fall
   back gracefully (`|| echo "[]"`); the X/Twitter cookies expire and a
