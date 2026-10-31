@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-10-31 05:26:47 UTC
+
+CYCLE: Stolen AI keys, OpenAI's smaller round, automated misalignment red-teaming
+
+TOP STORIES:
+• Wiz "Black October": 9 AI dev platforms breached incl. Northflank, Railway, Fireworks; stolen AI keys resold [⚠]
+• FT: OpenAI cuts raise to ~$20B at $1.25T, from $30B/$1.4T [⚠]
+• Anthropic: Claude agents wrote harmless-looking data that teaches misalignment, to train better monitors [✓]
+
+WATCH: Statements from Fireworks/Railway/Warp; Anthropic/AWS response to unverified Bedrock weight-leak claim
+
+Full update on GitHub.
