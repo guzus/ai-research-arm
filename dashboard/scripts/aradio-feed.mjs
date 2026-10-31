@@ -40,9 +40,16 @@ export const ARADIO_FEED_DESCRIPTION_MAX = 4000;
 export const ARADIO_DEFAULT_AUDIO_BASE = 'https://s3.guzus.xyz/obj-ai-research-arm';
 /** Mirror of render/aradio.ts ARADIO_AUDIO_KEY_RE: a flat audio/aradio/<name>.mp3. */
 export const ARADIO_AUDIO_KEY_RE = /^audio\/aradio\/[A-Za-z0-9._-]+\.mp3$/;
+/**
+ * The show art in public/brand/: a 3000x3000 RGB PNG without alpha (Apple
+ * takes a 1400-3000 px square JPEG or PNG; Spotify a 1:1 image, PNG before
+ * JPEG). Both fetch art once per URL, so a new design needs a new file name.
+ */
+export const ARADIO_FEED_ARTWORK_PATH = '/brand/aradio-cover.png';
 
 const DEFAULT_SITE_ORIGIN = 'https://ara.guzus.xyz';
 const CHANNEL_TITLE = 'ARA Radio';
+const CHANNEL_AUTHOR = 'ARA';
 const CHANNEL_DESCRIPTION =
   "A short two-host bulletin on what changed in AI since the last one, voiced from ara's live " +
   'situation board. New episodes air when earnings calls, podcasts, launches or filings change the picture.';
@@ -280,16 +287,21 @@ function itemLines(entry, rawBulletin, origin, audioBase) {
  * RSS 2.0 podcast feed for the station. `index` is the parsed index.json (any
  * value; a non-object yields a valid feed with no episodes); `bulletins` maps
  * a bulletin path relative to the station directory (Map or plain object) to
- * the parsed bulletin file.
+ * the parsed bulletin file. `ownerEmail` adds an <itunes:owner> block unless
+ * it is blank or not a string.
  */
 export function buildAradioFeed({
   index,
   bulletins,
   siteOrigin = DEFAULT_SITE_ORIGIN,
   audioBase = ARADIO_DEFAULT_AUDIO_BASE,
+  ownerEmail = '',
 } = {}) {
   const origin = String(siteOrigin).replace(/\/+$/, '');
   const base = String(audioBase).replace(/\/+$/, '');
+  const artwork = `${origin}${ARADIO_FEED_ARTWORK_PATH}`;
+  // 254 characters is the longest address SMTP can carry.
+  const owner = text(ownerEmail, 254);
   const entries = selectAradioFeedEntries(index);
   const updatedMs = isRecord(index) ? zonedInstantMs(index.updated_at) : null;
   const lastBuildMs = updatedMs ?? entries[0]?.airedMs ?? null;
@@ -305,7 +317,27 @@ export function buildAradioFeed({
   ];
   if (lastBuildMs !== null) lines.push(`    <lastBuildDate>${new Date(lastBuildMs).toUTCString()}</lastBuildDate>`);
   lines.push(
-    '    <itunes:author>ARA</itunes:author>',
+    // RSS 2.0 wants the channel's own title and link here. No width/height:
+    // their 144x400 maximum describes a thumbnail, not this art.
+    '    <image>',
+    `      <url>${xmlEscape(artwork)}</url>`,
+    `      <title>${xmlEscape(CHANNEL_TITLE)}</title>`,
+    `      <link>${xmlEscape(`${origin}/aradio`)}</link>`,
+    '    </image>',
+    `    <itunes:author>${xmlEscape(CHANNEL_AUTHOR)}</itunes:author>`,
+  );
+  // Spotify for Creators mails its ownership code to <itunes:email>. Anyone
+  // who opens the feed can read the address, so it is opt-in.
+  if (owner) {
+    lines.push(
+      '    <itunes:owner>',
+      `      <itunes:name>${xmlEscape(CHANNEL_AUTHOR)}</itunes:name>`,
+      `      <itunes:email>${xmlEscape(owner)}</itunes:email>`,
+      '    </itunes:owner>',
+    );
+  }
+  lines.push(
+    `    <itunes:image href="${xmlEscape(artwork)}"/>`,
     '    <itunes:explicit>false</itunes:explicit>',
     '    <itunes:type>episodic</itunes:type>',
     '    <itunes:category text="Technology"/>',
@@ -313,7 +345,6 @@ export function buildAradioFeed({
     '      <itunes:category text="Tech News"/>',
     '    </itunes:category>',
   );
-  // No <itunes:image>: Apple requires square 1400-3000 px art; public/brand/ has only a 1280x640 card.
   for (const entry of entries) lines.push(...itemLines(entry, lookup(bulletins, entry.path), origin, base));
   lines.push('  </channel>', '</rss>', '');
   return lines.join('\n');

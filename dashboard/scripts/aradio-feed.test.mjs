@@ -9,6 +9,7 @@ import test from 'node:test';
 import {
   ARADIO_AUDIO_KEY_RE,
   ARADIO_DEFAULT_AUDIO_BASE,
+  ARADIO_FEED_ARTWORK_PATH,
   ARADIO_FEED_DESCRIPTION_MAX,
   ARADIO_FEED_MAX_ITEMS,
   aradioFeedBulletinPath,
@@ -28,6 +29,7 @@ const INDEX = fixture('index.json');
 const B1450 = fixture('bulletins/2026-10-30/1450.json');
 const B1050 = fixture('bulletins/2026-10-30/1050.json');
 const ORIGIN = 'https://ara.guzus.xyz';
+const ARTWORK = 'https://ara.guzus.xyz/brand/aradio-cover.png';
 const BASE = ARADIO_DEFAULT_AUDIO_BASE;
 const FOOTER = `\n\nTranscript and sources: ${ORIGIN}/aradio`;
 const ITUNES_NS = 'http://www.itunes.com/dtds/podcast-1.0.dtd';
@@ -397,6 +399,7 @@ function assertEmptyFeed(t, xml, { lastBuildDate = null } = {}) {
   const channel = channelOf(xml);
   assert.equal(childrenNamed(channel, 'item').length, 0);
   assert.equal(one(channel, 'title').text, 'ARA Radio');
+  assert.equal(one(channel, 'itunes:image').attrs.href, ARTWORK);
   assert.equal(childrenNamed(channel, 'lastBuildDate')[0]?.text ?? null, lastBuildDate);
 }
 
@@ -437,7 +440,7 @@ test('a missing directory, missing or broken index, or empty station is a valid 
 
 // ── Channel ───────────────────────────────────────────────────────────────
 
-test('channel: podcast metadata, self link, categories, and no non-square artwork', () => {
+test('channel: podcast metadata, self link, categories, and square artwork', () => {
   const root = parseXml(buildAradioFeed({ index: INDEX, siteOrigin: ORIGIN, audioBase: BASE }));
   assert.equal(root.name, 'rss');
   assert.deepEqual(root.attrs, { version: '2.0', 'xmlns:itunes': ITUNES_NS, 'xmlns:atom': 'http://www.w3.org/2005/Atom' });
@@ -455,7 +458,16 @@ test('channel: podcast metadata, self link, categories, and no non-square artwor
   assert.deepEqual(categories.map((category) => category.attrs.text), ['Technology', 'News']);
   assert.equal(categories[0].children.length, 0);
   assert.deepEqual(categories[1].children.map((sub) => [sub.name, sub.attrs.text]), [['itunes:category', 'Tech News']]);
-  assert.equal(childrenNamed(channel, 'itunes:image').length, 0);
+  // The same absolute HTTPS art for Apple (<itunes:image>) and plain RSS
+  // (<image>, whose title and link are the channel's own).
+  assert.deepEqual(one(channel, 'itunes:image').attrs, { href: ARTWORK });
+  assert.deepEqual(one(channel, 'image').children.map((child) => [child.name, child.text]), [
+    ['url', ARTWORK],
+    ['title', 'ARA Radio'],
+    ['link', `${ORIGIN}/aradio`],
+  ]);
+  // No owner unless one is configured (see the owner test).
+  assert.equal(childrenNamed(channel, 'itunes:owner').length, 0);
 
   // Without updated_at, lastBuildDate is the newest episode's air time.
   const { updated_at: _omitted, ...withoutUpdated } = INDEX;
@@ -468,9 +480,69 @@ test('origin and audio base: trailing slashes dropped, values escaped', (t) => {
   const channel = channelOf(xml);
   assert.equal(one(channel, 'link').text, 'https://preview.example/aradio');
   assert.equal(one(channel, 'atom:link').attrs.href, 'https://preview.example/aradio/feed.xml');
+  assert.equal(one(channel, 'itunes:image').attrs.href, 'https://preview.example/brand/aradio-cover.png');
+  assert.equal(one(one(channel, 'image'), 'url').text, 'https://preview.example/brand/aradio-cover.png');
   const [first] = childrenNamed(channel, 'item');
   assert.equal(one(first, 'enclosure').attrs.url, 'https://cdn.example/a&b"c/audio/aradio/2026-10-30-1450.mp3');
   assert.ok(one(first, 'description').text.endsWith('\n\nTranscript and sources: https://preview.example/aradio'));
+});
+
+test('owner: absent unless an address is set; a set one is trimmed and escaped', (t) => {
+  const reference = buildAradioFeed({ index: INDEX, siteOrigin: ORIGIN, audioBase: BASE });
+  for (const ownerEmail of [undefined, null, '', '  \n ', '\u0000\u000b', 42, {}]) {
+    // Byte-identical to a build that never heard of an owner.
+    assert.equal(buildAradioFeed({ index: INDEX, siteOrigin: ORIGIN, audioBase: BASE, ownerEmail }), reference, String(ownerEmail));
+  }
+  assert.doesNotMatch(reference, /itunes:(?:owner|name|email)/);
+
+  const plain = channelOf(buildAradioFeed({ index: INDEX, ownerEmail: '  radio@example.com\n' }));
+  assert.deepEqual(one(plain, 'itunes:owner').children.map((child) => [child.name, child.text]), [
+    ['itunes:name', 'ARA'],
+    ['itunes:email', 'radio@example.com'],
+  ]);
+
+  // Markup in the setting stays text: no element of its own reaches the feed.
+  const hostile = 'o\'neil&co@example.com</itunes:email></itunes:owner><itunes:block>Yes</itunes:block>';
+  const xml = buildAradioFeed({ index: INDEX, siteOrigin: ORIGIN, audioBase: BASE, ownerEmail: hostile });
+  expatCheck(t, xml);
+  assert.doesNotMatch(xml, /<itunes:block/);
+  assert.match(xml, /<itunes:email>o&apos;neil&amp;co@example\.com&lt;\/itunes:email&gt;&lt;\/itunes:owner&gt;/);
+  const channel = channelOf(xml);
+  assert.equal(childrenNamed(channel, 'itunes:block').length, 0);
+  assert.equal(one(one(channel, 'itunes:owner'), 'itunes:email').text, hostile);
+});
+
+/** A PNG's chunks as {type, data}, checking the signature first. */
+function pngChunks(png) {
+  assert.deepEqual([...png.subarray(0, 8)], [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a], 'not a PNG');
+  const chunks = [];
+  for (let at = 8; at + 12 <= png.length; at += 12 + png.readUInt32BE(at)) {
+    chunks.push({ type: png.toString('latin1', at + 4, at + 8), data: png.subarray(at + 8, at + 8 + png.readUInt32BE(at)) });
+  }
+  return chunks;
+}
+
+test('artwork: the file the feed names is art Apple and Spotify accept', () => {
+  // The URL is what directories cache; a new design ships under a new name.
+  assert.equal(ARADIO_FEED_ARTWORK_PATH, '/brand/aradio-cover.png');
+  const png = readFileSync(new URL(`../public${ARADIO_FEED_ARTWORK_PATH}`, import.meta.url));
+  // A git-lfs pointer would fail the signature: Railway's build does not hydrate LFS.
+  const chunks = pngChunks(png);
+  assert.deepEqual([chunks[0].type, chunks.at(-1).type], ['IHDR', 'IEND']);
+  const ihdr = chunks[0].data;
+  const [width, height] = [ihdr.readUInt32BE(0), ihdr.readUInt32BE(4)];
+  // Apple: square, 1400-3000 px. Spotify: 1:1.
+  assert.equal(width, height);
+  assert.ok(width >= 1400 && width <= 3000, `${width}x${height}`);
+  // 8-bit truecolor: RGB with no alpha channel, and no transparency chunk.
+  assert.deepEqual({ depth: ihdr[8], colorType: ihdr[9] }, { depth: 8, colorType: 2 });
+  assert.ok(!chunks.some((chunk) => chunk.type === 'tRNS'));
+  // Apple asks for 72 dpi (pHYs counts pixels per metre).
+  const phys = chunks.find((chunk) => chunk.type === 'pHYs')?.data;
+  assert.ok(phys && phys[8] === 1, 'pHYs in pixels per metre');
+  assert.deepEqual([phys.readUInt32BE(0), phys.readUInt32BE(4)].map((ppm) => Math.round(ppm * 0.0254)), [72, 72]);
+  // No directory caps the bytes; this keeps the art light for listeners and the image.
+  assert.ok(png.length <= 512 * 1024, `${png.length} bytes`);
 });
 
 // ── Items ─────────────────────────────────────────────────────────────────

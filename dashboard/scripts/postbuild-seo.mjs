@@ -1813,14 +1813,20 @@ writeFileSync(join(aradioDir, 'index.html'), buildNoindexPage(template, {
 // Its enclosures use the page's audio base: vite inlines VITE_AUDIO_BASE_URL
 // into main.ts from the same environment, and no dashboard/.env file is
 // tracked. Absent data is a valid feed with no episodes, never a failure.
+// ARADIO_FEED_OWNER_EMAIL (unset by default; the Dockerfile declares it as a
+// build arg) publishes <itunes:owner>, where Spotify mails its ownership code.
 const aradioFeedData = readAradioFeedData(join(dist, 'research', 'aradio'));
-writeFileSync(join(aradioDir, 'feed.xml'), buildAradioFeed({
+const aradioFeedXml = buildAradioFeed({
   ...aradioFeedData,
   siteOrigin: SITE_ORIGIN,
   audioBase: process.env.VITE_AUDIO_BASE_URL || ARADIO_DEFAULT_AUDIO_BASE,
-}));
+  ownerEmail: process.env.ARADIO_FEED_OWNER_EMAIL,
+});
+writeFileSync(join(aradioDir, 'feed.xml'), aradioFeedXml);
 const aradioEpisodes = selectAradioFeedEntries(aradioFeedData.index).length;
-console.log(`postbuild-seo: aradio/feed.xml written (${aradioEpisodes} episode${aradioEpisodes === 1 ? '' : 's'})`);
+// Every value in the feed is escaped, so only the real element matches.
+const aradioOwner = aradioFeedXml.includes('<itunes:owner>') ? 'with' : 'no';
+console.log(`postbuild-seo: aradio/feed.xml written (${aradioEpisodes} episode${aradioEpisodes === 1 ? '' : 's'}, ${aradioOwner} itunes:owner)`);
 const focusReaderDir = join(dist, 'design', 'focus-reader');
 mkdirSync(focusReaderDir, { recursive: true });
 writeFileSync(join(focusReaderDir, 'index.html'), buildNoindexPage(template, {

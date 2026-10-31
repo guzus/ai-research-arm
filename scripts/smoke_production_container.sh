@@ -75,7 +75,19 @@ grep -Eiq '^cache-control: .*max-age=300' "$feed_headers"
 grep -q '<rss' "$feed_body"
 grep -q 'xmlns:itunes' "$feed_body"
 python3 -c 'import sys, xml.etree.ElementTree as E; E.parse(sys.argv[1])' "$feed_body"
-rm -f "$feed_headers" "$feed_body"
+
+# The show art the feed names (<itunes:image>) is a real image file: Apple and
+# Spotify fetch it by URL, Apple checks it with HEAD and Last-Modified, and an
+# LFS pointer or the HTML shell would reject the show.
+art_path="$(python3 -c 'import sys, urllib.parse, xml.etree.ElementTree as E; print(urllib.parse.urlsplit(E.parse(sys.argv[1]).find("channel/{http://www.itunes.com/dtds/podcast-1.0.dtd}image").get("href")).path)' "$feed_body")"
+art_headers="$(mktemp)"
+art_body="$(mktemp)"
+curl -fsS --max-time 10 -D "$art_headers" -o "$art_body" "$base$art_path"
+grep -Eiq '^content-type: image/(png|jpeg)' "$art_headers"
+python3 -c 'import sys; head = open(sys.argv[1], "rb").read(8); sys.exit(not head.startswith((b"\x89PNG\r\n\x1a\n", b"\xff\xd8\xff")))' "$art_body"
+curl -fsS --max-time 10 --head -o /dev/null -D "$art_headers" "$base$art_path"
+grep -Eiq '^last-modified: ' "$art_headers"
+rm -f "$feed_headers" "$feed_body" "$art_headers" "$art_body"
 
 manifest_headers="$(mktemp)"
 manifest_body="$(mktemp)"
