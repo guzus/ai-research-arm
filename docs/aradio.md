@@ -134,6 +134,28 @@ OpenAI posts about one 90–250 s customer testimonial a day as a P0 video — a
 metadata-only episodes are routine material that waits for the 2 h cadence.
 A stopped gate commits nothing and exits 0.
 
+**Why the gate runs on the full clone.** On 2026-10-31 a pre-gate was built
+and then dropped. It decided on a blobless, depth-1 sparse checkout of only
+the gate's inputs (~7 MB, ~4 s) before paying for the full clone (~284 MB,
+14 s). It saved less than it seemed to, for two reasons:
+
+- The runner's workspace is shared. Sixteen scheduled lanes reuse whatever
+  clone is there without a quarantine, so after a sparse stop the next of
+  them re-cloned the full repository: the saving moved to that lane.
+- Lane-woken runs are mostly editor runs (5 of 7 in the observed 24 h),
+  which need the full clone anyway.
+
+A replay of the runner's job order put a number on it. If every cron fired on
+a weekday, runner-wide clone traffic would drop from 23.6 to 19.0 GB/day and
+checkout time by 0.4 min/day. Over the observed 24 h the saving was nothing.
+In exchange, a sparse-checkout list had to cover every file the gate reads,
+or the pre-gate would stop silently on material it could not see. In review,
+it also broke the reusing lanes: a sparse `.git` left at the workspace root
+was inherited, because git 2.34's `sparse-checkout disable` does not clear
+`core.sparseCheckout` or the blob filter. If bandwidth ever becomes the
+constraint, that design is the place to start: a subdirectory clone, deleted
+every run. The numbers do not justify it today.
+
 **Priority material that expires unaired is reported.** A priority item opens
 the gate at once, so one that leaves its window (3 days for earnings, 7 for
 episodes) with its key absent from the cursor was lost to an outage: every
