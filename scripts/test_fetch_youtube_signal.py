@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import http.client
 import json
 import os
 import sys
@@ -110,6 +111,37 @@ class CandidateTest(unittest.TestCase):
         self.assertEqual(youtube.approximate_age_days("Streamed 2 weeks ago"), 14)
         self.assertEqual(youtube.approximate_age_days("1 month ago"), 30)
         self.assertIsNone(youtube.approximate_age_days("unknown"))
+
+    def test_compact_publish_age_is_parsed(self):
+        # tuber-api's label format since 2026-09-29 (observed live values).
+        self.assertEqual(youtube.approximate_age_days("14h ago"), 0)
+        self.assertEqual(youtube.approximate_age_days("7d ago"), 7)
+        self.assertEqual(youtube.approximate_age_days("2w ago"), 14)
+        self.assertEqual(youtube.approximate_age_days("1y ago"), 365)
+        self.assertEqual(youtube.approximate_age_days("12y ago"), 4380)
+        self.assertEqual(youtube.approximate_age_days("Streamed 5mo ago"), 150)
+        self.assertEqual(youtube.approximate_age_days("45m ago"), 0)
+        self.assertEqual(youtube.approximate_age_days("3 hrs ago"), 0)
+
+    def test_compact_month_is_not_read_as_minutes(self):
+        # "1mo" must be thirty days, never "1m" (minute) plus a stray "o".
+        self.assertEqual(youtube.approximate_age_days("1mo ago"), 30)
+        self.assertEqual(youtube.approximate_age_days("1m ago"), 0)
+
+    def test_compact_age_feeds_recency_selection(self):
+        recent = youtube.VideoCandidate(
+            "gH4FTjDm9FQ", "Recent", "https://youtu.be/gH4FTjDm9FQ", SOURCE,
+            published="2d ago", score=100, evidence="summary",
+        )
+        stale = youtube.VideoCandidate(
+            "dQw4w9WgXcQ", "Stale", "https://youtu.be/dQw4w9WgXcQ", SOURCE,
+            published="1mo ago", score=500, evidence="summary",
+        )
+
+        selected, skipped = youtube.select_high_signal([recent, stale], max_items=5, min_score=80, max_age_days=14)
+
+        self.assertEqual([item.id for item in selected], ["gH4FTjDm9FQ"])
+        self.assertEqual(skipped[0].skipped_reason, "older than recency window (1mo ago)")
 
     def test_selection_skips_old_daily_candidates(self):
         old = youtube.VideoCandidate(
@@ -428,6 +460,53 @@ class TotalFetchFailureGuardTest(unittest.TestCase):
             self.assertIn("Fetch errors: 1", text)
             self.assertIn("Wrote", out)
 
+    def test_truncated_response_is_a_per_source_fetch_error(self):
+        # IncompleteRead is an http.client.HTTPException, not an OSError: it
+        # used to escape every per-source boundary and kill the whole run.
+        def truncated_then_up(source, *, base_url, fetch_json_fn=None):
+            if source.id == "down-channel":
+                raise http.client.IncompleteRead(b'{"videos": [')
+            candidate = youtube.normalize_video(
+                source,
+                {"id": "gH4FTjDm9FQ", "title": "OpenAI announces a new reasoning model",
+                 "publishedAt": "2d ago", "channel": "Up Search Channel"},
+            )
+            assert candidate is not None
+            return [candidate]
+
+        with tempfile.TemporaryDirectory() as td:
+            rc, _out, _err, out_path = self.run_main(td, truncated_then_up)
+
+            self.assertEqual(rc, 0)
+            text = out_path.read_text(encoding="utf-8")
+            self.assertIn("Fetch errors: 1", text)
+            self.assertIn("IncompleteRead", text)
+
+    def test_every_source_truncated_is_a_total_failure_not_a_crash(self):
+        def all_truncated(source, *, base_url, fetch_json_fn=None):
+            raise http.client.IncompleteRead(b"")
+
+        with tempfile.TemporaryDirectory() as td:
+            rc, _out, err, out_path = self.run_main(td, all_truncated)
+
+            self.assertEqual(rc, youtube.EXIT_TOTAL_FETCH_FAILURE)
+            self.assertFalse(out_path.exists())
+            self.assertIn("IncompleteRead", err)
+
+    def test_truncated_enrichment_response_is_recorded_not_raised(self):
+        candidate = youtube.VideoCandidate(
+            "gH4FTjDm9FQ", "Recent", "https://youtu.be/gH4FTjDm9FQ", SOURCE, published="2d ago")
+
+        def truncated(base_url, path, params):
+            raise http.client.IncompleteRead(b"{")
+
+        errors = youtube.enrich_candidates(
+            [candidate], base_url="https://tuber.test.invalid",
+            max_preview_checks=1, max_transcript_checks=1, fetch_json_fn=truncated)
+
+        self.assertEqual(2, len(errors))  # summary-preview + transcript, both soft
+        self.assertTrue(all("IncompleteRead" in message for _, message in errors))
+
     def test_empty_registry_keeps_current_write_behavior(self):
         # The guard requires at least one checked source: an empty registry
         # is a configuration state, not a fetch outage, and keeps writing.
@@ -437,6 +516,73 @@ class TotalFetchFailureGuardTest(unittest.TestCase):
             self.assertEqual(rc, 0)
             self.assertTrue(out_path.exists())
             self.assertIn("Sources checked: 0", out_path.read_text(encoding="utf-8"))
+
+
+class PublishAgeDriftGuardTest(unittest.TestCase):
+    """An all-unparseable publish-age batch is upstream drift, not "no news".
+
+    2026-09-29 incident: tuber-api switched "2 days ago" to "2d ago", every
+    candidate parsed as "unknown publish age", and the lane committed
+    "High-signal videos selected: 0" with exit 0 for 32 days. main() must exit
+    EXIT_PUBLISH_AGE_DRIFT (4) and write nothing when a meaningful batch has
+    zero parseable labels, while partial parse failures keep writing.
+    """
+
+    API_BASE = TotalFetchFailureGuardTest.API_BASE
+    run_main = TotalFetchFailureGuardTest.run_main
+
+    @staticmethod
+    def fetch_with_labels(labels_by_source):
+        def fake_fetch(source, *, base_url, fetch_json_fn=None):
+            candidates = []
+            for index, label in enumerate(labels_by_source.get(source.id, [])):
+                candidate = youtube.normalize_video(
+                    source,
+                    {
+                        "id": f"{source.id[:6]}{index:05d}"[:11].ljust(11, "x"),
+                        "title": f"OpenAI model update {source.id} {index}",
+                        "publishedAt": label,
+                        "channel": source.name,
+                    },
+                )
+                assert candidate is not None
+                candidates.append(candidate)
+            return candidates
+
+        return fake_fetch
+
+    def test_all_unparseable_labels_exit_4_and_write_nothing(self):
+        drifted = ["vor 2 Tagen", "vor 3 Tagen", "vor 1 Woche"]
+        fake = self.fetch_with_labels({"down-channel": drifted, "up-search": drifted})
+        with tempfile.TemporaryDirectory() as td:
+            rc, out, err, out_path = self.run_main(td, fake)
+
+            self.assertEqual(rc, youtube.EXIT_PUBLISH_AGE_DRIFT)
+            self.assertEqual(rc, 4)  # distinct from 2 (args) and 3 (outage)
+            self.assertFalse(out_path.exists())
+            self.assertNotIn("Wrote", out)
+            self.assertIn("publish-age format drift", err)
+            self.assertIn("vor 2 Tagen", err)
+
+    def test_partially_parseable_labels_still_write(self):
+        fake = self.fetch_with_labels({
+            "down-channel": ["vor 2 Tagen", "vor 3 Tagen", "vor 1 Woche"],
+            "up-search": ["2d ago", "vor 4 Tagen", "vor 5 Tagen"],
+        })
+        with tempfile.TemporaryDirectory() as td:
+            rc, _out, err, out_path = self.run_main(td, fake)
+
+            self.assertEqual(rc, 0)
+            self.assertTrue(out_path.exists())
+            self.assertNotIn("publish-age format drift", err)
+
+    def test_small_unparseable_batch_is_not_called_drift(self):
+        fake = self.fetch_with_labels({"up-search": ["vor 2 Tagen", "vor 3 Tagen"]})
+        with tempfile.TemporaryDirectory() as td:
+            rc, _out, _err, out_path = self.run_main(td, fake)
+
+            self.assertEqual(rc, 0)
+            self.assertTrue(out_path.exists())
 
 
 if __name__ == "__main__":
