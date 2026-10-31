@@ -1,0 +1,146 @@
+{
+  "schema": 1,
+  "id": "2026-10-31-1849",
+  "aired_at": "2026-10-31T18:49:00Z",
+  "headline": "All-In: Anthropic's IPO may need only $80B to $100B; Google's earnings-day drop erased about $500B as cloud profit soared",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's eleven minutes to seven UTC on Saturday, October thirty-first. This is ARA Radio, and the picture today is Anthropic's coming IPO looking leaner than expected, while Google's stock takes a beating despite booming cloud profits."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's right, and the new detail comes from the All-In podcast, which has now gone through Anthropic's S-1 filing in depth."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "What did the hosts say?"
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They said Anthropic has raised about one hundred ten billion dollars in its whole life, lost only nine or ten billion, and still holds roughly one hundred billion in cash."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "So the capital raised in the IPO could be smaller than people feared."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The hosts argued it only needs to raise eighty to one hundred billion dollars, not a hundred and fifty or more, which could give the company more say over pricing. That is their reading, not a company statement."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Anything on the customer base?"
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They said around two hundred fifty customers spend ten million dollars or more, and about sixteen hundred spend between one and ten million. One host named cheap open-source models as Anthropic's biggest risk, because they could commoditize the market."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "We should note that revenue figures for the first half still differ between podcasts, so treat the numbers with care. Reports also say OpenAI has cut its own round to about twenty billion dollars, and that has not been confirmed."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Now the second story. On All-In, the hosts said Google shares dropped ten to fifteen percent on Thursday, wiping out about five hundred billion dollars of market value."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is striking, given that Google Cloud revenue more than doubled this quarter."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "It is. The hosts blamed worries over search ad clicks, but they also said cloud operating profit passed eleven billion dollars, against three and a half billion a year ago. They added that search revenue is still up twelve percent."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Alphabet kept its capital spending guidance at one hundred ninety-five to two hundred five billion dollars, and reported negative free cash flow in the third quarter. That tension between spending and market patience is the heart of this story."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "And the broader chip selloff from Thursday, with Intel down heavily, hangs over all of it."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "For what to watch: whether the chip and Alphabet selloff carries into Monday, and the pricing and date of Anthropic's listing, expected in November."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Also whether OpenAI or its backers confirm that smaller round."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA Radio. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's eleven minutes to seven UTC on Saturday, October thirty-first. This is ARA Radio, and the picture today is Anthropic's coming IPO looking leaner than expected, while Google's stock takes a beating despite booming cloud profits.",
+    "Speaker 2: [high_energy]That's right, and the new detail comes from the All-In podcast, which has now gone through Anthropic's S-1 filing in depth.",
+    "Speaker 1: What did the hosts say?",
+    "Speaker 2: They said Anthropic has raised about [emphasis]one hundred ten billion dollars[/emphasis] in its whole life, lost only nine or ten billion, and still holds roughly one hundred billion in cash.",
+    "Speaker 1: So the capital raised in the IPO could be smaller than people feared.",
+    "Speaker 2: The hosts argued it only needs to raise eighty to one hundred billion dollars, not a hundred and fifty or more, which could give the company more say over pricing. That is their reading, not a company statement.",
+    "Speaker 1: Anything on the customer base?",
+    "Speaker 2: They said around two hundred fifty customers spend ten million dollars or more, and about sixteen hundred spend between one and ten million. One host named cheap open-source models as Anthropic's biggest risk, because they could commoditize the market.",
+    "Speaker 1: We should note that revenue figures for the first half still differ between podcasts, so treat the numbers with care. Reports also say OpenAI has cut its own round to about twenty billion dollars, and that has not been confirmed.",
+    "Speaker 2: Now the second story. On All-In, the hosts said Google shares dropped ten to fifteen percent on Thursday, wiping out about [emphasis]five hundred billion dollars[/emphasis] of market value.",
+    "Speaker 1: That is striking, given that Google Cloud revenue more than doubled this quarter.",
+    "Speaker 2: It is. The hosts blamed worries over search ad clicks, but they also said cloud operating profit passed eleven billion dollars, against three and a half billion a year ago. They added that search revenue is still up twelve percent.",
+    "Speaker 1: Alphabet kept its capital spending guidance at one hundred ninety-five to two hundred five billion dollars, and reported negative free cash flow in the third quarter. That tension between spending and market patience is the heart of this story.",
+    "Speaker 2: And the broader chip selloff from Thursday, with Intel down heavily, hangs over all of it.",
+    "Speaker 1: For what to watch: whether the chip and Alphabet selloff carries into Monday, and the pricing and date of Anthropic's listing, expected in November.",
+    "Speaker 2: Also whether OpenAI or its backers confirm that smaller round.",
+    "Speaker 1: That's ARA Radio. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "anthropic-ipo-and-ai-funding",
+    "hyperscaler-capex-and-chip-selloff"
+  ],
+  "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, Vertiv and the chip rout",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=p1Dy4e4ff0s",
+      "kind": "podcast",
+      "label": "All-In Podcast"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-10-31-1849.mp3",
+    "bytes": 811965,
+    "duration_s": 135.2
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "claude-sonnet-5p5-isolated",
+    "model": "claude-sonnet-5-5"
+  },
+  "inbox": {
+    "items": 16,
+    "kinds": {
+      "podcast": 13,
+      "video": 3
+    }
+  }
+}

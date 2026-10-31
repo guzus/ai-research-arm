@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-10-31T14:48:00Z",
-  "headline": "Google's Gemini 4 Carbon takes the top benchmark spot but stays gated; Alphabet holds capex near $200B; a Claude Code extension is…",
+  "updated_at": "2026-10-31T18:49:00Z",
+  "headline": "All-In: Anthropic's IPO may need only $80B to $100B; Google's earnings-day drop erased about $500B as cloud profit soared",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -9,11 +9,17 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-10-31T14:48:00Z",
-      "now": "Anthropic filed its S-1 and could list on Nasdaq as soon as November, possibly raising about $100B at a $1.5T to $2T valuation. First-half revenue is quoted as $6.3B on Hard Fork and $16.3B on 20VC. Meta reportedly announced an equity raise of up to $95B. FT reportedly says OpenAI cut its round to about $20B.",
-      "changed": "On 20VC, hosts discussed Anthropic issuing about $100B of stock and Meta announcing a raise of up to $95B; first-half revenue figures differ by source.",
-      "watch": "Anthropic's pricing and listing date in November; whether OpenAI or MGX confirm the reduced round.",
+      "updated_at": "2026-10-31T18:49:00Z",
+      "now": "Anthropic filed its S-1 and could list on Nasdaq as soon as November, possibly raising about $100B at a $1.5T to $2T valuation. On All-In, hosts said it has raised about $110B, lost under $10B, holds about $100B in cash, and has 250 customers spending over $10M. Revenue figures differ by source. FT reportedly says OpenAI cut its round to about $20B.",
+      "changed": "On All-In, hosts said the S-1 shows Anthropic raised about $110B in total, lost only $9B to $10B, and holds roughly $100B in cash, so it may need to raise just $80B to $100B.",
+      "watch": "Anthropic's pricing and listing date in November; whether OpenAI or MGX confirm the reduced round; quarterly growth in its largest customers.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=p1Dy4e4ff0s",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-10-30T21:44:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=2-aUmDMZgLE",
           "kind": "podcast",
@@ -47,6 +53,10 @@
         {
           "at": "2026-10-31T14:48:00Z",
           "change": "20VC adds Meta's reported equity raise and the scale of Anthropic's planned issuance."
+        },
+        {
+          "at": "2026-10-31T18:49:00Z",
+          "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk."
         }
       ]
     },
@@ -56,11 +66,17 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-10-31T14:48:00Z",
+      "updated_at": "2026-10-31T18:49:00Z",
       "now": "Google Cloud revenue rose 103% to $30.7B; Microsoft Cloud hit $63.9B. Amazon says AWS grew over 39%. Alphabet says Gemini APIs process nearly 32 billion tokens a minute and holds 2026 capex at $195B to $205B. Thursday Intel fell 28.6% and the chip index about 7%.",
-      "changed": "On Alphabet's call, the company kept 2026 capex at $195B to $205B, reported negative third-quarter free cash flow of $9.1B, and said it began using third-party compute, a near-term cloud margin headwind.",
-      "watch": "Whether the chip selloff continues Monday and whether other PC or memory-exposed firms repeat Intel's warning.",
+      "changed": "On All-In, hosts said Alphabet shares fell 10% to 15% Thursday, erasing about $500B, on search ad-click worries, even as Google Cloud operating profit passed $11B versus $3.5B a year earlier.",
+      "watch": "Whether the chip and Alphabet selloff continues Monday and whether other PC or memory-exposed firms repeat Intel's warning.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=p1Dy4e4ff0s",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-10-30T21:44:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
           "kind": "earnings-call",
@@ -117,6 +133,10 @@
         {
           "at": "2026-10-31T14:48:00Z",
           "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added."
+        },
+        {
+          "at": "2026-10-31T18:49:00Z",
+          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
         }
       ]
     },
