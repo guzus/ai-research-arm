@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "id": "2026-10-31-2156",
+  "aired_at": "2026-10-31T21:56:00Z",
+  "headline": "Mistral open-sources a trillion-parameter Large 4; guests say agentic attacks now cost cents per company",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's just before ten PM UTC on Saturday, October thirty-first. This is ARA Radio. A new open model and a grim cost estimate for cyberattacks are the fresh items tonight."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Mistral says it has open-sourced Large 4, its biggest open model ever, at about one trillion parameters."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "What did the company claim on The Cognitive Revolution?"
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "A Mistral researcher said it is their best agentic model, and on the coding subset of the Artificial Analysis index they call it the best open model, tied with GLM five point three while using half the tokens."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Those are Mistral's own numbers, so independent evaluations matter here."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Agreed. It's a sparse mixture of experts, so only a fraction of the parameters run on each token. The hosts also noted it was reportedly trained on about thirty-eight hundred Blackwell chips, a fraction of what the biggest labs use."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Which feeds the debate about whether compute is the real gap between open and closed models."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Right, and that same episode turned to security. A guest from the security industry said agentic attacks seen in Southeast Asia over the past two weeks cost five to ten cents to compromise a company."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is a striking figure, and it is one guest's estimate rather than a measured industry statistic. The guest also pointed to several open-weight cyber-specific models released in the past three weeks that anyone can download."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That fits the rest of that story. Wiz reportedly counts nine AI developer platforms breached this month for stored API keys, and a tampered Claude Code extension turned up on Cursor's marketplace. Anthropic says its own systems were not affected. We're now calling that story escalating."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Elsewhere, nothing else has moved since our last bulletin. Anthropic's filing and the chip selloff are unchanged, and Gemini Carbon still has no release date."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "For next steps, watch for independent scores on Mistral Large 4 and its licence terms, and for a Cursor post-mortem on that extension."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA Radio. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's just before ten PM UTC on Saturday, October thirty-first. This is ARA Radio. A new open model and a grim cost estimate for cyberattacks are the fresh items tonight.",
+    "Speaker 2: [high_energy]Mistral says it has open-sourced Large 4, its biggest open model ever, at about one [emphasis]trillion parameters[/emphasis].",
+    "Speaker 1: What did the company claim on The Cognitive Revolution?",
+    "Speaker 2: A Mistral researcher said it is their best agentic model, and on the coding subset of the Artificial Analysis index they call it the best open model, tied with GLM five point three while using half the tokens.",
+    "Speaker 1: Those are Mistral's own numbers, so independent evaluations matter here.",
+    "Speaker 2: Agreed. It's a sparse mixture of experts, so only a fraction of the parameters run on each token. The hosts also noted it was reportedly trained on about thirty-eight hundred Blackwell chips, a fraction of what the biggest labs use.",
+    "Speaker 1: Which feeds the debate about whether compute is the real gap between open and closed models.",
+    "Speaker 2: Right, and that same episode turned to security. A guest from the security industry said agentic attacks seen in Southeast Asia over the past two weeks cost [emphasis]five to ten cents[/emphasis] to compromise a company.",
+    "Speaker 1: That is a striking figure, and it is one guest's estimate rather than a measured industry statistic. The guest also pointed to several open-weight cyber-specific models released in the past three weeks that anyone can download.",
+    "Speaker 2: That fits the rest of that story. Wiz reportedly counts nine AI developer platforms breached this month for stored API keys, and a tampered Claude Code extension turned up on Cursor's marketplace. Anthropic says its own systems were not affected. We're now calling that story escalating.",
+    "Speaker 1: Elsewhere, nothing else has moved since our last bulletin. Anthropic's filing and the chip selloff are unchanged, and Gemini Carbon still has no release date.",
+    "Speaker 2: For next steps, watch for independent scores on Mistral Large 4 and its licence terms, and for a Cursor post-mortem on that extension.",
+    "Speaker 1: That's ARA Radio. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "mistral-large-4-open-weights",
+    "ai-cyber-risk-and-key-theft"
+  ],
+  "threads": [
+    {
+      "slug": "mistral-large-4-open-weights",
+      "title": "Mistral Large 4: a trillion-parameter open model and the open-versus-closed compute gap",
+      "status": "developing"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=4844s",
+      "kind": "podcast",
+      "label": "The Cognitive Revolution"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=1617s",
+      "kind": "podcast",
+      "label": "The Cognitive Revolution"
+    }
+  ],
+  "ops": [
+    {
+      "op": "create",
+      "slug": "mistral-large-4-open-weights"
+    },
+    {
+      "op": "update",
+      "slug": "ai-cyber-risk-and-key-theft"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-10-31-2156.mp3",
+    "bytes": 666525,
+    "duration_s": 111.0
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "claude-sonnet-5p5-isolated",
+    "model": "claude-sonnet-5-5"
+  },
+  "inbox": {
+    "items": 3,
+    "kinds": {
+      "podcast": 3
+    }
+  }
+}
