@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-10-31T15:51:00Z",
+  "updated_at": "2026-10-31T20:15:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -25,8 +25,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-10-31T15:51:00Z",
-        "attempts": 1
+        "checked_at": "2026-10-31T20:15:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Spawn’s ten-person team shipped 77,000 code changes in a month with an always-on fleet of AI agents. NLW breaks down the systems behind that output, why human taste and ambition still matter, and five practical lessons other businesses can apply. In the headlines: legal AI startup Crosby bids for Weil’s assets, tech stocks slide despite surging AI revenues, and Granola launches free dictation. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -53,8 +53,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-10-31T15:51:00Z",
-        "attempts": 1
+        "checked_at": "2026-10-31T20:15:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "What does it take to build AI for finance on top of a general-purpose model? Joseph Kim, who leads work on ChatGPT for Financial Services at OpenAI, joins swyx and Richard at AI Engineer New York to discuss the decisions behind the product: training financial reasoning into a shared model, connecting market data, and building workflows financial professionals can review and trust. Joseph explains why OpenAI bundled financial data even when connectors already existed, what startups can build with the"
@@ -176,13 +176,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 9441,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-10-31T15:51:00Z",
-        "attempts": 2
+        "available": true,
+        "source": "youtube_captions",
+        "words": 27656,
+        "checked_at": "2026-10-31T20:15:00Z",
+        "attempts": 3
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "The Wall Street banks are funding other people. Uh all of the exchanges, Galaxy, Gemini, uh Coinbase, they all do Bitcoin as back loans. Uh so I think collateralization is like 3:1 collateralization or 4 to1 collateralization. Uh so you put in 100 mil and you get out 25 mil.",
+          "at_s": 1617,
+          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=1617s"
+        },
+        {
+          "text": "So it's the largest model that we've open sourced uh open sourced ever. So it's 1 trillion parameters and it's trained with 1 25 flops. Uh flops being the amount of compute that you put into it. And this has been a key milestone both for us and in general for most AI labs.",
+          "at_s": 4724,
+          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=4724s"
+        },
+        {
+          "text": "uh on the sort of AA index which is uh a respected third party eval on the coding subset of that we're finding ourselves to be the best open source model just tied with GLM 5.3 but requiring 50% less tokens and then on these critical capabilities to ourselves and and our customers.",
+          "at_s": 4844,
+          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=4844s"
+        },
+        {
+          "text": "I mean if you look say for example GPT3 this was a dense model trained with 3x the number of active parameters as the current mistral large 4 particularly GPT3 was trained with 175B parameters total but it was a dense model so all parameters were activated uh for each token whereas uh ML4 is a sparse mixture of experts",
+          "at_s": 5040,
+          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=5040s"
+        },
+        {
+          "text": "So uh maybe just to switch gears a little bit, Mistral Large 4 was trained on 3,800 uh Blackwell GPUs, I believe. I I saw that I saw that number uh somewhere. Um and then you hear about, you know, Elon talking about 100,000 million million GPUs, etc. Uh and yet you guys are not that far off, right? Right.",
+          "at_s": 7281,
+          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=7281s"
+        },
+        {
+          "text": "The other thing that struck me from that was just like boy the compute deficit is going to be really tough. I mean, yeah, 3,800 GPUs, flat coil GPUs, right? That's because I I I looked at that number and I was like, wow. Like, you know, because Elon is literally talking about a million million GPUs.",
+          "at_s": 8203,
+          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=8203s"
+        }
+      ],
       "description": ""
     },
     {
@@ -207,8 +238,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-10-31T15:51:00Z",
-        "attempts": 2
+        "checked_at": "2026-10-31T20:15:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "What happens when AI makes legal work cheap enough to take cases lawyers couldn't afford to touch before? Eve CEO Jay Madheswaran argues that AI won't just cut costs for law firms. It could expand access to legal representation by making an entirely new class of cases economically viable. Jay joins a16z General Partner Alex Rampell to explain how Eve is automating plaintiff law from the first client call through settlement, and why some firms are already using it to"
@@ -292,8 +323,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-10-31T15:51:00Z",
-        "attempts": 2
+        "checked_at": "2026-10-31T20:15:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Artificial Analysis overhauls the Intelligence Index with version five, and the new benchmarks reshuffle the AI model leaderboard. NLW breaks down what changed, why private datasets and agentic tasks matter, and how the gap between US and open weight models widened. In the headlines: Google’s Gemini 4 Carbon takes the top spot, Google and Microsoft cloud earnings, and a broader DOJ probe into NVIDIA. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -497,8 +528,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-10-31T10:34:00Z",
-        "attempts": 1
+        "checked_at": "2026-10-31T20:15:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Host Sowbhagya Suresh shares some of the latest news and cutting-edge research from across Microsoft—from understanding the challenges facing coding agents to uncovering how people use AI at work and improving extended-range weather forecasting. Introduction A self-improving agentic framework Understanding coding agent success and failure Evolving agent skills with activity logs Looking beyond similarities in AI use Helping teachers make more time for teaching Improving extended-range weather forecasting BioEmu2 now available in public preview Final thoughts"
@@ -582,8 +613,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-10-31T15:51:00Z",
-        "attempts": 2
+        "checked_at": "2026-10-31T20:15:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Google’s Genie 4 shows how close AI is to inventing playable worlds on the fly, with big implications for gaming and robotics. NLW breaks down real-time prompting, generative audio, and the Gemini reasoning loop behind the new world model. In the headlines: Anthropic acquires a one-person biotech startup, markets cheer the Anthropic S1, and scientists push back on OpenAI’s physics disclosure. The AI Daily Brief helps you understand the most important news and discussions in AI."
