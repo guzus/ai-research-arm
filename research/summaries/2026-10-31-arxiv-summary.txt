@@ -1,12 +1,12 @@
 arXiv Papers - 2026-10-31
 
 TOP 5 PAPERS:
-• Training Foundation Models with a Single Algorithm - pretrain/SFT/RL unified as likelihood training
-• Algebraic World Model - explores unknown envs, proves reachability in Lean; ARC-AGI-3 99.9
-• How to Loop Your Transformer - loop scaling rules + parallel looped inference
-• ShallowDefend - explicit safety decision first defeats multi-turn jailbreaks
-• Gym-Anything for Robotics - coding agents build RL sims; frontier models score 0.06
+• Training Foundation Models with a Single Algorithm - pretrain/SFT/RL unified as likelihood fitting
+• Algebraic World Model - Lean-verified world models, clears ARC-AGI-3
+• How to Loop Your Transformer - scaling rules for looped LMs
+• Efficient Scalable Oversight via Rewinding - cheaper oversight proofs
+• Role Spoofing in LLMs - why prompt-injection defenses fail, probe fix
 
-CATEGORIES: LM/NLP 8, Vision/Multimodal 8, Agents/Reasoning 11, Safety 5, Other 8
+CATEGORIES: LM/NLP 11, Vision/Multimodal 10, Agents/Reasoning 11, Safety 6, Other 6
 
 Full report on GitHub.
