@@ -68,6 +68,7 @@ jobs:
   ubuntu:
     name: Freshness (ubuntu-latest)
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
       contents: read
       pull-requests: read
@@ -131,6 +132,9 @@ jobs:
   self-hosted:
     name: Freshness (self-hosted)
     runs-on: [self-hosted, Linux]
+    # Runs take about 30 s. A hung curl or gh call must not hold the only
+    # self-hosted runner for the 360-minute default.
+    timeout-minutes: 5
     permissions:
       contents: read
       pull-requests: read
