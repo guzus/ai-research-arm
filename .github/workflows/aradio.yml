@@ -180,6 +180,21 @@ jobs:
             echo "scratch=$scratch"
           } >> "$GITHUB_OUTPUT"
 
+      # Failed runs commit nothing, so the run history is the only record of
+      # an outage. The gate backs off from the newest failure since the last
+      # bulletin (doubling from 30 min to 4 h, 2 h while priority material
+      # waits) instead of retrying the editor on every trigger. A failed
+      # lookup leaves no record, which means no backoff, never no attempts.
+      - name: Read failed runs since the last bulletin
+        id: history
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SCRATCH: ${{ steps.stamp.outputs.scratch }}
+        run: |
+          python3 scripts/aradio_run_alert.py --history \
+            --attempts-out "$SCRATCH/attempts.json" --github-output "$GITHUB_OUTPUT"
+
       # Deterministic gate + inbox. The agent gets .agent-input/aradio/; the
       # validator and writer read only the trusted copy under $RUNNER_TEMP,
       # never .tmp/ (the import path) or .agent-input/.
@@ -198,6 +213,7 @@ jobs:
             --trusted-dir "$SCRATCH/trusted" \
             --force "$FORCE" \
             --tuber-api-base "$TUBER_API_BASE" \
+            --attempts "$SCRATCH/attempts.json" \
             --expired-out "$SCRATCH/expired.json" \
             --github-output "$GITHUB_OUTPUT"
 
@@ -485,6 +501,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           JOB_STATUS: ${{ job.status }}
           SINCE: ${{ steps.inbox.outputs.since }}
+          FAILED_SINCE: ${{ steps.history.outputs.failed }}
           GATE_REASON: ${{ steps.inbox.outputs.reason }}
           CHECKOUT: ${{ steps.checkout.outcome }}
           DEPS: ${{ steps.deps.outcome }}

@@ -96,7 +96,9 @@ about 22 s, and the full clone is most of that. A replay of such a weekday
 through the gate (110 min cadence, priority goes at once) gives 13 editor runs
 of about 2.6 min each. That is ≈ 50 runner-min/day, against ≈ 38 for the
 hourly cron alone. Over the 24 h to 2026-10-31 14:00 UTC, the lane runs that
-actually happened would have woken it 7 times (5 editor runs), ≈ 14 min.
+actually happened would have woken it 7 times (5 editor runs), ≈ 14 min. That
+bound holds while runs publish. During an outage the backoff (see "The gate")
+holds the editor to about 8 attempts a day, 12 with priority material.
 
 **Why not the cron alone.** On 2026-10-31 the hourly cron fired none of its
 slots between the workflow's re-enable at 08:21 UTC and 14:00, even after
@@ -127,6 +129,7 @@ have been three wake-ups instead of none, at about 10:38 (Podcast Signal),
 new = inbox candidates whose key is not in research/aradio/cursor.json
 force (workflow_dispatch input)         → run the editor
 no new items                            → stop: "no new material"
+failed runs since the last bulletin     → stop until the backoff ends (below)
 any priority item in new                → run the editor now
 ≥ 110 min since cursor.last_editor_run_at (or never ran) → run the editor
 otherwise                               → stop: routine material waits for the 2 h cadence
@@ -137,6 +140,21 @@ Priority items: earnings filings, earnings-call episodes, and **long-form**
 OpenAI posts about one 90–250 s customer testimonial a day as a P0 video — and
 metadata-only episodes are routine material that waits for the 2 h cadence.
 A stopped gate commits nothing and exits 0.
+
+**Backoff while the station is stuck.** The cursor moves only on
+publication, so during an outage (editor quota or token, a validator mismatch,
+a broken push) the 110 min anchor never moves. Without a backoff, every trigger
+would retry the editor on the shared Claude subscription, up to about 57 times
+on a weekday. Failed runs commit nothing, so `aradio_run_alert.py --history`
+reads them from the run history before the gate: the failed runs created since
+`cursor.last_editor_run_at`, and when the newest one finished. The gate then
+waits 30 min after the newest failure, doubling per failure to a 4 h cap, or
+2 h while priority material waits so a fixed outage resumes it quickly. A
+publication moves the cursor, which resets the backoff, and `force` bypasses
+it. With a trigger every 20 min and every attempt failing, a 24 h outage makes
+8 editor attempts instead of 72 (12 with priority material waiting). A failed
+lookup writes no record, which means no backoff, never a station that stops
+trying.
 
 **Why the gate runs on the full clone.** On 2026-10-31 a pre-gate was built
 and then dropped. It decided on a blobless, depth-1 sparse checkout of only

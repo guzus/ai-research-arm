@@ -1299,6 +1299,101 @@ class ExpiredAlertStepTest(unittest.TestCase):
                 self.assertIn(marker, stdout)
 
 
+class BackoffTest(FixtureTest):
+    """While stuck, the editor is retried on a doubling backoff, not on every trigger."""
+
+    STUCK_SINCE = "2026-10-30T04:00:00Z"  # 290 min before NOW: routine material is due
+
+    def setUp(self):
+        super().setUp()
+        self.repo.twitter("2026-10-30", {"00:00": story(1, "A", ["https://x.com/a/status/1"])})
+        self.repo.cursor(last_editor_run_at=self.STUCK_SINCE)
+
+    def attempts(self, failed: int, minutes_ago: int, since: str = STUCK_SINCE) -> dict:
+        return {"since": since, "failed": failed,
+                "last_failed_at": bi.iso_z(NOW - dt.timedelta(minutes=minutes_ago))}
+
+    def test_each_failure_doubles_the_wait_up_to_four_hours(self):
+        self.assertTrue(self.repo.build()["go"])  # due, and nothing has failed
+        for failed, wait in ((1, 30), (2, 60), (3, 120), (4, 240), (9, 240), (500, 240)):
+            with self.subTest(failed=failed):
+                early = self.repo.build(attempts=self.attempts(failed, wait - 1))
+                self.assertFalse(early["go"])
+                self.assertIn(f"backing off after {failed} failed run(s)", early["reason"])
+                self.assertTrue(self.repo.build(attempts=self.attempts(failed, wait))["go"])
+
+    def test_priority_material_waits_at_most_two_hours(self):
+        self.repo.podcasts([episode("p")])  # a P0 long-form episode with a transcript
+        self.assertFalse(self.repo.build(attempts=self.attempts(4, 119))["go"])
+        summary = self.repo.build(attempts=self.attempts(4, 120))
+        self.assertEqual((True, "1 new priority item(s)"), (summary["go"], summary["reason"]))
+
+    def test_force_and_an_empty_inbox_come_before_the_backoff(self):
+        self.assertTrue(self.repo.build(force=True, attempts=self.attempts(3, 1))["go"])
+        self.repo.cursor(last_editor_run_at=self.STUCK_SINCE, keys={
+            bi.twitter_key("https://x.com/a/status/1", "A"): "2026-10-30T01:00:00Z"})
+        self.assertEqual("no new material",
+                         self.repo.build(attempts=self.attempts(3, 1))["reason"])
+
+    def test_a_publication_resets_it(self):
+        # A record for an older cursor stamp describes a finished outage.
+        summary = self.repo.build(attempts=self.attempts(3, 1, since="2026-10-29T04:00:00Z"))
+        self.assertTrue(summary["go"])
+        self.assertTrue(any("no backoff this run" in w for w in summary["warnings"]))
+
+    def test_cli_reads_the_record_and_runs_without_one(self):
+        record = Path(self.repo.tmp.name) / "attempts.json"
+        record.write_text(json.dumps(self.attempts(2, 10)), encoding="utf-8")
+        gh = Path(self.repo.tmp.name) / "gh.txt"
+        args = ["--now", "2026-10-30T08:50:00Z", "--repo-root", str(self.repo.root),
+                "--trusted-dir", str(self.repo.trusted), "--no-transcript-fetch",
+                "--github-output", str(gh), "--attempts"]
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(0, bi.main(args + [str(record)]))
+        self.assertIn("go=false", gh.read_text())
+        gh.write_text("")
+        with contextlib.redirect_stdout(io.StringIO()) as out:
+            self.assertEqual(0, bi.main(args + [str(record.with_name("missing.json"))]))
+        self.assertIn("go=true", gh.read_text())
+        self.assertIn("no attempts record", out.getvalue())
+
+    def test_a_day_long_outage_costs_a_handful_of_editor_runs(self):
+        # Triggers every 20 min for 24 h (more than the cron plus all four
+        # lanes); every editor attempt fails two minutes after it starts.
+        def attempts_in_a_day(priority: bool, backoff: bool) -> int:
+            item = bi.Candidate(key="k", kind="earnings" if priority else "twitter",
+                                priority=priority, source="s", title="t", url=None,
+                                at=NOW, text="", links=[])
+            record, tries = bi.Attempts(), 0
+            for step in range(72):
+                now = NOW + dt.timedelta(minutes=20 * step)
+                go, _ = bi.decide([item], {"last_editor_run_at": self.STUCK_SINCE}, now, False,
+                                  record if backoff else bi.Attempts())
+                if go:
+                    tries += 1
+                    record = bi.Attempts(record.failed + 1, now + dt.timedelta(minutes=2))
+            return tries
+
+        self.assertEqual(72, attempts_in_a_day(priority=False, backoff=False))
+        self.assertEqual(8, attempts_in_a_day(priority=False, backoff=True))
+        self.assertEqual(12, attempts_in_a_day(priority=True, backoff=True))
+
+    def test_workflow_reads_the_history_before_the_gate(self):
+        workflow = yaml.safe_load((REPO_ROOT / ".github/workflows/aradio.yml")
+                                  .read_text(encoding="utf-8"))
+        steps = workflow["jobs"]["aradio"]["steps"]
+        names = [step.get("name") for step in steps]
+        history = steps[names.index("Read failed runs since the last bulletin")]
+        self.assertEqual("history", history["id"])
+        self.assertTrue(history.get("continue-on-error"))
+        self.assertIn("--history", history["run"])
+        self.assertIn('--attempts-out "$SCRATCH/attempts.json"', history["run"])
+        self.assertLess(names.index("Stamp the run (UTC)"), names.index(history["name"]))
+        gate = steps[names.index("Build inbox and apply the gate")]
+        self.assertLess(names.index(history["name"]), names.index(gate["name"]))
+        self.assertIn('--attempts "$SCRATCH/attempts.json"', gate["run"])
+
+
 class OutageStampTest(FixtureTest):
     """The gate outputs the cursor's last publication: aradio_run_alert.py keys outages on it."""
 

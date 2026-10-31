@@ -42,8 +42,12 @@ def published(**values: str) -> dict[str, str]:
                GATE_REASON="138 min since the last editor run", **values)
 
 
-def run(run_id: int, created_at: str, conclusion: str = "failure") -> dict:
-    return {"id": run_id, "created_at": created_at, "conclusion": conclusion}
+def run(run_id: int, created_at: str, conclusion: str = "failure",
+        updated_at: str | None = None) -> dict:
+    record = {"id": run_id, "created_at": created_at, "conclusion": conclusion}
+    if updated_at:
+        record["updated_at"] = updated_at
+    return record
 
 
 def no_runs(since):
@@ -198,6 +202,71 @@ class RecoveryTest(unittest.TestCase):
             ara.query_runs("o/r", None)
 
 
+class HistoryTest(unittest.TestCase):
+    """--history: the gate's backoff record, read from the run history."""
+
+    def cursor(self, tmp: str, last: str | None) -> str:
+        path = Path(tmp) / "cursor.json"
+        path.write_text(json.dumps({"schema": 1, "last_editor_run_at": last, "keys": {}}))
+        return str(path)
+
+    def test_counts_failures_since_the_last_bulletin_and_the_newest_finish(self):
+        runs = [
+            run(950, "2026-10-31T11:50:12Z", updated_at="2026-10-31T11:53:40Z"),
+            run(949, "2026-10-31T10:50:09Z", "timed_out", updated_at="2026-10-31T11:20:09Z"),
+            run(940, "2026-10-31T08:53:32Z", updated_at="2026-10-31T08:56:10Z"),  # published SINCE
+            run(951, "2026-10-31T11:58:00Z", "cancelled", updated_at="2026-10-31T11:58:01Z"),
+            run(900, "2026-10-31T12:50:00Z", updated_at="2026-10-31T12:51:00Z"),  # this run
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            seen = []
+            record = ara.history(self.cursor(tmp, "2026-10-31T17:53:00+09:00"),
+                                 lambda since: seen.append(since) or runs, "900")
+        self.assertEqual([ara.parse_time(SINCE)], seen)
+        self.assertEqual({"since": SINCE, "failed": 2, "last_failed_at": "2026-10-31T11:53:40Z"},
+                         record)
+
+    def test_a_healthy_or_never_published_station(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual({"since": SINCE, "failed": 0, "last_failed_at": None},
+                             ara.history(self.cursor(tmp, SINCE), lambda since: [], "900"))
+            never = ara.history(self.cursor(tmp, None),
+                                lambda since: [run(1, "2026-10-30T09:50:00Z",
+                                                   updated_at="2026-10-30T09:52:00Z")], "900")
+        self.assertEqual({"since": "never", "failed": 1, "last_failed_at": "2026-10-30T09:52:00Z"},
+                         never)
+        with tempfile.TemporaryDirectory() as tmp:  # no cursor.json yet, as for the gate
+            self.assertEqual("never", ara.history(str(Path(tmp) / "cursor.json"),
+                                                  lambda since: [], "900")["since"])
+
+    def test_main_writes_the_record_and_a_failed_lookup_means_no_backoff(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            cursor, out, record = self.cursor(tmp, SINCE), Path(tmp) / "out", Path(tmp) / "rec"
+            runs = [run(950, "2026-10-31T11:50:12Z", updated_at="2026-10-31T11:53:40Z")]
+            argv = ["--history", "--cursor", cursor, "--attempts-out", str(record),
+                    "--github-output", str(out)]
+            with mock.patch.object(ara, "query_runs", return_value=runs), \
+                    mock.patch.dict(os.environ, {"GITHUB_RUN_ID": "900"}), \
+                    contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(0, ara.main(argv))
+            self.assertEqual(1, json.loads(record.read_text())["failed"])
+            self.assertIn("failed<<", out.read_text())
+            record.unlink()
+            broken = subprocess.CalledProcessError(1, ["gh"])
+            with mock.patch.object(ara, "query_runs", side_effect=broken), \
+                    contextlib.redirect_stdout(io.StringIO()), \
+                    contextlib.redirect_stderr(io.StringIO()) as err:
+                self.assertEqual(0, ara.main(argv))
+            self.assertFalse(record.exists())
+            self.assertIn("without backoff", err.getvalue())
+
+    def test_the_recovery_check_reuses_the_history_count(self):
+        shaped = ara.shape(published(FAILED_SINCE="3"), no_runs, NOW)
+        self.assertEqual("aradio-recovered-" + SINCE, shaped["idempotency_key"])
+        self.assertIn("after 3 failed run(s)", shaped["text"])
+        self.assertEqual("", ara.shape(published(FAILED_SINCE="0"), no_runs, NOW)["title"])
+
+
 class OutputTest(unittest.TestCase):
     def test_outputs_round_trip_through_github_output(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -247,6 +316,7 @@ class WorkflowTest(unittest.TestCase):
             self.assertIn(step_id, self.steps, name)
             self.assertEqual(f"${{{{ steps.{step_id}.outcome }}}}", shape_step["env"][name])
         self.assertEqual("${{ steps.inbox.outputs.since }}", shape_step["env"]["SINCE"])
+        self.assertEqual("${{ steps.history.outputs.failed }}", shape_step["env"]["FAILED_SINCE"])
         self.assertEqual("read", self.job["permissions"]["actions"])
         names_in_order = [step.get("name") for step in self.job["steps"]]
         self.assertEqual(names_in_order.index("Publish Hooker workflow telemetry") - 1,

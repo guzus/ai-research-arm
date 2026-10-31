@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
-"""Shape Aradio's per-run Hooker event: an outage alerts once, recovery once.
+"""Aradio's view of its own run history: back off while stuck, alert once.
+
+Failed runs commit nothing, so GitHub's run history is the only record of
+them. This script reads it twice per run.
+
+--history (before the gate): counts this workflow's failed runs since the
+cursor's last_editor_run_at and the newest failure's time, for the gate's
+doubling backoff (build_aradio_inbox.retry_at), and writes them as the
+gate's --attempts record.
+
+Default (the run's last step): shapes the run's Hooker event, so an outage
+alerts once a day and its recovery once.
 
 aradio.yml posts one hooker-telemetry event per hourly run, priority 5 when
 the job fails. A run that fails WITHOUT publishing leaves
@@ -23,9 +34,10 @@ per-run alert. A gate stop is keyed on the UTC hour: every lane that finishes
 wakes the station, and one "nothing to air" event an hour is enough.
 
 Inputs are environment variables set by the workflow (step outcomes, the job
-status, the gate's `since`). Outputs are hooker-telemetry inputs: title,
-text, priority, tags and idempotency_key. An empty value keeps the action's
-default, so a failure here can never silence the telemetry step.
+status, the gate's `since`, the history step's failure count). Outputs are
+hooker-telemetry inputs: title, text, priority, tags and idempotency_key. An
+empty value keeps the action's default, so a failure here can never silence
+the telemetry step.
 """
 
 from __future__ import annotations
@@ -97,6 +109,32 @@ def failed_runs_since(runs: list[dict], since: Optional[datetime],
     return found
 
 
+def newest_failure(runs: list[dict]) -> Optional[datetime]:
+    """When the latest of these failed runs finished (its updated_at)."""
+    times = [t for t in (parse_time(run.get("updated_at")) for run in runs) if t is not None]
+    return max(times) if times else None
+
+
+def read_since(cursor_path: str) -> tuple[Optional[datetime], str]:
+    """The cursor's last publication, as the gate normalizes it (`since`)."""
+    if not os.path.exists(cursor_path):  # before the first bulletin, as for the gate
+        return None, "never"
+    with open(cursor_path, encoding="utf-8") as handle:
+        cursor = json.load(handle)
+    last = parse_time(cursor.get("last_editor_run_at")) if isinstance(cursor, dict) else None
+    return last, (iso_z(last) if last else "never")
+
+
+def history(cursor_path: str, runs_fn: Callable[[Optional[datetime]], list[dict]],
+            run_id: str) -> dict:
+    """The gate's --attempts record: failed runs since the last bulletin."""
+    since, label = read_since(cursor_path)
+    failed = failed_runs_since(runs_fn(since), since, run_id)
+    last = newest_failure(failed)
+    return {"since": label, "failed": len(failed),
+            "last_failed_at": iso_z(last) if last else None}
+
+
 def query_runs(repository: str, since: Optional[datetime]) -> list[dict]:
     """This workflow's recent runs on main (read-only `gh api`, needs actions: read)."""
     args = ["gh", "api", "-X", "GET",
@@ -125,15 +163,20 @@ def shape(env: Mapping[str, str], runs_fn: Callable[[Optional[datetime]], list[d
     if env.get("PUSH") == "success":
         if since is None and since_raw != "never":
             return {**shaped, "text": "\n".join(lines)}
-        try:
-            failed = failed_runs_since(runs_fn(since), since, env.get("GITHUB_RUN_ID", ""))
-        except (OSError, subprocess.SubprocessError, ValueError) as exc:
-            print(f"::warning::cannot list earlier Aradio runs, so no recovery check: "
-                  f"{type(exc).__name__}", file=sys.stderr)
-            failed = []
+        counted = env.get("FAILED_SINCE", "").strip()
+        if counted.isdigit():  # the history step already listed them
+            failed = int(counted)
+        else:
+            try:
+                failed = len(failed_runs_since(runs_fn(since), since,
+                                               env.get("GITHUB_RUN_ID", "")))
+            except (OSError, subprocess.SubprocessError, ValueError) as exc:
+                print(f"::warning::cannot list earlier Aradio runs, so no recovery check: "
+                      f"{type(exc).__name__}", file=sys.stderr)
+                failed = 0
         if failed:
             label = since_raw if since else "the first bulletin"
-            lines.append(f"Published again after {len(failed)} failed run(s) since {label}; "
+            lines.append(f"Published again after {failed} failed run(s) since {label}; "
                          "the outage is over.")
             if status == "success":
                 shaped.update(title="✅ Aradio recovered", priority="3",
@@ -172,8 +215,28 @@ def write_outputs(path: Optional[str], values: Mapping[str, str]) -> None:
 def main(argv: Optional[list[str]] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--github-output", default=os.environ.get("GITHUB_OUTPUT"))
+    parser.add_argument("--history", action="store_true",
+                        help="before the gate: write the --attempts record instead")
+    parser.add_argument("--cursor", default="research/aradio/cursor.json")
+    parser.add_argument("--attempts-out", default=None)
     args = parser.parse_args(argv)
     repository = os.environ.get("GITHUB_REPOSITORY", "")
+    if args.history:
+        try:
+            record = history(args.cursor, lambda since: query_runs(repository, since),
+                             os.environ.get("GITHUB_RUN_ID", ""))
+        except (OSError, subprocess.SubprocessError, ValueError) as exc:
+            # No record means no backoff: a broken lookup can cost attempts,
+            # never a station that stops trying.
+            print(f"::warning::cannot read Aradio's run history ({type(exc).__name__}); "
+                  "the gate runs without backoff", file=sys.stderr)
+            return 0
+        if args.attempts_out:
+            with open(args.attempts_out, "w", encoding="utf-8") as handle:
+                json.dump(record, handle)
+        write_outputs(args.github_output, {"failed": str(record["failed"])})
+        print(json.dumps(record))
+        return 0
     shaped = shape(os.environ, lambda since: query_runs(repository, since),
                    datetime.now(timezone.utc))
     write_outputs(args.github_output, shaped)
