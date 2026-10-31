@@ -17,6 +17,14 @@
       },
       "implementation": ".github/actions/run-cursor-container"
     },
+    "claude-container": {
+      "isolated_workspace": true,
+      "editorial_contract": true,
+      "provider_credentials": {
+        "claude": "claude-code-oauth-token"
+      },
+      "implementation": ".github/actions/run-claude-container"
+    },
     "agent-run": {
       "isolated_workspace": false,
       "editorial_contract": true,
@@ -242,6 +250,15 @@
         "preflight_path": "harness"
       },
       "notes": "Cursor Agent CLI inside run-cursor-container, authenticated by CURSOR_API_KEY and pinned to cursor-grok-4.6-high-fast (the CLI id for Grok 4.6 Fast; grok-4.6-fast is not a valid --model). Replaces composer-2.5. Runtime-selectable by agent-dispatch and by agent-run only through a lane-local compatibility override. It temporarily serves both production editorial routes while the OpenCode Go monthly plan is exhausted. cursor-composer-2p5 remains a compatibility alias."
+    },
+    "claude-sonnet-5p5-isolated": {
+      "adapter": "claude-container",
+      "provider": "claude",
+      "model": "claude-sonnet-5-5",
+      "display_name": "Claude Sonnet 5.5 via isolated Claude Code",
+      "aliases": [],
+      "production_eligible": true,
+      "notes": "Claude Code CLI 2.1.285 inside run-claude-container, pinned to the full claude-sonnet-5-5 id and authenticated by CLAUDE_CODE_OAUTH_TOKEN, which reaches the CLI on an inherited descriptor and is never in the container environment. The lane policy .github/claude/<lane>.json (Read/Edit allow rules only) decides the tools, and a PreToolUse guard enforces it as an exact path allowlist: no Bash, web, MCP, or subagents. Runtime-selectable by agent-dispatch only, never by agent-run or fallback.chain. It shares the CLAUDE_CODE_OAUTH_TOKEN failure domain with the native agent-run Claude lanes; validate with claude-isolated-canary.yml."
     }
   },
   "routes": {
@@ -265,9 +282,9 @@
     },
     "aradio": {
       "contract": "research-editorial",
-      "backend": "cursor-grok-4p6-fast",
+      "backend": "claude-sonnet-5p5-isolated",
       "fallback": "none",
-      "notes": "Dedicated isolated route for the Aradio situation-board editor, so the hourly station can be rerouted or cost-tuned without touching the shared editorial routes. The editor returns one uncommitted .tmp/aradio/edit.json of ops; trusted host code validates it, voices it, and is the only committer. Fails closed with no cross-adapter fallback."
+      "notes": "Dedicated isolated route for the Aradio situation-board editor, so the hourly station can be rerouted or cost-tuned without touching the shared editorial routes. Moved from Cursor to the isolated Claude Code adapter on 2026-10-31, while Cursor's weekly usage limit is exhausted, under the .github/claude/aradio.json policy (read the staged inbox, write the one ops file). The editor returns one uncommitted .tmp/aradio/edit.json of ops; trusted host code validates it, voices it, and is the only committer. Fails closed with no cross-adapter fallback; repoint this route alone to move it back."
     }
   },
   "fallback": {

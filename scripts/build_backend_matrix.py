@@ -112,6 +112,27 @@ def cursor_model_id(workflow_name: str) -> str:
     return found.pop()
 
 
+CLAUDE_CONTAINER_ACTION_MODEL_RE = re.compile(r'^claude/(claude-[a-z0-9][a-z0-9.-]*)$')
+
+
+def claude_container_model_id(workflow_name: str) -> str:
+    """The model id a direct run-claude-container caller passes to `claude --model`."""
+    doc = yaml.safe_load((WORKFLOWS_DIR / workflow_name).read_text(encoding="utf-8"))
+    found = set()
+    for job in (doc.get("jobs") or {}).values():
+        for step in job.get("steps") or []:
+            if step.get("uses") == "./.github/actions/run-claude-container":
+                model = str((step.get("with") or {}).get("model") or "")
+                found.update(CLAUDE_CONTAINER_ACTION_MODEL_RE.findall(model))
+    if len(found) != 1:
+        raise SystemExit(
+            f"{workflow_name}: expected exactly one isolated Claude model id, "
+            f"found {sorted(found)}. The matrix cannot name an author it "
+            "cannot resolve."
+        )
+    return found.pop()
+
+
 def opencode_display_name(model_id: str) -> str:
     """Human label for the diagram node, derived from the served model id."""
     words = {"v4": "V4", "k3": "K3", "k2": "K2", "deepseek": "DeepSeek", "glm": "GLM"}
@@ -142,6 +163,9 @@ OPENCODE_ACTION = "run-opencode-container"
 CURSOR_ACTION = "run-cursor-container"
 CURSOR_PROVIDER_LABEL = "Cursor CLI"
 CURSOR_ACTION_MODEL_RE = re.compile(r'^cursor/([A-Za-z0-9._-]+)$')
+CLAUDE_CONTAINER_ACTION = "run-claude-container"
+CLAUDE_CONTAINER_LABEL = "Claude Code (isolated container)"
+CLAUDE_MODEL_ID_RE = re.compile(r"^claude-[a-z0-9][a-z0-9.-]*$")
 AGENT_DISPATCH = "agent-dispatch"
 RESOLVER_CALL_RE = re.compile(r"resolve_backend_lane\.py\s+([a-z0-9\-]+)")
 STEP_OUTCOME_RE = re.compile(r"steps\.([a-zA-Z0-9_\-]+)\.outcome\s*==\s*'failure'")
@@ -242,6 +266,15 @@ class CursorStep:
 
 
 @dataclass
+class ClaudeContainerStep:
+    workflow: str
+    lane: str
+    model: str
+    token: str
+    step_name: str
+
+
+@dataclass
 class DispatchStep:
     workflow: str
     lane: str
@@ -272,6 +305,7 @@ class Observation:
     pi: list[PiStep] = field(default_factory=list)
     opencode_steps: list[OpencodeStep] = field(default_factory=list)
     cursor_steps: list[CursorStep] = field(default_factory=list)
+    claude_container_steps: list[ClaudeContainerStep] = field(default_factory=list)
     native: list[NativeStep] = field(default_factory=list)
     codex: bool = False
     codex_token: str = ""
@@ -279,6 +313,7 @@ class Observation:
     opencode_token: str = ""
     cursor: bool = False
     cursor_token: str = ""
+    claude_container: bool = False
     resolver_lanes: set[str] = field(default_factory=set)
     det_by_lane: dict[str, str] = field(default_factory=dict)
     det_by_tier: dict[str, str] = field(default_factory=dict)
@@ -642,6 +677,16 @@ def observe_workflow(wf_path: Path) -> Observation:
                     step_name=step_name,
                 ))
 
+            elif uses == "./.github/actions/run-claude-container":
+                obs.claude_container = True
+                obs.claude_container_steps.append(ClaudeContainerStep(
+                    workflow=wf_path.name,
+                    lane=str(with_block.get("lane", "")).strip(),
+                    model=str(with_block.get("model", "")).strip(),
+                    token=first_secret(with_block.get("claude-code-oauth-token")),
+                    step_name=step_name,
+                ))
+
     return obs
 
 
@@ -724,6 +769,20 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
             if credential != "cursor-api-key":
                 errors.append(f"route '{route_key}': cursor provider must bind exactly "
                               "to dispatcher input cursor-api-key")
+        elif profile.adapter == "claude-container":
+            if fallback != "none":
+                errors.append(f"route '{route_key}': claude-container routes must use "
+                              "fallback 'none' because cross-adapter fallback is not "
+                              "implemented")
+            if profile.provider != "claude" or not profile.model_id:
+                errors.append(f"route '{route_key}': claude-container backend '{backend}' "
+                              "must declare provider=claude and a non-empty model")
+            elif not CLAUDE_MODEL_ID_RE.fullmatch(profile.model_id):
+                errors.append(f"route '{route_key}': claude-container backend '{backend}' "
+                              "must pin a full claude-* model id, not an alias")
+            if credential != "claude-code-oauth-token":
+                errors.append(f"route '{route_key}': claude provider must bind exactly "
+                              "to dispatcher input claude-code-oauth-token")
         else:
             errors.append(f"route '{route_key}': backend '{backend}' adapter "
                           f"'{profile.adapter}' is not implemented by agent-dispatch")
@@ -928,6 +987,19 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
                 errors.append(f"lane '{step.lane}': opencode editorial lanes must be "
                               "strict (no silent model/provider fallback)")
 
+        for step in obs.claude_container_steps:
+            label = f"{wf_name} step '{step.step_name}'"
+            if step.lane:
+                errors.append(f"{label}: run-claude-container is called with lane "
+                              f"'{step.lane}' directly; isolated Claude lanes must route "
+                              "through agent-dispatch so the SSOT decides the backend")
+            if not CLAUDE_CONTAINER_ACTION_MODEL_RE.fullmatch(step.model):
+                errors.append(f"{label}: run-claude-container must pin one literal "
+                              "claude/claude-* model ref")
+            if step.token != "CLAUDE_CODE_OAUTH_TOKEN":
+                errors.append(f"{label}: must pass claude-code-oauth-token: "
+                              "secrets.CLAUDE_CODE_OAUTH_TOKEN")
+
         for step in obs.native:
             if step.rerouted_provider:
                 # generative-research's env-rerouted Fireworks path is a known
@@ -1086,6 +1158,9 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             elif profile and profile.adapter == "cursor":
                 token = "CURSOR_API_KEY"
                 harness_label = "agent-dispatch → Cursor CLI (runtime SSOT)"
+            elif profile and profile.adapter == "claude-container":
+                token = "CLAUDE_CODE_OAUTH_TOKEN"
+                harness_label = f"agent-dispatch → {CLAUDE_CONTAINER_LABEL} (runtime SSOT)"
             else:
                 harness_label = "agent-dispatch → Claude Code · agent-run (runtime SSOT)"
             if route.get("fallback") == "none":
@@ -1265,6 +1340,11 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
             rows.append([label, f"`{wf_name}`", "Cursor CLI (containerised)",
                          CURSOR_PROVIDER_LABEL, f"`{model_id}`",
                          f"`{obs.cursor_token}`", note])
+        if obs.claude_container and any(not step.lane for step in obs.claude_container_steps):
+            model_id = claude_container_model_id(wf_name)
+            rows.append([f"(canary) claude-container + {model_id}", f"`{wf_name}`",
+                         CLAUDE_CONTAINER_LABEL, "Anthropic (native)", f"`{model_id}`",
+                         "`CLAUDE_CODE_OAUTH_TOKEN`", "hard fail (diagnostics lane)"])
 
     return rows
 
@@ -1440,7 +1520,8 @@ def build_generated_blocks() -> tuple[str, str]:
                              observations[p.name].agent_run, observations[p.name].pi,
                              observations[p.name].native, observations[p.name].codex,
                              observations[p.name].opencode,
-                             observations[p.name].cursor])]
+                             observations[p.name].cursor,
+                             observations[p.name].claude_container])]
 
     lines = [BEGIN_MARKER, ""]
     lines.append("### Lanes")

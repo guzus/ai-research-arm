@@ -14,16 +14,18 @@ continues to own its prompt, dated paths, staged inputs, timeout, and trusted
 post-processing because those are lane I/O, not provider routing.
 
 Only isolated adapters implemented by agent-dispatch are accepted here.
-OpenCode and Cursor CLI routes fail closed: cross-adapter fallback would
-require a second containment boundary and is not silently inferred from the
-global agent-run chain.  The host-checkout agent-run adapter is deliberately
-incompatible.
+OpenCode, Cursor CLI, and isolated Claude Code routes fail closed:
+cross-adapter fallback would require a second containment boundary and is not
+silently inferred from the global agent-run chain.  The host-checkout
+agent-run adapter is deliberately incompatible, even though it serves the same
+Claude provider and credential as the isolated claude-container adapter.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -31,8 +33,11 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_FILE = REPO_ROOT / "data" / "agent-backends.json"
-SUPPORTED_ADAPTERS = {"opencode", "cursor"}
+SUPPORTED_ADAPTERS = {"opencode", "cursor", "claude-container"}
 SUPPORTED_FALLBACKS = {"global", "none"}
+# A full model id, never an alias such as `sonnet` that silently moves to a
+# newer model and would change an artifact's provenance without an SSOT edit.
+CLAUDE_MODEL = re.compile(r"^claude-[a-z0-9][a-z0-9.-]*$")
 
 
 class RouteError(ValueError):
@@ -184,6 +189,28 @@ def resolve_route(data: dict, lane_key: str) -> RouteSelection:
         if credential != "cursor-api-key":
             raise RouteError(
                 "cursor must bind exactly to dispatcher input cursor-api-key"
+            )
+    if adapter == "claude-container":
+        if not strict:
+            raise RouteError(
+                f"route '{route_key}' uses claude-container but fallback is '{fallback}'; "
+                "cross-adapter fallback is unsupported, so claude-container routes "
+                "must use 'none'"
+            )
+        if provider != "claude" or not model:
+            raise RouteError(
+                f"backend '{backend_key}' must declare provider 'claude' and a "
+                "non-empty model; model_ref is derived as provider/model"
+            )
+        if not CLAUDE_MODEL.fullmatch(model):
+            raise RouteError(
+                f"backend '{backend_key}' model must be a full claude-* model id, "
+                "not an alias"
+            )
+        if credential != "claude-code-oauth-token":
+            raise RouteError(
+                "claude-container must bind exactly to dispatcher input "
+                "claude-code-oauth-token"
             )
     return RouteSelection(
         lane=lane_key,
