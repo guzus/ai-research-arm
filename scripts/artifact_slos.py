@@ -19,6 +19,9 @@ PUBLISHED_DEGRADED_POLICIES = {
     "per-symbol-stale-carry-forward",
     "price-live-score-stale",
     "per-model-stale-carry-forward",
+    # Aradio publishes a bulletin's text when its audio fails (audio: null),
+    # then fails the job; index.json `degraded` marks it until audio returns.
+    "publish-text-fail-loud-on-audio",
 }
 
 

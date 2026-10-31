@@ -34,6 +34,14 @@ class ArtifactSloRegistryTest(unittest.TestCase):
         self.assertNotIn("freshness_slo_hours", self.by_id["earnings"]["cadence"])
         self.assertNotIn("freshness_slo_hours", self.by_id["generative-research"]["cadence"])
 
+    def test_aradio_freshness_tolerates_quiet_stretches(self):
+        # cursor.json moves only when the gate runs the editor; a stopped gate
+        # commits nothing. Replaying real lane data (2026-10-10..30) through
+        # the gate gave routine 10-21 h gaps between editor runs, so an 8 h
+        # threshold paged on a healthy station. A day-plus threshold (30 h, as
+        # for the podcasts lane it mostly reads) still catches a dead lane.
+        self.assertGreaterEqual(self.by_id["aradio"]["cadence"]["freshness_slo_hours"], 24)
+
     def test_fixed_cadence_registry_drives_both_watchdogs(self):
         import check_lane_freshness as freshness
         import check_lane_content as content

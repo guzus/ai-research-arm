@@ -50,6 +50,8 @@ research/*
 !research/arm/**
 !research/market
 !research/market/**
+!research/aradio
+!research/aradio/**
 # Build-only evidence input. prebuild reads the canonical index to emit the
 # narrowed public claims projection; it does not mirror this directory.
 !research/claims

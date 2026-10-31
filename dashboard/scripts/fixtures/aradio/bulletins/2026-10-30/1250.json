@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "id": "2026-10-30-1250",
+  "aired_at": "2026-10-30T12:50:00Z",
+  "headline": "Anthropic's filing timeline firms up; EU code of practice settles into enforcement",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's ten to one UTC on Friday, October thirtieth. This is Aradio, with two updates since the last bulletin."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "A second report says Anthropic is preparing a confidential filing before the end of the year. Alphabet is not part of this story, but the timing matters for every lab raising money."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The company declined to comment. Until a filing is confirmed, this stays reported, not settled."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "In Brussels, the AI Office published its first supervisory priorities under the code of practice for general-purpose models."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "No new signatories this week, so we are marking that story steady."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch for the first formal information requests to model providers."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Anthropic, the detail that matters is the confidential route. A confidential submission lets the company respond to regulators' comments before anything is public, so the first hard evidence may be weeks away."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Two independent reports on timing are more than we had on Monday, but it is still the press reading tea leaves, not the company speaking."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Our model ticket on the listing stays at reported. We will move it when there is a filing, a bank on the record, or a statement from the company."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Back to Brussels for a moment. The supervisory priorities name documentation of training data and evaluations of systemic risk as the first areas the office will check."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That lines up with what the code already asks for, which is why the labs that signed are calling it a non-event. The labs that did not sign are the ones to watch."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's Aradio. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's ten to one UTC on Friday, October thirtieth. This is Aradio, with two updates since the last bulletin.",
+    "Speaker 2: A second report says Anthropic is preparing a confidential filing before the end of the year. Alphabet is not part of this story, but the timing matters for every lab raising money.",
+    "Speaker 1: The company declined to comment. Until a filing is confirmed, this stays reported, not settled.",
+    "Speaker 2: In Brussels, the AI Office published its first supervisory priorities under the code of practice for general-purpose models.",
+    "Speaker 1: No new signatories this week, so we are marking that story steady.",
+    "Speaker 2: Watch for the first formal information requests to model providers.",
+    "Speaker 2: On Anthropic, the detail that matters is the confidential route. A confidential submission lets the company respond to regulators' comments before anything is public, so the first hard evidence may be weeks away.",
+    "Speaker 1: Two independent reports on timing are more than we had on Monday, but it is still the press reading tea leaves, not the company speaking.",
+    "Speaker 2: Our model ticket on the listing stays at reported. We will move it when there is a filing, a bank on the record, or a statement from the company.",
+    "Speaker 1: Back to Brussels for a moment. The supervisory priorities name documentation of training data and evaluations of systemic risk as the first areas the office will check.",
+    "Speaker 2: That lines up with what the code already asks for, which is why the labs that signed are calling it a non-event. The labs that did not sign are the ones to watch.",
+    "Speaker 1: That's Aradio. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "anthropic-ipo",
+    "eu-ai-act-gpai-code"
+  ],
+  "threads": [
+    {
+      "slug": "anthropic-ipo",
+      "title": "Anthropic's IPO",
+      "status": "developing"
+    },
+    {
+      "slug": "eu-ai-act-gpai-code",
+      "title": "The EU AI Act's code of practice for general-purpose models",
+      "status": "steady"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://x.com/reporter/status/1980000000000000002",
+      "kind": "twitter",
+      "label": "@reporter on X"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "anthropic-ipo"
+    },
+    {
+      "op": "update",
+      "slug": "eu-ai-act-gpai-code"
+    }
+  ],
+  "warnings": [],
+  "audio": null,
+  "audio_error": "gemini: HTTP 503 after 3 attempts",
+  "editor": {
+    "backend": "claude",
+    "model": "claude-opus-5"
+  },
+  "inbox": {
+    "items": 9,
+    "kinds": {
+      "earnings-call": 2,
+      "podcast": 1,
+      "twitter": 6
+    }
+  }
+}

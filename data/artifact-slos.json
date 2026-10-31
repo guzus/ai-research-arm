@@ -404,6 +404,72 @@
       }
     },
     {
+      "id": "podcasts",
+      "producer": ".github/workflows/podcasts.yml",
+      "artifacts": [
+        "research/podcasts/index.json",
+        "research/podcasts/[0-9]*.md"
+      ],
+      "freshness_paths": [
+        "research/podcasts"
+      ],
+      "cadence": {
+        "kind": "interval",
+        "hours": 2,
+        "freshness_slo_hours": 30
+      },
+      "validators": [
+        "scripts/fetch_podcast_signal.py"
+      ],
+      "degraded_policy": "partial-source-fail-soft",
+      "degraded_signal": {
+        "kind": "json_boolean_any",
+        "label": "partial-source",
+        "path": "research/podcasts/index.json",
+        "selectors": [
+          "degraded"
+        ]
+      }
+    },
+    {
+      "id": "aradio",
+      "producer": ".github/workflows/aradio.yml",
+      "artifacts": [
+        "research/aradio/state.json",
+        "research/aradio/cursor.json",
+        "research/aradio/index.json",
+        "research/aradio/bulletins/*/*.json",
+        "research/aradio/archive/*.json"
+      ],
+      "freshness_paths": [
+        "research/aradio/cursor.json"
+      ],
+      "cadence": {
+        "kind": "interval",
+        "hours": 1,
+        "freshness_slo_hours": 30
+      },
+      "validators": [
+        "scripts/check_aradio.py"
+      ],
+      "degraded_policy": "publish-text-fail-loud-on-audio",
+      "degraded_signal": {
+        "kind": "json_boolean_any",
+        "label": "audio-missing",
+        "path": "research/aradio/index.json",
+        "selectors": [
+          "degraded"
+        ],
+        "required_selectors": [
+          "schema",
+          "updated_at",
+          "degraded",
+          "latest",
+          "bulletins"
+        ]
+      }
+    },
+    {
       "id": "earnings",
       "producer": ".github/workflows/daily-earnings.yml",
       "artifacts": [

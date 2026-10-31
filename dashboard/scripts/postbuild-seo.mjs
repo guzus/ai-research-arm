@@ -16,6 +16,8 @@
 //     stable metadata + committed evidence and prediction-market links.
 //   - Internal/duplicate routes (agents, focus-reader, dated model aliases):
 //     explicit noindex pages with an appropriate canonical.
+//   - The live Aradio station (/aradio): a noindex page whose description
+//     names the latest bulletin, so link unfurlers show what is on air.
 //
 // Also emits dist/sitemap.xml (canonical indexable URLs only, with lastmod),
 // dist/robots.txt (allow all + sitemap pointer), dist/feed.xml, and
@@ -69,6 +71,7 @@ const wikiIndexPath = join(wikiDir, 'index.json');
 const distGenerativeDir = join(dist, 'research', 'generative');
 const distTicketIndexPath = join(dist, 'research', 'models', 'tickets', 'index.json');
 const armTimelinePath = join(researchRoot, 'arm', 'timeline.json');
+const aradioIndexPath = join(researchRoot, 'aradio', 'index.json');
 
 // Override via env (POSTBUILD_SITE_ORIGIN) for preview deploys.
 const SITE_ORIGIN = process.env.POSTBUILD_SITE_ORIGIN || 'https://ara.guzus.xyz';
@@ -1747,6 +1750,46 @@ writeFileSync(join(agentsDir, 'index.html'), buildNoindexPage(template, {
   title: 'ara agent operations',
   description: agentsDescription,
   body: agentsDescription,
+  shareImageUrl,
+}));
+// Aradio is rendered at runtime from research/aradio/*.json and changes with
+// every bulletin, so the static page is noindex like the other live surfaces.
+// Its description names the newest bulletin when one has aired (every
+// bulletin commit redeploys, so this is at most one deploy old). The index is
+// model-authored: it is parsed defensively and only escaped text is emitted.
+function latestAradioBulletin() {
+  if (!existsSync(aradioIndexPath)) return null;
+  try {
+    const index = JSON.parse(readFileSync(aradioIndexPath, 'utf8'));
+    const rows = Array.isArray(index?.bulletins) ? index.bulletins : [];
+    let latest = null;
+    for (const row of rows) {
+      const aired = Date.parse(row?.aired_at);
+      const headline = typeof row?.headline === 'string' ? compactText(row.headline) : '';
+      if (!Number.isFinite(aired) || !headline) continue;
+      if (!latest || aired > latest.aired) latest = { aired, headline };
+    }
+    return latest;
+  } catch (e) {
+    console.warn(`postbuild-seo: aradio index parse failed (${e.message}); using the static description`);
+    return null;
+  }
+}
+const aradioLatest = latestAradioBulletin();
+const aradioAbout =
+  "Aradio is ara's rolling AI-news bulletin: two hosts read what changed in AI since the last " +
+  'bulletin, next to a live board of the storylines that matter.';
+const aradioDescription = aradioLatest
+  ? `On air ${new Date(aradioLatest.aired).toISOString().slice(0, 16).replace('T', ' ')} UTC: ${aradioLatest.headline}`
+  : aradioAbout;
+const aradioDir = join(dist, 'aradio');
+mkdirSync(aradioDir, { recursive: true });
+writeFileSync(join(aradioDir, 'index.html'), buildNoindexPage(template, {
+  route: '/aradio',
+  canonicalRoute: '/aradio',
+  title: 'Aradio: AI news on air',
+  description: aradioDescription,
+  body: aradioLatest ? `${aradioDescription} ${aradioAbout}` : aradioAbout,
   shareImageUrl,
 }));
 const focusReaderDir = join(dist, 'design', 'focus-reader');

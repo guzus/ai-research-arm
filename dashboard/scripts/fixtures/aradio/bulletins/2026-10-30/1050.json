@@ -1,0 +1,122 @@
+{
+  "schema": 1,
+  "id": "2026-10-30-1050",
+  "aired_at": "2026-10-30T10:50:00Z",
+  "headline": "Memory makers say HBM is sold out through next year; Gemini enterprise pricing moves",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's ten to eleven UTC on Friday, October thirtieth. This is Aradio."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The memory makers' filings this morning say high-bandwidth memory is allocated through next year. Alphabet and the other buyers have locked in supply, and everyone else is paying more for ordinary DRAM."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Google also cut list prices for its enterprise Gemini tier. In its launch video, a product lead framed it as a response to usage growth, not to competition."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Rivals have not matched yet. Give it two weeks before reading too much into that. Price cuts like this usually take a quarter to show up in anyone's numbers."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Start with memory, because it touches everything else on the board. The filings describe allocation, not just high prices: buyers without long-term contracts are being told to wait."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "And the knock-on effect is in ordinary DRAM. As fabs move capacity to the high-bandwidth parts, contract prices for the memory in laptops and phones keep rising."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "We have moved the memory story up a notch, to developing with an importance of four. The next data point is the memory makers' own guidance later this week."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Gemini, the price cut is aimed at seats, not tokens. Businesses that already pay for Workspace get more of the assistant bundled in."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "If Microsoft answers on Copilot pricing, this becomes a price war. If it does not, it is Google buying adoption."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "What to watch: memory guidance this week, and any move on enterprise assistant pricing from Microsoft or OpenAI."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's Aradio. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's ten to eleven UTC on Friday, October thirtieth. This is Aradio.",
+    "Speaker 2: The memory makers' filings this morning say high-bandwidth memory is allocated through next year. Alphabet and the other buyers have locked in supply, and everyone else is paying more for ordinary DRAM.",
+    "Speaker 1: Google also cut list prices for its enterprise Gemini tier. In its launch video, a product lead framed it as a response to usage growth, not to competition.",
+    "Speaker 2: Rivals have not matched yet. Give it two weeks before reading too much into that. Price cuts like this usually take a quarter to show up in anyone's numbers.",
+    "Speaker 1: Start with memory, because it touches everything else on the board. The filings describe allocation, not just high prices: buyers without long-term contracts are being told to wait.",
+    "Speaker 2: And the knock-on effect is in ordinary DRAM. As fabs move capacity to the high-bandwidth parts, contract prices for the memory in laptops and phones keep rising.",
+    "Speaker 1: We have moved the memory story up a notch, to developing with an importance of four. The next data point is the memory makers' own guidance later this week.",
+    "Speaker 2: On Gemini, the price cut is aimed at seats, not tokens. Businesses that already pay for Workspace get more of the assistant bundled in.",
+    "Speaker 1: If Microsoft answers on Copilot pricing, this becomes a price war. If it does not, it is Google buying adoption.",
+    "Speaker 2: What to watch: memory guidance this week, and any move on enterprise assistant pricing from Microsoft or OpenAI.",
+    "Speaker 1: That's Aradio. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "hbm-supply-crunch",
+    "gemini-enterprise-pricing"
+  ],
+  "threads": [
+    {
+      "slug": "hbm-supply-crunch",
+      "title": "The HBM supply crunch",
+      "status": "developing"
+    },
+    {
+      "slug": "gemini-enterprise-pricing",
+      "title": "Gemini enterprise pricing",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/0000000/fixture-8k.htm",
+      "kind": "earnings",
+      "label": "8-K exhibit 99.1"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=fixture-gemini-launch",
+      "kind": "video",
+      "label": "Google Cloud launch video"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "hbm-supply-crunch"
+    },
+    {
+      "op": "update",
+      "slug": "gemini-enterprise-pricing"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-10-30-1050.mp3",
+    "bytes": 3120044,
+    "duration_s": 196.4
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "claude",
+    "model": "claude-opus-5"
+  },
+  "inbox": {
+    "items": 9,
+    "kinds": {
+      "earnings-call": 2,
+      "podcast": 1,
+      "twitter": 6
+    }
+  }
+}

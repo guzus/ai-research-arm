@@ -1,0 +1,122 @@
+{
+  "schema": 1,
+  "updated_at": "2026-10-30T14:51:40Z",
+  "headline": "Alphabet's call puts a number on AI capex as the memory squeeze reaches phones",
+  "threads": [
+    {
+      "slug": "hbm-supply-crunch",
+      "title": "The HBM supply crunch",
+      "status": "escalating",
+      "importance": 4,
+      "first_seen": "2026-10-27T08:50:00Z",
+      "updated_at": "2026-10-30T14:50:00Z",
+      "now": "High-bandwidth memory for AI accelerators is allocated through next year at the three suppliers, and conventional DRAM contract prices are rising as fabs shift capacity to HBM. Phone makers are the first consumer segment reporting higher memory costs.",
+      "changed": "A phone maker's call blamed a gross-margin miss on memory prices, the first consumer-side confirmation of the squeeze.",
+      "watch": "Samsung's memory guidance on Thursday's call, and whether DRAM contract prices rise again in November.",
+      "evidence": [
+        {"url": "https://www.youtube.com/watch?v=fixture-hbm-call", "kind": "earnings-call", "label": "Q3 earnings call (replay)", "at": "2026-10-30T13:10:00Z", "speaker": "Chief financial officer", "quote": "Memory is the single biggest headwind to our gross margin this quarter, and we do not see it easing before the second half of next year."},
+        {"url": "https://www.sec.gov/Archives/edgar/data/0000000/fixture-8k.htm", "kind": "earnings", "label": "8-K exhibit 99.1", "at": "2026-10-29T20:05:00Z"},
+        {"url": "https://x.com/semianalysis_/status/1980000000000000001", "kind": "twitter", "label": "@semianalysis_ on X", "at": "2026-10-30T09:12:00Z"}
+      ],
+      "history": [
+        {"at": "2026-10-27T08:50:00Z", "change": "Opened: suppliers say HBM is allocated through next year."},
+        {"at": "2026-10-29T10:50:00Z", "change": "DRAM contract prices up again as capacity moves to HBM."},
+        {"at": "2026-10-30T14:50:00Z", "change": "Escalating: first consumer-side margin hit, on a phone maker's call."}
+      ]
+    },
+    {
+      "slug": "hyperscaler-capex-q3",
+      "title": "Hyperscaler AI capex this quarter",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-28T20:50:00Z",
+      "updated_at": "2026-10-30T14:50:00Z",
+      "now": "Alphabet raised its full-year capital expenditure outlook and said most of the increase is servers and data centres for AI. Microsoft reports next; analysts expect another raise. Investors are asking how much of the spend is already earning revenue.",
+      "changed": "On Alphabet's call the CEO said cloud backlog grew faster than capex, the company's answer to the return-on-spend question.",
+      "watch": "Microsoft's call on Wednesday: Azure growth and whether capex guidance rises again.",
+      "evidence": [
+        {"url": "https://www.youtube.com/watch?v=fixture-goog-q3", "kind": "earnings-call", "label": "Alphabet Q3 earnings call", "at": "2026-10-29T21:30:00Z", "speaker": "Sundar Pichai", "quote": "Our backlog grew faster than our capital expenditure this quarter, which is the clearest signal we have that this demand is real."},
+        {"url": "https://www.sec.gov/Archives/edgar/data/1652044/fixture-goog-8k.htm", "kind": "earnings", "label": "Alphabet Q3 8-K", "at": "2026-10-29T20:01:00Z"},
+        {"url": "https://www.youtube.com/watch?v=fixture-bg2-pod", "kind": "podcast", "label": "BG2 Pod", "at": "2026-10-30T11:00:00Z"}
+      ],
+      "history": [
+        {"at": "2026-10-28T20:50:00Z", "change": "Opened ahead of the hyperscaler earnings week."},
+        {"at": "2026-10-29T22:50:00Z", "change": "Alphabet raises full-year capex outlook."},
+        {"at": "2026-10-30T14:50:00Z", "change": "Pichai: backlog grew faster than capex."}
+      ]
+    },
+    {
+      "slug": "anthropic-ipo",
+      "title": "Anthropic's IPO",
+      "status": "developing",
+      "importance": 5,
+      "first_seen": "2026-10-22T16:50:00Z",
+      "updated_at": "2026-10-30T12:50:00Z",
+      "now": "Anthropic has hired banks and is reported to be preparing a confidential filing. The company has not confirmed a date. Reports put the target valuation well above its last private round.",
+      "changed": "Two reports now point to a confidential filing before year end; the company declined to comment.",
+      "watch": "Any confirmation of a confidential S-1 submission, and the lead underwriters.",
+      "evidence": [
+        {"url": "https://x.com/reporter/status/1980000000000000002", "kind": "twitter", "label": "@reporter on X", "at": "2026-10-30T12:05:00Z"},
+        {"url": "https://ara.guzus.xyz/models/forecast/anthropic-ipo", "kind": "ticket", "label": "Model ticket: Anthropic IPO", "at": "2026-10-30T06:29:00Z"}
+      ],
+      "history": [
+        {"at": "2026-10-22T16:50:00Z", "change": "Opened: banks reportedly hired."},
+        {"at": "2026-10-30T12:50:00Z", "change": "Second report points to a filing before year end."}
+      ]
+    },
+    {
+      "slug": "gemini-enterprise-pricing",
+      "title": "Gemini enterprise pricing",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-10-29T10:50:00Z",
+      "updated_at": "2026-10-30T10:50:00Z",
+      "now": "Google cut list prices for its enterprise Gemini tier and bundled more seats with Workspace plans. Rivals have not matched yet.",
+      "changed": "Google's launch video framed the cut as a response to usage growth, not competition.",
+      "watch": "Whether OpenAI or Microsoft adjust enterprise seat pricing within two weeks.",
+      "evidence": [
+        {"url": "https://www.youtube.com/watch?v=fixture-gemini-launch", "kind": "video", "label": "Google Cloud launch video", "at": "2026-10-29T17:00:00Z", "speaker": "Product lead"}
+      ],
+      "history": [
+        {"at": "2026-10-29T10:50:00Z", "change": "Opened on the price cut."},
+        {"at": "2026-10-30T10:50:00Z", "change": "Launch video explains the rationale."}
+      ]
+    },
+    {
+      "slug": "eu-ai-act-gpai-code",
+      "title": "The EU AI Act's code of practice for general-purpose models",
+      "status": "steady",
+      "importance": 3,
+      "first_seen": "2026-10-20T08:50:00Z",
+      "updated_at": "2026-10-30T12:50:00Z",
+      "now": "Most frontier labs have signed the code of practice. The AI Office is now in its enforcement phase, and the open question is how it treats labs that did not sign.",
+      "changed": "No new signatories this week; the AI Office published its first supervisory priorities.",
+      "watch": "The AI Office's first formal information requests to model providers.",
+      "evidence": [
+        {"url": "https://digital-strategy.ec.europa.eu/en/fixture-gpai-code", "kind": "other", "label": "European Commission"}
+      ],
+      "history": [
+        {"at": "2026-10-20T08:50:00Z", "change": "Opened as the enforcement phase began."},
+        {"at": "2026-10-30T12:50:00Z", "change": "Steady: supervisory priorities published."}
+      ]
+    },
+    {
+      "slug": "openai-devday-launches",
+      "title": "OpenAI's DevDay launches",
+      "status": "resolved",
+      "importance": 4,
+      "first_seen": "2026-10-06T17:50:00Z",
+      "updated_at": "2026-10-28T08:50:00Z",
+      "now": "The DevDay releases are generally available and pricing is published.",
+      "changed": "Absorbed: every announced feature has shipped, and the story has gone quiet.",
+      "watch": "",
+      "evidence": [
+        {"url": "https://www.youtube.com/watch?v=fixture-devday", "kind": "video", "label": "OpenAI DevDay keynote"}
+      ],
+      "history": [
+        {"at": "2026-10-06T17:50:00Z", "change": "Opened on the keynote."},
+        {"at": "2026-10-28T08:50:00Z", "change": "Resolved: launches absorbed."}
+      ]
+    }
+  ]
+}

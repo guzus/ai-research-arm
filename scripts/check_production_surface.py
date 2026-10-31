@@ -100,6 +100,10 @@ ROUTE_PROBES: tuple[Probe, ...] = (
         body_contains="<title",
         required_headers=HTML_HEADERS + (("x-robots-tag", "noindex, nofollow"),),
     ),
+    # Generated static page (postbuild-seo.mjs), so the marker is route-specific:
+    # a homepage shell served under /aradio would still fail.
+    Probe("aradio", "/aradio", content_type_prefix="text/html", body_contains="<title>Aradio", required_headers=HTML_HEADERS),
+    Probe("aradio-trailing-slash", "/aradio/", content_type_prefix="text/html", body_contains="<title>Aradio", required_headers=HTML_HEADERS),
     Probe("manifest", "/research/manifest.json", content_type_prefix="application/json", body_contains='"generatedAt"'),
     Probe(
         "evidence-search-contract",

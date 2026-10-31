@@ -1,0 +1,376 @@
+name: Aradio
+
+# Aradio — ARA's rolling two-host AI news station (contract: docs/aradio.md).
+#
+#   1. build_aradio_inbox.py   trusted, deterministic inbox + GATE. Most runs
+#                              stop here: no model, no TTS, nothing committed.
+#   2. agent-dispatch          isolated editor; returns ONE uncommitted file,
+#                              .tmp/aradio/edit.json (ops + optional script).
+#   3. check_aradio.py         trusted validator: hard errors publish nothing and
+#                              leave the cursor, so the next run retries.
+#   4. aradio_tts.py           Gemini 3.8 Flash TTS (only when on air).
+#   5. aws s3 cp               immutable audio/aradio/<id>.mp3.
+#   6. write_aradio_bulletin.py the ONLY committer for research/aradio/.
+#   7. safe-push, then the job fails if the editor or the audio failed.
+#
+# Audio failure is LOUD: the text still publishes (audio: null + audio_error),
+# then the job fails. The daily broadcast's continue-on-error TTS step that
+# exits 0 on Gemini errors is the anti-pattern this lane avoids.
+
+on:
+  schedule:
+    # Hourly at :50. The gate decides: priority material (earnings filings and
+    # calls, P0 spoken episodes) airs within the hour; routine material waits
+    # for a 2 h cadence; no new material means a model-free no-op run.
+    - cron: '50 * * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Run the editor even when the gate would stop
+        required: false
+        default: false
+        type: boolean
+
+# Serialize runs: the cursor and the board are single-writer state.
+concurrency:
+  group: aradio
+  cancel-in-progress: false
+
+jobs:
+  aradio:
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      # The self-hosted workspace persists between jobs. Move only the exact
+      # canonical checkout aside before checkout runs Git against it.
+      - name: Quarantine stale self-hosted workspace
+        id: quarantine_workspace
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+          repo_name="${GITHUB_REPOSITORY##*/}"
+          runner_root=$(realpath -- "$RUNNER_WORKSPACE")
+          workspace_parent=$(realpath -- "$(dirname -- "$GITHUB_WORKSPACE")")
+          workspace_name=$(basename -- "$GITHUB_WORKSPACE")
+          if [[ ! "$repo_name" =~ ^[A-Za-z0-9_.-]+$ ]] \
+            || [ "$repo_name" = "." ] || [ "$repo_name" = ".." ] \
+            || [ "$workspace_parent" != "$runner_root" ] \
+            || [ "$workspace_name" != "$repo_name" ]; then
+            echo "::error::Refusing to quarantine an unexpected workspace: $GITHUB_WORKSPACE"
+            exit 1
+          fi
+          workspace_entry="$runner_root/$repo_name"
+          if [ ! -e "$workspace_entry" ] && [ ! -L "$workspace_entry" ]; then
+            echo "::error::Expected runner workspace entry is missing: $workspace_entry"
+            exit 1
+          fi
+          quarantine=$(mktemp -d "$runner_root/.opencode-precheckout.XXXXXX")
+          quarantine_name=$(basename -- "$quarantine")
+          case "$quarantine_name" in
+            .opencode-precheckout.??????) ;;
+            *) echo "::error::Unexpected quarantine path: $quarantine"; exit 1 ;;
+          esac
+          rmdir -- "$quarantine"
+          cd "$runner_root"
+          mv -- "$workspace_entry" "$quarantine"
+          mkdir -- "$workspace_entry"
+          rm -rf -- "$quarantine"
+
+      # Publishing is main-only. From any other ref the run would spend the
+      # editor and TTS and upload public audio before safe-push refused to
+      # publish. Stop before checkout or any spend; this sits after the
+      # quarantine so the always() cleanup and telemetry steps run against an
+      # empty workspace, never a stale checkout. The ref goes through env,
+      # never ${{ }} inside the script.
+      - name: Refuse refs other than main
+        shell: bash
+        env:
+          RUN_REF: ${{ github.ref }}
+        run: |
+          set -euo pipefail
+          if [ "$RUN_REF" != "refs/heads/main" ]; then
+            echo "::error::Aradio publishes only from refs/heads/main, and this run is on ${RUN_REF}. Dispatch it from main."
+            exit 1
+          fi
+
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        env:
+          GIT_CONFIG_NOSYSTEM: "1"
+          GIT_CONFIG_GLOBAL: /dev/null
+        with:
+          # The board and cursor are read-modify-write state. A forced dispatch
+          # queued behind a running job, or an auto-rerun, must read the branch
+          # tip at execution time, not the trigger-time SHA (stale state would
+          # re-offer consumed items and conflict at push).
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+          persist-credentials: false
+          set-safe-directory: false
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+
+      - name: Install Python dependencies
+        run: uv sync --frozen
+
+      # One UTC read for the whole run: the bulletin id, the S3 key, aired_at
+      # and the commit message all derive from this minute-aligned stamp.
+      - name: Stamp the run (UTC)
+        id: stamp
+        run: |
+          set -euo pipefail
+          stamp=$(date -u +'%Y-%m-%dT%H:%M:00Z')
+          scratch="$RUNNER_TEMP/aradio-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          rm -rf -- "$scratch"
+          mkdir -p -- "$scratch"
+          {
+            echo "stamp=$stamp"
+            echo "id=${stamp:0:10}-${stamp:11:2}${stamp:14:2}"
+            echo "scratch=$scratch"
+          } >> "$GITHUB_OUTPUT"
+
+      # Deterministic gate + inbox. The agent gets .agent-input/aradio/; the
+      # validator and writer read only the trusted copy under $RUNNER_TEMP,
+      # never .tmp/ (the import path) or .agent-input/.
+      - name: Build inbox and apply the gate
+        id: inbox
+        env:
+          NOW: ${{ steps.stamp.outputs.stamp }}
+          SCRATCH: ${{ steps.stamp.outputs.scratch }}
+          FORCE: ${{ inputs.force || false }}
+          TUBER_API_BASE: ${{ vars.TUBER_API_BASE || 'https://tuber-api.guzus.xyz' }}
+        run: |
+          set -euo pipefail
+          uv run python scripts/build_aradio_inbox.py \
+            --now "$NOW" \
+            --out-dir .agent-input/aradio \
+            --trusted-dir "$SCRATCH/trusted" \
+            --force "$FORCE" \
+            --tuber-api-base "$TUBER_API_BASE" \
+            --github-output "$GITHUB_OUTPUT"
+
+      # The prompt is a trusted repo file; a random heredoc delimiter keeps
+      # any line of it from terminating the step output early. The adapter
+      # imports the return artifact only into an existing canonical parent.
+      - name: Load editor prompt
+        id: prompt
+        if: steps.inbox.outputs.go == 'true'
+        run: |
+          set -euo pipefail
+          delimiter="ARADIO_PROMPT_$(python3 -c 'import secrets; print(secrets.token_hex(16))')"
+          if grep -qF -- "$delimiter" prompts/aradio-editor.md; then
+            echo "::error::Prompt collides with its output delimiter."
+            exit 1
+          fi
+          {
+            printf 'text<<%s\n' "$delimiter"
+            cat prompts/aradio-editor.md
+            printf '\n%s\n' "$delimiter"
+          } >> "$GITHUB_OUTPUT"
+          mkdir -p .tmp/aradio
+          rm -f -- .tmp/aradio/edit.json
+
+      - name: Capture Aradio output base
+        id: base
+        if: steps.inbox.outputs.go == 'true'
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # continue-on-error so the explicit failure step below can say what
+      # happened; nothing downstream runs unless this step succeeded.
+      - name: Edit the situation board with the SSOT-routed editor
+        id: editor
+        if: steps.inbox.outputs.go == 'true'
+        continue-on-error: true
+        uses: ./.github/actions/agent-dispatch
+        with:
+          mode: editorial
+          lane: aradio
+          return-artifacts: .tmp/aradio/edit.json
+          # Read the staged inbox, write one file: no shell, web, MCP, or
+          # writes to the repo's code and data.
+          cursor-config: .github/cursor/aradio.json
+          opencode-config: .github/opencode/aradio.json
+          timeout-minutes: '12'
+          claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          zai-api-key: ${{ secrets.ZAI_API_KEY }}
+          opencode-api-key: ${{ secrets.OPENCODE_API_KEY }}
+          cursor-api-key: ${{ secrets.CURSOR_API_KEY }}
+          prompt-text: ${{ steps.prompt.outputs.text }}
+
+      # Hard errors fail here and publish nothing; soft errors are repaired.
+      - name: Validate the editor's ops
+        id: validate
+        if: steps.inbox.outputs.go == 'true' && steps.editor.outcome == 'success'
+        env:
+          SCRATCH: ${{ steps.stamp.outputs.scratch }}
+        run: |
+          set -euo pipefail
+          uv run python scripts/check_aradio.py \
+            --edit .tmp/aradio/edit.json \
+            --inbox "$SCRATCH/trusted/inbox.json" \
+            --state research/aradio/state.json \
+            --out "$SCRATCH/edit.normalized.json" \
+            --github-output "$GITHUB_OUTPUT"
+
+      # The WAV stays under $RUNNER_TEMP (`.wav` is an LFS extension here).
+      - name: Voice the bulletin with Gemini TTS
+        id: tts
+        if: steps.validate.outcome == 'success' && steps.validate.outputs.on_air == 'true'
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SCRATCH: ${{ steps.stamp.outputs.scratch }}
+        run: |
+          set -euo pipefail
+          uv run python scripts/aradio_tts.py \
+            --edit "$SCRATCH/edit.normalized.json" \
+            --out "$SCRATCH/bulletin.mp3" \
+            --work-dir "$SCRATCH" \
+            --result "$SCRATCH/tts.json"
+
+      # Keys are immutable (s3.guzus.xyz caches 200s behind Cloudflare); the
+      # "latest" pointer is research/aradio/index.json.
+      - name: Upload bulletin audio to S3
+        id: upload
+        if: steps.tts.outcome == 'success'
+        continue-on-error: true
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
+          S3_ENDPOINT_URL: ${{ secrets.S3_ENDPOINT_URL }}
+          S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          SCRATCH: ${{ steps.stamp.outputs.scratch }}
+          BULLETIN_ID: ${{ steps.stamp.outputs.id }}
+        run: |
+          set -euo pipefail
+          for name in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY S3_ENDPOINT_URL S3_BUCKET; do
+            if [ -z "${!name:-}" ]; then
+              echo "::error::$name is not configured; bulletin audio cannot be published."
+              exit 1
+            fi
+          done
+          mp3="$SCRATCH/bulletin.mp3"
+          key="audio/aradio/${BULLETIN_ID}.mp3"
+          test -s "$mp3"
+          aws s3 cp "$mp3" "s3://${S3_BUCKET}/${key}" \
+            --endpoint-url "$S3_ENDPOINT_URL" \
+            --content-type audio/mpeg \
+            --cache-control "public, max-age=31536000, immutable" \
+            --no-progress
+          echo "key=$key" >> "$GITHUB_OUTPUT"
+
+      - name: Configure trusted writer identity
+        if: steps.validate.outcome == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      # Runs whether or not the audio worked: the text always publishes.
+      - name: Publish board and bulletin
+        id: writer
+        if: steps.validate.outcome == 'success'
+        env:
+          SCRATCH: ${{ steps.stamp.outputs.scratch }}
+          NOW: ${{ steps.stamp.outputs.stamp }}
+          TTS_OUTCOME: ${{ steps.tts.outcome }}
+          UPLOAD_OUTCOME: ${{ steps.upload.outcome }}
+          AUDIO_KEY: ${{ steps.upload.outputs.key }}
+          BACKEND: ${{ steps.editor.outputs.effective-backend }}
+          MODEL: ${{ steps.editor.outputs.model-id }}
+        run: |
+          set -euo pipefail
+          audio_error=""
+          if [ "$TTS_OUTCOME" = "success" ] && [ "$UPLOAD_OUTCOME" != "success" ]; then
+            audio_error="audio upload to S3 failed"
+          fi
+          uv run python scripts/write_aradio_bulletin.py \
+            --edit "$SCRATCH/edit.normalized.json" \
+            --inbox "$SCRATCH/trusted/inbox.json" \
+            --now "$NOW" \
+            --tts-result "$SCRATCH/tts.json" \
+            --audio-key "$AUDIO_KEY" \
+            --audio-error "$audio_error" \
+            --backend "$BACKEND" \
+            --model "$MODEL" \
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Require Aradio output
+        if: steps.writer.outcome == 'success'
+        uses: ./.github/actions/require-output
+        with:
+          base-sha: ${{ steps.base.outputs.sha }}
+          expected-paths: |
+            research/aradio/cursor.json
+          label: Aradio writer
+
+      - name: Enforce Aradio diff scope
+        if: steps.writer.outcome == 'success'
+        uses: ./.github/actions/require-diff-scope
+        with:
+          base-sha: ${{ steps.base.outputs.sha }}
+          allowed-paths: |
+            research/aradio/
+          label: Aradio writer
+
+      - name: Remove untrusted staging files
+        if: always()
+        run: rm -rf -- .tmp .agent-input
+
+      - name: Push changes
+        id: push
+        if: steps.writer.outcome == 'success'
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          strict-publication: 'true'
+
+      - name: Fail when the editor failed
+        if: always() && steps.inbox.outputs.go == 'true' && steps.editor.outcome != 'success'
+        run: |
+          echo "::error::The Aradio editor failed its containment or artifact contract; nothing was published and the cursor did not advance."
+          exit 1
+
+      # After publishing: the text is live with audio: null + audio_error, and
+      # the run goes red so a silent-audio outage cannot hide.
+      - name: Fail when on-air audio is missing
+        if: always() && steps.validate.outputs.on_air == 'true' && (steps.tts.outcome != 'success' || steps.upload.outcome != 'success')
+        env:
+          TTS_OUTCOME: ${{ steps.tts.outcome }}
+          UPLOAD_OUTCOME: ${{ steps.upload.outcome }}
+        run: |
+          echo "::error::The bulletin aired without audio (TTS: ${TTS_OUTCOME:-skipped}, upload: ${UPLOAD_OUTCOME:-skipped}); its text was published with audio_error. See the TTS step log for the HTTP status and error body."
+          exit 1
+
+      - name: Remove Aradio scratch
+        if: always()
+        env:
+          SCRATCH: ${{ steps.stamp.outputs.scratch }}
+        run: |
+          if [ -n "${SCRATCH:-}" ]; then
+            rm -rf -- "$SCRATCH"
+          fi
+
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        continue-on-error: true
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+          title: Aradio
+          text: "Gate: ${{ steps.inbox.outputs.reason }}"
+          tags: aradio
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

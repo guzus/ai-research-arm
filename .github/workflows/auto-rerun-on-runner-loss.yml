@@ -28,6 +28,7 @@ on:
       - "RSS Official Announcements (Every 2 Hours)"
       - "Twitter AI News (hourly matrix)"
       - "Daily AI Expert Blogs"
+      - "Podcast Signal"
       - "Naver Blog Subscriptions"
       - "Bluesky AI Researcher Commentary (Daily)"
       - "Community AI Digest (HN + Reddit)"
@@ -38,6 +39,7 @@ on:
       - "LLM Wiki Ingest (After Daily Digest)"
       - "Daily Front Page"
       - "Generative Research"
+      - "Aradio"
     types: [completed]
     # Filters the TRIGGERING run's head_branch. Scheduled, issue-, and
     # workflow_run-chained runs all resolve to the default branch, so every

@@ -136,6 +136,10 @@ DEFAULT_DEPLOY_RELEVANT_PATHS = (
     # model-pricing refresh now ships a visibly stale chart, not just an
     # out-of-date number in a hover card.
     "research/market",
+    # The /aradio view polls research/aradio/index.json from the deployed
+    # image, so a bulletin commit that never deploys is a station that never
+    # goes on air — exactly the stale-build case this check exists for.
+    "research/aradio",
 )
 
 DEFAULT_TIMEOUT_SECONDS = 15.0

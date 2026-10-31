@@ -1,0 +1,110 @@
+name: Podcast Signal
+
+# Aradio's source lane (docs/aradio.md, "Sources come through tuber").
+# Refreshes research/podcasts/index.json (rolling 30-day episode index) and
+# research/podcasts/YYYY-MM-DD.md (episodes first seen that UTC day) from the
+# spoken sources in data/sources/podcasts.json: AI podcasts, official lab
+# channels, and first-party earnings-call streams, all read through tuber-api.
+#
+# Deterministic lane: no model, no agent, no LLM credentials, so it cannot be
+# taken down by an agent-credential outage (load-bearing rule 14). It is also
+# read-only towards tuber: scripts/fetch_podcast_signal.py refuses tuber's
+# generation endpoints (/summarize, /acp/jobs, POST /podcast/episode/summarize)
+# before any request is made, so this lane never spends tuber's model budget.
+#
+# Transcript text is never committed: at most 6 excerpts of <= 60 words per
+# episode (the earnings lane's quote policy), because everything under
+# research/ is public.
+#
+# Fail-soft per source, fail-loud in aggregate. Exit 3 = every source failed
+# and exit 4 = tuber relative-age label drift; both write nothing, turn this
+# job red, and leave the git-recency freshness clock running. A run where more
+# than half of the sources failed still publishes, with `degraded: true` in
+# the index (the artifact SLO registry's degraded signal for this lane).
+
+on:
+  schedule:
+    # Every 2 hours at :41. The Aradio editor runs hourly at :50, so a new
+    # episode reaches its inbox within ~10 minutes of being discovered here.
+    # Captions often trail an upload, so the script re-checks an episode's
+    # transcript on later runs while the episode is < 3 days old.
+    - cron: '41 */2 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: podcasts
+  cancel-in-progress: true
+
+jobs:
+  podcasts:
+    # Self-hosted per load-bearing rule 5. ubuntu-latest is reserved for CI and
+    # watchdogs; this is a production publishing lane.
+    runs-on: [self-hosted, Linux]
+    # A steady-state run makes ~40-60 requests (~1-2 min). The transcript
+    # phase is capped at 12 fetches and time-boxed to 8 minutes inside the
+    # script, so this ceiling only trips on a hung endpoint.
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      # Required by safe-push: `main` is PR-only (rule 13), so publishing goes
+      # through a run-scoped branch -> PR -> immediate squash-merge.
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Setup uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          enable-cache: true
+
+      # No extras: fetch_podcast_signal.py is stdlib-only (urllib/json/re) on
+      # purpose, so this lane has no dependency that can break it.
+      - name: Install Python dependencies
+        run: uv sync --frozen
+
+      - name: Fetch podcast signal
+        env:
+          TUBER_API_BASE: ${{ vars.TUBER_API_BASE || 'https://tuber-api.guzus.xyz' }}
+        run: |
+          set -euo pipefail
+          # No continue-on-error: exit 3/4 must turn the run red.
+          uv run python scripts/fetch_podcast_signal.py \
+            --registry data/sources/podcasts.json \
+            --out-dir research/podcasts \
+            --tuber-api-base "$TUBER_API_BASE"
+
+      - name: Commit podcast signal
+        id: commit
+        run: |
+          set -euo pipefail
+          git add research/podcasts
+          if git diff --cached --quiet -- research/podcasts; then
+            # The common case: updated_at moves only when content changes, so
+            # a quiet run rewrites nothing.
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "podcast signal unchanged; nothing to commit"
+            exit 0
+          fi
+          # `date -u`, never bare `date`: the runner's clock is correct but its
+          # timezone is KST, while every consumer reads these as UTC.
+          git commit -m "Podcast signal $(date -u +'%Y-%m-%d %H:%M UTC')"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Push changes
+        if: steps.commit.outputs.changed == 'true'
+        uses: ./.github/actions/safe-push
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Non-blocking by load-bearing rule 4 - telemetry must never fail a job.
+      - name: Publish Hooker workflow telemetry
+        if: always()
+        continue-on-error: true
+        uses: ./.github/actions/hooker-telemetry
+        with:
+          status: ${{ job.status }}
+          text: "podcasts committed=${{ steps.commit.outputs.changed }}"
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

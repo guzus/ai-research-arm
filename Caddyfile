@@ -3,7 +3,7 @@
 	encode zstd gzip
 
 	@html {
-		path / /index.html /today /today/* /twitter /twitter/* /models /models/* /frontpage /frontpage/* /research /research/* /wiki /wiki/* /agents /agents/ /design/* /pricing /pricing/
+		path / /index.html /today /today/* /twitter /twitter/* /models /models/* /frontpage /frontpage/* /research /research/* /wiki /wiki/* /agents /agents/ /design/* /pricing /pricing/ /aradio /aradio/
 		not path *.js *.css *.json *.xml *.txt *.png *.jpg *.jpeg *.webp *.gif *.svg *.ico *.avif *.woff *.woff2
 	}
 	header @html Cache-Control "public, max-age=0, must-revalidate"

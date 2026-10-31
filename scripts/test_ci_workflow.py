@@ -16,6 +16,7 @@ REQUIRED_CONTRACT_PATHS = {
     ".dockerignore",
     ".opencode/tools/**",
     "data/sources/ai_blogs.json",
+    "data/sources/podcasts.json",
     "prompts/**",
     "research/models/tickets/**",
     "research/wiki/**",

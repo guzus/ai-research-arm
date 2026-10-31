@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "editor": {
+    "vimMode": false
+  },
+  "permissions": {
+    "allow": [
+      "Read(.agent-input/aradio/**/*)",
+      "Write(.tmp/aradio/edit.json)"
+    ],
+    "deny": [
+      "Shell(*)",
+      "Write(.env*)",
+      "Write(.git/**/*)",
+      "Write(.github/**/*)",
+      "Write(research/**/*)",
+      "Write(data/**/*)",
+      "Write(scripts/**/*)",
+      "Write(dashboard/**/*)",
+      "Write(docs/**/*)",
+      "WebFetch(*)",
+      "Mcp(*)"
+    ]
+  }
+}

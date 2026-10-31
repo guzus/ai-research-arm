@@ -157,7 +157,7 @@ flowchart LR
     subgraph runtime["⚙️ Runtime-routed lanes — lane: → data/agent-backends.json"]
         lanes0["ai-news-research · digest-audio-script · digest-synthesis<br/>digest-synthesis-fallback · model-timeline · twitter-autoresearch<br/>twitter-judge · twitter-primary · twitter-primary-repair<br/><i>9 lanes</i>"]
         strict0["🔒 claude-canary · twitter-ab-claude · twitter-ab-judge<br/>twitter-ab-judge-swapped<br/><i>strict — never falls back</i>"]
-        strict1["🔒 arxiv · bluesky · community<br/>generative-research-ko · rss · wiki-ingest<br/><i>strict — never falls back</i>"]
+        strict1["🔒 aradio · arxiv · bluesky<br/>community · generative-research-ko · rss<br/>wiki-ingest<br/><i>strict — never falls back</i>"]
         strict2["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
         strict3["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
         gendef["generative-research-default<br/><i>dispatch default</i>"]
@@ -227,7 +227,7 @@ interesting ones:
 | `2h-bluesky.yml` | daily | `research/bluesky/` |
 | `daily-arxiv.yml` | daily | `research/arxiv/` |
 | `daily-youtube.yml` | daily | `research/youtube/` |
-| `daily-earnings.yml` | weekdays, before the digest | `research/earnings/` (SEC EDGAR earnings filings for AI-exposed issuers; one file per event, nothing on a quiet day) |
+| `daily-earnings.yml` | weekdays, every 2 h (last run before the digest) | `research/earnings/` (SEC EDGAR earnings filings for AI-exposed issuers; one file per event, nothing on a quiet day) |
 | `twitter-account-explorer.yml` | weekly | reviewed PRs against the account manifest |
 
 **Synthesize** — read everything, write the record

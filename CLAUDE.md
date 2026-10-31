@@ -23,10 +23,11 @@ articles; and publish everything to a Vite/TS SPA at
 ## Core Pipeline Architecture
 
 ```
-sources (Twitter/RSS/Bluesky/HN/Reddit/arXiv)
+sources (Twitter/RSS/Bluesky/HN/Reddit/arXiv, SEC filings, podcasts + YouTube via tuber)
     → aggregator workflows (hourly/4h/daily) write into research/<source>/
     → synthesis workflows (digest, news research, model timeline) read research/
     → output workflows (front-page, generative-research) produce shareable artifacts
+    → aradio.yml (hourly) CRUDs a situation board and airs two-host audio bulletins
     → dashboard prebuild copies research/* into dashboard/public/research/
     → Railway rebuilds the root Dockerfile image and deploys on every push to main
 ```
@@ -42,7 +43,7 @@ and opens a PR with methodology fixes.
 | [`ARA_CATALOG.json`](ARA_CATALOG.json) + [`COMPONENTS.md`](COMPONENTS.md) | The `ara-*` class allowlist the validator loads, and its human reference. Kept in lockstep by CI — see "Component catalog" below. |
 | [`data/agent-backends.json`](data/agent-backends.json) | Routing SSOT: per-lane backend, profile table, ordered fallback chain. See Backends. |
 | [`data/artifact-slos.json`](data/artifact-slos.json) | Artifact/SLO SSOT: producer, exact output paths, cadence kind, freshness threshold, validators, content policy, and degraded behavior. Event/on-demand artifacts are inventoried without false clock-based paging. |
-| `docs/*.md` | Per-lane contracts, read at runtime by the agents and enforced by the matching validator: `model-tickets`, `model-onboarding`, `wiki-schema`, `okf`, `headline-dedupe`, `blog-subscriptions`, `twitter-account-curation`, `twitter-model-ab`, `generative-research-backends`, `backend-matrix` (generated), `claim-store`, `hooker-telemetry`. [`docs/archive/`](docs/archive/) holds superseded docs + improvement logs. |
+| `docs/*.md` | Per-lane contracts, read at runtime by the agents and enforced by the matching validator: `model-tickets`, `model-onboarding`, `wiki-schema`, `okf`, `headline-dedupe`, `blog-subscriptions`, `twitter-account-curation`, `twitter-model-ab`, `generative-research-backends`, `backend-matrix` (generated), `claim-store`, `hooker-telemetry`, `aradio` (the Aradio contract: gate, inbox, editor ops, validator, writer, published files). [`docs/archive/`](docs/archive/) holds superseded docs + improvement logs. |
 | `dashboard/` | Vite + Bun + TypeScript SPA. `prebuild.mjs` copies `research/*` into `public/research/` and emits `manifest.json`. |
 | [`Dockerfile`](Dockerfile) + [`Caddyfile`](Caddyfile) + [`railway.json`](railway.json) | The Railway stack serving **ara.guzus.xyz** behind Cloudflare (responses carry `x-railway-edge`): bun build → Caddy serves `dashboard/dist`; `railway.json` pins the DOCKERFILE builder + `/` healthcheck. Vercel no longer serves the domain — rule 3. |
 | `data/`, `research/` | Static lookup data for aggregation scripts; all generated artifacts (subdir map in "Output Locations"). |
@@ -117,7 +118,8 @@ the lanes to catch up (a daily lane won't self-heal until its next slot).
 |---|---|
 | `fetch_ai_blogs.py` | Per-feed AI-blog fetcher (`daily-ai-blogs.yml`); boundary-handles bad feeds so one failure doesn't crash the run. Registry is `data/sources/ai_blogs.json` (50 feeds); `type` drives both scoring and the per-item `Signal:` label. **`vc_blog` is weight 0 and pinned to P2/`include_in_digest: false`** — a VC firm is talking its own book and the feeds are majority portfolio marketing, so they are a watch list, not digest input; `investor_blog` (independent analysts: Stratechery, Tunguz, Clouded Judgement, semis desks) is weight 12 and digest-eligible. A `TITLE_PENALTY_PATTERNS` entry sinks "Investing in X"/"Behind the investment"/"Welcoming" so a firm's thesis posts still outrank its announcements. `scripts/test_fetch_ai_blogs.py::ShippedRegistryTest` enforces the P0/P1 ⇒ digest, P2 ⇒ watch-list coupling offline. |
 | `watch_blog_subscriptions.py` | RSS subscription watcher (`blog-subscriptions.yml`); seeds historical GUIDs without alerting, verifies Telegram responses, acknowledges each proven delivery atomically. |
-| `fetch_youtube_signal.py` | tuber-backed YouTube lane; read-only by default — never triggers paid summary generation. |
+| `fetch_youtube_signal.py` | tuber-backed YouTube lane; read-only by default — never triggers paid summary generation. Parses both "2 days ago" and compact "2d ago"/"1mo ago" labels; **exit 4 = publish-age format drift** (≥ 5 candidates, not one parseable label) writes nothing. tuber switched formats on 2026-09-29 and the lane committed "High-signal videos selected: 0" with a green run for 32 days — the advisory content gate's `reject_patterns` matched it daily and nothing failed. |
+| `fetch_podcast_signal.py` | tuber-backed spoken-media lane (`podcasts.yml`) feeding Aradio; model-free and **read-only** (never calls tuber's summarize/generation endpoints). Registry `data/sources/podcasts.json`: `channel` (official labs + video podcasts), `search` (MANDATORY `channel_id` — finds first-party livestreams such as the Alphabet/Tesla earnings calls while third-party re-streams can never enter; `/api/channel` omits past livestreams), `podcast` (RSS metadata only — tuber does not transcribe RSS audio). Every full-episode AI podcast surveyed 2026-10-30 is on YouTube, which is why channels dominate; use the registry's channel IDs, not obvious handles (several are clips-only or dormant). Commits ≤ 6 excerpts of ≤ 60 words per episode and **never transcript text** (`research/` is published). `select_windows()` and `safe_url()` are shared with the Aradio inbox. Exit 3 = every source failed, 4 = relative-age label drift; both write nothing. tuber's transcript endpoint never runs ASR on request and YouTube throttles it, so episodes without a transcript are retried for 3 days. |
 | `fetch_earnings_signal.py` | SEC-EDGAR-backed earnings lane (`daily-earnings.yml`). Tier 1 = the issuer's own 8-K Item 2.02 / 6-K filing and its EX-99 exhibits; Tier 2 = a LINK to the issuer's first-party call transcript, best-effort and never fatal. Needs no API key, but SEC fair access requires a contact **address** in the User-Agent (a URL gets HTTP 403) — override with the `SEC_CONTACT_EMAIL` repo variable. Quote caps (6 quotes / 60 words) are enforced in code, not prose: that is the licensing position. Inverts the youtube empty-result rule — see the note under Aggregation. |
 | `dedupe_headline_alerts.py`, `headline_judge.py` | Twitter headline-alert dedup: deterministic layered check, then an agent-in-the-loop Haiku gate adjudicating the contested `[0.35,0.50)` Jaccard band (`shortlist` → judge → `apply`, fail-open, URL-keyed). Contract: [`docs/headline-dedupe.md`](docs/headline-dedupe.md). |
 | `curate_twitter_accounts.py`, `explore_twitter_accounts.py` | Validate/curate `data/sources/twitter_accounts.json` + build the birdy fetch manifest; the scout scores candidates on trust-weighted mentions (needs ≥1 *monitored* citer), AI topicality, and bounded engagement, so viral off-topic accounts don't outrank genuine AI sources. Contract: [`docs/twitter-account-curation.md`](docs/twitter-account-curation.md). |
@@ -125,6 +127,15 @@ the lanes to catch up (a daily lane won't self-heal until its next slot).
 | `fetch_gpu_spot.py` | Deterministic Vast.ai GPU spot-rental price lane (`gpu-spot.yml`); model-free. Prices are normalized to **USD per GPU-hour** (`dph_total / num_gpus`) — the whole point, since an 8×H100 box at $2/GPU sorts *after* a 1×H100 at $3/GPU. The endpoint caps at 64 offers with no pagination, so a capped model is re-queried across **every** `num_gpus` 1–16 plus a `{"gte": 17}` tail sweep; `truncated` means "computed over an incomplete sample" and is set when any query caps *or* coverage isn't provably exhaustive. Fail-soft per model (carries the prior value forward marked `stale`), fail-loud if every model fails; a stale value is NEVER appended to `history`. |
 | `render_front_page.mjs` | Newspaper render for `daily-front-page.yml`: digest → SVG → PNG via `@resvg/resvg-js` (no Chromium, no model). Budget-aware — overflow is ellipsized/dropped, never painted over. |
 | `test_*.py` | Pytest-style tests run in CI. |
+
+**Aradio** (`aradio.yml`; contract [`docs/aradio.md`](docs/aradio.md); see Load-bearing rule 15)
+
+| Script | Purpose |
+|---|---|
+| `build_aradio_inbox.py` | Trusted, deterministic first step. Collects items not yet in `research/aradio/cursor.json` from the podcasts index, earnings events, Twitter stories and model tickets; stages `.agent-input/aradio/` (inbox, board copy, context, transcript windows fetched live from tuber) plus a trusted copy in `$RUNNER_TEMP`. Owns the **gate**: no new material → stop; a priority item (earnings filing/call, or a ≥ 10-min P0 episode with a transcript) → go now; otherwise go only after 110 min. A stopped gate spends no model or TTS budget and commits nothing. |
+| `check_aradio.py` | Trusted validator for the editor's `edit.json` (ops, not a board rewrite). Hard errors fail the run before anything publishes; soft errors are repaired and listed. Provenance: an evidence URL must come from this run's inbox or the existing board, and must pass the strict URL rule. Quotes: EXACTLY ONE COMPLETE SENTENCE of a spoken item's transcript window or an earnings `Key quotes:` line (split at `.`/`!`/`?`, never after abbreviations or ellipses, and at `>>` speaker changes; nothing cut by a `…` window edge or lacking its own end punctuation in captions), published in the source's own wording; a transcript quote never carries `speaker`, a Key-quotes quote carries the line's attribution; ≤ 40 words, ≤ 2 quotes / 60 words per source across the board, ≤ 8 new per run. Single home for Aradio's limits, URL rule and sentence rule (the inbox's `context.json` copy is pinned by a parity test; `select_windows` marks window edges with `sentence_end`). |
+| `aradio_tts.py` | Gemini 3.8 Flash TTS (Interactions API, Charon + Puck, documented fields only — no `speech_config.mode`). Fails loudly with the HTTP status and error body; refuses audio shorter than 60 % of the expected duration rather than publish a truncated bulletin. |
+| `write_aradio_bulletin.py` | The **only** committer for `research/aradio/`: applies ops (append-only history, verified before writing; each thread keeps 12 entries, older ones archived in the same run), auto-resolves quiet/overflow threads, archives, records consumed keys, writes atomically, stages exact paths. Bulletin files are immutable; a same-minute rerun is a no-op or a hard error, never an overwrite. |
 
 #### Experimental / manually-run scripts (NOT in the automated pipeline)
 
@@ -287,12 +298,13 @@ or if the container loses its hardening flags.
 | `daily-ai-blogs.yml` | `:13` every 6h | `research/blogs/` |
 | `blog-subscriptions.yml` | `:47` every 2h | Telegram notifications for configured blog subscriptions + GUID state in `research/summaries/blog-subscriptions.json` |
 | `daily-youtube.yml` | daily `23:20` for the next `00:00` digest | `research/youtube/` (tuber discovery + read-only summary/transcript evidence) |
+| `podcasts.yml` ("Podcast Signal") | every 2h `:41` (just before Aradio's `:50`) | `research/podcasts/index.json` (rolling 30-day episode index: metadata, ≤ 6 excerpts, transcript status) + `YYYY-MM-DD.md`; Aradio's spoken-source lane. Raw lane: NOT in COPY_DIRS/`.dockerignore`/deploy health, same reasoning as earnings. Dispatch it once right after merge — the SLO registry reports it MISSING until its first artifact lands. |
 | `hourly-twitter.yml` | every 3h `:07`; primary lane routes to `backend: claude` through `.github/actions/agent-run` (verify against `data/agent-backends.json` lane `twitter-primary` — not this table); comparison lanes via matrix/manual dispatch | `research/twitter/` + `research/summaries/` + Telegram headline alerts; comparison outputs under `research/twitter-deepseek/`, `research/twitter-deepseek-pi/`, `research/twitter-fireworks-pi/`, and `research/twitter-opencode-kimi/` |
 | `twitter-account-explorer.yml` | weekly Tuesday `01:47` UTC + manual dispatch | Opens reviewed PRs for `data/sources/twitter_accounts.json` changes when high-signal account evidence exists |
 | `2h-bluesky.yml` | daily `10:11` | `research/bluesky/` (supplemental expert commentary, capped output) |
 | `4h-community.yml` | every 4h `:19` | `research/community/*-hn.md`, `*-reddit.md` |
 | `daily-arxiv.yml` | daily `06:13` | `research/arxiv/` |
-| `daily-earnings.yml` | weekdays `23:35` (before the `00:00` digest) | `research/earnings/<filing-date>-<TICKER>-<FYxxQx>.md` + `index.json` (SEC EDGAR earnings filings for the AI-exposed issuers in `data/sources/earnings_issuers.json`, plus first-party transcript LINKS) |
+| `daily-earnings.yml` | weekdays every 2h `:35` (`01:35`-`23:35`; the last run lands before the `00:00` digest) | `research/earnings/<filing-date>-<TICKER>-<FYxxQx>.md` + `index.json` (SEC EDGAR earnings filings for the AI-exposed issuers in `data/sources/earnings_issuers.json`, plus first-party transcript LINKS) |
 
 **The earnings lane is event-cadence, and that is why it is deliberately
 absent from four places.** It produces output on roughly 40 reporting days a
@@ -326,6 +338,7 @@ false `deploy-stale` alerts. Do not "fix" any of these omissions.
 | `generative-research.yml` | `gen-research` issue label or `workflow_dispatch` with `topic` or `twitter_url` | `research/generative/*.{html,ara.md}` + `index.json` |
 | `translate-generative-research.yml` | automatically dispatched after each generative article reaches `main`; manual `workflow_dispatch` also accepts an existing article `slug` | One validated Korean translation revision under `research/generative/`; automatic runs auto-merge, manual runs use a review PR by default |
 | `research-issue.yml` | issue labeled `research` | `research/issues/{issue-number}-research.md` |
+| `aradio.yml` ("Aradio") | hourly `:50` + `workflow_dispatch` (`force` bypasses the gate) | `research/aradio/` (board `state.json`, immutable `bulletins/YYYY-MM-DD/HHMM.json`, `index.json`, `cursor.json`, `archive/`) + mp3 at `s3://…/audio/aradio/<id>.mp3`; the `/aradio` dashboard tab. Editor = `agent-dispatch` on the dedicated `aradio` route (isolated Cursor today, `fallback: none`). Runs only from `main` (a guard fails any other ref before checkout or spend). Most hours the gate stops before any model runs. A green run can be a gate stop; a red one after the push means the text published but the audio did not. Dispatch once after merge (the SLO registry reports MISSING until `cursor.json` exists). |
 
 ### Meta (CI, code-review, self-improvement)
 
@@ -414,7 +427,7 @@ derivable from the SSOT.
 | **GLM 5.3 Flash (via OpenCode)** | Registered editorial profile; explicit generative/Twitter selector and canary | `OPENCODE_API_KEY` (Go plan) | Strict containerized profile `opencode-glm-5p3-flash`, using `opencode-go/glm-5.3-flash`. Temporarily removed from production routes while its monthly plan is exhausted. The independent registered-profile probe in `opencode-deepseek-canary.yml` is the exact reversion signal. |
 | **DeepSeek V4 Flash (via opencode)** | Explicit `generative-research` and `hourly-twitter` selector; and `opencode-deepseek-canary.yml` | `OPENCODE_API_KEY` (Go plan) | Retained comparison/diagnostic profile pinned to `opencode-go/deepseek-v4-flash` — the **2026-07-31** release. 1M ctx, $0.07/$0.14 per Mtok on the $10/mo Go plan (caps $12/5h, $30/wk, $60/mo). It is no longer the production editorial priority. Moonshot serves Kimi only and is not a fallback. |
 | **Meta Muse Spark 1.3 Contributor (via OpenCode)** | Explicit `generative-research backend=opencode-muse-spark-1p3-contributor`; opt-in OpenCode canary probe | `OPENCODE_API_KEY` (Go plan) | Official ref `opencode-go/muse-spark-1.3-contributor`. Uses OpenAI Responses transport, is region-limited, and requires workspace consent to Contributor model-improvement data collection. It is intentionally absent from production editorial routes; the writer records the exact bare model id. |
-| **Grok 4.6 Fast (via Cursor CLI)** | Both strict editorial routes during the OpenCode incident; lane-local standby for compatible local digest/Twitter/no-MCP AI-news; explicit generative/Twitter selector; canary; translation | `CURSOR_API_KEY` | Official Cursor Agent CLI (`agent`) inside `run-cursor-container`, same isolation contract as OpenCode. Model **`cursor-grok-4.6-high-fast`**. Nested sandbox disabled (container is the boundary). Never on global `fallback.chain`: only named lane-local chains may cross into Cursor, and exact path/mode contracts apply. MCP AI-news is excluded because Cursor policy denies MCP. Validate with `cursor-cli-canary.yml`. |
+| **Grok 4.6 Fast (via Cursor CLI)** | Both strict editorial routes during the OpenCode incident; the dedicated `aradio` route (repoint it alone in the SSOT); lane-local standby for compatible local digest/Twitter/no-MCP AI-news; explicit generative/Twitter selector; canary; translation | `CURSOR_API_KEY` | Official Cursor Agent CLI (`agent`) inside `run-cursor-container`, same isolation contract as OpenCode. Model **`cursor-grok-4.6-high-fast`**. Nested sandbox disabled (container is the boundary). Never on global `fallback.chain`: only named lane-local chains may cross into Cursor, and exact path/mode contracts apply. MCP AI-news is excluded because Cursor policy denies MCP. Validate with `cursor-cli-canary.yml`. |
 | **Opus 5.5 (native)** | **The `generative-research` default** plus explicit `generative-research` `backend=opus-5-5` | `CLAUDE_CODE_OAUTH_TOKEN` | Native Anthropic on **`claude-opus-5-5`**. Not the Fireworks-unavailable fallback target. The resolved model pins `--model`, every `ANTHROPIC_DEFAULT_*` alias, and `CLAUDE_CODE_SUBAGENT_MODEL`; a pre-push gate verifies provenance. Selectors: `opus-5-5`, `opus-5.5`, `opus55`, `claude-opus-5-5`. Legacy `opus-5`, `opus5`, and `claude-opus-5` dispatches resolve to the same 5.5 model. |
 | **Codex** | `generative-research backend=codex` | `CODEX_AUTH_JSON` | Codex CLI with ChatGPT-managed file auth (`auth.json` from `codex login`), so usage bills against the ChatGPT/Codex subscription, not the API. |
 | **Fireworks pi** | `hourly-twitter.yml backend=fireworks-pi` manual comparison lane | `FIREWORKS_API_KEY` | Uses pi's built-in Fireworks provider with `accounts/fireworks/models/kimi-k2p7`; writes `research/twitter-fireworks-pi/` plus a Telegram summary. |
@@ -463,6 +476,8 @@ analytical thread they carry most of the argument:
 
 ```
 research/
+├── aradio/                    # aradio.yml via write_aradio_bulletin.py ONLY (state.json board, immutable
+│                              # bulletins/YYYY-MM-DD/HHMM.json, index.json, cursor.json, archive/); mp3s on S3
 ├── arxiv/                     # daily-arxiv.yml
 ├── arm/                       # arm-timeline.yml (dashboard Arm-tab timeline source; prod fallback for prebuild)
 ├── audio/                     # digest audio; mp3s live on S3 (since May 2026) — committed files are 0-byte stubs
@@ -483,6 +498,7 @@ research/
 ├── models/                    # 24h-model-timeline.yml
 │   ├── tickets/                # persistent set, one .md per shipping artifact
 │   └── <date>-timeline.md      # derived daily diff (created/updated/closed counts)
+├── podcasts/                  # podcasts.yml (index.json episode index + daily .md; excerpts only, never transcripts)
 ├── rss/                       # hourly-rss.yml
 ├── blogs/                     # daily-ai-blogs.yml
 ├── summaries/                 # Telegram digest, headline-alert, and blog-subscription state
@@ -513,12 +529,12 @@ Secrets are configured in GitHub Actions. None are committed.
 | `ZAI_API_KEY` | Fallback chain link 2; `agent-run backend=zai-glm-5p3`; `zai-claude-code-canary.yml` | Z.ai Coding Plan key. Now load-bearing for outage resilience, not just comparison. |
 | `FIREWORKS_API_KEY` | Fireworks generative/comparison lanes and a reserved dispatcher credential slot | Covers GLM and DeepSeek Fireworks profiles. The prewired dispatcher slot is for a future isolated adapter; current agent-run profiles are not selectable by `research-editorial`. **The account is SUSPENDED as of 2026-08-01** — probes return `HTTP 412: Account getclarito-5mege6wpl is suspended, possibly due to reaching the monthly spending limit or failure to pay past invoices` (run `30641250660`). The strict `twitter-deepseek` cron had hard-failed 4×/day since ~2026-07-05 and was dropped 2026-08-01; it remains dispatch-only until billing is settled at https://fireworks.ai/account/billing. Check the job name before attributing those historical failures to a primary lane. |
 | `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, and the dispatcher credential set | OpenCode Go key: https://opencode.ai/auth; caps are $12/5h, $30/week, $60/month. The monthly cap is currently exhausted, so production editorial routing is temporarily off OpenCode. `opencode-deepseek-canary.yml` independently probes the registered editorial profile. When that probe succeeds, restore only `routes.research-editorial.backend`, regenerate docs, and redispatch RSS/community/Bluesky. |
-| `CURSOR_API_KEY` | Cursor CLI profiles, all five editorial lanes during the incident, translation, direct comparison/canary paths, and five lane-local agent-run fallbacks | Cursor dashboard API key. It temporarily carries a larger failure domain: RSS/community/Bluesky plus arXiv/wiki, with standby fallback authorization for local digest synthesis/audio, primary Twitter/repair, and no-MCP AI-news. Cursor is never a global fallback. Validate with `cursor-cli-canary.yml`. |
+| `CURSOR_API_KEY` | Cursor CLI profiles, all five editorial lanes during the incident, the Aradio editor (dedicated `aradio` route), translation, direct comparison/canary paths, and five lane-local agent-run fallbacks | Cursor dashboard API key. It temporarily carries a larger failure domain: RSS/community/Bluesky plus arXiv/wiki and the Aradio editor, with standby fallback authorization for local digest synthesis/audio, primary Twitter/repair, and no-MCP AI-news. Cursor is never a global fallback. Validate with `cursor-cli-canary.yml`. |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | The file-backed `~/.codex/auth.json` from `codex login`. Treat like a password; one auth file per serialized runner stream. |
 | `BIRD_AUTH_TOKEN`, `BIRD_CT0` | birdy workflows (`hourly-twitter*`, `24h-model-timeline`, `twitter-account-explorer`, `generative-research`) | X/Twitter cookies; they expire — see rule 6. The env-var names keep the `BIRD_` prefix because that is what birdy reads. |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | `blog-subscriptions`, `daily-digest`, `liveness-check` | Blog alerts, digest delivery, liveness escalation. |
 | `HOOKER_URL`, `HOOKER_TOKEN` | Telemetry composite + most workflows | Base URL and token for the hooker POSTs. Optional — without them telemetry steps no-op (rule 4). |
-| `S3_*` (4 vars), `GEMINI_API_KEY` | `daily-digest` audio | Optional. Gemini Flash TTS generates the mp3, S3 stores it; the committed `research/audio/*.mp3` are 0-byte stubs. Missing = that step skips. |
+| `S3_*` (4 vars), `GEMINI_API_KEY` | `daily-digest` audio, `aradio` bulletins | Gemini Flash TTS generates the mp3, S3 stores it. **Digest:** optional; the committed `research/audio/*.mp3` are 0-byte stubs; missing = that step skips. **Aradio:** required whenever a bulletin goes on air — missing or failing = the text publishes with `audio: null`, then the job fails. Only the bucket's `audio/` prefix is publicly readable (anything else returns 403), hence `audio/aradio/<id>.mp3`. **Since 2026-10-22 the digest has published no audio while its runs stayed green** (the step is `continue-on-error` and exits 0 on Gemini errors; S3 returns 404 for the 10-22 and 10-29 mp3s): read that step's log before trusting either audio path. |
 | `EXA_API_KEY`, `PERPLEXITY_API_KEY` | `daily-digest`, `ai-news-research`, `research-issue` | Optional MCP search. **Currently unset** (verified 2026-07-02) — `daily-digest` warns and uses local-source synthesis. |
 | `GITHUB_TOKEN` | All workflows | Auto-provided. |
 | `DEEPSEEK_API_KEY`, `VERCEL_DEPLOY_HOOK` | _Retired_ | Both removed from the repo. DeepSeek routes through Fireworks now; Railway, not Vercel, serves ara.guzus.xyz (rule 3). |
@@ -796,6 +812,54 @@ output or break the pipeline. Read them before editing.
     credential failure = one banner-labelled digest + several stale lanes
     that need a manual re-dispatch once the agent path is fixed, because a
     daily lane will not retry until its next slot.
+
+15. **Aradio's board is CRUD'd through ops; its editor never writes
+    `research/`.** Contract: [`docs/aradio.md`](docs/aradio.md). The editor
+    (isolated `agent-dispatch`, route `aradio`) returns exactly one artifact,
+    `.tmp/aradio/edit.json`, holding create/update/resolve OPS plus an
+    optional script; trusted host steps validate it (`check_aradio.py`),
+    voice it (`aradio_tts.py`), and `write_aradio_bulletin.py` is the only
+    committer. Preserve these, or the board corrupts silently:
+    (a) **Ops, not rewrites** — history is append-only and checked before any
+    write, slugs are immutable, threads are resolved, never deleted; letting
+    the editor emit a whole board would let one bad generation erase history.
+    History is BOUNDED: `state.json` keeps each thread's newest 12 entries and
+    the writer moves older ones to `archive/YYYY-MM.json` in the same run
+    (archived + retained == prior + new, checked). Unbounded history once
+    grew the board until it filled the editor's whole input budget, and the
+    gate kept saying "go" on an empty inbox.
+    (b) **Provenance** — an evidence URL must appear in that run's trusted
+    inbox (or already be on the board) and pass the strict URL rule. A quote
+    must be EXACTLY ONE COMPLETE SENTENCE of a single transcript window of a
+    spoken item or one earnings `Key quotes:` line — never a title, a show
+    note, or Twitter/ticket text (ARA's own model-written summaries) — and
+    the SOURCE'S OWN WORDING of that sentence is published, not the editor's
+    string. A transcript quote never carries `speaker` (naming is not
+    speaking); a Key-quotes quote carries the line's own attribution. Do not
+    "relax" this to substring, fragment, whole-text or folded-string
+    matching, or to a speaker found by name: each let a quote be stitched,
+    re-punctuated, cut loose from its negation, condition or question mark,
+    or credited to someone who did not say it, under a real citation.
+    (c) **The cursor advances only on publication** — an editor failure or a
+    hard validation error commits nothing, so the next hour retries the same
+    material; a gate stop is a healthy no-op.
+    (d) **Audio failure is loud** — the text publishes with `audio: null`,
+    then the job fails. Never copy the digest's `continue-on-error` TTS
+    step, which has exited 0 on Gemini errors since 2026-10-22.
+    (e) **Transcripts are working input, never output** — only ≤ 6 excerpts
+    of ≤ 60 words per episode are committed (`research/` is published), the
+    board holds ≤ 2 quotes / 60 quoted words per source (counting what is
+    already there) with ≤ 8 new quotes per run, and tuber is read-only:
+    never call its summarize/generation endpoints.
+    (f) **S3 keys are immutable** (`audio/aradio/<id>.mp3`; s3.guzus.xyz caches
+    200s for 4 h behind Cloudflare); the "latest" pointer is
+    `research/aradio/index.json`, which Caddy serves uncached.
+    (g) **A stale Aradio safe-push PR is CLOSED, never merged.** Rule 13's
+    "merge it manually, oldest first" does NOT apply to `aradio.yml`: if a
+    bulletin's `automation/safe-push/*` PR fails to auto-merge, `main`'s cursor
+    never advanced, so the next hourly run already re-reads and re-airs that
+    material. Merging the stale PR afterwards would roll the board and cursor
+    back over the newer run. Its orphaned mp3 on S3 is harmless.
 
 ## Code Style
 

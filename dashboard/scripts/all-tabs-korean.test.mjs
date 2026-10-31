@@ -10,6 +10,7 @@ const dashboardRoot = new URL('../', import.meta.url);
 
 const PRIMARY_TAB_KEYS = [
   'nav.twitter',
+  'nav.aradio',
   'nav.models',
   'nav.research',
   'nav.wiki',
@@ -80,11 +81,12 @@ test('standalone tab renderers accept Korean and emit localized UI chrome', asyn
   });
   t.after(() => vite.close());
 
-  const [today, twitter, pricing, agents] = await Promise.all([
+  const [today, twitter, pricing, agents, aradio] = await Promise.all([
     vite.ssrLoadModule('/src/render/today.ts'),
     vite.ssrLoadModule('/src/render/twitter.ts'),
     vite.ssrLoadModule('/src/render/pricing.ts'),
     vite.ssrLoadModule('/src/render/agents.ts'),
+    vite.ssrLoadModule('/src/render/aradio.ts'),
   ]);
 
   const todayHtml = today.renderTodayHtml({
@@ -157,4 +159,23 @@ test('standalone tab renderers accept Korean and emit localized UI chrome', asyn
   const agentsHtml = agents.renderAgentsStudioHtml('ko');
   assert.ok(agentsHtml.includes(uiText('ko', 'agents.title')));
   assert.ok(agentsHtml.includes(uiText('ko', 'agents.loading')));
+
+  // Before the first bulletin the station still renders localized chrome.
+  const aradioHtml = aradio.renderAradioView({
+    language: 'ko',
+    nowMs: Date.now(),
+    index: null,
+    indexStatus: 'missing',
+    board: null,
+    boardStatus: 'missing',
+    latestDetail: null,
+    selectedId: null,
+    transcript: { kind: 'none' },
+    keepListening: false,
+    showAll: false,
+    checkedAt: null,
+  }).html;
+  assert.ok(aradioHtml.includes(uiText('ko', 'aradio.title')));
+  assert.ok(aradioHtml.includes(uiText('ko', 'aradio.emptyTitle')));
+  assert.ok(aradioHtml.includes(uiText('ko', 'aradio.offAir')));
 });
