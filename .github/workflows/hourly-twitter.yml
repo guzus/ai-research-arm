@@ -931,25 +931,49 @@ jobs:
 
       - name: Process tweets with pi + DeepSeek v4 Flash via Fireworks (deepseek-pi tier)
         if: steps.backend.outputs.name == 'deepseek-pi'
+        # pi has no internal timeout. Cancel a hung run inside the 60-minute
+        # job cap (the container is stopped and removed by the step's trap),
+        # leaving time for the steps that report and clean up after it.
+        timeout-minutes: 45
         uses: ./.github/actions/run-pi-container
         with:
-          prompt-file: /tmp/prompt-rendered.md
+          mode: twitter
+          allowed-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
+          prompt-file: ${{ steps.render.outputs.rendered_path }}
           provider: fireworks
           model: accounts/fireworks/models/deepseek-v4-flash
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          mount-bird-snapshot: 'true'
           bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
           bird-ct0: ${{ secrets.BIRD_CT0 }}
+          birdy-tool-log-path: .twitter-input/birdy-tool-log.jsonl
 
       - name: Process tweets with pi + Fireworks (fireworks-pi tier)
         if: steps.backend.outputs.name == 'fireworks-pi'
+        # pi has no internal timeout. Cancel a hung run inside the 60-minute
+        # job cap (the container is stopped and removed by the step's trap),
+        # leaving time for the steps that report and clean up after it.
+        timeout-minutes: 45
         uses: ./.github/actions/run-pi-container
         with:
-          prompt-file: /tmp/prompt-rendered.md
+          mode: twitter
+          allowed-paths: |
+            ${{ steps.const.outputs.digest_file }}
+            ${{ steps.const.outputs.status_file }}
+            ${{ steps.const.outputs.summary_file }}
+            ${{ steps.const.outputs.headlines_file }}
+          prompt-file: ${{ steps.render.outputs.rendered_path }}
           provider: fireworks
           model: accounts/fireworks/models/kimi-k2p7
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
+          mount-bird-snapshot: 'true'
           bird-auth-token: ${{ secrets.BIRD_AUTH_TOKEN }}
           bird-ct0: ${{ secrets.BIRD_CT0 }}
+          birdy-tool-log-path: .twitter-input/birdy-tool-log.jsonl
 
       # opencode tier runs on the host like opencode-deepseek-canary.yml (no
       # claude-code-action, no pi container): pinned CLI, checked-in

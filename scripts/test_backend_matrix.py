@@ -1044,6 +1044,31 @@ class RoutingInvariants(unittest.TestCase):
                 continue
             with self.subTest(runner="opencode", begin=begin):
                 self.assertEqual(block(cursor, begin, end), block(opencode, begin, end))
+        # pi shares every span but two. Its image block names the image and
+        # container with a random suffix and builds no birdy-fast, so only its
+        # name check and background build are compared; it takes no inline
+        # prompt or return artifacts, so its mode checks end at the allowed
+        # paths. It adds the twitter-only checks, mounts, and attempt
+        # telemetry that the Claude runner does not use.
+        pi = re.sub(r"\bpi\b", "ADAPTER", shell("run-pi-container"))
+        pi_spans = tuple(span for span in spans
+                         if not span[0].startswith(("image=", "if { [")))
+        pi_spans += (
+            ('if [ "$RUN_MODE" = "twitter" ] && [ -z "$ALLOWED_PATHS" ]',
+             'twitter mode requires allowed-paths."'),
+            ('if [ -n "$BIRDY_TOOL_LOG_REL" ]; then',
+             'birdy-tool-log-path cannot traverse directories."'),
+            ('if { [ "$RUN_MODE" = "twitter" ]', 'allowed-paths must contain 1-8 paths."'),
+            ("# TRUSTED_BIRD_MOUNT_GUARD_BEGIN", "# TRUSTED_BIRD_MOUNT_GUARD_END"),
+            ('case "$container_name" in', 'container name exceeds 120 characters."'),
+            ("# Bash runs a trap only after a foreground command exits, so build in",
+             'build_job=""'),
+            ("extra_args=()", 'BIRDY_TOOL_LOG_PATH=/workspace/${BIRDY_TOOL_LOG_REL#/}")'),
+            ("# CONTAINER_RUN_BEGIN", "# CONTAINER_RUN_END"),
+        )
+        for begin, end in pi_spans:
+            with self.subTest(runner="pi", begin=begin):
+                self.assertEqual(block(cursor, begin, end), block(pi, begin, end))
         # The wiki lane's uv is the Cursor image's pinned copy, with the same
         # copy-mode install; only its Python moves off the noexec /tmp.
         def lines_with(text: str, needle: str) -> list[str]:
@@ -3002,7 +3027,7 @@ esac
                 self.assertEqual(
                     step.secrets.get("cursor-api-key"), "CURSOR_API_KEY", step)
 
-    RUNNERS = ("claude", "cursor", "opencode")
+    RUNNERS = ("claude", "cursor", "opencode", "pi")
 
     def runner_harness(self, adapter: str, root: Path, output_file: str = "") -> str:
         """The runner's real cleanup, traps and CONTAINER_RUN block, around a
@@ -3376,6 +3401,155 @@ esac
                                       / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
                 guard = run.split("# TRUSTED_IMPORT_GUARD_BEGIN", 1)[1].split(
                     "# TRUSTED_IMPORT_GUARD_END", 1)[0]
+                calls = [line.strip() for line in guard.splitlines()
+                         if "bundle verify" in line or "bundle unbundle" in line]
+                self.assertEqual([
+                    'if ! "${trusted_git[@]}" bundle verify "$bundle_file" >/dev/null 2>&1; then',
+                    'bundle_heads=$("${trusted_git[@]}" bundle unbundle "$bundle_file")',
+                ], [line for line in calls if not line.startswith("#")])
+
+    def test_pi_runner_prints_only_a_typed_summary_and_keeps_its_status(self):
+        run = yaml.safe_load((REPO_ROOT / ".github/actions/run-pi-container/action.yml")
+                             .read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+        summary = run.split("# PI_RESULT_SUMMARY_BEGIN", 1)[1].split("# PI_RESULT_SUMMARY_END", 1)[0]
+        # The summary prints before the telemetry and import checks can stop
+        # the step, and it is the real checkout's summarizer: the container
+        # mounts only the disposable clone, never that checkout.
+        self.assertLess(run.index("# CONTAINER_RUN_END"), run.index("# PI_RESULT_SUMMARY_BEGIN"))
+        self.assertLess(run.index("# PI_RESULT_SUMMARY_END"),
+                        run.index("# TRUSTED_ATTEMPT_TELEMETRY_BEGIN"))
+        self.assertIn("/usr/bin/python3 -I scripts/summarize_pi_result.py", summary)
+        self.assertIn('pi_result_file="$isolated_workspace/.pi-result.txt"', summary)
+        # pi's reply and errors go to the attempt log inside the container,
+        # which hands the host a capped copy, never to the log.
+        self.assertIn('--model "$PI_MODEL" > "$attempt_log" 2>&1', run)
+        self.assertIn('head -c 1048576 -- "$attempt_log" > .pi-result.txt || true', run)
+        self.assertTrue(run.rstrip().endswith('exit "$agent_status"'))
+        # Credentials reach the container by name only and are never expanded
+        # by the host script, so no argv or echo can carry them.
+        for secret in ("AUTH_TOKEN", "CT0", "FIREWORKS_API_KEY"):
+            self.assertIn(f"--env {secret} \\", run)
+            self.assertNotRegex(run, rf"\${{?{secret}\b")
+        self.assertIn('--name "$container_name"', run)
+        self.assertIn('container_name="ara-pi-${run_suffix}"', run)
+        self.assertIn('image="ara-pi-agent:${run_suffix}"', run)
+        self.assertRegex(run, r'run_suffix="[^"]*\$\(od -An -N4 -tx1 /dev/urandom')
+
+        from summarize_pi_result import reply_sha256
+        hostile = "done\r::add-mask::SECRET\n::error::INJECTED\n##[warning]x\n"
+        for link in (False, True):
+            with self.subTest(link=link), tempfile.TemporaryDirectory() as tmp:
+                workspace = Path(tmp) / "workspace"
+                workspace.mkdir()
+                result = workspace / ".pi-result.txt"
+                if link:
+                    (Path(tmp) / "elsewhere.txt").write_text(hostile, encoding="utf-8")
+                    os.symlink(Path(tmp) / "elsewhere.txt", result)
+                else:
+                    result.write_text(hostile, encoding="utf-8")
+                checked = subprocess.run(
+                    ["bash", "-c", "set -euo pipefail\nagent_status=3\n"
+                     f'isolated_workspace="{workspace}"\n' + summary
+                     + '\necho "status=$agent_status"'],
+                    cwd=REPO_ROOT, capture_output=True, text=True, check=True)
+                lines = checked.stdout.splitlines()
+                self.assertEqual("status=3", lines[-1])
+                self.assertEqual(2, len(lines), checked.stdout)
+                fields = ("reply_sha256=- reply_bytes=- reply_lines=-" if link else
+                          f"reply_sha256={reply_sha256(hostile)} reply_bytes={len(hostile)} "
+                          "reply_lines=3")
+                self.assertEqual(f"::notice title=pi result::status=3 {fields} cli_error=other",
+                                 lines[0])
+                for leaked in ("SECRET", "INJECTED", "##["):
+                    self.assertNotIn(leaked, checked.stdout + checked.stderr)
+
+    def test_pi_writes_only_its_disposable_clone(self):
+        """pi used to mount the real checkout read-write, so an injected model
+        could edit the scripts, local actions, or .git/config that later steps
+        of its job run. It now gets the Cursor runner's clone and import."""
+        action = yaml.safe_load((REPO_ROOT / ".github/actions/run-pi-container/action.yml")
+                                .read_text(encoding="utf-8"))
+        run = action["runs"]["steps"][0]["run"]
+        code = [line.strip() for line in run.splitlines()
+                if line.strip() and not line.strip().startswith("#")]
+        self.assertEqual(
+            ['extra_args+=(--volume "/tmp/bird:/tmp/bird:ro")',
+             '--volume "$isolated_workspace:/workspace" \\',
+             '--volume "$PROMPT_FILE:/tmp/pi-prompt.md:ro" \\'],
+            [line for line in code if "--volume" in line])
+        self.assertNotIn('"$GITHUB_WORKSPACE:', run)
+        # The exact container flag set: an allowlist, so an added --cap-add,
+        # seccomp/apparmor override, env file, device, or host namespace fails.
+        start = code.index("docker_cmd=(docker run --rm \\")
+        self.assertEqual([
+            '--name "$container_name" \\', '--user "$(id -u):$(id -g)" \\',
+            "--workdir /workspace \\", "--cap-drop ALL \\",
+            "--security-opt no-new-privileges \\", "--pids-limit 512 \\",
+            "--env HOME=/tmp/pi-home \\", "--env XDG_CONFIG_HOME=/tmp/pi-home/.config \\",
+            "--env FIREWORKS_API_KEY \\", "--env AUTH_TOKEN \\", "--env CT0 \\",
+            "--env BIRDY_READ_ONLY=1 \\",
+            '--env "GIT_AUTHOR_NAME=$GIT_USER_NAME" \\',
+            '--env "GIT_AUTHOR_EMAIL=$GIT_USER_EMAIL" \\',
+            '--env "GIT_COMMITTER_NAME=$GIT_USER_NAME" \\',
+            '--env "GIT_COMMITTER_EMAIL=$GIT_USER_EMAIL" \\',
+            "--env PI_PROVIDER \\", "--env PI_MODEL \\", "--env PI_THINKING \\",
+            "--env PI_TOOLS \\", "--env RUN_MODE \\", "--env ALLOWED_PATHS \\",
+            '--env "PRE_SHA=$pre_sha" \\', '${extra_args[@]+"${extra_args[@]}"} \\',
+            '--volume "$isolated_workspace:/workspace" \\',
+            '--volume "$PROMPT_FILE:/tmp/pi-prompt.md:ro" \\', '"$image" \\',
+        ], code[start + 1:code.index("bash -lc '", start)])
+        self.assertEqual(
+            ['extra_args+=(--volume "/tmp/bird:/tmp/bird:ro")',
+             'extra_args+=(--env "BIRDY_TOOL_LOG_PATH=/workspace/${BIRDY_TOOL_LOG_REL#/}")'],
+            [line for line in code if line.startswith("extra_args+=")])
+        text = "\n".join(code)
+        for forbidden in ('--volume "$HOME', "seccomp", "apparmor", "systempaths",
+                          "docker.sock"):
+            self.assertNotIn(forbidden, text, f"container gained {forbidden}")
+        for flag in ("--privileged", "--network", "--net", "--cap-add", "--env-file",
+                     "--mount", "--device", "--pid", "--ipc", "--userns", "--uts",
+                     "--cgroupns", "--group-add"):
+            self.assertNotRegex(text, rf"(^|\s){re.escape(flag)}(\s|=|$)",
+                                f"container gained {flag}")
+        # The clone is made, run, and imported in this order, and the step
+        # ends with the status the host observed.
+        order = ["# TRUSTED_CLONE_SETUP_END", "# CONTAINER_RUN_BEGIN",
+                 "# TRUSTED_ATTEMPT_TELEMETRY_BEGIN", "# TRUSTED_IMPORT_GUARD_BEGIN",
+                 "# TRUSTED_IMPORT_GUARD_END"]
+        self.assertEqual(sorted(run.index(marker) for marker in order),
+                         [run.index(marker) for marker in order])
+        self.assertIn("twitter) ;;", run)
+        self.assertIn("mode must be twitter, the only pi output contract", run)
+        # The container body sits inside bash -lc '...': one apostrophe ends it.
+        start = run.index("bash -lc '") + len("bash -lc '")
+        self.assertNotIn("'", run[start:run.index("\n  ')", start)])
+        with tempfile.NamedTemporaryFile("w", suffix=".sh") as fh:
+            fh.write(run)
+            fh.flush()
+            self.assertEqual(0, subprocess.run(["bash", "-n", fh.name]).returncode)
+        # Both pi tiers declare the same output contract as the contained
+        # Cursor tier of the same job.
+        steps = yaml.safe_load((REPO_ROOT / ".github/workflows/hourly-twitter.yml")
+                               .read_text(encoding="utf-8"))["jobs"]["twitter"]["steps"]
+        cursor = next(step for step in steps if step.get("id") == "twitter-cursor-agent")["with"]
+        pi_calls = [step["with"] for step in steps
+                    if step.get("uses") == "./.github/actions/run-pi-container"]
+        self.assertEqual(2, len(pi_calls))
+        for call in pi_calls:
+            with self.subTest(model=call["model"]):
+                for key in ("mode", "allowed-paths", "prompt-file", "mount-bird-snapshot",
+                            "birdy-tool-log-path"):
+                    self.assertEqual(cursor[key], call[key], key)
+
+    def test_import_guard_keeps_the_bundle_ref_listing_out_of_the_log(self):
+        """`git bundle verify` lists the refs a bundle advertises: bytes the
+        container wrote, printed after workflow commands resume."""
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter):
+                run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                                      / "action.yml").read_text(encoding="utf-8"))
+                guard = run["runs"]["steps"][0]["run"].split(
+                    "# TRUSTED_IMPORT_GUARD_BEGIN", 1)[1].split("# TRUSTED_IMPORT_GUARD_END", 1)[0]
                 calls = [line.strip() for line in guard.splitlines()
                          if "bundle verify" in line or "bundle unbundle" in line]
                 self.assertEqual([
