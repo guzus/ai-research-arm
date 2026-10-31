@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-10-31 19:14:16 UTC
+
+CYCLE: Agent adoption data from Roblox, AMD inference economics, Grok text watermarking
+
+TOP STORIES:
+• Roblox Q3 letter: MCP server daily use rising since September; 80%+ of top 100 games used AI in the past month [⚠]
+• SemiAnalysis: AMD MI355X up to 2x B200 performance per dollar on Kimi K3 agentic inference [⚠]
+• Grok to watermark generated text by default from Nov 7, per in-app notice [⚠]
+• Meta built a humanoid robot "Max" with Fourier in 3 months (The Information); Thrun's Dulo raises $130M seed [⚠]
+
+WATCH: Official xAI statement on the Nov 7 Grok watermark rollout and any opt-out
+
+Full update on GitHub.
