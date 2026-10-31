@@ -157,9 +157,10 @@ flowchart LR
     subgraph runtime["⚙️ Runtime-routed lanes — lane: → data/agent-backends.json"]
         lanes0["ai-news-research · digest-audio-script · digest-synthesis<br/>digest-synthesis-fallback · model-timeline · twitter-autoresearch<br/>twitter-judge · twitter-primary · twitter-primary-repair<br/><i>9 lanes</i>"]
         strict0["🔒 claude-canary · twitter-ab-claude · twitter-ab-judge<br/>twitter-ab-judge-swapped<br/><i>strict — never falls back</i>"]
-        strict1["🔒 aradio · arxiv · bluesky<br/>community · generative-research-ko · rss<br/>wiki-ingest<br/><i>strict — never falls back</i>"]
-        strict2["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
-        strict3["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
+        strict1["🔒 aradio<br/><i>strict — never falls back</i>"]
+        strict2["🔒 arxiv · bluesky · community<br/>generative-research-ko · rss · wiki-ingest<br/><i>strict — never falls back</i>"]
+        strict3["🔒 twitter-deepseek<br/><i>strict — never falls back</i>"]
+        strict4["🔒 twitter-ab-zai · twitter-zai · zai-canary<br/><i>strict — never falls back</i>"]
         gendef["generative-research-default<br/><i>dispatch default</i>"]
     end
     subgraph mirrors["🪞 CI-enforced mirrors — literal in workflow, equality-gated"]
@@ -176,9 +177,10 @@ flowchart LR
     end
     lanes0 -->|"claude-opus-5-5"| ANT
     strict0 -->|"claude-opus-5-5"| ANT
-    strict1 -->|"cursor-grok-4.6-high-fast"| CUR
-    strict2 -->|"deepseek-v4-flash"| FW
-    strict3 -->|"glm-5.3"| ZAI
+    strict1 -->|"claude-sonnet-5-5"| ANT
+    strict2 -->|"cursor-grok-4.6-high-fast"| CUR
+    strict3 -->|"deepseek-v4-flash"| FW
+    strict4 -->|"glm-5.3"| ZAI
     gendef -->|"claude-opus-5-5"| ANT
     pi -->|"deepseek-v4-flash · kimi-k2p7"| FW
     native -->|"claude-sonnet-5-5"| ANT

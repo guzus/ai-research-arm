@@ -197,9 +197,11 @@ jobs:
           lane: aradio
           return-artifacts: .tmp/aradio/edit.json
           # Read the staged inbox, write one file: no shell, web, MCP, or
-          # writes to the repo's code and data.
+          # writes to the repo's code and data. One policy per adapter; the
+          # SSOT route decides which one runs.
           cursor-config: .github/cursor/aradio.json
           opencode-config: .github/opencode/aradio.json
+          claude-config: .github/claude/aradio.json
           timeout-minutes: '12'
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}

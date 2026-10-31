@@ -90,7 +90,7 @@ Reading notes:
 |---|---|---|---|---|---|---|
 | ai-news-research | `ai-news-research.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `claude-sonnet-5-5` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | chain: `cursor-grok-4p6-fast` |
 | ai-news-research-mcp | `ai-news-research.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
-| aradio (route:aradio) | `aradio.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
+| aradio (route:aradio) | `aradio.yml` | agent-dispatch → Claude Code (isolated container) (runtime SSOT) | Claude Sonnet 5.5 via isolated Claude Code | `claude-sonnet-5-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (route fallback=none) |
 | arxiv (route:research-editorial-secondary) | `daily-arxiv.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | bluesky (route:research-editorial) | `2h-bluesky.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | claude-canary | `claude-native-canary.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `${{ inputs.model }}` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
@@ -122,6 +122,7 @@ Reading notes:
 | twitter-zai (tier:zai-glm-5p3) | `hourly-twitter.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.3 via Z.ai | `glm-5.3` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
 | wiki-ingest (route:research-editorial-secondary) | `wiki-ingest.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | zai-canary · PINNED | `zai-claude-code-canary.yml` | Claude Code · agent-run (runtime SSOT) | GLM 5.3 via Z.ai | `glm-5.3` | `ZAI_API_KEY` | hard fail (strict — never walks the chain) |
+| (canary) claude-container + claude-sonnet-5-5 | `claude-isolated-canary.yml` | Claude Code (isolated container) | Anthropic (native) | `claude-sonnet-5-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (diagnostics lane) |
 | (canary) cursor + cursor-grok-4.6-high-fast | `cursor-cli-canary.yml` | Cursor CLI (containerised) | Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (diagnostics lane) |
 | (dispatch path) backend=claude | `generative-research.yml` | Claude Code · claude-code-action | Anthropic (native) | `claude-sonnet-5-5` | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (explicit backend) |
 | (dispatch path) backend=codex | `generative-research.yml` | Codex CLI | OpenAI (ChatGPT subscription auth) | `codex` | `CODEX_AUTH_JSON` | hard fail (explicit backend) |
@@ -155,7 +156,7 @@ Reading notes:
 - `podcasts.yml`
 - `production-synthetic.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p3`; native path serves `claude-opus-5-5`. 34 SSOT lanes (+14 dispatch execution paths) across 37 workflows; 15 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p3`; native path serves `claude-opus-5-5`. 34 SSOT lanes (+15 dispatch execution paths) across 38 workflows; 15 workflows run no model._
 
 _Explicit lane fallback overrides (replace, never extend, the global chain): `ai-news-research`: `cursor-grok-4p6-fast`; `digest-audio-script`: `cursor-grok-4p6-fast`; `digest-synthesis-fallback`: `cursor-grok-4p6-fast`; `twitter-primary`: `cursor-grok-4p6-fast`; `twitter-primary-repair`: `cursor-grok-4p6-fast`._
 

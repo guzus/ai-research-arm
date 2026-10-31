@@ -255,10 +255,11 @@ class RoutingInvariants(unittest.TestCase):
         )
         steps = action["runs"]["steps"]
         local_children = [step for step in steps if "uses" in step]
-        self.assertEqual(2, len(local_children))
+        self.assertEqual(3, len(local_children))
         by_uses = {child["uses"]: child for child in local_children}
         opencode = by_uses["./.github/actions/run-opencode-container"]
         cursor = by_uses["./.github/actions/run-cursor-container"]
+        claude = by_uses["./.github/actions/run-claude-container"]
         self.assertEqual("${{ inputs.opencode-api-key }}",
                          opencode["with"]["opencode-api-key"])
         self.assertEqual("${{ inputs.opencode-config }}",
@@ -271,11 +272,21 @@ class RoutingInvariants(unittest.TestCase):
                          opencode.get("if"))
         self.assertEqual("steps.route.outputs.adapter == 'cursor'",
                          cursor.get("if"))
+        self.assertEqual("${{ inputs.claude-code-oauth-token }}",
+                         claude["with"]["claude-code-oauth-token"])
+        self.assertEqual("${{ inputs.claude-config }}",
+                         claude["with"]["claude-config"])
+        self.assertEqual("${{ steps.route.outputs.model_ref }}", claude["with"]["model"])
+        self.assertEqual("editorial", claude["with"]["mode"])
+        self.assertEqual("steps.route.outputs.adapter == 'claude-container'",
+                         claude.get("if"))
         for child, foreign in (
                 (opencode, ("claude-code-oauth-token", "fireworks-api-key",
                             "zai-api-key", "cursor-api-key")),
                 (cursor, ("claude-code-oauth-token", "fireworks-api-key",
                           "zai-api-key", "opencode-api-key")),
+                (claude, ("fireworks-api-key", "zai-api-key", "opencode-api-key",
+                          "cursor-api-key")),
         ):
             rendered_child = json.dumps(child, sort_keys=True)
             for secret_input in foreign:
@@ -285,6 +296,7 @@ class RoutingInvariants(unittest.TestCase):
         for name, credential in (
                 ("opencode", {"opencode-go": "opencode-api-key"}),
                 ("cursor", {"cursor": "cursor-api-key"}),
+                ("claude-container", {"claude": "claude-code-oauth-token"}),
         ):
             adapter = config["adapters"][name]
             self.assertIs(adapter["isolated_workspace"], True)
@@ -303,6 +315,18 @@ class RoutingInvariants(unittest.TestCase):
                          dispatch["with"].get("cursor-config"))
         self.assertEqual(".github/opencode/aradio.json",
                          dispatch["with"].get("opencode-config"))
+        self.assertEqual(".github/claude/aradio.json",
+                         dispatch["with"].get("claude-config"))
+        claude_policy = json.loads(
+            (REPO_ROOT / ".github/claude/aradio.json").read_text(encoding="utf-8"))
+        # Claude Code matches Write calls against Edit rules; Write(path) rules
+        # never match, so the one writable file is an Edit rule.
+        self.assertEqual(["Read(.agent-input/aradio/**)", "Edit(.tmp/aradio/edit.json)"],
+                         claude_policy["permissions"]["allow"])
+        for denied in ("Bash", "Task", "WebFetch", "WebSearch", "NotebookEdit", "mcp__*",
+                       "Read(//proc/**)", "Read(~/**)", "Edit(research/**)",
+                       "Edit(.agent-input/**)", "Edit(.github/**)"):
+            self.assertIn(denied, claude_policy["permissions"]["deny"])
         self.assertTrue(dispatch.get("continue-on-error"))
         self.assertNotIn("allowed-paths", dispatch["with"])
         self.assertNotIn("expected-paths", dispatch["with"])
@@ -336,6 +360,257 @@ class RoutingInvariants(unittest.TestCase):
             self.assertIn("$SCRATCH/edit.normalized.json", by_id[step_id]["run"])
             self.assertNotIn(".agent-input", by_id[step_id]["run"])
         self.assertEqual("false", str(workflow["concurrency"]["cancel-in-progress"]).lower())
+
+    def test_aradio_alone_routes_to_isolated_claude(self):
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        selected = resolve_route(config, "aradio")
+        self.assertEqual("claude-container", selected.adapter)
+        self.assertEqual("claude-sonnet-5p5-isolated", selected.backend)
+        self.assertEqual("claude/claude-sonnet-5-5", selected.model_ref)
+        self.assertEqual("claude-code-oauth-token", selected.credential)
+        self.assertEqual("none", selected.fallback)
+        self.assertTrue(selected.strict)
+        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest",
+                     "generative-research-ko"):
+            self.assertEqual("cursor", resolve_route(config, lane).adapter, lane)
+        adapter = config["adapters"]["claude-container"]
+        self.assertEqual(".github/actions/run-claude-container", adapter["implementation"])
+        self.assertTrue((REPO_ROOT / adapter["implementation"] / "action.yml").exists())
+        backend = config["backends"]["claude-sonnet-5p5-isolated"]
+        self.assertNotIn("generative", backend)
+        self.assertEqual([], backend["aliases"])
+
+    def test_claude_container_route_validation_fails_closed(self):
+        def broken(mutate):
+            config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+            mutate(config)
+            return config
+
+        cases = {
+            "global fallback": (lambda c: c["routes"]["aradio"].update(fallback="global"),
+                                "must use 'none'"),
+            "other provider": (lambda c: c["backends"]["claude-sonnet-5p5-isolated"].update(
+                provider="cursor"), "credential input|provider 'claude'"),
+            "empty model": (lambda c: c["backends"]["claude-sonnet-5p5-isolated"].update(
+                model=""), "non-empty model"),
+            "alias model": (lambda c: c["backends"]["claude-sonnet-5p5-isolated"].update(
+                model="sonnet"), "full claude-\\* model id"),
+            "suffix model": (lambda c: c["backends"]["claude-sonnet-5p5-isolated"].update(
+                model="claude-sonnet-5-5[1m]"), "full claude-\\* model id"),
+            "credential remap": (lambda c: c["adapters"]["claude-container"][
+                "provider_credentials"].update(claude="cursor-api-key"),
+                "claude-code-oauth-token"),
+            "not isolated": (lambda c: c["adapters"]["claude-container"].update(
+                isolated_workspace=False), "isolated_workspace"),
+            "not production": (lambda c: c["backends"]["claude-sonnet-5p5-isolated"].update(
+                production_eligible=False), "production-eligible"),
+        }
+        for name, (mutate, message) in cases.items():
+            with self.subTest(name), self.assertRaisesRegex(ValueError, message):
+                resolve_route(broken(mutate), "aradio")
+        # The host-checkout adapter serves the same provider and credential,
+        # and must stay incompatible.
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        config["routes"]["aradio"]["backend"] = "claude"
+        with self.assertRaisesRegex(ValueError, "isolated_workspace"):
+            resolve_route(config, "aradio")
+
+    def test_isolated_claude_never_enters_a_fallback_chain(self):
+        fallback = copy.deepcopy(self.fallback)
+        fallback["chain"].append("claude-sonnet-5p5-isolated")
+        self.assertTrue(any("fallback executes inside agent-run" in error
+                            for error in check_fallback(fallback, self.profiles)))
+        lanes = copy.deepcopy(self.lanes)
+        lanes["digest-synthesis-fallback"]["fallback_chain"] = ["claude-sonnet-5p5-isolated"]
+        errors = cross_check(lanes, self.obs, self.profiles)
+        self.assertTrue(any("unsupported adapter 'claude-container'" in error
+                            for error in errors), errors)
+
+    def test_isolated_claude_lanes_route_only_through_agent_dispatch(self):
+        from build_backend_matrix import ClaudeContainerStep, Observation
+        obs = copy.deepcopy(self.obs)
+        rogue = Observation()
+        rogue.claude_container = True
+        rogue.claude_container_steps.append(ClaudeContainerStep(
+            "aradio.yml", "aradio", "claude/claude-sonnet-5-5", "CLAUDE_CODE_OAUTH_TOKEN",
+            "direct call"))
+        rogue.claude_container_steps.append(ClaudeContainerStep(
+            "aradio.yml", "", "claude/sonnet", "CURSOR_API_KEY", "bad canary"))
+        obs["rogue.yml"] = rogue
+        errors = cross_check(self.lanes, obs, self.profiles)
+        for message in ("must route through agent-dispatch",
+                        "must pin one literal claude/claude-* model ref",
+                        "must pass claude-code-oauth-token"):
+            self.assertTrue(any(message in error for error in errors), (message, errors))
+
+    def test_claude_container_never_runs_unsandboxed(self):
+        action_path = REPO_ROOT / ".github/actions/run-claude-container/action.yml"
+        action_doc = yaml.safe_load(action_path.read_text(encoding="utf-8"))
+        run = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
+        code = "\n".join(line for line in run.splitlines()
+                         if not line.lstrip().startswith("#"))
+        for flag in ("--cap-drop ALL", "--security-opt no-new-privileges", "--pids-limit 512",
+                     '--user "$(id -u):$(id -g)"', "--read-only",
+                     "--tmpfs /tmp:rw,nosuid,nodev,mode=1777", "--env HOME=/tmp/claude-home",
+                     "--env DISABLE_AUTOUPDATER=1",
+                     "--env CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1",
+                     "--env CLAUDE_CODE_DISABLE_CLAUDE_MDS=1",
+                     '--volume "$generated_claude_settings:/tmp/claude-config/settings.json:ro"',
+                     '--volume "$PROMPT_FILE:/tmp/claude-prompt.md:ro"'):
+            self.assertIn(flag, code, f"container lost {flag}")
+        # Every lockdown flag of the one CLI invocation.
+        for flag in ("claude -p", "--restricted", '--tools "$CLAUDE_TOOLS"',
+                     "--permission-mode dontAsk", "--permission-prompts none",
+                     "--strict-mcp-config", '--mcp-config "{\\"mcpServers\\":{}}"',
+                     "--settings /tmp/claude-config/settings.json",
+                     "--disable-slash-commands", "--no-session-persistence",
+                     '--max-turns "$CLAUDE_MAX_TURNS"', '--model "$claude_model"',
+                     '--output-format json', 'timeout "${model_budget_seconds}s" claude -p'):
+            self.assertIn(flag, code, f"CLI lost {flag}")
+        self.assertEqual(1, code.count("claude -p \\\n"), "exactly one CLI invocation")
+        for forbidden in ("--dangerously-skip-permissions", "bypassPermissions",
+                          "--allowedTools", "--allowed-tools", "--add-dir",
+                          '--volume "$HOME', "--privileged", "--network host",
+                          "docker.sock", "--bare"):
+            self.assertNotIn(forbidden, code, f"container gained {forbidden}")
+        self.assertIn("Docker is required for sandboxed Claude Code runs", code)
+        self.assertIn("trap cleanup EXIT", code)
+        self.assertIn('docker image rm -f "$image"', code)
+        self.assertIn('rm -rf -- "$isolated_workspace"', code)
+        self.assertIn("scripts/copy_claude_settings.py", code)
+        self.assertIn("COPY tool-guard.mjs /opt/ara-claude/tool-guard.mjs", code)
+        self.assertIn("sha512sum -c -", code)
+        self.assertIn("claude --version", code)
+        for workflow_path in sorted((REPO_ROOT / ".github/workflows").glob("*.y*ml")):
+            doc = yaml.safe_load(workflow_path.read_text(encoding="utf-8"))
+            for job in (doc.get("jobs") or {}).values():
+                for step in job.get("steps") or []:
+                    for line in (step.get("run") or "").splitlines():
+                        self.assertNotRegex(
+                            line.split("#", 1)[0], r"(^|[;&|]|\s)claude\s+-p\b",
+                            f"{workflow_path.name}: `claude -p` outside the container")
+
+    def test_claude_container_keeps_the_token_out_of_every_environment(self):
+        action_path = REPO_ROOT / ".github/actions/run-claude-container/action.yml"
+        run = "\n".join(st.get("run") or "" for st in
+                        yaml.safe_load(action_path.read_text(encoding="utf-8"))["runs"]["steps"])
+        code_lines = [line.strip() for line in run.splitlines()
+                      if not line.lstrip().startswith("#")]
+        self.assertFalse(any(line.startswith("--env CLAUDE_CODE_OAUTH_TOKEN")
+                             for line in code_lines))
+        # Host side: validated, then piped by the printf builtin; never argv.
+        references = [line for line in code_lines if "$CLAUDE_CODE_OAUTH_TOKEN" in line]
+        self.assertEqual([
+            'if [[ ! "$CLAUDE_CODE_OAUTH_TOKEN" =~ ^[A-Za-z0-9._~+/=-]{20,4096}$ ]]; then',
+            'printf \'%s\\n\' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}" | tee "$OUTPUT_FILE"',
+            'printf \'%s\\n\' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}"',
+        ], references)
+        self.assertIn("docker_cmd=(docker run --rm -i \\", code_lines)
+        # Container side: one stdin line into a non-exported variable, handed
+        # to the CLI on descriptor 3 and unset afterwards.
+        self.assertIn("IFS= read -r claude_oauth_token || true", code_lines)
+        self.assertIn("exec </dev/null", code_lines)
+        self.assertIn("CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR=3 \\", code_lines)
+        self.assertIn('3< <(printf "%s" "$claude_oauth_token") \\', code_lines)
+        self.assertIn("unset claude_oauth_token", code_lines)
+        self.assertNotIn("export claude_oauth_token", run)
+        # Expanded exactly once: into the pipe the CLI reads.
+        self.assertEqual(1, sum(line.count("$claude_oauth_token") for line in code_lines))
+
+    def test_claude_container_trusted_blocks_match_cursor_runner(self):
+        """The isolated Claude runner copies the hardened Cursor runner verbatim.
+
+        A containment fix in one copy must land in the other, so the trusted
+        spans are compared with only the adapter name normalized.
+        """
+        def shell(name: str) -> str:
+            doc = yaml.safe_load((REPO_ROOT / ".github/actions" / name / "action.yml")
+                                 .read_text(encoding="utf-8"))
+            return "\n".join(st.get("run") or "" for st in doc["runs"]["steps"])
+
+        def normalize(text: str, adapter: str) -> str:
+            for spelling in (adapter.upper(), adapter.capitalize(), adapter):
+                text = text.replace(spelling, "ADAPTER")
+            return text
+
+        cursor = normalize(shell("run-cursor-container"), "cursor")
+        claude = normalize(shell("run-claude-container"), "claude")
+        spans = (
+            ("cleanup() {", "trap 'exit 130' INT"),
+            ('if { [ "$RUN_MODE" = "twitter" ]', 'staged_prompt="${RUNNER_TEMP:-/tmp}'),
+            ("# TRUSTED_AGENT_INPUT_GUARD_BEGIN", "# TRUSTED_AGENT_INPUT_GUARD_END"),
+            ("# TRUSTED_CLONE_SETUP_BEGIN", "# TRUSTED_CLONE_SETUP_END"),
+            ('image="ara-ADAPTER-agent:', 'docker build --pull -t "$image" "$build_dir"'),
+            ("# The host deliberately cloned without a checkout",
+             'trusted_packed=$(base64 -w0 .git/packed-refs)'),
+            ("# This fixed container tail runs after the agent child exits.",
+             "# TRUSTED_COMMIT_NORMALIZATION_END"),
+            ("# TRUSTED_IMPORT_GUARD_BEGIN", "# TRUSTED_IMPORT_GUARD_END"),
+        )
+
+        def block(text: str, begin: str, end: str) -> str:
+            start = text.index(begin)
+            return text[start:text.index(end, start) + len(end)]
+
+        for begin, end in spans:
+            with self.subTest(begin=begin):
+                expected = block(cursor, begin, end)
+                if begin.startswith("image="):
+                    # The build context carries the path guard, not birdy-fast.
+                    expected = expected.replace(
+                        'cp "$GITHUB_ACTION_PATH/birdy-fast" "$build_dir/birdy-fast"',
+                        'cp "$GITHUB_ACTION_PATH/tool-guard.mjs" "$build_dir/tool-guard.mjs"')
+                self.assertEqual(expected, block(claude, begin, end))
+
+    def test_claude_container_host_script_parses_under_bash(self):
+        action_path = REPO_ROOT / ".github/actions/run-claude-container/action.yml"
+        run = "\n".join(st.get("run") or "" for st in
+                        yaml.safe_load(action_path.read_text(encoding="utf-8"))["runs"]["steps"])
+        start = run.index("bash -lc '") + len("bash -lc '")
+        body = run[start:run.index("\n  ')", start)]
+        self.assertNotIn("'", body, "apostrophe inside the bash -lc body")
+        with tempfile.NamedTemporaryFile("w", suffix=".sh", delete=False) as fh:
+            fh.write(run)
+            script_path = fh.name
+        try:
+            checked = subprocess.run(["bash", "-n", script_path],
+                                     capture_output=True, text=True, check=False)
+        finally:
+            Path(script_path).unlink(missing_ok=True)
+        self.assertEqual(0, checked.returncode, checked.stderr)
+        body_check = subprocess.run(["bash", "-n"], input=body, capture_output=True,
+                                    text=True, check=False)
+        self.assertEqual(0, body_check.returncode, body_check.stderr)
+
+    def test_claude_isolated_canary_probes_the_model_production_runs(self):
+        config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        model = config["backends"][config["routes"]["aradio"]["backend"]]["model"]
+        workflow_path = REPO_ROOT / ".github/workflows/claude-isolated-canary.yml"
+        canary = workflow_path.read_text(encoding="utf-8")
+        doc = yaml.safe_load(canary)
+        steps = doc["jobs"]["canary"]["steps"]
+        call = next(step for step in steps
+                    if step.get("uses") == "./.github/actions/run-claude-container")
+        self.assertEqual("canary", call["with"]["mode"])
+        self.assertEqual(f"claude/{model}", call["with"]["model"])
+        self.assertEqual(".github/claude/canary.json", call["with"]["claude-config"])
+        self.assertEqual("${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}",
+                         call["with"]["claude-code-oauth-token"])
+        self.assertNotIn("lane", call["with"])
+        self.assertIn("CLAUDE-ISOLATED-CANARY-OK", call["with"]["prompt-text"])
+        check = steps[-1]["run"]
+        self.assertIn("scripts/check_claude_isolated_canary.py", check)
+        self.assertIn(f"--model {model}", check)
+        self.assertIn("--token CLAUDE-ISOLATED-CANARY-OK", check)
+        self.assertEqual({"contents": "read"}, doc["jobs"]["canary"]["permissions"])
+        self.assertEqual(["self-hosted", "Linux"], doc["jobs"]["canary"]["runs-on"])
+        self.assertIn(".claude-precheckout.", canary)
+        checkout = next(step for step in steps
+                        if str(step.get("uses", "")).startswith("actions/checkout@"))
+        self.assertIs(False, checkout["with"]["persist-credentials"])
+        self.assertIs(False, checkout["with"]["set-safe-directory"])
+        policy = json.loads((REPO_ROOT / ".github/claude/canary.json").read_text(encoding="utf-8"))
+        self.assertEqual([], policy["permissions"]["allow"])
 
     def test_korean_translation_dispatch_uses_capability_minimized_policy(self):
         workflow = yaml.safe_load(

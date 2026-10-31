@@ -10,6 +10,7 @@ The JSON is the reviewable update manifest; CI verifies every trusted build call
 | Birdy | `v1.2.2` | SHA-256 per OS/architecture |
 | Claude-action Bun | `1.3.14` | SHA-256 per Linux architecture; isolated runner-temp install |
 | Cursor Agent | `2026.08.25-3e8eec8` | SHA-256 per Linux architecture |
+| Claude Code (isolated adapter) | `2.1.285` | npm registry SHA-512 per Linux architecture; native binary, no package scripts |
 | OpenCode | `1.18.3` | `sha512-HnItl/+uhSpj7JV9x6ITiE0XFq4b/PKF5OM03TIyiFoFiLw3MQoJOAXZFTEzC7IOgAIYcysRQBBmCmlXILkxww==` |
 | Pi coding agent | `0.73.1` | `sha512-gXQh3SaZmWTfVMc4Ao5+LGbVeKvzyO7tolok0nLsZgq9nGjZx/EEU3NM8C+qUnB4Nvs2rswG5qOVgLzQkq0fHQ==` |
 | Codex CLI | `0.151.0` | `sha512-mhtWmOZRdmWD1jPbLDnQb59BsaVP/V+lXe/OFNR9ZcLZU0UCiBwn98Fcav1ss7sDIlHkuqj6nWd44IPeXoOhJA==` |

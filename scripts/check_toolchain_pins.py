@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import base64
+import binascii
 import json
 import re
 import sys
@@ -36,6 +38,7 @@ def render(data: dict) -> str:
         f"| Birdy | `{data['birdy']['version']}` | SHA-256 per OS/architecture |",
         f"| Claude-action Bun | `{data['agent_bun']['version']}` | SHA-256 per Linux architecture; isolated runner-temp install |",
         f"| Cursor Agent | `{data['cursor_agent']['version']}` | SHA-256 per Linux architecture |",
+        f"| Claude Code (isolated adapter) | `{data['claude_code']['version']}` | npm registry SHA-512 per Linux architecture; native binary, no package scripts |",
         f"| OpenCode | `{npm['opencode-ai']['version']}` | `{npm['opencode-ai']['integrity']}` |",
         f"| Pi coding agent | `{npm['@mariozechner/pi-coding-agent']['version']}` | `{npm['@mariozechner/pi-coding-agent']['integrity']}` |",
         f"| Codex CLI | `{npm['@openai/codex']['version']}` | `{npm['@openai/codex']['integrity']}` |",
@@ -67,12 +70,13 @@ def validate(data: dict) -> list[str]:
         "pi": ROOT / ".github/actions/run-pi-container/action.yml",
         "opencode": ROOT / ".github/actions/run-opencode-container/action.yml",
         "cursor": ROOT / ".github/actions/run-cursor-container/action.yml",
+        "claude": ROOT / ".github/actions/run-claude-container/action.yml",
         "generative": ROOT / ".github/workflows/generative-research.yml",
     }
     text = {name: path.read_text(encoding="utf-8") for name, path in files.items()}
     node = data["container_images"]["node_22_bookworm_slim"]
     uv = data["container_images"]["uv_0_9_7"]
-    for name in ("pi", "opencode", "cursor"):
+    for name in ("pi", "opencode", "cursor", "claude"):
         if node not in text[name]:
             errors.append(f"{files[name]} does not use audited Node image {node}")
     for name in ("opencode", "cursor"):
@@ -95,6 +99,32 @@ def validate(data: dict) -> list[str]:
     for digest in cursor["sha256"].values():
         if digest not in text["cursor"]:
             errors.append("Cursor container lacks an audited architecture checksum")
+
+    claude = data["claude_code"]
+    claude_text = text["claude"]
+    if not re.fullmatch(r"\d+\.\d+\.\d+", claude["version"]):
+        errors.append("claude_code.version must be one exact release")
+    for arch in ("x64", "arm64"):
+        url = (f"https://registry.npmjs.org/@anthropic-ai/claude-code-linux-${{a}}/-/"
+               f"claude-code-linux-${{a}}-{claude['version']}.tgz")
+        if url not in claude_text:
+            errors.append(f"Claude container must download the pinned {claude['version']} "
+                          "platform package from the npm registry")
+            break
+        integrity = claude["integrity"].get(f"linux_{arch}", "")
+        try:
+            digest = base64.b64decode(integrity.removeprefix("sha512-"), validate=True).hex()
+        except (binascii.Error, ValueError):
+            digest = ""
+        if not integrity.startswith("sha512-") or len(digest) != 128:
+            errors.append(f"claude_code.integrity.linux_{arch} must be an npm sha512 SRI value")
+        elif f"sha={digest} ;;" not in claude_text:
+            errors.append(f"Claude container lacks the audited linux_{arch} SHA-512 checksum")
+    if "sha512sum -c -" not in claude_text:
+        errors.append("Claude container must verify the package with sha512sum")
+    for forbidden in ("claude.ai/install", "install.sh", "npm install", "npx "):
+        if forbidden in claude_text:
+            errors.append(f"Claude container must not use the mutable installer path {forbidden!r}")
 
     npm = data["npm"]
     expected = {

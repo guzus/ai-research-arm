@@ -38,7 +38,9 @@ inputs:
     required: false
     default: '45'
   claude-code-oauth-token:
-    description: Reserved known adapter credential; never passed to OpenCode.
+    description: >-
+      Claude Code OAuth token, passed only to the isolated Claude Code
+      adapter; never passed to OpenCode or Cursor.
     required: false
     default: ''
   fireworks-api-key:
@@ -71,6 +73,14 @@ inputs:
       modify this read-only mount.
     required: false
     default: .github/opencode/opencode.json
+  claude-config:
+    description: >-
+      Trusted workspace-relative Claude Code lane policy. Empty means
+      .github/claude/<lane>.json; there is no permissive default, so a lane
+      routed to the isolated Claude adapter without a policy fails closed.
+      The selected model cannot read or modify this read-only mount.
+    required: false
+    default: ''
 
 outputs:
   route:
@@ -122,7 +132,10 @@ runs:
           --github-output "$GITHUB_OUTPUT"
 
     - name: Verify selected adapter credential binding
-      if: steps.route.outputs.adapter == 'opencode' || steps.route.outputs.adapter == 'cursor'
+      if: >-
+        steps.route.outputs.adapter == 'opencode'
+        || steps.route.outputs.adapter == 'cursor'
+        || steps.route.outputs.adapter == 'claude-container'
       shell: bash
       env:
         ADAPTER: ${{ steps.route.outputs.adapter }}
@@ -139,6 +152,12 @@ runs:
           cursor)
             if [ "$CREDENTIAL" != "cursor-api-key" ]; then
               echo "::error::Cursor route selected an unsupported credential binding."
+              exit 1
+            fi
+            ;;
+          claude-container)
+            if [ "$CREDENTIAL" != "claude-code-oauth-token" ]; then
+              echo "::error::Claude Code route selected an unsupported credential binding."
               exit 1
             fi
             ;;
@@ -175,5 +194,20 @@ runs:
         model: ${{ steps.route.outputs.model_ref }}
         cursor-api-key: ${{ inputs.cursor-api-key }}
         cursor-config: ${{ inputs.cursor-config }}
+        timeout-minutes: ${{ inputs.timeout-minutes }}
+        prompt-text: ${{ inputs.prompt-text }}
+
+    - name: Run selected isolated Claude Code adapter
+      id: claude
+      if: steps.route.outputs.adapter == 'claude-container'
+      uses: ./.github/actions/run-claude-container
+      with:
+        mode: editorial
+        lane: ${{ inputs.lane }}
+        allowed-paths: ${{ inputs.allowed-paths }}
+        return-artifacts: ${{ inputs.return-artifacts }}
+        model: ${{ steps.route.outputs.model_ref }}
+        claude-code-oauth-token: ${{ inputs.claude-code-oauth-token }}
+        claude-config: ${{ inputs.claude-config }}
         timeout-minutes: ${{ inputs.timeout-minutes }}
         prompt-text: ${{ inputs.prompt-text }}
