@@ -858,7 +858,6 @@ jobs:
                 response_format: {type: "audio"},
                 generation_config: {
                   speech_config: {
-                    mode: "conversational",
                     speakers: [
                       {speaker: "Speaker 1", voice: "Charon"},
                       {speaker: "Speaker 2", voice: "Puck"}
@@ -874,6 +873,8 @@ jobs:
             -d "$BODY")
 
           if [ "$HTTP" != "200" ]; then
+            # Annotate, so a rejected request is visible on the run instead of a green step with no audio.
+            echo "::error title=Digest audio not generated::Gemini TTS returned HTTP $HTTP"
             echo "Gemini TTS returned HTTP $HTTP — error body:"
             head -50 /tmp/gemini-resp.json
             exit 0
