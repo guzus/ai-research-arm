@@ -1217,7 +1217,7 @@ const ARADIO_TICK_MS = 30 * 1000;
 const ARADIO_FEED_URL = new URL(ARADIO_FEED_PATH, PUBLIC_SITE_ORIGIN).href;
 // The only brand image is the 1280x640 social card; there is no square asset.
 // Lock screens crop or letterbox it, which still beats a blank tile.
-const ARADIO_ARTWORK: MediaImage[] = [{ src: '/brand/github-social-preview.png', sizes: '1280x640', type: 'image/png' }];
+const ARADIO_ARTWORK: MediaImage[] = [{ src: '/brand/aradio-cover.png', sizes: '3000x3000', type: 'image/png' }];
 // HTMLMediaElement.HAVE_FUTURE_DATA: below it a playing element is buffering.
 const MEDIA_HAVE_FUTURE_DATA = 3;
 

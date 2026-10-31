@@ -491,8 +491,8 @@ broadcast": the situation board, the last 72 bulletins and the transcript
   bottom-bar `<audio>` (the digest and a bulletin can never play at once). The
   bar steps aside while the radio's own button is on screen.
 - **Lock screen** (Media Session): title = headline, artist "ARA Radio", album
-  "AI news, on air", artwork `/brand/github-social-preview.png` (no square
-  asset exists); play, pause, seekto, previous/next and `setPositionState`. On
+  "AI news, on air", artwork `/brand/aradio-cover.png` (the square show art
+  the podcast feed uses); play, pause, seekto, previous/next and `setPositionState`. On
   `ended` the next bulletin starts at once and an overdue poll runs alongside:
   timers are throttled behind a locked screen, so playback never waits on the
   network.
