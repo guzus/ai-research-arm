@@ -192,16 +192,18 @@ class CopyClaudeSettingsTest(unittest.TestCase):
             "git commit variant": "Bash(git commit *)",
             "git push": "Bash(git push *)",
             "git anything": "Bash(git *)",
-            "curl over http": 'Bash(curl -s "http://export.arxiv.org/api/query?*)',
-            "curl without query": 'Bash(curl -s "https://export.arxiv.org/api/query*)',
-            "curl unquoted": "Bash(curl -s https://export.arxiv.org/api/query?*)",
+            "curl over http": 'Bash(curl -q -s "http://export.arxiv.org/api/query?*)',
+            "curl without query": 'Bash(curl -q -s "https://export.arxiv.org/api/query*)',
+            "curl unquoted": "Bash(curl -q -s https://export.arxiv.org/api/query?*)",
             "curl follows redirects": 'Bash(curl -sL "https://export.arxiv.org/api/query?*)',
+            "curl reads a curlrc": 'Bash(curl -s "https://export.arxiv.org/api/query?*)',
+            "curl -q after -s": 'Bash(curl -s -q "https://export.arxiv.org/api/query?*)',
             "curl other flags": 'Bash(curl -sSL "https://export.arxiv.org/api/query?*)',
             "curl output flag": 'Bash(curl -o x "https://export.arxiv.org/api/query?*)',
-            "curl ip host": 'Bash(curl -s "https://127.0.0.1/api?*)',
-            "curl userinfo": 'Bash(curl -s "https://user@export.arxiv.org/api?*)',
-            "curl port": 'Bash(curl -s "https://export.arxiv.org:8443/api?*)',
-            "curl traversal": 'Bash(curl -s "https://export.arxiv.org/api/../x?*)',
+            "curl ip host": 'Bash(curl -q -s "https://127.0.0.1/api?*)',
+            "curl userinfo": 'Bash(curl -q -s "https://user@export.arxiv.org/api?*)',
+            "curl port": 'Bash(curl -q -s "https://export.arxiv.org:8443/api?*)',
+            "curl traversal": 'Bash(curl -q -s "https://export.arxiv.org/api/../x?*)',
             "curl any url": "Bash(curl *)",
             "uv anything": "Bash(uv run *)",
             "uv inline code": "Bash(uv run python -c *)",
@@ -229,7 +231,7 @@ class CopyClaudeSettingsTest(unittest.TestCase):
         for host in ("api.example.com", "evil.example", "arxiv.org", "www.export.arxiv.org",
                      "export.arxiv.org.evil.example", "export-arxiv.org"):
             policy = load("arxiv")
-            policy["permissions"]["allow"].append(f'Bash(curl -s "https://{host}/api/query?*)')
+            policy["permissions"]["allow"].append(f'Bash(curl -q -s "https://{host}/api/query?*)')
             with self.subTest(host=host), self.assertRaisesRegex(ValueError, "CURL_HOSTS"):
                 validate(policy)
 
@@ -256,7 +258,7 @@ class CopyClaudeSettingsTest(unittest.TestCase):
             ("rss", "Edit(research/rss/**)", "needs Edit\\(research/rss/\\*\\*\\)"),
             ("rss", "Bash(git add research/rss/*)", "needs a Bash\\(git add"),
             ("arxiv", "Edit(research/summaries/**)", "needs Edit\\(research/summaries"),
-            ("bluesky", "Read(.agent-input/bluesky/**)", "Glob needs a Read"),
+            ("bluesky", "Read(.agent-input/bluesky/**)", "Glob needs a Read\\(<dir>/\\*\\*\\)"),
         )
         for name, removed, message in cases:
             policy = load(name)
@@ -306,7 +308,7 @@ class CopyClaudeSettingsTest(unittest.TestCase):
             self.assertIn("Glob or subagent tool", texts[name])
         self.assertIn("  - `git add <path>`, with one or more paths, each under `research/arxiv/` "
                       "or `research/summaries/`", texts["arxiv"])
-        self.assertIn('  - `curl -s "https://export.arxiv.org/api/query?<query>"`', texts["arxiv"])
+        self.assertIn('  - `curl -q -s "https://export.arxiv.org/api/query?<query>"`', texts["arxiv"])
         self.assertIn("For `export.arxiv.org` ask for `max_results=40` or fewer and page with "
                       "`start=0`, `start=40`, `start=80`.", texts["arxiv"])
         self.assertNotIn("max_results", texts["wiki"])
@@ -318,6 +320,20 @@ class CopyClaudeSettingsTest(unittest.TestCase):
         for name in ("rss", "community", "arxiv", "wiki"):
             self.assertIn(f"Bash output over {BASH_OUTPUT_MAX_CHARS} characters is not shown",
                           texts[name])
+
+    def test_glob_needs_a_read_directory_and_the_addendum_never_raises(self):
+        # The guard lists only under a Read prefix, so Glob beside exact Read
+        # rules alone could list nothing: the copier refuses it, and the
+        # addendum still renders for such an (unvalidated) list.
+        policy = load("bluesky")
+        allow = policy["permissions"]["allow"]
+        allow[allow.index("Read(.agent-input/bluesky/**)")] = "Read(.agent-input/bluesky/a.json)"
+        with self.assertRaisesRegex(ValueError, "Glob needs a Read"):
+            validate(policy)
+        text = addendum(allow)
+        self.assertIn("- Glob lists a directory under a Read path", text)
+        self.assertIn("Give `path` and a plain `pattern`", text)
+        self.assertNotIn("for example", text)
 
     def test_copy_writes_the_addendum_beside_the_settings(self):
         with tempfile.TemporaryDirectory() as tmp:

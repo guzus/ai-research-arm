@@ -399,7 +399,7 @@ class RoutingInvariants(unittest.TestCase):
                       "Bash(git add research/community/*)", "Bash(git commit -m *)"],
         "arxiv": ["Read(research/arxiv/**)", "Read(research/summaries/**)",
                   "Edit(research/arxiv/**)", "Edit(research/summaries/**)",
-                  'Bash(curl -s "https://export.arxiv.org/api/query?*)',
+                  'Bash(curl -q -s "https://export.arxiv.org/api/query?*)',
                   "Bash(git add research/arxiv/*)", "Bash(git add research/summaries/*)",
                   "Bash(git commit -m *)"],
         "wiki-ingest": ["Read(docs/wiki-schema.md)", "Read(research/digest/**)",
@@ -741,7 +741,7 @@ class RoutingInvariants(unittest.TestCase):
                                      f"{lane}: documented {command!r}: {result.stderr}")
                     # A documented page must also fit in what the CLI shows.
                     for host, (size, _, limit) in CURL_PAGE_LIMITS.items():
-                        if command.startswith(f'curl -s "https://{host}/'):
+                        if command.startswith(f'curl -q -s "https://{host}/'):
                             pages = re.findall(rf"[?&]{size}=(\d+)", command)
                             self.assertTrue(pages and all(int(page) <= limit for page in pages),
                                             f"{lane}: {command!r} asks for more than {limit}")
