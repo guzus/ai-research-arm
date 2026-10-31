@@ -22,6 +22,10 @@
 //   feed); and every text node and attribute goes through xmlEscape, which
 //   also drops the characters XML 1.0 forbids outright, because escaping
 //   cannot make a NUL or a form feed well-formed. There is no CDATA.
+//   Podcast apps render a <description> as HTML once the XML is parsed, so
+//   description text is HTML-escaped first (htmlEscapeText), then XML-escaped:
+//   a "<script>" in a transcript reaches them as text, never as markup.
+//   Titles stay plain (see itemLines).
 //
 // DETERMINISM
 //   Nothing reads the clock, and a date is taken only from a string that
@@ -89,10 +93,27 @@ export function xmlEscape(value) {
     .replace(/'/g, '&apos;');
 }
 
-/** Cut to `max` characters with "…", never inside a surrogate pair. */
-function clip(value, max) {
+/**
+ * Escape text for an HTML text node: `&`, `<` and `>` only. Quotes need no
+ * escaping outside attributes, and leaving them (and every apostrophe in
+ * speech) alone keeps a description readable in the few apps that show it raw.
+ */
+export function htmlEscapeText(value) {
+  return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/**
+ * Cut to `max` characters with "…", never inside a surrogate pair — nor, for
+ * HTML-escaped text (`escaped`), inside an entity such as `&amp;`.
+ */
+function clip(value, max, escaped = false) {
   if (value.length <= max) return value;
   let cut = Math.max(0, max - 1);
+  if (escaped) {
+    // Every `&` in escaped text opens an entity; back off one the cut would split.
+    const amp = value.lastIndexOf('&', cut - 1);
+    if (amp !== -1 && value.indexOf(';', amp) >= cut) cut = amp;
+  }
   if (cut > 0 && /[\uD800-\uDBFF]/.test(value[cut - 1])) cut -= 1;
   return value.slice(0, cut).trimEnd() + '…';
 }
@@ -218,7 +239,7 @@ function transcriptLines(bulletin) {
   return lines.slice(0, 60);
 }
 
-/** Join paragraphs within `budget`, cutting only between them, marked "…". */
+/** Join HTML-escaped paragraphs within `budget`, cutting only between them, marked "…". */
 function capParagraphs(parts, budget) {
   let body = '';
   for (let i = 0; i < parts.length; i += 1) {
@@ -229,17 +250,23 @@ function capParagraphs(parts, budget) {
       body = next;
       continue;
     }
-    // `body` is empty only if one paragraph overflows on its own, which the
-    // 1,200-character line cap rules out; cut inside it rather than drop it.
-    return body ? body + CUT_MARK : clip(parts[i], budget);
+    // `body` is empty only if one paragraph overflows on its own: a
+    // 1,200-character line that escaping has grown (`&` → `&amp;`). Cut inside
+    // it rather than drop it.
+    return body ? body + CUT_MARK : clip(parts[i], budget, true);
   }
   return body;
 }
 
+/**
+ * The episode's <description> text, HTML-escaped (xmlEscape is applied on
+ * output). The cap counts escaped characters: that is what an app receives.
+ */
 function describe(bulletin, headline, origin) {
-  const footer = `\n\nTranscript and sources: ${origin}/aradio`;
+  const footer = htmlEscapeText(`\n\nTranscript and sources: ${origin}/aradio`);
   const lines = bulletin ? transcriptLines(bulletin) : [];
-  const parts = lines.length ? lines.map((line) => `${speakerLabel(line.speaker)}: ${line.text}`) : [headline];
+  const parts = (lines.length ? lines.map((line) => `${speakerLabel(line.speaker)}: ${line.text}`) : [headline])
+    .map(htmlEscapeText);
   return capParagraphs(parts, Math.max(0, ARADIO_FEED_DESCRIPTION_MAX - footer.length)) + footer;
 }
 
@@ -269,6 +296,9 @@ function itemLines(entry, rawBulletin, origin, audioBase) {
   const title = entry.headline || (bulletin ? text(bulletin.headline, 200) : '') || fallbackTitle(entry.airedMs);
   const lines = [
     '    <item>',
+    // Titles stay plain text, XML-escaped only: podcast apps show <title> as
+    // text and never parse it as HTML, so HTML-escaping it would put "&amp;"
+    // on screen in place of "&".
     `      <title>${xmlEscape(title)}</title>`,
     `      <link>${xmlEscape(`${origin}/aradio`)}</link>`,
     `      <guid isPermaLink="false">${xmlEscape(entry.id)}</guid>`,
@@ -312,7 +342,7 @@ export function buildAradioFeed({
     `    <title>${xmlEscape(CHANNEL_TITLE)}</title>`,
     `    <link>${xmlEscape(`${origin}/aradio`)}</link>`,
     `    <atom:link href="${xmlEscape(`${origin}/aradio/feed.xml`)}" rel="self" type="application/rss+xml"/>`,
-    `    <description>${xmlEscape(CHANNEL_DESCRIPTION)}</description>`,
+    `    <description>${xmlEscape(htmlEscapeText(CHANNEL_DESCRIPTION))}</description>`,
     '    <language>en</language>',
   ];
   if (lastBuildMs !== null) lines.push(`    <lastBuildDate>${new Date(lastBuildMs).toUTCString()}</lastBuildDate>`);

@@ -567,8 +567,11 @@ serves: RSS 2.0 with iTunes tags (title "ARA Radio", author "ARA", explicit
 false, Technology and News › Tech News). Episodes are the page's bulletins with
 a policy-valid audio key, newest first, ≤ 72: guid = bulletin id, pubDate =
 `aired_at`, an enclosure with the same URL the page plays (`length` = `bytes`,
-`audio/mpeg`), `itunes:duration`, and the transcript as a plain-text
-description (≤ 4,000 characters). Bulletin files are read only at validated
+`audio/mpeg`), `itunes:duration`, and the transcript as the description
+(≤ 4,000 characters as an app receives them). Apps render a description as
+HTML, so its text is HTML-escaped and then XML-escaped: a `<tag>` in a
+transcript stays text. Titles, which apps show as text, are XML-escaped only.
+Bulletin files are read only at validated
 paths inside the station directory, every value is XML-escaped, the output is
 deterministic, and absent data is a valid feed with no episodes. Caddy caches
 it like `/feed.xml`; the container smoke and `check_production_surface.py`
