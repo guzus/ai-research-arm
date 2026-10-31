@@ -826,6 +826,11 @@ class RoutingInvariants(unittest.TestCase):
                         'cp "$GITHUB_ACTION_PATH/birdy-fast" "$build_dir/birdy-fast"',
                         'cp "$GITHUB_ACTION_PATH/tool-guard.mjs" "$build_dir/tool-guard.mjs"')
                 self.assertEqual(expected, block(claude, begin, end))
+        # The host import guard is the trusted boundary for OpenCode too.
+        opencode = normalize(shell("run-opencode-container"), "opencode")
+        self.assertEqual(block(cursor, "# TRUSTED_IMPORT_GUARD_BEGIN", "# TRUSTED_IMPORT_GUARD_END"),
+                         block(opencode, "# TRUSTED_IMPORT_GUARD_BEGIN",
+                               "# TRUSTED_IMPORT_GUARD_END"))
         # The wiki lane's uv is the Cursor image's pinned copy, with the same
         # copy-mode install; only its Python moves off the noexec /tmp.
         def lines_with(text: str, needle: str) -> list[str]:
@@ -3824,6 +3829,75 @@ exit "$FAKE_RUN_STATUS"
                              (original / "scripts" / "validator.py").read_text(
                                  encoding="utf-8"))
             self.assertEqual("", git(original, "status", "--porcelain").stdout)
+
+    def test_trusted_import_guard_never_imports_git_metadata(self):
+        """Under a directory-prefix lane, a committed .git* path never crosses
+        into the real checkout, in any of the three runners."""
+        def run_guard(adapter: str, files: dict[str, str]) -> tuple:
+            action = REPO_ROOT / ".github" / "actions" / f"run-{adapter}-container" / "action.yml"
+            shell = "\n".join(st.get("run") or "" for st in
+                              yaml.safe_load(action.read_text(encoding="utf-8"))["runs"]["steps"])
+            guard = shell.split("# TRUSTED_IMPORT_GUARD_BEGIN", 1)[1].split(
+                "# TRUSTED_IMPORT_GUARD_END", 1)[0]
+            tmp = tempfile.TemporaryDirectory()
+            self.addCleanup(tmp.cleanup)
+            original, isolated = Path(tmp.name) / "original", Path(tmp.name) / "isolated"
+
+            def git(repo: Path, *args: str) -> str:
+                return subprocess.run(["git", "-C", str(repo), *args], text=True,
+                                      capture_output=True, check=True).stdout.strip()
+
+            (original / "research" / "wiki" / "entities").mkdir(parents=True)
+            (original / "research" / "wiki" / "index.md").write_text("# Wiki\n", encoding="utf-8")
+            git(original, "init", "-q", "-b", "main")
+            git(original, "-c", "user.name=t", "-c", "user.email=t@example.invalid",
+                "add", ".")
+            git(original, "-c", "user.name=t", "-c", "user.email=t@example.invalid",
+                "commit", "-q", "-m", "base")
+            pre_sha = git(original, "rev-parse", "HEAD")
+            subprocess.run(["git", "clone", "--quiet", "--no-hardlinks", str(original),
+                            str(isolated)], check=True)
+            for name, content in files.items():
+                (isolated / name).parent.mkdir(parents=True, exist_ok=True)
+                (isolated / name).write_text(content, encoding="utf-8")
+            git(isolated, "add", "-f", *files)
+            git(isolated, "-c", "user.name=t", "-c", "user.email=t@example.invalid",
+                "commit", "-q", "-m", "agent output")
+            post_sha = git(isolated, "rev-parse", "HEAD")
+            git(isolated, "bundle", "create", "-q", f".{adapter}-export.bundle",
+                "HEAD", f"^{pre_sha}")
+            (isolated / f".{adapter}-post-sha").write_text(post_sha + "\n", encoding="utf-8")
+            build_dir = Path(tmp.name) / "build"
+            build_dir.mkdir()
+            env = {**os.environ, "GITHUB_WORKSPACE": str(original),
+                   "isolated_workspace": str(isolated), "pre_sha": pre_sha,
+                   "RUN_MODE": "editorial", "ALLOWED_PATHS": "research/wiki/",
+                   "RETURN_ARTIFACTS": "", "BIRDY_TOOL_LOG_REL": "", "agent_status": "0",
+                   "build_dir": str(build_dir)}
+            result = subprocess.run(["bash", "-c", "set -euo pipefail\n" + guard], text=True,
+                                    capture_output=True, env=env, check=False)
+            return result, git(original, "rev-parse", "HEAD"), pre_sha, post_sha, original
+
+        for adapter in ("claude", "cursor", "opencode"):
+            for name in ("research/wiki/.gitattributes", "research/wiki/entities/.GitIgnore",
+                         "research/wiki/.gitmodules"):
+                with self.subTest(adapter=adapter, path=name):
+                    result, head, pre_sha, _, original = run_guard(adapter, {
+                        "research/wiki/entities/page.md": "page\n",
+                        name: "* filter=lfs diff=lfs merge=lfs -text\n"})
+                    self.assertNotEqual(0, result.returncode, result.stdout + result.stderr)
+                    self.assertIn(f"commit path is git metadata: {name}",
+                                  result.stdout + result.stderr)
+                    self.assertEqual(pre_sha, head)
+                    self.assertFalse((original / name).exists())
+                    self.assertFalse((original / "research/wiki/entities/page.md").exists())
+            with self.subTest(adapter=adapter, path="control"):
+                result, head, _, post_sha, original = run_guard(adapter, {
+                    "research/wiki/entities/page.md": "page\n"})
+                self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+                self.assertEqual(post_sha, head)
+                self.assertEqual("page\n", (original / "research/wiki/entities/page.md")
+                                 .read_text(encoding="utf-8"))
 
     def test_trusted_import_guard_rejects_artifact_parent_symlink(self):
         """A regular final file cannot escape through a linked parent."""

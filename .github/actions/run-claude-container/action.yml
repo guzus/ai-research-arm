@@ -1076,6 +1076,14 @@ runs:
           path_violation=0
           while IFS= read -r -d '' status && IFS= read -r -d '' path; do
             changed_count=$((changed_count + 1))
+            # No agent output is git metadata. Under a directory-prefix
+            # allowed path a committed .gitattributes would change how every
+            # later checkout filters those files.
+            if [[ "/$path" = */.[Gg][Ii][Tt]* ]]; then
+              echo "::error::Claude commit path is git metadata: $path"
+              path_violation=1
+              continue
+            fi
             tree_entry=$("${trusted_git[@]}" ls-tree "$post_sha" -- "$path")
             tree_header="${tree_entry%%$'\t'*}"
             read -r tree_mode tree_type tree_oid <<< "$tree_header"
