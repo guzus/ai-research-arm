@@ -22,6 +22,9 @@ on:
     # Hourly at :50. The gate decides: priority material (earnings filings and
     # calls, P0 spoken episodes) airs within the hour; routine material waits
     # for a 2 h cadence; no new material means a model-free no-op run.
+    # GitHub registers this cron when the file is pushed to main while the
+    # workflow is enabled. After `gh workflow enable`, push a change to this
+    # file, or the schedule stays silent (2026-10-31: no :50 run for 3 h).
     - cron: '50 * * * *'
   workflow_dispatch:
     inputs:
