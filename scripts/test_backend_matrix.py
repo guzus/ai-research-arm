@@ -1035,11 +1035,15 @@ class RoutingInvariants(unittest.TestCase):
                         'cp "$GITHUB_ACTION_PATH/birdy-fast" "$build_dir/birdy-fast"',
                         'cp "$GITHUB_ACTION_PATH/tool-guard.mjs" "$build_dir/tool-guard.mjs"')
                 self.assertEqual(expected, block(claude, begin, end))
-        # The host import guard is the trusted boundary for OpenCode too.
-        opencode = normalize(shell("run-opencode-container"), "opencode")
-        self.assertEqual(block(cursor, "# TRUSTED_IMPORT_GUARD_BEGIN", "# TRUSTED_IMPORT_GUARD_END"),
-                         block(opencode, "# TRUSTED_IMPORT_GUARD_BEGIN",
-                               "# TRUSTED_IMPORT_GUARD_END"))
+        # OpenCode shares every span but its attempt telemetry, and its
+        # CONTAINER_RUN block is Cursor's; Claude's adds the token pipe.
+        opencode = normalize(shell("run-opencode-container").replace("OpenCode", "opencode"),
+                             "opencode")
+        for begin, end in spans + (("# CONTAINER_RUN_BEGIN", "# CONTAINER_RUN_END"),):
+            if begin == "# TRUSTED_ATTEMPT_TELEMETRY_BEGIN":
+                continue
+            with self.subTest(runner="opencode", begin=begin):
+                self.assertEqual(block(cursor, begin, end), block(opencode, begin, end))
         # The wiki lane's uv is the Cursor image's pinned copy, with the same
         # copy-mode install; only its Python moves off the noexec /tmp.
         def lines_with(text: str, needle: str) -> list[str]:
@@ -3010,18 +3014,23 @@ esac
         docker.write_text(
             "#!/bin/bash\n"
             'log="$DOCKER_TEST_LOG"; flag="$DOCKER_TEST_LOG.stopped"\n'
+            'created="$DOCKER_TEST_LOG.created"; image="$DOCKER_TEST_LOG.image"\n'
             'case "$1 $2" in\n'
             "  'run '*|'run --rm')\n"
             '    echo run >> "$log"; cat > /dev/null\n'
+            '    sleep "${FAKE_CREATE_DELAY:-0}"; touch "$created"\n'
             '    for _ in $(seq 1 "${FAKE_RUN_TICKS:-600}"); do\n'
             '      [ -f "$flag" ] && exit 137; sleep 0.1\n'
             "    done\n"
             '    echo container-output; exit "${FAKE_STATUS:-0}" ;;\n'
+            "  'build --pull')\n"
+            "    trap 'exit 143' TERM; echo build >> \"$log\"\n"
+            '    sleep "${FAKE_BUILD_SECONDS:-0}" & wait "$!"; touch "$image" ;;\n'
             "  'container inspect')\n"
-            '    grep -qx run "$log" && [ ! -f "$flag" ] ;;\n'
+            '    [ -f "$created" ] && [ ! -f "$flag" ] ;;\n'
             "  'rm -f') echo rm >> \"$log\"; touch \"$flag\" ;;\n"
-            "  'image inspect') exit 0 ;;\n"
-            "  'image rm') echo image-rm >> \"$log\" ;;\n"
+            "  'image inspect') [ -f \"$image\" ] || [ -z \"${FAKE_BUILD_SECONDS:-}\" ] ;;\n"
+            "  'image rm') echo image-rm >> \"$log\"; rm -f \"$image\" ;;\n"
             "  *) exit 1 ;;\n"
             "esac\n", encoding="utf-8")
         docker.chmod(0o755)
@@ -3078,6 +3087,87 @@ esac
                     stop = re.findall(r"^::stop-commands::([0-9a-f]{32})$", stdout, re.MULTILINE)
                     self.assertEqual(1, len(stop), stdout)
                     self.assertIn(f"::{stop[0]}::", stdout.splitlines())
+
+    def test_cancelling_before_the_container_exists_still_removes_it(self):
+        """The signal can land while `docker run` is still creating the
+        container: cleanup keeps removing while the job lives."""
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                log = root / "docker.log"
+                env = {**os.environ, "PATH": f"{root}/bin:/usr/bin:/bin",
+                       "DOCKER_TEST_LOG": str(log), "FAKE_CREATE_DELAY": "2.5"}
+                proc = subprocess.Popen(["bash", "-c", self.runner_harness(adapter, root)],
+                                        env=env, stdout=subprocess.DEVNULL, start_new_session=True)
+                self.addCleanup(lambda pgid=proc.pid: self.kill_group(pgid))
+                deadline = time.monotonic() + 10
+                while not (log.exists() and "run" in log.read_text(encoding="utf-8")):
+                    if time.monotonic() > deadline:
+                        self.fail("the fake container never started")
+                    time.sleep(0.05)
+                proc.send_signal(signal.SIGINT)
+                self.assertEqual(130, proc.wait(timeout=12))
+                self.assertEqual(["run", "rm", "image-rm"],
+                                 log.read_text(encoding="utf-8").split())
+
+    def test_cancelling_a_build_leaves_no_image(self):
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                                      / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+                build = run[run.index("# Bash runs a trap only after a foreground command exits, so build in"):
+                            run.index('build_job=""\n', run.index('wait "$build_job"'))]
+                harness = self.runner_harness(adapter, root).split("\ndocker_cmd=(", 1)[0]
+                script = harness + "\n" + textwrap.dedent(build) + '\nbuild_job=""\necho built\n'
+                log = root / "docker.log"
+                env = {**os.environ, "PATH": f"{root}/bin:/usr/bin:/bin",
+                       "DOCKER_TEST_LOG": str(log), "FAKE_BUILD_SECONDS": "3"}
+                proc = subprocess.Popen(["bash", "-c", script], env=env, stdout=subprocess.PIPE,
+                                        text=True, start_new_session=True)
+                self.addCleanup(lambda pgid=proc.pid: self.kill_group(pgid))
+                deadline = time.monotonic() + 10
+                while not (log.exists() and "build" in log.read_text(encoding="utf-8")):
+                    if time.monotonic() > deadline:
+                        self.fail("the fake build never started")
+                    time.sleep(0.05)
+                proc.send_signal(signal.SIGINT)
+                stdout, _ = proc.communicate(timeout=10)
+                self.assertEqual(130, proc.returncode)
+                self.assertNotIn("built", stdout)
+                time.sleep(3.5)  # past the build's own finish line
+                self.assertFalse(Path(str(log) + ".image").exists(), "the build left an image")
+                self.assertFalse((root / "build").exists())
+
+    def test_opencode_host_reannounces_only_a_fixed_fatal_keyword(self):
+        run = yaml.safe_load((REPO_ROOT / ".github/actions/run-opencode-container/action.yml")
+                             .read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+        block = run.split("# OPENCODE_FATAL_NOTICE_BEGIN", 1)[1].split(
+            "# OPENCODE_FATAL_NOTICE_END", 1)[0]
+        container = re.search(r'opencode_fatal_keywords="(\([^"]+\))"', run).group(1)
+        self.assertIn(f"grep -m1 -xiE '{container}'", block)
+
+        def notice(content: str | None, link: bool = False) -> str:
+            with tempfile.TemporaryDirectory() as tmp:
+                fatal = Path(tmp) / ".opencode-fatal"
+                if link:
+                    (Path(tmp) / "elsewhere").write_text(content or "", encoding="utf-8")
+                    os.symlink(Path(tmp) / "elsewhere", fatal)
+                elif content is not None:
+                    fatal.write_text(content, encoding="utf-8")
+                result = subprocess.run(["bash", "-c", "set -euo pipefail\n" + block],
+                                        env={**os.environ, "isolated_workspace": tmp},
+                                        capture_output=True, text=True, check=True)
+                return result.stdout
+
+        self.assertEqual("::error::OpenCode provider returned an unrecoverable error "
+                         "(Invalid API key); the attempt was aborted.\n",
+                         notice("Invalid API key\n"))
+        for content in (None, "", "Invalid API key; ::add-mask::x\n", "::warning::x\n",
+                        "usage limit reached " + "x" * 200 + "\n"):
+            with self.subTest(content=content):
+                self.assertEqual("", notice(content))
+        self.assertEqual("", notice("Invalid API key\n", link=True))
 
     def test_a_finished_runner_container_keeps_its_status(self):
         for adapter in self.RUNNERS:

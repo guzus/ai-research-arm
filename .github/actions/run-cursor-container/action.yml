@@ -175,6 +175,7 @@ runs:
         image=""
         container_name=""
         container_job=""
+        build_job=""
         stop_token=""
         staged_prompt=""
         cleanup() {
@@ -189,18 +190,34 @@ runs:
           fi
           # A cancelled run gets here while its container still runs: the
           # container is a background job (CONTAINER_RUN), so no trap waits it
-          # out. Remove it first, and again while that job lives, in case the
-          # signal landed before Docker had created the container.
+          # out. Remove it first, and again while that job lives (for up to 7 s,
+          # inside the runner's 10 s from INT to SIGKILL), in case the signal
+          # landed before Docker had created the container. The pass after the
+          # job is gone still removes a container it left behind.
           if [ -n "$container_name" ]; then
-            for _ in 1 2 3; do
+            removal_deadline=$((SECONDS + 7))
+            while :; do
+              job_alive=false
+              if [ -n "${container_job:-}" ] && kill -0 "$container_job" 2>/dev/null; then
+                job_alive=true
+              fi
               if docker container inspect "$container_name" >/dev/null 2>&1; then
                 timeout 30s docker rm -f "$container_name" >/dev/null 2>&1 \
                   || echo "::warning::Failed to remove Cursor container $container_name"
               fi
-              if [ -z "${container_job:-}" ] || ! kill -0 "$container_job" 2>/dev/null; then
+              if [ "$job_alive" != "true" ] || [ "$SECONDS" -ge "$removal_deadline" ]; then
                 break
               fi
-              sleep 1
+              sleep 0.5
+            done
+          fi
+          # A cancelled build is stopped before its image is removed, so the
+          # image cannot appear after cleanup has looked for it.
+          if [ -n "${build_job:-}" ] && kill -0 "$build_job" 2>/dev/null; then
+            kill -TERM "$build_job" 2>/dev/null || true
+            for _ in 1 2 3 4 5 6; do
+              kill -0 "$build_job" 2>/dev/null || break
+              sleep 0.5
             done
           fi
           if [ -n "$image" ] && docker image inspect "$image" >/dev/null 2>&1; then
@@ -656,7 +673,9 @@ runs:
         # Bash runs a trap only after a foreground command exits, so build in
         # the background: a cancelled build still reaches cleanup.
         docker build --pull -t "$image" "$build_dir" &
-        wait "$!"
+        build_job=$!
+        wait "$build_job"
+        build_job=""
 
         # Optional mounts / env, assembled as arrays so empty values never
         # collapse into a stray argument.

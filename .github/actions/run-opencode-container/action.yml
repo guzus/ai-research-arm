@@ -187,6 +187,7 @@ runs:
         image=""
         container_name=""
         container_job=""
+        build_job=""
         stop_token=""
         staged_prompt=""
         cleanup() {
@@ -201,18 +202,34 @@ runs:
           fi
           # A cancelled run gets here while its container still runs: the
           # container is a background job (CONTAINER_RUN), so no trap waits it
-          # out. Remove it first, and again while that job lives, in case the
-          # signal landed before Docker had created the container.
+          # out. Remove it first, and again while that job lives (for up to 7 s,
+          # inside the runner's 10 s from INT to SIGKILL), in case the signal
+          # landed before Docker had created the container. The pass after the
+          # job is gone still removes a container it left behind.
           if [ -n "$container_name" ]; then
-            for _ in 1 2 3; do
+            removal_deadline=$((SECONDS + 7))
+            while :; do
+              job_alive=false
+              if [ -n "${container_job:-}" ] && kill -0 "$container_job" 2>/dev/null; then
+                job_alive=true
+              fi
               if docker container inspect "$container_name" >/dev/null 2>&1; then
                 timeout 30s docker rm -f "$container_name" >/dev/null 2>&1 \
                   || echo "::warning::Failed to remove opencode container $container_name"
               fi
-              if [ -z "${container_job:-}" ] || ! kill -0 "$container_job" 2>/dev/null; then
+              if [ "$job_alive" != "true" ] || [ "$SECONDS" -ge "$removal_deadline" ]; then
                 break
               fi
-              sleep 1
+              sleep 0.5
+            done
+          fi
+          # A cancelled build is stopped before its image is removed, so the
+          # image cannot appear after cleanup has looked for it.
+          if [ -n "${build_job:-}" ] && kill -0 "$build_job" 2>/dev/null; then
+            kill -TERM "$build_job" 2>/dev/null || true
+            for _ in 1 2 3 4 5 6; do
+              kill -0 "$build_job" 2>/dev/null || break
+              sleep 0.5
             done
           fi
           if [ -n "$image" ] && docker image inspect "$image" >/dev/null 2>&1; then
@@ -659,7 +676,9 @@ runs:
         # Bash runs a trap only after a foreground command exits, so build in
         # the background: a cancelled build still reaches cleanup.
         docker build --pull -t "$image" "$build_dir" &
-        wait "$!"
+        build_job=$!
+        wait "$build_job"
+        build_job=""
 
         # Optional mounts / env, assembled as arrays so empty values never
         # collapse into a stray argument.
@@ -788,6 +807,9 @@ runs:
             # doubles stay literal and re-quote correctly for the container.
             opencode_fatal_keywords="(Monthly usage limit reached|usage limit reached|Insufficient balance|Insufficient credits|Invalid API key|API key is invalid)"
             opencode_fatal_pattern="level=ERROR.*${opencode_fatal_keywords}"
+            # The keyword of a fatal abort, for the host to re-announce: the
+            # ::error:: line below is inert while workflow commands are stopped.
+            rm -f -- .opencode-fatal
             model_budget_seconds=$((AGENT_TIMEOUT_MINUTES * 60))
             model_started_seconds=$SECONDS
             attempt_count=0
@@ -855,6 +877,7 @@ runs:
                   | grep -m1 -oiE "${opencode_fatal_keywords}\$" | head -n 1)
                 if [ -n "$fatal" ]; then
                   echo "::error::OpenCode provider returned an unrecoverable error; aborting this attempt instead of waiting out the ${remaining_seconds}s timeout: ${fatal}"
+                  printf "%s\n" "$fatal" > .opencode-fatal 2>/dev/null || true
                   kill -TERM "$opencode_pid" 2>/dev/null
                   # Escalate if it does not go down promptly, so a wedged
                   # provider client can never outlive its own abort and keep
@@ -1149,6 +1172,22 @@ runs:
         fi
         echo "::notice title=OpenCode attempt telemetry::attempts=${attempt_count} last_status=${last_agent_status} translation_segment_calls=${translation_segment_calls} artifacts=${artifact_count} retry_reason=${retry_reason}"
         # TRUSTED_ATTEMPT_TELEMETRY_END
+
+        # OPENCODE_FATAL_NOTICE_BEGIN
+        # Workflow commands were stopped while the container ran, so its fatal
+        # abort annotation was inert. Re-announce it from the keyword file:
+        # only an exact fixed keyword (the container's opencode_fatal_keywords)
+        # is printed, never free text, and the run status is untouched.
+        fatal_file="$isolated_workspace/.opencode-fatal"
+        if [ -f "$fatal_file" ] && [ ! -L "$fatal_file" ] \
+          && [ "$(wc -c < "$fatal_file")" -le 128 ]; then
+          fatal_keyword=$(grep -m1 -xiE '(Monthly usage limit reached|usage limit reached|Insufficient balance|Insufficient credits|Invalid API key|API key is invalid)' \
+            "$fatal_file" || true)
+          if [ -n "$fatal_keyword" ]; then
+            echo "::error::OpenCode provider returned an unrecoverable error (${fatal_keyword}); the attempt was aborted."
+          fi
+        fi
+        # OPENCODE_FATAL_NOTICE_END
 
         # TRUSTED_IMPORT_GUARD_BEGIN
         RETURN_ARTIFACTS="${RETURN_ARTIFACTS:-}"

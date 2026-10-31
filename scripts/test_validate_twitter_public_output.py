@@ -108,6 +108,16 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
         self.assertIn("exact line: **Cycle summary**: <text>", str(ctx.exception))
         self.assertIn("twitter-story-title", str(ctx.exception))
 
+    def test_printed_errors_cannot_run_workflow_commands(self) -> None:
+        from validate_twitter_public_output import _log_safe
+        text = _log_safe("status date must equal '2026-10-31'; got '##[add-mask]x'\n"
+                         "  ::error::forged\nfine\r::warning::hidden\x1b[31m")
+        self.assertNotIn("##[", text)
+        for line in text.splitlines():
+            self.assertFalse(line.lstrip().startswith("::"), line)
+        self.assertNotIn("\x1b", text)
+        self.assertIn("## [add-mask]x", text)
+
     def test_section_preview_cannot_start_a_workflow_command(self) -> None:
         self.write_status("published", 1)
         self.summary.write_text("Meta released Muse Spark 1.1.\n", encoding="utf-8")
