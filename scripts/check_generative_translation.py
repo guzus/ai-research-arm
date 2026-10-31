@@ -24,22 +24,32 @@ BLOCK_DIRECTIVE_RE = re.compile(r"^\s*:::(?:([a-z][a-z0-9-]*)\b.*)?$", re.MULTIL
 INLINE_DIRECTIVE_RE = re.compile(r"\{(/|[a-z][a-z0-9-]*)(?::[^{}]*)?\}")
 HANGUL_RE = re.compile(r"[가-힣]")
 LATIN_WORD_RE = re.compile(r"\b[A-Za-z][A-Za-z'-]*\b")
-KOREAN_MONTH_RE = re.compile(r"(?<![0-9.,])([0-9]+)월(?:\s*[0-9]+)?")
-# "13월의 월급" (the year-end tax refund) is an idiom, not a month.
-KOREAN_MONTH_IDIOM_RE = re.compile(r"13월의\s?월급")
+# A number glued to 월 names a month unless 월 begins a word (2026월드컵,
+# 월요일, 월간, 월급).
+KOREAN_MONTH_RE = re.compile(r"(?<![0-9.,])([0-9]+)월(?!드|요일|간|급|세|렛|스트)(?:\s*[0-9]+)?")
+# "13월의 월급" and "13월의 보너스" (the year-end tax refund) are idioms.
+KOREAN_MONTH_IDIOM_RE = re.compile(r"13월의\s?[가-힣]")
 # Korean dates run year, month, day. These shapes keep the English order
-# ("10월 26, 2026", "4월 2026에", "10일 7월 2026"). The year must end the
-# phrase bare or with a particle: "3월 3일, 2026년 가이던스" and "3월
-# 2026명" are ordinary Korean.
-_BARE_YEAR = (
-    r"(?:1[89]|2[01])[0-9]{2}(?![0-9년])"
-    r"(?=$|[^가-힣]|(?:에서|에는|에도|에|의|까지|부터|은|는|이|가|을|를|과|와|으로|로|도)(?![가-힣]))"
+# ("10월 26, 2026", "4월 2026에", "10일 7월 2026", "6월 30일, 2026년 기준").
+# After a bare day, or a day before its month, the year is always English
+# order. Otherwise the year must close the date: a reference word follows
+# it, or, bare, nothing but punctuation or a particle does. A year that starts a phrase of its own is
+# ordinary Korean: "2월 26일, 2026 회계연도", "4월, 2026 로드맵", "3월 3일,
+# 2026년 가이던스", "6월 9일, 2027년까지", "3월 2026명".
+_YEAR = r"(?:1[89]|2[01])[0-9]{2}(?![0-9])"
+_CLOSING_YEAR = (
+    rf"{_YEAR}(?:년?\s*(?=기준|현재|시점|당시|자(?![가-힣]))"
+    r"|(?!년)(?=\s*(?:$|[^\s가-힣0-9])"
+    r"|(?:에서|에는|에도|에|의|까지|부터|은|는|이|가|을|를|과|와|으로|로|도)(?![가-힣])))"
 )
+_KOREAN_MONTH = r"(?:0?[1-9]|1[0-2])월"
+_DAY_RANGE = r"[0-9]{1,2}(?:\s*[–—~-]\s*[0-9]{1,2})?"
 KOREAN_ENGLISH_ORDER_DATE_RE = re.compile(
     r"(?<![0-9.,])(?:"
-    rf"(?:0?[1-9]|1[0-2])월\s+[0-9]{{1,2}}(?:\s*[–—~-]\s*[0-9]{{1,2}})?일?,\s*{_BARE_YEAR}"
-    rf"|[0-9]{{1,2}}일\s+(?:0?[1-9]|1[0-2])월,?\s+{_BARE_YEAR}"
-    rf"|(?:0?[1-9]|1[0-2])월,?\s+{_BARE_YEAR}"
+    rf"{_KOREAN_MONTH}\s+{_DAY_RANGE},\s*{_YEAR}"
+    rf"|{_KOREAN_MONTH}\s+{_DAY_RANGE}일,\s*{_CLOSING_YEAR}"
+    rf"|[0-9]{{1,2}}일\s+{_KOREAN_MONTH},?\s+{_YEAR}"
+    rf"|{_KOREAN_MONTH},?\s+{_CLOSING_YEAR}"
     r")"
 )
 TRANSLATABLE_LIST_ATTRS = frozenset(
@@ -113,8 +123,8 @@ def korean_date_errors(source: str, target: str) -> list[str]:
 
     impossible = impossible_months(target) - impossible_months(source)
     english_order = collections.Counter(
-        KOREAN_ENGLISH_ORDER_DATE_RE.findall(target)
-    ) - collections.Counter(KOREAN_ENGLISH_ORDER_DATE_RE.findall(source))
+        text.strip() for text in KOREAN_ENGLISH_ORDER_DATE_RE.findall(target)
+    ) - collections.Counter(text.strip() for text in KOREAN_ENGLISH_ORDER_DATE_RE.findall(source))
     errors = []
     for label, found in (
         ("Korean date names an impossible month", impossible),
