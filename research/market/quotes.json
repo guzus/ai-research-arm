@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T09:58:13Z",
+  "generated_at": "2026-10-31T17:22:43Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-10-30T20:00:01Z",
@@ -72,6 +72,18 @@
       "stale": false,
       "symbol": "NASDAQ:GOOGL",
       "ticker": "GOOGL"
+    },
+    "NASDAQ:INTC": {
+      "asOf": "2026-10-30T20:00:01Z",
+      "change": -26.31,
+      "changePercent": -28.5761,
+      "currency": "USD",
+      "marketState": null,
+      "price": 65.76,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:INTC",
+      "ticker": "INTC"
     },
     "NASDAQ:META": {
       "asOf": "2026-10-30T20:00:01Z",
@@ -180,6 +192,18 @@
       "stale": false,
       "symbol": "NYSE:DELL",
       "ticker": "DELL"
+    },
+    "NYSE:RDDT": {
+      "asOf": "2026-10-30T20:03:23Z",
+      "change": -37.87,
+      "changePercent": -29.2207,
+      "currency": "USD",
+      "marketState": null,
+      "price": 91.73,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NYSE:RDDT",
+      "ticker": "RDDT"
     }
   }
 }
