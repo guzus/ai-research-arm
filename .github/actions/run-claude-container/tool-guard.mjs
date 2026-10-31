@@ -187,6 +187,14 @@ function fileAllowed(policy, kind, relative) {
   ));
 }
 
+// No lane output is git metadata. Under a directory-prefix lane such as
+// research/wiki/ a planted .gitattributes would pass the trusted import and
+// change how every later checkout filters or converts those files; a nested
+// .git is refused there, but never needs to be written either.
+function gitMetadata(relative) {
+  return relative.split("/").some((part) => part.toLowerCase().startsWith(".git"));
+}
+
 function within(directories, relative) {
   return directories.some((dir) => relative === dir || relative.startsWith(`${dir}/`));
 }
@@ -234,7 +242,7 @@ function checkGitAdd(policy, segment, workspace) {
       deny(`git add argument ${JSON.stringify(word).slice(0, 120)} is not a plain relative path`);
     }
     const relative = canonicalTarget(word, workspace, "stage");
-    if (!within(policy.gitAdd, relative)) {
+    if (gitMetadata(relative) || !within(policy.gitAdd, relative)) {
       deny(`git add of ${JSON.stringify(relative).slice(0, 200)} is outside this lane's allowlist`);
     }
   }
@@ -332,7 +340,7 @@ function main() {
     }
   } else if (tool === "Write") {
     const relative = canonicalTarget(input.file_path, workspace, "write");
-    if (!fileAllowed(policy, "Edit", relative)) {
+    if (gitMetadata(relative) || !fileAllowed(policy, "Edit", relative)) {
       deny(`Write of ${JSON.stringify(relative).slice(0, 200)} is outside this lane's allowlist`);
     }
   } else if (tool === "Glob") {

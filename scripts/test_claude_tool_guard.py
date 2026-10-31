@@ -463,6 +463,23 @@ class ClaudeShellGuardTest(unittest.TestCase):
         self.assertEqual(2, self.run_guard("Glob", {"pattern": "*", "path": ".agent-input/rss"})
                          .returncode)
 
+    def test_no_lane_writes_or_stages_git_metadata(self):
+        ws = self.workspace
+        (ws / "research/wiki/.gitkeep").write_text("", encoding="utf-8")
+        (ws / "research/wiki/.git").mkdir()
+        (ws / "research/wiki/.git/config").write_text("x\n", encoding="utf-8")
+        self.use(lane_allow("wiki"))
+        for path in ("research/wiki/.gitattributes", "research/wiki/.gitignore",
+                     "research/wiki/.gitmodules", "research/wiki/.GITATTRIBUTES",
+                     "research/wiki/entities/.gitattributes", "research/wiki/.git/config",
+                     "research/wiki/.git/hooks/pre-commit", "research/wiki/.gitkeep"):
+            with self.subTest(path=path):
+                result = self.run_guard("Write", {"file_path": str(ws / path), "content": "x"})
+                self.assertEqual(2, result.returncode, result.stderr)
+        self.assert_bash(allowed=["git add research/wiki/"],
+                         denied=["git add research/wiki/.git", "git add research/wiki/.git/config",
+                                 "git add research/wiki/.gitkeep"])
+
     def test_shell_lanes_read_and_write_only_their_paths(self):
         ws = self.workspace
         self.use(lane_allow("wiki"))
