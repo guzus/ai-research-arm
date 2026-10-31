@@ -17,6 +17,10 @@ status_note: |
 
   **Why `confirmed`, not `released`:** only an initial group of cyber defenders has access. There is no date
   for wider access.
+
+  **2026-10-30/31 — first third-party agentic leaderboard.** @mercor (RT'd by @demishassabis): Carbon debuts
+  #1 on APEX-Agents at 84.2% Pass@1 / 90.4% mean, ahead of Gemini 4 Argon (82.4% / 87.4%) and Claude Sonnet 5.5
+  (75.5% / 83.7%); #1 in consulting and banking, #2 in corporate law, where Argon leads.
 expected: "Cyber-defender (Fairwind Program) rollout began week of 2026-10-26; broader availability 'soon', no date."
 labels:
   - frontier-model
@@ -34,8 +38,10 @@ sources:
   - "@AINativeF"
   - https://x.com/DailyAiDriver/status/2116155432494571739
   - https://x.com/AlyBlak3/status/2116156713137287406
+  - https://x.com/mercor/status/2116226723968872959
+  - https://x.com/demishassabis/status/2116452833167814692
 created_at: 2026-10-29
-updated_at: 2026-10-30
+updated_at: 2026-10-31
 closed_at: null
 closed_reason: null
 history:
@@ -43,6 +49,8 @@ history:
     change: "Created — CONFIRMED / confirmed. Google DeepMind announced Gemini 4 Carbon (2026-10-28 ~17:02 UTC). It is described as state-of-the-art in cybersecurity and long-horizon tasks (able to 'work through complex tasks for days'), and #1 on the Artificial Analysis Intelligence Index v5.0. It is rolling out first to cyber defenders through the Fairwind Program, with expanded access 'soon'. Benchmark figures (AA 59; SEC-bench Pro 88.2%, ExploitGym 54.8%, CWE-bench 71.0%) come from secondary recaps of Google's post. Successor tier to Gemini 4 Argon ([[google-gemini-4-2026-09]]), which stays a separate ticket."
   - ts: 2026-10-30
     change: "Confirmed, unchanged — access still gated. Secondary relays on 2026-10-30 frame Carbon against Anthropic: @DailyAiDriver puts it at 59 vs Claude Opus 5.5's 58 on the Artificial Analysis overall index, with Claude still leading some individual tests. The 59 matches the figure already recorded. @buildjayy restates the defenders-first rollout, and @AlyBlak3 says a broader release is promised but undated. @RyanYanBuilds' evidence review agrees that Carbon is officially announced with limited initial access. No general availability, pricing or API listing captured. Rumours of models beyond Carbon (Xenon, Hydrogen / Gemini 4 Flash) are tracked separately at [[google-gemini-4-xenon-2026-10]] and [[google-gemini-4-flash-hydrogen-2026-10]]."
+  - ts: 2026-10-31
+    change: "Confirmed, unchanged — first third-party agentic leaderboard, access still gated. @mercor (2026-10-30 17:52 UTC, retweeted by @demishassabis 2026-10-31 08:50 UTC) puts Carbon #1 on APEX-Agents (multi-step investment-banking, consulting and corporate-law tasks) at 84.2% Pass@1 and 90.4% mean, the only model above a 90% mean, ahead of Gemini 4 Argon (82.4% / 87.4%) and Claude Sonnet 5.5 (75.5% / 83.7%). By domain: consulting 91.9% (#1), banking 86.9% (#1), corporate law 73.8% (#2, behind Argon at 76.7%). Relays also report Elon Musk replying 'Impressive' to Pichai's announcement (@binujayaraj; not checked). No general availability, pricing or API listing yet; secondary recaps (@techtrends_zm, @AIDiscoveryDesk) still describe a defenders-first rollout."
 ---
 Gemini 4 Carbon is Google's second Gemini 4 model in two weeks. Argon reached general availability on
 2026-10-13 ([[google-gemini-4-2026-09]]). Google calls Carbon its "next frontier model". It is a separate

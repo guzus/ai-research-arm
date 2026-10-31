@@ -3,7 +3,7 @@ slug: aleph-alpha-kolibri-1-2026-10
 title: Aleph Alpha releases Kolibri-1 — 78B-total / 3.46B-active open-weight MoE under Apache 2.0
 company: Aleph Alpha
 model: Kolibri-1
-status: released
+status: closed
 status_note: |
   **Official, first-party.** @Aleph__Alpha (2026-10-03 08:54 UTC): "Small bird,
   fast wings, Kolibri is here. 78B parameters. 3.46B active. Up to 1M tokens of
@@ -37,14 +37,16 @@ sources:
   - "@charles_maddock"
   - "@TheDevilCloud"
 created_at: 2026-10-03
-updated_at: 2026-10-05
-closed_at: null
-closed_reason: null
+updated_at: 2026-10-31
+closed_at: 2026-10-31
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-03
     change: "Created — RELEASED / confirmed. @Aleph__Alpha announced Kolibri-1 on its own handle (2026-10-03 08:54 UTC): 78B total parameters, 3.46B active, up to 1M tokens of context, weights released under Apache 2.0. Aleph Alpha staffer @SohirMaskey adds that the model and its training pipelines were built in under a year and that more releases are planned. Released because the weights are downloadable by anyone; confirmed because the source is the company's own account. No benchmarks or model-card details captured in-window."
   - ts: 2026-10-05
     change: "Released, unchanged. Aleph Alpha's own follow-up thread (2026-10-05 06:06 UTC, ~532 likes) restates that Kolibri was built in Germany from scratch on European infrastructure and introduces the team. Third-party reception is split: @charles_maddock calls it a SOTA open-weight model beating Qwen, Mistral and Nemotron at similar active-parameter count; @TheDevilCloud replies that the comparison is against older ~3B-active models and 'is not SOTA'. No benchmark table captured in-window, so the SOTA claim stays unverified."
+  - ts: 2026-10-31
+    change: "CLOSED — released-and-aged. Open weights were released on 2026-10-03 (first entry), 28 days ago, which meets the 4-week rule. No new Kolibri signal since 2026-10-05; the benchmark table and model card never reached this desk. Any later larger Aleph Alpha release gets its own ticket."
 ---
 
 Aleph Alpha spent the last two years being cited as the cautionary tale of
