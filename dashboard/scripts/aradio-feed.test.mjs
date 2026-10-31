@@ -545,6 +545,16 @@ test('artwork: the file the feed names is art Apple and Spotify accept', () => {
   assert.ok(png.length <= 512 * 1024, `${png.length} bytes`);
 });
 
+test('parity: the radio\'s lock screen shows the feed\'s cover, at its real size', () => {
+  const main = readFileSync(new URL('../src/main.ts', import.meta.url), 'utf8');
+  const match = /const ARADIO_ARTWORK[^=]*=\s*\[\{\s*src:\s*'([^']+)',\s*sizes:\s*'(\d+)x(\d+)',\s*type:\s*'([^']+)'/.exec(main);
+  assert.ok(match, 'main.ts no longer declares ARADIO_ARTWORK as one literal image');
+  assert.equal(match[1], ARADIO_FEED_ARTWORK_PATH);
+  const ihdr = pngChunks(readFileSync(new URL(`../public${match[1]}`, import.meta.url)))[0].data;
+  assert.deepEqual([Number(match[2]), Number(match[3])], [ihdr.readUInt32BE(0), ihdr.readUInt32BE(4)]);
+  assert.equal(match[4], 'image/png');
+});
+
 // ── Items ─────────────────────────────────────────────────────────────────
 
 test('description falls back to the script (tags stripped), then to the headline', () => {

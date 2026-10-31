@@ -1215,9 +1215,12 @@ function paintPricing(data: ModelPricing, gpu: GpuSpotData | null = null): void 
 const ARADIO_POLL_MS = 5 * 60 * 1000;
 const ARADIO_TICK_MS = 30 * 1000;
 const ARADIO_FEED_URL = new URL(ARADIO_FEED_PATH, PUBLIC_SITE_ORIGIN).href;
-// The only brand image is the 1280x640 social card; there is no square asset.
-// Lock screens crop or letterbox it, which still beats a blank tile.
+// Lock screens and Control Center show artwork as a square. The radio has its
+// 3000x3000 show art, the podcast feed's cover too (a test pins the two). The
+// digest is another show with no square art: it keeps the 1280x640 social
+// card, which a lock screen crops or letterboxes — still better than a blank tile.
 const ARADIO_ARTWORK: MediaImage[] = [{ src: '/brand/aradio-cover.png', sizes: '3000x3000', type: 'image/png' }];
+const DIGEST_ARTWORK: MediaImage[] = [{ src: '/brand/github-social-preview.png', sizes: '1280x640', type: 'image/png' }];
 // HTMLMediaElement.HAVE_FUTURE_DATA: below it a playing element is buffering.
 const MEDIA_HAVE_FUTURE_DATA = 3;
 
@@ -2221,7 +2224,7 @@ function syncMediaSession(): void {
           title: digestAudioState.title,
           artist: 'ara',
           album: uiText(activeLanguage, 'today.audioTitle'),
-          artwork: ARADIO_ARTWORK,
+          artwork: DIGEST_ARTWORK,
         });
     } catch {
       // Metadata is a nicety; playback does not depend on it.

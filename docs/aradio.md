@@ -492,10 +492,10 @@ broadcast": the situation board, the last 72 bulletins and the transcript
   bar steps aside while the radio's own button is on screen.
 - **Lock screen** (Media Session): title = headline, artist "ARA Radio", album
   "AI news, on air", artwork `/brand/aradio-cover.png` (the square show art
-  the podcast feed uses); play, pause, seekto, previous/next and `setPositionState`. On
-  `ended` the next bulletin starts at once and an overdue poll runs alongside:
-  timers are throttled behind a locked screen, so playback never waits on the
-  network.
+  the podcast feed uses; the digest keeps the site's social card); play,
+  pause, seekto, previous/next and `setPositionState`. On `ended` the next
+  bulletin starts at once and an overdue poll runs alongside: timers are
+  throttled behind a locked screen, so playback never waits on the network.
 - **Audio failures**: a bulletin whose mp3 does not load or play (the
   element's `error`, or `play()` rejecting with `NotSupportedError`) is
   skipped like an `ended` one — the next playable bulletin starts, keeping the
