@@ -14,6 +14,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import types
 import unittest
 import urllib.error
 from pathlib import Path, PurePosixPath
@@ -1536,9 +1537,40 @@ class TriggerTest(FixtureTest):
         job = self.workflow["jobs"]["aradio"]
         self.assertEqual(f"${{{{ {condition} }}}}", job["if"])
         group = self.workflow["concurrency"]["group"]
-        self.assertEqual(f"${{{{ ({condition}) && 'aradio' || "
-                         "format('aradio-skipped-{0}', github.run_id) }}", group)
+        self.assertEqual(f"${{{{ github.ref == 'refs/heads/main' && ({condition}) && 'aradio' || "
+                         "format('aradio-isolated-{0}', github.run_id) }}", group)
         self.assertIs(False, self.workflow["concurrency"]["cancel-in-progress"])
+
+    def test_only_runs_that_can_write_share_the_single_writer_group(self):
+        # A run that can never write must not displace a pending forced run:
+        # one from another branch is refused at the ref guard, and the history
+        # step lists only main's runs, so the displaced run would look
+        # cancelled by hand and its force would be dropped.
+        body = self.workflow["concurrency"]["group"].strip().removeprefix("${{").removesuffix("}}")
+
+        def evaluate(event_name: str, ref: str, head_repo: str | None = None) -> object:
+            # Enough of GitHub's expression language for this group: ==, !=,
+            # && and || (which return an operand, as Python's and/or do) and
+            # format(). Anything more makes eval() fail, and this test with it.
+            event = ({"workflow_run": {"head_repository": {"full_name": head_repo}}}
+                     if event_name == "workflow_run" else {})
+            github = json.loads(json.dumps({"event_name": event_name, "ref": ref,
+                                            "repository": "guzus/ai-research-arm",
+                                            "run_id": 41, "event": event}),
+                                object_hook=lambda d: types.SimpleNamespace(**d))
+            python = body.replace("&&", " and ").replace("||", " or ")
+            return eval(python, {"__builtins__": {}},
+                        {"github": github, "format": lambda text, *args: text.format(*args)})
+
+        main = "refs/heads/main"
+        self.assertEqual("aradio", evaluate("schedule", main))
+        self.assertEqual("aradio", evaluate("workflow_dispatch", main))
+        self.assertEqual("aradio", evaluate("workflow_run", main, "guzus/ai-research-arm"))
+        for case in (("workflow_run", main, "someone/fork"),
+                     ("workflow_dispatch", "refs/heads/feature"),
+                     ("workflow_dispatch", "refs/tags/v1")):
+            with self.subTest(case):
+                self.assertEqual("aradio-isolated-41", evaluate(*case))
 
 
 class ParserTest(unittest.TestCase):
