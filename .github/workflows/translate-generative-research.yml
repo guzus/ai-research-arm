@@ -194,6 +194,9 @@ jobs:
               a month name left in the text to its number glued to 월
               (September becomes `9월`). Keep clock times and numeric dates
               as written (`⟦ARA0001⟧:⟦ARA0002⟧ UTC`).
+            - A hyphen inside an English compound, as in mid-⟦ARA0000⟧s or
+              7-of-⟦ARA0001⟧, is not a minus sign; translate the compound
+              without it (`⟦ARA0000⟧대 중반`).
             - Translate reader-facing prose, headings, labels, captions,
               callouts, quotations, and reference titles into idiomatic Korean.
             - Do not browse, research, add claims, add sources, drop sections,

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import html
 import math
 import re
 from html.parser import HTMLParser
@@ -53,6 +54,12 @@ def _urls(text: str) -> collections.Counter[str]:
 
 def _numbers(text: str) -> collections.Counter[str]:
     return collections.Counter(NUMBER_RE.findall(text))
+
+
+def _numeric_text(text: str) -> str:
+    """Text as numbers are read: a character reference is markup, so the
+    escaped apostrophe "&#x27;" is not the number 27."""
+    return html.unescape(text)
 
 
 def _localized_integer_additions_are_safe(
@@ -245,14 +252,14 @@ def check_pair(
     source_comparison = _as_html(source, source_raw) if cross_representation else source_raw
     if _urls(source_comparison) != _urls(target_raw):
         errors.append("URL multiset changed")
-    source_numbers = _numbers(source_comparison)
-    target_numbers = _numbers(target_raw)
+    source_numbers = _numbers(_numeric_text(source_comparison))
+    target_numbers = _numbers(_numeric_text(target_raw))
     if allow_localized_number_rendering:
         if not cross_representation:
             errors.append(
                 "localized number rendering is only valid for ARA-to-HTML comparisons"
             )
-        elif not _localized_integer_additions_are_safe(source_numbers, target_raw):
+        elif not _localized_integer_additions_are_safe(source_numbers, _numeric_text(target_raw)):
             missing = sorted((source_numbers - target_numbers).elements())
             extra = sorted((target_numbers - source_numbers).elements())
             errors.append(

@@ -455,6 +455,19 @@ class TranslationSegmentsTest(unittest.TestCase):
         self.assertEqual(literals, ["2026년 10월 29일", "20", "23", "10월 26–27일", "2026"])
         self.assertEqual(date_tokens, [tokens[0], tokens[3]])
 
+    def test_word_glued_hyphens_are_not_minus_signs(self):
+        # Each phrase published a stray minus: "-60대 중반", "4 대 -27",
+        # "7/-10라운드", "-800 V 이전", "모두 -1017 이전".
+        text, _, literals, _ = segments._mask(
+            "the mid-60s margin, a 4-vs-27 index, 7-of-10 rounds, pre-800 V gear, "
+            "and V4.1-Flash-1017",
+            preserve_commas=False,
+        )
+        self.assertEqual(literals, ["60", "4", "27", "7", "10", "800", "4.1", "1017"])
+        self.assertIn("mid-⟦ARA0000⟧s", text)
+        self.assertIn("pre-⟦ARA0005⟧ V", text)
+        self.assertEqual(segments._mask("a -30% move", preserve_commas=False)[2], ["-30%"])
+
     def test_renderer_fits_the_model_suffix_to_the_korean_date(self):
         token = "⟦ARA0000⟧"
         cases = {
@@ -743,6 +756,43 @@ class TranslationParityTest(unittest.TestCase):
                         allow_localized_number_rendering=True,
                     ),
                 )
+
+    def test_stray_minus_before_a_word_glued_number_fails(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "margin.ara.md"
+            target = root / "margin.ko.ara.md"
+            source.write_text(
+                "---\ntitle: Margins\n---\n\nMargins stayed in the mid-60s while 7-of-10 rounds passed.\n",
+                encoding="utf-8",
+            )
+            clean = "---\ntitle: 마진\n---\n\n매출총이익률은 60대 중반을 유지했고 10회 중 7회가 통과했다.\n"
+            target.write_text(clean, encoding="utf-8")
+            self.assertEqual(parity.check_pair(source, target), [])
+            target.write_text(clean.replace("60대", "-60대"), encoding="utf-8")
+            self.assertIn("numeric-token multiset changed", parity.check_pair(source, target))
+
+    def test_character_references_are_not_numbers(self):
+        source_raw = SOURCE.replace(
+            ":::references",
+            ':::donut\n- {label: "Co-founders\' 80% pledge", value: 80}\n- {label: Other, value: 20}\n:::\n\n:::references',
+        )
+        korean_raw = KOREAN.replace(
+            ":::references",
+            ":::donut\n- {label: 공동창업자 80% 서약, value: 80}\n- {label: 기타, value: 20}\n:::\n\n:::references",
+        )
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            source = root / "alpha.ara.md"
+            target = root / "alpha.ko.html"
+            source.write_text(source_raw, encoding="utf-8")
+            target.write_text(compile_source(korean_raw), encoding="utf-8")
+            # The source escapes the apostrophe as &#x27;; dropping it in
+            # Korean drops no number.
+            self.assertIn("&#x27;", compile_source(source_raw))
+            self.assertEqual(
+                parity.check_pair(source, target, allow_localized_number_rendering=True), []
+            )
 
     def test_impossible_or_english_order_korean_dates_fail(self):
         with tempfile.TemporaryDirectory() as td:
