@@ -23,6 +23,7 @@ import {
   ARADIO_RATE_KEY,
   ARADIO_REL_KEYS,
   ARADIO_RESTART_S,
+  ARADIO_STALL_MS,
   aradioAge,
   aradioAudioSrc,
   aradioFollowLinks,
@@ -43,6 +44,7 @@ import {
   aradioRateLabel,
   aradioRecordListen,
   aradioScriptKey,
+  aradioStallStep,
   aradioUtcTime,
   failAradioProgramme,
   hydrateAradioFeed,
@@ -74,6 +76,7 @@ import type {
   AradioProgramme,
   AradioRadioInput,
   AradioRadioView,
+  AradioStallWatch,
   AradioTranscriptState,
   AradioViewState,
 } from './render/aradio';
@@ -1280,6 +1283,9 @@ let aradioWaiting = false;
 // A failing source cannot tell us — Chrome pauses the element as its source
 // fails (after earlier playback), so `paused` is already true when `error` fires.
 let aradioPlayIntent = false;
+// The stall watchdog: what it last saw move, and the look it has booked.
+let aradioStall: AradioStallWatch | null = null;
+let aradioStallTimer: number | null = null;
 let aradioStopAfter = false;
 let aradioSeekDragging = false;
 let aradioRadioObserver: IntersectionObserver | null = null;
@@ -1784,6 +1790,59 @@ function aradioTrackFailed(id: string, play: boolean): void {
   digestAudioState.title = uiText(activeLanguage, 'aradio.playerFailed', { time });
   digestAudioEl?.pause();
   announceAradio(uiText(activeLanguage, 'aradio.stoppedFailed', { time }));
+  updateDigestAudioUi();
+}
+
+/** Seconds of audio the player holds, all buffered ranges together. */
+function aradioBufferedSeconds(audio: HTMLAudioElement): number {
+  let total = 0;
+  for (let i = 0; i < audio.buffered.length; i += 1) total += audio.buffered.end(i) - audio.buffered.start(i);
+  return total;
+}
+
+/**
+ * The stall watchdog (render/aradio.ts aradioStallStep): a look at the player
+ * on each of its events, and again when a stall would be due while it is
+ * starved. A radio bulletin stuck for ARADIO_STALL_MS fails like one that
+ * errored. Timers behind a locked screen fire late, and that only delays the
+ * skip: the step compares the player's own position and buffer, not how much
+ * time the timers believe has passed. The digest is never watched.
+ */
+function checkAradioStall(): void {
+  if (aradioStallTimer !== null) {
+    window.clearTimeout(aradioStallTimer);
+    aradioStallTimer = null;
+  }
+  const audio = digestAudioEl;
+  const loaded = aradioLoadedEntry();
+  const starved = (audio?.readyState ?? 0) < MEDIA_HAVE_FUTURE_DATA;
+  const now = Date.now();
+  const { watch, stalled } = aradioStallStep(aradioStall, {
+    id: audio && loaded && !aradioWaiting ? loaded.id : null,
+    intent: aradioPlayIntent,
+    paused: audio?.paused ?? true,
+    ended: audio?.ended ?? false,
+    starved,
+    position: audio?.currentTime ?? 0,
+    buffered: audio ? aradioBufferedSeconds(audio) : 0,
+    nowMs: now,
+  });
+  aradioStall = stalled ? null : watch;
+  if (stalled && loaded) {
+    aradioTrackStalled(loaded.id);
+    return;
+  }
+  if (watch && starved) aradioStallTimer = window.setTimeout(checkAradioStall, Math.max(1000, watch.since + ARADIO_STALL_MS - now));
+}
+
+/** A bulletin stuck loading fails like one that errored (it can only stall while meant to play). */
+function aradioTrackStalled(id: string): void {
+  aradioTrackFailed(id, true);
+  const audio = digestAudioEl;
+  if (!audio || aradioLoadedEntry()?.id !== id || !aradioHasFailed(aradioProgramme, id)) return;
+  // The radio stopped on it: let go of the hung request, so play opens a fresh one.
+  audio.removeAttribute('src');
+  audio.load();
   updateDigestAudioUi();
 }
 
@@ -3345,6 +3404,13 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
   digestAudioEl.addEventListener('loadedmetadata', () => {
     if (digestAudioState.kind === 'digest') digestAudioState.failedSrc = null;
   });
+  // The stall watchdog looks whenever the player reports anything that can
+  // start, end or show a stall, and when the page comes back into view (its
+  // timers may have been held while it was hidden).
+  for (const type of ['loadstart', 'emptied', 'play', 'playing', 'waiting', 'stalled', 'progress', 'timeupdate', 'seeking', 'pause', 'ended']) {
+    digestAudioEl.addEventListener(type, checkAradioStall);
+  }
+  document.addEventListener('visibilitychange', checkAradioStall);
 
   return digestAudioEl;
 }

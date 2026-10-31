@@ -551,6 +551,15 @@ asked for).
   (paused); play, from any of them, tries again from the first bulletin missed.
   A blocked or interrupted `play()` (autoplay policy, a newer load) is not a
   failure. The rules are `failAradioProgramme` / `retryAradioProgramme`.
+- **Stalls**: a source that hangs never errors, so a watchdog
+  (`aradioStallStep`) fails a bulletin the same way when, while the listener
+  wants sound, the player is starved and neither its position nor its
+  buffered audio has moved for 20 s. Buffering that recovers, or audio still
+  trickling in, restarts the clock. The player's events drive the checks, and
+  while it is starved a re-check is booked for when a stall would be due. A
+  timer held behind a locked screen only delays the skip, because each check
+  compares the player's own position and buffer. A stop on a stall drops the
+  hung request, so trying again opens a fresh one. The digest is never watched.
 - **Updates**: the page polls `research/aradio/index.json` every 5 minutes (and
   in the background while a bulletin plays). The radio card takes new data at
   once and is patched in place (fixed heights, no re-render, focus kept);
