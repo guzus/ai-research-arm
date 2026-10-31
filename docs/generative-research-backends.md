@@ -15,7 +15,7 @@ research pipeline:
 | `codex` | Codex CLI default model for ChatGPT auth | `CODEX_AUTH_JSON` seeded into file-backed `auth.json` | Optional Codex backend using ChatGPT-managed Codex auth rather than OpenAI API billing. Codex reads the same staged input files, writes the same methodology artifacts, and publishes through the same writer contract; article metadata records `codex`. |
 | `opencode-deepseek-v4-flash` | `deepseek-v4-flash` (1M context, the 2026-07-31 build) via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription), read directly from env by opencode's built-in `opencode-go` provider. Moonshot serves Kimi only and is not a fallback. | Explicit isolated comparison backend; the production editorial route now prioritizes the separate `opencode-glm-5p3-flash` profile. No interactive login or auth-file seeding. Strict: preflight failure fails rather than substituting another author. Article metadata records `deepseek-v4-flash`. Validate with `opencode-deepseek-canary.yml`. |
 | `opencode-muse-spark-1p3-contributor` | Meta Muse Spark 1.3 Contributor via the opencode CLI | `OPENCODE_API_KEY` (OpenCode Go subscription) | Explicit isolated backend using `opencode-go/muse-spark-1.3-contributor` and the provider's OpenAI Responses transport. Region-limited. Requires explicit OpenCode workspace consent because prompts and outputs may be used for model improvement. Strict: never substitutes another author. Article metadata records `muse-spark-1.3-contributor`. It is not a production editorial route. |
-| `cursor-grok-4p6-fast` | `cursor-grok-4.6-high-fast` via the Cursor CLI (`agent`) | `CURSOR_API_KEY` (Cursor dashboard API key), read from env by the official CLI. | Selectable isolated comparison backend. Same disposable-clone / `--cap-drop ALL` contract as OpenCode (`run-cursor-container`). Not the production default and not on `fallback.chain`. Article metadata records `cursor-grok-4.6-high-fast`. Selectors: `cursor`, `cursor-cli`, `cursor-agent`, `grok-4.6-fast`, `grok`. `cursor-composer-2p5` remains a compatibility alias. Validate with `cursor-cli-canary.yml`. Current `generative-translation` route. |
+| `cursor-grok-4p6-fast` | `cursor-grok-4.6-high-fast` via the Cursor CLI (`agent`) | `CURSOR_API_KEY` (Cursor dashboard API key), read from env by the official CLI. | Selectable isolated comparison backend. Same disposable-clone / `--cap-drop ALL` contract as OpenCode (`run-cursor-container`). Not the production default and not on `fallback.chain`. Article metadata records `cursor-grok-4.6-high-fast`. Selectors: `cursor`, `cursor-cli`, `cursor-agent`, `grok-4.6-fast`, `grok`. `cursor-composer-2p5` remains a compatibility alias. Validate with `cursor-cli-canary.yml`. Served the `generative-translation` route until its weekly usage limit ran out on 2026-10-31. |
 | `deepseek-v4-flash` | `deepseek-v4-flash` via Fireworks | `FIREWORKS_API_KEY` via Fireworks' Anthropic-compatible endpoint | Optional comparison backend. Routes through Fireworks (`accounts/fireworks/models/deepseek-v4-flash`); the direct DeepSeek API is retired (billing/credits). The `--model opus` passed to Claude Code is ignored — `ANTHROPIC_MODEL` env governs the served model. All model slots (incl. subagents) use the Fireworks model id. Retries up to two times if the Anthropic-compatible socket drops before an article commit is produced. |
 
 ## Local Oracle / GPT-5.5 Pro
@@ -241,11 +241,13 @@ The canonical `opencode-glm-5p3-flash` backend profile remains registered:
 provider `opencode-go`, official model id `glm-5.3-flash`, resolved model ref
 `opencode-go/glm-5.3-flash`. It is temporarily absent from production routes
 while the OpenCode Go monthly plan is exhausted. Production editorial lanes
-currently use isolated Cursor routes; restoring GLM remains a separate,
-deliberate route change after its canary succeeds.
-adapter, bounding either provider credential's blast radius. Neither route adds a
-generative-research dispatch selector; the explicit DeepSeek path below remains
-available for controlled comparison and diagnostics.
+currently use the isolated Claude Code adapter (Cursor's weekly usage limit is
+exhausted too); restoring GLM remains a separate, deliberate route change after
+its canary succeeds. The two editorial routes normally use different adapters,
+bounding either provider credential's blast radius; for now they share one.
+Neither route adds a generative-research dispatch selector; the explicit
+DeepSeek path below remains available for controlled comparison and
+diagnostics.
 
 ### Explicit DeepSeek V4 Flash path
 
@@ -388,13 +390,12 @@ isolation boundary (`--sandbox disabled` on the CLI; bubblewrap is not
 assumed in the slim image). Missing Docker is a hard failure; never fall
 back to host-level `agent -p`.
 
-ArXiv and wiki use Cursor as the secondary production editorial failure domain;
-RSS, community, and Bluesky stay on OpenCode. Switching either route is an SSOT
-edit plus `uv run python scripts/build_backend_matrix.py`.
-Korean translation now selects this profile through
-`routes.generative-translation`. Cursor writes the fixed segment JSONL
-under `.github/cursor/translation.json`; pointing the route back to
-OpenCode does not need a workflow edit.
+Cursor served both production editorial routes and Korean translation
+(`routes.generative-translation`) until its weekly usage limit ran out on
+2026-10-31; all three now select the isolated Claude Code adapter. Pointing a
+route back is an SSOT edit plus `uv run python scripts/build_backend_matrix.py`
+and needs no workflow edit: Cursor then writes the translation's fixed segment
+JSONL under `.github/cursor/translation.json`.
 
 Seed the secret once:
 

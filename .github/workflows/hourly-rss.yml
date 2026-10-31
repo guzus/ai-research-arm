@@ -213,6 +213,7 @@ jobs:
             research/rss/${{ steps.datetime.outputs.date }}.md
           allowed-paths: |
             research/rss/${{ steps.datetime.outputs.date }}.md
+          claude-config: .github/claude/rss.json
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}

@@ -76,19 +76,31 @@ class RoutingInvariants(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "isolated_workspace"):
                 resolve_route(config, lane)
 
-    def test_research_editorial_temporarily_uses_cursor(self):
+    def test_editorial_routes_temporarily_use_isolated_claude(self):
+        """Cursor's weekly limit and OpenCode Go's plan are both exhausted."""
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
-        route = config["routes"]["research-editorial"]
-        self.assertEqual("cursor-grok-4p6-fast", route["backend"])
-        self.assertIn("opencode-deepseek-v4-flash", config["backends"])
-        for lane in ("rss", "bluesky", "community"):
+        for route in ("research-editorial", "research-editorial-secondary",
+                      "generative-translation", "aradio"):
+            self.assertEqual("claude-sonnet-5p5-isolated", config["routes"][route]["backend"])
+            self.assertEqual("none", config["routes"][route]["fallback"])
+        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest",
+                     "generative-research-ko"):
             selected = resolve_route(config, lane)
-            self.assertEqual("cursor", selected.adapter)
-            self.assertEqual("cursor/cursor-grok-4.6-high-fast", selected.model_ref)
-        for lane in ("arxiv", "wiki-ingest"):
-            selected = resolve_route(config, lane)
-            self.assertEqual("cursor", selected.adapter)
-            self.assertEqual("cursor/cursor-grok-4.6-high-fast", selected.model_ref)
+            self.assertEqual("claude-container", selected.adapter, lane)
+            self.assertEqual("claude/claude-sonnet-5-5", selected.model_ref, lane)
+            self.assertEqual("claude-code-oauth-token", selected.credential, lane)
+        # Pointing a route back is an SSOT-only edit: the profiles stay registered.
+        for backend in ("cursor-grok-4p6-fast", "opencode-glm-5p3-flash",
+                        "opencode-deepseek-v4-flash"):
+            self.assertIn(backend, config["backends"])
+            for route in ("research-editorial", "research-editorial-secondary",
+                          "generative-translation"):
+                repointed = copy.deepcopy(config)
+                repointed["routes"][route]["backend"] = backend
+                lane = next(key for key, lane in config["lanes"].items()
+                            if lane.get("route") == route)
+                self.assertNotEqual("claude-container",
+                                    resolve_route(repointed, lane).adapter)
 
     def test_synthetic_opencode_profile_needs_only_profile_and_route_data(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
@@ -361,7 +373,196 @@ class RoutingInvariants(unittest.TestCase):
             self.assertNotIn(".agent-input", by_id[step_id]["run"])
         self.assertEqual("false", str(workflow["concurrency"]["cancel-in-progress"]).lower())
 
-    def test_aradio_alone_routes_to_isolated_claude(self):
+    # Each dispatched lane and its Claude Code policy. The Cursor policy is
+    # what the lane ran under before the 2026-10-31 move; a lane without a
+    # cursor-config input gets the dispatcher's default.
+    CLAUDE_LANE_POLICIES = {
+        "rss": ".github/claude/rss.json",
+        "bluesky": ".github/claude/bluesky.json",
+        "community": ".github/claude/community.json",
+        "arxiv": ".github/claude/arxiv.json",
+        "wiki-ingest": ".github/claude/wiki.json",
+        "aradio": ".github/claude/aradio.json",
+        "generative-research-ko": ".github/claude/translation.json",
+    }
+
+    @staticmethod
+    def dispatch_inputs() -> dict[str, dict]:
+        found = {}
+        for path in workflow_files():
+            doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+            for job in (doc.get("jobs") or {}).values():
+                for step in job.get("steps") or []:
+                    if step.get("uses") == "./.github/actions/agent-dispatch":
+                        found[step["with"]["lane"]] = step["with"]
+        return found
+
+    @staticmethod
+    def lane_outputs(inputs: dict) -> list[str]:
+        """The lane's committed paths and returned artifacts, dates made literal."""
+        paths = "\n".join(str(inputs.get(key, ""))
+                          for key in ("allowed-paths", "return-artifacts"))
+        prepared = "${{ steps.prepare.outputs.result_path }}"
+        if prepared in paths:
+            # prepare_generative_translation.py emits one fixed path.
+            fixed = ".tmp/generative-translation.ko.segments.jsonl"
+            source = (REPO_ROOT / "scripts/prepare_generative_translation.py").read_text(
+                encoding="utf-8")
+            assert f'result_path = Path("{fixed}")' in source
+            paths = paths.replace(prepared, fixed)
+        paths = re.sub(r"\$\{\{[^}]*\}\}", "DATE", paths)
+        return [line.strip() for line in paths.splitlines() if line.strip()]
+
+    @staticmethod
+    def claude_rules(policy: dict) -> list[tuple[str, str, bool]]:
+        """(kind, target, prefix) for each allow rule; kind is Read, Edit, Glob,
+        git, curl or uv, and git targets are the staged directories."""
+        from copy_claude_settings import CURL_RULE, GIT_ADD_RULE, GIT_COMMIT_RULE, RULE, UV_RULE
+        rules = []
+        for rule in policy["permissions"]["allow"]:
+            if match := RULE.fullmatch(rule):
+                rules.append((match.group(1), match.group(2), bool(match.group(3))))
+            elif match := GIT_ADD_RULE.fullmatch(rule):
+                rules.append(("git", match.group(1), True))
+            elif rule == GIT_COMMIT_RULE:
+                rules.append(("git", "", False))
+            elif CURL_RULE.fullmatch(rule):
+                rules.append(("curl", "", False))
+            elif UV_RULE.fullmatch(rule):
+                rules.append(("uv", "", False))
+            elif rule == "Glob":
+                rules.append(("Glob", "", False))
+            else:
+                raise AssertionError(f"unclassified Claude allow rule {rule!r}")
+        return rules
+
+    def test_every_dispatched_lane_passes_its_claude_policy(self):
+        from copy_claude_settings import validate
+        inputs = self.dispatch_inputs()
+        self.assertEqual(set(self.CLAUDE_LANE_POLICIES), set(inputs))
+        for lane, policy_path in self.CLAUDE_LANE_POLICIES.items():
+            with self.subTest(lane=lane):
+                self.assertEqual(policy_path, inputs[lane].get("claude-config"))
+                self.assertEqual("${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}",
+                                 inputs[lane].get("claude-code-oauth-token"))
+                validate(json.loads((REPO_ROOT / policy_path).read_text(encoding="utf-8")))
+
+    def test_claude_lane_policies_grant_no_more_than_cursor(self):
+        """Every Claude capability maps onto one the lane's Cursor policy grants."""
+        def covers(pattern: str, target: str, prefix: bool) -> bool:
+            if pattern == "**/*":
+                return True
+            if pattern.endswith("/**/*"):
+                base = pattern[:-len("/**/*")]
+                return (prefix and target == base) or target.startswith(base + "/")
+            return not prefix and pattern == target
+
+        def overlaps(pattern: str, target: str, prefix: bool) -> bool:
+            if pattern == "**/*":
+                return True
+            stem = pattern[:-len("/**/*")] if pattern.endswith("/**/*") else pattern
+            if pattern.endswith("/**/*"):
+                hit = target == stem or target.startswith(stem + "/")
+            elif pattern.endswith("*"):
+                stem = stem[:-1]
+                hit = target.startswith(stem)
+            else:
+                hit = target == stem
+            return hit or (prefix and stem.startswith(target + "/"))
+
+        def granted(rules: list[str], kind: str) -> list[str]:
+            return [rule[len(kind) + 1:-1] for rule in rules
+                    if rule.startswith(f"{kind}(") and rule.endswith(")")]
+
+        inputs = self.dispatch_inputs()
+        for lane, policy_path in self.CLAUDE_LANE_POLICIES.items():
+            with self.subTest(lane=lane):
+                cursor_path = inputs[lane].get("cursor-config", ".github/cursor/cli-config.json")
+                cursor = json.loads((REPO_ROOT / cursor_path).read_text(encoding="utf-8"))
+                allow, deny = cursor["permissions"]["allow"], cursor["permissions"]["deny"]
+                claude = json.loads((REPO_ROOT / policy_path).read_text(encoding="utf-8"))
+                shell = {"git": "git", "curl": "curl", "uv": "uv"}
+                for kind, target, prefix in self.claude_rules(claude):
+                    if kind in {"Read", "Edit"}:
+                        cursor_kind = "Read" if kind == "Read" else "Write"
+                        self.assertTrue(any(covers(p, target, prefix)
+                                            for p in granted(allow, cursor_kind)),
+                                        f"{lane}: Cursor grants no {cursor_kind}({target})")
+                        self.assertFalse(any(overlaps(p, target, prefix)
+                                             for p in granted(deny, cursor_kind)),
+                                         f"{lane}: Cursor denies {cursor_kind}({target})")
+                    elif kind == "Glob":
+                        self.assertTrue(granted(allow, "Read"), f"{lane}: Cursor reads nothing")
+                    else:
+                        command = shell[kind]
+                        self.assertIn(command, granted(allow, "Shell"), f"{lane}: {command}")
+                        self.assertFalse({command, "*"} & set(granted(deny, "Shell")),
+                                         f"{lane}: Cursor denies Shell({command})")
+                claude_deny = claude["permissions"]["deny"]
+                if "*" in granted(deny, "Shell"):
+                    self.assertIn("Bash", claude_deny, lane)
+                if "*" in granted(deny, "WebFetch"):
+                    self.assertIn("WebFetch", claude_deny, lane)
+                if "*" in granted(deny, "Mcp"):
+                    self.assertIn("mcp__*", claude_deny, lane)
+
+    def test_claude_lane_policies_match_each_lane_contract(self):
+        """Writes, staging, and reads are exactly what each lane's contract and
+        prompt use: no stray write path, no commit right for an artifact lane."""
+        from copy_claude_settings import CURL_RULE, GIT_COMMIT_RULE, UV_RULE
+        inputs = self.dispatch_inputs()
+        for lane, policy_path in self.CLAUDE_LANE_POLICIES.items():
+            with self.subTest(lane=lane):
+                policy = json.loads((REPO_ROOT / policy_path).read_text(encoding="utf-8"))
+                rules = self.claude_rules(policy)
+                outputs = self.lane_outputs(inputs[lane])
+                committed = [line.strip() for line in str(
+                    inputs[lane].get("allowed-paths", "")).splitlines() if line.strip()]
+
+                def writable(path: str, kind: str = "Edit") -> list[tuple]:
+                    path = path.rstrip("/")
+                    return [rule for rule in rules if rule[0] == kind and (
+                        path == rule[1] or (rule[2] and path.startswith(rule[1] + "/")))]
+
+                for path in outputs:
+                    self.assertTrue(writable(path), f"{lane}: cannot write {path}")
+                for kind, target, prefix in rules:
+                    if kind == "Edit":
+                        self.assertTrue(any(path.rstrip("/") == target or (
+                            prefix and path.startswith(target + "/")) for path in outputs),
+                            f"{lane}: Edit({target}) is no output of the lane")
+                staged = [target for kind, target, prefix in rules if kind == "git" and target]
+                if not committed:
+                    self.assertFalse([rule for rule in rules if rule[0] == "git"], lane)
+                for directory in staged:
+                    self.assertTrue(any(path.startswith(directory + "/") for path in
+                                        self.lane_outputs({"allowed-paths": "\n".join(committed)})),
+                                    f"{lane}: git add {directory}/ stages no committed output")
+                prompt = str(inputs[lane]["prompt-text"])
+                if prompt.strip() == "${{ steps.prompt.outputs.text }}":
+                    prompt = (REPO_ROOT / "prompts/aradio-editor.md").read_text(encoding="utf-8")
+                for kind, target, prefix in rules:
+                    if kind == "Read":
+                        self.assertTrue(target + ("/" if prefix else "") in prompt,
+                                        f"{lane}: its prompt never names {target}")
+                    elif kind == "Glob":
+                        self.assertTrue("`ls " in prompt, f"{lane}: its prompt lists nothing")
+                staged_words = [word for line in prompt.splitlines() if "git add " in line
+                                for word in line.split("git add ", 1)[1].split()]
+                for directory in staged:
+                    self.assertTrue(any(word.startswith(directory + "/") for word in staged_words),
+                                    f"{lane}: its prompt never stages {directory}/")
+                for rule in policy["permissions"]["allow"]:
+                    if rule == GIT_COMMIT_RULE:
+                        self.assertTrue("git commit -m " in prompt, f"{lane}: never commits")
+                    elif match := CURL_RULE.fullmatch(rule):
+                        self.assertTrue(f'"{match.group(2)}' in prompt,
+                                        f"{lane}: its prompt never fetches {rule}")
+                    elif match := UV_RULE.fullmatch(rule):
+                        command = match.group(1) + (match.group(3) or "").replace(' "*', ' "')
+                        self.assertTrue(command in prompt, f"{lane}: its prompt never runs {rule}")
+
+    def test_aradio_routes_to_isolated_claude(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
         selected = resolve_route(config, "aradio")
         self.assertEqual("claude-container", selected.adapter)
@@ -370,9 +571,8 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual("claude-code-oauth-token", selected.credential)
         self.assertEqual("none", selected.fallback)
         self.assertTrue(selected.strict)
-        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest",
-                     "generative-research-ko"):
-            self.assertEqual("cursor", resolve_route(config, lane).adapter, lane)
+        self.assertEqual(["aradio"], [key for key, lane in config["lanes"].items()
+                                      if lane.get("route") == "aradio"])
         adapter = config["adapters"]["claude-container"]
         self.assertEqual(".github/actions/run-claude-container", adapter["implementation"])
         self.assertTrue((REPO_ROOT / adapter["implementation"] / "action.yml").exists())

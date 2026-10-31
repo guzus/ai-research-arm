@@ -186,6 +186,7 @@ jobs:
             research/wiki/
           allowed-paths: |
             research/wiki/
+          claude-config: .github/claude/wiki.json
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
           zai-api-key: ${{ secrets.ZAI_API_KEY }}

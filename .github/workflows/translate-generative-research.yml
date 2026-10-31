@@ -146,6 +146,7 @@ jobs:
           # broader repository access.
           opencode-config: .github/opencode/translation.json
           cursor-config: .github/cursor/translation.json
+          claude-config: .github/claude/translation.json
           timeout-minutes: '80'
           claude-code-oauth-token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           fireworks-api-key: ${{ secrets.FIREWORKS_API_KEY }}
