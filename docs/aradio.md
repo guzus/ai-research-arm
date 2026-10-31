@@ -97,8 +97,9 @@ first run that finds it pending honours it. So exactly one editor run spends
 it, even one that then hangs past `timeout-minutes` or is a re-run, and a run
 that fails before its editor passes it on. Serialization is untouched. Runs
 are ordered by `run_started_at`, when their latest attempt was queued: a
-re-run keeps its `created_at`. A forced run cancelled by hand while it waited
-had no run queued behind it, so it is not honoured. Gate stops report to
+re-run keeps its `created_at`. A re-run never honours a force: its first
+attempt had that chance. A forced run cancelled by hand while it waited had
+no run queued behind it, so it is not honoured. Gate stops report to
 Hooker once per UTC hour (`aradio-stop-<hour>` idempotency key), so the extra
 wake-ups do not add telemetry.
 
@@ -171,8 +172,25 @@ quickly. A publication moves the cursor, which resets the backoff, and
 24 h outage makes 8 editor attempts instead of 72 (12 with priority material
 waiting). Each run's jobs cost an API call, so at most 20 runs are looked up,
 newest first; past that the count is a lower bound, which can only shorten
-the wait. A failed lookup writes no record, which means no backoff, never a
-station that stops trying.
+the wait. A failed lookup, or the step's 3 min `timeout-minutes`, writes no
+record, which means no backoff and no force, never a station that stops
+trying.
+
+**Bounded edge cases.** The run history can mislead the history step in
+four known ways. Each costs at most one extra editor run, never a stuck
+station:
+
+- The API shows only a run's latest attempt. If the run that honoured a
+  force is re-run and the re-run stops at its gate, the honouring editor run
+  is hidden, and the next run can honour the force again.
+- A run whose jobs list comes back empty looks as if it never started. If it
+  was the honouring run, the force can be honoured twice.
+- The bulletin's stamp comes from the runner's clock, run times from
+  GitHub's. A runner clock more than a minute slow can make the run that
+  published look like a later gate stop, with the same result.
+- More than 20 newer displaced or failed runs use up the lookups before an
+  older editor failure is reached, so that run does not back off. Its own
+  editor run is then the newest, which the next run finds first.
 
 **Why the gate runs on the full clone.** On 2026-10-31 a pre-gate was built
 and then dropped. It decided on a blobless, depth-1 sparse checkout of only

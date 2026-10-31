@@ -192,10 +192,13 @@ jobs:
       # not. A failed lookup leaves no record, which means no backoff, never
       # no attempts. The same listing finds a forced dispatch the concurrency
       # queue cancelled before it ran (force_pending): this run honours it
-      # unless an editor has run since it was queued.
+      # unless an editor has run since it was queued. Normally a few seconds;
+      # a timeout is a failed lookup like any other (no record, no force) and
+      # never holds up the gate.
       - name: Read failed runs since the last bulletin
         id: history
         continue-on-error: true
+        timeout-minutes: 3
         env:
           GH_TOKEN: ${{ github.token }}
           SCRATCH: ${{ steps.stamp.outputs.scratch }}
@@ -508,6 +511,7 @@ jobs:
         id: run_alert
         if: always()
         continue-on-error: true
+        timeout-minutes: 3
         env:
           GH_TOKEN: ${{ github.token }}
           JOB_STATUS: ${{ job.status }}

@@ -24,6 +24,9 @@ last_editor_run_at and writes the gate's --attempts record:
   it, even one that then times out or is a re-run, and a run that fails
   before its editor passes it on. A forced run that started, or that was
   cancelled by hand while it waited (no run queued behind it), was not lost.
+  A re-run never honours one: its first attempt had that chance, and the API
+  shows only a run's latest attempt (docs/aradio.md lists the bounded edge
+  cases).
 
 Runs are ordered by when their latest attempt was queued: a re-run keeps its
 created_at, and run_started_at is the attempt's queue time. A run's jobs cost
@@ -92,8 +95,11 @@ WORKFLOW_FILE = "aradio.yml"
 # name (both test-pinned).
 FORCED_TITLE = "Aradio (forced)"
 EDITOR_STEP = "Edit the situation board with the SSOT-routed editor"
-# Each run's jobs are one `gh api` call (about 0.4 s).
+# Each run's jobs are one `gh api` call (about 0.4 s). A call that takes
+# longer than GH_TIMEOUT is a failed lookup; the workflow step's
+# timeout-minutes bounds them all.
 MAX_JOB_LOOKUPS = 20
+GH_TIMEOUT = 20
 # GitHub cancels a pending run a second or two after the run that displaces
 # it is queued (as observed on this repository's runs).
 DISPLACED_SLACK = timedelta(seconds=30)
@@ -269,7 +275,7 @@ def read_since(cursor_path: str) -> tuple[Optional[datetime], str]:
 
 
 def history(cursor_path: str, runs_fn: Callable[[], list[dict]], run_id: str,
-            jobs_fn: Callable[[object], list[dict]]) -> dict:
+            jobs_fn: Callable[[object], list[dict]], rerun: bool = False) -> dict:
     """The gate's --attempts record, plus a forced run the queue cancelled.
 
     One listing of the newest runs serves both: a lost forced run can predate
@@ -279,7 +285,7 @@ def history(cursor_path: str, runs_fn: Callable[[], list[dict]], run_id: str,
     since, label = read_since(cursor_path)
     runs = runs_fn()
     lookups = JobLookups(jobs_fn)
-    forced = lost_force(runs, since, run_id, lookups)
+    forced = None if rerun else lost_force(runs, since, run_id, lookups)
     failed, editor = failures_since(runs, since, run_id, lookups)
     last = newest_finish(editor)
     return {"since": label, "failed": len(failed), "editor_failures": len(editor),
@@ -292,7 +298,7 @@ def query_runs(repository: str) -> list[dict]:
     raw = subprocess.run(
         ["gh", "api", "-X", "GET", f"repos/{repository}/actions/workflows/{WORKFLOW_FILE}/runs",
          "-f", "branch=main", "-f", "per_page=100", "-f", "exclude_pull_requests=true"],
-        check=True, capture_output=True, text=True, timeout=60).stdout
+        check=True, capture_output=True, text=True, timeout=GH_TIMEOUT).stdout
     payload = json.loads(raw)
     runs = payload.get("workflow_runs") if isinstance(payload, dict) else None
     if not isinstance(runs, list):
@@ -303,7 +309,7 @@ def query_runs(repository: str) -> list[dict]:
 def query_jobs(repository: str, run_id: object) -> list[dict]:
     """One run's jobs, latest attempt (read-only `gh api`); a run cancelled while pending has none."""
     raw = subprocess.run(["gh", "api", f"repos/{repository}/actions/runs/{run_id}/jobs"],
-                         check=True, capture_output=True, text=True, timeout=60).stdout
+                         check=True, capture_output=True, text=True, timeout=GH_TIMEOUT).stdout
     payload = json.loads(raw)
     jobs = payload.get("jobs") if isinstance(payload, dict) else None
     if not isinstance(jobs, list):
@@ -394,7 +400,8 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     if args.history:
         try:
-            record = history(args.cursor, runs_fn, os.environ.get("GITHUB_RUN_ID", ""), jobs_fn)
+            record = history(args.cursor, runs_fn, os.environ.get("GITHUB_RUN_ID", ""), jobs_fn,
+                             rerun=os.environ.get("GITHUB_RUN_ATTEMPT", "1") != "1")
         except (OSError, subprocess.SubprocessError, ValueError) as exc:
             # No record means no backoff: a broken lookup can cost attempts,
             # never a station that stops trying. A lost force waits for a run

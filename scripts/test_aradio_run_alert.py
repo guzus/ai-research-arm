@@ -487,6 +487,28 @@ class LostForceTest(unittest.TestCase):
         self.assertEqual(801, found)
         self.assertEqual(ara.MAX_JOB_LOOKUPS, len(asked))
 
+    def test_a_re_run_never_honours_it(self):
+        # Its first attempt had that chance, and the API shows only the
+        # latest attempt, so a re-run of the honouring run would honour twice.
+        with tempfile.TemporaryDirectory() as tmp:
+            cursor = Path(tmp) / "cursor.json"
+            cursor.write_text(json.dumps({"last_editor_run_at": SINCE, "keys": {}}))
+            runs = [self.NOW_RUNNING, self.FORCED, self.RAN]
+            self.assertEqual(801, ara.history(str(cursor), lambda: runs, "900",
+                                              jobs_of({801: NEVER_STARTED}, []))["forced_run"])
+            self.assertIsNone(ara.history(str(cursor), lambda: runs, "900",
+                                          jobs_of({801: NEVER_STARTED}, []),
+                                          rerun=True)["forced_run"])
+            out = Path(tmp) / "out"
+            with mock.patch.object(ara, "query_runs", return_value=runs), \
+                    mock.patch.object(ara, "query_jobs", return_value=[]), \
+                    mock.patch.dict(os.environ, {"GITHUB_RUN_ID": "900",
+                                                 "GITHUB_RUN_ATTEMPT": "2"}), \
+                    contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(0, ara.main(["--history", "--cursor", str(cursor),
+                                              "--github-output", str(out)]))
+            self.assertRegex(out.read_text(), r"force_pending<<(\S+)\nfalse\n")
+
     def test_history_reports_it_and_main_raises_force(self):
         with tempfile.TemporaryDirectory() as tmp:
             cursor = Path(tmp) / "cursor.json"
@@ -615,6 +637,23 @@ class WorkflowTest(unittest.TestCase):
         workflow = yaml.safe_load((ROOT / ".github/workflows/aradio.yml").read_text())
         self.job = workflow["jobs"]["aradio"]
         self.steps = {step.get("id") or step.get("name"): step for step in self.job["steps"]}
+
+    def test_the_history_lookup_is_bounded_and_never_holds_the_gate(self):
+        # A timed-out step is a failed lookup: no record, no force_pending,
+        # and the gate after it runs regardless.
+        for step_id in ("history", "run_alert"):
+            with self.subTest(step_id):
+                step = self.steps[step_id]
+                self.assertTrue(step.get("continue-on-error"))
+                self.assertLessEqual(step["timeout-minutes"], 5)
+                self.assertLess(step["timeout-minutes"], self.job["timeout-minutes"])
+        self.assertNotIn("if", self.steps["inbox"])
+        # A hung call fails on its own well before the step's limit.
+        self.assertLess(ara.GH_TIMEOUT * 2, self.steps["history"]["timeout-minutes"] * 60)
+        completed = subprocess.CompletedProcess([], 0, stdout=json.dumps({"jobs": []}))
+        with mock.patch.object(ara.subprocess, "run", return_value=completed) as call:
+            ara.query_jobs("o/r", 1)
+        self.assertEqual(ara.GH_TIMEOUT, call.call_args.kwargs["timeout"])
 
     def test_every_stage_outcome_reaches_the_script(self):
         shape_step = self.steps["run_alert"]
