@@ -347,14 +347,28 @@ runs:
         # --tools list its allow rules imply. The model never reads or writes
         # either file: the copy is mounted read-only outside /workspace.
         generated_claude_settings="$build_dir/claude.settings.json"
+        generated_claude_addendum="$build_dir/claude.addendum.md"
         claude_tools=$(/usr/bin/python3 -I scripts/copy_claude_settings.py \
           "$GITHUB_WORKSPACE/$CLAUDE_CONFIG_REL" \
-          "$generated_claude_settings" "$CLAUDE_MODEL_REF")
+          "$generated_claude_settings" "$CLAUDE_MODEL_REF" \
+          --addendum "$generated_claude_addendum")
         if [[ ! "$claude_tools" =~ ^((Read|Write|Glob|Bash)(,(Read|Write|Glob|Bash))*)?$ ]]; then
           echo "::error::Claude settings copier returned an unexpected tool list."
           exit 1
         fi
         echo "Claude lane policy $CLAUDE_CONFIG_REL exposes tools: ${claude_tools:-none}"
+        # The prompt ends with the exact forms the lane policy admits, generated
+        # from that policy, so what a model is told to run can never drift from
+        # what the guard allows. A policy without tools (the canary) adds none.
+        if [ -s "$generated_claude_addendum" ]; then
+          composed_prompt="$build_dir/claude-prompt.md"
+          {
+            cat -- "$PROMPT_FILE"
+            printf '\n\n'
+            cat -- "$generated_claude_addendum"
+          } > "$composed_prompt"
+          PROMPT_FILE="$composed_prompt"
+        fi
         empty_git_template="$build_dir/empty-git-template"
         mkdir -p "$empty_git_template"
 
@@ -963,11 +977,20 @@ runs:
         # closed here even if the CLI itself exited 0.
         result_file="$isolated_workspace/.claude-result.json"
         summary_file="$build_dir/claude-result-summary.txt"
+        # The guard's denial log holds only "<tool>\t<reason code>" lines; the
+        # summarizer drops any other line, and a linked or oversized log is
+        # ignored rather than read.
+        denial_args=()
+        denial_file="$isolated_workspace/.claude-guard-denials.tsv"
+        if [ -f "$denial_file" ] && [ ! -L "$denial_file" ] \
+          && [ "$(wc -c < "$denial_file")" -le 1048576 ]; then
+          denial_args=(--guard-denials "$denial_file")
+        fi
         result_status=0
         if [ -f "$result_file" ] && [ ! -L "$result_file" ] \
           && [ "$(wc -c < "$result_file")" -le 1048576 ]; then
           /usr/bin/python3 -I scripts/summarize_claude_result.py "$result_file" \
-            > "$summary_file" || result_status=$?
+            ${denial_args[@]+"${denial_args[@]}"} > "$summary_file" || result_status=$?
         else
           result_status=4
         fi
@@ -1076,6 +1099,14 @@ runs:
           path_violation=0
           while IFS= read -r -d '' status && IFS= read -r -d '' path; do
             changed_count=$((changed_count + 1))
+            # No agent output is git metadata. Under a directory-prefix
+            # allowed path a committed .gitattributes would change how every
+            # later checkout filters those files.
+            if [[ "/$path" = */.[Gg][Ii][Tt]* ]]; then
+              echo "::error::Claude commit path is git metadata: $path"
+              path_violation=1
+              continue
+            fi
             tree_entry=$("${trusted_git[@]}" ls-tree "$post_sha" -- "$path")
             tree_header="${tree_entry%%$'\t'*}"
             read -r tree_mode tree_type tree_oid <<< "$tree_header"

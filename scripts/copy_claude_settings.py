@@ -11,8 +11,9 @@ file, limited to a reviewable subset:
   - `Bash(git add <dir>/*)`, which stages paths under <dir>; the lane must
     also hold `Edit(<dir>/**)`, so it can only stage what it may write.
   - `Bash(git commit -m *)`, a plain `git commit -m "<message>"`.
-  - `Bash(curl -sL "https://<host>/<path>?*)` (or `-s`), one fixed URL
-    prefix; the query may not carry a shell metacharacter.
+  - `Bash(curl -s "https://<host>/<path>?*)`, one fixed URL prefix on a host
+    in CURL_HOSTS; the query may not carry a shell metacharacter. There is no
+    `-L`: curl never follows a redirect off that host.
   - `Bash(uv run python scripts/<name>.py)`, the same with one fixed
     `--flag`, or with ` "*` for one quoted plain-text argument: an existing
     repository script and nothing else.
@@ -37,6 +38,10 @@ all, so the adapter runs `claude --init-only` first and refuses to start the
 model unless the liveness hook left its marker. It is written owner-read
 only, for a read-only container mount. The model is selected by `--model`,
 never by this file.
+
+With `--addendum PATH` it also writes the prompt addendum: the admitted forms
+as text, which the adapter appends to the lane prompt so the commands a model
+is told to run come from the same rules the guard enforces.
 """
 
 from __future__ import annotations
@@ -55,10 +60,18 @@ RULE = re.compile(r"^(Read|Edit)\(([A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*)(/\*\*)?
 GIT_ADD_RULE = re.compile(r"^Bash\(git add ([A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*)/\*\)$")
 GIT_COMMIT_RULE = "Bash(git commit -m *)"
 CURL_RULE = re.compile(
-    r'^Bash\(curl (-sL|-s) "(https://[a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,}'
+    r'^Bash\(curl -s "(https://[a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,}'
     r'(?:/[A-Za-z0-9_.-]+)*/?\?)\*\)$'
 )
 UV_RULE = re.compile(r'^Bash\((uv run python scripts/([a-z0-9_]+)\.py)( --[a-z][a-z-]*| "\*)?\)$')
+# The only hosts a curl rule may name, kept identical to CURL_HOSTS in
+# tool-guard.mjs: reaching a new host is a reviewed code change, never a
+# policy edit alone.
+CURL_HOSTS = ("export.arxiv.org",)
+# The page-size and offset parameters that keep a pinned host's reply under
+# BASH_OUTPUT_MAX_CHARS, and the largest page that fits: about 2.5 KB per arXiv
+# entry, so 40 fit (measured 2026-10-31: 100 entries came to 248.6 KB).
+CURL_PAGE_LIMITS = {"export.arxiv.org": ("max_results", "start", 40)}
 GLOB_RULE = "Glob"
 SCRIPTS_DIR = Path(__file__).resolve().parent
 TOP_LEVEL_KEYS = {"$schema", "permissions"}
@@ -87,8 +100,12 @@ SHELL_BASELINE_DENY = tuple(rule for rule in BASELINE_DENY if rule != "Bash")
 CONTAINER_SETTINGS = "/tmp/claude-config/settings.json"
 CONTAINER_GUARD = "/opt/ara-claude/tool-guard.mjs"
 CONTAINER_WORKSPACE = "/workspace"
+# The guard appends one "<tool>\t<reason code>" line per refusal here, never an
+# input or a path; the host prints the counts in its typed result summary.
+CONTAINER_GUARD_DENIALS = "/workspace/.claude-guard-denials.tsv"
 GUARD_COMMAND = (
-    f"node {CONTAINER_GUARD} {CONTAINER_SETTINGS} {CONTAINER_WORKSPACE} || exit 2"
+    f"node {CONTAINER_GUARD} {CONTAINER_SETTINGS} {CONTAINER_WORKSPACE} "
+    f"{CONTAINER_GUARD_DENIALS} || exit 2"
 )
 # Claude Code 2.1.285 lets a call PROCEED when it kills a hook that ran past
 # its timeout (and when a signal kills the hook shell): `|| exit 2` only maps
@@ -147,7 +164,11 @@ def validate(config: object) -> tuple[dict, str]:
             git_add_dirs.append(target)
             kinds.add("git add")
         elif curl:
-            target = curl.group(2).removeprefix("https://").removesuffix("?")
+            target = curl.group(1).removeprefix("https://").removesuffix("?")
+            host = target.split("/", 1)[0]
+            if host not in CURL_HOSTS:
+                raise ValueError(f"allow rule {rule!r} names curl host {host!r}, which is not "
+                                 "in CURL_HOSTS")
             kinds.add("curl")
         elif uv:
             target = ""
@@ -225,21 +246,112 @@ def validate(config: object) -> tuple[dict, str]:
     return settings, ",".join(tools)
 
 
-def copy_settings(source: Path, destination: Path, model_ref: str) -> str:
-    if not MODEL_REF.fullmatch(model_ref):
-        raise ValueError("model must be one canonical claude/<model> ref")
-    settings, tools = validate(json.loads(source.read_text(encoding="utf-8")))
-    temporary = destination.with_name(destination.name + ".tmp")
+def addendum(allow: list[str]) -> str:
+    """The exact forms a validated policy admits, as text for the lane prompt.
+
+    The adapter appends it to every prompt, so the commands a model is told to
+    run come from the same rules the guard enforces and cannot drift from them.
+    A policy without tools gets no text.
+    """
+    reads: list[str] = []
+    writes: list[str] = []
+    stage_dirs: list[str] = []
+    fetches: list[str] = []
+    runs: list[str] = []
+    glob = commit = False
+    for rule in allow:
+        if rule == GLOB_RULE:
+            glob = True
+        elif rule == GIT_COMMIT_RULE:
+            commit = True
+        elif match := RULE.fullmatch(rule):
+            shown = match.group(2) + ("/" if match.group(3) else "")
+            (reads if match.group(1) == "Read" else writes).append(shown)
+        elif match := GIT_ADD_RULE.fullmatch(rule):
+            stage_dirs.append(match.group(1) + "/")
+        elif match := CURL_RULE.fullmatch(rule):
+            fetches.append(match.group(1))
+        elif match := UV_RULE.fullmatch(rule):
+            suffix = match.group(3) or ""
+            runs.append(match.group(1) + (' "<text>"' if suffix == ' "*' else suffix))
+    if not (reads or writes or glob or stage_dirs or commit or fetches or runs):
+        return ""
+
+    def paths(items: list[str]) -> str:
+        return ", ".join(f"`{item}`" for item in items)
+
+    lines = ["## Sandbox tools", "",
+             "This run is sandboxed. A guard refuses every tool call outside these forms, "
+             "so use them exactly.", ""]
+    if reads:
+        lines.append(f"- Read files only at or under: {paths(reads)}.")
+    if writes:
+        lines.append(f"- Write files only at or under: {paths(writes)}. Read an existing "
+                     "file before you replace it.")
+    if glob:
+        example = next(item.rstrip("/") for item in reads if item.endswith("/"))
+        lines.append("- Glob lists a directory under a Read path; use it instead of `ls` or "
+                     f"`find`. Give `path` (for example `{example}`) and a plain `pattern` "
+                     "such as `*` or `*.md`; no braces, `[...]` classes or `..`.")
+    shell = stage_dirs or commit or fetches or runs
+    if shell:
+        lines.append("- Bash runs one command per call, on one line, in the foreground, and "
+                     "only these forms:")
+        if stage_dirs:
+            lines.append(f"  - `git add <path>`, with one or more paths, each under "
+                         f"{' or '.join(f'`{item}`' for item in stage_dirs)}")
+        if commit:
+            lines.append('  - `git commit -m "<message>"`, optionally followed by '
+                         '`|| echo "No changes"`; the message may use only letters, digits, '
+                         "spaces and `:._,()#+/@-`")
+            if stage_dirs:
+                lines.append('  - `git add <path> && git commit -m "<message>"`')
+        for prefix in fetches:
+            lines.append(f'  - `curl -s "{prefix}<query>"`; the query may use only letters, '
+                         "digits and `_=&+:.%,()/@-`, and nothing may follow the closing quote")
+        for run in runs:
+            lines.append(f"  - `{run}`" + ("; the text may use only letters, digits, spaces "
+                                          "and `._,:()/+'-`" if run.endswith('"<text>"') else ""))
+        lines.append("- Nothing else runs in Bash: no pipes, redirects, `;`, `$(...)`, "
+                     "backticks, `cd`, `ls`, `cat`, `python` or other programs.")
+        hints = []
+        for host, (size, offset, limit) in CURL_PAGE_LIMITS.items():
+            if any(prefix.startswith(f"https://{host}/") for prefix in fetches):
+                hints.append(f"For `{host}` ask for `{size}={limit}` or fewer and page with "
+                             f"`{offset}=0`, `{offset}={limit}`, `{offset}={2 * limit}`.")
+        lines.append(f"- Bash output over {BASH_OUTPUT_MAX_CHARS} characters is not shown; it "
+                     "is saved where you cannot read it. Ask for less per call."
+                     + "".join(f" {hint}" for hint in hints))
+    missing = ["Edit", "WebFetch", "WebSearch", "Grep"] + ([] if glob else ["Glob"])
+    lines.append(f"- There is no {', '.join(missing)} or subagent tool"
+                 + ("." if shell else ", and no Bash: no `ls`, `git`, `curl` or other "
+                    "commands."))
+    return "\n".join(lines) + "\n"
+
+
+def write_once(path: Path, text: str) -> None:
+    """Write an owner-read-only file through a fresh sibling, then rename it."""
+    temporary = path.with_name(path.name + ".tmp")
     fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o400)
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as handle:
-            json.dump(settings, handle, sort_keys=True, indent=2)
-            handle.write("\n")
-        os.replace(temporary, destination)
+            handle.write(text)
+        os.replace(temporary, path)
     except Exception:
         if temporary.exists():
             temporary.unlink()
         raise
+
+
+def copy_settings(source: Path, destination: Path, model_ref: str,
+                  addendum_path: Path | None = None) -> str:
+    if not MODEL_REF.fullmatch(model_ref):
+        raise ValueError("model must be one canonical claude/<model> ref")
+    policy = json.loads(source.read_text(encoding="utf-8"))
+    settings, tools = validate(policy)
+    write_once(destination, json.dumps(settings, sort_keys=True, indent=2) + "\n")
+    if addendum_path is not None:
+        write_once(addendum_path, addendum(policy["permissions"].get("allow", [])))
     return tools
 
 
@@ -248,8 +360,10 @@ def main() -> int:
     parser.add_argument("source", type=Path)
     parser.add_argument("destination", type=Path)
     parser.add_argument("model_ref")
+    parser.add_argument("--addendum", type=Path, default=None,
+                        help="also write the prompt addendum that lists the admitted forms")
     args = parser.parse_args()
-    print(copy_settings(args.source, args.destination, args.model_ref))
+    print(copy_settings(args.source, args.destination, args.model_ref, args.addendum))
     return 0
 
 

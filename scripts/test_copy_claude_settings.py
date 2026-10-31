@@ -10,11 +10,14 @@ import copy_claude_settings
 from copy_claude_settings import (
     BASELINE_DENY,
     BASH_OUTPUT_MAX_CHARS,
+    CONTAINER_GUARD_DENIALS,
     CONTAINER_LIVENESS_MARKER,
+    CURL_HOSTS,
     GUARD_COMMAND,
     GUARD_TIMEOUT_SECONDS,
     LIVENESS_COMMAND,
     SHELL_BASELINE_DENY,
+    addendum,
     copy_settings,
     validate,
 )
@@ -72,6 +75,10 @@ class CopyClaudeSettingsTest(unittest.TestCase):
         # or timed-out hook lets the call proceed on 2.1.285, so the timeout
         # must dwarf the guard's runtime.
         self.assertTrue(GUARD_COMMAND.endswith("|| exit 2"))
+        # The guard's denial log sits in the clone, where the host reads it
+        # after the run and the lane's allowlist never reaches.
+        self.assertEqual("/workspace/.claude-guard-denials.tsv", CONTAINER_GUARD_DENIALS)
+        self.assertIn(f" {CONTAINER_GUARD_DENIALS} || exit 2", GUARD_COMMAND)
         self.assertGreaterEqual(GUARD_TIMEOUT_SECONDS, 600)
         liveness = settings["hooks"]["SessionStart"]
         self.assertEqual([{"matcher": "*", "hooks": [
@@ -185,15 +192,16 @@ class CopyClaudeSettingsTest(unittest.TestCase):
             "git commit variant": "Bash(git commit *)",
             "git push": "Bash(git push *)",
             "git anything": "Bash(git *)",
-            "curl over http": 'Bash(curl -sL "http://export.arxiv.org/api/query?*)',
-            "curl without query": 'Bash(curl -sL "https://export.arxiv.org/api/query*)',
-            "curl unquoted": "Bash(curl -sL https://export.arxiv.org/api/query?*)",
+            "curl over http": 'Bash(curl -s "http://export.arxiv.org/api/query?*)',
+            "curl without query": 'Bash(curl -s "https://export.arxiv.org/api/query*)',
+            "curl unquoted": "Bash(curl -s https://export.arxiv.org/api/query?*)",
+            "curl follows redirects": 'Bash(curl -sL "https://export.arxiv.org/api/query?*)',
             "curl other flags": 'Bash(curl -sSL "https://export.arxiv.org/api/query?*)',
             "curl output flag": 'Bash(curl -o x "https://export.arxiv.org/api/query?*)',
-            "curl ip host": 'Bash(curl -sL "https://127.0.0.1/api?*)',
-            "curl userinfo": 'Bash(curl -sL "https://user@export.arxiv.org/api?*)',
-            "curl port": 'Bash(curl -sL "https://export.arxiv.org:8443/api?*)',
-            "curl traversal": 'Bash(curl -sL "https://export.arxiv.org/api/../x?*)',
+            "curl ip host": 'Bash(curl -s "https://127.0.0.1/api?*)',
+            "curl userinfo": 'Bash(curl -s "https://user@export.arxiv.org/api?*)',
+            "curl port": 'Bash(curl -s "https://export.arxiv.org:8443/api?*)',
+            "curl traversal": 'Bash(curl -s "https://export.arxiv.org/api/../x?*)',
             "curl any url": "Bash(curl *)",
             "uv anything": "Bash(uv run *)",
             "uv inline code": "Bash(uv run python -c *)",
@@ -214,6 +222,16 @@ class CopyClaudeSettingsTest(unittest.TestCase):
         policy["permissions"]["allow"].append("Bash(uv run python scripts/no_such_script.py)")
         with self.assertRaisesRegex(ValueError, "names no repository script"):
             validate(policy)
+
+    def test_curl_reaches_only_the_hosts_pinned_in_code(self):
+        self.assertEqual(("export.arxiv.org",), CURL_HOSTS)
+        validate(load("arxiv"))
+        for host in ("api.example.com", "evil.example", "arxiv.org", "www.export.arxiv.org",
+                     "export.arxiv.org.evil.example", "export-arxiv.org"):
+            policy = load("arxiv")
+            policy["permissions"]["allow"].append(f'Bash(curl -s "https://{host}/api/query?*)')
+            with self.subTest(host=host), self.assertRaisesRegex(ValueError, "CURL_HOSTS"):
+                validate(policy)
 
     def test_uv_rules_name_only_regular_repository_scripts(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -264,6 +282,57 @@ class CopyClaudeSettingsTest(unittest.TestCase):
             policy["permissions"]["deny"].append(tool)
             with self.subTest(lane=name, tool=tool), self.assertRaisesRegex(ValueError, "removes tools"):
                 validate(policy)
+
+    def test_addendum_lists_exactly_the_forms_the_policy_admits(self):
+        self.assertEqual("", addendum(CANARY["permissions"]["allow"]))
+        texts = {name: addendum(load(name)["permissions"]["allow"]) for name in
+                 ("aradio", "translation", "bluesky", "rss", "community", "arxiv", "wiki")}
+        for name, text in texts.items():
+            with self.subTest(lane=name):
+                self.assertTrue(text.startswith("## Sandbox tools\n"))
+                for rule in load(name)["permissions"]["allow"]:
+                    target = rule.split("(", 1)[-1].rstrip(")").replace("/**", "/")
+                    if rule.startswith(("Read(", "Edit(")):
+                        self.assertIn(f"`{target}`", text)
+                self.assertIn("There is no Edit, WebFetch, WebSearch, Grep", text)
+        for name in ("aradio", "translation", "bluesky"):
+            self.assertIn("no Bash: no `ls`, `git`, `curl`", texts[name])
+            self.assertNotIn("git add", texts[name])
+        self.assertIn("Glob lists a directory under a Read path; use it instead of `ls`",
+                      texts["bluesky"])
+        self.assertIn("for example `.agent-input/bluesky`", texts["bluesky"])
+        self.assertIn("for example `research/digest`", texts["wiki"])
+        for name in ("rss", "community", "arxiv"):
+            self.assertIn("Glob or subagent tool", texts[name])
+        self.assertIn("  - `git add <path>`, with one or more paths, each under `research/arxiv/` "
+                      "or `research/summaries/`", texts["arxiv"])
+        self.assertIn('  - `curl -s "https://export.arxiv.org/api/query?<query>"`', texts["arxiv"])
+        self.assertIn("For `export.arxiv.org` ask for `max_results=40` or fewer and page with "
+                      "`start=0`, `start=40`, `start=80`.", texts["arxiv"])
+        self.assertNotIn("max_results", texts["wiki"])
+        for form in ('  - `uv run python scripts/wiki_search.py "<text>"`',
+                     "  - `uv run python scripts/check_wiki.py`\n",
+                     "  - `uv run python scripts/check_wiki.py --lint`\n",
+                     "  - `uv run python scripts/build_wiki_index.py`\n"):
+            self.assertIn(form, texts["wiki"])
+        for name in ("rss", "community", "arxiv", "wiki"):
+            self.assertIn(f"Bash output over {BASH_OUTPUT_MAX_CHARS} characters is not shown",
+                          texts[name])
+
+    def test_copy_writes_the_addendum_beside_the_settings(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / "wiki.json"
+            source.write_text(json.dumps(load("wiki")), encoding="utf-8")
+            settings, extra = Path(tmp) / "settings.json", Path(tmp) / "addendum.md"
+            self.assertEqual("Read,Write,Glob,Bash",
+                             copy_settings(source, settings, "claude/claude-sonnet-5-5", extra))
+            self.assertEqual(addendum(load("wiki")["permissions"]["allow"]),
+                             extra.read_text(encoding="utf-8"))
+            self.assertEqual(0o400, extra.stat().st_mode & 0o777)
+            source.write_text(json.dumps(CANARY), encoding="utf-8")
+            empty = Path(tmp) / "canary.md"
+            copy_settings(source, Path(tmp) / "canary.json", "claude/claude-sonnet-5-5", empty)
+            self.assertEqual("", empty.read_text(encoding="utf-8"))
 
     def test_rejects_malformed_documents(self):
         for document in ([], "x", {"permissions": []}, {"permissions": {"allow": "Read(x)"}},
