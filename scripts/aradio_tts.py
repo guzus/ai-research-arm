@@ -14,7 +14,7 @@ Voices: Speaker 1 = Charon (anchor), Speaker 2 = Puck (co-host). Only fields in
 the documented REST schema are sent (`speech_config.speakers`; no `mode`).
 
 Failure is LOUD, unlike the daily broadcast's continue-on-error step that
-exits 0 on Gemini errors: every failure writes `{ok: false, error, status}` to
+exited 0 on Gemini errors: every failure writes `{ok: false, error, status}` to
 --result, prints the HTTP status and the first ~2 KB of the error body to
 stderr, and exits non-zero with a distinct code. Audio shorter than 60 % of
 the expected duration (spoken words / 188 wpm) is treated as truncated and is

@@ -14,17 +14,37 @@ name: Aradio
 #   7. safe-push, then the job fails if the editor or the audio failed.
 #
 # Audio failure is LOUD: the text still publishes (audio: null + audio_error),
-# then the job fails. The daily broadcast's continue-on-error TTS step that
-# exits 0 on Gemini errors is the anti-pattern this lane avoids.
+# then the job fails. The daily broadcast's continue-on-error TTS step, which
+# kept the digest green through nine days of Gemini errors, is the
+# anti-pattern this lane avoids.
+
+# Says which lane woke the station. A forced dispatch is named so that the
+# history step can find it if the concurrency queue cancels it before it runs
+# (aradio_run_alert.FORCED_TITLE). Other runs keep the workflow's name.
+run-name: ${{ github.event_name == 'workflow_run' && format('Aradio after {0}', github.event.workflow_run.name) || inputs.force && 'Aradio (forced)' || github.workflow }}
 
 on:
+  # Aradio airs when the picture changes, so each lane that feeds the inbox
+  # wakes it when that lane's run completes: podcasts (episodes and YouTube
+  # channels via tuber), earnings filings, Twitter stories and model tickets
+  # (build_aradio_inbox.py's four collectors). The names must equal those
+  # workflows' `name:` exactly; a test pins this list to the producers of the
+  # lanes the gate reads. The gate keeps the extra runs model-free.
+  workflow_run:
+    workflows:
+      - "Podcast Signal"
+      - "Daily Earnings Signal"
+      - "Twitter AI News (hourly matrix)"
+      - "Hyperscaler Model Release Timeline (Every 24 Hours)"
+    types: [completed]
+    branches: [main]
   schedule:
-    # Hourly at :50. The gate decides: priority material (earnings filings and
-    # calls, P0 spoken episodes) airs within the hour; routine material waits
-    # for a 2 h cadence; no new material means a model-free no-op run.
-    # GitHub registers this cron when the file is pushed to main while the
-    # workflow is enabled. After `gh workflow enable`, push a change to this
-    # file, or the schedule stays silent (2026-10-31: no :50 run for 3 h).
+    # Backstop, hourly at :50: routine material that waited for the 2 h
+    # cadence airs within the hour after it, even when no lane finishes.
+    # Do not rely on it alone. GitHub fires schedules late or not at all
+    # under load, and on 2026-10-31 this one fired none of its slots from
+    # the workflow's 08:21 re-enable until 14:47 UTC, even after #6316
+    # pushed this file at 11:17 (docs/aradio.md "Triggers").
     - cron: '50 * * * *'
   workflow_dispatch:
     inputs:
@@ -34,16 +54,35 @@ on:
         default: false
         type: boolean
 
-# Serialize runs: the cursor and the board are single-writer state.
+# Serialize runs: the cursor and the board are single-writer state. GitHub
+# keeps one pending run per group and cancels the older one, so a burst of
+# triggers collapses to one running and one pending run; the pending one
+# reads the branch tip when it starts. A forced dispatch cancelled that way
+# is honoured by a later run (the history step below). A run the job's `if`
+# skips (a lane run from another repository) takes a group of its own: it
+# must never displace a real pending run. This condition must stay identical
+# to the job's `if` (test-pinned).
 concurrency:
-  group: aradio
+  group: >-
+    ${{ (github.event_name != 'workflow_run'
+    || github.event.workflow_run.head_repository.full_name == github.repository)
+    && 'aradio' || format('aradio-skipped-{0}', github.run_id) }}
   cancel-in-progress: false
 
 jobs:
   aradio:
+    # Any conclusion wakes the station: a lane can publish and then fail a
+    # later step (Twitter's headline alerts run after its push), and a stop is
+    # model-free, so the gate decides. A lane run from another repository's
+    # fork must never wake a job holding secrets.
+    if: >-
+      ${{ github.event_name != 'workflow_run'
+      || github.event.workflow_run.head_repository.full_name == github.repository }}
     runs-on: [self-hosted, Linux]
     timeout-minutes: 30
     permissions:
+      # actions: read lets the run's alert step list earlier runs (recovery).
+      actions: read
       contents: write
       pull-requests: write
 
@@ -106,6 +145,7 @@ jobs:
           fi
 
       - name: Checkout repository
+        id: checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         env:
           GIT_CONFIG_NOSYSTEM: "1"
@@ -124,6 +164,7 @@ jobs:
         uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
 
       - name: Install Python dependencies
+        id: deps
         run: uv sync --frozen
 
       # One UTC read for the whole run: the bulletin id, the S3 key, aired_at
@@ -142,6 +183,29 @@ jobs:
             echo "scratch=$scratch"
           } >> "$GITHUB_OUTPUT"
 
+      # Failed runs commit nothing, so the run history is the only record of
+      # an outage. The gate backs off from the newest failed editor run since
+      # the last bulletin (doubling from 30 min to 4 h, 2 h while priority
+      # material waits) instead of retrying the editor on every trigger. A
+      # run that hung past timeout-minutes counts (GitHub reports it as
+      # cancelled); a setup or gate failure spent no editor time and does
+      # not. A failed lookup leaves no record, which means no backoff, never
+      # no attempts. The same listing finds a forced dispatch the concurrency
+      # queue cancelled before it ran (force_pending): this run honours it
+      # unless an editor has run since it was queued. Normally a few seconds;
+      # a timeout is a failed lookup like any other (no record, no force) and
+      # never holds up the gate.
+      - name: Read failed runs since the last bulletin
+        id: history
+        continue-on-error: true
+        timeout-minutes: 3
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SCRATCH: ${{ steps.stamp.outputs.scratch }}
+        run: |
+          python3 scripts/aradio_run_alert.py --history \
+            --attempts-out "$SCRATCH/attempts.json" --github-output "$GITHUB_OUTPUT"
+
       # Deterministic gate + inbox. The agent gets .agent-input/aradio/; the
       # validator and writer read only the trusted copy under $RUNNER_TEMP,
       # never .tmp/ (the import path) or .agent-input/.
@@ -150,7 +214,7 @@ jobs:
         env:
           NOW: ${{ steps.stamp.outputs.stamp }}
           SCRATCH: ${{ steps.stamp.outputs.scratch }}
-          FORCE: ${{ inputs.force || false }}
+          FORCE: ${{ inputs.force || steps.history.outputs.force_pending == 'true' }}
           TUBER_API_BASE: ${{ vars.TUBER_API_BASE || 'https://tuber-api.guzus.xyz' }}
         run: |
           set -euo pipefail
@@ -160,7 +224,73 @@ jobs:
             --trusted-dir "$SCRATCH/trusted" \
             --force "$FORCE" \
             --tuber-api-base "$TUBER_API_BASE" \
+            --attempts "$SCRATCH/attempts.json" \
+            --expired-out "$SCRATCH/expired.json" \
             --github-output "$GITHUB_OUTPUT"
+
+      # A priority item (earnings filing or call, long-form P0 episode) that
+      # leaves its window unaired was lost to an outage: every editor run in
+      # its window failed, or none ran. The gate writes the list on every
+      # run, stop or go. Each item is posted once, keyed on the item, so the
+      # day's later runs are Hooker idempotency hits, and it is annotated on
+      # that first post only (on every run while Hooker cannot take it, since
+      # then nobody else is told). Titles are third-party text: jq
+      # HTML-escapes them into a raw_text body, so Hooker neither escapes them
+      # twice nor promotes a title's own tags to markup, and the log line
+      # comes pre-escaped for workflow commands. On a go this runs just
+      # before the editor, so each POST is time-boxed and the step is too.
+      # No --retry: Hooker records the key before it delivers, so a retried
+      # POST would come back as an idempotency hit that delivered nothing.
+      - name: Report priority items that expired unaired
+        if: always() && steps.stamp.outputs.scratch != ''
+        continue-on-error: true
+        timeout-minutes: 5
+        shell: bash
+        env:
+          HOOKER_URL: ${{ secrets.HOOKER_URL }}
+          HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}
+          REPORT: ${{ steps.stamp.outputs.scratch }}/expired.json
+        run: |
+          set -euo pipefail
+          if [ ! -s "$REPORT" ] || [ "$(jq length "$REPORT")" = "0" ]; then
+            exit 0
+          fi
+          run_url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          title="Aradio never aired a priority item"
+          jq -c '.[]' "$REPORT" | while IFS= read -r item; do
+            log=$(jq -r '.log' <<<"$item")
+            if [ -z "${HOOKER_URL:-}" ] || [ -z "${HOOKER_TOKEN:-}" ]; then
+              echo "::warning title=${title}::${log} (Hooker is not configured)"
+              continue
+            fi
+            body=$(jq -n --argjson item "$item" --arg title "$title" --arg run "$run_url" '{
+              title: $title,
+              text: (["❓ <b>\($title)</b>", ("\($item.kind): \($item.source)" | @html),
+                      ($item.title | @html),
+                      "At \($item.at); its \($item.window_days)-day window closed without a published editor run.",
+                      ("Key: \($item.key)" | @html), ("Run: \($run)" | @html)] | join("\n")),
+              raw_text: true,
+              priority: 4,
+              tags: ["ara", "aradio", "expired", $item.kind],
+              parse_mode: "HTML",
+              payload: {kind: "aradio-expired", item: ($item | del(.log)), run_url: $run},
+              reply_markup: {inline_keyboard: [[{text: "GitHub run", url: $run}]]}
+            }')
+            key=$(jq -r '.idempotency_key' <<<"$item")
+            if response=$(curl -sS --fail-with-body --max-time 30 -X POST "${HOOKER_URL%/}/publish/ara-telemetry" \
+                -H "Authorization: Bearer ${HOOKER_TOKEN}" \
+                -H "Content-Type: application/json" \
+                -H "Idempotency-Key: ${key}" \
+                --data-binary "$body"); then
+              if [ "$(jq -r '.idempotency_hit // false' <<<"$response" 2>/dev/null || echo false)" = "true" ]; then
+                echo "Already reported: ${log}"
+              else
+                echo "::warning title=${title}::${log}"
+              fi
+            else
+              echo "::warning title=${title}::${log} (Hooker publish failed)"
+            fi
+          done
 
       # The prompt is a trusted repo file; a random heredoc delimiter keeps
       # any line of it from terminating the step output early. The adapter
@@ -189,7 +319,9 @@ jobs:
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       # continue-on-error so the explicit failure step below can say what
-      # happened; nothing downstream runs unless this step succeeded.
+      # happened; nothing downstream runs unless this step succeeded. Its
+      # name is how the history step tells an editor run from a gate stop
+      # (aradio_run_alert.EDITOR_STEP, test-pinned).
       - name: Edit the situation board with the SSOT-routed editor
         id: editor
         if: steps.inbox.outputs.go == 'true'
@@ -312,6 +444,7 @@ jobs:
             --github-output "$GITHUB_OUTPUT"
 
       - name: Require Aradio output
+        id: require_output
         if: steps.writer.outcome == 'success'
         uses: ./.github/actions/require-output
         with:
@@ -321,6 +454,7 @@ jobs:
           label: Aradio writer
 
       - name: Enforce Aradio diff scope
+        id: diff_scope
         if: steps.writer.outcome == 'success'
         uses: ./.github/actions/require-diff-scope
         with:
@@ -367,15 +501,45 @@ jobs:
             rm -rf -- "$SCRATCH"
           fi
 
+      # A run that fails without publishing leaves the cursor, so the next
+      # run fails the same way: keyed on the failing stage, the cursor's last
+      # publication and the UTC date, the outage is one Hooker alert a day,
+      # and the first run that publishes again reports the recovery once
+      # (scripts/aradio_run_alert.py). A run cancelled at timeout-minutes is
+      # stuck on the stage it hung in. Empty outputs keep the defaults.
+      - name: Shape the run's Hooker event
+        id: run_alert
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 3
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JOB_STATUS: ${{ job.status }}
+          SINCE: ${{ steps.inbox.outputs.since }}
+          FAILED_SINCE: ${{ steps.history.outputs.failed }}
+          GATE_REASON: ${{ steps.inbox.outputs.reason }}
+          CHECKOUT: ${{ steps.checkout.outcome }}
+          DEPS: ${{ steps.deps.outcome }}
+          INBOX: ${{ steps.inbox.outcome }}
+          EDITOR: ${{ steps.editor.outcome }}
+          VALIDATE: ${{ steps.validate.outcome }}
+          WRITER: ${{ steps.writer.outcome }}
+          REQUIRE_OUTPUT: ${{ steps.require_output.outcome }}
+          DIFF_SCOPE: ${{ steps.diff_scope.outcome }}
+          PUSH: ${{ steps.push.outcome }}
+        run: python3 scripts/aradio_run_alert.py --github-output "$GITHUB_OUTPUT"
+
       - name: Publish Hooker workflow telemetry
         if: always()
         continue-on-error: true
         uses: ./.github/actions/hooker-telemetry
         with:
           status: ${{ job.status }}
-          title: Aradio
-          text: "Gate: ${{ steps.inbox.outputs.reason }}"
-          tags: aradio
+          title: ${{ steps.run_alert.outputs.title || 'Aradio' }}
+          text: "${{ steps.run_alert.outputs.text || format('Gate: {0}', steps.inbox.outputs.reason) }}"
+          priority: ${{ steps.run_alert.outputs.priority }}
+          tags: ${{ steps.run_alert.outputs.tags || 'aradio' }}
+          idempotency-key: ${{ steps.run_alert.outputs.idempotency_key }}
         env:
           HOOKER_URL: ${{ secrets.HOOKER_URL }}
           HOOKER_TOKEN: ${{ secrets.HOOKER_TOKEN }}

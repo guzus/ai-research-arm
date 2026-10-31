@@ -18,11 +18,21 @@ inputs:
 runs:
   using: composite
   steps:
+    # A probe added by a just-merged PR can 404 until Railway deploys it, so
+    # the script gets this probe file's last commit time and re-probes such a
+    # 404 for a bounded time while that commit is fresh. A shallow clone cannot
+    # say when the file changed (its boundary commit appears to add every
+    # file), so it passes nothing and every failure stays immediate.
     - name: Probe production surface
       id: check
       continue-on-error: true
       shell: bash
-      run: python3 scripts/check_production_surface.py --exit-code
+      run: |
+        committed_at=""
+        if [ "$(git rev-parse --is-shallow-repository 2>/dev/null)" = "false" ]; then
+          committed_at="$(git log -1 --format=%cI -- scripts/check_production_surface.py 2>/dev/null || true)"
+        fi
+        python3 scripts/check_production_surface.py --exit-code --probe-code-committed-at "$committed_at"
 
     - name: Alert via hooker
       if: steps.check.outcome == 'failure'

@@ -26,6 +26,14 @@ inputs:
     description: Hooker priority, 1-5. Defaults from status.
     required: false
     default: ""
+  idempotency-key:
+    description: >-
+      Hooker Idempotency-Key; Hooker drops a repeat per topic (keys are kept
+      14 days by default). Defaults to one key per run, job and status; pass a
+      stable key to collapse repeats, e.g. one alert per outage instead of one
+      per failed run.
+    required: false
+    default: ""
 
 runs:
   using: composite
@@ -39,6 +47,7 @@ runs:
         TELEMETRY_TEXT: ${{ inputs.text }}
         TELEMETRY_TAGS: ${{ inputs.tags }}
         TELEMETRY_PRIORITY: ${{ inputs.priority }}
+        TELEMETRY_IDEMPOTENCY_KEY: ${{ inputs.idempotency-key }}
       run: |
         set -euo pipefail
         token="${HOOKER_TOKEN:-${HOOKER_API_KEY:-}}"
@@ -116,7 +125,8 @@ runs:
 
         Path(env("HOOKER_PAYLOAD_PATH")).write_text(json.dumps(body))
         Path(env("HOOKER_IDEMPOTENCY_PATH")).write_text(
-            f"ara-telemetry-{run_id}-{run_attempt}-{job}-{status}"
+            env("TELEMETRY_IDEMPOTENCY_KEY")
+            or f"ara-telemetry-{run_id}-{run_attempt}-{job}-{status}"
         )
         PY
         then

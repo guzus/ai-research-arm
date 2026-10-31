@@ -322,6 +322,37 @@ class GitIntegrationTest(unittest.TestCase):
         self.assertEqual(by_lane["rss"], clf.STALE)
         self.assertEqual(by_lane["twitter"], clf.FRESH)
 
+    def test_digest_audio_pages_when_the_text_lands_without_its_stub(self):
+        # Replays 2026-10-21/22: the 10-21 stub landed at 02:42Z; on 10-22 the
+        # digest published but Gemini returned HTTP 400, so no stub followed.
+        def commit(path, iso_date, message):
+            target = Path(self.repo, path)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text("" if path.endswith(".mp3") else "# Digest\n", encoding="utf-8")
+            self._git("add", "-A")
+            self._git("commit", "-q", "-m", message,
+                      env_extra={"GIT_AUTHOR_DATE": iso_date, "GIT_COMMITTER_DATE": iso_date})
+
+        commit("research/digest/2026-10-21-digest.md", "2026-10-21T00:40:00Z", "Daily digest 2026-10-21")
+        commit("research/audio/2026-10-21-digest.mp3", "2026-10-21T02:42:00Z",
+               "Audio digest 2026-10-21 stub (mp3 lives on S3)")
+        commit("research/digest/2026-10-22-digest.md", "2026-10-22T00:40:00Z", "Daily digest 2026-10-22")
+        lanes = {lane: clf.LANE_THRESHOLDS_HOURS[lane] for lane in ("digest", "digest-audio")}
+
+        def states(iso_now):
+            now_epoch = int(datetime.fromisoformat(iso_now.replace("Z", "+00:00")).timestamp())
+            return {s.lane: s.state for s in clf.evaluate(lanes, now_epoch, self.repo)}
+
+        self.assertEqual({"digest": clf.FRESH, "digest-audio": clf.FRESH},
+                         states("2026-10-22T06:00:00Z"))
+        # The first liveness run after 30 h without a stub pages for audio only.
+        self.assertEqual({"digest": clf.FRESH, "digest-audio": clf.STALE},
+                         states("2026-10-22T12:00:00Z"))
+        commit("research/audio/2026-10-22-digest.mp3", "2026-10-22T13:00:00Z",
+               "Audio digest 2026-10-22 stub (mp3 lives on S3)")
+        self.assertEqual({"digest": clf.FRESH, "digest-audio": clf.FRESH},
+                         states("2026-10-22T18:00:00Z"))
+
     def test_absent_lane_dir_is_missing(self):
         self._commit_lane("rss", "2026-05-28T05:00:00Z")
         now_epoch = int(datetime(2026, 5, 28, 6, 0, tzinfo=timezone.utc).timestamp())

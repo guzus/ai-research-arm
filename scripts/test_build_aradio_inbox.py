@@ -9,11 +9,17 @@ import html
 import http.client
 import io
 import json
+import os
+import re
+import subprocess
+import sys
 import tempfile
 import unittest
 import urllib.error
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from unittest import mock
+
+import yaml
 
 import build_aradio_inbox as bi
 
@@ -1074,6 +1080,465 @@ class EpisodeRevisitTest(FixtureTest):
         self.assertEqual(["ep:dwarkesh:call:meta"],
                          [item["key"] for item in self.repo.items()])
         self.assertTrue(self.repo.items()[0]["priority"])
+
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+
+def earnings_event(accession: str, date: str, file: str = "missing.md") -> dict:
+    # Without a readable event file the item's time is its filing date.
+    return {"file": file, "date": date, "ticker": "TKR", "issuer": "Issuer Inc.",
+            "form": "8-K", "accession": accession, "period": "FY26Q3"}
+
+
+class ExpiredUnairedTest(FixtureTest):
+    """Priority items that leave their window unaired are reported, once (item keys)."""
+
+    def setUp(self):
+        super().setUp()
+        self.repo.earnings([
+            earnings_event("0000000000-26-000001", "2026-10-29",
+                           file="2026-10-29-AMZN-FY26Q3.md"),     # still eligible
+            earnings_event("0000000000-26-000002", "2026-10-27"),  # window closed 10-30 00:00
+            earnings_event("0000000000-26-000003", "2026-10-25"),  # closed 10-28: out of band
+            earnings_event("0000000000-26-000004", "2026-10-27"),  # aired
+        ])
+        self.repo.podcasts([
+            # Published 7 days and 2 h ago: the episode window closed at 06:00.
+            episode("lost%call", published="2026-10-23T06:00:00Z",
+                    first_seen="2026-10-23T07:00:00Z"),
+            episode("notes-aired", published="2026-10-23T06:00:00Z",
+                    first_seen="2026-10-23T07:00:00Z"),
+            episode("routine", priority="P1", published="2026-10-23T06:00:00Z",
+                    first_seen="2026-10-23T07:00:00Z"),
+        ])
+        self.repo.cursor(last_editor_run_at="2026-10-30T08:00:00Z", keys={
+            "earn:0000000000-26-000004": "2026-10-27T10:00:00Z",
+            "ep:dwarkesh:notes-aired:meta": "2026-10-23T08:00:00Z",
+        })
+
+    def test_only_unaired_priority_items_that_just_left_their_window(self):
+        summary = self.repo.build()
+        self.assertEqual(["ep:dwarkesh:lost%call", "earn:0000000000-26-000002"],
+                         [record["key"] for record in summary["expired"]])
+        earnings = summary["expired"][1]
+        self.assertEqual("aradio-expired-earn:0000000000-26-000002",
+                         earnings["idempotency_key"])
+        self.assertEqual(("earnings", 3, "2026-10-27T00:00:00Z"),
+                         (earnings["kind"], earnings["window_days"], earnings["at"]))
+        episode_record = summary["expired"][0]
+        self.assertEqual(7, episode_record["window_days"])
+        self.assertIn("Episode lost%25call", episode_record["log"])  # workflow-command safe
+        self.assertNotIn("\n", episode_record["log"])
+
+    def test_report_is_independent_of_the_gate_and_bounded_to_a_day(self):
+        cursor = json.loads((self.repo.research / "aradio" / "cursor.json").read_text())
+        self.repo.cursor(last_editor_run_at=cursor["last_editor_run_at"], keys={
+            **cursor["keys"], "earn:0000000000-26-000001": "2026-10-29T21:00:00Z"})
+        stop = self.repo.build()
+        self.assertEqual((False, "no new material"), (stop["go"], stop["reason"]))
+        self.assertEqual(2, len(stop["expired"]))
+        forced = self.repo.build(force=True)
+        self.assertTrue(forced["go"])
+        self.assertEqual(stop["expired"], forced["expired"])
+        # A day later the same items are past the report window: never re-listed.
+        later = self.repo.build(now=NOW + bi.EXPIRY_REPORT_WINDOW + dt.timedelta(hours=1))
+        self.assertEqual([], later["expired"])
+        # Before their windows closed they were plain inbox items, not expired.
+        earlier = self.repo.build(now=dt.datetime(2026, 10, 29, 20, 0, tzinfo=dt.timezone.utc))
+        self.assertEqual([], earlier["expired"])
+
+    def test_cli_writes_the_report_and_counts_it(self):
+        gh = Path(self.repo.tmp.name) / "gh.txt"
+        report = Path(self.repo.tmp.name) / "scratch" / "expired.json"
+        with contextlib.redirect_stdout(io.StringIO()) as out:
+            code = bi.main(["--now", "2026-10-30T08:50:00Z", "--repo-root", str(self.repo.root),
+                            "--trusted-dir", str(self.repo.trusted), "--no-transcript-fetch",
+                            "--expired-out", str(report), "--github-output", str(gh)])
+        self.assertEqual(0, code)
+        self.assertIn("expired=2", gh.read_text())
+        records = json.loads(report.read_text(encoding="utf-8"))
+        self.assertEqual(2, len(records))
+        self.assertEqual(2, out.getvalue().count("aradio expired: "))
+        self.assertNotIn("::warning", "".join(line for line in out.getvalue().splitlines()
+                                              if "expired" in line))
+
+    def test_a_failing_report_never_changes_the_gate(self):
+        # The report rides on the gate; an exception in it must leave every
+        # decision and every staged byte as it was, and say why it is missing.
+        gate_fields = ("go", "reason", "eligible", "new", "priority", "revisits", "items",
+                       "kinds", "transcripts", "transcripts_degraded")
+        cursor = json.loads((self.repo.research / "aradio" / "cursor.json").read_text())
+        stop_keys = {**cursor["keys"], "earn:0000000000-26-000001": "2026-10-29T21:00:00Z"}
+        for name, keys, force in (("go", cursor["keys"], False), ("stop", stop_keys, False),
+                                  ("forced", stop_keys, True)):
+            with self.subTest(name):
+                self.repo.cursor(last_editor_run_at=cursor["last_editor_run_at"], keys=keys)
+                healthy = self.repo.build(force=force)
+                staged = (self.repo.out / "inbox.json").read_text() if healthy["go"] else None
+                with mock.patch.object(bi, "expired_unaired", side_effect=RuntimeError("boom")):
+                    broken = self.repo.build(force=force)
+                self.assertEqual({k: healthy[k] for k in gate_fields},
+                                 {k: broken[k] for k in gate_fields})
+                if healthy["go"]:
+                    self.assertEqual(staged, (self.repo.out / "inbox.json").read_text())
+                self.assertTrue(healthy["expired"])
+                self.assertEqual([], broken["expired"])
+                self.assertIn("expired-item report skipped (RuntimeError: boom)",
+                              broken["warnings"])
+        gh = Path(self.repo.tmp.name) / "gh.txt"
+        with mock.patch.object(bi, "expired_unaired", side_effect=RuntimeError("boom")), \
+                contextlib.redirect_stdout(io.StringIO()) as out:
+            code = bi.main(["--now", "2026-10-30T08:50:00Z", "--repo-root", str(self.repo.root),
+                            "--trusted-dir", str(self.repo.trusted), "--no-transcript-fetch",
+                            "--github-output", str(gh)])
+        self.assertEqual(0, code)
+        self.assertIn("expired=0", gh.read_text())
+        self.assertIn("::warning::aradio inbox: expired-item report skipped", out.getvalue())
+
+
+FAKE_CURL = """#!{python}
+import json, os, sys
+with open(os.environ["FAKE_CURL_LOG"], "a", encoding="utf-8") as handle:
+    handle.write(json.dumps(sys.argv[1:]) + "\\n")
+sys.stdout.write(os.environ.get("FAKE_CURL_RESPONSE", ""))
+sys.exit(int(os.environ.get("FAKE_CURL_EXIT", "0")))
+"""
+
+
+class ExpiredAlertStepTest(unittest.TestCase):
+    """Runs aradio.yml's report step with a fake curl."""
+
+    RECORD = {"key": "earn:0000000000-26-000002", "kind": "earnings",
+              "source": "Issuer <Inc.> & Co", "title": "Q3 <b>beat</b>",
+              "at": "2026-10-27T00:00:00Z", "url": None, "window_days": 3,
+              "idempotency_key": "aradio-expired-earn:0000000000-26-000002",
+              "log": "earnings earn:0000000000-26-000002 (Issuer: Q3), left its 3-day window unaired"}
+
+    def run_step(self, *, hooker: bool = True, response: str = '{"ok":true,"idempotency_hit":false}',
+                 curl_exit: int = 0, records: list | bool | None = None
+                 ) -> tuple[str, list[list[str]]]:
+        """records=None posts RECORD; False writes no report file at all."""
+        workflow = yaml.safe_load((REPO_ROOT / ".github/workflows/aradio.yml")
+                                  .read_text(encoding="utf-8"))
+        step = next(step for step in workflow["jobs"]["aradio"]["steps"]
+                    if step.get("name") == "Report priority items that expired unaired")
+        self.assertTrue(step.get("continue-on-error"))
+        # The gate writes the report on stops and goes alike; the file decides.
+        self.assertEqual("always() && steps.stamp.outputs.scratch != ''", step["if"])
+        # On a go it runs just before the editor: bounded per POST and per step.
+        self.assertEqual(5, step["timeout-minutes"])
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            bin_dir = tmp_path / "bin"
+            bin_dir.mkdir()
+            curl = bin_dir / "curl"
+            curl.write_text(FAKE_CURL.format(python=sys.executable), encoding="utf-8")
+            curl.chmod(0o755)
+            report = tmp_path / "expired.json"
+            if records is not False:
+                report.write_text(json.dumps([self.RECORD] if records is None else records),
+                                  encoding="utf-8")
+            env = {"PATH": f"{bin_dir}{os.pathsep}{os.environ['PATH']}",
+                   "FAKE_CURL_LOG": str(tmp_path / "curl.log"),
+                   "FAKE_CURL_RESPONSE": response, "FAKE_CURL_EXIT": str(curl_exit),
+                   "REPORT": str(report), "GITHUB_SERVER_URL": "https://github.com",
+                   "GITHUB_REPOSITORY": "o/r", "GITHUB_RUN_ID": "7",
+                   "HOOKER_URL": "https://hooker.test/" if hooker else "",
+                   "HOOKER_TOKEN": "t" if hooker else ""}
+            result = subprocess.run(["bash", "-c", step["run"]], env=env, text=True,
+                                    capture_output=True, check=False)
+            self.assertEqual(0, result.returncode, result.stderr)
+            log = tmp_path / "curl.log"
+            calls = ([json.loads(line) for line in log.read_text(encoding="utf-8").splitlines()]
+                     if log.exists() else [])
+        return result.stdout, calls
+
+    def test_first_post_is_annotated_and_keyed_on_the_item(self):
+        stdout, calls = self.run_step()
+        self.assertEqual(1, len(calls))
+        args = calls[0]
+        self.assertIn("https://hooker.test/publish/ara-telemetry", args)
+        self.assertIn("Idempotency-Key: aradio-expired-earn:0000000000-26-000002", args)
+        self.assertEqual("30", args[args.index("--max-time") + 1])
+        # A retried POST would be an idempotency hit that delivered nothing.
+        self.assertFalse(any(arg.startswith("--retry") for arg in args))
+        body = json.loads(args[args.index("--data-binary") + 1])
+        self.assertEqual(4, body["priority"])
+        self.assertIn("expired", body["tags"])
+        # Escaped once here and sent raw, so Hooker neither escapes it again
+        # nor promotes the title's own <b> to markup.
+        self.assertIs(True, body["raw_text"])
+        self.assertTrue(body["text"].startswith("❓ <b>Aradio never aired a priority item</b>\n"))
+        self.assertIn("Issuer &lt;Inc.&gt; &amp; Co", body["text"])
+        self.assertIn("Q3 &lt;b&gt;beat&lt;/b&gt;", body["text"])
+        self.assertNotIn("&amp;lt;", body["text"])
+        self.assertNotIn("log", body["payload"]["item"])
+        self.assertEqual("https://github.com/o/r/actions/runs/7", body["payload"]["run_url"])
+        self.assertIn("::warning title=Aradio never aired a priority item::earnings", stdout)
+
+    def test_repeat_posts_are_quiet(self):
+        stdout, calls = self.run_step(response='{"ok":true,"idempotency_hit":true}')
+        self.assertEqual(1, len(calls))
+        self.assertNotIn("::warning", stdout)
+        self.assertIn("Already reported: earnings", stdout)
+
+    def test_no_report_or_an_empty_one_posts_nothing(self):
+        for records in (False, []):
+            with self.subTest(records=records):
+                stdout, calls = self.run_step(records=records)
+                self.assertEqual([], calls)
+                self.assertEqual("", stdout)
+
+    def test_without_hooker_every_run_annotates(self):
+        for kwargs, marker in ((dict(hooker=False), "(Hooker is not configured)"),
+                               (dict(curl_exit=22, response="oops"), "(Hooker publish failed)")):
+            with self.subTest(marker):
+                stdout, _ = self.run_step(**kwargs)
+                self.assertIn("::warning title=Aradio never aired a priority item::", stdout)
+                self.assertIn(marker, stdout)
+
+
+class BackoffTest(FixtureTest):
+    """While stuck, the editor is retried on a doubling backoff, not on every trigger."""
+
+    STUCK_SINCE = "2026-10-30T04:00:00Z"  # 290 min before NOW: routine material is due
+
+    def setUp(self):
+        super().setUp()
+        self.repo.twitter("2026-10-30", {"00:00": story(1, "A", ["https://x.com/a/status/1"])})
+        self.repo.cursor(last_editor_run_at=self.STUCK_SINCE)
+
+    def attempts(self, failed: int, minutes_ago: int, since: str = STUCK_SINCE) -> dict:
+        # aradio_run_alert.history()'s record: every failed run since the
+        # bulletin, and those whose editor step ran.
+        return {"since": since, "failed": failed + 2, "editor_failures": failed,
+                "last_editor_failure_at": bi.iso_z(NOW - dt.timedelta(minutes=minutes_ago)),
+                "forced_run": None}
+
+    def test_each_failure_doubles_the_wait_up_to_four_hours(self):
+        self.assertTrue(self.repo.build()["go"])  # due, and nothing has failed
+        for failed, wait in ((1, 30), (2, 60), (3, 120), (4, 240), (9, 240), (500, 240)):
+            with self.subTest(failed=failed):
+                early = self.repo.build(attempts=self.attempts(failed, wait - 1))
+                self.assertFalse(early["go"])
+                self.assertIn(f"backing off after {failed} failed editor run(s)",
+                              early["reason"])
+                self.assertTrue(self.repo.build(attempts=self.attempts(failed, wait))["go"])
+
+    def test_failures_that_spent_no_editor_time_do_not_hold_it_back(self):
+        # Setup and gate failures (a flaky checkout, an unreadable lane) are
+        # in `failed` for the recovery alert, but only editor runs back off.
+        summary = self.repo.build(attempts=self.attempts(0, 1))
+        self.assertEqual(2, self.attempts(0, 1)["failed"])
+        self.assertEqual((True, "290 min since the last editor run"),
+                         (summary["go"], summary["reason"]))
+        # Nor do they delay priority material on a station whose editor works.
+        self.repo.podcasts([episode("p")])
+        summary = self.repo.build(attempts=self.attempts(0, 1))
+        self.assertEqual((True, "1 new priority item(s)"), (summary["go"], summary["reason"]))
+
+    def test_priority_material_waits_at_most_two_hours(self):
+        self.repo.podcasts([episode("p")])  # a P0 long-form episode with a transcript
+        self.assertFalse(self.repo.build(attempts=self.attempts(4, 119))["go"])
+        summary = self.repo.build(attempts=self.attempts(4, 120))
+        self.assertEqual((True, "1 new priority item(s)"), (summary["go"], summary["reason"]))
+
+    def test_force_and_an_empty_inbox_come_before_the_backoff(self):
+        self.assertTrue(self.repo.build(force=True, attempts=self.attempts(3, 1))["go"])
+        self.repo.cursor(last_editor_run_at=self.STUCK_SINCE, keys={
+            bi.twitter_key("https://x.com/a/status/1", "A"): "2026-10-30T01:00:00Z"})
+        self.assertEqual("no new material",
+                         self.repo.build(attempts=self.attempts(3, 1))["reason"])
+
+    def test_a_publication_resets_it(self):
+        # A record for an older cursor stamp describes a finished outage.
+        summary = self.repo.build(attempts=self.attempts(3, 1, since="2026-10-29T04:00:00Z"))
+        self.assertTrue(summary["go"])
+        self.assertTrue(any("no backoff this run" in w for w in summary["warnings"]))
+
+    def test_cli_reads_the_record_and_runs_without_one(self):
+        record = Path(self.repo.tmp.name) / "attempts.json"
+        record.write_text(json.dumps(self.attempts(2, 10)), encoding="utf-8")
+        gh = Path(self.repo.tmp.name) / "gh.txt"
+        args = ["--now", "2026-10-30T08:50:00Z", "--repo-root", str(self.repo.root),
+                "--trusted-dir", str(self.repo.trusted), "--no-transcript-fetch",
+                "--github-output", str(gh), "--attempts"]
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(0, bi.main(args + [str(record)]))
+        self.assertIn("go=false", gh.read_text())
+        gh.write_text("")
+        with contextlib.redirect_stdout(io.StringIO()) as out:
+            self.assertEqual(0, bi.main(args + [str(record.with_name("missing.json"))]))
+        self.assertIn("go=true", gh.read_text())
+        self.assertIn("no attempts record", out.getvalue())
+
+    def test_a_day_long_outage_costs_a_handful_of_editor_runs(self):
+        # Triggers every 20 min for 24 h (more than the cron plus all four
+        # lanes); every editor attempt fails two minutes after it starts.
+        def attempts_in_a_day(priority: bool, backoff: bool) -> int:
+            item = bi.Candidate(key="k", kind="earnings" if priority else "twitter",
+                                priority=priority, source="s", title="t", url=None,
+                                at=NOW, text="", links=[])
+            record, tries = bi.Attempts(), 0
+            for step in range(72):
+                now = NOW + dt.timedelta(minutes=20 * step)
+                go, _ = bi.decide([item], {"last_editor_run_at": self.STUCK_SINCE}, now, False,
+                                  record if backoff else bi.Attempts())
+                if go:
+                    tries += 1
+                    record = bi.Attempts(record.failed + 1, now + dt.timedelta(minutes=2))
+            return tries
+
+        self.assertEqual(72, attempts_in_a_day(priority=False, backoff=False))
+        self.assertEqual(8, attempts_in_a_day(priority=False, backoff=True))
+        self.assertEqual(12, attempts_in_a_day(priority=True, backoff=True))
+
+    def test_workflow_reads_the_history_before_the_gate(self):
+        workflow = yaml.safe_load((REPO_ROOT / ".github/workflows/aradio.yml")
+                                  .read_text(encoding="utf-8"))
+        steps = workflow["jobs"]["aradio"]["steps"]
+        names = [step.get("name") for step in steps]
+        history = steps[names.index("Read failed runs since the last bulletin")]
+        self.assertEqual("history", history["id"])
+        self.assertTrue(history.get("continue-on-error"))
+        self.assertIn("--history", history["run"])
+        self.assertIn('--attempts-out "$SCRATCH/attempts.json"', history["run"])
+        self.assertLess(names.index("Stamp the run (UTC)"), names.index(history["name"]))
+        gate = steps[names.index("Build inbox and apply the gate")]
+        self.assertLess(names.index(history["name"]), names.index(gate["name"]))
+        self.assertIn('--attempts "$SCRATCH/attempts.json"', gate["run"])
+
+
+class OutageStampTest(FixtureTest):
+    """The gate outputs the cursor's last publication: aradio_run_alert.py keys outages on it."""
+
+    def test_main_reports_the_last_publication_stamp(self):
+        gh = Path(self.repo.tmp.name) / "gh.txt"
+        args = ["--now", "2026-10-30T08:50:00Z", "--repo-root", str(self.repo.root),
+                "--trusted-dir", str(self.repo.trusted), "--no-transcript-fetch",
+                "--github-output", str(gh)]
+        with contextlib.redirect_stdout(io.StringIO()):
+            bi.main(args)
+        self.assertIn("since=never", gh.read_text())  # before the first editor run
+        self.repo.cursor(last_editor_run_at="2026-10-30T17:53:00+09:00")
+        with contextlib.redirect_stdout(io.StringIO()):
+            bi.main(args)
+        self.assertIn("since=2026-10-30T08:53:00Z", gh.read_text())
+
+
+# Audit hooks cannot be removed, so one process-wide hook records file access
+# only while a test has armed it.
+_AUDIT: dict = {"root": None, "seen": None}
+
+
+def _audit_hook(event: str, args: tuple) -> None:
+    if _AUDIT["root"] is None or event not in ("open", "os.scandir", "os.listdir"):
+        return
+    target = args[0] if args else None
+    if target is None or isinstance(target, int):
+        return
+    try:
+        path = Path(os.fsdecode(target)).resolve()
+    except (TypeError, ValueError, OSError):
+        return
+    root = _AUDIT["root"]
+    if path == root or root in path.parents:
+        _AUDIT["seen"].add(path.relative_to(root).as_posix())
+
+
+sys.addaudithook(_audit_hook)
+
+
+def gate_reads(repo_root: Path, now: dt.datetime) -> set[str]:
+    """Every path under repo_root that one gate run opens (staging goes elsewhere)."""
+    with tempfile.TemporaryDirectory() as staging:
+        _AUDIT["root"], _AUDIT["seen"] = repo_root.resolve(), set()
+        try:
+            bi.build(repo_root=repo_root, now=now, out_dir=Path(staging) / "out",
+                     trusted_dir=Path(staging) / "trusted", fetch=False,
+                     select_loader=lambda: None)
+            return set(_AUDIT["seen"])
+        finally:
+            _AUDIT["root"], _AUDIT["seen"] = None, None
+
+
+class TriggerTest(FixtureTest):
+    """Aradio wakes when a lane it reads finishes (workflow_run), not only on cron."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.workflow = yaml.safe_load((REPO_ROOT / ".github/workflows/aradio.yml")
+                                      .read_text(encoding="utf-8"))
+        cls.names = {}
+        for path in sorted((REPO_ROOT / ".github/workflows").glob("*.yml")):
+            doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+            if isinstance(doc, dict) and isinstance(doc.get("name"), str):
+                cls.names[doc["name"]] = f".github/workflows/{path.name}"
+
+    def triggers(self) -> set[str]:
+        return {self.names[name] for name in self.workflow[True]["workflow_run"]["workflows"]}
+
+    @staticmethod
+    def producers_of(paths: set[str]) -> set[str]:
+        """Registry producers of the lanes behind these paths (Aradio's own excluded)."""
+        import artifact_slos
+
+        def covers(glob: str, path: str) -> bool:
+            pure, pattern = PurePosixPath(path), PurePosixPath(glob)
+            return len(pure.parts) == len(pattern.parts) and pure.match(glob)
+
+        return {entry["producer"] for entry in artifact_slos.load_registry()
+                if entry["id"] != "aradio"
+                and any(covers(glob, path) for glob in entry["artifacts"] for path in paths)}
+
+    def test_every_trigger_name_matches_a_workflow(self):
+        # workflow_run matches `name:` strings, so a rename drops a trigger silently.
+        names = self.workflow[True]["workflow_run"]["workflows"]
+        self.assertEqual([], [name for name in names if name not in self.names])
+
+    def test_triggers_are_exactly_the_producers_of_what_the_gate_reads(self):
+        self.repo.podcasts([episode("long")], registry=[{"id": "dwarkesh"}])
+        self.repo.earnings([{"file": "2026-10-29-AMZN-FY26Q3.md", "date": "2026-10-29",
+                             "ticker": "AMZN", "issuer": "Amazon.com, Inc.", "form": "8-K",
+                             "accession": "0001018724-26-000038"}])
+        self.repo.twitter("2026-10-30", {"06:00": story(1, "T", ["https://x.com/t/status/3"])})
+        self.repo.ticket("fresh-ticket", "2026-10-29", entries=3)
+        read = self.producers_of(gate_reads(self.repo.root, NOW))
+        self.assertEqual({".github/workflows/podcasts.yml", ".github/workflows/daily-earnings.yml",
+                          ".github/workflows/hourly-twitter.yml",
+                          ".github/workflows/24h-model-timeline.yml"}, read)
+        self.assertEqual(read, self.triggers())
+
+    def test_this_repositorys_lane_data_reads_only_trigger_lanes(self):
+        days = sorted(path.stem for path in (REPO_ROOT / "research" / "twitter").glob("*.md")
+                      if re.fullmatch(r"\d{4}-\d{2}-\d{2}", path.stem))
+        if not days:
+            self.skipTest("no committed Twitter lane files in this checkout")
+        now = dt.datetime.fromisoformat(days[-1]).replace(hour=12, tzinfo=dt.timezone.utc)
+        read = self.producers_of(gate_reads(REPO_ROOT, now))
+        self.assertIn(".github/workflows/podcasts.yml", read)
+        self.assertLessEqual(read, self.triggers())
+
+    def test_cron_and_dispatch_stay_and_only_main_completions_count(self):
+        on = self.workflow[True]
+        self.assertEqual(["completed"], on["workflow_run"]["types"])
+        self.assertEqual(["main"], on["workflow_run"]["branches"])
+        self.assertEqual([{"cron": "50 * * * *"}], on["schedule"])
+        self.assertEqual("boolean", on["workflow_dispatch"]["inputs"]["force"]["type"])
+
+    def test_any_lane_conclusion_wakes_the_job_and_skips_never_displace_runs(self):
+        # Twitter can push stories and then fail its alert steps, so a failed
+        # lane run still wakes the station; only a fork's run never does.
+        condition = ("github.event_name != 'workflow_run' || "
+                     "github.event.workflow_run.head_repository.full_name == github.repository")
+        self.assertNotIn("conclusion", condition)
+        job = self.workflow["jobs"]["aradio"]
+        self.assertEqual(f"${{{{ {condition} }}}}", job["if"])
+        group = self.workflow["concurrency"]["group"]
+        self.assertEqual(f"${{{{ ({condition}) && 'aradio' || "
+                         "format('aradio-skipped-{0}', github.run_id) }}", group)
+        self.assertIs(False, self.workflow["concurrency"]["cancel-in-progress"])
 
 
 class ParserTest(unittest.TestCase):

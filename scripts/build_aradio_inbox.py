@@ -22,8 +22,12 @@ An episode consumed from show notes (`:meta`) is offered once more when its
 transcript lands; one consumed with a transcript is never re-offered.
 
 Gate (stop = no model, no TTS, nothing committed, exit 0):
-  force -> go; no new items -> stop; any priority item -> go;
+  force -> go; no new items -> stop; backing off after failed editor runs -> stop;
+  any priority item -> go;
   >= 110 min since cursor.last_editor_run_at (or never ran) -> go; else stop.
+Every run, stop or go, also reports the priority items that left their
+window unaired in the last 24 h (--expired-out); the workflow posts each to
+Hooker once.
 
 board.json is the editor's VIEW of research/aradio/state.json (unresolved
 threads and threads resolved in the last 48 h, each with its last 3 history
@@ -112,6 +116,15 @@ ITEM_LINKS_MAX = 8
 MAX_EXCERPTS = 6
 
 GATE_MIN_INTERVAL = dt.timedelta(minutes=110)
+# While the station is stuck, the cursor (and so the 110 min rule's anchor)
+# never moves, so every trigger would retry the editor. Each failed editor run
+# since the last bulletin doubles the wait from the newest one instead: 30 min,
+# 1 h, 2 h, then 4 h, or at most 2 h while priority material waits. A setup or
+# gate failure spent no editor time and does not count. A publication resets
+# it, and force bypasses it.
+BACKOFF_BASE = dt.timedelta(minutes=30)
+BACKOFF_CAP = dt.timedelta(hours=4)
+PRIORITY_BACKOFF_CAP = dt.timedelta(hours=2)
 EPISODE_TRANSCRIPT_GRACE = dt.timedelta(hours=6)
 # Additive to the contract's eligibility table. Without it the first run (and
 # any newly registered show) would offer weeks of back catalogue as "new"
@@ -121,6 +134,9 @@ EPISODE_MAX_AGE = dt.timedelta(days=7)
 EARNINGS_WINDOW = dt.timedelta(days=3)
 TWITTER_WINDOW = dt.timedelta(hours=26)
 TICKET_WINDOW_DAYS = 2
+# How far back each run looks for priority items that left their window
+# unaired (expired_unaired). A day survives skipped hourly runs.
+EXPIRY_REPORT_WINDOW = dt.timedelta(hours=24)
 FUTURE_SLACK = dt.timedelta(minutes=10)
 
 REVISIT_NOTE = "transcript now available; previously offered from show notes only"
@@ -794,9 +810,16 @@ def collect_tickets(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Can
     return found
 
 
-def collect_all(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Candidate]:
+COLLECTORS = (collect_podcasts, collect_earnings, collect_twitter, collect_tickets)
+# The only collectors that can mark an item priority (earnings filings and
+# calls, long-form P0 episodes); Twitter stories and tickets never are.
+PRIORITY_COLLECTORS = (collect_podcasts, collect_earnings)
+
+
+def collect_all(repo_root: Path, now: dt.datetime, notes: Notes,
+                collectors: tuple = COLLECTORS) -> list[Candidate]:
     candidates: list[Candidate] = []
-    for collector in (collect_podcasts, collect_earnings, collect_twitter, collect_tickets):
+    for collector in collectors:
         candidates.extend(collector(repo_root, now, notes))
     unique: dict[str, Candidate] = {}
     for candidate in candidates:
@@ -812,17 +835,97 @@ def collect_all(repo_root: Path, now: dt.datetime, notes: Notes) -> list[Candida
     return list(unique.values())
 
 
+def expired_unaired(repo_root: Path, now: dt.datetime, consumed: dict,
+                    eligible_now: set[str]) -> list[Candidate]:
+    """Priority items that left their window in the last EXPIRY_REPORT_WINDOW unaired.
+
+    An item eligible at `now - EXPIRY_REPORT_WINDOW` but not now, whose key
+    the cursor never recorded, was never consumed by a published editor run:
+    every run in its window failed, or none ran. Re-running the collectors at
+    the earlier stamp reuses their exact windows, so this cannot drift from
+    the gate. An episode consumed from its show notes counts as aired. The
+    bounded window is what keeps the report to once per item: Hooker drops
+    the repeats by key, and after a day the item is never listed again.
+    """
+    then = now - EXPIRY_REPORT_WINDOW
+    expired = []
+    for candidate in collect_all(repo_root, then, Notes(), PRIORITY_COLLECTORS):
+        if not candidate.priority or candidate.key in eligible_now:
+            continue
+        if candidate.consumed(consumed) or candidate.supersedes in consumed:
+            continue
+        expired.append(candidate)
+    return sorted(expired, key=lambda c: (c.at, c.key))
+
+
+def expiry_report(expired: list[Candidate]) -> list[dict]:
+    """The run's report: one record per expired item, keyed for Hooker."""
+    records = []
+    for candidate in expired:
+        window = EARNINGS_WINDOW if candidate.kind == "earnings" else EPISODE_MAX_AGE
+        key = candidate.key if len(candidate.key) <= 160 else (
+            "sha256:" + hashlib.sha256(candidate.key.encode("utf-8")).hexdigest()[:32])
+        records.append({
+            "key": candidate.key,
+            "kind": candidate.kind,
+            "source": candidate.source,
+            "title": candidate.title,
+            "at": iso_z(candidate.at),
+            "url": contract.safe_url(candidate.url),
+            "window_days": window.days,
+            "idempotency_key": f"aradio-expired-{key}",
+            # Third-party text, escaped for one workflow-command line.
+            "log": contract.gh_escape(
+                f"{candidate.kind} {candidate.key} ({candidate.source}: {candidate.title}), "
+                f"at {iso_z(candidate.at)}, left its {window.days}-day window unaired"),
+        })
+    return records
+
+
 # ---------------------------------------------------------------------------
 # Gate
 # ---------------------------------------------------------------------------
 
-def decide(new: list[Candidate], cursor: dict, now: dt.datetime, force: bool
-           ) -> tuple[bool, str]:
+@dataclass(frozen=True)
+class Attempts:
+    """Failed editor runs since the last bulletin, from the run history (aradio_run_alert.py)."""
+    failed: int = 0
+    last_failed_at: dt.datetime | None = None
+
+
+def load_attempts(raw: Any, since: str, notes: Notes) -> Attempts:
+    """The history step's record, if it describes this cursor; else none."""
+    if not isinstance(raw, dict):
+        return Attempts()
+    if raw.get("since") != since:
+        notes.warn(f"attempts record is for since={raw.get('since')!r}, not {since!r}; "
+                   "no backoff this run")
+        return Attempts()
+    failed, last = raw.get("editor_failures"), parse_ts(raw.get("last_editor_failure_at"))
+    if not isinstance(failed, int) or isinstance(failed, bool) or failed < 0:
+        return Attempts()
+    return Attempts(failed, last)
+
+
+def retry_at(attempts: Attempts, priority: bool) -> dt.datetime | None:
+    """When the editor may be tried again after `attempts.failed` failures."""
+    if attempts.failed <= 0 or attempts.last_failed_at is None:
+        return None
+    cap = PRIORITY_BACKOFF_CAP if priority else BACKOFF_CAP
+    return attempts.last_failed_at + min(BACKOFF_BASE * 2 ** min(attempts.failed - 1, 16), cap)
+
+
+def decide(new: list[Candidate], cursor: dict, now: dt.datetime, force: bool,
+           attempts: Attempts = Attempts()) -> tuple[bool, str]:
     if force:
         return True, "forced by workflow_dispatch"
     if not new:
         return False, "no new material"
     priority = sum(1 for candidate in new if candidate.priority)
+    wait = retry_at(attempts, bool(priority))
+    if wait is not None and now < wait:
+        return False, (f"backing off after {attempts.failed} failed editor run(s) since the "
+                       f"last bulletin; next try from {iso_z(wait)}")
     if priority:
         return True, f"{priority} new priority item(s)"
     last = parse_ts(cursor.get("last_editor_run_at"))
@@ -1359,14 +1462,18 @@ def total_bytes(files: dict[str, str]) -> int:
 
 
 def build(*, repo_root: Path, now: dt.datetime, out_dir: Path, trusted_dir: Path,
-          force: bool = False, fetch: bool = True,
+          force: bool = False, fetch: bool = True, attempts: Any = None,
           tuber_api_base: str = DEFAULT_TUBER_API_BASE,
           fetch_fn: Callable[[str, str], list[dict]] = fetch_transcript,
           select_fn: Callable[..., list[dict]] | None = None,
           select_loader: Callable[[], Callable[..., list[dict]] | None] = load_select_windows,
           sleep_fn: Callable[[float], None] = time.sleep,
           clock: Callable[[], float] = time.monotonic) -> dict:
-    """Run the gate and, when it says go, stage the inbox. Returns a summary."""
+    """Run the gate and, when it says go, stage the inbox. Returns a summary.
+
+    attempts is the history step's record of failed editor runs since the
+    last bulletin (backoff); it applies only when it names this cursor's stamp.
+    """
     aradio = repo_root / "research" / "aradio"
     try:
         cursor_raw = (json.loads((aradio / "cursor.json").read_text(encoding="utf-8"))
@@ -1381,17 +1488,27 @@ def build(*, repo_root: Path, now: dt.datetime, out_dir: Path, trusted_dir: Path
     consumed = cursor_raw.get("keys", {})
 
     notes = Notes()
+    last_run = parse_ts(cursor_raw.get("last_editor_run_at"))
+    since = iso_z(last_run) if last_run else "never"
     candidates = collect_all(repo_root, now, notes)
     new = [c for c in candidates if not c.consumed(consumed)]
     for candidate in new:
         if candidate.supersedes is not None and candidate.supersedes in consumed:
             candidate.note = REVISIT_NOTE
-    go, reason = decide(new, cursor_raw, now, force)
+    go, reason = decide(new, cursor_raw, now, force, load_attempts(attempts, since, notes))
+    try:
+        expired = expired_unaired(repo_root, now, consumed, {c.key for c in candidates})
+    except Exception as exc:  # a report: it must never break the gate it rides on
+        notes.warn(f"expired-item report skipped ({type(exc).__name__}: {exc})")
+        expired = []
     summary: dict[str, Any] = {
         "go": go, "reason": reason, "eligible": len(candidates), "new": len(new),
         "priority": sum(1 for c in new if c.priority),
         "revisits": sum(1 for c in new if c.note == REVISIT_NOTE), "items": 0, "kinds": {},
         "transcripts": 0, "transcripts_degraded": False, "warnings": notes.warnings,
+        "expired": expiry_report(expired),
+        # Moves only on publication: aradio_run_alert.py keys an outage on it.
+        "since": since,
     }
     if not go:
         return summary
@@ -1489,6 +1606,11 @@ def main(argv: list[str] | None = None) -> int:
                         default=os.environ.get("TUBER_API_BASE") or DEFAULT_TUBER_API_BASE)
     parser.add_argument("--no-transcript-fetch", action="store_true",
                         help="never call tuber; use committed excerpts")
+    parser.add_argument("--attempts", type=Path, default=None,
+                        help="failed editor runs since the last bulletin "
+                             "(aradio_run_alert.py --history)")
+    parser.add_argument("--expired-out", type=Path, default=None,
+                        help="write the expired-unaired priority report (JSON list) here")
     parser.add_argument("--github-output", default=None)
     args = parser.parse_args(argv)
 
@@ -1502,10 +1624,18 @@ def main(argv: list[str] | None = None) -> int:
     repo_root = args.repo_root.resolve()
     out_dir = args.out_dir or (repo_root / ".agent-input" / "aradio")
 
+    attempts = None
+    if args.attempts is not None:
+        try:
+            attempts = json.loads(args.attempts.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as exc:
+            # The history step could not read the runs: no backoff, never a stuck gate.
+            print(f"::warning::aradio inbox: no attempts record ({type(exc).__name__}); "
+                  "no backoff this run")
     try:
         summary = build(repo_root=repo_root, now=now, out_dir=out_dir,
                         trusted_dir=args.trusted_dir, force=_truthy(args.force),
-                        fetch=not args.no_transcript_fetch,
+                        fetch=not args.no_transcript_fetch, attempts=attempts,
                         tuber_api_base=args.tuber_api_base)
     except InboxError as exc:
         print(f"::error::aradio inbox: {contract.gh_escape(exc)}")
@@ -1524,12 +1654,20 @@ def main(argv: list[str] | None = None) -> int:
               f"board view {summary['board_bytes']} bytes (cap {MAX_BOARD_BYTES}), "
               f"{summary['board_threads']} thread(s) in full, "
               f"{summary['board_other_threads']} by slug")
+    # Plain lines: the workflow annotates each item once, when Hooker first
+    # accepts it, rather than on every run of the day it stays listed.
+    for record in summary["expired"]:
+        print(f"aradio expired: {record['log']}")
+    if args.expired_out is not None:
+        contract.atomic_write_text(args.expired_out, contract.dump_json(summary["expired"]))
     contract.write_github_output(args.github_output, {
         "go": "true" if summary["go"] else "false",
         "reason": contract.clean_text(summary["reason"]),
         "items": str(summary["items"]),
         "priority": str(summary["priority"]),
         "transcripts_degraded": "true" if summary["transcripts_degraded"] else "false",
+        "expired": str(len(summary["expired"])),
+        "since": summary["since"],
     })
     return EXIT_OK
 

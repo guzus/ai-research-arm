@@ -14,11 +14,20 @@ jobs:
     # This is intentionally GitHub-hosted and runs only trusted default-branch
     # code. It must remain independent of the self-hosted runner it observes.
     runs-on: ubuntu-latest
+    # The deploy-race retry can wait up to 15 min for a just-merged route.
+    timeout-minutes: 30
     permissions:
       contents: read
     steps:
       - name: Checkout trusted default branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          # Real history, so the probe step can read when the probe file last
+          # changed; a depth-1 clone makes it look as new as HEAD on every
+          # run. Blobless: commits and trees only (~14 MB), with the checked-
+          # out files' blobs fetched on demand.
+          fetch-depth: 0
+          filter: blob:none
       - name: Probe routes, headers, discovery files, and user-agent policy
         uses: ./.github/actions/production-surface-alert
         with:

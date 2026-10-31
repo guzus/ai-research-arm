@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
 
+import contextlib
+import io
 import json
+import os
 import unittest
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
+from unittest import mock
+
+import yaml
 
 import check_production_surface as cps
+
+ROOT = Path(__file__).resolve().parent.parent
 
 
 class ResponseEvaluationTest(unittest.TestCase):
@@ -124,6 +134,156 @@ class EvaluateTest(unittest.TestCase):
         self.assertTrue({"malformed-today-404", "missing-asset-404"} <= names)
         self.assertTrue({"evidence-search-contract", "public-claims-contract"} <= names)
         self.assertTrue({"ua-googlebot", "ua-perplexity", "ua-claudebot-policy", "ua-gptbot-policy", "ua-ccbot-policy"} <= names)
+
+
+NOW = datetime(2026, 10, 31, 4, 17, tzinfo=timezone.utc)
+ROUTE = cps.Probe("aradio", "/aradio", content_type_prefix="text/html", body_contains="<title>Aradio")
+NOT_DEPLOYED = cps.Response(404, {"content-type": "text/html"}, "Not Found")
+DEPLOYED = cps.Response(200, {"content-type": "text/html"}, "<title>Aradio</title>")
+BROKEN = cps.Response(500, {"content-type": "text/html"}, "boom")
+HOME_OK = cps.Response(
+    200,
+    {"content-type": "text/html", "x-content-type-options": "nosniff",
+     "cache-control": "public, max-age=0, must-revalidate"},
+    "<title>ARA</title>",
+)
+
+
+class DeployRaceTest(unittest.TestCase):
+    """A just-merged probe may run before Railway deploys its route."""
+
+    def setUp(self):
+        self.clock = 0.0
+        self.sleeps = []
+
+    def sleep(self, seconds):
+        self.sleeps.append(seconds)
+        self.clock += seconds
+
+    def settle(self, answers, committed_at, probe=ROUTE, eligible=None, home=HOME_OK):
+        """Initial pass plus settle for `probe` beside the home-page canary.
+
+        `answers` are served to `probe` in order, the last one repeating.
+        """
+        queue = list(answers)
+
+        def fetch(target, base_url, timeout):
+            if target == cps.HOME_PROBE:
+                return home
+            answer = queue.pop(0) if len(queue) > 1 else queue[0]
+            if isinstance(answer, Exception):
+                raise answer
+            return answer
+
+        probes = [cps.HOME_PROBE, probe]
+        results = cps.evaluate(probes, "https://example.test", fetch_fn=fetch)
+        self.assertEqual(home is not HOME_OK, results[0].failed)
+        with contextlib.redirect_stderr(io.StringIO()):
+            return cps.settle_deploy_race(
+                probes, results, "https://example.test", 1.0, committed_at, NOW,
+                eligible=[probe] if eligible is None else eligible,
+                fetch_fn=fetch, sleep_fn=self.sleep, clock=lambda: self.clock,
+            )[1]
+
+    def test_new_route_passes_once_the_deploy_lands(self):
+        result = self.settle([NOT_DEPLOYED, NOT_DEPLOYED, NOT_DEPLOYED, DEPLOYED],
+                             NOW - timedelta(minutes=10))
+        self.assertFalse(result.failed)
+        self.assertEqual([60.0, 60.0, 60.0], self.sleeps)
+        self.assertIn("after 180s of deploy-race retry", result.detail)
+
+    def test_persistent_404_fails_after_a_bounded_wait(self):
+        result = self.settle([NOT_DEPLOYED], NOW - timedelta(minutes=5))
+        self.assertTrue(result.failed)
+        self.assertEqual(404, result.status)
+        self.assertEqual(15, len(self.sleeps))
+        self.assertLessEqual(sum(self.sleeps), cps.DEPLOY_RACE_RETRY_BUDGET_SECONDS)
+        self.assertIn("still failing after 900s", result.detail)
+
+    def test_404_pages_at_once_when_the_probe_code_is_older_than_the_window(self):
+        result = self.settle([NOT_DEPLOYED, DEPLOYED], NOW - timedelta(minutes=31))
+        self.assertTrue(result.failed)
+        self.assertEqual([], self.sleeps)
+
+    def test_other_failures_never_wait(self):
+        recent = NOW - timedelta(minutes=2)
+        wrong_marker = cps.Response(200, {"content-type": "text/html"}, "<title>ARA</title>")
+        for name, answer in (("5xx", BROKEN), ("fetch error", TimeoutError("boom")),
+                             ("marker", wrong_marker)):
+            with self.subTest(name):
+                self.sleeps = []
+                result = self.settle([answer, DEPLOYED], recent)
+                self.assertTrue(result.failed)
+                self.assertEqual([], self.sleeps)
+
+    def test_a_site_whose_home_page_fails_is_down_not_mid_deploy(self):
+        for home in (NOT_DEPLOYED, BROKEN):
+            with self.subTest(home=home.status):
+                result = self.settle([NOT_DEPLOYED, DEPLOYED], NOW - timedelta(minutes=2), home=home)
+                self.assertTrue(result.failed)
+                self.assertEqual([], self.sleeps)
+
+    def test_a_deployed_route_that_breaks_stops_waiting(self):
+        # Not a 404 any more: the image has the route, so the failure is real.
+        result = self.settle([NOT_DEPLOYED, BROKEN, DEPLOYED], NOW - timedelta(minutes=2))
+        self.assertTrue(result.failed)
+        self.assertEqual(500, result.status)
+        self.assertEqual([60.0], self.sleeps)
+
+    def test_expected_404_and_user_agent_probes_never_wait(self):
+        recent = NOW - timedelta(minutes=2)
+        missing = cps.Probe("real-404", "/__missing__", expected_status=404)
+        self.assertTrue(self.settle([DEPLOYED, NOT_DEPLOYED], recent, probe=missing).failed)
+        googlebot = next(p for p in cps.USER_AGENT_PROBES if p.name == "ua-googlebot")
+        # Default eligibility is the route table: zone policy is never a deploy.
+        self.assertTrue(self.settle([NOT_DEPLOYED, DEPLOYED], recent, probe=googlebot,
+                                    eligible=cps.ROUTE_PROBES).failed)
+        self.assertEqual([], self.sleeps)
+        self.assertNotIn(googlebot, set(cps.ROUTE_PROBES))
+
+    def test_missing_unparseable_naive_or_future_timestamps_disable_the_retry(self):
+        for value in ("", "   ", "not-a-date", "2026-10-31T04:10:00",
+                      (NOW + timedelta(minutes=10)).isoformat()):
+            with self.subTest(value=value):
+                self.sleeps = []
+                result = self.settle([NOT_DEPLOYED, DEPLOYED], cps.parse_committed_at(value))
+                self.assertTrue(result.failed)
+                self.assertEqual([], self.sleeps)
+        # Within the clock-skew slack a future stamp still counts as fresh.
+        self.assertFalse(self.settle([NOT_DEPLOYED, DEPLOYED], NOW + timedelta(minutes=2)).failed)
+
+    def test_git_committer_dates_parse_with_any_offset(self):
+        expected = datetime(2026, 10, 31, 3, 56, 13, tzinfo=timezone.utc)
+        self.assertEqual(expected, cps.parse_committed_at("2026-10-31T12:56:13+09:00"))
+        self.assertEqual(expected, cps.parse_committed_at("2026-10-31T03:56:13Z"))
+
+    def test_main_passes_the_parsed_commit_time(self):
+        failed = [cps.Result("aradio", "/aradio", "failed", "HTTP 404, expected 200", 404)]
+        # CI sets both: keep this fixture's red report out of the test job's outputs.
+        with mock.patch.dict(os.environ, {"GITHUB_OUTPUT": "", "GITHUB_STEP_SUMMARY": ""}), \
+                mock.patch.object(cps, "evaluate", return_value=failed), \
+                mock.patch.object(cps, "settle_deploy_race", return_value=failed) as settle, \
+                contextlib.redirect_stdout(io.StringIO()):
+            code = cps.main(["--exit-code", "--probe-code-committed-at", "2026-10-31T12:56:13+09:00"])
+        self.assertEqual(2, code)
+        args = settle.call_args.args
+        self.assertEqual(cps.DEFAULT_PROBES, args[0])
+        self.assertEqual(datetime(2026, 10, 31, 3, 56, 13, tzinfo=timezone.utc), args[4])
+
+    def test_workflow_gives_the_probe_real_history(self):
+        action = yaml.safe_load((ROOT / ".github/actions/production-surface-alert/action.yml").read_text())
+        check = next(step for step in action["runs"]["steps"] if step.get("id") == "check")
+        self.assertIn("--probe-code-committed-at", check["run"])
+        self.assertIn("git log -1 --format=%cI -- scripts/check_production_surface.py", check["run"])
+        self.assertIn("--is-shallow-repository", check["run"])
+        self.assertTrue(check.get("continue-on-error"))
+        workflow = yaml.safe_load((ROOT / ".github/workflows/production-synthetic.yml").read_text())
+        job = workflow["jobs"]["probe"]
+        checkout = next(step for step in job["steps"]
+                        if str(step.get("uses", "")).startswith("actions/checkout@"))
+        self.assertEqual(0, checkout["with"]["fetch-depth"])
+        self.assertEqual("blob:none", checkout["with"]["filter"])
+        self.assertGreater(job["timeout-minutes"] * 60, cps.DEPLOY_RACE_RETRY_BUDGET_SECONDS)
 
 
 if __name__ == "__main__":
