@@ -11,6 +11,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import os
+import re
 import sys
 import tempfile
 import unittest
@@ -176,6 +177,15 @@ class RegistryTest(unittest.TestCase):
             self._load([self._row(transcript={"source": "q4-event-feed"})])
         with self.assertRaisesRegex(ValueError, "requires url_template"):
             self._load([self._row(transcript={"source": "url-template"})])
+        with self.assertRaisesRegex(ValueError, "requires expect_final_url"):
+            self._load([self._row(transcript={
+                "source": "url-template", "url_template": "https://aka.ms/t{fy}q{q}",
+            })])
+        with self.assertRaisesRegex(ValueError, "invalid regex in expect_final_url"):
+            self._load([self._row(transcript={
+                "source": "url-template", "url_template": "https://aka.ms/t{fy}q{q}",
+                "expect_final_url": "(unclosed",
+            })])
         with self.assertRaisesRegex(ValueError, "invalid transcript.source"):
             self._load([self._row(transcript={"source": "seeking-alpha"})])
 
@@ -576,6 +586,99 @@ class RenderTest(unittest.TestCase):
         self.assertIn("- First-party transcript: yes", text)
         self.assertIn("https://cdn.example/t.pdf", text)
         self.assertIn("never stores or reproduces their text", text)
+
+
+class TemplateTranscriptTest(unittest.TestCase):
+    """A templated transcript link is real only if it LANDS where expected.
+
+    An unknown aka.ms short link redirects to bing.com and answers HTTP 200
+    (verified 2026-10-30 with aka.ms/transcriptfy99q9), so the old "the URL
+    resolved" check reported a Microsoft transcript before one existed.
+    """
+
+    TEMPLATE = {
+        "source": "url-template",
+        "url_template": "https://aka.ms/transcriptfy{fy}q{q}",
+        "expect_final_url": r"(?i)transcript[^/]*\.docx",
+    }
+
+    def event(self) -> earnings.EarningsEvent:
+        return earnings.EarningsEvent(
+            issuer=make_issuer(transcript=self.TEMPLATE),
+            form="8-K",
+            items="2.02,9.01",
+            accession="0001193125-26-436122",
+            filing_date=dt.date(2026, 10, 28),
+            report_date="2026-10-28",
+            acceptance="2026-10-28T20:05:00.000Z",
+            primary_document="msft-8k.htm",
+            fiscal_year=2027,
+            fiscal_quarter=1,
+        )
+
+    @staticmethod
+    def no_fetch(url, accept):
+        raise AssertionError(f"template discovery must not use fetch_fn ({url})")
+
+    def test_landing_on_the_transcript_document_links_it(self):
+        landed = ("https://view.officeapps.live.com/op/view.aspx?src=https://microsoft.com/"
+                  "en-us/investor/earnings/FY-2027-Q1/Document/DownloadDocument/36/"
+                  "TranscriptQandAFY27Q1.docx")
+        seen = []
+
+        def resolve(url):
+            seen.append(url)
+            return landed
+
+        links, note = earnings.discover_transcripts(
+            self.event().issuer, self.event(), self.no_fetch, resolve
+        )
+
+        self.assertEqual(seen, ["https://aka.ms/transcriptfy27q1"])
+        self.assertEqual([link.url for link in links], ["https://aka.ms/transcriptfy27q1"])
+        self.assertIn("landed on", note)
+
+    def test_search_engine_fallback_is_not_a_transcript(self):
+        def resolve(url):
+            return "https://www.bing.com/?ref=aka&shorturl=transcriptfy27q1"
+
+        links, note = earnings.discover_transcripts(
+            self.event().issuer, self.event(), self.no_fetch, resolve
+        )
+
+        self.assertEqual(links, [])
+        self.assertIn("not yet published", note)
+        self.assertIn("bing.com", note)
+
+    def test_unverifiable_link_is_never_claimed(self):
+        links, note = earnings.discover_transcripts(self.event().issuer, self.event(), self.no_fetch)
+
+        self.assertEqual(links, [])
+        self.assertIn("not checked", note)
+
+    def test_resolver_failure_stays_non_fatal(self):
+        def resolve(url):
+            raise earnings.FetchError(f"HTTP 503 for {url}")
+
+        links, note = earnings.discover_transcripts(
+            self.event().issuer, self.event(), self.no_fetch, resolve
+        )
+
+        self.assertEqual(links, [])
+        self.assertIn("non-fatal", note)
+
+    def test_shipped_registry_templates_declare_a_landing_check(self):
+        issuers = earnings.load_issuers(earnings.DEFAULT_REGISTRY)
+        templated = [i for i in issuers if i.transcript.get("source") == "url-template"]
+
+        self.assertTrue(templated)
+        for issuer in templated:
+            self.assertTrue(issuer.transcript.get("expect_final_url"), issuer.id)
+            self.assertIsNone(
+                re.search(issuer.transcript["expect_final_url"],
+                          "https://www.bing.com/?ref=aka&shorturl=transcriptfy27q1"),
+                issuer.id,
+            )
 
 
 class MainTest(unittest.TestCase):

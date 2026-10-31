@@ -386,6 +386,15 @@ def load_issuers(path: Path) -> list[Issuer]:
             raise ValueError(f"{issuer.id}: transcript.source=q4-event-feed requires host")
         if source == "url-template" and not issuer.transcript.get("url_template"):
             raise ValueError(f"{issuer.id}: transcript.source=url-template requires url_template")
+        if source == "url-template" and not issuer.transcript.get("expect_final_url"):
+            # A templated URL can resolve for a transcript that does not exist
+            # yet (an unknown aka.ms link lands on bing.com with HTTP 200), so
+            # every template must say what a real landing URL looks like.
+            raise ValueError(
+                f"{issuer.id}: transcript.source=url-template requires expect_final_url"
+            )
+        if source == "url-template":
+            _validate_regex(issuer.transcript["expect_final_url"], "expect_final_url", issuer.id)
         _validate_regex(issuer.fpi_match, "fpi_match", issuer.id)
         _validate_regex(issuer.fpi_exclude_match, "fpi_exclude_match", issuer.id)
         _validate_regex(
@@ -414,8 +423,12 @@ class FetchError(Exception):
 
 
 FetchBytes = Callable[[str, str], bytes]
+# url -> the URL it finally lands on after redirects.
+ResolveUrl = Callable[[str], str]
 
 _last_request_at = 0.0
+# Bytes read before a redirect probe drops the body (we only need the URL).
+FINAL_URL_PROBE_BYTES = 65536
 
 
 def http_get(url: str, accept: str = "*/*", *, contact: str = DEFAULT_CONTACT,
@@ -426,6 +439,26 @@ def http_get(url: str, accept: str = "*/*", *, contact: str = DEFAULT_CONTACT,
     socket errors); 403/404 fail immediately because retrying a rejected
     User-Agent or a missing document only burns request budget.
     """
+    return _request(
+        url, accept, contact,
+        lambda resp: resp.read(max_read) if max_read else resp.read(),
+    )
+
+
+def http_final_url(url: str, *, contact: str = DEFAULT_CONTACT) -> str:
+    """Where `url` lands after redirects (same rate limit and retry as http_get).
+
+    A 200 alone cannot prove a templated short link exists: an unknown
+    `aka.ms/<anything>` redirects to bing.com and answers 200 too.
+    """
+    def landing(resp) -> str:
+        resp.read(FINAL_URL_PROBE_BYTES)
+        return resp.geturl()
+
+    return _request(url, "*/*", contact, landing)
+
+
+def _request(url: str, accept: str, contact: str, reader: Callable[[Any], Any]) -> Any:
     global _last_request_at
     headers = {
         "User-Agent": USER_AGENT_TEMPLATE.format(contact=contact),
@@ -442,7 +475,7 @@ def http_get(url: str, accept: str = "*/*", *, contact: str = DEFAULT_CONTACT,
         try:
             request = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(request, timeout=TIMEOUT_SECONDS, context=SSL_CTX) as resp:
-                return resp.read(max_read) if max_read else resp.read()
+                return reader(resp)
         except urllib.error.HTTPError as exc:
             transient = exc.code == 429 or 500 <= exc.code < 600
             if transient and attempts == 1:
@@ -768,7 +801,10 @@ def q4_feed_url(host: str, year: int) -> str:
 
 
 def discover_transcripts(
-    issuer: Issuer, event: EarningsEvent, fetch_fn: FetchBytes
+    issuer: Issuer,
+    event: EarningsEvent,
+    fetch_fn: FetchBytes,
+    resolve_fn: ResolveUrl | None = None,
 ) -> tuple[list[TranscriptLink], str]:
     """Best-effort. Returns (links, provenance note). Never raises.
 
@@ -781,7 +817,7 @@ def discover_transcripts(
     try:
         if source == "q4-event-feed":
             return _discover_q4(issuer, event, fetch_fn)
-        return _discover_template(issuer, event, fetch_fn)
+        return _discover_template(issuer, event, resolve_fn)
     except FetchError as exc:
         return [], f"transcript lookup failed (non-fatal): {exc}"
     except (ValueError, TypeError, KeyError, AttributeError, IndexError) as exc:
@@ -831,7 +867,7 @@ def _discover_q4(
 
 
 def _discover_template(
-    issuer: Issuer, event: EarningsEvent, fetch_fn: FetchBytes
+    issuer: Issuer, event: EarningsEvent, resolve_fn: ResolveUrl | None
 ) -> tuple[list[TranscriptLink], str]:
     url = issuer.transcript["url_template"].format(
         fy=f"{event.fiscal_year % 100:02d}",
@@ -840,12 +876,23 @@ def _discover_template(
         ticker=issuer.ticker,
         ticker_lower=issuer.ticker.lower(),
     )
-    # Existence check only. The response body is discarded immediately: this
-    # lane links transcripts, it never stores them.
-    fetch_fn(url, "*/*")
+    if resolve_fn is None:
+        # No way to check where the link lands, and a resolving short link is
+        # not evidence: never claim a transcript we could not verify.
+        return [], f"transcript URL {url} not checked (no redirect resolver)"
+    # Existence check only. The body is discarded: this lane links
+    # transcripts, it never stores them. The LANDING URL is the evidence —
+    # an unknown aka.ms link answers 200 from bing.com, so "it resolved"
+    # proves nothing (that produced false "transcript available" claims).
+    final_url = resolve_fn(url)
+    if not re.search(issuer.transcript["expect_final_url"], final_url):
+        return [], (
+            f"transcript URL {url} landed on {final_url}, which does not match "
+            "expect_final_url; treating the transcript as not yet published"
+        )
     return (
         [TranscriptLink("Earnings call transcript", url, "issuer investor relations")],
-        f"issuer transcript URL template resolved to {url}",
+        f"issuer transcript URL template {url} landed on {final_url}",
     )
 
 
@@ -859,6 +906,7 @@ def collect_events(
     target_date: dt.date,
     lookback_days: int,
     fetch_fn: FetchBytes,
+    resolve_fn: ResolveUrl | None = None,
 ) -> tuple[list[EarningsEvent], list[tuple[Issuer, str]]]:
     """(events, submission errors).
 
@@ -942,7 +990,7 @@ def collect_events(
                 event.notes.append(document_note)
             if not exhibits and not document_note:
                 event.notes.append("filing carries no EX-99 exhibit; metadata only")
-            enrich_event(event, exhibits, fetch_fn=fetch_fn)
+            enrich_event(event, exhibits, fetch_fn=fetch_fn, resolve_fn=resolve_fn)
             events.append(event)
     return dedupe_events(events), errors
 
@@ -968,7 +1016,11 @@ def dedupe_events(events: list[EarningsEvent]) -> list[EarningsEvent]:
 
 
 def enrich_event(
-    event: EarningsEvent, exhibits: list[Document], *, fetch_fn: FetchBytes
+    event: EarningsEvent,
+    exhibits: list[Document],
+    *,
+    fetch_fn: FetchBytes,
+    resolve_fn: ResolveUrl | None = None,
 ) -> None:
     """Attach documents, headline figures, quotes and transcript links."""
     event.documents = exhibits[:MAX_EXHIBITS_PER_FILING]
@@ -993,7 +1045,7 @@ def enrich_event(
             )
     event.headline = event.headline[:MAX_HEADLINE_ITEMS]
     event.quotes = event.quotes[:MAX_QUOTES]
-    links, note = discover_transcripts(event.issuer, event, fetch_fn)
+    links, note = discover_transcripts(event.issuer, event, fetch_fn, resolve_fn)
     event.transcripts = links[:MAX_TRANSCRIPT_LINKS]
     event.notes.append(f"Tier 2 (first-party transcript): {note}")
 
@@ -1224,11 +1276,15 @@ def main(argv: list[str] | None = None) -> int:
     def fetch_fn(url: str, accept: str) -> bytes:
         return http_get(url, accept, contact=args.contact)
 
+    def resolve_fn(url: str) -> str:
+        return http_final_url(url, contact=args.contact)
+
     events, errors = collect_events(
         issuers,
         target_date=target_date,
         lookback_days=args.lookback_days,
         fetch_fn=fetch_fn,
+        resolve_fn=resolve_fn,
     )
 
     # Fail closed on a TOTAL outage only. Unlike the youtube lane, an empty
