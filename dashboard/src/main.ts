@@ -28,6 +28,7 @@ import {
   aradioFollowLinks,
   aradioHasFailed,
   aradioLineTimings,
+  aradioListenOf,
   aradioListenState,
   aradioNextRate,
   aradioParseListened,
@@ -1948,13 +1949,23 @@ function cycleAradioRate(): void {
   syncAradioRadio();
 }
 
-/** Skip within the bulletin on now (the ±15 s buttons and the lock screen's skips). */
+/**
+ * Skip within the bulletin on now (the ±15 s buttons and the lock screen's
+ * skips). Caught up, a skip back replays the end of the last bulletin.
+ */
 function jumpAradio(seconds: number): void {
   const audio = digestAudioEl;
   if (!audio || !aradioLoadedEntry() || !Number.isFinite(audio.duration) || audio.duration <= 0) return;
+  const caughtUp = aradioWaiting || audio.ended;
+  if (caughtUp && seconds > 0) return;
   // Short of the very end, so a skip forward lets the bulletin end (and the next start) as usual.
   audio.currentTime = Math.max(0, Math.min(audio.duration - 0.1, audio.currentTime + seconds));
   aradioScriptFollowing = true;
+  if (caughtUp) {
+    aradioWaiting = false;
+    startOrResumeAradio();
+    return;
+  }
   updateDigestAudioUi();
 }
 
@@ -1963,8 +1974,10 @@ function jumpAradio(seconds: number): void {
  * the player seeks there; another one starts the way the radio would start it
  * (what the card shows as up first plays through the radio's own rule, any
  * other through the log's) and seeks there once its audio has loaded.
+ * `follow`: the transcript window goes back to following. A line picked from
+ * the keyboard keeps the reader in charge, so the focused line stays in view.
  */
-function playAradioLine(id: string, index: number): void {
+function playAradioLine(id: string, index: number, follow = true): void {
   const bulletin = aradioBulletins.get(id);
   const entry = aradioEntry(id);
   if (!bulletin?.audio || !entry?.audio) return;
@@ -1975,7 +1988,7 @@ function playAradioLine(id: string, index: number): void {
     ? audio.duration
     : entry.audio.durationS ?? bulletin.audio.durationS ?? 0;
   const start = aradioLineTimings(bulletin.lines, duration)?.[index]?.start ?? 0;
-  aradioScriptFollowing = true;
+  if (follow) aradioScriptFollowing = true;
   if (playable) {
     aradioWaiting = false;
     audio.currentTime = start;
@@ -2090,7 +2103,8 @@ function updateAradioRelive(view: HTMLElement): void {
   const show = Boolean(line) && !aradioScriptFollowing;
   if (button.hidden === show) button.hidden = !show;
   if (show && line) {
-    const above = line.getBoundingClientRect().bottom < view.getBoundingClientRect().top + 8;
+    // Up while the line sits above where following would put it, else down.
+    const above = line.getBoundingClientRect().top < view.getBoundingClientRect().top + view.clientHeight * 0.3;
     button.classList.toggle('is-up', above);
   }
 }
@@ -2104,12 +2118,17 @@ function pauseAradioFollow(view: HTMLElement): void {
 
 function resumeAradioFollow(view: HTMLElement): void {
   aradioScriptFollowing = true;
-  // The button hides itself: focus goes to the line it brought back.
-  const seek = aradioLiveLineIn(view)?.querySelector<HTMLElement>('[data-aradio-seek-line]');
-  if (seek && view.parentElement?.contains(document.activeElement)) {
-    view.querySelectorAll<HTMLElement>('[data-aradio-seek-line]').forEach((item) => { item.tabIndex = item === seek ? 0 : -1; });
-    seek.focus({ preventScroll: true });
+  // The button hides itself. Focus goes to the transcript's heading: on a line
+  // it would hand the window back to the reader (and scroll out of view).
+  const frame = view.parentElement;
+  if (frame?.contains(document.activeElement)) {
+    const title = frame.closest('.aradio-script')?.querySelector<HTMLElement>('#aradioScriptTitle');
+    title?.setAttribute('tabindex', '-1');
+    title?.focus({ preventScroll: true });
   }
+  view.querySelectorAll<HTMLElement>('[data-aradio-seek-line]').forEach((item) => {
+    item.tabIndex = item.closest('.aradio-line')?.classList.contains('is-live') ? 0 : -1;
+  });
   followAradioLine(view);
 }
 
@@ -2320,7 +2339,6 @@ function syncAradioRadio(): void {
   attr(card.querySelector('[data-aradio-now-time]'), 'datetime', copy.datetime);
   text('[data-aradio-now-time]', copy.time);
   text('[data-aradio-now-day]', copy.day);
-  attr(card.querySelector('[data-aradio-read]'), 'data-aradio-read', view.now?.id ?? '');
 
   const seek = card.querySelector<HTMLInputElement>('[data-aradio-seek]');
   if (seek) {
@@ -2398,7 +2416,7 @@ function syncAradioPlayUi(): void {
     if (entry && pillText) {
       // A log row's pill: how much was heard (live for the bulletin in the
       // player), and what it says changes only with the play state.
-      const stored = aradioListened[id];
+      const stored = aradioListenOf(aradioListened, id);
       const listen = isCurrent && duration > 0
         ? aradioListenState({ at: audio?.ended ? duration : audio?.currentTime ?? 0, duration, done: Boolean(stored?.done) || Boolean(audio?.ended) }, null)
         : aradioListenState(stored, entry.audio?.durationS ?? null);
@@ -2623,7 +2641,7 @@ function handleAradioClick(target: HTMLElement): boolean {
   const line = target.closest<HTMLElement>('[data-aradio-seek-line]');
   if (line) {
     const id = line.closest<HTMLElement>('[data-aradio-lines]')?.dataset.aradioLines;
-    if (id) playAradioLine(id, Number(line.dataset.aradioSeekLine) || 0);
+    if (id) playAradioLine(id, Number(line.dataset.aradioSeekLine) || 0, !line.matches(':focus-visible'));
     return true;
   }
   const relive = target.closest<HTMLElement>('[data-aradio-relive]');
@@ -2770,10 +2788,26 @@ content.addEventListener('keydown', (e) => {
     lines[next]?.focus();
     return;
   }
-  if (view && target === view && ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(e.key)) {
+  if (!view) return;
+  // Paging (from a line or the window), or arrows on the window itself, scroll it by hand.
+  if (['PageDown', 'PageUp'].includes(e.key) || (target === view && ['ArrowDown', 'ArrowUp', 'Home', 'End', ' '].includes(e.key))) {
     e.stopPropagation();
     pauseAradioFollow(view);
   }
+});
+// Whichever line has focus is the list's tab stop, however it got there. A
+// line focused from the keyboard puts the reader in charge of the window, so
+// following never scrolls the focused line out of view (a click or tap does
+// not: the window keeps following).
+content.addEventListener('focusin', (e) => {
+  if (activeTab !== 'aradio' || !(e.target instanceof HTMLElement)) return;
+  const line = e.target.closest<HTMLElement>('[data-aradio-seek-line]');
+  if (!line) return;
+  line.closest('ol')?.querySelectorAll<HTMLElement>('[data-aradio-seek-line]').forEach((item) => {
+    item.tabIndex = item === line ? 0 : -1;
+  });
+  const view = aradioScriptWindowOf(line);
+  if (view && line.matches(':focus-visible')) pauseAradioFollow(view);
 });
 
 function hydrateAvailabilityFromManifest(m: Manifest): void {

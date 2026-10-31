@@ -797,36 +797,16 @@ export function aradioRadioView(input: AradioRadioInput, nowMs: number): AradioR
 // ── Following the transcript ─────────────────────────────────────────────
 //
 // TTS returns audio, not timestamps, so where each line falls is ESTIMATED:
-// a line takes time in proportion to what is spoken (its letters, with
-// acronyms and digits weighted up because they are read out longhand, plus a
-// little for each pause its punctuation asks for), the speakers leave a short
-// gap between turns, and the whole is scaled to the bulletin's real duration.
-// Against the first real bulletin (2026-10-31 08:53, 17 lines, 171.9 s; line
-// starts measured from its audio) the estimate is within ~1 s on average and
-// ~2.7 s at worst, so the page says the timing is approximate and never shows
-// a per-line time.
-
-/** Letters' worth of speaking time per character of an all-caps token (UTC, AWS). */
-const ACRONYM_WEIGHT = 2;
-/** Per digit: "100" is read as "one hundred". */
-const DIGIT_WEIGHT = 3;
-/** A full stop, question or exclamation mark with more of the line after it. */
-const SENTENCE_PAUSE_WEIGHT = 6;
-/** A comma, colon, semicolon or dash. */
-const CLAUSE_PAUSE_WEIGHT = 4;
-
-/** How long a line takes to say, in letters' worth of speaking time (≥ 1). */
-export function aradioLineWeight(text: string): number {
-  let weight = 0;
-  for (const token of text.match(/[\p{L}\p{N}]+/gu) ?? []) {
-    if (/^\p{N}+$/u.test(token)) weight += DIGIT_WEIGHT * token.length;
-    else if (token.length > 1 && token === token.toUpperCase() && /\p{Lu}/u.test(token)) weight += ACRONYM_WEIGHT * token.length;
-    else weight += token.length;
-  }
-  weight += SENTENCE_PAUSE_WEIGHT * (text.match(/[.!?]["'”’)\]]*\s+(?=\S)/g) ?? []).length;
-  weight += CLAUSE_PAUSE_WEIGHT * (text.match(/[,;:]\s|[—–]/g) ?? []).length;
-  return Math.max(1, weight);
-}
+// a line takes time in proportion to its length in characters (spaces and
+// punctuation included: they stand for the word breaks and pauses read into
+// it), the speakers leave a short gap between turns, and the whole is scaled
+// to the bulletin's real duration. On the only real bulletin so far
+// (2026-10-31 08:53, 17 lines, 171.9 s; line starts measured from its audio)
+// that is ~0.8 s off on average, ~2.8 s at worst, and on the right line ~92%
+// of the time. Finer weights (acronyms and digits read out longhand,
+// punctuation pauses) did no better there, so the estimate stays this simple
+// until more bulletins say otherwise. The page says the timing is approximate
+// and never shows a per-line time.
 
 export type AradioLineTiming = { start: number; end: number };
 
@@ -840,7 +820,7 @@ export type AradioLineTiming = { start: number; end: number };
 export function aradioLineTimings(lines: readonly { text: string }[], durationS: number): AradioLineTiming[] | null {
   if (!Number.isFinite(durationS) || durationS <= 0) return null;
   if (!lines.length) return [];
-  const weights = lines.map((line) => aradioLineWeight(line.text));
+  const weights = lines.map((line) => Math.max(1, line.text.length));
   const total = weights.reduce((sum, weight) => sum + weight, 0);
   const gaps = lines.length - 1;
   // The pauses never take more than a fifth of a (suspiciously short) bulletin.
@@ -929,6 +909,11 @@ function listenOf(raw: unknown): AradioListen | null {
   return { at: Math.min(at, duration), duration, done: raw.done === true };
 }
 
+/** This viewer's listening of bulletin `id`, never an inherited property ("constructor" is a valid id). */
+export function aradioListenOf(listened: AradioListened | null | undefined, id: string): AradioListen | undefined {
+  return listened && Object.prototype.hasOwnProperty.call(listened, id) ? listened[id] : undefined;
+}
+
 /** Parse what localStorage held. Anything malformed is dropped, never thrown. */
 export function aradioParseListened(raw: string | null | undefined): AradioListened {
   if (typeof raw !== 'string' || !raw) return {};
@@ -963,7 +948,7 @@ export function aradioRecordListen(
 ): AradioListened {
   if (!SAFE_ID_RE.test(id) || !Number.isFinite(durationS) || durationS <= 0) return listened;
   const at = ended ? durationS : Math.max(0, Math.min(Number.isFinite(positionS) ? positionS : 0, durationS));
-  const prior = listened[id];
+  const prior = aradioListenOf(listened, id);
   const done = Boolean(prior?.done) || ended || at >= durationS - LISTEN_DONE_SLACK_S;
   if (prior && prior.done === done && Math.abs(prior.at - at) < 1 && prior.duration === durationS) return listened;
   if (!prior && at < LISTEN_STARTED_S && !done) return listened;
@@ -974,7 +959,8 @@ export function aradioRecordListen(
 export function aradioPruneListened(listened: AradioListened, keepIds: Iterable<string>): AradioListened {
   const out: Record<string, AradioListen> = {};
   for (const id of keepIds) {
-    if (listened[id]) out[id] = listened[id];
+    const listen = aradioListenOf(listened, id);
+    if (listen) out[id] = listen;
     if (Object.keys(out).length >= ARADIO_LISTENED_MAX) break;
   }
   return Object.keys(out).length === Object.keys(listened).length ? listened : out;
@@ -1643,7 +1629,7 @@ export function aradioPillCopy(
  * has heard, as a fill behind its length ("2:52", "1:20 left", "Played").
  */
 function playPill(entry: AradioBulletinEntry, s: AradioViewState): string {
-  const listen = aradioListenState(s.listened?.[entry.id], entry.audio?.durationS ?? null);
+  const listen = aradioListenState(aradioListenOf(s.listened, entry.id), entry.audio?.durationS ?? null);
   const pill = aradioPillCopy(entry, listen, s.language, false);
   return `<button type="button" class="aradio-log-play is-${pill.state}" data-aradio-play="${esc(entry.id)}"`
     + ` aria-label="${esc(pill.label)}" style="--aradio-heard:${esc(pill.heard)}">`

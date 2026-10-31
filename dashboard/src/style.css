@@ -7343,7 +7343,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
      once they have been read. Every tone keeps 4.5:1 on the window. */
   --aradio-window: var(--bg-secondary);
   --aradio-line-ahead: #4a4e57;
-  --aradio-line-read: #676b74;
+  --aradio-line-read: #63666f;
   --aradio-cohost: #0369a1;
   padding: clamp(18px, 2.8vw, 28px) var(--card-pad-x) 0;
   border-color: var(--border);
@@ -7884,8 +7884,6 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   font-weight: 700;
   line-height: 1.4;
 }
-
-.aradio-script-title:focus { outline: none; }
 
 .aradio-script-note {
   color: var(--text-secondary);
@@ -8440,7 +8438,7 @@ button.aradio-covered-item:hover .aradio-covered-name {
 .aradio-pill--escalating { background: #ffedd5; color: #9a3412; }
 .aradio-pill--developing { background: var(--ara-periwinkle); color: var(--ara-royal); }
 .aradio-pill--steady { background: var(--bg-secondary); color: var(--text-secondary); }
-.aradio-pill--resolved { border: 1px solid var(--border); color: var(--text-tertiary); }
+.aradio-pill--resolved { border: 1px solid var(--border); color: var(--text-secondary); }
 
 /* Importance as signal strength: five rising bars. */
 .aradio-signal {
@@ -8723,8 +8721,6 @@ button.aradio-covered-item:hover .aradio-covered-name {
   white-space: nowrap;
 }
 
-.aradio-log-play.is-done { color: var(--text-secondary); }
-
 .aradio-mini-icon {
   position: relative;
   display: inline-block;
@@ -8905,7 +8901,7 @@ button.aradio-covered-item:hover .aradio-covered-name {
   list-style: none;
   /* On the card itself, not the radio's tinted window. */
   --aradio-line-ahead: #4a4e57;
-  --aradio-line-read: #6b6f78;
+  --aradio-line-read: #63666f;
 }
 
 .aradio-lines--archive .aradio-line,

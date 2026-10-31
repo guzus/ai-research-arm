@@ -500,14 +500,18 @@ asked for).
   stops the following until "Back to live line". Each line of a bulletin with
   audio is a button that plays the bulletin from there; the lines are one tab
   stop (arrow keys, Home and End move between them). The line changing is
-  never announced. TTS returns no timestamps, so line timing is **estimated**
-  (`aradioLineTimings`: each line's spoken length — letters, acronyms and
-  digits weighted for being read out longhand, punctuation pauses — plus
-  0.5 s between turns, scaled to the real duration). Against the first real
-  bulletin (2026-10-31 08:53, line starts measured from its audio) it is about
-  1 s off on average and right ~91 % of the time; the page says "Timing is
-  approximate" and shows no per-line times. A text-only bulletin's transcript
-  is plain text.
+  never announced. A line focused from the keyboard puts the reader in charge
+  of the window too, so following never scrolls the focused line away. TTS
+  returns no timestamps, so line timing is **estimated** (`aradioLineTimings`:
+  each line's length in characters plus 0.5 s between turns, scaled to the
+  real duration). On the only real bulletin so far (2026-10-31 08:53, line
+  starts measured from its audio with a speech recogniser and checked against
+  the silences at each turn) it is ~0.8 s off on average, ~2.8 s at worst, and
+  on the right line ~92 % of the time. That is in-sample: finer weights
+  (acronyms, digits, punctuation pauses) did no better on it, and the
+  estimate should be re-checked as bulletins accumulate. The page says
+  "Timing is approximate" and shows no per-line times. A text-only bulletin's
+  transcript is plain text.
 - **Speed and progress** are this browser's own (localStorage, every access in
   try/catch; a blocked store means 1× and nothing heard): the speed applies to
   the shared player only while it holds a bulletin (the digest stays at 1×).

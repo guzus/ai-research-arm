@@ -836,26 +836,27 @@ test('timing: line spans tile the bulletin, a turn pause after each line, scaled
   assert.ok(Math.abs(short.at(-1).end - 6) < 1e-9);
 });
 
-test('timing: what is spoken longhand weighs more than its letters', () => {
-  const w = mod.aradioLineWeight;
-  assert.ok(w('UTC') > w('utc'), 'an acronym is spelled out');
-  assert.ok(w('Nasdaq 100') > w('Nasdaq abc'), 'digits are read as words');
-  assert.ok(w('first, second') > w('first second'), 'a comma is a pause');
-  assert.ok(w('First. Second') > w('First Second'), 'so is a full stop inside the line');
-  assert.equal(w('Done.'), w('Done'), 'the full stop that ends a line is the turn pause');
-  assert.equal(w(''), 1, 'never zero');
-  assert.equal(w('…'), 1);
+test('timing: a line takes time in proportion to its length; an empty one still gets a sliver', () => {
+  const pause = mod.ARADIO_TURN_PAUSE_S;
+  const [short, long] = mod.aradioLineTimings([{ text: 'x'.repeat(10) }, { text: 'x'.repeat(30) }], 20 + pause);
+  assert.ok(Math.abs(short.end - short.start - (5 + pause)) < 1e-9, 'a quarter of the speaking time, then the gap');
+  assert.ok(Math.abs(long.end - long.start - 15) < 1e-9, 'three quarters; nothing after the last line');
+  const withEmpty = mod.aradioLineTimings([{ text: '' }, { text: 'Hello there.' }], 5);
+  assert.ok(withEmpty[0].end > withEmpty[0].start, 'an empty line still has a span');
 });
 
+// In-sample: the estimate was chosen on this bulletin (the only one so far),
+// so this guards against regressions; it does not prove the estimate general.
+// Word share, which the estimate replaced, fails it (1.8 s mean, 83%).
 test('timing: against the first real bulletin the estimate stays within about a second', () => {
   const lines = mod.normalizeAradioBulletin(REAL_0853).lines;
   assert.equal(lines.length, REAL_0853_STARTS.length);
   const timings = mod.aradioLineTimings(lines, 171.98);
   const errors = timings.map((span, i) => Math.abs(span.start - REAL_0853_STARTS[i]));
   const mean = errors.reduce((sum, e) => sum + e, 0) / errors.length;
-  assert.ok(mean < 1.2, `mean start error ${mean.toFixed(2)} s`);
+  assert.ok(mean < 1, `mean start error ${mean.toFixed(2)} s`);
   assert.ok(Math.max(...errors) < 3, `worst start error ${Math.max(...errors).toFixed(2)} s`);
-  // Sampled every 0.1 s, the line marked live is the one being read ~9 times in 10.
+  // Sampled every 0.1 s, the line marked live is the one being read 9 times in 10 or more.
   let right = 0;
   let total = 0;
   for (let t = 0; t < 171.9; t += 0.1) {
@@ -864,7 +865,7 @@ test('timing: against the first real bulletin the estimate stays within about a 
     if (mod.aradioLiveLine(timings, t) === actual) right += 1;
     total += 1;
   }
-  assert.ok(right / total > 0.88, `${((100 * right) / total).toFixed(1)}% of the time on the right line`);
+  assert.ok(right / total > 0.9, `${((100 * right) / total).toFixed(1)}% of the time on the right line`);
 });
 
 test('timing: the live line, and which bulletin the player is reading', () => {
@@ -1036,6 +1037,13 @@ test('log rows: a play pill with the length, the time left or "Played", filled b
   assert.match(fresh, /data-aradio-pill-text>4:02</);
   // Text-only rows say so where the pill would be.
   assert.match(fresh, /data-aradio-row="2026-10-30-1250"><span class="aradio-log-noaudio">Text only<\/span>/);
+
+  // A hostile headline is inert in the pill's name too.
+  const headline = '"><img src=x onerror=alert(1)>';
+  const index = { updatedAt: null, degraded: false, bulletins: bulletinsOf(entry('14:50', { headline })) };
+  const hostile = mod.renderAradioLog(viewState({ index }));
+  assert.doesNotMatch(hostile, /<img src=x/);
+  assert.match(hostile, /aria-label="Play the 14:50 UTC bulletin: &quot;&gt;&lt;img src=x onerror=alert\(1\)&gt; \(3:20\)"/);
 });
 
 test('listened: parsed defensively, written only when a pill would change, finishing is sticky', () => {
@@ -1067,6 +1075,13 @@ test('listened: parsed defensively, written only when a pill would change, finis
   assert.deepEqual(mod.aradioListenState(undefined, 242.1), { state: 'new', fraction: 0, remaining: 242.1 });
   assert.deepEqual(mod.aradioListenState({ at: 60.525, duration: 242.1, done: false }, null), { state: 'partial', fraction: 0.25, remaining: 181.575 });
   assert.equal(mod.aradioListenState({ at: 2, duration: 242.1, done: true }, null).state, 'done');
+
+  // An id that names an Object.prototype member is just an id.
+  assert.equal(mod.aradioListenOf({}, 'constructor'), undefined);
+  assert.equal(mod.aradioListenState(mod.aradioListenOf({}, 'toString'), 200).state, 'new');
+  const proto = mod.aradioRecordListen({}, 'constructor', 60, 120);
+  assert.deepEqual(mod.aradioListenOf(proto, 'constructor'), { at: 60, duration: 120, done: false });
+  assert.deepEqual(mod.aradioParseListened(JSON.stringify(proto)), proto);
 
   const kept = mod.aradioPruneListened({ a1: heard[id], [id]: heard[id] }, [id, 'other']);
   assert.deepEqual(Object.keys(kept), [id]);

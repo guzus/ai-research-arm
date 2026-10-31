@@ -576,7 +576,7 @@ const COPY = {
     'aradio.backToLive': '지금 읽는 줄로 돌아가기',
     'aradio.inThisBulletin': '이번 방송에서 다룬 이야기',
     'aradio.followIn': '{app}에서 팔로우',
-    'aradio.played': '들음',
+    'aradio.played': '다 들음',
     'aradio.pillPlaying': '재생 중',
     'aradio.timeLeft': '{time} 남음',
     'aradio.seekValue': '{duration} 중 {elapsed}',
