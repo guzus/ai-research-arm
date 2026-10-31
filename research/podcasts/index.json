@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-10-31T20:15:00Z",
+  "updated_at": "2026-10-31T23:40:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -25,8 +25,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-10-31T20:15:00Z",
-        "attempts": 2
+        "checked_at": "2026-10-31T23:40:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Spawn’s ten-person team shipped 77,000 code changes in a month with an always-on fleet of AI agents. NLW breaks down the systems behind that output, why human taste and ambition still matter, and five practical lessons other businesses can apply. In the headlines: legal AI startup Crosby bids for Weil’s assets, tech stocks slide despite surging AI revenues, and Granola launches free dictation. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -53,8 +53,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-10-31T20:15:00Z",
-        "attempts": 2
+        "checked_at": "2026-10-31T23:40:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "What does it take to build AI for finance on top of a general-purpose model? Joseph Kim, who leads work on ChatGPT for Financial Services at OpenAI, joins swyx and Richard at AI Engineer New York to discuss the decisions behind the product: training financial reasoning into a shared model, connecting market data, and building workflows financial professionals can review and trust. Joseph explains why OpenAI bundled financial data even when connectors already existed, what startups can build with the"
@@ -238,8 +238,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-10-31T20:15:00Z",
-        "attempts": 3
+        "checked_at": "2026-10-31T23:40:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "What happens when AI makes legal work cheap enough to take cases lawyers couldn't afford to touch before? Eve CEO Jay Madheswaran argues that AI won't just cut costs for law firms. It could expand access to legal representation by making an entirely new class of cases economically viable. Jay joins a16z General Partner Alex Rampell to explain how Eve is automating plaintiff law from the first client call through settlement, and why some firms are already using it to"
@@ -323,8 +323,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-10-31T20:15:00Z",
-        "attempts": 3
+        "checked_at": "2026-10-31T23:40:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Artificial Analysis overhauls the Intelligence Index with version five, and the new benchmarks reshuffle the AI model leaderboard. NLW breaks down what changed, why private datasets and agentic tasks matter, and how the gap between US and open weight models widened. In the headlines: Google’s Gemini 4 Carbon takes the top spot, Google and Microsoft cloud earnings, and a broader DOJ probe into NVIDIA. The AI Daily Brief helps you understand the most important news and discussions in AI."
