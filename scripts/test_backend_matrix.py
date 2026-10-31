@@ -449,30 +449,83 @@ class RoutingInvariants(unittest.TestCase):
         run = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
         code = "\n".join(line for line in run.splitlines()
                          if not line.lstrip().startswith("#"))
-        for flag in ("--cap-drop ALL", "--security-opt no-new-privileges", "--pids-limit 512",
-                     '--user "$(id -u):$(id -g)"', "--read-only",
-                     "--tmpfs /tmp:rw,nosuid,nodev,mode=1777", "--env HOME=/tmp/claude-home",
-                     "--env DISABLE_AUTOUPDATER=1",
-                     "--env CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1",
-                     "--env CLAUDE_CODE_DISABLE_CLAUDE_MDS=1",
-                     '--volume "$generated_claude_settings:/tmp/claude-config/settings.json:ro"',
-                     '--volume "$PROMPT_FILE:/tmp/claude-prompt.md:ro"'):
-            self.assertIn(flag, code, f"container lost {flag}")
-        # Every lockdown flag of the one CLI invocation.
-        for flag in ("claude -p", "--restricted", '--tools "$CLAUDE_TOOLS"',
-                     "--permission-mode dontAsk", "--permission-prompts none",
-                     "--strict-mcp-config", '--mcp-config "{\\"mcpServers\\":{}}"',
-                     "--settings /tmp/claude-config/settings.json",
-                     "--disable-slash-commands", "--no-session-persistence",
-                     '--max-turns "$CLAUDE_MAX_TURNS"', '--model "$claude_model"',
-                     '--output-format json', 'timeout "${model_budget_seconds}s" claude -p'):
-            self.assertIn(flag, code, f"CLI lost {flag}")
+        def array(opening: str) -> list[str]:
+            """The stripped lines of a bash array literal, opening line excluded."""
+            lines = code.splitlines()
+            start = next(i for i, line in enumerate(lines) if line.strip() == opening)
+            body = []
+            for line in lines[start + 1:]:
+                if line.strip() in {"bash -lc '", ")"}:
+                    break
+                body.append(line.strip())
+            return body
+
+        # The exact container flag set: an allowlist, so an added --cap-add,
+        # seccomp/apparmor override, env file, device, or host namespace fails.
+        self.assertEqual([
+            '--name "$container_name" \\', '--user "$(id -u):$(id -g)" \\',
+            "--workdir /workspace \\", "--cap-drop ALL \\",
+            "--security-opt no-new-privileges \\", "--pids-limit 512 \\", "--read-only \\",
+            "--tmpfs /tmp:rw,nosuid,nodev,mode=1777 \\", "--env HOME=/tmp/claude-home \\",
+            "--env XDG_CONFIG_HOME=/tmp/claude-home/.config \\",
+            "--env XDG_DATA_HOME=/tmp/claude-home/.local/share \\",
+            "--env XDG_CACHE_HOME=/tmp/claude-home/.cache \\",
+            "--env CLAUDE_CONFIG_DIR=/tmp/claude-home/.claude \\",
+            "--env DISABLE_AUTOUPDATER=1 \\",
+            "--env CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 \\",
+            "--env CLAUDE_CODE_DISABLE_CLAUDE_MDS=1 \\",
+            "--env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 \\",
+            "--env CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS=1 \\",
+            "--env GITHUB_WORKSPACE=/workspace \\",
+            '--env "GIT_AUTHOR_NAME=github-actions[bot]" \\',
+            '--env "GIT_AUTHOR_EMAIL=41898282+github-actions[bot]@users.noreply.github.com" \\',
+            '--env "GIT_COMMITTER_NAME=github-actions[bot]" \\',
+            '--env "GIT_COMMITTER_EMAIL=41898282+github-actions[bot]@users.noreply.github.com" \\',
+            "--env CLAUDE_MODEL_REF \\", '--env "CLAUDE_TOOLS=$claude_tools" \\',
+            "--env CLAUDE_MAX_TURNS \\", "--env AGENT_TIMEOUT_MINUTES \\",
+            "--env AGENT_LANE \\", "--env RUN_MODE \\", "--env ALLOWED_PATHS \\",
+            "--env RETURN_ARTIFACTS \\", '--env "PRE_SHA=$pre_sha" \\',
+            '--volume "$isolated_workspace:/workspace" \\',
+            '--volume "$PROMPT_FILE:/tmp/claude-prompt.md:ro" \\',
+            '--volume "$generated_claude_settings:/tmp/claude-config/settings.json:ro" \\',
+            '"$image" \\',
+        ], array("docker_cmd=(docker run --rm -i \\"))
+        # The exact CLI lockdown flag set, shared by the liveness probe and
+        # the one real turn so both load the settings identically.
+        self.assertEqual([
+            "--restricted", '--tools "$CLAUDE_TOOLS"', "--permission-mode dontAsk",
+            "--permission-prompts none", "--strict-mcp-config",
+            '--mcp-config "{\\"mcpServers\\":{}}"',
+            "--settings /tmp/claude-config/settings.json", "--disable-slash-commands",
+            "--no-session-persistence",
+        ], array("claude_flags=("))
+        for flag in ('claude --init-only "${claude_flags[@]}" \\',
+                     'timeout "${model_budget_seconds}s" claude -p \\',
+                     '--model "$claude_model" \\', '"${claude_flags[@]}" \\',
+                     '--max-turns "$CLAUDE_MAX_TURNS" \\', "--output-format json \\"):
+            self.assertIn(flag, [line.strip() for line in code.splitlines()],
+                          f"CLI lost {flag}")
         self.assertEqual(1, code.count("claude -p \\\n"), "exactly one CLI invocation")
+        self.assertEqual(1, code.count("claude --init-only"), "exactly one liveness probe")
+        from copy_claude_settings import CONTAINER_LIVENESS_MARKER
+        self.assertIn(f"liveness_marker={CONTAINER_LIVENESS_MARKER}", code)
         for forbidden in ("--dangerously-skip-permissions", "bypassPermissions",
                           "--allowedTools", "--allowed-tools", "--add-dir",
-                          '--volume "$HOME', "--privileged", "--network host",
-                          "docker.sock", "--bare"):
+                          '--volume "$HOME', "seccomp", "apparmor", "systempaths",
+                          "docker.sock", "-e CLAUDE_CODE_OAUTH_TOKEN",
+                          "--env CLAUDE_CODE_OAUTH_TOKEN", "--env=CLAUDE_CODE_OAUTH_TOKEN"):
             self.assertNotIn(forbidden, code, f"container gained {forbidden}")
+        for flag in ("--privileged", "--network", "--net", "--cap-add", "--env-file",
+                     "--mount", "--device", "--pid", "--ipc", "--userns", "--uts",
+                     "--cgroupns", "--group-add", "--bare"):
+            self.assertNotRegex(code, rf"(^|\s){re.escape(flag)}(\s|=|$)",
+                                f"container gained {flag}")
+        # The CLI's own output never reaches the public log: its JSON holds
+        # the reply and every denied call's input, a denied Write's content
+        # included. Only the redirections and the copy for the host remain.
+        self.assertNotIn('cat -- "$attempt_log"', code)
+        self.assertEqual(3, code.count('"$attempt_log"'), "attempt log only redirected/copied")
+        self.assertEqual(2, code.count('"$attempt_err"'), "stderr only redirected")
         self.assertIn("Docker is required for sandboxed Claude Code runs", code)
         self.assertIn("trap cleanup EXIT", code)
         self.assertIn('docker image rm -f "$image"', code)
@@ -496,15 +549,21 @@ class RoutingInvariants(unittest.TestCase):
                         yaml.safe_load(action_path.read_text(encoding="utf-8"))["runs"]["steps"])
         code_lines = [line.strip() for line in run.splitlines()
                       if not line.lstrip().startswith("#")]
-        self.assertFalse(any(line.startswith("--env CLAUDE_CODE_OAUTH_TOKEN")
-                             for line in code_lines))
-        # Host side: validated, then piped by the printf builtin; never argv.
-        references = [line for line in code_lines if "$CLAUDE_CODE_OAUTH_TOKEN" in line]
+        # Every mention of the variable, in any form (-e NAME, --env NAME,
+        # --env-file, export): host side it is validated, then piped by the
+        # printf builtin, never argv; container side only the descriptor
+        # variable names it.
+        mentions = [line for line in code_lines if "CLAUDE_CODE_OAUTH_TOKEN" in line]
         self.assertEqual([
             'if [[ ! "$CLAUDE_CODE_OAUTH_TOKEN" =~ ^[A-Za-z0-9._~+/=-]{20,4096}$ ]]; then',
+            "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR=3 \\",
             'printf \'%s\\n\' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}" | tee "$OUTPUT_FILE"',
             'printf \'%s\\n\' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}"',
-        ], references)
+        ], mentions)
+        for forbidden in ("--env-file", "-e CLAUDE_CODE_OAUTH_TOKEN",
+                          "--env CLAUDE_CODE_OAUTH_TOKEN", "--env=CLAUDE_CODE_OAUTH_TOKEN",
+                          "export CLAUDE_CODE_OAUTH_TOKEN"):
+            self.assertNotIn(forbidden, run)
         self.assertIn("docker_cmd=(docker run --rm -i \\", code_lines)
         # Container side: one stdin line into a non-exported variable, handed
         # to the CLI on descriptor 3 and unset afterwards.
@@ -543,8 +602,11 @@ class RoutingInvariants(unittest.TestCase):
             ('image="ara-ADAPTER-agent:', 'docker build --pull -t "$image" "$build_dir"'),
             ("# The host deliberately cloned without a checkout",
              'trusted_packed=$(base64 -w0 .git/packed-refs)'),
+            ("# The model child is gone before this fixed-format file is",
+             "} > .ADAPTER-attempt-telemetry"),
             ("# This fixed container tail runs after the agent child exits.",
              "# TRUSTED_COMMIT_NORMALIZATION_END"),
+            ("# TRUSTED_ATTEMPT_TELEMETRY_BEGIN", "# TRUSTED_ATTEMPT_TELEMETRY_END"),
             ("# TRUSTED_IMPORT_GUARD_BEGIN", "# TRUSTED_IMPORT_GUARD_END"),
         )
 
@@ -561,6 +623,147 @@ class RoutingInvariants(unittest.TestCase):
                         'cp "$GITHUB_ACTION_PATH/birdy-fast" "$build_dir/birdy-fast"',
                         'cp "$GITHUB_ACTION_PATH/tool-guard.mjs" "$build_dir/tool-guard.mjs"')
                 self.assertEqual(expected, block(claude, begin, end))
+
+    @staticmethod
+    def claude_action_shell() -> str:
+        action_path = REPO_ROOT / ".github/actions/run-claude-container/action.yml"
+        return "\n".join(st.get("run") or "" for st in
+                         yaml.safe_load(action_path.read_text(encoding="utf-8"))["runs"]["steps"])
+
+    def test_claude_result_summary_fails_closed_and_never_prints_the_reply(self):
+        shell = self.claude_action_shell()
+        block = shell.split("# TRUSTED_RESULT_SUMMARY_BEGIN", 1)[1].split(
+            "# TRUSTED_RESULT_SUMMARY_END", 1)[0]
+        reply = "INBOX-QUOTE-THAT-MUST-NOT-BE-LOGGED"
+        good = {"type": "result", "subtype": "success", "is_error": False, "num_turns": 2,
+                "result": reply, "modelUsage": {"claude-sonnet-5-5": {"outputTokens": 9}},
+                "permission_denials": [{"tool_name": "Write", "tool_input": {
+                    "file_path": "/workspace/x", "content": "DENIED-CONTENT"}}]}
+
+        def run(case: str, status: int, result: object = None, link: bool = False,
+                oversize: bool = False) -> tuple[int, str, str]:
+            with tempfile.TemporaryDirectory() as tmp:
+                tmp_path = Path(tmp)
+                isolated = tmp_path / "isolated"
+                build = tmp_path / "build"
+                isolated.mkdir()
+                build.mkdir()
+                result_file = isolated / ".claude-result.json"
+                if link:
+                    target = tmp_path / "elsewhere.json"
+                    target.write_text(json.dumps(good), encoding="utf-8")
+                    os.symlink(target, result_file)
+                elif oversize:
+                    result_file.write_text(" " * 1048577, encoding="utf-8")
+                elif result is not None:
+                    result_file.write_text(json.dumps(result), encoding="utf-8")
+                output_file = tmp_path / "output.txt"
+                env = os.environ.copy()
+                env.update({"isolated_workspace": str(isolated), "build_dir": str(build),
+                            "OUTPUT_FILE": str(output_file), "agent_status": str(status)})
+                checked = subprocess.run(
+                    ["bash", "-c", "set -euo pipefail\n" + block
+                     + '\necho "final_status=$agent_status"'],
+                    cwd=REPO_ROOT, env=env, capture_output=True, text=True, check=False)
+                self.assertEqual(0, checked.returncode, (case, checked.stderr))
+                final = int(checked.stdout.rsplit("final_status=", 1)[1].strip())
+                written = output_file.read_text(encoding="utf-8") if output_file.exists() else ""
+                return final, checked.stdout, written
+
+        final, stdout, written = run("good", 0, good)
+        self.assertEqual(0, final)
+        self.assertIn("::notice title=Claude result::is_error=false", stdout)
+        self.assertIn("output_tokens=claude-sonnet-5-5:9", written)
+        self.assertIn("Claude permission denial: Write /workspace/x", written)
+        for leaked in (reply, "DENIED-CONTENT"):
+            self.assertNotIn(leaked, stdout)
+            self.assertNotIn(leaked, written)
+        self.assertEqual(1, run("is_error on exit 0", 0, {**good, "is_error": True})[0])
+        self.assertIn("reported is_error; failing closed",
+                      run("is_error on exit 0", 0, {**good, "is_error": True})[1])
+        self.assertEqual(1, run("missing", 0)[0])
+        self.assertEqual(1, run("not json", 0, "not an object")[0])
+        self.assertEqual(1, run("linked", 0, link=True)[0])
+        self.assertEqual(1, run("oversize", 0, oversize=True)[0])
+        # A real failure keeps its own status; nothing ever turns it green.
+        self.assertEqual(124, run("timeout", 124, good)[0])
+        self.assertEqual(124, run("timeout and error", 124, {**good, "is_error": True})[0])
+
+    def test_claude_attempt_never_starts_the_model_without_live_settings(self):
+        shell = self.claude_action_shell()
+        block = shell.split("# CLAUDE_ATTEMPT_BEGIN", 1)[1].split("# CLAUDE_ATTEMPT_END", 1)[0]
+        fake = r"""#!/usr/bin/env bash
+if [ "$1" = "--init-only" ]; then
+  echo "init-only $*" >> "$FAKE_LOG"
+  if [ "$FAKE_INIT_MARKER" = 1 ]; then touch "$FAKE_MARKER"; fi
+  exit "$FAKE_INIT_STATUS"
+fi
+echo "run $*" >> "$FAKE_LOG"
+token=$(cat <&3)
+echo "token-fd=$token token-env=${CLAUDE_CODE_OAUTH_TOKEN:-unset}" >> "$FAKE_LOG"
+if [ "$FAKE_RUN_MARKER" = 1 ]; then touch "$FAKE_MARKER"; fi
+echo '{"type":"result","is_error":false,"result":"RAW-REPLY-NOT-FOR-LOGS"}'
+exit "$FAKE_RUN_STATUS"
+"""
+
+        def run(init_marker: int, init_status: int, run_marker: int, run_status: int):
+            with tempfile.TemporaryDirectory() as tmp:
+                tmp_path = Path(tmp)
+                bin_dir = tmp_path / "bin"
+                work = tmp_path / "work"
+                bin_dir.mkdir()
+                work.mkdir()
+                (bin_dir / "claude").write_text(fake, encoding="utf-8")
+                (bin_dir / "claude").chmod(0o755)
+                (tmp_path / "claude-prompt.md").write_text("prompt\n", encoding="utf-8")
+                log = tmp_path / "calls.log"
+                env = os.environ.copy()
+                env.pop("CLAUDE_CODE_OAUTH_TOKEN", None)
+                env.update({
+                    "PATH": f"{bin_dir}:{env['PATH']}", "FAKE_LOG": str(log),
+                    "FAKE_MARKER": f"{tmp}/claude-liveness/session-start",
+                    "FAKE_INIT_MARKER": str(init_marker), "FAKE_INIT_STATUS": str(init_status),
+                    "FAKE_RUN_MARKER": str(run_marker), "FAKE_RUN_STATUS": str(run_status),
+                    "CLAUDE_MODEL_REF": "claude/claude-sonnet-5-5", "AGENT_TIMEOUT_MINUTES": "1",
+                    "CLAUDE_TOOLS": "Read,Write", "CLAUDE_MAX_TURNS": "4",
+                    "RETURN_ARTIFACTS": ".tmp/aradio/edit.json",
+                })
+                script = ("set -uo pipefail\nclaude_oauth_token=TOKEN-ON-FD\n"
+                          + block.replace("/tmp/", f"{tmp}/")
+                          + '\necho "final_status=$agent_status"')
+                checked = subprocess.run(["bash", "-c", script], cwd=work, env=env,
+                                         capture_output=True, text=True, check=False)
+                self.assertEqual(0, checked.returncode, checked.stderr)
+                calls = log.read_text(encoding="utf-8") if log.exists() else ""
+                telemetry = (work / ".claude-attempt-telemetry").read_text(encoding="utf-8")
+                final = int(checked.stdout.rsplit("final_status=", 1)[1].strip())
+                return final, calls, checked, telemetry
+
+        # The settings file did not load: no marker, so the model never runs.
+        final, calls, checked, telemetry = run(0, 0, 1, 0)
+        self.assertEqual(1, final)
+        self.assertIn("init-only --restricted", calls)
+        self.assertNotIn("run ", calls)
+        self.assertIn("refusing to start the model without its guard", checked.stderr)
+        self.assertEqual("attempt_count=1\nlast_agent_status=1\ntranslation_segment_calls=0\n"
+                         "artifact_count=0\nretry_reason=none\n", telemetry)
+        final, calls, _, _ = run(1, 2, 1, 0)
+        self.assertEqual(1, final)
+        self.assertNotIn("run ", calls)
+        # Live settings: one real turn, token on descriptor 3, never in env,
+        # and the CLI's own output is never echoed.
+        final, calls, checked, telemetry = run(1, 0, 1, 0)
+        self.assertEqual(0, final)
+        self.assertIn("token-fd=TOKEN-ON-FD token-env=unset", calls)
+        self.assertIn("run -p --model claude-sonnet-5-5 --restricted --tools Read,Write", calls)
+        self.assertNotIn("RAW-REPLY-NOT-FOR-LOGS", checked.stdout + checked.stderr)
+        self.assertIn("last_agent_status=0\n", telemetry)
+        # The real session dropped its hooks: fail closed after the fact.
+        final, _, checked, _ = run(1, 0, 0, 0)
+        self.assertEqual(1, final)
+        self.assertIn("without its session hooks", checked.stderr)
+        # A failed turn keeps its own status.
+        self.assertEqual(3, run(1, 0, 1, 3)[0])
 
     def test_claude_container_host_script_parses_under_bash(self):
         action_path = REPO_ROOT / ".github/actions/run-claude-container/action.yml"

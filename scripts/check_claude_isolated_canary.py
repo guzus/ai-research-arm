@@ -2,34 +2,53 @@
 """Fail closed unless the isolated Claude Code canary proves auth, quota, and model.
 
 The canary runs `claude -p --output-format json` inside run-claude-container
-with no tools at all. Its host-tee'd stdout holds container log lines plus
-the CLI's one-line JSON result; this checks the last result object: a
-successful, error-free turn, no permission denials, the exact canary token as
-the whole reply, and output usage billed to the requested model (the same
-served-model rule as scripts/check_claude_canary.py).
+with no tools at all. The adapter never prints the CLI's reply: its output
+file holds container log lines plus the sanitized summary line from
+scripts/summarize_claude_result.py. This checks the last summary: a
+successful, error-free turn, no permission denials, output usage billed to
+the requested model (the served-model rule of scripts/check_claude_canary.py),
+and a reply whose SHA-256 is that of the exact canary token.
 """
 
 import argparse
+import re
 from pathlib import Path
 
-from summarize_claude_execution import parse_objects
+from summarize_claude_result import reply_sha256
 
 
-def validate(objects: list[dict], model: str, token: str) -> None:
-    results = [obj for obj in objects if obj.get("type") == "result"]
-    if not results:
-        raise ValueError("canary output has no Claude result object")
-    result = results[-1]
-    if result.get("is_error") is not False or result.get("subtype") != "success":
+SUMMARY_PREFIX = "::notice title=Claude result::"
+FIELD = re.compile(r"^([a-z0-9_]+)=(\S+)$")
+
+
+def last_summary(text: str) -> dict[str, str]:
+    lines = [line[len(SUMMARY_PREFIX):] for line in text.splitlines()
+             if line.startswith(SUMMARY_PREFIX)]
+    if not lines:
+        raise ValueError("canary output has no Claude result summary")
+    fields: dict[str, str] = {}
+    for part in lines[-1].split():
+        match = FIELD.fullmatch(part)
+        if not match or match.group(1) in fields:
+            raise ValueError("canary result summary is malformed")
+        fields[match.group(1)] = match.group(2)
+    return fields
+
+
+def validate(text: str, model: str, token: str) -> None:
+    summary = last_summary(text)
+    if summary.get("is_error") != "false" or summary.get("subtype") != "success":
         raise ValueError("canary result is an error; check auth, quota, and model access")
-    if result.get("permission_denials"):
+    if summary.get("permission_denials") != "0":
         raise ValueError("canary encountered permission denials")
-    usage = result.get("modelUsage")
-    served = usage.get(model) if isinstance(usage, dict) else None
-    output_tokens = served.get("outputTokens") if isinstance(served, dict) else None
-    if not isinstance(output_tokens, int) or output_tokens <= 0:
+    served = {}
+    for entry in summary.get("output_tokens", "none").split(","):
+        name, _, count = entry.rpartition(":")
+        if name and count.isdigit():
+            served[name] = int(count)
+    if served.get(model, 0) <= 0:
         raise ValueError(f"requested model {model} has no observed output usage")
-    if str(result.get("result", "")).strip() != token:
+    if summary.get("reply_sha256") != reply_sha256(token):
         raise ValueError("canary reply is not exactly the canary token")
 
 
@@ -39,7 +58,7 @@ def main() -> None:
     parser.add_argument("--model", required=True)
     parser.add_argument("--token", required=True)
     args = parser.parse_args()
-    validate(parse_objects(args.output_file.read_text(encoding="utf-8", errors="replace")),
+    validate(args.output_file.read_text(encoding="utf-8", errors="replace"),
              args.model, args.token)
     print(f"Verified isolated Claude Code canary on {args.model}: OAuth token, "
           "quota, and served model OK; no tools, no publication")

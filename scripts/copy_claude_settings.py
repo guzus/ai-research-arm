@@ -20,8 +20,11 @@ file, limited to a reviewable subset:
 
 The run copy adds what the adapter enforces regardless of the lane: dontAsk,
 bypass and auto modes disabled, no project MCP servers, no git snapshot or
-auto memory, and the PreToolUse guard. It is written owner-read only, for a
-read-only container mount. The model is selected by `--model`,
+auto memory, the PreToolUse guard, and a SessionStart liveness hook. Under
+`-p`, Claude Code silently drops a settings file it cannot parse, guard and
+all, so the adapter runs `claude --init-only` first and refuses to start the
+model unless the liveness hook left its marker. It is written owner-read
+only, for a read-only container mount. The model is selected by `--model`,
 never by this file.
 """
 
@@ -68,6 +71,8 @@ GUARD_COMMAND = (
 # exit codes. The guard finishes in tens of milliseconds, so allow it far more
 # time than it can need rather than leave a timeout an attacker could aim for.
 GUARD_TIMEOUT_SECONDS = 600
+CONTAINER_LIVENESS_MARKER = "/tmp/claude-liveness/session-start"
+LIVENESS_COMMAND = f"touch {CONTAINER_LIVENESS_MARKER}"
 
 
 def validate(config: object) -> tuple[dict, str]:
@@ -128,6 +133,12 @@ def validate(config: object) -> tuple[dict, str]:
                 "matcher": "*",
                 "hooks": [{"type": "command", "command": GUARD_COMMAND,
                            "timeout": GUARD_TIMEOUT_SECONDS}],
+            }],
+            # Prints nothing, so nothing reaches the model's context. The
+            # marker only proves the CLI loaded this file and runs its hooks.
+            "SessionStart": [{
+                "matcher": "*",
+                "hooks": [{"type": "command", "command": LIVENESS_COMMAND, "timeout": 30}],
             }],
         },
         "disableAllHooks": False,

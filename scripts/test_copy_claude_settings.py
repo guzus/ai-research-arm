@@ -6,8 +6,10 @@ from pathlib import Path
 
 from copy_claude_settings import (
     BASELINE_DENY,
+    CONTAINER_LIVENESS_MARKER,
     GUARD_COMMAND,
     GUARD_TIMEOUT_SECONDS,
+    LIVENESS_COMMAND,
     copy_settings,
     validate,
 )
@@ -49,7 +51,7 @@ class CopyClaudeSettingsTest(unittest.TestCase):
         self.assertIs(False, settings["autoMemoryEnabled"])
         self.assertNotIn("env", settings)
         self.assertNotIn("apiKeyHelper", settings)
-        self.assertEqual({"PreToolUse"}, set(settings["hooks"]))
+        self.assertEqual({"PreToolUse", "SessionStart"}, set(settings["hooks"]))
         hooks = settings["hooks"]["PreToolUse"]
         self.assertEqual(1, len(hooks))
         self.assertEqual("*", hooks[0]["matcher"])
@@ -60,6 +62,10 @@ class CopyClaudeSettingsTest(unittest.TestCase):
         # must dwarf the guard's runtime.
         self.assertTrue(GUARD_COMMAND.endswith("|| exit 2"))
         self.assertGreaterEqual(GUARD_TIMEOUT_SECONDS, 600)
+        liveness = settings["hooks"]["SessionStart"]
+        self.assertEqual([{"matcher": "*", "hooks": [
+            {"type": "command", "command": LIVENESS_COMMAND, "timeout": 30}]}], liveness)
+        self.assertEqual(f"touch {CONTAINER_LIVENESS_MARKER}", LIVENESS_COMMAND)
 
     def test_writes_owner_read_only_copy_and_prints_tools(self):
         with tempfile.TemporaryDirectory() as tmp:
