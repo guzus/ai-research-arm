@@ -65,7 +65,18 @@ export function normalizeTopic(value: string): string {
   return value.trim().toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
-export function readWatchlist(storage: Storage | null = typeof localStorage === 'undefined' ? null : localStorage): WatchlistState {
+// Touching `localStorage` itself can throw (blocked site data, sandboxed
+// frames). These run at module load, so a throw here would take the whole
+// dashboard down: resolve the store defensively and treat failure as none.
+function browserStorage(): Storage | null {
+  try {
+    return typeof localStorage === 'undefined' ? null : localStorage;
+  } catch {
+    return null;
+  }
+}
+
+export function readWatchlist(storage: Storage | null = browserStorage()): WatchlistState {
   if (!storage) return { topics: [] };
   try {
     const parsed = JSON.parse(storage.getItem(WATCHLIST_KEY) || '{}') as Partial<WatchlistState>;
@@ -78,11 +89,15 @@ export function readWatchlist(storage: Storage | null = typeof localStorage === 
   }
 }
 
-export function writeWatchlist(state: WatchlistState, storage: Storage | null = typeof localStorage === 'undefined' ? null : localStorage): void {
+export function writeWatchlist(state: WatchlistState, storage: Storage | null = browserStorage()): void {
   if (!storage) return;
-  storage.setItem(WATCHLIST_KEY, JSON.stringify({
-    topics: Array.from(new Set(state.topics.map(normalizeTopic).filter(Boolean))).slice(0, 50),
-  }));
+  try {
+    storage.setItem(WATCHLIST_KEY, JSON.stringify({
+      topics: Array.from(new Set(state.topics.map(normalizeTopic).filter(Boolean))).slice(0, 50),
+    }));
+  } catch {
+    // Full or blocked storage: the watchlist still works for this page view.
+  }
 }
 
 export function watchlistFromUrl(search: string): string[] {
