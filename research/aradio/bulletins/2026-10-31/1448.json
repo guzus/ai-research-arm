@@ -1,0 +1,187 @@
+{
+  "schema": 1,
+  "id": "2026-10-31-1448",
+  "aired_at": "2026-10-31T14:48:00Z",
+  "headline": "Google's Gemini 4 Carbon takes the top benchmark spot but stays gated; Alphabet holds capex near $200B; a Claude Code extension is…",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's twelve minutes to three UTC on Saturday, October thirty-first. This is ARA Radio. Google has a new top-ranked model, but few can use it yet."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's Gemini 4 Carbon, announced on Alphabet's earnings call. Google said it was excited to be leading at the frontier."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Relays put it first on the new Artificial Analysis index, fifty-nine against fifty-eight for Claude Opus five point five. Mercor's agent benchmark also has it first, at eighty-four point two percent on a single attempt."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Access is limited to cyber defenders for now. There's no general release date, no pricing and no independent testing yet."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On that same call, Alphabet kept its capital spending guidance for the year at one hundred ninety-five to two hundred five billion dollars. Free cash flow was negative nine point one billion in the third quarter."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The company also said it began renting third-party computing capacity at the end of the quarter, which it expects to squeeze cloud margins. Cloud revenue still jumped one hundred three percent, to thirty point seven billion dollars."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That sits against Thursday's chip rout, when Intel fell nearly thirty percent. The next test is Monday."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On security, Anthropic says someone used Cursor's extension marketplace to publish a tampered copy of the Claude Code extension. Anthropic says its own systems were not compromised and only Cursor users are affected."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Relays say the fake versions planted an attacker key. That detail is not confirmed, and we have no statement from Cursor yet."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On funding, hosts on the 20VC podcast talked about Anthropic issuing about one hundred billion dollars of stock after its filing. They also said Meta announced a raise of up to ninety-five billion dollars."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Sources disagree on Anthropic's first-half revenue, so treat that figure with care until the listing documents are parsed."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "One more thread. OpenAI claims its models disproved a major computer science conjecture. The outside reviewers wrote an open letter saying their involvement is not certification, so there's no verdict."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "To watch: a release date for Carbon, a Cursor post-mortem, Anthropic's pricing and listing date, and Monday's chip trading."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA Radio. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's twelve minutes to three UTC on Saturday, October thirty-first. This is ARA Radio. Google has a new top-ranked model, but few can use it yet.",
+    "Speaker 2: [high_energy]That's Gemini 4 Carbon, announced on Alphabet's earnings call. Google said it was excited to be leading at the frontier.",
+    "Speaker 1: Relays put it first on the new Artificial Analysis index, fifty-nine against fifty-eight for Claude Opus five point five. Mercor's agent benchmark also has it first, at [emphasis]eighty-four point two percent[/emphasis] on a single attempt.",
+    "Speaker 2: Access is limited to cyber defenders for now. There's no general release date, no pricing and no independent testing yet.",
+    "Speaker 1: On that same call, Alphabet kept its capital spending guidance for the year at one hundred ninety-five to two hundred five billion dollars. Free cash flow was negative nine point one billion in the third quarter.",
+    "Speaker 2: The company also said it began renting third-party computing capacity at the end of the quarter, which it expects to squeeze cloud margins. Cloud revenue still jumped one hundred three percent, to thirty point seven billion dollars.",
+    "Speaker 1: That sits against Thursday's chip rout, when Intel fell nearly thirty percent. The next test is Monday.",
+    "Speaker 2: On security, Anthropic says someone used Cursor's extension marketplace to publish a tampered copy of the Claude Code extension. Anthropic says its own systems were not compromised and only Cursor users are affected.",
+    "Speaker 1: Relays say the fake versions planted an attacker key. That detail is not confirmed, and we have no statement from Cursor yet.",
+    "Speaker 2: On funding, hosts on the 20VC podcast talked about Anthropic issuing about one hundred billion dollars of stock after its filing. They also said Meta announced a raise of up to ninety-five billion dollars.",
+    "Speaker 1: Sources disagree on Anthropic's first-half revenue, so treat that figure with care until the listing documents are parsed.",
+    "Speaker 2: One more thread. OpenAI claims its models disproved a major computer science conjecture. The outside reviewers wrote an open letter saying their involvement is not certification, so there's no verdict.",
+    "Speaker 1: To watch: a release date for Carbon, a Cursor post-mortem, Anthropic's pricing and listing date, and Monday's chip trading.",
+    "Speaker 2: That's ARA Radio. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "gemini-4-carbon-frontier-race",
+    "hyperscaler-capex-and-chip-selloff",
+    "ai-cyber-risk-and-key-theft",
+    "anthropic-ipo-and-ai-funding",
+    "ai-math-and-physics-discovery-claims"
+  ],
+  "threads": [
+    {
+      "slug": "gemini-4-carbon-frontier-race",
+      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
+      "status": "developing"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, Vertiv and the chip rout",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "developing"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
+      "kind": "earnings-call",
+      "label": "Alphabet earnings call"
+    },
+    {
+      "url": "https://x.com/demishassabis/status/2116452833167814692",
+      "kind": "ticket",
+      "label": "Gemini 4 Carbon ticket (Hassabis on X)"
+    },
+    {
+      "url": "https://x.com/OwenGregorian/status/2116491977319383467",
+      "kind": "ticket",
+      "label": "OpenAI discoveries ticket (StudyFinds via X)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2-aUmDMZgLE",
+      "kind": "podcast",
+      "label": "20VC"
+    },
+    {
+      "url": "https://x.com/ishkme/status/2116513901525217673",
+      "kind": "ticket",
+      "label": "Cursor tampered extension ticket (@ishkme on X)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "create",
+      "slug": "gemini-4-carbon-frontier-race"
+    },
+    {
+      "op": "create",
+      "slug": "ai-math-and-physics-discovery-claims"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    },
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    },
+    {
+      "op": "update",
+      "slug": "ai-cyber-risk-and-key-theft"
+    }
+  ],
+  "warnings": [
+    "headline truncated to 140 characters",
+    "ops[0] create gemini-4-carbon-frontier-race evidence[0]: label set to the source's name because the evidence carries a quote",
+    "ops[2] update hyperscaler-capex-and-chip-selloff evidence[0]: label set to the source's name because the evidence carries a quote"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-10-31-1448.mp3",
+    "bytes": 769773,
+    "duration_s": 128.2
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "claude-sonnet-5p5-isolated",
+    "model": "claude-sonnet-5-5"
+  },
+  "inbox": {
+    "items": 40,
+    "kinds": {
+      "earnings-call": 1,
+      "podcast": 20,
+      "ticket": 10,
+      "video": 9
+    }
+  }
+}
