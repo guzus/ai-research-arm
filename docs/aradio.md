@@ -496,6 +496,16 @@ broadcast": the situation board, the last 72 bulletins and the transcript
   `ended` the next bulletin starts at once and an overdue poll runs alongside:
   timers are throttled behind a locked screen, so playback never waits on the
   network.
+- **Audio failures**: a bulletin whose mp3 does not load or play (the
+  element's `error`, or `play()` rejecting with `NotSupportedError`) is
+  skipped like an `ended` one — the next playable bulletin starts, keeping the
+  play state, and the live region says "Couldn’t play the 12:50 UTC bulletin —
+  skipping". A failed bulletin is never retried by itself in that listening
+  session (polls do not queue it again). When nothing left can play, the radio
+  stops and says so on the card ("Couldn’t play"), the bar and the lock screen
+  (paused); play, from any of them, tries again from the first bulletin missed.
+  A blocked or interrupted `play()` (autoplay policy, a newer load) is not a
+  failure. The rules are `failAradioProgramme` / `retryAradioProgramme`.
 - **Updates**: the page polls `research/aradio/index.json` every 5 minutes (and
   in the background while a bulletin plays). The radio card takes new data at
   once and is patched in place (fixed heights, no re-render, focus kept);

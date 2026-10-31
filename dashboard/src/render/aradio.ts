@@ -14,6 +14,9 @@
  * comes next. The situation board, the bulletin log and the transcripts sit
  * below it, "Behind the broadcast". The running order is a pure data
  * structure (`AradioProgramme`) so its rules are tested here, not in the DOM.
+ * One bad file must not end the listening: a bulletin whose audio fails is
+ * skipped and never retried by itself; when nothing left can play, the card
+ * says so ("Couldn't play") and play tries again from the first one missed.
  *
  * WHY EVERYTHING HERE IS DEFENSIVE
  * --------------------------------
@@ -121,11 +124,18 @@ export type AradioTranscriptState =
  * one on now (`pos`). Built newest first from the index; a bulletin that airs
  * during the session is inserted right after the one on now. "Previous" walks
  * back through it, "next" forward, and "Up next" is what follows `pos`.
+ * `failed` lists the bulletins whose audio did not load or play this session:
+ * they stay in `ids` (so a poll never queues them again) but every step skips
+ * them, so nothing is retried unless the listener asks.
  */
-export type AradioProgramme = { readonly ids: readonly string[]; readonly pos: number };
+export type AradioProgramme = { readonly ids: readonly string[]; readonly pos: number; readonly failed?: readonly string[] };
 
-/** off = nothing of ours is playing; waiting = caught up, the next bulletin to air plays. */
-export type AradioRadioMode = 'off' | 'playing' | 'paused' | 'waiting';
+/**
+ * off = nothing of ours is playing; waiting = caught up, the next bulletin to
+ * air plays; failed = stopped because nothing left in the running order could
+ * play (play tries again).
+ */
+export type AradioRadioMode = 'off' | 'playing' | 'paused' | 'waiting' | 'failed';
 
 /** What main.ts knows about the station and the shared player, as data. */
 export type AradioRadioInput = {
@@ -589,12 +599,12 @@ export function syncAradioProgramme(
     ids.splice(at, 0, entry.id);
   }
   for (const entry of unseen) if (msOf(entry.airedAt) <= newestKnown) ids.push(entry.id);
-  return { ids, pos: programme.pos };
+  return { ...programme, ids };
 }
 
 /**
  * Move one bulletin forward (1) or back (-1), skipping any that left the
- * index or lost their audio. Null at either end.
+ * index, lost their audio or failed this session. Null at either end.
  */
 export function stepAradioProgramme(
   programme: AradioProgramme,
@@ -603,6 +613,57 @@ export function stepAradioProgramme(
 ): AradioProgramme | null {
   const playable = new Set(aradioPlayableIds(bulletins));
   for (let pos = programme.pos + delta; pos >= 0 && pos < programme.ids.length; pos += delta) {
+    const id = programme.ids[pos];
+    if (playable.has(id) && !aradioHasFailed(programme, id)) return { ...programme, pos };
+  }
+  return null;
+}
+
+/** The bulletin's audio failed to load or play in this listening session. */
+export function aradioHasFailed(programme: AradioProgramme | null, id: string | null | undefined): boolean {
+  return Boolean(programme && id && programme.failed?.includes(id));
+}
+
+/**
+ * The bulletin on now (`id`) failed to load or play: record it and move to
+ * the next bulletin that can still play. `skip` plays the returned order's
+ * bulletin on now; `stop` means nothing playable is left after it, so the
+ * radio stops and says so. Null when `id` is not the bulletin on now or has
+ * already failed: the element's `error` and the rejected play() report the
+ * same failure, and a late report about a bulletin already skipped past
+ * changes nothing. A failed bulletin is never tried again by itself, so a
+ * run of broken files (or a dead connection) ends in one stop, not a loop.
+ */
+export function failAradioProgramme(
+  programme: AradioProgramme,
+  bulletins: readonly AradioBulletinEntry[],
+  id: string,
+): { action: 'skip' | 'stop'; programme: AradioProgramme } | null {
+  if (programme.ids[programme.pos] !== id || aradioHasFailed(programme, id)) return null;
+  const failed: AradioProgramme = { ...programme, failed: [...(programme.failed ?? []), id] };
+  const next = stepAradioProgramme(failed, bulletins, 1);
+  return next ? { action: 'skip', programme: next } : { action: 'stop', programme: failed };
+}
+
+/**
+ * "Try again" after a stop on failures: a fresh session (nothing failed),
+ * starting at the first of the failures that stopped the radio — the listener
+ * missed all of them, and the newest missed one plays first. A bulletin that
+ * played before them (or was never reached) stays behind. Null when none of
+ * what was missed can still play.
+ */
+export function retryAradioProgramme(
+  programme: AradioProgramme,
+  bulletins: readonly AradioBulletinEntry[],
+): AradioProgramme | null {
+  const playable = new Set(aradioPlayableIds(bulletins));
+  let start = programme.pos;
+  for (let pos = programme.pos - 1; pos >= 0; pos -= 1) {
+    const id = programme.ids[pos];
+    if (aradioHasFailed(programme, id)) start = pos;
+    else if (playable.has(id)) break;
+  }
+  for (let pos = start; pos < programme.ids.length; pos += 1) {
     if (playable.has(programme.ids[pos])) return { ids: programme.ids, pos };
   }
   return null;
@@ -618,7 +679,7 @@ export function aradioUpNext(
   const out: AradioBulletinEntry[] = [];
   for (let pos = programme.pos + 1; pos < programme.ids.length && out.length < count; pos += 1) {
     const entry = byId.get(programme.ids[pos]);
-    if (entry?.audio && !out.includes(entry)) out.push(entry);
+    if (entry?.audio && !aradioHasFailed(programme, entry.id) && !out.includes(entry)) out.push(entry);
   }
   return out;
 }
@@ -653,29 +714,38 @@ export function aradioRadioView(input: AradioRadioInput, nowMs: number): AradioR
     ? 'ready'
     : bulletins.length ? 'text-only' : input.indexStatus === 'error' ? 'error' : 'none';
   const loaded = input.loaded;
-  const mode: AradioRadioMode = loaded && input.waiting
-    ? 'waiting'
-    : loaded && !input.ended ? (input.playing ? 'playing' : 'paused') : 'off';
+  // The player still holds the bulletin that failed last: the radio stopped on it.
+  const mode: AradioRadioMode = loaded && aradioHasFailed(input.programme, loaded.id)
+    ? 'failed'
+    : loaded && input.waiting
+      ? 'waiting'
+      : loaded && !input.ended ? (input.playing ? 'playing' : 'paused') : 'off';
+  // Off or stopped on a failure, the card shows what pressing play starts.
+  const idle = mode === 'off' || mode === 'failed';
 
   let now: AradioBulletinEntry | null = null;
   let order: AradioProgramme | null = null;
-  if (mode !== 'off') {
+  if (!idle) {
     now = loaded;
     order = input.programme;
   } else {
-    // Off: show what pressing play starts. After "stop after this bulletin"
-    // that is the next one in the running order; otherwise the newest.
-    const next = input.programme && loaded ? stepAradioProgramme(input.programme, bulletins, 1) : null;
+    // After failures, play tries again from the first bulletin missed; after
+    // "stop after this bulletin", the next one in the running order;
+    // otherwise the newest.
+    const programme = loaded ? input.programme : null;
+    const next = !programme
+      ? null
+      : mode === 'failed' ? retryAradioProgramme(programme, bulletins) : stepAradioProgramme(programme, bulletins, 1);
     order = next ?? startAradioProgramme(bulletins);
     const id = order ? order.ids[order.pos] : null;
     now = bulletins.find((entry) => entry.id === id) ?? null;
   }
   const upNext = mode === 'waiting' || !order ? [] : aradioUpNext(order, bulletins);
   const active = mode === 'playing' || mode === 'paused';
-  const duration = mode === 'off'
+  const duration = idle
     ? now?.audio?.durationS ?? 0
     : input.duration > 0 ? input.duration : now?.audio?.durationS ?? 0;
-  const elapsed = mode === 'off' ? 0 : mode === 'waiting' ? duration : Math.max(0, Math.min(input.position, duration || input.position));
+  const elapsed = idle ? 0 : mode === 'waiting' ? duration : Math.max(0, Math.min(input.position, duration || input.position));
   return {
     kind,
     mode,
@@ -683,7 +753,7 @@ export function aradioRadioView(input: AradioRadioInput, nowMs: number): AradioR
     latestAiredAt: newestPlayable?.airedAt ?? null,
     now,
     upNext,
-    canPrevious: mode !== 'off',
+    canPrevious: !idle,
     canNext: active && Boolean(input.programme && stepAradioProgramme(input.programme, bulletins, 1)),
     textOnlyNewest: newest && !newest.audio && newestPlayable && msOf(newest.airedAt) > msOf(newestPlayable.airedAt)
       ? newest
@@ -891,18 +961,23 @@ export function aradioRadioCopy(view: AradioRadioView, nowMs: number, language: 
     : live ? t('aradio.onAir') : t('aradio.latestAgo', { age: aradioAge(view.latestAiredAt, nowMs, language) });
   const labels: Record<AradioRadioMode, UiCopyKey> = {
     off: 'aradio.upFirst', playing: 'aradio.nowPlaying', paused: 'aradio.paused', waiting: 'aradio.caughtUp',
+    failed: 'aradio.couldNotPlay',
   };
   const toggles: Record<AradioRadioMode, UiCopyKey> = {
     off: 'aradio.playStation', playing: 'aradio.pauseStation', paused: 'aradio.resumeStation', waiting: 'aradio.turnOff',
+    failed: 'aradio.tryAgain',
   };
   const now = view.now;
   const duration = view.duration > 0 ? view.duration : 0;
   const seekMax = Math.max(1, Math.round(duration));
   const seekValue = Math.min(seekMax, Math.round(view.elapsed));
   // Caught up needs no note: "Up next" already says new bulletins play as they air.
-  const note = view.textOnlyNewest
-    ? t('aradio.textOnlyNewest', { time: aradioUtcTime(view.textOnlyNewest.airedAt) })
-    : '';
+  // A stop on failures always says why, so it is never a silent "Paused".
+  const note = view.mode === 'failed'
+    ? t('aradio.failedNote')
+    : view.textOnlyNewest
+      ? t('aradio.textOnlyNewest', { time: aradioUtcTime(view.textOnlyNewest.airedAt) })
+      : '';
   return {
     badge,
     live,

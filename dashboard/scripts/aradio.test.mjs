@@ -71,6 +71,7 @@ function entry(hhmm, { audio = true, headline } = {}) {
 const bulletinsOf = (...rows) => mod.normalizeAradioIndex({ bulletins: rows }).bulletins;
 const rawOf = (bulletins) => bulletins.map((row) => ({ id: row.id, aired_at: row.airedAt, headline: row.headline, audio: row.audio }));
 const ids = (list) => list.map((item) => (typeof item === 'string' ? item : item.id).slice(11));
+const onNow = (programme) => programme.ids[programme.pos].slice(11);
 
 test('index: newest first by aired_at, validated paths and audio, text-only kept', () => {
   const shuffled = { ...INDEX, bulletins: [INDEX.bulletins[2], INDEX.bulletins[0], INDEX.bulletins[1], INDEX.bulletins[0]] };
@@ -453,6 +454,163 @@ test('radio view: caught up stays on; "stop after this bulletin" turns it off on
   assert.match(html, /aradio-deck aradio-mode--playing/);
 });
 
+test('audio failure: the radio skips to the next bulletin that can play, in running order', () => {
+  const bulletins = bulletinsOf(entry('14:50'), entry('13:50', { audio: false }), entry('12:50'), entry('11:50'), entry('10:50'));
+  const programme = mod.startAradioProgramme(bulletins);
+  assert.deepEqual(ids(programme.ids), ['1450', '1250', '1150', '1050']);
+
+  // 14:50 fails: 12:50 plays next (the text-only 13:50 was never in the order).
+  const first = mod.failAradioProgramme(programme, bulletins, '2026-10-30-1450');
+  assert.equal(first.action, 'skip');
+  assert.equal(onNow(first.programme), '1250');
+  assert.deepEqual(ids(first.programme.failed), ['1450']);
+  assert.deepEqual(first.programme.ids, programme.ids, 'the order itself is unchanged');
+
+  // 12:50 fails too: on to 11:50, both failures carried.
+  const second = mod.failAradioProgramme(first.programme, bulletins, '2026-10-30-1250');
+  assert.equal(second.action, 'skip');
+  assert.equal(onNow(second.programme), '1150');
+  assert.deepEqual(ids(second.programme.failed), ['1450', '1250']);
+
+  // Listening to an older bulletin: a failure moves on, never back to the newest.
+  const onOld = mod.startAradioProgramme(bulletins, '2026-10-30-1150');
+  assert.equal(onNow(mod.failAradioProgramme(onOld, bulletins, '2026-10-30-1150').programme), '1050');
+  // A bulletin that left the index meanwhile is passed over as well.
+  const aged = bulletinsOf(entry('14:50'), entry('12:50'), entry('10:50'));
+  assert.equal(onNow(mod.failAradioProgramme(first.programme, aged, '2026-10-30-1250').programme), '1050');
+});
+
+test('audio failure: a failed bulletin is never tried again by itself; one failure is handled once', () => {
+  const bulletins = bulletinsOf(entry('14:50'), entry('12:50'), entry('10:50'));
+  const on1250 = mod.stepAradioProgramme(mod.startAradioProgramme(bulletins), bulletins, 1);
+  const { programme } = mod.failAradioProgramme(on1250, bulletins, '2026-10-30-1250');
+  assert.equal(onNow(programme), '1050');
+  assert.equal(mod.aradioHasFailed(programme, '2026-10-30-1250'), true);
+  assert.equal(mod.aradioHasFailed(programme, '2026-10-30-1050'), false);
+  assert.equal(mod.aradioHasFailed(null, '2026-10-30-1250'), false);
+
+  // The element's `error` and the rejected play() describe one failure: the
+  // second report, or a late one about a bulletin no longer on, is a no-op.
+  assert.equal(mod.failAradioProgramme(programme, bulletins, '2026-10-30-1250'), null);
+  assert.equal(mod.failAradioProgramme(programme, bulletins, '2026-10-30-1450'), null);
+  assert.equal(mod.failAradioProgramme(on1250, bulletins, '2026-10-30-1450'), null, 'only the bulletin on now can fail');
+
+  // Previous and next step over it, and "Up next" leaves it out.
+  const back = mod.stepAradioProgramme(programme, bulletins, -1);
+  assert.equal(onNow(back), '1450');
+  assert.equal(onNow(mod.stepAradioProgramme(back, bulletins, 1)), '1050');
+  assert.deepEqual(ids(mod.aradioUpNext(back, bulletins)), ['1050']);
+  assert.deepEqual(ids(mod.aradioRadioView(radioInput({ bulletins, programme: back, loaded: bulletins[0], playing: true }), LATEST_MS).upNext), ['1050']);
+
+  // Polls never bring it back: the same index is a no-op, and a newer one
+  // carries the failure and queues only the new bulletin.
+  assert.equal(mod.syncAradioProgramme(programme, bulletins), programme);
+  const newer = bulletinsOf(entry('15:50'), ...rawOf(bulletins));
+  const synced = mod.syncAradioProgramme(programme, newer);
+  assert.deepEqual(ids(synced.ids), ['1450', '1250', '1050', '1550']);
+  assert.deepEqual(ids(synced.failed), ['1250']);
+  assert.deepEqual(ids(mod.aradioUpNext(synced, newer)), ['1550']);
+  // A session the listener starts afresh (a bulletin picked in the log) is clean.
+  assert.equal(mod.startAradioProgramme(newer, '2026-10-30-1250').failed, undefined);
+});
+
+test('audio failure: when everything left fails the radio stops, says so and offers to try again', () => {
+  const bulletins = bulletinsOf(entry('14:50'), entry('12:50', { audio: false }), entry('10:50'));
+  const [b1450, , b1050] = bulletins;
+  const nowMs = LATEST_MS + 20 * 60_000;
+  const skip = mod.failAradioProgramme(mod.startAradioProgramme(bulletins), bulletins, b1450.id);
+  assert.equal(skip.action, 'skip');
+  const stop = mod.failAradioProgramme(skip.programme, bulletins, b1050.id);
+  assert.equal(stop.action, 'stop');
+  assert.equal(onNow(stop.programme), '1050', 'the order stays on the last failure');
+  assert.deepEqual(ids(stop.programme.failed), ['1450', '1050']);
+  assert.equal(mod.failAradioProgramme(stop.programme, bulletins, b1050.id), null, 'the rejected play() after `error` adds nothing');
+  assert.equal(mod.stepAradioProgramme(stop.programme, bulletins, 1), null);
+  assert.equal(mod.stepAradioProgramme(stop.programme, bulletins, -1), null, 'nothing behind it can play either');
+
+  // The player still holds 10:50: the card says it stopped, never a silent "Paused".
+  const input = radioInput({ bulletins, programme: stop.programme, loaded: b1050, playing: false });
+  const view = mod.aradioRadioView(input, nowMs);
+  assert.equal(view.mode, 'failed');
+  assert.equal(mod.aradioRadioView({ ...input, waiting: true }, nowMs).mode, 'failed', 'a stop outranks caught up');
+  assert.equal(view.now.id, b1450.id, 'play tries again from the first bulletin missed');
+  assert.deepEqual(view.upNext.map((item) => item.id), [b1050.id]);
+  assert.equal(view.canPrevious, false);
+  assert.equal(view.canNext, false);
+  assert.equal(view.seekable, false);
+  assert.equal(view.elapsed, 0);
+  const copy = mod.aradioRadioCopy(view, nowMs, 'en');
+  assert.equal(copy.label, 'Couldn’t play');
+  assert.equal(copy.toggleLabel, 'Try ARA Radio again');
+  assert.equal(copy.toggleIcon, 'play');
+  assert.equal(copy.note, 'The audio didn’t load. Try again, or read the transcript.');
+  assert.equal(copy.time, '14:50 UTC');
+  const html = mod.renderAradioRadio(viewState({ index: { updatedAt: null, degraded: false, bulletins }, radio: input }));
+  assert.match(html, /aradio-deck aradio-mode--failed/);
+  assert.match(html, /data-aradio-now-label>Couldn’t play</);
+  assert.match(html, /data-aradio-toggle aria-label="Try ARA Radio again"/);
+  assert.match(html, /data-aradio-note>The audio didn’t load\. Try again, or read the transcript\.</);
+
+  // Trying again is a fresh session from 14:50, so each gets one more go.
+  const retry = mod.retryAradioProgramme(stop.programme, bulletins);
+  assert.deepEqual(retry, { ids: stop.programme.ids, pos: 0 });
+  assert.equal(onNow(mod.stepAradioProgramme(retry, bulletins, 1)), '1050');
+  for (const [key, time] of [['aradio.skipFailed', '14:50'], ['aradio.stoppedFailed', '10:50'], ['aradio.playerFailed', '10:50']]) {
+    assert.ok(uiText('en', key, { time }).includes(`${time} UTC`), key);
+  }
+});
+
+test('audio failure: trying again replays what was missed, not what already played', () => {
+  const bulletins = bulletinsOf(entry('14:50'), entry('12:50'), entry('10:50'));
+  // 14:50 failed and was skipped, 12:50 played to its end, then 10:50 failed.
+  const on1250 = mod.failAradioProgramme(mod.startAradioProgramme(bulletins), bulletins, '2026-10-30-1450').programme;
+  const on1050 = mod.stepAradioProgramme(on1250, bulletins, 1);
+  const stop = mod.failAradioProgramme(on1050, bulletins, '2026-10-30-1050');
+  assert.equal(stop.action, 'stop');
+  const retry = mod.retryAradioProgramme(stop.programme, bulletins);
+  assert.equal(onNow(retry), '1050', '12:50 played, so only 10:50 was missed');
+  assert.equal(retry.failed, undefined);
+  // What was missed has left the index: nothing to retry (the radio starts from the newest).
+  assert.equal(mod.retryAradioProgramme(stop.programme, bulletinsOf(entry('14:50'), entry('12:50'))), null);
+  const view = mod.aradioRadioView(radioInput({ bulletins: bulletinsOf(entry('14:50'), entry('12:50')), programme: stop.programme, loaded: bulletins[2] }), LATEST_MS);
+  assert.equal(view.mode, 'failed');
+  assert.equal(view.now.id, '2026-10-30-1450');
+});
+
+test('audio failure while caught up: the new bulletin is not retried and nothing spins', () => {
+  const bulletins = bulletinsOf(entry('14:50'), entry('12:50'));
+  // Everything played: caught up on 12:50, waiting for the next bulletin.
+  const last = mod.stepAradioProgramme(mod.startAradioProgramme(bulletins), bulletins, 1);
+  assert.equal(mod.stepAradioProgramme(last, bulletins, 1), null);
+
+  // 15:50 airs; the poll queues it after the one on now and the radio starts it.
+  const aired = bulletinsOf(entry('15:50'), ...rawOf(bulletins));
+  const onNew = mod.stepAradioProgramme(mod.syncAradioProgramme(last, aired), aired, 1);
+  assert.equal(onNow(onNew), '1550');
+
+  // Its audio fails. Nothing follows it, so the radio stops on it rather than
+  // claim "caught up" over a bulletin the listener never heard.
+  const stop = mod.failAradioProgramme(onNew, aired, '2026-10-30-1550');
+  assert.equal(stop.action, 'stop');
+  // Later polls of the same index are no-ops: it is never queued or played again.
+  for (let poll = 0; poll < 3; poll += 1) assert.equal(mod.syncAradioProgramme(stop.programme, aired), stop.programme);
+  assert.equal(mod.stepAradioProgramme(stop.programme, aired, 1), null);
+  assert.equal(mod.failAradioProgramme(stop.programme, aired, '2026-10-30-1550'), null);
+  const view = mod.aradioRadioView(radioInput({ bulletins: aired, programme: stop.programme, loaded: aired[0] }), LATEST_MS + 70 * 60_000);
+  assert.equal(view.mode, 'failed');
+  assert.equal(view.now.id, '2026-10-30-1550', 'play tries the bulletin that failed');
+  assert.deepEqual(view.upNext, []);
+
+  // The next bulletin to air still joins the order behind it; trying again plays both.
+  const later = bulletinsOf(entry('16:50'), ...rawOf(aired));
+  const synced = mod.syncAradioProgramme(stop.programme, later);
+  assert.deepEqual(ids(synced.ids), ['1450', '1250', '1550', '1650']);
+  assert.deepEqual(ids(synced.failed), ['1550']);
+  const retry = mod.retryAradioProgramme(synced, later);
+  assert.equal(onNow(retry), '1550');
+  assert.deepEqual(ids(mod.aradioUpNext(retry, later)), ['1650']);
+});
+
 test('radio card: hostile headlines are escaped wherever they show', () => {
   const headline = '<img src=x onerror=alert(1)> "quoted" & \'single\'';
   const bulletins = bulletinsOf(entry('14:50', { headline }), entry('12:50', { headline }));
@@ -468,9 +626,11 @@ test('the radio card keeps its shape while bulletins change (no layout shift)', 
   const off = mod.renderAradioRadio(viewState());
   const playing = mod.renderAradioRadio(viewState({ radio: radioInput({ programme, loaded: bulletins[0], playing: true, position: 30, duration: 242 }) }));
   const waiting = mod.renderAradioRadio(viewState({ radio: radioInput({ programme: { ids: programme.ids, pos: 1 }, loaded: bulletins[2], ended: true, waiting: true }) }));
+  const failed = mod.renderAradioRadio(viewState({ radio: radioInput({ programme: { ids: programme.ids, pos: 1, failed: [bulletins[2].id] }, loaded: bulletins[2] }) }));
   // Same hooks in the same order: main.ts patches text in place.
   assert.equal(shape(playing), shape(off));
   assert.equal(shape(waiting), shape(off));
+  assert.equal(shape(failed), shape(off));
   // Up next always fills its reserved rows: entries, or one line saying why not.
   assert.match(waiting, /<ol class="aradio-upnext-list" data-aradio-upnext><li class="aradio-upnext-empty">/);
 });
@@ -610,9 +770,25 @@ test('Korean: the radio, chrome, statuses, kinds and speakers are localized', ()
     'aradio.announceNow', 'aradio.textOnlyNewest', 'aradio.textOnlyTitle', 'aradio.textOnlyBody', 'aradio.podcastTitle',
     'aradio.podcastHint', 'aradio.feedLabel', 'aradio.copy', 'aradio.copied', 'aradio.copyFailed', 'aradio.behind',
     'aradio.behindHint', 'aradio.emptyTitle', 'aradio.emptyBody', 'aradio.player', 'aradio.playerTitle',
+    'aradio.couldNotPlay', 'aradio.tryAgain', 'aradio.failedNote', 'aradio.skipFailed', 'aradio.stoppedFailed',
+    'aradio.playerFailed',
   ];
   for (const key of keys) {
     assert.notEqual(uiText('ko', key), uiText('en', key), `${key} must be translated`);
     assert.match(uiText('ko', key), /[가-힣]/, `${key} must emit Hangul`);
+  }
+  // Every time-bearing failure message keeps its time in Korean too.
+  for (const key of ['aradio.skipFailed', 'aradio.stoppedFailed', 'aradio.playerFailed']) {
+    assert.ok(uiText('ko', key, { time: '12:50' }).includes('UTC 12:50'), key);
+  }
+
+  // A stop on failures reads as Korean on the card.
+  const bulletins = mod.normalizeAradioIndex(INDEX).bulletins;
+  const failed = mod.renderAradioRadio(viewState({
+    language: 'ko',
+    radio: radioInput({ programme: { ids: ['2026-10-30-1450', '2026-10-30-1050'], pos: 1, failed: ['2026-10-30-1450', '2026-10-30-1050'] }, loaded: bulletins[2] }),
+  }));
+  for (const key of ['aradio.couldNotPlay', 'aradio.tryAgain', 'aradio.failedNote']) {
+    assert.ok(failed.includes(uiText('ko', key)), `failed card missing Korean ${key}`);
   }
 });
