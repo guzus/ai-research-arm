@@ -28,6 +28,25 @@ class ToolchainPinsTest(unittest.TestCase):
         data["agent_bun"]["version"] = "latest"
         self.assertIn("agent_bun.version must be an exact release version", ctp.validate(data))
 
+    def test_claude_code_pin_must_match_the_isolated_container(self):
+        data = ctp.load()
+        self.assertRegex(data["claude_code"]["version"], r"^\d+\.\d+\.\d+$")
+        for integrity in data["claude_code"]["integrity"].values():
+            self.assertRegex(integrity, r"^sha512-[A-Za-z0-9+/]{86}==$")
+        # A version bump without new integrity values, or a changed digest,
+        # must fail: the container would install something nobody audited.
+        data["claude_code"]["version"] = "2.1.999"
+        self.assertTrue(any("platform package" in e for e in ctp.validate(data)))
+        data = ctp.load()
+        data["claude_code"]["integrity"]["linux_x64"] = (
+            "sha512-" + "A" * 86 + "==")
+        self.assertIn("Claude container lacks the audited linux_x64 SHA-512 checksum",
+                      ctp.validate(data))
+        data = ctp.load()
+        data["claude_code"]["integrity"]["linux_arm64"] = "sha256-abc"
+        self.assertIn("claude_code.integrity.linux_arm64 must be an npm sha512 SRI value",
+                      ctp.validate(data))
+
 
 if __name__ == "__main__":
     unittest.main()

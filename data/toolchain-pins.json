@@ -38,6 +38,14 @@
       "linux_arm64": "f1c1c2330d89fa4ef5b6cc04fcffba15012ff50eacd07e0f3baec0716f25ac5d"
     }
   },
+  "claude_code": {
+    "$comment": "Native Claude Code binary from the @anthropic-ai/claude-code-linux-<arch> npm package (the wrapper package only copies it in a postinstall). integrity is the registry's own dist.integrity (npm view @anthropic-ai/claude-code-linux-x64@<version> dist.integrity); run-claude-container checks the equivalent SHA-512 hex.",
+    "version": "2.1.285",
+    "integrity": {
+      "linux_x64": "sha512-6qNST8qKemr+rD9zvUEwEq0UtWt0E5Js8bkbjh13/LM62FiGWcN6IqiJPxybJ2FNd+I3liXq6JYNv/vrGnmAow==",
+      "linux_arm64": "sha512-vAvIr+MVnm5IrSq8KoJrZkoG3BFpLvVEqfrx15w7hWW+gcSYHPvN33lfkzXvs5L8MYXxNW0Ae86MLiCH+x4ldQ=="
+    }
+  },
   "npm": {
     "opencode-ai": {
       "version": "1.18.3",

@@ -1,0 +1,1305 @@
+name: Run Claude Code agent in container
+description: >-
+  Run Claude Code (`claude -p`) inside a Docker container with only the
+  workflow workspace's disposable clone, the rendered prompt, and a trusted
+  per-lane permission policy mounted. The real checkout is never writable by
+  the agent, and the OAuth token reaches the CLI on an inherited pipe, never
+  in an environment variable.
+
+# WHY THIS EXISTS
+#
+# The agent-run adapter runs Claude Code on the host checkout, so it is not an
+# isolated workspace. Editorial lanes feed the model untrusted text (podcast
+# transcripts, tweets, filings): a prompt injection there must not reach the
+# persistent self-hosted runner, the repository, or the OAuth token. This
+# action gives Claude the isolation contract of run-cursor-container and
+# run-opencode-container: pinned image, disposable clone, throwaway HOME,
+# --cap-drop ALL, no-new-privileges, and a trusted host import of only the
+# declared artifacts or at most one validated commit. Every TRUSTED_* block is
+# a verbatim copy of run-cursor-container's with the adapter name swapped;
+# scripts/test_backend_matrix.py fails CI if the copies drift.
+#
+# Claude-side lockdown. Each layer alone refuses a read of the token:
+#   --tools       only what the lane's allow rules imply (Read, Write, Edit
+#                 for Aradio; nothing for the canary): no Bash, web, MCP, Task.
+#   --restricted  ignores user, project and local settings (the clone's own
+#                 .claude/ and .mcp.json) and confines file tools to /workspace.
+#   dontAsk       a call no rule pre-approves is denied, never prompted.
+#   deny rules    /proc, /sys, HOME, /tmp, .git, and the repository's code and
+#                 data (.github/claude/<lane>.json, baseline in the copier).
+#   tool-guard    PreToolUse hook: an exact allowlist from permissions.allow,
+#                 closing dontAsk's default "any read in the working directory".
+#   token pipe    CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR: the token is in no
+#                 process environment, so no tool, hook, or child can read it.
+#
+# Missing Docker is a HARD FAILURE. Never fall back to host-level `claude -p`.
+
+inputs:
+  mode:
+    description: Output contract to enforce after the isolated agent run (editorial or canary).
+    required: true
+  lane:
+    description: >-
+      Backend SSOT lane key. agent-dispatch passes it; the canary leaves it
+      empty. It also names the default lane policy, .github/claude/<lane>.json.
+    required: false
+    default: ''
+  allowed-paths:
+    description: >-
+      Exact newline-delimited commit paths (or directory prefixes ending in /)
+      allowed in editorial mode. Ignored in canary mode, whose contract is
+      built in.
+    required: false
+    default: ''
+  return-artifacts:
+    description: >-
+      Exact newline-delimited uncommitted artifacts under .tmp/ to return from
+      an editorial run after regular-file/path/size validation. Used when a
+      trusted host step owns the final append and commit contract.
+    required: false
+    default: ''
+  prompt-file:
+    description: >-
+      Path to the rendered prompt file (host path). Exactly one of
+      prompt-file / prompt-text is required; that is enforced at runtime rather
+      than by `required: true`, which cannot express either/or.
+    required: false
+    default: ''
+  prompt-text:
+    description: >-
+      Inline prompt, used instead of prompt-file. Exactly one of prompt-file /
+      prompt-text.
+    required: false
+    default: ''
+  model:
+    description: Fully-qualified Claude model ref, e.g. claude/claude-sonnet-5-5.
+    required: true
+  claude-code-oauth-token:
+    description: >-
+      CLAUDE_CODE_OAUTH_TOKEN. It reaches the container as its first stdin
+      line and the CLI on an inherited descriptor; it is never set in the
+      container's environment.
+    required: true
+  claude-config:
+    description: >-
+      Workspace-relative trusted Claude Code lane policy. Empty means
+      .github/claude/<lane>.json. There is deliberately no permissive default:
+      a lane without a policy file fails before Docker runs.
+    required: false
+    default: ''
+  timeout-minutes:
+    description: Hard wall-clock cap on the agent turn, enforced inside the container.
+    required: false
+    default: '45'
+  max-turns:
+    description: Hard cap on agentic turns (claude --max-turns), enforced by the CLI.
+    required: false
+    default: '40'
+  output-file:
+    description: >-
+      Host path to tee the container's stdout to, for lanes that assert on what
+      the agent said (the canary checks its token). Written on the host, so it
+      needs no mount and the container cannot tamper with it.
+    required: false
+    default: ''
+
+runs:
+  using: composite
+  steps:
+    - name: Build and run Claude Code container
+      shell: bash
+      env:
+        RUN_MODE: ${{ inputs.mode }}
+        AGENT_LANE: ${{ inputs.lane }}
+        ALLOWED_PATHS: ${{ inputs.allowed-paths }}
+        RETURN_ARTIFACTS: ${{ inputs.return-artifacts }}
+        PROMPT_FILE: ${{ inputs.prompt-file }}
+        PROMPT_TEXT: ${{ inputs.prompt-text }}
+        OUTPUT_FILE: ${{ inputs.output-file }}
+        CLAUDE_MODEL_REF: ${{ inputs.model }}
+        CLAUDE_CODE_OAUTH_TOKEN: ${{ inputs.claude-code-oauth-token }}
+        CLAUDE_CONFIG_REL: ${{ inputs.claude-config }}
+        AGENT_TIMEOUT_MINUTES: ${{ inputs.timeout-minutes }}
+        CLAUDE_MAX_TURNS: ${{ inputs.max-turns }}
+      run: |
+        set -euo pipefail
+
+        if ! command -v docker >/dev/null 2>&1; then
+          echo "::error::Docker is required for sandboxed Claude Code runs. Refusing to fall back to host-level 'claude -p' — that is the unsandboxed posture this action exists to remove."
+          exit 1
+        fi
+
+        # The self-hosted runner is persistent. Keep every per-run artifact
+        # scoped to this invocation and remove it on success, failure, timeout,
+        # or cancellation so repeated scheduled runs cannot fill its disk.
+        build_dir=""
+        isolated_workspace=""
+        image=""
+        container_name=""
+        staged_prompt=""
+        cleanup() {
+          exit_code=$?
+          trap - EXIT
+          # GitHub cancellation can escalate INT -> TERM while cleanup is
+          # already stopping Docker. Do not let the second signal interrupt
+          # removal of the secret-bearing container.
+          trap '' TERM INT
+          if [ -n "$container_name" ] \
+            && docker container inspect "$container_name" >/dev/null 2>&1; then
+            timeout 30s docker rm -f "$container_name" >/dev/null 2>&1 \
+              || echo "::warning::Failed to remove Claude container $container_name"
+          fi
+          if [ -n "$image" ] && docker image inspect "$image" >/dev/null 2>&1; then
+            docker image rm -f "$image" >/dev/null 2>&1 \
+              || echo "::warning::Failed to remove Claude image $image"
+          fi
+          if [ -n "$build_dir" ] && [ -d "$build_dir" ]; then
+            rm -rf -- "$build_dir" \
+              || echo "::warning::Failed to remove Claude build directory $build_dir"
+          fi
+          if [ -n "$isolated_workspace" ] && [ -d "$isolated_workspace" ]; then
+            rm -rf -- "$isolated_workspace" \
+              || echo "::warning::Failed to remove isolated Claude workspace $isolated_workspace"
+          fi
+          if [ -n "$staged_prompt" ] && [ -f "$staged_prompt" ]; then
+            rm -f -- "$staged_prompt" \
+              || echo "::warning::Failed to remove staged Claude prompt $staged_prompt"
+          fi
+          exit "$exit_code"
+        }
+        trap cleanup EXIT
+        trap 'exit 143' TERM
+        trap 'exit 130' INT
+
+        if [ -n "$PROMPT_FILE" ] && [ -n "$PROMPT_TEXT" ]; then
+          echo "::error::Pass exactly one of prompt-file / prompt-text, not both."
+          exit 1
+        fi
+        if [ -z "$PROMPT_FILE" ] && [ -z "$PROMPT_TEXT" ]; then
+          echo "::error::One of prompt-file / prompt-text is required."
+          exit 1
+        fi
+        case "$RUN_MODE" in
+          editorial|canary) ;;
+          *)
+            echo "::error::mode must be one of: editorial, canary (got '$RUN_MODE')."
+            exit 1
+            ;;
+        esac
+        if [[ ! "$CLAUDE_MODEL_REF" =~ ^claude/claude-[a-z0-9][a-z0-9.-]*$ ]]; then
+          echo "::error::model must be one canonical claude/<model> ref."
+          exit 1
+        fi
+        # The token crosses into the container as one stdin line. Refuse any
+        # value that could split, truncate, or smuggle a second line. Never
+        # echo it.
+        if [[ ! "$CLAUDE_CODE_OAUTH_TOKEN" =~ ^[A-Za-z0-9._~+/=-]{20,4096}$ ]]; then
+          echo "::error::claude-code-oauth-token is empty or malformed."
+          exit 1
+        fi
+        if [[ ! "$AGENT_TIMEOUT_MINUTES" =~ ^[0-9]+$ ]] \
+          || [ "$AGENT_TIMEOUT_MINUTES" -lt 1 ] \
+          || [ "$AGENT_TIMEOUT_MINUTES" -gt 240 ]; then
+          echo "::error::timeout-minutes must be an integer from 1 through 240."
+          exit 1
+        fi
+        if [[ ! "$CLAUDE_MAX_TURNS" =~ ^[0-9]+$ ]] \
+          || [ "$CLAUDE_MAX_TURNS" -lt 1 ] \
+          || [ "$CLAUDE_MAX_TURNS" -gt 200 ]; then
+          echo "::error::max-turns must be an integer from 1 through 200."
+          exit 1
+        fi
+        if [ "$RUN_MODE" = "editorial" ] && [ -z "$ALLOWED_PATHS" ] \
+          && [ -z "$RETURN_ARTIFACTS" ]; then
+          echo "::error::editorial mode requires allowed-paths and/or return-artifacts."
+          exit 1
+        fi
+        # A lane's policy defaults to .github/claude/<lane>.json, so moving a
+        # lane onto this adapter is an SSOT edit plus one reviewed policy file.
+        # Without a lane key there is nothing to default to: fail closed.
+        if [ -z "$CLAUDE_CONFIG_REL" ]; then
+          if [[ ! "$AGENT_LANE" =~ ^[a-z0-9][a-z0-9-]*$ ]]; then
+            echo "::error::claude-config is required when no SSOT lane names the default policy."
+            exit 1
+          fi
+          CLAUDE_CONFIG_REL=".github/claude/${AGENT_LANE}.json"
+        fi
+        case "$CLAUDE_CONFIG_REL" in
+          /*|../*|*/../*|*/..|.git/*)
+            echo "::error::claude-config must be a workspace-relative non-git path."
+            exit 1
+            ;;
+        esac
+        if { [ "$RUN_MODE" = "twitter" ] || [ "$RUN_MODE" = "editorial" ]; } \
+          && [ -n "$ALLOWED_PATHS" ]; then
+          allowed_count=0
+          while IFS= read -r allowed_path; do
+            [ -z "$allowed_path" ] && continue
+            allowed_count=$((allowed_count + 1))
+            case "$allowed_path" in
+              research/*) ;;
+              *)
+                echo "::error::$RUN_MODE allowed path must stay under research/: $allowed_path"
+                exit 1
+                ;;
+            esac
+            case "$allowed_path" in
+              */../*|../*|*/..|*.git/*)
+                echo "::error::$RUN_MODE allowed path traverses a forbidden directory: $allowed_path"
+                exit 1
+                ;;
+            esac
+          done <<< "$ALLOWED_PATHS"
+          if [ "$allowed_count" -lt 1 ] || [ "$allowed_count" -gt 8 ]; then
+            echo "::error::$RUN_MODE allowed-paths must contain 1-8 paths."
+            exit 1
+          fi
+        fi
+        return_artifact_count=0
+        while IFS= read -r artifact; do
+          [ -z "$artifact" ] && continue
+          return_artifact_count=$((return_artifact_count + 1))
+          case "$artifact" in
+            .tmp/*) ;;
+            *)
+              echo "::error::return-artifacts must stay under .tmp/: $artifact"
+              exit 1
+              ;;
+          esac
+          case "$artifact" in
+            */../*|../*|*/..|*/./*|*/.|*.git/*)
+              echo "::error::return artifact traverses a forbidden directory: $artifact"
+              exit 1
+              ;;
+          esac
+        done <<< "$RETURN_ARTIFACTS"
+        if [ "$return_artifact_count" -gt 8 ]; then
+          echo "::error::return-artifacts must contain at most 8 exact paths."
+          exit 1
+        fi
+        if [ -n "$PROMPT_FILE" ] && [ ! -f "$PROMPT_FILE" ]; then
+          echo "::error::Claude prompt file not found: $PROMPT_FILE"
+          exit 1
+        fi
+        # An inline prompt is staged to a run-scoped file so both paths mount
+        # the prompt identically read-only.
+        if [ -n "$PROMPT_TEXT" ]; then
+          staged_prompt="${RUNNER_TEMP:-/tmp}/claude-inline-prompt-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}.md"
+          PROMPT_FILE="$staged_prompt"
+          printf '%s' "$PROMPT_TEXT" > "$PROMPT_FILE"
+        fi
+        workspace_root_for_config=$(realpath -- "$GITHUB_WORKSPACE")
+        config_path="$workspace_root_for_config/$CLAUDE_CONFIG_REL"
+        if [ ! -f "$config_path" ] || [ -L "$config_path" ] \
+          || [ "$(realpath -- "$config_path")" != "$config_path" ]; then
+          echo "::error::Claude config not found: $CLAUDE_CONFIG_REL"
+          exit 1
+        fi
+
+        # Scheduled editorial lanes stage freshly fetched, untrusted source
+        # data here. It is copied into the disposable clone, never committed or
+        # mounted from an arbitrary host path. Reject links/special entries so
+        # cp cannot cross outside the workspace.
+        # TRUSTED_AGENT_INPUT_GUARD_BEGIN
+        agent_input="$GITHUB_WORKSPACE/.agent-input"
+        if [ -e "$agent_input" ] || [ -L "$agent_input" ]; then
+          workspace_root_for_input=$(realpath -- "$GITHUB_WORKSPACE")
+          if [ ! -d "$agent_input" ] || [ -L "$agent_input" ] \
+            || [ "$(realpath -- "$agent_input")" != "$workspace_root_for_input/.agent-input" ]; then
+            echo "::error::.agent-input is missing, linked, or noncanonical."
+            exit 1
+          fi
+          if ! unsafe_agent_input=$(find "$agent_input" -mindepth 1 \
+            \! -type d \! -type f -print -quit); then
+            echo "::error::Could not audit .agent-input before copying it."
+            exit 1
+          fi
+          if [ -n "$unsafe_agent_input" ]; then
+            echo "::error::.agent-input contains a linked or special entry: $unsafe_agent_input"
+            exit 1
+          fi
+          agent_input_bytes=$(find "$agent_input" -type f -exec wc -c {} \; \
+            | awk '{sum += $1} END {print sum + 0}')
+          if [ "$agent_input_bytes" -gt 52428800 ]; then
+            echo "::error::.agent-input exceeds the 50 MiB lane-data cap."
+            exit 1
+          fi
+        fi
+        # TRUSTED_AGENT_INPUT_GUARD_END
+
+        build_dir="${RUNNER_TEMP:-/tmp}/claude-container-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        rm -rf "$build_dir"
+        mkdir -p "$build_dir"
+        # The trusted copier validates the lane policy, writes the fail-closed
+        # run copy (dontAsk, guard hook, no project MCP), and prints the
+        # --tools list its allow rules imply. The model never reads or writes
+        # either file: the copy is mounted read-only outside /workspace.
+        generated_claude_settings="$build_dir/claude.settings.json"
+        claude_tools=$(/usr/bin/python3 -I scripts/copy_claude_settings.py \
+          "$GITHUB_WORKSPACE/$CLAUDE_CONFIG_REL" \
+          "$generated_claude_settings" "$CLAUDE_MODEL_REF")
+        if [[ ! "$claude_tools" =~ ^((Read|Write|Edit)(,(Read|Write|Edit))*)?$ ]]; then
+          echo "::error::Claude settings copier returned an unexpected tool list."
+          exit 1
+        fi
+        echo "Claude lane policy $CLAUDE_CONFIG_REL exposes tools: ${claude_tools:-none}"
+        empty_git_template="$build_dir/empty-git-template"
+        mkdir -p "$empty_git_template"
+
+        # Never give the agent a writable mount of the real checkout. A local,
+        # no-hardlink clone carries the same committed tree but has disposable
+        # git metadata, hooks, ignored files, and virtualenv state. The trusted
+        # host shell below imports a commit only after validating its exact diff.
+        # TRUSTED_CLONE_SETUP_BEGIN
+        workspace_root=$(realpath -- "$GITHUB_WORKSPACE")
+        git_dir="$workspace_root/.git"
+        if [ ! -d "$git_dir" ] || [ -L "$git_dir" ] \
+          || [ "$(realpath -- "$git_dir")" != "$workspace_root/.git" ]; then
+          echo "::error::Real checkout .git must be a canonical directory inside GITHUB_WORKSPACE."
+          exit 1
+        fi
+        # A linked-worktree commondir redirects config, refs, and objects before
+        # Git consults any -c override. These jobs use a normal checkout, so a
+        # persisted commondir is stale/hostile metadata, never required state.
+        rm -f -- "$git_dir/commondir"
+        for git_control_dir in "$git_dir/objects" "$git_dir/objects/info" \
+          "$git_dir/refs" "$git_dir/info"; do
+          if [ ! -d "$git_control_dir" ] || [ -L "$git_control_dir" ] \
+            || [ "$(realpath -- "$git_control_dir")" != "$git_control_dir" ]; then
+            echo "::error::Real checkout has a linked or malformed Git control directory: $git_control_dir"
+            exit 1
+          fi
+        done
+        for required_git_file in "$git_dir/HEAD" "$git_dir/index"; do
+          if [ ! -f "$required_git_file" ] || [ -L "$required_git_file" ] \
+            || [ "$(realpath -- "$required_git_file")" != "$required_git_file" ]; then
+            echo "::error::Real checkout has a linked or malformed Git control file: $required_git_file"
+            exit 1
+          fi
+        done
+        if [ -e "$git_dir/packed-refs" ] || [ -L "$git_dir/packed-refs" ]; then
+          if [ ! -f "$git_dir/packed-refs" ] || [ -L "$git_dir/packed-refs" ] \
+            || [ "$(realpath -- "$git_dir/packed-refs")" != "$git_dir/packed-refs" ]; then
+            echo "::error::Real checkout packed-refs is linked or malformed."
+            exit 1
+          fi
+        fi
+        if [[ ! "${GITHUB_SERVER_URL:-}" =~ ^https://[^/[:space:]]+(/[^[:space:]]*)?$ ]] \
+          || [[ ! "${GITHUB_REPOSITORY:-}" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]]; then
+          echo "::error::Trusted GitHub origin coordinates are malformed."
+          exit 1
+        fi
+        trusted_origin="${GITHUB_SERVER_URL%/}/${GITHUB_REPOSITORY}.git"
+
+        # This checkout persists across jobs. Replace executable local Git
+        # configuration before the FIRST Git command and remove every local
+        # metadata bridge that can redirect object lookup, attributes, hooks,
+        # or later safe-push transport. Callers use persist-credentials:false;
+        # safe-push supplies its own one-command authorization header.
+        trusted_config=$(mktemp "$git_dir/config.claude.XXXXXX")
+        {
+          printf '%s\n' '[core]'
+          printf '%s\n' '  repositoryformatversion = 0'
+          printf '%s\n' '  filemode = true'
+          printf '%s\n' '  bare = false'
+          printf '%s\n' '  logallrefupdates = false'
+          printf '%s\n' '[user]'
+          printf '%s\n' '  name = github-actions[bot]'
+          printf '%s\n' '  email = 41898282+github-actions[bot]@users.noreply.github.com'
+          printf '%s\n' '[remote "origin"]'
+          printf '  url = %s\n' "$trusted_origin"
+          printf '%s\n' '  fetch = +refs/heads/*:refs/remotes/origin/*'
+        } > "$trusted_config"
+        chmod 600 "$trusted_config"
+        mv -f -- "$trusted_config" "$git_dir/config"
+        rm -f -- "$git_dir/config.worktree" "$git_dir/info/attributes" \
+          "$git_dir/info/grafts" "$git_dir/objects/info/alternates" \
+          "$git_dir/objects/info/http-alternates"
+        rm -rf -- "$git_dir/hooks" "$git_dir/logs" "$git_dir/refs/replace"
+        mkdir -p "$git_dir/hooks"
+        if ! bad_ref_path=$(find "$git_dir/refs" -mindepth 1 \
+          \! -type d \! -type f -print -quit) \
+          || ! bad_object_path=$(find "$git_dir/objects" -mindepth 1 \
+          \! -type d \! -type f -print -quit); then
+          echo "::error::Could not audit real checkout refs/objects control paths."
+          exit 1
+        fi
+        if [ -n "$bad_ref_path" ] || [ -n "$bad_object_path" ]; then
+          echo "::error::Real checkout refs/objects contain linked or special control paths."
+          exit 1
+        fi
+        if [ -n "${GITHUB_ENV:-}" ]; then
+          {
+            printf '%s\n' 'GIT_CONFIG_NOSYSTEM=1'
+            printf '%s\n' 'GIT_CONFIG_GLOBAL=/dev/null'
+            printf '%s\n' 'GIT_NO_REPLACE_OBJECTS=1'
+          } >> "$GITHUB_ENV"
+        fi
+
+        host_git=(env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+          GIT_NO_REPLACE_OBJECTS=1 git -c core.fsmonitor=false \
+          -c core.hooksPath=/dev/null -c core.attributesFile=/dev/null \
+          -c core.sparseCheckout=false -c core.sparseCheckoutCone=false \
+          -c index.sparse=false -c core.worktree="$workspace_root" \
+          -C "$workspace_root")
+        if ! "${host_git[@]}" diff --no-ext-diff --quiet \
+          || ! "${host_git[@]}" diff --no-ext-diff --cached --quiet; then
+          echo "::error::Real checkout has tracked changes before the Claude run."
+          exit 1
+        fi
+        pre_sha=$("${host_git[@]}" rev-parse HEAD)
+        isolated_workspace="${RUNNER_TEMP:-/tmp}/claude-workspace-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        rm -rf "$isolated_workspace"
+        env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+          GIT_NO_REPLACE_OBJECTS=1 GIT_LFS_SKIP_SMUDGE=1 \
+          git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
+          -c core.attributesFile=/dev/null clone --quiet --no-hardlinks \
+          --no-checkout --template="$empty_git_template" \
+          "$GITHUB_WORKSPACE" "$isolated_workspace"
+        isolated_pre_sha=$(env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+          GIT_NO_REPLACE_OBJECTS=1 git -c core.fsmonitor=false \
+          -c core.hooksPath=/dev/null -c core.attributesFile=/dev/null \
+          -c core.worktree="$isolated_workspace" \
+          -C "$isolated_workspace" rev-parse HEAD)
+        if [ "$isolated_pre_sha" != "$pre_sha" ]; then
+          echo "::error::Isolated Claude clone HEAD does not match the real checkout."
+          exit 1
+        fi
+        # `git clone --template=<empty> --no-checkout` does not create
+        # .git/info. The containment tail deliberately requires every Git
+        # control directory to remain canonical after the agent exits, so the
+        # trusted host must establish that invariant before the container runs.
+        # This was the canary 31290819841 false positive: the agent/provider
+        # succeeded, then the tail rejected a directory that never existed.
+        # TRUSTED_ISOLATED_CONTROL_SETUP_BEGIN
+        for isolated_control_dir in \
+          "$isolated_workspace/.git/info" \
+          "$isolated_workspace/.git/objects/info"; do
+          if [ -e "$isolated_control_dir" ] || [ -L "$isolated_control_dir" ]; then
+            if [ ! -d "$isolated_control_dir" ] || [ -L "$isolated_control_dir" ]; then
+              echo "::error::Isolated Claude clone has a linked or malformed Git control directory: $isolated_control_dir"
+              exit 1
+            fi
+          else
+            mkdir -- "$isolated_control_dir"
+          fi
+          isolated_control_parent=$(realpath -- "$(dirname -- "$isolated_control_dir")")
+          if [ "$(realpath -- "$isolated_control_dir")" \
+            != "$isolated_control_parent/$(basename -- "$isolated_control_dir")" ]; then
+            echo "::error::Isolated Claude Git control directory is noncanonical: $isolated_control_dir"
+            exit 1
+          fi
+        done
+        # TRUSTED_ISOLATED_CONTROL_SETUP_END
+        if [ "$RUN_MODE" = "generative" ] && [ -d "$GITHUB_WORKSPACE/.gen-input" ]; then
+          cp -a "$GITHUB_WORKSPACE/.gen-input" "$isolated_workspace/.gen-input"
+        fi
+        if [ "$RUN_MODE" = "twitter" ] && [ -d "$GITHUB_WORKSPACE/.twitter-input" ]; then
+          cp -a "$GITHUB_WORKSPACE/.twitter-input" "$isolated_workspace/.twitter-input"
+        fi
+        if [ -d "$GITHUB_WORKSPACE/.agent-input" ]; then
+          cp -a "$GITHUB_WORKSPACE/.agent-input" "$isolated_workspace/.agent-input"
+        fi
+        # Return artifacts are untracked, so the no-checkout clone does not
+        # carry their parent. Establish the one trusted scratch root before
+        # the model runs; a translation policy can then deny bash entirely.
+        isolated_tmp="$isolated_workspace/.tmp"
+        if [ -e "$isolated_tmp" ] || [ -L "$isolated_tmp" ]; then
+          if [ ! -d "$isolated_tmp" ] || [ -L "$isolated_tmp" ]; then
+            echo "::error::Isolated Claude .tmp root is linked or malformed."
+            exit 1
+          fi
+        else
+          mkdir -- "$isolated_tmp"
+        fi
+        isolated_tmp_parent=$(realpath -- "$(dirname -- "$isolated_tmp")")
+        if [ "$(realpath -- "$isolated_tmp")" \
+          != "$isolated_tmp_parent/$(basename -- "$isolated_tmp")" ]; then
+          echo "::error::Isolated Claude .tmp root is noncanonical."
+          exit 1
+        fi
+        # TRUSTED_CLONE_SETUP_END
+        # Claude Code ships one native executable per platform. The npm
+        # @anthropic-ai/claude-code wrapper only copies it over a stub in a
+        # postinstall script, so install the audited platform package
+        # directly: exact version, SHA-512 checked, no package scripts, never
+        # the mutable curl|bash installer. DISABLE_AUTOUPDATER (below) stops
+        # drift after startup. git is for the fixed container tail only; the
+        # model has no tool that can run it.
+        cat > "$build_dir/Dockerfile" <<'EOF'
+        FROM node:22-bookworm-slim@sha256:83f487e0a63425e5b4d146fb5e5be574bcbe1b7b843d3ebafdd95eaf7767a7e5
+        RUN apt-get update \
+          && apt-get install -y --no-install-recommends ca-certificates curl git \
+          && rm -rf /var/lib/apt/lists/*
+        RUN set -eux; \
+          arch="$(dpkg --print-architecture)"; \
+          case "$arch" in \
+            amd64) a=x64; sha=eaa3524fca8a7a6afeac3f73bd413012ad14b56b7413926cf1b91b8e1d77fcb33ad8588659c37a22a8893f1c9b27614d77e2379625eae8960dbffbeb1a7980a3 ;; \
+            arm64) a=arm64; sha=bc0bc8afe3159e6e48ad2abc2a826b664a06dc11692ef544a9faf1d79c3b8565be81c4981cfbcddf795f9335efb392fc3185f1356d007bce8c2e2087fb1e2575 ;; \
+            *) echo "unsupported arch $arch" >&2; exit 1 ;; \
+          esac; \
+          curl -fsSL "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-${a}/-/claude-code-linux-${a}-2.1.285.tgz" -o /tmp/claude-code.tgz; \
+          echo "$sha  /tmp/claude-code.tgz" | sha512sum -c -; \
+          rm -rf /opt/claude-code; \
+          mkdir -p /opt/claude-code; \
+          tar -xzf /tmp/claude-code.tgz -C /opt/claude-code --strip-components=1 package/claude; \
+          rm -f /tmp/claude-code.tgz; \
+          test -x /opt/claude-code/claude; \
+          chmod 755 /opt/claude-code/claude; \
+          ln -sfn /opt/claude-code/claude /usr/local/bin/claude
+        COPY tool-guard.mjs /opt/ara-claude/tool-guard.mjs
+        RUN chmod 644 /opt/ara-claude/tool-guard.mjs \
+          && HOME=/tmp/claude-version-home claude --version \
+          && rm -rf /tmp/claude-version-home
+        WORKDIR /workspace
+        EOF
+
+        image="ara-claude-agent:${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        container_name="ara-claude-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-${GITHUB_JOB:-job}"
+        case "$container_name" in
+          *[!A-Za-z0-9_.-]*)
+            echo "::error::Unsafe run-scoped Claude container name: $container_name"
+            exit 1
+            ;;
+        esac
+        if [ "${#container_name}" -gt 120 ]; then
+          echo "::error::Run-scoped Claude container name exceeds 120 characters."
+          exit 1
+        fi
+        cp "$GITHUB_ACTION_PATH/tool-guard.mjs" "$build_dir/tool-guard.mjs"
+        docker build --pull -t "$image" "$build_dir"
+
+        # The agent's HOME is a throwaway inside the container: the runner's
+        # real home holds other lanes' credentials and must never be reachable.
+        # The root filesystem is read-only and /tmp is a private tmpfs, so the
+        # only writable host path is the disposable clone. The OAuth token is
+        # deliberately absent from this list; it arrives on stdin (-i).
+        docker_cmd=(docker run --rm -i \
+          --name "$container_name" \
+          --user "$(id -u):$(id -g)" \
+          --workdir /workspace \
+          --cap-drop ALL \
+          --security-opt no-new-privileges \
+          --pids-limit 512 \
+          --read-only \
+          --tmpfs /tmp:rw,nosuid,nodev,mode=1777 \
+          --env HOME=/tmp/claude-home \
+          --env XDG_CONFIG_HOME=/tmp/claude-home/.config \
+          --env XDG_DATA_HOME=/tmp/claude-home/.local/share \
+          --env XDG_CACHE_HOME=/tmp/claude-home/.cache \
+          --env CLAUDE_CONFIG_DIR=/tmp/claude-home/.claude \
+          --env DISABLE_AUTOUPDATER=1 \
+          --env CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 \
+          --env CLAUDE_CODE_DISABLE_CLAUDE_MDS=1 \
+          --env CLAUDE_CODE_DISABLE_AUTO_MEMORY=1 \
+          --env CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS=1 \
+          --env GITHUB_WORKSPACE=/workspace \
+          --env "GIT_AUTHOR_NAME=github-actions[bot]" \
+          --env "GIT_AUTHOR_EMAIL=41898282+github-actions[bot]@users.noreply.github.com" \
+          --env "GIT_COMMITTER_NAME=github-actions[bot]" \
+          --env "GIT_COMMITTER_EMAIL=41898282+github-actions[bot]@users.noreply.github.com" \
+          --env CLAUDE_MODEL_REF \
+          --env "CLAUDE_TOOLS=$claude_tools" \
+          --env CLAUDE_MAX_TURNS \
+          --env AGENT_TIMEOUT_MINUTES \
+          --env AGENT_LANE \
+          --env RUN_MODE \
+          --env ALLOWED_PATHS \
+          --env RETURN_ARTIFACTS \
+          --env "PRE_SHA=$pre_sha" \
+          --volume "$isolated_workspace:/workspace" \
+          --volume "$PROMPT_FILE:/tmp/claude-prompt.md:ro" \
+          --volume "$generated_claude_settings:/tmp/claude-config/settings.json:ro" \
+          "$image" \
+          bash -lc '
+            set -uo pipefail
+            # The OAuth token is the first stdin line. It stays a non-exported
+            # shell variable and later crosses to the CLI on a pipe descriptor,
+            # so it is in no process environment that a tool could read.
+            IFS= read -r claude_oauth_token || true
+            exec </dev/null
+            mkdir -p "$HOME" "$XDG_CONFIG_HOME" "$CLAUDE_CONFIG_DIR"
+
+            # The host deliberately cloned without a checkout, so neither
+            # persistent global config nor a template hook can run there.
+            # Materialize the tree only after entering the disposable
+            # container, with config, hooks, and global attributes disabled.
+            export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+              GIT_NO_REPLACE_OBJECTS=1
+            git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
+              -c core.attributesFile=/dev/null reset --hard "$PRE_SHA"
+            if [ "$(git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
+              -c core.attributesFile=/dev/null rev-parse HEAD)" != "$PRE_SHA" ]; then
+              echo "isolated Claude checkout does not match pre-run HEAD" >&2
+              exit 1
+            fi
+
+            # Keep trusted git control state in non-exported shell variables;
+            # the Claude child cannot mutate its parent shell variables.
+            trusted_config=$(base64 -w0 .git/config)
+            trusted_head=$(base64 -w0 .git/HEAD)
+            trusted_packed=""
+            if [ -f .git/packed-refs ]; then
+              trusted_packed=$(base64 -w0 .git/packed-refs)
+            fi
+
+            # CLAUDE_ATTEMPT_BEGIN
+            #
+            # One headless turn under the layered lockdown described at the top
+            # of this file. The CLI reads the token from descriptor 3 and then
+            # deletes the variable naming it; the prompt arrives on stdin, so
+            # no argument length limit applies. This body runs inside an outer
+            # single-quoted bash -lc script, so it must contain no single
+            # quote anywhere, comments included (Cursor CLI Canary run
+            # 31993098610 broke on exactly that).
+            claude_model="${CLAUDE_MODEL_REF#*/}"
+            model_budget_seconds=$((AGENT_TIMEOUT_MINUTES * 60))
+            attempt_log=/tmp/claude-attempt.json
+            attempt_err=/tmp/claude-attempt.err
+            rm -f -- "$attempt_log" "$attempt_err"
+            set +e
+            CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR=3 \
+              timeout "${model_budget_seconds}s" claude -p \
+              --model "$claude_model" \
+              --restricted \
+              --tools "$CLAUDE_TOOLS" \
+              --permission-mode dontAsk \
+              --permission-prompts none \
+              --strict-mcp-config \
+              --mcp-config "{\"mcpServers\":{}}" \
+              --settings /tmp/claude-config/settings.json \
+              --disable-slash-commands \
+              --no-session-persistence \
+              --max-turns "$CLAUDE_MAX_TURNS" \
+              --output-format json \
+              3< <(printf "%s" "$claude_oauth_token") \
+              < /tmp/claude-prompt.md > "$attempt_log" 2> "$attempt_err"
+            agent_status=$?
+            unset claude_oauth_token
+            set -e
+
+            artifact_count=0
+            while IFS= read -r artifact; do
+              [ -z "$artifact" ] && continue
+              if [ -e "$artifact" ] || [ -L "$artifact" ]; then
+                artifact_count=$((artifact_count + 1))
+              fi
+            done <<< "$RETURN_ARTIFACTS"
+            # The result is one JSON line with no tool output in it, so no
+            # inbox text. The canary asserts on it, and failures and
+            # zero-artifact exits need it for diagnosis; production successes
+            # stay quiet and the host prints a sanitized summary instead.
+            if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ] \
+              || [ "$artifact_count" -eq 0 ]; then
+              echo "Claude attempt log (status=${agent_status}):"
+              cat -- "$attempt_log" || true
+              echo
+              head -c 4000 -- "$attempt_err" || true
+            fi
+            echo "Claude attempt: status=${agent_status} artifacts=${artifact_count}"
+
+            # The model child is gone before these fixed-format files are
+            # replaced. The host still validates every field; neither file
+            # authorizes artifact import or publication.
+            rm -f -- .claude-result.json .claude-attempt-telemetry
+            cp -- "$attempt_log" .claude-result.json 2>/dev/null \
+              || : > .claude-result.json
+            {
+              printf "attempt_count=%s\n" 1
+              printf "last_agent_status=%s\n" "$agent_status"
+              printf "artifact_count=%s\n" "$artifact_count"
+            } > .claude-attempt-telemetry
+            # CLAUDE_ATTEMPT_END
+
+            # This fixed container tail runs after the agent child exits. It
+            # restores config/HEAD, removes hooks and object indirections, and
+            # exports a static bundle. The host never fetches from this repo.
+            for trusted_dir in .git .git/objects .git/objects/info .git/refs .git/info; do
+              if [ ! -d "$trusted_dir" ] || [ -L "$trusted_dir" ]; then
+                echo "isolated Claude run replaced trusted git directory: $trusted_dir" >&2
+                exit 1
+              fi
+            done
+            rm -f -- .git/config .git/HEAD .git/packed-refs
+            printf "%s" "$trusted_config" | base64 -d > .git/config
+            printf "%s" "$trusted_head" | base64 -d > .git/HEAD
+            if [ -n "$trusted_packed" ]; then
+              printf "%s" "$trusted_packed" | base64 -d > .git/packed-refs
+            fi
+            rm -rf -- .git/hooks .git/refs/replace
+            mkdir -p .git/hooks
+            rm -f -- .git/objects/info/alternates \
+              .git/objects/info/http-alternates .git/info/grafts .git/shallow
+
+            export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+              GIT_NO_REPLACE_OBJECTS=1
+            # Agents commonly commit a draft and then make a second repair
+            # commit after a validator/length check. Exporting that history
+            # directly would violate the trusted host one-direct-child
+            # import contract. Normalize the FINAL committed tree into one
+            # fixed-message child of PRE_SHA inside the disposable clone.
+            #
+            # This is not permission to accept arbitrary rewritten history:
+            # verify the agent HEAD still descends from PRE_SHA BEFORE
+            # normalization. `git bundle create HEAD ^PRE_SHA` then contains
+            # only the normalized commit and its final reachable blobs;
+            # intermediate-only objects never cross into the real checkout.
+            # TRUSTED_COMMIT_NORMALIZATION_BEGIN
+            agent_post_sha=$(git rev-parse HEAD)
+            post_sha="$agent_post_sha"
+            if [ "$agent_post_sha" != "$PRE_SHA" ]; then
+              if ! git merge-base --is-ancestor "$PRE_SHA" "$agent_post_sha"; then
+                echo "isolated Claude commit does not descend from the pre-run HEAD" >&2
+                exit 1
+              fi
+              if [ "$RUN_MODE" = "canary" ]; then
+                echo "canary Claude run created a commit" >&2
+                exit 1
+              fi
+
+              commit_count=$(git rev-list --count "$PRE_SHA..$agent_post_sha")
+              if [ "$commit_count" -lt 1 ] || [ "$commit_count" -gt 8 ]; then
+                echo "isolated Claude commit chain must contain 1-8 commits; got $commit_count" >&2
+                exit 1
+              fi
+
+              expected_parent="$PRE_SHA"
+              while IFS= read -r commit_oid; do
+                [ -z "$commit_oid" ] && continue
+                parent_line=$(git rev-list --parents -n 1 "$commit_oid")
+                read -r observed_commit observed_parent extra_parent <<< "$parent_line"
+                if [ "$observed_commit" != "$commit_oid" ] \
+                  || [ "$observed_parent" != "$expected_parent" ] \
+                  || [ -n "${extra_parent:-}" ]; then
+                  echo "isolated Claude history must be a merge-free linear chain rooted at PRE_SHA" >&2
+                  exit 1
+                fi
+
+                commit_path_count=0
+                while IFS= read -r -d "" status \
+                  && IFS= read -r -d "" path; do
+                  commit_path_count=$((commit_path_count + 1))
+                  if [ "$commit_path_count" -gt 512 ]; then
+                    echo "isolated Claude commit changes more than 512 paths" >&2
+                    exit 1
+                  fi
+
+                  path_allowed=false
+                  case "$RUN_MODE" in
+                    generative)
+                      relative="${path#research/generative/}"
+                      if [ "$path" = "research/generative/index.json" ] \
+                        || { [ "$relative" != "$path" ] \
+                          && [[ "$relative" != */* ]] \
+                          && { [[ "$relative" = *.html ]] \
+                            || [[ "$relative" = *.ara.md ]]; }; }; then
+                        path_allowed=true
+                      fi
+                      ;;
+                    twitter|editorial)
+                      while IFS= read -r allowed_path; do
+                        if [ -n "$allowed_path" ] \
+                          && { [ "$path" = "$allowed_path" ] \
+                            || { [[ "$allowed_path" = */ ]] \
+                              && [[ "$path" = "$allowed_path"* ]]; }; }; then
+                          path_allowed=true
+                          break
+                        fi
+                      done <<< "$ALLOWED_PATHS"
+                      ;;
+                    canary)
+                      echo "canary Claude run created a commit: $status $path" >&2
+                      exit 1
+                      ;;
+                    *)
+                      echo "unknown Claude run mode during commit normalization: $RUN_MODE" >&2
+                      exit 1
+                      ;;
+                  esac
+                  if [ "$path_allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
+                    echo "$RUN_MODE Claude intermediate commit changed forbidden path/status: $status $path" >&2
+                    exit 1
+                  fi
+
+                  tree_entry=$(git ls-tree "$commit_oid" -- "$path")
+                  read -r tree_mode tree_type tree_oid trailing <<< "$tree_entry"
+                  if [ "$tree_mode" != "100644" ] || [ "$tree_type" != "blob" ] \
+                    || [ "$(git cat-file -s "$tree_oid" 2>/dev/null || echo 99999999)" -gt 5242880 ]; then
+                    echo "Claude intermediate path is not a <=5 MiB regular non-executable blob: $path" >&2
+                    exit 1
+                  fi
+                done < <(git diff-tree --no-commit-id --name-status \
+                  --no-renames -r -z "$expected_parent" "$commit_oid")
+                expected_parent="$commit_oid"
+              done < <(git rev-list --reverse "$PRE_SHA..$agent_post_sha")
+              if [ "$expected_parent" != "$agent_post_sha" ]; then
+                echo "isolated Claude linear history validation did not reach agent HEAD" >&2
+                exit 1
+              fi
+
+              final_tree=$(git rev-parse "$agent_post_sha^{tree}")
+              post_sha=$(printf "%s\n" "Normalize isolated Claude output" \
+                | git commit-tree "$final_tree" -p "$PRE_SHA")
+              git update-ref HEAD "$post_sha" "$agent_post_sha"
+            fi
+            rm -f -- .claude-post-sha .claude-export.bundle
+            printf "%s\n" "$post_sha" > .claude-post-sha
+            if [ "$post_sha" != "$PRE_SHA" ]; then
+              git bundle create .claude-export.bundle HEAD "^$PRE_SHA"
+            fi
+            # TRUSTED_COMMIT_NORMALIZATION_END
+            exit "$agent_status"
+          ')
+
+        # tee on the HOST, so the output file needs no mount and the container
+        # cannot rewrite what the lane asserts on. The token goes in on stdin
+        # through printf, a shell builtin, so it never appears in an argv.
+        # Capture the container status instead of exiting immediately: the
+        # trusted host must still validate what the container left behind.
+        set +e
+        if [ -n "$OUTPUT_FILE" ]; then
+          printf '%s\n' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}" | tee "$OUTPUT_FILE"
+          agent_status=${PIPESTATUS[1]}
+        else
+          printf '%s\n' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}"
+          agent_status=${PIPESTATUS[1]}
+        fi
+        set -e
+
+        # TRUSTED_ATTEMPT_TELEMETRY_BEGIN
+        telemetry_file="$isolated_workspace/.claude-attempt-telemetry"
+        if [ ! -f "$telemetry_file" ] || [ -L "$telemetry_file" ] \
+          || [ "$(realpath -- "$telemetry_file")" \
+            != "$(realpath -- "$isolated_workspace")/.claude-attempt-telemetry" ] \
+          || [ "$(wc -c < "$telemetry_file")" -gt 128 ]; then
+          echo "::error::Claude attempt telemetry is missing, linked, noncanonical, or oversized."
+          exit 1
+        fi
+        telemetry_line_count=$(wc -l < "$telemetry_file")
+        attempt_line=$(sed -n "1p" "$telemetry_file")
+        status_line=$(sed -n "2p" "$telemetry_file")
+        artifact_line=$(sed -n "3p" "$telemetry_file")
+        if [ "$telemetry_line_count" -ne 3 ] \
+          || [[ ! "$attempt_line" =~ ^attempt_count=1$ ]] \
+          || [[ ! "$status_line" =~ ^last_agent_status=([0-9]{1,3})$ ]] \
+          || [[ ! "$artifact_line" =~ ^artifact_count=([0-8])$ ]]; then
+          echo "::error::Claude attempt telemetry is malformed."
+          exit 1
+        fi
+        last_agent_status=${status_line#last_agent_status=}
+        artifact_count=${artifact_line#artifact_count=}
+        if [ "$last_agent_status" -ne "$agent_status" ]; then
+          echo "::error::Claude model status does not match the container exit status."
+          exit 1
+        fi
+        echo "::notice title=Claude attempt telemetry::last_status=${last_agent_status} artifacts=${artifact_count}"
+        # The CLI result is untrusted data from the container: the summarizer
+        # prints only typed, pattern-checked fields, never the reply text, and
+        # exits 3 when the CLI reported is_error, which fails closed here even
+        # if the CLI itself exited 0.
+        result_file="$isolated_workspace/.claude-result.json"
+        result_status=0
+        if [ -f "$result_file" ] && [ ! -L "$result_file" ] \
+          && [ "$(wc -c < "$result_file")" -le 1048576 ]; then
+          /usr/bin/python3 -I scripts/summarize_claude_result.py "$result_file" \
+            || result_status=$?
+        else
+          result_status=4
+        fi
+        if [ "$result_status" -eq 3 ] && [ "$agent_status" -eq 0 ]; then
+          echo "::error::Claude Code exited 0 but reported is_error; failing closed."
+          agent_status=1
+        elif [ "$result_status" -ne 0 ] && [ "$result_status" -ne 3 ]; then
+          echo "::warning::Claude result JSON is missing, linked, oversized, or unreadable."
+          if [ "$agent_status" -eq 0 ]; then
+            agent_status=1
+          fi
+        fi
+        # TRUSTED_ATTEMPT_TELEMETRY_END
+
+        # TRUSTED_IMPORT_GUARD_BEGIN
+        RETURN_ARTIFACTS="${RETURN_ARTIFACTS:-}"
+        # Import only a static bundle produced by the fixed container tail.
+        # Do not use `git fetch` even with the bundle's absolute path: fetch is
+        # transport-aware, so persisted url.*.insteadOf + core.sshCommand
+        # settings in the real repo could rewrite that path and execute a host
+        # helper. `git bundle unbundle` directly parses/indexes the local bundle
+        # and neither resolves a transport URL nor updates a ref.
+        post_file="$isolated_workspace/.claude-post-sha"
+        bundle_file="$isolated_workspace/.claude-export.bundle"
+        if [ ! -f "$post_file" ] || [ -L "$post_file" ] \
+          || [ "$(wc -c < "$post_file")" -gt 128 ]; then
+          echo "::error::Claude did not produce a valid regular post-SHA file."
+          exit 1
+        fi
+        post_sha=$(tr -d '\r\n' < "$post_file")
+        if [[ ! "$post_sha" =~ ^[0-9a-f]{40,64}$ ]]; then
+          echo "::error::Claude post-SHA is malformed."
+          exit 1
+        fi
+
+        trusted_git=(env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
+          GIT_NO_REPLACE_OBJECTS=1 git -c core.fsmonitor=false \
+          -c core.hooksPath=/dev/null -c core.attributesFile=/dev/null \
+          -c core.sparseCheckout=false -c core.sparseCheckoutCone=false \
+          -c index.sparse=false \
+          -c core.worktree="$GITHUB_WORKSPACE" -C "$GITHUB_WORKSPACE")
+        import_paths=()
+        import_statuses=()
+        import_oids=()
+        import_pre_oids=()
+        if [ "$post_sha" != "$pre_sha" ]; then
+          if [ ! -f "$bundle_file" ] || [ -L "$bundle_file" ] \
+            || [ "$(wc -c < "$bundle_file")" -gt 20971520 ]; then
+            echo "::error::Claude commit bundle is missing, linked, or exceeds 20 MiB."
+            exit 1
+          fi
+          "${trusted_git[@]}" bundle verify "$bundle_file"
+          bundle_heads=$("${trusted_git[@]}" bundle unbundle "$bundle_file")
+          advertised_count=0
+          advertised_head=""
+          while read -r advertised_oid advertised_ref trailing; do
+            [ -z "$advertised_oid" ] && continue
+            advertised_count=$((advertised_count + 1))
+            if [ "$advertised_ref" != "HEAD" ] || [ -n "${trailing:-}" ]; then
+              echo "::error::Static Claude bundle advertises an unexpected ref."
+              exit 1
+            fi
+            advertised_head="$advertised_oid"
+          done <<< "$bundle_heads"
+          if [ "$advertised_count" != "1" ] || [ "$advertised_head" != "$post_sha" ]; then
+            echo "::error::Static Claude bundle HEAD does not match its declared post-SHA."
+            exit 1
+          fi
+        elif [ -e "$bundle_file" ] || [ -L "$bundle_file" ]; then
+          echo "::error::Claude emitted a bundle despite leaving HEAD unchanged."
+          exit 1
+        fi
+
+        if ! "${trusted_git[@]}" merge-base --is-ancestor "$pre_sha" "$post_sha"; then
+          echo "::error::Claude commit does not descend from the pre-run HEAD."
+          exit 1
+        fi
+        if ! "${trusted_git[@]}" diff --no-ext-diff --quiet \
+          || ! "${trusted_git[@]}" diff --no-ext-diff --cached --quiet \
+          || [ "$("${trusted_git[@]}" rev-parse HEAD)" != "$pre_sha" ]; then
+          echo "::error::Real checkout changed during the isolated Claude run."
+          exit 1
+        fi
+
+        if [ "$post_sha" != "$pre_sha" ]; then
+          if [ "$("${trusted_git[@]}" rev-list --count "$pre_sha..$post_sha")" != "1" ] \
+            || [ "$("${trusted_git[@]}" rev-parse "$post_sha^")" != "$pre_sha" ]; then
+            echo "::error::Claude must produce at most one direct child commit."
+            exit 1
+          fi
+          if [ "$RUN_MODE" = "canary" ]; then
+            echo "::error::canary Claude run created a commit."
+            exit 1
+          fi
+
+          changed_count=0
+          gen_index=0
+          gen_html=0
+          gen_source=0
+          path_violation=0
+          while IFS= read -r -d '' status && IFS= read -r -d '' path; do
+            changed_count=$((changed_count + 1))
+            tree_entry=$("${trusted_git[@]}" ls-tree "$post_sha" -- "$path")
+            tree_header="${tree_entry%%$'\t'*}"
+            read -r tree_mode tree_type tree_oid <<< "$tree_header"
+            if [ "$tree_mode" != "100644" ] || [ "$tree_type" != "blob" ] \
+              || [ "$("${trusted_git[@]}" cat-file -s "$tree_oid" 2>/dev/null || echo 99999999)" -gt 5242880 ]; then
+              echo "::error::Claude commit path is not a <=5 MiB regular non-executable blob: $path"
+              path_violation=1
+              continue
+            fi
+            import_paths+=("$path")
+            import_statuses+=("$status")
+            import_oids+=("$tree_oid")
+            case "$RUN_MODE" in
+              generative)
+                relative="${path#research/generative/}"
+                if [ "$path" = "research/generative/index.json" ] && [ "$status" = "M" ]; then
+                  gen_index=$((gen_index + 1))
+                elif [ "$relative" != "$path" ] && [[ "$relative" != */* ]] \
+                  && [ "$status" = "A" ] && [[ "$relative" = *.html ]]; then
+                  gen_html=$((gen_html + 1))
+                elif [ "$relative" != "$path" ] && [[ "$relative" != */* ]] \
+                  && [ "$status" = "A" ] && [[ "$relative" = *.ara.md ]]; then
+                  gen_source=$((gen_source + 1))
+                else
+                  echo "::error::generative Claude commit changed forbidden path/status: $status $path"
+                  path_violation=1
+                fi
+                ;;
+              twitter|editorial)
+                allowed=false
+                while IFS= read -r allowed_path; do
+                  if [ -n "$allowed_path" ] \
+                    && { [ "$path" = "$allowed_path" ] \
+                      || { [[ "$allowed_path" = */ ]] \
+                        && [[ "$path" = "$allowed_path"* ]]; }; }; then
+                    allowed=true
+                    break
+                  fi
+                done <<< "$ALLOWED_PATHS"
+                if [ "$allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
+                  echo "::error::$RUN_MODE Claude commit changed forbidden path/status: $status $path"
+                  path_violation=1
+                fi
+                ;;
+              canary)
+                echo "::error::canary Claude run created a commit: $status $path"
+                path_violation=1
+                ;;
+            esac
+          done < <("${trusted_git[@]}" diff --no-ext-diff --name-status --no-renames -z "$pre_sha..$post_sha")
+          if [ "$RUN_MODE" = "generative" ] \
+            && { [ "$gen_index" != "1" ] || [ "$gen_html" != "1" ] || [ "$gen_source" != "1" ] || [ "$changed_count" != "3" ]; }; then
+            echo "::error::generative writer contract requires exactly index.json + one added HTML/ARA source pair."
+            path_violation=1
+          fi
+          if [ "$path_violation" != "0" ]; then
+            exit 1
+          fi
+        elif [ "$RUN_MODE" = "canary" ]; then
+          echo "Canary left the disposable repository unchanged."
+        fi
+
+        # Methodology JSON and the Twitter tool log are untrusted DATA, not
+        # executable workspace state. Reject links/oversized files and copy
+        # only these named artifacts back to the real checkout.
+        artifacts=()
+        if [ "$RUN_MODE" = "generative" ]; then
+          artifacts+=(.gen-verifier-findings.json .gen-redteam-findings.json .gen-claims-ledger.json)
+        elif [ "$RUN_MODE" = "twitter" ] && [ -n "$BIRDY_TOOL_LOG_REL" ]; then
+          artifacts+=("${BIRDY_TOOL_LOG_REL#/}")
+        fi
+        while IFS= read -r artifact; do
+          [ -n "$artifact" ] && artifacts+=("$artifact")
+        done <<< "$RETURN_ARTIFACTS"
+        # Both GNU and BSD realpath require the target to exist; avoid GNU's
+        # non-portable -e spelling because local/self-hosted runners include macOS.
+        isolated_root=$(realpath -- "$isolated_workspace")
+        trusted_workspace=$(realpath -- "$GITHUB_WORKSPACE")
+        for artifact in ${artifacts[@]+"${artifacts[@]}"}; do
+          case "$artifact" in
+            ""|/*|.|..|./*|../*|*/../*|*/..|*/./*|*/.)
+              echo "::error::Claude artifact path is not a clean relative path: $artifact"
+              exit 1
+              ;;
+          esac
+          source_artifact="$isolated_workspace/$artifact"
+          if [ -e "$source_artifact" ] || [ -L "$source_artifact" ]; then
+            if [ ! -f "$source_artifact" ] || [ -L "$source_artifact" ]; then
+              echo "::error::Claude artifact is not a regular file: $artifact"
+              exit 1
+            fi
+            source_resolved=$(realpath -- "$source_artifact")
+            if [ "$source_resolved" != "$isolated_root/$artifact" ]; then
+              echo "::error::Claude artifact escapes the isolated workspace or crosses a symlink: $artifact"
+              exit 1
+            fi
+            if [ "$(wc -c < "$source_artifact")" -gt 10485760 ]; then
+              echo "::error::Claude artifact exceeds 10 MiB: $artifact"
+              exit 1
+            fi
+            artifact_parent=$(dirname -- "$artifact")
+            if [ "$artifact_parent" = "." ]; then
+              expected_destination_parent="$trusted_workspace"
+            else
+              expected_destination_parent="$trusted_workspace/$artifact_parent"
+            fi
+            if [ ! -d "$expected_destination_parent" ] \
+              || [ -L "$expected_destination_parent" ]; then
+              echo "::error::Claude artifact destination parent is missing, linked, or not a directory: $artifact"
+              exit 1
+            fi
+            destination_parent_resolved=$(realpath -- "$expected_destination_parent")
+            if [ "$destination_parent_resolved" != "$expected_destination_parent" ]; then
+              echo "::error::Claude artifact destination crosses a symlink: $artifact"
+              exit 1
+            fi
+            destination="$trusted_workspace/$artifact"
+            if [ -L "$destination" ] || { [ -e "$destination" ] && [ ! -f "$destination" ]; }; then
+              echo "::error::Claude artifact destination is not a regular file path: $artifact"
+              exit 1
+            fi
+          fi
+        done
+        while IFS= read -r artifact; do
+          [ -z "$artifact" ] && continue
+          source_artifact="$isolated_workspace/$artifact"
+          if [ ! -f "$source_artifact" ] || [ -L "$source_artifact" ]; then
+            echo "::error::Claude did not produce required return artifact: $artifact"
+            exit 1
+          fi
+        done <<< "$RETURN_ARTIFACTS"
+
+        if [ "$post_sha" != "$pre_sha" ]; then
+          if [ "$("${trusted_git[@]}" rev-parse HEAD)" != "$pre_sha" ]; then
+            echo "::error::Real checkout HEAD changed during isolated Claude run."
+            exit 1
+          fi
+
+          # Never ask Git to populate the real worktree. Even with global
+          # attributes disabled, a persisted .git/info/attributes plus local
+          # filter.*.smudge/process command can make checkout/reset execute
+          # host code. Materialize only the already-validated regular blobs
+          # with cat-file, update the index without -u, then advance HEAD with
+          # an old-value compare-and-swap.
+          import_dir="$build_dir/trusted-import"
+          rm -rf -- "$import_dir"
+          mkdir -p "$import_dir"
+
+          install_blob() {
+            local source_blob="$1"
+            local destination_blob="$2"
+            local destination_dir staged_blob
+            destination_dir=$(dirname -- "$destination_blob")
+            staged_blob=$(mktemp "$destination_dir/.claude-import.XXXXXX") || return 1
+            if ! install -m 644 "$source_blob" "$staged_blob"; then
+              rm -f -- "$staged_blob"
+              return 1
+            fi
+            if ! mv -f -- "$staged_blob" "$destination_blob"; then
+              rm -f -- "$staged_blob"
+              return 1
+            fi
+          }
+
+          import_count=${#import_paths[@]}
+          for ((import_i = 0; import_i < import_count; import_i++)); do
+            path=${import_paths[$import_i]}
+            status=${import_statuses[$import_i]}
+            tree_oid=${import_oids[$import_i]}
+            destination="$trusted_workspace/$path"
+            destination_parent=$(dirname -- "$destination")
+            if [ ! -d "$destination_parent" ] || [ -L "$destination_parent" ] \
+              || [ "$(realpath -- "$destination_parent")" != "$destination_parent" ]; then
+              echo "::error::Claude commit destination crosses a linked or missing directory: $path"
+              exit 1
+            fi
+            if [ "$status" = "A" ]; then
+              import_pre_oids[$import_i]=""
+              if [ -e "$destination" ] || [ -L "$destination" ]; then
+                echo "::error::Claude added path would overwrite real checkout data: $path"
+                exit 1
+              fi
+            elif [ "$status" = "M" ]; then
+              if [ ! -f "$destination" ] || [ -L "$destination" ] \
+                || [ "$(realpath -- "$destination")" != "$destination" ]; then
+                echo "::error::Claude modified path is not a canonical regular checkout file: $path"
+                exit 1
+              fi
+              pre_entry=$("${trusted_git[@]}" ls-tree "$pre_sha" -- "$path")
+              pre_header="${pre_entry%%$'\t'*}"
+              read -r pre_mode pre_type pre_oid <<< "$pre_header"
+              if [ "$pre_mode" != "100644" ] || [ "$pre_type" != "blob" ]; then
+                echo "::error::Claude modified path cannot be restored as a regular blob: $path"
+                exit 1
+              fi
+              import_pre_oids[$import_i]="$pre_oid"
+              "${trusted_git[@]}" cat-file blob "$pre_sha:$path" \
+                > "$import_dir/$import_i.pre"
+            else
+              echo "::error::Claude import received an unvalidated status: $status $path"
+              exit 1
+            fi
+            "${trusted_git[@]}" cat-file blob "$tree_oid" \
+              > "$import_dir/$import_i.post"
+          done
+
+          restore_pre_import() {
+            local restore_i restore_path restore_status restore_destination
+            local restore_failed=0
+            "${trusted_git[@]}" read-tree --reset --no-sparse-checkout "$pre_sha" \
+              || restore_failed=1
+            for ((restore_i = 0; restore_i < import_count; restore_i++)); do
+              restore_path=${import_paths[$restore_i]}
+              restore_status=${import_statuses[$restore_i]}
+              restore_destination="$trusted_workspace/$restore_path"
+              if [ "$restore_status" = "A" ]; then
+                rm -f -- "$restore_destination" || restore_failed=1
+              elif ! install_blob "$import_dir/$restore_i.pre" "$restore_destination"; then
+                restore_failed=1
+              fi
+            done
+            if [ "$("${trusted_git[@]}" rev-parse HEAD)" != "$pre_sha" ] \
+              || [ "$("${trusted_git[@]}" write-tree)" \
+                != "$("${trusted_git[@]}" rev-parse "$pre_sha^{tree}")" ]; then
+              restore_failed=1
+            fi
+            for ((restore_i = 0; restore_i < import_count; restore_i++)); do
+              restore_destination="$trusted_workspace/${import_paths[$restore_i]}"
+              if [ "${import_statuses[$restore_i]}" = "A" ]; then
+                if [ -e "$restore_destination" ] || [ -L "$restore_destination" ]; then
+                  restore_failed=1
+                fi
+              elif [ "$("${trusted_git[@]}" hash-object --no-filters -- \
+                "$restore_destination")" != "${import_pre_oids[$restore_i]}" ]; then
+                restore_failed=1
+              fi
+            done
+            return "$restore_failed"
+          }
+
+          apply_failed=0
+          for ((import_i = 0; import_i < import_count; import_i++)); do
+            destination="$trusted_workspace/${import_paths[$import_i]}"
+            if ! install_blob "$import_dir/$import_i.post" "$destination"; then
+              apply_failed=1
+              break
+            fi
+          done
+          if [ "$apply_failed" != "0" ] \
+            || ! "${trusted_git[@]}" read-tree --reset --no-sparse-checkout "$post_sha" \
+            || ! "${trusted_git[@]}" update-ref HEAD "$post_sha" "$pre_sha"; then
+            restore_pre_import \
+              || echo "::error::Failed to fully restore the pre-import checkout."
+            echo "::error::Failed to atomically import the validated Claude commit."
+            exit 1
+          fi
+
+          expected_tree=$("${trusted_git[@]}" rev-parse "$post_sha^{tree}")
+          actual_tree=$("${trusted_git[@]}" write-tree)
+          import_verified=true
+          if [ "$actual_tree" != "$expected_tree" ] \
+            || [ "$("${trusted_git[@]}" rev-parse HEAD)" != "$post_sha" ]; then
+            import_verified=false
+          fi
+          for ((import_i = 0; import_i < import_count; import_i++)); do
+            destination="$trusted_workspace/${import_paths[$import_i]}"
+            if [ "$("${trusted_git[@]}" hash-object --no-filters -- "$destination")" \
+              != "${import_oids[$import_i]}" ]; then
+              import_verified=false
+            fi
+          done
+          if [ "$import_verified" != "true" ]; then
+            rollback_failed=0
+            "${trusted_git[@]}" update-ref HEAD "$pre_sha" "$post_sha" \
+              || rollback_failed=1
+            restore_pre_import || rollback_failed=1
+            if [ "$rollback_failed" != "0" ]; then
+              echo "::error::Failed to fully restore the pre-import checkout."
+            fi
+            echo "::error::Validated Claude commit did not materialize exactly."
+            exit 1
+          fi
+        fi
+        for artifact in ${artifacts[@]+"${artifacts[@]}"}; do
+          source_artifact="$isolated_workspace/$artifact"
+          if [ -f "$source_artifact" ] && [ ! -L "$source_artifact" ]; then
+            source_resolved=$(realpath -- "$source_artifact")
+            if [ "$source_resolved" != "$isolated_root/$artifact" ]; then
+              echo "::error::Claude artifact source changed after validation: $artifact"
+              exit 1
+            fi
+            destination="$trusted_workspace/$artifact"
+            install -m 600 "$source_resolved" "$destination"
+          fi
+        done
+
+        # TRUSTED_IMPORT_GUARD_END
+        exit "$agent_status"
