@@ -1,9 +1,27 @@
 {
   "schema": 1,
-  "updated_at": "2026-10-31T18:49:00Z",
+  "updated_at": "2026-10-31T21:56:00Z",
   "degraded": false,
-  "latest": "2026-10-31-1849",
+  "latest": "2026-10-31-2156",
   "bulletins": [
+    {
+      "id": "2026-10-31-2156",
+      "aired_at": "2026-10-31T21:56:00Z",
+      "headline": "Mistral open-sources a trillion-parameter Large 4; guests say agentic attacks now cost cents per company",
+      "path": "bulletins/2026-10-31/2156.json",
+      "audio": {
+        "key": "audio/aradio/2026-10-31-2156.mp3",
+        "bytes": 666525,
+        "duration_s": 111.0
+      },
+      "covers": [
+        "mistral-large-4-open-weights",
+        "ai-cyber-risk-and-key-theft"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-10-31-1849",
       "aired_at": "2026-10-31T18:49:00Z",

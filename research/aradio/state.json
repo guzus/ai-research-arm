@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-10-31T18:49:00Z",
-  "headline": "All-In: Anthropic's IPO may need only $80B to $100B; Google's earnings-day drop erased about $500B as cloud profit soared",
+  "updated_at": "2026-10-31T21:56:00Z",
+  "headline": "Mistral open-sources a trillion-parameter Large 4; guests say agentic attacks now cost cents per company",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -143,14 +143,20 @@
     {
       "slug": "ai-cyber-risk-and-key-theft",
       "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
-      "status": "developing",
+      "status": "escalating",
       "importance": 4,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-10-31T14:48:00Z",
-      "now": "Wiz reportedly counts nine AI developer platforms breached in October for stored AI API keys, including Northflank, which told customers to rotate all secrets. Epoch reportedly found open-weight GLM-5.3 built Firefox exploits for about $1,000 each. Anthropic says its agents wrote benign-looking data that teaches misalignment.",
-      "changed": "Anthropic says a malicious actor used Cursor's extension marketplace to publish a tampered Claude Code extension; Anthropic says its own systems were not compromised and only Cursor users are affected.",
+      "updated_at": "2026-10-31T21:56:00Z",
+      "now": "Wiz reportedly counts nine AI developer platforms breached in October for stored API keys, including Northflank. Epoch reportedly found open-weight GLM-5.3 built Firefox exploits for about $1,000 each. A security guest on The Cognitive Revolution said agentic attacks now cost cents per company. Cursor's marketplace carried a tampered Claude Code extension.",
+      "changed": "On The Cognitive Revolution, a security guest said agentic attacks in Southeast Asia over two weeks cost between five and ten cents to compromise a company, and new open cyber-specific models can be downloaded.",
       "watch": "A Cursor post-mortem and install count; platform statements from Fireworks AI, Railway and Warp; bulk key revocations.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=1617s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-10-30T18:44:00Z"
+        },
         {
           "url": "https://x.com/ishkme/status/2116513901525217673",
           "kind": "ticket",
@@ -184,6 +190,10 @@
         {
           "at": "2026-10-31T14:48:00Z",
           "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
+        },
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
         }
       ]
     },
@@ -216,6 +226,31 @@
         {
           "at": "2026-10-31T14:48:00Z",
           "change": "Gemini 4 Carbon announced; tops Artificial Analysis v5 and APEX-Agents per relays; access still gated to cyber defenders."
+        }
+      ]
+    },
+    {
+      "slug": "mistral-large-4-open-weights",
+      "title": "Mistral Large 4: a trillion-parameter open model and the open-versus-closed compute gap",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-10-31T21:56:00Z",
+      "updated_at": "2026-10-31T21:56:00Z",
+      "now": "Mistral says it open-sourced Large 4, its largest open model: about one trillion parameters, sparse mixture of experts. On the Artificial Analysis coding subset it claims a tie with GLM 5.3 using half the tokens. Hosts said it trained on about 3,800 Blackwell GPUs, far below frontier clusters.",
+      "changed": "On The Cognitive Revolution, a Mistral researcher said Large 4 is its best agentic model and the best open model on coding, tied with GLM 5.3 at half the tokens. The claims are Mistral's own.",
+      "watch": "Independent evals of Large 4, its licence and hosting terms, and whether Western enterprises adopt it over Chinese open models.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=4844s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-10-30T18:44:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Mistral Large 4 open release discussed on The Cognitive Revolution: one trillion parameters, claimed tie with GLM 5.3 on coding at half the tokens."
         }
       ]
     },
