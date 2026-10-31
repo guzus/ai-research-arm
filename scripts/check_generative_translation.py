@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import html
 import math
 import re
 from html.parser import HTMLParser
@@ -14,12 +15,25 @@ from compile_ara import AraSyntaxError, compile_source
 
 
 URL_RE = re.compile(r"https?://[^\s<>\"'()\]}]+")
-NUMBER_RE = re.compile(r"(?<!\d)[+\-−]?(?:[$€£₩¥]\s*)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:%|×|x)?(?!\d)")
+# A hyphen glued to a word (mid-2026, GPT-5, 4월-6월) is not a minus sign;
+# reading it as one made the opaque token "-2026" and the translation
+# "-2026년 중반", and stripped the 6 from "4월-6월".
+NUMBER_RE = re.compile(r"(?<!\d)(?:(?<![A-Za-z가-힣])[+\-−])?(?:[$€£₩¥]\s*)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:%|×|x)?(?!\d)")
 FOOTNOTE_RE = re.compile(r"\[\^([A-Za-z0-9_-]+)\]")
 BLOCK_DIRECTIVE_RE = re.compile(r"^\s*:::(?:([a-z][a-z0-9-]*)\b.*)?$", re.MULTILINE)
 INLINE_DIRECTIVE_RE = re.compile(r"\{(/|[a-z][a-z0-9-]*)(?::[^{}]*)?\}")
 HANGUL_RE = re.compile(r"[가-힣]")
 LATIN_WORD_RE = re.compile(r"\b[A-Za-z][A-Za-z'-]*\b")
+KOREAN_MONTH_RE = re.compile(r"(?<![0-9.,])([0-9]+)월(?:\s*[0-9]+)?")
+# Korean dates run year, month, day. These shapes keep the English order
+# ("10월 26, 2026", "4월 2026", "10일 7월 2026").
+KOREAN_ENGLISH_ORDER_DATE_RE = re.compile(
+    r"(?<![0-9.,])(?:"
+    r"(?:0?[1-9]|1[0-2])월\s+[0-9]{1,2}(?:\s*[–—~-]\s*[0-9]{1,2})?일?,\s*(?:1[89]|2[01])[0-9]{2}"
+    r"|[0-9]{1,2}일\s+(?:0?[1-9]|1[0-2])월,?\s+(?:1[89]|2[01])[0-9]{2}"
+    r"|(?:0?[1-9]|1[0-2])월,?\s+(?:1[89]|2[01])[0-9]{2}(?!년)"
+    r")(?![0-9])"
+)
 TRANSLATABLE_LIST_ATTRS = frozenset(
     {"data-categories", "data-items", "data-labels", "data-x-labels"}
 )
@@ -40,6 +54,12 @@ def _urls(text: str) -> collections.Counter[str]:
 
 def _numbers(text: str) -> collections.Counter[str]:
     return collections.Counter(NUMBER_RE.findall(text))
+
+
+def _numeric_text(text: str) -> str:
+    """Text as numbers are read: a character reference is markup, so the
+    escaped apostrophe "&#x27;" is not the number 27."""
+    return html.unescape(text)
 
 
 def _localized_integer_additions_are_safe(
@@ -68,6 +88,34 @@ def _localized_integer_additions_are_safe(
         if localized_count < extra_count:
             return False
     return True
+
+
+def korean_date_errors(source: str, target: str) -> list[str]:
+    """Reject Korean dates that name no real month or keep English order.
+
+    Shapes the source itself contains (a quoted Korean headline) are allowed.
+    """
+    impossible = collections.Counter(
+        match.group().strip()
+        for match in KOREAN_MONTH_RE.finditer(target)
+        if not 1 <= int(match.group(1)) <= 12
+    ) - collections.Counter(
+        match.group().strip()
+        for match in KOREAN_MONTH_RE.finditer(source)
+        if not 1 <= int(match.group(1)) <= 12
+    )
+    english_order = collections.Counter(
+        KOREAN_ENGLISH_ORDER_DATE_RE.findall(target)
+    ) - collections.Counter(KOREAN_ENGLISH_ORDER_DATE_RE.findall(source))
+    errors = []
+    for label, found in (
+        ("Korean date names an impossible month", impossible),
+        ("Korean date keeps English word order", english_order),
+    ):
+        if found:
+            examples = ", ".join(repr(text) for text in sorted(found)[:5])
+            errors.append(f"{label} ({sum(found.values())}): {examples}")
+    return errors
 
 
 class TopologyParser(HTMLParser):
@@ -204,14 +252,14 @@ def check_pair(
     source_comparison = _as_html(source, source_raw) if cross_representation else source_raw
     if _urls(source_comparison) != _urls(target_raw):
         errors.append("URL multiset changed")
-    source_numbers = _numbers(source_comparison)
-    target_numbers = _numbers(target_raw)
+    source_numbers = _numbers(_numeric_text(source_comparison))
+    target_numbers = _numbers(_numeric_text(target_raw))
     if allow_localized_number_rendering:
         if not cross_representation:
             errors.append(
                 "localized number rendering is only valid for ARA-to-HTML comparisons"
             )
-        elif not _localized_integer_additions_are_safe(source_numbers, target_raw):
+        elif not _localized_integer_additions_are_safe(source_numbers, _numeric_text(target_raw)):
             missing = sorted((source_numbers - target_numbers).elements())
             extra = sorted((target_numbers - source_numbers).elements())
             errors.append(
@@ -239,6 +287,7 @@ def check_pair(
         return errors
     if _topology(source_html) != _topology(target_html):
         errors.append("compiled HTML tag/class/immutable-attribute topology changed")
+    errors.extend(korean_date_errors(source_html, target_html))
 
     source_ngrams = _lowercase_prose_ngrams(source_html)
     if sum(source_ngrams.values()) >= 20:
