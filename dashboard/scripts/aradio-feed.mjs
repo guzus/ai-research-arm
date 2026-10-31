@@ -63,7 +63,7 @@ const ZONED_INSTANT_RE = /^\d{4}-\d{2}-\d{2}(?:[T ]\d{2}:\d{2}(?::\d{2}(?:\.\d+)
 // The XML 1.0 Char production, inverted: C0 controls other than tab/LF/CR,
 // lone surrogates (the u flag reads a valid pair as one code point), U+FFFE
 // and U+FFFF.
-const XML_INVALID_RE = /[^\t\n\r -퟿-�\u{10000}-\u{10FFFF}]/gu;
+const XML_INVALID_RE = /[^\t\n\r\u0020-\uD7FF\uE000-\uFFFD\u{10000}-\u{10FFFF}]/gu;
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const CUT_MARK = '\n\n…';
 
