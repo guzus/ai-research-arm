@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Repair garbled dates in published Korean generative-research translations.
+"""Repair garbled dates and signs in published Korean generative-research translations.
 
 Each published ``.ko.html`` is its English ARA source compiled to HTML with
 the text runs and translatable attribute values replaced, so the k-th run of
@@ -22,6 +22,10 @@ Classes (select with ``--classes``):
      "2일(2026년 8월)", "5월 말 2026", "유월 2026"), or an English date left
      untranslated. B skips and lists dates in quotes, in titles of other
      works (reference entries, <em>, <cite>), in URLs, and ranges.
+  S  stray minus: a number the English glued to a word by a hyphen
+     ("mid-60s", "7-of-10", "mid-2026") that the Korean prints as a negative
+     ("-60대 중반", "7/-10", "-2026년 중반"), because the old masking made
+     the hyphen part of the opaque token.
 
 The script reads the working tree and is idempotent: a second run finds
 nothing. ``--write`` applies the selected classes and refuses to write unless
@@ -81,6 +85,11 @@ KOREAN_PART_RE = re.compile(rf"([0-9]+)(?:([년월일])|(?=\s*[–—~\-]\s*[0-9
 QUALIFIERS = "초순|상순|중순|하순|상반기|하반기|초|말|경"
 HANGUL_RE = re.compile(r"[가-힣]")
 RANGE_FORMS = frozenset({"cross_md", "cross_dm", "month_range"})
+# How the old masking read a sign: any hyphen before a number.
+SIGNED_NUMBER_RE = re.compile(
+    r"(?<!\d)-((?:[$€£₩¥]\s*)?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:%|×|x)?)(?!\d)"
+)
+WORD_CHAR_RE = re.compile(r"[A-Za-z가-힣]")
 
 # Hand-checked against the English source: months the old renderer stripped
 # ("4월-6월" lost "-6" to strip_unsafe_digits) or the model dropped, which no
@@ -577,8 +586,47 @@ def plan_run(report: Report, name: str, unit: Unit, english_raw: str, korean: st
     return edits
 
 
+def plan_signs(report: Report, name: str, unit: Unit, english_raw: str, korean: str) -> list[Edit]:
+    """Stray minus signs inside one aligned run (offsets relative to it).
+
+    A minus is stray when the English glued that number to a word with a
+    hyphen and the Korean prints it as a negative standing alone. When the
+    English also has a genuine negative of the same number, or the Korean
+    has more negatives than the English has compounds, a person decides.
+    """
+    label = f"attr {unit.key}" if unit.kind == "attr" else "text"
+    english = html.unescape(english_raw)
+
+    def kinds(text: str):
+        glued, standalone = collections.defaultdict(list), collections.defaultdict(list)
+        for match in SIGNED_NUMBER_RE.finditer(text):
+            previous = text[match.start() - 1] if match.start() else ""
+            (glued if WORD_CHAR_RE.fullmatch(previous) else standalone)[match.group(1)].append(match)
+        return glued, standalone
+
+    english_glued, english_negative = kinds(english)
+    _, korean_negative = kinds(korean)
+    edits = []
+    for literal, matches in korean_negative.items():
+        compounds = len(english_glued.get(literal, []))
+        if not compounds:
+            continue
+        if english_negative.get(literal) or len(matches) > compounds:
+            report.skip(name, label, "a negative number may be genuine",
+                        f"-{literal} glued to a word {compounds}x", korean[:160])
+            continue
+        for match in matches:
+            edits.append(Edit(match.start(), match.start() + 1, "", "S", "stray minus",
+                              f"…-{literal} (a hyphenated compound)", None))
+    return edits
+
+
 def verify(edit: Edit, before: str) -> None:
     """Parse the rewrite back; it must name exactly the English date."""
+    if edit.cls == "S":
+        if before != "-" or edit.after:
+            raise SystemExit(f"stray-minus edit must remove one hyphen, not {before!r}")
+        return
     if edit.expected is None:
         return
     got = korean_components(edit.after)
@@ -628,8 +676,13 @@ def plan_document(report: Report, file: str, source_html: str, korean: str) -> l
     for source_unit, korean_unit in zip(source_units, korean_units, strict=True):
         run = korean[korean_unit.start : korean_unit.end]
         label = f"attr {korean_unit.key}" if korean_unit.kind == "attr" else "text"
-        for edit in plan_run(report, file, korean_unit,
-                             source_html[source_unit.start : source_unit.end], run):
+        english_run = source_html[source_unit.start : source_unit.end]
+        dated = plan_run(report, file, korean_unit, english_run, run)
+        signs = [
+            edit for edit in plan_signs(report, file, korean_unit, english_run, run)
+            if not any(edit.start < other.end and other.start < edit.end for other in dated)
+        ]
+        for edit in dated + signs:
             start, end = korean_unit.start + edit.start, korean_unit.start + edit.end
             verify(edit, korean[start:end])
             changes.append(Change(file, label, edit.cls, edit.rule, edit.flags, start, end,
@@ -703,6 +756,7 @@ def plan(root: Path, report: Report) -> dict[str, list[Change]]:
         # Titles in index.json are plain text with the same garbles.
         title_unit = Unit("text", "", 0, len(ko["title"]), frozenset())
         edits = plan_run(report, "index.json", title_unit, html.escape(row["title"]), ko["title"])
+        edits += plan_signs(report, "index.json", title_unit, html.escape(row["title"]), ko["title"])
         if edits:
             needle = json.dumps(ko["title"], ensure_ascii=False)
             if needle[1:-1] != ko["title"] or index_raw.count(needle) != 1:
@@ -782,22 +836,22 @@ def run(root: Path, classes: set[str], write: bool) -> tuple[list[Change], Repor
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    parser.add_argument("--classes", default="A,B", help="comma-separated classes: A, B")
+    parser.add_argument("--classes", default="A,B,S", help="comma-separated classes: A, B, S")
     parser.add_argument("--write", action="store_true", help="apply the changes in place")
     parser.add_argument("--report", type=Path, help="directory for the CSV repair table")
     parser.add_argument("--seed", type=int, default=0, help="seed for the 20 review samples")
     parser.add_argument("--root", type=Path, default=ROOT)
     args = parser.parse_args(argv)
     classes = {cls.strip() for cls in args.classes.split(",") if cls.strip()}
-    if not classes <= {"A", "B"}:
-        parser.error("classes must be A and/or B")
+    if not classes <= {"A", "B", "S"}:
+        parser.error("classes must be among A, B, S")
     changes, report = run(args.root, classes, args.write)
     if args.report:
         write_reports(args.report, changes, report, args.seed)
     counts = collections.Counter(change.cls for change in changes)
     files = len({change.file for change in changes})
     verb = "rewrote" if args.write else "would rewrite"
-    print(f"{verb} {sum(counts.values())} date phrase(s) in {files} file(s): {dict(sorted(counts.items()))}")
+    print(f"{verb} {sum(counts.values())} phrase(s) in {files} file(s): {dict(sorted(counts.items()))}")
     reasons = collections.Counter(entry["reason"] for entry in report.unresolved)
     print(f"listed and left as is: {sum(reasons.values())} {dict(sorted(reasons.items()))}")
     return 0

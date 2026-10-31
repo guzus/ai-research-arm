@@ -145,6 +145,21 @@ class RepairKoreanTranslationDatesTest(unittest.TestCase):
             later, _ = repair.run(root, {"A", "B"}, write=False)
             self.assertEqual({c.cls for c in later}, {"B"})
 
+    def test_stray_minus_needs_a_hyphenated_source_compound(self):
+        unit = repair.Unit("text", "", 0, 0, frozenset())
+        report = repair.Report()
+        edits = repair.plan_signs(report, "f", unit, "margins in the mid-60s", "-60대 중반 마진")
+        self.assertEqual([(e.start, e.end, e.after, e.cls) for e in edits], [(0, 1, "", "S")])
+        # A genuine negative of the same number in the source leaves it to a person.
+        report = repair.Report()
+        self.assertEqual(
+            repair.plan_signs(report, "f", unit, "mid-60s, then -60 points", "-60대 중반, 이후 -60포인트"),
+            [],
+        )
+        self.assertEqual([entry["reason"] for entry in report.unresolved], ["a negative number may be genuine"])
+        # A hyphen glued to a word in Korean is a hyphen, not a minus sign.
+        self.assertEqual(repair.plan_signs(repair.Report(), "f", unit, "GPT-5", "GPT-5"), [])
+
     def test_masked_comparison_rejects_a_change_outside_the_spans(self):
         old = "앞 29월 2026 뒤"
         edits = [(2, 10, "2026년 10월 29일")]
