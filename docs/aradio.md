@@ -518,6 +518,54 @@ paths inside the station directory, every value is XML-escaped, the output is
 deterministic, and absent data is a valid feed with no episodes. Caddy caches
 it like `/feed.xml`; the container smoke and `check_production_surface.py`
 (`aradio-feed`) guard it. Anyone can follow it by URL (Apple Podcasts: Library
-→ ⋯ → Follow a Show by URL); listing in the Apple or Spotify directories needs
-square 1400–3000 px artwork first, which is why the feed has no
-`itunes:image` yet.
+→ ⋯ → Follow a Show by URL).
+
+**Artwork.** `<itunes:image>` and the RSS `<image>` (with the channel's title
+and link) name `<origin>/brand/aradio-cover.png` (`ARADIO_FEED_ARTWORK_PATH`):
+a 3000×3000 RGB PNG, no alpha channel, sRGB, 72 dpi, ~140 KB, committed in
+`dashboard/public/brand/` as a regular git blob (`.gitattributes` keeps that
+directory's `*.png`, not its JPEGs, out of LFS, which the Railway build does
+not hydrate). That meets
+Apple (square, 1400–3000 px, JPEG or PNG, RGB, no alpha) and Spotify (1:1, PNG
+preferred over JPEG). It is the page's own type and tokens: Source Serif 4 from
+`dashboard/scripts/fonts/` rendered with resvg, ground `#f4f5f8`, ink
+`#1a1a1a`, the ON AIR sign in lamp red `#e5372a`, the play button in royal
+`#2251ff`. Apple and Spotify fetch art once per URL, so a redesign ships under
+a new file name with the constant updated; overwriting the file in place
+changes nothing in either app. The container smoke fetches whatever
+`<itunes:image>` names and requires a real image with `Last-Modified` (Apple
+checks art with HEAD).
+
+**Owner email.** `ARADIO_FEED_OWNER_EMAIL`, a Railway service variable that the
+Dockerfile passes to the build as an `ARG`, adds `<itunes:owner>` with
+`<itunes:name>ARA</itunes:name>` and the address (trimmed, escaped) in
+`<itunes:email>`. It is unset by default, which emits no owner block. Spotify
+for Creators mails its ownership code to `<itunes:email>`; Apple's feed
+requirements do not use it (Podcasts Connect asks for contact details itself).
+Anyone who opens the feed can read the address. The build log line
+`aradio/feed.xml written (N episodes, with|no itunes:owner)` shows whether the
+variable reached the build.
+
+**Listing on Spotify and Apple Podcasts.** Both list a show only once its feed
+carries an episode, so wait for the first bulletin with audio.
+
+- Spotify for Creators (then follow the show in the Spotify app):
+  1. Set `ARADIO_FEED_OWNER_EMAIL` on the Railway service to an inbox you can
+     read and redeploy. Check that `https://ara.guzus.xyz/aradio/feed.xml` shows
+     `<itunes:email>` and at least one `<item>`.
+  2. Sign in at `creators.spotify.com` with the Spotify account that should own
+     the show. Choose **Find an existing show** (or, if the account already has
+     a show, avatar menu → **Add a new show** → **Find an existing show**), then
+     **Somewhere else**, and paste the feed URL.
+  3. Spotify mails an 8-digit code from `noreply@hello.creators.spotify.com`
+     to the feed's `<itunes:email>`. Paste it into the form, confirm the show
+     details, and submit.
+  4. Spotify re-reads the feed several times an hour; allow at least an hour
+     before a change reaches the apps.
+- Apple Podcasts Connect (`podcastsconnect.apple.com`):
+  1. **+** → **New Show** → **Add a show with an RSS feed**, paste the feed
+     URL, **Add**. Apple validates the feed: title, description, artwork,
+     language, category and explicit on the show; title, enclosure and guid on
+     every episode.
+  2. On Show Information, check the details, set Content Rights, add the
+     contact information, choose Availability, **Save**, then **Publish**.
