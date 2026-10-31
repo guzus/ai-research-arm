@@ -546,10 +546,11 @@ changes nothing in either app. The container smoke fetches whatever
 `<itunes:image>` names and requires a real image with `Last-Modified` (Apple
 checks art with HEAD).
 
-**Owner email.** `ARADIO_FEED_OWNER_EMAIL`, a Railway service variable that the
-Dockerfile passes to the build as an `ARG`, adds `<itunes:owner>` with
-`<itunes:name>ARA</itunes:name>` and the address (trimmed, escaped) in
-`<itunes:email>`. It is unset by default, which emits no owner block. Spotify
+**Owner email.** `ARADIO_FEED_OWNER_EMAIL`, a Dockerfile `ARG` that defaults to
+`i@guzus.xyz`, adds `<itunes:owner>` with `<itunes:name>ARA</itunes:name>` and
+the address (trimmed, escaped) in `<itunes:email>`. A service variable of the
+same name on the deploy platform overrides the default; an empty value emits
+no owner block, and so does a local build without the variable. Spotify
 for Creators mails its ownership code to `<itunes:email>`; Apple's feed
 requirements do not use it (Podcasts Connect asks for contact details itself).
 Anyone who opens the feed can read the address. The build log line
@@ -560,9 +561,9 @@ variable reached the build.
 carries an episode, so wait for the first bulletin with audio.
 
 - Spotify for Creators (then follow the show in the Spotify app):
-  1. Set `ARADIO_FEED_OWNER_EMAIL` on the Railway service to an inbox you can
-     read and redeploy. Check that `https://ara.guzus.xyz/aradio/feed.xml` shows
-     `<itunes:email>` and at least one `<item>`.
+  1. Check that `https://ara.guzus.xyz/aradio/feed.xml` shows
+     `<itunes:email>i@guzus.xyz</itunes:email>` (the Dockerfile default) and at
+     least one `<item>`.
   2. Sign in at `creators.spotify.com` with the Spotify account that should own
      the show. Choose **Find an existing show** (or, if the account already has
      a show, avatar menu → **Add a new show** → **Find an existing show**), then

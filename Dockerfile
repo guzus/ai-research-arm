@@ -18,10 +18,12 @@ RUN cd dashboard && bun install --frozen-lockfile
 COPY dashboard ./dashboard
 COPY research ./research
 
-# Railway hands a service variable to the build only if the stage declares it.
-# Unset (the default), the Aradio podcast feed carries no <itunes:owner>; see
+# The Aradio podcast feed's <itunes:owner> address, where Spotify for Creators
+# mails its ownership code. It is public in /aradio/feed.xml. The platform
+# hands a service variable to the build only if the stage declares it, so one
+# set there overrides this default; empty emits no owner block. See
 # docs/aradio.md "Podcast feed".
-ARG ARADIO_FEED_OWNER_EMAIL
+ARG ARADIO_FEED_OWNER_EMAIL=i@guzus.xyz
 
 # Every push to main changes research/, so this step never hits the cache.
 # Keep its layer down to what the runtime needs (no RUN --mount: Railway's
