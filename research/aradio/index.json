@@ -1,9 +1,27 @@
 {
   "schema": 1,
-  "updated_at": "2026-10-31T14:48:00Z",
+  "updated_at": "2026-10-31T18:49:00Z",
   "degraded": false,
-  "latest": "2026-10-31-1448",
+  "latest": "2026-10-31-1849",
   "bulletins": [
+    {
+      "id": "2026-10-31-1849",
+      "aired_at": "2026-10-31T18:49:00Z",
+      "headline": "All-In: Anthropic's IPO may need only $80B to $100B; Google's earnings-day drop erased about $500B as cloud profit soared",
+      "path": "bulletins/2026-10-31/1849.json",
+      "audio": {
+        "key": "audio/aradio/2026-10-31-1849.mp3",
+        "bytes": 811965,
+        "duration_s": 135.2
+      },
+      "covers": [
+        "anthropic-ipo-and-ai-funding",
+        "hyperscaler-capex-and-chip-selloff"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-10-31-1448",
       "aired_at": "2026-10-31T14:48:00Z",
