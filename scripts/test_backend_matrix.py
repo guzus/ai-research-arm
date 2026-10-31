@@ -969,8 +969,7 @@ class RoutingInvariants(unittest.TestCase):
         self.assertEqual([
             'if [[ ! "$CLAUDE_CODE_OAUTH_TOKEN" =~ ^[A-Za-z0-9._~+/=-]{20,4096}$ ]]; then',
             "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR=3 \\",
-            'printf \'%s\\n\' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}" | tee "$OUTPUT_FILE"',
-            'printf \'%s\\n\' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}"',
+            'printf \'%s\\n\' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}" >"$container_out" 2>&1 &',
         ], mentions)
         for forbidden in ("--env-file", "-e CLAUDE_CODE_OAUTH_TOKEN",
                           "--env CLAUDE_CODE_OAUTH_TOKEN", "--env=CLAUDE_CODE_OAUTH_TOKEN",
@@ -2502,8 +2501,7 @@ exit "$FAKE_RUN_STATUS"
             'rm -f -- "$attempt_log"',
             '"$(cat /tmp/cursor-prompt.md)" > "$attempt_log" 2>&1 &',
             '"$(cat /tmp/cursor-prompt.md)" > "$attempt_log" 2>&1 &',
-            'fatal=$(grep -m1 -oiE "$cursor_fatal_pattern" "$attempt_log" 2>/dev/null'
-            ' | cut -c1-300)',
+            'fatal=$(grep -m1 -oiE "$cursor_fatal_pattern" "$attempt_log" 2>/dev/null \\',
             'segment_calls=$(grep -cF "translation_segment {" "$attempt_log" || true)',
             'if [ -f "${attempt_log:-}" ] && [ ! -L "${attempt_log:-}" ]; then',
             'head -c 1048576 -- "$attempt_log" > .cursor-result.txt || true',
@@ -2736,17 +2734,21 @@ esac
             stdout, stderr, result, _, _, _ = run_case("flood")
             self.assertEqual(1048576, len(result))
             self.assertNotIn("FLOOD", "\n".join(stdout) + stderr)
-            # The fatal abort names only the fixed keyword, never the reply.
-            stdout, stderr, result, telemetry, _, _ = run_case("fatal")
+            # The fatal abort records only the fixed keyword for the host, and
+            # the container prints no ::error:: (the host re-announces it) and
+            # never the provider text.
+            stdout, stderr, result, telemetry, _, fatal_case = run_case("fatal")
             self.assertEqual(3, len(stdout), stdout)
-            self.assertRegex(stdout[0], r"^::error::Cursor CLI returned an unrecoverable error; "
-                             r"aborting this attempt instead of waiting out the ([1-5][0-9]|60)s "
-                             r"timeout: usage limit$")
+            self.assertRegex(stdout[0], r"^Cursor CLI returned an unrecoverable error; aborting "
+                             r"this attempt instead of waiting out the ([1-5][0-9]|60)s timeout\.$")
             self.assertRegex(stdout[1], status_line.format(n=1, status=143, artifacts=0))
             self.assertEqual("final_status=143", stdout[2])
+            self.assertNotIn("::error::", "\n".join(stdout))
             self.assertNotIn("INJECTED", "\n".join(stdout) + stderr)
             self.assertNotIn("Weekly", "\n".join(stdout) + stderr)
             self.assertIn(b"Weekly usage limit reached", result)
+            self.assertEqual("usage limit\n",
+                             (fatal_case / "work" / ".cursor-fatal").read_text(encoding="utf-8"))
             self.assertIn("last_agent_status=143\n", telemetry)
             # The Korean zero-output retry is unchanged and the host gets the
             # last attempt's reply.
@@ -3168,6 +3170,58 @@ esac
             with self.subTest(content=content):
                 self.assertEqual("", notice(content))
         self.assertEqual("", notice("Invalid API key\n", link=True))
+
+    def test_cursor_host_reannounces_only_a_fixed_fatal_keyword(self):
+        run = yaml.safe_load((REPO_ROOT / ".github/actions/run-cursor-container/action.yml")
+                             .read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+        block = run.split("# CURSOR_FATAL_NOTICE_BEGIN", 1)[1].split(
+            "# CURSOR_FATAL_NOTICE_END", 1)[0]
+        # The host prints only the fixed keyword set the container matches.
+        container = re.search(r'cursor_fatal_keywords="(\([^"]+\))"', run).group(1)
+        self.assertIn(f"grep -m1 -xiE '{container}'", block)
+        # The container no longer echoes the matched provider text to its
+        # stdout; it records the fixed keyword in the clone for the host.
+        self.assertNotIn("Cursor CLI returned an unrecoverable error; aborting this attempt "
+                         "instead of waiting out the ${remaining_seconds}s timeout: ${fatal}", run)
+        self.assertIn('printf "%s\\n" "$fatal" > .cursor-fatal', run)
+
+        def notice(content: str | None, link: bool = False) -> str:
+            with tempfile.TemporaryDirectory() as tmp:
+                fatal = Path(tmp) / ".cursor-fatal"
+                if link:
+                    (Path(tmp) / "elsewhere").write_text(content or "", encoding="utf-8")
+                    os.symlink(Path(tmp) / "elsewhere", fatal)
+                elif content is not None:
+                    fatal.write_text(content, encoding="utf-8")
+                return subprocess.run(["bash", "-c", "set -euo pipefail\n" + block],
+                                      env={**os.environ, "isolated_workspace": tmp},
+                                      capture_output=True, text=True, check=True).stdout
+
+        self.assertEqual("::error::Cursor CLI returned an unrecoverable error "
+                         "(Invalid API key); the attempt was aborted.\n",
+                         notice("Invalid API key\n"))
+        for content in (None, "", "Invalid API key; ::add-mask::x\n", "::warning::x\n",
+                        "usage limit reached " + "x" * 200 + "\n"):
+            with self.subTest(content=content):
+                self.assertEqual("", notice(content))
+        self.assertEqual("", notice("Invalid API key\n", link=True))
+
+    def test_container_stdout_and_stderr_go_to_a_host_file_not_the_log(self):
+        """A shell-capable model can write to its PID 1 stdout (/proc/1/fd/1),
+        so the container's stdout/stderr must be redirected to a host file; the
+        job log takes only the typed summary."""
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter):
+                run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                                      / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+                block = run.split("# CONTAINER_RUN_BEGIN", 1)[1].split("# CONTAINER_RUN_END", 1)[0]
+                self.assertIn('container_out="${OUTPUT_FILE:-$build_dir/container-output.log}"', block)
+                self.assertIn('"${docker_cmd[@]}" >"$container_out" 2>&1', block)
+                self.assertNotIn("| tee ", block)
+                self.assertNotIn('"${docker_cmd[@]}" &', block)
+                # The window stays as defense in depth: one stop and one resume.
+                self.assertEqual(1, block.count('echo "::stop-commands::${stop_token}"'))
+                self.assertEqual(1, block.count('echo "::${stop_token}::"'))
 
     def test_a_finished_runner_container_keeps_its_status(self):
         for adapter in self.RUNNERS:

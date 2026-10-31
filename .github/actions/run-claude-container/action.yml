@@ -964,27 +964,26 @@ runs:
         # Capture the container status instead of exiting immediately: the
         # trusted host must still validate what the container left behind.
         # CONTAINER_RUN_BEGIN
-        # Bash runs a trap only after a FOREGROUND command exits, so a cancelled
-        # job used to wait out the container and lose cleanup to the runner's
-        # SIGKILL. The container runs as a background job instead: `wait`
+        # The container runs as a BACKGROUND job: bash runs a trap only after a
+        # foreground command exits, so a cancelled job used to wait the
+        # container out and lose cleanup to the runner's SIGKILL. `wait`
         # returns at once on INT or TERM, and the EXIT trap removes the named
-        # container first. Meanwhile the job log takes no workflow commands
-        # from the container; the token that resumes them is fresh and never
-        # enters it.
+        # container before it resumes workflow commands.
+        #
+        # The container's stdout and stderr go to a host file, never the job
+        # log. A shell-capable model can write straight to its PID 1 stdout
+        # (/proc/1/fd/1), so suspending workflow commands does not contain its
+        # output on its own; this redirect does, and the typed summary below is
+        # all that reaches the log. The stop-commands window stays as defense
+        # in depth, and its token is fresh and never enters the container.
+        container_out="${OUTPUT_FILE:-$build_dir/container-output.log}"
         stop_token=$(od -An -N16 -tx1 /dev/urandom | tr -d ' \n')
         echo "::stop-commands::${stop_token}"
         set +e
-        if [ -n "$OUTPUT_FILE" ]; then
-          {
-            printf '%s\n' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}" | tee "$OUTPUT_FILE"
-            exit "${PIPESTATUS[1]}"
-          } &
-        else
-          {
-            printf '%s\n' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}"
-            exit "${PIPESTATUS[1]}"
-          } &
-        fi
+        # The OAuth token is the container's first stdin line; the redirect
+        # moves only stdout/stderr. `wait` on the pipeline yields docker's
+        # status, which is the pipeline's last command.
+        printf '%s\n' "$CLAUDE_CODE_OAUTH_TOKEN" | "${docker_cmd[@]}" >"$container_out" 2>&1 &
         container_job=$!
         wait "$container_job"
         agent_status=$?

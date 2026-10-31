@@ -789,7 +789,9 @@ runs:
             # host-shell syntax error (Cursor CLI Canary run 31993098610).
             # Inside the outer singles these doubles stay literal and
             # re-quote correctly for the container.
-            cursor_fatal_pattern="(Invalid API key|API key is invalid|Unauthorized|authentication failed|usage limit|Insufficient (balance|credits)|402 Payment)"
+            cursor_fatal_keywords="(Invalid API key|API key is invalid|Unauthorized|authentication failed|usage limit|Insufficient balance|Insufficient credits|402 Payment)"
+            cursor_fatal_pattern="$cursor_fatal_keywords"
+            rm -f -- .cursor-fatal
             model_budget_seconds=$((AGENT_TIMEOUT_MINUTES * 60))
             model_started_seconds=$SECONDS
             attempt_count=0
@@ -835,9 +837,14 @@ runs:
               agent_pid=$!
               while kill -0 "$agent_pid" 2>/dev/null; do
                 sleep 5
-                fatal=$(grep -m1 -oiE "$cursor_fatal_pattern" "$attempt_log" 2>/dev/null | cut -c1-300)
+                fatal=$(grep -m1 -oiE "$cursor_fatal_pattern" "$attempt_log" 2>/dev/null \
+                  | grep -m1 -oiE "${cursor_fatal_keywords}\$" | head -n 1)
                 if [ -n "$fatal" ]; then
-                  echo "::error::Cursor CLI returned an unrecoverable error; aborting this attempt instead of waiting out the ${remaining_seconds}s timeout: ${fatal}"
+                  # Record only the fixed keyword in the clone; the host
+                  # re-announces it (CURSOR_FATAL_NOTICE), because this echo
+                  # now lands in the host output file, not the job log.
+                  printf "%s\n" "$fatal" > .cursor-fatal 2>/dev/null || true
+                  echo "Cursor CLI returned an unrecoverable error; aborting this attempt instead of waiting out the ${remaining_seconds}s timeout."
                   kill -TERM "$agent_pid" 2>/dev/null
                   for _ in 1 2 3 4 5 6 7 8 9 10; do
                     kill -0 "$agent_pid" 2>/dev/null || break
@@ -1052,24 +1059,23 @@ runs:
         # instead of exiting immediately: the trusted host must validate and,
         # when safe, import a writer commit even if Cursor timed out afterward.
         # CONTAINER_RUN_BEGIN
-        # Bash runs a trap only after a FOREGROUND command exits, so a cancelled
-        # job used to wait out the container and lose cleanup to the runner's
-        # SIGKILL. The container runs as a background job instead: `wait`
+        # The container runs as a BACKGROUND job: bash runs a trap only after a
+        # foreground command exits, so a cancelled job used to wait the
+        # container out and lose cleanup to the runner's SIGKILL. `wait`
         # returns at once on INT or TERM, and the EXIT trap removes the named
-        # container first. Meanwhile the job log takes no workflow commands
-        # from the container; the token that resumes them is fresh and never
-        # enters it.
+        # container before it resumes workflow commands.
+        #
+        # The container's stdout and stderr go to a host file, never the job
+        # log. A shell-capable model can write straight to its PID 1 stdout
+        # (/proc/1/fd/1), so suspending workflow commands does not contain its
+        # output on its own; this redirect does, and the typed summary below is
+        # all that reaches the log. The stop-commands window stays as defense
+        # in depth, and its token is fresh and never enters the container.
+        container_out="${OUTPUT_FILE:-$build_dir/container-output.log}"
         stop_token=$(od -An -N16 -tx1 /dev/urandom | tr -d ' \n')
         echo "::stop-commands::${stop_token}"
         set +e
-        if [ -n "$OUTPUT_FILE" ]; then
-          {
-            "${docker_cmd[@]}" | tee "$OUTPUT_FILE"
-            exit "${PIPESTATUS[0]}"
-          } &
-        else
-          "${docker_cmd[@]}" &
-        fi
+        "${docker_cmd[@]}" >"$container_out" 2>&1 &
         container_job=$!
         wait "$container_job"
         agent_status=$?
@@ -1077,6 +1083,22 @@ runs:
         echo "::${stop_token}::"
         stop_token=""
         # CONTAINER_RUN_END
+
+        # CURSOR_FATAL_NOTICE_BEGIN
+        # Workflow commands were stopped while the container ran, so its fatal
+        # abort annotation was inert. Re-announce it from the keyword file:
+        # only an exact fixed keyword (the container's cursor_fatal_keywords)
+        # is printed, never free text, and the run status is untouched.
+        fatal_file="$isolated_workspace/.cursor-fatal"
+        if [ -f "$fatal_file" ] && [ ! -L "$fatal_file" ] \
+          && [ "$(wc -c < "$fatal_file")" -le 128 ]; then
+          fatal_keyword=$(grep -m1 -xiE '(Invalid API key|API key is invalid|Unauthorized|authentication failed|usage limit|Insufficient balance|Insufficient credits|402 Payment)' \
+            "$fatal_file" || true)
+          if [ -n "$fatal_keyword" ]; then
+            echo "::error::Cursor CLI returned an unrecoverable error (${fatal_keyword}); the attempt was aborted."
+          fi
+        fi
+        # CURSOR_FATAL_NOTICE_END
 
         # TRUSTED_ATTEMPT_TELEMETRY_BEGIN
         telemetry_file="$isolated_workspace/.cursor-attempt-telemetry"
