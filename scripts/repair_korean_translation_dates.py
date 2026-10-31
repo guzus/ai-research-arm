@@ -393,25 +393,9 @@ def classify(text: str, atoms: list[Atom], roles, months) -> str | None:
     return "B" if (year_late or day_first or bare_day or bare_year) else None
 
 
-def has_batchim(syllable: str) -> bool:
-    return "가" <= syllable <= "힣" and (ord(syllable) - 0xAC00) % 28 != 0
-
-
 def fit_particle(phrase: str, tail: str) -> tuple[str, int]:
     """Particle agreeing with the phrase's final syllable: (text, consumed)."""
-    final = phrase[-1]
-    if final in "일월":
-        for written, fitted in segments._FINAL_RIEUL_PARTICLES:
-            if tail.startswith(written):
-                return fitted, len(written)
-        return "", 0
-    rieul = has_batchim(final) and (ord(final) - 0xAC00) % 28 == 8
-    for consonant, vowel in (("으로", "로"), ("은", "는"), ("을", "를"), ("과", "와")):
-        wanted = vowel if not has_batchim(final) or (consonant == "으로" and rieul) else consonant
-        for written in (consonant, vowel):
-            if tail.startswith(written):
-                return wanted, len(written)
-    return "", 0
+    return segments.fit_particle(phrase[-1], tail)
 
 
 def inside_quotes(run: str, start: int) -> bool:

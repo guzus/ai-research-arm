@@ -484,6 +484,47 @@ class TranslationSegmentsTest(unittest.TestCase):
                     segments.attach_korean_date(written, token, "2025년 6월"), expected
                 )
 
+    def test_every_particle_fits_a_date_ending_in_rieul(self):
+        token = "⟦ARA0000⟧"
+        date = "2025년 11월"
+        pairs = (*segments._PARTICLE_PAIRS, *segments._BOUNDED_PARTICLE_PAIRS)
+        for after_consonant, after_vowel in pairs:
+            for written in (after_consonant, after_vowel):
+                with self.subTest(written=written):
+                    self.assertEqual(
+                        segments.attach_korean_date(f"{token}{written} 다음", token, date),
+                        f"{date}{after_consonant} 다음",
+                    )
+        for written in ("로", "으로"):
+            self.assertEqual(
+                segments.attach_korean_date(f"{token}{written}부터", token, date), f"{date}로부터"
+            )
+        # The two rewrites the first repair published as "11월나" and "10일라는".
+        self.assertEqual(
+            segments.attach_korean_date(f"{token}나 2026년", token, date), "2025년 11월이나 2026년"
+        )
+        self.assertEqual(
+            segments.attach_korean_date(f"{token}라는 경첩", token, "2022년 8월 10일"),
+            "2022년 8월 10일이라는 경첩",
+        )
+        # A syllable that begins a word is not a particle, and a unit that
+        # begins a word is not a duplicate.
+        for word in ("나라", "다음", "고객", "면적", "가격", "이후", "월간 보고서", "월말", "일부", "년도"):
+            with self.subTest(word=word):
+                self.assertEqual(segments.attach_korean_date(f"{token}{word}", token, date), f"{date}{word}")
+        self.assertEqual(
+            segments.attach_korean_date(f"{token}일시 중단", token, "8월 18일"), "8월 18일일시 중단"
+        )
+        self.assertEqual(segments.attach_korean_date(f"{token}일부터", token, "8월 18일"), "8월 18일부터")
+
+    def test_particles_fit_any_final_syllable(self):
+        self.assertEqual(segments.fit_particle("초", "이 "), ("가", 1))  # 5월 초가
+        self.assertEqual(segments.fit_particle("기", "은"), ("는", 1))  # 상반기는
+        self.assertEqual(segments.fit_particle("순", "로"), ("으로", 1))  # 중순으로
+        self.assertEqual(segments.fit_particle("말", "으로"), ("로", 2))  # 말로
+        self.assertEqual(segments.fit_particle("경", "라는"), ("이라는", 2))  # 경이라는
+        self.assertEqual(segments.fit_particle("9", "는"), ("", 0))
+
     def test_dated_article_renders_korean_dates_that_pass_parity(self):
         source_raw = """---
 title: Link launched on October 26–27

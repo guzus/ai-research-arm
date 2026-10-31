@@ -598,18 +598,50 @@ def strip_unsafe_digits(text: str) -> str:
     return "".join(cleaned)
 
 
-_DUPLICATE_DATE_UNIT_RE = re.compile(r"[년월일](?!요일)")
-# Every Korean date literal ends in 일 or 월, a final ㄹ: particles take the
-# consonant form, except that ㄹ takes 로 rather than 으로.
-_FINAL_RIEUL_PARTICLES = (
-    ("으로", "로"),
-    ("는", "은"),
-    ("가", "이"),
-    ("를", "을"),
-    ("와", "과"),
-    ("며", "이며"),
-    ("였", "이었"),
+# A unit the model added after a token that is already a whole date, but
+# not the first syllable of a word such as 월간, 월말, 일시, 일부, or 년도.
+_DUPLICATE_DATE_UNIT_RE = re.compile(
+    r"년(?![간대도차])|월(?!요일|[간말초급])|일(?!요일|부(?!터)|[시간정대반상련환제치])"
 )
+# Particles whose form depends on the final consonant before them, as
+# (after a consonant, after a vowel). A one-syllable form that also begins
+# ordinary words (나라, 다음, 고객, 면적, 가격, 이후) is fitted only before
+# a word boundary. 으로/로 is separate: a final ㄹ or a vowel takes 로.
+_PARTICLE_PAIRS = (
+    ("이라는", "라는"), ("이라고", "라고"), ("이라며", "라며"), ("이라서", "라서"),
+    ("이라도", "라도"), ("이라면", "라면"), ("이라니", "라니"), ("이야말로", "야말로"),
+    ("이어서", "여서"), ("이어도", "여도"), ("이에요", "예요"), ("이지만", "지만"),
+    ("이었", "였"), ("이며", "며"), ("은", "는"), ("을", "를"), ("과", "와"),
+)
+_BOUNDED_PARTICLE_PAIRS = (
+    ("이나", "나"), ("이야", "야"), ("이란", "란"), ("이랑", "랑"),
+    ("이다", "다"), ("이고", "고"), ("이면", "면"), ("이", "가"),
+)
+
+
+def fit_particle(final: str, tail: str) -> tuple[str, int]:
+    """Refit the particle opening ``tail`` to a word ending in ``final``.
+
+    Returns the particle to write and how many characters of ``tail`` it
+    replaces; ("", 0) when ``tail`` opens with no particle.
+    """
+    if not "가" <= final <= "힣":
+        return "", 0
+    batchim = (ord(final) - 0xAC00) % 28
+    for after_consonant, after_vowel in _PARTICLE_PAIRS:
+        for written in (after_consonant, after_vowel):
+            if tail.startswith(written):
+                return (after_consonant if batchim else after_vowel), len(written)
+    for after_consonant, after_vowel in _BOUNDED_PARTICLE_PAIRS:
+        for written in (after_consonant, after_vowel):
+            following = tail[len(written) : len(written) + 1]
+            if tail.startswith(written) and not ("가" <= following <= "힣"):
+                return (after_consonant if batchim else after_vowel), len(written)
+    for written in ("으로", "로"):
+        if tail.startswith(written):
+            # ㄹ (batchim 8) takes 로 like a vowel.
+            return ("으로" if batchim and batchim != 8 else "로"), len(written)
+    return "", 0
 
 
 def attach_korean_date(text: str, token: str, korean: str) -> str:
@@ -617,7 +649,7 @@ def attach_korean_date(text: str, token: str, korean: str) -> str:
 
     The model cannot see that a token is a whole date, so it may write the
     unit a bare year needs (⟦ARA0000⟧년에) or a particle chosen for a number
-    that ends in a vowel (⟦ARA0000⟧는).
+    that ends in a vowel (⟦ARA0000⟧는, ⟦ARA0000⟧라는).
     """
     index = text.find(token)
     if index < 0:
@@ -625,11 +657,8 @@ def attach_korean_date(text: str, token: str, korean: str) -> str:
     tail = text[index + len(token) :]
     if _DUPLICATE_DATE_UNIT_RE.match(tail):
         tail = tail[1:]
-    for written, fitted in _FINAL_RIEUL_PARTICLES:
-        if tail.startswith(written):
-            tail = fitted + tail[len(written) :]
-            break
-    return text[:index] + korean + tail
+    fitted, consumed = fit_particle(korean[-1], tail)
+    return text[:index] + korean + fitted + tail[consumed:]
 
 
 def render(source_path: Path, source_sha256: str, result_path: Path, draft_path: Path) -> None:
