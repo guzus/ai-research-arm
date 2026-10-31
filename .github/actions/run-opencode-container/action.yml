@@ -439,7 +439,11 @@ runs:
         fi
         # TRUSTED_AGENT_INPUT_GUARD_END
 
-        build_dir="${RUNNER_TEMP:-/tmp}/opencode-container-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        # A per-invocation suffix (random tail) keeps two matrix legs or
+        # dispatch steps of one run from sharing a build directory, workspace,
+        # image tag, or container name on the persistent runner.
+        run_suffix="${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-${GITHUB_JOB:-job}-$(od -An -N4 -tx1 /dev/urandom | tr -d ' \n')"
+        build_dir="${RUNNER_TEMP:-/tmp}/opencode-container-${run_suffix}"
         rm -rf "$build_dir"
         mkdir -p "$build_dir"
         generated_opencode_config="$build_dir/opencode.generated.json"
@@ -551,7 +555,7 @@ runs:
           exit 1
         fi
         pre_sha=$("${host_git[@]}" rev-parse HEAD)
-        isolated_workspace="${RUNNER_TEMP:-/tmp}/opencode-workspace-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        isolated_workspace="${RUNNER_TEMP:-/tmp}/opencode-workspace-${run_suffix}"
         rm -rf "$isolated_workspace"
         env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
           GIT_NO_REPLACE_OBJECTS=1 GIT_LFS_SKIP_SMUDGE=1 \
@@ -665,8 +669,8 @@ runs:
         WORKDIR /workspace
         EOF
 
-        image="ara-opencode-agent:${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
-        container_name="ara-opencode-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-${GITHUB_JOB:-job}"
+        image="ara-opencode-agent:${run_suffix}"
+        container_name="ara-opencode-${run_suffix}"
         case "$container_name" in
           *[!A-Za-z0-9_.-]*)
             echo "::error::Unsafe run-scoped opencode container name: $container_name"

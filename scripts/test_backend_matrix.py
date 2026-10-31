@@ -3053,6 +3053,21 @@ esac
         except ProcessLookupError:
             pass
 
+    def test_runner_names_carry_a_per_invocation_random_suffix(self):
+        """Two hourly-twitter matrix legs on one runner must not share a
+        container name or image tag; a random tail makes every name unique."""
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter):
+                run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                                      / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+                self.assertRegex(run, r'run_suffix="[^"]*\$\(od -An -N4 -tx1 /dev/urandom')
+                self.assertIn(f'image="ara-{adapter}-agent:${{run_suffix}}"', run)
+                self.assertIn(f'container_name="ara-{adapter}-${{run_suffix}}"', run)
+                self.assertIn(f"{adapter}-container-${{run_suffix}}", run)
+                self.assertIn(f"{adapter}-workspace-${{run_suffix}}", run)
+                # No bare run-id names remain, which two legs of one run share.
+                self.assertNotIn("${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}\"", run)
+
     def test_cleanup_resumes_commands_only_after_removing_the_container(self):
         """On cancel the container is removed before workflow commands resume,
         so a model still writing to its PID 1 stdout cannot reach the log as
@@ -4005,6 +4020,7 @@ esac
                 "RUNNER_TEMP": str(tmp_path),
                 "GITHUB_RUN_ID": "hostsetup",
                 "GITHUB_RUN_ATTEMPT": "1",
+                "run_suffix": "hostsetup-1-job-test",
                 "RUN_MODE": "canary",
                 "build_dir": str(build_dir),
                 "empty_git_template": str(empty_template),
@@ -4018,7 +4034,7 @@ esac
                 text=True, capture_output=True, env=env, check=False)
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
             self.assertFalse(marker.exists(), result.stdout + result.stderr)
-            isolated = tmp_path / "opencode-workspace-hostsetup-1"
+            isolated = tmp_path / "opencode-workspace-hostsetup-1-job-test"
             self.assertFalse((isolated / ".git" / "hooks" /
                               "post-checkout").exists())
             self.assertFalse((isolated / "tracked.txt").exists(),
