@@ -907,6 +907,8 @@ class TranslationParityTest(unittest.TestCase):
                 ("4월 2026에", "English word order"),
                 ("10일 7월 2026", "English word order"),
                 ("7월 17-20, 2026에", "English word order"),
+                ("6월 30일, 2026년 기준", "English word order"),
+                ("10월 26일, 2026에", "English word order"),
             ):
                 with self.subTest(garbled=garbled):
                     target.write_text(
@@ -930,6 +932,10 @@ class TranslationParityTest(unittest.TestCase):
                 "6월 9일, 2027년까지",
                 "13월의 월급",
                 "3월 2026명",
+                "2월 26일, 2026 회계연도 4분기 실적",
+                "4월, 2026 로드맵",
+                "13월의 보너스",
+                "2026월드컵",
             ):
                 with self.subTest(valid=valid):
                     self.assertEqual(
