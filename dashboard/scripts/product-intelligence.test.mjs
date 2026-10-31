@@ -141,3 +141,22 @@ test('product surfaces preserve loading/error paths and mobile containment', () 
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.change-grid[\s\S]*grid-template-columns: 1fr/);
   assert.match(css, /@media \(max-width: 420px\)[\s\S]*\.search-filters \{ grid-template-columns: 1fr/);
 });
+
+test('watchlist storage that throws on access never breaks the dashboard', async () => {
+  const mod = await importTs('src/product-intelligence.ts');
+  const descriptor = Object.getOwnPropertyDescriptor(globalThis, 'localStorage');
+  // Blocked site data and sandboxed frames make the localStorage getter itself throw.
+  Object.defineProperty(globalThis, 'localStorage', {
+    configurable: true,
+    get() { throw new Error('SecurityError: access denied'); },
+  });
+  try {
+    assert.deepEqual(mod.readWatchlist(), { topics: [] });
+    assert.doesNotThrow(() => mod.writeWatchlist({ topics: ['anthropic'] }));
+  } finally {
+    if (descriptor) Object.defineProperty(globalThis, 'localStorage', descriptor);
+    else delete globalThis.localStorage;
+  }
+  const full = { getItem: () => null, setItem: () => { throw new Error('QuotaExceededError'); } };
+  assert.doesNotThrow(() => mod.writeWatchlist({ topics: ['anthropic'] }, full));
+});
