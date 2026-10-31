@@ -22,10 +22,12 @@ import {
   ARADIO_RESTART_S,
   aradioAge,
   aradioAudioSrc,
+  aradioHasFailed,
   aradioPlayAria,
   aradioRadioCopy,
   aradioRadioView,
   aradioUtcTime,
+  failAradioProgramme,
   hydrateAradioFeed,
   hydrateAradioLinks,
   normalizeAradioBoard,
@@ -38,6 +40,7 @@ import {
   renderAradioTranscript,
   renderAradioUpNext,
   renderAradioView,
+  retryAradioProgramme,
   startAradioProgramme,
   stepAradioProgramme,
   syncAradioProgramme,
@@ -1212,9 +1215,12 @@ function paintPricing(data: ModelPricing, gpu: GpuSpotData | null = null): void 
 const ARADIO_POLL_MS = 5 * 60 * 1000;
 const ARADIO_TICK_MS = 30 * 1000;
 const ARADIO_FEED_URL = new URL(ARADIO_FEED_PATH, PUBLIC_SITE_ORIGIN).href;
-// The only brand image is the 1280x640 social card; there is no square asset.
-// Lock screens crop or letterbox it, which still beats a blank tile.
-const ARADIO_ARTWORK: MediaImage[] = [{ src: '/brand/github-social-preview.png', sizes: '1280x640', type: 'image/png' }];
+// Lock screens and Control Center show artwork as a square. The radio has its
+// 3000x3000 show art, the podcast feed's cover too (a test pins the two). The
+// digest is another show with no square art: it keeps the 1280x640 social
+// card, which a lock screen crops or letterboxes — still better than a blank tile.
+const ARADIO_ARTWORK: MediaImage[] = [{ src: '/brand/aradio-cover.png', sizes: '3000x3000', type: 'image/png' }];
+const DIGEST_ARTWORK: MediaImage[] = [{ src: '/brand/github-social-preview.png', sizes: '1280x640', type: 'image/png' }];
 // HTMLMediaElement.HAVE_FUTURE_DATA: below it a playing element is buffering.
 const MEDIA_HAVE_FUTURE_DATA = 3;
 
@@ -1246,6 +1252,10 @@ let aradioAnnouncedTrack: string | null = null;
 let aradioProgramme: AradioProgramme | null = null;
 let aradioLoaded: AradioBulletinEntry | null = null;
 let aradioWaiting = false;
+// The listener wants sound: set by the radio's play(), cleared by a real pause.
+// A failing source cannot tell us — Chrome pauses the element as its source
+// fails (after earlier playback), so `paused` is already true when `error` fires.
+let aradioPlayIntent = false;
 let aradioStopAfter = false;
 let aradioSeekDragging = false;
 let aradioRadioObserver: IntersectionObserver | null = null;
@@ -1548,6 +1558,30 @@ function focusAradioThread(slug: string): void {
   window.setTimeout(() => target.classList.remove('is-flash'), 1600);
 }
 
+/**
+ * After a Retry repainted the view, put focus back where the reader was: the
+ * radio's play button, or the card's heading when there is nothing to play
+ * (still unreachable, or no audio yet); the board's heading for the board's
+ * Retry; the error card's Retry when loading timed out again. Focus the reader
+ * already moved elsewhere is left alone.
+ */
+function refocusAradioAfterRetry(board: boolean): void {
+  if (activeTab !== 'aradio') return;
+  const active = document.activeElement;
+  if (active && active !== document.body) return;
+  const scope = content.querySelector<HTMLElement>(board ? '.aradio-board' : '[data-aradio-radio]');
+  const target = !scope
+    ? content.querySelector<HTMLElement>('[data-retry]')
+    : board
+      ? scope.querySelector<HTMLElement>('#aradioBoardTitle')
+      : scope.querySelector<HTMLElement>('[data-aradio-toggle]')
+        ?? scope.querySelector<HTMLElement>('.aradio-empty-title')
+        ?? scope.querySelector<HTMLElement>('#aradioStation');
+  if (!target) return;
+  if (!target.matches('button, input')) target.setAttribute('tabindex', '-1');
+  target.focus({ preventScroll: true });
+}
+
 function aradioAudioUrl(entry: AradioBulletinEntry): string | null {
   // The guarded builder re-checks the key policy; no key, no audio.
   return aradioAudioSrc(AUDIO_BASE, entry.audio);
@@ -1570,11 +1604,26 @@ function announceAradio(message: string): void {
   if (activeTab === 'aradio' && live && message) live.textContent = message;
 }
 
+/**
+ * The radio's every play(). A source that cannot play (NotSupportedError) is
+ * that bulletin failing; a blocked (autoplay policy) or interrupted (a newer
+ * load, a pause) play() is not, and only refreshes the controls.
+ */
+function playAradio(audio: HTMLAudioElement, id: string): void {
+  aradioPlayIntent = true;
+  void audio.play().catch((error: unknown) => {
+    if (error instanceof DOMException && error.name === 'NotSupportedError') aradioTrackFailed(id, true);
+    else updateDigestAudioUi();
+  });
+}
+
 function setAradioTrack(entry: AradioBulletinEntry, autoplay: boolean): void {
   const src = aradioAudioUrl(entry);
   if (!src) return;
   const audio = ensureDigestAudioPlayer();
-  const changed = digestAudioState.src !== src || audio.getAttribute('src') !== src;
+  // A player left in an error state holds nothing, so even the same src
+  // (trying a failed bulletin again) loads afresh.
+  const changed = digestAudioState.src !== src || audio.getAttribute('src') !== src || audio.error !== null;
   digestAudioState.kind = 'aradio';
   digestAudioState.aradioId = entry.id;
   digestAudioState.date = null;
@@ -1586,6 +1635,7 @@ function setAradioTrack(entry: AradioBulletinEntry, autoplay: boolean): void {
   digestAudioState.dismissedSrc = null;
   aradioLoaded = entry;
   aradioWaiting = false;
+  aradioPlayIntent = autoplay;
   if (changed) {
     audio.src = src;
     audio.currentTime = 0;
@@ -1601,32 +1651,63 @@ function setAradioTrack(entry: AradioBulletinEntry, autoplay: boolean): void {
       aradioAnnouncedTrack = entry.id;
       announceAradio(uiText(activeLanguage, 'aradio.announceNow', { headline: entry.headline || `${aradioUtcTime(entry.airedAt)} UTC` }));
     }
-    void audio.play().catch(() => {
-      updateDigestAudioUi();
-    });
+    playAradio(audio, entry.id);
   }
+}
+
+/**
+ * A radio bulletin's audio failed to load or play (`play` = the listener
+ * wanted sound). The running order (render/aradio.ts) decides: skip to the
+ * next bulletin that can play, keeping the play state, or — nothing left —
+ * stop and say so on the card, the bar and the lock screen. A report about a
+ * bulletin no longer loaded, or a second report about this one, changes nothing.
+ */
+function aradioTrackFailed(id: string, play: boolean): void {
+  const loaded = aradioLoadedEntry();
+  if (!loaded || loaded.id !== id || !aradioProgramme) return;
+  const outcome = failAradioProgramme(aradioProgramme, aradioKnownBulletins(), id);
+  if (!outcome) return;
+  aradioProgramme = outcome.programme;
+  const time = aradioUtcTime(loaded.airedAt);
+  const next = outcome.action === 'skip' ? aradioEntry(outcome.programme.ids[outcome.programme.pos]) : null;
+  if (next) {
+    const skipped = uiText(activeLanguage, 'aradio.skipFailed', { time });
+    // One message, not two in a row: a live region may read only the last.
+    if (play) aradioAnnouncedTrack = next.id;
+    setAradioTrack(next, play);
+    announceAradio(play
+      ? `${skipped}. ${uiText(activeLanguage, 'aradio.announceNow', { headline: next.headline || `${aradioUtcTime(next.airedAt)} UTC` })}`
+      : skipped);
+    return;
+  }
+  digestAudioState.title = uiText(activeLanguage, 'aradio.playerFailed', { time });
+  digestAudioEl?.pause();
+  announceAradio(uiText(activeLanguage, 'aradio.stoppedFailed', { time }));
+  updateDigestAudioUi();
 }
 
 /** Play from where the listener left off, or start the running order over. */
 function startOrResumeAradio(): void {
   const audio = ensureDigestAudioPlayer();
   const loaded = aradioLoadedEntry();
+  const failed = aradioHasFailed(aradioProgramme, loaded?.id);
   aradioWaiting = false;
-  if (loaded && !audio.ended) {
+  if (loaded && !audio.ended && !failed) {
     digestAudioState.dismissedSrc = null;
     showDigestAudioPlayer();
     stopResearchAudio();
     startAradioTicker();
-    void audio.play().catch(() => {
-      updateDigestAudioUi();
-    });
+    playAradio(audio, loaded.id);
     updateDigestAudioUi();
     return;
   }
-  // Same rule the card shows as "Up first": after "stop after this
-  // bulletin", the next in the running order; otherwise the newest.
+  // Same rule the card shows as "Up first": after a stop on failures, try
+  // again from the first bulletin missed; after "stop after this bulletin",
+  // the next in the running order; otherwise the newest.
   const known = aradioKnownBulletins();
-  const next = loaded && aradioProgramme ? stepAradioProgramme(aradioProgramme, known, 1) : null;
+  const next = loaded && aradioProgramme
+    ? failed ? retryAradioProgramme(aradioProgramme, known) : stepAradioProgramme(aradioProgramme, known, 1)
+    : null;
   const programme = next ?? startAradioProgramme(known);
   const entry = programme ? aradioEntry(programme.ids[programme.pos]) : null;
   if (!programme || !entry) {
@@ -1657,7 +1738,8 @@ function toggleAradioRadio(): void {
 function toggleAradioPlayback(id: string | null): void {
   if (!id) return;
   const audio = ensureDigestAudioPlayer();
-  if (aradioLoadedEntry()?.id === id && !audio.ended) {
+  // Asking for a bulletin that failed is the listener's retry: a fresh session from it.
+  if (aradioLoadedEntry()?.id === id && !audio.ended && !aradioHasFailed(aradioProgramme, id)) {
     if (audio.paused) startOrResumeAradio();
     else audio.pause();
     return;
@@ -1683,7 +1765,8 @@ function aradioNext(): void {
 /** Restart the bulletin on now, or — within its first seconds — go back one. */
 function aradioPrevious(): void {
   const audio = digestAudioEl;
-  if (!aradioLoadedEntry() || !audio || !aradioProgramme) return;
+  const loaded = aradioLoadedEntry();
+  if (!loaded || !audio || !aradioProgramme) return;
   const wasEnded = audio.ended || aradioWaiting;
   const autoplay = wasEnded || !audio.paused;
   const back = !wasEnded && audio.currentTime <= ARADIO_RESTART_S
@@ -1699,9 +1782,7 @@ function aradioPrevious(): void {
   audio.currentTime = 0;
   if (autoplay) {
     stopResearchAudio();
-    void audio.play().catch(() => {
-      updateDigestAudioUi();
-    });
+    playAradio(audio, loaded.id);
   }
   updateDigestAudioUi();
 }
@@ -1937,7 +2018,7 @@ function syncAradioRadio(): void {
 
   const deck = card.querySelector<HTMLElement>('[data-aradio-deck]');
   if (deck && !deck.classList.contains(`aradio-mode--${view.mode}`)) {
-    deck.classList.remove('aradio-mode--off', 'aradio-mode--playing', 'aradio-mode--paused', 'aradio-mode--waiting');
+    deck.classList.remove('aradio-mode--off', 'aradio-mode--playing', 'aradio-mode--paused', 'aradio-mode--waiting', 'aradio-mode--failed');
     deck.classList.add(`aradio-mode--${view.mode}`);
   }
   const toggle = card.querySelector<HTMLButtonElement>('[data-aradio-toggle]');
@@ -2143,7 +2224,7 @@ function syncMediaSession(): void {
           title: digestAudioState.title,
           artist: 'ara',
           album: uiText(activeLanguage, 'today.audioTitle'),
-          artwork: ARADIO_ARTWORK,
+          artwork: DIGEST_ARTWORK,
         });
     } catch {
       // Metadata is a nicety; playback does not depend on it.
@@ -2235,6 +2316,13 @@ function handleAradioClick(target: HTMLElement): boolean {
   const goto = target.closest<HTMLElement>('[data-aradio-goto]');
   if (goto) {
     focusAradioThread(goto.dataset.aradioGoto || '');
+    return true;
+  }
+  const retry = target.closest<HTMLElement>('[data-retry]');
+  if (retry) {
+    // load() repaints the whole view, which drops focus to <body>.
+    const board = Boolean(retry.closest('.aradio-board'));
+    void load().then(() => refocusAradioAfterRetry(board));
     return true;
   }
   return false;
@@ -2765,7 +2853,20 @@ function ensureDigestAudioPlayer(): HTMLAudioElement {
     hideDigestAudioPlayer();
     updateDigestAudioUi();
   });
+  // A pause the listener (or the system) made: a failure after it must not
+  // start the next bulletin. A pause event that lands while the element plays
+  // again is stale (a failed source's, after the skip) and is ignored.
+  digestAudioEl.addEventListener('pause', () => {
+    if (digestAudioEl?.paused) aradioPlayIntent = false;
+  });
   digestAudioEl.addEventListener('error', () => {
+    // The radio skips a bulletin that cannot play rather than sit "Paused" on
+    // it. `error` is null again once a newer track loads, so a late event
+    // about an earlier one is ignored.
+    if (digestAudioState.kind === 'aradio') {
+      if (digestAudioEl?.error && digestAudioState.aradioId) aradioTrackFailed(digestAudioState.aradioId, aradioPlayIntent);
+      return;
+    }
     if (digestAudioTitleEl) digestAudioTitleEl.textContent = `${digestAudioState.title} · unavailable`;
     updateDigestAudioUi();
   });
