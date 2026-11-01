@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-11-01 13:11:41 UTC
+
+CYCLE: DeepSeek's coding agent, Google's agentic CI repair, OpenAI allowance change
+
+TOP STORIES:
+• Bloomberg: DeepSeek releases prototype autonomous coding agent aimed at Claude Code [⚠]
+• Google FlowAgent: 28,554 CI-repair fixes applied in production, 67% judged correct [⚠]
+• OpenAI docs reportedly put ChatGPT + Codex on one shared token allowance [⚠]
+
+WATCH: Whether OpenAI ships GPT-6.2 "Astra" early this week (rumor only so far)
+
+Full update on GitHub.
