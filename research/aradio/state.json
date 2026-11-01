@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-01T15:32:00Z",
+  "updated_at": "2026-11-01T19:39:00Z",
   "headline": "Gemini 4 Carbon pricing surfaces, Qwen 4 and GPT-6.2 Astra look imminent, Anthropic IPO eyed for about two weeks out",
   "threads": [
     {
@@ -267,15 +267,27 @@
     },
     {
       "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
-      "title": "Next model launches: Alibaba's Qwen 4 and OpenAI's GPT-6.2 Astra both look close",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
       "status": "developing",
       "importance": 3,
       "first_seen": "2026-11-01T15:32:00Z",
-      "updated_at": "2026-11-01T15:32:00Z",
-      "now": "Unconfirmed: Alibaba's Qwen 4 is reportedly due the week of November 2, with model names in Qwen Code and a rumored one-million-token default context. Separately, a gpt-6.2-astra string reportedly shows in OpenAI Codex analytics. A reported Qwen-in-Apple-Intelligence China beta on November 4 is single-sourced.",
-      "changed": "Qwen 4 timing was restated as next week, and several accounts say a gpt-6.2-astra model string appeared in Codex analytics. Neither company has announced anything.",
-      "watch": "An Alibaba Qwen 4 release this week; any OpenAI post on GPT-6.2 Astra; Apple or Alibaba confirmation of a November 4 developer beta.",
+      "updated_at": "2026-11-01T19:39:00Z",
+      "now": "Unconfirmed: Alibaba's Qwen 4 is reportedly due the week of November 2. Users say gpt-6.2-astra works from Codex CLI, though OpenAI has said nothing and it may be an alias. Hidden text on Anthropic's site reportedly lists Claude Mythos 5.5, absent from an October 23 snapshot.",
+      "changed": "Users report gpt-6.2-astra now runs from Codex CLI, beyond the analytics sighting. Separately, hidden text on Anthropic's site names Claude Mythos 5.5. All single-source; no company has commented.",
+      "watch": "An OpenAI launch post for GPT-6.2 Astra on Nov 2-3; Qwen 4 release this week; any Anthropic announcement of Mythos 5.5 or removal of the string.",
       "evidence": [
+        {
+          "url": "https://x.com/kimmonismus/status/2116973297326055564",
+          "kind": "twitter",
+          "label": "@kimmonismus on X (Astra in Codex CLI)",
+          "at": "2026-11-01T19:00:00Z"
+        },
+        {
+          "url": "https://x.com/kimmonismus/status/2116914141017370972",
+          "kind": "twitter",
+          "label": "@kimmonismus on X (Mythos 5.5 string)",
+          "at": "2026-11-01T19:00:00Z"
+        },
         {
           "url": "https://x.com/RagerrrYT/status/2116877919054397950",
           "kind": "ticket",
@@ -299,6 +311,10 @@
         {
           "at": "2026-11-01T15:32:00Z",
           "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
+        },
+        {
+          "at": "2026-11-01T19:39:00Z",
+          "change": "Astra reportedly callable in Codex CLI; Mythos 5.5 string spotted on Anthropic's site. Both unconfirmed."
         }
       ]
     },
