@@ -896,16 +896,19 @@ runs:
             post_sha="$agent_post_sha"
             if [ "$agent_post_sha" != "$PRE_SHA" ]; then
               if ! git merge-base --is-ancestor "$PRE_SHA" "$agent_post_sha"; then
+                printf "%s\n" not-descendant > .claude-refusal 2>/dev/null || true
                 echo "isolated Claude commit does not descend from the pre-run HEAD" >&2
                 exit 1
               fi
               if [ "$RUN_MODE" = "canary" ]; then
+                printf "%s\n" canary-commit > .claude-refusal 2>/dev/null || true
                 echo "canary Claude run created a commit" >&2
                 exit 1
               fi
 
               commit_count=$(git rev-list --count "$PRE_SHA..$agent_post_sha")
               if [ "$commit_count" -lt 1 ] || [ "$commit_count" -gt 8 ]; then
+                printf "%s\n" commit-count > .claude-refusal 2>/dev/null || true
                 echo "isolated Claude commit chain must contain 1-8 commits; got $commit_count" >&2
                 exit 1
               fi
@@ -918,6 +921,7 @@ runs:
                 if [ "$observed_commit" != "$commit_oid" ] \
                   || [ "$observed_parent" != "$expected_parent" ] \
                   || [ -n "${extra_parent:-}" ]; then
+                  printf "%s\n" nonlinear > .claude-refusal 2>/dev/null || true
                   echo "isolated Claude history must be a merge-free linear chain rooted at PRE_SHA" >&2
                   exit 1
                 fi
@@ -927,6 +931,7 @@ runs:
                   && IFS= read -r -d "" path; do
                   commit_path_count=$((commit_path_count + 1))
                   if [ "$commit_path_count" -gt 512 ]; then
+                    printf "%s\n" path-count > .claude-refusal 2>/dev/null || true
                     echo "isolated Claude commit changes more than 512 paths" >&2
                     exit 1
                   fi
@@ -955,15 +960,18 @@ runs:
                       done <<< "$ALLOWED_PATHS"
                       ;;
                     canary)
+                      printf "%s\n" canary-commit > .claude-refusal 2>/dev/null || true
                       echo "canary Claude run created a commit: $status $(shown_path "$path")" >&2
                       exit 1
                       ;;
                     *)
+                      printf "%s\n" unknown-mode > .claude-refusal 2>/dev/null || true
                       echo "unknown Claude run mode during commit normalization: $RUN_MODE" >&2
                       exit 1
                       ;;
                   esac
                   if [ "$path_allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
+                    printf "%s\n" forbidden-path > .claude-refusal 2>/dev/null || true
                     echo "$RUN_MODE Claude intermediate commit changed forbidden path/status: $status $(shown_path "$path")" >&2
                     exit 1
                   fi
@@ -972,6 +980,7 @@ runs:
                   read -r tree_mode tree_type tree_oid trailing <<< "$tree_entry"
                   if [ "$tree_mode" != "100644" ] || [ "$tree_type" != "blob" ] \
                     || [ "$(git cat-file -s "$tree_oid" 2>/dev/null || echo 99999999)" -gt 5242880 ]; then
+                    printf "%s\n" bad-blob > .claude-refusal 2>/dev/null || true
                     echo "Claude intermediate path is not a <=5 MiB regular non-executable blob: $(shown_path "$path")" >&2
                     exit 1
                   fi
@@ -980,6 +989,7 @@ runs:
                 expected_parent="$commit_oid"
               done < <(git rev-list --reverse "$PRE_SHA..$agent_post_sha")
               if [ "$expected_parent" != "$agent_post_sha" ]; then
+                printf "%s\n" linear-mismatch > .claude-refusal 2>/dev/null || true
                 echo "isolated Claude linear history validation did not reach agent HEAD" >&2
                 exit 1
               fi
@@ -1037,6 +1047,24 @@ runs:
         stop_token=""
         # CONTAINER_RUN_END
 
+        # CONTAINER_REFUSAL_CODE_BEGIN
+        # When the container tail refuses, its reason goes to the 0600
+        # output file; the host sees only a status mismatch. Read the
+        # fixed code the tail left in the clone, accept it only from a
+        # closed set, and surface it below. No untrusted text crosses.
+        refusal_code=none
+        refusal_file="$isolated_workspace/.claude-refusal"
+        if [ "$agent_status" -ne 0 ] && [ -f "$refusal_file" ] && [ ! -L "$refusal_file" ] \
+          && [ "$(wc -c < "$refusal_file")" -le 64 ]; then
+          case "$(tr -d '\r\n' < "$refusal_file")" in
+            not-descendant|canary-commit|commit-count|nonlinear|path-count|unknown-mode|forbidden-path|bad-blob|linear-mismatch) refusal_code=$(tr -d '\r\n' < "$refusal_file") ;;
+          esac
+        fi
+        if [ "$refusal_code" != none ]; then
+          echo "::notice title=Claude import refusal::code=${refusal_code}"
+        fi
+        # CONTAINER_REFUSAL_CODE_END
+
         # TRUSTED_ATTEMPT_TELEMETRY_BEGIN
         telemetry_file="$isolated_workspace/.claude-attempt-telemetry"
         if [ ! -f "$telemetry_file" ] || [ -L "$telemetry_file" ] \
@@ -1067,10 +1095,10 @@ runs:
         artifact_count=${artifact_line#artifact_count=}
         retry_reason=${reason_line#retry_reason=}
         if [ "$last_agent_status" -ne "$agent_status" ]; then
-          echo "::error::Claude model status does not match the container exit status."
+          echo "::error::Claude model status does not match the container exit status (refusal=${refusal_code})."
           exit 1
         fi
-        echo "::notice title=Claude attempt telemetry::attempts=${attempt_count} last_status=${last_agent_status} translation_segment_calls=${translation_segment_calls} artifacts=${artifact_count} retry_reason=${retry_reason}"
+        echo "::notice title=Claude attempt telemetry::attempts=${attempt_count} last_status=${last_agent_status} translation_segment_calls=${translation_segment_calls} artifacts=${artifact_count} retry_reason=${retry_reason} refusal=${refusal_code}"
         # TRUSTED_ATTEMPT_TELEMETRY_END
 
         # TRUSTED_RESULT_SUMMARY_BEGIN

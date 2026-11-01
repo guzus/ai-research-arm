@@ -3608,6 +3608,62 @@ esac
             self.assertIn("search=1", result.stdout)
             self.assertIn("read=1", result.stdout)
 
+    def test_container_tail_refusals_surface_a_closed_set_code(self):
+        """A container-tail refusal only showed the host a status mismatch; its
+        real reason stayed in the 0600 file. Each refusal now records a fixed
+        code the host reads from a closed set and surfaces, no untrusted text."""
+        codes = {"not-descendant", "canary-commit", "commit-count", "nonlinear",
+                 "path-count", "unknown-mode", "forbidden-path", "bad-blob",
+                 "linear-mismatch"}
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter):
+                run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                                      / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+                tail = run.split("# TRUSTED_COMMIT_NORMALIZATION_BEGIN", 1)[1].split(
+                    "# TRUSTED_COMMIT_NORMALIZATION_END", 1)[0]
+                written = set(re.findall(
+                    rf'printf "%s\\n" ([a-z-]+) > \.{adapter}-refusal 2>/dev/null \|\| true', tail))
+                self.assertEqual(codes, written, adapter)
+                # Every refusal exit in the tail is preceded by a code write.
+                self.assertEqual(tail.count("exit 1"),
+                                 tail.count(f"> .{adapter}-refusal 2>/dev/null || true"))
+                # The telemetry notice and mismatch error both carry the code.
+                self.assertIn("retry_reason=${retry_reason} refusal=${refusal_code}", run)
+                self.assertIn("exit status (refusal=${refusal_code}).", run)
+
+                span = run.split("# CONTAINER_REFUSAL_CODE_BEGIN", 1)[1].split(
+                    "# CONTAINER_REFUSAL_CODE_END", 1)[0]
+
+                def read(contents: str | None, status: str = "1", link: bool = False) -> str:
+                    with tempfile.TemporaryDirectory() as tmp:
+                        ws = Path(tmp) / "ws"
+                        ws.mkdir()
+                        fatal = ws / f".{adapter}-refusal"
+                        if link:
+                            (Path(tmp) / "elsewhere").write_text(contents or "", encoding="utf-8")
+                            os.symlink(Path(tmp) / "elsewhere", fatal)
+                        elif contents is not None:
+                            fatal.write_text(contents, encoding="utf-8")
+                        return subprocess.run(
+                            ["bash", "-c", "set -uo pipefail\n" + span
+                             + '\necho "code=$refusal_code"'],
+                            env={**os.environ, "isolated_workspace": str(ws),
+                                 "agent_status": status},
+                            capture_output=True, text=True, check=True).stdout
+
+                out = read("forbidden-path\n")
+                self.assertIn("code=forbidden-path", out)
+                self.assertIn("import refusal::code=forbidden-path", out)
+                for bad in (None, "", "::error::INJECTED\n", "nonsense\n", "forbidden-path extra\n"):
+                    with self.subTest(bad=bad):
+                        out = read(bad)
+                        self.assertIn("code=none", out)
+                        self.assertNotIn("INJECTED", out)
+                        self.assertNotIn("import refusal::", out)
+                # A code is read only on a failed run, and never through a link.
+                self.assertIn("code=none", read("forbidden-path\n", status="0"))
+                self.assertIn("code=none", read("forbidden-path\n", link=True))
+
     def test_import_guard_keeps_the_bundle_ref_listing_out_of_the_log(self):
         """`git bundle verify` lists the refs a bundle advertises: bytes the
         container wrote, printed after workflow commands resume."""
@@ -4024,7 +4080,7 @@ esac
             valid = subprocess.run(
                 ["bash", "-c", "set -euo pipefail\n" + guard],
                 env={**os.environ, "isolated_workspace": str(isolated),
-                     "agent_status": "0"},
+                     "agent_status": "0", "refusal_code": "none"},
                 text=True, capture_output=True, check=False)
             self.assertEqual(0, valid.returncode, valid.stdout + valid.stderr)
             self.assertIn("attempts=2 last_status=0 translation_segment_calls=15",
@@ -4036,7 +4092,7 @@ esac
             malformed = subprocess.run(
                 ["bash", "-c", "set -euo pipefail\n" + guard],
                 env={**os.environ, "isolated_workspace": str(isolated),
-                     "agent_status": "0"},
+                     "agent_status": "0", "refusal_code": "none"},
                 text=True, capture_output=True, check=False)
             self.assertNotEqual(0, malformed.returncode)
             self.assertIn("attempt telemetry is malformed",
