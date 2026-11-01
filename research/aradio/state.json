@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-01T19:39:00Z",
+  "updated_at": "2026-11-01T23:55:00Z",
   "headline": "Gemini 4 Carbon pricing surfaces, Qwen 4 and GPT-6.2 Astra look imminent, Anthropic IPO eyed for about two weeks out",
   "threads": [
     {
@@ -9,11 +9,17 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-01T15:32:00Z",
+      "updated_at": "2026-11-01T23:55:00Z",
       "now": "Anthropic filed its S-1 and could list on Nasdaq as soon as November, possibly raising about $100B at a $1.5T to $2T valuation. On All-In, hosts said it has raised about $110B, lost under $10B, holds about $100B in cash, and has 250 customers spending over $10M. Revenue figures differ by source. FT reportedly says OpenAI cut its round to about $20B.",
-      "changed": "On Latent Space, the host said Anthropic has filed and the IPO is expected in about two weeks at around two trillion dollars. The show described Opus 5.5 as launched the day before recording.",
+      "changed": "On Big Technology, hosts read the S-1: revenue went from $41M three years ago to $16.3B in the first half of 2026, no customer is over 10% of revenue, and revenue per dollar of compute rose from 40 cents to $2.28.",
       "watch": "Anthropic's pricing and listing date; whether the two-week timing holds.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=NVvfllwYliY",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (Anthropic S-1)",
+          "at": "2026-10-26T15:14:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=MRQTlwcW-aQ",
           "kind": "podcast",
@@ -67,6 +73,10 @@
         {
           "at": "2026-11-01T15:32:00Z",
           "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
+        },
+        {
+          "at": "2026-11-01T23:55:00Z",
+          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
         }
       ]
     },
@@ -266,6 +276,47 @@
       ]
     },
     {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-10-31T14:48:00Z",
+      "updated_at": "2026-11-01T23:55:00Z",
+      "now": "OpenAI announced three model-produced results, including a claimed disproof of the Exponential Time Hypothesis. Reviewers Impagliazzo, Paturi and Williams say in an open letter that their involvement is not certification. A similar Anthropic 3-SAT paper is reported only secondhand.",
+      "changed": "Lex Fridman's math guests and MLST's Kevin Hartnett discuss the AI math wave; MLST says Epoch's test had a pre-release OpenAI model prove Erdos problem 126 and disprove 74, both checked in Lean.",
+      "watch": "An expert verdict on the ETH result, the KITP Yang-Mills group statement, and a first-party Anthropic post.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg",
+          "kind": "podcast",
+          "label": "Lex Fridman Podcast #503",
+          "at": "2026-10-26T15:14:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=IRJDwtAreB4",
+          "kind": "podcast",
+          "label": "Machine Learning Street Talk",
+          "at": "2026-10-26T15:14:00Z"
+        },
+        {
+          "url": "https://x.com/OwenGregorian/status/2116491977319383467",
+          "kind": "ticket",
+          "label": "OpenAI discoveries ticket (StudyFinds via X)",
+          "at": "2026-10-31T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "ETH disproof reviewers disclaim certification; verdict still pending."
+        },
+        {
+          "at": "2026-11-01T23:55:00Z",
+          "change": "Lex Fridman and MLST transcripts add context: Lean-checked Erdos results, guests favouring human-AI collaboration over AI-only maths."
+        }
+      ]
+    },
+    {
       "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
       "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
       "status": "developing",
@@ -340,31 +391,6 @@
         {
           "at": "2026-10-31T21:56:00Z",
           "change": "Mistral Large 4 open release discussed on The Cognitive Revolution: one trillion parameters, claimed tie with GLM 5.3 on coding at half the tokens."
-        }
-      ]
-    },
-    {
-      "slug": "ai-math-and-physics-discovery-claims",
-      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-10-31T14:48:00Z",
-      "updated_at": "2026-10-31T14:48:00Z",
-      "now": "OpenAI announced three model-produced results, including a claimed disproof of the Exponential Time Hypothesis. Reviewers Impagliazzo, Paturi and Williams say in an open letter that their involvement is not certification. A similar Anthropic 3-SAT paper is reported only secondhand.",
-      "changed": "ETH reviewers said on the record they are not certifying OpenAI's claim; OpenAI reportedly agreed to release raw data and fund a conference.",
-      "watch": "An expert verdict on the ETH result, the KITP Yang-Mills group statement, and a first-party Anthropic post.",
-      "evidence": [
-        {
-          "url": "https://x.com/OwenGregorian/status/2116491977319383467",
-          "kind": "ticket",
-          "label": "OpenAI discoveries ticket (StudyFinds via X)",
-          "at": "2026-10-31T00:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "ETH disproof reviewers disclaim certification; verdict still pending."
         }
       ]
     },
