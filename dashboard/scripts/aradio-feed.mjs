@@ -49,10 +49,10 @@ export const ARADIO_AUDIO_KEY_RE = /^audio\/aradio\/[A-Za-z0-9._-]+\.mp3$/;
  * takes a 1400-3000 px square JPEG or PNG; Spotify a 1:1 image, PNG before
  * JPEG). Both fetch art once per URL, so a new design needs a new file name.
  */
-export const ARADIO_FEED_ARTWORK_PATH = '/brand/aradio-cover.png';
+export const ARADIO_FEED_ARTWORK_PATH = '/brand/ara-ai-news-cover.png';
 
 const DEFAULT_SITE_ORIGIN = 'https://ara.guzus.xyz';
-const CHANNEL_TITLE = 'ARA Radio';
+const CHANNEL_TITLE = 'ARA AI News';
 const CHANNEL_AUTHOR = 'ARA';
 const CHANNEL_DESCRIPTION =
   "A short two-host bulletin on what changed in AI since the last one, voiced from ara's live " +
@@ -274,7 +274,7 @@ const pad2 = (value) => String(value).padStart(2, '0');
 
 function fallbackTitle(ms) {
   const date = new Date(ms);
-  return `ARA Radio — ${date.getUTCDate()} ${MONTHS[date.getUTCMonth()]} ${date.getUTCFullYear()}, `
+  return `ARA AI News — ${date.getUTCDate()} ${MONTHS[date.getUTCMonth()]} ${date.getUTCFullYear()}, `
     + `${pad2(date.getUTCHours())}:${pad2(date.getUTCMinutes())} UTC`;
 }
 

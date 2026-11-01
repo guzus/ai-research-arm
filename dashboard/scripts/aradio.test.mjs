@@ -283,10 +283,10 @@ test('the radio is one big labelled button and never adds an <audio> element', (
   // The shared bottom bar owns the page's only <audio>; the view adds none.
   assert.doesNotMatch(html, /<audio\b/);
   assert.equal((html.match(/data-aradio-toggle/g) || []).length, 1);
-  assert.match(html, /<button type="button" class="aradio-toggle" data-aradio-toggle aria-label="Play ARA Radio" aria-describedby="aradioNowHeadline">/);
+  assert.match(html, /<button type="button" class="aradio-toggle" data-aradio-toggle aria-label="Play ARA AI News" aria-describedby="aradioNowHeadline">/);
   // A media button changes its name (Play ↔ Pause), so it carries no aria-pressed.
   assert.doesNotMatch(html, /data-aradio-toggle[^>]*aria-pressed/);
-  assert.match(html, /<h2 class="aradio-station" id="aradioStation">ARA Radio<\/h2>/);
+  assert.match(html, /<h2 class="aradio-station" id="aradioStation">ARA AI News<\/h2>/);
   assert.match(html, /data-aradio-radio="ready"/);
   // Off: previous/next stay focusable but inert; "stop after" is a real toggle.
   assert.match(html, /data-aradio-prev aria-label="Previous bulletin" aria-disabled="true"/);
@@ -301,31 +301,46 @@ test('the radio is one big labelled button and never adds an <audio> element', (
   assert.match(html, /<h3 class="aradio-section-title" id="aradioBoardTitle">Situation board<\/h3>/);
 });
 
-test('ON AIR for two hours after the newest bulletin with audio, then its age', () => {
-  assert.deepEqual(mod.aradioAirState(null, LATEST_MS), { state: 'none', ageMs: null });
-  assert.equal(mod.aradioAirState('2026-10-30T14:50:00Z', LATEST_MS + 119 * 60_000).state, 'live');
-  assert.equal(mod.aradioAirState('2026-10-30T14:50:00Z', LATEST_MS + 120 * 60_000).state, 'idle');
-  // A viewer clock behind the writer's still reads as live, never negative.
-  assert.deepEqual(mod.aradioAirState('2026-10-30T14:50:00Z', LATEST_MS - 60_000), { state: 'live', ageMs: 0 });
+test('status line: the newest bulletin with audio and its age, at any age; none with nothing to hear', () => {
+  // No ON AIR window: minutes, hours or days on, the line gives only the age
+  // (and a viewer clock behind the writer's never shows a negative one).
+  for (const [minutes, age] of [[-1, 'just now'], [0, 'just now'], [20, '20m ago'], [119, '1h ago'], [180, '3h ago'], [72 * 60, '3d ago']]) {
+    const html = mod.renderAradioView(viewState({ nowMs: LATEST_MS + minutes * 60_000 })).html;
+    assert.match(html, new RegExp(`<p class="aradio-badge" data-aradio-badge>Latest bulletin · ${age}</p>`), String(minutes));
+    assert.doesNotMatch(html, /on air|off air|aradio-badge-lamp|is-live|is-off/i, String(minutes));
+  }
+  // The line sits beside the station name, before the tagline.
+  const html = mod.renderAradioRadio(viewState());
+  assert.ok(html.indexOf('id="aradioStation"') < html.indexOf('data-aradio-badge') && html.indexOf('data-aradio-badge') < html.indexOf('aradio-tagline'));
 
-  const live = mod.renderAradioView(viewState()).html;
-  assert.match(live, /class="aradio-badge is-live" data-aradio-badge>/);
-  assert.match(live, /data-aradio-badge-text>On air</);
-  const idle = mod.renderAradioView(viewState({ nowMs: LATEST_MS + 3 * 3600_000 })).html;
-  assert.match(idle, /class="aradio-badge" data-aradio-badge>/);
-  assert.match(idle, /data-aradio-badge-text>Latest bulletin · 3h ago</);
-
-  // A text-only bulletin cannot be heard: ON AIR follows the newest playable
+  // A text-only bulletin cannot be heard: the line follows the newest playable
   // one, and the card says the newer one is there to read.
   const bulletins = bulletinsOf(entry('17:40', { audio: false }), entry('14:50'));
   const nowMs = Date.parse('2026-10-30T17:50:00Z');
-  const view = mod.aradioRadioView(radioInput({ bulletins }), nowMs);
-  assert.equal(view.air.state, 'idle');
+  const view = mod.aradioRadioView(radioInput({ bulletins }));
+  assert.equal(view.latestAiredAt, '2026-10-30T14:50:00.000Z');
   assert.equal(view.now.id, '2026-10-30-1450');
   assert.equal(view.textOnlyNewest.id, '2026-10-30-1740');
   const copy = mod.aradioRadioCopy(view, nowMs, 'en');
   assert.equal(copy.badge, 'Latest bulletin · 3h ago');
   assert.equal(copy.note, 'The 17:40 UTC bulletin is text only. Read it below.');
+
+  // It follows what was published, not this session: audio that failed to play does not move it.
+  const index = mod.normalizeAradioIndex(INDEX).bulletins;
+  const failed = mod.aradioRadioView(radioInput({ programme: { ids: ['2026-10-30-1450', '2026-10-30-1050'], pos: 1, failed: ['2026-10-30-1450', '2026-10-30-1050'] }, loaded: index[2] }));
+  assert.equal(failed.mode, 'failed');
+  assert.equal(mod.aradioRadioCopy(failed, LATEST_MS + 20 * 60_000, 'en').badge, 'Latest bulletin · 20m ago');
+
+  // Nothing to hear (before the first bulletin, text only, unreachable): no line at all.
+  for (const [kind, input] of [
+    ['none', radioInput({ bulletins: [], indexStatus: 'missing' })],
+    ['text-only', radioInput({ bulletins: bulletinsOf(entry('14:50', { audio: false })) })],
+    ['error', radioInput({ bulletins: [], indexStatus: 'error' })],
+  ]) {
+    const quiet = mod.aradioRadioView(input);
+    assert.equal(quiet.kind, kind);
+    assert.equal(mod.aradioRadioCopy(quiet, LATEST_MS, 'en').badge, '', kind);
+  }
 });
 
 test('running order: newest first, text-only skipped, can start anywhere playable', () => {
@@ -377,7 +392,7 @@ test('radio view: off, playing, paused — what is on and what comes next', () =
   const [b1450, , b1050] = bulletins;
   const nowMs = LATEST_MS + 20 * 60_000;
 
-  const off = mod.aradioRadioView(radioInput(), nowMs);
+  const off = mod.aradioRadioView(radioInput());
   assert.equal(off.kind, 'ready');
   assert.equal(off.mode, 'off');
   assert.equal(off.now.id, b1450.id, 'pressing play starts the newest bulletin with audio');
@@ -387,32 +402,32 @@ test('radio view: off, playing, paused — what is on and what comes next', () =
   assert.equal(off.seekable, false);
   const offCopy = mod.aradioRadioCopy(off, nowMs, 'en');
   assert.equal(offCopy.label, 'Up first');
-  assert.equal(offCopy.toggleLabel, 'Play ARA Radio');
+  assert.equal(offCopy.toggleLabel, 'Play ARA AI News');
   assert.equal(offCopy.toggleIcon, 'play');
   assert.equal(offCopy.elapsed, '0:00');
   assert.equal(offCopy.remaining, '−4:02', 'the index duration until the audio loads');
   assert.equal(offCopy.time, '14:50 UTC');
 
   const programme = mod.startAradioProgramme(bulletins);
-  const playing = mod.aradioRadioView(radioInput({ programme, loaded: b1450, playing: true, position: 61.4, duration: 242.1 }), nowMs);
+  const playing = mod.aradioRadioView(radioInput({ programme, loaded: b1450, playing: true, position: 61.4, duration: 242.1 }));
   assert.equal(playing.mode, 'playing');
   assert.equal(playing.canNext, true);
   assert.equal(playing.canPrevious, true);
   assert.equal(playing.seekable, true);
   const playingCopy = mod.aradioRadioCopy(playing, nowMs, 'en');
   assert.equal(playingCopy.label, 'Now playing');
-  assert.equal(playingCopy.toggleLabel, 'Pause ARA Radio');
+  assert.equal(playingCopy.toggleLabel, 'Pause ARA AI News');
   assert.equal(playingCopy.toggleIcon, 'pause');
   assert.equal(playingCopy.elapsed, '1:01');
   assert.equal(playingCopy.remaining, '−3:00');
   assert.equal(playingCopy.seekText, '1:01 of 4:02');
   assert.deepEqual([playingCopy.seekMax, playingCopy.seekValue], [242, 61]);
 
-  const paused = mod.aradioRadioView(radioInput({ programme, loaded: b1450, playing: false, position: 61, duration: 242.1 }), nowMs);
+  const paused = mod.aradioRadioView(radioInput({ programme, loaded: b1450, playing: false, position: 61, duration: 242.1 }));
   const pausedCopy = mod.aradioRadioCopy(paused, nowMs, 'en');
   assert.equal(paused.mode, 'paused');
   assert.equal(pausedCopy.label, 'Paused');
-  assert.equal(pausedCopy.toggleLabel, 'Resume ARA Radio');
+  assert.equal(pausedCopy.toggleLabel, 'Resume ARA AI News');
   assert.equal(pausedCopy.toggleIcon, 'play');
 
   // Buffering shows on the button only while it is meant to be playing.
@@ -420,7 +435,7 @@ test('radio view: off, playing, paused — what is on and what comes next', () =
     mod.renderAradioRadio(viewState({ radio: radioInput({ programme, loaded: b1450, playing: true, buffering: true }) })),
     /class="aradio-toggle is-playing is-buffering"/,
   );
-  assert.equal(mod.aradioRadioView(radioInput({ programme, loaded: b1450, buffering: true }), nowMs).buffering, false);
+  assert.equal(mod.aradioRadioView(radioInput({ programme, loaded: b1450, buffering: true })).buffering, false);
 });
 
 test('radio view: caught up stays on; "stop after this bulletin" turns it off on the next one', () => {
@@ -431,24 +446,24 @@ test('radio view: caught up stays on; "stop after this bulletin" turns it off on
 
   // The last bulletin ended: on, silent, the next to air plays by itself.
   const last = { ids: programme.ids, pos: 1 };
-  const waiting = mod.aradioRadioView(radioInput({ programme: last, loaded: b1050, ended: true, waiting: true, duration: 196.4, position: 196.4 }), nowMs);
+  const waiting = mod.aradioRadioView(radioInput({ programme: last, loaded: b1050, ended: true, waiting: true, duration: 196.4, position: 196.4 }));
   assert.equal(waiting.mode, 'waiting');
   assert.deepEqual(waiting.upNext, []);
   assert.equal(waiting.canNext, false);
   assert.equal(waiting.canPrevious, true, 'previous replays the last bulletin');
   const waitingCopy = mod.aradioRadioCopy(waiting, nowMs, 'en');
   assert.equal(waitingCopy.label, 'Caught up');
-  assert.equal(waitingCopy.toggleLabel, 'Turn off ARA Radio');
+  assert.equal(waitingCopy.toggleLabel, 'Turn off ARA AI News');
   assert.equal(waitingCopy.toggleIcon, 'pause');
   assert.match(mod.renderAradioUpNext(waiting, waitingCopy), /New bulletins play as soon as they air/);
 
   // Stopped after 14:50: play resumes with the next in the running order...
-  const stopped = mod.aradioRadioView(radioInput({ programme, loaded: b1450, ended: true }), nowMs);
+  const stopped = mod.aradioRadioView(radioInput({ programme, loaded: b1450, ended: true }));
   assert.equal(stopped.mode, 'off');
   assert.equal(stopped.now.id, b1050.id);
   assert.deepEqual(stopped.upNext, []);
   // ...and after the last one, from the newest again.
-  const stoppedLast = mod.aradioRadioView(radioInput({ programme: last, loaded: b1050, ended: true }), nowMs);
+  const stoppedLast = mod.aradioRadioView(radioInput({ programme: last, loaded: b1050, ended: true }));
   assert.equal(stoppedLast.now.id, b1450.id);
   assert.deepEqual(stoppedLast.upNext.map((item) => item.id), [b1050.id]);
 
@@ -503,7 +518,7 @@ test('audio failure: a failed bulletin is never tried again by itself; one failu
   assert.equal(onNow(back), '1450');
   assert.equal(onNow(mod.stepAradioProgramme(back, bulletins, 1)), '1050');
   assert.deepEqual(ids(mod.aradioUpNext(back, bulletins)), ['1050']);
-  assert.deepEqual(ids(mod.aradioRadioView(radioInput({ bulletins, programme: back, loaded: bulletins[0], playing: true }), LATEST_MS).upNext), ['1050']);
+  assert.deepEqual(ids(mod.aradioRadioView(radioInput({ bulletins, programme: back, loaded: bulletins[0], playing: true })).upNext), ['1050']);
 
   // Polls never bring it back: the same index is a no-op, and a newer one
   // carries the failure and queues only the new bulletin.
@@ -533,9 +548,9 @@ test('audio failure: when everything left fails the radio stops, says so and off
 
   // The player still holds 10:50: the card says it stopped, never a silent "Paused".
   const input = radioInput({ bulletins, programme: stop.programme, loaded: b1050, playing: false });
-  const view = mod.aradioRadioView(input, nowMs);
+  const view = mod.aradioRadioView(input);
   assert.equal(view.mode, 'failed');
-  assert.equal(mod.aradioRadioView({ ...input, waiting: true }, nowMs).mode, 'failed', 'a stop outranks caught up');
+  assert.equal(mod.aradioRadioView({ ...input, waiting: true }).mode, 'failed', 'a stop outranks caught up');
   assert.equal(view.now.id, b1450.id, 'play tries again from the first bulletin missed');
   assert.deepEqual(view.upNext.map((item) => item.id), [b1050.id]);
   assert.equal(view.canPrevious, false);
@@ -544,14 +559,14 @@ test('audio failure: when everything left fails the radio stops, says so and off
   assert.equal(view.elapsed, 0);
   const copy = mod.aradioRadioCopy(view, nowMs, 'en');
   assert.equal(copy.label, 'Couldn’t play');
-  assert.equal(copy.toggleLabel, 'Try ARA Radio again');
+  assert.equal(copy.toggleLabel, 'Try ARA AI News again');
   assert.equal(copy.toggleIcon, 'play');
   assert.equal(copy.note, 'The audio didn’t load. Try again, or read the transcript.');
   assert.equal(copy.time, '14:50 UTC');
   const html = mod.renderAradioRadio(viewState({ index: { updatedAt: null, degraded: false, bulletins }, radio: input }));
   assert.match(html, /aradio-deck aradio-mode--failed/);
   assert.match(html, /data-aradio-now-label>Couldn’t play</);
-  assert.match(html, /data-aradio-toggle aria-label="Try ARA Radio again"/);
+  assert.match(html, /data-aradio-toggle aria-label="Try ARA AI News again"/);
   assert.match(html, /data-aradio-note>The audio didn’t load\. Try again, or read the transcript\.</);
 
   // Trying again is a fresh session from 14:50, so each gets one more go.
@@ -575,7 +590,7 @@ test('audio failure: trying again replays what was missed, not what already play
   assert.equal(retry.failed, undefined);
   // What was missed has left the index: nothing to retry (the radio starts from the newest).
   assert.equal(mod.retryAradioProgramme(stop.programme, bulletinsOf(entry('14:50'), entry('12:50'))), null);
-  const view = mod.aradioRadioView(radioInput({ bulletins: bulletinsOf(entry('14:50'), entry('12:50')), programme: stop.programme, loaded: bulletins[2] }), LATEST_MS);
+  const view = mod.aradioRadioView(radioInput({ bulletins: bulletinsOf(entry('14:50'), entry('12:50')), programme: stop.programme, loaded: bulletins[2] }));
   assert.equal(view.mode, 'failed');
   assert.equal(view.now.id, '2026-10-30-1450');
 });
@@ -599,7 +614,7 @@ test('audio failure while caught up: the new bulletin is not retried and nothing
   for (let poll = 0; poll < 3; poll += 1) assert.equal(mod.syncAradioProgramme(stop.programme, aired), stop.programme);
   assert.equal(mod.stepAradioProgramme(stop.programme, aired, 1), null);
   assert.equal(mod.failAradioProgramme(stop.programme, aired, '2026-10-30-1550'), null);
-  const view = mod.aradioRadioView(radioInput({ bulletins: aired, programme: stop.programme, loaded: aired[0] }), LATEST_MS + 70 * 60_000);
+  const view = mod.aradioRadioView(radioInput({ bulletins: aired, programme: stop.programme, loaded: aired[0] }));
   assert.equal(view.mode, 'failed');
   assert.equal(view.now.id, '2026-10-30-1550', 'play tries the bulletin that failed');
   assert.deepEqual(view.upNext, []);
@@ -758,7 +773,7 @@ test('a stall fails the bulletin like an error: one skip, never again, a visible
   // 12:50 hangs too: nothing is left, so the radio stops and the card says so.
   const stop = mod.failAradioProgramme(skip.programme, bulletins, '2026-10-30-1250');
   assert.equal(stop.action, 'stop');
-  const view = mod.aradioRadioView(radioInput({ bulletins, programme: stop.programme, loaded: bulletins[1] }), LATEST_MS);
+  const view = mod.aradioRadioView(radioInput({ bulletins, programme: stop.programme, loaded: bulletins[1] }));
   assert.equal(view.mode, 'failed');
 });
 
@@ -786,14 +801,13 @@ test('the radio card keeps its shape while bulletins change (no layout shift)', 
   assert.match(waiting, /<ol class="aradio-upnext-list" data-aradio-upnext><li class="aradio-upnext-empty">/);
 });
 
-test('before the first run: OFF AIR, an honest empty state and the podcast feed', () => {
+test('before the first run: no status line, an honest empty state and the podcast feed', () => {
   const html = mod.renderAradioView(viewState({
     index: null, indexStatus: 'missing', board: null, boardStatus: 'missing',
     selectedId: null, transcript: { kind: 'none' }, checkedAt: null,
   })).html;
   assert.match(html, /data-aradio-radio="none"/);
-  assert.match(html, /class="aradio-badge is-off" data-aradio-badge>/);
-  assert.match(html, /data-aradio-badge-text>Off air</);
+  assert.doesNotMatch(html, /data-aradio-badge|on air|off air/i);
   assert.match(html, /The first bulletin hasn’t aired yet/);
   assert.match(html, /Checks for new bulletins every 5 minutes/);
   assert.match(html, /Listen in your podcast app/);
@@ -805,17 +819,20 @@ test('before the first run: OFF AIR, an honest empty state and the podcast feed'
     selectedId: null, transcript: { kind: 'none' }, checkedAt: null,
   })).html;
   assert.match(failed, /data-aradio-radio="error"/);
+  assert.doesNotMatch(failed, /data-aradio-badge/);
   assert.match(failed, /Could not reach the station/);
   assert.match(failed, /data-retry/);
 });
 
-test('only text-only bulletins: OFF AIR, nothing to play, the log is still there to read', () => {
+test('only text-only bulletins: no status line, nothing to play, the log is still there to read', () => {
   const bulletins = bulletinsOf(entry('14:50', { audio: false }), entry('12:50', { audio: false }));
   const index = { updatedAt: null, degraded: true, bulletins };
   const html = mod.renderAradioView(viewState({ index, transcript: { kind: 'none' } })).html;
   assert.match(html, /data-aradio-radio="text-only"/);
   assert.match(html, /No audio to play yet/);
-  assert.match(html, /data-aradio-badge-text>Off air</);
+  assert.doesNotMatch(html, /data-aradio-badge|on air|off air/i);
+  // With no status line, "Updated" is the card's only age.
+  assert.match(html, /<time class="aradio-updated"[^>]*>Updated 20m ago\.<\/time>/);
   assert.doesNotMatch(html, /data-aradio-toggle|data-aradio-play=/);
   assert.match(html, /Behind the broadcast/);
   assert.equal((html.match(/data-aradio-row=/g) || []).length, 2);
@@ -906,17 +923,18 @@ test('log shows a day of bulletins until expanded', () => {
 test('Korean: the radio, chrome, statuses, kinds and speakers are localized', () => {
   const { html, links } = mod.renderAradioView(viewState({ language: 'ko' }));
   for (const copy of [
-    'ARA 라디오', '방송 중', '먼저 들을 방송', '다음 순서', '이 방송까지만 듣기', '팟캐스트 앱으로 듣기', '방송 배경 자료',
-    '상황판', '확대 중', '전개 중', '대본', '앵커', '공동 진행자', 'aria-label="ARA 라디오 듣기"',
+    'ARA AI 뉴스', '최근 방송 · 20분 전', '먼저 들을 방송', '다음 순서', '이 방송까지만 듣기', '팟캐스트 앱으로 듣기', '방송 배경 자료',
+    '상황판', '확대 중', '전개 중', '대본', '앵커', '공동 진행자', 'aria-label="ARA AI 뉴스 듣기"',
   ]) {
     assert.ok(html.includes(copy), `missing Korean copy: ${copy}`);
   }
   assert.ok(links.some((link) => link.kindLabel === '실적 발표 콜'), 'evidence kinds are localized too');
   assert.doesNotMatch(html, />Situation board<|>Up next<|>Behind the broadcast</);
+  assert.doesNotMatch(html, /방송 중|방송 대기|라디오/);
 
   // Every radio string reads as Korean, not as English left behind.
   const keys = [
-    'aradio.station', 'aradio.album', 'aradio.latestAgo', 'aradio.upFirst', 'aradio.nowPlaying', 'aradio.paused',
+    'aradio.station', 'aradio.latestAgo', 'aradio.upFirst', 'aradio.nowPlaying', 'aradio.paused',
     'aradio.caughtUp', 'aradio.playStation', 'aradio.pauseStation', 'aradio.resumeStation', 'aradio.turnOff',
     'aradio.previous', 'aradio.next', 'aradio.stopAfter', 'aradio.upNext', 'aradio.upNextEmpty', 'aradio.seekValue',
     'aradio.announceNow', 'aradio.textOnlyNewest', 'aradio.textOnlyTitle', 'aradio.textOnlyBody', 'aradio.podcastTitle',
@@ -1111,7 +1129,7 @@ test('text-only station: the newest bulletin is there to read, as plain text', (
   assert.match(html, /data-aradio-script-window tabindex="0" role="region" aria-labelledby="aradioScriptTitle"/);
   assert.match(html, /<p class="aradio-line-text">/);
   assert.doesNotMatch(html, /data-aradio-seek-line|data-aradio-relive|Timing is approximate|data-aradio-toggle/);
-  assert.equal(mod.aradioRadioView(radioInput({ bulletins }), LATEST_MS).scriptEntry.id, '2026-10-30-1450');
+  assert.equal(mod.aradioRadioView(radioInput({ bulletins })).scriptEntry.id, '2026-10-30-1450');
 });
 
 test('player: ±15 s and speed beside the one big button; the cover at identity size', () => {
@@ -1129,7 +1147,7 @@ test('player: ±15 s and speed beside the one big button; the cover at identity 
   assert.match(playing, /data-aradio-forward aria-label="Forward 15 seconds" aria-disabled="false"/);
   assert.match(playing, /aria-label="Playback speed 1\.5×">1\.5×</);
   // The show's cover: decorative (the station is named in text), the feed's and lock screen's file.
-  assert.match(off, /<img class="aradio-art" src="\/brand\/aradio-cover\.png" alt="" width="64" height="64" decoding="async">/);
+  assert.match(off, /<img class="aradio-art" src="\/brand\/ara-ai-news-cover\.png" alt="" width="64" height="64" decoding="async">/);
   assert.equal(mod.ARADIO_COVER_PATH, ARADIO_FEED_ARTWORK_PATH);
 });
 
@@ -1147,21 +1165,22 @@ test('speed: 1×, 1.25×, 1.5×, 2× and round again; anything stored that is no
 
 test('liveness: when the station last aired and when to expect more, never a schedule or a listener count', () => {
   const html = mod.renderAradioRadio(viewState());
-  assert.match(html, /<p class="aradio-liveness" data-aradio-liveness><time class="aradio-updated" datetime="2026-10-30T14:50:00\.000Z" data-aradio-rel="2026-10-30T14:50:00\.000Z" data-aradio-rel-key="aradio\.updated"[^>]*>Updated 20m ago\.<\/time>/);
+  // The status line already says how old the latest bulletin is: "Updated" does not say it twice.
+  assert.match(html, /data-aradio-badge>Latest bulletin · 20m ago</);
+  assert.match(html, /<p class="aradio-liveness" data-aradio-liveness><time hidden class="aradio-updated" datetime="2026-10-30T14:50:00\.000Z" data-aradio-rel="2026-10-30T14:50:00\.000Z" data-aradio-rel-key="aradio\.updated"[^>]*>Updated 20m ago\.<\/time>/);
   assert.match(html, /The next bulletin airs when the picture changes\./);
   assert.ok(mod.ARADIO_REL_KEYS.includes('aradio.updated'), 'the ticker re-ages it');
-  // Off air the sign already says how old the latest bulletin is: not twice.
   const idle = mod.renderAradioRadio(viewState({ nowMs: LATEST_MS + 3 * 3600_000 }));
-  assert.match(idle, /data-aradio-badge-text>Latest bulletin · 3h ago</);
+  assert.match(idle, /data-aradio-badge>Latest bulletin · 3h ago</);
   assert.match(idle, /<time hidden class="aradio-updated"/);
   // ...unless a newer text-only bulletin is what the station updated with.
   const newer = bulletinsOf(entry('17:40', { audio: false }), entry('14:50'));
-  const copy = mod.aradioRadioCopy(mod.aradioRadioView(radioInput({ bulletins: newer }), Date.parse('2026-10-30T18:00:00Z')), Date.parse('2026-10-30T18:00:00Z'), 'en');
+  const copy = mod.aradioRadioCopy(mod.aradioRadioView(radioInput({ bulletins: newer })), Date.parse('2026-10-30T18:00:00Z'), 'en');
   assert.deepEqual([copy.badge, copy.updated, copy.updatedShown], ['Latest bulletin · 3h ago', 'Updated 20m ago.', true]);
   assert.doesNotMatch(html, /listen(er|ing)s?\b.*\d|\d+\s*listening/i);
   // A text-only bulletin newer than the last playable one still counts as an update.
   const bulletins = bulletinsOf(entry('17:40', { audio: false }), entry('14:50'));
-  assert.equal(mod.aradioRadioView(radioInput({ bulletins }), LATEST_MS).updatedAt, '2026-10-30T17:40:00.000Z');
+  assert.equal(mod.aradioRadioView(radioInput({ bulletins })).updatedAt, '2026-10-30T17:40:00.000Z');
   // Before the first bulletin, or unreachable: nothing to date.
   for (const state of [
     { index: null, indexStatus: 'missing', board: null, boardStatus: 'missing', selectedId: null, transcript: { kind: 'none' }, script: { kind: 'none' } },

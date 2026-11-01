@@ -1223,7 +1223,7 @@ function paintPricing(data: ModelPricing, gpu: GpuSpotData | null = null): void 
   }, benchmark, activeLanguage);
 }
 
-// ── Aradio (ARA Radio, the live station) ─────────────────
+// ── Aradio (ARA AI News) ─────────────────
 // research/aradio/{index,state}.json change with every bulletin. Caddy serves
 // research JSON with max-age=0 and Cloudflare does not cache JSON
 // (cf-cache-status: DYNAMIC), so a cache-busted poll sees a bulletin as soon
@@ -1246,7 +1246,7 @@ const ARADIO_FEED_URL = new URL(ARADIO_FEED_PATH, PUBLIC_SITE_ORIGIN).href;
 // 3000x3000 show art, the podcast feed's cover too (a test pins the two). The
 // digest is another show with no square art: it keeps the 1280x640 social
 // card, which a lock screen crops or letterboxes — still better than a blank tile.
-const ARADIO_ARTWORK: MediaImage[] = [{ src: '/brand/aradio-cover.png', sizes: '3000x3000', type: 'image/png' }];
+const ARADIO_ARTWORK: MediaImage[] = [{ src: '/brand/ara-ai-news-cover.png', sizes: '3000x3000', type: 'image/png' }];
 const DIGEST_ARTWORK: MediaImage[] = [{ src: '/brand/github-social-preview.png', sizes: '1280x640', type: 'image/png' }];
 // HTMLMediaElement.HAVE_FUTURE_DATA: below it a playing element is buffering.
 const MEDIA_HAVE_FUTURE_DATA = 3;
@@ -1478,7 +1478,7 @@ function aradioViewState(): AradioViewState {
     showAll: aradioShowAll,
     checkedAt: aradioCheckedAt,
     radio,
-    script: aradioScriptState(aradioRadioView(radio, nowMs)),
+    script: aradioScriptState(aradioRadioView(radio)),
     listened: aradioListened,
     rate: aradioRate,
   };
@@ -2067,7 +2067,7 @@ function playAradioLine(id: string, index: number, follow = true): void {
     return;
   }
   aradioPendingSeek = { id, time: start };
-  const view = aradioRadioView(aradioRadioInput(), Date.now());
+  const view = aradioRadioView(aradioRadioInput());
   if ((view.mode === 'off' || view.mode === 'failed') && view.now?.id === id) startOrResumeAradio();
   else toggleAradioPlayback(id);
 }
@@ -2346,7 +2346,7 @@ function aradioTick(): void {
   if ((watching || listening) && Date.now() - aradioLastPollAt >= ARADIO_POLL_MS) void pollAradio();
 }
 
-/** Re-age every relative time and re-evaluate ON AIR without a re-render. */
+/** Re-age every relative time, the status line's included, without a re-render. */
 function refreshAradioClock(): void {
   if (activeTab !== 'aradio') return;
   const now = Date.now();
@@ -2368,7 +2368,7 @@ function syncAradioRadio(): void {
   const card = content.querySelector<HTMLElement>('[data-aradio-radio]');
   if (!card) return;
   const now = Date.now();
-  const view = aradioRadioView(aradioRadioInput(), now);
+  const view = aradioRadioView(aradioRadioInput());
   if (card.dataset.aradioRadio !== view.kind) {
     repaintAradioRadio();
     return;
@@ -2381,8 +2381,7 @@ function syncAradioRadio(): void {
   const attr = (el: Element | null, name: string, value: string) => {
     if (el && el.getAttribute(name) !== value) el.setAttribute(name, value);
   };
-  card.querySelector('[data-aradio-badge]')?.classList.toggle('is-live', copy.live);
-  text('[data-aradio-badge-text]', copy.badge);
+  text('[data-aradio-badge]', copy.badge);
   // "Updated N ago" follows the newest bulletin the poller has seen; the ticker re-ages it.
   const updated = card.querySelector<HTMLElement>('[data-aradio-liveness] [data-aradio-rel]');
   if (updated && copy.updatedIso && updated.dataset.aradioRel !== copy.updatedIso) {
@@ -2569,7 +2568,7 @@ function syncAradioFeedLink(): void {
   const link = document.createElement('link');
   link.rel = 'alternate';
   link.type = 'application/rss+xml';
-  link.title = 'ARA Radio';
+  link.title = 'ARA AI News';
   link.href = ARADIO_FEED_URL;
   document.head.append(link);
 }
@@ -2635,7 +2634,6 @@ function syncMediaSession(): void {
         ? {
           title: entry ? entry.headline || `${aradioUtcTime(entry.airedAt)} UTC` : uiText(activeLanguage, 'aradio.station'),
           artist: uiText(activeLanguage, 'aradio.station'),
-          album: uiText(activeLanguage, 'aradio.album'),
           artwork: ARADIO_ARTWORK,
         }
         : {
@@ -2721,7 +2719,7 @@ function handleAradioClick(target: HTMLElement): boolean {
     return true;
   }
   if (target.closest('[data-aradio-script-retry]')) {
-    const id = aradioRadioView(aradioRadioInput(), Date.now()).scriptEntry?.id;
+    const id = aradioRadioView(aradioRadioInput()).scriptEntry?.id;
     if (id) aradioBulletinFailed.delete(id);
     syncAradioRadio();
     return true;

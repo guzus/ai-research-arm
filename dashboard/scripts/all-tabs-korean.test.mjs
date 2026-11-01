@@ -189,6 +189,6 @@ test('standalone tab renderers accept Korean and emit localized UI chrome', asyn
   }).html;
   assert.ok(aradioHtml.includes(uiText('ko', 'aradio.station')));
   assert.ok(aradioHtml.includes(uiText('ko', 'aradio.emptyTitle')));
-  assert.ok(aradioHtml.includes(uiText('ko', 'aradio.offAir')));
+  assert.ok(aradioHtml.includes(uiText('ko', 'aradio.emptyBody')));
   assert.ok(aradioHtml.includes(uiText('ko', 'aradio.podcastTitle')));
 });
