@@ -691,16 +691,27 @@ runs:
         # tagging ara-<adapter>-agent:<run> tens of seconds after a cancelled
         # job's cleanup looked for the image. Before building this run's image,
         # drop this adapter's tags from OTHER runs so they do not accumulate on
-        # the persistent runner. Legs of the current run and attempt share the
-        # kept prefix, so a sibling leg's in-flight tag is never removed.
+        # the persistent runner. A tag goes only once its image is older than
+        # the longest timeout of any job that runs these actions (a test pins
+        # it), so a run still in progress on a runner sharing this daemon keeps
+        # its image, and rm without -f refuses an image a container uses.
+        # Sibling legs of this run and attempt share the kept prefix; any
+        # inspect or parse failure keeps the tag.
         image_repo="${image%%:*}"
         image_keep_prefix="${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-"
+        image_stale_minutes=360
+        image_stale_before=$(( $(date +%s) - image_stale_minutes * 60 ))
         while IFS= read -r stale_image; do
           [ -n "$stale_image" ] || continue
           case "${stale_image#"$image_repo":}" in
-            "$image_keep_prefix"*) ;;
-            *) docker image rm -f "$stale_image" >/dev/null 2>&1 || true ;;
+            "$image_keep_prefix"*) continue ;;
           esac
+          stale_created=$(docker image inspect --format '{{.Created}}' "$stale_image" 2>/dev/null) || continue
+          [[ "$stale_created" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$ ]] || continue
+          stale_epoch=$(date -d "$stale_created" +%s 2>/dev/null) || continue
+          if [ "$stale_epoch" -lt "$image_stale_before" ]; then
+            docker image rm "$stale_image" >/dev/null 2>&1 || true
+          fi
         done < <(docker images --format '{{.Repository}}:{{.Tag}}' "$image_repo" 2>/dev/null || true)
         # Bash runs a trap only after a foreground command exits, so build in
         # the background: a cancelled build still reaches cleanup.

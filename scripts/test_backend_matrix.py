@@ -8,6 +8,7 @@ loosen the parser. (Doc-freshness itself is the separate `--check` CI step.)
 
 import copy
 import json
+import datetime
 import os
 import re
 import signal
@@ -3067,23 +3068,72 @@ esac
                 root = Path(tmp)
                 bindir = root / "bin"
                 bindir.mkdir()
-                tags = [f"{repo}:100-1-job-aaaa", f"{repo}:100-1-twitter-bbbb",
-                        f"{repo}:99-1-job-cccc", f"{repo}:100-2-job-dddd"]
+                now = datetime.datetime.now(datetime.timezone.utc)
+
+                def created(minutes_ago: int) -> str:
+                    return (now - datetime.timedelta(minutes=minutes_ago)).strftime(
+                        "%Y-%m-%dT%H:%M:%S.123456789Z")
+
+                images = {
+                    f"{repo}:100-1-job-aaaa": created(900),      # sibling leg: kept
+                    f"{repo}:100-1-twitter-bbbb": created(5),    # sibling leg: kept
+                    f"{repo}:99-1-job-cccc": created(400),       # old other run: removed
+                    f"{repo}:100-2-job-dddd": created(400),      # old other attempt: removed
+                    f"{repo}:98-1-job-eeee": created(30),        # may still run elsewhere
+                    f"{repo}:97-1-job-ffff": None,               # inspect fails: kept
+                    f"{repo}:96-1-job-gggg": "",                 # no timestamp: kept
+                }
+                (root / "tags").write_text("".join(f"{ref}\n" for ref in images), encoding="utf-8")
+                (root / "created").write_text(
+                    "".join(f"{ref} {value}\n" for ref, value in images.items()
+                            if value is not None), encoding="utf-8")
                 docker = bindir / "docker"
                 docker.write_text(
                     "#!/bin/bash\n"
-                    'if [ "$1 $2" = "image rm" ]; then echo "$4" >> "$RMLOG"; exit 0; fi\n'
-                    'if [ "$1" = images ]; then printf "%s\\n" ' + " ".join(f'"{t}"' for t in tags)
-                    + "; exit 0; fi\nexit 0\n", encoding="utf-8")
+                    'if [ "$1 $2" = "image rm" ]; then echo "$3" >> "$RMLOG"; exit 0; fi\n'
+                    'if [ "$1 $2" = "image inspect" ]; then\n'
+                    '  line=$(grep -F -- "${@: -1} " "$CREATED" || true)\n'
+                    '  [ -n "$line" ] || exit 1\n'
+                    '  printf "%s\\n" "${line#* }"; exit 0\n'
+                    "fi\n"
+                    'if [ "$1" = images ]; then cat "$TAGS"; exit 0; fi\n'
+                    "exit 0\n", encoding="utf-8")
                 docker.chmod(0o755)
                 rmlog = root / "rm.log"
                 script = (f'image="{repo}:100-1-twitter-zzzz"\n' + block)
                 subprocess.run(["bash", "-c", "set -euo pipefail\n" + script],
                                env={**os.environ, "PATH": f"{bindir}:/usr/bin:/bin",
-                                    "RMLOG": str(rmlog), "GITHUB_RUN_ID": "100",
-                                    "GITHUB_RUN_ATTEMPT": "1"}, check=True)
+                                    "RMLOG": str(rmlog), "TAGS": str(root / "tags"),
+                                    "CREATED": str(root / "created"),
+                                    "GITHUB_RUN_ID": "100", "GITHUB_RUN_ATTEMPT": "1"},
+                               check=True)
                 removed = set(rmlog.read_text(encoding="utf-8").split()) if rmlog.exists() else set()
                 self.assertEqual({f"{repo}:99-1-job-cccc", f"{repo}:100-2-job-dddd"}, removed)
+                # Never forced: an image a container still uses is refused.
+                self.assertIn('docker image rm "$stale_image"', block)
+                self.assertNotIn("image rm -f", block)
+
+    def test_stale_tag_sweep_outlasts_every_runner_job_timeout(self):
+        """Another run's tag is removed only once it is older than any job
+        that runs these actions can last, so a concurrent run on a runner
+        sharing this Docker daemon never loses its image mid-job."""
+        callers = ("run-cursor-container", "run-opencode-container", "run-claude-container",
+                   "run-pi-container", "agent-dispatch", "agent-run")
+        longest = 0
+        for path in sorted((REPO_ROOT / ".github/workflows").glob("*.y*ml")):
+            doc = yaml.safe_load(path.read_text(encoding="utf-8"))
+            for job in (doc.get("jobs") or {}).values():
+                if any(any(f"actions/{caller}" in str(step.get("uses") or "")
+                           for caller in callers) for step in job.get("steps") or []):
+                    # A job without a cap runs up to GitHub's 360-minute default.
+                    longest = max(longest, int(job.get("timeout-minutes", 360)))
+        self.assertGreater(longest, 0)
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter):
+                run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                                      / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+                minutes = int(re.search(r"^image_stale_minutes=(\d+)$", run, re.M).group(1))
+                self.assertGreaterEqual(minutes, longest)
 
     def test_runner_names_carry_a_per_invocation_random_suffix(self):
         """Two hourly-twitter matrix legs on one runner must not share a
