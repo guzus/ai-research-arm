@@ -1,5 +1,5 @@
 {
-  "article_count": 109,
+  "article_count": 110,
   "articles": [
     {
       "claim_count": 18,
@@ -1037,6 +1037,16 @@
       "stem": "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign",
       "tags": [],
       "title": "Anthropic's agents beat a row-by-row monitor with fiction. The weak point is what a dataset implies about its speaker, not what any single row says."
+    },
+    {
+      "claim_count": 24,
+      "created_at": "2026-11-01T10:20:20Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "stem": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?"
     }
   ],
   "by_host": {
@@ -1052,6 +1062,9 @@
     ],
     "21jingji.com": [
       "2026-07-13T181948--cxmt#c6"
+    ],
+    "21shares.com": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c23"
     ],
     "247wallst.com": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c19",
@@ -1272,6 +1285,9 @@
     ],
     "alzforum.org": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c41"
+    ],
+    "ambcrypto.com": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c22"
     ],
     "amd.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c7"
@@ -1933,6 +1949,9 @@
     "bam.brookfield.com": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c26"
     ],
+    "bankless.com": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c24"
+    ],
     "bankofengland.co.uk": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c23"
     ],
@@ -2342,7 +2361,8 @@
     "cftc.gov": [
       "2026-06-24T160453--test-ornn-com-codex-2#C15",
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30",
-      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c28"
+      "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c28",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c16"
     ],
     "chainalysis.com": [
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c13"
@@ -2575,7 +2595,8 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c6"
     ],
     "coincentral.com": [
-      "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c5"
+      "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c5",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c19"
     ],
     "coindesk.com": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c26",
@@ -2935,6 +2956,9 @@
     "decentralizedthoughts.github.io": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c25"
     ],
+    "dechert.com": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c17"
+    ],
     "decrypt.co": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c25",
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c18"
@@ -3168,6 +3192,9 @@
     "docs.kernel.org": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c18"
     ],
+    "docs.lighter.xyz": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c7"
+    ],
     "docs.nvidia.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c2",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c25"
@@ -3189,6 +3216,9 @@
     ],
     "docs.tori.finance": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c10"
+    ],
+    "docs.trade.xyz": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c3"
     ],
     "docs.typesafe.ai": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c1"
@@ -3798,6 +3828,9 @@
     "gartner.com": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c28"
     ],
+    "gate.com": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c20"
+    ],
     "gdpr-info.eu": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c15"
     ],
@@ -4197,7 +4230,9 @@
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c15",
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c4",
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c5",
-      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c6"
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c6",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c5",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c6"
     ],
     "hyundai.com": [
       "2026-05-27T035557--800-vdc-architecture#c22"
@@ -4394,7 +4429,9 @@
     ],
     "ir.theice.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C5",
-      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c2"
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c2",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c1",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c2"
     ],
     "irishtimes.com": [
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c6"
@@ -4538,7 +4575,13 @@
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c26"
     ],
     "l2beat.com": [
-      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c3"
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c3",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c10",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c11",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c12",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c18",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c8",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c9"
     ],
     "labs.cloudsecurityalliance.org": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c37",
@@ -4586,7 +4629,9 @@
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c21",
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c10",
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c4",
-      "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c7"
+      "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c7",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c14",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c15"
     ],
     "law.justia.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c17",
@@ -5700,6 +5745,9 @@
       "2026-08-04T171206--comfyui-company#c39",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c39"
     ],
+    "reports.zksecurity.xyz": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c13"
+    ],
     "research": [
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c19"
     ],
@@ -6591,7 +6639,8 @@
     "thedefiant.io": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c20",
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c21",
-      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c19"
+      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c19",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c21"
     ],
     "theenergymag.com": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c13"
@@ -7235,7 +7284,8 @@
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c2",
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c1",
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c1",
-      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c18"
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c18",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c4"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -7527,6 +7577,9 @@
     ],
     "https://altstreet.investments/reference/structures/gpu-collateralization": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c13"
+    ],
+    "https://ambcrypto.com/lighter-dex-to-repay-users-in-stablecoins-after-major-outage-details/amp": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c22"
     ],
     "https://americas.kioxia.com/en-us/business/memory/xlflash.html": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c21"
@@ -9049,6 +9102,9 @@
     "https://cognition.com/blog/frontier-code": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c6"
     ],
+    "https://coincentral.com/best-perp-dexes-in-2026-hyperliquid-aster-lighter-edgex-and-apex-omni-compared": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c19"
+    ],
     "https://coincentral.com/upbit-operator-dunamu-taps-optimism-foundation-to-build-giwa-chain": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c5"
     ],
@@ -9598,6 +9654,9 @@
     "https://docs.kernel.org/process/coding-assistants.html": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c18"
     ],
+    "https://docs.lighter.xyz/trading/trading-fees.md": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c7"
+    ],
     "https://docs.nvidia.com/attestation/attestation-client-tools-sdk/latest/gpu_and_switch_attestation.html": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c25"
     ],
@@ -9631,6 +9690,9 @@
     ],
     "https://docs.tori.finance/resources/institutional": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c10"
+    ],
+    "https://docs.trade.xyz/overview/relationship-to-hyperliquid.md": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c3"
     ],
     "https://docs.typesafe.ai/models.md": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c1"
@@ -10844,6 +10906,10 @@
     "https://humanoid.guide/tau-robotics-humanoids-clean-homes-for-30-an-hour-with-help": [
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c9"
     ],
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/priority-fees": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c5",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c6"
+    ],
     "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/rate-limits-and-user-limits": [
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c5"
     ],
@@ -10978,6 +11044,10 @@
       "2026-06-24T160453--test-ornn-com-codex-2#C5",
       "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c2"
     ],
+    "https://ir.theice.com/press/news-details/2026/Intercontinental-Exchange-and-TradeXYZ-to-Bring-Hyperliquid-Based-Perpetual-Markets-Onshore/default.aspx": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c1",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c2"
+    ],
     "https://ironfinance.medium.com/iron-finance-post-mortem-17-june-2021-6a4e9ccf23f5": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c17"
     ],
@@ -11035,6 +11105,18 @@
     ],
     "https://l2beat.com/layer2s/projects/robinhood": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c3"
+    ],
+    "https://l2beat.com/publications/exchange-risk-and-how-lighter-escapes-it": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c10",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c11",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c9"
+    ],
+    "https://l2beat.com/scaling/projects/lighter": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c12",
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c8"
+    ],
+    "https://l2beat.com/scaling/projects/paradex": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c18"
     ],
     "https://labs.cloudsecurityalliance.org/research/csa-research-note-frontier-ai-dual-use-cybersecurity-gpt56-2": [
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c8"
@@ -12216,6 +12298,9 @@
     "https://replicate.com/docs/guides/extend/comfyui": [
       "2026-08-04T171206--comfyui-company#c39"
     ],
+    "https://reports.zksecurity.xyz/reports/zklighter-block": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c13"
+    ],
     "https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c4",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c6"
@@ -13033,6 +13118,9 @@
     "https://thedefiant.io/news/hacks/q2-2026-most-hacked-quarter-defi-70-exploits-746m": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c19"
     ],
+    "https://thedefiant.io/newsletter/defi-daily/the-ultimate-10-10-crash-autopsy": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c21"
+    ],
     "https://theenergymag.com/news/2026-08-11/coreweave-ai-2-6-billion-wider-spread": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c13"
     ],
@@ -13332,6 +13420,9 @@
     ],
     "https://www.21jingji.com/article/20260520/herald/479c3a328776ac189032079a93ae5c9b.html": [
       "2026-07-13T181948--cxmt#c6"
+    ],
+    "https://www.21shares.com/research/the-perpetual-dex-wars-hyperliquid-aster-and-lighter-in-focus": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c23"
     ],
     "https://www.247wallst.com/investing/2026/06/19/google-spacex-microsoft-and-amazon-are-about-to-spend-twice-the-entire-u-s-defense-budget-on-ai": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c27"
@@ -13676,6 +13767,9 @@
     "https://www.bain.com/about/media-center/press-releases/20252/$2-trillion-in-new-revenue-needed-to-fund-ais-scaling-trend---bain--companys-6th-annual-global-technology-report": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c22"
     ],
+    "https://www.bankless.com/read/is-lit-the-most-underpriced-perps-bet-in-crypto": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c24"
+    ],
     "https://www.bankofengland.co.uk/-/media/boe/files/financial-stability-report/2026/financial-stability-report-july-2026.pdf": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c23"
     ],
@@ -13966,6 +14060,9 @@
     "https://www.cftc.gov/PressRoom/PressReleases/8961-24": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c28"
+    ],
+    "https://www.cftc.gov/PressRoom/PressReleases/9240-26": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c16"
     ],
     "https://www.chaincatcher.com/en/article/2148842": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c20"
@@ -14595,6 +14692,9 @@
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c4",
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c5"
     ],
+    "https://www.dechert.com/knowledge/onpoint/2026/6/cftc-takes-historic-steps-to-bring-digital-asset-perpetual-contr.html": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c17"
+    ],
     "https://www.deeplearning.ai/the-batch/microsoft-pays-inflection-ai-650-million-hires-most-of-its-staff": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c14"
     ],
@@ -14981,6 +15081,9 @@
     ],
     "https://www.gartner.com/en/newsroom/press-releases/2026-05-19-gartner-survey-shows-thirty-one-percent-of-chief-sales-officers-cited-difficulty-proving-roi-of-ai-driven-tools-as-a-top-challenge-for-sales-objectives-in-two-thousand-twenty-si": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c28"
+    ],
+    "https://www.gate.com/learn/articles/perp-dex-landscape-2026-volume-architecture-ranking": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c20"
     ],
     "https://www.getsmartresume.com/article/jane-street-trading-quant-intern": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c7"
@@ -15467,6 +15570,15 @@
     "https://www.law.cornell.edu/cfr/text/17/229.10": [
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c21"
     ],
+    "https://www.law.cornell.edu/cfr/text/17/38.151": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c14"
+    ],
+    "https://www.law.cornell.edu/cfr/text/17/38.500": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c14"
+    ],
+    "https://www.law.cornell.edu/cfr/text/17/48.3": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c15"
+    ],
     "https://www.law.cornell.edu/supremecourt/text/435/679": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c37"
     ],
@@ -15505,6 +15617,9 @@
     ],
     "https://www.law.cornell.edu/uscode/text/7/6c": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c23"
+    ],
+    "https://www.law.cornell.edu/uscode/text/7/7": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c14"
     ],
     "https://www.lawfaremedia.org/article/pentagon's-anthropic-designation-won't-survive-first-contact-with-legal-system": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c1",
@@ -17362,6 +17477,9 @@
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c7",
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c9"
     ],
+    "https://x.com/drwconvexity/status/2116179494163615996": [
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c4"
+    ],
     "https://x.com/elonmusk/status/2071184354756477041": [
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c1",
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c2",
@@ -17609,7 +17727,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3123,
+  "claim_count": 3147,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -92039,9 +92157,565 @@
         "https://arxiv.org/html/2511.18397v1"
       ],
       "type": "comparison"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-10-29",
+      "claim": "On 2026-10-29 ICE and Trade[XYZ] announced a definitive agreement under which ICE becomes exclusive operator of Trade[XYZ]'s regulated markets, subject to regulatory approvals, with no regulator named.",
+      "confidence": "high",
+      "hosts": [
+        "ir.theice.com"
+      ],
+      "id": "c1",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://ir.theice.com/press/news-details/2026/Intercontinental-Exchange-and-TradeXYZ-to-Bring-Hyperliquid-Based-Perpetual-Markets-Onshore/default.aspx"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-05-22",
+      "claim": "L2BEAT rebuilt the desert verifier byte-for-byte and reproduced the state root from blobs across about 5,000 batches.",
+      "confidence": "high",
+      "hosts": [
+        "l2beat.com"
+      ],
+      "id": "c10",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://l2beat.com/publications/exchange-risk-and-how-lighter-escapes-it"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-05-22",
+      "claim": "Open positions cash-settle at the last published mark price on exit, and oracle signatures are not verified onchain.",
+      "confidence": "high",
+      "hosts": [
+        "l2beat.com"
+      ],
+      "id": "c11",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://l2beat.com/publications/exchange-risk-and-how-lighter-escapes-it"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-11-01",
+      "claim": "L2BEAT records average proof intervals of about 3m41s, state updates about 6m53s, and a stall of more than four hours on 2026-10-29.",
+      "confidence": "medium",
+      "hosts": [
+        "l2beat.com"
+      ],
+      "id": "c12",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c12",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://l2beat.com/scaling/projects/lighter"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2025-09-08",
+      "claim": "zkSecurity's audit of Lighter's block circuits found two high-severity issues, one letting a malicious prover create an account with arbitrary collateral; all but one finding were fixed.",
+      "confidence": "medium",
+      "hosts": [
+        "reports.zksecurity.xyz"
+      ],
+      "id": "c13",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://reports.zksecurity.xyz/reports/zklighter-block"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-11-01",
+      "claim": "Regulation 38.151 requires impartial, non-discriminatory access criteria and comparable fee structures for equal access; Core Principle 9 requires a competitive, open, and efficient market; Core Principle 12 requires promotion of fair and equitable trading.",
+      "confidence": "high",
+      "hosts": [
+        "law.cornell.edu"
+      ],
+      "id": "c14",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal",
+        "legal",
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.law.cornell.edu/cfr/text/17/38.151",
+        "https://www.law.cornell.edu/cfr/text/17/38.500",
+        "https://www.law.cornell.edu/uscode/text/7/7"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-11-01",
+      "claim": "A foreign board of trade may not permit direct access to its electronic trading and order matching system from the US without a Part 48 registration.",
+      "confidence": "medium",
+      "hosts": [
+        "law.cornell.edu"
+      ],
+      "id": "c15",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "legal"
+      ],
+      "source_urls": [
+        "https://www.law.cornell.edu/cfr/text/17/48.3"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-05-29",
+      "claim": "On 2026-05-29 the CFTC approved Kalshi's BTCPERP as a futures contract under Regulation 40.3 and said the perpetual design may not be suitable for all asset classes.",
+      "confidence": "high",
+      "hosts": [
+        "cftc.gov"
+      ],
+      "id": "c16",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.cftc.gov/PressRoom/PressReleases/9240-26"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-06-09",
+      "claim": "CFTC staff Letter 26-17 lets Coinbase's FCM offer offshore perps as foreign futures and accept digital commodities or stablecoins as margin at a foreign affiliate.",
+      "confidence": "medium",
+      "hosts": [
+        "dechert.com"
+      ],
+      "id": "c17",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c17",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.dechert.com/knowledge/onpoint/2026/6/cftc-takes-historic-steps-to-bring-digital-asset-perpetual-contr.html"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-11-01",
+      "claim": "Paradex posts encrypted blobs under a symmetric key encrypted to a three-member council and L2BEAT states there is no generic escape hatch mechanism.",
+      "confidence": "high",
+      "hosts": [
+        "l2beat.com"
+      ],
+      "id": "c18",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://l2beat.com/scaling/projects/paradex"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-10-15",
+      "claim": "Hyperliquid 30-day perp volume was about $209.5B and Lighter's about $62.7B as of 2026-10-15, with open interest of $7.70B and $711M.",
+      "confidence": "medium",
+      "hosts": [
+        "coincentral.com"
+      ],
+      "id": "c19",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c19",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://coincentral.com/best-perp-dexes-in-2026-hyperliquid-aster-lighter-edgex-and-apex-omni-compared"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-10-29",
+      "claim": "The ICE release does not state where order matching for the onshore market will occur; it says the structure will be built on Hyperliquid.",
+      "confidence": "medium",
+      "hosts": [
+        "ir.theice.com"
+      ],
+      "id": "c2",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://ir.theice.com/press/news-details/2026/Intercontinental-Exchange-and-TradeXYZ-to-Bring-Hyperliquid-Based-Perpetual-Markets-Onshore/default.aspx"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-09-28",
+      "claim": "A snapshot as of about 2026-09-28 put total itemised 30-day on-chain perp volume near $598B with Hyperliquid at $204.1B and Lighter at $52.6B.",
+      "confidence": "medium",
+      "hosts": [
+        "gate.com"
+      ],
+      "id": "c20",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c20",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://www.gate.com/learn/articles/perp-dex-landscape-2026-volume-architecture-ranking"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2025-10-10",
+      "claim": "An autopsy of the 2025-10-10 crash put total market-wide liquidations above $19B.",
+      "confidence": "medium",
+      "hosts": [
+        "thedefiant.io"
+      ],
+      "id": "c21",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c21",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://thedefiant.io/newsletter/defi-daily/the-ultimate-10-10-crash-autopsy"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2025-10-15",
+      "claim": "Lighter was offline about 4.5 hours during the 2025-10-10 cascade after a database failure, affecting over 2,000 users.",
+      "confidence": "medium",
+      "hosts": [
+        "ambcrypto.com"
+      ],
+      "id": "c22",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c22",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://ambcrypto.com/lighter-dex-to-repay-users-in-stablecoins-after-major-outage-details/amp"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2025-10-06",
+      "claim": "A 21Shares note in October 2025 raised the possibility of wash trading in incentive-driven perp volume and applied its 70:1 volume-to-TVL flag to Aster rather than Lighter.",
+      "confidence": "medium",
+      "hosts": [
+        "21shares.com"
+      ],
+      "id": "c23",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c23",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.21shares.com/research/the-perpetual-dex-wars-hyperliquid-aster-and-lighter-in-focus"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-06-02",
+      "claim": "Bankless identified Will Price as a DeFi investor and Lighter advisor on 2026-06-02.",
+      "confidence": "high",
+      "hosts": [
+        "bankless.com"
+      ],
+      "id": "c24",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c24",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.bankless.com/read/is-lit-the-most-underpriced-perps-bet-in-crypto"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-11-01",
+      "claim": "Trade[XYZ] is a HIP-3 builder whose markets currently match, position and settle on HyperCore.",
+      "confidence": "medium",
+      "hosts": [
+        "docs.trade.xyz"
+      ],
+      "id": "c3",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.trade.xyz/overview/relationship-to-hyperliquid.md"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-10-30",
+      "claim": "Wilson's 2026-10-30 post asked five questions including whether Hyperliquid priority fees fit CFTC core principles and whether positions being trackable in real time is a benefit.",
+      "confidence": "high",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c4",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/drwconvexity/status/2116179494163615996"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-11-01",
+      "claim": "Hyperliquid order priority latency improves linearly from 0 to 8 bps at roughly 45 ms per bp, ALO orders are sorted within a 400 ms window, and priority fees are burned.",
+      "confidence": "high",
+      "hosts": [
+        "hyperliquid.gitbook.io"
+      ],
+      "id": "c5",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/priority-fees"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-11-01",
+      "claim": "Hyperliquid gossip priority is a Dutch auction on a 3-minute schedule with a 0.1 HYPE floor buying about 25 ms of earlier read access per slot.",
+      "confidence": "high",
+      "hosts": [
+        "hyperliquid.gitbook.io"
+      ],
+      "id": "c6",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/priority-fees"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-11-01",
+      "claim": "Lighter Standard accounts pay 0/0 fees with 300 ms taker and cancel latency, while Premium accounts pay 0.0040% maker and 0.0280% taker with 140 ms taker latency.",
+      "confidence": "high",
+      "hosts": [
+        "docs.lighter.xyz"
+      ],
+      "id": "c7",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.lighter.xyz/trading/trading-fees.md"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-11-01",
+      "claim": "L2BEAT rates Lighter Stage 0, with a 21-day regular upgrade delay that a 4/7 Security Council can reduce to zero, and 91 upgrades at fetch time.",
+      "confidence": "medium",
+      "hosts": [
+        "l2beat.com"
+      ],
+      "id": "c8",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c8",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://l2beat.com/scaling/projects/lighter"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta",
+      "article_created_at": "2026-11-01T10:20:20Z",
+      "article_title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+      "as_of": "2026-05-22",
+      "claim": "If the operator does not process a forced priority transaction for 14 days, anyone can trigger desert mode and users prove balances against the last state root to withdraw.",
+      "confidence": "high",
+      "hosts": [
+        "l2beat.com"
+      ],
+      "id": "c9",
+      "key": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://l2beat.com/publications/exchange-risk-and-how-lighter-escapes-it"
+      ],
+      "type": "technical"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1504,
+  "reusable_count": 1511,
   "schema_version": 1
 }

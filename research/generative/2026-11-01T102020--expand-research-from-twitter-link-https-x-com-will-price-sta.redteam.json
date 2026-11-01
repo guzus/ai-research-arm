@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "The release names no regulator and no registration category, gives no launch date, and says customers would be KYC/AML-verified and reach the venue through futures commission merchants.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c2", "claim_text": "Lighter's Standard taker waits 300 ms; the opt-in Premium account waits 140 ms and pays fees.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c3", "claim_text": "L2BEAT rates Lighter Stage 0, with a 14-day forced-transaction deadline and upgrades that a council can make instant.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true}
+  ]
+}
