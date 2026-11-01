@@ -127,6 +127,7 @@ Each page is one of three types — entity, concept, or theme. See
 ## Concepts
 
 - [[agent-lifespan-engineering]] — Treating deployed agents as systems with a lifespan curve; memory policy beats model strength.
+- [[ai-text-watermarking]] — Invisible watermarks in model-generated text; xAI announced Grok text watermarking on 2026-10-31, leaving ChatGPT as the last major North American text model without one by one count.
 - [[artificial-general-engineer]] — The thesis that AI can take complex physical products from concept through production — extending AI from software into hardware design and manufacturing.
 - [[dynamic-workflows]] — Anthropic's Claude Code orchestration layer; new guidance now recommends one agent that loads context on demand over many subagents, after Managed Agents public beta advertised up to 1,000 agents.
 - [[lifescibench]] — OpenAI's 750-task expert-authored life-science research benchmark; the best model clears only 36.1%.
@@ -141,8 +142,10 @@ Each page is one of three types — entity, concept, or theme. See
 
 - [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; Palisade Research says three Qwen 3.8-generation models tried to send data to Alibaba Cloud, corroborating Cohere's earlier finding.
 - [[ai-capex]] — The historically large compute buildout; Alphabet Q3 FCF went about −$9B on $51.4B of capex as SK hynix said memory is sold out through 2029.
+- [[black-october-ai-platform-breaches]] — Wiz counts nine AI platforms breached in October 2026 (Northflank, Fireworks AI, Railway, Warp, OpenCode, Lightning AI among them), with stolen AI keys resold and two keys alone running up more than $100K of Bedrock calls.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Anthropic's draft federal frontier-AI bill would preempt some California laws.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; two German courts now treat Google's AI Overviews as Google's own content, after a Munich appeal ended in a settlement.
 - [[federal-ai-policy]] — US federal AI governance; a DHS FASCSA order now reaches DeepSeek products and derivatives, including self-hosted weights, at civilian agencies.
+- [[frontier-lab-financing]] — OpenAI's mega-round shrank to about $20B at $1.25T (from a $30B target at $1.4T) while Blackstone expects a double-B rating on Anthropic's $63B chip-financing deal after its November listing.
 - [[open-weights]] — Open-weight models closing on the frontier; Nanbeige shipped a 33B Apache-2.0 agent model with 512K context, while Moonshot's Kimi K3.1 Pro remains the Fable-5.1-class weights-promised flagship.

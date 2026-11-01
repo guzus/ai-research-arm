@@ -100,6 +100,7 @@
         "anthropic",
         "apple",
         "astra",
+        "black-october-ai-platform-breaches",
         "california-ai-regulation",
         "claude-fable-5",
         "claude-opus-5",
@@ -111,6 +112,7 @@
         "dynamic-workflows",
         "evo-genome-models",
         "federal-ai-policy",
+        "fireworks-ai",
         "gemini-3-6-flash",
         "gemini-3-8-flash",
         "gemini-4-argon",
@@ -243,6 +245,7 @@
         "anthropic",
         "apple",
         "artificial-general-engineer",
+        "black-october-ai-platform-breaches",
         "broadcom",
         "california-ai-regulation",
         "chai-discovery",
@@ -260,6 +263,7 @@
         "federal-ai-policy",
         "figure-ai",
         "fireworks-ai",
+        "frontier-lab-financing",
         "gemini-3-5-flash",
         "gemini-3-5-pro",
         "gemini-4-carbon",
@@ -309,6 +313,37 @@
           "source_url": "https://commons.wikimedia.org/wiki/File:Rear_of_rack_at_NERSC_data_center_-_closeup.jpg"
         }
       ]
+    },
+    {
+      "slug": "ai-text-watermarking",
+      "title": "AI Text Watermarking",
+      "type": "concept",
+      "tags": [
+        "watermarking",
+        "provenance",
+        "transparency",
+        "policy"
+      ],
+      "summary": "Invisible watermarks embedded in model-generated text so a detector can flag it; xAI announced Grok text watermarking on 2026-10-31, leaving ChatGPT as the last major North American text model without one by one count.",
+      "description": "Invisible watermarks embedded in model-generated text so a detector can flag it; xAI announced Grok text watermarking on 2026-10-31, leaving ChatGPT as the last major North American text model without one by one count.",
+      "created_at": "2026-11-01",
+      "updated_at": "2026-11-01",
+      "timestamp": "2026-11-01T00:00:00Z",
+      "file": "concepts/ai-text-watermarking.md",
+      "aliases": [
+        "text watermarking",
+        "Grok watermarking",
+        "invisible text watermark",
+        "SynthID Text",
+        "TextSeal2"
+      ],
+      "outbound": [
+        "anthropic",
+        "eu-ai-regulation",
+        "openai",
+        "xai"
+      ],
+      "inbound": []
     },
     {
       "slug": "aleph-alpha",
@@ -475,9 +510,11 @@
         "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "black-october-ai-platform-breaches",
         "claude-fable-5",
         "decart",
         "federal-ai-policy",
+        "frontier-lab-financing",
         "google",
         "jev",
         "microsoft",
@@ -690,6 +727,7 @@
         "agent-lifespan-engineering",
         "agentic-ai-security",
         "ai-capex",
+        "ai-text-watermarking",
         "alibaba",
         "amazon",
         "amd",
@@ -722,6 +760,7 @@
         "figure-ai",
         "fireworks-ai",
         "fractile",
+        "frontier-lab-financing",
         "gemini-3-5-flash",
         "gemini-4-argon",
         "gemini-spark",
@@ -953,6 +992,39 @@
           "stale": true
         }
       }
+    },
+    {
+      "slug": "black-october-ai-platform-breaches",
+      "title": "Black October AI Platform Breaches",
+      "type": "theme",
+      "tags": [
+        "security",
+        "supply-chain",
+        "api-keys",
+        "inference-infra",
+        "agents"
+      ],
+      "summary": "Wiz counts nine AI platforms breached in October 2026 (Northflank, Fireworks AI, Railway, Warp, OpenCode, Lightning AI among them), with stolen AI keys resold and two keys alone running up more than $100K of Bedrock calls.",
+      "description": "Wiz counts nine AI platforms breached in October 2026 (Northflank, Fireworks AI, Railway, Warp, OpenCode, Lightning AI among them), with stolen AI keys resold and two keys alone running up more than $100K of Bedrock calls.",
+      "created_at": "2026-11-01",
+      "updated_at": "2026-11-01",
+      "timestamp": "2026-11-01T00:00:00Z",
+      "file": "themes/black-october-ai-platform-breaches.md",
+      "aliases": [
+        "Black October",
+        "Wiz nine-platform breach list",
+        "Northflank breach",
+        "stolen AI API keys"
+      ],
+      "outbound": [
+        "agentic-ai-security",
+        "ai-capex",
+        "amazon",
+        "fireworks-ai"
+      ],
+      "inbound": [
+        "fireworks-ai"
+      ]
     },
     {
       "slug": "broadcom",
@@ -1751,6 +1823,7 @@
         "crusoe",
         "dell",
         "fireworks-ai",
+        "frontier-lab-financing",
         "meta",
         "microsoft",
         "nebius",
@@ -2384,6 +2457,7 @@
         "xai"
       ],
       "inbound": [
+        "ai-text-watermarking",
         "aleph-alpha",
         "anthropic",
         "apple",
@@ -2638,8 +2712,8 @@
       "summary": "AI inference-infrastructure company; Ember-1 is a Kimi K3 specialist the lab says keeps K3 quality with about 40% fewer tokens, after a $1.505B Series D at $17.5B.",
       "description": "AI inference-infrastructure company; Ember-1 is a Kimi K3 specialist the lab says keeps K3 quality with about 40% fewer tokens, after a $1.505B Series D at $17.5B.",
       "created_at": "2026-07-18",
-      "updated_at": "2026-09-28",
-      "timestamp": "2026-09-28T00:00:00Z",
+      "updated_at": "2026-11-01",
+      "timestamp": "2026-11-01T00:00:00Z",
       "file": "entities/fireworks-ai.md",
       "aliases": [
         "Fireworks",
@@ -2649,8 +2723,10 @@
         "Fireworks Ember-1"
       ],
       "outbound": [
+        "agentic-ai-security",
         "ai-capex",
         "anthropic",
+        "black-october-ai-platform-breaches",
         "coreweave",
         "moonshot-kimi-k3",
         "naive-ai",
@@ -2660,6 +2736,7 @@
         "openrouter"
       ],
       "inbound": [
+        "black-october-ai-platform-breaches",
         "meta",
         "moonshot-kimi-k3",
         "muse-spark-open",
@@ -2712,6 +2789,41 @@
         "apple",
         "model-specific-silicon"
       ]
+    },
+    {
+      "slug": "frontier-lab-financing",
+      "title": "Frontier Lab Financing",
+      "type": "theme",
+      "tags": [
+        "funding",
+        "ipo",
+        "credit",
+        "valuation",
+        "frontier-lab"
+      ],
+      "summary": "OpenAI's mega-round shrank to about $20B at $1.25T (from a $30B target at $1.4T) while Blackstone expects a double-B rating on Anthropic's $63B chip-financing deal after its November listing.",
+      "description": "OpenAI's mega-round shrank to about $20B at $1.25T (from a $30B target at $1.4T) while Blackstone expects a double-B rating on Anthropic's $63B chip-financing deal after its November listing.",
+      "created_at": "2026-11-01",
+      "updated_at": "2026-11-01",
+      "timestamp": "2026-11-01T00:00:00Z",
+      "file": "themes/frontier-lab-financing.md",
+      "aliases": [
+        "OpenAI mega-round",
+        "OpenAI $20B round",
+        "Anthropic junk rating",
+        "Anthropic chip-financing deal",
+        "lab capital raises"
+      ],
+      "outbound": [
+        "ai-capex",
+        "amazon",
+        "anthropic",
+        "coreweave",
+        "neocloud",
+        "openai",
+        "sk-hynix"
+      ],
+      "inbound": []
     },
     {
       "slug": "gemini-3-5-flash",
@@ -5040,6 +5152,7 @@
         "coreweave",
         "crusoe",
         "dell",
+        "frontier-lab-financing",
         "gemini-3-5-flash",
         "meta",
         "microsoft",
@@ -5546,6 +5659,7 @@
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
+        "ai-text-watermarking",
         "amd",
         "anthropic",
         "apple",
@@ -5563,6 +5677,7 @@
         "federal-ai-policy",
         "figure-ai",
         "fireworks-ai",
+        "frontier-lab-financing",
         "gemini-3-8-flash",
         "gemini-3-8-live",
         "google",
@@ -6310,6 +6425,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "frontier-lab-financing",
         "intel",
         "micron",
         "nvidia"
@@ -6821,6 +6937,7 @@
       "inbound": [
         "agentic-ai-security",
         "ai-capex",
+        "ai-text-watermarking",
         "anthropic",
         "cursor",
         "eu-ai-regulation",
@@ -7192,6 +7309,7 @@
     "ai supply-chain security": "agentic-ai-security",
     "ai-capex": "ai-capex",
     "ai-for-manufacturing": "artificial-general-engineer",
+    "ai-text-watermarking": "ai-text-watermarking",
     "aleksander madry": "openai",
     "aleph alpha": "aleph-alpha",
     "aleph-alpha": "aleph-alpha",
@@ -7212,6 +7330,8 @@
     "ant": "anthropic",
     "anthropic": "anthropic",
     "anthropic biology lab": "claude-science",
+    "anthropic chip-financing deal": "frontier-lab-financing",
+    "anthropic junk rating": "frontier-lab-financing",
     "anthropic pbc": "anthropic",
     "anthropic public benefit fund": "anthropic",
     "anthropic s-1": "anthropic",
@@ -7238,6 +7358,8 @@
     "beam": "reflection-ai",
     "bezos prometheus": "prometheus",
     "biohub": "google",
+    "black october": "black-october-ai-platform-breaches",
+    "black-october-ai-platform-breaches": "black-october-ai-platform-breaches",
     "block dessa": "dessa",
     "block's dessa": "dessa",
     "bluefield-4": "nvidia",
@@ -7405,6 +7527,7 @@
     "fractile": "fractile",
     "fractile systems": "fractile",
     "frontier deployed engineers": "anthropic",
+    "frontier-lab-financing": "frontier-lab-financing",
     "fugu": "sakana-ai",
     "fugu max": "sakana-ai",
     "fugu ultra": "sakana-ai",
@@ -7513,6 +7636,7 @@
     "grok 4.7": "xai",
     "grok 4.8": "xai",
     "grok bot": "xai",
+    "grok watermarking": "ai-text-watermarking",
     "groq": "groq",
     "groq inc.": "groq",
     "h3": "minimax-h3",
@@ -7543,6 +7667,7 @@
     "intel": "intel",
     "intel corporation": "intel",
     "interim measures for the administration of ai anthropomorphic interactive services": "china-ai-regulation",
+    "invisible text watermark": "ai-text-watermarking",
     "ironwood": "google",
     "jack clark": "anthropic",
     "jasmine wang": "openai",
@@ -7570,6 +7695,7 @@
     "kolibri": "aleph-alpha",
     "kolibri 1": "aleph-alpha",
     "kolibri-1": "aleph-alpha",
+    "lab capital raises": "frontier-lab-financing",
     "law of multiagents": "zawinskis-law-of-multiagents",
     "le chonk": "mistral-large-4",
     "leanstral": "mistral-leanstral-1-5",
@@ -7712,6 +7838,7 @@
     "neocloud": "neocloud",
     "noam shazeer": "noam-shazeer",
     "noam-shazeer": "noam-shazeer",
+    "northflank breach": "black-october-ai-platform-breaches",
     "notebooklm": "google",
     "nous research": "nous-research",
     "nous-research": "nous-research",
@@ -7730,9 +7857,11 @@
     "open-source ai": "open-weights",
     "open-weights": "open-weights",
     "openai": "openai",
+    "openai $20b round": "frontier-lab-financing",
     "openai astra": "astra",
     "openai dots": "openai",
     "openai inc.": "openai",
+    "openai mega-round": "frontier-lab-financing",
     "openai opco": "openai",
     "openai's next flagship": "gpt-6",
     "openai/math": "openai",
@@ -7864,11 +7993,13 @@
     "step 5 preview": "step-5-preview",
     "step-5-preview": "step-5-preview",
     "stepfun step 5": "step-5-preview",
+    "stolen ai api keys": "black-october-ai-platform-breaches",
     "suncatcher": "google",
     "super intelligence force": "federal-ai-policy",
     "super intelligence renaming order": "federal-ai-policy",
     "synthid bio": "google",
     "synthid detector": "google",
+    "synthid text": "ai-text-watermarking",
     "synthid.com": "google",
     "taalas": "taalas",
     "taalas hc1": "taalas",
@@ -7878,6 +8009,8 @@
     "tencent-hunyuan-hy3": "tencent-hunyuan-hy3",
     "terra": "gpt-5-6",
     "tev1-4b-experimental": "jev",
+    "text watermarking": "ai-text-watermarking",
+    "textseal2": "ai-text-watermarking",
     "thinking machines": "thinking-machines",
     "thinking machines lab": "thinking-machines",
     "thinking-machines": "thinking-machines",
@@ -7910,6 +8043,7 @@
     "weights in silicon": "model-specific-silicon",
     "white house accord on super intelligence": "federal-ai-policy",
     "white house genesis": "federal-ai-policy",
+    "wiz nine-platform breach list": "black-october-ai-platform-breaches",
     "wonder full": "muse-wonder",
     "world ai conference": "china-ai-regulation",
     "world ai cooperation organization": "china-ai-regulation",
