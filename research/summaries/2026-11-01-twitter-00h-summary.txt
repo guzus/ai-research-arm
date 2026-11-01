@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-11-01 00:01:56 UTC
+
+CYCLE: Grok gets text watermarks; Hopper decode gains; OpenAI round gap
+
+TOP STORIES:
+• xAI announces global Grok text watermarking, with an opt-out page [⚠]
+• vLLM fused Hopper kernels speed up decode by as much as 38% (SemiAnalysis) [⚠]
+• WSJ: only ~$11B of OpenAI's $30B ask has come in so far [⚠]
+
+WATCH: whether xAI offers a public detector for Grok watermarks
+
+Full update on GitHub.
