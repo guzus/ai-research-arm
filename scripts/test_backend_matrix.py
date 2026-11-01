@@ -3238,7 +3238,7 @@ esac
         container = re.search(r'opencode_fatal_keywords="(\([^"]+\))"', run).group(1)
         self.assertIn(f"grep -m1 -xiE '{container}'", block)
 
-        def notice(content: str | None, link: bool = False) -> str:
+        def notice(content: str | None, link: bool = False, status: str = "1") -> str:
             with tempfile.TemporaryDirectory() as tmp:
                 fatal = Path(tmp) / ".opencode-fatal"
                 if link:
@@ -3247,7 +3247,8 @@ esac
                 elif content is not None:
                     fatal.write_text(content, encoding="utf-8")
                 result = subprocess.run(["bash", "-c", "set -euo pipefail\n" + block],
-                                        env={**os.environ, "isolated_workspace": tmp},
+                                        env={**os.environ, "isolated_workspace": tmp,
+                                             "agent_status": status},
                                         capture_output=True, text=True, check=True)
                 return result.stdout
 
@@ -3259,6 +3260,7 @@ esac
             with self.subTest(content=content):
                 self.assertEqual("", notice(content))
         self.assertEqual("", notice("Invalid API key\n", link=True))
+        self.assertEqual("", notice("Invalid API key\n", status="0"))
 
     def test_cursor_host_reannounces_only_a_fixed_fatal_keyword(self):
         run = yaml.safe_load((REPO_ROOT / ".github/actions/run-cursor-container/action.yml")
@@ -3274,7 +3276,7 @@ esac
                          "instead of waiting out the ${remaining_seconds}s timeout: ${fatal}", run)
         self.assertIn('printf "%s\\n" "$fatal" > .cursor-fatal', run)
 
-        def notice(content: str | None, link: bool = False) -> str:
+        def notice(content: str | None, link: bool = False, status: str = "1") -> str:
             with tempfile.TemporaryDirectory() as tmp:
                 fatal = Path(tmp) / ".cursor-fatal"
                 if link:
@@ -3283,7 +3285,8 @@ esac
                 elif content is not None:
                     fatal.write_text(content, encoding="utf-8")
                 return subprocess.run(["bash", "-c", "set -euo pipefail\n" + block],
-                                      env={**os.environ, "isolated_workspace": tmp},
+                                      env={**os.environ, "isolated_workspace": tmp,
+                                           "agent_status": status},
                                       capture_output=True, text=True, check=True).stdout
 
         self.assertEqual("::error::Cursor CLI returned an unrecoverable error "
@@ -3294,6 +3297,7 @@ esac
             with self.subTest(content=content):
                 self.assertEqual("", notice(content))
         self.assertEqual("", notice("Invalid API key\n", link=True))
+        self.assertEqual("", notice("Invalid API key\n", status="0"))
 
     def test_container_stdout_and_stderr_go_to_a_host_file_not_the_log(self):
         """A shell-capable model can write to its PID 1 stdout (/proc/1/fd/1),

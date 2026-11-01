@@ -1124,7 +1124,9 @@ runs:
         # only an exact fixed keyword (the container's cursor_fatal_keywords)
         # is printed, never free text, and the run status is untouched.
         fatal_file="$isolated_workspace/.cursor-fatal"
-        if [ -f "$fatal_file" ] && [ ! -L "$fatal_file" ] \
+        # Only for a failed run: the model can leave this file behind on
+        # a green one, and a passing step must not show a fatal error.
+        if [ "$agent_status" -ne 0 ] && [ -f "$fatal_file" ] && [ ! -L "$fatal_file" ] \
           && [ "$(wc -c < "$fatal_file")" -le 128 ]; then
           fatal_keyword=$(grep -m1 -xiE '(Invalid API key|API key is invalid|Unauthorized|authentication failed|usage limit|Insufficient balance|Insufficient credits|402 Payment)' \
             "$fatal_file" || true)
