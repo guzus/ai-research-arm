@@ -3100,6 +3100,33 @@ esac
                 # No bare run-id names remain, which two legs of one run share.
                 self.assertNotIn("${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}\"", run)
 
+    def test_runner_build_dir_clone_and_output_file_are_private(self):
+        """Other runner accounts on this host can reach RUNNER_TEMP, and the
+        container's output can hold anything it printed: the build directory
+        and clone are 0700 and the output file 0600, whatever the umask."""
+        for adapter in self.RUNNERS:
+            with self.subTest(adapter=adapter), tempfile.TemporaryDirectory() as tmp:
+                run = yaml.safe_load((REPO_ROOT / ".github/actions" / f"run-{adapter}-container"
+                                      / "action.yml").read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+                start = run.index('build_dir="${RUNNER_TEMP:-/tmp}/')
+                block = run[start:run.index('mkdir -m 700 -p -- "$build_dir"', start)]
+                block += 'mkdir -m 700 -p -- "$build_dir"\necho "$build_dir"\n'
+                made = subprocess.run(["bash", "-c", "set -euo pipefail\numask 022\n" + block],
+                                      env={**os.environ, "RUNNER_TEMP": tmp, "run_suffix": "t"},
+                                      capture_output=True, text=True, check=True).stdout.strip()
+                self.assertEqual(0o700, os.stat(made).st_mode & 0o777)
+                setup = run.split("# TRUSTED_CLONE_SETUP_BEGIN", 1)[1].split(
+                    "# TRUSTED_CLONE_SETUP_END", 1)[0]
+                self.assertIn('rm -rf "$isolated_workspace"\n'
+                              '# The container writes into this clone; keep it private to this\n'
+                              '# runner account. git clones into an existing empty directory.\n'
+                              'mkdir -m 700 -- "$isolated_workspace"\n', setup)
+                container_run = run.split("# CONTAINER_RUN_BEGIN", 1)[1].split(
+                    "# CONTAINER_RUN_END", 1)[0]
+                create = container_run.index('( umask 077 && : > "$container_out" )')
+                self.assertLess(create, container_run.index('chmod 600 -- "$container_out"'))
+                self.assertLess(create, container_run.index('"${docker_cmd[@]}"'))
+
     def test_cleanup_resumes_commands_only_after_removing_the_container(self):
         """On cancel the container is removed before workflow commands resume,
         so a model still writing to its PID 1 stdout cannot reach the log as
@@ -3311,14 +3338,18 @@ esac
                     env = {**os.environ, "PATH": f"{root}/bin:/usr/bin:/bin",
                            "DOCKER_TEST_LOG": str(root / "docker.log"),
                            "FAKE_RUN_TICKS": "0", "FAKE_STATUS": "7"}
+                    if tee:
+                        output.write_text("stale\n", encoding="utf-8")
+                        output.chmod(0o644)
                     result = subprocess.run(
-                        ["bash", "-c", self.runner_harness(adapter, root,
-                                                           str(output) if tee else "")],
+                        ["bash", "-c", "umask 022\n" + self.runner_harness(
+                            adapter, root, str(output) if tee else "")],
                         env=env, capture_output=True, text=True, timeout=20)
                     self.assertEqual(0, result.returncode, result.stderr)
                     self.assertIn("agent_status=7", result.stdout)
                     if tee:
                         self.assertEqual("container-output\n", output.read_text(encoding="utf-8"))
+                        self.assertEqual(0o600, output.stat().st_mode & 0o777)
                     lines = result.stdout.splitlines()
                     token = lines[lines.index(next(line for line in lines
                                                    if line.startswith("::stop-commands::")))]
@@ -4079,11 +4110,12 @@ esac
                 "GITHUB_ENV": str(github_env),
             })
             result = subprocess.run(
-                ["bash", "-c", "set -euo pipefail\n" + setup],
+                ["bash", "-c", "set -euo pipefail\numask 022\n" + setup],
                 text=True, capture_output=True, env=env, check=False)
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
             self.assertFalse(marker.exists(), result.stdout + result.stderr)
             isolated = tmp_path / "opencode-workspace-hostsetup-1-job-test"
+            self.assertEqual(0o700, isolated.stat().st_mode & 0o777)
             self.assertFalse((isolated / ".git" / "hooks" /
                               "post-checkout").exists())
             self.assertFalse((isolated / "tracked.txt").exists(),

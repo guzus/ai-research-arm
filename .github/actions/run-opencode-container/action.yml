@@ -445,7 +445,9 @@ runs:
         run_suffix="${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-${GITHUB_JOB:-job}-$(od -An -N4 -tx1 /dev/urandom | tr -d ' \n')"
         build_dir="${RUNNER_TEMP:-/tmp}/opencode-container-${run_suffix}"
         rm -rf "$build_dir"
-        mkdir -p "$build_dir"
+        # 0700: the files built up in here (the container output, result
+        # summaries, import staging) are for this runner account only.
+        mkdir -m 700 -p -- "$build_dir"
         generated_opencode_config="$build_dir/opencode.generated.json"
         /usr/bin/python3 -I scripts/build_opencode_config.py \
           "$GITHUB_WORKSPACE/$OPENCODE_CONFIG_REL" \
@@ -557,6 +559,9 @@ runs:
         pre_sha=$("${host_git[@]}" rev-parse HEAD)
         isolated_workspace="${RUNNER_TEMP:-/tmp}/opencode-workspace-${run_suffix}"
         rm -rf "$isolated_workspace"
+        # The container writes into this clone; keep it private to this
+        # runner account. git clones into an existing empty directory.
+        mkdir -m 700 -- "$isolated_workspace"
         env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
           GIT_NO_REPLACE_OBJECTS=1 GIT_LFS_SKIP_SMUDGE=1 \
           git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
@@ -1148,6 +1153,11 @@ runs:
         # all that reaches the log. The stop-commands window stays as defense
         # in depth, and its token is fresh and never enters the container.
         container_out="${OUTPUT_FILE:-$build_dir/container-output.log}"
+        # The file holds whatever the container printed and a caller's
+        # output file sits outside the 0700 build directory: create it
+        # private to this runner account before the container starts.
+        ( umask 077 && : > "$container_out" )
+        chmod 600 -- "$container_out"
         stop_token=$(od -An -N16 -tx1 /dev/urandom | tr -d ' \n')
         echo "::stop-commands::${stop_token}"
         set +e
