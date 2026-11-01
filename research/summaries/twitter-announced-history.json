@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-01 01:00 UTC",
-    "headline": "OPENAI ROBOTICS HIRING DRIVE \u2014 SAMA POST ANCHORS WEEKEND TALENT WAVE AT 9,288 LIKES",
-    "source": "@sama",
-    "source_file": "research/summaries/2026-06-01-twitter-01h-headlines.json",
-    "url": "https://x.com/sama/status/2061117302528188712"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-01 05:00 UTC",
-    "headline": "NVIDIA SHIPS DGX STATION FOR WINDOWS \u2014 1-TRILLION-PARAMETER FRONTIER MODELS RUN LOCALLY ON GB300, OPENSHELL FOR ON-DEVICE AGENTS",
-    "source": "@nvidianewsroom",
-    "source_file": "research/summaries/2026-06-01-twitter-05h-headlines.json",
-    "url": "https://x.com/nvidianewsroom/status/2061307670607319201"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-06-01 05:00 UTC",
-    "headline": "MINIMAX M3 LAUNCHES \u2014 OPEN-WEIGHTS, 1M CONTEXT VIA SPARSE ATTENTION, 59% SWE-BENCH PRO; WEIGHTS + TECH REPORT IN 10 DAYS",
-    "source": "@MiniMax_AI",
-    "source_file": "research/summaries/2026-06-01-twitter-05h-headlines.json",
-    "url": "https://x.com/MiniMax_AI/status/2061266317815296322"
-  },
-  {
-    "backfilled": true,
     "category": "opensource",
     "delivered_at": "2026-06-01 05:00 UTC",
     "headline": "NVIDIA ALPAMAYO 2 SUPER \u2014 32B OPEN-WEIGHTS REASONING VLA FOR LEVEL-4 ROBOTAXIS, SHIPS WITH ALPAGYM + OMNIDREAMS",
@@ -23282,5 +23255,26 @@
     "headline": "GOOGLE DEEPMIND GEMINI-BASED PLANASSIST GOES TO 12 MORE UK COUNCILS",
     "source": "@GoogleDeepMind",
     "url": "https://x.com/GoogleDeepMind/status/2116524000977285321"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-11-01 13:11:41 UTC",
+    "headline": "DEEPSEEK RELEASES PROTOTYPE AUTONOMOUS CODING AGENT TO CHALLENGE CLAUDE CODE \u2014 BLOOMBERG",
+    "source": "@business",
+    "url": "https://x.com/business/status/2116754642222616835"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-01 13:11:41 UTC",
+    "headline": "GOOGLE FLOWAGENT: 28,554 AGENT-WRITTEN CI TEST FIXES APPLIED IN PRODUCTION, 67% JUDGED CORRECT",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2116855559034912990"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-11-01 13:11:41 UTC",
+    "headline": "OPENAI TO PUT CHATGPT AND CODEX ON ONE SHARED TOKEN ALLOWANCE, STARTING WITH PLUS",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2116854778747875587"
   }
 ]
