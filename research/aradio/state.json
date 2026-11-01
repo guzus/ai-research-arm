@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-01T13:19:00Z",
-  "headline": "Mistral open-sources a trillion-parameter Large 4; guests say agentic attacks now cost cents per company",
+  "updated_at": "2026-11-01T15:32:00Z",
+  "headline": "Gemini 4 Carbon pricing surfaces, Qwen 4 and GPT-6.2 Astra look imminent, Anthropic IPO eyed for about two weeks out",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -9,11 +9,17 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-10-31T18:49:00Z",
+      "updated_at": "2026-11-01T15:32:00Z",
       "now": "Anthropic filed its S-1 and could list on Nasdaq as soon as November, possibly raising about $100B at a $1.5T to $2T valuation. On All-In, hosts said it has raised about $110B, lost under $10B, holds about $100B in cash, and has 250 customers spending over $10M. Revenue figures differ by source. FT reportedly says OpenAI cut its round to about $20B.",
-      "changed": "On All-In, hosts said the S-1 shows Anthropic raised about $110B in total, lost only $9B to $10B, and holds roughly $100B in cash, so it may need to raise just $80B to $100B.",
-      "watch": "Anthropic's pricing and listing date in November; whether OpenAI or MGX confirm the reduced round; quarterly growth in its largest customers.",
+      "changed": "On Latent Space, the host said Anthropic has filed and the IPO is expected in about two weeks at around two trillion dollars. The show described Opus 5.5 as launched the day before recording.",
+      "watch": "Anthropic's pricing and listing date; whether the two-week timing holds.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=MRQTlwcW-aQ",
+          "kind": "podcast",
+          "label": "Latent Space (Anthropic engineering and product)",
+          "at": "2026-10-27T15:14:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=p1Dy4e4ff0s",
           "kind": "podcast",
@@ -57,6 +63,10 @@
         {
           "at": "2026-10-31T18:49:00Z",
           "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk."
+        },
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
         }
       ]
     },
@@ -146,11 +156,23 @@
       "status": "developing",
       "importance": 4,
       "first_seen": "2026-10-31T14:48:00Z",
-      "updated_at": "2026-11-01T06:51:00Z",
-      "now": "Google announced Gemini 4 Carbon on Alphabet's earnings call. Relays put it first on Artificial Analysis v5.0 at 59 versus 58 for Claude Opus 5.5, and first on Mercor's APEX-Agents at 84.2% Pass@1. Access is gated to cyber defenders; no general availability, pricing or API date.",
-      "changed": "Google DeepMind says Genie 4, a world model built on Gemini, is rolling out as a research preview to trusted testers and is coming soon to Google AI Ultra.",
-      "watch": "A date for general availability, API pricing, and independent evals; any Anthropic or OpenAI response.",
+      "updated_at": "2026-11-01T15:32:00Z",
+      "now": "Google announced Gemini 4 Carbon on Alphabet's earnings call. Relays put it first on Artificial Analysis v5.0 at 59 versus 58 for Claude Opus 5.5, and first on Mercor's APEX-Agents. A relay reports intro API pricing of $2 and $10 per million tokens, rising to $4 and $20. Access is still gated to cyber defenders. Genie 4 adds audio.",
+      "changed": "A relay of Google's post puts Carbon API intro pricing at two and ten dollars per million tokens, rising to four and twenty. On a DeepMind podcast, the Genie 4 team described audio and Gemini in the loop.",
+      "watch": "Broader Carbon availability, confirmation of pricing on a Google page, independent evals, and Genie 4 API access.",
       "evidence": [
+        {
+          "url": "https://x.com/linktulu/status/2116885735684944155",
+          "kind": "ticket",
+          "label": "@linktulu on X (Carbon pricing relay)",
+          "at": "2026-11-01T00:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI",
+          "kind": "video",
+          "label": "Google for Developers (Genie 4)",
+          "at": "2026-10-27T15:14:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=sFfPkUJd_Jk",
           "kind": "video",
@@ -179,6 +201,10 @@
         {
           "at": "2026-11-01T06:51:00Z",
           "change": "Genie 4 world-model video adds a second Gemini-based product: trusted-tester preview now, Google AI Ultra soon."
+        },
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Carbon intro pricing reported via relay; Genie 4 transcript adds audio, Gemini steering and API plans."
         }
       ]
     },
@@ -236,6 +262,43 @@
         {
           "at": "2026-10-31T21:56:00Z",
           "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
+        }
+      ]
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Alibaba's Qwen 4 and OpenAI's GPT-6.2 Astra both look close",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-11-01T15:32:00Z",
+      "updated_at": "2026-11-01T15:32:00Z",
+      "now": "Unconfirmed: Alibaba's Qwen 4 is reportedly due the week of November 2, with model names in Qwen Code and a rumored one-million-token default context. Separately, a gpt-6.2-astra string reportedly shows in OpenAI Codex analytics. A reported Qwen-in-Apple-Intelligence China beta on November 4 is single-sourced.",
+      "changed": "Qwen 4 timing was restated as next week, and several accounts say a gpt-6.2-astra model string appeared in Codex analytics. Neither company has announced anything.",
+      "watch": "An Alibaba Qwen 4 release this week; any OpenAI post on GPT-6.2 Astra; Apple or Alibaba confirmation of a November 4 developer beta.",
+      "evidence": [
+        {
+          "url": "https://x.com/RagerrrYT/status/2116877919054397950",
+          "kind": "ticket",
+          "label": "@RagerrrYT on X (Qwen 4 relay)",
+          "at": "2026-11-01T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/pradeepXkapoor/status/2116882770190299219",
+          "kind": "ticket",
+          "label": "@pradeepXkapoor on X (GPT-6.2 Astra)",
+          "at": "2026-11-01T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/jakeisinvestor/status/2116884638060920988",
+          "kind": "ticket",
+          "label": "@jakeisinvestor on X (Qwen on Apple)",
+          "at": "2026-11-01T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
         }
       ]
     },

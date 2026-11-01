@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "id": "2026-11-01-1532",
+  "aired_at": "2026-11-01T15:32:00Z",
+  "headline": "Gemini 4 Carbon pricing surfaces, Qwen 4 and GPT-6.2 Astra look imminent, Anthropic IPO eyed for about two weeks out",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's thirty-two minutes past three PM UTC on Sunday, November first. This is ARA AI News, and the picture today is about pricing and launches that are close but not yet official."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The lead is Google's Gemini 4 Carbon, which now has a reported price. A relay of Google's own post says introductory API pricing matches Argon, at two dollars per million input tokens and ten dollars per million output tokens."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "And that rises to four dollars and twenty dollars after the intro period, with no end date given. This is a secondary relay and hasn't been checked against a Google pricing page."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The bigger catch is access. Carbon still sits behind a program for cyber defenders, and Google says broader access is coming as soon as possible, with no date."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Relays still put it first on the Artificial Analysis index, at fifty-nine against fifty-eight for Claude Opus five point five. Outsiders can't test that yet."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Also from Google, a DeepMind episode on Genie four, the world model. The team said it now generates audio alongside video, and that a Gemini model sits in the loop, thinking about how to respond to what the user does."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "They also pitched it for robotics, and the show notes say Genie is going into the API for the first time."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Now the next launches. Two models look close, but neither is official. Alibaba's Qwen four is reportedly due this week, with model names showing up in Qwen's code tools."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "One unchecked detail says those entries default to a one million token context window. A separate single-source report says Qwen will power Apple Intelligence in China, with a developer beta on November fourth."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "And on the OpenAI side, several accounts say a model string called GPT six point two Astra is appearing in Codex usage analytics. OpenAI hasn't said anything."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On Anthropic's IPO, a Latent Space episode said the company has filed and the listing is expected in about two weeks, at a valuation near two trillion dollars. That is the host's expectation, not a confirmed pricing date."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Remember what All-In said earlier. They read the filing as showing roughly one hundred ten billion dollars raised and about one hundred billion in cash, so the final raise may be smaller than headlines suggested."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The other threads were quiet. The chip selloff, the security story around stolen API keys, and Mistral's open trillion-parameter model have no new facts today."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "What to watch. First, whether Qwen four actually lands this week. Second, any OpenAI post on Astra. Third, whether Google opens Carbon beyond defenders. And fourth, Monday's market open after Thursday's chip rout."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's thirty-two minutes past three PM UTC on Sunday, November first. This is ARA AI News, and the picture today is about pricing and launches that are close but not yet official.",
+    "Speaker 2: [high_energy]The lead is Google's Gemini 4 Carbon, which now has a reported price. A relay of Google's own post says introductory API pricing matches Argon, at two dollars per million input tokens and ten dollars per million output tokens.",
+    "Speaker 1: And that rises to four dollars and twenty dollars after the intro period, with no end date given. This is a secondary relay and hasn't been checked against a Google pricing page.",
+    "Speaker 2: The bigger catch is access. Carbon still sits behind a program for cyber defenders, and Google says broader access is coming as soon as possible, with no date.",
+    "Speaker 1: Relays still put it first on the Artificial Analysis index, at fifty-nine against fifty-eight for Claude Opus five point five. Outsiders can't test that yet.",
+    "Speaker 2: Also from Google, a DeepMind episode on Genie four, the world model. The team said it now generates audio alongside video, and that a Gemini model sits in the loop, thinking about how to respond to what the user does.",
+    "Speaker 1: They also pitched it for robotics, and the show notes say Genie is going into the API for the first time.",
+    "Speaker 2: Now the next launches. Two models look close, but neither is official. Alibaba's Qwen four is reportedly due this week, with model names showing up in Qwen's code tools.",
+    "Speaker 1: One unchecked detail says those entries default to a one million token context window. A separate single-source report says Qwen will power Apple Intelligence in China, with a developer beta on November fourth.",
+    "Speaker 2: And on the OpenAI side, several accounts say a model string called GPT six point two Astra is appearing in Codex usage analytics. OpenAI hasn't said anything.",
+    "Speaker 1: On Anthropic's IPO, a Latent Space episode said the company has filed and the listing is expected in about two weeks, at a valuation near two trillion dollars. That is the host's expectation, not a confirmed pricing date.",
+    "Speaker 2: Remember what All-In said earlier. They read the filing as showing roughly one hundred ten billion dollars raised and about one hundred billion in cash, so the final raise may be smaller than headlines suggested.",
+    "Speaker 1: The other threads were quiet. The chip selloff, the security story around stolen API keys, and Mistral's open trillion-parameter model have no new facts today.",
+    "Speaker 2: What to watch. First, whether Qwen four actually lands this week. Second, any OpenAI post on Astra. Third, whether Google opens Carbon beyond defenders. And fourth, Monday's market open after Thursday's chip rout.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "gemini-4-carbon-frontier-race",
+    "next-model-launches-qwen-4-gpt-6-2-astra",
+    "anthropic-ipo-and-ai-funding"
+  ],
+  "threads": [
+    {
+      "slug": "gemini-4-carbon-frontier-race",
+      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
+      "status": "developing"
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Alibaba's Qwen 4 and OpenAI's GPT-6.2 Astra both look close",
+      "status": "developing"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://x.com/RagerrrYT/status/2116877919054397950",
+      "kind": "ticket",
+      "label": "@RagerrrYT on X (Qwen 4 relay)"
+    },
+    {
+      "url": "https://x.com/pradeepXkapoor/status/2116882770190299219",
+      "kind": "ticket",
+      "label": "@pradeepXkapoor on X (GPT-6.2 Astra)"
+    },
+    {
+      "url": "https://x.com/jakeisinvestor/status/2116884638060920988",
+      "kind": "ticket",
+      "label": "@jakeisinvestor on X (Qwen on Apple)"
+    },
+    {
+      "url": "https://x.com/linktulu/status/2116885735684944155",
+      "kind": "ticket",
+      "label": "@linktulu on X (Carbon pricing relay)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI",
+      "kind": "video",
+      "label": "Google for Developers (Genie 4)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=MRQTlwcW-aQ",
+      "kind": "podcast",
+      "label": "Latent Space (Anthropic engineering and product)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "create",
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra"
+    },
+    {
+      "op": "update",
+      "slug": "gemini-4-carbon-frontier-race"
+    },
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    }
+  ],
+  "warnings": [
+    "script[1]: unknown audio tag [/high_energy] stripped"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-01-1532.mp3",
+    "bytes": 921261,
+    "duration_s": 153.4
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "claude-sonnet-5p5-isolated",
+    "model": "claude-sonnet-5-5"
+  },
+  "inbox": {
+    "items": 14,
+    "kinds": {
+      "podcast": 3,
+      "ticket": 8,
+      "video": 3
+    }
+  }
+}
