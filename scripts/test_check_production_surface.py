@@ -135,11 +135,25 @@ class EvaluateTest(unittest.TestCase):
         self.assertTrue({"evidence-search-contract", "public-claims-contract"} <= names)
         self.assertTrue({"ua-googlebot", "ua-perplexity", "ua-claudebot-policy", "ua-gptbot-policy", "ua-ccbot-policy"} <= names)
 
+    def test_aradio_probes_pin_the_feed_link_not_the_title(self):
+        # Either side of a rename's deploy passes; the SPA shell never does.
+        probes = [probe for probe in cps.DEFAULT_PROBES if probe.name in ("aradio", "aradio-trailing-slash")]
+        self.assertEqual(2, len(probes))
+        headers = {"content-type": "text/html", "x-content-type-options": "nosniff",
+                   "cache-control": "public, max-age=0, must-revalidate"}
+        link = '<link rel="alternate" type="application/rss+xml" href="https://ara.guzus.xyz/aradio/feed.xml" />'
+        for probe in probes:
+            for title in ("Aradio: AI news on air", "ARA AI News"):
+                page = cps.Response(200, headers, f"<title>{title} -- ara</title>{link}")
+                self.assertFalse(cps.evaluate_response(probe, page).failed, (probe.name, title))
+            shell = cps.Response(200, headers, "<title>ara -- AI research arm</title>")
+            self.assertTrue(cps.evaluate_response(probe, shell).failed, probe.name)
+
 
 NOW = datetime(2026, 10, 31, 4, 17, tzinfo=timezone.utc)
-ROUTE = cps.Probe("aradio", "/aradio", content_type_prefix="text/html", body_contains="<title>ARA AI News")
+ROUTE = cps.Probe("aradio", "/aradio", content_type_prefix="text/html", body_contains="aradio/feed.xml")
 NOT_DEPLOYED = cps.Response(404, {"content-type": "text/html"}, "Not Found")
-DEPLOYED = cps.Response(200, {"content-type": "text/html"}, "<title>ARA AI News -- ara</title>")
+DEPLOYED = cps.Response(200, {"content-type": "text/html"}, '<link rel="alternate" href="https://ara.guzus.xyz/aradio/feed.xml" />')
 BROKEN = cps.Response(500, {"content-type": "text/html"}, "boom")
 HOME_OK = cps.Response(
     200,

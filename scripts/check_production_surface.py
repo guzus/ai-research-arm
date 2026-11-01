@@ -103,9 +103,13 @@ ROUTE_PROBES: tuple[Probe, ...] = (
         required_headers=HTML_HEADERS + (("x-robots-tag", "noindex, nofollow"),),
     ),
     # Generated static page (postbuild-seo.mjs), so the marker is route-specific:
-    # a homepage shell served under /aradio would still fail.
-    Probe("aradio", "/aradio", content_type_prefix="text/html", body_contains="<title>ARA AI News", required_headers=HTML_HEADERS),
-    Probe("aradio-trailing-slash", "/aradio/", content_type_prefix="text/html", body_contains="<title>ARA AI News", required_headers=HTML_HEADERS),
+    # a homepage shell served under /aradio would still fail. The marker is the
+    # page's <link rel="alternate"> to its podcast feed, not its <title>: the
+    # title is copy (the show was renamed), and a run between a renaming merge
+    # and its deploy would get the old title with a 200, which the deploy-race
+    # retry (404s only) does not wait out.
+    Probe("aradio", "/aradio", content_type_prefix="text/html", body_contains="aradio/feed.xml", required_headers=HTML_HEADERS),
+    Probe("aradio-trailing-slash", "/aradio/", content_type_prefix="text/html", body_contains="aradio/feed.xml", required_headers=HTML_HEADERS),
     Probe("manifest", "/research/manifest.json", content_type_prefix="application/json", body_contains='"generatedAt"'),
     Probe(
         "evidence-search-contract",
