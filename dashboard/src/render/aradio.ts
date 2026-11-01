@@ -196,10 +196,10 @@ export const ARADIO_FEED_PATH = '/aradio/feed.xml';
 /** The show art, the same file the feed and the lock screen use (a test pins them). */
 export const ARADIO_COVER_PATH = '/brand/aradio-cover.png';
 /**
- * The show on Spotify, `https://open.spotify.com/show/<id>`, once Spotify
- * lists it (docs/aradio.md, "Listing on Spotify"). Empty hides the button.
+ * The show on Spotify, `https://open.spotify.com/show/<id>` (listed
+ * 2026-11-01; docs/aradio.md, "Listing on Spotify"). Empty hides the button.
  */
-export const ARADIO_SPOTIFY_SHOW_URL = '';
+export const ARADIO_SPOTIFY_SHOW_URL = 'https://open.spotify.com/show/6XPmQwa4EfqXz7S3Vs1Owb';
 /** How far the skip buttons (and lock-screen skips without their own offset) jump. */
 export const ARADIO_JUMP_S = 15;
 /** The speeds the speed button cycles through. */
