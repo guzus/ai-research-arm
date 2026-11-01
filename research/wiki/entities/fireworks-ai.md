@@ -6,8 +6,9 @@ aliases: ["Fireworks", "Fireworks.ai", "Fireworks AI Inc.", "Ember-1", "Firework
 tags: [funding, inference-infra, series-d, ai-capex]
 description: AI inference-infrastructure company; Ember-1 is a Kimi K3 specialist the lab says keeps K3 quality with about 40% fewer tokens, after a $1.505B Series D at $17.5B.
 created_at: 2026-07-18
-timestamp: 2026-09-28T00:00:00Z
+timestamp: 2026-11-01T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-01", path: research/digest/2026-11-01-digest.md}
   - {title: "ARA daily digest 2026-09-28", path: research/digest/2026-09-28-digest.md}
   - {title: "ARA daily digest 2026-07-18", path: research/digest/2026-07-18-digest.md}
 ---
@@ -36,6 +37,15 @@ the [[ai-capex]] cycle.
   from training-side capex figures (TSMC, hyperscaler GPU orders) that
   otherwise dominate the capex narrative.
 
+## Named in Wiz's "Black October" list (2026-11-01)
+
+- Wiz lists Fireworks AI among **nine AI platforms breached in October**,
+  alongside Northflank, Railway, Warp, OpenCode and Lightning AI. The digest
+  relays this from a single secondhand summary of Wiz's numbers and gives no
+  Fireworks-specific scope, customer impact or company response. See
+  [[black-october-ai-platform-breaches]] and [[agentic-ai-security]] (ARA daily
+  digest 2026-11-01).
+
 ## Ember-1: a Kimi K3 specialist that spends fewer tokens (2026-09-28)
 
 - **Fireworks shipped Ember-1**, a [[moonshot-kimi-k3|Kimi K3]]
@@ -63,3 +73,5 @@ the [[ai-capex]] cycle.
 - **Competitive position.** How the round and valuation compare against
   other inference-serving platforms (e.g. [[openrouter]], which routes
   rather than serves inference directly) as the field consolidates.
+- **Breach scope.** What, if anything, Fireworks has said about the October
+  incident Wiz attributes to it.
