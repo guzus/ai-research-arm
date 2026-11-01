@@ -106,6 +106,30 @@ runs:
           exit 1
         fi
 
+        # SECRETS-IN-CONTAINER INTERIM (fail fast before any container runs).
+        #
+        # This action would pass the X session cookies (AUTH_TOKEN, CT0) and
+        # FIREWORKS_API_KEY into the container's environment. The container
+        # runs pi -- a coding agent with bash and default network egress -- on
+        # untrusted tweets, so a prompt-injected model could read those secrets
+        # (env, /proc) and POST them anywhere. The X cookies are a session
+        # takeover. The disposable clone contains the checkout; it does not
+        # contain the secrets.
+        #
+        # Closing this properly is a multi-component, separately-reviewed
+        # change, not a bolt-on: bird must go through the host Birdy daemon
+        # (its socket mounted read-only, cookies staying host-side), Fireworks
+        # through a host proxy that injects the key (pi points its fireworks
+        # provider baseUrl at the proxy with a dummy key), and the container
+        # must run on an egress-restricted network that reaches only those two.
+        # The pi tiers are manual-only comparison lanes and their Fireworks
+        # account is suspended, so they cannot produce output today anyway.
+        #
+        # Until that lands, refuse to run rather than expose the secrets. No
+        # container is ever created, so no secret reaches one.
+        echo "::error::The pi Twitter tiers are disabled: running pi on untrusted tweets with the X session cookies and the Fireworks key in its environment would let a prompt-injected model exfiltrate them (X account takeover). Re-enable only once bird goes through the host Birdy daemon socket and Fireworks through a host key-injecting proxy, with the container on an egress-restricted network. Refusing to run rather than expose secrets."
+        exit 1
+
         # The self-hosted runner is persistent. Keep every per-run artifact
         # scoped to this invocation and remove it on success, failure, timeout,
         # or cancellation. This cleanup is the other isolated runners' text with

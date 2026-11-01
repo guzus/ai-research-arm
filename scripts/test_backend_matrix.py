@@ -3541,6 +3541,40 @@ esac
                             "birdy-tool-log-path"):
                     self.assertEqual(cursor[key], call[key], key)
 
+    def test_pi_tiers_refuse_before_any_container_sees_a_secret(self):
+        """The pi tiers would pass the X cookies and the Fireworks key into a
+        prompt-injectable container. Until bird and Fireworks go through host
+        proxies on an egress-restricted network, the action fails fast before
+        it builds or runs any container, so no secret ever reaches one."""
+        run = yaml.safe_load((REPO_ROOT / ".github/actions/run-pi-container/action.yml")
+                             .read_text(encoding="utf-8"))["runs"]["steps"][0]["run"]
+        refusal = run.index('Refusing to run rather than expose secrets.')
+        self.assertLess(refusal, run.index("docker_cmd=(docker run"))
+        for secret in ("--env FIREWORKS_API_KEY", "--env AUTH_TOKEN", "--env CT0"):
+            self.assertLess(refusal, run.index(secret))
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bindir = root / "bin"
+            bindir.mkdir()
+            docker = bindir / "docker"
+            docker.write_text('#!/bin/bash\necho "$@" >> "$DOCKER_CALLS"\nexit 0\n',
+                              encoding="utf-8")
+            docker.chmod(0o755)
+            calls = root / "calls"
+            result = subprocess.run(
+                ["bash", "-c", run],
+                env={**os.environ, "PATH": f"{bindir}:/usr/bin:/bin",
+                     "DOCKER_CALLS": str(calls), "FIREWORKS_API_KEY": "fw-SECRET",
+                     "AUTH_TOKEN": "cookie-SECRET", "CT0": "ct0-SECRET",
+                     "GITHUB_WORKSPACE": tmp, "RUNNER_TEMP": tmp},
+                capture_output=True, text=True)
+            self.assertEqual(1, result.returncode)
+            self.assertIn("::error::The pi Twitter tiers are disabled", result.stdout)
+            # The docker binary is never invoked, so no container, no secret.
+            self.assertFalse(calls.exists(), calls.read_text() if calls.exists() else "")
+            for secret in ("fw-SECRET", "cookie-SECRET", "ct0-SECRET"):
+                self.assertNotIn(secret, result.stdout + result.stderr)
+
     def test_import_guard_keeps_the_bundle_ref_listing_out_of_the_log(self):
         """`git bundle verify` lists the refs a bundle advertises: bytes the
         container wrote, printed after workflow commands resume."""
