@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-11-01
+
+TOP STORIES:
+• Wiz: nine AI dev platforms breached in "Black October"; stolen API keys resold
+• OpenAI round cut to ~$20B at $1.25T (FT); only ~$11B in so far (WSJ)
+• Blackstone expects junk rating for Anthropic after IPO
+• xAI turns on Grok text watermarking
+
+KEY NUMBERS:
+• 1.7M Bedrock calls in 13h from one stolen key
+• 88K of 1.53M public agent skills tell agents to skip human checks
+• Up to 2x B200 perf/$ claimed for AMD MI355X on Kimi K3
+
+TRENDING: ChatGPT account-takeover exploit (HN, 293 pts)
+
+Full digest on GitHub.
