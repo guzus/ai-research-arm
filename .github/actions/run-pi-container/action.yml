@@ -106,6 +106,30 @@ runs:
           exit 1
         fi
 
+        # SECRETS-IN-CONTAINER INTERIM (fail fast before any container runs).
+        #
+        # This action would pass the X session cookies (AUTH_TOKEN, CT0) and
+        # FIREWORKS_API_KEY into the container's environment. The container
+        # runs pi -- a coding agent with bash and default network egress -- on
+        # untrusted tweets, so a prompt-injected model could read those secrets
+        # (env, /proc) and POST them anywhere. The X cookies are a session
+        # takeover. The disposable clone contains the checkout; it does not
+        # contain the secrets.
+        #
+        # Closing this properly is a multi-component, separately-reviewed
+        # change, not a bolt-on: bird must go through the host Birdy daemon
+        # (its socket mounted read-only, cookies staying host-side), Fireworks
+        # through a host proxy that injects the key (pi points its fireworks
+        # provider baseUrl at the proxy with a dummy key), and the container
+        # must run on an egress-restricted network that reaches only those two.
+        # The pi tiers are manual-only comparison lanes and their Fireworks
+        # account is suspended, so they cannot produce output today anyway.
+        #
+        # Until that lands, refuse to run rather than expose the secrets. No
+        # container is ever created, so no secret reaches one.
+        echo "::error::The pi Twitter tiers are disabled: running pi on untrusted tweets with the X session cookies and the Fireworks key in its environment would let a prompt-injected model exfiltrate them (X account takeover). Re-enable only once bird goes through the host Birdy daemon socket and Fireworks through a host key-injecting proxy, with the container on an egress-restricted network. Refusing to run rather than expose secrets."
+        exit 1
+
         # The self-hosted runner is persistent. Keep every per-run artifact
         # scoped to this invocation and remove it on success, failure, timeout,
         # or cancellation. This cleanup is the other isolated runners' text with
@@ -721,16 +745,19 @@ runs:
             post_sha="$agent_post_sha"
             if [ "$agent_post_sha" != "$PRE_SHA" ]; then
               if ! git merge-base --is-ancestor "$PRE_SHA" "$agent_post_sha"; then
+                printf "%s\n" not-descendant > .pi-refusal 2>/dev/null || true
                 echo "isolated pi commit does not descend from the pre-run HEAD" >&2
                 exit 1
               fi
               if [ "$RUN_MODE" = "canary" ]; then
+                printf "%s\n" canary-commit > .pi-refusal 2>/dev/null || true
                 echo "canary pi run created a commit" >&2
                 exit 1
               fi
 
               commit_count=$(git rev-list --count "$PRE_SHA..$agent_post_sha")
               if [ "$commit_count" -lt 1 ] || [ "$commit_count" -gt 8 ]; then
+                printf "%s\n" commit-count > .pi-refusal 2>/dev/null || true
                 echo "isolated pi commit chain must contain 1-8 commits; got $commit_count" >&2
                 exit 1
               fi
@@ -743,6 +770,7 @@ runs:
                 if [ "$observed_commit" != "$commit_oid" ] \
                   || [ "$observed_parent" != "$expected_parent" ] \
                   || [ -n "${extra_parent:-}" ]; then
+                  printf "%s\n" nonlinear > .pi-refusal 2>/dev/null || true
                   echo "isolated pi history must be a merge-free linear chain rooted at PRE_SHA" >&2
                   exit 1
                 fi
@@ -752,6 +780,7 @@ runs:
                   && IFS= read -r -d "" path; do
                   commit_path_count=$((commit_path_count + 1))
                   if [ "$commit_path_count" -gt 512 ]; then
+                    printf "%s\n" path-count > .pi-refusal 2>/dev/null || true
                     echo "isolated pi commit changes more than 512 paths" >&2
                     exit 1
                   fi
@@ -780,15 +809,18 @@ runs:
                       done <<< "$ALLOWED_PATHS"
                       ;;
                     canary)
+                      printf "%s\n" canary-commit > .pi-refusal 2>/dev/null || true
                       echo "canary pi run created a commit: $status $(shown_path "$path")" >&2
                       exit 1
                       ;;
                     *)
+                      printf "%s\n" unknown-mode > .pi-refusal 2>/dev/null || true
                       echo "unknown pi run mode during commit normalization: $RUN_MODE" >&2
                       exit 1
                       ;;
                   esac
                   if [ "$path_allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
+                    printf "%s\n" forbidden-path > .pi-refusal 2>/dev/null || true
                     echo "$RUN_MODE pi intermediate commit changed forbidden path/status: $status $(shown_path "$path")" >&2
                     exit 1
                   fi
@@ -797,6 +829,7 @@ runs:
                   read -r tree_mode tree_type tree_oid trailing <<< "$tree_entry"
                   if [ "$tree_mode" != "100644" ] || [ "$tree_type" != "blob" ] \
                     || [ "$(git cat-file -s "$tree_oid" 2>/dev/null || echo 99999999)" -gt 5242880 ]; then
+                    printf "%s\n" bad-blob > .pi-refusal 2>/dev/null || true
                     echo "pi intermediate path is not a <=5 MiB regular non-executable blob: $(shown_path "$path")" >&2
                     exit 1
                   fi
@@ -805,6 +838,7 @@ runs:
                 expected_parent="$commit_oid"
               done < <(git rev-list --reverse "$PRE_SHA..$agent_post_sha")
               if [ "$expected_parent" != "$agent_post_sha" ]; then
+                printf "%s\n" linear-mismatch > .pi-refusal 2>/dev/null || true
                 echo "isolated pi linear history validation did not reach agent HEAD" >&2
                 exit 1
               fi
@@ -858,6 +892,24 @@ runs:
         stop_token=""
         # CONTAINER_RUN_END
 
+        # CONTAINER_REFUSAL_CODE_BEGIN
+        # When the container tail refuses, its reason goes to the 0600
+        # output file; the host sees only a status mismatch. Read the
+        # fixed code the tail left in the clone, accept it only from a
+        # closed set, and surface it below. No untrusted text crosses.
+        refusal_code=none
+        refusal_file="$isolated_workspace/.pi-refusal"
+        if [ "$agent_status" -ne 0 ] && [ -f "$refusal_file" ] && [ ! -L "$refusal_file" ] \
+          && [ "$(wc -c < "$refusal_file")" -le 64 ]; then
+          case "$(tr -d '\r\n' < "$refusal_file")" in
+            not-descendant|canary-commit|commit-count|nonlinear|path-count|unknown-mode|forbidden-path|bad-blob|linear-mismatch) refusal_code=$(tr -d '\r\n' < "$refusal_file") ;;
+          esac
+        fi
+        if [ "$refusal_code" != none ]; then
+          echo "::notice title=pi import refusal::code=${refusal_code}"
+        fi
+        # CONTAINER_REFUSAL_CODE_END
+
         # PI_RESULT_SUMMARY_BEGIN
         # .pi-result.txt is the attempt log the container copied (the model
         # reply or the provider error): untrusted, never echoed, and read only
@@ -907,10 +959,10 @@ runs:
         artifact_count=${artifact_line#artifact_count=}
         retry_reason=${reason_line#retry_reason=}
         if [ "$last_agent_status" -ne "$agent_status" ]; then
-          echo "::error::pi model status does not match the container exit status."
+          echo "::error::pi model status does not match the container exit status (refusal=${refusal_code})."
           exit 1
         fi
-        echo "::notice title=pi attempt telemetry::attempts=${attempt_count} last_status=${last_agent_status} translation_segment_calls=${translation_segment_calls} artifacts=${artifact_count} retry_reason=${retry_reason}"
+        echo "::notice title=pi attempt telemetry::attempts=${attempt_count} last_status=${last_agent_status} translation_segment_calls=${translation_segment_calls} artifacts=${artifact_count} retry_reason=${retry_reason} refusal=${refusal_code}"
         # TRUSTED_ATTEMPT_TELEMETRY_END
 
         # TRUSTED_IMPORT_GUARD_BEGIN
