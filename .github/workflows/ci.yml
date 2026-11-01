@@ -78,9 +78,15 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+# Each job times out at about 3-4x its observed p95, with a 5-minute floor.
+# Over 110 runs to 2026-10-31 those p95s were: actionlint 23 s, dashboard
+# 43 s, production-image 55 s, python-scripts 153 s, hooker-telemetry 21 s.
+# A hung step then fails fast instead of holding the job for GitHub's
+# 360-minute default; a production-image build hung for 24 min on 2026-10-31.
 jobs:
   actionlint:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -92,6 +98,7 @@ jobs:
 
   dashboard:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     defaults:
       run:
         working-directory: dashboard
@@ -124,7 +131,7 @@ jobs:
           # path with its own LFS toggle.
           lfs: false
 
-      # Vite 8 requires Node.js >= 20.19. The self-hosted runner ships Node 18,
+      # Vite 8 requires Node.js >= 20.19. A runner image can ship an older Node,
       # and `bun run build` shells out to `vite build` which uses the system
       # node shebang. Provision Node 22 explicitly so Vite has the runtime it
       # needs. Keep ahead of Vite's minimum to leave headroom.
@@ -153,6 +160,7 @@ jobs:
     # Pull requests contain untrusted code. Keep the full Docker build/run on a
     # disposable GitHub-hosted runner, never the persistent production runner.
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -163,6 +171,7 @@ jobs:
 
   python-scripts:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -217,6 +226,7 @@ jobs:
     needs: [actionlint, dashboard, production-image, python-scripts]
     if: always()
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7

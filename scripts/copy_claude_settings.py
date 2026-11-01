@@ -11,9 +11,10 @@ file, limited to a reviewable subset:
   - `Bash(git add <dir>/*)`, which stages paths under <dir>; the lane must
     also hold `Edit(<dir>/**)`, so it can only stage what it may write.
   - `Bash(git commit -m *)`, a plain `git commit -m "<message>"`.
-  - `Bash(curl -s "https://<host>/<path>?*)`, one fixed URL prefix on a host
-    in CURL_HOSTS; the query may not carry a shell metacharacter. There is no
-    `-L`: curl never follows a redirect off that host.
+  - `Bash(curl -q -s "https://<host>/<path>?*)`, one fixed URL prefix on a
+    host in CURL_HOSTS; the query may not carry a shell metacharacter. `-q`
+    comes first, so curl reads no curlrc, and there is no `-L`: curl never
+    follows a redirect off that host.
   - `Bash(uv run python scripts/<name>.py)`, the same with one fixed
     `--flag`, or with ` "*` for one quoted plain-text argument: an existing
     repository script and nothing else.
@@ -60,7 +61,7 @@ RULE = re.compile(r"^(Read|Edit)\(([A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*)(/\*\*)?
 GIT_ADD_RULE = re.compile(r"^Bash\(git add ([A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*)/\*\)$")
 GIT_COMMIT_RULE = "Bash(git commit -m *)"
 CURL_RULE = re.compile(
-    r'^Bash\(curl -s "(https://[a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,}'
+    r'^Bash\(curl -q -s "(https://[a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,}'
     r'(?:/[A-Za-z0-9_.-]+)*/?\?)\*\)$'
 )
 UV_RULE = re.compile(r'^Bash\((uv run python scripts/([a-z0-9_]+)\.py)( --[a-z][a-z-]*| "\*)?\)$')
@@ -145,6 +146,7 @@ def validate(config: object) -> tuple[dict, str]:
 
     kinds: set[str] = set()
     edit_prefixes: set[str] = set()
+    read_prefixes: set[str] = set()
     git_add_dirs: list[str] = []
     for rule in allow:
         if rule == GLOB_RULE or rule == GIT_COMMIT_RULE:
@@ -159,6 +161,8 @@ def validate(config: object) -> tuple[dict, str]:
             kinds.add(match.group(1))
             if match.group(1) == "Edit" and match.group(3):
                 edit_prefixes.add(target)
+            if match.group(1) == "Read" and match.group(3):
+                read_prefixes.add(target)
         elif git_add:
             target = git_add.group(1)
             git_add_dirs.append(target)
@@ -193,8 +197,9 @@ def validate(config: object) -> tuple[dict, str]:
             )
     if GIT_COMMIT_RULE in kinds and "git add" not in kinds:
         raise ValueError(f"{GIT_COMMIT_RULE} needs a Bash(git add <dir>/*) rule")
-    if GLOB_RULE in kinds and "Read" not in kinds:
-        raise ValueError("Glob needs a Read(path) rule to list under")
+    if GLOB_RULE in kinds and not read_prefixes:
+        raise ValueError("Glob needs a Read(<dir>/**) rule to list under: the guard lists "
+                         "only directories under a Read prefix")
     shell = bool({"git add", GIT_COMMIT_RULE, "curl", "uv"} & kinds)
     baseline = SHELL_BASELINE_DENY if shell else BASELINE_DENY
     missing = [rule for rule in baseline if rule not in deny]
@@ -289,10 +294,13 @@ def addendum(allow: list[str]) -> str:
         lines.append(f"- Write files only at or under: {paths(writes)}. Read an existing "
                      "file before you replace it.")
     if glob:
-        example = next(item.rstrip("/") for item in reads if item.endswith("/"))
+        # validate() requires a Read directory for Glob; an unvalidated list
+        # without one still gets the rule, just no example directory.
+        example = next((item.rstrip("/") for item in reads if item.endswith("/")), None)
         lines.append("- Glob lists a directory under a Read path; use it instead of `ls` or "
-                     f"`find`. Give `path` (for example `{example}`) and a plain `pattern` "
-                     "such as `*` or `*.md`; no braces, `[...]` classes or `..`.")
+                     "`find`. Give `path`" + (f" (for example `{example}`)" if example else "")
+                     + " and a plain `pattern` such as `*` or `*.md`; no braces, `[...]` "
+                     "classes or `..`.")
     shell = stage_dirs or commit or fetches or runs
     if shell:
         lines.append("- Bash runs one command per call, on one line, in the foreground, and "
@@ -307,7 +315,7 @@ def addendum(allow: list[str]) -> str:
             if stage_dirs:
                 lines.append('  - `git add <path> && git commit -m "<message>"`')
         for prefix in fetches:
-            lines.append(f'  - `curl -s "{prefix}<query>"`; the query may use only letters, '
+            lines.append(f'  - `curl -q -s "{prefix}<query>"`; the query may use only letters, '
                          "digits and `_=&+:.%,()/@-`, and nothing may follow the closing quote")
         for run in runs:
             lines.append(f"  - `{run}`" + ("; the text may use only letters, digits, spaces "

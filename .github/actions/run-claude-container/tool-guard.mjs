@@ -33,8 +33,9 @@
 // Rule grammar, kept identical to scripts/copy_claude_settings.py: `Read(p)`
 // or `Edit(p)` on a clean workspace-relative path, optionally ending in `/**`
 // (an Edit rule governs the Write tool); `Glob`; `Bash(git add <dir>/*)`;
-// `Bash(git commit -m *)`; `Bash(curl -s "https://<host>/<path>?*)` on a host
-// in CURL_HOSTS, never following a redirect; `Bash(uv run python
+// `Bash(git commit -m *)`; `Bash(curl -q -s "https://<host>/<path>?*)` on a
+// host in CURL_HOSTS (`-q` first, so no curlrc is read; no redirect is
+// followed); `Bash(uv run python
 // scripts/<name>.py)`, optionally with one fixed ` --flag` or ` "*` (one
 // quoted plain-text argument). Anything else fails closed. Claude Code still
 // applies its own allow and deny rules after this hook defers, so both layers
@@ -48,7 +49,7 @@ import path from "node:path";
 const RULE = /^(Read|Edit)\(([A-Za-z0-9_.-]+(?:\/[A-Za-z0-9_.-]+)*)(\/\*\*)?\)$/;
 const GIT_ADD_RULE = /^Bash\(git add ([A-Za-z0-9_.-]+(?:\/[A-Za-z0-9_.-]+)*)\/\*\)$/;
 const GIT_COMMIT_RULE = "Bash(git commit -m *)";
-const CURL_RULE = /^Bash\(curl -s "(https:\/\/[a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,}(?:\/[A-Za-z0-9_.-]+)*\/?\?)\*\)$/;
+const CURL_RULE = /^Bash\(curl -q -s "(https:\/\/[a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,}(?:\/[A-Za-z0-9_.-]+)*\/?\?)\*\)$/;
 const UV_RULE = /^Bash\((uv run python scripts\/([a-z0-9_]+)\.py)( --[a-z][a-z-]*| "\*)?\)$/;
 const GLOB_RULE = "Glob";
 // The only hosts a curl rule may name, kept identical to CURL_HOSTS in
@@ -65,7 +66,7 @@ const GLOB_PATTERN = /^[A-Za-z0-9_.*?-]+(?:\/[A-Za-z0-9_.*?-]+)*$/;
 // literally.
 const STAGE_PATH = /^[A-Za-z0-9_.][A-Za-z0-9_.-]*(?:\/[A-Za-z0-9_.-]+)*\/?$/;
 const COMMIT_COMMAND = /^git commit -m (?:"[A-Za-z0-9 :._,()#+\/@-]{1,200}"|'[A-Za-z0-9 :._,()#+\/@-]{1,200}')(?: \|\| echo "No changes")?$/;
-const CURL_COMMAND = /^curl -s "([^"]*)"$/;
+const CURL_COMMAND = /^curl -q -s "([^"]*)"$/;
 const URL_QUERY = /^[A-Za-z0-9_=&+:.%,()\/@-]*$/;
 const UV_ARGUMENT = /^[A-Za-z0-9 ._,:()\/+'-]{1,200}$/;
 // The closed sets the denial log may hold; scripts/summarize_claude_result.py
@@ -333,7 +334,7 @@ function checkGitCommit(policy, segment) {
 }
 
 function checkCurl(policy, command) {
-  const forms = policy.curl.map((rule) => `curl -s "${rule.prefix}<query>"`).join(" or ");
+  const forms = policy.curl.map((rule) => `curl -q -s "${rule.prefix}<query>"`).join(" or ");
   if (!policy.curl.length) {
     deny("command_not_allowed", "this lane does not run curl");
   }
@@ -354,8 +355,8 @@ function checkCurl(policy, command) {
     deny("shell_metachar", `no pipes, redirects or other shell syntax: run ${forms} alone `
       + "and read its output");
   }
-  if (!flags || flags[1] !== " -s") {
-    deny("curl_flag", `curl takes only -s (no -L or other flags): ${forms}`);
+  if (!flags || flags[1] !== " -q -s") {
+    deny("curl_flag", `curl takes exactly -q -s, in that order (no -L or other flags): ${forms}`);
   }
   deny("curl_form", `curl takes one double-quoted URL with nothing after it: ${forms}`);
 }

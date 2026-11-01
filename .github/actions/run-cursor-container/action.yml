@@ -124,9 +124,11 @@ inputs:
     default: ''
   output-file:
     description: >-
-      Host path to tee the agent's stdout to, for lanes that assert on what the
-      agent said (the canary greps for its token). Written on the host, so it
-      needs no mount and the container cannot tamper with it.
+      Host path to tee the container's stdout to, followed by the typed result
+      summary line (status and reply hash, never the reply), for lanes that
+      assert on what the agent said: the canary checks its token's hash with
+      scripts/check_cursor_canary.py. Written on the host, so it needs no
+      mount and the container cannot tamper with it.
     required: false
     default: ''
 
@@ -172,6 +174,9 @@ runs:
         isolated_workspace=""
         image=""
         container_name=""
+        container_job=""
+        build_job=""
+        stop_token=""
         staged_prompt=""
         cleanup() {
           exit_code=$?
@@ -180,10 +185,45 @@ runs:
           # already stopping Docker. Do not let the second signal interrupt
           # removal of the secret-bearing container.
           trap '' TERM INT
-          if [ -n "$container_name" ] \
-            && docker container inspect "$container_name" >/dev/null 2>&1; then
-            timeout 30s docker rm -f "$container_name" >/dev/null 2>&1 \
-              || echo "::warning::Failed to remove Cursor container $container_name"
+          # A cancelled run gets here while its container still runs: the
+          # container is a background job (CONTAINER_RUN), so no trap waits it
+          # out. Remove it first, and again while that job lives (for up to 7 s,
+          # inside the runner's 10 s from INT to SIGKILL), in case the signal
+          # landed before Docker had created the container. The pass after the
+          # job is gone still removes a container it left behind.
+          if [ -n "$container_name" ]; then
+            removal_deadline=$((SECONDS + 7))
+            while :; do
+              job_alive=false
+              if [ -n "${container_job:-}" ] && kill -0 "$container_job" 2>/dev/null; then
+                job_alive=true
+              fi
+              if docker container inspect "$container_name" >/dev/null 2>&1; then
+                timeout 30s docker rm -f "$container_name" >/dev/null 2>&1 \
+                  || echo "::warning::Failed to remove Cursor container $container_name"
+              fi
+              if [ "$job_alive" != "true" ] || [ "$SECONDS" -ge "$removal_deadline" ]; then
+                break
+              fi
+              sleep 0.5
+            done
+          fi
+          # The secret-bearing container is gone; only now let the job log take
+          # workflow commands again, so a model still writing to its PID 1
+          # stdout during cancellation cannot reach the log as the window
+          # reopens. (The stdout redirect already keeps it out; this is the
+          # ordering half of the same guarantee.)
+          if [ -n "${stop_token:-}" ]; then
+            echo "::${stop_token}::"
+          fi
+          # A cancelled build is stopped before its image is removed, so the
+          # image cannot appear after cleanup has looked for it.
+          if [ -n "${build_job:-}" ] && kill -0 "$build_job" 2>/dev/null; then
+            kill -TERM "$build_job" 2>/dev/null || true
+            for _ in 1 2 3 4 5 6; do
+              kill -0 "$build_job" 2>/dev/null || break
+              sleep 0.5
+            done
           fi
           if [ -n "$image" ] && docker image inspect "$image" >/dev/null 2>&1; then
             docker image rm -f "$image" >/dev/null 2>&1 \
@@ -388,9 +428,15 @@ runs:
         fi
         # TRUSTED_AGENT_INPUT_GUARD_END
 
-        build_dir="${RUNNER_TEMP:-/tmp}/cursor-container-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        # A per-invocation suffix (random tail) keeps two matrix legs or
+        # dispatch steps of one run from sharing a build directory, workspace,
+        # image tag, or container name on the persistent runner.
+        run_suffix="${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-${GITHUB_JOB:-job}-$(od -An -N4 -tx1 /dev/urandom | tr -d ' \n')"
+        build_dir="${RUNNER_TEMP:-/tmp}/cursor-container-${run_suffix}"
         rm -rf "$build_dir"
-        mkdir -p "$build_dir"
+        # 0700: the files built up in here (the container output, result
+        # summaries, import staging) are for this runner account only.
+        mkdir -m 700 -p -- "$build_dir"
         generated_cursor_config="$build_dir/cursor.cli-config.json"
         /usr/bin/python3 -I scripts/copy_cursor_config.py \
           "$GITHUB_WORKSPACE/$CURSOR_CONFIG_REL" \
@@ -500,8 +546,11 @@ runs:
           exit 1
         fi
         pre_sha=$("${host_git[@]}" rev-parse HEAD)
-        isolated_workspace="${RUNNER_TEMP:-/tmp}/cursor-workspace-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
+        isolated_workspace="${RUNNER_TEMP:-/tmp}/cursor-workspace-${run_suffix}"
         rm -rf "$isolated_workspace"
+        # The container writes into this clone; keep it private to this
+        # runner account. git clones into an existing empty directory.
+        mkdir -m 700 -- "$isolated_workspace"
         env GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
           GIT_NO_REPLACE_OBJECTS=1 GIT_LFS_SKIP_SMUDGE=1 \
           git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
@@ -622,8 +671,8 @@ runs:
         WORKDIR /workspace
         EOF
 
-        image="ara-cursor-agent:${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}"
-        container_name="ara-cursor-${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-${GITHUB_JOB:-job}"
+        image="ara-cursor-agent:${run_suffix}"
+        container_name="ara-cursor-${run_suffix}"
         case "$container_name" in
           *[!A-Za-z0-9_.-]*)
             echo "::error::Unsafe run-scoped Cursor container name: $container_name"
@@ -635,7 +684,38 @@ runs:
           exit 1
         fi
         cp "$GITHUB_ACTION_PATH/birdy-fast" "$build_dir/birdy-fast"
-        docker build --pull -t "$image" "$build_dir"
+        # BuildKit can keep building after its client is killed (Docker 29.x),
+        # tagging ara-<adapter>-agent:<run> tens of seconds after a cancelled
+        # job's cleanup looked for the image. Before building this run's image,
+        # drop this adapter's tags from OTHER runs so they do not accumulate on
+        # the persistent runner. A tag goes only once its image is older than
+        # the longest timeout of any job that runs these actions (a test pins
+        # it), so a run still in progress on a runner sharing this daemon keeps
+        # its image, and rm without -f refuses an image a container uses.
+        # Sibling legs of this run and attempt share the kept prefix; any
+        # inspect or parse failure keeps the tag.
+        image_repo="${image%%:*}"
+        image_keep_prefix="${GITHUB_RUN_ID:-local}-${GITHUB_RUN_ATTEMPT:-1}-"
+        image_stale_minutes=360
+        image_stale_before=$(( $(date +%s) - image_stale_minutes * 60 ))
+        while IFS= read -r stale_image; do
+          [ -n "$stale_image" ] || continue
+          case "${stale_image#"$image_repo":}" in
+            "$image_keep_prefix"*) continue ;;
+          esac
+          stale_created=$(docker image inspect --format '{{.Created}}' "$stale_image" 2>/dev/null) || continue
+          [[ "$stale_created" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$ ]] || continue
+          stale_epoch=$(date -d "$stale_created" +%s 2>/dev/null) || continue
+          if [ "$stale_epoch" -lt "$image_stale_before" ]; then
+            docker image rm "$stale_image" >/dev/null 2>&1 || true
+          fi
+        done < <(docker images --format '{{.Repository}}:{{.Tag}}' "$image_repo" 2>/dev/null || true)
+        # Bash runs a trap only after a foreground command exits, so build in
+        # the background: a cancelled build still reaches cleanup.
+        docker build --pull -t "$image" "$build_dir" &
+        build_job=$!
+        wait "$build_job"
+        build_job=""
 
         # Optional mounts / env, assembled as arrays so empty values never
         # collapse into a stray argument.
@@ -712,7 +792,7 @@ runs:
             export GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null \
               GIT_NO_REPLACE_OBJECTS=1
             git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
-              -c core.attributesFile=/dev/null reset --hard "$PRE_SHA"
+              -c core.attributesFile=/dev/null reset -q --hard "$PRE_SHA"
             if [ "$(git -c core.fsmonitor=false -c core.hooksPath=/dev/null \
               -c core.attributesFile=/dev/null rev-parse HEAD)" != "$PRE_SHA" ]; then
               echo "isolated Cursor checkout does not match pre-run HEAD" >&2
@@ -749,7 +829,9 @@ runs:
             # host-shell syntax error (Cursor CLI Canary run 31993098610).
             # Inside the outer singles these doubles stay literal and
             # re-quote correctly for the container.
-            cursor_fatal_pattern="(Invalid API key|API key is invalid|Unauthorized|authentication failed|usage limit|Insufficient (balance|credits)|402 Payment)"
+            cursor_fatal_keywords="(Invalid API key|API key is invalid|Unauthorized|authentication failed|usage limit|Insufficient balance|Insufficient credits|402 Payment)"
+            cursor_fatal_pattern="$cursor_fatal_keywords"
+            rm -f -- .cursor-fatal
             model_budget_seconds=$((AGENT_TIMEOUT_MINUTES * 60))
             model_started_seconds=$SECONDS
             attempt_count=0
@@ -793,13 +875,16 @@ runs:
                   "$(cat /tmp/cursor-prompt.md)" > "$attempt_log" 2>&1 &
               fi
               agent_pid=$!
-              tail -n +1 -f "$attempt_log" --pid "$agent_pid" 2>/dev/null &
-              tail_pid=$!
               while kill -0 "$agent_pid" 2>/dev/null; do
                 sleep 5
-                fatal=$(grep -m1 -oiE "$cursor_fatal_pattern" "$attempt_log" 2>/dev/null | cut -c1-300)
+                fatal=$(grep -m1 -oiE "$cursor_fatal_pattern" "$attempt_log" 2>/dev/null \
+                  | grep -m1 -oiE "${cursor_fatal_keywords}\$" | head -n 1)
                 if [ -n "$fatal" ]; then
-                  echo "::error::Cursor CLI returned an unrecoverable error; aborting this attempt instead of waiting out the ${remaining_seconds}s timeout: ${fatal}"
+                  # Record only the fixed keyword in the clone; the host
+                  # re-announces it (CURSOR_FATAL_NOTICE), because this echo
+                  # now lands in the host output file, not the job log.
+                  printf "%s\n" "$fatal" > .cursor-fatal 2>/dev/null || true
+                  echo "Cursor CLI returned an unrecoverable error; aborting this attempt instead of waiting out the ${remaining_seconds}s timeout."
                   kill -TERM "$agent_pid" 2>/dev/null
                   for _ in 1 2 3 4 5 6 7 8 9 10; do
                     kill -0 "$agent_pid" 2>/dev/null || break
@@ -811,11 +896,6 @@ runs:
               done
               wait "$agent_pid"
               agent_status=$?
-              # Tear the streamer down explicitly rather than trusting
-              # `tail --pid` to notice; an unreaped tail keeps this step
-              # stdout open and would hang the job it was meant to shorten.
-              kill -TERM "$tail_pid" 2>/dev/null
-              wait "$tail_pid" 2>/dev/null
               set -e
 
               segment_calls=$(grep -cF "translation_segment {" "$attempt_log" || true)
@@ -831,18 +911,10 @@ runs:
                   artifact_count=$((artifact_count + 1))
                 fi
               done <<< "$RETURN_ARTIFACTS"
-              # Flush the attempt log after the child exits. tail --pid
-              # can miss a fully-buffered write that lands as the process
-              # dies (canary 31998429963: status=0 but the token never
-              # reached OUTPUT_FILE). Canary needs that text on stdout
-              # for the token assert; failures and zero-artifact exits
-              # need it for diagnosis. Production successes stay
-              # single-streamed.
-              if [ "$RUN_MODE" = "canary" ] || [ "$agent_status" -ne 0 ] \
-                || [ "$artifact_count" -eq 0 ]; then
-                echo "Cursor attempt ${attempt_count} log (status=${agent_status}):"
-                cat -- "$attempt_log" || true
-              fi
+              # Nothing the CLI printed is echoed. In text mode the attempt
+              # log is the model final reply or the CLI error text, and
+              # Actions logs are public: the host prints only the typed
+              # fields of CURSOR_RESULT_SUMMARY, a hash for the reply.
               echo "Cursor attempt ${attempt_count}: status=${agent_status} translation_segment_calls=${segment_calls} artifacts=${artifact_count} remaining_seconds=${remaining_seconds}"
 
               if [ "$AGENT_LANE" = "generative-research-ko" ] \
@@ -857,6 +929,16 @@ runs:
               fi
               break
             done
+
+            # Hand the last attempt log to the host as untrusted data, for
+            # CURSOR_RESULT_SUMMARY only. Anything the model left at this path
+            # is removed first, and the copy is capped at the 1 MiB the host
+            # accepts. No step here may fail: errexit is on and this copy
+            # must never change the run status.
+            rm -rf -- .cursor-result.txt || true
+            if [ -f "${attempt_log:-}" ] && [ ! -L "${attempt_log:-}" ]; then
+              head -c 1048576 -- "$attempt_log" > .cursor-result.txt || true
+            fi
 
             # The model child is gone before this fixed-format file is
             # replaced. The host still validates every field before logging
@@ -905,6 +987,7 @@ runs:
             # only the normalized commit and its final reachable blobs;
             # intermediate-only objects never cross into the real checkout.
             # TRUSTED_COMMIT_NORMALIZATION_BEGIN
+            shown_path() { printf "%s" "$1" | LC_ALL=C tr -c "[:print:]" "?"; }
             agent_post_sha=$(git rev-parse HEAD)
             post_sha="$agent_post_sha"
             if [ "$agent_post_sha" != "$PRE_SHA" ]; then
@@ -968,7 +1051,7 @@ runs:
                       done <<< "$ALLOWED_PATHS"
                       ;;
                     canary)
-                      echo "canary Cursor run created a commit: $status $path" >&2
+                      echo "canary Cursor run created a commit: $status $(shown_path "$path")" >&2
                       exit 1
                       ;;
                     *)
@@ -977,7 +1060,7 @@ runs:
                       ;;
                   esac
                   if [ "$path_allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
-                    echo "$RUN_MODE Cursor intermediate commit changed forbidden path/status: $status $path" >&2
+                    echo "$RUN_MODE Cursor intermediate commit changed forbidden path/status: $status $(shown_path "$path")" >&2
                     exit 1
                   fi
 
@@ -985,7 +1068,7 @@ runs:
                   read -r tree_mode tree_type tree_oid trailing <<< "$tree_entry"
                   if [ "$tree_mode" != "100644" ] || [ "$tree_type" != "blob" ] \
                     || [ "$(git cat-file -s "$tree_oid" 2>/dev/null || echo 99999999)" -gt 5242880 ]; then
-                    echo "Cursor intermediate path is not a <=5 MiB regular non-executable blob: $path" >&2
+                    echo "Cursor intermediate path is not a <=5 MiB regular non-executable blob: $(shown_path "$path")" >&2
                     exit 1
                   fi
                 done < <(git diff-tree --no-commit-id --name-status \
@@ -1015,15 +1098,54 @@ runs:
         # cannot rewrite what the lane asserts on. Capture the container status
         # instead of exiting immediately: the trusted host must validate and,
         # when safe, import a writer commit even if Cursor timed out afterward.
+        # CONTAINER_RUN_BEGIN
+        # The container runs as a BACKGROUND job: bash runs a trap only after a
+        # foreground command exits, so a cancelled job used to wait the
+        # container out and lose cleanup to the runner's SIGKILL. `wait`
+        # returns at once on INT or TERM, and the EXIT trap removes the named
+        # container before it resumes workflow commands.
+        #
+        # The container's stdout and stderr go to a host file, never the job
+        # log. A shell-capable model can write straight to its PID 1 stdout
+        # (/proc/1/fd/1), so suspending workflow commands does not contain its
+        # output on its own; this redirect does, and the typed summary below is
+        # all that reaches the log. The stop-commands window stays as defense
+        # in depth, and its token is fresh and never enters the container.
+        container_out="${OUTPUT_FILE:-$build_dir/container-output.log}"
+        # The file holds whatever the container printed and a caller's
+        # output file sits outside the 0700 build directory: create it
+        # private to this runner account before the container starts.
+        ( umask 077 && : > "$container_out" )
+        chmod 600 -- "$container_out"
+        stop_token=$(od -An -N16 -tx1 /dev/urandom | tr -d ' \n')
+        echo "::stop-commands::${stop_token}"
         set +e
-        if [ -n "$OUTPUT_FILE" ]; then
-          "${docker_cmd[@]}" | tee "$OUTPUT_FILE"
-          agent_status=${PIPESTATUS[0]}
-        else
-          "${docker_cmd[@]}"
-          agent_status=$?
-        fi
+        "${docker_cmd[@]}" >"$container_out" 2>&1 &
+        container_job=$!
+        wait "$container_job"
+        agent_status=$?
         set -e
+        echo "::${stop_token}::"
+        stop_token=""
+        # CONTAINER_RUN_END
+
+        # CURSOR_FATAL_NOTICE_BEGIN
+        # Workflow commands were stopped while the container ran, so its fatal
+        # abort annotation was inert. Re-announce it from the keyword file:
+        # only an exact fixed keyword (the container's cursor_fatal_keywords)
+        # is printed, never free text, and the run status is untouched.
+        fatal_file="$isolated_workspace/.cursor-fatal"
+        # Only for a failed run: the model can leave this file behind on
+        # a green one, and a passing step must not show a fatal error.
+        if [ "$agent_status" -ne 0 ] && [ -f "$fatal_file" ] && [ ! -L "$fatal_file" ] \
+          && [ "$(wc -c < "$fatal_file")" -le 128 ]; then
+          fatal_keyword=$(grep -m1 -xiE '(Invalid API key|API key is invalid|Unauthorized|authentication failed|usage limit|Insufficient balance|Insufficient credits|402 Payment)' \
+            "$fatal_file" || true)
+          if [ -n "$fatal_keyword" ]; then
+            echo "::error::Cursor CLI returned an unrecoverable error (${fatal_keyword}); the attempt was aborted."
+          fi
+        fi
+        # CURSOR_FATAL_NOTICE_END
 
         # TRUSTED_ATTEMPT_TELEMETRY_BEGIN
         telemetry_file="$isolated_workspace/.cursor-attempt-telemetry"
@@ -1061,8 +1183,38 @@ runs:
         echo "::notice title=Cursor attempt telemetry::attempts=${attempt_count} last_status=${last_agent_status} translation_segment_calls=${translation_segment_calls} artifacts=${artifact_count} retry_reason=${retry_reason}"
         # TRUSTED_ATTEMPT_TELEMETRY_END
 
+        # CURSOR_RESULT_SUMMARY_BEGIN
+        # Text mode leaves no structured result. .cursor-result.txt is the last
+        # attempt log the container copied (the model reply or the CLI error):
+        # untrusted, never echoed, and read only as a regular, unlinked file
+        # within 1 MiB. The summarizer prints one line of typed fields with a
+        # hash for the reply; status is the exit status this host observed,
+        # never anything read from the file. The canary checks this line, so
+        # it is also appended to the output file. Diagnostic only: unlike the
+        # Claude summary, nothing here changes agent_status or exits.
+        cursor_result_file="$isolated_workspace/.cursor-result.txt"
+        cursor_result_args=()
+        if [ -f "$cursor_result_file" ] && [ ! -L "$cursor_result_file" ] \
+          && [ "$(wc -c 2>/dev/null < "$cursor_result_file" || echo 1048577)" -le 1048576 ]; then
+          cursor_result_args=(--result-file "$cursor_result_file")
+        fi
+        cursor_summary_file="$build_dir/cursor-result-summary.txt"
+        /usr/bin/python3 -I scripts/summarize_cursor_result.py --status "$agent_status" \
+          ${cursor_result_args[@]+"${cursor_result_args[@]}"} > "$cursor_summary_file" || true
+        if [ -s "$cursor_summary_file" ]; then
+          cat -- "$cursor_summary_file" || true
+          if [ -n "$OUTPUT_FILE" ]; then
+            cat -- "$cursor_summary_file" >> "$OUTPUT_FILE" || true
+          fi
+        fi
+        # CURSOR_RESULT_SUMMARY_END
+
         # TRUSTED_IMPORT_GUARD_BEGIN
         RETURN_ARTIFACTS="${RETURN_ARTIFACTS:-}"
+        # A committed path is model-chosen bytes. Show it with every
+        # nonprintable byte replaced, so a \r or \n can never start a workflow
+        # command line in the log.
+        shown_path() { printf '%s' "$1" | LC_ALL=C tr -c '[:print:]' '?'; }
         # Import only a static bundle produced by the fixed container tail.
         # Do not use `git fetch` even with the bundle's absolute path: fetch is
         # transport-aware, so persisted url.*.insteadOf + core.sshCommand
@@ -1098,7 +1250,13 @@ runs:
             echo "::error::Cursor commit bundle is missing, linked, or exceeds 20 MiB."
             exit 1
           fi
-          "${trusted_git[@]}" bundle verify "$bundle_file"
+          # verify lists the refs the bundle advertises, bytes the container
+          # wrote, and workflow commands are live again here: keep its output
+          # out of the log and fail with a fixed message.
+          if ! "${trusted_git[@]}" bundle verify "$bundle_file" >/dev/null 2>&1; then
+            echo "::error::Static Cursor bundle failed verification."
+            exit 1
+          fi
           bundle_heads=$("${trusted_git[@]}" bundle unbundle "$bundle_file")
           advertised_count=0
           advertised_head=""
@@ -1153,7 +1311,7 @@ runs:
             # allowed path a committed .gitattributes would change how every
             # later checkout filters those files.
             if [[ "/$path" = */.[Gg][Ii][Tt]* ]]; then
-              echo "::error::Cursor commit path is git metadata: $path"
+              echo "::error::Cursor commit path is git metadata: $(shown_path "$path")"
               path_violation=1
               continue
             fi
@@ -1162,7 +1320,7 @@ runs:
             read -r tree_mode tree_type tree_oid <<< "$tree_header"
             if [ "$tree_mode" != "100644" ] || [ "$tree_type" != "blob" ] \
               || [ "$("${trusted_git[@]}" cat-file -s "$tree_oid" 2>/dev/null || echo 99999999)" -gt 5242880 ]; then
-              echo "::error::Cursor commit path is not a <=5 MiB regular non-executable blob: $path"
+              echo "::error::Cursor commit path is not a <=5 MiB regular non-executable blob: $(shown_path "$path")"
               path_violation=1
               continue
             fi
@@ -1181,7 +1339,7 @@ runs:
                   && [ "$status" = "A" ] && [[ "$relative" = *.ara.md ]]; then
                   gen_source=$((gen_source + 1))
                 else
-                  echo "::error::generative Cursor commit changed forbidden path/status: $status $path"
+                  echo "::error::generative Cursor commit changed forbidden path/status: $status $(shown_path "$path")"
                   path_violation=1
                 fi
                 ;;
@@ -1197,12 +1355,12 @@ runs:
                   fi
                 done <<< "$ALLOWED_PATHS"
                 if [ "$allowed" != "true" ] || [[ ! "$status" =~ ^[AM]$ ]]; then
-                  echo "::error::$RUN_MODE Cursor commit changed forbidden path/status: $status $path"
+                  echo "::error::$RUN_MODE Cursor commit changed forbidden path/status: $status $(shown_path "$path")"
                   path_violation=1
                 fi
                 ;;
               canary)
-                echo "::error::canary Cursor run created a commit: $status $path"
+                echo "::error::canary Cursor run created a commit: $status $(shown_path "$path")"
                 path_violation=1
                 ;;
             esac
@@ -1330,33 +1488,33 @@ runs:
             destination_parent=$(dirname -- "$destination")
             if [ ! -d "$destination_parent" ] || [ -L "$destination_parent" ] \
               || [ "$(realpath -- "$destination_parent")" != "$destination_parent" ]; then
-              echo "::error::Cursor commit destination crosses a linked or missing directory: $path"
+              echo "::error::Cursor commit destination crosses a linked or missing directory: $(shown_path "$path")"
               exit 1
             fi
             if [ "$status" = "A" ]; then
               import_pre_oids[$import_i]=""
               if [ -e "$destination" ] || [ -L "$destination" ]; then
-                echo "::error::Cursor added path would overwrite real checkout data: $path"
+                echo "::error::Cursor added path would overwrite real checkout data: $(shown_path "$path")"
                 exit 1
               fi
             elif [ "$status" = "M" ]; then
               if [ ! -f "$destination" ] || [ -L "$destination" ] \
                 || [ "$(realpath -- "$destination")" != "$destination" ]; then
-                echo "::error::Cursor modified path is not a canonical regular checkout file: $path"
+                echo "::error::Cursor modified path is not a canonical regular checkout file: $(shown_path "$path")"
                 exit 1
               fi
               pre_entry=$("${trusted_git[@]}" ls-tree "$pre_sha" -- "$path")
               pre_header="${pre_entry%%$'\t'*}"
               read -r pre_mode pre_type pre_oid <<< "$pre_header"
               if [ "$pre_mode" != "100644" ] || [ "$pre_type" != "blob" ]; then
-                echo "::error::Cursor modified path cannot be restored as a regular blob: $path"
+                echo "::error::Cursor modified path cannot be restored as a regular blob: $(shown_path "$path")"
                 exit 1
               fi
               import_pre_oids[$import_i]="$pre_oid"
               "${trusted_git[@]}" cat-file blob "$pre_sha:$path" \
                 > "$import_dir/$import_i.pre"
             else
-              echo "::error::Cursor import received an unvalidated status: $status $path"
+              echo "::error::Cursor import received an unvalidated status: $status $(shown_path "$path")"
               exit 1
             fi
             "${trusted_git[@]}" cat-file blob "$tree_oid" \

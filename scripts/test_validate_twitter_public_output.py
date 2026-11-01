@@ -103,10 +103,41 @@ class ValidateTwitterPublicOutputTest(unittest.TestCase):
             "</article>\n",
             encoding="utf-8",
         )
-        with self.assertRaisesRegex(ContractError, r"section preview:\n## 10:00 UTC") as ctx:
+        with self.assertRaisesRegex(ContractError, r"section preview:\n\| ## 10:00 UTC") as ctx:
             self.validate()
         self.assertIn("exact line: **Cycle summary**: <text>", str(ctx.exception))
         self.assertIn("twitter-story-title", str(ctx.exception))
+
+    def test_printed_errors_cannot_run_workflow_commands(self) -> None:
+        from validate_twitter_public_output import _log_safe
+        text = _log_safe("status date must equal '2026-10-31'; got '##[add-mask]x'\n"
+                         "  ::error::forged\nfine\r::warning::hidden\x1b[31m")
+        self.assertNotIn("##[", text)
+        for line in text.splitlines():
+            self.assertFalse(line.lstrip().startswith("::"), line)
+        self.assertNotIn("\x1b", text)
+        self.assertIn("## [add-mask]x", text)
+
+    def test_section_preview_cannot_start_a_workflow_command(self) -> None:
+        self.write_status("published", 1)
+        self.summary.write_text("Meta released Muse Spark 1.1.\n", encoding="utf-8")
+        self.digest.write_text(
+            "## 10:00 UTC\n"
+            "::error::forged annotation\n"
+            "x\r::add-mask::secret\x1b[31m\n"
+            "<article class=\"twitter-story\">"
+            "<a class=\"twitter-source-chip\" href=\"https://x.com/AIatMeta/status/122\">@AIatMeta</a>"
+            "</article>\n",
+            encoding="utf-8",
+        )
+        with self.assertRaises(ContractError) as ctx:
+            self.validate()
+        preview = str(ctx.exception).split("section preview:\n", 1)[1]
+        for line in preview.splitlines():
+            self.assertFalse(line.startswith("::"), line)
+            self.assertTrue(line.startswith("| ") or line == "...", line)
+        self.assertNotIn("\x1b", preview)
+        self.assertIn("| ::error::forged annotation", preview)
 
     def test_rejects_capital_s_cycle_summary(self) -> None:
         self.write_status("published", 1)

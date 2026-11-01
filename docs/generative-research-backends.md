@@ -411,8 +411,11 @@ gh workflow run cursor-cli-canary.yml
 ```
 
 The canary runs one tool-denied headless `agent -p --mode ask` turn
-against `cursor/cursor-grok-4.6-high-fast` and asserts the token
-`CURSOR-CLI-CANARY-OK`.
+against `cursor/cursor-grok-4.6-high-fast` and requires exit 0 and a reply
+that is exactly the token `CURSOR-CLI-CANARY-OK`. The adapter never logs the
+reply: `scripts/check_cursor_canary.py` compares the SHA-256 in its typed
+result summary (`::notice title=Cursor result::`, also printed for every
+production Cursor run, with a `cli_error` class on failure).
 
 Dispatch a research run:
 
