@@ -245,11 +245,19 @@ lanes get it centrally.
 
 **Pi and opencode lanes don't read Claude Code settings,** so they get their
 isolation from a container instead. `.github/actions/run-pi-container`: a small
-Node container with `pi`, `birdy`, `git`, `jq`, mounting only
-`$GITHUB_WORKSPACE`, `/tmp/bird` read-only, and the prompt file.
+Node container with `pi`, `birdy`, `git`, `jq`, mounting only a disposable
+clone of the workspace, `/tmp/bird` read-only, and the prompt file. The
+read-write-checkout gap is closed (2026-11-01): pi gets the Cursor runner's
+clone setup, commit normalization, attempt telemetry, import guard, cleanup,
+and CONTAINER_RUN text verbatim (parity tested), so the host imports at most
+one validated commit of the four declared Twitter paths, plus the Birdy tool
+log as data. Edits pi makes to scripts, local actions, `.git/config`, or hooks
+stay in the throwaway clone. pi's reply and errors stay there too, summarized
+as one typed `::notice title=pi result::` line (a reply hash, a closed-set
+`cli_error`), and workflow commands are suspended while the container runs.
 `.github/actions/run-opencode-container`: the same tool image shape for
 opencode, plus `uv` and `pdftotext` because the research prompt shells out to
-`uv run python scripts/...` 17 times. Unlike pi, opencode never gets the real
+`uv run python scripts/...` 17 times. Like pi, opencode never gets the real
 checkout writable. Before `actions/checkout` can run Git against persistent
 state, each opencode caller uses an inline, non-Git guard to atomically move the
 exact canonical job workspace to a same-filesystem quarantine, recreate it
@@ -271,10 +279,10 @@ a canonical, symlink-free, size-capped `.agent-input/` copy. Both containers run
 `--security-opt no-new-privileges`, `--pids-limit`, non-root, with `HOME` under
 `/tmp` so the agent never sees the runner's real home. **Missing Docker is a
 hard failure** — never fall back to host-level `pi --tools ... bash` or
-`opencode run`. This boundary protects runner/checkout integrity; the opencode
-process still directly receives its billing key and, on research/Twitter lanes,
-the X cookies while retaining network access, so it is not a secret-exfiltration
-boundary for those credentials.
+`opencode run`. This boundary protects runner/checkout integrity; the pi and
+opencode processes still directly receive their billing keys and, on
+research/Twitter lanes, the X cookies while retaining network access, so it is
+not a secret-exfiltration boundary for those credentials.
 
 The Korean backfill currently selects the isolated Claude Code adapter
 (`routes.generative-translation`, since 2026-10-31).
