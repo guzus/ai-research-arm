@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-01
+
+TOP 5 PAPERS:
+• Training Foundation Models with a Single Algorithm - one likelihood-based method spans pretrain to RL
+• How to Loop Your Transformer - loop scaling rules + parallel inference fix
+• Algebraic World Model - agent explores, then proves goals unreachable in Lean
+• Gym-Anything for Robotics - coding agents build RL sim environments
+• Efficient Scalable Oversight via Rewinding - cheaper AI verification proofs
+
+CATEGORIES: LM/NLP 9, Vision/Multimodal 8, Agents/Reasoning 11, Safety 5, Other 8
+
+Full report on GitHub.
