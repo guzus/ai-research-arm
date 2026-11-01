@@ -3575,6 +3575,39 @@ esac
             for secret in ("fw-SECRET", "cookie-SECRET", "ct0-SECRET"):
                 self.assertNotIn(secret, result.stdout + result.stderr)
 
+    def test_birdy_telemetry_never_injects_or_crashes_or_skips_push(self):
+        """The Birdy tool log is model-controlled; a poisoned `command`, a
+        non-string, or a malformed line must not inject a workflow command,
+        crash the step, or (since the step runs before Push) skip publishing."""
+        steps = yaml.safe_load((REPO_ROOT / ".github/workflows/hourly-twitter.yml")
+                               .read_text(encoding="utf-8"))["jobs"]["twitter"]["steps"]
+        step = next(s for s in steps if s.get("name") == "Summarize Birdy follow-up telemetry")
+        self.assertIs(True, step.get("continue-on-error"))
+        with tempfile.TemporaryDirectory() as tmp:
+            log = Path(tmp) / ".twitter-input" / "birdy-tool-log.jsonl"
+            log.parent.mkdir(parents=True)
+            log.write_text(
+                json.dumps({"command": "search", "ok": True, "duration_ms": 12}) + "\n"
+                + json.dumps({"command": "##[error]INJECTED", "ok": False}) + "\n"
+                + json.dumps({"command": "\r::set-output name=x::y"}) + "\n"
+                + json.dumps({"command": ["list", "value"]}) + "\n"
+                + json.dumps({"command": "whoami", "duration_ms": True}) + "\n"
+                + "not json at all\n"
+                + json.dumps(["not", "a", "dict"]) + "\n"
+                + json.dumps({"command": "read", "blocked": True}) + "\n",
+                encoding="utf-8")
+            result = subprocess.run(
+                ["bash", "-c", step["run"]],
+                env={**os.environ, "GITHUB_WORKSPACE": tmp},
+                capture_output=True, text=True)
+            self.assertEqual(0, result.returncode, result.stderr)
+            combined = result.stdout + result.stderr
+            for leaked in ("##[", "INJECTED", "set-output", "list"):
+                self.assertNotIn(leaked, combined)
+            self.assertIn("other=", result.stdout)
+            self.assertIn("search=1", result.stdout)
+            self.assertIn("read=1", result.stdout)
+
     def test_import_guard_keeps_the_bundle_ref_listing_out_of_the_log(self):
         """`git bundle verify` lists the refs a bundle advertises: bytes the
         container wrote, printed after workflow commands resume."""

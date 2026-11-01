@@ -1222,36 +1222,65 @@ jobs:
 
       - name: Summarize Birdy follow-up telemetry
         if: always() && steps.backend.outputs.skip != 'true'
+        # The tool log is model-controlled: the agent writes it in its clone
+        # and the host imports it as data. A poisoned `command` must not inject
+        # a workflow command, and a malformed log must not fail this step,
+        # which runs before Push -- a failure here would skip publishing the
+        # real output. continue-on-error is a second guard: the summary is
+        # diagnostic, so its outcome never gates Push.
+        continue-on-error: true
         run: |
-          set -euo pipefail
+          set -uo pipefail
           LOG="$GITHUB_WORKSPACE/.twitter-input/birdy-tool-log.jsonl"
           if [ ! -s "$LOG" ]; then
             echo "No Birdy follow-up calls recorded."
             exit 0
           fi
-          python3 - "$LOG" <<'PY'
+          python3 - "$LOG" <<'PY' || echo "Birdy telemetry summary skipped (unreadable log)."
           import collections
           import json
           import sys
 
-          rows = []
-          with open(sys.argv[1], encoding="utf-8") as handle:
-              for line in handle:
-                  line = line.strip()
-                  if not line:
-                      continue
-                  try:
-                      rows.append(json.loads(line))
-                  except json.JSONDecodeError:
-                      continue
+          # Each command reaches a public log, so print only a closed set of
+          # known read commands verbatim; anything else (a non-string, an
+          # unknown or injected value) is bucketed as "other" and never shown.
+          KNOWN = {
+              "about", "activity", "bookmarks", "check", "follow", "followers",
+              "following", "home", "likes", "list-timeline", "lists", "mentions",
+              "news", "post", "query-ids", "read", "replies", "reply", "search",
+              "thread", "trending", "tweet", "unbookmark", "unfollow",
+              "user-tweets", "whoami", "unknown",
+          }
 
-          by_command = collections.Counter(row.get("command", "unknown") for row in rows)
-          blocked = sum(1 for row in rows if row.get("blocked"))
-          failures = sum(1 for row in rows if row.get("ok") is False)
-          durations = [row.get("duration_ms") for row in rows if isinstance(row.get("duration_ms"), int)]
-          print(f"Birdy follow-up calls: {len(rows)}; blocked={blocked}; failures={failures}; commands={dict(by_command)}")
-          if durations:
-              print(f"Birdy duration ms: avg={sum(durations)//len(durations)} max={max(durations)}")
+          def bucket(value: object) -> str:
+              return value if isinstance(value, str) and value in KNOWN else "other"
+
+          try:
+              rows = []
+              with open(sys.argv[1], encoding="utf-8") as handle:
+                  for line in handle:
+                      line = line.strip()
+                      if not line:
+                          continue
+                      try:
+                          parsed = json.loads(line)
+                      except (json.JSONDecodeError, ValueError):
+                          continue
+                      if isinstance(parsed, dict):
+                          rows.append(parsed)
+              by_command = collections.Counter(bucket(row.get("command")) for row in rows)
+              blocked = sum(1 for row in rows if row.get("blocked") is True)
+              failures = sum(1 for row in rows if row.get("ok") is False)
+              durations = [row.get("duration_ms") for row in rows
+                           if isinstance(row.get("duration_ms"), int)
+                           and not isinstance(row.get("duration_ms"), bool)]
+              counts = "; ".join(f"{name}={by_command[name]}" for name in sorted(by_command))
+              print(f"Birdy follow-up calls: {len(rows)}; blocked={blocked}; "
+                    f"failures={failures}; commands: {counts}")
+              if durations:
+                  print(f"Birdy duration ms: avg={sum(durations)//len(durations)} max={max(durations)}")
+          except Exception as exc:  # never fail the job over diagnostics
+              print(f"Birdy telemetry summary unavailable: {type(exc).__name__}")
           PY
 
       # ── Stop birdy daemon (always, if started) ─────────────────────
