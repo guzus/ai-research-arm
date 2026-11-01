@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-10-31T21:56:00Z",
+  "updated_at": "2026-11-01T06:51:00Z",
   "headline": "Mistral open-sources a trillion-parameter Large 4; guests say agentic attacks now cost cents per company",
   "threads": [
     {
@@ -141,6 +141,48 @@
       ]
     },
     {
+      "slug": "gemini-4-carbon-frontier-race",
+      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-10-31T14:48:00Z",
+      "updated_at": "2026-11-01T06:51:00Z",
+      "now": "Google announced Gemini 4 Carbon on Alphabet's earnings call. Relays put it first on Artificial Analysis v5.0 at 59 versus 58 for Claude Opus 5.5, and first on Mercor's APEX-Agents at 84.2% Pass@1. Access is gated to cyber defenders; no general availability, pricing or API date.",
+      "changed": "Google DeepMind says Genie 4, a world model built on Gemini, is rolling out as a research preview to trusted testers and is coming soon to Google AI Ultra.",
+      "watch": "A date for general availability, API pricing, and independent evals; any Anthropic or OpenAI response.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=sFfPkUJd_Jk",
+          "kind": "video",
+          "label": "Google DeepMind (Genie 4)",
+          "at": "2026-10-27T15:14:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
+          "kind": "earnings-call",
+          "label": "Alphabet earnings call",
+          "at": "2026-10-28T15:14:00Z",
+          "quote": "And with Gemini 4 Argon and now Carbon, which we announced today, we're excited to be leading at the frontier."
+        },
+        {
+          "url": "https://x.com/demishassabis/status/2116452833167814692",
+          "kind": "ticket",
+          "label": "Gemini 4 Carbon ticket (Hassabis on X)",
+          "at": "2026-10-31T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Gemini 4 Carbon announced; tops Artificial Analysis v5 and APEX-Agents per relays; access still gated to cyber defenders."
+        },
+        {
+          "at": "2026-11-01T06:51:00Z",
+          "change": "Genie 4 world-model video adds a second Gemini-based product: trusted-tester preview now, Google AI Ultra soon."
+        }
+      ]
+    },
+    {
       "slug": "ai-cyber-risk-and-key-theft",
       "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
       "status": "escalating",
@@ -198,38 +240,6 @@
       ]
     },
     {
-      "slug": "gemini-4-carbon-frontier-race",
-      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
-      "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-10-31T14:48:00Z",
-      "updated_at": "2026-10-31T14:48:00Z",
-      "now": "Google announced Gemini 4 Carbon on Alphabet's earnings call. Relays put it first on Artificial Analysis v5.0 at 59 versus 58 for Claude Opus 5.5, and first on Mercor's APEX-Agents at 84.2% Pass@1. Access is gated to cyber defenders; no general availability, pricing or API date.",
-      "changed": "Mercor's APEX-Agents leaderboard puts Carbon first, ahead of Gemini 4 Argon and Claude Sonnet 5.5; Demis Hassabis shared it. Wider release is promised but undated.",
-      "watch": "A date for general availability, API pricing, and independent evals; any Anthropic or OpenAI response.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
-          "kind": "earnings-call",
-          "label": "Alphabet earnings call",
-          "at": "2026-10-28T15:14:00Z",
-          "quote": "And with Gemini 4 Argon and now Carbon, which we announced today, we're excited to be leading at the frontier."
-        },
-        {
-          "url": "https://x.com/demishassabis/status/2116452833167814692",
-          "kind": "ticket",
-          "label": "Gemini 4 Carbon ticket (Hassabis on X)",
-          "at": "2026-10-31T00:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Gemini 4 Carbon announced; tops Artificial Analysis v5 and APEX-Agents per relays; access still gated to cyber defenders."
-        }
-      ]
-    },
-    {
       "slug": "mistral-large-4-open-weights",
       "title": "Mistral Large 4: a trillion-parameter open model and the open-versus-closed compute gap",
       "status": "developing",
@@ -276,6 +286,43 @@
         {
           "at": "2026-10-31T14:48:00Z",
           "change": "ETH disproof reviewers disclaim certification; verdict still pending."
+        }
+      ]
+    },
+    {
+      "slug": "ai-agents-in-finance-and-law",
+      "title": "AI agents move into finance and legal work",
+      "status": "steady",
+      "importance": 2,
+      "first_seen": "2026-11-01T06:51:00Z",
+      "updated_at": "2026-11-01T06:51:00Z",
+      "now": "OpenAI's financial services lead said on Latent Space that ChatGPT for Financial Services is an enterprise product, with Pro-plan access being worked on, and that most finance AI so far targets junior analysts. Arca, an AI-native wealth firm that raised $64M, says its agents prompt humans more than humans prompt agents. Eve's CEO told a16z AI makes plaintiff law cases viable.",
+      "changed": "Latent Space and a16z episodes show OpenAI, Arca and Eve pushing agents into finance and plaintiff law, with humans kept on money movement and final decisions.",
+      "watch": "Whether OpenAI announces wider Pro-plan access to ChatGPT for Financial Services.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=v-d1WTqIULs",
+          "kind": "podcast",
+          "label": "Latent Space (OpenAI finance)",
+          "at": "2026-10-31T03:21:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KM3VQZKjpiY",
+          "kind": "podcast",
+          "label": "Latent Space (Arca)",
+          "at": "2026-10-31T16:17:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=iRMmPjunm3Q",
+          "kind": "podcast",
+          "label": "a16z (Eve)",
+          "at": "2026-10-30T14:44:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-01T06:51:00Z",
+          "change": "Thread created from finance and legal agent episodes; no market-moving news."
         }
       ]
     }
