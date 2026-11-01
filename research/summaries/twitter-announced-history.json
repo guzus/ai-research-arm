@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-06-01 05:00 UTC",
-    "headline": "NVIDIA ALPAMAYO 2 SUPER \u2014 32B OPEN-WEIGHTS REASONING VLA FOR LEVEL-4 ROBOTAXIS, SHIPS WITH ALPAGYM + OMNIDREAMS",
-    "source": "@nvidianewsroom",
-    "source_file": "research/summaries/2026-06-01-twitter-05h-headlines.json",
-    "url": "https://x.com/nvidianewsroom/status/2061311112059003264"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-01 05:00 UTC",
-    "headline": "NVIDIA RTX SPARK \u2014 1 PFLOP CONSUMER PC CHIP FOR ON-DEVICE AI AGENTS, SHIPPING FALL 2026 WITH ASUS DELL HP LENOVO MS SURFACE MSI",
-    "source": "@IdleProtocol",
-    "source_file": "research/summaries/2026-06-01-twitter-05h-headlines.json",
-    "url": "https://x.com/IdleProtocol/status/2061311993458397675"
-  },
-  {
-    "backfilled": true,
-    "category": "research",
-    "delivered_at": "2026-06-01 05:00 UTC",
-    "headline": "NVIDIA ISAAC GR00T \u2014 FIRST OPEN HUMANOID ROBOT REFERENCE DESIGN, UNITREE H2 BODY + SHARPA FIVE-FINGERED HANDS + JETSON THOR",
-    "source": "@nvidianewsroom",
-    "source_file": "research/summaries/2026-06-01-twitter-05h-headlines.json",
-    "url": "https://x.com/nvidianewsroom/status/2061312819480392042"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-06-01 05:00 UTC",
-    "headline": "CHINA ISSUES SWEEPING NEW RULES TIGHTENING OVERSEAS DEALS ON INVESTORS, TECH, DATA, NATIONAL SECURITY \u2014 ONE MONTH POST-MANUS UNWIND",
-    "source": "@ReutersTech",
-    "source_file": "research/summaries/2026-06-01-twitter-05h-headlines.json",
-    "url": "https://x.com/ReutersTech/status/2061310663595553237"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-06-01 05:00 UTC",
     "headline": "DECART RAISES $300M WITH NVIDIA BACKING \u2014 GENERATIVE-AI INFRASTRUCTURE LAYER STILL TOP VC TARGET",
@@ -23276,5 +23240,33 @@
     "headline": "OPENAI TO PUT CHATGPT AND CODEX ON ONE SHARED TOKEN ALLOWANCE, STARTING WITH PLUS",
     "source": "@rohanpaul_ai",
     "url": "https://x.com/rohanpaul_ai/status/2116854778747875587"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-01 19:33:44 UTC",
+    "headline": "ANTHROPIC SITE CODE LISTS 'CLAUDE MYTHOS 5.5' \u2014 'MOST CAPABLE MODEL CLASS FOR CYBERSECURITY AND BIOLOGY'",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2116914141017370972"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-01 19:33:44 UTC",
+    "headline": "GPT-6.2 ASTRA REPORTEDLY CALLABLE IN CODEX CLI AHEAD OF OPENAI ANNOUNCEMENT",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2116973297326055564"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-11-01 19:33:44 UTC",
+    "headline": "OPENAI STEPS UP EFFORTS TO BLOCK CHINESE LABS FROM DISTILLING ITS MODELS' REASONING \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2116930782354649563"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-11-01 19:33:44 UTC",
+    "headline": "NVIDIA AGENTX SUBMISSION: RUBIN NVL72 CLAIMS 20.9X PERF PER TCO OVER GB300 NVL72 AT 325 TOK/S/USER",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2116950855718998288"
   }
 ]
