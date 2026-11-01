@@ -20,8 +20,9 @@ sources:
   - "https://x.com/Smlay_ero/status/2115014572004561199"
   - "https://x.com/kimmonismus/status/2115794808497168787"
   - "@jtdavies"
+  - "https://x.com/RagerrrYT/status/2116877919054397950"
 created_at: 2026-10-26
-updated_at: 2026-10-29
+updated_at: 2026-11-01
 closed_at: null
 closed_reason: null
 history:
@@ -31,6 +32,8 @@ history:
     change: "In-testing, unverified — Qwen 4 architecture recap, no new Kalmia evidence. @Smlay_ero (2026-10-27 09:35 UTC) lists the upcoming Qwen4 series features: QSA (Query-Sparse Attention) + GDN with a 7.6x prefill speedup at 1M context ('per Tongyi Cloud'), gated residual, 51B N-gram embedding parameters and the Muon optimizer, with Qwen4-Max positioned against Opus 5.5. This matches the 51B embedding claim in the creation entry and the architecture preview on the closed [[alibaba-qwen-4-architecture-2026-08]]. It does not tie the Kalmia arena model to Qwen 4, so verification stays unverified."
   - ts: 2026-10-29
     change: "In-testing; verification unverified -> partial. Qwen 4 release timing: @jtdavies (2026-10-29 09:20 UTC, 'Live from Amsterdam') quotes Xudong Guo, a Qwen research scientist, saying Qwen4 is coming 'next week'. @kimmonismus (2026-10-29 13:16 UTC) repeats this as the 'Qwen CTO' (the title is disputed by the original post) and adds that a change handling model names for the upcoming Qwen4 family has been merged into the official Qwen code repository. This is a second, independent signal that the Qwen 4 family is close. It is still secondary, with no Alibaba post, and it does not prove that Kalmia is Qwen 4. Expected set to the week of 2026-11-02."
+  - ts: 2026-11-01
+    change: "In-testing, partial, unchanged — timing restated, one new detail. @RagerrrYT (2026-11-01 13:00 UTC) repeats that Qwen 4 model names are showing up in Qwen Code and that an Alibaba Cloud speaker said 'next week' on stage, with no official date. New detail, unchecked: the Qwen 4 entries reportedly default to a 1M-token context window. Still no Alibaba announcement, and nothing new ties the Kalmia arena model to Qwen 4. Separately, a Qwen-in-Apple-Intelligence (China) ship date is tracked at [[alibaba-qwen-apple-intelligence-china-2026-11]]."
 ---
 
 A stealth model codenamed **"Kalmia"** has appeared in Arena's Code Arena. Community testers attribute it to **Alibaba's Qwen 4** generation by tokenizer fingerprinting. Its sibling stealth model, "Kibitz", was tied to Kimi K3.1, which launched on 2026-10-26 ([[moonshot-kimi-k3-1-pro-2026-10]]). That track record is why arena sightings like this are worth a ticket.

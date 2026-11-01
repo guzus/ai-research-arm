@@ -40,8 +40,9 @@ sources:
   - https://x.com/AlyBlak3/status/2116156713137287406
   - https://x.com/mercor/status/2116226723968872959
   - https://x.com/demishassabis/status/2116452833167814692
+  - https://x.com/linktulu/status/2116885735684944155
 created_at: 2026-10-29
-updated_at: 2026-10-31
+updated_at: 2026-11-01
 closed_at: null
 closed_reason: null
 history:
@@ -51,6 +52,8 @@ history:
     change: "Confirmed, unchanged — access still gated. Secondary relays on 2026-10-30 frame Carbon against Anthropic: @DailyAiDriver puts it at 59 vs Claude Opus 5.5's 58 on the Artificial Analysis overall index, with Claude still leading some individual tests. The 59 matches the figure already recorded. @buildjayy restates the defenders-first rollout, and @AlyBlak3 says a broader release is promised but undated. @RyanYanBuilds' evidence review agrees that Carbon is officially announced with limited initial access. No general availability, pricing or API listing captured. Rumours of models beyond Carbon (Xenon, Hydrogen / Gemini 4 Flash) are tracked separately at [[google-gemini-4-xenon-2026-10]] and [[google-gemini-4-flash-hydrogen-2026-10]]."
   - ts: 2026-10-31
     change: "Confirmed, unchanged — first third-party agentic leaderboard, access still gated. @mercor (2026-10-30 17:52 UTC, retweeted by @demishassabis 2026-10-31 08:50 UTC) puts Carbon #1 on APEX-Agents (multi-step investment-banking, consulting and corporate-law tasks) at 84.2% Pass@1 and 90.4% mean, the only model above a 90% mean, ahead of Gemini 4 Argon (82.4% / 87.4%) and Claude Sonnet 5.5 (75.5% / 83.7%). By domain: consulting 91.9% (#1), banking 86.9% (#1), corporate law 73.8% (#2, behind Argon at 76.7%). Relays also report Elon Musk replying 'Impressive' to Pichai's announcement (@binujayaraj; not checked). No general availability, pricing or API listing yet; secondary recaps (@techtrends_zm, @AIDiscoveryDesk) still describe a defenders-first rollout."
+  - ts: 2026-11-01
+    change: "Confirmed, unchanged — first pricing captured, access still gated. @linktulu (2026-11-01 13:31 UTC, citing Google's 2026-10-28 Carbon post) reports intro API pricing equal to Argon's, $2 / $10 per 1M input/output tokens with cached input 95% off, rising to $4 / $20 after the intro period (no end date given). The same post repeats the AA v5.0 score of 59 and the cyber benchmarks already recorded, and says broader developer, business and consumer access is 'as soon as possible', not open today. Secondary relay; the price has not been checked against a Google pricing page. @ricklamers (2026-11-01) complains publicly about Google announcing SOTA models that outsiders cannot use, which matches the gated rollout."
 ---
 Gemini 4 Carbon is Google's second Gemini 4 model in two weeks. Argon reached general availability on
 2026-10-13 ([[google-gemini-4-2026-09]]). Google calls Carbon its "next frontier model". It is a separate
