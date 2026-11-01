@@ -1251,19 +1251,21 @@ test('follow: a link per app this platform can open, none of them in the HTML', 
   assert.equal(mod.aradioPlatform(undefined), 'other');
 
   const apps = (links) => links.map((link) => `${link.app} ${link.href}${link.newTab ? ' (new tab)' : ''}`);
-  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'ios')), [
+  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'ios', '')), [
     'apple podcast://ara.guzus.xyz/aradio/feed.xml',
     'overcast overcast://x-callback-url/add?url=https%3A%2F%2Fara.guzus.xyz%2Faradio%2Ffeed.xml',
     'pocketcasts pktc://subscribe/ara.guzus.xyz/aradio/feed.xml',
   ]);
-  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'mac')), [
+  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'mac', '')), [
     'apple podcast://ara.guzus.xyz/aradio/feed.xml',
     'pocketcasts https://pocketcasts.com/follow/https://ara.guzus.xyz/aradio/feed.xml (new tab)',
   ]);
-  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'android')), ['pocketcasts pktc://subscribe/ara.guzus.xyz/aradio/feed.xml']);
-  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'other')), ['pocketcasts https://pocketcasts.com/follow/https://ara.guzus.xyz/aradio/feed.xml (new tab)']);
+  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'android', '')), ['pocketcasts pktc://subscribe/ara.guzus.xyz/aradio/feed.xml']);
+  assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'other', '')), ['pocketcasts https://pocketcasts.com/follow/https://ara.guzus.xyz/aradio/feed.xml (new tab)']);
   // Spotify appears only once the show URL is set, and only a real show URL.
-  assert.equal(mod.ARADIO_SPOTIFY_SHOW_URL, '', 'not listed yet: no Spotify button');
+  assert.equal(mod.ARADIO_SPOTIFY_SHOW_URL, 'https://open.spotify.com/show/6XPmQwa4EfqXz7S3Vs1Owb', 'the listed show');
+  assert.deepEqual(mod.aradioFollowLinks(feed, 'ios').map((link) => link.app), ['apple', 'spotify', 'overcast', 'pocketcasts'],
+    'the listed show passes the URL check and is offered by default');
   const show = 'https://open.spotify.com/show/0123456789abcdefABCDEF';
   assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'other', show)).slice(0, 1), [`spotify ${show} (new tab)`]);
   assert.deepEqual(apps(mod.aradioFollowLinks(feed, 'ios', show)).map((line) => line.split(' ')[0]), ['apple', 'spotify', 'overcast', 'pocketcasts']);
@@ -1272,7 +1274,7 @@ test('follow: a link per app this platform can open, none of them in the HTML', 
   }
   // Only an https feed gets links.
   for (const bad of ['http://ara.guzus.xyz/aradio/feed.xml', 'javascript:alert(1)', '/aradio/feed.xml', '']) {
-    assert.deepEqual(mod.aradioFollowLinks(bad, 'ios'), [], bad);
+    assert.deepEqual(mod.aradioFollowLinks(bad, 'ios', ''), [], bad);
   }
 
   const { html } = mod.renderAradioView(viewState());
@@ -1298,7 +1300,7 @@ test('follow: hydration gives the platform\'s buttons their links as properties 
   });
   const list = { hidden: true, querySelectorAll: () => anchors };
   const root = { querySelectorAll: (selector) => (selector === '[data-aradio-follow-list]' ? [list] : []) };
-  mod.hydrateAradioFollow(root, mod.aradioFollowLinks('https://ara.guzus.xyz/aradio/feed.xml', 'mac'));
+  mod.hydrateAradioFollow(root, mod.aradioFollowLinks('https://ara.guzus.xyz/aradio/feed.xml', 'mac', ''));
   assert.equal(list.hidden, false);
   assert.deepEqual(anchors.map((a) => a.item.hidden), [false, true, true, false]);
   assert.equal(anchors[0].href, 'podcast://ara.guzus.xyz/aradio/feed.xml');

@@ -698,8 +698,8 @@ asked for).
   `overcast://x-callback-url/add?url=<feed>` on iPhone and iPad; Pocket Casts'
   `pktc://subscribe/<feed without its scheme>` on iPhone, iPad and Android,
   else its web player's `https://pocketcasts.com/follow/<feed>`; Spotify,
-  which cannot follow a feed, once `ARADIO_SPOTIFY_SHOW_URL` is set to the
-  listed show. Copy RSS and the manual Apple route stay as the fallback.
+  which cannot follow a feed, through the listed show
+  (https://open.spotify.com/show/6XPmQwa4EfqXz7S3Vs1Owb, listed 2026-11-01) set in `ARADIO_SPOTIFY_SHOW_URL`. Copy RSS and the manual Apple route stay as the fallback.
 
 - **Audio** is `${AUDIO_BASE}/${audio.key}`, only for a key matching
   `^audio/aradio/[A-Za-z0-9._-]+\.mp3$`, played through the site's one shared
