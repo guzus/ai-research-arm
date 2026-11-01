@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-01T06:47:00Z",
+  "updated_at": "2026-11-01T15:26:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -25,8 +25,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-01T06:47:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Nathan Labenz and Prakash Narayanan examine whether prevailing AI assumptions survive real-world data across conversations with Anastasios Angelopoulos of Arena, Debo Olaosebikan of Kepler Computing, Samvit Ramadurgam of Union, Michael Freeman of ServiceNow, and Sagar Vaze of Mistral. The discussions evaluate production traces uncovering widespread model deception during extended tasks, ferroelectric memory engineered for older chip fabs, businesses run on tokens, and telemetry capturing AI-directed cyberattacks in Southeast Asia. These findings challenge conventional views on benchmark reliability, frontier compute efficiency,"
@@ -111,8 +111,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-01T06:47:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "Spawn’s ten-person team shipped 77,000 code changes in a month with an always-on fleet of AI agents. NLW breaks down the systems behind that output, why human taste and ambition still matter, and five practical lessons other businesses can apply. In the headlines: legal AI startup Crosby bids for Weil’s assets, tech stocks slide despite surging AI revenues, and Granola launches free dictation. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -471,8 +471,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-01T06:47:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "Artificial Analysis overhauls the Intelligence Index with version five, and the new benchmarks reshuffle the AI model leaderboard. NLW breaks down what changed, why private datasets and agentic tasks matter, and how the gap between US and open weight models widened. In the headlines: Google’s Gemini 4 Carbon takes the top spot, Google and Microsoft cloud earnings, and a broader DOJ probe into NVIDIA. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -1525,13 +1525,19 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 181,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 300,
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Our Isaac robotics platform honors Isaac Newton. Our Turing GPU architecture honors Alan Turing. And your engineering powers what we build today. Now, a new industrial revolution with AI factories powered by Nvidia accelerated computing. Like electricity and the internet, AI is now essential infrastructure. Every company will use it. Every nation will build it. One architecture for every model.",
+          "at_s": 55,
+          "url": "https://www.youtube.com/watch?v=XWYMvOFMacA&t=55s"
+        }
+      ],
       "description": "From drug discovery to robotics, voice, and video, the UK’s developers, researchers, and companies are advancing AI with NVIDIA accelerated computing. We celebrate their work—and the new AI factories being built to power what comes next."
     },
     {
@@ -1553,13 +1559,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2804,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7306,
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So every dollar spent, there's $3 of value coming in. This is extraordinary. The healthcare industry has never seen these kind of results before. And that's what brings us to such an incredible time. Now, just to remember, what is AI? It's not a model. It's now about agents. Agents helping us do useful work.",
+          "at_s": 330,
+          "url": "https://www.youtube.com/watch?v=QqeKRvAkIc8&t=330s"
+        },
+        {
+          "text": "Um, as I said, the World Health Organization projects that we're going to be something like 10 thou 10 million healthare workers short in a few short years. So, if we're going to meet that demand, we have to meet it in the physical world.",
+          "at_s": 928,
+          "url": "https://www.youtube.com/watch?v=QqeKRvAkIc8&t=928s"
+        },
+        {
+          "text": "And we need to take what is right now $2 billion, 12 years, you pick your number, it's really long, failure rates too high, too expensive. um and take this opportunity to connect digital and physical AI so that AI can become a new uh lab companion and so it's truly joining this scientific method.",
+          "at_s": 1795,
+          "url": "https://www.youtube.com/watch?v=QqeKRvAkIc8&t=1795s"
+        },
+        {
+          "text": "Using domainspecific models built with NVIDIA Bioneo, they can run millions of virtual experiments, narrowing the candidates before testing them in the lab. Those candidates move into the AI science factory. Autonomous robots make and test them. NVIDIA Isaac and Omniverse help develop and simulate the robotic systems. Jetson and Thor provide the compute.",
+          "at_s": 2157,
+          "url": "https://www.youtube.com/watch?v=QqeKRvAkIc8&t=2157s"
+        },
+        {
+          "text": "Now I want to introduce you to what is a new model at the frontier. We're super excited to be announcing today the RFD4 proteina model that has been co-developed with the um University of Washington Institute of Protein Design um in the David Baker lab, Nobel Laurate and Nvidia researchers. This model is incredible.",
+          "at_s": 2337,
+          "url": "https://www.youtube.com/watch?v=QqeKRvAkIc8&t=2337s"
+        },
+        {
+          "text": "We want to put the model to a real test. It takes so long to go from that idea or proof of concept to like a vial of a drug that can be injected into a patient. It's like a 10 to 12 year process and it's like a billion dollars in between.",
+          "at_s": 2675,
+          "url": "https://www.youtube.com/watch?v=QqeKRvAkIc8&t=2675s"
+        }
+      ],
       "description": "In her special address at NVIDIA GTC Berlin, Kimberly Powell, Vice President of Healthcare and Life Sciences at NVIDIA, explored how digital health agents are reaching national scale, how AI factories are speeding up drug discovery from research to clinic, and how robotic systems are expanding access to surgical care and essential medicines. These advances point to an intelligent, connected healthcare ecosystem that can deliver faster innovation and wider access to care across Europe and the world."
     },
     {
@@ -1581,13 +1618,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 6401,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "asr",
+        "words": 22932,
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Like, there was a whole design purpose of Frontier Code. But like, I could easily just be like, in my Cloud MD, just say, like, don't do that. And then you won't do it. And so like, am I penalizing Cloud Opus 5.5 unfairly because my benchmark doesn't have that personalization element, which is subjective.",
+          "at_s": 2184,
+          "url": "https://www.youtube.com/watch?v=MRQTlwcW-aQ&t=2184s"
+        },
+        {
+          "text": "And it's something that this is us just very much like figuring it out as we go and figuring it out with customers, and figuring out like which of those parameters do we deprecate over time, which of those parameters do we just like default better, which of those parameters should be like a 1 to 100 scale versus a",
+          "at_s": 2440,
+          "url": "https://www.youtube.com/watch?v=MRQTlwcW-aQ&t=2440s"
+        },
+        {
+          "text": "And sometimes your eval is wrong. - Totally. - Actually a lot of times your eval is wrong. Sometimes your environment is wrong. And then sometimes the model is wrong. - Yeah. - And actually a lot of what I think AI engineering is becoming, she's doing all this stuff. - Completely agree. - Yeah.",
+          "at_s": 3027,
+          "url": "https://www.youtube.com/watch?v=MRQTlwcW-aQ&t=3027s"
+        },
+        {
+          "text": "- Yeah, ballpark, I guess I would say like, we've sit somewhere like 40 to 50%, something like really crazy. - Yeah. - And then latency, I think we saw somewhere between like 10 and 20% improvement on like time to first soak in specifically.",
+          "at_s": 3532,
+          "url": "https://www.youtube.com/watch?v=MRQTlwcW-aQ&t=3532s"
+        },
+        {
+          "text": "So like the blog post of today was two weeks to make Clod AI faster. There were 12 things. There were 13 things. We hit 12 of the 13 targets in three days, right? Well, you could just stay. Okay, it's a two-week sprint. We'll do the 13. But instead there's 20 things you push bound.",
+          "at_s": 5186,
+          "url": "https://www.youtube.com/watch?v=MRQTlwcW-aQ&t=5186s"
+        },
+        {
+          "text": "- Fun fact, the Clot API skill that helps SQL build against the API is owned by our dev rel team. So that was built by Lance, right? - Yeah, exactly. - It was the most high leverage for a dev rel is to like distill everything, the risk practices that's gonna go into those agents. - Yeah.",
+          "at_s": 5995,
+          "url": "https://www.youtube.com/watch?v=MRQTlwcW-aQ&t=5995s"
+        }
+      ],
       "description": "An agent’s sandbox can die without taking the whole agent with it. That’s the idea behind “the brain and the hands,” Anthropic’s architecture for Claude Managed Agents. Now that the dust has settled on Opus 5.5, it is universally agreed to be the best model in the world. In this conversation with Katelyn Lesse and Angela Jiang, Anthropic’s Heads of Engineering and of Product, goes inside the systems that turn model capabilities into products developers can use. We cover: -"
     },
     {
@@ -1612,8 +1680,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Cliff Sosin joins Patrick to explore why even superintelligent AI may have fundamental limits, and what happens when intelligence becomes cheap and ubiquitous. They discuss why the biggest winners of the AI revolution may not be the companies building the models, but businesses with durable advantages in data, attention, and physical infrastructure. Cliff shares his perspective on the AI infrastructure boom, the risk of overinvestment, what makes companies like Meta and Carvana compelling, and how AI agents could reshape competition,"
@@ -1637,13 +1705,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2846,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 8676,
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Genie 2 expanded that a year later into 3D environments, going from 2D to 3D, still very much looking like gaming environments rather than realistic worlds, and it was not quite real-time, not quite interactive. So, then we really pushed, and Genie 3 was the first model released earlier this year. - In January.",
+          "at_s": 240,
+          "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI&t=240s"
+        },
+        {
+          "text": "We can use that as a reference of where we were in Genie 3. I think, like Raia was saying, the leap between the Genie 1, 2, 3 was pretty significant across different generations. But now we're seeing even a further push in the realism side. So with that, let's go to that example and see how that looks.",
+          "at_s": 382,
+          "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI&t=382s"
+        },
+        {
+          "text": "- Audio modality is a net new modality that's being added in this Genie 4 model. Previously in three, you can only navigate in a scene and only see the visual output. So here the Genie 4 model predicts both the video and audio together from the same model. - That's awesome.",
+          "at_s": 506,
+          "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI&t=506s"
+        },
+        {
+          "text": "- On the two lines we mentioned on the education and the robotics, so here the dialogue piece is driven by Gemini. It's not only driven by the Genie 4 world model alone, but also driven by the Gemini. There's a Gemini model here in the background thinking about how to respond to user's action.",
+          "at_s": 867,
+          "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI&t=867s"
+        },
+        {
+          "text": "Or is it actually just baseline 3.8 Flash taking in images? - This is just baseline 3.8 Flash, but you're talking about the audio model that could be plugged in A2A and— - A2A, but I think for A2A you can also share a video. - Yeah. - A video stream. - It's an interesting experiment.",
+          "at_s": 1022,
+          "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI&t=1022s"
+        },
+        {
+          "text": "There's so much talk about the eval space for mainline Gemini models or just mainline LLMs right now, just exponential difficulty improvement or increase rather. And to build a new benchmark, it used to take fifty hours and now it's 500 or 5,000 or something like that. I'm curious.",
+          "at_s": 2717,
+          "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI&t=2717s"
+        }
+      ],
       "description": "Raia Hadsell, Diego Rivas, and Hang Qi from Google DeepMind join host Logan Kilpatrick to introduce Genie 4, the latest world model from Google DeepMind. Their conversation covers: *What world models are *The arc from Genie 1 to Genie 4 *Live demos showcasing the model’s biggest leaps forward *The role of Gemini in the loop *The path to robotics and education applications *What it means to make Genie available in the API for the first time Chapters Welcome and Genie"
     },
     {
@@ -1699,13 +1798,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2868,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 8111,
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So when we launch, it means users can interact. And this launch means it has to be industrial-grade AI. And it looks completely different than a chatbot, prototype, MVP, or other names that the IT industry has invented to denote something we are just trying out . Please don't hold us accountable, but this isn't exactly industrial-grade AI.",
+          "at_s": 217,
+          "url": "https://www.youtube.com/watch?v=iy1PwZxFA7U&t=217s"
+        },
+        {
+          "text": "How will this help HR? How will this help lawyers? Our legal package here at Axiom, we have completely redesigned the entire legal system. Truth? We We used AI to rebuild it. And we used AI to rebuild it with AI. So now lawyers are also going through this moment on their own. Is n't that right?",
+          "at_s": 405,
+          "url": "https://www.youtube.com/watch?v=iy1PwZxFA7U&t=405s"
+        },
+        {
+          "text": "Or you could say: I will allow users to create their own personal agents so they can form personal teams and improve their productivity. But as CEO, I will create professional agents who will have more restrictions and protections, access to deeper levels of data, and we will have fewer such agents. We chose this path.",
+          "at_s": 577,
+          "url": "https://www.youtube.com/watch?v=iy1PwZxFA7U&t=577s"
+        },
+        {
+          "text": "And I say it will take me, say, 45 days. And now it takes me 4 days. Now, the difference between whether it should cost 45 cents or $4.50? Everyone says, “Oh, it’s $4.50. This is madness .\" I say, \"That would take me 45 days.\" Let's put this into perspective.",
+          "at_s": 818,
+          "url": "https://www.youtube.com/watch?v=iy1PwZxFA7U&t=818s"
+        },
+        {
+          "text": "We have, we have 100 questions. Over 100 questions with 100 predetermined answers. And I test them on different agents to see if they give exactly the answer I expect. And if not, we take a break. We are taking a breather. Why didn't he give the correct answer? Here is the correct answer.",
+          "at_s": 1770,
+          "url": "https://www.youtube.com/watch?v=iy1PwZxFA7U&t=1770s"
+        },
+        {
+          "text": "It lasted about 45 days or so, or 30 days. But, you know, we had this moment. This got me thinking: what actually works with AI, and do I have the ability to switch between dashboards, orchestration, models, pricing metrics, etc.? This technology is evolving.",
+          "at_s": 2136,
+          "url": "https://www.youtube.com/watch?v=iy1PwZxFA7U&t=2136s"
+        }
+      ],
       "description": "Russell Jukes is Chief Digital Information Officer at DXC Technology. Jukes joins Big Technology to discuss why so many enterprise AI pilots struggle to reach production and what companies can do to turn AI experimentation into real business value. Tune in to hear how enterprises can build production-grade AI, establish trust in autonomous agents, and move beyond measuring adoption to measuring AI fluency. We also cover the build-versus-buy debate, AI coding productivity, the growing complexity of enterprise technology stacks, security"
     },
     {
@@ -1730,8 +1860,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Ranjan Roy from Margins and Alex Stamos from Cognition are back for our weekly discussion of the latest tech news. We cover: 1) Is Sundar Pichai team product or team model? 2) Google's attempt to build a unified assistant 3) Which Google teams get priority? 4) Sundar's cloud allocation between Google Cloud and AI Research 5) Will Google Cloud Platform overtake Azure? 6) Meta Stock falls on worries about its fundraising and debt 7) OpenAI valuation takes a hit after"
@@ -1757,8 +1887,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Is China closing the AI gap? Is cyber chaos the new normal? Is data center funding drying up? And what happens if Anthropic’s IPO disappoints? From Kimi K3.1 to rogue agent swarms to Elon Musk’s debt market warning, NLW examines the four questions shaping AI this week. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -1782,13 +1912,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 3361,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 10166,
+        "checked_at": "2026-11-01T15:26:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So we create victories for children in learning, and if we talk about the core value of this driver—we want children to be in the 80-85% success zone. Truth? What percentage of the time when you do something is it too easy or too hard for you? If you have 100% success, it's too easy.",
+          "at_s": 706,
+          "url": "https://www.youtube.com/watch?v=T4u2FoIm3pw&t=706s"
+        },
+        {
+          "text": "They were interns and came up with the idea: \"We're going to build an educational large language model ( LLM) to make it free for everyone in the world, because every country is going to need its own educational model, not just a large one, but a small language model on a device.\" Mhm.",
+          "at_s": 1040,
+          "url": "https://www.youtube.com/watch?v=T4u2FoIm3pw&t=1040s"
+        },
+        {
+          "text": "Twenty years ago, I was in the minority, maybe 20% of the students agreed with me. Our classrooms were about half full , I think. I heard that now they are less than 10% full, people, students, do not consider this format effective. We need to rethink the format to create motivation that will actually help them learn something.",
+          "at_s": 1209,
+          "url": "https://www.youtube.com/watch?v=T4u2FoIm3pw&t=1209s"
+        },
+        {
+          "text": "And then in 1910, the tractor came to American farms, the Case tractor. You can literally look at that ad, it looks like an Anthropic ad: does the work of 50 programmers or 50 handymen. And literally everyone in America realized that 30% of jobs were disappearing. My children and grandchildren, we've been doing this for generations, and it's gone.",
+          "at_s": 1525,
+          "url": "https://www.youtube.com/watch?v=T4u2FoIm3pw&t=1525s"
+        },
+        {
+          "text": "\"\"Who wants to be the top 25 or 50? \"Yeah? And a year ago, when we opened 12 campuses, literally a thousand or so people at the information sessions. And we couldn't get 25. Yeah? We were getting, you know, 10, right? We opened a school in New York with, you know, 10 or 12 students .",
+          "at_s": 1819,
+          "url": "https://www.youtube.com/watch?v=T4u2FoIm3pw&t=1819s"
+        },
+        {
+          "text": "We have kids from Alpha High, right? People who have been able to build businesses over the last four years. So we have the data, and now it's a specialized school for that. We've structured it all. They come in and they're supposed to make $100 by mastering certain skills, then $1,000, $ 10,000, $100,000, and finally a million dollars.",
+          "at_s": 3015,
+          "url": "https://www.youtube.com/watch?v=T4u2FoIm3pw&t=3015s"
+        }
+      ],
       "description": "What should school look like if AI can help students learn dramatically faster? Alpha School principal Joe Liemandt argues the answer isn’t to fill the extra time with more academics, but to redesign school around the skills traditional classrooms struggle to teach: agency, teamwork, entrepreneurship, communication, and doing hard things. Joe joins Erik Torenberg and Horowitz Andreessen Academy co-founder Gagan Biyani to discuss Alpha’s model, where students spend two hours a day on core academics and the rest developing real-world"
     },
     {
