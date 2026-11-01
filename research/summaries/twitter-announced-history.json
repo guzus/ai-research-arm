@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-06-01 01:00 UTC",
-    "headline": "INSTAGRAM HANDLES SWAPPED OVER WEEKEND AS TELEGRAM CHANNELS MONETIZED META AI BYPASS \u2014 IN-THREAD VICTIMS CONFIRM 2FA SKIRTED",
-    "source": "@weezerOSINT",
-    "source_file": "research/summaries/2026-06-01-twitter-01h-headlines.json",
-    "url": "https://x.com/weezerOSINT/status/2061223556994965643"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-01 01:00 UTC",
-    "headline": "SOFTBANK MARKET CAP TOPS TOYOTA AT \u00a546.62T VS \u00a545.73T \u2014 FIRST TIME IN ~22 YEARS, NIKKEI PINS IT ON OPENAI STAKE",
-    "source": "@AIElecX",
-    "source_file": "research/summaries/2026-06-01-twitter-01h-headlines.json",
-    "url": "https://x.com/AIElecX/status/2061263757192630326"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-01 01:00 UTC",
-    "headline": "APPLE SIRI ENGINEER KELSEY PETERSON STARTS AT OPENAI 8 DAYS BEFORE WWDC 2026 \u2014 GURMAN",
-    "source": "@markgurman",
-    "source_file": "research/summaries/2026-06-01-twitter-01h-headlines.json",
-    "url": "https://x.com/markgurman/status/2061236259843182813"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-01 01:00 UTC",
-    "headline": "MICROSOFT BUILD 2026 OPENS MON JUNE 2, 9:30 AM PT \u2014 NADELLA KEYNOTE ON 'ASYNC COWORKERS,' COPILOT CODE/COWORK/SCOUT TABS LEAKED",
-    "source": "@JoeMaristela",
-    "source_file": "research/summaries/2026-06-01-twitter-01h-headlines.json",
-    "url": "https://x.com/JoeMaristela/status/2061262460917555374"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-06-01 01:00 UTC",
     "headline": "OPENAI ROBOTICS HIRING DRIVE \u2014 SAMA POST ANCHORS WEEKEND TALENT WAVE AT 9,288 LIKES",
@@ -23290,5 +23254,33 @@
     "headline": "THRUN'S DULO RAISES $130M SEED FROM SCHMIDT, DOERR, DST TO BUILD AI MODELS THAT DESIGN HARDWARE",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2116515663862812741"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-11-01 00:01:56 UTC",
+    "headline": "XAI ADDS INVISIBLE TEXT WATERMARKING TO GROK, ROLLING OUT GLOBALLY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2116654648082022668"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-11-01 00:01:56 UTC",
+    "headline": "VLLM FUSED HOPPER KERNELS SPEED UP DECODE BY UP TO 38%",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2116666571728863431"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-11-01 00:01:56 UTC",
+    "headline": "WSJ: ONLY ~$11B OF OPENAI'S $30B FUNDRAISE HAS COME IN SO FAR",
+    "source": "@techtactician",
+    "url": "https://x.com/techtactician/status/2116671768081633729"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-11-01 00:01:56 UTC",
+    "headline": "GOOGLE DEEPMIND GEMINI-BASED PLANASSIST GOES TO 12 MORE UK COUNCILS",
+    "source": "@GoogleDeepMind",
+    "url": "https://x.com/GoogleDeepMind/status/2116524000977285321"
   }
 ]
