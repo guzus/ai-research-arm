@@ -3548,5 +3548,19 @@
         "source_sha256": "a0220c1c981cd1347fe36e85fe4b865f3d5fb0627b98b30b2692194c0f0c5614"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-will-price-sta",
+    "file": "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-11-01T10:20:20Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/will__price/status/2116608448930697658\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
