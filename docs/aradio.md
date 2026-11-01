@@ -1,4 +1,4 @@
-# Aradio — the AI situation, on air
+# Aradio — ARA AI News
 
 Aradio is ARA's rolling audio news station: a short two-host bulletin that
 answers **"what is going on in AI right now, and what changed since the last
@@ -10,7 +10,7 @@ and investors say things that never become a tweet or a headline.
 
 | | |
 |---|---|
-| Route | `ara.guzus.xyz/aradio` (the "ARA Radio" player) |
+| Route | `ara.guzus.xyz/aradio` (the "ARA AI News" player) |
 | Podcast feed | `ara.guzus.xyz/aradio/feed.xml` (built at deploy, see "Dashboard") |
 | Producer | `.github/workflows/aradio.yml` (whenever an input lane finishes, plus an hourly `:50` backstop; see "Triggers") |
 | Source lane it adds | `.github/workflows/podcasts.yml` (every 2 h, `:41`) → `research/podcasts/` |
@@ -644,17 +644,20 @@ reused).
 
 ## Dashboard
 
-`/aradio` is a radio first ("ARA Radio"; `dashboard/src/render/aradio.ts`, the
+`/aradio` is a radio first ("ARA AI News"; `dashboard/src/render/aradio.ts`, the
 Aradio section of `main.ts`). One large play button starts **continuous
 listening**: the newest bulletin with audio, then older ones; text-only
 bulletins are never in the running order; a bulletin that airs mid-listen plays
-right after the one on now (several in the order they aired). The card shows
-ON AIR while the newest bulletin **with audio** is < 2 h old (else "Latest
-bulletin · Nh ago"; OFF AIR when nothing is playable — a text-only bulletin
-cannot be heard), "Updated N ago" for the newest bulletin of any kind (not
-repeated when the sign already gives that age) and "The next bulletin airs
-when the picture changes" (there is no schedule to promise, and no listener
-count), what is playing or up first with the show's cover, the controls
+right after the one on now (several in the order they aired). Bulletins are
+episodes, not a live stream, so nothing on the card claims to be on air. Its
+status line gives the age of the newest bulletin **with audio** ("Latest
+bulletin · 3h ago", whatever the age) and is absent when nothing is playable
+(before the first bulletin, or only text-only ones: a text-only bulletin
+cannot be heard, and the empty and text-only states say so). The card also
+shows "Updated N ago" for the newest bulletin of any kind (not repeated when
+the status line already gives that age) and "The next bulletin airs when the
+picture changes" (there is no schedule to promise, and no listener count),
+what is playing or up first with the show's cover, the controls
 (previous, back 15 s, play, forward 15 s, next), a seek bar, the speed (1×,
 1.25×, 1.5×, 2×) and "stop after this bulletin" (one-shot), the transcript of
 the bulletin on now, the storylines it covered ("In this bulletin"), the next
@@ -705,9 +708,9 @@ asked for).
   `^audio/aradio/[A-Za-z0-9._-]+\.mp3$`, played through the site's one shared
   bottom-bar `<audio>` (the digest and a bulletin can never play at once). The
   bar steps aside while the radio's own button is on screen.
-- **Lock screen** (Media Session): title = headline, artist "ARA Radio", album
-  "AI news, on air", artwork `/brand/aradio-cover.png` (the square show art
-  the podcast feed uses; the digest keeps the site's social card); play,
+- **Lock screen** (Media Session): title = headline, artist "ARA AI News", no
+  album, artwork `/brand/ara-ai-news-cover.png` (the square show art the
+  podcast feed uses; the digest keeps the site's social card); play,
   pause, seekto, previous/next, seekbackward/seekforward (15 s, or the offset
   the system asks for; iOS may show these skips in place of previous/next)
   and `setPositionState`. On `ended` the next
@@ -740,15 +743,15 @@ asked for).
   in the background while a bulletin plays). The radio card takes new data at
   once and is patched in place (fixed heights, no re-render, focus kept);
   "Behind the broadcast" takes it when the reader asks (the update chip).
-- **Empty states**: before the first run, OFF AIR and "The first bulletin
-  hasn't aired yet"; with only text-only bulletins, "No audio to play yet" and
-  the log to read.
+- **Empty states**: before the first run, no status line and "The first
+  bulletin hasn't aired yet"; with only text-only bulletins, no status line,
+  "No audio to play yet" and the log to read.
 
 ### Podcast feed (`/aradio/feed.xml`)
 
 `dashboard/scripts/aradio-feed.mjs` (called by `postbuild-seo.mjs`) writes
 `dist/aradio/feed.xml` from the copy of `research/aradio/` the page itself
-serves: RSS 2.0 with iTunes tags (title "ARA Radio", author "ARA", explicit
+serves: RSS 2.0 with iTunes tags (title "ARA AI News", author "ARA", explicit
 false, Technology and News › Tech News). Episodes are the page's bulletins with
 a policy-valid audio key, newest first, ≤ 72: guid = bulletin id, pubDate =
 `aired_at`, an enclosure with the same URL the page plays (`length` = `bytes`,
@@ -764,18 +767,20 @@ it like `/feed.xml`; the container smoke and `check_production_surface.py`
 → ⋯ → Follow a Show by URL).
 
 **Artwork.** `<itunes:image>` and the RSS `<image>` (with the channel's title
-and link) name `<origin>/brand/aradio-cover.png` (`ARADIO_FEED_ARTWORK_PATH`):
-a 3000×3000 RGB PNG, no alpha channel, sRGB, 72 dpi, ~140 KB, committed in
+and link) name `<origin>/brand/ara-ai-news-cover.png` (`ARADIO_FEED_ARTWORK_PATH`):
+a 3000×3000 RGB PNG, no alpha channel, sRGB, 72 dpi, ~130 KB, committed in
 `dashboard/public/brand/` as a regular git blob (`.gitattributes` keeps that
 directory's `*.png`, not its JPEGs, out of LFS, which the Railway build does
 not hydrate). That meets
 Apple (square, 1400–3000 px, JPEG or PNG, RGB, no alpha) and Spotify (1:1, PNG
-preferred over JPEG). It is the page's own type and tokens: Source Serif 4 from
-`dashboard/scripts/fonts/` rendered with resvg, ground `#f4f5f8`, ink
-`#1a1a1a`, the ON AIR sign in lamp red `#e5372a`, the play button in royal
-`#2251ff`. Apple and Spotify fetch art once per URL, so a redesign ships under
-a new file name with the constant updated; overwriting the file in place
-changes nothing in either app. The container smoke fetches whatever
+preferred over JPEG). It is the page's own type and tokens: "ARA" over "AI
+News" in Source Serif 4 Subhead Bold from `dashboard/scripts/fonts/` rendered
+with resvg, ground `#f4f5f8`, ink `#1a1a1a`, the play button in royal
+`#2251ff`, and no sign or tagline. Apple and Spotify fetch art once per URL,
+so a redesign ships under a new file name with the constant updated
+(`aradio-cover.png` was the ARA Radio art; the 2026-11-01 rename to ARA AI
+News shipped `ara-ai-news-cover.png`); overwriting the file in place changes
+nothing in either app. The container smoke fetches whatever
 `<itunes:image>` names and requires a real image with `Last-Modified` (Apple
 checks art with HEAD).
 

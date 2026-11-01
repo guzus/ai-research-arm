@@ -1,5 +1,5 @@
 /**
- * Aradio — ARA Radio, the rolling AI-news station, rendered from
+ * Aradio — ARA AI News, the rolling AI-news station, rendered from
  * research/aradio/*.json.
  *
  * Contract: docs/aradio.md ("Published files", "Audio", "Dashboard").
@@ -10,7 +10,7 @@
  * continuous listening: the newest bulletin with audio first, then older ones,
  * skipping text-only bulletins; a bulletin that airs while someone listens
  * plays next. Above the fold there is only what a listener needs: the station,
- * whether it is on air, what is playing, a seek bar, previous/next and what
+ * how fresh it is, what is playing, a seek bar, previous/next and what
  * comes next. The situation board, the bulletin log and the transcripts sit
  * below it, "Behind the broadcast". The running order is a pure data
  * structure (`AradioProgramme`) so its rules are tested here, not in the DOM.
@@ -183,8 +183,6 @@ export type AradioViewState = {
 // ── Constants ─────────────────────────────────────────────────────────────
 
 export const ARADIO_MAX_BULLETINS = 72;
-/** The contract's ON AIR window: the latest bulletin aired < 2 h ago. */
-export const ARADIO_ON_AIR_MS = 2 * 60 * 60 * 1000;
 /** Rows shown before "Show all": a day of hourly bulletins at most. */
 export const ARADIO_LOG_PREVIEW = 12;
 /** How many bulletins "Up next" lists. */
@@ -194,7 +192,7 @@ export const ARADIO_RESTART_S = 3;
 /** The podcast feed postbuild-seo.mjs writes (absolute URL is hydrated). */
 export const ARADIO_FEED_PATH = '/aradio/feed.xml';
 /** The show art, the same file the feed and the lock screen use (a test pins them). */
-export const ARADIO_COVER_PATH = '/brand/aradio-cover.png';
+export const ARADIO_COVER_PATH = '/brand/ara-ai-news-cover.png';
 /**
  * The show on Spotify, `https://open.spotify.com/show/<id>` (listed
  * 2026-11-01; docs/aradio.md, "Listing on Spotify"). Empty hides the button.
@@ -551,17 +549,6 @@ export function sortAradioThreads(threads: readonly AradioThread[]): { open: Ara
   return { open, resolved };
 }
 
-export type AradioAirState = { state: 'live' | 'idle' | 'none'; ageMs: number | null };
-
-/** ON AIR when the given bulletin aired less than two hours ago. */
-export function aradioAirState(latestAiredAt: string | null | undefined, nowMs: number): AradioAirState {
-  const aired = msOf(latestAiredAt ?? null);
-  if (!aired) return { state: 'none', ageMs: null };
-  // A viewer clock running behind the writer's must not show negative ages.
-  const ageMs = Math.max(0, nowMs - aired);
-  return { state: ageMs < ARADIO_ON_AIR_MS ? 'live' : 'idle', ageMs };
-}
-
 // ── The running order (continuous listening) ─────────────────────────────
 
 /** Ids of the bulletins a listener can hear (policy-valid audio), newest first. */
@@ -800,8 +787,7 @@ export type AradioRadioView = {
   /** ready = something to hear; none = nothing aired; text-only = aired, no audio. */
   kind: 'ready' | 'none' | 'text-only' | 'error';
   mode: AradioRadioMode;
-  /** ON AIR is about what a listener can hear: the newest PLAYABLE bulletin. */
-  air: AradioAirState;
+  /** When the newest PLAYABLE bulletin aired: the status line is about what a listener can hear. */
   latestAiredAt: string | null;
   /** On now (playing / paused / last heard), or what pressing play starts. */
   now: AradioBulletinEntry | null;
@@ -821,7 +807,7 @@ export type AradioRadioView = {
   stopAfter: boolean;
 };
 
-export function aradioRadioView(input: AradioRadioInput, nowMs: number): AradioRadioView {
+export function aradioRadioView(input: AradioRadioInput): AradioRadioView {
   const bulletins = input.bulletins;
   const newest = bulletins[0] ?? null;
   const newestPlayable = bulletins.find((entry) => entry.audio) ?? null;
@@ -864,7 +850,6 @@ export function aradioRadioView(input: AradioRadioInput, nowMs: number): AradioR
   return {
     kind,
     mode,
-    air: aradioAirState(newestPlayable?.airedAt ?? null, nowMs),
     latestAiredAt: newestPlayable?.airedAt ?? null,
     now,
     upNext,
@@ -1302,11 +1287,12 @@ export function aradioPlayAria(entry: { airedAt: string; headline: string }, lan
 
 /** Every string the radio card shows. The renderer and main.ts's in-place patcher share it. */
 export type AradioRadioCopy = {
+  /**
+   * The status line: "Latest bulletin · 3h ago" for the newest bulletin with
+   * audio, whatever its age; '' when nothing can be heard (the card's shape
+   * changes with it, and its empty or text-only state says why).
+   */
   badge: string;
-  /** ON AIR: the newest bulletin with audio aired under two hours ago. */
-  live: boolean;
-  /** OFF AIR: nothing to hear at all (the card's shape changes with it). */
-  off: boolean;
   label: string;
   headline: string;
   time: string;
@@ -1325,16 +1311,13 @@ export type AradioRadioCopy = {
   /** "Updated 12 min ago." for the newest bulletin of any kind; '' before the first. */
   updated: string;
   updatedIso: string;
-  /** Off air the sign already gives that age ("Latest bulletin · 3h ago"); it is not said twice. */
+  /** False when the status line already gives that age (the newest bulletin is the playable one). */
   updatedShown: boolean;
 };
 
 export function aradioRadioCopy(view: AradioRadioView, nowMs: number, language: UiLanguage): AradioRadioCopy {
   const t = (key: UiCopyKey, params?: Record<string, string | number>) => uiText(language, key, params);
-  const live = view.kind === 'ready' && view.air.state === 'live';
-  const badge = view.kind !== 'ready'
-    ? t('aradio.offAir')
-    : live ? t('aradio.onAir') : t('aradio.latestAgo', { age: aradioAge(view.latestAiredAt, nowMs, language) });
+  const badge = view.kind === 'ready' ? t('aradio.latestAgo', { age: aradioAge(view.latestAiredAt, nowMs, language) }) : '';
   const labels: Record<AradioRadioMode, UiCopyKey> = {
     off: 'aradio.upFirst', playing: 'aradio.nowPlaying', paused: 'aradio.paused', waiting: 'aradio.caughtUp',
     failed: 'aradio.couldNotPlay',
@@ -1356,8 +1339,6 @@ export function aradioRadioCopy(view: AradioRadioView, nowMs: number, language: 
       : '';
   return {
     badge,
-    live,
-    off: view.kind !== 'ready',
     label: t(labels[view.mode]),
     headline: now ? headlineOf(now) : '',
     time: now ? `${aradioUtcTime(now.airedAt)} UTC` : '',
@@ -1375,7 +1356,7 @@ export function aradioRadioCopy(view: AradioRadioView, nowMs: number, language: 
     upNextEmpty: t('aradio.upNextEmpty'),
     updated: view.updatedAt ? t('aradio.updated', { age: aradioAge(view.updatedAt, nowMs, language) }) : '',
     updatedIso: view.updatedAt ?? '',
-    updatedShown: Boolean(view.updatedAt) && (live || view.kind !== 'ready' || view.updatedAt !== view.latestAiredAt),
+    updatedShown: Boolean(view.updatedAt) && (view.kind !== 'ready' || view.updatedAt !== view.latestAiredAt),
   };
 }
 
@@ -1438,10 +1419,11 @@ function renderPodcast(language: UiLanguage): string {
 
 function renderRadioHead(copy: AradioRadioCopy, kind: AradioRadioView['kind'], s: { language: UiLanguage; nowMs: number }): string {
   const language = s.language;
-  // Station name and on-air sign share a row (the sign wraps below only when
-  // it cannot fit); the tagline runs underneath, then how fresh the station
-  // is and when to expect more. There is no schedule to promise: a bulletin
-  // airs when the material changes the picture.
+  // Station name and status line share a row (the status wraps below only
+  // when it cannot fit); the tagline runs underneath, then how fresh the
+  // station is and when to expect more. There is no schedule to promise: a
+  // bulletin airs when the material changes the picture. With nothing to
+  // hear there is no status line: the empty and text-only states say why.
   const updated = relTime(copy.updatedIso || null, 'aradio.updated', s, 'aradio-updated');
   const liveness = kind === 'ready' || kind === 'text-only'
     ? '<p class="aradio-liveness" data-aradio-liveness>'
@@ -1451,9 +1433,7 @@ function renderRadioHead(copy: AradioRadioCopy, kind: AradioRadioView['kind'], s
   return [
     '<header class="aradio-radio-head">',
     `<h2 class="aradio-station" id="aradioStation">${esc(uiText(language, 'aradio.station'))}</h2>`,
-    `<p class="aradio-badge${copy.live ? ' is-live' : ''}${copy.off ? ' is-off' : ''}" data-aradio-badge>`,
-    '<span class="aradio-badge-lamp" aria-hidden="true"></span>',
-    `<span data-aradio-badge-text>${esc(copy.badge)}</span></p>`,
+    copy.badge ? `<p class="aradio-badge" data-aradio-badge>${esc(copy.badge)}</p>` : '',
     `<p class="aradio-tagline">${esc(uiText(language, 'aradio.tagline'))}</p>`,
     liveness,
     '</header>',
@@ -1597,7 +1577,7 @@ function scriptSlot(s: AradioViewState, view: AradioRadioView): string {
  */
 export function renderAradioRadio(s: AradioViewState): string {
   const language = s.language;
-  const view = aradioRadioView(s.radio, s.nowMs);
+  const view = aradioRadioView(s.radio);
   const copy = aradioRadioCopy(view, s.nowMs, language);
   const t = (key: UiCopyKey) => esc(uiText(language, key));
   const live = '<p class="aradio-sr" aria-live="polite" data-aradio-live></p>';

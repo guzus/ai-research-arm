@@ -16,9 +16,9 @@
 //     stable metadata + committed evidence and prediction-market links.
 //   - Internal/duplicate routes (agents, focus-reader, dated model aliases):
 //     explicit noindex pages with an appropriate canonical.
-//   - The live Aradio station (/aradio): a noindex page whose description
-//     names the latest bulletin, so link unfurlers show what is on air, plus
-//     its podcast feed, dist/aradio/feed.xml (scripts/aradio-feed.mjs).
+//   - The Aradio station (/aradio): a noindex page whose description names
+//     the latest bulletin, so link unfurlers show what aired last, plus its
+//     podcast feed, dist/aradio/feed.xml (scripts/aradio-feed.mjs).
 //
 // Also emits dist/sitemap.xml (canonical indexable URLs only, with lastmod),
 // dist/robots.txt (allow all + sitemap pointer), dist/feed.xml, and
@@ -1793,19 +1793,19 @@ const aradioAbout =
   "Aradio is ara's rolling AI-news bulletin: two hosts read what changed in AI since the last " +
   'bulletin, next to a live board of the storylines that matter.';
 const aradioDescription = aradioLatest
-  ? `On air ${new Date(aradioLatest.aired).toISOString().slice(0, 16).replace('T', ' ')} UTC: ${aradioLatest.headline}`
+  ? `Latest bulletin ${new Date(aradioLatest.aired).toISOString().slice(0, 16).replace('T', ' ')} UTC: ${aradioLatest.headline}`
   : aradioAbout;
 const aradioDir = join(dist, 'aradio');
 mkdirSync(aradioDir, { recursive: true });
 writeFileSync(join(aradioDir, 'index.html'), buildNoindexPage(template, {
   route: '/aradio',
   canonicalRoute: '/aradio',
-  title: 'Aradio: AI news on air',
+  title: 'ARA AI News',
   description: aradioDescription,
   body: aradioLatest ? `${aradioDescription} ${aradioAbout}` : aradioAbout,
   shareImageUrl,
   extraHead: [
-    `<link rel="alternate" type="application/rss+xml" title="ARA Radio" href="${htmlEscapeAttr(`${SITE_ORIGIN}/aradio/feed.xml`)}" />`,
+    `<link rel="alternate" type="application/rss+xml" title="ARA AI News" href="${htmlEscapeAttr(`${SITE_ORIGIN}/aradio/feed.xml`)}" />`,
   ],
 }));
 // The podcast feed is built from the station data vite copied into dist (the

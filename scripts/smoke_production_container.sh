@@ -56,7 +56,7 @@ done
 for route in /aradio /aradio/; do
   aradio_body="$(mktemp)"
   curl -fsS --max-time 10 -o "$aradio_body" "$base$route"
-  grep -q '<title>Aradio' "$aradio_body"
+  grep -q '<title>ARA AI News' "$aradio_body"
   grep -q 'noindex' "$aradio_body"
   rm -f "$aradio_body"
 done

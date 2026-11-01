@@ -137,9 +137,9 @@ class EvaluateTest(unittest.TestCase):
 
 
 NOW = datetime(2026, 10, 31, 4, 17, tzinfo=timezone.utc)
-ROUTE = cps.Probe("aradio", "/aradio", content_type_prefix="text/html", body_contains="<title>Aradio")
+ROUTE = cps.Probe("aradio", "/aradio", content_type_prefix="text/html", body_contains="<title>ARA AI News")
 NOT_DEPLOYED = cps.Response(404, {"content-type": "text/html"}, "Not Found")
-DEPLOYED = cps.Response(200, {"content-type": "text/html"}, "<title>Aradio</title>")
+DEPLOYED = cps.Response(200, {"content-type": "text/html"}, "<title>ARA AI News -- ara</title>")
 BROKEN = cps.Response(500, {"content-type": "text/html"}, "boom")
 HOME_OK = cps.Response(
     200,

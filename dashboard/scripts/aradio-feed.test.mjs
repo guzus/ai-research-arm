@@ -30,7 +30,7 @@ const INDEX = fixture('index.json');
 const B1450 = fixture('bulletins/2026-10-30/1450.json');
 const B1050 = fixture('bulletins/2026-10-30/1050.json');
 const ORIGIN = 'https://ara.guzus.xyz';
-const ARTWORK = 'https://ara.guzus.xyz/brand/aradio-cover.png';
+const ARTWORK = 'https://ara.guzus.xyz/brand/ara-ai-news-cover.png';
 const BASE = ARADIO_DEFAULT_AUDIO_BASE;
 const FOOTER = `\n\nTranscript and sources: ${ORIGIN}/aradio`;
 const ITUNES_NS = 'http://www.itunes.com/dtds/podcast-1.0.dtd';
@@ -434,7 +434,7 @@ function assertEmptyFeed(t, xml, { lastBuildDate = null } = {}) {
   expatCheck(t, xml);
   const channel = channelOf(xml);
   assert.equal(childrenNamed(channel, 'item').length, 0);
-  assert.equal(one(channel, 'title').text, 'ARA Radio');
+  assert.equal(one(channel, 'title').text, 'ARA AI News');
   assert.equal(one(channel, 'itunes:image').attrs.href, ARTWORK);
   assert.equal(childrenNamed(channel, 'lastBuildDate')[0]?.text ?? null, lastBuildDate);
 }
@@ -481,7 +481,7 @@ test('channel: podcast metadata, self link, categories, and square artwork', () 
   assert.equal(root.name, 'rss');
   assert.deepEqual(root.attrs, { version: '2.0', 'xmlns:itunes': ITUNES_NS, 'xmlns:atom': 'http://www.w3.org/2005/Atom' });
   const channel = one(root, 'channel');
-  assert.equal(one(channel, 'title').text, 'ARA Radio');
+  assert.equal(one(channel, 'title').text, 'ARA AI News');
   assert.equal(one(channel, 'link').text, `${ORIGIN}/aradio`);
   assert.deepEqual(one(channel, 'atom:link').attrs, { href: `${ORIGIN}/aradio/feed.xml`, rel: 'self', type: 'application/rss+xml' });
   assert.match(one(channel, 'description').text, /^A short two-host bulletin on what changed in AI/);
@@ -499,7 +499,7 @@ test('channel: podcast metadata, self link, categories, and square artwork', () 
   assert.deepEqual(one(channel, 'itunes:image').attrs, { href: ARTWORK });
   assert.deepEqual(one(channel, 'image').children.map((child) => [child.name, child.text]), [
     ['url', ARTWORK],
-    ['title', 'ARA Radio'],
+    ['title', 'ARA AI News'],
     ['link', `${ORIGIN}/aradio`],
   ]);
   // No owner unless one is configured (see the owner test).
@@ -516,8 +516,8 @@ test('origin and audio base: trailing slashes dropped, values escaped', (t) => {
   const channel = channelOf(xml);
   assert.equal(one(channel, 'link').text, 'https://preview.example/aradio');
   assert.equal(one(channel, 'atom:link').attrs.href, 'https://preview.example/aradio/feed.xml');
-  assert.equal(one(channel, 'itunes:image').attrs.href, 'https://preview.example/brand/aradio-cover.png');
-  assert.equal(one(one(channel, 'image'), 'url').text, 'https://preview.example/brand/aradio-cover.png');
+  assert.equal(one(channel, 'itunes:image').attrs.href, 'https://preview.example/brand/ara-ai-news-cover.png');
+  assert.equal(one(one(channel, 'image'), 'url').text, 'https://preview.example/brand/ara-ai-news-cover.png');
   const [first] = childrenNamed(channel, 'item');
   assert.equal(one(first, 'enclosure').attrs.url, 'https://cdn.example/a&b"c/audio/aradio/2026-10-30-1450.mp3');
   assert.ok(one(first, 'description').text.endsWith('\n\nTranscript and sources: https://preview.example/aradio'));
@@ -560,7 +560,7 @@ function pngChunks(png) {
 
 test('artwork: the file the feed names is art Apple and Spotify accept', () => {
   // The URL is what directories cache; a new design ships under a new name.
-  assert.equal(ARADIO_FEED_ARTWORK_PATH, '/brand/aradio-cover.png');
+  assert.equal(ARADIO_FEED_ARTWORK_PATH, '/brand/ara-ai-news-cover.png');
   const png = readFileSync(new URL(`../public${ARADIO_FEED_ARTWORK_PATH}`, import.meta.url));
   // A git-lfs pointer would fail the signature: Railway's build does not hydrate LFS.
   const chunks = pngChunks(png);
@@ -615,9 +615,9 @@ test('title falls back to the bulletin headline, then to the air time', () => {
   const bulletins = { 'bulletins/2026-10-30/1450.json': { headline: '  From   the file ' } };
   const items = itemsOf(buildAradioFeed({ index, bulletins }));
   assert.deepEqual(items.map((item) => one(item, 'title').text), [
-    'ARA Radio — 5 Nov 2026, 09:05 UTC',
+    'ARA AI News — 5 Nov 2026, 09:05 UTC',
     'From the file',
-    'ARA Radio — 29 Oct 2026, 23:50 UTC',
+    'ARA AI News — 29 Oct 2026, 23:50 UTC',
   ]);
   // aired_at is optional: the id's UTC run stamp is the air time.
   assert.equal(one(items[2], 'pubDate').text, 'Thu, 29 Oct 2026 23:50:00 GMT');

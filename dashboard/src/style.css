@@ -7302,7 +7302,7 @@ body.tab-pricing .calendar { display: none; }
   .pricing-stale { background: #fbbf2422; color: #fbbf24; }
 }
 
-/* ── Aradio: ARA Radio (tab-aradio) ──────────────────
+/* ── Aradio: ARA AI News (tab-aradio) ──────────────────
    A radio first. One loud element — the large round play button in the
    site's royal blue — on a quiet card that follows the theme; everything
    else on the card is small type and hairlines. Its layout is fixed-height
@@ -7337,8 +7337,6 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 .aradio-view .aradio-radio {
   --aradio-button: var(--ara-royal);
   --aradio-button-ink: #ffffff;
-  --aradio-lamp: #e5372a;
-  --aradio-lamp-ink: #b42318;
   /* The transcript window: a tinted screen whose lines step down in tone
      once they have been read. Every tone keeps 4.5:1 on the window. */
   --aradio-window: var(--bg-secondary);
@@ -7349,8 +7347,11 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   border-color: var(--border);
 }
 
-/* Name and sign on one row (the sign wraps below only if it cannot fit), the
-   tagline and the station's freshness on rows of their own. */
+/* Name and status line on one row (the status wraps below only if it cannot
+   fit), the tagline and the station's freshness on rows of their own. The
+   name grows to fill its row, so the status sits at the row's end beside it
+   and starts flush left when it wraps (an auto margin would leave it
+   stranded at the right of a row of its own). */
 .aradio-radio-head {
   display: flex;
   flex-wrap: wrap;
@@ -7359,6 +7360,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 }
 
 .aradio-station {
+  flex: 1 1 auto;
   min-width: 0;
   font-family: var(--font-serif);
   font-size: clamp(1.5rem, 3.2vw, 1.95rem);
@@ -7368,7 +7370,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 }
 
 /* A full-width flex row of its own: a max-width here would cap the flex
-   basis and let the tagline slip up beside the sign on wide screens. */
+   basis and let the tagline slip up beside the status line on wide screens. */
 .aradio-tagline,
 .aradio-liveness {
   flex: 0 0 100%;
@@ -7395,14 +7397,13 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 
 .aradio-updated[hidden] { display: none; }
 
+/* The status line: how old the newest bulletin with audio is. */
 .aradio-badge {
   display: inline-flex;
   flex: none;
   align-items: center;
-  margin-left: auto;
-  gap: 8px;
   min-height: 30px;
-  padding: 0 12px 0 10px;
+  padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: 999px;
   color: var(--text-secondary);
@@ -7411,42 +7412,6 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
   font-weight: 650;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
-}
-
-.aradio-badge-lamp {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--text-tertiary);
-  opacity: 0.55;
-}
-
-/* The sign reads ON AIR / OFF AIR because that is what a studio sign says. */
-.aradio-badge.is-live,
-.aradio-badge.is-off {
-  font-size: 0.7rem;
-  font-weight: 750;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.aradio-badge.is-live {
-  border-color: color-mix(in srgb, var(--aradio-lamp) 45%, transparent);
-  background: color-mix(in srgb, var(--aradio-lamp) 9%, transparent);
-  color: var(--aradio-lamp-ink);
-}
-
-/* On air, the lamp breathes: a soft ring swells and fades every few seconds. */
-.aradio-badge.is-live .aradio-badge-lamp {
-  background: var(--aradio-lamp);
-  opacity: 1;
-  box-shadow: 0 0 0 0 color-mix(in srgb, var(--aradio-lamp) 45%, transparent);
-  animation: aradio-lamp 2.4s ease-out infinite;
-}
-
-@keyframes aradio-lamp {
-  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--aradio-lamp) 45%, transparent); }
-  70%, 100% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--aradio-lamp) 0%, transparent); }
 }
 
 /* Phones (one column, in DOM order): the controls with the big button
@@ -7624,8 +7589,7 @@ body.tab-aradio.aradio-radio-in-view .digest-audio-bar.is-aradio { display: none
 }
 
 /* The show's cover, at the size podcast apps list it: it carries a drawn
-   play button and ON AIR sign, which at hero size would compete with the
-   real ones (and claim to be on air when the station is not). */
+   play button, which at hero size would compete with the real one. */
 .aradio-art {
   display: block;
   width: 56px;
@@ -8220,7 +8184,7 @@ button.aradio-covered-item:hover .aradio-covered-name {
   line-height: 1.45;
 }
 
-/* Off air: nothing to play yet. */
+/* Nothing to play: before the first bulletin, text only, or unreachable. */
 .aradio-radio-empty {
   max-width: 62ch;
   margin-top: clamp(16px, 2.4vw, 22px);
@@ -8972,14 +8936,9 @@ button.aradio-covered-item:hover .aradio-covered-name {
   outline-offset: 2px;
 }
 
-/* Hangul has no capitals to track; the sign stays set solid. */
-:root:lang(ko) .aradio-badge { letter-spacing: 0; }
-
 @media (prefers-color-scheme: dark) {
   .aradio-view .aradio-radio {
     --aradio-button-ink: #08101c;
-    --aradio-lamp: #ff5a4e;
-    --aradio-lamp-ink: #ff9d94;
     --aradio-line-ahead: #c3c8d1;
     --aradio-line-read: #8d939e;
     --aradio-cohost: var(--ara-cyan);
@@ -8994,7 +8953,6 @@ button.aradio-covered-item:hover .aradio-covered-name {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aradio-badge.is-live .aradio-badge-lamp,
   .aradio-mode--waiting .aradio-toggle::after,
   .aradio-mode--playing .aradio-line.is-live .aradio-speaker::before { animation: none; }
   .aradio-toggle.is-buffering::after { animation: none; border-color: color-mix(in srgb, var(--aradio-button) 42%, transparent); }
