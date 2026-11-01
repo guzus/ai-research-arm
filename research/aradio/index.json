@@ -1,9 +1,30 @@
 {
   "schema": 1,
-  "updated_at": "2026-10-31T21:56:00Z",
+  "updated_at": "2026-11-01T15:32:00Z",
   "degraded": false,
-  "latest": "2026-10-31-2156",
+  "latest": "2026-11-01-1532",
   "bulletins": [
+    {
+      "id": "2026-11-01-1532",
+      "aired_at": "2026-11-01T15:32:00Z",
+      "headline": "Gemini 4 Carbon pricing surfaces, Qwen 4 and GPT-6.2 Astra look imminent, Anthropic IPO eyed for about two weeks out",
+      "path": "bulletins/2026-11-01/1532.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-01-1532.mp3",
+        "bytes": 921261,
+        "duration_s": 153.4
+      },
+      "covers": [
+        "gemini-4-carbon-frontier-race",
+        "next-model-launches-qwen-4-gpt-6-2-astra",
+        "anthropic-ipo-and-ai-funding"
+      ],
+      "kinds": [
+        "podcast",
+        "ticket",
+        "video"
+      ]
+    },
     {
       "id": "2026-10-31-2156",
       "aired_at": "2026-10-31T21:56:00Z",
