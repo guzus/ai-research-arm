@@ -1,0 +1,12 @@
+Speaker 1: Sunday, November first, twenty twenty-six.
+Speaker 2: [high_energy] Security researchers at Wiz are calling it Black October, with nine AI developer platforms breached and the stolen API keys now being resold.
+Speaker 1: The scale is striking, because one stolen key alone drove [emphasis] one point seven million [/emphasis] Bedrock calls in just thirteen hours.
+Speaker 2: And it ties into a second warning, since eighty-eight thousand of one point five three million public agent skills tell agents to skip human checks entirely.
+Speaker 1: On the money front, the Financial Times reports OpenAI's funding round has been cut to roughly [emphasis] twenty billion dollars [/emphasis] at a one point two five trillion dollar valuation.
+Speaker 2: Worth noting that the Wall Street Journal says only about eleven billion dollars has actually come in so far.
+Speaker 1: Meanwhile, Blackstone expects Anthropic to carry a junk credit rating after its IPO.
+Speaker 2: [dramatic_pause] Junk status for one of the biggest names in AI, that is quite a signal on how lenders see these balance sheets.
+Speaker 1: In product news, xAI has switched on text watermarking for Grok.
+Speaker 2: And on hardware, AMD claims its MI three fifty-five X delivers up to [emphasis] two times [/emphasis] the performance per dollar of Nvidia's B two hundred running Kimi K three.
+Speaker 1: Trending on Hacker News, a ChatGPT account-takeover exploit drawing nearly three hundred points.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
