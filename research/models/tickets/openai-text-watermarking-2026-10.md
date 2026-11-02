@@ -3,7 +3,7 @@ slug: openai-text-watermarking-2026-10
 title: OpenAI launches text watermarking — opt-in on the API worldwide, default for EU ChatGPT/Codex under the AI Act
 company: OpenAI
 model: null
-status: released
+status: closed
 status_note: |
   **First-party, @OpenAI thread, 2026-10-05 17:42 UTC:** "In the EU, we'll start
   watermarking eligible text from ChatGPT and Codex over the coming weeks to comply
@@ -34,12 +34,14 @@ sources:
   - https://x.com/TheInfoMachine/status/2107449727696433179
   - "@OpenAI"
 created_at: 2026-10-06
-updated_at: 2026-10-06
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-02
+closed_at: 2026-11-02
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-06
     change: "Created — RELEASED / confirmed. @OpenAI (2026-10-05 17:42 UTC) expanded content provenance to text: API customers can enable text watermarking for select models worldwide today, and eligible ChatGPT and Codex text in the EU will be watermarked over the coming weeks to comply with the EU AI Act. The signal is an invisible statistical pattern that does not identify users or prompts; OpenAI concedes it is often undetectable in short passages and removable by rewriting or translation, and limits the detector to approved researchers. Secondary (@TheInfoMachine): product name 'textGrain', detector ~80% recall on 200-token passages at 1% FPR."
+  - ts: 2026-11-02
+    change: "Closed — released-and-aged. The API text-watermarking opt-in went live on 2026-10-05 (@OpenAI, 17:42 UTC), four weeks before this run, and the ticket has carried no new lifecycle signal since. Further provenance or EU AI Act coverage moves to normal reporting."
 ---
 
 The first major lab to ship text watermarking in production, and it is doing so

@@ -5,6 +5,12 @@ company: Anthropic
 model: Mythos
 status: confirmed
 status_note: |
+  **2026-11-02 — a 'Claude Mythos 5.5' string reportedly sits on anthropic.com (second-hand).** An AI-news
+  roundup (@TraffAlex, 2026-11-02 14:06 UTC, crediting @testingcatalog) says an unpublished string on Anthropic's
+  site calls Claude Mythos 5.5 the company's most capable model class for cybersecurity and biology research.
+  There is no announcement and no date. The same roundup says a Hugging Face repo claiming to host a 14T-parameter
+  mid-training Mythos checkpoint was fake. Neither changes the gated stance: status stays `confirmed`.
+
   **2026-10-06 — Cyber Verification Program expanded (@AnthropicAI, first-party).**
   Verified security professionals can now access Claude Mythos 5.1, Opus 5.5 and
   Sonnet 5.5 "with safeguards designed for defensive work", and new tiers allow
@@ -78,6 +84,7 @@ labels:
   - project-glasswing
 verification: confirmed
 sources:
+  - "https://x.com/TraffAlex/status/2117257113667871135"
   - "https://x.com/AnthropicAI/status/2111152183240511640"
   - "@claudeai"
   - https://red.anthropic.com/2026/mythos-preview/
@@ -100,7 +107,7 @@ sources:
   - https://x.com/AnthropicAI/status/2107546569654636883
   - https://x.com/TheInfoMachine/status/2107828162352533704
 created_at: 2026-04-12
-updated_at: 2026-10-17
+updated_at: 2026-11-02
 closed_at: null
 closed_reason: null
 history:
@@ -152,6 +159,8 @@ history:
     change: "Access widened again, first-party; still not public. @AnthropicAI (2026-10-06 19:00 UTC, ~5.1K likes): 'We're expanding our Cyber Verification Program to give security professionals broader access to our most capable models. Through this program, verified security professionals can access Claude Mythos 5.1, Opus 5.5, and Sonnet 5.5 with safeguards designed for defensive work. We're also opening up new tiers to allow for authorized offensive work, like penetration testing and red-teaming.' This is the first Anthropic-primary statement of a Mythos 5.1 access route outside Glasswing, and the first explicit sanction of offensive use (pentest/red-team) under a verification tier. Corroborated as an Oct 6 launch by the @TheInfoMachine digest. Status stays confirmed: access is verification-gated, not general availability."
   - ts: 2026-10-17
     change: "Confirmed, unchanged — first-party gated-use result, no change to public availability. @AnthropicAI (2026-10-16 17:47 UTC), from its STEM Fellows Program: given plain-language instructions, 'Claude Mythos 5 designed quantum circuits that improve on the best published ones, sometimes by an order of magnitude or more.' This is another research-access output of the gated Mythos 5 tier, not a release step. Related same-day capability claim: [[anthropic-claude-curve-seeds-2026-10]]."
+  - ts: 2026-11-02
+    change: "Confirmed, unchanged — possible next version, second-hand. An AI-news roundup (@TraffAlex, 2026-11-02 14:06 UTC), crediting @testingcatalog, reports an unpublished string on Anthropic's site that describes 'Claude Mythos 5.5' as Anthropic's most capable model class for cybersecurity and biology research. No announcement, date or access change. The @testingcatalog post itself was not in this run's fetch, so the claim is held as a relay. The roundup also reports that a Hugging Face upload claiming to be a 14T-parameter mid-training Mythos checkpoint was fake; it is recorded here as debunked, not as evidence. Pattern note: Mythos 5.1 shipped gated next to a public Fable 5.1, and [[anthropic-claude-fable-5-5-2026-10]] tracks the matching rumored Fable version. That pairing is not assumed for 5.5."
 ---
 
 Mythos is Anthropic's post-Opus-4.7 frontier model, operated as a
