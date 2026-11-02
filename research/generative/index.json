@@ -3592,5 +3592,19 @@
     "source": "workflow_dispatch",
     "prompt": "SemiAnalysis GDPx: Opus 5.5 tops a 206-task agent benchmark at 12%, but domain weighting and cost per task decide the ranking",
     "tags": []
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-deepseekharnes",
+    "file": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-11-02T11:36:33Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/DeepSeekHarness/status/2116857257245987236\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

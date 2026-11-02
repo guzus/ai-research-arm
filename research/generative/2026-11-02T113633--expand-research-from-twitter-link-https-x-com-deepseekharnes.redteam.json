@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "A secondary roundup of reviews found no published comparison of `dsh` against Claude Code, Codex CLI or OpenCode, and this run found none either; the absence is consistent with the repository contents but is an absence of evidence, not proof of non-existence.",
+      "contradicting_url": "https://www.datacamp.com/blog/deepseek-harness-vs-claude-code",
+      "contradicting_quote": "Both produced byte-identical diffs... Claude Code 55.0 seconds, DeepSeek Harness 125.4 seconds... 'This is one Windows case study with prerelease Harness, not a permanent ranking.'",
+      "severity": "low",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "Subtracting from the API total implies about 209,600 stars (78%) arrived in the first 21 days after creation, roughly 10,000 per day, then the pace fell to roughly 1,000 per day",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "for the 17 October release it moved to Terminal-Bench 4.0, reporting 42.3 with the Claude Code framework and a separate DeepSWE v1.1 score of 77.0 measured with the mini-swe-v2 harness.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}

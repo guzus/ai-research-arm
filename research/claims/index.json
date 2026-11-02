@@ -1,5 +1,5 @@
 {
-  "article_count": 111,
+  "article_count": 112,
   "articles": [
     {
       "claim_count": 18,
@@ -1055,6 +1055,16 @@
       "stem": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
       "tags": [],
       "title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins"
+    },
+    {
+      "claim_count": 14,
+      "created_at": "2026-11-02T11:36:33Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "stem": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show"
     }
   ],
   "by_host": {
@@ -1454,7 +1464,11 @@
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c8",
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c3",
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c4",
-      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c6"
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c6",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c10",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c6",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c7",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c9"
     ],
     "api.comfy.org": [
       "2026-08-04T171206--comfyui-company#c13"
@@ -1476,7 +1490,10 @@
       "2026-08-04T171206--comfyui-company#c9",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c12",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c13",
-      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c13"
+      "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c13",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c1",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c12",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c14"
     ],
     "api.llama.fi": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c10",
@@ -1906,7 +1923,8 @@
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c8",
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c9",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c12",
-      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c13"
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c13",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c5"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -1926,6 +1944,9 @@
     ],
     "assets.theregister.com": [
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c7"
+    ],
+    "atlascloud.ai": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c11"
     ],
     "authorsalliance.org": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -2474,7 +2495,8 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c14",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c36",
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9",
-      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c10"
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c10",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c8"
     ],
     "clinicalgenome.org": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c40"
@@ -3508,7 +3530,8 @@
     "eu.36kr.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c5",
       "2026-06-22T052035--zhipu-ai-glm#c15",
-      "2026-08-20T152813--unitree-star-market-ipo-debut#c7"
+      "2026-08-20T152813--unitree-star-market-ipo-debut#c7",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c13"
     ],
     "eur-lex.europa.eu": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c27"
@@ -3969,7 +3992,8 @@
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c18",
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c10",
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c9",
-      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c11"
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c11",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c2"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -5654,7 +5678,8 @@
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c4"
     ],
     "qbitai.com": [
-      "2026-06-22T052035--zhipu-ai-glm#c23"
+      "2026-06-22T052035--zhipu-ai-glm#c23",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c13"
     ],
     "query1.finance.yahoo.com": [
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-13",
@@ -5738,7 +5763,9 @@
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c13",
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c3",
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c9",
-      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c4"
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c4",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c3",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c4"
     ],
     "rdi.berkeley.edu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
@@ -7677,17 +7704,29 @@
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c13",
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c25"
     ],
+    "https://api-docs.deepseek.com/guides/anthropic_api": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c10"
+    ],
+    "https://api-docs.deepseek.com/guides/kv_cache": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c7"
+    ],
     "https://api-docs.deepseek.com/news/news0802": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c8"
     ],
     "https://api-docs.deepseek.com/news/news261017": [
-      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c6"
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c6",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c9"
+    ],
+    "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c10"
     ],
     "https://api-docs.deepseek.com/quick_start/pricing": [
-      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c3"
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c3",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c6"
     ],
     "https://api-docs.deepseek.com/updates": [
-      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c4"
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c4",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c9"
     ],
     "https://api.comfy.org/nodes": [
       "2026-08-04T171206--comfyui-company#c13"
@@ -7708,6 +7747,16 @@
       "2026-08-04T171206--comfyui-company#c5",
       "2026-08-04T171206--comfyui-company#c8",
       "2026-08-04T171206--comfyui-company#c9"
+    ],
+    "https://api.github.com/repos/deepseek-ai/deepseek-harness": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c1",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c14"
+    ],
+    "https://api.github.com/repos/deepseek-ai/deepseek-harness/contents/benchmarks": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c12"
+    ],
+    "https://api.github.com/repos/openai/codex": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c14"
     ],
     "https://api.github.com/repos/openai/ten-proofs": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c6"
@@ -8436,6 +8485,9 @@
     "https://arxiv.org/abs/2608.21964": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c22"
     ],
+    "https://arxiv.org/abs/2608.25512": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c5"
+    ],
     "https://arxiv.org/abs/2609.28115": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c1",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c19"
@@ -9115,7 +9167,8 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c36"
     ],
     "https://claude.com/pricing": [
-      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9"
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9",
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c8"
     ],
     "https://clinicalgenome.org/working-groups/sequence-variant-interpretation": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c40"
@@ -10047,6 +10100,9 @@
     "https://eu.36kr.com/en/p/3943674198218376": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c7"
     ],
+    "https://eu.36kr.com/en/p/4026611310465672": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c13"
+    ],
     "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202401689": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c27"
     ],
@@ -10558,6 +10614,9 @@
     ],
     "https://github.com/dangnh0611/kaggle_rsna_breast_cancer": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15"
+    ],
+    "https://github.com/deepseek-ai/deepseek-harness": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c2"
     ],
     "https://github.com/deepseek-ai/open-infra-index/blob/main/202502OpenSourceWeek/day_6_one_more_thing_deepseekV3R1_inference_system_overview.md": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c20",
@@ -12283,6 +12342,12 @@
     "https://raw.githubusercontent.com/comfyanonymous/ComfyUI/master/comfy_execution/caching.py": [
       "2026-08-04T171206--comfyui-company#c49"
     ],
+    "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/master/SAFETY.md": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c3"
+    ],
+    "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/master/packages/sandbox/README.md": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c4"
+    ],
     "https://raw.githubusercontent.com/leanprover/comparator/master/README.md": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c10",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c46",
@@ -13835,6 +13900,9 @@
     ],
     "https://www.aronfrishberg.com/gatsby": [
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c24"
+    ],
+    "https://www.atlascloud.ai/blog/deepseek-harness-vs-opencode": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c11"
     ],
     "https://www.authorsalliance.org/resources/generative-ai/bartz-v-anthropic-settlement-faq": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -16168,6 +16236,9 @@
     "https://www.qbitai.com/2026/02/381712.html": [
       "2026-06-22T052035--zhipu-ai-glm#c23"
     ],
+    "https://www.qbitai.com/2026/10/503326.html": [
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c13"
+    ],
     "https://www.quicknode.com/blog/best-hyperliquid-rpc-providers-2026-full-comparison": [
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c12"
     ],
@@ -17839,7 +17910,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3180,
+  "claim_count": 3194,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -93545,9 +93616,340 @@
       "source_tiers": [],
       "source_urls": [],
       "type": "derived"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-11-02",
+      "claim": "deepseek-ai/deepseek-harness was created 2026-08-13, is MIT-licensed, and had 269,030 stars and 32,667 forks on 2026-11-02.",
+      "confidence": "high",
+      "hosts": [
+        "api.github.com"
+      ],
+      "id": "c1",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c1",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api.github.com/repos/deepseek-ai/deepseek-harness"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-11-02",
+      "claim": "DeepSeek's Anthropic-compatible endpoint maps claude-opus* names to deepseek-v4-pro and other claude* names to deepseek-flash, and DeepSeek documents running Claude Code against it.",
+      "confidence": "medium",
+      "hosts": [
+        "api-docs.deepseek.com"
+      ],
+      "id": "c10",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://api-docs.deepseek.com/guides/anthropic_api",
+        "https://api-docs.deepseek.com/quick_start/agent_integrations/claude_code"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-08-11",
+      "claim": "A Composio benchmark reported by Atlas Cloud ran 8 harnesses on DeepSeek V4 Flash over 30 tasks, with pass rates from 46.7% to 66.7% and tokens per task from 192k to 1.4M.",
+      "confidence": "low",
+      "hosts": [
+        "atlascloud.ai"
+      ],
+      "id": "c11",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c11",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.atlascloud.ai/blog/deepseek-harness-vs-opencode"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-11-02",
+      "claim": "The repo's benchmarks/ directory contains performance gates (e.g. session-open, terminal-io, conversation-fold), not model-accuracy or cross-harness results.",
+      "confidence": "medium",
+      "hosts": [
+        "api.github.com"
+      ],
+      "id": "c12",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c12",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api.github.com/repos/deepseek-ai/deepseek-harness/contents/benchmarks"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-10-15",
+      "claim": "On 2026-10-15 a partial DeepSeek outage began at 08:11 Beijing time while a Bilibili account named DeepSeekHarness appeared with 10,000+ followers; the reporting says there is no official evidence linking the two.",
+      "confidence": "medium",
+      "hosts": [
+        "eu.36kr.com",
+        "qbitai.com"
+      ],
+      "id": "c13",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c13",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.qbitai.com/2026/10/503326.html",
+        "https://eu.36kr.com/en/p/4026611310465672"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-11-02",
+      "claim": "Star counts on 2026-11-02: OpenClaw 393,695; DeepSeek Harness 269,030; OpenCode 223,978; Claude Code 154,233; Codex CLI 132,828.",
+      "confidence": "medium",
+      "hosts": [
+        "api.github.com"
+      ],
+      "id": "c14",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://api.github.com/repos/deepseek-ai/deepseek-harness",
+        "https://api.github.com/repos/openai/codex"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-11-02",
+      "claim": "The README calls dsh a developer preview and warns of compatibility-breaking changes; it is built on an everything-is-a-plugin architecture powered by Cordis.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c2",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/deepseek-ai/deepseek-harness"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-11-02",
+      "claim": "SAFETY.md states the project has not undergone a security audit and that sandboxes and permission prompts do not guarantee isolation.",
+      "confidence": "medium",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c3",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/master/SAFETY.md"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-11-02",
+      "claim": "The sandbox package confines subprocesses with bwrap/Landlock on Linux, Seatbelt on macOS, and a restricted token on Windows, and describes confinement as same-world only (shares host kernel and filesystem).",
+      "confidence": "medium",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c4",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/deepseek-ai/deepseek-harness/master/packages/sandbox/README.md"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-08-26",
+      "claim": "arXiv:2608.25512 (submitted 2026-08-26; authors Shi, Zhang, Cui, with two at DeepSeek-AI) formalizes Cordis around temporal composability (revertible effects) and spatial composability (reactive coeffects).",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c5",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2608.25512"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-11-02",
+      "claim": "DeepSeek API prices per 1M tokens: V4.1 Flash cache-hit $0.006, miss $0.30, output $1.20 at peak (half off-peak); V4 Pro $0.044/$1.32/$3.96 at peak; 1M context; peak windows 01:00-04:00 and 06:00-10:00 UTC Mon-Fri.",
+      "confidence": "high",
+      "hosts": [
+        "api-docs.deepseek.com"
+      ],
+      "id": "c6",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api-docs.deepseek.com/quick_start/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-11-02",
+      "claim": "DeepSeek context caching is on by default, matches only fully matching prefix units, and is best-effort with no guaranteed hit rate.",
+      "confidence": "high",
+      "hosts": [
+        "api-docs.deepseek.com"
+      ],
+      "id": "c7",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api-docs.deepseek.com/guides/kv_cache"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-11-02",
+      "claim": "Claude list prices per MTok: Opus 5.5 input $4, cache read $0.20, output $20; Sonnet 5.5 input $2, cache read $0.10, output $10.",
+      "confidence": "medium",
+      "hosts": [
+        "claude.com"
+      ],
+      "id": "c8",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c8",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://claude.com/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes",
+      "article_created_at": "2026-11-02T11:36:33Z",
+      "article_title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show",
+      "as_of": "2026-10-17",
+      "claim": "DeepSeek's V4.1-Flash-1017 release notes say the model is tuned for DeepSeek Harness and recommend Harness 0.2.1-rc.1 or later, while the headline Terminal-Bench 4.0 score of 42.3 was measured with the Claude Code framework.",
+      "confidence": "medium",
+      "hosts": [
+        "api-docs.deepseek.com"
+      ],
+      "id": "c9",
+      "key": "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c9",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://api-docs.deepseek.com/updates",
+        "https://api-docs.deepseek.com/news/news261017"
+      ],
+      "type": "event"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1527,
+  "reusable_count": 1533,
   "schema_version": 1
 }
