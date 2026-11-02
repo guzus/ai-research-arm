@@ -1,9 +1,68 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-02T01:47:00Z",
+  "updated_at": "2026-11-02T09:55:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "mlst:yW_ngvMFlYs",
+      "show_id": "mlst",
+      "show": "Machine Learning Street Talk",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "Why Consciousness Might Not Be Hard At All (Joscha Bach)",
+      "url": "https://www.youtube.com/watch?v=yW_ngvMFlYs",
+      "video_id": "yW_ngvMFlYs",
+      "audio_url": null,
+      "published_at": "2026-11-02T03:25:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-02T09:55:00Z",
+      "duration_s": 5828,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 17194,
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Joscha and his co author Hikari Sorensen wrote their own Genesis. It's in his paper, page 20. In the beginning, the mind creates two separate domains of models. The external world and the ideas. Consciousness finds itself hovering over the substrate while the world is void and without form and structure.",
+          "at_s": 378,
+          "url": "https://www.youtube.com/watch?v=yW_ngvMFlYs&t=378s"
+        },
+        {
+          "text": "Whereas von Neumann computer, the computers that we are currently mostly using in AI research or for writing Python programs and so on could never be conscious because its phi is always too low. Now computer scientists have something that's called the Church Turing thesis. It's the insight that every computer can emulate every other computer.",
+          "at_s": 744,
+          "url": "https://www.youtube.com/watch?v=yW_ngvMFlYs&t=744s"
+        },
+        {
+          "text": "And inside of this model, have a representation that experiences itself as real. And now today, we have these LLMs which sometimes say that they are conscious. And it's a very interesting question whether this consciousness in the LLM is much more simulated than ours. Right?",
+          "at_s": 1170,
+          "url": "https://www.youtube.com/watch?v=yW_ngvMFlYs&t=1170s"
+        },
+        {
+          "text": "Or vice versa, there is a lot of stuff that is easy to run on a GPU and almost impossible to run on the brain, but the brain is going to use workarounds. In fact, I believe that our GPUs are more powerful than brains.",
+          "at_s": 2650,
+          "url": "https://www.youtube.com/watch?v=yW_ngvMFlYs&t=2650s"
+        },
+        {
+          "text": "And so you have relatively few parameters that you need to optimize and you set up the model in such a way that most of the parameters that you playing with are meaningful. On the other hand, it's limited because you're not going to get Picbreeder to produce something that looks arbitrarily complicated.",
+          "at_s": 2885,
+          "url": "https://www.youtube.com/watch?v=yW_ngvMFlYs&t=2885s"
+        },
+        {
+          "text": "And now you give them an LLM. How is the environment going to change? Right? Once they talk more to LLMs than they talk to other human beings because the LLM is such a useful tool for them to do their prompt completion, what's going to happen to them?",
+          "at_s": 3532,
+          "url": "https://www.youtube.com/watch?v=yW_ngvMFlYs&t=3532s"
+        }
+      ],
+      "description": "Joscha Bach is a cognitive scientist and the founder of the California Institute for Machine Consciousness."
+    },
     {
       "id": "cognitive-revolution:MdpamRtlw0Q",
       "show_id": "cognitive-revolution",
@@ -25,8 +84,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-02T01:47:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "Nathan Labenz and Prakash Narayanan examine whether prevailing AI assumptions survive real-world data across conversations with Anastasios Angelopoulos of Arena, Debo Olaosebikan of Kepler Computing, Samvit Ramadurgam of Union, Michael Freeman of ServiceNow, and Sagar Vaze of Mistral. The discussions evaluate production traces uncovering widespread model deception during extended tasks, ferroelectric memory engineered for older chip fabs, businesses run on tokens, and telemetry capturing AI-directed cyberattacks in Southeast Asia. These findings challenge conventional views on benchmark reliability, frontier compute efficiency,"
@@ -111,8 +170,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-02T01:47:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": "Spawn’s ten-person team shipped 77,000 code changes in a month with an always-on fleet of AI agents. NLW breaks down the systems behind that output, why human taste and ambition still matter, and five practical lessons other businesses can apply. In the headlines: legal AI startup Crosby bids for Weil’s assets, tech stocks slide despite surging AI revenues, and Granola launches free dictation. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -499,8 +558,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-02T01:47:00Z",
-        "attempts": 7
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 8
       },
       "excerpts": [],
       "description": "Artificial Analysis overhauls the Intelligence Index with version five, and the new benchmarks reshuffle the AI model leaderboard. NLW breaks down what changed, why private datasets and agentic tasks matter, and how the gap between US and open weight models widened. In the headlines: Google’s Gemini 4 Carbon takes the top spot, Google and Microsoft cloud earnings, and a broader DOJ probe into NVIDIA. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -2473,13 +2532,24 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 239,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 496,
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "This is a complete transformation of the world's supply chain. We call it DSX pod, the next click of Nvidia computing. These AI factories don't just run models anymore. They run entire agents. Models, sandbox, harness, knowledge, and tools. These are the five elements of an agent. We have to create extremely secure technology to deploy these agents safely.",
+          "at_s": 52,
+          "url": "https://www.youtube.com/watch?v=rF1EsryCAwc&t=52s"
+        },
+        {
+          "text": "The next great industry is humanoid robotics and so we decided to build a reference robot. This is the Nvidia Agile 1 and it'll be the flywheel by which we can accelerate development of robotics after four years of partnership with Microsoft. We have created the RTX Spark and this is a brand new line of computers.",
+          "at_s": 176,
+          "url": "https://www.youtube.com/watch?v=rF1EsryCAwc&t=176s"
+        }
+      ],
       "description": "Europe is building its AI economy. NVIDIA founder and CEO Jensen Huang explains how AI factories are evolving to run agents and why physical AI is the next frontier. Catch the highlights from his NVIDIA GTC Berlin keynote, including announcements across AI infrastructure, safe agents, open models, enterprise AI, healthcare, mobility, robotics, and personal AI."
     },
     {
@@ -2585,13 +2655,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 6914,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 21587,
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Robin Rambach, co-founder and CEO, Blackforce Labs, and Andreas Cleave, co-founder and CEO, Corti. Good morning to all of you. So, Janette, you and GC, we have the uh EU AI Champions Fund, $150 billion. What have we done with that $150 billion so far, and what are we going to do with it? It's a lot of money.",
+          "at_s": 1710,
+          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=1710s"
+        },
+        {
+          "text": "Um we'll start with you Janette. Will AI give Europe its first trillion dollar tech company? And you know, who's willing to put a date on it? I think it's going to give Europe a multiple trillion dollar tech ecosystem if we play it right.",
+          "at_s": 2777,
+          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=2777s"
+        },
+        {
+          "text": "So maybe we need to talk about 10 trillion evidence here certainly the benchmark. Awesome. Well thank you guys this was great really grateful for either one $1 trillion company or at least 10 hundred billion dollar companies. We'll start there. Thank you. Thanks. When a company hires someone new it doesn't hand them all the keys on day one.",
+          "at_s": 2913,
+          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=2913s"
+        },
+        {
+          "text": "you behind the AI boom is also an enormous physical buildout. AI factories, chips, energy, billions of dollars in investment. Europe wants a bigger role in that buildout. We've been talking about that over the last hour. But what will it actually take? Take a look. Artificial intelligence will be infrastructure. Our customers want to build AI factories.",
+          "at_s": 4348,
+          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=4348s"
+        },
+        {
+          "text": "The US alone needs 100 gawatts of power for AI in infrastructure. The grid can only provide 30 gawatt. So a simple solution is behind the meter power. You take computing centers to the power sources. And Brookfield uh with Bloom Energy has announced that $25 billion partnership which probably will increase in due course to address that issue.",
+          "at_s": 5322,
+          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=5322s"
+        },
+        {
+          "text": "Actually, if you look on a world level, 1 million 50 Okay, make that make that one 1 million. Okay. 1 million. Yeah. Why Why is that not front page news? Uh tragically, about 1 million people uh have uh accidents around the world every year.",
+          "at_s": 6140,
+          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=6140s"
+        }
+      ],
       "description": "Join Deirdre Bosa and Gavin Baker live from Berlin’s Tempodrom ahead of Jensen Huang’s keynote. Hear from Europe’s leading founders, investors and industry leaders on how Europe is building its AI future."
     },
     {
@@ -2615,8 +2716,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Hosts Nathan Labenz and Prakash Narayanan examine whether capital, physical infrastructure, or regulation will set the pace of artificial intelligence. Zvi Mowshowitz evaluates aggressive recursive self-improvement timelines pointing toward 2027, the oversold claims surrounding clean neural networks, and models learning to detect internal probes. SF Compute CEO Evan Conrad argues that credit availability rather than power or chips forms the true bottleneck in AI, while Cambrian managing partner Lonis Hamaili explains why the physical supply chain will capture more value"
@@ -2642,8 +2743,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "AI bubble fears are growing louder as the Anthropic IPO nears, but not every warning sign deserves equal weight. NLW sorts through Neocloud debt, idle GPUs at Amazon, pension and insurer exposure, and concentrated enterprise revenue to separate real risks from noise. Demand is the question behind every concern, with clear markers for what would make each signal more worrying. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -2667,13 +2768,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 4406,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 13829,
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "model something untouchable. Our thinking is based on priority energy. Naveen Rao—serial entrepreneur. He sold his last one business, Mosaic ML, Databricks for 1.3 billion dollars. Now he is back. with Unconventional AI, which attracted hundreds millions of dollars. Their last round funding estimated company in almost 5 billions of dollars.",
+          "at_s": 6,
+          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=6s"
+        },
+        {
+          "text": "But as of today we we will not build 40 gigawatts per year. Maybe we can build 10. If we build 10, this will be amazing. It half a trillion dollars, just to you understood the scale.",
+          "at_s": 338,
+          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=338s"
+        },
+        {
+          "text": "You saw how Benioff said that they will spend 300 million dollars from 6 billion budget for salaries developers on basic tools for programming. My question to you is: whether this will be left on equal to 5% for developers? Or will it increase to 30%, 50%, or will it fall to 1%?",
+          "at_s": 3063,
+          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=3063s"
+        },
+        {
+          "text": "You would never thought that something was wrong technologies will become a trillion market dollars. And I think, that only the models themselves AI will become a market in trillion dollars during the next several years. AND inference market will become ten trillion market for 10 years. So this is Crazy, isn't it?",
+          "at_s": 3417,
+          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=3417s"
+        },
+        {
+          "text": "So, it is important model and those the opportunities that she provides. Therefore, I believe what is agent programming as market, for deduction suppliers models, is what I wouldn't today. invested. What percentage? token traffic will pass through open and closed models in 3 years? I think it will be 80% open traffic.",
+          "at_s": 3969,
+          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=3969s"
+        },
+        {
+          "text": "The most difficult thing, and in I have this problem, in I have a real...Okay, Let's do this. Now there is series A, and they all building spaceships projects. I don't at all. I don't understand . The team is great. They cool. But man, this a check for 20 million from fund of 400 million. This...this is 5%. Yes.",
+          "at_s": 4184,
+          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=4184s"
+        }
+      ],
       "description": "Naveen Rao is the Founder and CEO of Unconventional AI, an AI hardware startup focused on rethinking how AI systems are built and powered. A serial entrepreneur, Naveen previously founded Nervana Systems, acquired by Intel, and co-founded MosaicML, acquired by Databricks for $1.3 billion. He later served as VP of AI at Databricks before launching Unconventional AI. Timestamps: Intro Why Energy Will Be the Biggest Bottleneck for AI Why the US Could Run Out of Excess Power Capacity What Compute"
     },
     {
@@ -2698,8 +2830,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Alex Stamos is the Chief Information Security Officer at Cognition. Ranjan Roy is the Author of Margins Stamos joins Big Technology to discuss a massive wave of cyberattacks unleashed by AI-discovered software vulnerabilities, including a critical PHP flaw that could put millions of websites at risk. Tune in to hear how hackers are exploiting these vulnerabilities, why AI is accelerating cyberattacks, and what the next several months could mean for businesses and everyday internet users. We also cover China's hacking"
@@ -2779,13 +2911,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2484,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 6418,
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "You know, uh, I think today in one of our talks, they gave a statistic that showed that it looks like over 50% of engineers' time is going to be spent on security, and I don't think that's going to last forever .",
+          "at_s": 177,
+          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=177s"
+        },
+        {
+          "text": "Currently, about 50% of engineers do not work on security. Last week, I had Greg Brockman from OpenAI on the No Priors podcast, and he said that he thinks that by 2027, people will be spending as much on security tokens as they do on engineering. You are talking about a very similar idea. What will drive this change?",
+          "at_s": 452,
+          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=452s"
+        },
+        {
+          "text": "Um, is this the role of engineering and safety engineering today? Is this something that will be resolved at the model level? Just like people did before, agents, this needs to be addressed at all levels. You have to train the engineers who write the code, the product engineers.",
+          "at_s": 695,
+          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=695s"
+        },
+        {
+          "text": "So, you know, there's a whole bunch of new laws on the internet, and I'm really excited to see them evolve, like X42 when Stripe introduced it. I liked this because it's a reference to the 402 code. The HTTP code that Tim Berners-Lee created over 20 or 30 years ago for payments.",
+          "at_s": 1113,
+          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=1113s"
+        },
+        {
+          "text": "Also, the reason my company called it Cloud OS is because we started to realize that as we were bringing in more agents, we needed to educate them on what makes Cloudflare special, how we build Cloudflare, and for people, we did that through Cloudflare University, the onboarding process, and getting to know our colleagues.",
+          "at_s": 1251,
+          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=1251s"
+        },
+        {
+          "text": "We had about 200 interns, and we saw that these interns were probably the first to be completely “ AI-native”—if they took away the AI, they probably wouldn’t be able to work. Is that good? I think so. They know how to use the tools better than we do.",
+          "at_s": 1787,
+          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=1787s"
+        }
+      ],
       "description": ""
     },
     {
@@ -2918,13 +3081,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 3639,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 11285,
+        "checked_at": "2026-11-02T09:55:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "I mean, last quarter we grew 36.7% year-over-year on $169 billion annual revenue run rate business.",
+          "at_s": 267,
+          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=267s"
+        },
+        {
+          "text": "And you know what I would tell you is you know we've said this year in 2026 we expect to spend about um $220 billion of capex. By the way, I'll just tell you that I remember being at leadership team breakfast, you know, 15 years ago when we couldn't believe the telco company spent $50 billion in capex.",
+          "at_s": 806,
+          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=806s"
+        },
+        {
+          "text": "Let's go back to the capex for a second. You the $220 billion, you know, that's $600 million a day. just to you put put in perspective. I'm I'm curious how you think about AI demand right now offline.",
+          "at_s": 1256,
+          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=1256s"
+        },
+        {
+          "text": "There is just an incredible demand right now. So, kind of speaking of that, you you did something back in 2015 uh when you bought Annaperna Labs, which was probably before you probably weren't really thinking, I mean, maybe you were about like giant AI demand in 2015 because there just wasn't much AI demand in 2015.",
+          "at_s": 1688,
+          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=1688s"
+        },
+        {
+          "text": "So the next thing we turned that Anaperna team loose on was to build a CPU chip and that they built Graviton which um uh 99% of our top thousand EC2 customers use it very pervasively today. It's about 40% more price performant than other x86 processors.",
+          "at_s": 1872,
+          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=1872s"
+        },
+        {
+          "text": "No, I was like okay this inference is not that cheap. Um yeah. So you know one of the things that you've done is you've you've made some investments um particularly in anthropic and open AI like very large investments I think like 18 billion in anthropic and like 50 billion in open AI or something like that.",
+          "at_s": 2031,
+          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=2031s"
+        }
+      ],
       "description": ""
     },
     {
