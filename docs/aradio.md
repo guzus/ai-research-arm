@@ -649,25 +649,29 @@ reused).
 
 Every on-air bulletin carries the station's sonic identity, the way a show
 like TBPN is recognisable from its first second: one three-note motif
-(A – E – A an octave up, "A-R-A") on an FM bell.
+(A – E – A an octave up, "A-R-A") on bell and brass, over a 128 bpm
+four-on-the-floor groove. Cues (`[transition]`, `[gong]`) are at most 3 per
+bulletin, one per line, at a line's start, never on the opening line.
 
 | Sound | Where | Length |
 |---|---|---|
-| Signature intro | riser → sub-bass hit + A-major stab → the motif; the pad stays under the opening line, ducked | voice enters at 3.1 s |
-| Transition stinger | before each line the editor started with `[transition]` (a new storyline; ≤ 3, never the opening line) | ~0.9 s before the voice resumes |
-| Outro | the motif descending over the resolving chord, after the sign-off | ~4 s |
+| Signature intro | one-bar build (riser + accelerating snare roll) → THE HIT (kick, sub boom, crash, A-major brass stab) → the motif in bell + brass → a 128 bpm groove (kick, claps, hats, bass) the opening line rides over, ducked | voice enters at 4.2 s |
+| Transition hit | before each line the editor started with `[transition]` (a new storyline): reverse-cymbal swell → kick, clap, crash, D-major brass stab → the motif's E → A over half a bar of groove | voice back at 1.3 s |
+| Gong | before the line the editor started with `[gong]`: the bulletin's one huge moment (mega round, acquisition, IPO, record quarter); at most 1, an excess gong plays as a transition | voice at 1.7 s, the gong rings on ducked |
+| Outro | a bar of groove under the motif descending in brass and bell, a snare build, then the final hit ringing out | ~6 s |
 
 **Synthesized, not sampled.** The kit is generated from the standard library
 at the voice's sample rate on every run, deterministically (seeded noise): no
 sample files, no music model, nothing to license, and every change to the
 sound is a reviewed diff. Preview a change before it airs with
 `python scripts/aradio_sound.py --preview /tmp/kit.wav`. Music sits ~14 dB
-under speech (a 0.25 s ramp), sounds are levelled to the voice's RMS, and a
+under speech (a 0.25 s ramp), sounds are levelled to the voice's RMS (hits
+land at full speech level), and a
 soft limiter keeps a stab under a speech peak from clipping.
 
 **Segments.** A stinger can only land between words if the voice is cut
 there, and one TTS request returns one unbroken take, so `aradio_tts.py`
-splits the script at each `[transition]` line and voices each segment with
+splits the script at each cue line and voices each segment with
 its own request (same voices, styles and total tokens; at most 4 requests).
 The truncation check runs on the summed voice. The result carries the exact
 span of every segment in the final mix, which the writer publishes as

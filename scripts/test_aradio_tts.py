@@ -283,6 +283,25 @@ class SoundDesignTest(TTSBase):
         self.assertAlmostEqual(40.0, spans[1]["end_s"] - spans[1]["start_s"], places=1)
         self.assertLessEqual(spans[-1]["end_s"], result["duration_s"])
 
+    def test_gong_line_splits_and_is_played_as_a_gong(self):
+        lines = script()
+        lines[3] = lines[3].replace(": ", ": [gong] ", 1)
+        lines[8] = lines[8].replace(": ", ": [transition] ", 1)
+        self.assertEqual([[0, 1, 2], [3, 4, 5, 6, 7], [8, 9, 10, 11]], tts.split_segments(lines))
+        self.assertEqual(["gong", "transition"], [tts.line_cue(lines[3]), tts.line_cue(lines[8])])
+        self.assertIsNone(tts.line_cue(lines[0]))
+        self.assertNotIn("[", tts.build_request([lines[3]])["input"][0]["content"][0]["text"])
+        self.write_edit({"schema": 1, "on_air": True, "headline": "h", "ops": [],
+                         "script": lines, "covers": [], "note": ""})
+        post = FakePost(*[(200, response(wav_bytes(seconds, voiced=True)))
+                          for seconds in (25, 42, 33)])
+        with mock.patch.object(tts.sound, "mix", wraps=tts.sound.mix) as mixed:
+            code, stdout, _, _ = self.run_main(post)
+        self.assertEqual(0, code, stdout)
+        self.assertEqual(["gong", "transition"], mixed.call_args.args[1])
+        self.assertEqual(["intro", "gong", "transition"],
+                         [span["cue"] for span in self.result_json()["segments"]])
+
     def test_no_sound_is_one_dry_request(self):
         self.write_edit({"schema": 1, "on_air": True, "headline": "h", "ops": [],
                          "script": self.segmented_script(), "covers": [], "note": ""})

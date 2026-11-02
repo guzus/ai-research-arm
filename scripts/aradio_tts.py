@@ -9,12 +9,12 @@ translated because 3.8 reads its input verbatim:
   [high_energy]           -> turn style "high energy, excited"
   [emphasis]X[/emphasis]  -> tags stripped; style adds "; stress the key figure"
   [dramatic_pause]        -> " <short pause> " (a 3.8 point-in-time vocal event)
-  [transition]            -> starts a new SEGMENT (see "Sound design" below)
+  [transition] / [gong]   -> starts a new SEGMENT (see "Sound design" below)
 
 Sound design (scripts/aradio_sound.py): the script is cut into segments at
-each line the validator kept a leading `[transition]` on, each segment is
-voiced by its own request (same voices and styles), and the segments are
-mixed between the signature intro, the transition stingers and the outro.
+each line the validator kept a leading cue on, each segment is voiced by its
+own request (same voices and styles), and the segments are mixed between the
+signature intro, the cue sounds (transition stinger or gong) and the outro.
 The result records the exact span of each segment in the final audio
 (`segments`), which the dashboard uses to follow the transcript. Sound is
 fail-soft for a single segment (a voice it cannot mix airs dry, with
@@ -114,7 +114,9 @@ def turn_from_line(line: str) -> dict | None:
         raw = raw.replace(symbol, replacement)
     energetic = "[high_energy]" in raw
     emphasis = "[emphasis]" in raw
-    text = (raw.replace("[transition]", " ").replace("[high_energy]", " ").replace("[emphasis]", " ")
+    for tag in contract.CUE_TAGS:
+        raw = raw.replace(tag, " ")
+    text = (raw.replace("[high_energy]", " ").replace("[emphasis]", " ")
             .replace("[/emphasis]", " ").replace("[dramatic_pause]", SHORT_PAUSE))
     text = contract.tidy_spaces(text)
     if not text:
@@ -125,12 +127,18 @@ def turn_from_line(line: str) -> dict | None:
     return {"speaker": speaker, "text": text, "style": style}
 
 
+def line_cue(line: str) -> str | None:
+    """"transition" or "gong" when the line opens with that sound cue."""
+    _, raw = contract.split_script_line(line)
+    return next((tag.strip("[]") for tag in contract.CUE_TAGS
+                 if raw.lstrip().startswith(tag)), None)
+
+
 def split_segments(script: list[str]) -> list[list[int]]:
-    """Line indexes per segment: a new one starts at each `[transition]` line."""
+    """Line indexes per segment: a new one starts at each cue line."""
     segments: list[list[int]] = []
     for index, line in enumerate(script):
-        _, raw = contract.split_script_line(line)
-        if not segments or (raw.lstrip().startswith(contract.TRANSITION_TAG)):
+        if not segments or line_cue(line):
             segments.append([])
         segments[-1].append(index)
     return segments
@@ -413,7 +421,8 @@ def synthesize(edit: dict, *, out: Path, work_dir: Path, api_key: str,
     final, spans = wavs[0], None
     if with_sound and sound_error is None:
         try:
-            mixed = sound.mix([sound.read_wav(wav) for wav in wavs])
+            cues = [line_cue(script[lines[0]]) or "transition" for lines in segments[1:]]
+            mixed = sound.mix([sound.read_wav(wav) for wav in wavs], cues)
         except Exception as exc:  # the sound must never cost a voice it can air dry
             if len(wavs) > 1:
                 raise TTSFailure(EXIT_NO_AUDIO, f"cannot join voice segments: {exc}",
@@ -425,8 +434,9 @@ def synthesize(edit: dict, *, out: Path, work_dir: Path, api_key: str,
         else:
             final = sound.write_wav(mixed.pcm)
             spans = [{"start_s": round(begin, 2), "end_s": round(end, 2),
-                      "lines": [lines[0], lines[-1]]}
-                     for (begin, end), lines in zip(mixed.spans, segments)]
+                      "lines": [lines[0], lines[-1]],
+                      "cue": line_cue(script[lines[0]]) if index else "intro"}
+                     for index, ((begin, end), lines) in enumerate(zip(mixed.spans, segments))]
     duration = wav_duration(final)
 
     work_dir.mkdir(parents=True, exist_ok=True)

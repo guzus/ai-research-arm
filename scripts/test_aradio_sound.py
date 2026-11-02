@@ -21,7 +21,7 @@ def tone(seconds: float, amplitude: int = 6000, rate: int = RATE) -> sound.Pcm:
 
 class KitTest(unittest.TestCase):
     def test_kit_is_deterministic_and_bounded(self):
-        for make in (sound.intro, sound.transition, sound.outro):
+        for make in (sound.intro, sound.transition, sound.gong, sound.outro):
             first, second = make(RATE), make(RATE)
             self.assertEqual(first, second, make.__name__)
             self.assertLessEqual(max(abs(v) for v in first), 0.95 + 1e-9)
@@ -30,6 +30,7 @@ class KitTest(unittest.TestCase):
     def test_intro_is_long_enough_for_the_voice_entry(self):
         self.assertGreater(len(sound.intro(RATE)) / RATE, sound.INTRO_VOICE_AT_S)
         self.assertGreater(len(sound.transition(RATE)) / RATE, sound.TRANSITION_VOICE_AT_S)
+        self.assertGreater(len(sound.gong(RATE)) / RATE, sound.GONG_VOICE_AT_S)
 
 
 class MixTest(unittest.TestCase):
@@ -95,6 +96,24 @@ class MixTest(unittest.TestCase):
                 self.assertLess(abs(result.pcm.samples[n] - voice), 7000)
                 if abs(voice) == 32000:
                     self.assertGreater(abs(result.pcm.samples[n]), 0.8 * sound.INT16_MAX)
+
+    def test_gong_cue_uses_its_own_sound_and_entry_point(self):
+        segments = [tone(2.0), tone(2.0), tone(2.0)]
+        result = sound.mix(segments, ["gong", "transition"])
+        gap = lambda i: result.spans[i + 1][0] - result.spans[i][1]
+        self.assertAlmostEqual(sound.SEGMENT_GAP_S + sound.GONG_VOICE_AT_S, gap(0), places=2)
+        self.assertAlmostEqual(sound.SEGMENT_GAP_S + sound.TRANSITION_VOICE_AT_S, gap(1),
+                               places=2)
+        with self.assertRaises(sound.SoundError):
+            sound.mix(segments, ["gong"])                       # wrong count
+        with self.assertRaises(sound.SoundError):
+            sound.mix(segments, ["gong", "airhorn"])            # unknown cue
+
+    def test_hits_are_loud_relative_to_the_voice(self):
+        voice = tone(3.0, amplitude=6000)
+        result = sound.mix([voice])
+        intro_peak = max(abs(v) for v in result.pcm.samples[:int(sound.INTRO_VOICE_AT_S * RATE)])
+        self.assertGreater(intro_peak, max(abs(v) for v in voice.samples))
 
     def test_unmixable_voices_raise(self):
         with self.assertRaises(sound.SoundError):
