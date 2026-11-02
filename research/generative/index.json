@@ -3621,6 +3621,24 @@
     "prompt": "Seed Twitter/X URL: https://x.com/DeepSeekHarness/status/2116857257245987236\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-11-02T115050--expand-research-from-twitter-link-https-x-com-deepseekharnes.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "하네스는 가격표다: DeepSeek Harness의 정체와 269,000개의 스타가 보여주지 않는 것",
+        "model": "claude-sonnet-5-5",
+        "created_at": "2026-11-02T11:50:50Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-deepseekharnes",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-11-02T11:50:50Z",
+        "source_file": "research/generative/2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes.ara.md",
+        "source_sha256": "b150e7d80a26080a5bcfc65704716c6746fea9ac015a21abedf4e8f6b1fff6d6"
+      }
+    }
   }
 ]
