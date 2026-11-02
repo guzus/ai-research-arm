@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-02
+
+TOP 5 PAPERS:
+• Latent Sparse Attention - clustered-key attention, up to 72x faster prefill at 10M tokens
+• ZHA Tree-Indexed Attention - subquadratic sparse attention, retrofits pretrained LLMs
+• SecPO - prompt-injection ASR 8.8% vs 78.8% on AgentDojo
+• LARC - continuous latent reasoning for image gen, test-time scaling
+• MoETok - sparse-expert 1D tokenizer, rivals diffusion on gen
+
+CATEGORIES: LLM/NLP 13, Vision/Multimodal 13, Agents/Reasoning 10, Safety 8, Other 12
+
+Full report on GitHub.
