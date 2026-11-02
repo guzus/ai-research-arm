@@ -462,6 +462,97 @@ class SoftRepairTest(ValidatorBase):
             self.assertNotIn("\n", escaped)
 
 
+class TransitionCueTest(ValidatorBase):
+    def test_transition_kept_only_at_line_start_after_the_opening(self):
+        lines = script()
+        lines[0] = lines[0].replace(": ", ": [transition] ", 1)        # opening: stripped
+        lines[2] = lines[2].replace(": ", ": [transition] ", 1)        # kept
+        lines[3] = lines[3] + " [transition] word"                     # mid-line: stripped
+        lines[5] = lines[5].replace(": ", ": [transition] [transition] ", 1)  # kept once
+        lines[7] = lines[7].replace(": ", ": [transition] ", 1)        # kept (3rd)
+        lines[9] = lines[9].replace(": ", ": [transition] ", 1)        # over budget
+        normalized, report = self.validate(edit_obj(script=lines))
+        self.assertEqual([], report.errors)
+        kept = [i for i, line in enumerate(normalized["script"]) if "[transition]" in line]
+        self.assertEqual([2, 5, 7], kept)
+        for i in kept:
+            self.assertRegex(normalized["script"][i], r"^Speaker [12]: \[transition\] word")
+            self.assertEqual(1, normalized["script"][i].count("[transition]"))
+        joined = " ".join(report.warnings)
+        self.assertIn("opening line", joined)
+        self.assertIn("only at its start", joined)
+        self.assertIn("excess [transition]", joined)
+        # The cue is not spoken and does not use the vocal tag budget.
+        self.assertEqual(ca.count_spoken_words(script()) + 1,  # line 3's extra "word"
+                         ca.count_spoken_words(normalized["script"]))
+
+    def test_normalized_script_revalidates_unchanged(self):
+        lines = script()
+        lines[4] = lines[4].replace(": ", ": [transition] ", 1)
+        first, _ = self.validate(edit_obj(script=lines))
+        second, report = self.validate(edit_obj(script=first["script"]))
+        self.assertEqual(first["script"], second["script"])
+        self.assertEqual([], [w for w in report.warnings if "transition" in w])
+
+    def test_transition_without_spoken_text_is_stripped(self):
+        for body in ("[transition]", "[transition] [emphasis]", "[transition] [laughs]"):
+            lines = script()
+            lines[3] = "Speaker 2: " + body
+            lines[4] = lines[4].replace(": ", ": [transition] ", 1)
+            _, report = self.validate(edit_obj(script=lines))
+            repaired = ca.repair_script(lines, ca.Report())
+            self.assertNotIn("[transition]", repaired[3], body)
+            self.assertIn("[transition]", repaired[4], body)
+            self.assertIn("no spoken text", " ".join(report.warnings), body)
+
+    def test_gong_is_one_per_bulletin_and_shares_the_cue_budget(self):
+        lines = script()
+        lines[2] = lines[2].replace(": ", ": [gong] ", 1)          # kept
+        lines[4] = lines[4].replace(": ", ": [gong] ", 1)          # 2nd gong -> transition
+        lines[6] = lines[6].replace(": ", ": [transition] ", 1)    # 3rd cue, kept
+        lines[8] = lines[8].replace(": ", ": [gong] ", 1)          # over the cue budget
+        lines[9] = lines[9].replace(": ", ": [gong] [transition] ", 1)  # two on one line
+        normalized, report = self.validate(edit_obj(script=lines))
+        self.assertEqual([], report.errors)
+        out = normalized["script"]
+        self.assertTrue(out[2].split(": ", 1)[1].startswith("[gong] word"))
+        self.assertTrue(out[4].split(": ", 1)[1].startswith("[transition] word"))
+        self.assertTrue(out[6].split(": ", 1)[1].startswith("[transition] word"))
+        for i in (8, 9):
+            self.assertNotIn("[", out[i])
+        joined = " ".join(report.warnings)
+        self.assertIn("excess [gong] played as a [transition]", joined)
+        self.assertIn("at most 3 cues", joined)
+        self.assertIn("one sound cue per line", joined)
+        self.assertNotIn("gong", ca.spoken_text(out[2]))  # a cue is never spoken
+
+    def test_repair_is_a_fixed_point(self):
+        # The writer re-validates the normalized edit: a second repair must
+        # change nothing and warn about nothing (reviewer-found regressions).
+        tricky = [
+            "Speaker 2: The [foo [transition] bar] item matters a lot here",
+            "Speaker 2: x [high_energy[transition]] y and more words",
+            "Speaker 2: [a [transition] b] then real words follow",
+            "Speaker 1: [transition] [transition] doubled cue then words",
+            "Speaker 2: [transition] <cough> [laughs] words [emphasis]one",
+            "Speaker 1: words [transition] mid line [dramatic_pause] then more",
+            "Speaker 2: [transition]",
+            "Speaker 1:[transition]no space after the prefix",
+            "Speaker 2: [gong] [gong] doubled gong then words",
+            "Speaker 1: [gong] [transition] mixed cues then words",
+            "Speaker 2: The [x [gong] y] bracket join then words",
+        ]
+        for line in tricky:
+            for position in (0, 3):
+                lines = script()
+                lines[position] = line
+                first = ca.repair_script(lines, ca.Report())
+                report = ca.Report()
+                second = ca.repair_script(first, report)
+                self.assertEqual(first, second, line)
+                self.assertEqual([], report.warnings, line)
+
+
 class CliTest(ValidatorBase):
     def run_cli(self, edit) -> tuple[int, str, Path, Path]:
         edit_path = self.root / "edit.json"

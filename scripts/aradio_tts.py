@@ -9,6 +9,17 @@ translated because 3.8 reads its input verbatim:
   [high_energy]           -> turn style "high energy, excited"
   [emphasis]X[/emphasis]  -> tags stripped; style adds "; stress the key figure"
   [dramatic_pause]        -> " <short pause> " (a 3.8 point-in-time vocal event)
+  [transition] / [gong]   -> starts a new SEGMENT (see "Sound design" below)
+
+Sound design (scripts/aradio_sound.py): the script is cut into segments at
+each line the validator kept a leading cue on, each segment is voiced by its
+own request (same voices and styles), and the segments are mixed between the
+signature intro, the cue sounds (transition stinger or gong) and the outro.
+The result records the exact span of each segment in the final audio
+(`segments`), which the dashboard uses to follow the transcript. Sound is
+fail-soft for a single segment (a voice it cannot mix airs dry, with
+`sound_error`) and `--no-sound` airs the voice dry on purpose; with several
+segments the voice cannot be joined without the mixer, so that fails loudly.
 
 Voices: Speaker 1 = Charon (anchor), Speaker 2 = Puck (co-host). Only fields in
 the documented REST schema are sent (`speech_config.speakers`; no `mode`).
@@ -43,6 +54,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any, Callable
 
+import aradio_sound as sound
 import check_aradio as contract
 
 API_URL = "https://generativelanguage.googleapis.com/v1beta/interactions"
@@ -60,7 +72,17 @@ SYMBOLS = (("×", " times "), ("&", " and "), ("—", ", "), ("–", ", "),
            ("‐", "-"), ("‑", "-"), ("•", " "), ("’", "'"),
            ("‘", "'"), ("“", '"'), ("”", '"'))
 MIN_DURATION_RATIO = 0.6
+# A short segment's pace varies more, so each one gets a little slack on top
+# of the ratio; the whole voice is still held to the plain ratio.
+SEGMENT_SLACK_S = 2.0
 HTTP_TIMEOUT_S = 180
+# The segmented path stops starting requests after this long and falls back to
+# one dry request, and a segment (<= ~1/2 of the script) gets a shorter HTTP
+# timeout. Worst case: 240 s budget + one in-flight segment (2 x 120 s + 15 s
+# retry) + the dry fallback (2 x 180 s + 15 s) ~= 14.5 min, inside the job's
+# 30 min after a 12 min editor.
+SEGMENTED_BUDGET_S = 240
+SEGMENT_HTTP_TIMEOUT_S = 120
 RETRY_DELAY_S = 15
 MAX_ERROR_BODY = 2048
 DEFAULT_PCM_RATE = 24000
@@ -92,6 +114,8 @@ def turn_from_line(line: str) -> dict | None:
         raw = raw.replace(symbol, replacement)
     energetic = "[high_energy]" in raw
     emphasis = "[emphasis]" in raw
+    for tag in contract.CUE_TAGS:
+        raw = raw.replace(tag, " ")
     text = (raw.replace("[high_energy]", " ").replace("[emphasis]", " ")
             .replace("[/emphasis]", " ").replace("[dramatic_pause]", SHORT_PAUSE))
     text = contract.tidy_spaces(text)
@@ -101,6 +125,23 @@ def turn_from_line(line: str) -> dict | None:
     if emphasis:
         style += EMPHASIS_SUFFIX
     return {"speaker": speaker, "text": text, "style": style}
+
+
+def line_cue(line: str) -> str | None:
+    """"transition" or "gong" when the line opens with that sound cue."""
+    _, raw = contract.split_script_line(line)
+    return next((tag.strip("[]") for tag in contract.CUE_TAGS
+                 if raw.lstrip().startswith(tag)), None)
+
+
+def split_segments(script: list[str]) -> list[list[int]]:
+    """Line indexes per segment: a new one starts at each cue line."""
+    segments: list[list[int]] = []
+    for index, line in enumerate(script):
+        if not segments or line_cue(line):
+            segments.append([])
+        segments[-1].append(index)
+    return segments
 
 
 def build_request(script: list[str]) -> dict:
@@ -157,7 +198,7 @@ def http_post(url: str, headers: dict, body: bytes, timeout: float) -> tuple[int
 
 
 def call_api(request: dict, api_key: str, post_fn: PostFn,
-             sleep_fn: Callable[[float], None]) -> bytes:
+             sleep_fn: Callable[[float], None], timeout: float = HTTP_TIMEOUT_S) -> bytes:
     """POST once; retry once on 429, 5xx or a network failure."""
     body = json.dumps(request).encode("utf-8")
     headers = {"x-goog-api-key": api_key, "Content-Type": "application/json"}
@@ -165,7 +206,7 @@ def call_api(request: dict, api_key: str, post_fn: PostFn,
     payload = b""
     for attempt in (1, 2):
         try:
-            status, payload = post_fn(API_URL, headers, body, HTTP_TIMEOUT_S)
+            status, payload = post_fn(API_URL, headers, body, timeout)
         except OSError as exc:  # URLError, timeouts and resets are OSErrors
             if attempt == 1:
                 print(f"Gemini TTS network error ({type(exc).__name__}); retrying once",
@@ -299,14 +340,49 @@ def encode_mp3(ffmpeg: str, wav_path: Path, mp3_path: Path) -> None:
         raise TTSFailure(EXIT_ENCODE, "ffmpeg produced no mp3")
 
 
+def _voice(script: list[str], segments: list[list[int]], api_key: str, post_fn: PostFn,
+           sleep_fn: Callable[[float], None], clock: Callable[[], float]
+           ) -> tuple[list[bytes], int]:
+    """One WAV per segment; every segment is checked for truncation on its own,
+    so a storyline that came back empty cannot hide inside a long total."""
+    wavs: list[bytes] = []
+    parts = 0
+    started = clock()
+    for lines in segments:
+        if len(segments) > 1 and clock() - started > SEGMENTED_BUDGET_S:
+            raise TTSFailure(EXIT_HTTP, f"segmented voicing passed its "
+                                        f"{SEGMENTED_BUDGET_S}s budget")
+        part = [script[i] for i in lines]
+        timeout = SEGMENT_HTTP_TIMEOUT_S if len(segments) > 1 else HTTP_TIMEOUT_S
+        wav, blocks = extract_audio(call_api(build_request(part), api_key, post_fn, sleep_fn,
+                                             timeout))
+        words = contract.count_spoken_words(part)
+        expected = contract.expected_duration_s(words)
+        seconds = wav_duration(wav)
+        floor = MIN_DURATION_RATIO * expected - (SEGMENT_SLACK_S if len(segments) > 1 else 0)
+        if seconds < floor:
+            where = f"segment {len(wavs) + 1} of {len(segments)}: " if len(segments) > 1 else ""
+            raise TTSFailure(EXIT_TRUNCATED,
+                             f"{where}audio is {seconds:.1f}s but {words} words need about "
+                             f"{expected:.0f}s; treated as truncated", 200)
+        wavs.append(wav)
+        parts += blocks
+    return wavs, parts
+
+
 def synthesize(edit: dict, *, out: Path, work_dir: Path, api_key: str,
                post_fn: PostFn = http_post,
                sleep_fn: Callable[[float], None] = time.sleep,
-               which: Callable[[str], str | None] = shutil.which) -> dict:
+               which: Callable[[str], str | None] = shutil.which,
+               with_sound: bool = True,
+               clock: Callable[[], float] = time.monotonic) -> dict:
     script = edit.get("script") if edit.get("on_air") is True else None
     if not isinstance(script, list) or not script:
         raise TTSFailure(EXIT_CONFIG, "edit is not on air or has no script")
-    request = build_request(script)
+    whole = [list(range(len(script)))]
+    segments = split_segments(script) if with_sound else whole
+    for lines in segments:  # fail on an unspeakable segment before any spend
+        build_request([script[i] for i in lines])
     words = contract.count_spoken_words(script)
     expected = contract.expected_duration_s(words)
     if not api_key:
@@ -314,25 +390,69 @@ def synthesize(edit: dict, *, out: Path, work_dir: Path, api_key: str,
     ffmpeg = which("ffmpeg")
     if not ffmpeg:  # checked before spending on the API call
         raise TTSFailure(EXIT_ENCODE, "ffmpeg is not installed on this runner")
-    payload = call_api(request, api_key, post_fn, sleep_fn)
-    wav, parts = extract_audio(payload)
-    duration = wav_duration(wav)
-    if duration < MIN_DURATION_RATIO * expected:
+
+    calls = 0
+
+    def counted(url: str, headers: dict, body: bytes, timeout: float) -> tuple[int, bytes]:
+        nonlocal calls
+        calls += 1
+        return post_fn(url, headers, body, timeout)
+
+    sound_error: str | None = None
+    try:
+        wavs, parts = _voice(script, segments, api_key, counted, sleep_fn, clock)
+    except TTSFailure as exc:
+        if len(segments) == 1:
+            raise
+        # More requests are more chances to fail; the bulletin still airs, as
+        # one dry take (no stingers), rather than not at all.
+        sound_error = contract.clip(contract.clean_text(
+            f"segmented voicing failed, aired as one dry take: {exc}"), 200)[0]
+        print(f"::warning::aradio sound: {contract.gh_escape(sound_error)}")
+        segments = whole
+        wavs, parts = _voice(script, segments, api_key, counted, sleep_fn, clock)
+    requests = calls  # HTTP requests made, retries included
+    voice_s = sum(wav_duration(wav) for wav in wavs)
+    if voice_s < MIN_DURATION_RATIO * expected:
         raise TTSFailure(EXIT_TRUNCATED,
-                         f"audio is {duration:.1f}s but {words} words need about "
+                         f"audio is {voice_s:.1f}s but {words} words need about "
                          f"{expected:.0f}s; treated as truncated", 200)
+
+    final, spans = wavs[0], None
+    if with_sound and sound_error is None:
+        try:
+            cues = [line_cue(script[lines[0]]) or "transition" for lines in segments[1:]]
+            mixed = sound.mix([sound.read_wav(wav) for wav in wavs], cues)
+        except Exception as exc:  # the sound must never cost a voice it can air dry
+            if len(wavs) > 1:
+                raise TTSFailure(EXIT_NO_AUDIO, f"cannot join voice segments: {exc}",
+                                 200) from exc
+            sound_error = contract.clip(contract.clean_text(
+                f"{type(exc).__name__}: {exc}"), 200)[0]
+            print(f"::warning::aradio sound: airing the voice dry: "
+                  f"{contract.gh_escape(sound_error)}")
+        else:
+            final = sound.write_wav(mixed.pcm)
+            spans = [{"start_s": round(begin, 2), "end_s": round(end, 2),
+                      "lines": [lines[0], lines[-1]],
+                      "cue": line_cue(script[lines[0]]) if index else "intro"}
+                     for index, ((begin, end), lines) in enumerate(zip(mixed.spans, segments))]
+    duration = wav_duration(final)
+
     work_dir.mkdir(parents=True, exist_ok=True)
     wav_path = work_dir / f"aradio-{os.getpid()}.wav"
     try:
-        wav_path.write_bytes(wav)
+        wav_path.write_bytes(final)
         out.parent.mkdir(parents=True, exist_ok=True)
         encode_mp3(ffmpeg, wav_path, out)
     finally:
         wav_path.unlink(missing_ok=True)
     return {"ok": True, "mp3": str(out), "bytes": out.stat().st_size,
-            "duration_s": round(duration, 1), "expected_s": round(expected, 1),
+            "duration_s": round(duration, 1), "voice_s": round(voice_s, 1),
+            "expected_s": round(expected, 1),
             "words": words, "error": None, "status": 200, "model": MODEL,
-            "audio_parts": parts}
+            "audio_parts": parts, "requests": requests,
+            "sound": spans is not None, "sound_error": sound_error, "segments": spans}
 
 
 def main(argv: list[str] | None = None, *, post_fn: PostFn = http_post,
@@ -345,6 +465,8 @@ def main(argv: list[str] | None = None, *, post_fn: PostFn = http_post,
     parser.add_argument("--result", type=Path, default=None, help="result JSON path")
     parser.add_argument("--work-dir", type=Path, default=None,
                         help="where the temporary WAV lives (default: --out's directory)")
+    parser.add_argument("--no-sound", action="store_true",
+                        help="air the voice dry: one request, no intro/transitions/outro")
     parser.add_argument("--dry-run", action="store_true",
                         help="print the request body and exit without network")
     args = parser.parse_args(argv)
@@ -365,15 +487,19 @@ def main(argv: list[str] | None = None, *, post_fn: PostFn = http_post,
                        "error": "normalized edit unreadable", "status": None}, EXIT_CONFIG)
 
     if args.dry_run:
+        script = edit.get("script") or []
         try:
-            request = build_request(edit.get("script") or [])
+            segments = (split_segments(script) if not args.no_sound
+                        else [list(range(len(script)))])
+            requests = [build_request([script[i] for i in lines]) for lines in segments]
         except (TTSFailure, ValueError) as exc:
             print(f"::error::aradio TTS dry run: {contract.gh_escape(exc)}")
             return EXIT_CONFIG
-        print(json.dumps(request, indent=2, ensure_ascii=False))
-        script = edit.get("script") or []
+        print(json.dumps(requests if len(requests) > 1 else requests[0],
+                         indent=2, ensure_ascii=False))
         words = contract.count_spoken_words(script)
-        print(f"dry run: {len(request['input'][0]['content'])} turns, {words} words, "
+        turns = sum(len(request["input"][0]["content"]) for request in requests)
+        print(f"dry run: {len(requests)} segment(s), {turns} turns, {words} words, "
               f"expected ~{contract.expected_duration_s(words):.0f}s; nothing sent",
               file=sys.stderr)
         return EXIT_OK
@@ -384,7 +510,8 @@ def main(argv: list[str] | None = None, *, post_fn: PostFn = http_post,
     try:
         result = synthesize(edit, out=args.out, work_dir=work_dir,
                             api_key=os.environ.get("GEMINI_API_KEY", "").strip(),
-                            post_fn=post_fn, sleep_fn=sleep_fn, which=which)
+                            post_fn=post_fn, sleep_fn=sleep_fn, which=which,
+                            with_sound=not args.no_sound)
     except TTSFailure as exc:
         print(f"::error::aradio TTS failed: {contract.gh_escape(exc)}")
         print(f"HTTP status: {exc.status if exc.status is not None else 'n/a'}",
@@ -403,7 +530,9 @@ def main(argv: list[str] | None = None, *, post_fn: PostFn = http_post,
                        "error": f"unexpected {type(exc).__name__}", "status": None},
                       EXIT_UNEXPECTED)
     print(f"aradio TTS: {result['bytes']} bytes mp3, {result['duration_s']}s "
-          f"(expected ~{result['expected_s']}s for {result['words']} words)")
+          f"({result['voice_s']}s of voice in {result['requests']} segment(s), expected "
+          f"~{result['expected_s']}s for {result['words']} words; "
+          f"sound {'on' if result['sound'] else 'off'})")
     return finish(result, EXIT_OK)
 
 

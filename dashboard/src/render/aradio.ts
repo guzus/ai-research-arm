@@ -80,7 +80,16 @@ export type AradioThread = {
 
 export type AradioBoard = { updatedAt: string | null; headline: string; threads: AradioThread[] };
 
-export type AradioAudio = { key: string; durationS: number | null; bytes: number | null };
+/** Where one voiced segment sits in the mixed audio, and the lines it reads (inclusive). */
+export type AradioVoiceSegment = { start: number; end: number; firstLine: number; lastLine: number };
+
+export type AradioAudio = {
+  key: string;
+  durationS: number | null;
+  bytes: number | null;
+  /** Present when the bulletin was mixed with the station's sound design. */
+  segments?: AradioVoiceSegment[];
+};
 
 export type AradioBulletinEntry = {
   id: string;
@@ -304,11 +313,38 @@ export function normalizeAradioAudio(raw: unknown): AradioAudio | null {
   if (!ARADIO_AUDIO_KEY_RE.test(key)) return null;
   const duration = isRecord(raw) ? Number(raw.duration_s) : NaN;
   const bytes = isRecord(raw) ? Number(raw.bytes) : NaN;
-  return {
+  const audio: AradioAudio = {
     key,
     durationS: Number.isFinite(duration) && duration > 0 ? duration : null,
     bytes: Number.isFinite(bytes) && bytes > 0 ? Math.round(bytes) : null,
   };
+  const segments = isRecord(raw) ? normalizeAradioSegments(raw.segments) : null;
+  if (segments) audio.segments = segments;
+  return audio;
+}
+
+/**
+ * `[{start_s, end_s, lines: [first, last]}]` → voice segments, or null unless
+ * they tile lines 0..n in order without overlapping. Line counts are checked
+ * against the transcript where the timings are made.
+ */
+export function normalizeAradioSegments(raw: unknown): AradioVoiceSegment[] | null {
+  if (!Array.isArray(raw) || !raw.length || raw.length > 16) return null;
+  const segments: AradioVoiceSegment[] = [];
+  let nextLine = 0;
+  let previousEnd = 0;
+  for (const entry of raw) {
+    if (!isRecord(entry) || !Array.isArray(entry.lines) || entry.lines.length !== 2) return null;
+    const start = Number(entry.start_s);
+    const end = Number(entry.end_s);
+    const [firstLine, lastLine] = entry.lines.map(Number);
+    if (![start, end].every(Number.isFinite) || start < previousEnd || end <= start) return null;
+    if (!Number.isInteger(firstLine) || !Number.isInteger(lastLine) || firstLine !== nextLine || lastLine < firstLine) return null;
+    segments.push({ start, end, firstLine, lastLine });
+    nextLine = lastLine + 1;
+    previousEnd = end;
+  }
+  return segments;
 }
 
 /** `YYYY-MM-DD-HHMM` (the UTC run stamp) → ISO, else null. */
@@ -891,9 +927,30 @@ export type AradioLineTiming = { start: number; end: number };
  * part of it, so the line just read stays current until the next one starts.
  * Null without a usable duration.
  */
-export function aradioLineTimings(lines: readonly { text: string }[], durationS: number): AradioLineTiming[] | null {
+export function aradioLineTimings(
+  lines: readonly { text: string }[],
+  durationS: number,
+  segments?: readonly AradioVoiceSegment[] | null,
+): AradioLineTiming[] | null {
   if (!Number.isFinite(durationS) || durationS <= 0) return null;
   if (!lines.length) return [];
+  const spans = segments?.length && segments[segments.length - 1].lastLine === lines.length - 1
+    && segments[segments.length - 1].end <= durationS + 1 ? segments : null;
+  if (spans) {
+    // Mixed with the station's sound: the music is not speech, so each
+    // segment's lines share only that segment's real voice time. A line still
+    // runs until the next one starts (across a transition stinger), the first
+    // from 0 (over the intro) and the last to the end (over the outro).
+    const timings: AradioLineTiming[] = [];
+    for (const span of spans) {
+      const inner = aradioLineTimings(lines.slice(span.firstLine, span.lastLine + 1), span.end - span.start);
+      for (const timing of inner ?? []) timings.push({ start: span.start + timing.start, end: span.start + timing.end });
+    }
+    timings[0] = { ...timings[0], start: 0 };
+    for (let i = 0; i + 1 < timings.length; i += 1) timings[i] = { ...timings[i], end: timings[i + 1].start };
+    timings[timings.length - 1] = { ...timings[timings.length - 1], end: durationS };
+    return timings;
+  }
   const weights = lines.map((line) => Math.max(1, line.text.length));
   const total = weights.reduce((sum, weight) => sum + weight, 0);
   const gaps = lines.length - 1;
@@ -931,7 +988,8 @@ export function aradioPlayerLine(
   if (!loaded || loaded.id !== bulletin.id || !bulletin.lines.length || aradioHasFailed(radio.programme, loaded.id)) return -1;
   if (radio.ended || radio.waiting) return bulletin.lines.length;
   const duration = radio.duration > 0 ? radio.duration : bulletin.audio?.durationS ?? loaded.audio?.durationS ?? 0;
-  return aradioLiveLine(aradioLineTimings(bulletin.lines, duration), radio.position);
+  const segments = bulletin.audio?.segments ?? loaded.audio?.segments;
+  return aradioLiveLine(aradioLineTimings(bulletin.lines, duration, segments), radio.position);
 }
 
 // ── Playback speed ───────────────────────────────────────────────────────

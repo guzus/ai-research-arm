@@ -20,13 +20,18 @@ import aradio_tts as tts
 RATE = 8000
 
 
-def wav_bytes(seconds: float, rate: int = RATE) -> bytes:
+def wav_bytes(seconds: float, rate: int = RATE, *, voiced: bool = False) -> bytes:
+    """Silence by default (the mixer refuses it, so the voice airs dry);
+    `voiced` gives a square wave the mixer accepts."""
     buffer = io.BytesIO()
+    frames = (b"".join(struct.pack("<h", 4000 if (n // 20) % 2 else -4000)
+                       for n in range(int(seconds * rate))) if voiced
+              else b"\x00\x00" * int(seconds * rate))
     with wave.open(buffer, "wb") as handle:
         handle.setnchannels(1)
         handle.setsampwidth(2)
         handle.setframerate(rate)
-        handle.writeframes(b"\x00\x00" * int(seconds * rate))
+        handle.writeframes(frames)
     return buffer.getvalue()
 
 
@@ -242,6 +247,140 @@ class AudioDecodingTest(unittest.TestCase):
         wav, parts = tts.extract_audio(json.dumps(payload).encode())
         self.assertEqual(2, parts)
         self.assertAlmostEqual(5.0, tts.wav_duration(wav), places=3)
+
+
+class SoundDesignTest(TTSBase):
+    def segmented_script(self) -> list[str]:
+        lines = script()
+        lines[4] = lines[4].replace(": ", ": [transition] ", 1)
+        lines[9] = lines[9].replace(": ", ": [transition] ", 1)
+        return lines
+
+    def test_segments_split_at_transition_lines(self):
+        self.assertEqual([[0, 1, 2, 3], [4, 5, 6, 7, 8], [9, 10, 11]],
+                         tts.split_segments(self.segmented_script()))
+        self.assertEqual([list(range(12))], tts.split_segments(script()))
+
+    def test_each_segment_is_voiced_then_mixed_with_exact_spans(self):
+        self.write_edit({"schema": 1, "on_air": True, "headline": "h", "ops": [],
+                         "script": self.segmented_script(), "covers": [], "note": ""})
+        post = FakePost(*[(200, response(wav_bytes(seconds, voiced=True)))
+                          for seconds in (30, 40, 30)])
+        code, stdout, _, _ = self.run_main(post)
+        self.assertEqual(0, code, stdout)
+        self.assertEqual([4, 5, 3], [len(call["body"]["input"][0]["content"])
+                                     for call in post.calls])
+        for call in post.calls:
+            for part in call["body"]["input"][0]["content"]:
+                self.assertNotIn("[", part["text"])
+        result = self.result_json()
+        self.assertTrue(result["sound"])
+        self.assertEqual(3, result["requests"])
+        self.assertAlmostEqual(100.0, result["voice_s"], places=1)
+        self.assertGreater(result["duration_s"], result["voice_s"] + 5)
+        spans = result["segments"]
+        self.assertEqual([[0, 3], [4, 8], [9, 11]], [span["lines"] for span in spans])
+        self.assertAlmostEqual(40.0, spans[1]["end_s"] - spans[1]["start_s"], places=1)
+        self.assertLessEqual(spans[-1]["end_s"], result["duration_s"])
+
+    def test_gong_line_splits_and_is_played_as_a_gong(self):
+        lines = script()
+        lines[3] = lines[3].replace(": ", ": [gong] ", 1)
+        lines[8] = lines[8].replace(": ", ": [transition] ", 1)
+        self.assertEqual([[0, 1, 2], [3, 4, 5, 6, 7], [8, 9, 10, 11]], tts.split_segments(lines))
+        self.assertEqual(["gong", "transition"], [tts.line_cue(lines[3]), tts.line_cue(lines[8])])
+        self.assertIsNone(tts.line_cue(lines[0]))
+        self.assertNotIn("[", tts.build_request([lines[3]])["input"][0]["content"][0]["text"])
+        self.write_edit({"schema": 1, "on_air": True, "headline": "h", "ops": [],
+                         "script": lines, "covers": [], "note": ""})
+        post = FakePost(*[(200, response(wav_bytes(seconds, voiced=True)))
+                          for seconds in (25, 42, 33)])
+        with mock.patch.object(tts.sound, "mix", wraps=tts.sound.mix) as mixed:
+            code, stdout, _, _ = self.run_main(post)
+        self.assertEqual(0, code, stdout)
+        self.assertEqual(["gong", "transition"], mixed.call_args.args[1])
+        self.assertEqual(["intro", "gong", "transition"],
+                         [span["cue"] for span in self.result_json()["segments"]])
+
+    def test_no_sound_is_one_dry_request(self):
+        self.write_edit({"schema": 1, "on_air": True, "headline": "h", "ops": [],
+                         "script": self.segmented_script(), "covers": [], "note": ""})
+        post = FakePost((200, response(wav_bytes(100, voiced=True))))
+        code, stdout, _, _ = self.run_main(post, extra=("--no-sound",))
+        self.assertEqual(0, code, stdout)
+        result = self.result_json()
+        self.assertEqual((1, False, None), (result["requests"], result["sound"],
+                                            result["segments"]))
+        self.assertAlmostEqual(100.0, result["duration_s"], places=1)
+
+    def test_unmixable_single_voice_airs_dry_with_a_warning(self):
+        code, stdout, _, _ = self.run_main(FakePost((200, response(wav_bytes(100)))))
+        self.assertEqual(0, code, stdout)
+        result = self.result_json()
+        self.assertFalse(result["sound"])
+        self.assertIn("silent", result["sound_error"])
+        self.assertIn("::warning::", stdout)
+
+    def test_unmixable_segments_fail_loudly(self):
+        self.write_edit({"schema": 1, "on_air": True, "headline": "h", "ops": [],
+                         "script": self.segmented_script(), "covers": [], "note": ""})
+        post = FakePost(*[(200, response(wav_bytes(35))) for _ in range(3)])
+        code, _, _, _ = self.run_main(post)
+        self.assertEqual(tts.EXIT_NO_AUDIO, code)
+        self.assertFalse(self.result_json()["ok"])
+
+    def test_a_truncated_segment_falls_back_to_one_dry_take(self):
+        # Segment 2 (5 of 12 lines, ~48 s) comes back at 2 s: the total (62 s
+        # of 115 s expected) would pass the whole-voice ratio, the segment must not.
+        self.write_edit({"schema": 1, "on_air": True, "headline": "h", "ops": [],
+                         "script": self.segmented_script(), "covers": [], "note": ""})
+        post = FakePost((200, response(wav_bytes(30, voiced=True))),
+                        (200, response(wav_bytes(2, voiced=True))),
+                        (200, response(wav_bytes(100, voiced=True))))
+        code, stdout, _, _ = self.run_main(post)
+        self.assertEqual(0, code, stdout)
+        result = self.result_json()
+        self.assertEqual(12, len(post.calls[-1]["body"]["input"][0]["content"]))
+        self.assertEqual((False, None, 3), (result["sound"], result["segments"],
+                                            result["requests"]))
+        self.assertIn("segment 2 of 3", result["sound_error"])
+        self.assertAlmostEqual(100.0, result["duration_s"], places=1)
+
+    def test_a_failed_segment_request_falls_back_and_a_failed_fallback_fails(self):
+        self.write_edit({"schema": 1, "on_air": True, "headline": "h", "ops": [],
+                         "script": self.segmented_script(), "covers": [], "note": ""})
+        post = FakePost((200, response(wav_bytes(30, voiced=True))),
+                        (400, b'{"error": {"message": "bad"}}'),
+                        (400, b'{"error": {"message": "still bad"}}'))
+        code, _, _, _ = self.run_main(post)
+        self.assertEqual(tts.EXIT_HTTP, code)
+        self.assertIn("still bad", self.result_json()["error"])
+
+    def test_segmented_budget_stops_new_requests(self):
+        ticks = iter([0.0, 10.0, 20.0, tts.SEGMENTED_BUDGET_S + 1, 0.0])
+        post = FakePost((200, response(wav_bytes(30, voiced=True))),
+                        (200, response(wav_bytes(40, voiced=True))),
+                        (200, response(wav_bytes(100, voiced=True))))
+        result = tts.synthesize(
+            {"on_air": True, "script": self.segmented_script()}, out=self.out,
+            work_dir=self.work, api_key="k", post_fn=post, sleep_fn=lambda _: None,
+            which=lambda _: str(self.ffmpeg), clock=lambda: next(ticks))
+        self.assertEqual(3, len(post.calls))           # 2 segments, then the dry take
+        self.assertIn("budget", result["sound_error"])
+        self.assertFalse(result["sound"])
+
+    def test_segment_requests_use_the_shorter_timeout(self):
+        timeouts = []
+
+        def post(url, headers, body, timeout):
+            timeouts.append(timeout)
+            return 200, response(wav_bytes(40, voiced=True))
+
+        self.write_edit({"schema": 1, "on_air": True, "headline": "h", "ops": [],
+                         "script": self.segmented_script(), "covers": [], "note": ""})
+        code, stdout, _, _ = self.run_main(post)
+        self.assertEqual(0, code, stdout)
+        self.assertEqual([tts.SEGMENT_HTTP_TIMEOUT_S] * 3, timeouts)
 
 
 if __name__ == "__main__":

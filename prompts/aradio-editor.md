@@ -175,6 +175,18 @@ Rules:
 - Audio tags, sparingly (at most 5 in total): `[high_energy]` once, on the
   lead; `[emphasis]…[/emphasis]` around at most 3 key figures;
   `[dramatic_pause]` at most once. Tags go inside a line, never on their own.
+- Sound cues, right after `Speaker N: ` at the start of a line, never on the
+  opening line (the show's intro sting already opens it), one per line, at
+  most 3 in total:
+  - `[transition]` where the bulletin moves to a different storyline: the
+    station's transition hit plays there. Never mid-story.
+  - `[gong]` — at most ONCE, and only for a genuinely huge moment: a mega
+    funding round, a major acquisition, an IPO filing or pricing, a record
+    quarter. Put it on the line that delivers that news; it replaces the
+    transition there. Most bulletins have no gong; a gong on routine news
+    cheapens it.
+  The intro and outro music are added automatically — do not write them,
+  describe them, or mention music or sound effects in the script.
 - `covers`: the slugs the script talks about, in the order it talks about
   them. Every slug must exist on the board after your ops.
 

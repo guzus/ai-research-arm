@@ -62,7 +62,7 @@ aradio.yml (when an input lane finishes; hourly backstop):
                              .tmp/aradio/edit.json  (ops + optional script)
   3. check_aradio.py         trusted validator; hard errors fail the run,
                              soft errors are repaired and reported.
-  4. aradio_tts.py           Gemini TTS → mp3 (only when on_air)
+  4. aradio_tts.py           Gemini TTS → mixed with the sound kit → mp3 (only when on_air)
   5. aws s3 cp               audio/aradio/<id>.mp3 (immutable key)
   6. write_aradio_bulletin.py  the ONLY committer for research/aradio/
   7. safe-push; then the job fails if the editor or the audio failed.
@@ -556,10 +556,13 @@ sentence publishes the label with it.
 - `bulletins/YYYY-MM-DD/HHMM.json` — one per aired bulletin:
   `{schema, id, aired_at, headline, lines: [{speaker, text}], script,
   covers, threads: [{slug, title, status}], sources: [{url, kind, label}],
-  ops: [{op, slug}], warnings, audio: {key, bytes, duration_s} | null,
+  ops: [{op, slug}], warnings, audio: {key, bytes, duration_s, segments?} | null,
   audio_error, editor: {backend, model}, inbox: {items, kinds}}`.
   `lines` is display-ready (audio tags stripped; `speaker` is `"Speaker 1"` or
-  `"Speaker 2"`); `script` is the raw TTS input.
+  `"Speaker 2"`); `script` is the raw TTS input. `audio.duration_s` is the
+  whole mp3, music included; the optional `audio.segments` (see "Sound
+  design") gives each voiced segment's span. The same `audio` object is copied
+  into the bulletin's `index.json` entry.
 - `index.json` — `{schema, updated_at, degraded, latest, bulletins: [{id,
   aired_at, headline, path, audio, covers, kinds}]}`, newest first, ≤ 72.
   `degraded` is true when the latest on-air bulletin has no audio. `latest` is
@@ -641,6 +644,52 @@ next hourly run re-reads the same material and airs it again from `main`.
 Merging the stale PR afterwards would roll the board and cursor back over that
 newer run. Close it; its orphaned mp3 on S3 is harmless (keys are never
 reused).
+
+## Sound design (`scripts/aradio_sound.py`)
+
+Every on-air bulletin carries the station's sonic identity, the way a show
+like TBPN is recognisable from its first second: one three-note motif
+(A – E – A an octave up, "A-R-A") on bell and brass, over a 128 bpm
+four-on-the-floor groove. Cues (`[transition]`, `[gong]`) are at most 3 per
+bulletin, one per line, at a line's start, never on the opening line.
+
+| Sound | Where | Length |
+|---|---|---|
+| Signature intro | one-bar build (riser + accelerating snare roll) → THE HIT (kick, sub boom, crash, A-major brass stab) → the motif in bell + brass → a 128 bpm groove (kick, claps, hats, bass) the opening line rides over, ducked | voice enters at 4.2 s |
+| Transition hit | before each line the editor started with `[transition]` (a new storyline): reverse-cymbal swell → kick, clap, crash, D-major brass stab → the motif's E → A over half a bar of groove | voice back at 1.3 s |
+| Gong | before the line the editor started with `[gong]`: the bulletin's one huge moment (mega round, acquisition, IPO, record quarter); at most 1, an excess gong plays as a transition | voice at 1.7 s, the gong rings on ducked |
+| Outro | a bar of groove under the motif descending in brass and bell, a snare build, then the final hit ringing out | ~6 s |
+
+**Synthesized, not sampled.** The kit is generated from the standard library
+at the voice's sample rate on every run, deterministically (seeded noise): no
+sample files, no music model, nothing to license, and every change to the
+sound is a reviewed diff. Preview a change before it airs with
+`python scripts/aradio_sound.py --preview /tmp/kit.wav`. Music sits ~14 dB
+under speech (a 0.25 s ramp), sounds are levelled to the voice's RMS (hits
+land at full speech level), and a
+soft limiter keeps a stab under a speech peak from clipping.
+
+**Segments.** A stinger can only land between words if the voice is cut
+there, and one TTS request returns one unbroken take, so `aradio_tts.py`
+splits the script at each cue line and voices each segment with
+its own request (same voices, styles and total tokens; at most 4 requests).
+The truncation check runs on the summed voice. The result carries the exact
+span of every segment in the final mix, which the writer publishes as
+`audio.segments` (`[{start_s, end_s, lines: [first, last]}]`, dropped unless
+they tile the script in order) and the dashboard uses to follow the
+transcript within the real voice time rather than across the music.
+
+**Fail-soft for the sound, never for the voice.** Every segment is held to
+the truncation ratio on its own (2 s of slack for a short one) as well as the
+whole voice, so a storyline that came back empty cannot hide in the total.
+More requests mean more chances to fail and more time: if any segment fails
+(HTTP, no audio, truncation), or the segmented path passes its 240 s budget (segment requests time out at
+120 s; the worst case stays ~14.5 min, inside the 30 min job),
+the script is re-voiced as ONE dry request and airs without stingers, with
+`sound_error` saying why. A single voice the mixer cannot read airs dry the
+same way; several segments that cannot be joined fail like any TTS error. `aradio_tts.py --no-sound` airs one dry
+request on purpose; the workflow passes it when the repository variable
+`ARADIO_SOUND` is `off`, the kill switch that needs no code change.
 
 ## Dashboard
 

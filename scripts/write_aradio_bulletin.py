@@ -48,6 +48,7 @@ import argparse
 import copy
 import datetime as dt
 import json
+import math
 import re
 import subprocess
 import sys
@@ -377,9 +378,43 @@ def archive_rows(archive: Any, month: str) -> tuple[list[dict], list[dict]]:
 # Audio outcome
 # ---------------------------------------------------------------------------
 
+def audio_segments(raw: Any, script_lines: int, duration: float) -> list[dict] | None:
+    """The TTS step's voice spans, if they tile the script in order; else None.
+
+    `[{start_s, end_s, lines: [first, last]}]`: where each voiced segment sits
+    in the mixed audio (docs/aradio.md -> "Sound design"). They are a timing
+    hint for the transcript, so a malformed list is dropped (the dashboard
+    falls back to its whole-file estimate), never a reason to refuse a bulletin.
+    """
+    if not isinstance(raw, list) or not raw or script_lines <= 0:
+        return None
+    segments: list[dict] = []
+    next_line, previous_end = 0, 0.0
+
+    def number(value: Any) -> float | None:
+        ok = isinstance(value, (int, float)) and not isinstance(value, bool)
+        return float(value) if ok and math.isfinite(value) else None
+
+    for entry in raw:
+        if not isinstance(entry, dict):
+            return None
+        start, end = number(entry.get("start_s")), number(entry.get("end_s"))
+        lines = entry.get("lines")
+        if (start is None or end is None or not isinstance(lines, list) or len(lines) != 2
+                or not all(isinstance(i, int) and not isinstance(i, bool) for i in lines)):
+            return None
+        if (lines[0] != next_line or lines[1] < lines[0] or start < previous_end
+                or end <= start or end > duration + 0.5):
+            return None
+        segments.append({"start_s": round(start, 2), "end_s": round(end, 2),
+                         "lines": [lines[0], lines[1]]})
+        next_line, previous_end = lines[1] + 1, end
+    return segments if next_line == script_lines else None
+
+
 def audio_outcome(on_air: bool, run_id: str, tts_result: dict | None,
-                  audio_key: str | None, audio_error: str | None
-                  ) -> tuple[dict | None, str | None]:
+                  audio_key: str | None, audio_error: str | None,
+                  script_lines: int = 0) -> tuple[dict | None, str | None]:
     if not on_air:
         return None, None
     expected_key = AUDIO_KEY_TEMPLATE.format(id=run_id)
@@ -391,7 +426,11 @@ def audio_outcome(on_air: bool, run_id: str, tts_result: dict | None,
         if (not isinstance(size, int) or isinstance(size, bool) or size <= 0
                 or not isinstance(duration, (int, float)) or isinstance(duration, bool)):
             raise WriterError("TTS result is ok but lacks bytes/duration_s")
-        return {"key": audio_key, "bytes": size, "duration_s": round(float(duration), 1)}, None
+        audio = {"key": audio_key, "bytes": size, "duration_s": round(float(duration), 1)}
+        segments = audio_segments(tts_result.get("segments"), script_lines, float(duration))
+        if segments:
+            audio["segments"] = segments
+        return audio, None
     if audio_error:
         reason = audio_error
     elif tts_result is None:
@@ -592,7 +631,8 @@ def write(*, repo_root: Path, edit_raw: Any, inbox: contract.TrustedInbox, now: 
                for w in (carried if isinstance(carried, list) else []) if isinstance(w, str)]
     edit["warnings"] = list(dict.fromkeys(carried + list(report.warnings)))[:MAX_WARNINGS]
 
-    audio, error = audio_outcome(edit["on_air"], run_id, tts_result, audio_key, audio_error)
+    audio, error = audio_outcome(edit["on_air"], run_id, tts_result, audio_key, audio_error,
+                                 len(edit["script"]) if edit["on_air"] else 0)
     index = _load_optional(lane / "index.json")
     archive = _load_optional(lane / "archive" / f"{now.strftime('%Y-%m')}.json")
     outputs, summary = compose(edit=edit, inbox=inbox, board=board, cursor=cursor,
