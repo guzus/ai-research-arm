@@ -1,0 +1,177 @@
+{
+  "schema": 1,
+  "id": "2026-11-02-1946",
+  "aired_at": "2026-11-02T19:46:00Z",
+  "headline": "Marvell agrees to buy Lumentum in an optical AI bet; Anthropic IPO, Gemini 4 Carbon and the chip selloff stay in focus",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's fourteen minutes to eight UTC on Monday, November second. This is ARA AI News, and today the chip and infrastructure story picks up a big new deal."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Marvell Technology has announced it will combine with Lumentum, the optical components maker, alongside its fiscal third-quarter results."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Marvell's chairman and CEO called optical connectivity a once-in-a-generation opportunity, saying AI infrastructure is going through a fundamental architectural shift toward optical."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Lumentum's chief executive said the combined company would address a market of five hundred fifty billion dollars, and that it can serve customers from scale-across and scale-out today to scale-up tomorrow."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "What about the money side?"
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Marvell says it sees line of sight to more than one billion dollars of run-rate synergies, mostly in cost of goods. It also expects the deal to add to non-GAAP gross margin, operating margin and earnings per share in the first year after closing."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "We should be careful here. The release we have doesn't give us the price or the closing date, and no earnings call transcript was available at the time of writing. There will also be a joint proxy statement for both sets of shareholders."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The timing matters. The deal lands right after last week's chip rout, when Intel fell nearly twenty-nine percent and the chip index dropped about seven percent in a day."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On the wider board, the Anthropic listing remains the biggest story. Anthropic has filed its S-1, and the talk is of a Nasdaq debut as soon as this month at a valuation between one and a half and two trillion dollars."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Podcast hosts who read the filing say first-half revenue reached sixteen point three billion dollars, and no customer accounts for more than ten percent of it. Nothing new on pricing or a date yet."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "In models, Google's Gemini 4 Carbon sits at or near the top of several rankings, but a new SemiAnalysis benchmark reportedly has Claude Opus five point five first, with Carbon close behind at about a third of the cost per task."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "And reports of Qwen 4 and a GPT six point two Astra release remain unconfirmed. Secondary accounts also say Apple will use Alibaba's Qwen for Apple Intelligence in China, with developer testing starting Wednesday."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "So what do we watch? First, the Marvell filing details and any reaction from the optical supply chain."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Second, whether Qwen 4 arrives this week, and whether Apple or Alibaba confirm the China plan. Third, Anthropic's pricing and listing date."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's fourteen minutes to eight UTC on Monday, November second. This is ARA AI News, and today the chip and infrastructure story picks up a big new deal.",
+    "Speaker 2: Marvell Technology has announced it will combine with Lumentum, the optical components maker, alongside its fiscal third-quarter results.",
+    "Speaker 1: [high_energy] Marvell's chairman and CEO called optical connectivity a once-in-a-generation opportunity, saying AI infrastructure is going through a fundamental architectural shift toward optical.",
+    "Speaker 2: Lumentum's chief executive said the combined company would address a market of [emphasis]five hundred fifty billion dollars[/emphasis], and that it can serve customers from scale-across and scale-out today to scale-up tomorrow.",
+    "Speaker 1: What about the money side?",
+    "Speaker 2: Marvell says it sees line of sight to more than [emphasis]one billion dollars[/emphasis] of run-rate synergies, mostly in cost of goods. It also expects the deal to add to non-GAAP gross margin, operating margin and earnings per share in the first year after closing.",
+    "Speaker 1: We should be careful here. The release we have doesn't give us the price or the closing date, and no earnings call transcript was available at the time of writing. There will also be a joint proxy statement for both sets of shareholders.",
+    "Speaker 2: The timing matters. The deal lands right after last week's chip rout, when Intel fell nearly twenty-nine percent and the chip index dropped about seven percent in a day.",
+    "Speaker 1: [transition] On the wider board, the Anthropic listing remains the biggest story. Anthropic has filed its S-1, and the talk is of a Nasdaq debut as soon as this month at a valuation between one and a half and two trillion dollars.",
+    "Speaker 2: Podcast hosts who read the filing say first-half revenue reached sixteen point three billion dollars, and no customer accounts for more than ten percent of it. Nothing new on pricing or a date yet.",
+    "Speaker 1: [transition] In models, Google's Gemini 4 Carbon sits at or near the top of several rankings, but a new SemiAnalysis benchmark reportedly has Claude Opus five point five first, with Carbon close behind at about a third of the cost per task.",
+    "Speaker 2: And reports of Qwen 4 and a GPT six point two Astra release remain unconfirmed. Secondary accounts also say Apple will use Alibaba's Qwen for Apple Intelligence in China, with developer testing starting Wednesday.",
+    "Speaker 1: So what do we watch? First, the Marvell filing details and any reaction from the optical supply chain.",
+    "Speaker 2: Second, whether Qwen 4 arrives this week, and whether Apple or Alibaba confirm the China plan. Third, Anthropic's pricing and listing date.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "marvell-lumentum-optical-ai-deal",
+    "hyperscaler-capex-and-chip-selloff",
+    "anthropic-ipo-and-ai-funding",
+    "gemini-4-carbon-frontier-race",
+    "next-model-launches-qwen-4-gpt-6-2-astra"
+  ],
+  "threads": [
+    {
+      "slug": "marvell-lumentum-optical-ai-deal",
+      "title": "Marvell's deal for Lumentum and the shift to optical AI connectivity",
+      "status": "developing"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, Vertiv and the chip rout",
+      "status": "escalating"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "gemini-4-carbon-frontier-race",
+      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
+      "status": "developing"
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526442714/",
+      "kind": "earnings",
+      "label": "Marvell Technology, Inc. (MRVL)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "create",
+      "slug": "marvell-lumentum-optical-ai-deal"
+    }
+  ],
+  "warnings": [
+    "ops[0] create marvell-lumentum-optical-ai-deal evidence[0]: label set to the source's name because the evidence carries a quote"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-02-1946.mp3",
+    "bytes": 996141,
+    "duration_s": 165.9,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 84.88,
+        "lines": [
+          0,
+          7
+        ]
+      },
+      {
+        "start_s": 86.33,
+        "end_s": 110.53,
+        "lines": [
+          8,
+          9
+        ]
+      },
+      {
+        "start_s": 111.98,
+        "end_s": 159.38,
+        "lines": [
+          10,
+          14
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "claude-sonnet-5p5-isolated",
+    "model": "claude-sonnet-5-5"
+  },
+  "inbox": {
+    "items": 1,
+    "kinds": {
+      "earnings": 1
+    }
+  }
+}
