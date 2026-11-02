@@ -324,11 +324,11 @@
         "transparency",
         "policy"
       ],
-      "summary": "Invisible watermarks embedded in model-generated text so a detector can flag it; xAI announced Grok text watermarking on 2026-10-31, leaving ChatGPT as the last major North American text model without one by one count.",
-      "description": "Invisible watermarks embedded in model-generated text so a detector can flag it; xAI announced Grok text watermarking on 2026-10-31, leaving ChatGPT as the last major North American text model without one by one count.",
+      "summary": "Invisible watermarks embedded in model-generated text so a detector can flag it; xAI confirmed global Grok watermarking and Anthropic reportedly extends it to older Claude models from Nov 3, leaving North American ChatGPT the lone holdout by one count.",
+      "description": "Invisible watermarks embedded in model-generated text so a detector can flag it; xAI confirmed global Grok watermarking and Anthropic reportedly extends it to older Claude models from Nov 3, leaving North American ChatGPT the lone holdout by one count.",
       "created_at": "2026-11-01",
-      "updated_at": "2026-11-01",
-      "timestamp": "2026-11-01T00:00:00Z",
+      "updated_at": "2026-11-02",
+      "timestamp": "2026-11-02T00:00:00Z",
       "file": "concepts/ai-text-watermarking.md",
       "aliases": [
         "text watermarking",
@@ -343,7 +343,9 @@
         "openai",
         "xai"
       ],
-      "inbound": []
+      "inbound": [
+        "xai"
+      ]
     },
     {
       "slug": "aleph-alpha",
@@ -397,11 +399,11 @@
         "export-control",
         "hyperscaler-china"
       ],
-      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.",
-      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.",
+      "summary": "Chinese tech conglomerate (Alibaba Cloud, Qwen); reportedly set to power Apple Intelligence in China (Nov 4 developer beta, December release) while Qwen 4 is still unreleased.",
+      "description": "Chinese tech conglomerate (Alibaba Cloud, Qwen); reportedly set to power Apple Intelligence in China (Nov 4 developer beta, December release) while Qwen 4 is still unreleased.",
       "created_at": "2026-07-05",
-      "updated_at": "2026-09-21",
-      "timestamp": "2026-09-21T00:00:00Z",
+      "updated_at": "2026-11-02",
+      "timestamp": "2026-11-02T00:00:00Z",
       "file": "entities/alibaba.md",
       "aliases": [
         "Alibaba Group",
@@ -418,6 +420,7 @@
       "outbound": [
         "ai-capex",
         "anthropic",
+        "apple",
         "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
@@ -849,6 +852,7 @@
       ],
       "inbound": [
         "ai-capex",
+        "alibaba",
         "dessa",
         "eu-ai-regulation",
         "google",
@@ -2468,7 +2472,8 @@
         "mistral",
         "mistral-shieldstral",
         "openai",
-        "seedance-2-5"
+        "seedance-2-5",
+        "xai"
       ],
       "translations": {
         "ko": {
@@ -6896,11 +6901,11 @@
         "elon-musk",
         "ai-infrastructure"
       ],
-      "summary": "Elon Musk's frontier lab behind Grok; Grok Bot can now place outbound phone calls to people and businesses, while a nearly-500-race study found Grok picked Republicans and OpenAI's GPT picked Democrats.",
-      "description": "Elon Musk's frontier lab behind Grok; Grok Bot can now place outbound phone calls to people and businesses, while a nearly-500-race study found Grok picked Republicans and OpenAI's GPT picked Democrats.",
+      "summary": "Elon Musk's frontier lab behind Grok; Musk blamed unsustainable serving costs for Grok Bot usage limits, and xAI confirmed global Grok text watermarking without signing the EU transparency code.",
+      "description": "Elon Musk's frontier lab behind Grok; Musk blamed unsustainable serving costs for Grok Bot usage limits, and xAI confirmed global Grok text watermarking without signing the EU transparency code.",
       "created_at": "2026-06-08",
-      "updated_at": "2026-10-26",
-      "timestamp": "2026-10-26T00:00:00Z",
+      "updated_at": "2026-11-02",
+      "timestamp": "2026-11-02T00:00:00Z",
       "file": "entities/xai.md",
       "aliases": [
         "xAI",
@@ -6917,11 +6922,13 @@
       "outbound": [
         "agentic-ai-security",
         "ai-capex",
+        "ai-text-watermarking",
         "anthropic",
         "claude-fable-5",
         "claude-opus-5",
         "cursor",
         "dynamic-workflows",
+        "eu-ai-regulation",
         "gpt-5-6",
         "gpt-6",
         "harvey",

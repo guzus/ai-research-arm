@@ -4,10 +4,11 @@ title: xAI
 type: entity
 aliases: [xAI, "x.AI", "@xai", Grok, Colossus, "Colossus 1", "Grok 4.6", "Grok Bot", "Grok 4.7", "Grok 4.8"]
 tags: [frontier-lab, grok, compute-landlord, elon-musk, ai-infrastructure]
-description: Elon Musk's frontier lab behind Grok; Grok Bot can now place outbound phone calls to people and businesses, while a nearly-500-race study found Grok picked Republicans and OpenAI's GPT picked Democrats.
+description: Elon Musk's frontier lab behind Grok; Musk blamed unsustainable serving costs for Grok Bot usage limits, and xAI confirmed global Grok text watermarking without signing the EU transparency code.
 created_at: 2026-06-08
-timestamp: 2026-10-26T00:00:00Z
+timestamp: 2026-11-02T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-02", path: research/digest/2026-11-02-digest.md}
   - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
@@ -393,6 +394,19 @@ for refused tasks — see
 (@elonmusk, @alexmichaelio;
 ARA daily digest
 2026-10-26).
+
+## Grok Bot serving costs and global text watermarking (2026-11-02)
+
+- **Serving cost drives Grok Bot limits.** Musk said Grok Bot's serving cost
+  was "unsustainably high relative to revenue", explaining weekend usage meters
+  jumping to 100%. It is the second flat-rate agent plan tightened in a week,
+  after [[openai]]'s shared ChatGPT/Codex allowance (@elonmusk, @SawyerMerritt,
+  @mark_k).
+- **Global Grok text watermarking.** The Oct 31 announcement of invisible
+  watermarking appears to be rolling out globally with an opt-out page. xAI did
+  not sign the EU transparency Code of Practice that six other labs did. See
+  [[ai-text-watermarking]] and [[eu-ai-regulation]] (@AndrewCurran_; ARA daily
+  digest 2026-11-02).
 
 ## Open questions
 

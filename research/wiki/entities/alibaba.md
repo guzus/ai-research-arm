@@ -4,15 +4,17 @@ title: Alibaba
 type: entity
 aliases: ["Alibaba Group", "Alibaba Cloud", "BABA", "Alibaba Group Holding", "Qwen", "Qoder", "Qwen-Drive", "Qwen-Drive 1.0", "Qwen3.8-Omni-Flash", "Qwen Omni Flash"]
 tags: [china, distillation, litigation, export-control, hyperscaler-china]
-description: Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
+description: Chinese tech conglomerate (Alibaba Cloud, Qwen); reportedly set to power Apple Intelligence in China (Nov 4 developer beta, December release) while Qwen 4 is still unreleased.
 created_at: 2026-07-05
-timestamp: 2026-09-21T00:00:00Z
+timestamp: 2026-11-02T00:00:00Z
 market:
   ticker: BABA
   exchange: NYSE
   symbol: NYSE:BABA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-11-02", path: research/digest/2026-11-02-digest.md}
+  - {title: "ARA model ticket — Qwen inside Apple Intelligence in China", path: research/models/tickets/alibaba-qwen-apple-intelligence-china-2026-11.md}
   - {title: "ARA daily digest 2026-09-21", path: research/digest/2026-09-21-digest.md}
   - {title: "ARA daily digest 2026-09-19", path: research/digest/2026-09-19-digest.md}
   - {title: "ARA daily digest 2026-09-08", path: research/digest/2026-09-08-digest.md}
@@ -262,6 +264,20 @@ friction point distinct from Qwen's own model-release cadence.
   [[open-weights]] (Alibaba Qwen, The Decoder,
   HN 426/145; ARA daily digest 2026-09-21).
 
+## Qwen for Apple Intelligence in China; Qwen 4 still pending (2026-11-02)
+
+- **Reported schedule for [[apple]] Intelligence in China.** A People's Daily
+  post says testing starts in the iOS developer beta on **Nov 4**, with the
+  Chinese rollout in **iOS 27.3 in December**, Qwen sitting behind Siri,
+  Writing Tools and Visual Intelligence. Approval was reportedly granted in
+  July. Single secondary source; **no Apple or Alibaba statement** yet. This
+  revives the July Caixin report that had closed as unverified. If it holds,
+  Qwen would be the first Chinese model running system-level AI on iPhones,
+  while Apple's assistant elsewhere runs on Gemini (model ticket
+  `alibaba-qwen-apple-intelligence-china-2026-11`; ARA daily digest 2026-11-02).
+- **Qwen 4 is still "next week".** Qwen Code names reportedly default to a
+  1M-token context, but there is no Alibaba announcement or model card yet.
+
 ## Open questions
 
 - **Will Alibaba respond on the record?** Alibaba has declined to comment
@@ -276,3 +292,5 @@ friction point distinct from Qwen's own model-release cadence.
   "outperforms all Opus models" claim is one tester's self-reported result;
   watch for an official Qwen benchmark table and independent evals once the
   open-weight release lands.
+- **Does the Apple beta land on Nov 4?** Watch for iOS developer-beta release
+  notes or an Apple/Alibaba confirmation.
