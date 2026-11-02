@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 23,
+  "count": 24,
   "events": [
+    {
+      "file": "2026-11-02-MRVL-FY27Q3.md",
+      "date": "2026-11-02",
+      "ticker": "MRVL",
+      "period": "FY27Q3",
+      "issuer": "Marvell Technology, Inc.",
+      "form": "8-K",
+      "accession": "0001193125-26-442714",
+      "transcript": false
+    },
     {
       "file": "2026-10-29-AMZN-FY26Q3.md",
       "date": "2026-10-29",
