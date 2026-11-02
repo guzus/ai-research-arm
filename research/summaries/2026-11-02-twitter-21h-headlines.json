@@ -1,0 +1,32 @@
+[
+  {
+    "headline": "ANTHROPIC S-1/A: Q3 REVENUE $16.96B, SWINGS TO $567M OPERATING LOSS ON $5B SHORT-TERM COMPUTE",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2117268002454507902",
+    "category": "business"
+  },
+  {
+    "headline": "ANTHROPIC FILING: MODELS MAY 'IMMINENTLY' HIT ITS AI-ACCELERATED-PROGRESS (RSI) THRESHOLD",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2117290147863826460",
+    "category": "policy"
+  },
+  {
+    "headline": "MARVELL TO ACQUIRE LUMENTUM IN ~$115B ALL-STOCK DEAL; MRVL -12.7%, LITE -18.6%",
+    "source": "@aleabitoreddit",
+    "url": "https://x.com/aleabitoreddit/status/2117229519178498541",
+    "category": "infra"
+  },
+  {
+    "headline": "MIT: GPT-6 ASTRA EDITS 0.016% OF QWEN WEIGHTS, LIFTS MATH-500 FROM 7.9% TO 48.1% WITHOUT TRAINING",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2117350399271371113",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC LAUNCHES MESSAGE THREADS BETA ON MESSAGES API; ~35% FASTER FIRST TOKEN ON 500K-1M TOKEN REQUESTS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2117332449382510884",
+    "category": "model"
+  }
+]
