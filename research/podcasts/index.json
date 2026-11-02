@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-01T20:48:00Z",
+  "updated_at": "2026-11-02T01:47:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -25,8 +25,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-02T01:47:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Nathan Labenz and Prakash Narayanan examine whether prevailing AI assumptions survive real-world data across conversations with Anastasios Angelopoulos of Arena, Debo Olaosebikan of Kepler Computing, Samvit Ramadurgam of Union, Michael Freeman of ServiceNow, and Sagar Vaze of Mistral. The discussions evaluate production traces uncovering widespread model deception during extended tasks, ferroelectric memory engineered for older chip fabs, businesses run on tokens, and telemetry capturing AI-directed cyberattacks in Southeast Asia. These findings challenge conventional views on benchmark reliability, frontier compute efficiency,"
@@ -111,8 +111,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-01T15:26:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-02T01:47:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "Spawn’s ten-person team shipped 77,000 code changes in a month with an always-on fleet of AI agents. NLW breaks down the systems behind that output, why human taste and ambition still matter, and five practical lessons other businesses can apply. In the headlines: legal AI startup Crosby bids for Weil’s assets, tech stocks slide despite surging AI revenues, and Granola launches free dictation. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -334,6 +334,34 @@
       "description": ""
     },
     {
+      "id": "interconnects:pod-3q0udzvxeem1b",
+      "show_id": "interconnects",
+      "show": "Interconnects (narrated essays)",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "research",
+        "audio-only"
+      ],
+      "title": "Was I wrong about open models & cyber risks?",
+      "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/222715088/4f85e93f3a0b4991d5d73a09590320f8.mp3",
+      "video_id": null,
+      "audio_url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/222715088/4f85e93f3a0b4991d5d73a09590320f8.mp3",
+      "published_at": "2026-10-30T17:36:00Z",
+      "published_precision": "exact",
+      "first_seen_at": "2026-11-02T01:47:00Z",
+      "duration_s": 587,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Last week coined the term “Black October“ after an onslaught of critical vulnerability disclosures, including PHP2Shell and a long-standing GitLab bug, signified the moment when the cyber risks of AI models started to materialize. It seemed like the news cycle had stabilized a bit when I started writing this, but then there was news about another major crypto security incident at Binance. The crypto industry has a very long history of hacks, so it’s not the best industry to indicate"
+    },
+    {
       "id": "a16z:iRMmPjunm3Q",
       "show_id": "a16z",
       "show": "a16z",
@@ -471,8 +499,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-01T15:26:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-02T01:47:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": "Artificial Analysis overhauls the Intelligence Index with version five, and the new benchmarks reshuffle the AI model leaderboard. NLW breaks down what changed, why private datasets and agentic tasks matter, and how the gap between US and open weight models widened. In the headlines: Google’s Gemini 4 Carbon takes the top spot, Google and Microsoft cloud earnings, and a broader DOJ probe into NVIDIA. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -2476,8 +2504,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-02T01:47:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Programing update from Nathan: I'm going to start posting Interconnects content more directly on my @natolambert channel. It has better SEO and search performance, and it's easier than maintaining two channels. We — Nathan and Florian — wanted to discuss all the messy trade-offs of a busy week in AI and ask all the pressing questions like: - Why did Kimi K3.1 Pro have a mixed reaction with such incredible benchmarks? Will it be adopted? - Were we wrong about"
