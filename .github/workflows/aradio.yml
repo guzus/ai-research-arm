@@ -369,16 +369,22 @@ jobs:
         id: tts
         if: steps.validate.outcome == 'success' && steps.validate.outputs.on_air == 'true'
         continue-on-error: true
+        # Sound design (intro/transitions/outro, scripts/aradio_sound.py) is on
+        # unless the repository variable ARADIO_SOUND is "off" (kill switch).
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SCRATCH: ${{ steps.stamp.outputs.scratch }}
+          ARADIO_SOUND: ${{ vars.ARADIO_SOUND }}
         run: |
           set -euo pipefail
+          sound_flag=()
+          if [ "${ARADIO_SOUND:-}" = "off" ]; then sound_flag=(--no-sound); fi
           uv run python scripts/aradio_tts.py \
             --edit "$SCRATCH/edit.normalized.json" \
             --out "$SCRATCH/bulletin.mp3" \
             --work-dir "$SCRATCH" \
-            --result "$SCRATCH/tts.json"
+            --result "$SCRATCH/tts.json" \
+            "${sound_flag[@]}"
 
       # Keys are immutable (s3.guzus.xyz caches 200s behind Cloudflare); the
       # "latest" pointer is research/aradio/index.json.

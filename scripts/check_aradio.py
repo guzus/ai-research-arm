@@ -129,12 +129,18 @@ TARGET_SCRIPT_LINES = (10, 24)
 TARGET_SCRIPT_WORDS = (350, 750)
 TAG_LIMITS = {"[high_energy]": 1, "[emphasis]": 3, "[dramatic_pause]": 1}
 MAX_TAGS = 5
+# A sound cue, not a vocal one, so it has its own budget: the transition
+# stinger before a new storyline (docs/aradio.md -> "Sound design"). It is kept
+# only at the very start of a line's text, never on the first line (the intro
+# sting already opens the show), at most MAX_TRANSITIONS times.
+TRANSITION_TAG = "[transition]"
+MAX_TRANSITIONS = 3
 WORDS_PER_MINUTE = 188
 MAX_EDIT_BYTES = 1024 * 1024
 
 SCRIPT_LINE_RE = re.compile(r"^Speaker [12]: \S")
 SPEAKER_PREFIX_RE = re.compile(r"^Speaker ([12]):\s*")
-KNOWN_TAG_RE = re.compile(r"\[(?:high_energy|emphasis|/emphasis|dramatic_pause)\]")
+KNOWN_TAG_RE = re.compile(r"\[(?:high_energy|emphasis|/emphasis|dramatic_pause|transition)\]")
 BRACKET_TOKEN_RE = re.compile(r"\[[^\[\]\n]{0,60}\]")
 ANGLE_TOKEN_RE = re.compile(r"<[^<>\n]{0,60}>")
 # URLs never belong in prose fields or the spoken script (they live in
@@ -1002,6 +1008,7 @@ def repair_script(lines: list[str], report: Report) -> list[str]:
     """Soft repairs: URLs, markdown, unknown/excess tags, blank lines."""
     counts = {tag: 0 for tag in TAG_LIMITS}
     total = 0
+    transitions = 0
     repaired: list[str] = []
     for index, raw in enumerate(lines):
         where = f"script[{index}]"
@@ -1015,6 +1022,18 @@ def repair_script(lines: list[str], report: Report) -> list[str]:
         if MARKDOWN_CHARS_RE.search(line):
             line = MARKDOWN_CHARS_RE.sub("", line)
             report.soft(f"{where}: markdown characters stripped")
+
+        # The sound cue comes out FIRST and goes back last, so every other
+        # repair runs on a cue-free line: removing it later could join two
+        # fragments into a new bracket token that only a second pass strips,
+        # and the writer re-validates this function's output.
+        prefix = SPEAKER_PREFIX_RE.match(line)
+        cut = prefix.end() if prefix else 0
+        cue = line[cut:].lstrip().startswith(TRANSITION_TAG)
+        if TRANSITION_TAG in line:
+            if line.count(TRANSITION_TAG) > (1 if cue else 0):
+                report.soft(f"{where}: [transition] kept only at the start of a line")
+            line = line[:cut] + line[cut:].replace(TRANSITION_TAG, " ")
 
         def bracket(match: re.Match) -> str:
             token = match.group(0)
@@ -1052,6 +1071,18 @@ def repair_script(lines: list[str], report: Report) -> list[str]:
         line = KNOWN_TAG_RE.sub(limit, line)
         if emphasis_open:
             line = line + "[/emphasis]"
+        if cue and not spoken_text(line):
+            report.soft(f"{where}: [transition] with no spoken text after it stripped")
+        elif cue and not repaired:
+            report.soft(f"{where}: [transition] on the opening line stripped "
+                        "(the intro sting opens the show)")
+        elif cue and transitions >= MAX_TRANSITIONS:
+            report.soft(f"{where}: excess [transition] stripped")
+        elif cue:
+            transitions += 1
+            prefix = SPEAKER_PREFIX_RE.match(line)
+            cut = prefix.end() if prefix else 0
+            line = f"{line[:cut]}{TRANSITION_TAG} {line[cut:].strip()}"
         repaired.append(" ".join(line.split()))
     return repaired
 

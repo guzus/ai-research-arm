@@ -496,6 +496,29 @@ class CursorAndIndexTest(WriterBase):
                                                        "duration_s": 1.0},
                              "audio/aradio/other.mp3", None)
 
+    def test_audio_segments_published_only_when_they_tile_the_script(self):
+        ok = {"ok": True, "bytes": 10, "duration_s": 60.0, "segments": [
+            {"start_s": 3.1, "end_s": 20.0, "lines": [0, 3]},
+            {"start_s": 20.9, "end_s": 55.0, "lines": [4, 11]}]}
+        audio, error = wb.audio_outcome(True, "2026-10-30-0850", ok,
+                                        "audio/aradio/2026-10-30-0850.mp3", None, 12)
+        self.assertIsNone(error)
+        self.assertEqual(ok["segments"], audio["segments"])
+        bad_cases = [
+            [{"start_s": 3.1, "end_s": 20.0, "lines": [0, 3]}],                 # misses lines
+            [{"start_s": 3.1, "end_s": 20.0, "lines": [1, 11]}],                # not from 0
+            [{"start_s": 3.1, "end_s": 20.0, "lines": [0, 3]},
+             {"start_s": 10.0, "end_s": 55.0, "lines": [4, 11]}],               # overlaps
+            [{"start_s": 3.1, "end_s": 90.0, "lines": [0, 11]}],                # past the end
+            [{"start_s": "3", "end_s": 20.0, "lines": [0, 11]}],                # not a number
+            "nope",
+        ]
+        for segments in bad_cases:
+            audio, error = wb.audio_outcome(True, "2026-10-30-0850", {**ok, "segments": segments},
+                                            "audio/aradio/2026-10-30-0850.mp3", None, 12)
+            self.assertIsNone(error)
+            self.assertNotIn("segments", audio, segments)
+
 
 CRAFTED = [
     "https://a.example/x) [y](javascript:alert(1))",

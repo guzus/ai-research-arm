@@ -1002,6 +1002,42 @@ test('timing: line spans tile the bulletin, a turn pause after each line, scaled
   assert.ok(Math.abs(short.at(-1).end - 6) < 1e-9);
 });
 
+test('timing: with sound design, lines share only their segment\'s voice time', () => {
+  const lines = [{ text: 'x'.repeat(10) }, { text: 'x'.repeat(10) }, { text: 'x'.repeat(10) }, { text: 'x'.repeat(10) }];
+  const audio = mod.normalizeAradioAudio({
+    key: 'audio/aradio/2026-11-02-0950.mp3', duration_s: 40, bytes: 10,
+    segments: [{ start_s: 3, end_s: 15, lines: [0, 1] }, { start_s: 16, end_s: 36, lines: [2, 3] }],
+  });
+  assert.deepEqual(audio.segments, [
+    { start: 3, end: 15, firstLine: 0, lastLine: 1 },
+    { start: 16, end: 36, firstLine: 2, lastLine: 3 },
+  ]);
+  const timings = mod.aradioLineTimings(lines, 40, audio.segments);
+  assert.equal(timings[0].start, 0, 'the first line owns the intro');
+  assert.equal(timings[2].start, 16, 'a segment starts exactly where its voice does');
+  assert.equal(timings[1].end, 16, 'a line runs on across the transition stinger');
+  assert.equal(timings[3].end, 40, 'the last line runs to the end, through the outro');
+  assert.ok(timings[1].start > 3 && timings[1].start < 15, 'estimated inside its segment');
+  assert.equal(mod.aradioLiveLine(timings, 15.5), 1, 'the stinger belongs to the line before it');
+
+  // Segments that do not match the transcript fall back to the whole-file estimate.
+  const plain = mod.aradioLineTimings(lines, 40);
+  assert.deepEqual(mod.aradioLineTimings(lines.slice(0, 3), 40, audio.segments), mod.aradioLineTimings(lines.slice(0, 3), 40));
+  assert.deepEqual(mod.aradioLineTimings(lines, 40, null), plain);
+
+  // Malformed segments are dropped; the rest of the audio still normalizes.
+  for (const segments of [
+    [{ start_s: 3, end_s: 15, lines: [1, 3] }],
+    [{ start_s: 3, end_s: 15, lines: [0, 1] }, { start_s: 10, end_s: 36, lines: [2, 3] }],
+    [{ start_s: 'x', end_s: 15, lines: [0, 3] }],
+    'nope',
+  ]) {
+    const normalized = mod.normalizeAradioAudio({ key: 'audio/aradio/a.mp3', duration_s: 40, segments });
+    assert.equal(normalized.durationS, 40);
+    assert.equal(normalized.segments, undefined, JSON.stringify(segments));
+  }
+});
+
 test('timing: a line takes time in proportion to its length; an empty one still gets a sliver', () => {
   const pause = mod.ARADIO_TURN_PAUSE_S;
   const [short, long] = mod.aradioLineTimings([{ text: 'x'.repeat(10) }, { text: 'x'.repeat(30) }], 20 + pause);

@@ -2057,7 +2057,12 @@ function playAradioLine(id: string, index: number, follow = true): void {
   const duration = playable && Number.isFinite(audio.duration) && audio.duration > 0
     ? audio.duration
     : entry.audio.durationS ?? bulletin.audio.durationS ?? 0;
-  const start = aradioLineTimings(bulletin.lines, duration)?.[index]?.start ?? 0;
+  const segments = bulletin.audio.segments ?? entry.audio.segments;
+  // With sound design, jumping to the first line skips the intro too: start
+  // at its voice rather than 0, which the timings give the first line.
+  const start = index === 0 && segments?.length
+    ? segments[0].start
+    : aradioLineTimings(bulletin.lines, duration, segments)?.[index]?.start ?? 0;
   if (follow) aradioScriptFollowing = true;
   if (playable) {
     aradioWaiting = false;

@@ -175,6 +175,12 @@ Rules:
 - Audio tags, sparingly (at most 5 in total): `[high_energy]` once, on the
   lead; `[emphasis]…[/emphasis]` around at most 3 key figures;
   `[dramatic_pause]` at most once. Tags go inside a line, never on their own.
+- Sound cue: start a line with `[transition]` (right after `Speaker N: `)
+  where the bulletin moves to a different storyline, so the station's
+  transition stinger plays there. At most 3, never on the opening line (the
+  show's intro sting already opens it) and never mid-story. The intro and the
+  outro music are added automatically — do not write them, describe them, or
+  mention music in the script.
 - `covers`: the slugs the script talks about, in the order it talks about
   them. Every slug must exist on the board after your ops.
 
