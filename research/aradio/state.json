@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-01T23:55:00Z",
+  "updated_at": "2026-11-02T01:51:00Z",
   "headline": "Gemini 4 Carbon pricing surfaces, Qwen 4 and GPT-6.2 Astra look imminent, Anthropic IPO eyed for about two weeks out",
   "threads": [
     {
@@ -391,6 +391,37 @@
         {
           "at": "2026-10-31T21:56:00Z",
           "change": "Mistral Large 4 open release discussed on The Cognitive Revolution: one trillion parameters, claimed tie with GLM 5.3 on coding at half the tokens."
+        }
+      ]
+    },
+    {
+      "slug": "flat-rate-ai-agent-usage-limits",
+      "title": "Flat-rate AI agent plans tighten usage as serving costs bite",
+      "status": "developing",
+      "importance": 2,
+      "first_seen": "2026-11-02T01:51:00Z",
+      "updated_at": "2026-11-02T01:51:00Z",
+      "now": "Elon Musk says the cost of serving Grok Bot was unsustainably high relative to revenue, the first official explanation for weekend limit cuts after users saw usage meters jump to 100% without warning. New quotas are unpublished. Reports say OpenAI has disclosed similar plan changes from December.",
+      "changed": "Musk said Grok Bot serving costs outran revenue, explaining the tighter usage limits; xAI has not published new quotas or pricing.",
+      "watch": "Whether xAI publishes new Grok Bot quotas or pricing, or raises the price of its bundled tier.",
+      "evidence": [
+        {
+          "url": "https://x.com/elonmusk/status/2116992258520064397",
+          "kind": "twitter",
+          "label": "@elonmusk on X (Grok Bot costs)",
+          "at": "2026-11-02T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/mark_k/status/2117001516867592576",
+          "kind": "twitter",
+          "label": "@mark_k on X (usage meters)",
+          "at": "2026-11-02T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-02T01:51:00Z",
+          "change": "Thread created: Musk attributes Grok Bot usage-limit cuts to serving costs; limits unpublished."
         }
       ]
     },
