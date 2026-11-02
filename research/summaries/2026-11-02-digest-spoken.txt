@@ -1,0 +1,11 @@
+Speaker 1: Monday, November second, twenty twenty-six.
+Speaker 2: [high_energy] Leading off, a model called Claude Mythos five point five was spotted on Anthropic's website, though nothing is confirmed yet.
+Speaker 1: And OpenAI may be close behind, with GPT six point two Astra reportedly callable from the Codex CLI ahead of launch.
+Speaker 2: Meanwhile Elon Musk says Grok Bot's serving costs outran its revenue, so usage limits are getting cut.
+Speaker 1: DeepSeek has reportedly shipped a prototype rival to Claude Code.
+Speaker 2: And Qwen will power Apple Intelligence in China, with a beta landing November fourth, which is a big win for Alibaba.
+Speaker 1: Some quick numbers, OpenAI's latest round has raised about [emphasis] eleven billion dollars [/emphasis] of a thirty billion dollar target.
+Speaker 2: NVIDIA claims Rubin NVL seventy-two delivers [emphasis] twenty point nine times [/emphasis] the performance per total cost of ownership of GB three hundred.
+Speaker 1: And Google's FlowAgent has applied [emphasis] twenty-eight thousand five hundred fifty-four [/emphasis] CI fixes.
+Speaker 2: Trending on Hacker News, five Qwen twenty-seven B models going head to head with Fable five on LiveCodeBench Hard.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.

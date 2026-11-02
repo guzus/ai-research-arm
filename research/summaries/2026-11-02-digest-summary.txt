@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-11-02
+
+TOP STORIES:
+• "Claude Mythos 5.5" spotted on Anthropic's website (unconfirmed)
+• GPT-6.2 Astra reportedly callable from Codex CLI ahead of launch
+• Musk: Grok Bot serving costs outran revenue, limits cut
+• DeepSeek ships prototype Claude Code rival (Bloomberg)
+• Qwen to power Apple Intelligence in China, beta Nov 4
+
+KEY NUMBERS:
+• OpenAI round: ~$11B raised of $30B target
+• Rubin NVL72: 20.9x GB300 perf/TCO (NVIDIA claim)
+• Google FlowAgent: 28,554 CI fixes applied
+
+TRENDING: Five Qwen 27B models vs Fable 5 on LiveCodeBench Hard (HN)
+
+Full digest on GitHub.
