@@ -1,5 +1,5 @@
 {
-  "article_count": 110,
+  "article_count": 111,
   "articles": [
     {
       "claim_count": 18,
@@ -1047,6 +1047,14 @@
         "twitter-seed"
       ],
       "title": "Verifiable is not the same as fair: does Lighter answer Don Wilson's five questions about Hyperliquid onshore?"
+    },
+    {
+      "claim_count": 33,
+      "created_at": "2026-11-02T11:18:55Z",
+      "slug": "semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "stem": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "tags": [],
+      "title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins"
     }
   ],
   "by_host": {
@@ -1184,7 +1192,8 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c21",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c8",
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c20",
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c31"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c31",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c10"
     ],
     "ai.meta.com": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c16",
@@ -1258,6 +1267,10 @@
     "aljazeera.com": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c31",
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c4"
+    ],
+    "all-ai.de": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c4",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c8"
     ],
     "allwork.space": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c17"
@@ -1423,7 +1436,10 @@
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c4",
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c5",
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c11",
-      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c16"
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c16",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c13",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c6",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -1888,7 +1904,9 @@
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c13",
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c14",
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c8",
-      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c9"
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c9",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c12",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c13"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -3063,7 +3081,8 @@
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c14",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4",
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7",
-      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c17"
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c17",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c11"
     ],
     "developers.tron.network": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c14"
@@ -3440,7 +3459,9 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c26",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c27",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c9",
-      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c11"
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c11",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c14",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c21"
     ],
     "epochai.substack.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c35"
@@ -3507,6 +3528,9 @@
     ],
     "eweek.com": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c23"
+    ],
+    "explainx.ai": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c15"
     ],
     "explore.jobs.netflix.net": [
       "2026-08-04T171206--comfyui-company#c18"
@@ -3783,7 +3807,8 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c18",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c20",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7",
-      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c18"
+      "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c18",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5"
     ],
     "foxbusiness.com": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c19"
@@ -3833,6 +3858,11 @@
     ],
     "gdpr-info.eu": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c15"
+    ],
+    "gdpx.semianalysis.com": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c1",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c2",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c8"
     ],
     "geminicli.com": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c25"
@@ -4210,7 +4240,8 @@
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c17",
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c20",
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c15",
-      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c22"
+      "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c22",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c12"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
@@ -4670,7 +4701,8 @@
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c5"
     ],
     "letsdatascience.com": [
-      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7"
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c9"
     ],
     "letsmoney.com.br": [
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c17"
@@ -5085,7 +5117,13 @@
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-7",
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-9",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c10",
-      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c5"
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c5",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c16",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c18",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c19",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c20",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c3",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c9"
     ],
     "newslink.mba.org": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c15"
@@ -5197,7 +5235,8 @@
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c18",
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c19",
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c5",
-      "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-1"
+      "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-1",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5"
     ],
     "ofox.ai": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c17"
@@ -5431,7 +5470,8 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c29",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c3",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c32",
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c4"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c4",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c6"
     ],
     "platform.minimax.io": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c7",
@@ -6325,7 +6365,8 @@
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c1",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c10",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c2",
-      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c34"
+      "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c34",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7"
     ],
     "support.google.com": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c23"
@@ -6491,7 +6532,8 @@
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c7",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c19",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c5",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c6"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c6",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c17"
     ],
     "technode.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c25",
@@ -6900,7 +6942,9 @@
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c15",
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c2",
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c4",
-      "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c6"
+      "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c6",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c15",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c4"
     ],
     "unitree.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2",
@@ -7285,7 +7329,9 @@
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c1",
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c1",
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c18",
-      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c4"
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c4",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c16",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c17"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -7476,7 +7522,8 @@
       "2026-06-25T170208--native-computer-use-gemini-3-5-flash#c2",
       "2026-06-25T170208--native-computer-use-gemini-3-5-flash#c3",
       "2026-06-25T170208--native-computer-use-gemini-3-5-flash#c9",
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c31"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c31",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c10"
     ],
     "https://ai.google.dev/gemma/docs/core/model_card_4": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c21"
@@ -8108,7 +8155,8 @@
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c15"
     ],
     "https://arxiv.org/abs/2411.00640": [
-      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c28"
+      "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c28",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c13"
     ],
     "https://arxiv.org/abs/2411.11192": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c10"
@@ -8248,6 +8296,9 @@
     ],
     "https://arxiv.org/abs/2510.03760": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c16"
+    ],
+    "https://arxiv.org/abs/2510.04374": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c12"
     ],
     "https://arxiv.org/abs/2510.09259": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c19"
@@ -9531,7 +9582,8 @@
     "https://developers.openai.com/api/docs/pricing": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c6",
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c14",
-      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4"
+      "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c4",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c11"
     ],
     "https://developers.tron.network/docs/concensus": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c14"
@@ -9931,11 +9983,15 @@
     "https://epoch.ai/gradient-updates/moe-vs-dense-models-inference": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c22"
     ],
+    "https://epoch.ai/gradient-updates/state-of-rl-envs": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c21"
+    ],
     "https://epoch.ai/gradient-updates/three-issues-undermining-compute-based-ai-policies": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c32"
     ],
     "https://epoch.ai/gradient-updates/why-benchmarking-is-hard": [
-      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c11"
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c11",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c14"
     ],
     "https://epoch.ai/models/claude-opus-5": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c4"
@@ -9996,6 +10052,9 @@
     ],
     "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=clinvar&term=%22clinsig+vus%22%5BProperties%5D&retmode=json": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c21"
+    ],
+    "https://explainx.ai/blog/semianalysis-gdpx-benchmark-opus-5-5-12-percent-agents-fail-2026": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c15"
     ],
     "https://explore.jobs.netflix.net/careers/job/790314754913-technical-director-inkubator-los-angeles-california-united-states-of-america": [
       "2026-08-04T171206--comfyui-company#c18"
@@ -10353,6 +10412,9 @@
     "https://fourweekmba.com/ai-anthropic-told-claude-agents-to-evade-its-monitor-they-did": [
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c18"
     ],
+    "https://fourweekmba.com/ai-opus-5-5-leads-semianalysiss-gdpx-agent-benchmark-at-12": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5"
+    ],
     "https://fourweekmba.com/ai-synthid-bio-protein-watermark": [
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c12",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c13",
@@ -10390,6 +10452,13 @@
     ],
     "https://gdpr-info.eu/art-6-gdpr": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c15"
+    ],
+    "https://gdpx.semianalysis.com": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c1",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c8"
+    ],
+    "https://gdpx.semianalysis.com/domains": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c2"
     ],
     "https://geminicli.com/docs/cli/model-routing": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c25"
@@ -10800,6 +10869,9 @@
     "https://huggingface.co/datasets/nvidia/Nemotron-Post-Training-Dataset-v1": [
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c12"
     ],
+    "https://huggingface.co/datasets/openai/gdpval": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c12"
+    ],
     "https://huggingface.co/deepseek-ai/DeepSeek-R1": [
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c12",
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c13",
@@ -11164,6 +11236,9 @@
     "https://leidendeclaration.ai": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c40"
     ],
+    "https://letsdatascience.com/news/google-announces-gemini-4-carbon-limiting-first-access-to-cy-f33fd14e": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c9"
+    ],
     "https://letsdatascience.com/news/openai-cuts-gpt-56-sol-api-prices-fbfd85f3": [
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c7"
     ],
@@ -11473,6 +11548,14 @@
     "https://newsletter.semianalysis.com/p/ectc2026": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c21"
     ],
+    "https://newsletter.semianalysis.com/p/gdpx-measuring-frontier-model-capabilities": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c16",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c18",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c19",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c20",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c3",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c9"
+    ],
     "https://newsletter.semianalysis.com/p/huawei-ai-cloudmatrix-384-chinas-answer-to-nvidia-gb200-nvl72": [
       "2026-06-22T052035--zhipu-ai-glm#c24"
     ],
@@ -11580,6 +11663,9 @@
     ],
     "https://officechai.com/ai/an-anthropic-researcher-says-fable-just-helped-him-disprove-the-85-year-old-jacobian-conjecture": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c12"
+    ],
+    "https://officechai.com/ai/claude-opus-5-5-tops-semi-analysis-gdpx-benchmark-gemini-4-carbon-placed-second": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5"
     ],
     "https://officechai.com/ai/how-the-math-community-has-reacted-to-fable-helping-disprove-the-jacobian-conjecture": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c17",
@@ -11888,7 +11974,8 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c28",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c29",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c3",
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c32"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c32",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c6"
     ],
     "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool": [
       "2026-08-20T142851--expand-research-from-twitter-link-https-x-com-trycua-status#c17"
@@ -12741,6 +12828,9 @@
     "https://stripe.com/newsroom/news/stripe-2025-update": [
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c6"
     ],
+    "https://support.claude.com/en/articles/16049681": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7"
+    ],
     "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c11",
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c12",
@@ -13492,6 +13582,10 @@
     "https://www.aljazeera.com/news/2026/7/22/unprecedented-openai-says-ai-models-autonomously-hacked-another-company": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c31"
     ],
+    "https://www.all-ai.de/news/news26top/benchmark-neu-opus-sol-gemini": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c4",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c8"
+    ],
     "https://www.alphagenomedocs.com/faqs.html": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c28"
     ],
@@ -13601,7 +13695,9 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c33",
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c7",
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c8",
-      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9"
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c6",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7"
     ],
     "https://www.anthropic.com/news/claude-sonnet-4-6": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c9"
@@ -13706,6 +13802,9 @@
     ],
     "https://www.anthropic.com/research/small-samples-poison": [
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c11"
+    ],
+    "https://www.anthropic.com/research/statistical-approach-to-model-evals": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c13"
     ],
     "https://www.anthropic.com/rsp-updates": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c6"
@@ -16683,6 +16782,9 @@
     "https://www.techmeme.com/260725/p13": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c19"
     ],
+    "https://www.techmeme.com/261102/p1": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c17"
+    ],
     "https://www.technologyreview.com/2026/03/13/1134230/future-ai-chips-could-be-built-on-glass": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c20"
     ],
@@ -17045,6 +17147,10 @@
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c4",
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c6"
     ],
+    "https://www.unite.ai/semianalysis-launches-gdpx-benchmark-spanning-11-agentic-domains": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c15",
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c4"
+    ],
     "https://www.unitree.com/g1": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c2",
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c11"
@@ -17379,6 +17485,9 @@
     "https://x.com/SemiAnalysis_/status/2092314842396828077": [
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-3"
     ],
+    "https://x.com/SemiAnalysis_/status/2117075906099298410": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c16"
+    ],
     "https://x.com/ShinkaIoT/status/2065583785958314179": [
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c11",
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c17"
@@ -17644,6 +17753,9 @@
     "https://x.com/sundarpichai/status/2081026488158040181": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c18"
     ],
+    "https://x.com/sundarpichai/status/2117113121102045347": [
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c17"
+    ],
     "https://x.com/t_blom/status/2076580921398931788": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c22"
     ],
@@ -17727,7 +17839,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3147,
+  "claim_count": 3180,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -92713,9 +92825,729 @@
         "https://l2beat.com/publications/exchange-risk-and-how-lighter-escapes-it"
       ],
       "type": "technical"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "GDPx v1.0 has 206 tasks across 11 domains built with 14 partners; Claude Opus 5.5 leads at 12.0, Gemini 4 Carbon 10.9, GPT-6 Astra 9.6.",
+      "confidence": "high",
+      "hosts": [
+        "gdpx.semianalysis.com"
+      ],
+      "id": "c1",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c1",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://gdpx.semianalysis.com"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Gemini 4 Argon is $2/$10 per million input/output tokens through 2026-11-30 and $4/$20 from 2026-12-01; Carbon is not on Google's pricing page.",
+      "confidence": "high",
+      "hosts": [
+        "ai.google.dev"
+      ],
+      "id": "c10",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "GPT-6 Astra is $10/$50, GPT-6.1 Sol $2/$10 and GPT-6 Luna $0.10/$0.50 per million input/output tokens, with higher rates above 272K input tokens.",
+      "confidence": "high",
+      "hosts": [
+        "developers.openai.com"
+      ],
+      "id": "c11",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://developers.openai.com/api/docs/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2025-10-05",
+      "claim": "GDPval has 1,320 tasks across 44 occupations in 9 sectors, a 220-task gold subset, and human inter-rater agreement of about 71%.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org",
+        "huggingface.co"
+      ],
+      "id": "c12",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2510.04374",
+        "https://huggingface.co/datasets/openai/gdpval"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2024-11-19",
+      "claim": "Clustered standard errors on popular evals can be over three times naive standard errors, and frontier models' question scores correlate 0.3 to 0.7.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com",
+        "arxiv.org"
+      ],
+      "id": "c13",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "academic"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/research/statistical-approach-to-model-evals",
+        "https://arxiv.org/abs/2411.00640"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2025-12-23",
+      "claim": "Switching scaffold alone moves SWE-bench Verified scores by up to 11 points for GPT-5 and 15 for Kimi K2 Thinking.",
+      "confidence": "high",
+      "hosts": [
+        "epoch.ai"
+      ],
+      "id": "c14",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://epoch.ai/gradient-updates/why-benchmarking-is-hard"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "In Fleet's cyber alignment tasks 196 of 200 runs broke at least one behavior rule and 173 broke a rule rated severely misaligned.",
+      "confidence": "medium",
+      "hosts": [
+        "explainx.ai",
+        "unite.ai"
+      ],
+      "id": "c15",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c15",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.unite.ai/semianalysis-launches-gdpx-benchmark-spanning-11-agentic-domains",
+        "https://explainx.ai/blog/semianalysis-gdpx-benchmark-opus-5-5-12-percent-agents-fail-2026"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "SemiAnalysis says Opus 5.5 and GPT-6 Astra have sandbagged overall scores due to safety classifiers, and that Muse Wonder Full is the best available cyber model.",
+      "confidence": "high",
+      "hosts": [
+        "newsletter.semianalysis.com",
+        "x.com"
+      ],
+      "id": "c16",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/gdpx-measuring-frontier-model-capabilities",
+        "https://x.com/SemiAnalysis_/status/2117075906099298410"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Sundar Pichai posted that GDPx is a high-quality benchmark with headroom and pointed to the cost line for Carbon.",
+      "confidence": "high",
+      "hosts": [
+        "techmeme.com",
+        "x.com"
+      ],
+      "id": "c17",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://x.com/sundarpichai/status/2117113121102045347",
+        "https://www.techmeme.com/261102/p1"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Partner sections of the GDPx post were largely written by the partners, and SemiAnalysis says it wanted chip design slightly overrepresented.",
+      "confidence": "high",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c18",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/gdpx-measuring-frontier-model-capabilities"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Finance and legal tasks score essentially 0 for every model under binary grading, so GDPx reports average partial scores for them.",
+      "confidence": "high",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c19",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/gdpx-measuring-frontier-model-capabilities"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "GDPx task counts per domain: RSI 10, chip design 34, cyber 18, bio 13, finance 24, legal 20, quant 10, hardware 21, materials 23, alignment 18, SWE 15.",
+      "confidence": "high",
+      "hosts": [
+        "gdpx.semianalysis.com"
+      ],
+      "id": "c2",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://gdpx.semianalysis.com/domains"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "SemiAnalysis's QA process flags nearly 50% of Terminal Bench 4.0 tasks as broken.",
+      "confidence": "medium",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c20",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c20",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/gdpx-measuring-frontier-model-capabilities"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-01-12",
+      "claim": "Epoch reports RL-environment task prices mostly of $200 to $2,000 and benchmarking demand far below RL-training demand.",
+      "confidence": "medium",
+      "hosts": [
+        "epoch.ai"
+      ],
+      "id": "c21",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c21",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://epoch.ai/gradient-updates/state-of-rl-envs"
+      ],
+      "type": "market-structure"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "GDPx weights all domains equally and partners equally within a domain; the headline is pass@1 across three attempts with an 8-hour default limit.",
+      "confidence": "high",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c3",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/gdpx-measuring-frontier-model-capabilities"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Opus 5.5 averaged $51.41 per task and 548K output tokens on GDPx; Gemini 4 Carbon $16.29; GPT-6 Astra $53.99.",
+      "confidence": "medium",
+      "hosts": [
+        "all-ai.de",
+        "unite.ai"
+      ],
+      "id": "c4",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.unite.ai/semianalysis-launches-gdpx-benchmark-spanning-11-agentic-domains",
+        "https://www.all-ai.de/news/news26top/benchmark-neu-opus-sol-gemini"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Excluding cyber, bio and alignment, GPT-6 Astra scores 11.8 and Opus 5.5 11.7, and Gemini 4 Carbon slips from second to fifth.",
+      "confidence": "medium",
+      "hosts": [
+        "fourweekmba.com",
+        "officechai.com"
+      ],
+      "id": "c5",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://fourweekmba.com/ai-opus-5-5-leads-semianalysiss-gdpx-agent-benchmark-at-12",
+        "https://officechai.com/ai/claude-opus-5-5-tops-semi-analysis-gdpx-benchmark-gemini-4-carbon-placed-second"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-09-22",
+      "claim": "Claude Opus 5.5 is priced at $4 per million input and $20 per million output tokens, with cache reads at $0.20.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com",
+        "platform.claude.com"
+      ],
+      "id": "c6",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/claude-opus-5-5",
+        "https://platform.claude.com/docs/en/about-claude/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-09-22",
+      "claim": "Anthropic states that Opus 5.5 cyber tasks flagged by classifiers fall back to Opus 4.8 and that this likely reduces its benchmark scores.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com",
+        "support.claude.com"
+      ],
+      "id": "c7",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/claude-opus-5-5",
+        "https://support.claude.com/en/articles/16049681"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "GPT-6.1 Sol scored 8.4 at $9.80 per task; DeepSeek 4.1 Flash 5.4 at $0.94; GPT-6 Luna 5.1 at $0.92; Fable 5.1 8.5 at $67.16; Sonnet 5.5 8.2 at $45.27; Grok 4.7 3.9 at $16.34.",
+      "confidence": "medium",
+      "hosts": [
+        "all-ai.de",
+        "gdpx.semianalysis.com"
+      ],
+      "id": "c8",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c8",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.all-ai.de/news/news26top/benchmark-neu-opus-sol-gemini",
+        "https://gdpx.semianalysis.com"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-10-28",
+      "claim": "Gemini 4 Carbon was announced 2026-10-28 with first access limited to cyber defenders in the Fairwind Program and is not generally available.",
+      "confidence": "high",
+      "hosts": [
+        "letsdatascience.com",
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c9",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://letsdatascience.com/news/google-announces-gemini-4-carbon-limiting-first-access-to-cy-f33fd14e",
+        "https://newsletter.semianalysis.com/p/gdpx-measuring-frontier-model-capabilities"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Implied Opus 5.5 average across cyber, bio and alignment is about 12.8 points.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d1",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "GPT-6.1 Sol delivers about 0.86 GDPx points per dollar per task versus about 0.23 for Opus 5.5.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d10",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Opus 5.5 delivers about 0.23 GDPx points per dollar per task.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d11",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "If Carbon's per-task cost doubled with post-introductory pricing it would be about $32.58.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d12",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d12",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Implied GPT-6 Astra average across cyber, bio and alignment is about 3.7 points.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d2",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Gemini 4 Carbon reaches about 91% of Opus 5.5's score.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Gemini 4 Carbon costs about 32% of Opus 5.5 per task.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Moving from Carbon to Opus costs about $31.93 per extra GDPx point per task.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "Opus 5.5's 548K output tokens at list price cost about $10.96, roughly 21% of its $51.41 per task.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "A binomial standard error for a 12% pass rate over 206 tasks is about 2.3 points.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d7",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "One RSI or quant task carries about 0.91 points of headline weight.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d8",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+      "article_created_at": "2026-11-02T11:18:55Z",
+      "article_title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+      "as_of": "2026-11-02",
+      "claim": "An average chip-design task carries about 0.27 points of headline weight.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d9",
+      "key": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#d9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1511,
+  "reusable_count": 1527,
   "schema_version": 1
 }

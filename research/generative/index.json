@@ -3580,5 +3580,17 @@
         "source_sha256": "4bd5afa7186e0549524135975da7eaa2a2598bd650d0270b28cd29004793fbb3"
       }
     }
+  },
+  {
+    "slug": "semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a",
+    "file": "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "GDPx's 12% crown: Opus 5.5 leads SemiAnalysis's agent benchmark, but weighting, refusals and cost per task decide who wins",
+    "model": "claude-opus-5-5",
+    "created_at": "2026-11-02T11:18:55Z",
+    "source": "workflow_dispatch",
+    "prompt": "SemiAnalysis GDPx: Opus 5.5 tops a 206-task agent benchmark at 12%, but domain weighting and cost per task decide the ranking",
+    "tags": []
   }
 ]
