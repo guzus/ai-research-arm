@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-02T11:20:00Z",
+  "updated_at": "2026-11-02T16:29:00Z",
   "headline": "Gemini 4 Carbon pricing surfaces, Qwen 4 and GPT-6.2 Astra look imminent, Anthropic IPO eyed for about two weeks out",
   "threads": [
     {
@@ -302,6 +302,69 @@
       ]
     },
     {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-11-01T15:32:00Z",
+      "updated_at": "2026-11-02T16:29:00Z",
+      "now": "Unconfirmed: Alibaba's Qwen 4 is reportedly due the week of November 2. Secondary accounts say Apple Intelligence in China will use Qwen, with developer testing from November 4 and a December rollout. Users say gpt-6.2-astra works from Codex CLI; hidden text on Anthropic's site reportedly lists Claude Mythos 5.5. No company has commented.",
+      "changed": "Two secondary accounts say Apple Intelligence will use Alibaba's Qwen in mainland China: developer testing from November 4, consumer rollout in December via iOS 27.3. No Apple or Alibaba primary yet.",
+      "watch": "An OpenAI launch post for GPT-6.2 Astra; Qwen 4 release this week; an Apple or Alibaba statement and the November 4 developer beta; any Anthropic word on Mythos 5.5.",
+      "evidence": [
+        {
+          "url": "https://x.com/jakeisinvestor/status/2116884638060920988",
+          "kind": "ticket",
+          "label": "@jakeisinvestor on X (Qwen in Apple Intelligence)",
+          "at": "2026-11-02T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/ticker_report/status/2117263734066364485",
+          "kind": "ticket",
+          "label": "@ticker_report on X (Apple China schedule)",
+          "at": "2026-11-02T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/kimmonismus/status/2116973297326055564",
+          "kind": "twitter",
+          "label": "@kimmonismus on X (Astra in Codex CLI)",
+          "at": "2026-11-01T19:00:00Z"
+        },
+        {
+          "url": "https://x.com/kimmonismus/status/2116914141017370972",
+          "kind": "twitter",
+          "label": "@kimmonismus on X (Mythos 5.5 string)",
+          "at": "2026-11-01T19:00:00Z"
+        },
+        {
+          "url": "https://x.com/RagerrrYT/status/2116877919054397950",
+          "kind": "ticket",
+          "label": "@RagerrrYT on X (Qwen 4 relay)",
+          "at": "2026-11-01T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/pradeepXkapoor/status/2116882770190299219",
+          "kind": "ticket",
+          "label": "@pradeepXkapoor on X (GPT-6.2 Astra)",
+          "at": "2026-11-01T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
+        },
+        {
+          "at": "2026-11-01T19:39:00Z",
+          "change": "Astra reportedly callable in Codex CLI; Mythos 5.5 string spotted on Anthropic's site. Both unconfirmed."
+        },
+        {
+          "at": "2026-11-02T16:29:00Z",
+          "change": "Two secondary accounts report Qwen powering Apple Intelligence in China: developer beta Nov 4, public in December. Unconfirmed by Apple or Alibaba."
+        }
+      ]
+    },
+    {
       "slug": "ai-math-and-physics-discovery-claims",
       "title": "Labs claim AI-made math and physics discoveries; experts hold back",
       "status": "developing",
@@ -343,59 +406,6 @@
       ]
     },
     {
-      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
-      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-11-01T15:32:00Z",
-      "updated_at": "2026-11-01T19:39:00Z",
-      "now": "Unconfirmed: Alibaba's Qwen 4 is reportedly due the week of November 2. Users say gpt-6.2-astra works from Codex CLI, though OpenAI has said nothing and it may be an alias. Hidden text on Anthropic's site reportedly lists Claude Mythos 5.5, absent from an October 23 snapshot.",
-      "changed": "Users report gpt-6.2-astra now runs from Codex CLI, beyond the analytics sighting. Separately, hidden text on Anthropic's site names Claude Mythos 5.5. All single-source; no company has commented.",
-      "watch": "An OpenAI launch post for GPT-6.2 Astra on Nov 2-3; Qwen 4 release this week; any Anthropic announcement of Mythos 5.5 or removal of the string.",
-      "evidence": [
-        {
-          "url": "https://x.com/kimmonismus/status/2116973297326055564",
-          "kind": "twitter",
-          "label": "@kimmonismus on X (Astra in Codex CLI)",
-          "at": "2026-11-01T19:00:00Z"
-        },
-        {
-          "url": "https://x.com/kimmonismus/status/2116914141017370972",
-          "kind": "twitter",
-          "label": "@kimmonismus on X (Mythos 5.5 string)",
-          "at": "2026-11-01T19:00:00Z"
-        },
-        {
-          "url": "https://x.com/RagerrrYT/status/2116877919054397950",
-          "kind": "ticket",
-          "label": "@RagerrrYT on X (Qwen 4 relay)",
-          "at": "2026-11-01T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/pradeepXkapoor/status/2116882770190299219",
-          "kind": "ticket",
-          "label": "@pradeepXkapoor on X (GPT-6.2 Astra)",
-          "at": "2026-11-01T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/jakeisinvestor/status/2116884638060920988",
-          "kind": "ticket",
-          "label": "@jakeisinvestor on X (Qwen on Apple)",
-          "at": "2026-11-01T00:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
-        },
-        {
-          "at": "2026-11-01T19:39:00Z",
-          "change": "Astra reportedly callable in Codex CLI; Mythos 5.5 string spotted on Anthropic's site. Both unconfirmed."
-        }
-      ]
-    },
-    {
       "slug": "mistral-large-4-open-weights",
       "title": "Mistral Large 4: a trillion-parameter open model and the open-versus-closed compute gap",
       "status": "developing",
@@ -426,11 +436,23 @@
       "status": "developing",
       "importance": 2,
       "first_seen": "2026-11-02T01:51:00Z",
-      "updated_at": "2026-11-02T01:51:00Z",
-      "now": "Elon Musk says the cost of serving Grok Bot was unsustainably high relative to revenue, the first official explanation for weekend limit cuts after users saw usage meters jump to 100% without warning. New quotas are unpublished. Reports say OpenAI has disclosed similar plan changes from December.",
-      "changed": "Musk said Grok Bot serving costs outran revenue, explaining the tighter usage limits; xAI has not published new quotas or pricing.",
-      "watch": "Whether xAI publishes new Grok Bot quotas or pricing, or raises the price of its bundled tier.",
+      "updated_at": "2026-11-02T16:29:00Z",
+      "now": "Elon Musk says Grok Bot serving costs outran revenue, explaining weekend limit cuts; new quotas are unpublished. OpenAI reportedly will give ChatGPT and Codex a shared token-based allowance on Plus, Pro and Business from December, with no sizes yet, after repeated Codex limit changes on the $200 plan.",
+      "changed": "Reportedly, OpenAI will move ChatGPT and Codex to one shared token-based allowance on Plus, Pro and Business from December, excluding Instant chat. Sizes and rates unpublished; no OpenAI primary captured.",
+      "watch": "Whether xAI publishes new Grok Bot quotas; OpenAI's official allowance sizes and per-model token rates.",
       "evidence": [
+        {
+          "url": "https://x.com/FeildenStuart/status/2117280400389099638",
+          "kind": "ticket",
+          "label": "@FeildenStuart on X (OpenAI shared allowance)",
+          "at": "2026-11-02T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/eth_ansh/status/2117285033795010896",
+          "kind": "ticket",
+          "label": "@eth_ansh on X (Codex limit changes)",
+          "at": "2026-11-02T00:00:00Z"
+        },
         {
           "url": "https://x.com/elonmusk/status/2116992258520064397",
           "kind": "twitter",
@@ -448,6 +470,10 @@
         {
           "at": "2026-11-02T01:51:00Z",
           "change": "Thread created: Musk attributes Grok Bot usage-limit cuts to serving costs; limits unpublished."
+        },
+        {
+          "at": "2026-11-02T16:29:00Z",
+          "change": "Reported OpenAI shift to a shared ChatGPT and Codex token allowance from December; sizes unpublished, unverified."
         }
       ]
     },
