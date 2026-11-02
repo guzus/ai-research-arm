@@ -1,9 +1,56 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-02T19:46:00Z",
+  "updated_at": "2026-11-02T21:46:00Z",
   "degraded": false,
-  "latest": "2026-11-02-1946",
+  "latest": "2026-11-02-2146",
   "bulletins": [
+    {
+      "id": "2026-11-02-2146",
+      "aired_at": "2026-11-02T21:46:00Z",
+      "headline": "Anthropic's amended S-1 shows a Q3 operating loss and AI-takeoff warning; Marvell-Lumentum terms emerge as both stocks fall",
+      "path": "bulletins/2026-11-02/2146.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-02-2146.mp3",
+        "bytes": 1076781,
+        "duration_s": 179.4,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 95.6,
+            "lines": [
+              0,
+              7
+            ]
+          },
+          {
+            "start_s": 97.05,
+            "end_s": 130.53,
+            "lines": [
+              8,
+              11
+            ]
+          },
+          {
+            "start_s": 131.98,
+            "end_s": 172.82,
+            "lines": [
+              12,
+              16
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "anthropic-ipo-and-ai-funding",
+        "marvell-lumentum-optical-ai-deal",
+        "gemini-4-carbon-frontier-race",
+        "next-model-launches-qwen-4-gpt-6-2-astra"
+      ],
+      "kinds": [
+        "podcast",
+        "twitter"
+      ]
+    },
     {
       "id": "2026-11-02-1946",
       "aired_at": "2026-11-02T19:46:00Z",
