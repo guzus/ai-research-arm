@@ -1,9 +1,213 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-02T09:55:00Z",
+  "updated_at": "2026-11-02T20:29:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "ai-explained:0Kw6_DTZPrY",
+      "show_id": "ai-explained",
+      "show": "AI Explained",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "commentary"
+      ],
+      "title": "‘We may release models we can’t control’: Amodei, Altman … and Gemini Carbon",
+      "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY",
+      "video_id": "0Kw6_DTZPrY",
+      "audio_url": null,
+      "published_at": "2026-11-02T16:59:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-02T20:29:00Z",
+      "duration_s": 1675,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 4932,
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "The vast majority of anthropic staff still believe there will be some human role in training a frontier AI model by the end of 2030. Yes, on average they think that 95% of the work will be done by an AI itself training a frontier model.",
+          "at_s": 153,
+          "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY&t=153s"
+        },
+        {
+          "text": "Next, Amade is famously belligerent toward China wanting to ban chips going there and his stated reason this week is that this is because we think it will allow democracies to negotiate with China from a position of strength on AI safety agreements. Seems fair enough, right? They want AI safety agreements desperately.",
+          "at_s": 351,
+          "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY&t=351s"
+        },
+        {
+          "text": "Amade will be glad then to hear that I'm moving on to what Sam Olman has said in the last few days, but not before one last quote from Anthropic's IPO documents. No, I'm not going to go into how much cash they've built up, their accelerating revenue per watt of compute or anything like that.",
+          "at_s": 697,
+          "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY&t=697s"
+        },
+        {
+          "text": "Like Jack Clark, he's not terribly keen on a trillion IQ model. I would much rather intuitively have a trillion AIs of like slightly superhuman intelligence join society than one AI of 1 trillion IQ join society. Okay, but if the last line of defense is getting the models to want what we want, is that looking hard or easy?",
+          "at_s": 910,
+          "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY&t=910s"
+        },
+        {
+          "text": "Take Tony Fang of OpenAI. He said, \"My work has not been that impacted by prior AI models, including Astra, but this one is on another level. He's gotten an accelerated version of what the public will experience. People will elicit 10 times more than what they can as researchers from these models.\"",
+          "at_s": 1058,
+          "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY&t=1058s"
+        },
+        {
+          "text": "Even the very same semi analysis released a benchmark GDPX all about agentic capabilities in professional domains. And as you might be able to see, Gemini 4 carbon came in second to Opus 5.5. Oh, and it was one-third the cost of Astra or Opus 5.52.",
+          "at_s": 1194,
+          "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY&t=1194s"
+        }
+      ],
+      "description": "You know what, by AI standards, it might not have been the craziest week, but that doesn’t mean several headline-worthy things happened - from Altman and Anthropic implying they would release models they can’t control, with behavior they cannot verify, to Gemini 4 Carbon bursting onto the scene, some Amodei rationalization, de-tokenization and more… Chapters: Introduction Introduction Anthropic Staff Survey Amodei's Five Rationalisations Altman: Only Alignment Will Work Gemini 4 Carbon and Why Models Keep Impressing"
+    },
+    {
+      "id": "interconnects-interviews:zsO5RktNB7k",
+      "show_id": "interconnects-interviews",
+      "show": "Interconnects (Nathan Lambert)",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "How Open Models Win Against OpenAI and Anthropic",
+      "url": "https://www.youtube.com/watch?v=zsO5RktNB7k",
+      "video_id": "zsO5RktNB7k",
+      "audio_url": null,
+      "published_at": "2026-11-02T15:59:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-02T20:29:00Z",
+      "duration_s": 1009,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:lXkjXSul6yg",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Why a Robotics Company Needs More Than a Great AI Model",
+      "url": "https://www.youtube.com/watch?v=lXkjXSul6yg",
+      "video_id": "lXkjXSul6yg",
+      "audio_url": null,
+      "published_at": "2026-11-02T15:59:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-02T20:29:00Z",
+      "duration_s": 2697,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 8307,
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Yes, our robots are working all across the United States, from small family businesses to Fortune 50 and Fortune 100 companies. Claude told me last night that Tutor robots are estimated to have helped produce and ship over a quarter of a billion products to American consumers. So, apparently, most American consumers are Tutor customers a few levels down.",
+          "at_s": 116,
+          "url": "https://www.youtube.com/watch?v=lXkjXSul6yg&t=116s"
+        },
+        {
+          "text": "you eliminate 90% of your room for compromise in order to make progress. Interesting. And then, when I started the business, it became very clear to me, “Oh, okay. Robotics is actually not just a \" full stack\" of models, hardware, and software. This is a “full stack” that includes models, hardware , software, supply chains, customers, product, right?",
+          "at_s": 346,
+          "url": "https://www.youtube.com/watch?v=lXkjXSul6yg&t=346s"
+        },
+        {
+          "text": "It may be that economically valuable things are so multidimensional that 90% of the tasks can be solved, but the last 10% will still require human intervention for some time, simply because collecting this data would require too many instructors. Yes. And that could be interesting, right? You may be willing to accept this given the economy.",
+          "at_s": 854,
+          "url": "https://www.youtube.com/watch?v=lXkjXSul6yg&t=854s"
+        },
+        {
+          "text": "It has one arm and many suction cups, and it works on fundamental models ranging from 200 to 400 million parameters. This emerged from the world in which Tutor was founded in 2021, on the topic of what fundamental models can do for robots? They can foresee opportunities, delights that can then be fulfilled.",
+          "at_s": 1132,
+          "url": "https://www.youtube.com/watch?v=lXkjXSul6yg&t=1132s"
+        },
+        {
+          "text": "It's an interesting challenge because almost everyone we sell robots to has never bought robots before. And that follows from these statistics, right? If only 38,000 robots are deployed annually in the United States , if nine out of 10 American factories and warehouses do not have a single robot, then almost the entire market is untouched.",
+          "at_s": 1416,
+          "url": "https://www.youtube.com/watch?v=lXkjXSul6yg&t=1416s"
+        },
+        {
+          "text": "We have great pricing calculators where you can input data about how your warehouse or factory is operating today and get an estimate of, \"Hey , with an initial implementation of two robots, we could save $100,000 a year, a million dollars a year, or $100 million a year.\"",
+          "at_s": 2104,
+          "url": "https://www.youtube.com/watch?v=lXkjXSul6yg&t=2104s"
+        }
+      ],
+      "description": "What does it take to build robots that can actually work in factories and warehouses? Tutor Intelligence CEO Josh Gruenstein argues robotics is a systems problem spanning AI, hardware, manufacturing, and the work itself. Josh joins a16z General Partners Martin Casado and Raghu Raghuram to explain Tutor’s approach: deploy robots into real businesses, use human “tutors” when needed, and turn that work into training data that makes the robots more capable. They discuss Tutor’s 100-robot data factory, robots starting at"
+    },
+    {
+      "id": "20vc:1dwyL6Iz_PU",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Modal CEO: Who Wins the Inference Market | Has Open-Source LLM Inference Peaked?",
+      "url": "https://www.youtube.com/watch?v=1dwyL6Iz_PU",
+      "video_id": "1dwyL6Iz_PU",
+      "audio_url": null,
+      "published_at": "2026-11-02T14:59:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-02T20:29:00Z",
+      "duration_s": 3732,
+      "transcript": {
+        "available": true,
+        "source": "asr",
+        "words": 13460,
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "At every layer, there's going to be 20 percent, 30 percent growth margins. I think there's a lot of margin opportunity, and there's a lot of opportunity to make a lot of money. The space is so big, but you're also splitting it across a lot of layers in the stack. The 90 percent software margin and businesses are gone.",
+          "at_s": 875,
+          "url": "https://www.youtube.com/watch?v=1dwyL6Iz_PU&t=875s"
+        },
+        {
+          "text": "We have a very diversified set of customers. You can actually look at the demand and aggregate pretty well and predict based on monthly growth rates, which has been about 30%, 40% month and month for the last 12 months.",
+          "at_s": 1166,
+          "url": "https://www.youtube.com/watch?v=1dwyL6Iz_PU&t=1166s"
+        },
+        {
+          "text": "I think open source is always going to be, there's always going to be great models coming out. Let's also remember like the open source models, they're all moving into licensing models. So like, they're getting better at capturing the value of those models, and I think that means they're going to have more funding to train better models.",
+          "at_s": 1633,
+          "url": "https://www.youtube.com/watch?v=1dwyL6Iz_PU&t=1633s"
+        },
+        {
+          "text": "That's 100 billion dollar company. I think there is an opportunity to create a 100 billion dollar company with a lot of specialized models in the inference. You would have done it there at 8.5 billion. I would have done it at 8.5 billion. I think there's a pretty big outcome here. Could be an exit.",
+          "at_s": 1851,
+          "url": "https://www.youtube.com/watch?v=1dwyL6Iz_PU&t=1851s"
+        },
+        {
+          "text": "But I, I, with, with the growth rate right now, like the growth rates are not slowing down. Like, we're growing 30 for the next four billion. Four billion. I mean, I definitely think we should, I hope to be way beyond that. With the greatest of respects, 15 billion then feels like quite a cheap price.",
+          "at_s": 2399,
+          "url": "https://www.youtube.com/watch?v=1dwyL6Iz_PU&t=2399s"
+        },
+        {
+          "text": "It's $60 billion of revenue. It largely kind of dictates the $2 trillion price. And you look at Mark Benioff who says that they spend 5% of engineers salaries, 300 million on cool code today. Now, if that comes way down as efficiencies improve, you name it, that's a challenge.",
+          "at_s": 2779,
+          "url": "https://www.youtube.com/watch?v=1dwyL6Iz_PU&t=2779s"
+        }
+      ],
+      "description": "Erik Bernhardsson is the Co-Founder and CEO of Modal, the AI infrastructure platform for training models, running inference and powering AI agents. Modal has raised over $1.2 billion, including a recent $750 million Series D led by Accel at a $15.75BN valuation. The company has surpassed $1BN in ARR, growing more than 15x year-on-year. Previously, Erik built Spotify's original music recommendation system. Timestamps: Intro How Erik Fell in Love With Coding at Eight Years Old Why Erik Rejects the “Eating"
+    },
     {
       "id": "mlst:yW_ngvMFlYs",
       "show_id": "mlst",
@@ -84,8 +288,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-02T09:55:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "Nathan Labenz and Prakash Narayanan examine whether prevailing AI assumptions survive real-world data across conversations with Anastasios Angelopoulos of Arena, Debo Olaosebikan of Kepler Computing, Samvit Ramadurgam of Union, Michael Freeman of ServiceNow, and Sagar Vaze of Mistral. The discussions evaluate production traces uncovering widespread model deception during extended tasks, ferroelectric memory engineered for older chip fabs, businesses run on tokens, and telemetry capturing AI-directed cyberattacks in Southeast Asia. These findings challenge conventional views on benchmark reliability, frontier compute efficiency,"
@@ -170,8 +374,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-02T09:55:00Z",
-        "attempts": 7
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 8
       },
       "excerpts": [],
       "description": "Spawn’s ten-person team shipped 77,000 code changes in a month with an always-on fleet of AI agents. NLW breaks down the systems behind that output, why human taste and ambition still matter, and five practical lessons other businesses can apply. In the headlines: legal AI startup Crosby bids for Weil’s assets, tech stocks slide despite surging AI revenues, and Granola launches free dictation. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -2855,13 +3059,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 5519,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 11115,
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Everybody everybody here is all activated on the AI ecosystem and working towards the AI economy. We've been working here in Europe now for 33 years. You probably don't realize that NV1, Nvidia's first chip, NV2, and NV3, which became Riva 128, the chip that saved our company really and launched our company, were all built in Europe.",
+          "at_s": 279,
+          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=279s"
+        },
+        {
+          "text": "The beginnings of the AI economy. In the last year alone, we've invested nearly 10 billion dollars in Europe across startups, big partnerships, small partnerships all over all over Europe. This last week alone as I journeyed from France and UK to Sweden and now here in Berlin, we announced the investments of 14 startup companies.",
+          "at_s": 401,
+          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=401s"
+        },
+        {
+          "text": "The first part is the system software that runs the AI factory. These systems are gigantic. A 1-gigawatt data center, 1-gigawatt AI factory, costs about $50 billion. Land, power, shell, all of the compute, networking, storage, power, cooling, all connected together, multiple acres of AI factory. Just turning it on and operating it is a marvel in itself.",
+          "at_s": 869,
+          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=869s"
+        },
+        {
+          "text": "It connects 72 GPUs into one gigantic GPU. Okay, so each GPU is 20 petaflops, connecting 72 of them into one gigantic system. And this is our new Vera computer. So this this auditorium is packed. We have 100 other watch parties around the world. 100 watch parties, 15,000 people are watching us right now.",
+          "at_s": 1333,
+          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=1333s"
+        },
+        {
+          "text": "And Procore supports construction phase planning. Power limits how much an AI factory can produce. DSX Max LPS is an end-to-end control loop that dynamically steers power to match workload demand. It uses 30% less power for the same output. DSX rethinks cooling. Nvidia Vera Rubin systems are designed for closed-loop liquid cooling with coolant temperatures up to 45°C.",
+          "at_s": 1691,
+          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=1691s"
+        },
+        {
+          "text": "Each gigawatt each gigawatt data center is $50 the revenue generation you expect is tens of billions of dollars per year. And so if we just said it's $40 per year of revenue generation that comes out of that infrastructure. $40 if delayed by just 3 months that's $5 excuse me, what is that? $10 worth of revenues.",
+          "at_s": 1968,
+          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=1968s"
+        }
+      ],
       "description": "Join NVIDIA founder and CEO Jensen Huang live from Berlin for the latest in AI and accelerated computing. Discover how Europe is building its own intelligence—with the control, knowledge, and tools to put AI to work."
     },
     {
@@ -2883,13 +3118,19 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 123,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 184,
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Developers are training robots to learn tasks of every kind at home, in hospitals, stores, factories, and beyond. Then these learned skills move from simulation to the real world. Introducing Agile 1SN, a full stack reference robot built on NVIDIA Isaac Groot and powered by Jetson Thor, giving developers a starting point to train and deploy new skills.",
+          "at_s": 66,
+          "url": "https://www.youtube.com/watch?v=roUZ7_Rsf5c&t=66s"
+        }
+      ],
       "description": "From prompts and data to real-world robot skills, frontier AI agents build training worlds, replay real-world motion, and tune physics using NVIDIA open libraries and models. Skills are trained with NVIDIA Isaac Lab and Newton and evaluated with NVIDIA Isaac Lab-Arena, locally on NVIDIA DGX Station. Agile ONE brings those skills into the physical world, built on NVIDIA Isaac GR00T and powered by NVIDIA Jetson Thor."
     },
     {
@@ -2973,8 +3214,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -2998,13 +3239,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2660,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 6752,
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "You know, if we look at what we do, we spend 80% of our time searching and finding information and 20, maybe 20 or even less, 10% of our time actually doing something with it.",
+          "at_s": 286,
+          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=286s"
+        },
+        {
+          "text": "So , you know, we have a wealth of experience working with clients for 60, 50, 30, 40, 50 , 60 years. And we are one of those organizations that truly loves a challenge. And when I talk about complex problems, AI is a great example. It's a challenging environment. It covers all enterprises.",
+          "at_s": 730,
+          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=730s"
+        },
+        {
+          "text": "We look, we have Claude running as a suite of enterprise applications. We have AW Quick, AWS Quick, running across the organization. So we're implementing that to...120 000 of our employees. We have Copilot, ChatGPT, and additional modules. We've also built our own AI testing ground.",
+          "at_s": 1329,
+          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=1329s"
+        },
+        {
+          "text": "What I didn't tell you is : the demand was enormous. But I also saved $15 million right off the bat, in my marketing organization and budget, reduced my reliance on third parties, and gave my team complete control over what we produce, how we produce it, and how we launch it into the world.",
+          "at_s": 1983,
+          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=1983s"
+        },
+        {
+          "text": "My team developed our own token calculator based on the models we use . Before we run AI tools using different models, or run agents in a certain way, or a skill set that requires a lot of computing power, we evaluate the cost and We use free models for the draft or the final version.",
+          "at_s": 2180,
+          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=2180s"
+        },
+        {
+          "text": "So when you start generating agent compute power, which is 100 % of the compute and coding in Oasis and a lot of the execution of these operations, you understand those dollars and cents before you even start the operation. So, you know, we take that into account. It's going to be constantly evolving.",
+          "at_s": 2317,
+          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=2317s"
+        }
+      ],
       "description": ""
     },
     {
@@ -3026,13 +3298,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 6203,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "asr",
+        "words": 19801,
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Now, when we brought that data to ramp, the quote is incredible because this is what my researcher told me, \"I prepared a list of factors to see if your thesis, this is him texting me around VC money being 80% to 90% of the top 1% of AI spend.\" But he said, \"Chimaltz Actual Estimate is pretty much correct.\"",
+          "at_s": 254,
+          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=254s"
+        },
+        {
+          "text": "Same time, investors are dumping French debt, Friedberg, France's 10 year has surpassed 5% this week, high since 2002, on the other hand, and this is an ongoing issue here in the United States, 10 year dropped just under 5% for the first time in a month.\"",
+          "at_s": 2789,
+          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=2789s"
+        },
+        {
+          "text": "Take a guess where the U.S. is today. What percentage of our GDP, 20%, yeah, I was going to say 25. Federal government spending is 7.4 trillion. State and local government spending is 4.6. You add those two together. That's $12 trillion out of a $33 trillion GDP. U.S. public spending is roughly 36% of GDP. Okay, we're there.",
+          "at_s": 3208,
+          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=3208s"
+        },
+        {
+          "text": "And Norway. And Norway. If you're forced to do that, and then we have this incredible thing this week, which dovetails with this, which is Elon said he's going to give every American child, which I think is to find us under 18, a share of SpaceX worth $150, $160, $70.",
+          "at_s": 4302,
+          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=4302s"
+        },
+        {
+          "text": "We're a larger group of 50 states. And they're at, by the way, I think France is almost that 56% is their top tax rate. Maybe it's 55, 56. The only place that's higher, I think, in Europe is Denmark, which is like 60% top tax rate. It doesn't matter. Take it to 90%. Nothing will get better, folks.",
+          "at_s": 5184,
+          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=5184s"
+        },
+        {
+          "text": "I'm going to guess 20%. Youth unemployment in Brazil is around 15, 16%. That's all right. And it's rising. And it's rising. It's almost at 20%. US is still fortunately below a low 10% and the same is true in many of these other countries.",
+          "at_s": 5386,
+          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=5386s"
+        }
+      ],
       "description": ""
     },
     {
@@ -3056,8 +3359,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-02T20:29:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
