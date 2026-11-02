@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-02T08:14:00Z",
+  "updated_at": "2026-11-02T11:20:00Z",
   "headline": "Gemini 4 Carbon pricing surfaces, Qwen 4 and GPT-6.2 Astra look imminent, Anthropic IPO eyed for about two weeks out",
   "threads": [
     {
@@ -161,6 +161,80 @@
       ]
     },
     {
+      "slug": "gemini-4-carbon-frontier-race",
+      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-10-31T14:48:00Z",
+      "updated_at": "2026-11-02T11:20:00Z",
+      "now": "Google announced Gemini 4 Carbon on Alphabet's earnings call. Relays put it first on Artificial Analysis v5.0 at 59 versus 58 for Claude Opus 5.5, and first on Mercor's APEX-Agents. A relay reports intro API pricing of $2 and $10 per million tokens, rising to $4 and $20. Access is still gated to cyber defenders. Genie 4 adds audio.",
+      "changed": "SemiAnalysis's new GDPx agent benchmark reportedly has Claude Opus 5.5 first at 12.0%, Gemini 4 Carbon at 10.9% for about a third of the cost per task, and GPT-6 Astra at 9.6%. Rankings shift without cyber, bio and alignment tasks.",
+      "watch": "Broader Carbon availability, confirmation of pricing on a Google page, independent evals, lab responses to GDPx grading, and Genie 4 API access.",
+      "evidence": [
+        {
+          "url": "https://x.com/SemiAnalysis_/status/2117075900575477855",
+          "kind": "twitter",
+          "label": "@SemiAnalysis_ on X (GDPx benchmark)",
+          "at": "2026-11-02T10:00:00Z"
+        },
+        {
+          "url": "https://x.com/notlikeryo_/status/2117205312230838654",
+          "kind": "twitter",
+          "label": "@notlikeryo_ on X (GDPx scores)",
+          "at": "2026-11-02T10:00:00Z"
+        },
+        {
+          "url": "https://x.com/linktulu/status/2116885735684944155",
+          "kind": "ticket",
+          "label": "@linktulu on X (Carbon pricing relay)",
+          "at": "2026-11-01T00:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI",
+          "kind": "video",
+          "label": "Google for Developers (Genie 4)",
+          "at": "2026-10-27T15:14:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=sFfPkUJd_Jk",
+          "kind": "video",
+          "label": "Google DeepMind (Genie 4)",
+          "at": "2026-10-27T15:14:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
+          "kind": "earnings-call",
+          "label": "Alphabet earnings call",
+          "at": "2026-10-28T15:14:00Z",
+          "quote": "And with Gemini 4 Argon and now Carbon, which we announced today, we're excited to be leading at the frontier."
+        },
+        {
+          "url": "https://x.com/demishassabis/status/2116452833167814692",
+          "kind": "ticket",
+          "label": "Gemini 4 Carbon ticket (Hassabis on X)",
+          "at": "2026-10-31T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Gemini 4 Carbon announced; tops Artificial Analysis v5 and APEX-Agents per relays; access still gated to cyber defenders."
+        },
+        {
+          "at": "2026-11-01T06:51:00Z",
+          "change": "Genie 4 world-model video adds a second Gemini-based product: trusted-tester preview now, Google AI Ultra soon."
+        },
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Carbon intro pricing reported via relay; Genie 4 transcript adds audio, Gemini steering and API plans."
+        },
+        {
+          "at": "2026-11-02T11:20:00Z",
+          "change": "SemiAnalysis GDPx: Opus 5.5 12.0%, Carbon 10.9% at $16 per task versus $51; top three within 2.4 points and order depends on domains counted."
+        }
+      ]
+    },
+    {
       "slug": "ai-cyber-risk-and-key-theft",
       "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
       "status": "escalating",
@@ -224,64 +298,6 @@
         {
           "at": "2026-11-02T08:14:00Z",
           "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
-        }
-      ]
-    },
-    {
-      "slug": "gemini-4-carbon-frontier-race",
-      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
-      "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-10-31T14:48:00Z",
-      "updated_at": "2026-11-01T15:32:00Z",
-      "now": "Google announced Gemini 4 Carbon on Alphabet's earnings call. Relays put it first on Artificial Analysis v5.0 at 59 versus 58 for Claude Opus 5.5, and first on Mercor's APEX-Agents. A relay reports intro API pricing of $2 and $10 per million tokens, rising to $4 and $20. Access is still gated to cyber defenders. Genie 4 adds audio.",
-      "changed": "A relay of Google's post puts Carbon API intro pricing at two and ten dollars per million tokens, rising to four and twenty. On a DeepMind podcast, the Genie 4 team described audio and Gemini in the loop.",
-      "watch": "Broader Carbon availability, confirmation of pricing on a Google page, independent evals, and Genie 4 API access.",
-      "evidence": [
-        {
-          "url": "https://x.com/linktulu/status/2116885735684944155",
-          "kind": "ticket",
-          "label": "@linktulu on X (Carbon pricing relay)",
-          "at": "2026-11-01T00:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI",
-          "kind": "video",
-          "label": "Google for Developers (Genie 4)",
-          "at": "2026-10-27T15:14:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=sFfPkUJd_Jk",
-          "kind": "video",
-          "label": "Google DeepMind (Genie 4)",
-          "at": "2026-10-27T15:14:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
-          "kind": "earnings-call",
-          "label": "Alphabet earnings call",
-          "at": "2026-10-28T15:14:00Z",
-          "quote": "And with Gemini 4 Argon and now Carbon, which we announced today, we're excited to be leading at the frontier."
-        },
-        {
-          "url": "https://x.com/demishassabis/status/2116452833167814692",
-          "kind": "ticket",
-          "label": "Gemini 4 Carbon ticket (Hassabis on X)",
-          "at": "2026-10-31T00:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Gemini 4 Carbon announced; tops Artificial Analysis v5 and APEX-Agents per relays; access still gated to cyber defenders."
-        },
-        {
-          "at": "2026-11-01T06:51:00Z",
-          "change": "Genie 4 world-model video adds a second Gemini-based product: trusted-tester preview now, Google AI Ultra soon."
-        },
-        {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Carbon intro pricing reported via relay; Genie 4 transcript adds audio, Gemini steering and API plans."
         }
       ]
     },
