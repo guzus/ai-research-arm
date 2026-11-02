@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-02T16:29:00Z",
-  "headline": "Gemini 4 Carbon pricing surfaces, Qwen 4 and GPT-6.2 Astra look imminent, Anthropic IPO eyed for about two weeks out",
+  "updated_at": "2026-11-02T19:46:00Z",
+  "headline": "Marvell agrees to buy Lumentum in an optical AI bet; Anthropic IPO, Gemini 4 Carbon and the chip selloff stay in focus",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -157,6 +157,33 @@
         {
           "at": "2026-10-31T18:49:00Z",
           "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
+        }
+      ]
+    },
+    {
+      "slug": "marvell-lumentum-optical-ai-deal",
+      "title": "Marvell's deal for Lumentum and the shift to optical AI connectivity",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-11-02T19:46:00Z",
+      "updated_at": "2026-11-02T19:46:00Z",
+      "now": "Marvell announced with its fiscal third-quarter results that it will combine with optical maker Lumentum. Marvell says the deal should be accretive to non-GAAP earnings in year one and expects over $1B of run-rate synergies, mostly in cost of goods. Both CEOs cite a $550B interconnect market. Terms and timing are not captured here.",
+      "changed": "Marvell's CEO called optical connectivity a once-in-a-generation opportunity as the company announced the Lumentum combination alongside quarterly results. A joint proxy and prospectus will follow.",
+      "watch": "Full deal terms, price and closing timeline in the 8-K and joint proxy; Marvell's earnings call commentary; stock reaction and rival optical moves.",
+      "evidence": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526442714/",
+          "kind": "earnings",
+          "label": "Marvell Technology, Inc. (MRVL)",
+          "at": "2026-11-02T13:06:04Z",
+          "speaker": "Matt Murphy, Chairman and CEO of Marvell",
+          "quote": "AI infrastructure is undergoing a fundamental architectural shift toward optical connectivity, creating an opportunity that comes along once in a generation"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-02T19:46:00Z",
+          "change": "Thread created: Marvell announces combination with Lumentum, citing optical AI connectivity, over $1B synergies and a $550B market."
         }
       ]
     },
