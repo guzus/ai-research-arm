@@ -77,6 +77,10 @@ class ClaudeSandboxPolicyTests(unittest.TestCase):
         # Bash sandbox masks instead of denying the runner's whole home tree.
         for path in (".aws", ".config/gh", ".docker", ".ssh", ".claude"):
             self.assertIn(f"Read(~/{path}/**)", permissions)
+        # Office host sessions on this runners user keep a copy of ghs login
+        # here (GH_CONFIG_DIR, because this file masks ~/.config/gh in their
+        # sandbox). The Bash sandbox already denies ~/; keep the Read tool out.
+        self.assertIn("Read(~/.config/gh-office/**)", permissions)
         self.assertIn("Read(~/.claude.json)", permissions)
 
     def test_git_remote_token_is_not_readable_via_file_tool(self) -> None:

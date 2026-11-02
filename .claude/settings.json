@@ -86,6 +86,7 @@
     "deny": [
       "Read(~/.aws/**)",
       "Read(~/.config/gh/**)",
+      "Read(~/.config/gh-office/**)",
       "Read(~/.docker/**)",
       "Read(~/.ssh/**)",
       "Read(~/.claude/**)",
