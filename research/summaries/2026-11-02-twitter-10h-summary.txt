@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-11-02 10:53:51 UTC
+
+CYCLE: New agent benchmark, OpenAI's Gulf deals, open-weight exploit capability
+
+TOP STORIES:
+• SemiAnalysis GDPx: best agent scores 12% (Opus 5.5); Gemini 4 Carbon 10.9% at ~1/3 the cost per task [✓]
+• OpenAI reportedly signs 4 Abu Dhabi deals incl. ADNOC/G42 [⚠]
+• Epoch: GLM 5.3 built working Firefox exploits from unshipped patches [⚠]
+
+WATCH: OpenAI/ADNOC confirmation; Epoch's primary write-up
+
+Full update on GitHub.
