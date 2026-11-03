@@ -271,6 +271,7 @@
         "google",
         "hugging-face",
         "intel",
+        "marvell",
         "meta",
         "micron",
         "microsoft",
@@ -983,7 +984,8 @@
         "nvidia",
         "openai",
         "perplexity",
-        "verification-bottleneck"
+        "verification-bottleneck",
+        "weight-space-programming"
       ],
       "translations": {
         "ko": {
@@ -1068,6 +1070,7 @@
         "etched",
         "google",
         "gpt-5-6",
+        "marvell",
         "meta",
         "micron",
         "model-specific-silicon",
@@ -1566,6 +1569,7 @@
         "claude-ultra",
         "deepseek",
         "deepseek-v4-1-flash",
+        "gdpx",
         "gemini-4-argon",
         "gemini-4-carbon",
         "google",
@@ -2806,18 +2810,20 @@
         "valuation",
         "frontier-lab"
       ],
-      "summary": "OpenAI's mega-round shrank to about $20B at $1.25T (from a $30B target at $1.4T) while Blackstone expects a double-B rating on Anthropic's $63B chip-financing deal after its November listing.",
-      "description": "OpenAI's mega-round shrank to about $20B at $1.25T (from a $30B target at $1.4T) while Blackstone expects a double-B rating on Anthropic's $63B chip-financing deal after its November listing.",
+      "summary": "Anthropic's amended S-1 shows $16.96B Q3 revenue but a $567M operating loss and $895B of compute commitments; OpenAI's mega-round shrank to about $20B at $1.25T and Blackstone expects a double-B rating on Anthropic's $63B chip deal.",
+      "description": "Anthropic's amended S-1 shows $16.96B Q3 revenue but a $567M operating loss and $895B of compute commitments; OpenAI's mega-round shrank to about $20B at $1.25T and Blackstone expects a double-B rating on Anthropic's $63B chip deal.",
       "created_at": "2026-11-01",
-      "updated_at": "2026-11-01",
-      "timestamp": "2026-11-01T00:00:00Z",
+      "updated_at": "2026-11-03",
+      "timestamp": "2026-11-03T00:00:00Z",
       "file": "themes/frontier-lab-financing.md",
       "aliases": [
         "OpenAI mega-round",
         "OpenAI $20B round",
         "Anthropic junk rating",
         "Anthropic chip-financing deal",
-        "lab capital raises"
+        "lab capital raises",
+        "Anthropic S-1/A",
+        "Anthropic amended S-1"
       ],
       "outbound": [
         "ai-capex",
@@ -2827,6 +2833,34 @@
         "neocloud",
         "openai",
         "sk-hynix"
+      ],
+      "inbound": []
+    },
+    {
+      "slug": "gdpx",
+      "title": "GDPx (SemiAnalysis agentic benchmark)",
+      "type": "concept",
+      "tags": [
+        "benchmark",
+        "agents",
+        "evaluation",
+        "semianalysis"
+      ],
+      "summary": "SemiAnalysis's 206-task agentic benchmark on which the best model, Claude Opus 5.5, scores only 12.0% at $51 per task.",
+      "description": "SemiAnalysis's 206-task agentic benchmark on which the best model, Claude Opus 5.5, scores only 12.0% at $51 per task.",
+      "created_at": "2026-11-03",
+      "updated_at": "2026-11-03",
+      "timestamp": "2026-11-03T00:00:00Z",
+      "file": "concepts/gdpx.md",
+      "aliases": [
+        "GDPx",
+        "SemiAnalysis GDPx",
+        "GDPx benchmark"
+      ],
+      "outbound": [
+        "claude-opus-5-5",
+        "gemini-4-carbon",
+        "remote-labor-index"
       ],
       "inbound": []
     },
@@ -3164,6 +3198,7 @@
       ],
       "inbound": [
         "claude-opus-5-5",
+        "gdpx",
         "gemini-4-argon",
         "google"
       ]
@@ -3897,6 +3932,44 @@
         "agentic-ai-security",
         "apple"
       ]
+    },
+    {
+      "slug": "marvell",
+      "title": "Marvell Technology",
+      "type": "entity",
+      "tags": [
+        "semiconductors",
+        "optical-interconnect",
+        "ai-infrastructure",
+        "m-and-a",
+        "public-company"
+      ],
+      "summary": "Custom-silicon and connectivity chipmaker that agreed on 2026-11-02 to buy optical-component maker Lumentum in an all-stock deal, pitching optical connectivity as a once-in-a-generation AI-infrastructure shift.",
+      "description": "Custom-silicon and connectivity chipmaker that agreed on 2026-11-02 to buy optical-component maker Lumentum in an all-stock deal, pitching optical connectivity as a once-in-a-generation AI-infrastructure shift.",
+      "created_at": "2026-11-03",
+      "updated_at": "2026-11-03",
+      "timestamp": "2026-11-03T00:00:00Z",
+      "file": "entities/marvell.md",
+      "aliases": [
+        "Marvell",
+        "MRVL",
+        "Marvell Technology Inc.",
+        "Lumentum",
+        "LITE",
+        "Marvell-Lumentum"
+      ],
+      "outbound": [
+        "ai-capex",
+        "broadcom",
+        "nvidia"
+      ],
+      "inbound": [],
+      "market": {
+        "ticker": "MRVL",
+        "exchange": "NASDAQ",
+        "symbol": "NASDAQ:MRVL",
+        "provider": "yahoo"
+      }
     },
     {
       "slug": "matrix-multiplication-exponent",
@@ -5346,6 +5419,7 @@
         "groq",
         "hugging-face",
         "intel",
+        "marvell",
         "meta",
         "microsoft",
         "mistral",
@@ -5715,6 +5789,7 @@
         "spacex",
         "thinking-machines",
         "verification-bottleneck",
+        "weight-space-programming",
         "xai",
         "zawinskis-law-of-multiagents"
       ],
@@ -5881,11 +5956,11 @@
         "public-company",
         "ai-sovereignty"
       ],
-      "summary": "US enterprise/government data-analytics company; a Bloomberg investigation said CENTCOM users of Palantir's Maven Smart System recommended a stale IRGC catalog entry, contributing to a strike on a Minab elementary school.",
-      "description": "US enterprise/government data-analytics company; a Bloomberg investigation said CENTCOM users of Palantir's Maven Smart System recommended a stale IRGC catalog entry, contributing to a strike on a Minab elementary school.",
+      "summary": "US enterprise/government data-analytics company; FY26Q3 revenue topped $2B for the first time ($2.313B, +96%), with US commercial now larger than US government revenue.",
+      "description": "US enterprise/government data-analytics company; FY26Q3 revenue topped $2B for the first time ($2.313B, +96%), with US commercial now larger than US government revenue.",
       "created_at": "2026-08-04",
-      "updated_at": "2026-09-23",
-      "timestamp": "2026-09-23T00:00:00Z",
+      "updated_at": "2026-11-03",
+      "timestamp": "2026-11-03T00:00:00Z",
       "file": "entities/palantir.md",
       "aliases": [
         "Palantir",
@@ -6232,6 +6307,7 @@
       "inbound": [
         "anthropic",
         "claude-fable-5",
+        "gdpx",
         "unitree",
         "verification-bottleneck"
       ]
@@ -6853,7 +6929,8 @@
         "openai",
         "openrouter",
         "ox-alpha",
-        "seedance-2-5"
+        "seedance-2-5",
+        "weight-space-programming"
       ]
     },
     {
@@ -6889,6 +6966,34 @@
         "ai-capex",
         "anthropic"
       ]
+    },
+    {
+      "slug": "weight-space-programming",
+      "title": "Weight-space programming",
+      "type": "concept",
+      "tags": [
+        "interpretability",
+        "model-editing",
+        "mit-csail",
+        "astra"
+      ],
+      "summary": "MIT CSAIL claim that GPT-6 Astra found and removed the internal signal behind a small Qwen model's repetition loops by editing 0.016% of weights, lifting MATH-500 from 7.9% to 48.1%; unreplicated.",
+      "description": "MIT CSAIL claim that GPT-6 Astra found and removed the internal signal behind a small Qwen model's repetition loops by editing 0.016% of weights, lifting MATH-500 from 7.9% to 48.1%; unreplicated.",
+      "created_at": "2026-11-03",
+      "updated_at": "2026-11-03",
+      "timestamp": "2026-11-03T00:00:00Z",
+      "file": "concepts/weight-space-programming.md",
+      "aliases": [
+        "weight-space programming",
+        "weight editing by LLM",
+        "Astra weight editing"
+      ],
+      "outbound": [
+        "astra",
+        "openai",
+        "verification-bottleneck"
+      ],
+      "inbound": []
     },
     {
       "slug": "xai",
@@ -7336,12 +7441,14 @@
     "andy jassy": "amazon",
     "ant": "anthropic",
     "anthropic": "anthropic",
+    "anthropic amended s-1": "frontier-lab-financing",
     "anthropic biology lab": "claude-science",
     "anthropic chip-financing deal": "frontier-lab-financing",
     "anthropic junk rating": "frontier-lab-financing",
     "anthropic pbc": "anthropic",
     "anthropic public benefit fund": "anthropic",
     "anthropic s-1": "anthropic",
+    "anthropic s-1/a": "frontier-lab-financing",
     "anthropic scion": "anthropic",
     "anysphere": "cursor",
     "apple": "apple",
@@ -7353,6 +7460,7 @@
     "artificial-general-engineer": "artificial-general-engineer",
     "astra": "astra",
     "astra for law": "astra",
+    "astra weight editing": "weight-space-programming",
     "aurora": "openai",
     "aurora-blue-alpha": "openai",
     "aurora-green-alpha": "openai",
@@ -7541,6 +7649,8 @@
     "fugu ultra v2": "sakana-ai",
     "fugu-ultra v1.1": "sakana-ai",
     "fusion api": "openrouter",
+    "gdpx": "gdpx",
+    "gdpx benchmark": "gdpx",
     "gemini 3.2 flash": "gemini-3-5-flash",
     "gemini 3.5 flash": "gemini-3-5-flash",
     "gemini 3.5 flash cyber": "gemini-3-6-flash",
@@ -7719,10 +7829,12 @@
     "liquidai": "liquid-ai",
     "lisa su": "amd",
     "listen labs": "salesforce",
+    "lite": "marvell",
     "llama": "meta",
     "local weights": "open-weights",
     "longcat": "meituan-longcat-2",
     "longcat-2.0": "meituan-longcat-2",
+    "lumentum": "marvell",
     "luna": "gpt-5-6",
     "m3": "minimax-m3",
     "m3.1 flash": "minimax-m3-1-flash",
@@ -7736,6 +7848,9 @@
     "maia 200": "microsoft",
     "maia 300": "microsoft",
     "marlin": "sakana-ai",
+    "marvell": "marvell",
+    "marvell technology inc.": "marvell",
+    "marvell-lumentum": "marvell",
     "math 2.0": "verification-bottleneck",
     "matrix multiplication exponent": "matrix-multiplication-exponent",
     "matrix-multiplication-exponent": "matrix-multiplication-exponent",
@@ -7802,6 +7917,7 @@
     "moonshot kimi k3": "moonshot-kimi-k3",
     "moonshot-kimi-k2-7-code": "moonshot-kimi-k2-7-code",
     "moonshot-kimi-k3": "moonshot-kimi-k3",
+    "mrvl": "marvell",
     "msft": "microsoft",
     "mu": "micron",
     "muse agent": "muse-code",
@@ -7965,6 +8081,7 @@
     "seedance": "seedance-2-5",
     "seedance 2.5": "seedance-2-5",
     "seedance-2-5": "seedance-2-5",
+    "semianalysis gdpx": "gdpx",
     "shazeer": "noam-shazeer",
     "shieldstral": "mistral-shieldstral",
     "sif": "federal-ai-policy",
@@ -8047,6 +8164,9 @@
     "voxtral 3": "mistral",
     "weathernext": "google",
     "weathernext 3": "google",
+    "weight editing by llm": "weight-space-programming",
+    "weight-space programming": "weight-space-programming",
+    "weight-space-programming": "weight-space-programming",
     "weights in silicon": "model-specific-silicon",
     "white house accord on super intelligence": "federal-ai-policy",
     "white house genesis": "federal-ai-policy",
@@ -8083,6 +8203,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-11-03",
+      "op": "ingest",
+      "summary": "Ingested the 2026-11-03 digest (no model tickets read beyond the digest; sole input). Created 3 (marvell — Marvell's 2026-11-02 all-stock Lumentum deal, ~4.5 shares per share / ~$115B as relayed, $1B+ synergies, 2028 close, NASDAQ:MRVL binding; gdpx — SemiAnalysis's 206-task agentic benchmark, Opus 5.5 12.0% at $51/task vs Gemini 4 Carbon 10.9%; weight-space-programming — MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights, MATH-500 7.9%→48.1%, unreplicated). Updated 2 (frontier-lab-financing — Anthropic amended S-1: $16.96B Q3 revenue, $567M operating loss, $895B compute commitments, \"imminent\" RSP-threshold risk factor, unreconciled \"$23B loss\" headline; palantir — FY26Q3 $2.313B revenue +96%, US commercial +148% and now larger than US government, Q4 guide $2.649–2.653B). Skipped for budget: anthropic page body (80k-token page; S-1/A carried on frontier-lab-financing instead), astra/openai increments (Abu Dhabi deals, Grid Protectors, LifeVal, Pando), Hydrogen-1.0, LongCat-2.5, Latent Sparse Attention/ZHA, SecPO, Aramco–Humain, Oracle $20B raise, Brave suit."
+    },
     {
       "date": "2026-10-29",
       "op": "ingest",
@@ -8177,11 +8302,6 @@
       "date": "2026-10-09",
       "op": "ingest",
       "summary": "Ingested the 2026-10-09 digest (no model tickets with updated_at today or yesterday). Created 0, updated 7 (anthropic — Cyber Mission OSS Scanner + CIDP, Dashboards/Motion beta, Usage Policy 12 Nov, $150M/3y Genesis; openai — Korbak/Balesni/Wang letter, FT ~$50B ARR recut, USA Today >$250M, Dark Clark Cat-5, three math withdrawals; google — Gemini Enterprise agent + Hassabis $150M Genesis; federal-ai-policy — $2.4B Genesis credit book published; verification-bottleneck — Tao Math 2.0 + AHM boycott + 300/719 formalized; agentic-ai-security — untriaged OSS Scanner + ARTEX/Shinhan + Dark Clark; gpt-6 — 6.1 Sol Ultrafast 8× / $12/$60). Skipped for budget: Arena $200M/$3.1B, Manus $500M, Mellum2.1, Whistle ASR, Step 5 Preview increment, nvidia/amd Genesis as own pages, Isomorphic Labs $40B talks."
-    },
-    {
-      "date": "2026-10-08",
-      "op": "ingest",
-      "summary": "Ingested the 2026-10-08 digest plus tickets updated 2026-10-07 (haiku rumor ticket still stale; math-dump and Grok-bot-routing tickets). Created 2 (claude-haiku-5-5 — $0.10/$0.50 to 100K then $0.50/$2.50, first Haiku with effort controls; nous-research — $90M Series B at $1.5B, Hermes Agent). Updated 9 (anthropic — Haiku ship + Sonnet cache-read $0.10 + Platform credits; gpt-6 — Intelligent UI in paid ChatGPT, Work/Codex stay put; openai — same UI + Common Sense Media ChatGPT Teens + $50B Nexus talks; google — public SynthID Detector + $300M Biohub; verification-bottleneck — Lean≠English NS paper 2610.08144; ai-capex — Samsung KRW 107.4T prelim + Nexus + memory squeeze; claude-sonnet-5-5 + claude-opus-5-5 — Haiku family pointers; open-weights — Nous raise). Skipped for budget: Liquid d1, Perplexity embedders, Nemotron IOI, Microsoft RTX Spark, xAI Grok multi-backend as own increment, Healthleap, Meta bait-and-switch ads."
     }
   ]
 }

@@ -4,15 +4,16 @@ title: Palantir Technologies
 type: entity
 aliases: ["Palantir", "PLTR", "Palantir Technologies Inc.", "Alex Karp", "Maven Smart System"]
 tags: [enterprise-ai, government, earnings, public-company, ai-sovereignty]
-description: US enterprise/government data-analytics company; a Bloomberg investigation said CENTCOM users of Palantir's Maven Smart System recommended a stale IRGC catalog entry, contributing to a strike on a Minab elementary school.
+description: US enterprise/government data-analytics company; FY26Q3 revenue topped $2B for the first time ($2.313B, +96%), with US commercial now larger than US government revenue.
 created_at: 2026-08-04
-timestamp: 2026-09-23T00:00:00Z
+timestamp: 2026-11-03T00:00:00Z
 market:
   ticker: PLTR
   exchange: NASDAQ
   symbol: NASDAQ:PLTR
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-11-03", path: research/digest/2026-11-03-digest.md}
   - {title: "ARA daily digest 2026-09-23", path: research/digest/2026-09-23-digest.md}
   - {title: "ARA daily digest 2026-09-15", path: research/digest/2026-09-15-digest.md}
   - {title: "ARA daily digest 2026-08-04", path: research/digest/2026-08-04-digest.md}
@@ -24,6 +25,24 @@ company that has become the loudest vendor case for *not* deploying frontier
 models directly. Its **FY26Q2** results (8-K filed 2026-08-03) are the first
 Palantir quarter tracked in this wiki and the single issuer earnings report in
 the 2026-08-04 digest cycle.
+
+## FY26Q3 (filed 2026-11-02)
+
+| Metric | Value |
+|---|---|
+| Revenue | **$2.313B**, +96% YoY, first quarter above $2B |
+| GAAP net margin | 49% |
+| US commercial revenue | +148% YoY, +29% QoQ; now exceeds US government revenue |
+| Q4 revenue guide | $2.649–$2.653B |
+
+- Karp, on the results: *"The Sovereign AI movement is imposing the most
+  dramatic dichotomy between haves and have nots that I have witnessed in 30
+  years of business."*
+- The crossover of US commercial over US government revenue is the new fact:
+  the growth is no longer carried by defense budgets (Palantir 8-K EX-99.1; ARA
+  daily digest 2026-11-03).
+- Net margin fell from 55% in Q2 to 49% while growth accelerated from 93% to
+  96%; the filing does not attribute the margin change.
 
 ## FY26Q2 (reported 2026-08-03)
 
@@ -38,13 +57,13 @@ the 2026-08-04 digest cycle.
 
 ## Why it matters
 
-- **93% growth is the clearest public read on AI budget conversion.** Most of
+- **93–96% growth is the clearest public read on AI budget conversion.** Most of
   the [[ai-capex]] story is spend by hyperscalers on their own capacity;
   Palantir's line is revenue booked from enterprises and governments buying
-  deployed AI. A 55% GAAP net margin at that growth rate is unusual enough
+  deployed AI. A 49–55% GAAP net margin at that growth rate is unusual enough
   that the quarter functions as a demand data point rather than a company one.
 - **The "don't trust the labs" thesis is the tracking-worthy part.** CEO Alex
-  Karp used the results to argue frontier labs are too untrustworthy for
+  Karp used the Q2 results to argue frontier labs are too untrustworthy for
   enterprise deployment, then called the AI industry **"Marxist"** to
   TechCrunch in the same news cycle. This is competitive positioning from the
   vendor selling the alternative — but "enterprises won't hand their data to
