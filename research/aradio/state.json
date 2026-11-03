@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-03T10:05:00Z",
+  "updated_at": "2026-11-03T14:35:00Z",
   "headline": "Palantir posts a first $2B+ quarter with revenue up 96%; Anthropic IPO, Marvell-Lumentum and Qwen-for-Apple stay in play",
   "threads": [
     {
@@ -176,11 +176,23 @@
       "status": "escalating",
       "importance": 4,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-03T06:41:00Z",
+      "updated_at": "2026-11-03T14:35:00Z",
       "now": "Wiz reportedly counts nine AI developer platforms breached in October for stored API keys, including Northflank. Epoch reportedly found open-weight GLM-5.3 built Firefox exploits for about $1,000 each. A security guest on The Cognitive Revolution said agentic attacks now cost cents per company. Cursor's marketplace carried a tampered Claude Code extension.",
-      "changed": "Goldman Sachs reportedly restricted most staff from AI coding tools; Replit says agents belong in managed cloud sandboxes, not employee laptops. Goldman's policy rests on one Bloomberg report.",
-      "watch": "Goldman, Anthropic or a second bank confirming the policy and its scope; a Cursor post-mortem; platform statements on key theft.",
+      "changed": "OpenAI says its next security sprint will partner with Cathedral Systems and it is raising bug bounties, up to $172,000. That may explain a rumored Anthropic Slack 'Cathedral' breach as a red-team job; that link is inference.",
+      "watch": "Goldman or a second bank confirming its policy; a Cursor post-mortem; any Anthropic statement on the Slack claim; Cathedral's sprint findings.",
       "evidence": [
+        {
+          "url": "https://x.com/SteveAIStudio/status/2117623501997932686",
+          "kind": "ticket",
+          "label": "@SteveAIStudio on X (OpenAI security sprint)",
+          "at": "2026-11-03T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/OpenAI/status/2117444048227123277",
+          "kind": "ticket",
+          "label": "@OpenAI on X (Cathedral Systems)",
+          "at": "2026-11-03T00:00:00Z"
+        },
         {
           "url": "https://x.com/lhchavez/status/2117496522656841766",
           "kind": "twitter",
@@ -216,18 +228,6 @@
           "kind": "ticket",
           "label": "Cursor tampered extension ticket (@ishkme on X)",
           "at": "2026-10-31T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/AndrewCurran_/status/2116310704110305280",
-          "kind": "twitter",
-          "label": "@AndrewCurran_ on X (Wiz summary)",
-          "at": "2026-10-31T05:00:00Z"
-        },
-        {
-          "url": "https://x.com/djcroman/status/2116144325314953273",
-          "kind": "ticket",
-          "label": "Epoch AI GLM-5.3 study via X",
-          "at": "2026-10-30T00:00:00Z"
         }
       ],
       "history": [
@@ -250,6 +250,10 @@
         {
           "at": "2026-11-03T06:41:00Z",
           "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
         }
       ]
     },
@@ -408,16 +412,69 @@
       ]
     },
     {
+      "slug": "mistral-large-4-open-weights",
+      "title": "Mistral Large 4: a trillion-parameter open model and the open-versus-closed compute gap",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-10-31T21:56:00Z",
+      "updated_at": "2026-11-03T14:35:00Z",
+      "now": "Mistral open-sourced Large 4 on October 29: about one trillion parameters, 49B active, sparse mixture of experts. It claims a coding tie with GLM 5.3 at half the tokens. Hosts said it trained on about 3,800 Blackwell GPUs. A technical report is now out; licence details are secondhand.",
+      "changed": "Mistral published the Large 4 technical report. Secondary roundups say a modified MIT-style licence restricts hosting it as a service, and that it uses about 47% fewer tokens than open rivals on agent tasks.",
+      "watch": "Independent evals of the final checkpoint, confirmation of the licence terms, and Western enterprise adoption over Chinese open models.",
+      "evidence": [
+        {
+          "url": "https://x.com/alexxhashemi/status/2117621284443971936",
+          "kind": "ticket",
+          "label": "@alexxhashemi on X (Large 4 roundup)",
+          "at": "2026-11-03T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/MistralAI/status/2117574509179900410",
+          "kind": "ticket",
+          "label": "@MistralAI on X (technical report)",
+          "at": "2026-11-03T00:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=4844s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-10-30T18:44:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Mistral Large 4 open release discussed on The Cognitive Revolution: one trillion parameters, claimed tie with GLM 5.3 on coding at half the tokens."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "Technical report published; licence and token-efficiency claims are secondary and unverified."
+        }
+      ]
+    },
+    {
       "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
       "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
       "status": "developing",
       "importance": 3,
       "first_seen": "2026-11-01T15:32:00Z",
-      "updated_at": "2026-11-02T16:29:00Z",
+      "updated_at": "2026-11-03T14:35:00Z",
       "now": "Unconfirmed: Alibaba's Qwen 4 is reportedly due the week of November 2. Secondary accounts say Apple Intelligence in China will use Qwen, with developer testing from November 4 and a December rollout. Users say gpt-6.2-astra works from Codex CLI; hidden text on Anthropic's site reportedly lists Claude Mythos 5.5. No company has commented.",
-      "changed": "Two secondary accounts say Apple Intelligence will use Alibaba's Qwen in mainland China: developer testing from November 4, consumer rollout in December via iOS 27.3. No Apple or Alibaba primary yet.",
-      "watch": "An OpenAI launch post for GPT-6.2 Astra; Qwen 4 release this week; an Apple or Alibaba statement and the November 4 developer beta; any Anthropic word on Mythos 5.5.",
+      "changed": "Meituan reportedly unveiled LongCat-2.5, a 1.6T-parameter agentic multimodal model. Relays say DeepSeek plans to pre-train V5 on 160,000 Huawei Ascend chips. Neither is confirmed first-party.",
+      "watch": "An OpenAI launch post for GPT-6.2 Astra; Qwen 4 this week; the Apple developer beta on November 4; Meituan weights or API; DeepSeek or Huawei confirmation.",
       "evidence": [
+        {
+          "url": "https://x.com/fableforge/status/2117624333656830210",
+          "kind": "ticket",
+          "label": "@fableforge on X (LongCat-2.5)",
+          "at": "2026-11-03T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/StarsLevels/status/2117622026554757616",
+          "kind": "ticket",
+          "label": "@StarsLevels on X (DeepSeek V5, Ascend)",
+          "at": "2026-11-03T00:00:00Z"
+        },
         {
           "url": "https://x.com/jakeisinvestor/status/2116884638060920988",
           "kind": "ticket",
@@ -467,6 +524,10 @@
         {
           "at": "2026-11-02T16:29:00Z",
           "change": "Two secondary accounts report Qwen powering Apple Intelligence in China: developer beta Nov 4, public in December. Unconfirmed by Apple or Alibaba."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "LongCat-2.5 relayed; DeepSeek V5 on Huawei Ascend reported by relay; Fable 5.5 ticket closed as unverified."
         }
       ]
     },
@@ -508,31 +569,6 @@
         {
           "at": "2026-11-01T23:55:00Z",
           "change": "Lex Fridman and MLST transcripts add context: Lean-checked Erdos results, guests favouring human-AI collaboration over AI-only maths."
-        }
-      ]
-    },
-    {
-      "slug": "mistral-large-4-open-weights",
-      "title": "Mistral Large 4: a trillion-parameter open model and the open-versus-closed compute gap",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-10-31T21:56:00Z",
-      "updated_at": "2026-10-31T21:56:00Z",
-      "now": "Mistral says it open-sourced Large 4, its largest open model: about one trillion parameters, sparse mixture of experts. On the Artificial Analysis coding subset it claims a tie with GLM 5.3 using half the tokens. Hosts said it trained on about 3,800 Blackwell GPUs, far below frontier clusters.",
-      "changed": "On The Cognitive Revolution, a Mistral researcher said Large 4 is its best agentic model and the best open model on coding, tied with GLM 5.3 at half the tokens. The claims are Mistral's own.",
-      "watch": "Independent evals of Large 4, its licence and hosting terms, and whether Western enterprises adopt it over Chinese open models.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=4844s",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution",
-          "at": "2026-10-30T18:44:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T21:56:00Z",
-          "change": "Mistral Large 4 open release discussed on The Cognitive Revolution: one trillion parameters, claimed tie with GLM 5.3 on coding at half the tokens."
         }
       ]
     },
