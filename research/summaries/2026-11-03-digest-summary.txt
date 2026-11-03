@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-11-03
+
+TOP STORIES:
+• Anthropic S-1/A: $16.96B Q3 revenue, $567M operating loss, RSI threshold "may imminently" be met
+• Marvell buys Lumentum in ~$115B all-stock deal
+• Palantir tops $2B quarterly revenue, up 96%
+
+KEY NUMBERS:
+• GDPx agent benchmark: best score 12% (Opus 5.5)
+• Astra weight edit: Qwen MATH-500 7.9% -> 48.1%
+• Anthropic compute commitments: $895B
+
+TRENDING: GPT-6 Astra editing model weights (1,980 pts on HN)
+
+Full digest on GitHub.
