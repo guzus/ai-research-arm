@@ -1,9 +1,92 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-03T10:00:00Z",
+  "updated_at": "2026-11-03T18:00:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "microsoft-research:KyX-aQ-pw4I",
+      "show_id": "microsoft-research",
+      "show": "Microsoft Research",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "research"
+      ],
+      "title": "ATLAS: Navigating Culture as Infrastructure for Designing and Evaluating AI",
+      "url": "https://www.youtube.com/watch?v=KyX-aQ-pw4I",
+      "video_id": "KyX-aQ-pw4I",
+      "audio_url": null,
+      "published_at": "2026-11-03T16:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-03T18:00:00Z",
+      "duration_s": 2949,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-03T18:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "AI is increasingly shaping how people work, learn, communicate, and make decisions, yet systems that work well in one context may not translate effectively to another. In this talk, Liz will introduce ATLAS, a practical playbook informed by ethnographic and participatory research across agriculture, small business, health, and workplace settings. Drawing on examples of how communities interact with and evaluate AI, she will discuss how teams can identify cultural assumptions throughout the AI lifecycle and use community knowledge to inform"
+    },
+    {
+      "id": "ai-daily-brief:QSZKZHeGZr4",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "How to Deslopify Your AI",
+      "url": "https://www.youtube.com/watch?v=QSZKZHeGZr4",
+      "video_id": "QSZKZHeGZr4",
+      "audio_url": null,
+      "published_at": "2026-11-03T14:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-03T18:00:00Z",
+      "duration_s": 2536,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-03T18:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
+    {
+      "id": "nvidia:yLMjEpMio2w",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "From AI Infrastructure to the 6G Future",
+      "url": "https://www.youtube.com/watch?v=yLMjEpMio2w",
+      "video_id": "yLMjEpMio2w",
+      "audio_url": null,
+      "published_at": "2026-11-03T12:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-03T18:00:00Z",
+      "duration_s": 2280,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-03T18:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "In this Telecom Special Address from NVIDIA GTC Berlin, Ronnie Vasishta, SVP of Telecom at NVIDIA, explores how AI-RAN, accelerated computing, and AI inference at the edge are shaping the path to 6G. Key Highlights: - Understand how AI factories, distributed inference, AI-RAN, and 6G fit into one strategic roadmap for telcos. - Learn about the latest breakthroughs and ecosystem advancements in AI Infrastructure, edge AI, and 6G. - Discover what this advancement means for your business, from a commercialization"
+    },
     {
       "id": "ai-daily-brief:9VHxHcU0uVY",
       "show_id": "ai-daily-brief",
@@ -25,8 +108,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-03T10:00:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-03T18:00:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "What if abundant intelligence makes human ambition expand rather than human relevance disappear? NLW explores Venkatesh Rao’s “Cognitive Mercantilism,” which uses the history of capitalism to challenge assumptions about AI and our intellectual future. From the agricultural revolution to today’s AI agents, the episode examines how cheaper intelligence could unlock new desires, new work, and possibilities we haven’t yet imagined. The AI Daily Brief helps you understand the most important news and discussions in AI."
