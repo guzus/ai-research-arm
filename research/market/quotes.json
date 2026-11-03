@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T03:06:03Z",
+  "generated_at": "2026-11-03T11:23:23Z",
   "quotes": {
     "NASDAQ:AAPL": {
       "asOf": "2026-11-02T21:00:01Z",
@@ -96,6 +96,18 @@
       "stale": false,
       "symbol": "NASDAQ:META",
       "ticker": "META"
+    },
+    "NASDAQ:MRVL": {
+      "asOf": "2026-11-02T21:00:01Z",
+      "change": -24.99,
+      "changePercent": -12.724,
+      "currency": "USD",
+      "marketState": null,
+      "price": 171.41,
+      "source": "yahoo",
+      "stale": false,
+      "symbol": "NASDAQ:MRVL",
+      "ticker": "MRVL"
     },
     "NASDAQ:MSFT": {
       "asOf": "2026-11-02T21:00:01Z",
