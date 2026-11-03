@@ -1,0 +1,11 @@
+Twitter/X AI Pulse - 2026-11-03 06:36:46 UTC
+
+CYCLE: Enterprises pull back on AI coding agents; the weight-edited model is now public
+
+TOP STORIES:
+• Replit advisory: run AI agents in managed cloud sandboxes, not on laptops, after Bloomberg reports Goldman restricted AI coding tools [⚠]
+• GPT-6 Astra's weight-edited Qwen model is on Hugging Face; a rebuild from the logs scores 51.0% on MATH-500 [⚠]
+
+WATCH: Goldman or Bloomberg detail on the scope of the coding-tool restriction, or a second bank following
+
+Full update on GitHub.
