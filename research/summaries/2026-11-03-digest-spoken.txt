@@ -1,0 +1,11 @@
+Speaker 1: Tuesday, November third, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic's amended S-1 is out, and it shows [emphasis] sixteen point nine six billion dollars [/emphasis] in third-quarter revenue, against an operating loss of five hundred sixty-seven million dollars.
+Speaker 1: The filing also says a recursive self-improvement threshold may imminently be met, and it lists compute commitments of [emphasis] eight hundred ninety-five billion dollars [/emphasis].
+Speaker 2: That's an extraordinary line to put in a securities filing, right next to the revenue numbers.
+Speaker 1: In chips, Marvell is buying Lumentum in an all-stock deal worth roughly [emphasis] one hundred fifteen billion dollars [/emphasis].
+Speaker 2: And Palantir topped two billion dollars in quarterly revenue, up ninety-six percent.
+Speaker 1: Some quick numbers from research. On the new GDPx agent benchmark, the best score is just twelve percent, from Opus five point five.
+Speaker 2: Worth noting that even the top model fails most of those tasks, so agents still have a long way to go.
+Speaker 1: Trending on Hacker News, with nearly two thousand points, is GPT six Astra editing model weights directly.
+Speaker 2: One Astra weight edit lifted Qwen on MATH five hundred from seven point nine percent to [dramatic_pause] forty-eight point one percent.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
