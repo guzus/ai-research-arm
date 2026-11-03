@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "id": "2026-11-03-0303",
+  "aired_at": "2026-11-03T03:03:00Z",
+  "headline": "Palantir posts a first $2B+ quarter with revenue up 96%; Anthropic IPO, Marvell-Lumentum and Qwen-for-Apple stay in play",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's three oh three UTC on Tuesday, November third. This is ARA AI News, and tonight Palantir has reported a blowout quarter while the Anthropic listing and a big chip merger remain the main stories."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Palantir's third-quarter revenue rose ninety-six percent from a year ago to two point three billion dollars, and it's the first time the company has topped two billion in a single quarter."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Profits are striking too. GAAP net income was one point one billion dollars, a forty-nine percent margin, and adjusted free cash flow was one point two billion."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The mix matters. U.S. commercial revenue grew one hundred forty-eight percent, and Palantir says it has now passed U.S. government revenue for the first time in the company's history."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Looking ahead, Palantir guides next-quarter revenue to roughly two point six five billion dollars. There was no call transcript at the time we checked, so we're relying on the press release."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "In that release, chief executive Alex Karp framed it as a sovereign AI divide, saying institutions are being pushed into either the haves or the have nots."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Now the rest of the board. On Anthropic, the amended S-1 filed Monday shows third-quarter revenue of sixteen point nine six billion dollars."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "But also a five hundred sixty-seven million dollar operating loss, after a profit in the second quarter, driven by expensive short-term compute. The filing also warns future models may soon reach its AI-accelerated-progress threshold."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On chips, Marvell's planned combination with Lumentum reportedly values Lumentum near one hundred fifteen billion dollars in all stock, closing in 2028. Those terms come from one trader's posts, not a filing we hold, so treat them with care."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Both stocks reportedly fell sharply on the news, Marvell about thirteen percent and Lumentum nearly nineteen."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "And on Google, SemiAnalysis's new GDPx benchmark has Gemini 4 Carbon second behind Claude Opus five point five, at about a third of the cost per task."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Separately, unconfirmed reports say Alibaba's Qwen four is due this week, and that Apple Intelligence in China will use Qwen, with developer testing starting tomorrow. Neither company has confirmed."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "We've also closed out our finance and legal agents thread, which has gone quiet."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "What to watch: how Palantir trades when markets open, the Anthropic roadshow and price range, and whether Apple or Alibaba confirm the Qwen deal."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's three oh three UTC on Tuesday, November third. This is ARA AI News, and tonight Palantir has reported a blowout quarter while the Anthropic listing and a big chip merger remain the main stories.",
+    "Speaker 2: [high_energy] Palantir's third-quarter revenue rose ninety-six percent from a year ago to [emphasis]two point three billion dollars[/emphasis], and it's the first time the company has topped two billion in a single quarter.",
+    "Speaker 1: Profits are striking too. GAAP net income was one point one billion dollars, a forty-nine percent margin, and adjusted free cash flow was one point two billion.",
+    "Speaker 2: The mix matters. U.S. commercial revenue grew one hundred forty-eight percent, and Palantir says it has now passed U.S. government revenue for the first time in the company's history.",
+    "Speaker 1: Looking ahead, Palantir guides next-quarter revenue to roughly two point six five billion dollars. There was no call transcript at the time we checked, so we're relying on the press release.",
+    "Speaker 2: In that release, chief executive Alex Karp framed it as a sovereign AI divide, saying institutions are being pushed into either the haves or the have nots.",
+    "Speaker 1: [transition] Now the rest of the board. On Anthropic, the amended S-1 filed Monday shows third-quarter revenue of sixteen point nine six billion dollars.",
+    "Speaker 2: But also a five hundred sixty-seven million dollar operating loss, after a profit in the second quarter, driven by expensive short-term compute. The filing also warns future models may soon reach its AI-accelerated-progress threshold.",
+    "Speaker 1: [transition] On chips, Marvell's planned combination with Lumentum reportedly values Lumentum near one hundred fifteen billion dollars in all stock, closing in 2028. Those terms come from one trader's posts, not a filing we hold, so treat them with care.",
+    "Speaker 2: Both stocks reportedly fell sharply on the news, Marvell about thirteen percent and Lumentum nearly nineteen.",
+    "Speaker 1: [transition] And on Google, SemiAnalysis's new GDPx benchmark has Gemini 4 Carbon second behind Claude Opus five point five, at about a third of the cost per task.",
+    "Speaker 2: Separately, unconfirmed reports say Alibaba's Qwen four is due this week, and that Apple Intelligence in China will use Qwen, with developer testing starting tomorrow. Neither company has confirmed.",
+    "Speaker 1: We've also closed out our finance and legal agents thread, which has gone quiet.",
+    "Speaker 2: What to watch: how Palantir trades when markets open, the Anthropic roadshow and price range, and whether Apple or Alibaba confirm the Qwen deal.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "palantir-q3-ai-demand",
+    "anthropic-ipo-and-ai-funding",
+    "marvell-lumentum-optical-ai-deal",
+    "gemini-4-carbon-frontier-race",
+    "next-model-launches-qwen-4-gpt-6-2-astra"
+  ],
+  "threads": [
+    {
+      "slug": "palantir-q3-ai-demand",
+      "title": "Palantir's blowout quarter and enterprise AI demand",
+      "status": "developing"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "marvell-lumentum-optical-ai-deal",
+      "title": "Marvell's deal for Lumentum and the shift to optical AI connectivity",
+      "status": "developing"
+    },
+    {
+      "slug": "gemini-4-carbon-frontier-race",
+      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
+      "status": "developing"
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/",
+      "kind": "earnings",
+      "label": "Palantir Technologies Inc. (PLTR)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "resolve",
+      "slug": "ai-agents-in-finance-and-law"
+    },
+    {
+      "op": "create",
+      "slug": "palantir-q3-ai-demand"
+    }
+  ],
+  "warnings": [
+    "ops[1] create palantir-q3-ai-demand evidence[0]: label set to the source's name because the evidence carries a quote"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-03-0303.mp3",
+    "bytes": 958845,
+    "duration_s": 159.7,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 64.68,
+        "lines": [
+          0,
+          5
+        ]
+      },
+      {
+        "start_s": 66.13,
+        "end_s": 89.89,
+        "lines": [
+          6,
+          7
+        ]
+      },
+      {
+        "start_s": 91.34,
+        "end_s": 111.62,
+        "lines": [
+          8,
+          9
+        ]
+      },
+      {
+        "start_s": 113.07,
+        "end_s": 153.15,
+        "lines": [
+          10,
+          14
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "claude-sonnet-5p5-isolated",
+    "model": "claude-sonnet-5-5"
+  },
+  "inbox": {
+    "items": 1,
+    "kinds": {
+      "earnings": 1
+    }
+  }
+}
