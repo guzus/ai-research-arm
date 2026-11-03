@@ -38,7 +38,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-11-03T11:01:44Z",
+  "generated_at": "2026-11-03T21:05:44Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -349,7 +349,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.075,"0.6":0.075,"0.7":0.075,"0.8":0.0923,"0.9":0.0923,"0.95":4.125},"pareto":8,"plotted":109,"ts":"2026-11-02T00:51:56Z"},
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.0923,"0.6":0.0923,"0.7":0.0923,"0.8":0.0923,"0.9":0.0923,"0.95":4.125},"pareto":8,"plotted":109,"ts":"2026-11-02T11:51:53Z"},
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.0923,"0.6":0.0923,"0.7":0.0923,"0.8":0.0923,"0.9":0.0923,"0.95":4.125},"pareto":8,"plotted":109,"ts":"2026-11-02T23:08:24Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.081,"0.6":0.081,"0.7":0.081,"0.8":0.0846,"0.9":0.0846,"0.95":4.125},"pareto":9,"plotted":109,"ts":"2026-11-03T11:01:44Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.081,"0.6":0.081,"0.7":0.081,"0.8":0.0846,"0.9":0.0846,"0.95":4.125},"pareto":9,"plotted":109,"ts":"2026-11-03T11:01:44Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.058,"0.6":0.058,"0.7":0.058,"0.8":0.0846,"0.9":0.0846,"0.95":4.125},"pareto":8,"plotted":109,"ts":"2026-11-03T21:05:44Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -704,7 +705,7 @@
         {
           "key": "kimik3",
           "name": "Kimi K3",
-          "output_usd_per_mtok": 15.0,
+          "output_usd_per_mtok": 9.6,
           "pareto": false,
           "score": 0.37,
           "stderr": 0.048523658709390974,
@@ -1264,7 +1265,7 @@
         {
           "key": "kimik3",
           "name": "Kimi K3",
-          "output_usd_per_mtok": 15.0,
+          "output_usd_per_mtok": 9.6,
           "pareto": false,
           "score": 0.721830985915493,
           "stderr": 0.026636607935112643,
@@ -2330,7 +2331,7 @@
         {
           "key": "kimik3",
           "name": "Kimi K3",
-          "output_usd_per_mtok": 15.0,
+          "output_usd_per_mtok": 9.6,
           "pareto": false,
           "score": 0.9722222222222222,
           "stderr": 0.011158359139033182,
@@ -2510,7 +2511,7 @@
         {
           "key": "gptoss120b",
           "name": "gpt-oss-120b",
-          "output_usd_per_mtok": 0.081,
+          "output_usd_per_mtok": 0.058,
           "pareto": true,
           "score": 0.8888888888888888,
           "stderr": 0.04463343655613273,
@@ -2690,7 +2691,7 @@
         {
           "key": "gemma426ba4b",
           "name": "Gemma 4 26B A4B",
-          "output_usd_per_mtok": 0.3,
+          "output_usd_per_mtok": 0.239,
           "pareto": false,
           "score": 0.8222222222222222,
           "stderr": 0.05763774795025092,
@@ -2834,7 +2835,7 @@
         {
           "key": "gptoss20b",
           "name": "gpt-oss-20b",
-          "output_usd_per_mtok": 0.13,
+          "output_usd_per_mtok": 0.09,
           "pareto": false,
           "score": 0.6527777777777778,
           "stderr": 0.0593111883162336,
@@ -2970,7 +2971,7 @@
           "key": "mistralsmall3",
           "name": "Mistral Small 3",
           "output_usd_per_mtok": 0.08,
-          "pareto": true,
+          "pareto": false,
           "score": 0.06666666666666667,
           "stderr": 0.02682716849943299,
           "vendor": "mistralai"
@@ -3241,7 +3242,7 @@
         {
           "key": "kimik3",
           "name": "Kimi K3",
-          "output_usd_per_mtok": 15.0,
+          "output_usd_per_mtok": 9.6,
           "pareto": false,
           "score": 0.506,
           "stderr": 0.015818160898606836,
@@ -3681,9 +3682,9 @@
         }
       ]
     },
-    "as_of": "2026-11-03T11:01:44Z",
+    "as_of": "2026-11-03T21:05:44Z",
     "counts": {
-      "pareto": 9,
+      "pareto": 8,
       "plotted": 109,
       "priced": 349,
       "scored": 194,
@@ -3896,7 +3897,7 @@
         "score_as_of": "2026-08-12",
         "score_variant": "grok-4.6_high",
         "stderr": 0.014480018812911388,
-        "variants_seen": 1,
+        "variants_seen": 2,
         "vendor": "x-ai"
       },
       {
@@ -4052,14 +4053,14 @@
         "vendor": "deepseek"
       },
       {
-        "blended_usd_per_mtok": 3.894,
+        "blended_usd_per_mtok": 2.607,
         "context_length": 1048576,
         "epoch_model": "Kimi K3",
-        "input_usd_per_mtok": 0.192,
+        "input_usd_per_mtok": 0.276,
         "key": "kimik3",
         "name": "Kimi K3",
         "openrouter_id": "moonshotai/kimi-k3",
-        "output_usd_per_mtok": 15.0,
+        "output_usd_per_mtok": 9.6,
         "pareto": false,
         "price_variant": null,
         "runs": 3,
@@ -4105,7 +4106,7 @@
         "score_as_of": "2026-09-21",
         "score_variant": "grok-4.7_xhigh",
         "stderr": 0.015505824295534454,
-        "variants_seen": 1,
+        "variants_seen": 2,
         "vendor": "x-ai"
       },
       {
@@ -5192,14 +5193,14 @@
         "vendor": "openai"
       },
       {
-        "blended_usd_per_mtok": 0.03675,
+        "blended_usd_per_mtok": 0.0265,
         "context_length": 131072,
         "epoch_model": "gpt-oss-120b",
-        "input_usd_per_mtok": 0.022,
+        "input_usd_per_mtok": 0.016,
         "key": "gptoss120b",
         "name": "gpt-oss-120b",
         "openrouter_id": "openai/gpt-oss-120b",
-        "output_usd_per_mtok": 0.081,
+        "output_usd_per_mtok": 0.058,
         "pareto": true,
         "price_variant": null,
         "runs": 1,
@@ -5230,14 +5231,14 @@
         "vendor": "openai"
       },
       {
-        "blended_usd_per_mtok": 0.15,
+        "blended_usd_per_mtok": 0.11975,
         "context_length": 262144,
         "epoch_model": "Gemma 4 26B A4B",
-        "input_usd_per_mtok": 0.1,
+        "input_usd_per_mtok": 0.08,
         "key": "gemma426ba4b",
         "name": "Gemma 4 26B A4B",
         "openrouter_id": "google/gemma-4-26b-a4b-it",
-        "output_usd_per_mtok": 0.3,
+        "output_usd_per_mtok": 0.239,
         "pareto": false,
         "price_variant": null,
         "runs": 1,
@@ -5420,14 +5421,14 @@
         "vendor": "qwen"
       },
       {
-        "blended_usd_per_mtok": 0.055,
+        "blended_usd_per_mtok": 0.036,
         "context_length": 131072,
         "epoch_model": "gpt-oss-20b",
-        "input_usd_per_mtok": 0.03,
+        "input_usd_per_mtok": 0.018,
         "key": "gptoss20b",
         "name": "gpt-oss-20b",
         "openrouter_id": "openai/gpt-oss-20b",
-        "output_usd_per_mtok": 0.13,
+        "output_usd_per_mtok": 0.09,
         "pareto": false,
         "price_variant": null,
         "runs": 3,
@@ -5580,7 +5581,7 @@
         "name": "Mistral Small 3",
         "openrouter_id": "mistralai/mistral-small-24b-instruct-2501",
         "output_usd_per_mtok": 0.08,
-        "pareto": true,
+        "pareto": false,
         "price_variant": null,
         "runs": 2,
         "score": 0.47285353535353536,
@@ -6030,6 +6031,13 @@
         "vendor": "tencent"
       },
       {
+        "input_usd_per_mtok": 0.075,
+        "key": "minimaxm3.1flash",
+        "name": "MiniMax M3.1 Flash",
+        "output_usd_per_mtok": 0.3,
+        "vendor": "minimax"
+      },
+      {
         "input_usd_per_mtok": 0.059,
         "key": "deepseekv4flashlatest",
         "name": "DeepSeek V4 Flash Latest",
@@ -6077,6 +6085,13 @@
         "name": "DeepSeek Flash Latest",
         "output_usd_per_mtok": 0.315,
         "vendor": "~deepseek"
+      },
+      {
+        "input_usd_per_mtok": 0.0825,
+        "key": "hy3",
+        "name": "Hy3",
+        "output_usd_per_mtok": 0.33,
+        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.0509,
@@ -6219,13 +6234,6 @@
         "vendor": "meta-llama"
       },
       {
-        "input_usd_per_mtok": 0.132,
-        "key": "hy3",
-        "name": "Hy3",
-        "output_usd_per_mtok": 0.528,
-        "vendor": "tencent"
-      },
-      {
         "input_usd_per_mtok": 0.351,
         "key": "mistralsmall3.124b",
         "name": "Mistral Small 3.1 24B",
@@ -6238,13 +6246,6 @@
         "name": "Hunyuan A13B Instruct",
         "output_usd_per_mtok": 0.57,
         "vendor": "tencent"
-      },
-      {
-        "input_usd_per_mtok": 0.15,
-        "key": "minimaxm3.1flash",
-        "name": "MiniMax M3.1 Flash",
-        "output_usd_per_mtok": 0.6,
-        "vendor": "minimax"
       },
       {
         "input_usd_per_mtok": 0.15,
@@ -6800,6 +6801,13 @@
         "vendor": "minimax"
       },
       {
+        "input_usd_per_mtok": 0.7506,
+        "key": "hy4preview",
+        "name": "Hy4 preview",
+        "output_usd_per_mtok": 2.2509,
+        "vendor": "tencent"
+      },
+      {
         "input_usd_per_mtok": 0.57,
         "key": "kimik20711",
         "name": "Kimi K2 0711",
@@ -6882,13 +6890,6 @@
         "name": "Gemini 2.5 Flash",
         "output_usd_per_mtok": 2.5,
         "vendor": "google"
-      },
-      {
-        "input_usd_per_mtok": 0.834,
-        "key": "hy4preview",
-        "name": "Hy4 preview",
-        "output_usd_per_mtok": 2.501,
-        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.26,
@@ -7178,13 +7179,6 @@
         "vendor": "z-ai"
       },
       {
-        "input_usd_per_mtok": 0.1824,
-        "key": "kimilatest",
-        "name": "Kimi Latest",
-        "output_usd_per_mtok": 9.3388,
-        "vendor": "~moonshotai"
-      },
-      {
         "input_usd_per_mtok": 2.0,
         "key": "kimik3.1pro",
         "name": "Kimi K3.1 Pro",
@@ -7260,6 +7254,13 @@
         "name": "Gemini 2.5 Pro Preview 06-05",
         "output_usd_per_mtok": 10.0,
         "vendor": "google"
+      },
+      {
+        "input_usd_per_mtok": 0.151,
+        "key": "kimilatest",
+        "name": "Kimi Latest",
+        "output_usd_per_mtok": 10.5354,
+        "vendor": "~moonshotai"
       },
       {
         "input_usd_per_mtok": 4.0,
