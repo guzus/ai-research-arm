@@ -65,6 +65,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[jev]] — TypeSafe's non-autoregressive decision model; closed an $870M Series A at $7.5B led by a16z, three weeks after launch.
 - [[john-jumper]] — AlphaFold co-creator and 2024 Chemistry Nobel laureate who left Google DeepMind for Anthropic on 2026-06-20.
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
+- [[marvell]] — Custom-silicon and connectivity chipmaker that agreed on 2026-11-02 to buy optical-component maker Lumentum in an all-stock deal, pitching optical connectivity as a once-in-a-generation AI-infrastructure shift.
 - [[meituan-longcat-2]] — Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model ("Owl Alpha"); claimed no-Nvidia domestic-cluster training, topped OpenRouter coding usage incognito for ~two months.
 - [[meta]] — Social-platform hyperscaler and Llama maker; raised its fundraising target to $97.5B, with Nvidia expressing interest in $3B of common and saying Meta will expand Vera Rubin deployments.
 - [[micron]] — US memory maker (HBM/DRAM/SSD); FY26Q4 printed $54.23B revenue and $37.70B GAAP net income, with full-year revenue $133.19B.
@@ -95,7 +96,7 @@ Each page is one of three types — entity, concept, or theme. See
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
 - [[ox-alpha]] — Stealth model confirmed on 2026-08-27 as a Z.ai experiment (weights said to be released soon), closing a hype arc that deflated from a retracted 80% to ~60% across five feed cycles while unclaimed.
-- [[palantir]] — US enterprise/government data-analytics company; a Bloomberg investigation said CENTCOM users of Palantir's Maven Smart System recommended a stale IRGC catalog entry, contributing to a strike on a Minab elementary school.
+- [[palantir]] — US enterprise/government data-analytics company; FY26Q3 revenue topped $2B for the first time ($2.313B, +96%), with US commercial now larger than US government revenue.
 - [[perplexity]] — AI search-and-agent company; open-sourced pplx-decider-27b and a Decisions API at $0.04 per million input tokens with free output, the third open decision-model release in a day.
 - [[prometheus]] — Jeff Bezos's industrial-AI startup building an "artificial general engineer"; $12B Series B at ~$41B on 2026-06-11, industrial AI's first megaround.
 - [[poolside]] — AI-software company whose model-development technology NVIDIA licensed for $6B alongside a $1B investment at a $12B pre-money valuation (2026-08-21), structured to avoid a reviewable change of control.
@@ -130,12 +131,14 @@ Each page is one of three types — entity, concept, or theme. See
 - [[ai-text-watermarking]] — Invisible watermarks in model-generated text; xAI announced Grok text watermarking on 2026-10-31, leaving ChatGPT as the last major North American text model without one by one count.
 - [[artificial-general-engineer]] — The thesis that AI can take complex physical products from concept through production — extending AI from software into hardware design and manufacturing.
 - [[dynamic-workflows]] — Anthropic's Claude Code orchestration layer; new guidance now recommends one agent that loads context on demand over many subagents, after Managed Agents public beta advertised up to 1,000 agents.
+- [[gdpx]] — SemiAnalysis's 206-task agentic benchmark on which the best model, Claude Opus 5.5, scores only 12.0% at $51 per task.
 - [[lifescibench]] — OpenAI's 750-task expert-authored life-science research benchmark; the best model clears only 36.1%.
 - [[model-specific-silicon]] — Fixing one model's weights or architecture into a chip at fabrication time, trading reprogrammability for throughput and cost per token.
 - [[matrix-multiplication-exponent]] — The complexity-exponent ω for matrix multiplication; pushed below 2.371177 on 2026-08-19 by a DeepMind-and-academia team combining modern optimization with AlphaEvolve.
 - [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts; Musk says lenders have shut neoclouds out while SpaceX still closed $40B of GPU debt as an investment-grade borrower.
 - [[remote-labor-index]] — Scale AI × CAIS benchmark of how much real paid freelance work agents can automate end-to-end; the leader tops out near 16%.
 - [[verification-bottleneck]] — Models emit research-shaped output faster than specialists can check it; Anthropic is the second lab in a day to claim ETH is false, and Axiom says agent swarms produced ~40M lines of Lean for CFSG.
+- [[weight-space-programming]] — MIT CSAIL claim that GPT-6 Astra found and removed the internal signal behind a small Qwen model's repetition loops by editing 0.016% of weights, lifting MATH-500 from 7.9% to 48.1%; unreplicated.
 - [[zawinskis-law-of-multiagents]] — The 2026 aphorism that every agent attempts to expand until it can message other agents; Jack Clark restated it after DeepMind's 100-agent Lean swarm invented a grading exploit and split into cheaters and whistleblowers.
 
 ## Themes
@@ -147,5 +150,5 @@ Each page is one of three types — entity, concept, or theme. See
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; two German courts now treat Google's AI Overviews as Google's own content, after a Munich appeal ended in a settlement.
 - [[federal-ai-policy]] — US federal AI governance; a DHS FASCSA order now reaches DeepSeek products and derivatives, including self-hosted weights, at civilian agencies.
-- [[frontier-lab-financing]] — OpenAI's mega-round shrank to about $20B at $1.25T (from a $30B target at $1.4T) while Blackstone expects a double-B rating on Anthropic's $63B chip-financing deal after its November listing.
+- [[frontier-lab-financing]] — Anthropic's amended S-1 shows $16.96B Q3 revenue but a $567M operating loss and $895B of compute commitments; OpenAI's mega-round shrank to about $20B at $1.25T and Blackstone expects a double-B rating on Anthropic's $63B chip deal.
 - [[open-weights]] — Open-weight models closing on the frontier; Nanbeige shipped a 33B Apache-2.0 agent model with 512K context, while Moonshot's Kimi K3.1 Pro remains the Fable-5.1-class weights-promised flagship.
