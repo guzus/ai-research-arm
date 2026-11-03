@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-03
+
+TOP 5 PAPERS:
+• Library of Layers - runtime layer ordering unifies dense/recurrent/MoE
+• VeriHarm-Bench - coding agents: 95% task acc, only 37% safe success
+• Muon vs AdamW - AdamW wins after fine-tuning at large data budgets
+• Multi-Epoch Scaling Theory - ensembling delays overfitting under data reuse
+• Strategist - evolved inference strategies, 39% cheaper, same accuracy
+
+CATEGORIES: LM/NLP 10, CV/Multimodal 9, Agents/Reasoning 11, Safety 6, Other 8
+
+Full report on GitHub.
