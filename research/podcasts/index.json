@@ -1,9 +1,65 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-02T20:29:00Z",
+  "updated_at": "2026-11-03T02:37:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "microsoft-research:zPgns4ui61Y",
+      "show_id": "microsoft-research",
+      "show": "Microsoft Research",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "research"
+      ],
+      "title": "Scaling Density Functional Theory with Gaussian Splatting",
+      "url": "https://www.youtube.com/watch?v=zPgns4ui61Y",
+      "video_id": "zPgns4ui61Y",
+      "audio_url": null,
+      "published_at": "2026-11-02T21:07:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-03T02:37:00Z",
+      "duration_s": 3281,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-03T02:37:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Density functional theory (DFT) strikes a practical balance between accuracy and computational cost in many problems of computational chemistry and materials science. However, many DFT calculations are limited by fixed atom-centered basis sets, which dictate how accuracy and cost scale with system size. I will discuss Gaussian Splatting for Density Functional Theory (GS-DFT), which represents molecular orbitals as a cloud of Gaussians whose positions, shapes, and mixing coefficients are optimized jointly by gradient descent to minimize the energy without training"
+    },
+    {
+      "id": "microsoft-research:dS6cFdoyit8",
+      "show_id": "microsoft-research",
+      "show": "Microsoft Research",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "research"
+      ],
+      "title": "Learning Generative Maps & the Rewards Guiding Them: Normalizing Flow Maps & Surrogate Reward Mixing",
+      "url": "https://www.youtube.com/watch?v=dS6cFdoyit8",
+      "video_id": "dS6cFdoyit8",
+      "audio_url": null,
+      "published_at": "2026-11-02T21:07:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-03T02:37:00Z",
+      "duration_s": 3529,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-03T02:37:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Learning a generative model gives us a sampler for a data distribution. Adapting that sampler to a downstream task requires rewarding preferential outcomes typically in the form of scalar rewards or rankings that the model must internalize. In this talk, I will discuss learning generative maps as well as new methodology to exploit (multiple) rewards at inference used to guide them. I will first introduce Normalizing Flow Maps (NFM), a new generative modeling class which combine few-step generation with exact"
+    },
     {
       "id": "ai-explained:0Kw6_DTZPrY",
       "show_id": "ai-explained",
@@ -84,11 +140,11 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-02T20:29:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-03T02:37:00Z",
+        "attempts": 2
       },
       "excerpts": [],
-      "description": ""
+      "description": "Open models have passed an inflection point, where they can be deployed and adapted for meaningful agentic tasks. This represents meaningful competition for OpenAI and Anthropic, whose models reached this milestone 3-6 months earlier, but the open model ecosystem has a very different puzzle to solve in customer relationships, re-investing revenue in future models, and keeping pace with the frontier of performance. This talk discusses the major debates facing open models, from distillation to whether they matter in RSI and"
     },
     {
       "id": "a16z:lXkjXSul6yg",
@@ -288,8 +344,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-02T20:29:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-03T02:37:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": "Nathan Labenz and Prakash Narayanan examine whether prevailing AI assumptions survive real-world data across conversations with Anastasios Angelopoulos of Arena, Debo Olaosebikan of Kepler Computing, Samvit Ramadurgam of Union, Michael Freeman of ServiceNow, and Sagar Vaze of Mistral. The discussions evaluate production traces uncovering widespread model deception during extended tasks, ferroelectric memory engineered for older chip fabs, businesses run on tokens, and telemetry capturing AI-directed cyberattacks in Southeast Asia. These findings challenge conventional views on benchmark reliability, frontier compute efficiency,"
