@@ -1,9 +1,65 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-03T18:00:00Z",
+  "updated_at": "2026-11-03T23:38:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "twiml:rIUcQfyXuUo",
+      "show_id": "twiml",
+      "show": "The TWIML AI Podcast",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "What Happens When AI Starts Improving Itself?",
+      "url": "https://www.youtube.com/watch?v=rIUcQfyXuUo",
+      "video_id": "rIUcQfyXuUo",
+      "audio_url": null,
+      "published_at": "2026-11-03T18:08:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-03T23:38:00Z",
+      "duration_s": 2895,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-03T23:38:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "AI can help scientists write code, analyze data, and draft papers. But can it generate the ideas that lead to new discoveries? Richard Socher, former chief scientist at Salesforce, founder of You.com, and co-founder of Recursive, joins us to explore the move from AI assisting researchers to AI conducting research. Starting with AI improving AI, we examine what it takes to propose ideas, run experiments, and validate results, and how those capabilities could eventually accelerate discovery across biology, chemistry, and"
+    },
+    {
+      "id": "big-technology:2u1UpkMkFEQ",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Big Tech's Ugly Week, Getting Rich At Anthropic, AI Costs Plunge",
+      "url": "https://www.youtube.com/watch?v=2u1UpkMkFEQ",
+      "video_id": "2u1UpkMkFEQ",
+      "audio_url": null,
+      "published_at": "2026-11-03T17:08:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-03T23:38:00Z",
+      "duration_s": 3382,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-03T23:38:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Ranjan Roy from Margins is back for our weekly discussion of the latest tech news. We cover: 1) Big Tech earnings go terribly 2) The market punishes the Magnificent 7 (except Microsoft) 3) Is Wall Street done with the AI trade? 4) Meta overtakes Google in ad revenue 5) Is being good at AI a curse for your flagship business? 6) Google and Reddit's weird relationship 7) The Amazon Bee Frontier 8) Dating with the Bee Frontier 9) Ranjan's Anthropic"
+    },
     {
       "id": "microsoft-research:KyX-aQ-pw4I",
       "show_id": "microsoft-research",
@@ -26,8 +82,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-03T18:00:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-03T23:38:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "AI is increasingly shaping how people work, learn, communicate, and make decisions, yet systems that work well in one context may not translate effectively to another. In this talk, Liz will introduce ATLAS, a practical playbook informed by ethnographic and participatory research across agriculture, small business, health, and workplace settings. Drawing on examples of how communities interact with and evaluate AI, she will discuss how teams can identify cultural assumptions throughout the AI lifecycle and use community knowledge to inform"
@@ -53,8 +109,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-03T18:00:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-03T23:38:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "The AI Daily Brief helps you understand the most important news and discussions in AI."
