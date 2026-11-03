@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-03T03:03:00Z",
+  "updated_at": "2026-11-03T06:41:00Z",
   "headline": "Palantir posts a first $2B+ quarter with revenue up 96%; Anthropic IPO, Marvell-Lumentum and Qwen-for-Apple stay in play",
   "threads": [
     {
@@ -171,6 +171,89 @@
       ]
     },
     {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating",
+      "importance": 4,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-03T06:41:00Z",
+      "now": "Wiz reportedly counts nine AI developer platforms breached in October for stored API keys, including Northflank. Epoch reportedly found open-weight GLM-5.3 built Firefox exploits for about $1,000 each. A security guest on The Cognitive Revolution said agentic attacks now cost cents per company. Cursor's marketplace carried a tampered Claude Code extension.",
+      "changed": "Goldman Sachs reportedly restricted most staff from AI coding tools; Replit says agents belong in managed cloud sandboxes, not employee laptops. Goldman's policy rests on one Bloomberg report.",
+      "watch": "Goldman, Anthropic or a second bank confirming the policy and its scope; a Cursor post-mortem; platform statements on key theft.",
+      "evidence": [
+        {
+          "url": "https://x.com/lhchavez/status/2117496522656841766",
+          "kind": "twitter",
+          "label": "@lhchavez on X (Replit advisory)",
+          "at": "2026-11-03T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/amasad/status/2117504072416890937",
+          "kind": "twitter",
+          "label": "@amasad on X (Replit CEO)",
+          "at": "2026-11-03T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/unusual_whales/status/2117345248074407981",
+          "kind": "twitter",
+          "label": "@unusual_whales on X (Bloomberg relay)",
+          "at": "2026-11-03T06:00:00Z"
+        },
+        {
+          "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/222715088/4f85e93f3a0b4991d5d73a09590320f8.mp3",
+          "kind": "podcast",
+          "label": "Interconnects (Black October essay)",
+          "at": "2026-10-30T17:36:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=1617s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-10-30T18:44:00Z"
+        },
+        {
+          "url": "https://x.com/ishkme/status/2116513901525217673",
+          "kind": "ticket",
+          "label": "Cursor tampered extension ticket (@ishkme on X)",
+          "at": "2026-10-31T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/AndrewCurran_/status/2116310704110305280",
+          "kind": "twitter",
+          "label": "@AndrewCurran_ on X (Wiz summary)",
+          "at": "2026-10-31T05:00:00Z"
+        },
+        {
+          "url": "https://x.com/djcroman/status/2116144325314953273",
+          "kind": "ticket",
+          "label": "Epoch AI GLM-5.3 study via X",
+          "at": "2026-10-30T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
+        },
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
+        },
+        {
+          "at": "2026-11-02T08:14:00Z",
+          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
+        },
+        {
+          "at": "2026-11-03T06:41:00Z",
+          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
+        }
+      ]
+    },
+    {
       "slug": "palantir-q3-ai-demand",
       "title": "Palantir's blowout quarter and enterprise AI demand",
       "status": "developing",
@@ -321,73 +404,6 @@
         {
           "at": "2026-11-02T21:46:00Z",
           "change": "Traders report all-stock terms of 4.5:1, about $115B, 2028 close; both stocks fell sharply. Terms not yet in a company filing we hold."
-        }
-      ]
-    },
-    {
-      "slug": "ai-cyber-risk-and-key-theft",
-      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
-      "status": "escalating",
-      "importance": 4,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-02T08:14:00Z",
-      "now": "Wiz reportedly counts nine AI developer platforms breached in October for stored API keys, including Northflank. Epoch reportedly found open-weight GLM-5.3 built Firefox exploits for about $1,000 each. A security guest on The Cognitive Revolution said agentic attacks now cost cents per company. Cursor's marketplace carried a tampered Claude Code extension.",
-      "changed": "Interconnects' show notes say last week was dubbed \"Black October\" for critical vulnerability disclosures, including PHP2Shell and a GitLab bug, plus a new Binance security incident. No transcript yet.",
-      "watch": "A Cursor post-mortem and install count; platform statements from Fireworks AI, Railway and Warp; bulk key revocations.",
-      "evidence": [
-        {
-          "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/222715088/4f85e93f3a0b4991d5d73a09590320f8.mp3",
-          "kind": "podcast",
-          "label": "Interconnects (Black October essay)",
-          "at": "2026-10-30T17:36:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=1617s",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution",
-          "at": "2026-10-30T18:44:00Z"
-        },
-        {
-          "url": "https://x.com/ishkme/status/2116513901525217673",
-          "kind": "ticket",
-          "label": "Cursor tampered extension ticket (@ishkme on X)",
-          "at": "2026-10-31T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/AndrewCurran_/status/2116310704110305280",
-          "kind": "twitter",
-          "label": "@AndrewCurran_ on X (Wiz summary)",
-          "at": "2026-10-31T05:00:00Z"
-        },
-        {
-          "url": "https://x.com/djcroman/status/2116144325314953273",
-          "kind": "ticket",
-          "label": "Epoch AI GLM-5.3 study via X",
-          "at": "2026-10-30T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/AnthropicAI/status/2116349211549843666",
-          "kind": "twitter",
-          "label": "@AnthropicAI on X",
-          "at": "2026-10-31T05:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
-        },
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
-        },
-        {
-          "at": "2026-10-31T21:56:00Z",
-          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
-        },
-        {
-          "at": "2026-11-02T08:14:00Z",
-          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
         }
       ]
     },
