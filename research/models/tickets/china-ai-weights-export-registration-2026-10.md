@@ -3,7 +3,7 @@ slug: china-ai-weights-export-registration-2026-10
 title: "China reportedly requires pre-export registration of AI model weights and source code (Announcement No. 48)"
 company: PRC (export-control authorities)
 model: null
-status: rumored
+status: closed
 status_note: |
   **Single-source report.** @bitsquin (2026-10-19 12:47 UTC): "REPORT: China's mandatory
   pre-export registration requirement for AI model weights and source code took effect
@@ -19,12 +19,14 @@ verification: unverified
 sources:
   - "https://x.com/bitsquin/status/2112163770718179518"
 created_at: 2026-10-19
-updated_at: 2026-10-19
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-03
+closed_at: 2026-11-03
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-10-19
     change: "Created — RUMORED / unverified. A single account (@bitsquin, 2026-10-19 12:47 UTC) reports that a mandatory pre-export registration requirement for AI model weights and source code took effect immediately under 'Announcement No. 48'. No issuing body, official text or second source in signal. Opened as rumored despite the 'took effect' wording because nothing corroborates it. Related but distinct: [[china-outbound-deal-rules-2026-06]] (outbound deal rules) and [[china-ai-talent-travel-curbs-2026-09]] (talent travel curbs)."
+  - ts: 2026-11-03
+    change: "Closed — stale-rumor-unverified. No history entry since it was created on 2026-10-19 (15 days) and no corroboration this cycle: no published regulation, no regulator statement and no second outlet. A published rule or official notice would open a successor ticket that links here."
 ---
 
 If it is real, this rule matters more than most Chinese AI policy news. Chinese labs

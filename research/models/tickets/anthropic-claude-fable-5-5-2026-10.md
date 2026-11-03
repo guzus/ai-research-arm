@@ -3,7 +3,7 @@ slug: anthropic-claude-fable-5-5-2026-10
 title: "Claude Fable 5.5 — claude-fable-5-5 record reportedly found in Microsoft's Azure model catalog"
 company: Anthropic
 model: Claude Fable 5.5
-status: in-testing
+status: closed
 status_note: |
   **2026-10-15 — a second artifact claim, of a different kind and with no name on it.**
   @LuminaBench (2026-10-15 10:02 UTC) reports a new codename, `claude-onigiri-eap`,
@@ -50,9 +50,9 @@ sources:
   - "https://x.com/Electronynet/status/2112177249805820170"
   - "https://x.com/pankajkumar_dev/status/2112176644018626840"
 created_at: 2026-10-02
-updated_at: 2026-10-19
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-03
+closed_at: 2026-11-03
+closed_reason: stale-rumor-unverified
 history:
   - ts: 2026-10-02
     change: "Created — RUMORED / unverified. Single-source claim (@MehdiCade, 2026-10-02 12:33 UTC) that Fable 5.1 requests are being routed to a backend 'that looks like Fable 5.5', with no artifact, model ID or Anthropic statement. Predecessor tickets [[anthropic-claude-fable-5-1-2026-08]] and [[claude-fable-5]] are closed and untouched."
@@ -64,6 +64,8 @@ history:
     change: "In-testing, unchanged; verification stays unverified. A second artifact-class claim from a different originator on a different surface. @LuminaBench (2026-10-15 10:02 UTC) reports a previously unseen codename, 'claude-onigiri-eap', in Artificial Analysis's website frontend, with four effort variants (low/med/high/xhigh) and an Opus 4.8 fallback, which is how Fable/Opus-tier entries are configured there. The poster explicitly hedges ('might be', 'could be wrong'). Relays (@fayequepeerzade, @buildwithrajath) add a 'claude-onigiri-eap-2' variant and read 'EAP' as early access. NOT ADOPTED AS IDENTIFICATION: the codename does not contain 'Fable', and the Opus 4.8 fallback fits an unannounced Opus-tier model as well as Fable 5.5. It is logged here because a benchmark-site staging entry would be consistent with the Azure record from 2026-10-14. Also logged and unadopted: opinion posts that Anthropic might hold Fable 5.5 until nearer its reported IPO ([[anthropic-ipo-2026-06]]) (@Airo_07). That is speculation, not evidence."
   - ts: 2026-10-19
     change: "In-testing, unchanged; verification stays unverified. No new artifact on 2026-10-19, only louder chatter. An Arabic week-ahead roundup (@Electronynet, 13:41 UTC) lists Fable 5.5 first among expected releases and repeats that leaks say the model has reached partners. @pankajkumar_dev (13:38 UTC) posts a cinematic scene he says Fable 5.5 made and urges Anthropic to 'launch this model ASAP'. He does not say how he got access, and nothing ties the output to a specific model ID. Neither post adds evidence beyond the Azure-catalog and 'claude-onigiri-eap' claims of 2026-10-14/15. No Anthropic statement."
+  - ts: 2026-11-03
+    change: "Closed — stale-rumor-unverified. No history entry since 2026-10-19 (15 days) and no new corroboration this cycle: no Anthropic statement, no public model ID, and the Azure catalog and 'claude-onigiri-eap' sightings were never confirmed. A first-party Fable 5.5 announcement or a verifiable listing would open a successor ticket that links here."
 ---
 
 This is a tease with no artifact. "Routed to a backend that looks like" is the
