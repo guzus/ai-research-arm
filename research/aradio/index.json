@@ -1,9 +1,64 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-02T21:46:00Z",
+  "updated_at": "2026-11-03T03:03:00Z",
   "degraded": false,
-  "latest": "2026-11-02-2146",
+  "latest": "2026-11-03-0303",
   "bulletins": [
+    {
+      "id": "2026-11-03-0303",
+      "aired_at": "2026-11-03T03:03:00Z",
+      "headline": "Palantir posts a first $2B+ quarter with revenue up 96%; Anthropic IPO, Marvell-Lumentum and Qwen-for-Apple stay in play",
+      "path": "bulletins/2026-11-03/0303.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-03-0303.mp3",
+        "bytes": 958845,
+        "duration_s": 159.7,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 64.68,
+            "lines": [
+              0,
+              5
+            ]
+          },
+          {
+            "start_s": 66.13,
+            "end_s": 89.89,
+            "lines": [
+              6,
+              7
+            ]
+          },
+          {
+            "start_s": 91.34,
+            "end_s": 111.62,
+            "lines": [
+              8,
+              9
+            ]
+          },
+          {
+            "start_s": 113.07,
+            "end_s": 153.15,
+            "lines": [
+              10,
+              14
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "palantir-q3-ai-demand",
+        "anthropic-ipo-and-ai-funding",
+        "marvell-lumentum-optical-ai-deal",
+        "gemini-4-carbon-frontier-race",
+        "next-model-launches-qwen-4-gpt-6-2-astra"
+      ],
+      "kinds": [
+        "earnings"
+      ]
+    },
     {
       "id": "2026-11-02-2146",
       "aired_at": "2026-11-02T21:46:00Z",

@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-03T02:42:00Z",
-  "headline": "Anthropic's amended S-1 shows a Q3 operating loss and AI-takeoff warning; Marvell-Lumentum terms emerge as both stocks fall",
+  "updated_at": "2026-11-03T03:03:00Z",
+  "headline": "Palantir posts a first $2B+ quarter with revenue up 96%; Anthropic IPO, Marvell-Lumentum and Qwen-for-Apple stay in play",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -167,6 +167,33 @@
         {
           "at": "2026-10-31T18:49:00Z",
           "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
+        }
+      ]
+    },
+    {
+      "slug": "palantir-q3-ai-demand",
+      "title": "Palantir's blowout quarter and enterprise AI demand",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-11-03T03:03:00Z",
+      "updated_at": "2026-11-03T03:03:00Z",
+      "now": "Palantir's third-quarter revenue rose 96% to $2.313B, its first quarter above $2B. GAAP net income was $1.128B, adjusted free cash flow $1.216B. U.S. commercial revenue grew 148% and now exceeds U.S. government revenue for the first time. Next-quarter revenue guidance is $2.649B to $2.653B.",
+      "changed": "Palantir reported Q3 on Nov 2: revenue $2.313B, up 96% year over year and 20% sequentially; U.S. commercial up 148%, passing government revenue for the first time.",
+      "watch": "Market reaction when trading opens, and whether the guidance of about $2.65B holds; no call transcript was available yet.",
+      "evidence": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/",
+          "kind": "earnings",
+          "label": "Palantir Technologies Inc. (PLTR)",
+          "at": "2026-11-02T21:06:48Z",
+          "speaker": "Alex Karp, Co-Founder and Chief Executive Officer of Palantir Technologies",
+          "quote": "Our U.S. commercial revenue has surpassed our U.S. government revenue for the first time in our company's history."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-03T03:03:00Z",
+          "change": "Palantir Q3: revenue $2.313B (+96%), GAAP net income $1.128B, U.S. commercial +148%, guidance about $2.65B."
         }
       ]
     },
@@ -543,12 +570,12 @@
     {
       "slug": "ai-agents-in-finance-and-law",
       "title": "AI agents move into finance and legal work",
-      "status": "steady",
+      "status": "resolved",
       "importance": 2,
       "first_seen": "2026-11-01T06:51:00Z",
-      "updated_at": "2026-11-01T06:51:00Z",
+      "updated_at": "2026-11-03T03:03:00Z",
       "now": "OpenAI's financial services lead said on Latent Space that ChatGPT for Financial Services is an enterprise product, with Pro-plan access being worked on, and that most finance AI so far targets junior analysts. Arca, an AI-native wealth firm that raised $64M, says its agents prompt humans more than humans prompt agents. Eve's CEO told a16z AI makes plaintiff law cases viable.",
-      "changed": "Latent Space and a16z episodes show OpenAI, Arca and Eve pushing agents into finance and plaintiff law, with humans kept on money movement and final decisions.",
+      "changed": "No new developments since creation; folded into the broader enterprise-AI picture, including Palantir's results.",
       "watch": "Whether OpenAI announces wider Pro-plan access to ChatGPT for Financial Services.",
       "evidence": [
         {
@@ -574,6 +601,10 @@
         {
           "at": "2026-11-01T06:51:00Z",
           "change": "Thread created from finance and legal agent episodes; no market-moving news."
+        },
+        {
+          "at": "2026-11-03T03:03:00Z",
+          "change": "Resolved: quiet, low-importance thread; no new finance or legal agent news."
         }
       ]
     }
