@@ -3,7 +3,7 @@ slug: google-embeddinggemma-2-2026-10
 title: "EmbeddingGemma 2 — Google DeepMind's 740M natively multimodal open on-device embedding model (Apache 2.0)"
 company: "Google / DeepMind"
 model: "EmbeddingGemma 2"
-status: released
+status: closed
 status_note: |
   **First-party launch, 2026-10-06 16:04 UTC (@GoogleDeepMind).** "Meet
   EmbeddingGemma 2, our first natively multimodal open model for on-device
@@ -30,12 +30,14 @@ sources:
   - https://x.com/TheInfoMachine/status/2107828162352533704
   - "@GoogleDeepMind"
 created_at: 2026-10-07
-updated_at: 2026-10-07
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-03
+closed_at: 2026-11-03
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-07
     change: "Created — RELEASED / confirmed. @GoogleDeepMind announced EmbeddingGemma 2 on 2026-10-06 16:04 UTC: a 740M-parameter, natively multimodal open embedding model (text, code, images, audio, video in one space) for on-device use, Apache 2.0, weights on Hugging Face and Kaggle; pairs with Gemma 4 for private on-device RAG. Secondary: Gemma 4 architecture, MTEB Code 68.76 -> 78.68 (@TheInfoMachine)."
+  - ts: 2026-11-03
+    change: "Closed — released-and-aged. EmbeddingGemma 2 shipped with open weights on 2026-10-06, 28 days ago, and no new signal arrived this cycle. Further coverage rolls into normal digest coverage."
 ---
 
 Google's open embedding line goes multimodal. The first EmbeddingGemma was

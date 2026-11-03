@@ -25,6 +25,11 @@ status_note: |
 
   Related but distinct: [[deepseek-second-round-2026-07]] (funding),
   [[china-nvidia-h200-import-2026-07]] (import policy).
+
+  **2026-11-03 — second report, different workload split.** @StarsLevels, citing TrendForce and
+  The Information: DeepSeek plans to PRE-TRAIN V5 mainly on Ascend 950 (160,000+ 950DT at Ulanqab,
+  Inner Mongolia), with pre-training possibly from late 2026 and V5 in 2027. This corroborates the chip
+  count and site but contradicts the inference-only claim above. Still no company confirmation.
 expected: "Unconfirmed. Corroboration would come from a Huawei or DeepSeek statement, a provincial energy/permitting filing for the Inner Mongolia site, or a second independent outlet."
 labels:
   - deepseek
@@ -35,13 +40,16 @@ labels:
 verification: partial
 sources:
   - https://x.com/ns123abc/status/2095838690681454963
+  - "https://x.com/StarsLevels/status/2117622026554757616"
 created_at: 2026-09-07
-updated_at: 2026-09-07
+updated_at: 2026-11-03
 closed_at: null
 closed_reason: null
 history:
   - ts: 2026-09-07
     change: "Created — RUMORED. @ns123abc reported on 2026-09-04 that DeepSeek purchased 160,000 Huawei Ascend 950DT chips for a new 1 gigawatt data center in Inner Mongolia, adding that the 950DT is Hopper-class and therefore inference-only, with training staying on NVIDIA. The inference/training split is the substantive claim: it matches what Zhipu disclosed in its interim filing ([[zhipu-domestic-chip-datacenter-2026-07]]) — domestic silicon for serving at scale, NVIDIA for training — which is workload segregation rather than substitution. Status rumored, verification partial: a single relay account with no DeepSeek or Huawei statement, no filing and no corroborating outlet in this cycle's signal. Figures are internally consistent and the Inner Mongolia siting is plausible on power grounds, but the 160k chip count is NOT established. Related: [[deepseek-second-round-2026-07]], [[china-nvidia-h200-import-2026-07]]."
+  - ts: 2026-11-03
+    change: "Rumored / partial, unchanged — a second report that CONTRADICTS the original inference-only framing. @StarsLevels (2026-11-03 14:16 UTC), citing TrendForce and The Information, reports that DeepSeek plans to pre-train its next model, V5, mainly on Huawei Ascend 950 chips, using 160,000+ Ascend 950DT at a new data center in Ulanqab, Inner Mongolia. It says founder Liang Wenfeng has claimed four Ascend 950s match one NVIDIA GB300, that pre-training could start as soon as late 2026, and that V5 is expected in 2027. The 160K chip count and Inner Mongolia siting now have a second relay, but @ns123abc's 'training stays on NVIDIA' clause does not: this report puts training on Ascend. Neither DeepSeek nor Huawei has confirmed. The outlet attribution is from the relay, not the outlets' own posts, so verification stays partial."
 ---
 
 Strip the headline number away and the interesting claim survives: Chinese
