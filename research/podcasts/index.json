@@ -1,9 +1,36 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-03T02:37:00Z",
+  "updated_at": "2026-11-03T10:00:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "ai-daily-brief:9VHxHcU0uVY",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "AI Won’t Make Our Minds Useless According to 400 Years of History",
+      "url": "https://www.youtube.com/watch?v=9VHxHcU0uVY",
+      "video_id": "9VHxHcU0uVY",
+      "audio_url": null,
+      "published_at": "2026-11-02T23:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-03T10:00:00Z",
+      "duration_s": 1584,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-03T10:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "What if abundant intelligence makes human ambition expand rather than human relevance disappear? NLW explores Venkatesh Rao’s “Cognitive Mercantilism,” which uses the history of capitalism to challenge assumptions about AI and our intellectual future. From the agricultural revolution to today’s AI agents, the episode examines how cheaper intelligence could unlock new desires, new work, and possibilities we haven’t yet imagined. The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
     {
       "id": "microsoft-research:zPgns4ui61Y",
       "show_id": "microsoft-research",
@@ -26,8 +53,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-03T02:37:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-03T10:00:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Density functional theory (DFT) strikes a practical balance between accuracy and computational cost in many problems of computational chemistry and materials science. However, many DFT calculations are limited by fixed atom-centered basis sets, which dictate how accuracy and cost scale with system size. I will discuss Gaussian Splatting for Density Functional Theory (GS-DFT), which represents molecular orbitals as a cloud of Gaussians whose positions, shapes, and mixing coefficients are optimized jointly by gradient descent to minimize the energy without training"
@@ -54,11 +81,70 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-03T02:37:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-03T10:00:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Learning a generative model gives us a sampler for a data distribution. Adapting that sampler to a downstream task requires rewarding preferential outcomes typically in the form of scalar rewards or rankings that the model must internalize. In this talk, I will discuss learning generative maps as well as new methodology to exploit (multiple) rewards at inference used to guide them. I will first introduce Normalizing Flow Maps (NFM), a new generative modeling class which combine few-step generation with exact"
+    },
+    {
+      "id": "latent-space:bJBEFzlKPoQ",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Building Legal Agents When You Can't See the Data — Jacob Lauritzen, CTO of Legora",
+      "url": "https://www.youtube.com/watch?v=bJBEFzlKPoQ",
+      "video_id": "bJBEFzlKPoQ",
+      "audio_url": null,
+      "published_at": "2026-11-02T20:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-03T10:00:00Z",
+      "duration_s": 4042,
+      "transcript": {
+        "available": true,
+        "source": "asr",
+        "words": 15109,
+        "checked_at": "2026-11-03T10:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "That's actually not what we're seeing, and we had one problem where it wouldn't cite properly and so we'd be like, \"Next model of these solves, it went from 70% to 99%. This is like, we did nothing and like, great.\" But if you're doing a $400 million dollar M&A transaction, you're going to want the goal.",
+          "at_s": 10,
+          "url": "https://www.youtube.com/watch?v=bJBEFzlKPoQ&t=10s"
+        },
+        {
+          "text": "I guess that the agent, I don't know, I want to say a year ago, probably. Yeah. So this is a rough timeline for people who are understanding YC 2023. Yes. And then you were, you were YC founder as well. YC 24. YC 24. Yeah, I was in YC 23. The goal was 24. Okay.",
+          "at_s": 258,
+          "url": "https://www.youtube.com/watch?v=bJBEFzlKPoQ&t=258s"
+        },
+        {
+          "text": "I imagine early on, like when you guys first started, I guess, transitioning to the agents or building the agents, like what were, like what models were you guys using? I guess it would have been like Opus 4.6 or something. That would have been, yeah, Sonnet 4.6, Opus 4.6 is probably right.",
+          "at_s": 498,
+          "url": "https://www.youtube.com/watch?v=bJBEFzlKPoQ&t=498s"
+        },
+        {
+          "text": "So some open weights models are great for certain tasks And then we'll use them there some will post train and and some will issues to frontier models Yeah, you call it model arbitrage You have different Favourites and research on this where you were firmly anthropic at a start of the year Grok is improving a lot Yeah, you",
+          "at_s": 1826,
+          "url": "https://www.youtube.com/watch?v=bJBEFzlKPoQ&t=1826s"
+        },
+        {
+          "text": "I won't tell you now I think now in the past few months open weights models have become extremely capable And so we will do it for certain tasks where we think there's a huge delta between What a frontier model can do at the cost and latency versus what we think a post-trained model can do Legal research is",
+          "at_s": 3193,
+          "url": "https://www.youtube.com/watch?v=bJBEFzlKPoQ&t=3193s"
+        },
+        {
+          "text": "But if you're doing a, you know, $400 million M&A transaction, you're going to want LaGoura. And kind of an unrelated question. But I'm curious. Are you guys going to law schools and kind of like getting them to like teach LaGoura in classes? Like how does that work? Yeah. It's definitely a program that we are.",
+          "at_s": 3858,
+          "url": "https://www.youtube.com/watch?v=bJBEFzlKPoQ&t=3858s"
+        }
+      ],
+      "description": "Legora can’t read a single trace of what its agent does for a lawyer. The data belongs to the law firm’s clients. How do you build and test an agent when you can’t see its work? Jacob Lauritzen is the CTO of Legora, one of the fastest-growing companies in legal tech history. The team started in a Stockholm basement with ChatGPT, Swedish law, and a search tool. Today, a lawyer can use Legora to draft and edit Word documents, review"
     },
     {
       "id": "ai-explained:0Kw6_DTZPrY",
@@ -140,8 +226,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-03T02:37:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-03T10:00:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Open models have passed an inflection point, where they can be deployed and adapted for meaningful agentic tasks. This represents meaningful competition for OpenAI and Anthropic, whose models reached this milestone 3-6 months earlier, but the open model ecosystem has a very different puzzle to solve in customer relationships, re-investing revenue in future models, and keeping pace with the frontier of performance. This talk discusses the major debates facing open models, from distillation to whether they matter in RSI and"
@@ -344,8 +430,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-03T02:37:00Z",
-        "attempts": 7
+        "checked_at": "2026-11-03T10:00:00Z",
+        "attempts": 8
       },
       "excerpts": [],
       "description": "Nathan Labenz and Prakash Narayanan examine whether prevailing AI assumptions survive real-world data across conversations with Anastasios Angelopoulos of Arena, Debo Olaosebikan of Kepler Computing, Samvit Ramadurgam of Union, Michael Freeman of ServiceNow, and Sagar Vaze of Mistral. The discussions evaluate production traces uncovering widespread model deception during extended tasks, ferroelectric memory engineered for older chip fabs, businesses run on tokens, and telemetry capturing AI-directed cyberattacks in Southeast Asia. These findings challenge conventional views on benchmark reliability, frontier compute efficiency,"
