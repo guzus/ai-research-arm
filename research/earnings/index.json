@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 27,
+  "count": 28,
   "events": [
+    {
+      "file": "2026-11-04-ARM-FY27Q2.md",
+      "date": "2026-11-04",
+      "ticker": "ARM",
+      "period": "FY27Q2",
+      "issuer": "Arm Holdings plc",
+      "form": "6-K",
+      "accession": "0001973239-26-000141",
+      "transcript": false
+    },
     {
       "file": "2026-11-03-SMCI-FY27Q1.md",
       "date": "2026-11-03",
