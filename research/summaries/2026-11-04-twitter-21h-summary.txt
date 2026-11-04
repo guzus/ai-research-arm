@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-11-04 21:15:06 UTC
+
+CYCLE: Kimi K3.1 Pro weights drop; Ripple-65B Preview; Anthropic vault-particle paper
+
+TOP STORIES:
+• Moonshot opens Kimi K3.1 Pro weights (2.8T MoE / 104B active, 1M context) [✓]
+• Ricursive Ripple-65B Preview: $32M Apache-2.0 dense model, 80.5 Terminal-Bench [✓]
+• Anthropic: Claude mapped the first 3D bacterial vault particle [✓]
+
+WATCH: Friday GPT-6.2 rumor vs an actual API row; independent Terminal-Bench on the new weights
+
+Full update on GitHub.
