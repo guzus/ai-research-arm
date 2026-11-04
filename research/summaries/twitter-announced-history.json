@@ -3,42 +3,6 @@
     "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-06-01 11:00 UTC",
-    "headline": "NVIDIA RTX SPARK / N1X SPEC HARDENS: 20 CPU CORES, 6,144 GPU CORES, 128GB LPDDR5X, 1 PFLOP, MICROSOFT + DELL 2026 LAUNCH",
-    "source": "@MORNINGSTAR857",
-    "source_file": "research/summaries/2026-06-01-twitter-11h-headlines.json",
-    "url": "https://x.com/MORNINGSTAR857/status/2061403009230274961"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-06-01 11:00 UTC",
-    "headline": "FT: IRAN-LINKED GROUPS RUNNING 500K-700K AI-ASSISTED CYBERATTACKS/DAY ON UAE USING CHATGPT + GEMINI VIA VPN",
-    "source": "@shawnchauhan1",
-    "source_file": "research/summaries/2026-06-01-twitter-11h-headlines.json",
-    "url": "https://x.com/shawnchauhan1/status/2061402450410778748"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-06-01 11:00 UTC",
-    "headline": "CLICKUP SHIPS COWORK FEATURE \u2014 THIRD AGENT-COLLAB NAMESPACE IN A WEEK AFTER MICROSOFT COPILOT COWORK + ANTHROPIC COWORK",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-06-01-twitter-11h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2061370353616601329"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-01 11:00 UTC",
-    "headline": "SALESFORCE COMMITS $2B TO FRANCE THROUGH 2030, LAUNCHES AI INNOVATION HUB IN PARIS \u2014 CRM +5% PRE-MARKET",
-    "source": "@Tradinguru55",
-    "source_file": "research/summaries/2026-06-01-twitter-11h-headlines.json",
-    "url": "https://x.com/Tradinguru55/status/2061399113829065114"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-01 11:00 UTC",
     "headline": "QUALCOMM UNVEILS DRAGONWING IQ10 ROBOTICS REFERENCE PLATFORM AT 700 TOPS \u2014 DIRECT COMPETITOR TO NVIDIA ISAAC GR00T",
     "source": "@ainews_24_7",
     "source_file": "research/summaries/2026-06-01-twitter-11h-headlines.json",
@@ -23250,5 +23214,33 @@
     "headline": "ANTHROPIC LAUNCHES MESSAGE THREADS BETA ON MESSAGES API; ~35% FASTER FIRST TOKEN ON 500K-1M TOKEN REQUESTS",
     "source": "@ClaudeDevs",
     "url": "https://x.com/ClaudeDevs/status/2117332449382510884"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-11-04 06:03:52 UTC",
+    "headline": "ORACLE CANCELS $7B TENCENT AI CHIP LEASE AFTER US OFFICIALS OBJECT",
+    "source": "@ns123abc",
+    "url": "https://x.com/ns123abc/status/2117857386610454950"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-11-04 06:03:52 UTC",
+    "headline": "EXIT POLL: 57% SAY AI WILL HURT SOCIETY; 76% OPPOSE LOCAL DATA CENTERS",
+    "source": "@econographs",
+    "url": "https://x.com/econographs/status/2117859420516331979"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-11-04 06:03:52 UTC",
+    "headline": "MENLO: ENTERPRISE AI SPEND HITS $177B; ANTHROPIC TAKES 55% OF LLM API DOLLARS",
+    "source": "@deedydas",
+    "url": "https://x.com/deedydas/status/2117803499102822424"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-04 06:03:52 UTC",
+    "headline": "ANTHROPIC OPEN-SOURCES FLASHPROVE TO PROVE WHICH MODEL PRODUCED A REPLY",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2117710942826123294"
   }
 ]
