@@ -1,0 +1,15 @@
+AI News - 2026-11-04
+
+TOP STORIES:
+• Texas elects Gina Hinojosa after a data-center pause pledge; neoclouds sold off
+• Axios: OpenAI to buy Pierre Computer and fold Code Storage into Codex
+• Tencent Hy4 is live: 1M context, vision, $0.417/$1.251 per MTok
+• Anthropic open-sources FlashProve zk proofs of which model wrote an answer
+• Fal raises $1.3B at a $16B valuation
+
+KEY NUMBERS:
+• AMD Data Center $8.5B (+97% YoY); company revenue $13.4B
+• Menlo: enterprise AI spend $177B; Anthropic 55% of LLM API dollars
+• OpenAI bug bounties up to $172K; SMCI net income $1.59B
+
+Full report on GitHub.
