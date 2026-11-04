@@ -1,9 +1,154 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-04T06:57:00Z",
+  "updated_at": "2026-11-04T16:32:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "a16z:dSiTwPl0t1U",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "The New AI Agents That Shop, Plan, and Gossip",
+      "url": "https://www.youtube.com/watch?v=dSiTwPl0t1U",
+      "video_id": "dSiTwPl0t1U",
+      "audio_url": null,
+      "published_at": "2026-11-04T15:02:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-04T16:32:00Z",
+      "duration_s": 3016,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 11616,
+        "checked_at": "2026-11-04T16:32:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "So, of all the different group chats that I'm running of AI power users, there's about 3,600 give or take messages uh so far. And when looking at like the pain points of what are the fears of the space, the number one fear that people talk about, 22% of the messages are talking about trust as the main fear.",
+          "at_s": 335,
+          "url": "https://www.youtube.com/watch?v=dSiTwPl0t1U&t=335s"
+        },
+        {
+          "text": "They offered a million dollars to anyone that wanted to use their product to get free pizza. Right? Each person get $30 of pizza. In order to get that $30 of pizza, you were granting access to your entire Google Workspace, all of your emails, right? All of your data for 30 bucks.",
+          "at_s": 615,
+          "url": "https://www.youtube.com/watch?v=dSiTwPl0t1U&t=615s"
+        },
+        {
+          "text": "I sign all the email that I write with AI with the model that I used. Like I write my own name plus the model number so that I'm just signaling to the person like, hey, I'm acknowledging that I used AI for this. I think actually people are pretty flexible as long as they don't feel hoodwinkedked by it.",
+          "at_s": 737,
+          "url": "https://www.youtube.com/watch?v=dSiTwPl0t1U&t=737s"
+        },
+        {
+          "text": "Of the 300 I did a survey of you know AI power users 354 people only 3% were actually using it as as their primary agent.",
+          "at_s": 1123,
+          "url": "https://www.youtube.com/watch?v=dSiTwPl0t1U&t=1123s"
+        },
+        {
+          "text": "But I think we're still going to be people with our own preferences and tastes. And if the agent's not meeting us where we are, we'll just switch to another agent. We'll import and export our our stuff and be like, \"Ah, this other agent's going to meet me on my preferences better.\" Right.",
+          "at_s": 1639,
+          "url": "https://www.youtube.com/watch?v=dSiTwPl0t1U&t=1639s"
+        },
+        {
+          "text": "I mean, it's like Amazon B. It's a 24/7 ambient listener wearing your wrist. Okay, maybe to wrap it up. So, the first is we're going to get back together, let's say, in three or four weeks. What do you think will have changed? Okay. I think we're going to see a lot more innovation in the enterprise world.",
+          "at_s": 2770,
+          "url": "https://www.youtube.com/watch?v=dSiTwPl0t1U&t=2770s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:Es59icF3nZg",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "AI Lurches Towards RSI",
+      "url": "https://www.youtube.com/watch?v=Es59icF3nZg",
+      "video_id": "Es59icF3nZg",
+      "audio_url": null,
+      "published_at": "2026-11-04T13:02:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-04T16:32:00Z",
+      "duration_s": 1598,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-04T16:32:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:QmDLDy3ZSNE",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Behind Latent Space, ft AIEi Shanghai preview — with swyx and Galen Gao",
+      "url": "https://www.youtube.com/watch?v=QmDLDy3ZSNE",
+      "video_id": "QmDLDy3ZSNE",
+      "audio_url": null,
+      "published_at": "2026-11-04T10:02:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-04T16:32:00Z",
+      "duration_s": 4344,
+      "transcript": {
+        "available": true,
+        "source": "asr",
+        "words": 13700,
+        "checked_at": "2026-11-04T16:32:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "I was in trading and investment banking and hedge funds for 10 years, sorry, 8 years. And then switched to tech. So I worked in Amazon and a few startups. And then four years ago, became independent, road leading space, figured out that there was going to be this AI engineer thing. And then I start the AI. Cool.",
+          "at_s": 348,
+          "url": "https://www.youtube.com/watch?v=QmDLDy3ZSNE&t=348s"
+        },
+        {
+          "text": "So everybody contribute their knowledge is share their use cases about stable diffusion, come to Confier UI, and then become larger and larger. Actually, in the right now, the online community has around a million users learning together and several million users learning together. So become the largest AI community in China as well.",
+          "at_s": 960,
+          "url": "https://www.youtube.com/watch?v=QmDLDy3ZSNE&t=960s"
+        },
+        {
+          "text": "AI software is basically a similar industry flagship conference similar to the ones that every other industry already has. So gaming has GDC, 30,000 people in San Francisco. Security has two. Security has RSA. Security has Black Hat. If you're in a cyber security field, you go to one of those things. And that's where you learn.",
+          "at_s": 1312,
+          "url": "https://www.youtube.com/watch?v=QmDLDy3ZSNE&t=1312s"
+        },
+        {
+          "text": "Mostly that is basically exactly following the JS Conf model. JS Conf is the number one JS conference. Yeah. And it's a very simple model, right? Like, I will never reach every country in the world. But every non-country in the world will probably want to do some AI. So obviously, their country deserves to have a leading conference.",
+          "at_s": 1568,
+          "url": "https://www.youtube.com/watch?v=QmDLDy3ZSNE&t=1568s"
+        },
+        {
+          "text": "For you, a medium sized community is 1 million people. That's huge in here. Well, a million is already the toughest. I've seen those kind of Chinese influencer farms, like all these Chinese girls like doing this. The scale in China is just so different, and it's so competitive. People say they do 96 in San Francisco, they don't really.",
+          "at_s": 3824,
+          "url": "https://www.youtube.com/watch?v=QmDLDy3ZSNE&t=3824s"
+        },
+        {
+          "text": "But yeah, what I'm worried about, I think, personally, if we have an AI winter, it is an AI summer. This is probably the longest AI summer we've ever had in human history. But the history of AI has been, it's about 50 years old. There's always summer, everything's going to work. Winter, summer, winter.",
+          "at_s": 4105,
+          "url": "https://www.youtube.com/watch?v=QmDLDy3ZSNE&t=4105s"
+        }
+      ],
+      "description": "Then they get into Kill My SaaS. An agent can rebuild a tool and pass the entry checks. Choosing a winner still takes someone who knows what an organizer needs to get done. The conversation also covers OpenClaw adoption in China and what Thinking Machines' interaction models change about talking to AI. Chapters AIEi Shanghai Cold open Galen Gao and swyx Learn in Public How Latent Space started The idea for AI Engineer The conference as a dataset Kill My"
+    },
     {
       "id": "latent-space:LL0YmIyBKSU",
       "show_id": "latent-space",
@@ -203,8 +348,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-04T06:57:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-04T16:32:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "AI is increasingly shaping how people work, learn, communicate, and make decisions, yet systems that work well in one context may not translate effectively to another. In this talk, Liz will introduce ATLAS, a practical playbook informed by ethnographic and participatory research across agriculture, small business, health, and workplace settings. Drawing on examples of how communities interact with and evaluate AI, she will discuss how teams can identify cultural assumptions throughout the AI lifecycle and use community knowledge to inform"
@@ -230,8 +375,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-04T06:57:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-04T16:32:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -316,8 +461,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-04T06:57:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-04T16:32:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "What if abundant intelligence makes human ambition expand rather than human relevance disappear? NLW explores Venkatesh Rao’s “Cognitive Mercantilism,” which uses the history of capitalism to challenge assumptions about AI and our intellectual future. From the agricultural revolution to today’s AI agents, the episode examines how cheaper intelligence could unlock new desires, new work, and possibilities we haven’t yet imagined. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -372,8 +517,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-04T06:57:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-04T16:32:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Learning a generative model gives us a sampler for a data distribution. Adapting that sampler to a downstream task requires rewarding preferential outcomes typically in the form of scalar rewards or rankings that the model must internalize. In this talk, I will discuss learning generative maps as well as new methodology to exploit (multiple) rewards at inference used to guide them. I will first introduce Normalizing Flow Maps (NFM), a new generative modeling class which combine few-step generation with exact"
