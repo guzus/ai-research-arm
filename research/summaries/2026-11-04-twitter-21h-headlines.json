@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "MOONSHOT OPENS KIMI K3.1 PRO WEIGHTS — 2.8T MOE, 104B ACTIVE, 1M CONTEXT",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2118003733103600085",
+    "category": "opensource"
+  },
+  {
+    "headline": "RICURSIVE SHIPS RIPPLE-65B PREVIEW AT $32M — 80.5 TERMINAL-BENCH, APACHE 2.0",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2118066494634369464",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC: CLAUDE MAPS FIRST 3D STRUCTURE OF A BACTERIAL VAULT PARTICLE",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2118073665296228863",
+    "category": "research"
+  },
+  {
+    "headline": "CLAUDE CODE CUTS BACKGROUND-SUBAGENT STATUS COST ~99%; USAGE LIMIT -5%",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2118063143167693011",
+    "category": "model"
+  },
+  {
+    "headline": "COGNITION SWE-2 FLASH HITS 20% TERMINAL-BENCH 4.0 ON INKLING-SMALL BASE",
+    "source": "@soumithchintala",
+    "url": "https://x.com/soumithchintala/status/2118071460631834931",
+    "category": "model"
+  },
+  {
+    "headline": "THE INFORMATION: 12 INCOMING GOVERNORS CALL FOR DATA-CENTER PAUSES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2118085949443776746",
+    "category": "policy"
+  }
+]
