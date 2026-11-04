@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-11-04
+
+TOP STORIES:
+• AMD Data Center revenue $8.5B, +97% YoY; company revenue $13.4B
+• Weight-edited Qwen is on Hugging Face; Qwen 3.8 27B also reads weights
+• Replit: run AI coding agents in managed sandboxes after Goldman restriction
+
+KEY NUMBERS:
+• Super Micro net income $1.59B vs $168M a year ago
+• OpenAI bug bounties up to $172K
+• HN Astra thread: 2,744 points
+
+TRENDING: GPT-6 Astra weight-space programming (2,744 pts on HN)
+
+Full digest on GitHub.

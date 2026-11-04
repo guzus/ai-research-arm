@@ -1,0 +1,10 @@
+Speaker 1: Wednesday, November fourth, twenty twenty-six.
+Speaker 2: [high_energy] AMD just posted data-center revenue of [emphasis] eight point five billion dollars [/emphasis], up ninety-seven percent from a year ago, on company revenue of thirteen point four billion dollars.
+Speaker 1: Super Micro is having a similar year, with net income of [emphasis] one point five nine billion dollars [/emphasis], versus one hundred sixty-eight million a year ago.
+Speaker 2: That's [dramatic_pause] nearly ten times the profit, which is a stunning hardware print.
+Speaker 1: On the model side, a weight-edited Qwen is now on Hugging Face, and Qwen three point eight twenty-seven B can also read those weights.
+Speaker 2: Worth noting that this is the Astra weight-space trick, now sitting in a public repo anyone can pull.
+Speaker 1: Over at Replit, you can now run AI coding agents in managed sandboxes, after Goldman restricted that kind of use.
+Speaker 2: And OpenAI is paying bug bounties of up to [emphasis] one hundred seventy-two thousand dollars [/emphasis].
+Speaker 1: Trending on Hacker News, with two thousand seven hundred forty-four points, is GPT six Astra weight-space programming.
+Speaker 2: That is your ARA broadcast, full digest on GitHub.
