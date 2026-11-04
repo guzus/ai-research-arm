@@ -2,33 +2,6 @@
   {
     "backfilled": true,
     "category": "infra",
-    "delivered_at": "2026-06-01 11:00 UTC",
-    "headline": "QUALCOMM UNVEILS DRAGONWING IQ10 ROBOTICS REFERENCE PLATFORM AT 700 TOPS \u2014 DIRECT COMPETITOR TO NVIDIA ISAAC GR00T",
-    "source": "@ainews_24_7",
-    "source_file": "research/summaries/2026-06-01-twitter-11h-headlines.json",
-    "url": "https://x.com/ainews_24_7/status/2061399860020912446"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-01 14:00 UTC",
-    "headline": "IREN CLOSES $3.65B INVESTMENT-GRADE GPU FINANCING \u2014 FIRST IG-RATED GPU DEBT IN U.S. PRIVATE-PLACEMENT HISTORY, MSFT AI CLOUD ANCHORED",
-    "source": "@PSInvestor",
-    "source_file": "research/summaries/2026-06-01-twitter-14h-headlines.json",
-    "url": "https://x.com/PSInvestor/status/2061431618028585453"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-01 14:00 UTC",
-    "headline": "FITCH A / DBRS A(LOW) ON IREN \u2014 GOLDMAN + JPM LEAD, 96% OF GPU CAPEX FUNDED, 480MW / 50K+ BLACKWELL ULTRA BY END-2026",
-    "source": "@Cointelegraph",
-    "source_file": "research/summaries/2026-06-01-twitter-14h-headlines.json",
-    "url": "https://x.com/Cointelegraph/status/2061452907166290181"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
     "delivered_at": "2026-06-01 14:00 UTC",
     "headline": "NADELLA PUBLICLY ENDORSES RTX SPARK \u2014 JENSEN TO JOIN MICROSOFT BUILD LIVE FROM TAIWAN, PRE-EMPTS SEMIANALYSIS F-TIER CRITIQUE BY 1 MINUTE",
     "source": "@satyanadella",
@@ -23242,5 +23215,26 @@
     "headline": "ANTHROPIC OPEN-SOURCES FLASHPROVE TO PROVE WHICH MODEL PRODUCED A REPLY",
     "source": "@AnthropicAI",
     "url": "https://x.com/AnthropicAI/status/2117710942826123294"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-11-04 14:23:08 UTC",
+    "headline": "HINOJOSA UNSEATS ABBOTT AFTER PLEDGING TEXAS DATA-CENTER PAUSE; COREWEAVE -7%",
+    "source": "@rohanpaul_ai",
+    "url": "https://x.com/rohanpaul_ai/status/2117978113686773775"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-11-04 14:23:08 UTC",
+    "headline": "OPENAI TO ACQUIRE PIERRE COMPUTER AND FOLD CODE STORAGE INTO CODEX \u2014 AXIOS",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2117966987888312763"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-04 14:23:08 UTC",
+    "headline": "TENCENT SHIPS HY4 WITH VISION AND 1M CONTEXT; OPEN WEIGHTS STILL PENDING",
+    "source": "@testingcatalog",
+    "url": "https://x.com/testingcatalog/status/2117885727354548370"
   }
 ]
