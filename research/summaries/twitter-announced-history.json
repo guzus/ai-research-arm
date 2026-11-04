@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-01 14:00 UTC",
-    "headline": "NADELLA PUBLICLY ENDORSES RTX SPARK \u2014 JENSEN TO JOIN MICROSOFT BUILD LIVE FROM TAIWAN, PRE-EMPTS SEMIANALYSIS F-TIER CRITIQUE BY 1 MINUTE",
-    "source": "@satyanadella",
-    "source_file": "research/summaries/2026-06-01-twitter-14h-headlines.json",
-    "url": "https://x.com/satyanadella/status/2061315017589600699"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-01 14:00 UTC",
-    "headline": "SEMIANALYSIS Q1 2026 FOUNDRY PRINT: RECORD $48.8B (+32% Y/Y), TSMC SHARE AT 73.6% RECORD HIGH, CAPTURES 95%+ OF INCREMENTAL Q/Q REVENUE",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-06-01-twitter-14h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2061432999929860500"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-01 14:00 UTC",
-    "headline": "KOREAN MEMORY NOW 22% OF TOTAL EXPORTS \u2014 UP FROM 13% IN 2025 AND ~10% IN 2018-2024, VS AUTOS AT ~8%",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-06-01-twitter-14h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2061432717787398251"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-01 14:00 UTC",
-    "headline": "SEMIANALYSIS DISCLOSES TESLA-SPACEX TERAFAB TARGETING 1M WAFERS/MONTH ACROSS LOGIC, MEMORY, PACKAGING \u2014 NEW FOUNDRY ENTRANT",
-    "source": "@SemiAnalysis_",
-    "source_file": "research/summaries/2026-06-01-twitter-14h-headlines.json",
-    "url": "https://x.com/SemiAnalysis_/status/2061433005298655704"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-06-01 14:00 UTC",
-    "headline": "CALIFORNIA SENATE PASSES FIRST-IN-NATION BAN ON AI CHATBOT TOYS FOR CHILDREN UNDER 18 \u2014 27% OF RESPONSES FOUND INAPPROPRIATE",
-    "source": "@digitalbrain01",
-    "source_file": "research/summaries/2026-06-01-twitter-14h-headlines.json",
-    "url": "https://x.com/digitalbrain01/status/2061436269951856888"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-01 17:00 UTC",
-    "headline": "ANTHROPIC CONFIDENTIALLY FILES DRAFT S-1 WITH SEC \u2014 FIRST FRONTIER AI LAB IPO STEP AT $965B SERIES H MARK",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-06-01-twitter-17h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2061478052257841495"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-06-01 17:00 UTC",
     "headline": "FLORIDA AG SUES OPENAI AND SAM ALTMAN PERSONALLY \u2014 FIRST STATE AG TO SEEK CEO LIABILITY FOR AI PRODUCT HARMS",
@@ -23236,5 +23182,47 @@
     "headline": "TENCENT SHIPS HY4 WITH VISION AND 1M CONTEXT; OPEN WEIGHTS STILL PENDING",
     "source": "@testingcatalog",
     "url": "https://x.com/testingcatalog/status/2117885727354548370"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-11-04 21:15:06 UTC",
+    "headline": "MOONSHOT OPENS KIMI K3.1 PRO WEIGHTS \u2014 2.8T MOE, 104B ACTIVE, 1M CONTEXT",
+    "source": "@scaling01",
+    "url": "https://x.com/scaling01/status/2118003733103600085"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-04 21:15:06 UTC",
+    "headline": "RICURSIVE SHIPS RIPPLE-65B PREVIEW AT $32M \u2014 80.5 TERMINAL-BENCH, APACHE 2.0",
+    "source": "@kimmonismus",
+    "url": "https://x.com/kimmonismus/status/2118066494634369464"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-04 21:15:06 UTC",
+    "headline": "ANTHROPIC: CLAUDE MAPS FIRST 3D STRUCTURE OF A BACTERIAL VAULT PARTICLE",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2118073665296228863"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-04 21:15:06 UTC",
+    "headline": "CLAUDE CODE CUTS BACKGROUND-SUBAGENT STATUS COST ~99%; USAGE LIMIT -5%",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2118063143167693011"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-04 21:15:06 UTC",
+    "headline": "COGNITION SWE-2 FLASH HITS 20% TERMINAL-BENCH 4.0 ON INKLING-SMALL BASE",
+    "source": "@soumithchintala",
+    "url": "https://x.com/soumithchintala/status/2118071460631834931"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-11-04 21:15:06 UTC",
+    "headline": "THE INFORMATION: 12 INCOMING GOVERNORS CALL FOR DATA-CENTER PAUSES",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2118085949443776746"
   }
 ]
