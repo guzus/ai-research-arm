@@ -1,8 +1,28 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 25,
+  "count": 27,
   "events": [
+    {
+      "file": "2026-11-03-SMCI-FY27Q1.md",
+      "date": "2026-11-03",
+      "ticker": "SMCI",
+      "period": "FY27Q1",
+      "issuer": "Super Micro Computer, Inc.",
+      "form": "8-K",
+      "accession": "0001375365-26-000026",
+      "transcript": false
+    },
+    {
+      "file": "2026-11-03-AMD-FY26Q3.md",
+      "date": "2026-11-03",
+      "ticker": "AMD",
+      "period": "FY26Q3",
+      "issuer": "Advanced Micro Devices, Inc.",
+      "form": "8-K",
+      "accession": "0000002488-26-000188",
+      "transcript": false
+    },
     {
       "file": "2026-11-02-PLTR-FY26Q3.md",
       "date": "2026-11-02",
