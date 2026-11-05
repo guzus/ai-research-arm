@@ -872,7 +872,8 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
             profile = profiles.get(backend)
             diagnostic = (lane.get("manual_only") is True and lane.get("strict") is True
                           and lane.get("pinned") is True
-                          and profile is not None and profile.provider == "chubby"
+                          and profile is not None and not profile.production_restrictions
+                          and profile.provider == "chubby"
                           and lane.get("pinned_provider") == "chubby"
                           and not lane.get("fallback_chain")
                           and obs.events == {"workflow_dispatch"})
@@ -957,8 +958,14 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
             elif fallback_mode is not None:
                 errors.append(f"lane '{step.lane}': fallback_mode is only valid with a "
                               "Cursor fallback_chain entry")
+            chubby_only = (profile is not None and profile.provider == "chubby"
+                           and lane.get("strict") is True and not lane_chain)
             for input_name, expected in REQUIRED_AGENT_RUN_SECRETS.items():
-                if step.secrets.get(input_name) != expected:
+                if chubby_only:
+                    if step.secrets.get(input_name):
+                        errors.append(f"{label}: strict Chubby lanes must not receive "
+                                      f"unrelated credential {input_name}")
+                elif step.secrets.get(input_name) != expected:
                     errors.append(f"{label}: must pass {input_name}: secrets.{expected} — "
                                   "every agent-run call site carries all provider keys so a "
                                   "data/agent-backends.json flip re-routes without workflow edits")

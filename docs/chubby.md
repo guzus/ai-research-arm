@@ -66,7 +66,18 @@ creates a fresh random input, asks Claude Code to read it and write the exact
 contents, and checks the successful transcript, served model identity, both
 completed tools, exact file contents, and committed path scope. It permits
 only Read/Write, caps the run at eight turns and ten minutes, and publishes
-nothing. The backend bounds each response to 4,096 tokens.
+nothing. The backend bounds each response to 4,096 tokens. The workflow needs
+only `CHUBBY_API_KEY`; it receives no native Claude, Fireworks, or Z.ai secret.
+
+The pinned Claude action requires an API-key-shaped input even for bearer
+transport. A fixed, unusable sentinel satisfies that check; final CLI settings
+clear it, and the real Chubby key enters only through the step environment.
+Each run uses a private temporary `HOME` and Claude config directory, with the
+reviewed sandbox and model/endpoint settings pinned while preserving project
+instructions. The original runner home remains denied to tools. No credential
+is written to these settings or auth files, and cleanup removes the temporary
+configuration even when the agent fails. Repository-local Git identity lets
+the trusted output committer work independently of that temporary home.
 
 Configuration checks make no paid inference call and never claim provider
 health. Missing/incorrect keys, unreachable Office, budget exhaustion, and

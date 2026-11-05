@@ -123,7 +123,10 @@ class ChubbySelectionTest(unittest.TestCase):
             config.write_text(json.dumps(data))
             log = io.StringIO()
             with mock.patch.dict(os.environ, {"CHUBBY_API_KEY": key, "CHUBBY_BASE_URL": DEFAULT_BASE_URL,
-                                              "GITHUB_EVENT_NAME": event}), \
+                                              "GITHUB_EVENT_NAME": event,
+                                              "CLAUDE_CODE_OAUTH_TOKEN": "",
+                                              "ANTHROPIC_API_KEY": "",
+                                              "FIREWORKS_API_KEY": "", "ZAI_API_KEY": ""}), \
                  mock.patch("urllib.request.urlopen", side_effect=AssertionError("no network")), \
                  contextlib.redirect_stdout(log), contextlib.redirect_stderr(log):
                 code = main_with_args(["--file", str(config), "--github-output", str(output), *args])
@@ -152,6 +155,13 @@ class ChubbySelectionTest(unittest.TestCase):
             code, _, log = self.select("--lane", "chubby-canary", mutate=mutate)
             self.assertEqual(code, 2, log)
 
+    def test_manual_diagnostic_cannot_bypass_active_profile_restrictions(self):
+        def mutate(data):
+            data["backends"][PROFILE]["restrictions"] = {"requires_consent": True}
+        code, _, log = self.select("--lane", "chubby-canary", mutate=mutate)
+        self.assertEqual(code, 2, log)
+        self.assertIn("active restrictions: requires_consent", log)
+
     def test_chubby_cannot_be_added_as_fallback_even_after_marked_eligible(self):
         def mutate(data):
             data["backends"][PROFILE]["production_eligible"] = True
@@ -176,6 +186,34 @@ class ChubbyWorkflowTest(unittest.TestCase):
         obs = copy.deepcopy(self.observations)
         obs["daily-digest.yml"].agent_run[0].secrets["chubby-api-key"] = "CHUBBY_API_KEY"
         self.assertTrue(any("unrelated lanes" in e for e in cross_check(self.lanes, obs, self.profiles)))
+
+    def test_scoped_workflow_and_matrix_exclude_unrelated_credentials(self):
+        step = self.observations["chubby-canary.yml"].agent_run[0]
+        supplied = {key: value for key, value in step.secrets.items() if value}
+        self.assertEqual(supplied, {"chubby-api-key": "CHUBBY_API_KEY"})
+        for name, secret in (("claude-code-oauth-token", "CLAUDE_CODE_OAUTH_TOKEN"),
+                             ("fireworks-api-key", "FIREWORKS_API_KEY"),
+                             ("zai-api-key", "ZAI_API_KEY")):
+            obs = copy.deepcopy(self.observations)
+            obs["chubby-canary.yml"].agent_run[0].secrets[name] = secret
+            self.assertTrue(any("unrelated credential" in error
+                                for error in cross_check(self.lanes, obs, self.profiles)))
+
+    def test_manual_diagnostic_matrix_cannot_bypass_active_restrictions(self):
+        profiles = copy.deepcopy(self.profiles)
+        profiles[PROFILE].production_restrictions = ["requires_consent"]
+        errors = cross_check(self.lanes, self.observations, profiles)
+        self.assertTrue(any("not production-eligible" in error for error in errors), errors)
+
+    def test_canary_sets_commit_identity_in_repo_before_running_agent(self):
+        workflow = yaml.safe_load((ROOT / ".github/workflows/chubby-canary.yml").read_text())
+        steps = workflow["jobs"]["canary"]["steps"]
+        identity_index = next(i for i, step in enumerate(steps)
+                              if step.get("name") == "Configure local commit identity")
+        agent_index = next(i for i, step in enumerate(steps) if step.get("id") == "agent")
+        self.assertLess(identity_index, agent_index)
+        self.assertIn("git config --local user.name", steps[identity_index]["run"])
+        self.assertIn("git config --local user.email", steps[identity_index]["run"])
 
     def test_manual_lane_rejects_new_automatic_trigger(self):
         obs = copy.deepcopy(self.observations)

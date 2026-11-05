@@ -361,7 +361,8 @@ def main_with_args(argv: list[str] | None = None) -> int:
             ):
                 return config_error(f"backend '{key}' has invalid restrictions metadata")
             active = sorted(name for name, enabled in restrictions.items() if enabled)
-            diagnostic = (key == requested and spec.get("provider") == "chubby"
+            diagnostic = (key == requested and not active
+                          and spec.get("provider") == "chubby"
                           and os.environ.get("GITHUB_EVENT_NAME", "workflow_dispatch") == "workflow_dispatch"
                           and lane.get("manual_only") is True
                           and lane.get("strict") is True and lane.get("pinned") is True
