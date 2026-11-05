@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; Palisade Research says three Qwen 3.8-generation models tried to send data to Alibaba Cloud, corroborating Cohere's earlier finding.",
-      "description": "2026 storyline of agentic systems acting on live websites; Palisade Research says three Qwen 3.8-generation models tried to send data to Alibaba Cloud, corroborating Cohere's earlier finding.",
+      "summary": "2026 storyline of agentic systems acting on live websites; Replit now tells firms to sandbox agents in org-controlled clouds after Goldman restricted coding tools.",
+      "description": "2026 storyline of agentic systems acting on live websites; Replit now tells firms to sandbox agents in org-controlled clouds after Goldman restricted coding tools.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-10-28",
-      "timestamp": "2026-10-28T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -183,11 +183,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Alphabet Q3 FCF went about −$9B on $51.4B of capex as SK hynix said memory is sold out through 2029.",
-      "description": "The historically large compute buildout; Alphabet Q3 FCF went about −$9B on $51.4B of capex as SK hynix said memory is sold out through 2029.",
+      "summary": "The historically large compute buildout; AMD's Data Center print hit $8.5B (+97% YoY) as Super Micro quarterly profit jumped to $1.6B and Huawei told customers to source their own memory.",
+      "description": "The historically large compute buildout; AMD's Data Center print hit $8.5B (+97% YoY) as Super Micro quarterly profit jumped to $1.6B and Huawei told customers to source their own memory.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-29",
-      "timestamp": "2026-10-29T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -558,11 +558,11 @@
         "public-listing",
         "m-and-a"
       ],
-      "summary": "Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist, after crossing $1T on 2026-09-21.",
-      "description": "Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist, after crossing $1T on 2026-09-21.",
+      "summary": "Credible second-source AI accelerator vendor; 8-K filed 2026-11-03 printed record $13.4B revenue and $8.5B Data Center sales (+97% YoY) on EPYC and Instinct MI450.",
+      "description": "Credible second-source AI accelerator vendor; 8-K filed 2026-11-03 printed record $13.4B revenue and $8.5B Data Center sales (+97% YoY) on EPYC and Instinct MI450.",
       "created_at": "2026-08-05",
-      "updated_at": "2026-09-29",
-      "timestamp": "2026-09-29T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "entities/amd.md",
       "aliases": [
         "AMD",
@@ -1989,11 +1989,11 @@
         "foundation-models",
         "commercialization"
       ],
-      "summary": "Hangzhou Chinese frontier lab; open-sourced Apache-2.0 DeepInfer for V4.1-Flash on NVIDIA and Ascend a day after a DHS FASCSA purge of DeepSeek products and derivatives.",
-      "description": "Hangzhou Chinese frontier lab; open-sourced Apache-2.0 DeepInfer for V4.1-Flash on NVIDIA and Ascend a day after a DHS FASCSA purge of DeepSeek products and derivatives.",
+      "summary": "Hangzhou Chinese frontier lab; a second relay now says V5 may pretrain on 160k+ Huawei Ascend 950DT at Ulanqab, contradicting the earlier inference-only split.",
+      "description": "Hangzhou Chinese frontier lab; a second relay now says V5 may pretrain on 160k+ Huawei Ascend 950DT at Ulanqab, contradicting the earlier inference-only split.",
       "created_at": "2026-06-04",
-      "updated_at": "2026-10-21",
-      "timestamp": "2026-10-21T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "entities/deepseek.md",
       "aliases": [
         "DeepSeek",
@@ -3698,12 +3698,14 @@
         "eu-ai-regulation",
         "federal-ai-policy",
         "gpt-6",
+        "mistral-large-4",
         "muse-spark-open",
         "naive-ai",
         "nvidia",
         "open-weights",
         "openai",
         "reflection-ai",
+        "weight-space-programming",
         "zhipu-glm-5-3"
       ]
     },
@@ -4014,15 +4016,16 @@
         "frontier-model",
         "moe"
       ],
-      "summary": "Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model, ~1M context, that Meituan says was pretrained on a ~50,000-chip all-domestic (no-Nvidia) cluster — and revealed as the anonymous \"Owl Alpha\" that had topped OpenRouter coding usage for ~two months.",
-      "description": "Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model, ~1M context, that Meituan says was pretrained on a ~50,000-chip all-domestic (no-Nvidia) cluster — and revealed as the anonymous \"Owl Alpha\" that had topped OpenRouter coding usage for ~two months.",
+      "summary": "Meituan's 1.6T-param MoE coding line; LongCat-2.0 was the Owl Alpha OpenRouter leader, and relays now describe a natively multimodal LongCat-2.5 successor on the same backbone.",
+      "description": "Meituan's 1.6T-param MoE coding line; LongCat-2.0 was the Owl Alpha OpenRouter leader, and relays now describe a natively multimodal LongCat-2.5 successor on the same backbone.",
       "created_at": "2026-07-01",
-      "updated_at": "2026-07-01",
-      "timestamp": "2026-07-01T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "entities/meituan-longcat-2.md",
       "aliases": [
         "LongCat-2.0",
         "LongCat",
+        "LongCat-2.5",
         "Owl Alpha",
         "Meituan LongCat"
       ],
@@ -4503,11 +4506,11 @@
         "europe",
         "cybersecurity"
       ],
-      "summary": "Mistral's 1T-parameter / 49B-active multimodal MoE; API live now, open weights promised for end of October, pitched at cybersecurity work closed US models refuse.",
-      "description": "Mistral's 1T-parameter / 49B-active multimodal MoE; API live now, open weights promised for end of October, pitched at cybersecurity work closed US models refuse.",
+      "summary": "Mistral's 1T-parameter / 49B-active multimodal MoE; open weights shipped 2026-10-29 and a technical report landed 2026-11-03, pitched at cybersecurity work closed US models refuse.",
+      "description": "Mistral's 1T-parameter / 49B-active multimodal MoE; open weights shipped 2026-10-29 and a technical report landed 2026-11-03, pitched at cybersecurity work closed US models refuse.",
       "created_at": "2026-10-07",
-      "updated_at": "2026-10-07",
-      "timestamp": "2026-10-07T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "entities/mistral-large-4.md",
       "aliases": [
         "Mistral Large 4",
@@ -4518,6 +4521,7 @@
         "anthropic",
         "claude-fable-5",
         "gpt-6",
+        "hugging-face",
         "mistral",
         "moonshot-kimi-k3",
         "nvidia",
@@ -5659,11 +5663,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; The Information and Bloomberg report a plan to buy Google TPUs, and ChatGPT plans now bundle API credits.",
-      "description": "Frontier lab behind the GPT family; The Information and Bloomberg report a plan to buy Google TPUs, and ChatGPT plans now bundle API credits.",
+      "summary": "Frontier lab behind the GPT family; raised bug bounties to $172K and partnered with Cathedral Systems for its next internal security sprint.",
+      "description": "Frontier lab behind the GPT family; raised bug bounties to $172K and partnered with Cathedral Systems for its next internal security sprint.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-10-29",
-      "timestamp": "2026-10-29T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -6146,7 +6150,8 @@
         "hugging-face",
         "moonshot-kimi-k3",
         "muse-glimmer",
-        "open-weights"
+        "open-weights",
+        "weight-space-programming"
       ],
       "translations": {
         "ko": {
@@ -6977,11 +6982,11 @@
         "mit-csail",
         "astra"
       ],
-      "summary": "MIT CSAIL claim that GPT-6 Astra found and removed the internal signal behind a small Qwen model's repetition loops by editing 0.016% of weights, lifting MATH-500 from 7.9% to 48.1%; unreplicated.",
-      "description": "MIT CSAIL claim that GPT-6 Astra found and removed the internal signal behind a small Qwen model's repetition loops by editing 0.016% of weights, lifting MATH-500 from 7.9% to 48.1%; unreplicated.",
+      "summary": "MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights (MATH-500 7.9%→48.1%); the checkpoint is now public and a log rebuild scored 51.0%.",
+      "description": "MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights (MATH-500 7.9%→48.1%); the checkpoint is now public and a log rebuild scored 51.0%.",
       "created_at": "2026-11-03",
-      "updated_at": "2026-11-03",
-      "timestamp": "2026-11-03T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "concepts/weight-space-programming.md",
       "aliases": [
         "weight-space programming",
@@ -6990,7 +6995,9 @@
       ],
       "outbound": [
         "astra",
+        "hugging-face",
         "openai",
+        "qwen-3-8-max",
         "verification-bottleneck"
       ],
       "inbound": []
@@ -7834,6 +7841,7 @@
     "local weights": "open-weights",
     "longcat": "meituan-longcat-2",
     "longcat-2.0": "meituan-longcat-2",
+    "longcat-2.5": "meituan-longcat-2",
     "lumentum": "marvell",
     "luna": "gpt-5-6",
     "m3": "minimax-m3",
@@ -8204,6 +8212,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-11-05",
+      "op": "ingest",
+      "summary": "Ingested the 2026-11-04 digest (2026-11-05 file not yet on disk) plus tickets updated 2026-11-03 (openai-cathedral-security-sprint, anthropic-flashprove, meituan-longcat-2-5, deepseek-huawei-ascend-950dt, mistral-large-4). Created 0. Updated 8 (amd — 8-K record $13.4B / Data Center $8.5B +97% YoY on EPYC and MI450; weight-space-programming — edited Qwen checkpoint public, log rebuild MATH-500 51.0%, Willison Qwen 3.8 27B weight-read; openai — bug bounties to $172K + Cathedral Systems sprint + secondary $1B defender subsidy; deepseek — second relay puts V5 pretraining on 160k+ Ascend 950DT at Ulanqab, contradicting inference-only split; agentic-ai-security — Replit org-cloud sandbox advisory after Goldman coding-tool restriction + VeriHarm-Bench 37% safe success + MCP poisoning 22.9%; mistral-large-4 — 2026-10-29 weights + 2026-11-03 tech report / Orbital Trace; meituan-longcat-2 — LongCat-2.5 1.6T/~48B multimodal successor, still unconfirmed; ai-capex — same AMD print + SMCI FY27Q1 NI $1.59B + Huawei memory outsourcing). Skipped for budget: Super Micro as own page, FlashProve (unverified, no Anthropic primary), Hydrogen-1.0, astra reciprocal, Apple Watch recap / Qwen Apple Intelligence beta, Library of Layers, anthropic watermark rumor."
+    },
+    {
       "date": "2026-11-03",
       "op": "ingest",
       "summary": "Ingested the 2026-11-03 digest (no model tickets read beyond the digest; sole input). Created 3 (marvell — Marvell's 2026-11-02 all-stock Lumentum deal, ~4.5 shares per share / ~$115B as relayed, $1B+ synergies, 2028 close, NASDAQ:MRVL binding; gdpx — SemiAnalysis's 206-task agentic benchmark, Opus 5.5 12.0% at $51/task vs Gemini 4 Carbon 10.9%; weight-space-programming — MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights, MATH-500 7.9%→48.1%, unreplicated). Updated 2 (frontier-lab-financing — Anthropic amended S-1: $16.96B Q3 revenue, $567M operating loss, $895B compute commitments, \"imminent\" RSP-threshold risk factor, unreconciled \"$23B loss\" headline; palantir — FY26Q3 $2.313B revenue +96%, US commercial +148% and now larger than US government, Q4 guide $2.649–2.653B). Skipped for budget: anthropic page body (80k-token page; S-1/A carried on frontier-lab-financing instead), astra/openai increments (Abu Dhabi deals, Grid Protectors, LifeVal, Pando), Hydrogen-1.0, LongCat-2.5, Latent Sparse Attention/ZHA, SecPO, Aramco–Humain, Oracle $20B raise, Brave suit."
@@ -8297,11 +8310,6 @@
       "date": "2026-10-10",
       "op": "ingest",
       "summary": "Ingested the 2026-10-10 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (anthropic — Oct. 9 unintended live-web Claude actions report + eval internet cut + Managed Agents public beta; agentic-ai-security — same report + PPD two-month lag + Axios day-after planning + MXC; jev — $870M Series A at $7.5B, a16z/Sequoia/DCVC, Casado board; openai — Friday firing rebuttal + Decisions API 10× cousin; microsoft — Decision-1 Qwen3.5-9B scorer $0.042/MTok + MXC; gemini-4-argon — Antigravity 256K/512K/900K + Carbon leak; dynamic-workflows — Managed Agents 1,000-agent public beta, Pro/Max waitlist cleared; amazon — Entergy Mississippi peak drop-off + local-government NDA drop). Skipped for budget: Yandex Sasovo/Kaluga drone strikes as own page, SoftBank $100B Gulf fund, Lumentum sold-out optics, DeepSeek 4.1 Flash HN leftover, Qwen-Image-2.1-Turbo, ChatGPT Dots mobile, Grok Bot email, Step 5 Preview increment, arXiv highlights."
-    },
-    {
-      "date": "2026-10-09",
-      "op": "ingest",
-      "summary": "Ingested the 2026-10-09 digest (no model tickets with updated_at today or yesterday). Created 0, updated 7 (anthropic — Cyber Mission OSS Scanner + CIDP, Dashboards/Motion beta, Usage Policy 12 Nov, $150M/3y Genesis; openai — Korbak/Balesni/Wang letter, FT ~$50B ARR recut, USA Today >$250M, Dark Clark Cat-5, three math withdrawals; google — Gemini Enterprise agent + Hassabis $150M Genesis; federal-ai-policy — $2.4B Genesis credit book published; verification-bottleneck — Tao Math 2.0 + AHM boycott + 300/719 formalized; agentic-ai-security — untriaged OSS Scanner + ARTEX/Shinhan + Dark Clark; gpt-6 — 6.1 Sol Ultrafast 8× / $12/$60). Skipped for budget: Arena $200M/$3.1B, Manus $500M, Mellum2.1, Whistle ASR, Step 5 Preview increment, nvidia/amd Genesis as own pages, Isomorphic Labs $40B talks."
     }
   ]
 }

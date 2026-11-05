@@ -4,12 +4,13 @@ title: Mistral Large 4
 type: entity
 aliases: ["Mistral Large 4", "Le Chonk"]
 tags: [model-release, mistral, open-weights, moe, multimodal, europe, cybersecurity]
-description: Mistral's 1T-parameter / 49B-active multimodal MoE; API live now, open weights promised for end of October, pitched at cybersecurity work closed US models refuse.
+description: Mistral's 1T-parameter / 49B-active multimodal MoE; open weights shipped 2026-10-29 and a technical report landed 2026-11-03, pitched at cybersecurity work closed US models refuse.
 created_at: 2026-10-07
-timestamp: 2026-10-07T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 sources:
-  - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
+  - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA model ticket — Mistral Large 4", path: research/models/tickets/mistral-large-4-2026-10.md}
+  - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
 ---
 
 **Mistral Large 4** ("Le Chonk") is
@@ -88,16 +89,56 @@ ticket `mistral-large-4-2026-10`).
   sessions (Hacker News, Plotly;
   ARA daily digest 2026-10-07).
 
+## Weights, then the technical report (2026-11-04)
+
+- **Open weights of a "new and
+  improved Le Chonk" shipped
+  2026-10-29** on Hugging Face,
+  inside the end-of-October
+  promise. Mistral self-reports
+  #1 among open models on
+  Cognition's FrontierCode and
+  SOTA cyber defence tested
+  with CrowdStrike, Cloudflare,
+  Rubrik and Zscaler. Secondary
+  only: 1M context, commercial
+  use permitted, API price
+  halved to **$0.70 / $2.10**
+  per million tokens. See
+  [[open-weights]] and
+  [[hugging-face]] (ticket
+  `mistral-large-4-2026-10`).
+- **The technical report
+  ("the story of how Le Chonk
+  was built") landed on
+  alphaXiv on 2026-11-03.**
+  Pierre Stock called the final
+  model "way more efficient and
+  compact than its Preview
+  version three weeks ago."
+  Mistral also demoed **Orbital
+  Trace**, a real-time 3D
+  tracker of about 19,000
+  satellites and debris. A
+  secondary roundup cites a
+  modified MIT-style licence
+  with hosting-as-a-service
+  restrictions; that licence
+  detail is not first-party in
+  the digest (@MistralAI, ARA
+  daily digest 2026-11-04).
+
 ## Open questions
 
-- **Do the open weights actually
-  ship this month**, and under what
-  license? The preview is live; the
-  inspectable artifact is not.
+- **What is the exact licence
+  name?** The inspectable
+  artifact is out; the
+  hosting-restriction claim is
+  still secondary.
 - **Do independent evals hold the
   CyberGym / DeepSWE / Cybench
-  numbers** once a third party can
-  run the final checkpoint?
+  numbers** on the final
+  checkpoint?
 - **Does "best open-weights from
   the US or Europe" remain the
   useful comparison**, or does

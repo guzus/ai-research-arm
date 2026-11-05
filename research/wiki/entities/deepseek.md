@@ -4,10 +4,12 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng", DeepInfer, "deepseek-recipe"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou Chinese frontier lab; open-sourced Apache-2.0 DeepInfer for V4.1-Flash on NVIDIA and Ascend a day after a DHS FASCSA purge of DeepSeek products and derivatives.
+description: Hangzhou Chinese frontier lab; a second relay now says V5 may pretrain on 160k+ Huawei Ascend 950DT at Ulanqab, contradicting the earlier inference-only split.
 created_at: 2026-06-04
-timestamp: 2026-10-21T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
+  - {title: "ARA model ticket — DeepSeek Huawei Ascend 950DT", path: research/models/tickets/deepseek-huawei-ascend-950dt-2026-09.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA model ticket — DeepInfer open source", path: research/models/tickets/deepseek-deepinfer-open-source-2026-10.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
@@ -525,6 +527,29 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   [[agentic-ai-security]] (The
   Decoder, Twitter; ARA daily
   digest 2026-10-21).
+
+## Second Ascend report contradicts the inference-only split (2026-11-04)
+
+- **A relay citing TrendForce and
+  The Information says DeepSeek
+  plans to pre-train V5 mainly on
+  160,000+ Huawei Ascend 950DT
+  chips at Ulanqab, Inner
+  Mongolia**, possibly from late
+  2026, with V5 in 2027. That
+  corroborates the chip count and
+  site this page logged on
+  2026-09-05 as an inference-only
+  order, and **contradicts the
+  "training stays on NVIDIA"
+  clause**. Neither DeepSeek nor
+  Huawei has confirmed. The
+  outlet attribution is from the
+  relay, not the outlets' own
+  posts. See [[ai-capex]]
+  (model ticket
+  `deepseek-huawei-ascend-950dt-2026-09`;
+  ARA daily digest 2026-11-04).
 
 ## Open questions
 
