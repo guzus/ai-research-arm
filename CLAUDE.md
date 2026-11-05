@@ -413,6 +413,13 @@ new paid model batches from the weekly loop's deterministic-check budget.
 
 ## Backends
 
+**Office Chubby is an opt-in Messages gateway.** The strict manual
+`chubby-canary.yml` verifies the existing Claude Code harness through a scoped
+`cbm_` key; scheduled routing stays unchanged until that canary and Office
+accounting pass. Setup, contract limits, and the spoken-digest pilot are in
+[`docs/chubby.md`](docs/chubby.md). Never use an ordinary `chb_` key or put
+Chubby into the global fallback chain.
+
 **[`data/agent-backends.json`](data/agent-backends.json) is the single
 source of truth** for per-lane routing, route groups, the backend profile table,
 and the ordered fallback chain — edit it to re-route with no workflow change
