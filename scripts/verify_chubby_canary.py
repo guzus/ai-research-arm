@@ -14,8 +14,9 @@ def verify(objects: list[dict], model: str, source: Path, output: Path) -> None:
         raise ValueError('Expected an exact provider-qualified Chubby model')
     if source.is_symlink() or output.is_symlink() or not source.is_file() or not output.is_file():
         raise ValueError('Challenge input and output must be regular files')
-    expected = source.read_text()
-    if not expected.startswith('chubby-canary-') or output.read_text() != expected:
+    expected_bytes = source.read_bytes()
+    expected = expected_bytes.decode('utf-8')
+    if not expected.startswith('chubby-canary-') or output.read_bytes() != expected_bytes:
         raise ValueError('Canary output does not exactly match the fresh challenge')
     results = [obj for obj in objects if obj.get('type') == 'result']
     if not results or results[-1].get('is_error') is not False or results[-1].get('subtype') != 'success':

@@ -69,6 +69,11 @@ class ChubbyCanaryTest(unittest.TestCase):
         self.output.write_text('old-result\n')
         with self.assertRaises(ValueError):
             self.check()
+
+    def test_exact_copy_rejects_newline_conversion(self):
+        self.output.write_bytes(self.source.read_bytes().replace(b'\n', b'\r\n'))
+        with self.assertRaises(ValueError):
+            self.check()
         self.output.unlink()
         self.output.symlink_to(self.source)
         with self.assertRaises(ValueError):
