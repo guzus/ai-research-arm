@@ -52,6 +52,68 @@ def observations():
     return {p.name: observe_workflow(p) for p in workflow_files()}
 
 
+class DeterministicFallbackAttribution(unittest.TestCase):
+    def agent(self, lane, step_id=None, action="agent-run"):
+        step = {"uses": f"./.github/actions/{action}", "with": {"lane": lane}}
+        if step_id:
+            step["id"] = step_id
+        return step
+
+    def fallback(self, condition="steps.floor.outputs.ok != 'true'"):
+        return {"if": condition, "run": "python scripts/deterministic_daily_digest.py"}
+
+    def render(self, jobs):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "fixture.yml"
+            path.write_text(yaml.safe_dump({"jobs": jobs}), encoding="utf-8")
+            obs = observe_workflow(path)
+        lane_names = {step.lane for step in obs.agent_run + obs.dispatch_steps}
+        lanes = {name: {"workflow": "fixture.yml", "harness": "agent-run",
+                        "backend": "claude"} for name in lane_names}
+        rows = build_rows(lanes, {"fixture.yml": obs}, load_profiles(),
+                          "claude-opus-5-5", "claude", ["claude"], routes={})
+        return {row[0]: row[-1] for row in rows}
+
+    def test_fallback_only_covers_preceding_lanes_in_its_job(self):
+        rows = self.render({
+            "a": {"steps": [self.agent("first"),
+                             self.agent("second", action="agent-dispatch"),
+                             self.fallback(), self.agent("later")]},
+            "b": {"steps": [self.agent("other-job")]},
+        })
+        for lane in ("first", "second"):
+            self.assertIn("deterministic_daily_digest.py", rows[lane])
+        for lane in ("later", "other-job"):
+            self.assertNotIn("deterministic_daily_digest.py", rows[lane])
+
+    def test_explicit_step_condition_does_not_cover_other_preceding_lanes(self):
+        rows = self.render({"job": {"steps": [
+            self.agent("target", "target-step"), self.agent("unrelated", "other"),
+            self.fallback("steps.target-step.outcome == 'failure'"),
+        ]}})
+        self.assertIn("deterministic_daily_digest.py", rows["target"])
+        self.assertNotIn("deterministic_daily_digest.py", rows["unrelated"])
+
+    def test_step_ids_are_local_to_each_job(self):
+        rows = self.render({
+            "a": {"steps": [self.agent("first-job", "check")]},
+            "b": {"steps": [self.agent("second-job", "editor"),
+                             {"id": "check", "run": "check-output"},
+                             self.fallback("steps.check.outcome == 'failure'")]},
+        })
+        self.assertNotIn("deterministic_daily_digest.py", rows["first-job"])
+        self.assertIn("deterministic_daily_digest.py", rows["second-job"])
+
+    def test_shipped_digest_composer_does_not_back_up_audio(self):
+        lanes, fallback = load_lanes()
+        rows = build_rows(lanes, observations(), load_profiles(),
+                          fallback["native_model"], "claude", fallback["chain"])
+        rendered = {row[0]: row[-1] for row in rows}
+        for lane in ("digest-synthesis", "digest-synthesis-fallback"):
+            self.assertIn("deterministic_daily_digest.py", rendered[lane])
+        self.assertNotIn("deterministic_daily_digest.py", rendered["digest-audio-script"])
+
+
 class RoutingInvariants(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -79,31 +141,33 @@ class RoutingInvariants(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "isolated_workspace"):
                 resolve_route(config, lane)
 
-    def test_editorial_routes_temporarily_use_isolated_claude(self):
-        """Cursor's weekly limit and OpenCode Go's plan are both exhausted."""
+    def test_editorial_routes_use_verified_isolated_backends(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
         for route in ("research-editorial", "research-editorial-secondary",
                       "generative-translation", "aradio"):
-            self.assertEqual("claude-sonnet-5p5-isolated", config["routes"][route]["backend"])
             self.assertEqual("none", config["routes"][route]["fallback"])
-        for lane in ("rss", "bluesky", "community", "arxiv", "wiki-ingest",
-                     "generative-research-ko"):
+            lane = next(key for key, value in config["lanes"].items()
+                        if value.get("route") == route)
             selected = resolve_route(config, lane)
-            self.assertEqual("claude-container", selected.adapter, lane)
-            self.assertEqual("claude/claude-sonnet-5-5", selected.model_ref, lane)
-            self.assertEqual("claude-code-oauth-token", selected.credential, lane)
-        # Pointing a route back is an SSOT-only edit: the profiles stay registered.
-        for backend in ("cursor-grok-4p6-fast", "opencode-glm-5p3-flash",
-                        "opencode-deepseek-v4-flash"):
-            self.assertIn(backend, config["backends"])
+            self.assertTrue(selected.strict)
+            self.assertTrue(config["adapters"][selected.adapter]["isolated_workspace"])
+            self.assertTrue(config["adapters"][selected.adapter]["editorial_contract"])
+        for lane in ("rss", "community", "bluesky", "arxiv", "wiki-ingest",
+                     "generative-research-ko", "aradio"):
+            selected = resolve_route(config, lane)
+            self.assertEqual("cursor", selected.adapter, lane)
+            self.assertEqual("cursor/cursor-grok-4.6-high-fast", selected.model_ref, lane)
+            self.assertEqual("cursor-api-key", selected.credential, lane)
+        # Standby profiles stay compatible, independent of today's routing.
+        for backend in ("claude-sonnet-5p5-isolated", "cursor-grok-4p6-fast",
+                        "opencode-glm-5p3-flash", "opencode-deepseek-v4-flash"):
             for route in ("research-editorial", "research-editorial-secondary",
-                          "generative-translation"):
+                          "generative-translation", "aradio"):
                 repointed = copy.deepcopy(config)
                 repointed["routes"][route]["backend"] = backend
-                lane = next(key for key, lane in config["lanes"].items()
-                            if lane.get("route") == route)
-                self.assertNotEqual("claude-container",
-                                    resolve_route(repointed, lane).adapter)
+                lane = next(key for key, value in config["lanes"].items()
+                            if value.get("route") == route)
+                self.assertEqual(backend, resolve_route(repointed, lane).backend)
 
     def test_synthetic_opencode_profile_needs_only_profile_and_route_data(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
@@ -772,8 +836,9 @@ class RoutingInvariants(unittest.TestCase):
                             result = admitted("Glob", {"pattern": "*", "path": match.group(2)})
                             self.assertEqual(0, result.returncode, f"{lane}: {result.stderr}")
 
-    def test_aradio_routes_to_isolated_claude(self):
+    def test_isolated_claude_remains_compatible_with_aradio(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+        config["routes"]["aradio"]["backend"] = "claude-sonnet-5p5-isolated"
         selected = resolve_route(config, "aradio")
         self.assertEqual("claude-container", selected.adapter)
         self.assertEqual("claude-sonnet-5p5-isolated", selected.backend)
@@ -793,6 +858,7 @@ class RoutingInvariants(unittest.TestCase):
     def test_claude_container_route_validation_fails_closed(self):
         def broken(mutate):
             config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
+            config["routes"]["aradio"]["backend"] = "claude-sonnet-5p5-isolated"
             mutate(config)
             return config
 

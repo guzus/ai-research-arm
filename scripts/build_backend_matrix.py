@@ -317,7 +317,8 @@ class Observation:
     resolver_lanes: set[str] = field(default_factory=set)
     det_by_lane: dict[str, str] = field(default_factory=dict)
     det_by_tier: dict[str, str] = field(default_factory=dict)
-    det_job_wide: list[str] = field(default_factory=list)
+    # Unqualified fallbacks can only cover earlier lanes in their own job.
+    det_job_wide: dict[str, str] = field(default_factory=dict)
     has_dispatch_fireworks_fallback: bool = False
     has_fable_dispatch: bool = False
     has_opus_dispatch: bool = False
@@ -511,9 +512,9 @@ def observe_workflow(wf_path: Path) -> Observation:
     backend_options = ((dispatch_inputs.get("backend") or {}).get("options") or [])
     obs.has_fable_dispatch = "fable-5" in backend_options
     obs.has_opus_dispatch = "opus-5-5" in backend_options
-    step_id_to_lane: dict[str, str] = {}
-
     for job in (wf.get("jobs") or {}).values():
+        step_id_to_lane: dict[str, str] = {}
+        preceding_lanes: set[str] = set()
         for step in job.get("steps", []) or []:
             uses = str(step.get("uses", ""))
             with_block = step.get("with") or {}
@@ -547,14 +548,17 @@ def observe_workflow(wf_path: Path) -> Observation:
                         obs.det_by_lane.setdefault(lane, script)
                     elif tier:
                         obs.det_by_tier.setdefault(tier, script)
-                    elif script not in obs.det_job_wide:
-                        obs.det_job_wide.append(script)
+                    else:
+                        for preceding_lane in preceding_lanes:
+                            obs.det_job_wide.setdefault(preceding_lane, script)
 
             if uses == "./.github/actions/agent-dispatch":
                 secrets = {k: first_secret(with_block.get(k))
                            for k in REQUIRED_DISPATCH_SECRETS}
                 step_id = str(step.get("id", "")).strip()
                 lane = str(with_block.get("lane", "")).strip()
+                if lane:
+                    preceding_lanes.add(lane)
                 if step_id and lane:
                     step_id_to_lane[step_id] = lane
                 obs.dispatch_steps.append(DispatchStep(
@@ -573,6 +577,8 @@ def observe_workflow(wf_path: Path) -> Observation:
                 secrets = {k: first_secret(with_block.get(k)) for k in AGENT_RUN_SECRET_INPUTS}
                 step_id = str(step.get("id", "")).strip()
                 lane = str(with_block.get("lane", "")).strip()
+                if lane:
+                    preceding_lanes.add(lane)
                 if step_id and lane:
                     step_id_to_lane[step_id] = lane
                 obs.agent_run.append(AgentRunStep(
@@ -1114,8 +1120,8 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
         script = obs.det_by_lane.get(lane_key)
         if script is None and tier:
             script = obs.det_by_tier.get(tier)
-        if script is None and obs.det_job_wide:
-            script = obs.det_job_wide[0]
+        if script is None:
+            script = obs.det_job_wide.get(lane_key)
         return f"; then `{script}`" if script else ""
 
     def render_chain(requested: str, effective_chain: list[str] | None = None) -> str:

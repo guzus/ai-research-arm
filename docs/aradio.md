@@ -14,7 +14,7 @@ and investors say things that never become a tweet or a headline.
 | Podcast feed | `ara.guzus.xyz/aradio/feed.xml` (built at deploy, see "Dashboard") |
 | Producer | `.github/workflows/aradio.yml` (whenever an input lane finishes, plus an hourly `:50` backstop; see "Triggers") |
 | Source lane it adds | `.github/workflows/podcasts.yml` (every 2 h, `:41`) → `research/podcasts/` |
-| Editor | `agent-dispatch`, dedicated route `aradio` (isolated adapter; since 2026-10-31 the isolated Claude Code container on `claude-sonnet-5-5` under `.github/claude/aradio.json`: read the staged inbox, write the one ops file, nothing else) |
+| Editor | `agent-dispatch`, dedicated route `aradio` (isolated adapter; since 2026-11-05 Cursor Grok 4.6 Fast under `.github/cursor/aradio.json`: read the staged inbox, write the one ops file, nothing else) |
 | Voice | Gemini 3.8 Flash TTS → `s3://…/audio/aradio/<id>.mp3` |
 
 ## How it differs from the daily broadcast

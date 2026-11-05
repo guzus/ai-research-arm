@@ -22,13 +22,13 @@ short pointer plus the few genuinely agent-specific notes.
   directly or, for RSS, community, arXiv, Bluesky, wiki, Korean translation,
   and Aradio, the trusted `.github/actions/agent-dispatch`.
   RSS/community/Bluesky reference `research-editorial`; arXiv/wiki reference
-  `research-editorial-secondary`. Since 2026-10-31 every strict route selects
-  the isolated Claude Code adapter (`claude-sonnet-5p5-isolated`) because the
-  OpenCode Go monthly plan and Cursor's weekly usage limit are both exhausted;
-  each workflow passes its lane's `.github/claude/<lane>.json` policy as
-  `claude-config`. Host-checkout `agent-run` is deliberately
-  capability-incompatible and rejected. Every editorial lane now shares the
-  one `CLAUDE_CODE_OAUTH_TOKEN` failure domain (CLAUDE.md rule 14). Direct
+  `research-editorial-secondary`. Since 2026-11-05 all strict routes use Cursor Grok 4.6
+  Fast after canary `41962718497` passed. Claude executions hit a weekly-limit HTTP 429
+  before doing work; OpenCode canary `41962723359` failed before its GLM probe, so
+  OpenCode recovery remains unverified. All strict routes temporarily share Cursor.
+  Restore `research-editorial` to `opencode-glm-5p3-flash` only after its registered
+  editorial canary passes. Host-checkout `agent-run` remains
+  capability-incompatible. Direct
   Claude workflows may still use
   `anthropics/claude-code-action@v1`; when they do, pass the model via
   `claude_args`, never as a separate `model:` input:
@@ -45,8 +45,8 @@ short pointer plus the few genuinely agent-specific notes.
   (action repo: https://github.com/anthropics/claude-code-action)
 
 - **GLM-5.3 is the default fallback for ordinary Claude-harness lanes.** The
-  editorial dispatcher serves every strict route with the isolated Claude Code
-  adapter while OpenCode Go and Cursor are both exhausted. Known
+  editorial dispatcher serves every strict route with Cursor after its
+  2026-11-05 canary passed; Claude is currently quota-blocked. Known
   credential slots are prewired for a future isolated adapter, but the current
   host-checkout `agent-run` profiles cannot be selected by this route. `agent-run`
   probes the requested provider and walks the ordered `fallback.chain` from
@@ -113,8 +113,8 @@ short pointer plus the few genuinely agent-specific notes.
   there is no `opencode auth login` step and no auth-file seeding. The workflow
   resolves the route exclusively through `OPENCODE_API_KEY` (OpenCode Go subscription — sign in
   at https://opencode.ai/auth, subscribe, copy the key). The Go plan caps are
-  $12/5h, $30/week, and $60/month. It is temporarily absent from production
-  routing because the monthly cap is exhausted. Revert only after
+  $12/5h, $30/week, and $60/month. It remains absent from production
+  routing: the 2026-11-05 harness canary failed before its GLM probe. Revert only after
   `opencode-deepseek-canary.yml`'s registered editorial GLM probe succeeds:
   point only `routes.research-editorial.backend` back to
   `opencode-glm-5p3-flash`, regenerate the matrix, and redispatch
@@ -132,17 +132,17 @@ short pointer plus the few genuinely agent-specific notes.
   (`run-cursor-container`, official `agent` binary, `CURSOR_API_KEY`).
   It is selectable via SSOT / `generative-research.yml
   backend=cursor-grok-4p6-fast` / `hourly-twitter.yml
-  backend=cursor-grok-4p6-fast`. It is standby for the production editorial
-  routes and Korean translation, which ran on it until its weekly usage limit
-  ran out on 2026-10-31, and for the lane-local fallbacks of compatible local
-  digest synthesis/audio, Twitter, and no-MCP AI-news contracts. It is never
-  in the global chain.
-  Store the key with `gh secret set CURSOR_API_KEY`, then validate
-  cheaply with `cursor-cli-canary.yml` before pointing a route back.
+  backend=cursor-grok-4p6-fast`. Since 2026-11-05 it again serves all strict
+  editorial routes, translation, and Aradio after canary `41962718497` passed.
+  It also remains the lane-local standby for compatible digest, Twitter, and
+  no-MCP AI-news contracts, never a member of the global fallback chain.
+  Validate future changes with `cursor-cli-canary.yml`.
 
 - **Isolated Claude Code** (`run-claude-container`: pinned Claude Code
   2.1.285, `claude-sonnet-5-5`, `CLAUDE_CODE_OAUTH_TOKEN` handed over on a
-  descriptor) serves every strict route since 2026-10-31. A lane policy
+  descriptor) served every strict route from 2026-10-31 until the
+  2026-11-05 Cursor recovery. It remains registered as standby while Claude
+  is quota-blocked. A lane policy
   `.github/claude/<lane>.json` may only use the closed grammar in
   `scripts/copy_claude_settings.py` (Read/Edit paths, Glob, exact git
   add/commit, one fixed curl prefix, named uv scripts), and a PreToolUse

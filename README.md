@@ -176,7 +176,7 @@ flowchart LR
     end
     lanes0 -->|"claude-opus-5-5"| ANT
     strict0 -->|"claude-opus-5-5"| ANT
-    strict1 -->|"claude-sonnet-5-5"| ANT
+    strict1 -->|"cursor-grok-4.6-high-fast"| CUR
     strict2 -->|"deepseek-v4-flash"| FW
     strict3 -->|"glm-5.3"| ZAI
     gendef -->|"claude-opus-5-5"| ANT
@@ -282,8 +282,8 @@ native Claude Opus 5.5; explicit selectors also expose Codex, OpenCode DeepSeek
 and Meta Muse Spark 1.3 Contributor, Cursor, and Fireworks routes. Muse is
 region-limited and requires explicit consent to Contributor model-improvement
 data collection, so it is not a production editorial default. Separately, the five scheduled editorial lanes
-and the Korean translation currently run on the isolated Claude Code adapter while the
-OpenCode Go monthly plan and Cursor's weekly usage limit are exhausted
+and Korean translation currently run on Cursor after its 2026-11-05 canary
+passed; Claude is quota-blocked and OpenCode harness recovery is unverified
 ([details](docs/generative-research-backends.md)).
 
 **3. Tweet → verified article.** Give it just a tweet URL — it reads the
@@ -380,12 +380,12 @@ settings and service overrides. None are needed for the
 
 | Secret | Required for | Description |
 |--------|--------------|-------------|
-| `CLAUDE_CODE_OAUTH_TOKEN` | native-Claude lanes, fallback path, the isolated Claude Code routes | Claude Code auth. Since 2026-10-31 it backs every strict isolated route (editorial lanes, translation, Aradio) through the isolated container adapter; host-checkout agent-run stays incompatible with the editorial dispatcher |
+| `CLAUDE_CODE_OAUTH_TOKEN` | native-Claude lanes, fallback path, the isolated Claude Code routes | Claude Code auth. The isolated container adapter remains a standby after the 2026-11-05 Cursor recovery; host-checkout agent-run stays incompatible with the editorial dispatcher |
 | `FIREWORKS_API_KEY` | Fireworks generative and comparison routes | Anthropic-compatible Fireworks endpoint for explicit model routes and comparison lanes |
 | `ZAI_API_KEY` | Z.ai GLM 5.3 lanes and fallback chain | Z.ai Coding Plan key; current second provider in the global fallback chain and used by Z.ai canaries/comparison lanes |
 | `CODEX_AUTH_JSON` | `generative-research backend=codex` | file-backed ChatGPT Codex auth from `codex login`; treat like a password |
-| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. Its monthly plan is exhausted, so no production route uses it; RSS, community, and Bluesky return to its strict `glm-5.3-flash` route once the OpenCode canary passes. The OpenCode canary validates both direct DeepSeek and the dynamically resolved primary editorial route. |
-| `CURSOR_API_KEY` | Cursor CLI profiles, direct comparison/canary paths, dispatcher route plumbing | Cursor dashboard API key. Prewired so an SSOT-only switch to `cursor-grok-4p6-fast` needs no workflow edit. Its weekly usage limit ran out on 2026-10-31; a route can point back to it once `cursor-cli-canary.yml` passes. |
+| `OPENCODE_API_KEY` | OpenCode profiles, direct comparison/canary paths, dispatcher route plumbing | OpenCode Go key. Its 2026-11-05 harness canary failed before the GLM probe, so no production route uses it; RSS, community, and Bluesky return to its strict `glm-5.3-flash` route once the OpenCode canary passes. The OpenCode canary validates both direct DeepSeek and the dynamically resolved primary editorial route. |
+| `CURSOR_API_KEY` | Cursor CLI profiles, direct comparison/canary paths, dispatcher route plumbing | Cursor dashboard API key. Prewired so an SSOT-only switch to `cursor-grok-4p6-fast` needs no workflow edit. Canary `41962718497` passed on 2026-11-05; it again serves every strict isolated route. |
 | `BIRD_AUTH_TOKEN` / `BIRD_CT0` | Twitter/X lanes | X cookies (read-only use; expire often) |
 | `BIRDY_ACCOUNTS` | alternative to cookie pair | multi-account rotation JSON; every account forced read-only |
 | `GEMINI_API_KEY` | digest/article audio | price-performant TTS |
