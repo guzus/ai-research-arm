@@ -1,9 +1,68 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-05T02:43:00Z",
+  "updated_at": "2026-11-05T12:42:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "no-priors:yULk8eNa2mg",
+      "show_id": "no-priors",
+      "show": "No Priors",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "Tokenization, Agentic Trading, Harmonic: Robinhood's Mission to Expand Ownership with CEO Vlad Tenev",
+      "url": "https://www.youtube.com/watch?v=yULk8eNa2mg",
+      "video_id": "yULk8eNa2mg",
+      "audio_url": null,
+      "published_at": "2026-11-05T11:12:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-05T12:42:00Z",
+      "duration_s": 3249,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7797,
+        "checked_at": "2026-11-05T12:42:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "So, Cuba...Cuban bananas, I remember, were just incredible. And then I came to the US, and here bananas were just everywhere, right? But they weren't that tasty. Um, and yes, and even after I moved, in 1997 Bulgaria had the dubious distinction of having the highest inflation rate in the world. It was something like 2000% year-on-year .",
+          "at_s": 425,
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=425s"
+        },
+        {
+          "text": "They use Lean for verification , and this industry is growing very quickly. About a year ago, Harmonic, a startup I co-founded a few years ago, set out to create a mathematical superintelligence. Last year, we created a model called Aristotle, which was one of three that won a gold medal at the International Mathematical Olympiad.",
+          "at_s": 813,
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=813s"
+        },
+        {
+          "text": "We are seeing very strong adoption: over 150,000 clients have opened agent trading accounts with us in the few months since launch. Oho. And if you look at the tool calls, they follow a smooth exponential, where the last number we announced was around 30 million tool calls per day . So agent trading is clearly a product-market fit.",
+          "at_s": 1759,
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=1759s"
+        },
+        {
+          "text": "Now, if you have an AI lab that goes public with a valuation of a trillion or two trillion, for an individual investor to make that kind of profit during the IPO , the company would have to grow to quadrillions, right? Madness. I think that's actually unlikely.",
+          "at_s": 2388,
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=2388s"
+        },
+        {
+          "text": "And then these funds are publicly traded on the New York Stock Exchange, so they trade just like stocks. So, Robinhood Ventures Fund 1 was aimed at late-stage private companies . OpenAI is in that fund. There are several more companies there, fintechs, many AI startups, Eleven Labs, Cruzo , which we recently announced.",
+          "at_s": 2574,
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=2574s"
+        },
+        {
+          "text": "For each newborn child born from January 2025 for the next 3 years, the Treasury allocates one thousand dollars in seed capital. Michael and Susan Dell, through their foundation, have added over $6 billion to children in low-income areas.",
+          "at_s": 2959,
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=2959s"
+        }
+      ],
+      "description": "Sign up for new podcasts every week. Email feedback to show@no-priors.com Chapters: Intro to Vlad Tenev, His Background, and Robinhood Today A Revolutionary Future for Mathematics Robinhood’s Vision for Tokenization Monetizing Knowledge via Prediction Markets Impacts of Agentic Trading and Democratizing Trading Safeguarding Financial Infrastructure for a New Load of HFTs Ownership of Private Companies in the AI Revolution Robinhood and Trump Accounts Keeping a Steady Hand and Head as a Leader Conclusion"
+    },
     {
       "id": "big-technology:Xnmh24WgePk",
       "show_id": "big-technology",
@@ -26,8 +85,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T02:43:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-05T12:42:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Teddy Schleifer is a New York Times reporter who covers billionaires and their influence on politics. Schleifer joins Big Technology Podcast to discuss what the Democrats’ midterm sweep means for the AI buildout. Tune in to hear why voters are turning against data centers and how much a Democratic Congress can do to slow their construction with Trump still in the White House. We also cover the prospect of tech CEOs facing subpoenas, what the election means for Elon Musk,"
@@ -54,8 +113,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T02:43:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-05T12:42:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "How do organizations decide what AI should do, where to set boundaries, and when to keep humans in control? In this episode, Don Barger of the International Mission Board shares how establishing an AI charter helped define what the organization would and wouldn't use AI for. Mark Lay of Noblis explores four key decisions for managing AI across an organization, from delegation and accountability to technical debt. And Darren Taillie of Aerocore Technologies walks through how his team uses AI"
@@ -141,8 +200,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T02:43:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-05T12:42:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Martin Casado, General Partner at Andreessen Horowitz (a16z), joins Patrick to explore why AI represents an industrial revolution rather than another software cycle. Martin explains why traditional approaches to venture investing are increasingly outdated, what investors misunderstand about network effects and competitive moats, and how AI is forcing a complete rethink of computing infrastructure. They discuss the intense competition between frontier models, the risks facing companies like Anthropic and OpenAI, and why AI could finally deliver on decades of technological"
@@ -168,8 +227,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T02:43:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-05T12:42:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "RSI is the three-letter acronym on everyone’s mind as AI models edge closer to self-improvement. NLW connects Elon Musk’s warning about the cost of GrokBot, a new MIT paper on one model editing another model’s weights, and Anthropic’s updated S1 language on recursive self-improvement. Debates over personal agent economics, ending subsidies, and what RSI means for adoption tie every story together. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -432,8 +491,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T02:43:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-05T12:42:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "AI is increasingly shaping how people work, learn, communicate, and make decisions, yet systems that work well in one context may not translate effectively to another. In this talk, Liz will introduce ATLAS, a practical playbook informed by ethnographic and participatory research across agriculture, small business, health, and workplace settings. Drawing on examples of how communities interact with and evaluate AI, she will discuss how teams can identify cultural assumptions throughout the AI lifecycle and use community knowledge to inform"
