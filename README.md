@@ -378,6 +378,11 @@ which is gitignored) — see [`.env.example`](.env.example) for the common local
 settings and service overrides. None are needed for the
 [Quickstart](#quickstart-no-accounts-needed).
 
+The optional [Office Chubby setup](docs/chubby.md) uses a project-scoped key
+stored in Office session Secrets. It is provisioned for manual direct inference;
+existing scheduled workflows still use their configured providers.
+
+
 | Secret | Required for | Description |
 |--------|--------------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | native-Claude lanes, fallback path, the isolated Claude Code routes | Claude Code auth. The isolated container adapter remains a standby after the 2026-11-05 Cursor recovery; host-checkout agent-run stays incompatible with the editorial dispatcher |
