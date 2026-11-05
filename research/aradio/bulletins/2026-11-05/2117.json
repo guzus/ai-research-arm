@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "id": "2026-11-05-2117",
+  "aired_at": "2026-11-05T21:17:00Z",
+  "headline": "20VC hosts say OpenAI marked down to $1.25T from $1.4T; CoreWeave debt paying 15%",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's twenty past nine UTC on Thursday, November fifth. This is ARA AI News, and the funding picture just shifted."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On twenty VC, the hosts said OpenAI's latest fundraise priced at one point two five trillion dollars, down from one point four trillion."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is a one hundred and fifty billion dollar haircut on the private mark, the first real markdown we have heard on a frontier lab this week. They sat it next to what they called wobbliness in the debt markets."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They walked Anthropic's reported quarterly revenue as about five billion in the first quarter, eleven billion in the second, and seventeen billion in the third, and argued sequential growth is decelerating. The public filing still points at a possible November Nasdaq debut near one and a half to two trillion."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "We do not have an OpenAI filing that confirms that one point two five trillion dollar price. It is what the twenty VC hosts said on the show, not a number the company has put in a document we hold."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Same episode, the hosts said CoreWeave debt is paying fifteen percent. They treated Alphabet's drop of about twelve percent this week as price discovery rather than a one-off scare."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Chip demand is still there, and AMD, Arm, and Super Micro all just printed strong AI hardware quarters. The stress they are pointing at is the financing, with fifteen percent yields on CoreWeave's debt and a rumored seven billion dollar Oracle Tencent lease the Financial Times says was scrapped."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Agents inside companies moved too. On Andreessen Horowitz, a guest introduced as Figma's chief financial officer said finance teams are becoming builders, automating collections and deal diligence so they can spend time on customers and strategy."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That guest also said about ninety percent of the internal tools and agents they stand up later fall out of use, and argued you should not delegate your thinking to the model."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That sits beside the Robinhood figures from the last bulletin, still waiting on a filing: more than one hundred and fifty thousand agent-trading accounts and about thirty million tool calls a day."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "What to watch is confirmation: whether OpenAI or a round document repeats the one point two five trillion dollar mark, Anthropic's roadshow and price range, and whether CoreWeave's fifteen percent debt shows up in a prospectus. Those are the next facts that would turn a podcast discussion into a filing."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's twenty past nine UTC on Thursday, November fifth. This is ARA AI News, and the funding picture just shifted.",
+    "Speaker 2: [high_energy] On twenty VC, the hosts said OpenAI's latest fundraise priced at [emphasis]one point two five trillion dollars[/emphasis], down from one point four trillion.",
+    "Speaker 1: That is a one hundred and fifty billion dollar haircut on the private mark, the first real markdown we have heard on a frontier lab this week. They sat it next to what they called wobbliness in the debt markets.",
+    "Speaker 2: They walked Anthropic's reported quarterly revenue as about five billion in the first quarter, eleven billion in the second, and seventeen billion in the third, and argued sequential growth is decelerating. The public filing still points at a possible November Nasdaq debut near one and a half to two trillion.",
+    "Speaker 1: We do not have an OpenAI filing that confirms that one point two five trillion dollar price. It is what the twenty VC hosts said on the show, not a number the company has put in a document we hold.",
+    "Speaker 2: [transition] Same episode, the hosts said CoreWeave debt is paying [emphasis]fifteen percent[/emphasis]. They treated Alphabet's drop of about twelve percent this week as price discovery rather than a one-off scare.",
+    "Speaker 1: Chip demand is still there, and AMD, Arm, and Super Micro all just printed strong AI hardware quarters. The stress they are pointing at is the financing, with fifteen percent yields on CoreWeave's debt and a rumored seven billion dollar Oracle Tencent lease the Financial Times says was scrapped.",
+    "Speaker 2: [transition] Agents inside companies moved too. On Andreessen Horowitz, a guest introduced as Figma's chief financial officer said finance teams are becoming builders, automating collections and deal diligence so they can spend time on customers and strategy.",
+    "Speaker 1: That guest also said about [emphasis]ninety percent[/emphasis] of the internal tools and agents they stand up later fall out of use, and argued you should not delegate your thinking to the model.",
+    "Speaker 2: That sits beside the Robinhood figures from the last bulletin, still waiting on a filing: more than one hundred and fifty thousand agent-trading accounts and about thirty million tool calls a day.",
+    "Speaker 1: What to watch is confirmation: whether OpenAI or a round document repeats the one point two five trillion dollar mark, Anthropic's roadshow and price range, and whether CoreWeave's fifteen percent debt shows up in a prospectus. Those are the next facts that would turn a podcast discussion into a filing.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "anthropic-ipo-and-ai-funding",
+    "hyperscaler-capex-and-chip-selloff",
+    "ai-agents-in-finance-and-law"
+  ],
+  "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-agents-in-finance-and-law",
+      "title": "AI agents move into finance and legal work",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ",
+      "kind": "podcast",
+      "label": "20VC"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=492s",
+      "kind": "podcast",
+      "label": "20VC (Anthropic GAAP quarters)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=298s",
+      "kind": "podcast",
+      "label": "20VC (Alphabet price discovery)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc",
+      "kind": "podcast",
+      "label": "a16z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc&t=1228s",
+      "kind": "podcast",
+      "label": "a16z (internal tools falling out of use)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    },
+    {
+      "op": "update",
+      "slug": "ai-agents-in-finance-and-law"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-05-2117.mp3",
+    "bytes": 900237,
+    "duration_s": 149.9,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 58.44,
+        "lines": [
+          0,
+          4
+        ]
+      },
+      {
+        "start_s": 59.89,
+        "end_s": 87.45,
+        "lines": [
+          5,
+          6
+        ]
+      },
+      {
+        "start_s": 88.9,
+        "end_s": 143.38,
+        "lines": [
+          7,
+          11
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 2,
+    "kinds": {
+      "podcast": 2
+    }
+  }
+}
