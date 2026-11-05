@@ -1,0 +1,17 @@
+Daily AI Digest - 2026-11-05
+
+TOP STORIES:
+• OpenAI pipeline found 948 Linux root exploits for $1.2M
+• Meta buys Conductor; cloud shuts Nov 20
+• Moonshot released Kimi K3.1 Pro weights (2.8T MoE)
+• Texas elected a data-center pause governor
+• Arm Q2 revenue $1.44B, up 27% YoY
+
+KEY NUMBERS:
+• 1,724 validated kernel bugs; $1,279 per LPE
+• Qualcomm: $650M DC guided Q1'27, $15B by 2029
+• Images 2.6: 4B images/week; 50% faster
+
+TRENDING: Paying off 40 years of technical debt (1,113 pts on HN)
+
+Full digest on GitHub.
