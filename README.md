@@ -381,6 +381,11 @@ which is gitignored) — see [`.env.example`](.env.example) for the common local
 settings and service overrides. None are needed for the
 [Quickstart](#quickstart-no-accounts-needed).
 
+The optional [Chubby direct-chat setup](docs/chubby-direct-chat.md) uses a
+project-scoped key in a server-side secret store. Its configuration is separate
+from the [Claude Code Messages canary](docs/chubby.md); neither changes scheduled
+workflow routing.
+
 | Secret | Required for | Description |
 |--------|--------------|-------------|
 | `CLAUDE_CODE_OAUTH_TOKEN` | native-Claude lanes, fallback path, the isolated Claude Code routes | Claude Code auth. The isolated container adapter remains a standby after the 2026-11-05 Cursor recovery; host-checkout agent-run stays incompatible with the editorial dispatcher |
