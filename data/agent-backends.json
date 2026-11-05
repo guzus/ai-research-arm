@@ -264,27 +264,27 @@
   "routes": {
     "research-editorial": {
       "contract": "research-editorial",
-      "backend": "claude-sonnet-5p5-isolated",
+      "backend": "cursor-grok-4p6-fast",
       "fallback": "none",
-      "notes": "Primary isolated editorial route for RSS, Bluesky, and community. Moved from Cursor to the isolated Claude Code adapter on 2026-10-31, while Cursor's weekly usage limit and the OpenCode Go monthly plan are both exhausted, so every scheduled editorial lane shares the CLAUDE_CODE_OAUTH_TOKEN failure domain with research-editorial-secondary and Aradio. Each lane runs under its own .github/claude/<lane>.json policy: the part of the Cursor policy its prompt uses, never more. Point it back to cursor-grok-4p6-fast after the Cursor canary passes, or to opencode-glm-5p3-flash after the OpenCode canary does. Incompatible host-checkout adapters are rejected before execution; this route is fail-closed with no cross-adapter fallback."
+      "notes": "Primary isolated editorial route for RSS, Bluesky, and community. Restored to Cursor on 2026-11-05 after canary 41962718497 passed; Claude executions dead-start with HTTP 429. OpenCode canary 41962723359 failed in its DeepSeek harness before the GLM probe, so GLM recovery remains unverified. All strict routes temporarily share Cursor; restore the primary route to opencode-glm-5p3-flash only after its registered editorial canary passes. Isolation and fail-closed output contracts remain unchanged."
     },
     "research-editorial-secondary": {
       "contract": "research-editorial",
-      "backend": "claude-sonnet-5p5-isolated",
+      "backend": "cursor-grok-4p6-fast",
       "fallback": "none",
-      "notes": "Secondary isolated editorial route for arXiv and wiki, meant as a failure domain separate from research-editorial. While Cursor and OpenCode Go are both exhausted it runs on the same isolated Claude Code backend (moved 2026-10-31), so the two routes share one failure domain until either is pointed back. It keeps the isolated_workspace + editorial_contract capability gate and fails closed rather than silently changing model provenance."
+      "notes": "Isolated editorial route for arXiv and wiki. Restored to Cursor on 2026-11-05 after canary 41962718497 passed; isolated Claude executions were dead-starting with HTTP 429. Keeps the isolated_workspace + editorial_contract capability gate and fails closed with no cross-adapter fallback."
     },
     "generative-translation": {
       "contract": "research-editorial",
-      "backend": "claude-sonnet-5p5-isolated",
+      "backend": "cursor-grok-4p6-fast",
       "fallback": "none",
-      "notes": "Dedicated isolated route for Korean generative-research translation. It is separate from scheduled editorial traffic so translation quality/cost can be rerouted independently; publication stays host-owned and the route fails closed. Since 2026-10-31, while Cursor's weekly usage limit is exhausted, the isolated Claude Code adapter writes the fixed segment JSONL under .github/claude/translation.json (read the segments, write the one draft); Cursor and OpenCode remain compatible adapters if this route is pointed back."
+      "notes": "Dedicated isolated Korean translation route, restored to Cursor on 2026-11-05 after canary 41962718497 passed and Claude hit its weekly limit. The Cursor policy permits only staged segment reads and the fixed JSONL draft; trusted host validators and the canonical writer own publication. Fails closed."
     },
     "aradio": {
       "contract": "research-editorial",
-      "backend": "claude-sonnet-5p5-isolated",
+      "backend": "cursor-grok-4p6-fast",
       "fallback": "none",
-      "notes": "Dedicated isolated route for the Aradio situation-board editor, so the hourly station can be rerouted or cost-tuned without touching the shared editorial routes. Moved from Cursor to the isolated Claude Code adapter on 2026-10-31, while Cursor's weekly usage limit is exhausted, under the .github/claude/aradio.json policy (read the staged inbox, write the one ops file). The editor returns one uncommitted .tmp/aradio/edit.json of ops; trusted host code validates it, voices it, and is the only committer. Fails closed with no cross-adapter fallback; repoint this route alone to move it back."
+      "notes": "Dedicated isolated Aradio editor route, restored to Cursor on 2026-11-05 after canary 41962718497 passed and Claude hit its weekly limit. The editor returns only .tmp/aradio/edit.json under .github/cursor/aradio.json; trusted host code validates, voices, and commits. Fails closed with no cross-adapter fallback."
     }
   },
   "fallback": {
