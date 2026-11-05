@@ -92,6 +92,7 @@ class AgentBunInstallTest(unittest.TestCase):
         self.assertEqual({step["id"] for step in callers}, {
             "run-claude", "run-claude-bots", "run-zai", "run-zai-bots", "run-fireworks",
             "run-fireworks-bots", "run-zai-fallback", "run-zai-fallback-bots",
+            "run-chubby",
         })
         for step in callers:
             self.assertLess(steps.index(setup), steps.index(step))

@@ -68,6 +68,10 @@
           "mode": "deny"
         },
         {
+          "name": "CHUBBY_API_KEY",
+          "mode": "deny"
+        },
+        {
           "name": "ZAI_API_KEY",
           "mode": "deny"
         },

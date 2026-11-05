@@ -1762,9 +1762,15 @@ exit "$FAKE_RUN_STATUS"
             {self.lanes["twitter-deepseek-pi"]["model"], self.lanes["twitter-fireworks-pi"]["model"]},
         )
 
-    def test_all_agent_run_call_sites_carry_all_provider_secrets(self):
+    def test_legacy_agent_run_call_sites_carry_provider_secrets_and_chubby_is_scoped(self):
         for obs in self.obs.values():
             for step in obs.agent_run:
+                if self.profiles[self.lanes[step.lane]["backend"]].provider == "chubby":
+                    self.assertTrue(self.lanes[step.lane]["strict"])
+                    self.assertEqual(step.secrets["chubby-api-key"], "CHUBBY_API_KEY")
+                    for name in ("claude-code-oauth-token", "fireworks-api-key", "zai-api-key"):
+                        self.assertFalse(step.secrets[name])
+                    continue
                 self.assertEqual(step.secrets["claude-code-oauth-token"], "CLAUDE_CODE_OAUTH_TOKEN", step)
                 self.assertEqual(step.secrets["fireworks-api-key"], "FIREWORKS_API_KEY", step)
                 self.assertEqual(step.secrets["zai-api-key"], "ZAI_API_KEY", step)

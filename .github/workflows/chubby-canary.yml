@@ -1,0 +1,100 @@
+name: Chubby Claude Code Canary
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: chubby-claude-code-canary
+  cancel-in-progress: false
+
+jobs:
+  canary:
+    # Exercise the actual pipeline runner's tailnet, sandbox and tool runtime.
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Configure local commit identity
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+      - name: Prepare fresh tool-roundtrip challenge
+        id: fixture
+        env:
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import hashlib
+          import os
+          import secrets
+          from pathlib import Path
+          source = Path('.tmp/chubby-canary-input.txt')
+          source.parent.mkdir(exist_ok=True)
+          source.write_text('chubby-canary-' + secrets.token_hex(32) + '\n')
+          target = Path(f'research/chubby-canary/{os.environ["RUN_ID"]}-{os.environ["RUN_ATTEMPT"]}.txt')
+          if target.exists() or target.is_symlink():
+              raise SystemExit('Refusing a pre-existing canary output')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as handle:
+              handle.write(f'source={source}\noutput={target}\n')
+              handle.write(f'source-sha256={hashlib.sha256(source.read_bytes()).hexdigest()}\n')
+          PY
+
+      - name: Run strict Chubby tool canary
+        id: agent
+        uses: ./.github/actions/agent-run
+        with:
+          lane: chubby-canary
+          chubby-api-key: ${{ secrets.CHUBBY_API_KEY }}
+          chubby-base-url: ${{ vars.CHUBBY_BASE_URL }}
+          fireworks-fallback: none
+          claude-args: >-
+            --model opus --max-turns 8 --tools Read,Write
+            --allowedTools Read,Write --disallowedTools "mcp__*"
+          expected-paths: ${{ steps.fixture.outputs.output }}
+          allowed-paths: ${{ steps.fixture.outputs.output }}
+          label: Chubby tool canary
+          prompt: |
+            This is a bounded file-tool compatibility test. Do exactly this:
+            1. Use Read to read `${{ steps.fixture.outputs.source }}`.
+            2. After receiving that tool result, use Write to copy its exact
+               contents, including its trailing newline, into
+               `${{ steps.fixture.outputs.output }}`.
+            3. Finish with the word done. The trusted host will commit the file.
+            Do not read or modify any other files. Do not use shell commands.
+
+      - name: Verify served model and completed tool roundtrip
+        env:
+          EXECUTION_FILE: ${{ steps.agent.outputs.execution-file }}
+          MODEL: ${{ steps.agent.outputs.model-id }}
+          SOURCE: ${{ steps.fixture.outputs.source }}
+          SOURCE_SHA256: ${{ steps.fixture.outputs.source-sha256 }}
+          TARGET: ${{ steps.fixture.outputs.output }}
+          EFFECTIVE_BACKEND: ${{ steps.agent.outputs.effective-backend }}
+          USED_FALLBACK: ${{ steps.agent.outputs.used-fallback }}
+        run: |
+          set -euo pipefail
+          test "$EFFECTIVE_BACKEND" = chubby-deepseek-v4p1-flash
+          test "$USED_FALLBACK" = false
+          python3 scripts/verify_chubby_canary.py \
+            --execution-file "$EXECUTION_FILE" --model "$MODEL" \
+            --source "$SOURCE" --source-sha256 "$SOURCE_SHA256" --output "$TARGET"
+          {
+            echo 'Chubby Claude Code canary passed: streamed model/tool loop and exact committed output.'
+            echo "Configured model: $MODEL"
+            echo 'Check the ARA client in Office Chubby Requests/Usage for gateway accounting.'
+            echo 'Canary output is local to this job; nothing was published.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Remove challenge input
+        if: always()
+        run: rm -f .tmp/chubby-canary-input.txt

@@ -66,6 +66,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from chubby_config import DEFAULT_BASE_URL, validate_config  # noqa: E402
 from check_fireworks_backend import extract_message, redact, request_preflight  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -208,12 +209,27 @@ def probe_cursor(model: str) -> tuple[bool, str]:
     return True, "isolated Cursor credential configured"
 
 
+def probe_chubby(model: str) -> tuple[bool, str]:
+    """Check configuration only; cbm_ keys cannot read /models or the ledger.
+
+    A configured key does not prove reachability, authorization, or inference.
+    The strict manual canary is the only runtime compatibility evidence.
+    """
+    try:
+        validate_config(os.environ.get("CHUBBY_API_KEY", ""),
+                        os.environ.get("CHUBBY_BASE_URL", DEFAULT_BASE_URL), model)
+    except ValueError as exc:
+        return False, str(exc)
+    return True, "scoped Messages configuration valid (live inference not checked)"
+
+
 PROBES = {
     "fireworks": probe_fireworks,
     "zai": probe_zai,
     "claude": probe_claude,
     "opencode-go": probe_opencode,
     "cursor": probe_cursor,
+    "chubby": probe_chubby,
 }
 
 
@@ -268,6 +284,7 @@ def main_with_args(argv: list[str] | None = None) -> int:
         return config_error(f"{args.file} has no 'backends' profile table")
 
     strict = args.fallback_policy == "none"
+    lane: dict = {}
     lane_fallback_chain: list[str] = []
     if args.backend:
         requested = normalize(args.backend, backends)
@@ -308,6 +325,11 @@ def main_with_args(argv: list[str] | None = None) -> int:
     else:
         return config_error("one of --lane or --backend is required")
 
+    # Chubby is an opt-in diagnostic, never a fallback into or out of another
+    # provider. Enforce this even for an explicit backend invocation.
+    if backends[requested].get("provider") == "chubby":
+        strict = True
+
     # An explicit lane chain is an OVERRIDE, not a prefix. Compatibility was
     # proven for that lane's prompt/input/output boundary only; silently
     # continuing into the host-checkout global chain after it fails would
@@ -339,12 +361,23 @@ def main_with_args(argv: list[str] | None = None) -> int:
             ):
                 return config_error(f"backend '{key}' has invalid restrictions metadata")
             active = sorted(name for name, enabled in restrictions.items() if enabled)
-            if spec.get("production_eligible") is not True or active:
+            diagnostic = (key == requested and not active
+                          and spec.get("provider") == "chubby"
+                          and os.environ.get("GITHUB_EVENT_NAME", "workflow_dispatch") == "workflow_dispatch"
+                          and lane.get("manual_only") is True
+                          and lane.get("strict") is True and lane.get("pinned") is True
+                          and lane.get("pinned_provider") == spec.get("provider")
+                          and not lane_fallback_chain)
+            if (spec.get("production_eligible") is not True or active) and not diagnostic:
                 detail = f"; active restrictions: {', '.join(active)}" if active else ""
                 return config_error(
                     f"automated lane '{args.lane}' cannot select backend '{key}': "
                     f"not production-eligible{detail}"
                 )
+
+    if any(backends[key].get("provider") == "chubby" and key != requested
+           for key in candidates):
+        return config_error("Chubby cannot be selected from a fallback chain")
 
     isolated_candidates = {
         normalize(selector, backends) for selector in lane_fallback_chain

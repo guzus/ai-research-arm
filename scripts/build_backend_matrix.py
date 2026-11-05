@@ -176,6 +176,7 @@ REQUIRED_AGENT_RUN_SECRETS = {
     "zai-api-key": "ZAI_API_KEY",
 }
 OPTIONAL_AGENT_RUN_SECRETS = {
+    "chubby-api-key": "CHUBBY_API_KEY",
     "opencode-api-key": "OPENCODE_API_KEY",
     "cursor-api-key": "CURSOR_API_KEY",
 }
@@ -300,6 +301,7 @@ class NativeStep:
 
 @dataclass
 class Observation:
+    events: set[str] = field(default_factory=set)
     dispatch_steps: list[DispatchStep] = field(default_factory=list)
     agent_run: list[AgentRunStep] = field(default_factory=list)
     pi: list[PiStep] = field(default_factory=list)
@@ -449,6 +451,8 @@ def check_fallback(fallback: dict, profiles: dict[str, Profile]) -> list[str]:
         if profile is None:
             errors.append(f"fallback.chain entry '{entry}' is not in the backends table")
             continue
+        if profile.provider == "chubby":
+            errors.append(f"fallback.chain entry '{entry}': Chubby cannot be a fallback backend")
         if profile.adapter != "agent-run":
             errors.append(f"fallback.chain entry '{entry}' uses adapter "
                           f"'{profile.adapter}', but fallback executes inside agent-run")
@@ -507,6 +511,7 @@ def observe_workflow(wf_path: Path) -> Observation:
     wf = load_yaml(wf_path)
     obs = Observation()
     on_block = wf.get("on") or wf.get(True) or {}
+    obs.events = set(on_block)
     dispatch_inputs = ((on_block.get("workflow_dispatch") or {}).get("inputs") or {})
     obs.has_dispatch_fireworks_fallback = "fireworks_fallback" in dispatch_inputs
     backend_options = ((dispatch_inputs.get("backend") or {}).get("options") or [])
@@ -864,6 +869,28 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
                                   f"'{pinned_provider}' but backend '{backend}' resolves to "
                                   f"'{profiles[backend].provider}' — re-routing a pinned lane "
                                   "requires deliberately updating pinned_provider too")
+            profile = profiles.get(backend)
+            diagnostic = (lane.get("manual_only") is True and lane.get("strict") is True
+                          and lane.get("pinned") is True
+                          and profile is not None and not profile.production_restrictions
+                          and profile.provider == "chubby"
+                          and lane.get("pinned_provider") == "chubby"
+                          and not lane.get("fallback_chain")
+                          and obs.events == {"workflow_dispatch"})
+            if lane.get("manual_only") and not diagnostic:
+                errors.append(f"lane '{step.lane}': manual_only requires a pinned strict "
+                              "Chubby diagnostic in a workflow_dispatch-only workflow")
+            if profile and not diagnostic and (not profile.production_eligible
+                                               or profile.production_restrictions):
+                errors.append(f"lane '{step.lane}': primary backend '{backend}' "
+                              "is not production-eligible")
+            if profile and profile.provider == "chubby":
+                if lane.get("strict") is not True:
+                    errors.append(f"lane '{step.lane}': Chubby must be strict")
+                if step.secrets.get("chubby-api-key") != "CHUBBY_API_KEY":
+                    errors.append(f"{label}: Chubby requires chubby-api-key: secrets.CHUBBY_API_KEY")
+            elif step.secrets.get("chubby-api-key"):
+                errors.append(f"{label}: Chubby credential must not be passed to unrelated lanes")
             lane_tier = str(lane.get("tier", ""))
             if lane_tier and lane_tier != step.tier:
                 errors.append(f"{label}: lane '{step.lane}' declares tier '{lane_tier}' but "
@@ -885,6 +912,8 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
                     errors.append(f"lane '{step.lane}': fallback_chain entry '{candidate}' "
                                   "is not in the backends table")
                     continue
+                if candidate_profile.provider == "chubby":
+                    errors.append(f"lane '{step.lane}': Chubby cannot be a fallback backend")
                 if candidate_profile.normalized in seen_lane_fallbacks:
                     errors.append(f"lane '{step.lane}': fallback_chain entry '{candidate}' "
                                   "duplicates an earlier candidate")
@@ -929,8 +958,14 @@ def cross_check(lanes: dict[str, dict], observations: dict[str, Observation],
             elif fallback_mode is not None:
                 errors.append(f"lane '{step.lane}': fallback_mode is only valid with a "
                               "Cursor fallback_chain entry")
+            chubby_only = (profile is not None and profile.provider == "chubby"
+                           and lane.get("strict") is True and not lane_chain)
             for input_name, expected in REQUIRED_AGENT_RUN_SECRETS.items():
-                if step.secrets.get(input_name) != expected:
+                if chubby_only:
+                    if step.secrets.get(input_name):
+                        errors.append(f"{label}: strict Chubby lanes must not receive "
+                                      f"unrelated credential {input_name}")
+                elif step.secrets.get(input_name) != expected:
                     errors.append(f"{label}: must pass {input_name}: secrets.{expected} — "
                                   "every agent-run call site carries all provider keys so a "
                                   "data/agent-backends.json flip re-routes without workflow edits")
@@ -1136,7 +1171,7 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
                 parts.append(f"`{profile.normalized}`")
         return "chain: " + " → ".join(parts) if parts else "hard fail (chain exhausted)"
 
-    TOKEN_BY_PROVIDER = {"fireworks": "FIREWORKS_API_KEY", "zai": "ZAI_API_KEY",
+    TOKEN_BY_PROVIDER = {"chubby": "CHUBBY_API_KEY", "fireworks": "FIREWORKS_API_KEY", "zai": "ZAI_API_KEY",
                          "claude": "CLAUDE_CODE_OAUTH_TOKEN",
                          "opencode-go": "OPENCODE_API_KEY",
                          "cursor": "CURSOR_API_KEY"}
@@ -1357,6 +1392,7 @@ def build_rows(lanes: dict[str, dict], observations: dict[str, Observation],
 
 PROVIDER_NODES = {
     "fireworks": ("FW", "🎆 Fireworks"),
+    "chubby": ("CHUB", "Office Chubby<br/><i>Messages · manual canary</i>"),
     "zai": ("ZAI", "⚡ Z.ai"),
     "claude": ("ANT", "🅰️ Anthropic<br/><i>native Claude</i>"),
     "opencode-go": ("OC", "🚀 OpenCode Go<br/><i>opencode CLI</i>"),
