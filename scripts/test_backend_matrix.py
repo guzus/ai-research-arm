@@ -52,6 +52,68 @@ def observations():
     return {p.name: observe_workflow(p) for p in workflow_files()}
 
 
+class DeterministicFallbackAttribution(unittest.TestCase):
+    def agent(self, lane, step_id=None, action="agent-run"):
+        step = {"uses": f"./.github/actions/{action}", "with": {"lane": lane}}
+        if step_id:
+            step["id"] = step_id
+        return step
+
+    def fallback(self, condition="steps.floor.outputs.ok != 'true'"):
+        return {"if": condition, "run": "python scripts/deterministic_daily_digest.py"}
+
+    def render(self, jobs):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "fixture.yml"
+            path.write_text(yaml.safe_dump({"jobs": jobs}), encoding="utf-8")
+            obs = observe_workflow(path)
+        lane_names = {step.lane for step in obs.agent_run + obs.dispatch_steps}
+        lanes = {name: {"workflow": "fixture.yml", "harness": "agent-run",
+                        "backend": "claude"} for name in lane_names}
+        rows = build_rows(lanes, {"fixture.yml": obs}, load_profiles(),
+                          "claude-opus-5-5", "claude", ["claude"], routes={})
+        return {row[0]: row[-1] for row in rows}
+
+    def test_fallback_only_covers_preceding_lanes_in_its_job(self):
+        rows = self.render({
+            "a": {"steps": [self.agent("first"),
+                             self.agent("second", action="agent-dispatch"),
+                             self.fallback(), self.agent("later")]},
+            "b": {"steps": [self.agent("other-job")]},
+        })
+        for lane in ("first", "second"):
+            self.assertIn("deterministic_daily_digest.py", rows[lane])
+        for lane in ("later", "other-job"):
+            self.assertNotIn("deterministic_daily_digest.py", rows[lane])
+
+    def test_explicit_step_condition_does_not_cover_other_preceding_lanes(self):
+        rows = self.render({"job": {"steps": [
+            self.agent("target", "target-step"), self.agent("unrelated", "other"),
+            self.fallback("steps.target-step.outcome == 'failure'"),
+        ]}})
+        self.assertIn("deterministic_daily_digest.py", rows["target"])
+        self.assertNotIn("deterministic_daily_digest.py", rows["unrelated"])
+
+    def test_step_ids_are_local_to_each_job(self):
+        rows = self.render({
+            "a": {"steps": [self.agent("first-job", "check")]},
+            "b": {"steps": [self.agent("second-job", "editor"),
+                             {"id": "check", "run": "check-output"},
+                             self.fallback("steps.check.outcome == 'failure'")]},
+        })
+        self.assertNotIn("deterministic_daily_digest.py", rows["first-job"])
+        self.assertIn("deterministic_daily_digest.py", rows["second-job"])
+
+    def test_shipped_digest_composer_does_not_back_up_audio(self):
+        lanes, fallback = load_lanes()
+        rows = build_rows(lanes, observations(), load_profiles(),
+                          fallback["native_model"], "claude", fallback["chain"])
+        rendered = {row[0]: row[-1] for row in rows}
+        for lane in ("digest-synthesis", "digest-synthesis-fallback"):
+            self.assertIn("deterministic_daily_digest.py", rendered[lane])
+        self.assertNotIn("deterministic_daily_digest.py", rendered["digest-audio-script"])
+
+
 class RoutingInvariants(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
