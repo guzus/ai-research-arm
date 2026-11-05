@@ -55,7 +55,7 @@ jobs:
         with:
           lane: chubby-canary
           chubby-api-key: ${{ secrets.CHUBBY_API_KEY }}
-          chubby-base-url: ${{ vars.CHUBBY_BASE_URL || 'https://gunux.tailc0c7fe.ts.net/office/api/chubby' }}
+          chubby-base-url: ${{ vars.CHUBBY_BASE_URL }}
           fireworks-fallback: none
           claude-args: >-
             --model opus --max-turns 8 --tools Read,Write

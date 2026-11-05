@@ -16,13 +16,13 @@ and Office accounting checks below.
 | Setting | Location | Value |
 | --- | --- | --- |
 | `CHUBBY_API_KEY` | GitHub Actions repository secret | Dedicated ARA **Claude Code** key, `cbm_` followed by 64 hex characters |
-| `CHUBBY_BASE_URL` | Optional GitHub Actions repository variable | `https://gunux.tailc0c7fe.ts.net/office/api/chubby` (no `/v1`; the Claude SDK appends `/v1/messages`) |
+| `CHUBBY_BASE_URL` | Required GitHub Actions repository variable | Operator-supplied HTTPS URL ending in `/office/api/chubby` (no `/v1`; the Claude SDK appends `/v1/messages`) |
 | `CHUBBY_CLIENT_ID` | Recommended repository variable / operator record | Non-secret ARA client ID for Office usage correlation |
 | Model | `data/agent-backends.json` | `openrouter/deepseek/deepseek-v4.1-flash-1017` |
 
-The endpoint needs tailnet access from the self-hosted runner. Railway serves
-the resulting static artifacts and does not need Chubby credentials or access.
-Do not expose Office publicly to work around a routing failure.
+The calling runner must be able to reach the configured endpoint. Static
+artifact hosting does not need inference credentials or endpoint access.
+There is no built-in deployment address; missing configuration fails closed.
 
 Ordinary `chb_` service keys and Office operator/session/verifier tokens do
 **not** authorize Messages. An Office operator should first inspect existing
@@ -53,12 +53,12 @@ Catalog membership alone does not prove provider health.
 ## Run the canary
 
 Once the workflow is present on the repository default branch and the secret
-is configured:
+and endpoint variable are configured:
 
 ```bash
-gh workflow run chubby-canary.yml --repo guzus/ai-research-arm
-gh run list --repo guzus/ai-research-arm --workflow chubby-canary.yml --limit 1
-gh run watch <run-id> --repo guzus/ai-research-arm --exit-status
+gh workflow run chubby-canary.yml
+gh run list --workflow chubby-canary.yml --limit 1
+gh run watch <run-id> --exit-status
 ```
 
 The canary runs on the same self-hosted runner class as ARA's pipelines. It
@@ -120,7 +120,5 @@ editorial dispatcher cannot select this host-checkout adapter; migrating
 those lanes needs an adapter that preserves their disposable workspace and
 trusted artifact-import boundary.
 
-Current upstream contract: Office
-[`docs/chubby.md`](https://github.com/guzus/office/blob/main/docs/chubby.md),
-“Claude Code keys.” Integration procedure:
-[`chubby-integrate`](https://github.com/guzus/unix-config/blob/main/skills/chubby-integrate/SKILL.md).
+Consult the operator-provided Chubby Messages contract before configuring a
+new deployment; direct-chat and Messages credentials are not interchangeable.

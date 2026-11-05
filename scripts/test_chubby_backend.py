@@ -17,7 +17,7 @@ import yaml
 
 from build_backend_matrix import cross_check, load_lanes, load_profiles, observe_workflow, workflow_files
 from check_fireworks_backend import redact as redact_provider
-from chubby_config import DEFAULT_BASE_URL, validate_config
+from chubby_config import validate_config
 from prepare_chubby_run import MODEL_ENV, prepare
 from select_backend import main_with_args, probe_chubby
 from summarize_claude_execution import redact as redact_execution
@@ -26,34 +26,43 @@ ROOT = Path(__file__).resolve().parent.parent
 PROFILE = "chubby-deepseek-v4p1-flash"
 MODEL_ID = "openrouter/deepseek/deepseek-v4.1-flash-1017"
 KEY = "cbm_" + "a" * 64
+TEST_BASE_URL = "https://inference.example.com/office/api/chubby"
 
 
 class ChubbyConfigTest(unittest.TestCase):
     def test_valid_config_never_probes_network(self):
-        with mock.patch.dict(os.environ, {"CHUBBY_API_KEY": KEY, "CHUBBY_BASE_URL": DEFAULT_BASE_URL}), \
+        with mock.patch.dict(os.environ, {"CHUBBY_API_KEY": KEY, "CHUBBY_BASE_URL": TEST_BASE_URL}), \
              mock.patch("urllib.request.urlopen", side_effect=AssertionError("no paid preflight")):
             ok, reason = probe_chubby(MODEL_ID)
         self.assertTrue(ok)
         self.assertIn("live inference not checked", reason)
 
+    def test_missing_endpoint_fails_without_network(self):
+        with mock.patch.dict(os.environ, {"CHUBBY_API_KEY": KEY}, clear=True), \
+             mock.patch("urllib.request.urlopen", side_effect=AssertionError("no network")):
+            ok, reason = probe_chubby(MODEL_ID)
+        self.assertFalse(ok)
+        self.assertIn("CHUBBY_BASE_URL", reason)
+
     def test_rejects_ordinary_keys_and_untrusted_url_shapes_without_echo(self):
         cases = [
-            ("chb_" + "a" * 64, DEFAULT_BASE_URL),
-            (KEY + "\n", DEFAULT_BASE_URL),
+            (KEY, ""),
+            ("chb_" + "a" * 64, TEST_BASE_URL),
+            (KEY + "\n", TEST_BASE_URL),
             (KEY, "http://example.com/office/api/chubby"),
             (KEY, "https://example.com/office/api/chubby/v1"),
             (KEY, f"https://{KEY}@example.com/office/api/chubby"),
-            (KEY, DEFAULT_BASE_URL + "?token=" + KEY),
-            (KEY, DEFAULT_BASE_URL + "#" + KEY),
+            (KEY, TEST_BASE_URL + "?token=" + KEY),
+            (KEY, TEST_BASE_URL + "#" + KEY),
             (KEY, "https://[bad/office/api/chubby"),
-            (KEY, DEFAULT_BASE_URL + "\n"),
+            (KEY, TEST_BASE_URL + "\n"),
         ]
         for key, url in cases:
             with self.subTest(url=url), self.assertRaises(ValueError) as error:
                 validate_config(key, url, MODEL_ID)
             self.assertNotIn(KEY, str(error.exception))
         with self.assertRaises(ValueError):
-            validate_config(KEY, DEFAULT_BASE_URL, "claude-sonnet-5")
+            validate_config(KEY, TEST_BASE_URL, "claude-sonnet-5")
 
     def test_redacts_both_chubby_key_families_in_provider_and_transcript_errors(self):
         for redact in (redact_provider, redact_execution):
@@ -67,7 +76,7 @@ class ChubbyConfigTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             temp = Path(directory)
             original = json.loads((ROOT / ".claude/settings.json").read_text())
-            outputs = prepare(ROOT, temp, KEY, DEFAULT_BASE_URL, MODEL_ID,
+            outputs = prepare(ROOT, temp, KEY, TEST_BASE_URL, MODEL_ID,
                               "--model opus --max-turns 8 --tools Read,Write")
             args = shlex.split(outputs["claude-args"])
             policy = json.loads(Path(args[args.index("--settings") + 1]).read_text())
@@ -85,7 +94,7 @@ class ChubbyConfigTest(unittest.TestCase):
             self.assertFalse(policy["sandbox"]["enableWeakerNestedSandbox"])
             for name in MODEL_ENV:
                 self.assertEqual(policy["env"][name], MODEL_ID)
-            self.assertEqual(policy["env"]["ANTHROPIC_BASE_URL"], DEFAULT_BASE_URL)
+            self.assertEqual(policy["env"]["ANTHROPIC_BASE_URL"], TEST_BASE_URL)
             self.assertEqual(policy["env"]["ANTHROPIC_API_KEY"], "")
             self.assertEqual(policy["env"]["CLAUDE_CODE_OAUTH_TOKEN"], "")
             self.assertNotIn("ANTHROPIC_AUTH_TOKEN", policy["env"])
@@ -103,13 +112,13 @@ class ChubbyConfigTest(unittest.TestCase):
     def test_real_home_credential_denies_do_not_block_workspace_below_home(self):
         with tempfile.TemporaryDirectory() as directory:
             temp = Path(directory)
-            original_home = temp / "runner-home"
+            original_home = temp.resolve() / "runner-home"
             workspace = original_home / "_work" / "ara"
             (workspace / ".claude").mkdir(parents=True)
             (workspace / ".claude/settings.json").write_text(
                 (ROOT / ".claude/settings.json").read_text())
             with mock.patch("prepare_chubby_run.Path.home", return_value=original_home):
-                outputs = prepare(workspace, temp, KEY, DEFAULT_BASE_URL, MODEL_ID, "")
+                outputs = prepare(workspace, temp, KEY, TEST_BASE_URL, MODEL_ID, "")
             args = shlex.split(outputs["claude-args"])
             policy = json.loads(Path(args[args.index("--settings") + 1]).read_text())
             denies = [rule[len("Read(/"):-1] for rule in policy["permissions"]["deny"]
@@ -133,10 +142,10 @@ class ChubbyConfigTest(unittest.TestCase):
                 policy["env"] = {name: "attacker"}
                 settings.write_text(json.dumps(policy))
                 with self.assertRaises(ValueError):
-                    prepare(root, temp, KEY, DEFAULT_BASE_URL, MODEL_ID, "")
+                    prepare(root, temp, KEY, TEST_BASE_URL, MODEL_ID, "")
             for arg in ("--settings evil.json", "--setting-sources local", "--fallback-model claude"):
                 with self.assertRaises(ValueError):
-                    prepare(ROOT, temp, KEY, DEFAULT_BASE_URL, MODEL_ID, arg)
+                    prepare(ROOT, temp, KEY, TEST_BASE_URL, MODEL_ID, arg)
 
 
 class ChubbySelectionTest(unittest.TestCase):
@@ -148,7 +157,7 @@ class ChubbySelectionTest(unittest.TestCase):
             config, output = Path(directory) / "registry.json", Path(directory) / "output"
             config.write_text(json.dumps(data))
             log = io.StringIO()
-            with mock.patch.dict(os.environ, {"CHUBBY_API_KEY": key, "CHUBBY_BASE_URL": DEFAULT_BASE_URL,
+            with mock.patch.dict(os.environ, {"CHUBBY_API_KEY": key, "CHUBBY_BASE_URL": TEST_BASE_URL,
                                               "GITHUB_EVENT_NAME": event,
                                               "CLAUDE_CODE_OAUTH_TOKEN": "",
                                               "ANTHROPIC_API_KEY": "",

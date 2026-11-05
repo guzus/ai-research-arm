@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 from urllib.parse import urlsplit
 
-DEFAULT_BASE_URL = "https://gunux.tailc0c7fe.ts.net/office/api/chubby"
+DEFAULT_BASE_URL = ""  # Deployment endpoint must be configured explicitly.
 
 
 def validate_config(api_key: str, base_url: str, model: str) -> str:

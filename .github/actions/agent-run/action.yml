@@ -29,7 +29,7 @@ inputs:
   chubby-base-url:
     description: HTTPS Office Messages base URL without /v1. Validated before any inference.
     required: false
-    default: https://gunux.tailc0c7fe.ts.net/office/api/chubby
+    default: ""
   opencode-api-key:
     description: OpenCode Go key. Passed only to a lane-explicit isolated OpenCode fallback.
     required: false
