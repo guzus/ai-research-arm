@@ -1,4 +1,4 @@
-# Office Chubby project key
+# Chubby direct-chat project key
 
 ARA has a service-scoped Chubby client named `ai-research-arm`. Provisioning
 and allowlist readback were verified on 2026-11-05. This is optional direct
@@ -7,21 +7,19 @@ The routing source of truth remains `data/agent-backends.json`.
 
 ## Configuration and storage
 
-The endpoint is `https://gunux.tailc0c7fe.ts.net/office/api/chubby/v1` and
-requires tailnet connectivity from the calling runtime.
+Configure the deployment's HTTPS direct-chat endpoint in `CHUBBY_CHAT_BASE_URL`
+(including `/v1`) and keep the project-scoped `chb_` key in
+`CHUBBY_CHAT_API_KEY` in a server-side secret store. The caller must have network
+access to that endpoint. Use the placeholders in [`.env.example`](../.env.example);
+no deployment address, session identifier, or secret value belongs in Git.
 
-The Office session `gunux/ai-research-arm-3` holds `CHUBBY_API_KEY`,
-`CHUBBY_BASE_URL`, `CHUBBY_MODEL`, and `CHUBBY_CLIENT_ID` in its Secrets.
-The key is not in Git or GitHub Actions secrets. Office loads these variables
-on the session's next Resume/Restart; an already-running agent does not
-receive them automatically. On gunux, sessionctl stores them in the protected
-`~/.local/state/sessionctl/secrets/ai-research-arm-3.env` file (mode 0600).
-Do not print this file or paste its contents into a transcript.
+These `CHUBBY_CHAT_*` names keep direct-chat configuration separate from the
+Claude Code Messages adapter in [the Messages guide](chubby.md). The Messages
+canary requires its own `cbm_` key, a base URL without `/v1`, and its separately
+registered model. The direct-chat key cannot authorize that canary.
 
-For another authorized server-side runtime, provision the same project key
-through its secret store and use the placeholders in [`.env.example`](../.env.example).
-Do not use the Office operator password or provider credentials as the project key.
-The public dashboard must never receive `CHUBBY_API_KEY`.
+Do not use an operator credential or upstream provider key as the project key.
+The public dashboard must never receive either API key.
 
 ## Allowed models
 
@@ -47,14 +45,14 @@ Z.ai's direct provider route, Cursor/Codex subscription transports, and Gemini
 TTS are not provided by this key. Allowlisting a model does not verify its upstream
 credentials or authorize silently replacing an existing lane.
 
-`CHUBBY_MODEL` currently defaults to `meta/muse-spark-1.3`; callers must select
+`CHUBBY_CHAT_MODEL` currently defaults to `meta/muse-spark-1.3`; callers must select
 an exact allowed model. Limits remain 4 concurrent requests and 60 requests per
 minute. Future allowlist changes should update the existing client rather than
 issue replacement keys.
 
 ## Verify access
 
-From a shell with the session secrets loaded, this read-only check verifies
+From a shell with the direct-chat configuration loaded, this read-only check verifies
 connectivity, authentication, and the current allowlist without printing the key:
 
 ```bash
@@ -64,8 +62,8 @@ import os
 import urllib.request
 
 request = urllib.request.Request(
-    os.environ["CHUBBY_BASE_URL"].rstrip("/") + "/models",
-    headers={"Authorization": "Bearer " + os.environ["CHUBBY_API_KEY"]},
+    os.environ["CHUBBY_CHAT_BASE_URL"].rstrip("/") + "/models",
+    headers={"Authorization": "Bearer " + os.environ["CHUBBY_CHAT_API_KEY"]},
 )
 with urllib.request.urlopen(request, timeout=30) as response:
     for model in json.load(response)["data"]:
@@ -77,9 +75,9 @@ The initial key's `/models` check returned HTTP 200; the expanded eight-model
 allowlist was verified through the operator client readback. No inference call
 was made, so provider availability and end-to-end generation remain unverified.
 
-For a future direct-inference integration, use the
-[Office Chubby contract](https://github.com/guzus/office/blob/main/docs/chubby.md).
-Its chat subset does not replace CLI harnesses or their tools. Preserve exact
-model IDs, validate the supported request shape, disable automatic paid retries,
-and use an idempotency key per logical request. Verify one small inference call
-and its request/usage record before routing production work through it.
+For a future direct-inference integration, consult the deployment's Chubby chat
+contract. Its chat subset does not replace CLI harnesses or their tools.
+Preserve exact model IDs, validate the supported request shape, disable
+automatic paid retries, and use an idempotency key per logical request. Verify
+one small inference call and its request/usage record before routing production
+work through it.

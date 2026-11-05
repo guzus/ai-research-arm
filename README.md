@@ -378,10 +378,10 @@ which is gitignored) — see [`.env.example`](.env.example) for the common local
 settings and service overrides. None are needed for the
 [Quickstart](#quickstart-no-accounts-needed).
 
-The optional [Office Chubby setup](docs/chubby.md) uses a project-scoped key
-stored in Office session Secrets. It is provisioned for manual direct inference;
-existing scheduled workflows still use their configured providers.
-
+The optional [Chubby direct-chat setup](docs/chubby-direct-chat.md) uses a
+project-scoped key in a server-side secret store. Its configuration is separate
+from the [Claude Code Messages canary](docs/chubby.md); neither changes scheduled
+workflow routing.
 
 | Secret | Required for | Description |
 |--------|--------------|-------------|
