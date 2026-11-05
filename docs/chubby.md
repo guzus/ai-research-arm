@@ -64,7 +64,9 @@ gh run watch <run-id> --repo guzus/ai-research-arm --exit-status
 The canary runs on the same self-hosted runner class as ARA's pipelines. It
 creates a fresh random input, asks Claude Code to read it and write the exact
 contents, and checks the successful transcript, served model identity, both
-completed tools, exact file contents, and committed path scope. It permits
+completed tools, exact file contents against the pre-agent challenge hash,
+and committed path scope. Unexpected tools, paths, or duplicate calls/results
+fail verification. It permits
 only Read/Write, caps the run at eight turns and ten minutes, and publishes
 nothing. The backend bounds each response to 4,096 tokens. The workflow needs
 only `CHUBBY_API_KEY`; it receives no native Claude, Fireworks, or Z.ai secret.

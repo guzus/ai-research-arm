@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import tempfile
 import unittest
 from pathlib import Path
@@ -14,6 +15,7 @@ class ChubbyCanaryTest(unittest.TestCase):
         self.output = Path(self.tmp.name) / 'output.txt'
         self.source.write_text('chubby-canary-random-challenge\n')
         self.output.write_text(self.source.read_text())
+        self.source_sha256 = hashlib.sha256(self.source.read_bytes()).hexdigest()
         self.model = 'openrouter/deepseek/deepseek-v4.1-flash-1017'
         self.objects = [
             {'type': 'assistant', 'message': {'model': self.model, 'content': [
@@ -31,7 +33,7 @@ class ChubbyCanaryTest(unittest.TestCase):
         ]
 
     def check(self, objects=None):
-        verify(objects if objects is not None else self.objects, self.model, self.source, self.output)
+        verify(objects if objects is not None else self.objects, self.model, self.source, self.output, self.source_sha256)
 
     def test_completed_tool_roundtrip(self):
         self.check()
@@ -69,6 +71,42 @@ class ChubbyCanaryTest(unittest.TestCase):
         self.output.write_text('old-result\n')
         with self.assertRaises(ValueError):
             self.check()
+
+    def test_rejects_source_rewrite_even_when_output_and_transcript_agree(self):
+        replacement = 'chubby-canary-replacement\n'
+        self.source.write_text(replacement)
+        self.output.write_text(replacement)
+        self.objects[2]['message']['content'][0]['input']['content'] = replacement
+        rewrite = {'type': 'assistant', 'message': {'model': self.model, 'content': [
+            {'type': 'tool_use', 'id': 'rewrite-source', 'name': 'Write',
+             'input': {'file_path': str(self.source), 'content': replacement}}]}}
+        self.objects.insert(2, rewrite)
+        with self.assertRaisesRegex(ValueError, 'source changed'):
+            self.check()
+
+    def test_rejects_unexpected_tool_or_path_even_with_unchanged_challenge(self):
+        for name, path in [('Write', self.source), ('Read', self.output),
+                           ('Bash', self.source), ('Write', self.source.parent / 'other')]:
+            objects = copy.deepcopy(self.objects)
+            extra = copy.deepcopy(objects[2])
+            extra['message']['content'][0].update(id='extra', name=name)
+            extra['message']['content'][0]['input']['file_path'] = str(path)
+            objects.insert(2, extra)
+            with self.subTest(name=name, path=path), self.assertRaises(ValueError):
+                self.check(objects)
+
+    def test_rejects_duplicate_calls_results_and_unknown_results(self):
+        variants = []
+        for index in (0, 1, 2, 3):
+            objects = copy.deepcopy(self.objects)
+            objects.insert(index, copy.deepcopy(objects[index]))
+            variants.append(objects)
+        objects = copy.deepcopy(self.objects)
+        objects[3]['message']['content'][0]['tool_use_id'] = 'unknown'
+        variants.append(objects)
+        for objects in variants:
+            with self.subTest(objects=objects), self.assertRaises(ValueError):
+                self.check(objects)
 
     def test_exact_copy_rejects_newline_conversion(self):
         self.output.write_bytes(self.source.read_bytes().replace(b'\n', b'\r\n'))

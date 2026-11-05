@@ -34,6 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 <<'PY'
+          import hashlib
           import os
           import secrets
           from pathlib import Path
@@ -45,6 +46,7 @@ jobs:
               raise SystemExit('Refusing a pre-existing canary output')
           with open(os.environ['GITHUB_OUTPUT'], 'a') as handle:
               handle.write(f'source={source}\noutput={target}\n')
+              handle.write(f'source-sha256={hashlib.sha256(source.read_bytes()).hexdigest()}\n')
           PY
 
       - name: Run strict Chubby tool canary
@@ -75,6 +77,7 @@ jobs:
           EXECUTION_FILE: ${{ steps.agent.outputs.execution-file }}
           MODEL: ${{ steps.agent.outputs.model-id }}
           SOURCE: ${{ steps.fixture.outputs.source }}
+          SOURCE_SHA256: ${{ steps.fixture.outputs.source-sha256 }}
           TARGET: ${{ steps.fixture.outputs.output }}
           EFFECTIVE_BACKEND: ${{ steps.agent.outputs.effective-backend }}
           USED_FALLBACK: ${{ steps.agent.outputs.used-fallback }}
@@ -84,7 +87,7 @@ jobs:
           test "$USED_FALLBACK" = false
           python3 scripts/verify_chubby_canary.py \
             --execution-file "$EXECUTION_FILE" --model "$MODEL" \
-            --source "$SOURCE" --output "$TARGET"
+            --source "$SOURCE" --source-sha256 "$SOURCE_SHA256" --output "$TARGET"
           {
             echo 'Chubby Claude Code canary passed: streamed model/tool loop and exact committed output.'
             echo "Configured model: $MODEL"
