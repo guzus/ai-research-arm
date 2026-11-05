@@ -1,9 +1,54 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-05T06:41:00Z",
+  "updated_at": "2026-11-05T12:49:00Z",
   "degraded": false,
-  "latest": "2026-11-05-0641",
+  "latest": "2026-11-05-1249",
   "bulletins": [
+    {
+      "id": "2026-11-05-1249",
+      "aired_at": "2026-11-05T12:49:00Z",
+      "headline": "Robinhood says 150k agent-trading accounts and 30M daily tool calls; a $1-2T AI IPO is too late for retail",
+      "path": "bulletins/2026-11-05/1249.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-05-1249.mp3",
+        "bytes": 918381,
+        "duration_s": 153.0,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 68.6,
+            "lines": [
+              0,
+              4
+            ]
+          },
+          {
+            "start_s": 70.05,
+            "end_s": 113.73,
+            "lines": [
+              5,
+              7
+            ]
+          },
+          {
+            "start_s": 115.18,
+            "end_s": 146.42,
+            "lines": [
+              8,
+              11
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "ai-agents-in-finance-and-law",
+        "anthropic-ipo-and-ai-funding",
+        "flat-rate-ai-agent-usage-limits"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-05-0641",
       "aired_at": "2026-11-05T06:41:00Z",
