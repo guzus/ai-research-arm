@@ -76,7 +76,9 @@ transport. A fixed, unusable sentinel satisfies that check; final CLI settings
 clear it, and the real Chubby key enters only through the step environment.
 Each run uses a private temporary `HOME` and Claude config directory, with the
 reviewed sandbox and model/endpoint settings pinned while preserving project
-instructions. The original runner home remains denied to tools. No credential
+instructions. The original runner home stays sandbox-protected, with explicit
+Read denies for its credential paths that preserve access to a checkout beneath
+that home. No credential
 is written to these settings or auth files, and cleanup removes the temporary
 configuration even when the agent fails. Repository-local Git identity lets
 the trusted output committer work independently of that temporary home.

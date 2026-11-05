@@ -68,7 +68,15 @@ def prepare(root: Path, runner_temp: Path, api_key: str, base_url: str,
     # from the real runner's provider credentials. Keep both homes denied.
     real_home = str(Path.home().resolve())
     policy["sandbox"]["filesystem"]["denyRead"].append(real_home + "/")
-    policy["permissions"]["deny"].append("Read(/" + real_home + "/**)")
+    # Read denies outrank the sandbox allowRead exceptions. Mirror only the
+    # reviewed credential rules: a whole-home Read deny would also deny this
+    # repository when the runner checkout lives beneath its original home.
+    home_read_rules = [rule for rule in policy["permissions"]["deny"]
+                       if rule.startswith("Read(~/")]
+    policy["permissions"]["deny"].extend(
+        "Read(/" + real_home + "/" + rule[len("Read(~/"):]
+        for rule in home_read_rules
+    )
     config_dir = home / ".claude"
     config_dir.mkdir(mode=0o700)
     env.update({"HOME": str(home), "CLAUDE_CONFIG_DIR": str(config_dir)})

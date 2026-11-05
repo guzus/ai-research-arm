@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import contextlib
 import copy
+import fnmatch
 import io
 import json
 import os
@@ -74,7 +75,10 @@ class ChubbyConfigTest(unittest.TestCase):
             self.assertEqual(args[args.index("--setting-sources") + 1], "user,project")
             self.assertLessEqual(set(original["permissions"]["deny"]), set(policy["permissions"]["deny"]))
             self.assertIn(str(Path.home().resolve()) + "/", policy["sandbox"]["filesystem"]["denyRead"])
-            self.assertIn("Read(/" + str(Path.home().resolve()) + "/**)", policy["permissions"]["deny"])
+            for rule in original["permissions"]["deny"]:
+                if rule.startswith("Read(~/"):
+                    self.assertIn("Read(/" + str(Path.home().resolve()) + "/" + rule[len("Read(~/"):],
+                                  policy["permissions"]["deny"])
             self.assertTrue(policy["sandbox"]["enabled"])
             self.assertTrue(policy["sandbox"]["failIfUnavailable"])
             self.assertFalse(policy["sandbox"]["allowUnsandboxedCommands"])
@@ -95,6 +99,28 @@ class ChubbyConfigTest(unittest.TestCase):
                 if file.is_file():
                     self.assertNotIn(KEY, file.read_text())
                     self.assertNotIn(file.name, {".credentials.json", "auth.json"})
+
+    def test_real_home_credential_denies_do_not_block_workspace_below_home(self):
+        with tempfile.TemporaryDirectory() as directory:
+            temp = Path(directory)
+            original_home = temp / "runner-home"
+            workspace = original_home / "_work" / "ara"
+            (workspace / ".claude").mkdir(parents=True)
+            (workspace / ".claude/settings.json").write_text(
+                (ROOT / ".claude/settings.json").read_text())
+            with mock.patch("prepare_chubby_run.Path.home", return_value=original_home):
+                outputs = prepare(workspace, temp, KEY, DEFAULT_BASE_URL, MODEL_ID, "")
+            args = shlex.split(outputs["claude-args"])
+            policy = json.loads(Path(args[args.index("--settings") + 1]).read_text())
+            denies = [rule[len("Read(/"):-1] for rule in policy["permissions"]["deny"]
+                      if rule.startswith("Read(//")]
+            self.assertFalse(any(fnmatch.fnmatch(str(workspace / "README.md"), rule)
+                                 for rule in denies))
+            self.assertIn(str(original_home) + "/", policy["sandbox"]["filesystem"]["denyRead"])
+            for path in (".aws/credentials", ".config/gh/hosts.yml", ".config/gh-office/hosts.yml",
+                         ".docker/config.json", ".ssh/id_ed25519", ".claude/.credentials.json", ".claude.json"):
+                self.assertTrue(any(fnmatch.fnmatch(str(original_home / path), rule)
+                                    for rule in denies), path)
 
     def test_prep_rejects_auth_in_project_policy_and_caller_settings(self):
         with tempfile.TemporaryDirectory() as directory:
