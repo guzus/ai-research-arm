@@ -1,0 +1,383 @@
+{
+  "schema": 1,
+  "id": "2026-11-05-0641",
+  "aired_at": "2026-11-05T06:41:00Z",
+  "headline": "AMD Data Center nearly doubles; Texas votes in a data-center pause; OpenAI reports 948 kernel root exploits",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's twenty to seven UTC on Thursday, November fifth. This is ARA AI News. The chips are selling, and American voters just voted to slow the buildings that feed them."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "AMD printed a record third quarter. Revenue hit thirteen point four billion dollars, up forty-five percent, and Data Center nearly doubled to eight point five billion dollars on EPYC chips and the new Instinct M I four fifty."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Chair and CEO Lisa Su said the company beat the high end of guidance as Data Center sales nearly doubled, and that growth should accelerate in the fourth quarter as Helios and Venice production scale."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Arm's fiscal second quarter was its best ever for that period, with revenue of one billion four hundred forty-three million dollars, up twenty-seven percent, and licenses up fifty percent. Super Micro's fiscal first-quarter net income jumped to one billion five hundred ninety-four million dollars from one hundred sixty-eight million a year earlier, even as sequential gross margin fell to twelve point seven percent."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Palantir's two point three billion dollar quarter is now settled on our board. No new facts arrived, and that story is absorbed."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "In Texas, Democrat Gina Hinojosa unseated Governor Greg Abbott after campaigning for an immediate pause on new data-center permits. Wells Fargo puts twenty-seven percent of planned United States data-center capacity in that state."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "CoreWeave, SpaceX, and Oracle sold off on the result. A national exit poll found fifty-seven percent of Tuesday's voters think artificial intelligence will do more to hurt society than help, and seventy-six percent would oppose a new data center in their community."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "OpenAI says an upcoming cyber model, run as a five-stage pipeline, reproduced one thousand seven hundred twenty-four Linux kernel bugs and built nine hundred forty-eight distinct exploits that take an unprivileged user all the way to root, at about one point two million dollars in A P I credits."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The lab is sending reports and patches to maintainers, after a July GPT five point six Sol run found only one hundred sixty-six unique local privilege escalations. Named C V Es are not listed, and that cyber model is not a public product."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Menlo Ventures estimates enterprise A I spend at one hundred seventy-seven billion dollars by September, with Anthropic taking fifty-five percent of enterprise large language model A P I dollars, up from forty, against thirty-one percent for OpenAI and nine for Google."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That share lands while Anthropic's I P O roadshow is still live, and Cat Wu, who led product for Claude Code, posted that she is joining OpenAI to lead Core Products. Austin Lau, who helped build Anthropic's growth function, said he had moved too, two product hires rather than a research brain drain beside a still unpriced listing."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Open weights moved this week, as Moonshot ungated Kimi K three point one Pro, a two point eight trillion parameter mixture of experts with one hundred four billion active and a million-token window. Ricursive released Ripple sixty-five B Preview under Apache two point oh and says the whole research bill was thirty-two million dollars."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Baidu posted ERNIE five point five Flash Base, and Tencent's Hy four is live on A P Is with weights still promised. OpenAI shipped Images two point six with animated G I F files, not the GPT six point two Astra drop the timeline was waiting for."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch Texas, and whether Hinojosa extends the September permit freeze past the December grid audit. Watch AMD's fourth-quarter Helios and Venice ramp, and whether Oracle or Tencent confirm a reported seven billion dollar Southeast Asia chip lease that the Financial Times says was cancelled."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Anthropic's price range is still the other shoe. Axios reports OpenAI will buy Pierre Computer to put code storage inside Codex, and OpenAI has not confirmed that deal."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's twenty to seven UTC on Thursday, November fifth. This is ARA AI News. The chips are selling, and American voters just voted to slow the buildings that feed them.",
+    "Speaker 2: [high_energy] AMD printed a record third quarter. Revenue hit [emphasis] thirteen point four billion dollars[/emphasis], up forty-five percent, and Data Center nearly doubled to [emphasis] eight point five billion dollars[/emphasis] on EPYC chips and the new Instinct M I four fifty.",
+    "Speaker 1: Chair and CEO Lisa Su said the company beat the high end of guidance as Data Center sales nearly doubled, and that growth should accelerate in the fourth quarter as Helios and Venice production scale.",
+    "Speaker 2: Arm's fiscal second quarter was its best ever for that period, with revenue of [emphasis] one billion four hundred forty-three million dollars[/emphasis], up twenty-seven percent, and licenses up fifty percent. Super Micro's fiscal first-quarter net income jumped to one billion five hundred ninety-four million dollars from one hundred sixty-eight million a year earlier, even as sequential gross margin fell to twelve point seven percent.",
+    "Speaker 1: Palantir's two point three billion dollar quarter is now settled on our board. No new facts arrived, and that story is absorbed.",
+    "Speaker 2: [gong] In Texas, Democrat Gina Hinojosa unseated Governor Greg Abbott after campaigning for an immediate pause on new data-center permits. Wells Fargo puts twenty-seven percent of planned United States data-center capacity in that state.",
+    "Speaker 1: CoreWeave, SpaceX, and Oracle sold off on the result. A national exit poll found fifty-seven percent of Tuesday's voters think artificial intelligence will do more to hurt society than help, and seventy-six percent would oppose a new data center in their community.",
+    "Speaker 2: [transition] OpenAI says an upcoming cyber model, run as a five-stage pipeline, reproduced one thousand seven hundred twenty-four Linux kernel bugs and built nine hundred forty-eight distinct exploits that take an unprivileged user all the way to root, at about one point two million dollars in A P I credits.",
+    "Speaker 1: The lab is sending reports and patches to maintainers, after a July GPT five point six Sol run found only one hundred sixty-six unique local privilege escalations. Named C V Es are not listed, and that cyber model is not a public product.",
+    "Speaker 2: [transition] Menlo Ventures estimates enterprise A I spend at one hundred seventy-seven billion dollars by September, with Anthropic taking fifty-five percent of enterprise large language model A P I dollars, up from forty, against thirty-one percent for OpenAI and nine for Google.",
+    "Speaker 1: That share lands while Anthropic's I P O roadshow is still live, and Cat Wu, who led product for Claude Code, posted that she is joining OpenAI to lead Core Products. Austin Lau, who helped build Anthropic's growth function, said he had moved too, two product hires rather than a research brain drain beside a still unpriced listing.",
+    "Speaker 2: Open weights moved this week, as Moonshot ungated Kimi K three point one Pro, a two point eight trillion parameter mixture of experts with one hundred four billion active and a million-token window. Ricursive released Ripple sixty-five B Preview under Apache two point oh and says the whole research bill was thirty-two million dollars.",
+    "Speaker 1: Baidu posted ERNIE five point five Flash Base, and Tencent's Hy four is live on A P Is with weights still promised. OpenAI shipped Images two point six with animated G I F files, not the GPT six point two Astra drop the timeline was waiting for.",
+    "Speaker 2: Watch Texas, and whether Hinojosa extends the September permit freeze past the December grid audit. Watch AMD's fourth-quarter Helios and Venice ramp, and whether Oracle or Tencent confirm a reported seven billion dollar Southeast Asia chip lease that the Financial Times says was cancelled.",
+    "Speaker 1: Anthropic's price range is still the other shoe. Axios reports OpenAI will buy Pierre Computer to put code storage inside Codex, and OpenAI has not confirmed that deal.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "hyperscaler-capex-and-chip-selloff",
+    "palantir-q3-ai-demand",
+    "us-data-center-politics",
+    "ai-cyber-risk-and-key-theft",
+    "anthropic-ipo-and-ai-funding",
+    "mistral-large-4-open-weights",
+    "next-model-launches-qwen-4-gpt-6-2-astra"
+  ],
+  "threads": [
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "palantir-q3-ai-demand",
+      "title": "Palantir's blowout quarter and enterprise AI demand",
+      "status": "resolved"
+    },
+    {
+      "slug": "us-data-center-politics",
+      "title": "US data-center siting backlash after the midterms",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "mistral-large-4-open-weights",
+      "title": "Open-weight race: Kimi K3.1 Pro, Ripple-65B, ERNIE and Mistral",
+      "status": "developing"
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.cnbc.com/2026/11/04/ai-stocks-texas-governor-data-centers.html",
+      "kind": "twitter",
+      "label": "CNBC (Texas governor, data centers)"
+    },
+    {
+      "url": "https://x.com/rohanpaul_ai/status/2117978113686773775",
+      "kind": "twitter",
+      "label": "@rohanpaul_ai on X (Texas, neoclouds)"
+    },
+    {
+      "url": "https://www.nbcnews.com/politics/2026-election/exit-poll-trump-midterms-voters-economy-disapproval-rcna607045",
+      "kind": "twitter",
+      "label": "NBC News (national exit poll)"
+    },
+    {
+      "url": "https://x.com/econographs/status/2117859420516331979",
+      "kind": "twitter",
+      "label": "@econographs on X (exit poll)"
+    },
+    {
+      "url": "https://x.com/benthompson/status/2117980910930862516",
+      "kind": "twitter",
+      "label": "@benthompson on X (AI on the Ballot)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000188/",
+      "kind": "earnings",
+      "label": "Advanced Micro Devices, Inc. (AMD)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000141/",
+      "kind": "earnings",
+      "label": "Arm Holdings plc (ARM)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536526000026/",
+      "kind": "earnings",
+      "label": "Super Micro Computer, Inc. (SMCI)"
+    },
+    {
+      "url": "https://www.investing.com/news/stock-market-news/oracle-cancels-7-bln-chip-leasing-deal-with-tencent-ft-reports-4997349",
+      "kind": "twitter",
+      "label": "Investing.com / Reuters (Oracle-Tencent FT report)"
+    },
+    {
+      "url": "https://x.com/ns123abc/status/2117857386610454950",
+      "kind": "twitter",
+      "label": "@ns123abc on X (Oracle-Tencent lease)"
+    },
+    {
+      "url": "https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/",
+      "kind": "twitter",
+      "label": "Menlo Ventures (2026 State of Enterprise AI)"
+    },
+    {
+      "url": "https://x.com/deedydas/status/2117803499102822424",
+      "kind": "twitter",
+      "label": "@deedydas on X (Menlo enterprise AI)"
+    },
+    {
+      "url": "https://x.com/_catwu/status/2118137612577968402",
+      "kind": "twitter",
+      "label": "@_catwu on X (OpenAI Core Products)"
+    },
+    {
+      "url": "https://x.com/helloitsaustin/status/2118161804463595931",
+      "kind": "twitter",
+      "label": "@helloitsaustin on X (move to OpenAI)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2u1UpkMkFEQ",
+      "kind": "podcast",
+      "label": "Big Technology Podcast"
+    },
+    {
+      "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
+      "kind": "twitter",
+      "label": "OpenAI (A thousand fewer paths to root)"
+    },
+    {
+      "url": "https://x.com/OpenAI/status/2118119451401048497",
+      "kind": "twitter",
+      "label": "@OpenAI on X (cyber pipeline)"
+    },
+    {
+      "url": "https://x.com/scaling01/status/2118003733103600085",
+      "kind": "twitter",
+      "label": "@scaling01 on X (Kimi K3.1 Pro)"
+    },
+    {
+      "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+      "kind": "twitter",
+      "label": "Hugging Face (Kimi-K3.1-Pro)"
+    },
+    {
+      "url": "https://x.com/kimmonismus/status/2118066494634369464",
+      "kind": "twitter",
+      "label": "@kimmonismus on X (Ripple-65B)"
+    },
+    {
+      "url": "https://www.ricursive.com/ripple",
+      "kind": "twitter",
+      "label": "Ricursive (Ripple-65B Preview)"
+    },
+    {
+      "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
+      "kind": "twitter",
+      "label": "Hugging Face (Ripple-65B-Preview)"
+    },
+    {
+      "url": "https://ernie.baidu.com/release/ernie-5-5-flash-base/",
+      "kind": "twitter",
+      "label": "Baidu ERNIE blog (ERNIE-5.5-Flash-Base)"
+    },
+    {
+      "url": "https://x.com/teortaxesTex/status/2118217612513681648",
+      "kind": "twitter",
+      "label": "@teortaxesTex on X (ERNIE-5.5-Flash-Base)"
+    },
+    {
+      "url": "https://x.com/testingcatalog/status/2117885727354548370",
+      "kind": "twitter",
+      "label": "@testingcatalog on X (Tencent Hy4)"
+    },
+    {
+      "url": "https://openai.com/index/introducing-images-2-6/",
+      "kind": "twitter",
+      "label": "OpenAI (Introducing Images 2.6)"
+    },
+    {
+      "url": "https://x.com/OpenAI/status/2118124944928432327",
+      "kind": "twitter",
+      "label": "@OpenAI on X (Images 2.6)"
+    },
+    {
+      "url": "https://www.axios.com/2026/11/04/openai-pierre-computer-github",
+      "kind": "twitter",
+      "label": "Axios (OpenAI-Pierre)"
+    },
+    {
+      "url": "https://x.com/kimmonismus/status/2117966987888312763",
+      "kind": "twitter",
+      "label": "@kimmonismus on X (Pierre Computer)"
+    },
+    {
+      "url": "https://www.anthropic.com/research/investigating-vault-particles-with-claude",
+      "kind": "twitter",
+      "label": "Anthropic (vault particles)"
+    },
+    {
+      "url": "https://x.com/AnthropicAI/status/2118073665296228863",
+      "kind": "twitter",
+      "label": "@AnthropicAI on X (vault particle)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "create",
+      "slug": "us-data-center-politics"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    },
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    },
+    {
+      "op": "update",
+      "slug": "ai-cyber-risk-and-key-theft"
+    },
+    {
+      "op": "update",
+      "slug": "mistral-large-4-open-weights"
+    },
+    {
+      "op": "update",
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra"
+    },
+    {
+      "op": "update",
+      "slug": "ai-math-and-physics-discovery-claims"
+    },
+    {
+      "op": "resolve",
+      "slug": "palantir-q3-ai-demand"
+    }
+  ],
+  "warnings": [
+    "ops[1] update hyperscaler-capex-and-chip-selloff evidence[1]: duplicate URL dropped"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-05-0641.mp3",
+    "bytes": 1451469,
+    "duration_s": 241.8,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 66.44,
+        "lines": [
+          0,
+          4
+        ]
+      },
+      {
+        "start_s": 68.29,
+        "end_s": 97.77,
+        "lines": [
+          5,
+          6
+        ]
+      },
+      {
+        "start_s": 99.22,
+        "end_s": 132.78,
+        "lines": [
+          7,
+          8
+        ]
+      },
+      {
+        "start_s": 134.23,
+        "end_s": 235.27,
+        "lines": [
+          9,
+          15
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 26,
+    "kinds": {
+      "earnings": 3,
+      "podcast": 8,
+      "twitter": 13,
+      "video": 2
+    }
+  }
+}

@@ -1,9 +1,68 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-03T03:03:00Z",
+  "updated_at": "2026-11-05T06:41:00Z",
   "degraded": false,
-  "latest": "2026-11-03-0303",
+  "latest": "2026-11-05-0641",
   "bulletins": [
+    {
+      "id": "2026-11-05-0641",
+      "aired_at": "2026-11-05T06:41:00Z",
+      "headline": "AMD Data Center nearly doubles; Texas votes in a data-center pause; OpenAI reports 948 kernel root exploits",
+      "path": "bulletins/2026-11-05/0641.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-05-0641.mp3",
+        "bytes": 1451469,
+        "duration_s": 241.8,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 66.44,
+            "lines": [
+              0,
+              4
+            ]
+          },
+          {
+            "start_s": 68.29,
+            "end_s": 97.77,
+            "lines": [
+              5,
+              6
+            ]
+          },
+          {
+            "start_s": 99.22,
+            "end_s": 132.78,
+            "lines": [
+              7,
+              8
+            ]
+          },
+          {
+            "start_s": 134.23,
+            "end_s": 235.27,
+            "lines": [
+              9,
+              15
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "hyperscaler-capex-and-chip-selloff",
+        "palantir-q3-ai-demand",
+        "us-data-center-politics",
+        "ai-cyber-risk-and-key-theft",
+        "anthropic-ipo-and-ai-funding",
+        "mistral-large-4-open-weights",
+        "next-model-launches-qwen-4-gpt-6-2-astra"
+      ],
+      "kinds": [
+        "earnings",
+        "podcast",
+        "twitter"
+      ]
+    },
     {
       "id": "2026-11-03-0303",
       "aired_at": "2026-11-03T03:03:00Z",

@@ -1,186 +1,31 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-03T14:35:00Z",
-  "headline": "Palantir posts a first $2B+ quarter with revenue up 96%; Anthropic IPO, Marvell-Lumentum and Qwen-for-Apple stay in play",
+  "updated_at": "2026-11-05T06:41:00Z",
+  "headline": "AMD Data Center nearly doubles; Texas votes in a data-center pause; OpenAI reports 948 kernel root exploits",
   "threads": [
-    {
-      "slug": "anthropic-ipo-and-ai-funding",
-      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-02T21:46:00Z",
-      "now": "Anthropic filed its S-1 and could list on Nasdaq as soon as November, possibly raising about $100B at a $1.5T to $2T valuation. The amended filing shows Q3 revenue of $16.96B, nine-month revenue of $33.2B, compute at 58% of revenue and $895B of purchase and lease commitments, $447B due before 2030. Adjusted operating income was $2.5B.",
-      "changed": "Amended S-1 filed Nov 2: Q3 revenue $16.96B but a $567M operating loss versus a $974M profit in Q2, after $5B of pricey short-term compute. Risk language says future models may \"imminently\" hit its AI-accelerated-progress threshold.",
-      "watch": "Roadshow launch and price range; what safeguards Anthropic says its acceleration-threshold language triggers, including any Responsible Scaling Policy update.",
-      "evidence": [
-        {
-          "url": "https://x.com/AndrewCurran_/status/2117268002454507902",
-          "kind": "twitter",
-          "label": "@AndrewCurran_ on X (amended S-1)",
-          "at": "2026-11-02T21:00:00Z"
-        },
-        {
-          "url": "https://x.com/rohanpaul_ai/status/2117285920500273582",
-          "kind": "twitter",
-          "label": "@rohanpaul_ai on X (S-1/A breakdown)",
-          "at": "2026-11-02T21:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY",
-          "kind": "podcast",
-          "label": "AI Explained",
-          "at": "2026-11-02T16:59:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NVvfllwYliY",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (Anthropic S-1)",
-          "at": "2026-10-26T15:14:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=MRQTlwcW-aQ",
-          "kind": "podcast",
-          "label": "Latent Space (Anthropic engineering and product)",
-          "at": "2026-10-27T15:14:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=p1Dy4e4ff0s",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-10-30T21:44:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2-aUmDMZgLE",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-10-29T15:14:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=EGC7jht_mis",
-          "kind": "podcast",
-          "label": "Hard Fork",
-          "at": "2026-10-30T13:44:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Anthropic S-1 digested on Hard Fork and Decoder; FT reportedly says OpenAI shrank its round to about $20B at $1.25T."
-        },
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "20VC adds Meta's reported equity raise and the scale of Anthropic's planned issuance."
-        },
-        {
-          "at": "2026-10-31T18:49:00Z",
-          "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk."
-        },
-        {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
-        },
-        {
-          "at": "2026-11-01T23:55:00Z",
-          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
-        },
-        {
-          "at": "2026-11-02T21:46:00Z",
-          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
-        }
-      ]
-    },
-    {
-      "slug": "hyperscaler-capex-and-chip-selloff",
-      "title": "AI capex boom meets a market selloff: cloud earnings, Vertiv and the chip rout",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-10-31T18:49:00Z",
-      "now": "Google Cloud revenue rose 103% to $30.7B; Microsoft Cloud hit $63.9B. Amazon says AWS grew over 39%. Alphabet says Gemini APIs process nearly 32 billion tokens a minute and holds 2026 capex at $195B to $205B. Thursday Intel fell 28.6% and the chip index about 7%.",
-      "changed": "On All-In, hosts said Alphabet shares fell 10% to 15% Thursday, erasing about $500B, on search ad-click worries, even as Google Cloud operating profit passed $11B versus $3.5B a year earlier.",
-      "watch": "Whether the chip and Alphabet selloff continues Monday and whether other PC or memory-exposed firms repeat Intel's warning.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=p1Dy4e4ff0s",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-10-30T21:44:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
-          "kind": "earnings-call",
-          "label": "Alphabet earnings call",
-          "at": "2026-10-28T15:14:00Z",
-          "quote": "Moving to investments, our full-year 2026 CapEx guidance range of $195-$205 billion remain unchanged."
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/",
-          "kind": "earnings",
-          "label": "Amazon.com, Inc. (AMZN)",
-          "at": "2026-10-29T20:05:27Z",
-          "speaker": "Andy Jassy, President and CEO, Amazon",
-          "quote": "Our AWS investment in functionality and infrastructure is working, with over 39% year-over-year revenue growth in Q3 ($184 billion revenue run rate) and projected revenue growth rates of over 40% both in 2027 and in 2028"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/",
-          "kind": "earnings",
-          "label": "Alphabet Q3 8-K",
-          "at": "2026-10-28T20:01:33Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526436122/",
-          "kind": "earnings",
-          "label": "Microsoft FY27 Q1 8-K",
-          "at": "2026-10-28T20:04:44Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1674101/000162828026067707/",
-          "kind": "earnings",
-          "label": "Vertiv Holdings Co (VRT)",
-          "at": "2026-10-28T10:02:00Z",
-          "speaker": "Giordano Albertazzi, Vertiv's Chief Executive Officer",
-          "quote": "We are in the middle of the largest infrastructure buildout and it's accelerating"
-        },
-        {
-          "url": "https://x.com/DobbinsDownload/status/2116292393620398449",
-          "kind": "twitter",
-          "label": "@DobbinsDownload on X (market recap)",
-          "at": "2026-10-30T22:00:00Z"
-        },
-        {
-          "url": "https://x.com/MansaTesla/status/2116103460701581373",
-          "kind": "twitter",
-          "label": "@MansaTesla on X (Amazon recap)",
-          "at": "2026-10-30T09:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture."
-        },
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added."
-        },
-        {
-          "at": "2026-10-31T18:49:00Z",
-          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
-        }
-      ]
-    },
     {
       "slug": "ai-cyber-risk-and-key-theft",
       "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
       "status": "escalating",
-      "importance": 4,
+      "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-03T14:35:00Z",
-      "now": "Wiz reportedly counts nine AI developer platforms breached in October for stored API keys, including Northflank. Epoch reportedly found open-weight GLM-5.3 built Firefox exploits for about $1,000 each. A security guest on The Cognitive Revolution said agentic attacks now cost cents per company. Cursor's marketplace carried a tampered Claude Code extension.",
-      "changed": "OpenAI says its next security sprint will partner with Cathedral Systems and it is raising bug bounties, up to $172,000. That may explain a rumored Anthropic Slack 'Cathedral' breach as a red-team job; that link is inference.",
-      "watch": "Goldman or a second bank confirming its policy; a Cursor post-mortem; any Anthropic statement on the Slack claim; Cathedral's sprint findings.",
+      "updated_at": "2026-11-05T06:41:00Z",
+      "now": "OpenAI says a five-stage scout-to-patch pipeline using an upcoming cyber model reproduced 1,724 Linux kernel bugs and produced 948 distinct root exploits for $1.213 million in API credits, about $359 per successful LPE, and is sending reports to maintainers. Wiz still reports nine AI developer platforms breached in October for stored API keys. OpenAI's Cathedral Systems sprint remains scheduled.",
+      "changed": "OpenAI's Nov 4 write-up: 948 distinct Linux kernel local-privilege-escalation exploits at about $359 each; a July GPT-5.6 Sol run had found 166 unique LPEs for $513,690.",
+      "watch": "Named CVEs or kernel commits from this scan; whether OpenAI ships the cyber model; Cathedral sprint findings.",
       "evidence": [
+        {
+          "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
+          "kind": "twitter",
+          "label": "OpenAI (A thousand fewer paths to root)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/OpenAI/status/2118119451401048497",
+          "kind": "twitter",
+          "label": "@OpenAI on X (cyber pipeline)",
+          "at": "2026-11-05T06:00:00Z"
+        },
         {
           "url": "https://x.com/SteveAIStudio/status/2117623501997932686",
           "kind": "ticket",
@@ -216,18 +61,6 @@
           "kind": "podcast",
           "label": "Interconnects (Black October essay)",
           "at": "2026-10-30T17:36:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=1617s",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution",
-          "at": "2026-10-30T18:44:00Z"
-        },
-        {
-          "url": "https://x.com/ishkme/status/2116513901525217673",
-          "kind": "ticket",
-          "label": "Cursor tampered extension ticket (@ishkme on X)",
-          "at": "2026-10-31T00:00:00Z"
         }
       ],
       "history": [
@@ -254,33 +87,309 @@
         {
           "at": "2026-11-03T14:35:00Z",
           "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
         }
       ]
     },
     {
-      "slug": "palantir-q3-ai-demand",
-      "title": "Palantir's blowout quarter and enterprise AI demand",
-      "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-11-03T03:03:00Z",
-      "updated_at": "2026-11-03T03:03:00Z",
-      "now": "Palantir's third-quarter revenue rose 96% to $2.313B, its first quarter above $2B. GAAP net income was $1.128B, adjusted free cash flow $1.216B. U.S. commercial revenue grew 148% and now exceeds U.S. government revenue for the first time. Next-quarter revenue guidance is $2.649B to $2.653B.",
-      "changed": "Palantir reported Q3 on Nov 2: revenue $2.313B, up 96% year over year and 20% sequentially; U.S. commercial up 148%, passing government revenue for the first time.",
-      "watch": "Market reaction when trading opens, and whether the guidance of about $2.65B holds; no call transcript was available yet.",
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-05T06:41:00Z",
+      "now": "Anthropic's amended S-1 still points to a possible November Nasdaq listing near $1.5T to $2T. Menlo Ventures estimates enterprise AI spend at $176.8B by September, with Anthropic at 55% of enterprise LLM API dollars (from 40%), OpenAI 31% and Google 9%. Claude Code product lead Cat Wu posted she is joining OpenAI to lead Core Products; growth hire Austin Lau said he moved too.",
+      "changed": "Menlo puts Anthropic at 55% of enterprise LLM API spend as the S-1 roadshow looms; Claude Code PM Cat Wu and growth lead Austin Lau both posted moves to OpenAI.",
+      "watch": "Roadshow and price range; a named Claude Code successor; whether the S-1 or OpenAI usage disclosure corroborates Menlo's 55/31 split.",
       "evidence": [
         {
-          "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/",
-          "kind": "earnings",
-          "label": "Palantir Technologies Inc. (PLTR)",
-          "at": "2026-11-02T21:06:48Z",
-          "speaker": "Alex Karp, Co-Founder and Chief Executive Officer of Palantir Technologies",
-          "quote": "Our U.S. commercial revenue has surpassed our U.S. government revenue for the first time in our company's history."
+          "url": "https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/",
+          "kind": "twitter",
+          "label": "Menlo Ventures (2026 State of Enterprise AI)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/deedydas/status/2117803499102822424",
+          "kind": "twitter",
+          "label": "@deedydas on X (Menlo enterprise AI)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/_catwu/status/2118137612577968402",
+          "kind": "twitter",
+          "label": "@_catwu on X (OpenAI Core Products)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/helloitsaustin/status/2118161804463595931",
+          "kind": "twitter",
+          "label": "@helloitsaustin on X (move to OpenAI)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2u1UpkMkFEQ",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-03T17:08:00Z"
+        },
+        {
+          "url": "https://x.com/AndrewCurran_/status/2117268002454507902",
+          "kind": "twitter",
+          "label": "@AndrewCurran_ on X (amended S-1)",
+          "at": "2026-11-02T21:00:00Z"
+        },
+        {
+          "url": "https://x.com/rohanpaul_ai/status/2117285920500273582",
+          "kind": "twitter",
+          "label": "@rohanpaul_ai on X (S-1/A breakdown)",
+          "at": "2026-11-02T21:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY",
+          "kind": "podcast",
+          "label": "AI Explained",
+          "at": "2026-11-02T16:59:00Z"
         }
       ],
       "history": [
         {
-          "at": "2026-11-03T03:03:00Z",
-          "change": "Palantir Q3: revenue $2.313B (+96%), GAAP net income $1.128B, U.S. commercial +148%, guidance about $2.65B."
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Anthropic S-1 digested on Hard Fork and Decoder; FT reportedly says OpenAI shrank its round to about $20B at $1.25T."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "20VC adds Meta's reported equity raise and the scale of Anthropic's planned issuance."
+        },
+        {
+          "at": "2026-10-31T18:49:00Z",
+          "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk."
+        },
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
+        },
+        {
+          "at": "2026-11-01T23:55:00Z",
+          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
+        },
+        {
+          "at": "2026-11-02T21:46:00Z",
+          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
+        }
+      ]
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-05T06:41:00Z",
+      "now": "AMD's third quarter revenue was a record $13.4B, up 45%, with Data Center $8.5B, up 97%, on EPYC and Instinct MI450. Arm's FY27 Q2 revenue was $1.443B, up 27%, a record Q2, licenses $773M, up 50%. Super Micro FY27 Q1 net income was $1.594B vs $168M a year ago; sequential gross margin fell to 12.7% from 17.5%. The FT reports Oracle scrapped a ~$7B Tencent chip lease; unconfirmed.",
+      "changed": "AMD, Arm and Super Micro all printed strong AI-hardware quarters; Lisa Su said Data Center nearly doubled and Q4 should accelerate as Helios and Venice scale. FT says Oracle cancelled a $7B Tencent chip lease.",
+      "watch": "AMD Q4 Helios and Venice ramp; an Oracle or Tencent statement on the reported lease; whether the chip selloff resumes with the Texas siting fight.",
+      "evidence": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000188/",
+          "kind": "earnings",
+          "label": "Advanced Micro Devices, Inc. (AMD)",
+          "at": "2026-11-03T21:16:27Z",
+          "speaker": "Dr. Lisa Su, AMD chair and CEO",
+          "quote": "We delivered a record quarter with revenue exceeding the high end of our guidance as Data Center segment sales nearly doubled year-over-year"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000141/",
+          "kind": "earnings",
+          "label": "Arm Holdings plc (ARM)",
+          "at": "2026-11-04T21:02:18Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536526000026/",
+          "kind": "earnings",
+          "label": "Super Micro Computer, Inc. (SMCI)",
+          "at": "2026-11-03T21:31:04Z"
+        },
+        {
+          "url": "https://www.investing.com/news/stock-market-news/oracle-cancels-7-bln-chip-leasing-deal-with-tencent-ft-reports-4997349",
+          "kind": "twitter",
+          "label": "Investing.com / Reuters (Oracle-Tencent FT report)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/ns123abc/status/2117857386610454950",
+          "kind": "twitter",
+          "label": "@ns123abc on X (Oracle-Tencent lease)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=p1Dy4e4ff0s",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-10-30T21:44:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
+          "kind": "earnings-call",
+          "label": "Alphabet earnings call",
+          "at": "2026-10-28T15:14:00Z",
+          "quote": "Moving to investments, our full-year 2026 CapEx guidance range of $195-$205 billion remain unchanged."
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/",
+          "kind": "earnings",
+          "label": "Amazon.com, Inc. (AMZN)",
+          "at": "2026-10-29T20:05:27Z",
+          "speaker": "Andy Jassy, President and CEO, Amazon",
+          "quote": "Our AWS investment in functionality and infrastructure is working, with over 39% year-over-year revenue growth in Q3 ($184 billion revenue run rate) and projected revenue growth rates of over 40% both in 2027 and in 2028"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added."
+        },
+        {
+          "at": "2026-10-31T18:49:00Z",
+          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped."
+        }
+      ]
+    },
+    {
+      "slug": "us-data-center-politics",
+      "title": "US data-center siting backlash after the midterms",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-11-05T06:41:00Z",
+      "updated_at": "2026-11-05T06:41:00Z",
+      "now": "Democrat Gina Hinojosa unseated Texas Gov. Greg Abbott after campaigning for an immediate pause on new data-center permits. Wells Fargo puts 27% of planned U.S. data-center capacity in Texas; CNBC says CoreWeave fell 7% and Oracle 4.3%. A national exit poll found 57% of Tuesday's voters think AI will hurt society more than help, and 76% would oppose a new data center nearby.",
+      "changed": "Hinojosa beat Abbott on a data-center pause in the state Wells Fargo says holds 27% of planned U.S. capacity; a national exit poll found 76% would oppose a nearby data center.",
+      "watch": "Whether Hinojosa extends Abbott's September permit freeze past the December grid audit, and whether Georgia, Ohio or Pennsylvania follow with statewide pauses.",
+      "evidence": [
+        {
+          "url": "https://www.cnbc.com/2026/11/04/ai-stocks-texas-governor-data-centers.html",
+          "kind": "twitter",
+          "label": "CNBC (Texas governor, data centers)",
+          "at": "2026-11-04T14:00:00Z"
+        },
+        {
+          "url": "https://x.com/rohanpaul_ai/status/2117978113686773775",
+          "kind": "twitter",
+          "label": "@rohanpaul_ai on X (Texas, neoclouds)",
+          "at": "2026-11-04T14:00:00Z"
+        },
+        {
+          "url": "https://www.nbcnews.com/politics/2026-election/exit-poll-trump-midterms-voters-economy-disapproval-rcna607045",
+          "kind": "twitter",
+          "label": "NBC News (national exit poll)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/econographs/status/2117859420516331979",
+          "kind": "twitter",
+          "label": "@econographs on X (exit poll)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/benthompson/status/2117980910930862516",
+          "kind": "twitter",
+          "label": "@benthompson on X (AI on the Ballot)",
+          "at": "2026-11-04T14:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Created: Hinojosa wins Texas on a data-center pause; exit poll 57% AI-hurt / 76% local NIMBY."
+        }
+      ]
+    },
+    {
+      "slug": "mistral-large-4-open-weights",
+      "title": "Open-weight race: Kimi K3.1 Pro, Ripple-65B, ERNIE and Mistral",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-10-31T21:56:00Z",
+      "updated_at": "2026-11-05T06:41:00Z",
+      "now": "Moonshot ungated Kimi K3.1 Pro: 2.8T MoE, 104B active, 1M context; lab table 65.7 on Terminal-Bench 4.0 vs Opus 5.5 at 66.4. Ricursive's Ripple-65B Preview is Apache 2.0; it claims $32M R&D and 80.52 on Terminal-Bench 2.1. Baidu released ERNIE-5.5-Flash-Base (280B/14B). Tencent Hy4 is on APIs; weights promised. Independent evals pending.",
+      "changed": "Kimi K3.1 Pro, Ripple-65B Preview and ERNIE-5.5-Flash-Base dropped public weights; Tencent Hy4 went live on APIs with weights still promised.",
+      "watch": "Independent Terminal-Bench runs on the downloaded Kimi and Ripple weights; a Tencent Hy4 Hugging Face drop plus system card; a mid-trained ERNIE chat checkpoint.",
+      "evidence": [
+        {
+          "url": "https://x.com/scaling01/status/2118003733103600085",
+          "kind": "twitter",
+          "label": "@scaling01 on X (Kimi K3.1 Pro)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+          "kind": "twitter",
+          "label": "Hugging Face (Kimi-K3.1-Pro)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://x.com/kimmonismus/status/2118066494634369464",
+          "kind": "twitter",
+          "label": "@kimmonismus on X (Ripple-65B)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://www.ricursive.com/ripple",
+          "kind": "twitter",
+          "label": "Ricursive (Ripple-65B Preview)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
+          "kind": "twitter",
+          "label": "Hugging Face (Ripple-65B-Preview)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://ernie.baidu.com/release/ernie-5-5-flash-base/",
+          "kind": "twitter",
+          "label": "Baidu ERNIE blog (ERNIE-5.5-Flash-Base)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/teortaxesTex/status/2118217612513681648",
+          "kind": "twitter",
+          "label": "@teortaxesTex on X (ERNIE-5.5-Flash-Base)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/testingcatalog/status/2117885727354548370",
+          "kind": "twitter",
+          "label": "@testingcatalog on X (Tencent Hy4)",
+          "at": "2026-11-04T14:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Mistral Large 4 open release discussed on The Cognitive Revolution: one trillion parameters, claimed tie with GLM 5.3 on coding at half the tokens."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "Technical report published; licence and token-efficiency claims are secondary and unverified."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Kimi K3.1 Pro 2.8T ungated; Ripple-65B Apache 2.0 at claimed $32M; ERNIE-5.5-Flash-Base; Hy4 API live."
         }
       ]
     },
@@ -412,136 +521,28 @@
       ]
     },
     {
-      "slug": "mistral-large-4-open-weights",
-      "title": "Mistral Large 4: a trillion-parameter open model and the open-versus-closed compute gap",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-10-31T21:56:00Z",
-      "updated_at": "2026-11-03T14:35:00Z",
-      "now": "Mistral open-sourced Large 4 on October 29: about one trillion parameters, 49B active, sparse mixture of experts. It claims a coding tie with GLM 5.3 at half the tokens. Hosts said it trained on about 3,800 Blackwell GPUs. A technical report is now out; licence details are secondhand.",
-      "changed": "Mistral published the Large 4 technical report. Secondary roundups say a modified MIT-style licence restricts hosting it as a service, and that it uses about 47% fewer tokens than open rivals on agent tasks.",
-      "watch": "Independent evals of the final checkpoint, confirmation of the licence terms, and Western enterprise adoption over Chinese open models.",
-      "evidence": [
-        {
-          "url": "https://x.com/alexxhashemi/status/2117621284443971936",
-          "kind": "ticket",
-          "label": "@alexxhashemi on X (Large 4 roundup)",
-          "at": "2026-11-03T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/MistralAI/status/2117574509179900410",
-          "kind": "ticket",
-          "label": "@MistralAI on X (technical report)",
-          "at": "2026-11-03T00:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1FdJvaAft5E&t=4844s",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution",
-          "at": "2026-10-30T18:44:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T21:56:00Z",
-          "change": "Mistral Large 4 open release discussed on The Cognitive Revolution: one trillion parameters, claimed tie with GLM 5.3 on coding at half the tokens."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "Technical report published; licence and token-efficiency claims are secondary and unverified."
-        }
-      ]
-    },
-    {
-      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
-      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-11-01T15:32:00Z",
-      "updated_at": "2026-11-03T14:35:00Z",
-      "now": "Unconfirmed: Alibaba's Qwen 4 is reportedly due the week of November 2. Secondary accounts say Apple Intelligence in China will use Qwen, with developer testing from November 4 and a December rollout. Users say gpt-6.2-astra works from Codex CLI; hidden text on Anthropic's site reportedly lists Claude Mythos 5.5. No company has commented.",
-      "changed": "Meituan reportedly unveiled LongCat-2.5, a 1.6T-parameter agentic multimodal model. Relays say DeepSeek plans to pre-train V5 on 160,000 Huawei Ascend chips. Neither is confirmed first-party.",
-      "watch": "An OpenAI launch post for GPT-6.2 Astra; Qwen 4 this week; the Apple developer beta on November 4; Meituan weights or API; DeepSeek or Huawei confirmation.",
-      "evidence": [
-        {
-          "url": "https://x.com/fableforge/status/2117624333656830210",
-          "kind": "ticket",
-          "label": "@fableforge on X (LongCat-2.5)",
-          "at": "2026-11-03T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/StarsLevels/status/2117622026554757616",
-          "kind": "ticket",
-          "label": "@StarsLevels on X (DeepSeek V5, Ascend)",
-          "at": "2026-11-03T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/jakeisinvestor/status/2116884638060920988",
-          "kind": "ticket",
-          "label": "@jakeisinvestor on X (Qwen in Apple Intelligence)",
-          "at": "2026-11-02T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/ticker_report/status/2117263734066364485",
-          "kind": "ticket",
-          "label": "@ticker_report on X (Apple China schedule)",
-          "at": "2026-11-02T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/kimmonismus/status/2116973297326055564",
-          "kind": "twitter",
-          "label": "@kimmonismus on X (Astra in Codex CLI)",
-          "at": "2026-11-01T19:00:00Z"
-        },
-        {
-          "url": "https://x.com/kimmonismus/status/2116914141017370972",
-          "kind": "twitter",
-          "label": "@kimmonismus on X (Mythos 5.5 string)",
-          "at": "2026-11-01T19:00:00Z"
-        },
-        {
-          "url": "https://x.com/RagerrrYT/status/2116877919054397950",
-          "kind": "ticket",
-          "label": "@RagerrrYT on X (Qwen 4 relay)",
-          "at": "2026-11-01T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/pradeepXkapoor/status/2116882770190299219",
-          "kind": "ticket",
-          "label": "@pradeepXkapoor on X (GPT-6.2 Astra)",
-          "at": "2026-11-01T00:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
-        },
-        {
-          "at": "2026-11-01T19:39:00Z",
-          "change": "Astra reportedly callable in Codex CLI; Mythos 5.5 string spotted on Anthropic's site. Both unconfirmed."
-        },
-        {
-          "at": "2026-11-02T16:29:00Z",
-          "change": "Two secondary accounts report Qwen powering Apple Intelligence in China: developer beta Nov 4, public in December. Unconfirmed by Apple or Alibaba."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "LongCat-2.5 relayed; DeepSeek V5 on Huawei Ascend reported by relay; Fable 5.5 ticket closed as unverified."
-        }
-      ]
-    },
-    {
       "slug": "ai-math-and-physics-discovery-claims",
       "title": "Labs claim AI-made math and physics discoveries; experts hold back",
       "status": "developing",
       "importance": 3,
       "first_seen": "2026-10-31T14:48:00Z",
-      "updated_at": "2026-11-01T23:55:00Z",
-      "now": "OpenAI announced three model-produced results, including a claimed disproof of the Exponential Time Hypothesis. Reviewers Impagliazzo, Paturi and Williams say in an open letter that their involvement is not certification. A similar Anthropic 3-SAT paper is reported only secondhand.",
-      "changed": "Lex Fridman's math guests and MLST's Kevin Hartnett discuss the AI math wave; MLST says Epoch's test had a pre-release OpenAI model prove Erdos problem 126 and disprove 74, both checked in Lean.",
-      "watch": "An expert verdict on the ETH result, the KITP Yang-Mills group statement, and a first-party Anthropic post.",
+      "updated_at": "2026-11-05T06:41:00Z",
+      "now": "OpenAI's claimed ETH disproof still lacks reviewer certification. Anthropic says its science team, working with Claude, determined a 3D structure for a vault-like protein shell in prokaryotes, particles previously described only in plants and animals. Function is unknown; a preprint was submitted to bioRxiv. Anthropic says Claude sped the work and also made mistakes the team had to catch.",
+      "changed": "Anthropic published a Nov 4 note claiming the first 3D structure of a prokaryotic vault particle with Claude; it is an in-house result, not a journal paper.",
+      "watch": "The bioRxiv record going live; an outside group reproducing the map; still waiting on an expert verdict on OpenAI's ETH claim.",
       "evidence": [
+        {
+          "url": "https://www.anthropic.com/research/investigating-vault-particles-with-claude",
+          "kind": "twitter",
+          "label": "Anthropic (vault particles)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://x.com/AnthropicAI/status/2118073665296228863",
+          "kind": "twitter",
+          "label": "@AnthropicAI on X (vault particle)",
+          "at": "2026-11-04T21:00:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg",
           "kind": "podcast",
@@ -569,6 +570,93 @@
         {
           "at": "2026-11-01T23:55:00Z",
           "change": "Lex Fridman and MLST transcripts add context: Lean-checked Erdos results, guests favouring human-AI collaboration over AI-only maths."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Anthropic: Claude-assisted 3D map of a bacterial vault particle; preprint submitted, function unknown, unaudited."
+        }
+      ]
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-11-01T15:32:00Z",
+      "updated_at": "2026-11-05T06:41:00Z",
+      "now": "Qwen 4 was reported due the week of November 2 and has not been confirmed by Alibaba. Users still say gpt-6.2-astra works from Codex CLI. OpenAI instead shipped ChatGPT Images 2.6 globally, with GIF generation and API SKUs Flare and Sunburst. Axios reports OpenAI will acquire Pierre Computer to fold Code Storage into Codex; terms undisclosed, unconfirmed by OpenAI.",
+      "changed": "No first-party Qwen 4 or GPT-6.2 Astra; OpenAI shipped Images 2.6. Axios says OpenAI is buying Pierre Computer for Codex storage; OpenAI has not confirmed.",
+      "watch": "A first-party Qwen 4 or GPT-6.2 Astra post; OpenAI or Pierre confirmation of the Axios deal; Apple's reported China Qwen rollout in December.",
+      "evidence": [
+        {
+          "url": "https://openai.com/index/introducing-images-2-6/",
+          "kind": "twitter",
+          "label": "OpenAI (Introducing Images 2.6)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/OpenAI/status/2118124944928432327",
+          "kind": "twitter",
+          "label": "@OpenAI on X (Images 2.6)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://www.axios.com/2026/11/04/openai-pierre-computer-github",
+          "kind": "twitter",
+          "label": "Axios (OpenAI-Pierre)",
+          "at": "2026-11-04T14:00:00Z"
+        },
+        {
+          "url": "https://x.com/kimmonismus/status/2117966987888312763",
+          "kind": "twitter",
+          "label": "@kimmonismus on X (Pierre Computer)",
+          "at": "2026-11-04T14:00:00Z"
+        },
+        {
+          "url": "https://x.com/fableforge/status/2117624333656830210",
+          "kind": "ticket",
+          "label": "@fableforge on X (LongCat-2.5)",
+          "at": "2026-11-03T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/StarsLevels/status/2117622026554757616",
+          "kind": "ticket",
+          "label": "@StarsLevels on X (DeepSeek V5, Ascend)",
+          "at": "2026-11-03T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/jakeisinvestor/status/2116884638060920988",
+          "kind": "ticket",
+          "label": "@jakeisinvestor on X (Qwen in Apple Intelligence)",
+          "at": "2026-11-02T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/ticker_report/status/2117263734066364485",
+          "kind": "ticket",
+          "label": "@ticker_report on X (Apple China schedule)",
+          "at": "2026-11-02T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
+        },
+        {
+          "at": "2026-11-01T19:39:00Z",
+          "change": "Astra reportedly callable in Codex CLI; Mythos 5.5 string spotted on Anthropic's site. Both unconfirmed."
+        },
+        {
+          "at": "2026-11-02T16:29:00Z",
+          "change": "Two secondary accounts report Qwen powering Apple Intelligence in China: developer beta Nov 4, public in December. Unconfirmed by Apple or Alibaba."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "LongCat-2.5 relayed; DeepSeek V5 on Huawei Ascend reported by relay; Fable 5.5 ticket closed as unverified."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Images 2.6 live with GIFs; Qwen 4 and Astra still unconfirmed; Axios: OpenAI-Pierre, unverified."
         }
       ]
     },
@@ -616,6 +704,37 @@
         {
           "at": "2026-11-02T16:29:00Z",
           "change": "Reported OpenAI shift to a shared ChatGPT and Codex token allowance from December; sizes unpublished, unverified."
+        }
+      ]
+    },
+    {
+      "slug": "palantir-q3-ai-demand",
+      "title": "Palantir's blowout quarter and enterprise AI demand",
+      "status": "resolved",
+      "importance": 4,
+      "first_seen": "2026-11-03T03:03:00Z",
+      "updated_at": "2026-11-05T06:41:00Z",
+      "now": "Palantir's third-quarter revenue rose 96% to $2.313B, its first quarter above $2B. GAAP net income was $1.128B, adjusted free cash flow $1.216B. U.S. commercial revenue grew 148% and now exceeds U.S. government revenue for the first time. Next-quarter revenue guidance is $2.649B to $2.653B.",
+      "changed": "No new Palantir facts this cycle; the Nov 2 $2.313B quarter is on the record and already aired.",
+      "watch": "Market reaction when trading opens, and whether the guidance of about $2.65B holds; no call transcript was available yet.",
+      "evidence": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/",
+          "kind": "earnings",
+          "label": "Palantir Technologies Inc. (PLTR)",
+          "at": "2026-11-02T21:06:48Z",
+          "speaker": "Alex Karp, Co-Founder and Chief Executive Officer of Palantir Technologies",
+          "quote": "Our U.S. commercial revenue has surpassed our U.S. government revenue for the first time in our company's history."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-03T03:03:00Z",
+          "change": "Palantir Q3: revenue $2.313B (+96%), GAAP net income $1.128B, U.S. commercial +148%, guidance about $2.65B."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Resolved after the Q3 print was aired; no call transcript or guidance change arrived."
         }
       ]
     },
