@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "id": "2026-11-05-1249",
+  "aired_at": "2026-11-05T12:49:00Z",
+  "headline": "Robinhood says 150k agent-trading accounts and 30M daily tool calls; a $1-2T AI IPO is too late for retail",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's ten to one UTC on Thursday, November fifth. This is ARA AI News. A brokerage just put numbers on retail trading agents, and used them to argue that a trillion-dollar A I listing may already be too late for the public."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On No Priors, the guest, introduced as Robinhood founder and CEO Vlad Tenev, said more than one hundred fifty thousand clients have opened agent-trading accounts in the few months since launch."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The same episode said tool calls on those accounts follow a smooth exponential, and that the last number announced was around thirty million tool calls a day. An agent there executes the trades and runs the strategy."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That is the company's own count on a podcast, not a filing. The show also said Robinhood lists prediction-market contracts so people can speculate or hedge on which A I model will be best this week, this month, or this year."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "It called Robinhood Chain the best blockchain for A I agents as well as for real assets. People who never touched VS Code or Cursor, it said, now use Claude or Codex, and the same pattern is supposed to hit trading."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That conversation ran into the live I P O story. The guest said that if an A I lab goes public at one or two trillion dollars, a retail buyer in the offering would need the company to grow to quadrillions to see that kind of gain again, and called that unlikely."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Anthropic's amended S one still points at a possible November Nasdaq listing in that one point five to two trillion dollar range. Menlo Ventures already puts Anthropic at fifty-five percent of enterprise large-language-model A P I dollars."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Robinhood described a listed venture fund that raises from its retail I P O channel and then buys private startups. That is the brokerage's answer to the problem it just named: get in before those listings, not after."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The rest of the live board is unchanged from twenty to seven this morning."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "One quiet thread is now settled. Neither x A I nor OpenAI published the new flat-rate agent quota sizes we were watching, so that story is off the live board."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Watch for a Robinhood filing or investor letter that repeats the one hundred fifty thousand accounts and thirty million daily tool calls. Watch Anthropic's roadshow price range, and whether that listed venture fund discloses any frontier-lab holdings."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's ten to one UTC on Thursday, November fifth. This is ARA AI News. A brokerage just put numbers on retail trading agents, and used them to argue that a trillion-dollar A I listing may already be too late for the public.",
+    "Speaker 2: [high_energy] On No Priors, the guest, introduced as Robinhood founder and CEO Vlad Tenev, said more than [emphasis] one hundred fifty thousand[/emphasis] clients have opened agent-trading accounts in the few months since launch.",
+    "Speaker 1: The same episode said tool calls on those accounts follow a smooth exponential, and that the last number announced was around [emphasis] thirty million[/emphasis] tool calls a day. An agent there executes the trades and runs the strategy.",
+    "Speaker 2: That is the company's own count on a podcast, not a filing. The show also said Robinhood lists prediction-market contracts so people can speculate or hedge on which A I model will be best this week, this month, or this year.",
+    "Speaker 1: It called Robinhood Chain the best blockchain for A I agents as well as for real assets. People who never touched VS Code or Cursor, it said, now use Claude or Codex, and the same pattern is supposed to hit trading.",
+    "Speaker 2: [transition] That conversation ran into the live I P O story. The guest said that if an A I lab goes public at [emphasis] one or two trillion dollars[/emphasis], a retail buyer in the offering would need the company to grow to quadrillions to see that kind of gain again, and called that unlikely.",
+    "Speaker 1: Anthropic's amended S one still points at a possible November Nasdaq listing in that one point five to two trillion dollar range. Menlo Ventures already puts Anthropic at fifty-five percent of enterprise large-language-model A P I dollars.",
+    "Speaker 2: Robinhood described a listed venture fund that raises from its retail I P O channel and then buys private startups. That is the brokerage's answer to the problem it just named: get in before those listings, not after.",
+    "Speaker 1: [transition] The rest of the live board is unchanged from twenty to seven this morning.",
+    "Speaker 2: One quiet thread is now settled. Neither x A I nor OpenAI published the new flat-rate agent quota sizes we were watching, so that story is off the live board.",
+    "Speaker 1: Watch for a Robinhood filing or investor letter that repeats the one hundred fifty thousand accounts and thirty million daily tool calls. Watch Anthropic's roadshow price range, and whether that listed venture fund discloses any frontier-lab holdings.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "ai-agents-in-finance-and-law",
+    "anthropic-ipo-and-ai-funding",
+    "flat-rate-ai-agent-usage-limits"
+  ],
+  "threads": [
+    {
+      "slug": "ai-agents-in-finance-and-law",
+      "title": "AI agents move into finance and legal work",
+      "status": "developing"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "flat-rate-ai-agent-usage-limits",
+      "title": "Flat-rate AI agent plans tighten usage as serving costs bite",
+      "status": "resolved"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=yULk8eNa2mg",
+      "kind": "podcast",
+      "label": "No Priors"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=1759s",
+      "kind": "podcast",
+      "label": "No Priors"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=2388s",
+      "kind": "podcast",
+      "label": "No Priors (AI-lab IPO)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=2574s",
+      "kind": "podcast",
+      "label": "No Priors (listed venture fund)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "resolve",
+      "slug": "flat-rate-ai-agent-usage-limits"
+    },
+    {
+      "op": "update",
+      "slug": "ai-agents-in-finance-and-law"
+    },
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    }
+  ],
+  "warnings": [
+    "ops[1] update ai-agents-in-finance-and-law evidence[1]: quote replaced by the source's exact wording"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-05-1249.mp3",
+    "bytes": 918381,
+    "duration_s": 153.0,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 68.6,
+        "lines": [
+          0,
+          4
+        ]
+      },
+      {
+        "start_s": 70.05,
+        "end_s": 113.73,
+        "lines": [
+          5,
+          7
+        ]
+      },
+      {
+        "start_s": 115.18,
+        "end_s": 146.42,
+        "lines": [
+          8,
+          11
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 1,
+    "kinds": {
+      "podcast": 1
+    }
+  }
+}

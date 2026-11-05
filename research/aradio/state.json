@@ -1,8 +1,103 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-05T09:55:00Z",
-  "headline": "AMD Data Center nearly doubles; Texas votes in a data-center pause; OpenAI reports 948 kernel root exploits",
+  "updated_at": "2026-11-05T12:49:00Z",
+  "headline": "Robinhood says 150k agent-trading accounts and 30M daily tool calls; a $1-2T AI IPO is too late for retail",
   "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-05T12:49:00Z",
+      "now": "Anthropic's amended S-1 still points to a possible November Nasdaq listing near $1.5T-$2T. Menlo: Anthropic 55% of enterprise LLM API dollars, OpenAI 31%, Google 9%. On No Priors, a guest introduced as Robinhood's CEO said a $1-2T AI-lab IPO leaves little remaining public upside, and described a listed venture fund for private startups. Cat Wu and Austin Lau posted moves to OpenAI.",
+      "changed": "On No Priors, a guest introduced as Robinhood's CEO said a $1-2T AI-lab IPO leaves little public upside for retail, and described a listed venture fund that buys private startups.",
+      "watch": "Roadshow and price range; whether Robinhood's listed venture fund discloses AI-lab holdings; a named Claude Code successor.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=2388s",
+          "kind": "podcast",
+          "label": "No Priors (AI-lab IPO)",
+          "at": "2026-11-05T11:12:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=2574s",
+          "kind": "podcast",
+          "label": "No Priors (listed venture fund)",
+          "at": "2026-11-05T11:12:00Z"
+        },
+        {
+          "url": "https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/",
+          "kind": "twitter",
+          "label": "Menlo Ventures (2026 State of Enterprise AI)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/deedydas/status/2117803499102822424",
+          "kind": "twitter",
+          "label": "@deedydas on X (Menlo enterprise AI)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/_catwu/status/2118137612577968402",
+          "kind": "twitter",
+          "label": "@_catwu on X (OpenAI Core Products)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/helloitsaustin/status/2118161804463595931",
+          "kind": "twitter",
+          "label": "@helloitsaustin on X (move to OpenAI)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2u1UpkMkFEQ",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-03T17:08:00Z"
+        },
+        {
+          "url": "https://x.com/AndrewCurran_/status/2117268002454507902",
+          "kind": "twitter",
+          "label": "@AndrewCurran_ on X (amended S-1)",
+          "at": "2026-11-02T21:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Anthropic S-1 digested on Hard Fork and Decoder; FT reportedly says OpenAI shrank its round to about $20B at $1.25T."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "20VC adds Meta's reported equity raise and the scale of Anthropic's planned issuance."
+        },
+        {
+          "at": "2026-10-31T18:49:00Z",
+          "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk."
+        },
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
+        },
+        {
+          "at": "2026-11-01T23:55:00Z",
+          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
+        },
+        {
+          "at": "2026-11-02T21:46:00Z",
+          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
+        },
+        {
+          "at": "2026-11-05T12:49:00Z",
+          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
+        }
+      ]
+    },
     {
       "slug": "ai-cyber-risk-and-key-theft",
       "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
@@ -91,97 +186,6 @@
         {
           "at": "2026-11-05T06:41:00Z",
           "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
-        }
-      ]
-    },
-    {
-      "slug": "anthropic-ipo-and-ai-funding",
-      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-05T06:41:00Z",
-      "now": "Anthropic's amended S-1 still points to a possible November Nasdaq listing near $1.5T to $2T. Menlo Ventures estimates enterprise AI spend at $176.8B by September, with Anthropic at 55% of enterprise LLM API dollars (from 40%), OpenAI 31% and Google 9%. Claude Code product lead Cat Wu posted she is joining OpenAI to lead Core Products; growth hire Austin Lau said he moved too.",
-      "changed": "Menlo puts Anthropic at 55% of enterprise LLM API spend as the S-1 roadshow looms; Claude Code PM Cat Wu and growth lead Austin Lau both posted moves to OpenAI.",
-      "watch": "Roadshow and price range; a named Claude Code successor; whether the S-1 or OpenAI usage disclosure corroborates Menlo's 55/31 split.",
-      "evidence": [
-        {
-          "url": "https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/",
-          "kind": "twitter",
-          "label": "Menlo Ventures (2026 State of Enterprise AI)",
-          "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/deedydas/status/2117803499102822424",
-          "kind": "twitter",
-          "label": "@deedydas on X (Menlo enterprise AI)",
-          "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/_catwu/status/2118137612577968402",
-          "kind": "twitter",
-          "label": "@_catwu on X (OpenAI Core Products)",
-          "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/helloitsaustin/status/2118161804463595931",
-          "kind": "twitter",
-          "label": "@helloitsaustin on X (move to OpenAI)",
-          "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2u1UpkMkFEQ",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-03T17:08:00Z"
-        },
-        {
-          "url": "https://x.com/AndrewCurran_/status/2117268002454507902",
-          "kind": "twitter",
-          "label": "@AndrewCurran_ on X (amended S-1)",
-          "at": "2026-11-02T21:00:00Z"
-        },
-        {
-          "url": "https://x.com/rohanpaul_ai/status/2117285920500273582",
-          "kind": "twitter",
-          "label": "@rohanpaul_ai on X (S-1/A breakdown)",
-          "at": "2026-11-02T21:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY",
-          "kind": "podcast",
-          "label": "AI Explained",
-          "at": "2026-11-02T16:59:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Anthropic S-1 digested on Hard Fork and Decoder; FT reportedly says OpenAI shrank its round to about $20B at $1.25T."
-        },
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "20VC adds Meta's reported equity raise and the scale of Anthropic's planned issuance."
-        },
-        {
-          "at": "2026-10-31T18:49:00Z",
-          "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk."
-        },
-        {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
-        },
-        {
-          "at": "2026-11-01T23:55:00Z",
-          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
-        },
-        {
-          "at": "2026-11-02T21:46:00Z",
-          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
         }
       ]
     },
@@ -521,6 +525,65 @@
       ]
     },
     {
+      "slug": "ai-agents-in-finance-and-law",
+      "title": "AI agents move into finance and legal work",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-11-01T06:51:00Z",
+      "updated_at": "2026-11-05T12:49:00Z",
+      "now": "On No Priors, whose guest was introduced as Robinhood CEO Vlad Tenev, the episode said over 150,000 clients opened agent-trading accounts in the few months since launch, at about 30 million tool calls a day. It called Robinhood Chain best for AI agents and said the firm lists contracts on which model will be best. Prior: OpenAI's finance ChatGPT is still enterprise-only.",
+      "changed": "No Priors guest introduced as Robinhood CEO Vlad Tenev: over 150,000 agent-trading accounts since launch, about 30 million tool calls a day.",
+      "watch": "A Robinhood filing or letter repeating the 150,000 accounts and 30 million daily tool calls; whether other brokers report agent-trading adoption.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg",
+          "kind": "podcast",
+          "label": "No Priors",
+          "at": "2026-11-05T11:12:00Z",
+          "quote": "We are seeing very strong adoption: over 150,000 clients have opened agent trading accounts with us in the few months since launch."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=1759s",
+          "kind": "podcast",
+          "label": "No Priors",
+          "at": "2026-11-05T11:12:00Z",
+          "quote": "And if you look at the tool calls, they follow a smooth exponential, where the last number we announced was around 30 million tool calls per day ."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=v-d1WTqIULs",
+          "kind": "podcast",
+          "label": "Latent Space (OpenAI finance)",
+          "at": "2026-10-31T03:21:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KM3VQZKjpiY",
+          "kind": "podcast",
+          "label": "Latent Space (Arca)",
+          "at": "2026-10-31T16:17:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=iRMmPjunm3Q",
+          "kind": "podcast",
+          "label": "a16z (Eve)",
+          "at": "2026-10-30T14:44:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-01T06:51:00Z",
+          "change": "Thread created from finance and legal agent episodes; no market-moving news."
+        },
+        {
+          "at": "2026-11-03T03:03:00Z",
+          "change": "Resolved: quiet, low-importance thread; no new finance or legal agent news."
+        },
+        {
+          "at": "2026-11-05T12:49:00Z",
+          "change": "Reopened: No Priors says Robinhood has 150k agent-trading accounts and ~30M tool calls/day; Chain pitched for AI agents."
+        }
+      ]
+    },
+    {
       "slug": "ai-math-and-physics-discovery-claims",
       "title": "Labs claim AI-made math and physics discoveries; experts hold back",
       "status": "developing",
@@ -663,12 +726,12 @@
     {
       "slug": "flat-rate-ai-agent-usage-limits",
       "title": "Flat-rate AI agent plans tighten usage as serving costs bite",
-      "status": "developing",
+      "status": "resolved",
       "importance": 2,
       "first_seen": "2026-11-02T01:51:00Z",
-      "updated_at": "2026-11-02T16:29:00Z",
+      "updated_at": "2026-11-05T12:49:00Z",
       "now": "Elon Musk says Grok Bot serving costs outran revenue, explaining weekend limit cuts; new quotas are unpublished. OpenAI reportedly will give ChatGPT and Codex a shared token-based allowance on Plus, Pro and Business from December, with no sizes yet, after repeated Codex limit changes on the $200 plan.",
-      "changed": "Reportedly, OpenAI will move ChatGPT and Codex to one shared token-based allowance on Plus, Pro and Business from December, excluding Instant chat. Sizes and rates unpublished; no OpenAI primary captured.",
+      "changed": "No new quota sizes from xAI or OpenAI since November 2; the thread has gone quiet.",
       "watch": "Whether xAI publishes new Grok Bot quotas; OpenAI's official allowance sizes and per-model token rates.",
       "evidence": [
         {
@@ -704,6 +767,10 @@
         {
           "at": "2026-11-02T16:29:00Z",
           "change": "Reported OpenAI shift to a shared ChatGPT and Codex token allowance from December; sizes unpublished, unverified."
+        },
+        {
+          "at": "2026-11-05T12:49:00Z",
+          "change": "Resolved: unpublished Grok Bot and ChatGPT/Codex allowance sizes never arrived; no new facts this cycle."
         }
       ]
     },
@@ -735,47 +802,6 @@
         {
           "at": "2026-11-05T06:41:00Z",
           "change": "Resolved after the Q3 print was aired; no call transcript or guidance change arrived."
-        }
-      ]
-    },
-    {
-      "slug": "ai-agents-in-finance-and-law",
-      "title": "AI agents move into finance and legal work",
-      "status": "resolved",
-      "importance": 2,
-      "first_seen": "2026-11-01T06:51:00Z",
-      "updated_at": "2026-11-03T03:03:00Z",
-      "now": "OpenAI's financial services lead said on Latent Space that ChatGPT for Financial Services is an enterprise product, with Pro-plan access being worked on, and that most finance AI so far targets junior analysts. Arca, an AI-native wealth firm that raised $64M, says its agents prompt humans more than humans prompt agents. Eve's CEO told a16z AI makes plaintiff law cases viable.",
-      "changed": "No new developments since creation; folded into the broader enterprise-AI picture, including Palantir's results.",
-      "watch": "Whether OpenAI announces wider Pro-plan access to ChatGPT for Financial Services.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=v-d1WTqIULs",
-          "kind": "podcast",
-          "label": "Latent Space (OpenAI finance)",
-          "at": "2026-10-31T03:21:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=KM3VQZKjpiY",
-          "kind": "podcast",
-          "label": "Latent Space (Arca)",
-          "at": "2026-10-31T16:17:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=iRMmPjunm3Q",
-          "kind": "podcast",
-          "label": "a16z (Eve)",
-          "at": "2026-10-30T14:44:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-01T06:51:00Z",
-          "change": "Thread created from finance and legal agent episodes; no market-moving news."
-        },
-        {
-          "at": "2026-11-03T03:03:00Z",
-          "change": "Resolved: quiet, low-importance thread; no new finance or legal agent news."
         }
       ]
     }
