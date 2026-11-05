@@ -1,0 +1,11 @@
+Speaker 1: Thursday, November fifth, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI's pipeline just found [emphasis] nine hundred forty-eight [/emphasis] Linux root exploits. [dramatic_pause] The whole haul cost only [emphasis] one point two million dollars [/emphasis].
+Speaker 1: That is one thousand seven hundred twenty-four validated kernel bugs, at one thousand two hundred seventy-nine dollars per local privilege escalation.
+Speaker 2: That's the first time we've seen forty years of technical debt get paid down this cheaply, and it is trending on Hacker News with one thousand one hundred thirteen points.
+Speaker 1: Meta is buying Conductor, and that cloud shuts on November twentieth.
+Speaker 2: Moonshot released Kimi K three point one Pro weights, a two point eight trillion parameter mixture of experts anyone can pull.
+Speaker 1: On the policy front, Texas just elected a governor who wants a data-center pause.
+Speaker 2: [high_energy] Arm's second-quarter revenue hit one point four four billion dollars, up twenty-seven percent year over year.
+Speaker 1: Qualcomm is guiding six hundred fifty million dollars of data-center sales in first quarter twenty twenty-seven, heading for [emphasis] fifteen billion dollars [/emphasis] by twenty twenty-nine.
+Speaker 2: And Images two point six is now pushing four billion images a week, fifty percent faster than before.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
