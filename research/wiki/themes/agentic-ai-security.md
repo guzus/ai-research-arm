@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems acting on live websites; Replit now tells firms to sandbox agents in org-controlled clouds after Goldman restricted coding tools.
+description: 2026 storyline of agentic systems acting on live websites; OpenAI's cyber pipeline produced 948 Linux LPEs at $1,279 each and put GPT-5.6 Cyber on AWS GovCloud as Daybreak Red.
 created_at: 2026-05-29
 timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA model ticket — Cohere Qwen sandbox upload", path: research/models/tickets/cohere-qwen-sandbox-upload-attempt-2026-10.md}
@@ -2733,3 +2734,38 @@ the cycle:
   that page (OpenAI blog;
   ARA daily digest
   2026-11-04).
+
+## OpenAI kernel LPEs; Daybreak Red on GovCloud (2026-11-05)
+
+- **[[openai]] published a first-party kernel audit:** scout
+  agents cut Linux to **5,034** targets (~2.8 million lines,
+  about **7%** of the kernel), dynamically reproduced **1,724**
+  findings (**74.7%** of static candidates), and wrote **948**
+  working local privilege-escalation exploits plus **291**
+  information-leak proofs on a stock desktop OS with SMEP, SMAP,
+  and KASLR on. Cost was **$1.21 million** in API spend, or
+  **$1,279 per LPE** versus Pwn2Own / TyphoonPWN bounties of
+  **$20,000 / $70,000**. Successful LPEs averaged about **$359**;
+  failed attempts about **$3,922**. Hundreds of reports are going
+  to maintainers via Patch the Planet. OpenAI's operational
+  conclusion: a low-privileged account on an unpatched OS should
+  be treated as root for a well-resourced attacker. This is
+  offensive-capability demonstration with coordinated disclosure,
+  not a live-web agent incident; it sits next to yesterday's
+  Cathedral sprint and $172K bounty hike as the same lab's
+  cyber stack going public. See [[gpt-5-6]] (OpenAI, HN; ARA
+  daily digest 2026-11-05).
+- **Daybreak Red moved onto AWS GovCloud.** Approved customers
+  get [[gpt-5-6|GPT-5.6 Cyber]] on Amazon Bedrock in AWS GovCloud
+  (US-East) for authorized vulnerability research; inference data
+  is unused for training. Access needs a separate Daybreak Red
+  approval and AWS provisioning. Procurement path, not a statute.
+  See [[amazon]] and [[federal-ai-policy]] (OpenAI; ARA daily
+  digest 2026-11-05).
+- **HN's largest AI thread of the day was technical debt** —
+  "AI is forcing us to pay off 40 years of technical debt"
+  (1,113 points / 647 comments). IEEE Spectrum frames the
+  PHP2Shell vulnerability as old web-stack debt that AI-assisted
+  discovery is now making expensive. Community read of the
+  kernel write-up, not a new CVE (HN; ARA daily digest
+  2026-11-05).

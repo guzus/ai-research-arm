@@ -2,17 +2,18 @@
 slug: meta
 title: Meta
 type: entity
-aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm", "Meta Enterprise Platform", "CJ Desai", "Muse Gadgets"]
+aliases: [Meta, "Meta Platforms", Facebook, "Meta AI", Llama, "AI Mode", "Meta Hatch", "Meta One", "Muse Charm", "Meta Enterprise Platform", "CJ Desai", "Muse Gadgets", Conductor, "Conductor Cloud", "Charlie Holtz"]
 tags: [hyperscaler, frontier-lab, consumer-ai, open-weights, social]
-description: Social-platform hyperscaler and Llama maker; raised its fundraising target to $97.5B, with Nvidia expressing interest in $3B of common and saying Meta will expand Vera Rubin deployments.
+description: Social-platform hyperscaler and Llama maker; acquired coding startup Conductor into Superintelligence Labs, with Conductor Cloud shutting on November 20.
 created_at: 2026-06-16
-timestamp: 2026-10-28T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 market:
   ticker: META
   exchange: NASDAQ
   symbol: NASDAQ:META
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA model ticket — Meta Class C equity raise", path: research/models/tickets/meta-class-c-equity-raise-2026-10.md}
@@ -620,3 +621,41 @@ TechCrunch; ARA daily digest 2026-09-16).
   Decoder, Nvidia via
   @testingcatalog; ARA
   daily digest 2026-10-28).
+
+## Conductor acquihire into Superintelligence Labs (2026-11-05)
+
+- **Meta acquired the coding
+  startup Conductor.** Founder
+  Charlie Holtz will work with
+  chief AI officer Alexandr
+  Wang and Superintelligence
+  Labs product head Nat
+  Friedman. The local
+  multi-agent coding app
+  launched last summer on
+  [[anthropic]] and [[openai]]
+  models rather than in-house
+  [[muse-code|Muse]] weights.
+  Conductor Cloud goes
+  read-only on **November 13**
+  and shuts on **November 20**;
+  local Conductor keeps models
+  and critical fixes into
+  early 2027. Holtz teased
+  "the next interface" for
+  early 2027. Terms were not
+  disclosed. Holtz's March
+  2026 Series A from Spark and
+  Matrix (**$22 million**) is
+  the only dollar figure in
+  local sources. Treat the
+  deal as a product acquihire
+  into Superintelligence Labs,
+  not a priced round. HN 159
+  comments on a 136-point
+  story, heavier on shutdown
+  timing than on Meta's
+  product plans (TechCrunch,
+  The Verge, Conductor blog,
+  HN; ARA daily digest
+  2026-11-05).

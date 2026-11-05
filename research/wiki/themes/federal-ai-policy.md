@@ -2,12 +2,13 @@
 slug: federal-ai-policy
 title: Federal AI Policy
 type: theme
-aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits", FASCSA, "Federal Acquisition Supply Chain Security Act", "DHS DeepSeek order", "Pennsylvania AI Deceptive Advertising Act", "Josh Shapiro"]
+aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits", FASCSA, "Federal Acquisition Supply Chain Security Act", "DHS DeepSeek order", "Pennsylvania AI Deceptive Advertising Act", "Josh Shapiro", "Gina Hinojosa"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; a DHS FASCSA order now reaches DeepSeek products and derivatives, including self-hosted weights, at civilian agencies.
+description: US federal AI governance; incoming Texas governor Gina Hinojosa pledged an immediate data-center moratorium, and a national exit poll found 57% think AI will do more harm than good.
 created_at: 2026-06-03
-timestamp: 2026-10-25T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
@@ -2416,6 +2417,68 @@ footing for the first time in the cycle.
   debate (The Verge, The
   Guardian; ARA daily digest
   2026-10-25).
+
+## Texas moratorium vote; exit-poll hostility (2026-11-05)
+
+- **Incoming Texas governor Gina Hinojosa pledged an
+  immediate data-center moratorium.** Abbott had
+  already halted every state data-center permit in
+  September pending a December grid audit, so the
+  vote may decide whether that freeze lifts. The
+  Information counts incoming or leading governors
+  in **12 states** who have called for a pause.
+  Wells Fargo puts **27%** of planned US
+  data-center gigawatts in Texas. This is a
+  state-siting fight, not a federal statute; it
+  sits next to
+  [[california-ai-regulation]] as another
+  sub-national constraint on the [[ai-capex]]
+  buildout (CNBC, The Information, @benthompson;
+  ARA daily digest 2026-11-05).
+- **A joint SSRS national exit poll for NBC and
+  other networks found 57% saying AI will do more
+  to hurt society than help**, versus **24%** who
+  said it will help, and **43%** saying neither
+  party is better able to handle AI. The economy
+  (**39%**) and the state of democracy (**32%**)
+  still outranked AI as ballot issues. Hostility
+  without a mandate (NBC News; ARA daily digest
+  2026-11-05).
+- **AI PACs spent millions and mostly lost the
+  general.** American Mission and Building the
+  Future spent **$4.8 million** on South Carolina
+  Senate candidate Darline Graham (lost); Leading
+  the Future ([[openai]] president Greg Brockman
+  and a16z) spent **$27.38 million** in the
+  primaries. Think Big's Jared Moskowitz and
+  Guardrails Alliance-backed Angela Gonzales-Torres
+  won. The live fight remains federal AI preemption
+  versus state safeguards (TechCrunch; ARA daily
+  digest 2026-11-05).
+- **[[openai]]'s Chris Lehane published a 2028
+  policy essay** analogizing AI to FDR's New Deal
+  and listing worker training, capital access,
+  employee ownership, child-safety, data-center
+  buildout, and enforceable safety standards with a
+  kill switch. AI Now's Kate Brennan called the New
+  Deal frame "ahistorical at best." Essay, not a
+  bill (TechCrunch; ARA daily digest 2026-11-05).
+- **Google's K-12 Search coupling drew named
+  political fire.** Sen. Bernie Sanders called it
+  "extortion"; Sen. Richard Blumenthal, former FTC
+  chair Lina Khan, and NYC mayor Zohran Mamdani
+  also attacked the coupling. This is the November
+  4 reaction, not a new statute; the underlying
+  product policy was in yesterday's report. See
+  [[google]] (TechCrunch; ARA daily digest
+  2026-11-05).
+- **No new federal AI bill passed.** Daybreak Red
+  in GovCloud is a procurement path, not a
+  regulation. The Linux-kernel disclosure is being
+  handled through existing maintainer and Patch the
+  Planet channels. See [[openai]] and
+  [[agentic-ai-security]] (ARA daily digest
+  2026-11-05).
 
 ## Open questions
 

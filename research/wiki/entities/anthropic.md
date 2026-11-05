@@ -2,12 +2,13 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows", "sandbox-runtime", ANT, "Anthropic S-1", "Mithril Medicine", "Cruz v. Anthropic"]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows", "sandbox-runtime", ANT, "Anthropic S-1", "Mithril Medicine", "Cruz v. Anthropic", FlashProve]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; confirmed a third-party-software breach into sales, HR and IT, and expanded GSA OneGov to 40% off Claude for US agencies.
+description: AI safety lab behind Claude; published FlashProve as first-party zkSNARK inference proofs, Apache 2.0, after yesterday's unverified relay.
 created_at: 2026-05-24
-timestamp: 2026-10-29T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA model ticket — Anthropic GSA OneGov", path: research/models/tickets/anthropic-gsa-onegov-2026-10.md}
   - {title: "ARA model ticket — claimed Cathedral Slack breach", path: research/models/tickets/anthropic-slack-breach-2026-10.md}
@@ -4200,4 +4201,45 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   [[claude-science]]
   (Anthropic, HN; ARA daily
   digest 2026-10-29).
+
+## FlashProve first-party; Claude Code clone rule (2026-11-05)
+
+- **Anthropic published FlashProve as first-party.**
+  The zkSNARK prototype proves a response came from
+  committed weights without revealing them. On Llama
+  4 Maverick 400B MoE (4-bit), one H100 proves about
+  **110 tok/s** with ~**19 MB** proofs per
+  **1,024-token** request, at **70–95×** vLLM GPU
+  time. Code, Lean proofs, and a C++ verifier are
+  Apache 2.0. Yesterday's digest had this only as an
+  unverified relay; today's capture is first-party
+  from @AnthropicAI. HN 187/87. See
+  [[verification-bottleneck]] and
+  [[agentic-ai-security]] (@AnthropicAI, HN; ARA
+  daily digest 2026-11-05).
+- **Claude Code 2.1.317 loosened its game-clone
+  rule:** a named game may describe mechanics for an
+  original genre piece, and the tool offers a
+  similar-but-original alternative when the user
+  asks for a copy. Background subagents in v2.1.316+
+  also have [[claude-haiku-5-5|Haiku 5.5]] write the
+  30-second status line from short notes (~99%
+  cheaper per update). See [[dynamic-workflows]]
+  (The Verge, @ClaudeDevs; ARA daily digest
+  2026-11-05).
+- **The science team, working with Claude, published
+  a November 4 note** claiming the first 3D
+  structure of a vault-like protein shell in
+  prokaryotes; function of vaults is still unknown.
+  The PDF is lab-hosted and submitted to bioRxiv,
+  so "first" is not independently audited. Fold the
+  science claim onto [[claude-science]] rather than
+  treating it as a product ship (Anthropic research,
+  @AnthropicAI; ARA daily digest 2026-11-05).
+- **The Decoder headlines that the watermark on
+  several older Claude models is easy to bypass.**
+  Local sources carry the headline only, with no
+  method, model list, or Anthropic reply. Keep this
+  as rumor-grade on [[ai-text-watermarking]] (The
+  Decoder; ARA daily digest 2026-11-05).
 
