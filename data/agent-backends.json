@@ -249,7 +249,7 @@
         "protocol": "cursor-cli",
         "preflight_path": "harness"
       },
-      "notes": "Cursor Agent CLI inside run-cursor-container, authenticated by CURSOR_API_KEY and pinned to cursor-grok-4.6-high-fast (the CLI id for Grok 4.6 Fast; grok-4.6-fast is not a valid --model). Replaces composer-2.5. Runtime-selectable by agent-dispatch and by agent-run only through a lane-local compatibility override. It served the production editorial routes while the OpenCode Go monthly plan is exhausted, until its own weekly usage limit ran out on 2026-10-31; those routes run on claude-sonnet-5p5-isolated until the Cursor canary passes again. cursor-composer-2p5 remains a compatibility alias."
+      "notes": "Cursor Agent CLI inside run-cursor-container, authenticated by CURSOR_API_KEY and pinned to cursor-grok-4.6-high-fast (the CLI id for Grok 4.6 Fast; grok-4.6-fast is not a valid --model). Replaces composer-2.5. Runtime-selectable by agent-dispatch and by agent-run only through a lane-local compatibility override. After its October weekly cap, canary 41962718497 passed on 2026-11-05 and all strict routes returned to Cursor; Claude is quota-blocked and OpenCode harness recovery remains unverified. cursor-composer-2p5 remains a compatibility alias."
     },
     "claude-sonnet-5p5-isolated": {
       "adapter": "claude-container",
@@ -258,7 +258,7 @@
       "display_name": "Claude Sonnet 5.5 via isolated Claude Code",
       "aliases": [],
       "production_eligible": true,
-      "notes": "Claude Code CLI 2.1.285 inside run-claude-container, pinned to the full claude-sonnet-5-5 id and authenticated by CLAUDE_CODE_OAUTH_TOKEN, which reaches the CLI on an inherited descriptor and is never in the container environment. The lane policy .github/claude/<lane>.json decides the tools in a closed grammar (Read/Edit paths, Glob, exact git add/commit forms, one fixed curl URL prefix, named uv repository scripts), and a PreToolUse guard enforces it as an exact allowlist: no free-form shell, web tools, MCP, or subagents. Runtime-selectable by agent-dispatch only, never by agent-run or fallback.chain. Since 2026-10-31 it serves every isolated editorial route, so those lanes, Aradio, and the native agent-run Claude lanes share the CLAUDE_CODE_OAUTH_TOKEN failure domain; validate with claude-isolated-canary.yml."
+      "notes": "Claude Code CLI 2.1.285 inside run-claude-container, pinned to the full claude-sonnet-5-5 id and authenticated by CLAUDE_CODE_OAUTH_TOKEN, which reaches the CLI on an inherited descriptor and is never in the container environment. The lane policy .github/claude/<lane>.json decides the tools in a closed grammar (Read/Edit paths, Glob, exact git add/commit forms, one fixed curl URL prefix, named uv repository scripts), and a PreToolUse guard enforces it as an exact allowlist: no free-form shell, web tools, MCP, or subagents. Runtime-selectable by agent-dispatch only, never by agent-run or fallback.chain. It served every strict isolated route from 2026-10-31 until the 2026-11-05 Cursor recovery; it remains registered as standby while Claude is quota-blocked; validate with claude-isolated-canary.yml."
     }
   },
   "routes": {
@@ -278,7 +278,7 @@
       "contract": "research-editorial",
       "backend": "cursor-grok-4p6-fast",
       "fallback": "none",
-      "notes": "Dedicated isolated Korean translation route, restored to Cursor on 2026-11-05 after canary 41962718497 passed and Claude hit its weekly limit. The Cursor policy permits only staged segment reads and the fixed JSONL draft; trusted host validators and the canonical writer own publication. Fails closed."
+      "notes": "Dedicated isolated Korean translation route, restored to Cursor on 2026-11-05 after canary 41962718497 passed and Claude hit its weekly limit. Cursor may draft under .tmp; the trusted import accepts only the fixed segment JSONL; trusted host validators and the canonical writer own publication. Fails closed."
     },
     "aradio": {
       "contract": "research-editorial",

@@ -283,8 +283,8 @@ not a secret-exfiltration boundary for those credentials.
 
 The Korean backfill currently selects Cursor Grok 4.6 Fast
 (`routes.generative-translation`, restored 2026-11-05).
-`.github/cursor/translation.json` permits staged segment reads and writes only
-its fixed JSONL draft. Isolated Claude and OpenCode remain registered standby
+`.github/cursor/translation.json` permits staged segment reads and drafting
+under `.tmp/`; the trusted import accepts only the fixed segment JSONL. Isolated Claude and OpenCode remain registered standby
 adapters with their own restricted translation policies. Trusted host
 validators, the canonical writer, and exact diff gates remain the only
 publication path. The provider process still receives its own billing
