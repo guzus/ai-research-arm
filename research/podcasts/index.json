@@ -1,9 +1,65 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-04T22:08:00Z",
+  "updated_at": "2026-11-05T02:43:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "big-technology:Xnmh24WgePk",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Can AI Keep Going After The Democrats’ Big Win? — With Teddy Schleifer",
+      "url": "https://www.youtube.com/watch?v=Xnmh24WgePk",
+      "video_id": "Xnmh24WgePk",
+      "audio_url": null,
+      "published_at": "2026-11-05T00:13:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-05T02:43:00Z",
+      "duration_s": 1915,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-05T02:43:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Teddy Schleifer is a New York Times reporter who covers billionaires and their influence on politics. Schleifer joins Big Technology Podcast to discuss what the Democrats’ midterm sweep means for the AI buildout. Tune in to hear why voters are turning against data centers and how much a Democratic Congress can do to slow their construction with Trump still in the White House. We also cover the prospect of tech CEOs facing subpoenas, what the election means for Elon Musk,"
+    },
+    {
+      "id": "practical-ai:7UTjPnNkf2A",
+      "show_id": "practical-ai",
+      "show": "Practical AI",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Abundant Intelligence at the Midwest AI Summit Part 2",
+      "url": "https://www.youtube.com/watch?v=7UTjPnNkf2A",
+      "video_id": "7UTjPnNkf2A",
+      "audio_url": null,
+      "published_at": "2026-11-04T22:13:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-05T02:43:00Z",
+      "duration_s": 2869,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-05T02:43:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "How do organizations decide what AI should do, where to set boundaries, and when to keep humans in control? In this episode, Don Barger of the International Mission Board shares how establishing an AI charter helped define what the organization would and wouldn't use AI for. Mark Lay of Noblis explores four key decisions for managing AI across an organization, from delegation and accountability to technical debt. And Darren Taillie of Aerocore Technologies walks through how his team uses AI"
+    },
     {
       "id": "a16z:dSiTwPl0t1U",
       "show_id": "a16z",
@@ -61,7 +117,35 @@
           "url": "https://www.youtube.com/watch?v=dSiTwPl0t1U&t=2770s"
         }
       ],
-      "description": ""
+      "description": "Will we have one AI assistant that does everything, or an entire network of agents that know different parts of our lives? David Pawlan, creator of Assistant Benchmark, returns with Anish Acharya and Josh Elman to take stock of how quickly the agent landscape has changed. David has now tested more than 140 AI assistants, and they unpack what separates them, from memory and judgment to trust, shopping, and social experiences. They also explore what happens when agents start talking"
+    },
+    {
+      "id": "invest-like-the-best:XZxDawMm4lU",
+      "show_id": "invest-like-the-best",
+      "show": "Invest Like the Best",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "What Happens When the AI Boom Slows Down",
+      "url": "https://www.youtube.com/watch?v=XZxDawMm4lU",
+      "video_id": "XZxDawMm4lU",
+      "audio_url": null,
+      "published_at": "2026-11-04T13:13:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-05T02:43:00Z",
+      "duration_s": 4497,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-05T02:43:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Martin Casado, General Partner at Andreessen Horowitz (a16z), joins Patrick to explore why AI represents an industrial revolution rather than another software cycle. Martin explains why traditional approaches to venture investing are increasingly outdated, what investors misunderstand about network effects and competitive moats, and how AI is forcing a complete rethink of computing infrastructure. They discuss the intense competition between frontier models, the risks facing companies like Anthropic and OpenAI, and why AI could finally deliver on decades of technological"
     },
     {
       "id": "ai-daily-brief:Es59icF3nZg",
@@ -84,11 +168,11 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-04T22:08:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-05T02:43:00Z",
+        "attempts": 3
       },
       "excerpts": [],
-      "description": ""
+      "description": "RSI is the three-letter acronym on everyone’s mind as AI models edge closer to self-improvement. NLW connects Elon Musk’s warning about the cost of GrokBot, a new MIT paper on one model editing another model’s weights, and Anthropic’s updated S1 language on recursive self-improvement. Debates over personal agent economics, ending subsidies, and what RSI means for adoption tie every story together. The AI Daily Brief helps you understand the most important news and discussions in AI."
     },
     {
       "id": "latent-space:QmDLDy3ZSNE",
@@ -348,8 +432,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-04T16:32:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-05T02:43:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "AI is increasingly shaping how people work, learn, communicate, and make decisions, yet systems that work well in one context may not translate effectively to another. In this talk, Liz will introduce ATLAS, a practical playbook informed by ethnographic and participatory research across agriculture, small business, health, and workplace settings. Drawing on examples of how communities interact with and evaluate AI, she will discuss how teams can identify cultural assumptions throughout the AI lifecycle and use community knowledge to inform"
