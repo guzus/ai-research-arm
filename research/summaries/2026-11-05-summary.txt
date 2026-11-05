@@ -1,0 +1,15 @@
+AI News - 2026-11-05
+
+TOP STORIES:
+• OpenAI pipeline found 948 Linux root exploits for $1.2M and is sending patches
+• Meta buys Conductor; cloud shuts Nov 20, terms undisclosed
+• Images 2.6 ships GIFs; 4B images/week, 50% faster
+• Uber: 4 agent-booked rides in a 320M-trip Halloween week
+• AI PACs spent millions; several industry-backed candidates lost
+
+KEY NUMBERS:
+• 948 LPEs; $1,279/exploit; 1,724 validated kernel bugs
+• Qualcomm: $650M DC guided for Q1'27, $15B by 2029
+• Daybreak Red / GPT-5.6 Cyber live in AWS GovCloud
+
+Full report on GitHub.
