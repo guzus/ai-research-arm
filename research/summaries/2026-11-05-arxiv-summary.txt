@@ -1,12 +1,12 @@
 arXiv Papers - 2026-11-05
 
 TOP 5 PAPERS:
-• Mass Producing DSSEs - auto-discovers training data with surprising side effects
-• Rubric Curriculum RL - RLVR for open-ended tasks; 70.5% human win rate
-• Multi-Turn Agent RL - gains are error recovery, not single-step quality
-• SafeStart - MoE expert reduction raises jailbreak success by up to 18pp
-• D3D - async diffusion drafting, up to 7.48x speculative decoding
+• NEO-VLA - encoder-free VLA; action signals peak before the last visual layer
+• HALO - Apple sim-only humanoid, 91% zero-shot in 6 real homes
+• FrontierPhysics - 42 physicists, 56 research tasks; no config clears 46/168
+• Open-HumanScale - 50k-hour egocentric scaling law for robot policies
+• Visual Token Routing - 2.5-5.8x fewer screenshot tokens at matched CUA accuracy
 
-CATEGORIES: LM/NLP 12, CV/Multimodal 12, Agents/Reasoning 11, Safety 9, Other 6
+CATEGORIES: LM/NLP 10, CV/Multimodal 12, Agents/Reasoning 12, Safety 9, Other 6
 
 Full report on GitHub.
