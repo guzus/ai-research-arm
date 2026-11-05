@@ -59,7 +59,7 @@ jobs:
           fireworks-fallback: none
           claude-args: >-
             --model opus --max-turns 8 --tools Read,Write
-            --allowedTools Read,Write
+            --allowedTools Read,Write --disallowedTools "mcp__*"
           expected-paths: ${{ steps.fixture.outputs.output }}
           allowed-paths: ${{ steps.fixture.outputs.output }}
           label: Chubby tool canary
