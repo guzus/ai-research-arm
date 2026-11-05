@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: Open-weight models closing on the frontier; Nanbeige shipped a 33B Apache-2.0 agent model with 512K context, while Moonshot's Kimi K3.1 Pro remains the Fable-5.1-class weights-promised flagship.
+description: Open-weight models closing on the frontier; Moonshot published Kimi K3.1 Pro weights and Ricursive shipped Apache-2.0 Ripple-65B Preview.
 created_at: 2026-06-14
-timestamp: 2026-10-26T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
@@ -1055,6 +1056,48 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   frontier-close (MarkTechPost,
   r/MachineLearning; ARA
   daily digest 2026-10-26).
+
+## Kimi K3.1 Pro weights; Ripple-65B Preview (2026-11-05)
+
+- **[[moonshot-kimi-k3|Moonshot]] published ungated
+  Kimi K3.1 Pro weights** — a 2.8T / 104B-active MoE
+  with MXFP4 weights, a 1M-token window, 93 layers
+  (69 KDA + 24 Gated DSA), and 896 experts with 16
+  selected. Vendor Terminal-Bench 4.0 remains
+  **65.7**, one point behind
+  [[claude-opus-5-5|Opus 5.5]]. Hosts earning over
+  **$20 million** from model-as-a-service must
+  negotiate a separate license. SemiAnalysis says
+  vLLM and SGLang shipped day-0 support across
+  NVIDIA, AMD, Rubin, TPU, and (SGLang) Trainium.
+  The Hugging Face repo timestamp is **2026-11-02**.
+  This lands the Nov-4 weights promise. HN 415/116
+  (Hugging Face, @Kimi_Moonshot, @SemiAnalysis_, HN;
+  ARA daily digest 2026-11-05).
+- **Ricursive published Ripple-65B Preview
+  weights.** The US lab says the 65B dense model was
+  trained from scratch on **12T tokens** for **$32
+  million**, scores **80.52** on Terminal-Bench 2.1
+  versus [[reflection-ai|Reflection Beam-501B]] at
+  **80.1**, and is Apache 2.0 on Hugging Face,
+  Together, GMI Cloud, and OpenRouter. "U.S.
+  open-weight SOTA" excludes DeepSeek, Kimi, and
+  GLM, and the 80.52 versus 80.1 gap is inside eval
+  noise. Fold here rather than minting a lab page
+  until a second ship or an independent eval lands.
+  HN 243/85 (Ricursive, @JeffDean, MarkTechPost, HN;
+  ARA daily digest 2026-11-05).
+- **Tencent launched official Hy4 with vision** on
+  [[openrouter|OpenRouter]]: a **1,048,576-token**
+  window, text-and-image input, and **$0.417 /
+  $1.251** per million tokens, half the preview
+  list price. Tencent says weights and a system
+  card are coming; the 75.2 APEX-Agents score
+  versus [[deepseek-v4-1-flash|DeepSeek V4.1
+  Flash]] is first-party. Successor increment on
+  [[tencent-hunyuan-hy3]], not a new page. HN
+  205/67 (OpenRouter, @TencentHunyuan, HN; ARA
+  daily digest 2026-11-05).
 
 ## Open questions
 

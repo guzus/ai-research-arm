@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; AMD's Data Center print hit $8.5B (+97% YoY) as Super Micro quarterly profit jumped to $1.6B and Huawei told customers to source their own memory.
+description: The historically large compute buildout; Texas voters backed a data-center pause after Gina Hinojosa unseated Greg Abbott, while Arm printed record FY27Q2 revenue of $1,443 million.
 created_at: 2026-05-24
 timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
@@ -2064,3 +2065,56 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   split. Still unconfirmed
   by either company (ARA
   daily digest 2026-11-04).
+
+## Texas data-center pause; Arm record quarter (2026-11-05)
+
+- **Texas voters backed a data-center pause.**
+  Democrat Gina Hinojosa unseated Gov. Greg Abbott
+  after pledging an immediate moratorium. Abbott had
+  already halted every state data-center permit in
+  September pending a December grid audit, so the
+  vote may decide whether that freeze lifts after
+  the audit. The Information counts incoming or
+  leading governors in **12 states** who have called
+  for a pause. Wells Fargo puts **27%** of planned
+  US data-center gigawatts in Texas; [[coreweave]],
+  [[spacex]], and Oracle sold off, while Alphabet,
+  [[meta]], and [[microsoft]] were higher. See
+  [[federal-ai-policy]] (CNBC, The Information,
+  @benthompson; ARA daily digest 2026-11-05).
+- **Arm reported record FY27Q2 revenue of $1,443
+  million** (+27% YoY), with license and other
+  revenue up **50%** to **$773 million** and
+  annualized contract value up **12%** to **$1,790
+  million**. Non-GAAP operating margin expanded to
+  **44.2%** from 41.1% a year ago. The 6-K extract
+  has no attributed quotes. Fold here rather than
+  minting an Arm page on a single earnings print
+  (Arm 6-K EX-99.1; ARA daily digest 2026-11-05).
+- **Qualcomm guided about $650 million of
+  data-center revenue in Q1 2027, $5 billion by
+  the end of 2027, and $15 billion by 2029**, and
+  said data-center chips should eventually be about
+  **30%** of the company. Smartphone sales were
+  described as down about **20%** versus 2025.
+  Qualcomm's IR page was not fetchable here, so the
+  figures are The Verge's call recap (The Verge, HN;
+  ARA daily digest 2026-11-05).
+- **Tomasz Tunguz maps a 2027 inference ceiling:**
+  US AI capacity from **38 GW** today to an **81 GW**
+  ceiling in 2027, with theoretical US inference
+  revenue rising **3.4×** from **$0.14T** to
+  **$0.49T** as Blackwell and Rubin racks lift
+  blended monetization. Those figures are the
+  author's estimates, not a government or lab
+  release (Tomasz Tunguz; ARA daily digest
+  2026-11-05).
+- **Oracle reportedly cancelled a $7 billion Tencent
+  lease** for up to 100,000 advanced AI chips in
+  Southeast Asia after US officials objected and
+  Beijing pushed Tencent toward domestic chips.
+  Oracle and Tencent have not confirmed; ByteDance
+  and Alibaba leases were described as intact. Same
+  story this theme skipped on 2026-10-02; still
+  unconfirmed (Twitter 06:00 UTC, Investing.com /
+  Reuters; ARA daily digest 2026-11-05).

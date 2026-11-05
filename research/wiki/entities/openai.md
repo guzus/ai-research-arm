@@ -2,12 +2,13 @@
 slug: openai
 title: OpenAI
 type: entity
-aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha"]
+aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha", "Pierre Computer", "Images 2.6", "GPT-Image-2.6"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; raised bug bounties to $172K and partnered with Cathedral Systems for its next internal security sprint.
+description: Frontier lab behind the GPT family; a cyber pipeline produced 948 Linux LPEs at $1,279 each, Images 2.6 added GIFs, and the company agreed to acquire Pierre Computer.
 created_at: 2026-05-30
 timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA model ticket — OpenAI Cathedral security sprint", path: research/models/tickets/openai-cathedral-security-sprint-2026-11.md}
   - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
@@ -3687,6 +3688,52 @@ materially reshape how the lab is positioned heading into its IPO window:
   defenders of essential services.** That figure is not quoted in
   the first-party RSS excerpt (OpenAI blog, @SteveAIStudio; ARA daily
   digest 2026-11-04).
+
+## 948 Linux LPEs; Images 2.6 GIFs; Pierre deal (2026-11-05)
+
+- **An upcoming cyber model scanned about 7% of the Linux kernel**
+  and produced **948 working local privilege-escalation exploits**
+  plus **291 information-leak proofs**. Scout agents cut the audit
+  surface to **5,034** targets (~2.8 million lines); **74.7%** of
+  static candidates reproduced dynamically (**1,724** findings).
+  API spend was **$1.21 million**, or **$1,279 per LPE** versus
+  historical Pwn2Own / TyphoonPWN bounties of **$20,000 / $70,000**.
+  Successful LPEs cost about **$359** each versus about **$3,922**
+  per failed attempt. The proofs ran on a stock desktop OS with
+  SMEP, SMAP, and KASLR on. Hundreds of reports are going to
+  maintainers via Patch the Planet. OpenAI says a low-privileged
+  account on an unpatched OS should be treated as root for a
+  well-resourced attacker. First-party write-up; HN treated
+  "A thousand fewer paths to root" as a launch (196/111). See
+  [[agentic-ai-security]] and [[gpt-5-6]] (OpenAI, HN; ARA daily
+  digest 2026-11-05).
+- **Daybreak Red is now on AWS GovCloud.** Approved customers get
+  [[gpt-5-6|GPT-5.6 Cyber]] on Amazon Bedrock in AWS GovCloud
+  (US-East) for authorized vulnerability research; inference data
+  is unused for training. Access needs a separate Daybreak Red
+  approval and AWS provisioning. This is the government-cloud cut
+  of the same cyber stack behind the kernel run, a procurement
+  path rather than a new regulation. See [[amazon]] and
+  [[federal-ai-policy]] (OpenAI; ARA daily digest 2026-11-05).
+- **Images 2.6 shipped looping GIFs** in ChatGPT, Codex, and the
+  API, with playback-speed and per-frame edits. OpenAI says
+  generation is **50% faster** and volume is **4 billion images a
+  week**, up from **3 billion** in September. API SKUs are
+  GPT-Image-2.6 Flare (as fast as six seconds at low quality) and
+  Sunburst. HN 164/104 (The Verge, OpenAI, HN; ARA daily digest
+  2026-11-05).
+- **OpenAI will acquire Pierre Computer.** The official post says
+  Pierre built Code Storage plus the Trees/Diffs libraries already
+  in the Codex app, and that Pierre's open-source projects stay
+  open. Terms were undisclosed and the deal still needs regulatory
+  close. Axios framed it as targeting GitHub; until close, that is
+  the Axios headline, not the contract (OpenAI, Axios, HN, The
+  Decoder; ARA daily digest 2026-11-05).
+- **Secondary posts still float GPT-6.2 Astra, Sol, and a Cyber
+  SKU as soon as Friday 2026-11-07.** OpenAI posted nothing in the
+  captured window; treat Friday as a rumor until an API row or
+  model card appears (Twitter 21:00 UTC; ARA daily digest
+  2026-11-05).
 
 ## Open questions
 

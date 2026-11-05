@@ -12,7 +12,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[alibaba]] — Chinese tech conglomerate (Alibaba Cloud, Qwen); shipped open-weight Qwen-Image-2.1 (7B DiT, Qwen Research License) after the API-only Omni-Flash drop.
 - [[amd]] — Credible second-source AI accelerator vendor; 8-K filed 2026-11-03 printed record $13.4B revenue and $8.5B Data Center sales (+97% YoY) on EPYC and Instinct MI450.
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman says Amazon has lined up up to $80B of supplier financing for infrastructure starting next year.
-- [[anthropic]] — AI safety lab behind Claude; confirmed a third-party-software breach into sales, HR and IT, and expanded GSA OneGov to 40% off Claude for US agencies.
+- [[anthropic]] — AI safety lab behind Claude; published FlashProve as first-party zkSNARK inference proofs, Apache 2.0, after yesterday's unverified relay.
 - [[apple]] — Consumer-hardware giant; Meta and Apple tuned Muse Spark Open to run on two M5 Ultra Mac Studios.
 - [[astra]] — OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
@@ -67,7 +67,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[liquid-ai]] — MIT-spinout lab shipping on-device hybrid LFM models with day-one llama.cpp / MLX / vLLM / SGLang support.
 - [[marvell]] — Custom-silicon and connectivity chipmaker that agreed on 2026-11-02 to buy optical-component maker Lumentum in an all-stock deal, pitching optical connectivity as a once-in-a-generation AI-infrastructure shift.
 - [[meituan-longcat-2]] — Meituan's 1.6T-param MoE coding line; LongCat-2.0 was the Owl Alpha OpenRouter leader, and relays now describe a natively multimodal LongCat-2.5 successor on the same backbone.
-- [[meta]] — Social-platform hyperscaler and Llama maker; raised its fundraising target to $97.5B, with Nvidia expressing interest in $3B of common and saying Meta will expand Vera Rubin deployments.
+- [[meta]] — Social-platform hyperscaler and Llama maker; acquired coding startup Conductor into Superintelligence Labs, with Conductor Cloud shutting on November 20.
 - [[micron]] — US memory maker (HBM/DRAM/SSD); FY26Q4 printed $54.23B revenue and $37.70B GAAP net income, with full-year revenue $133.19B.
 - [[microsoft]] — Hyperscaler that disclosed Azure revenue for the first time at $33.2B (+48%) in FY27Q1, and booked about $10B from OpenAI.
 - [[midjourney]] — Investor-free, community-funded AI image lab now seeking discovery into Disney/Universal/Warner Bros.' internal AI-training practices while diversifying into hardware (Midjourney Medical scanner).
@@ -84,14 +84,14 @@ Each page is one of three types — entity, concept, or theme. See
 - [[muse-spark-open]] — Meta's 816B-total / 42B-active multimodal MoE under a custom Muse Model License, tuned with Apple to run on two M5 Ultra Mac Studios.
 - [[muse-wonder]] — Meta's first independently scored frontier pair; Artificial Analysis puts Wonder at 52 and subscriber-only Full at 56 on its Intelligence Index, up from Muse Spark 1.3's 48.
 - [[moonshot-kimi-k2-7-code]] — Moonshot AI open coding model that undercuts GPT-5.5 and Claude by up to roughly 12x on price per token while filling the Fable 5 vacuum.
-- [[moonshot-kimi-k3]] — Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10; the lab reset 25% of Pro quotas after a rate-limit failure, with weights still promised by Nov 4.
+- [[moonshot-kimi-k3]] — Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0; ungated Hugging Face weights shipped with MXFP4 and a 1M-token window.
 - [[naive-ai]] — Lab behind N0.5-Flash, a 309B MIT-licensed MoE (15.5B active, native 1M context) continued-pretrained on Xiaomi's MiMo-V2.5.
 - [[nano-banana-2-lite]] — Google's fastest/cheapest image model (gemini-3.1-flash-lite-image); Nano Banana 2.1 is a later SKU at the same ~$0.034/image, not a rename of this Lite card.
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") spun out of Yandex; Token Factory acquired Inferize to cut GPU cold-start times, after a $1B Reflection AI compute book and a $17B Microsoft-linked Vineland site.
 - [[noam-shazeer]] — Transformer co-inventor and Character.AI founder; Disney hired most of the remaining workforce after the Chapter 11 filing.
 - [[nous-research]] — Open-weights lab behind Hermes Agent; closed a $90M Series B at $1.5B led by Robot Ventures.
 - [[nvidia]] — Dominant AI-accelerator supplier; says it will put $3B into Meta's common-stock raise and that Meta will expand Vera Rubin deployments.
-- [[openai]] — Frontier lab behind the GPT family; raised bug bounties to $172K and partnered with Cathedral Systems for its next internal security sprint.
+- [[openai]] — Frontier lab behind the GPT family; a cyber pipeline produced 948 Linux LPEs at $1,279 each, Images 2.6 added GIFs, and the company agreed to acquire Pierre Computer.
 - [[openrouter]] — LLM-routing API now under Stripe; Deedy Das reconstructed public token pages at roughly $29.1M a week (~$1.5B annualized), with Anthropic at 36% of dollars.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -143,12 +143,12 @@ Each page is one of three types — entity, concept, or theme. See
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; Replit now tells firms to sandbox agents in org-controlled clouds after Goldman restricted coding tools.
-- [[ai-capex]] — The historically large compute buildout; AMD's Data Center print hit $8.5B (+97% YoY) as Super Micro quarterly profit jumped to $1.6B and Huawei told customers to source their own memory.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; OpenAI's cyber pipeline produced 948 Linux LPEs at $1,279 each and put GPT-5.6 Cyber on AWS GovCloud as Daybreak Red.
+- [[ai-capex]] — The historically large compute buildout; Texas voters backed a data-center pause after Gina Hinojosa unseated Greg Abbott, while Arm printed record FY27Q2 revenue of $1,443 million.
 - [[black-october-ai-platform-breaches]] — Wiz counts nine AI platforms breached in October 2026 (Northflank, Fireworks AI, Railway, Warp, OpenCode, Lightning AI among them), with stolen AI keys resold and two keys alone running up more than $100K of Bedrock calls.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Anthropic's draft federal frontier-AI bill would preempt some California laws.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; two German courts now treat Google's AI Overviews as Google's own content, after a Munich appeal ended in a settlement.
-- [[federal-ai-policy]] — US federal AI governance; a DHS FASCSA order now reaches DeepSeek products and derivatives, including self-hosted weights, at civilian agencies.
+- [[federal-ai-policy]] — US federal AI governance; incoming Texas governor Gina Hinojosa pledged an immediate data-center moratorium, and a national exit poll found 57% think AI will do more harm than good.
 - [[frontier-lab-financing]] — Anthropic's amended S-1 shows $16.96B Q3 revenue but a $567M operating loss and $895B of compute commitments; OpenAI's mega-round shrank to about $20B at $1.25T and Blackstone expects a double-B rating on Anthropic's $63B chip deal.
-- [[open-weights]] — Open-weight models closing on the frontier; Nanbeige shipped a 33B Apache-2.0 agent model with 512K context, while Moonshot's Kimi K3.1 Pro remains the Fable-5.1-class weights-promised flagship.
+- [[open-weights]] — Open-weight models closing on the frontier; Moonshot published Kimi K3.1 Pro weights and Ricursive shipped Apache-2.0 Ripple-65B Preview.

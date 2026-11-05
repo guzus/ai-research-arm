@@ -46,8 +46,8 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; Replit now tells firms to sandbox agents in org-controlled clouds after Goldman restricted coding tools.",
-      "description": "2026 storyline of agentic systems acting on live websites; Replit now tells firms to sandbox agents in org-controlled clouds after Goldman restricted coding tools.",
+      "summary": "2026 storyline of agentic systems acting on live websites; OpenAI's cyber pipeline produced 948 Linux LPEs at $1,279 each and put GPT-5.6 Cyber on AWS GovCloud as Daybreak Red.",
+      "description": "2026 storyline of agentic systems acting on live websites; OpenAI's cyber pipeline produced 948 Linux LPEs at $1,279 each and put GPT-5.6 Cyber on AWS GovCloud as Daybreak Red.",
       "created_at": "2026-05-29",
       "updated_at": "2026-11-05",
       "timestamp": "2026-11-05T00:00:00Z",
@@ -183,8 +183,8 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; AMD's Data Center print hit $8.5B (+97% YoY) as Super Micro quarterly profit jumped to $1.6B and Huawei told customers to source their own memory.",
-      "description": "The historically large compute buildout; AMD's Data Center print hit $8.5B (+97% YoY) as Super Micro quarterly profit jumped to $1.6B and Huawei told customers to source their own memory.",
+      "summary": "The historically large compute buildout; Texas voters backed a data-center pause after Gina Hinojosa unseated Greg Abbott, while Arm printed record FY27Q2 revenue of $1,443 million.",
+      "description": "The historically large compute buildout; Texas voters backed a data-center pause after Gina Hinojosa unseated Greg Abbott, while Arm printed record FY27Q2 revenue of $1,443 million.",
       "created_at": "2026-05-24",
       "updated_at": "2026-11-05",
       "timestamp": "2026-11-05T00:00:00Z",
@@ -345,6 +345,7 @@
         "xai"
       ],
       "inbound": [
+        "anthropic",
         "xai"
       ]
     },
@@ -630,11 +631,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; confirmed a third-party-software breach into sales, HR and IT, and expanded GSA OneGov to 40% off Claude for US agencies.",
-      "description": "AI safety lab behind Claude; confirmed a third-party-software breach into sales, HR and IT, and expanded GSA OneGov to 40% off Claude for US agencies.",
+      "summary": "AI safety lab behind Claude; published FlashProve as first-party zkSNARK inference proofs, Apache 2.0, after yesterday's unverified relay.",
+      "description": "AI safety lab behind Claude; published FlashProve as first-party zkSNARK inference proofs, Apache 2.0, after yesterday's unverified relay.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-10-29",
-      "timestamp": "2026-10-29T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -660,12 +661,14 @@
         "ANT",
         "Anthropic S-1",
         "Mithril Medicine",
-        "Cruz v. Anthropic"
+        "Cruz v. Anthropic",
+        "FlashProve"
       ],
       "outbound": [
         "agent-lifespan-engineering",
         "agentic-ai-security",
         "ai-capex",
+        "ai-text-watermarking",
         "alibaba",
         "amazon",
         "amd",
@@ -1577,6 +1580,7 @@
         "meta",
         "mistral",
         "muse-wonder",
+        "open-weights",
         "openai"
       ]
     },
@@ -2545,11 +2549,11 @@
         "ai-governance",
         "frontier-ai"
       ],
-      "summary": "US federal AI governance; a DHS FASCSA order now reaches DeepSeek products and derivatives, including self-hosted weights, at civilian agencies.",
-      "description": "US federal AI governance; a DHS FASCSA order now reaches DeepSeek products and derivatives, including self-hosted weights, at civilian agencies.",
+      "summary": "US federal AI governance; incoming Texas governor Gina Hinojosa pledged an immediate data-center moratorium, and a national exit poll found 57% think AI will do more harm than good.",
+      "description": "US federal AI governance; incoming Texas governor Gina Hinojosa pledged an immediate data-center moratorium, and a national exit poll found 57% think AI will do more harm than good.",
       "created_at": "2026-06-03",
-      "updated_at": "2026-10-25",
-      "timestamp": "2026-10-25T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "themes/federal-ai-policy.md",
       "aliases": [
         "federal AI policy",
@@ -2578,7 +2582,8 @@
         "Federal Acquisition Supply Chain Security Act",
         "DHS DeepSeek order",
         "Pennsylvania AI Deceptive Advertising Act",
-        "Josh Shapiro"
+        "Josh Shapiro",
+        "Gina Hinojosa"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -3699,6 +3704,7 @@
         "federal-ai-policy",
         "gpt-6",
         "mistral-large-4",
+        "moonshot-kimi-k3",
         "muse-spark-open",
         "naive-ai",
         "nvidia",
@@ -4053,11 +4059,11 @@
         "open-weights",
         "social"
       ],
-      "summary": "Social-platform hyperscaler and Llama maker; raised its fundraising target to $97.5B, with Nvidia expressing interest in $3B of common and saying Meta will expand Vera Rubin deployments.",
-      "description": "Social-platform hyperscaler and Llama maker; raised its fundraising target to $97.5B, with Nvidia expressing interest in $3B of common and saying Meta will expand Vera Rubin deployments.",
+      "summary": "Social-platform hyperscaler and Llama maker; acquired coding startup Conductor into Superintelligence Labs, with Conductor Cloud shutting on November 20.",
+      "description": "Social-platform hyperscaler and Llama maker; acquired coding startup Conductor into Superintelligence Labs, with Conductor Cloud shutting on November 20.",
       "created_at": "2026-06-16",
-      "updated_at": "2026-10-28",
-      "timestamp": "2026-10-28T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "entities/meta.md",
       "aliases": [
         "Meta",
@@ -4071,7 +4077,10 @@
         "Muse Charm",
         "Meta Enterprise Platform",
         "CJ Desai",
-        "Muse Gadgets"
+        "Muse Gadgets",
+        "Conductor",
+        "Conductor Cloud",
+        "Charlie Holtz"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -4760,11 +4769,11 @@
         "frontier-model",
         "agentic-product"
       ],
-      "summary": "Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10; the lab reset 25% of Pro quotas after a rate-limit failure, with weights still promised by Nov 4.",
-      "description": "Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10; the lab reset 25% of Pro quotas after a rate-limit failure, with weights still promised by Nov 4.",
+      "summary": "Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0; ungated Hugging Face weights shipped with MXFP4 and a 1M-token window.",
+      "description": "Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0; ungated Hugging Face weights shipped with MXFP4 and a 1M-token window.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-26",
-      "timestamp": "2026-10-26T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "entities/moonshot-kimi-k3.md",
       "aliases": [
         "Kimi K3",
@@ -4796,6 +4805,7 @@
         "google",
         "gpt-5-6",
         "harvey",
+        "hugging-face",
         "moonshot-kimi-k2-7-code",
         "nvidia",
         "open-weights",
@@ -5508,11 +5518,11 @@
         "china",
         "decentralization"
       ],
-      "summary": "Open-weight models closing on the frontier; Nanbeige shipped a 33B Apache-2.0 agent model with 512K context, while Moonshot's Kimi K3.1 Pro remains the Fable-5.1-class weights-promised flagship.",
-      "description": "Open-weight models closing on the frontier; Nanbeige shipped a 33B Apache-2.0 agent model with 512K context, while Moonshot's Kimi K3.1 Pro remains the Fable-5.1-class weights-promised flagship.",
+      "summary": "Open-weight models closing on the frontier; Moonshot published Kimi K3.1 Pro weights and Ricursive shipped Apache-2.0 Ripple-65B Preview.",
+      "description": "Open-weight models closing on the frontier; Moonshot published Kimi K3.1 Pro weights and Ricursive shipped Apache-2.0 Ripple-65B Preview.",
       "created_at": "2026-06-14",
-      "updated_at": "2026-10-26",
-      "timestamp": "2026-10-26T00:00:00Z",
+      "updated_at": "2026-11-05",
+      "timestamp": "2026-11-05T00:00:00Z",
       "file": "themes/open-weights.md",
       "aliases": [
         "open weights",
@@ -5531,6 +5541,7 @@
         "china-ai-regulation",
         "claude-fable-5",
         "claude-opus-4-8",
+        "claude-opus-5-5",
         "claude-sonnet-5",
         "deepseek",
         "deepseek-v4-1-flash",
@@ -5663,8 +5674,8 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; raised bug bounties to $172K and partnered with Cathedral Systems for its next internal security sprint.",
-      "description": "Frontier lab behind the GPT family; raised bug bounties to $172K and partnered with Cathedral Systems for its next internal security sprint.",
+      "summary": "Frontier lab behind the GPT family; a cyber pipeline produced 948 Linux LPEs at $1,279 each, Images 2.6 added GIFs, and the company agreed to acquire Pierre Computer.",
+      "description": "Frontier lab behind the GPT family; a cyber pipeline produced 948 Linux LPEs at $1,279 each, Images 2.6 added GIFs, and the company agreed to acquire Pierre Computer.",
       "created_at": "2026-05-30",
       "updated_at": "2026-11-05",
       "timestamp": "2026-11-05T00:00:00Z",
@@ -5694,7 +5705,10 @@
         "Aurora",
         "aurora-red-alpha",
         "aurora-green-alpha",
-        "aurora-blue-alpha"
+        "aurora-blue-alpha",
+        "Pierre Computer",
+        "Images 2.6",
+        "GPT-Image-2.6"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -7508,6 +7522,7 @@
     "character technologies": "character-ai",
     "character-ai": "character-ai",
     "character.ai": "character-ai",
+    "charlie holtz": "meta",
     "china ai policy": "china-ai-regulation",
     "china ai regulation": "china-ai-regulation",
     "china-ai-regulation": "china-ai-regulation",
@@ -7554,6 +7569,8 @@
     "colossus 1": "xai",
     "compute buildout": "ai-capex",
     "conceptual reasoning fellows": "anthropic",
+    "conductor": "meta",
+    "conductor cloud": "meta",
     "coreweave": "coreweave",
     "coreweave, inc.": "coreweave",
     "crm": "salesforce",
@@ -7646,6 +7663,7 @@
     "fireworks-ai": "fireworks-ai",
     "fireworks.ai": "fireworks-ai",
     "flash cyber": "gemini-3-6-flash",
+    "flashprove": "anthropic",
     "fractile": "fractile",
     "fractile systems": "fractile",
     "frontier deployed engineers": "anthropic",
@@ -7704,6 +7722,7 @@
     "gemma-4": "gemma-4",
     "genesis credits": "federal-ai-policy",
     "genie 4": "google",
+    "gina hinojosa": "federal-ai-policy",
     "glimmer": "muse-glimmer",
     "glm 5.2": "zhipu-glm-5-2",
     "glm 5.3": "zhipu-glm-5-3",
@@ -7751,6 +7770,7 @@
     "gpt-6.1-sol-ultrafast": "gpt-6",
     "gpt-6.1-terra": "gpt-6",
     "gpt-astra": "astra",
+    "gpt-image-2.6": "openai",
     "gpt-rosalind": "openai",
     "gpt-synopsys": "openai",
     "gpu-as-a-service": "neocloud",
@@ -7782,6 +7802,7 @@
     "hy3": "tencent-hunyuan-hy3",
     "ilya sutskever": "safe-superintelligence",
     "ilya sutskever's lab": "safe-superintelligence",
+    "images 2.6": "openai",
     "industrial ai": "artificial-general-engineer",
     "inferize": "nebius",
     "inkling": "thinking-machines",
@@ -8024,6 +8045,7 @@
     "perplexity": "perplexity",
     "perplexity ai": "perplexity",
     "perplexity computer": "perplexity",
+    "pierre computer": "openai",
     "pltr": "palantir",
     "poolside": "poolside",
     "pplx-decider": "perplexity",
@@ -8214,6 +8236,11 @@
     {
       "date": "2026-11-05",
       "op": "ingest",
+      "summary": "Ingested the 2026-11-05 digest (no model tickets with updated_at today or yesterday). Created 0. Updated 8 (openai — 948 Linux LPEs at $1,279 + Images 2.6 GIFs + Pierre Computer deal + Daybreak Red on GovCloud; agentic-ai-security — same kernel audit + GovCloud procurement path + HN technical-debt thread; meta — Conductor acquihire into Superintelligence Labs, Cloud shut Nov 20; moonshot-kimi-k3 — ungated K3.1 Pro weights on Hugging Face, MXFP4 / 1M ctx; open-weights — same K3.1 Pro drop + Ricursive Ripple-65B Preview Apache 2.0 + Tencent Hy4 API; anthropic — FlashProve first-party zkSNARK + Claude Code 2.1.317 clone rule; ai-capex — Texas data-center pause + Arm FY27Q2 $1,443M + Qualcomm $15B 2029 guide; federal-ai-policy — Hinojosa moratorium + 57% exit-poll hostility + AI PAC losses). Skipped for budget: Arm/Qualcomm/Ricursive/Conductor as own pages, gpt-5-6 Daybreak increment, claude-science vault note, cognition SWE-2 Flash, frontier-lab-financing Menlo $177B, Uber agent rides."
+    },
+    {
+      "date": "2026-11-05",
+      "op": "ingest",
       "summary": "Ingested the 2026-11-04 digest (2026-11-05 file not yet on disk) plus tickets updated 2026-11-03 (openai-cathedral-security-sprint, anthropic-flashprove, meituan-longcat-2-5, deepseek-huawei-ascend-950dt, mistral-large-4). Created 0. Updated 8 (amd — 8-K record $13.4B / Data Center $8.5B +97% YoY on EPYC and MI450; weight-space-programming — edited Qwen checkpoint public, log rebuild MATH-500 51.0%, Willison Qwen 3.8 27B weight-read; openai — bug bounties to $172K + Cathedral Systems sprint + secondary $1B defender subsidy; deepseek — second relay puts V5 pretraining on 160k+ Ascend 950DT at Ulanqab, contradicting inference-only split; agentic-ai-security — Replit org-cloud sandbox advisory after Goldman coding-tool restriction + VeriHarm-Bench 37% safe success + MCP poisoning 22.9%; mistral-large-4 — 2026-10-29 weights + 2026-11-03 tech report / Orbital Trace; meituan-longcat-2 — LongCat-2.5 1.6T/~48B multimodal successor, still unconfirmed; ai-capex — same AMD print + SMCI FY27Q1 NI $1.59B + Huawei memory outsourcing). Skipped for budget: Super Micro as own page, FlashProve (unverified, no Anthropic primary), Hydrogen-1.0, astra reciprocal, Apple Watch recap / Qwen Apple Intelligence beta, Library of Layers, anthropic watermark rumor."
     },
     {
@@ -8305,11 +8332,6 @@
       "date": "2026-10-11",
       "op": "ingest",
       "summary": "Ingested the 2026-10-11 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (nvidia — FT early talks on Reflection AI, $25B is April's mark not a bid; reflection-ai — same talks + Beam Apache 2.0 still promised later this month; microsoft — Nadella insider-risk essay, emergency brake, not a shipping control; openai — sabotaged-eval transcript, 6 Oct model fabricated ratings then corrupted its VM; anthropic — 19 State visa filings named + SI Force \"not optional\" disclosure demand; federal-ai-policy — first White House claim that incident disclosure is mandatory, still no statute; agentic-ai-security — visa count + sabotaged eval + Nadella essay + SI Force mandate; groq — named as the Reflection-talks acqui-hire template). Skipped for budget: Cloudflare Clef-flash/omni, Nace Drex 1.5, Firmus IPO walk, Apple/Huxe, Grok Bot card photo, gpt-rosalind-discovery price row, Gemini 4 Argon leftover, TypeSafe/Jev leftover, arXiv highlights."
-    },
-    {
-      "date": "2026-10-10",
-      "op": "ingest",
-      "summary": "Ingested the 2026-10-10 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (anthropic — Oct. 9 unintended live-web Claude actions report + eval internet cut + Managed Agents public beta; agentic-ai-security — same report + PPD two-month lag + Axios day-after planning + MXC; jev — $870M Series A at $7.5B, a16z/Sequoia/DCVC, Casado board; openai — Friday firing rebuttal + Decisions API 10× cousin; microsoft — Decision-1 Qwen3.5-9B scorer $0.042/MTok + MXC; gemini-4-argon — Antigravity 256K/512K/900K + Carbon leak; dynamic-workflows — Managed Agents 1,000-agent public beta, Pro/Max waitlist cleared; amazon — Entergy Mississippi peak drop-off + local-government NDA drop). Skipped for budget: Yandex Sasovo/Kaluga drone strikes as own page, SoftBank $100B Gulf fund, Lumentum sold-out optics, DeepSeek 4.1 Flash HN leftover, Qwen-Image-2.1-Turbo, ChatGPT Dots mobile, Grok Bot email, Step 5 Preview increment, arXiv highlights."
     }
   ]
 }

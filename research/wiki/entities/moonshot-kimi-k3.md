@@ -4,10 +4,11 @@ title: Moonshot AI Kimi K3
 type: entity
 aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open Frontier Intelligence", "Kimi Work", Moonshot, "Moonshot AI", "Kimi K3.1 Pro", "K3.1 Pro", "Kimi K3.1"]
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
-description: Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0 at $2/$10; the lab reset 25% of Pro quotas after a rate-limit failure, with weights still promised by Nov 4.
+description: Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0; ungated Hugging Face weights shipped with MXFP4 and a 1M-token window.
 created_at: 2026-07-17
-timestamp: 2026-10-26T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
@@ -360,6 +361,48 @@ covering it.
   (@Kimi_Moonshot,
   @natolambert, Bluesky; ARA
   daily digest 2026-10-26).
+
+- **Ungated K3.1 Pro weights
+  landed on Hugging Face
+  (2026-11-05).** The
+  checkpoint is a **2.8T
+  MoE** with **104B active**
+  parameters, **MXFP4**
+  weights, and a **1M-token**
+  window. The card lists **93
+  layers** (69 KDA + 24 Gated
+  DSA), **896 experts with 16
+  selected**, MoonViT-V2
+  vision, and MXFP8
+  activations from
+  quantization-aware
+  training. Moonshot's own
+  table still puts it at
+  **65.7** on Terminal-Bench
+  4.0, one point behind
+  [[claude-opus-5-5|Claude
+  Opus 5.5]]. Hosts earning
+  over **$20 million** from
+  model-as-a-service must
+  negotiate a separate
+  license. SemiAnalysis says
+  vLLM and SGLang shipped
+  day-0 support across
+  NVIDIA, AMD, Rubin, TPU,
+  and (SGLang) Trainium. The
+  Hugging Face repo timestamp
+  is **2026-11-02**, so the
+  files may have been up for
+  two days before today's
+  posts. This closes the
+  Nov-4 weights promise
+  logged on 2026-10-24/26.
+  HN 415/116. See
+  [[open-weights]] and
+  [[hugging-face]] (Hugging
+  Face, @Kimi_Moonshot,
+  @SemiAnalysis_, HN; ARA
+  daily digest 2026-11-05).
 
 ## Open questions
 
