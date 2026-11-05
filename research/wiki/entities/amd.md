@@ -4,15 +4,16 @@ title: AMD
 type: entity
 aliases: [AMD, "Advanced Micro Devices", "Lisa Su", Instinct, "MI450", Helios, EPYC]
 tags: [semiconductors, ai-accelerator, gpu, earnings, public-listing, m-and-a]
-description: Credible second-source AI accelerator vendor; agreed to acquire World Labs for $8.2B all-stock, installing Fei-Fei Li as EVP and chief scientist, after crossing $1T on 2026-09-21.
+description: Credible second-source AI accelerator vendor; 8-K filed 2026-11-03 printed record $13.4B revenue and $8.5B Data Center sales (+97% YoY) on EPYC and Instinct MI450.
 created_at: 2026-08-05
-timestamp: 2026-09-29T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 market:
   ticker: AMD
   exchange: NASDAQ
   symbol: NASDAQ:AMD
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA daily digest 2026-09-29", path: research/digest/2026-09-29-digest.md}
   - {title: "ARA daily digest 2026-09-22", path: research/digest/2026-09-22-digest.md}
   - {title: "ARA daily digest 2026-08-07", path: research/digest/2026-08-07-digest.md}
@@ -114,6 +115,18 @@ buy when they want to stop being single-sourced.
   come from TechCrunch, The Verge and the
   World Labs blog (ARA daily digest
   2026-09-29).
+
+## Record $13.4B quarter; Data Center nearly doubles again (2026-11-04)
+
+- **The 8-K filed 2026-11-03 printed company revenue of $13.4B, up 45%
+  YoY**, with **Data Center $8.5B, up 97% YoY** on EPYC and the Instinct
+  **MI450** Series launch. Non-GAAP EPS was up **74%**. Chair and CEO Lisa
+  Su said revenue exceeded the high end of guidance; CFO Jean Hu said Q4
+  should accelerate further as **Helios** and **"Venice"** production
+  scale. That is a first-party print on the same Data Center doubling
+  shape this page logged for FY26Q2 ($6.7B, +107%), now at a higher
+  dollar base. See [[ai-capex]] (AMD 8-K EX-99.1; ARA daily digest
+  2026-11-04).
 
 ## Open questions
 

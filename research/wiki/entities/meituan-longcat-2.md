@@ -2,12 +2,14 @@
 slug: meituan-longcat-2
 title: Meituan LongCat-2.0
 type: entity
-aliases: ["LongCat-2.0", "LongCat", "Owl Alpha", "Meituan LongCat"]
+aliases: ["LongCat-2.0", "LongCat", "LongCat-2.5", "Owl Alpha", "Meituan LongCat"]
 tags: [open-weights, china, coding, frontier-model, moe]
-description: Meituan's 2026-06-30 open-weighted 1.6T-param MoE coding model, ~1M context, that Meituan says was pretrained on a ~50,000-chip all-domestic (no-Nvidia) cluster — and revealed as the anonymous "Owl Alpha" that had topped OpenRouter coding usage for ~two months.
+description: Meituan's 1.6T-param MoE coding line; LongCat-2.0 was the Owl Alpha OpenRouter leader, and relays now describe a natively multimodal LongCat-2.5 successor on the same backbone.
 created_at: 2026-07-01
-timestamp: 2026-07-01T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
+  - {title: "ARA model ticket — Meituan LongCat-2.5", path: research/models/tickets/meituan-longcat-2-5-2026-11.md}
   - {title: "ARA daily digest 2026-07-01", path: research/digest/2026-07-01-digest.md}
   - {title: "ARA model ticket — meituan-longcat-2-2026-06", path: research/models/tickets/meituan-longcat-2-2026-06.md}
   - {title: "VentureBeat — Meituan open-sources LongCat-2.0", url: "https://x.com/VentureBeat/status/2071831014872092715", date: 2026-06-30}
@@ -42,9 +44,21 @@ that had run anonymously on OpenRouter as **"Owl Alpha"** for ~two months,
   third-party benchmark**, and the "trained entirely on Chinese chips" framing
   is Meituan's own — plausible but unverified.
 
+## LongCat-2.5 as a multimodal successor (2026-11-04)
+
+- **Secondary accounts describe LongCat-2.5 as a 1.6T-total / ~48B-active
+  natively multimodal agentic model** on the LongCat-2.0 MoE backbone, aimed
+  at long-horizon tasks, visual understanding and agentic coding. Meituan's
+  own post, weights, API and licence were not in the digest. The same
+  parameter shape is why this is treated as a successor on this page, not a
+  new pretraining scale. See [[open-weights]] (model timeline, @AINativeF;
+  ticket `meituan-longcat-2-5-2026-11`; ARA daily digest 2026-11-04).
+
 ## Open questions
 - **Independent benchmarks.** First neutral SWE-bench Pro / LMArena runs on the
-  open weights will settle the parity claims.
+  open weights will settle the 2.0 parity claims; 2.5 has no captured scores.
+- **Does 2.5 ship weights or an API?** Availability is the open question that
+  would promote it from a relay to a release.
 - **The silicon question.** Scrutiny confirming or refuting the all-domestic,
   no-Nvidia cluster composition is the load-bearing verification for the
   export-control-workaround narrative.

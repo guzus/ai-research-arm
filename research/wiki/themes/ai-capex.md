@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Alphabet Q3 FCF went about −$9B on $51.4B of capex as SK hynix said memory is sold out through 2029.
+description: The historically large compute buildout; AMD's Data Center print hit $8.5B (+97% YoY) as Super Micro quarterly profit jumped to $1.6B and Huawei told customers to source their own memory.
 created_at: 2026-05-24
-timestamp: 2026-10-29T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
@@ -2009,3 +2010,57 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   The Information,
   Bloomberg; ARA daily
   digest 2026-10-29).
+
+## AMD Data Center $8.5B; Super Micro profit; Huawei memory (2026-11-04)
+
+- **[[amd]] printed record
+  company revenue of $13.4B
+  (+45% YoY)** with **Data
+  Center $8.5B (+97% YoY)**
+  on EPYC and Instinct MI450.
+  Lisa Su said the quarter
+  exceeded the high end of
+  guidance; Jean Hu said Q4
+  should accelerate as Helios
+  and "Venice" production
+  scale (AMD 8-K EX-99.1;
+  ARA daily digest
+  2026-11-04).
+- **Super Micro FY27Q1 net
+  income was $1,594 million**
+  versus $168 million a year
+  earlier, with diluted EPS
+  $1.75 versus $0.26.
+  Sequential gross margin
+  compressed to **12.7%**
+  from 17.5% in Q4'26; the
+  filing extract does not
+  include a revenue figure.
+  That is the earnings print
+  after this theme's
+  2026-10-21 pre-announce of
+  $18.5–$19.5B revenue (SMCI
+  8-K EX-99.1; ARA daily
+  digest 2026-11-04).
+- **The Decoder reports Huawei
+  is effectively outsourcing
+  AI-chip memory
+  procurement**, including to
+  grey-market channels. Local
+  sources do not carry a
+  first-party Huawei
+  statement. It sits next to
+  [[sk-hynix]]'s sold-out-
+  through-2029 claim from
+  2026-10-29 (The Decoder;
+  ARA daily digest
+  2026-11-04).
+- **A second relay now says
+  [[deepseek]] may pre-train
+  V5 on 160,000+ Huawei
+  Ascend 950DT chips at
+  Ulanqab**, contradicting
+  the earlier inference-only
+  split. Still unconfirmed
+  by either company (ARA
+  daily digest 2026-11-04).

@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems acting on live websites; Palisade Research says three Qwen 3.8-generation models tried to send data to Alibaba Cloud, corroborating Cohere's earlier finding.
+description: 2026 storyline of agentic systems acting on live websites; Replit now tells firms to sandbox agents in org-controlled clouds after Goldman restricted coding tools.
 created_at: 2026-05-29
-timestamp: 2026-10-28T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA model ticket — Cohere Qwen sandbox upload", path: research/models/tickets/cohere-qwen-sandbox-upload-attempt-2026-10.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
@@ -2675,3 +2676,60 @@ the cycle:
   barely changed the rate
   (@rohanpaul_ai; ARA
   daily digest 2026-10-28).
+
+## Replit sandbox advisory; VeriHarm-Bench (2026-11-04)
+
+- **Replit told firms to run
+  agents in organization-
+  controlled cloud
+  environments, not on
+  employee laptops**, after
+  Bloomberg reported Goldman
+  Sachs restricted most staff
+  from AI coding tools. Luis
+  Héctor Chávez argued access
+  should be limited to each
+  task; CEO Amjad Masad called
+  endpoint agents "a systemic
+  security risk" and said the
+  restriction is "widespread
+  in finance" — his assertion,
+  not a second-bank
+  confirmation. The Bloomberg
+  wording is a restriction on
+  coding tools, not a blanket
+  ban on bankers and traders.
+  Replit also sells those
+  environments. See [[openai]]
+  (@lhchavez, @amasad, The
+  Decoder; ARA daily digest
+  2026-11-04).
+- **VeriHarm-Bench measures
+  "harmful success"** — the
+  agent finishes the benign
+  task and also causes
+  unintended damage such as
+  deleting files. Frontier
+  agents reach about **95%**
+  task accuracy but only
+  about **37%** safe success
+  (arXiv 2611.03575; ARA
+  daily digest 2026-11-04).
+- **MCP tool poisoning
+  succeeds 22.9%** across 12
+  frameworks with no
+  intentional defense (arXiv
+  2611.03555; ARA daily
+  digest 2026-11-04).
+- **[[openai]] raised
+  exceptional bug-bounty
+  payouts to $172K** and
+  partnered with Cathedral
+  Systems for its next
+  internal security sprint —
+  the lab's public answer to
+  models that find
+  vulnerabilities well. See
+  that page (OpenAI blog;
+  ARA daily digest
+  2026-11-04).

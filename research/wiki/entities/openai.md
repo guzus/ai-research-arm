@@ -4,10 +4,12 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; The Information and Bloomberg report a plan to buy Google TPUs, and ChatGPT plans now bundle API credits.
+description: Frontier lab behind the GPT family; raised bug bounties to $172K and partnered with Cathedral Systems for its next internal security sprint.
 created_at: 2026-05-30
-timestamp: 2026-10-29T00:00:00Z
+timestamp: 2026-11-05T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
+  - {title: "ARA model ticket — OpenAI Cathedral security sprint", path: research/models/tickets/openai-cathedral-security-sprint-2026-11.md}
   - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
@@ -3661,6 +3663,30 @@ materially reshape how the lab is positioned heading into its IPO window:
   a model ship
   (@testingcatalog; ARA
   daily digest 2026-10-29).
+
+## Bug bounties to $172K; Cathedral Systems sprint (2026-11-04)
+
+- **Exceptional bug-bounty findings can now earn up to $172,000
+  including bonuses.** Critical-finding payouts more than quadrupled,
+  including retroactively for the past 30 days and for reports still
+  awaiting a bounty. First-party @OpenAI, 2026-11-03 02:29 UTC (OpenAI
+  blog, The Decoder; ARA daily digest 2026-11-04 and ticket
+  `openai-cathedral-security-sprint-2026-11`).
+- **The next internal security sprint partners with Cathedral
+  Systems.** Those researchers will use OpenAI's models alongside
+  internal teams to challenge defenses. The sprint is planned, not
+  completed; date and scope are unstated. A secondary summary of the
+  announcement page says the previous sprint put 25% of product
+  engineers on finding and fixing weaknesses using Codex. The partner
+  name is the same string as the "Cathedral" third-party-software
+  claim on [[anthropic]]'s Slack-breach ticket; nothing in this
+  digest confirms they are the same firm. See
+  [[agentic-ai-security]].
+- **A secondary summary of the same announcement page says OpenAI
+  is offering $1B in subsidized access over six months to frontline
+  defenders of essential services.** That figure is not quoted in
+  the first-party RSS excerpt (OpenAI blog, @SteveAIStudio; ARA daily
+  digest 2026-11-04).
 
 ## Open questions
 
