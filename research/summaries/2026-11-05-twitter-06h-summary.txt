@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-11-05 06:33:02 UTC
+
+CYCLE: OpenAI ships a 948-LPE cyber pipeline and Images 2.6; Cat Wu jumps to OpenAI; Baidu drops ERNIE-5.5-Flash-Base
+
+TOP STORIES:
+• OpenAI cyber pipeline produced 948 Linux kernel root exploits for $1.2M in API credits [✓]
+• ChatGPT Images 2.6 live with GIFs; Flare and Sunburst hit the API [✓]
+• Cat Wu leaves Anthropic to lead OpenAI Core Products [✓]
+• Baidu releases ERNIE-5.5-Flash-Base weights (280B/14B, 33.5T tokens) [✓]
+
+WATCH: Friday GPT-6.2 rumor vs a real API row; kernel CVEs from the 948 LPEs
+
+Full update on GitHub.
