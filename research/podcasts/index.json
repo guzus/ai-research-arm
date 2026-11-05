@@ -1,9 +1,182 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-05T12:42:00Z",
+  "updated_at": "2026-11-05T21:12:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "dwarkesh:1NQwfImTseU",
+      "show_id": "dwarkesh",
+      "show": "Dwarkesh Podcast",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "frontier-labs"
+      ],
+      "title": "The benchmark where AIs have to lie to win",
+      "url": "https://www.youtube.com/watch?v=1NQwfImTseU",
+      "video_id": "1NQwfImTseU",
+      "audio_url": null,
+      "published_at": "2026-11-05T21:00:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-05T21:12:00Z",
+      "duration_s": 1094,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-05T21:12:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "I spent 20,000 dollars in API credits having different AI models play each other at Blood on the Clocktower (a Mafia or Werewolf type social deception game). The results were fascinating. Models have gotten much better over the course of this year at creative on-the-spot scheming and bluffing, and also at reasoning as a team to break apart these underground conspiracies. I go through some of the most standout games these AIs played in this video. The new models are"
+    },
+    {
+      "id": "a16z:9iAQdKxyiQc",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "How AI Is Turning Figma’s Finance Team Into Builders",
+      "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc",
+      "video_id": "9iAQdKxyiQc",
+      "audio_url": null,
+      "published_at": "2026-11-05T15:42:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-05T21:12:00Z",
+      "duration_s": 3012,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9382,
+        "checked_at": "2026-11-05T21:12:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "I think you should use AI as a tool to help and empower you, but it's critical to remain a thinker. Yes, much of what you describe applies to any good employee , regardless of the use of AI. I think AI just requires more accountability and diligence to understand that there is real thinking behind the work.",
+          "at_s": 607,
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc&t=607s"
+        },
+        {
+          "text": "So this is what they're going to end up demonstrating, or rather, they're going to sit there discussing and saying, \"Okay, this is what Pervir would say, this is what Dylan would say, and this is what Sean, our CRO, would say.\"",
+          "at_s": 838,
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc&t=838s"
+        },
+        {
+          "text": "Like with someone who's traveling abroad, what if they lived in San Francisco and just came to visit? How do you actually want to label and process this data? 95% of the difficulty lies in structuring your data correctly. Um, and these models are good at making those assumptions for you. And I didn't need something 100% perfect.",
+          "at_s": 1107,
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc&t=1107s"
+        },
+        {
+          "text": "Let me summarize: a lot of them , I would say about 90% of these tools and agents are no longer used, but it made people think, \"Okay, instead of doing this manually...\" Let me think about the automation around this , which I think is almost as important as building the agent itself. Yes, I agree with you 100%.",
+          "at_s": 1228,
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc&t=1228s"
+        },
+        {
+          "text": "And I also think one of the things I'm trying to experiment with right now is how can I use one of these models to better understand the team's performance ? If you give me a model with 20 tabs, it's going to be very difficult for me to switch between them and go through everything manually.",
+          "at_s": 2520,
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc&t=2520s"
+        },
+        {
+          "text": "Yes, and I think that's true whether we're talking about a public company like Figma or a seed or Series A startup that's starting to scale its go-to-market and gaining momentum—that's what founders and CEOs really expect from finance: additional business thinking on the matter and insights that are easier to get.",
+          "at_s": 2714,
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc&t=2714s"
+        }
+      ],
+      "description": "AI is moving finance from reconciling what happened last month to helping decide what the business should do next. Figma CFO Praveer Melwani argues that the best finance teams are becoming builders themselves, automating repetitive work so they can spend more time understanding customers, running experiments, and shaping strategy. Praveer joins a16z’s Seema Amble and Ivan Makarov to share what that shift looks like inside Figma, from collections and expense analysis to M&A diligence, where the corp dev team now"
+    },
+    {
+      "id": "20vc:4nKt18AZDsQ",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "OpenAI Cuts Valuation to $1.25T | DoorDash Buys Instacart for $17B | Kalshi Raises $1B",
+      "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ",
+      "video_id": "4nKt18AZDsQ",
+      "audio_url": null,
+      "published_at": "2026-11-05T15:42:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-05T21:12:00Z",
+      "duration_s": 4113,
+      "transcript": {
+        "available": true,
+        "source": "asr",
+        "words": 14320,
+        "checked_at": "2026-11-05T21:12:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "- You mentioned price discovery. It was a tough week for alphabet or Google, falling about 12%, which is most significant drop in a decade, Google cloud doubled to an insane number. It doubled to like 130 billion, growing 103%. But search did slow to 12%, free cash flow was negative unusual when looking at Google.",
+          "at_s": 298,
+          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=298s"
+        },
+        {
+          "text": "I mean, rough and tough, in Q1, and I'm using gap numbers here, not run weight, 'cause gap numbers, as I say, are ordered and the CFO will go to prison if they're wrong, so I always assume they're correct, right? Roughly 5 billion in Q1, roughly 11 billion in Q2, roughly 17 billion in Q3, those are the numbers.",
+          "at_s": 492,
+          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=492s"
+        },
+        {
+          "text": "But you can squint one way and say, they're still growing at 50% Q1, Q, which is 5x year and year, that's freaking amazing. You can squint another way and say, oh my God, it's deaccelerating for a 100% Q1, Q to 50% Q1, Q, does it go to 25 next quarter? All the money's in that bet.",
+          "at_s": 629,
+          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=629s"
+        },
+        {
+          "text": "And you squint the other way and you go, oh my god, it went from 12X growth to 2X growth. Is it gonna go to 50% growth or 10% growth in the following year? - Remember when we had Stuart Butterfield in Slack and zero to 10 and 18 months was like the gold standard, like the gold standard.",
+          "at_s": 822,
+          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=822s"
+        },
+        {
+          "text": "In today's news, it kind of lost through a couple of hours, but Dordash buys Instacart for $17 billion. Under half is 2021 private price. D1 still owns 9.7%. Sequoia owns 8.1%. Before we talk about agents, which was at disclosure. And the thing of note here, an inevitable ending to a clear second place provider to Dordash.",
+          "at_s": 1545,
+          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=1545s"
+        },
+        {
+          "text": "You were basically asking Jason to pick between base 10 at 30 billion, up to X from June, an inference company, cognition at 70 to 80 billion, up from 48 billion in September, and several at 3 billion, up from 1 billion in December. So three different companies, very different businesses.",
+          "at_s": 2603,
+          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=2603s"
+        }
+      ],
+      "description": "Jason Lemkin is one of the leading SaaS investors of the last decade with a portfolio including the likes of Algolia, Talkdesk, Owner, RevenueCat, Saleloft and more. Rory O’Driscoll is a General Partner @ Scale where he has led investments in category leaders such as Bill.com (BILL), Box (BOX), DocuSign (DOCU), and WalkMe (WKME), among others. Timestamps: Intro OpenAI Cuts Its Valuation to $1.25TRN Is the AI Trade Starting to Crack? Alphabet Loses ~$500BN Why Anthropic’s IPO Could Face Pricing"
+    },
+    {
+      "id": "ai-daily-brief:rSzMJZEgYeU",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "How the Midterm Results Change AI",
+      "url": "https://www.youtube.com/watch?v=rSzMJZEgYeU",
+      "video_id": "rSzMJZEgYeU",
+      "audio_url": null,
+      "published_at": "2026-11-05T12:42:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-05T21:12:00Z",
+      "duration_s": 1265,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-05T21:12:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Democrats sweep the midterms, and data centers proved to be a vote loser across both parties. NLW breaks down the key races in Ohio, Texas, Georgia, Michigan, and California, plus 41 data center ballot measures on track to pass. Likely policy shifts on whistleblower protections, incident reporting, and data center rules show how AI politics could shape 2028. The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
     {
       "id": "no-priors:yULk8eNa2mg",
       "show_id": "no-priors",
@@ -85,8 +258,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T12:42:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-05T21:12:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Teddy Schleifer is a New York Times reporter who covers billionaires and their influence on politics. Schleifer joins Big Technology Podcast to discuss what the Democrats’ midterm sweep means for the AI buildout. Tune in to hear why voters are turning against data centers and how much a Democratic Congress can do to slow their construction with Trump still in the White House. We also cover the prospect of tech CEOs facing subpoenas, what the election means for Elon Musk,"
@@ -113,8 +286,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T12:42:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-05T21:12:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "How do organizations decide what AI should do, where to set boundaries, and when to keep humans in control? In this episode, Don Barger of the International Mission Board shares how establishing an AI charter helped define what the organization would and wouldn't use AI for. Mark Lay of Noblis explores four key decisions for managing AI across an organization, from delegation and accountability to technical debt. And Darren Taillie of Aerocore Technologies walks through how his team uses AI"
@@ -200,8 +373,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T12:42:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-05T21:12:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Martin Casado, General Partner at Andreessen Horowitz (a16z), joins Patrick to explore why AI represents an industrial revolution rather than another software cycle. Martin explains why traditional approaches to venture investing are increasingly outdated, what investors misunderstand about network effects and competitive moats, and how AI is forcing a complete rethink of computing infrastructure. They discuss the intense competition between frontier models, the risks facing companies like Anthropic and OpenAI, and why AI could finally deliver on decades of technological"
@@ -227,8 +400,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T12:42:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-05T21:12:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "RSI is the three-letter acronym on everyone’s mind as AI models edge closer to self-improvement. NLW connects Elon Musk’s warning about the cost of GrokBot, a new MIT paper on one model editing another model’s weights, and Anthropic’s updated S1 language on recursive self-improvement. Debates over personal agent economics, ending subsidies, and what RSI means for adoption tie every story together. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -491,8 +664,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T12:42:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-05T21:12:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": "AI is increasingly shaping how people work, learn, communicate, and make decisions, yet systems that work well in one context may not translate effectively to another. In this talk, Liz will introduce ATLAS, a practical playbook informed by ethnographic and participatory research across agriculture, small business, health, and workplace settings. Drawing on examples of how communities interact with and evaluate AI, she will discuss how teams can identify cultural assumptions throughout the AI lifecycle and use community knowledge to inform"
