@@ -27,6 +27,7 @@ def redact(text: str) -> str:
     patterns = [
         (r"(?i)(bearer\s+)[A-Za-z0-9._~+/=-]{12,}", r"\1[redacted]"),
         (r"(?i)(api[_-]?key[\"'\s:=]+)[A-Za-z0-9._~+/=-]{12,}", r"\1[redacted]"),
+        (r"(?:cbm|chb)_[A-Za-z0-9._~+/=-]+", "chubby_[redacted]"),
         (r"fw_[A-Za-z0-9._~+/=-]{8,}", "fw_[redacted]"),
         (r"sk-[A-Za-z0-9._~+/=-]{8,}", "sk-[redacted]"),
     ]

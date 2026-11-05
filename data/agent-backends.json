@@ -31,7 +31,8 @@
       "provider_credentials": {
         "claude": "claude-code-oauth-token",
         "fireworks": "fireworks-api-key",
-        "zai": "zai-api-key"
+        "zai": "zai-api-key",
+        "chubby": "chubby-api-key"
       },
       "implementation": ".github/actions/agent-run"
     },
@@ -43,6 +44,15 @@
     }
   },
   "backends": {
+    "chubby-deepseek-v4p1-flash": {
+      "adapter": "agent-run",
+      "provider": "chubby",
+      "model": "openrouter/deepseek/deepseek-v4.1-flash-1017",
+      "display_name": "DeepSeek V4.1 Flash via Office Chubby",
+      "aliases": [],
+      "production_eligible": false,
+      "notes": "Manual canary only until live Messages/tool/sandbox compatibility is verified. Scoped cbm_ key, bearer auth, no native credentials and no fallback. Office owns inference accounting; ARA retains local Claude tools and output contracts."
+    },
     "claude": {
       "adapter": "agent-run",
       "provider": "claude",
@@ -297,6 +307,16 @@
     "notes": "ORDERED fallback chain, applied to non-strict agent-run lanes that do not declare a lane.fallback_chain override. Native Claude leads and serves `native_model`; Z.ai GLM-5.3 is the global secondary. Cross-adapter fallbacks are never inferred globally: only lanes with an explicit compatibility-tested fallback_chain may enter an isolated adapter, and that lane chain replaces rather than extends the global chain. The Claude probe is auth-only (401/403 down; 429, 400, 5xx and network faults stay UP \u2014 429 is the steady-state answer for a live OAuth token). The chain is walked twice at most: pre-agent on a probe failure, and post-agent with --exclude-backend claude when the Claude step dead-starts (is_error, <=1 turn, $0). Strict lanes never walk either chain."
   },
   "lanes": {
+    "chubby-canary": {
+      "workflow": "chubby-canary.yml",
+      "harness": "agent-run",
+      "backend": "chubby-deepseek-v4p1-flash",
+      "manual_only": true,
+      "pinned": true,
+      "pinned_provider": "chubby",
+      "strict": true,
+      "notes": "Manual scoped Messages diagnostic. Configuration preflight is local-only; actual inference and Read/Write round-trip are verified by this run. Never falls back or enables a production route."
+    },
     "rss": {
       "workflow": "hourly-rss.yml",
       "route": "research-editorial",

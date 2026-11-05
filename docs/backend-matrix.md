@@ -93,6 +93,7 @@ Reading notes:
 | aradio (route:aradio) | `aradio.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | arxiv (route:research-editorial-secondary) | `daily-arxiv.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
 | bluesky (route:research-editorial) | `2h-bluesky.yml` | agent-dispatch → Cursor CLI (runtime SSOT) | Grok 4.6 Fast via Cursor CLI | `cursor-grok-4.6-high-fast` | `CURSOR_API_KEY` | hard fail (route fallback=none) |
+| chubby-canary · PINNED | `chubby-canary.yml` | Claude Code · agent-run (runtime SSOT) | DeepSeek V4.1 Flash via Office Chubby | `openrouter/deepseek/deepseek-v4.1-flash-1017` | `CHUBBY_API_KEY` | hard fail (strict — never walks the chain) |
 | claude-canary | `claude-native-canary.yml` | Claude Code · agent-run (runtime SSOT) | Claude | `${{ inputs.model }}` (workflow `native-model` override) | `CLAUDE_CODE_OAUTH_TOKEN` | hard fail (strict — never walks the chain) |
 | claude-code-review | `claude-code-review.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
 | claude-interactive | `claude.yml` | Claude Code · claude-code-action (CI-enforced mirror) | Anthropic (native) | `claude-sonnet-5-5` | `CLAUDE_CODE_OAUTH_TOKEN` | — |
@@ -156,7 +157,7 @@ Reading notes:
 - `podcasts.yml`
 - `production-synthetic.yml`
 
-_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p3`; native path serves `claude-opus-5-5`. 34 SSOT lanes (+15 dispatch execution paths) across 38 workflows; 15 workflows run no model._
+_Global ordered fallback chain (SSOT `fallback.chain`): `claude` → `zai-glm-5p3`; native path serves `claude-opus-5-5`. 35 SSOT lanes (+15 dispatch execution paths) across 39 workflows; 15 workflows run no model._
 
 _Explicit lane fallback overrides (replace, never extend, the global chain): `ai-news-research`: `cursor-grok-4p6-fast`; `digest-audio-script`: `cursor-grok-4p6-fast`; `digest-synthesis-fallback`: `cursor-grok-4p6-fast`; `twitter-primary`: `cursor-grok-4p6-fast`; `twitter-primary-repair`: `cursor-grok-4p6-fast`._
 
