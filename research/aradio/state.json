@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-05T12:49:00Z",
-  "headline": "Robinhood says 150k agent-trading accounts and 30M daily tool calls; a $1-2T AI IPO is too late for retail",
+  "updated_at": "2026-11-05T21:17:00Z",
+  "headline": "20VC hosts say OpenAI marked down to $1.25T from $1.4T; CoreWeave debt paying 15%",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -9,11 +9,24 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-05T12:49:00Z",
-      "now": "Anthropic's amended S-1 still points to a possible November Nasdaq listing near $1.5T-$2T. Menlo: Anthropic 55% of enterprise LLM API dollars, OpenAI 31%, Google 9%. On No Priors, a guest introduced as Robinhood's CEO said a $1-2T AI-lab IPO leaves little remaining public upside, and described a listed venture fund for private startups. Cat Wu and Austin Lau posted moves to OpenAI.",
-      "changed": "On No Priors, a guest introduced as Robinhood's CEO said a $1-2T AI-lab IPO leaves little public upside for retail, and described a listed venture fund that buys private startups.",
-      "watch": "Roadshow and price range; whether Robinhood's listed venture fund discloses AI-lab holdings; a named Claude Code successor.",
+      "updated_at": "2026-11-05T21:17:00Z",
+      "now": "On 20VC, the hosts said OpenAI's latest fundraise priced at $1.25 trillion, down from $1.4 trillion. Anthropic's amended S-1 still points to a possible November Nasdaq listing near $1.5T-$2T. Hosts cited about $5B, $11B and $17B in Q1-Q3 GAAP and argued sequential growth is slowing. Menlo: Anthropic 55% of enterprise LLM API dollars.",
+      "changed": "On 20VC, the hosts said OpenAI priced a fundraise at $1.25 trillion, down from $1.4 trillion, and argued Anthropic's sequential growth is decelerating after GAAP quarters of about $5B, $11B and $17B.",
+      "watch": "Roadshow and price range; whether OpenAI or a filing confirms the $1.25T mark; a named Claude Code successor.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-05T15:42:00Z",
+          "quote": "We can argue that anthropic's last quarter wasn't quite as crazy as some folks might thought."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=492s",
+          "kind": "podcast",
+          "label": "20VC (Anthropic GAAP quarters)",
+          "at": "2026-11-05T15:42:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=2388s",
           "kind": "podcast",
@@ -49,18 +62,6 @@
           "kind": "twitter",
           "label": "@helloitsaustin on X (move to OpenAI)",
           "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2u1UpkMkFEQ",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-03T17:08:00Z"
-        },
-        {
-          "url": "https://x.com/AndrewCurran_/status/2117268002454507902",
-          "kind": "twitter",
-          "label": "@AndrewCurran_ on X (amended S-1)",
-          "at": "2026-11-02T21:00:00Z"
         }
       ],
       "history": [
@@ -95,6 +96,96 @@
         {
           "at": "2026-11-05T12:49:00Z",
           "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
+        }
+      ]
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-05T21:17:00Z",
+      "now": "AMD Q3 revenue was a record $13.4B, Data Center $8.5B up 97%. Arm FY27 Q2 $1.443B up 27%; Super Micro Q1 net income $1.594B, sequential gross margin 12.7%. On 20VC, the hosts said CoreWeave debt is paying 15% and called that wobbliness in the debt markets. The FT reports Oracle scrapped a ~$7B Tencent chip lease; unconfirmed.",
+      "changed": "On 20VC, the hosts said CoreWeave debt is paying 15% and called that wobbliness in the debt markets, next to Alphabet's drop of about 12%.",
+      "watch": "AMD Q4 Helios and Venice ramp; whether CoreWeave's 15% debt is confirmed in a filing; an Oracle or Tencent statement on the reported lease.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-05T15:42:00Z",
+          "quote": "Core weave debt is paying 15%."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=298s",
+          "kind": "podcast",
+          "label": "20VC (Alphabet price discovery)",
+          "at": "2026-11-05T15:42:00Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000188/",
+          "kind": "earnings",
+          "label": "Advanced Micro Devices, Inc. (AMD)",
+          "at": "2026-11-03T21:16:27Z",
+          "speaker": "Dr. Lisa Su, AMD chair and CEO",
+          "quote": "We delivered a record quarter with revenue exceeding the high end of our guidance as Data Center segment sales nearly doubled year-over-year"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000141/",
+          "kind": "earnings",
+          "label": "Arm Holdings plc (ARM)",
+          "at": "2026-11-04T21:02:18Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536526000026/",
+          "kind": "earnings",
+          "label": "Super Micro Computer, Inc. (SMCI)",
+          "at": "2026-11-03T21:31:04Z"
+        },
+        {
+          "url": "https://www.investing.com/news/stock-market-news/oracle-cancels-7-bln-chip-leasing-deal-with-tencent-ft-reports-4997349",
+          "kind": "twitter",
+          "label": "Investing.com / Reuters (Oracle-Tencent FT report)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/ns123abc/status/2117857386610454950",
+          "kind": "twitter",
+          "label": "@ns123abc on X (Oracle-Tencent lease)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=p1Dy4e4ff0s",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-10-30T21:44:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added."
+        },
+        {
+          "at": "2026-10-31T18:49:00Z",
+          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged."
         }
       ]
     },
@@ -186,90 +277,6 @@
         {
           "at": "2026-11-05T06:41:00Z",
           "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
-        }
-      ]
-    },
-    {
-      "slug": "hyperscaler-capex-and-chip-selloff",
-      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-05T06:41:00Z",
-      "now": "AMD's third quarter revenue was a record $13.4B, up 45%, with Data Center $8.5B, up 97%, on EPYC and Instinct MI450. Arm's FY27 Q2 revenue was $1.443B, up 27%, a record Q2, licenses $773M, up 50%. Super Micro FY27 Q1 net income was $1.594B vs $168M a year ago; sequential gross margin fell to 12.7% from 17.5%. The FT reports Oracle scrapped a ~$7B Tencent chip lease; unconfirmed.",
-      "changed": "AMD, Arm and Super Micro all printed strong AI-hardware quarters; Lisa Su said Data Center nearly doubled and Q4 should accelerate as Helios and Venice scale. FT says Oracle cancelled a $7B Tencent chip lease.",
-      "watch": "AMD Q4 Helios and Venice ramp; an Oracle or Tencent statement on the reported lease; whether the chip selloff resumes with the Texas siting fight.",
-      "evidence": [
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000188/",
-          "kind": "earnings",
-          "label": "Advanced Micro Devices, Inc. (AMD)",
-          "at": "2026-11-03T21:16:27Z",
-          "speaker": "Dr. Lisa Su, AMD chair and CEO",
-          "quote": "We delivered a record quarter with revenue exceeding the high end of our guidance as Data Center segment sales nearly doubled year-over-year"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000141/",
-          "kind": "earnings",
-          "label": "Arm Holdings plc (ARM)",
-          "at": "2026-11-04T21:02:18Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536526000026/",
-          "kind": "earnings",
-          "label": "Super Micro Computer, Inc. (SMCI)",
-          "at": "2026-11-03T21:31:04Z"
-        },
-        {
-          "url": "https://www.investing.com/news/stock-market-news/oracle-cancels-7-bln-chip-leasing-deal-with-tencent-ft-reports-4997349",
-          "kind": "twitter",
-          "label": "Investing.com / Reuters (Oracle-Tencent FT report)",
-          "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/ns123abc/status/2117857386610454950",
-          "kind": "twitter",
-          "label": "@ns123abc on X (Oracle-Tencent lease)",
-          "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=p1Dy4e4ff0s",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-10-30T21:44:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
-          "kind": "earnings-call",
-          "label": "Alphabet earnings call",
-          "at": "2026-10-28T15:14:00Z",
-          "quote": "Moving to investments, our full-year 2026 CapEx guidance range of $195-$205 billion remain unchanged."
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/",
-          "kind": "earnings",
-          "label": "Amazon.com, Inc. (AMZN)",
-          "at": "2026-10-29T20:05:27Z",
-          "speaker": "Andy Jassy, President and CEO, Amazon",
-          "quote": "Our AWS investment in functionality and infrastructure is working, with over 39% year-over-year revenue growth in Q3 ($184 billion revenue run rate) and projected revenue growth rates of over 40% both in 2027 and in 2028"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture."
-        },
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added."
-        },
-        {
-          "at": "2026-10-31T18:49:00Z",
-          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped."
         }
       ]
     },
@@ -530,11 +537,24 @@
       "status": "developing",
       "importance": 3,
       "first_seen": "2026-11-01T06:51:00Z",
-      "updated_at": "2026-11-05T12:49:00Z",
-      "now": "On No Priors, whose guest was introduced as Robinhood CEO Vlad Tenev, the episode said over 150,000 clients opened agent-trading accounts in the few months since launch, at about 30 million tool calls a day. It called Robinhood Chain best for AI agents and said the firm lists contracts on which model will be best. Prior: OpenAI's finance ChatGPT is still enterprise-only.",
-      "changed": "No Priors guest introduced as Robinhood CEO Vlad Tenev: over 150,000 agent-trading accounts since launch, about 30 million tool calls a day.",
-      "watch": "A Robinhood filing or letter repeating the 150,000 accounts and 30 million daily tool calls; whether other brokers report agent-trading adoption.",
+      "updated_at": "2026-11-05T21:17:00Z",
+      "now": "On No Priors, a guest introduced as Robinhood CEO Vlad Tenev said over 150,000 clients opened agent-trading accounts since launch, about 30 million tool calls a day. On a16z, a guest introduced as Figma's CFO said finance teams are becoming builders, that about 90% of internal AI tools and agents fall out of use, and that you should not delegate thinking to the model.",
+      "changed": "On a16z, a guest introduced as Figma's CFO said finance teams are becoming builders, that about 90% of internal AI tools fall out of use, and that you should not delegate thinking to the model.",
+      "watch": "A Robinhood filing repeating the 150,000 accounts and 30 million daily tool calls; whether other CFOs describe the same builder shift.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-05T15:42:00Z",
+          "quote": "And I believe you shouldn't delegate your thinking today."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc&t=1228s",
+          "kind": "podcast",
+          "label": "a16z (internal tools falling out of use)",
+          "at": "2026-11-05T15:42:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=yULk8eNa2mg",
           "kind": "podcast",
@@ -580,6 +600,10 @@
         {
           "at": "2026-11-05T12:49:00Z",
           "change": "Reopened: No Priors says Robinhood has 150k agent-trading accounts and ~30M tool calls/day; Chain pitched for AI agents."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "a16z Figma episode: guest introduced as CFO says finance is becoming a builder function; ~90% of internal agents fall away; do not delegate thinking."
         }
       ]
     },

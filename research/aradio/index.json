@@ -1,9 +1,54 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-05T12:49:00Z",
+  "updated_at": "2026-11-05T21:17:00Z",
   "degraded": false,
-  "latest": "2026-11-05-1249",
+  "latest": "2026-11-05-2117",
   "bulletins": [
+    {
+      "id": "2026-11-05-2117",
+      "aired_at": "2026-11-05T21:17:00Z",
+      "headline": "20VC hosts say OpenAI marked down to $1.25T from $1.4T; CoreWeave debt paying 15%",
+      "path": "bulletins/2026-11-05/2117.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-05-2117.mp3",
+        "bytes": 900237,
+        "duration_s": 149.9,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 58.44,
+            "lines": [
+              0,
+              4
+            ]
+          },
+          {
+            "start_s": 59.89,
+            "end_s": 87.45,
+            "lines": [
+              5,
+              6
+            ]
+          },
+          {
+            "start_s": 88.9,
+            "end_s": 143.38,
+            "lines": [
+              7,
+              11
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "anthropic-ipo-and-ai-funding",
+        "hyperscaler-capex-and-chip-selloff",
+        "ai-agents-in-finance-and-law"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-05-1249",
       "aired_at": "2026-11-05T12:49:00Z",
