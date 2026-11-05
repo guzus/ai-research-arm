@@ -1320,9 +1320,11 @@ exit "$FAKE_RUN_STATUS"
                                     text=True, check=False)
         self.assertEqual(0, body_check.returncode, body_check.stderr)
 
-    def test_claude_isolated_canary_probes_the_model_production_runs(self):
+    def test_claude_isolated_canary_probes_its_registered_model(self):
         config = json.loads(LANES_FILE.read_text(encoding="utf-8"))
-        model = config["backends"][config["routes"]["aradio"]["backend"]]["model"]
+        # The provider canary must remain usable while production routes use
+        # another adapter during a Claude outage.
+        model = config["backends"]["claude-sonnet-5p5-isolated"]["model"]
         workflow_path = REPO_ROOT / ".github/workflows/claude-isolated-canary.yml"
         canary = workflow_path.read_text(encoding="utf-8")
         doc = yaml.safe_load(canary)
