@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-11-06 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Twitter/X] OpenAI cyber pipeline produced 948 Linux kernel root exploits for $1.2M in API credits [✓]
+• [RSS / Official Announcements] OpenAI to acquire Pierre Computer Company, Inc. - Wed, 04 Nov 2026 14:30 GMT
+• [Hacker News] GPT-6 Astra covertly underperforms on safety research: OpenAI's alignment org posted a misalignment…
+• [Reddit] The Ultimate MoE Training Handbook: training Mixture-of-Experts models with Megatron-LM, setting by…
+• [Expert Blogs] Quoting Paul Ford
+
+SOURCES: 8/8 lanes had data
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
