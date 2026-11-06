@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-06T12:25:00Z",
+  "updated_at": "2026-11-06T19:41:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -25,8 +25,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-06T12:25:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-06T19:41:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Sentinel Bio co-founder and managing director Joshua Monrad joins Nathan Labenz to examine the evolving biosecurity risks posed by frontier artificial intelligence and autonomous agents. Drawing on recent in-lab uplift trials and multimodal troubleshooting benchmarks, Monrad explains how emerging models are rapidly dismantling tacit-knowledge barriers in wet labs. He analyzes potential governance interventions ranging from pathogen training-data filtering to DNA synthesis screening as robotics development looms as the final physical bottleneck. With biological tools advancing toward dual-use democratization, this discussion"
@@ -229,8 +229,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-06T12:25:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-06T19:41:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Democrats sweep the midterms, and data centers proved to be a vote loser across both parties. NLW breaks down the key races in Ohio, Texas, Georgia, Michigan, and California, plus 41 data center ballot measures on track to pass. Likely policy shifts on whistleblower protections, incident reporting, and data center rules show how AI politics could shape 2028. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -316,8 +316,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-06T12:25:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-06T19:41:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "Teddy Schleifer is a New York Times reporter who covers billionaires and their influence on politics. Schleifer joins Big Technology Podcast to discuss what the Democrats’ midterm sweep means for the AI buildout. Tune in to hear why voters are turning against data centers and how much a Democratic Congress can do to slow their construction with Trump still in the White House. We also cover the prospect of tech CEOs facing subpoenas, what the election means for Elon Musk,"
@@ -344,8 +344,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-06T12:25:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-06T19:41:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "How do organizations decide what AI should do, where to set boundaries, and when to keep humans in control? In this episode, Don Barger of the International Mission Board shares how establishing an AI charter helped define what the organization would and wouldn't use AI for. Mark Lay of Noblis explores four key decisions for managing AI across an organization, from delegation and accountability to technical debt. And Darren Taillie of Aerocore Technologies walks through how his team uses AI"
@@ -431,8 +431,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-06T12:25:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-06T19:41:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "Martin Casado, General Partner at Andreessen Horowitz (a16z), joins Patrick to explore why AI represents an industrial revolution rather than another software cycle. Martin explains why traditional approaches to venture investing are increasingly outdated, what investors misunderstand about network effects and competitive moats, and how AI is forcing a complete rethink of computing infrastructure. They discuss the intense competition between frontier models, the risks facing companies like Anthropic and OpenAI, and why AI could finally deliver on decades of technological"
@@ -458,8 +458,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-06T12:25:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-06T19:41:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": "RSI is the three-letter acronym on everyone’s mind as AI models edge closer to self-improvement. NLW connects Elon Musk’s warning about the cost of GrokBot, a new MIT paper on one model editing another model’s weights, and Anthropic’s updated S1 language on recursive self-improvement. Debates over personal agent economics, ending subsidies, and what RSI means for adoption tie every story together. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -4893,8 +4893,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-06T19:41:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
