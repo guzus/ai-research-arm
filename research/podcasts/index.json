@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-05T21:12:00Z",
+  "updated_at": "2026-11-06T02:47:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -23,13 +23,44 @@
       "first_seen_at": "2026-11-05T21:12:00Z",
       "duration_s": 1094,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-05T21:12:00Z",
-        "attempts": 1
+        "available": true,
+        "source": "youtube_captions",
+        "words": 3486,
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 2
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "The first flagship advanced model released in 2026 was the Claude Opus 4.6 in February. Seven months later, in September, GPT-6 Astro was released, and it is currently the best model in the game Blood on the Clock Tower. The difference between them is about 430 Elo points. This means that Astro wins about 92% of games against Opus 4.6.",
+          "at_s": 175,
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=175s"
+        },
+        {
+          "text": "From the leaderboards, you will notice that the newer Open AI models are much better at this game than the Anthropic models. This was not always the case. Back in March, Open AI's GPT 5.4 lagged behind Anthropic's Opus 4.6. Over the past 6 months, between GPT 5.4 and GPT 6 Astra, Open AI models have gained 580 Elo points.",
+          "at_s": 429,
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=429s"
+        },
+        {
+          "text": "However, when the GPT were on the good team, they refused to consider this evidence conclusive. The slip does not support Blair's claim that he is a monk. In that particular case, this oversight rules out Blair as an Imp, but not in all situations.",
+          "at_s": 552,
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=552s"
+        },
+        {
+          "text": "Other questions have already used up far more API tokens than I planned to use for this project. But I did one small experiment where a team consisting of half Opus 5.5 and half GPT 5.6 Soul played about 130 games against various top models.",
+          "at_s": 672,
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=672s"
+        },
+        {
+          "text": "And the result of all this AI editing is, in my opinion, a clean and intelligent environment that consistently produces engaging and realistic games. Of course, within the limitations of the models themselves regarding playing such games. And what I find interesting is that what I'm doing here isn't too different from, say, creating a reinforcement learning (RL ) environment.",
+          "at_s": 833,
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=833s"
+        },
+        {
+          "text": "For example, what if they simply stored the last 10 games they played in their context menu? And if that doesn't fit, how about a summary of these games and the main conclusions? Then one could ask the question: what is the Elo rating of Opus 5.5 with 10 games in context compared to regular Opus 5.5?",
+          "at_s": 966,
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=966s"
+        }
+      ],
       "description": "I spent 20,000 dollars in API credits having different AI models play each other at Blood on the Clocktower (a Mafia or Werewolf type social deception game). The results were fascinating. Models have gotten much better over the course of this year at creative on-the-spot scheming and bluffing, and also at reasoning as a team to break apart these underground conspiracies. I go through some of the most standout games these AIs played in this video. The new models are"
     },
     {
@@ -171,8 +202,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T21:12:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Democrats sweep the midterms, and data centers proved to be a vote loser across both parties. NLW breaks down the key races in Ohio, Texas, Georgia, Michigan, and California, plus 41 data center ballot measures on track to pass. Likely policy shifts on whistleblower protections, incident reporting, and data center rules show how AI politics could shape 2028. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -258,8 +289,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T21:12:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Teddy Schleifer is a New York Times reporter who covers billionaires and their influence on politics. Schleifer joins Big Technology Podcast to discuss what the Democrats’ midterm sweep means for the AI buildout. Tune in to hear why voters are turning against data centers and how much a Democratic Congress can do to slow their construction with Trump still in the White House. We also cover the prospect of tech CEOs facing subpoenas, what the election means for Elon Musk,"
@@ -286,8 +317,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T21:12:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "How do organizations decide what AI should do, where to set boundaries, and when to keep humans in control? In this episode, Don Barger of the International Mission Board shares how establishing an AI charter helped define what the organization would and wouldn't use AI for. Mark Lay of Noblis explores four key decisions for managing AI across an organization, from delegation and accountability to technical debt. And Darren Taillie of Aerocore Technologies walks through how his team uses AI"
@@ -373,8 +404,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-05T21:12:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Martin Casado, General Partner at Andreessen Horowitz (a16z), joins Patrick to explore why AI represents an industrial revolution rather than another software cycle. Martin explains why traditional approaches to venture investing are increasingly outdated, what investors misunderstand about network effects and competitive moats, and how AI is forcing a complete rethink of computing infrastructure. They discuss the intense competition between frontier models, the risks facing companies like Anthropic and OpenAI, and why AI could finally deliver on decades of technological"
@@ -691,8 +722,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-04T16:32:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -4807,8 +4838,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -4860,13 +4891,19 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 187,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 438,
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "It's like a 10-to-12-year process, and it's like $1 billion in between. With the introduction of RFD4-Proteina, we see these molecules that we can take directly off the computer, and not only do they bind to the target that we intend, there's this 10-to-1,000-fold increase in the tightness with which these designs are binding.",
+          "at_s": 108,
+          "url": "https://www.youtube.com/watch?v=S2rX2NHzwOs&t=108s"
+        }
+      ],
       "description": ""
     },
     {
@@ -4888,13 +4925,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2613,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7552,
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Then, when we started going upmarket from startups and mid- market companies, now, you know, 50% of our clients are Fortune 2000, and another 50% are mid-market businesses with revenue between $ 100 million and $500 million. They weren't just asking for more AI engineers. They asked for artificial intelligence as a service to transform their business.",
+          "at_s": 278,
+          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=278s"
+        },
+        {
+          "text": "Uh, roughly speaking, most companies spend, say, $ 10 to $200 per employee . Um, more AI- focused companies translate this into percentages. So, approximately 10%. Um, the average AI startup spends about 1x of its payroll on tokens. And then it grows to 5–10x in token costs. So where are you in this range?",
+          "at_s": 888,
+          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=888s"
+        },
+        {
+          "text": "For example, Micro 1, Recore, Handshake. And just what does the long-term outlook look like for these businesses, right? Because over 90 percent of their income comes from laboratories. And many of these founders would argue that they believe the situation will reverse and that in the next few years, everything will be up to corporations.",
+          "at_s": 1024,
+          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=1024s"
+        },
+        {
+          "text": "Then, after training and development within the universal LLM, agents come for programming. And the most interesting thing I've asked a few people here is, \" What percentage of companies do you think have implemented agents for programming in their engineering departments?\" And most answered: \"It should be 70 or 80%.\" This figure is closer to 50%.",
+          "at_s": 1235,
+          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=1235s"
+        },
+        {
+          "text": "So everyone owns some part of your data and says, \"Please use my agent.\" Please pay me this $20 per month. But you can't just pile up all those $10-a-month subscriptions; Ultimately, a small group of companies will likely own the interface, and everyone else will simply plug into it. Aha.",
+          "at_s": 1795,
+          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=1795s"
+        },
+        {
+          "text": "I'm even trying to imagine a corporation, let 's say, with some average SaaS product that brings in several million dollars a year. I think the first question is, will this change the situation enough to allocate engineering resources to it, in terms of a percentage of revenue or costs? I think this will be decided individually.",
+          "at_s": 1933,
+          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=1933s"
+        }
+      ],
       "description": ""
     },
     {
@@ -4916,13 +4984,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 849,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 1686,
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "High energy, mid-twenties female podcast host with a strong local Buenos Aires Argentine Spanish accent hosting a radio show in Spanish. All right, there we go. And now we can also click and proof my prompt. And so now this will be a bit more detailed. And then we can click Generate Voice.",
+          "at_s": 82,
+          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=82s"
+        },
+        {
+          "text": "-Frühling less sein blaues BandWeider flatten durch die Lufte Süße, wohlbekannte DüfteStreifen ahnungsvoll dan Land. Veilchen traumen schon, Wollen balde kommen. Horch, von fern ein leiser Harfenton Frühling ja du bist's! Dich hab 'ich vernommen! -So you can hear. Now it's actually speaking German with sort of a Spanish accent.",
+          "at_s": 204,
+          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=204s"
+        },
+        {
+          "text": "We will use the latest Google Gen AI Python client. And then we will need to set up a .env file. So what we can do is we can simply copy the .env.example into a .env file. And then in a .env file we can simply go back to our AI Studio. We can click on our API key here.",
+          "at_s": 326,
+          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=326s"
+        },
+        {
+          "text": "And so we can see here we got our Argentine podcast host, we got Thor's, studio voice, and, uh, we got a bunch of other tests that we've done here. We can also say, \"create a new script to list all the pre-built voices that are available on the Gemini API in the extended voice library.\" Okay, great.",
+          "at_s": 450,
+          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=450s"
+        },
+        {
+          "text": "So yeah you can see I have a custom Irish voice there. Already custom dialog length as well. So let's do exactly this. We want a podcast with these voices about the history of Dublin. Okay, so first of all, we're using Gemini 3.8. Flash just like we instructed it to do the research. From Viking Longships to Silicon Docks.",
+          "at_s": 648,
+          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=648s"
+        },
+        {
+          "text": "This is the new Gemini 3.8 text-to-speech. You have the 3.8 Flash TTS version, which is the most expressive, most languages supported. And then we have Gemini 3.8 Flash-Lite TTS, really, for your high volume, cost efficient projects where you're generating a lot of speech a little bit less language is supported, but still really, really strong in the benchmarks.",
+          "at_s": 777,
+          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=777s"
+        }
+      ],
       "description": ""
     },
     {
@@ -4947,8 +5046,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -4972,13 +5071,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2400,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7512,
+        "checked_at": "2026-11-06T02:47:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So, the door calculations, is anyone scaling from 10,000? Are they adding a zero every year? That's the second milestone I would mention. If you add those two steps and now add a zero for each year, that means you could reach 10 million by 2029. That's extraordinary. He can do things that will surprise everyone .",
+          "at_s": 228,
+          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=228s"
+        },
+        {
+          "text": "We are 3 years apart. We're 3 years away and I'm pretty sure everyone in this room has a few hundred million dollars of IT spending earmarked for this year and I'm guessing 50% of their spending is on infrastructure that isn't quantum secure. There was a fairly experienced AI researcher who said we don't need it. 2029? Hm? 2029?",
+          "at_s": 386,
+          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=386s"
+        },
+        {
+          "text": "We inspected all the traffic on one endpoint at a cost of $20 a year. Right? Hundreds of megabytes of traffic per endpoint at a cost of between $20 and $40 a year because machine learning runs on your endpoint, your compute, and we run it on a payload of 20, 30, or 40 megabytes.",
+          "at_s": 635,
+          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=635s"
+        },
+        {
+          "text": "We could take one of the Chinese open weighting models, take a Kimikay3, something like 800 billion parameters; and if you run your own GPUs with a little optimization—but I'm talking about a week's worth of engineering work— you could reduce the cost to around one or two dollars for a million tokens.",
+          "at_s": 781,
+          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=781s"
+        },
+        {
+          "text": "We've been paying billions of dollars to coding agents. Well, guess what? Basically, not everyone has ZVR in coding. There are tons of people who use cloud-based code and have no problem with that data training the models. So, we train these models with end users who code. These models just keep getting better at each other. Well, guess what?",
+          "at_s": 985,
+          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=985s"
+        },
+        {
+          "text": "This question has been there since 2022. The Senate had closed hearings in 2022, they had open hearings in 2023, Congress had them, the White House had them in both administrations, and they keep going around and around this question. The issue of AI regulation and data centers is driven by the Populism, not because of any reality.",
+          "at_s": 1568,
+          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=1568s"
+        }
+      ],
       "description": ""
     },
     {
