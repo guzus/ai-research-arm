@@ -1,9 +1,268 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-06T19:41:00Z",
+  "updated_at": "2026-11-07T00:17:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "ai-daily-brief:INC89yHLexM",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Companies Are Spending 5x More on AI Now",
+      "url": "https://www.youtube.com/watch?v=INC89yHLexM",
+      "video_id": "INC89yHLexM",
+      "audio_url": null,
+      "published_at": "2026-11-06T21:47:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-07T00:17:00Z",
+      "duration_s": 1832,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Menlo’s latest enterprise AI report shows spending per company up nearly five times in a year, driven by agents. NLW breaks down ten key stats on frontier model demand, Anthropic’s rising market share, coding agent revenue, and whether AI is eating SaaS. In the headlines: AI stocks suffer the worst drawdown since 2020, Anthropic IPO doubts grow, and Meter reports AI-led research is accelerating. The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
+    {
+      "id": "latent-space:KgqWyVVH4Oc",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Why AI Still Misses Rows in PDFs — with Adit Abraham of Reducto | Let Them Cook",
+      "url": "https://www.youtube.com/watch?v=KgqWyVVH4Oc",
+      "video_id": "KgqWyVVH4Oc",
+      "audio_url": null,
+      "published_at": "2026-11-06T16:47:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-07T00:17:00Z",
+      "duration_s": 3038,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 8714,
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "We're going to announce it on Monday, Hmm. Uh, this is our new custom model. We call it R1, which will be able to do this from start to finish. So those components, you know, layout capture and all that, and last mile corrections that you want to do as close to 100% as possible. Of course.",
+          "at_s": 302,
+          "url": "https://www.youtube.com/watch?v=KgqWyVVH4Oc&t=302s"
+        },
+        {
+          "text": "So for a while we would have these multipliers if you were turning on agent features and things like that. Yes. It all disappears. Uh, R1 is just sending us documents. This will be less than the cost per page of our base models. Mhm. For better accuracy than our most accurate models. Oho. OK.",
+          "at_s": 624,
+          "url": "https://www.youtube.com/watch?v=KgqWyVVH4Oc&t=624s"
+        },
+        {
+          "text": "And I think in general with Replo, how have you taken this whole agent and LLM boom? Is it that you've made a lot of cultural changes to perhaps embrace and get your engineers to use coding agents, or even have a lot of tools internally?",
+          "at_s": 1010,
+          "url": "https://www.youtube.com/watch?v=KgqWyVVH4Oc&t=1010s"
+        },
+        {
+          "text": "On the sales team, we started the year with one AE and one location. Wow. And now we have 30 people in the sales organization. Wow. So overall, I hired a lot. Yes. Um, I expect this won't slow down anytime soon. We still feel limited capacity as a team. Of course. Yes. Well, I think it's a nice place.",
+          "at_s": 2270,
+          "url": "https://www.youtube.com/watch?v=KgqWyVVH4Oc&t=2270s"
+        },
+        {
+          "text": "Hmm, for example, one of the things we talked about earlier is that people spend billions of dollars a year on document localization. Hmm. Uh, so if you have a business in the US and want to do business with a company in the Middle East, you'll probably want to translate your content into Arabic , right?",
+          "at_s": 2412,
+          "url": "https://www.youtube.com/watch?v=KgqWyVVH4Oc&t=2412s"
+        },
+        {
+          "text": "So, we have also significantly improved our structured extraction models. It's not just accuracy. We improve things like citation performance and schema adherence. And we do it at a much more cost-effective cost. We announced this today . Historically, a structured snippet page would cost you all of over 4.5 cents.",
+          "at_s": 2792,
+          "url": "https://www.youtube.com/watch?v=KgqWyVVH4Oc&t=2792s"
+        }
+      ],
+      "description": "Why do PDFs still break AI? Reducto co-founder and CEO Adit Abraham joins Allen Park on Latent Space Cooking to talk AI document parsing and make a steak sandwich with burrata, torched peaches, and chimichurri. From the YC pivot out of long-term memory to Reducto R1 and Deep Extract, Adit explains why even frontier models can miss rows in long documents, how his team catches failures in production, and what it takes to go from reading a PDF to reliably"
+    },
+    {
+      "id": "a16z:y4BdOtm40SA",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Inside Salesforce’s Acquisition Strategy for the AI Era",
+      "url": "https://www.youtube.com/watch?v=y4BdOtm40SA",
+      "video_id": "y4BdOtm40SA",
+      "audio_url": null,
+      "published_at": "2026-11-06T15:47:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-07T00:17:00Z",
+      "duration_s": 2919,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7250,
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "And so we decided, \"Okay, why don't we just test Finn internally and see what it does for Salesforce?\" And, uh, we found that we actually launched it in 14 days. And on our website help.salesforce.com, hmm, it's handling over 40% of the traffic right now. Oho. And it, um, provides 65% of solutions without contacting a person.",
+          "at_s": 525,
+          "url": "https://www.youtube.com/watch?v=y4BdOtm40SA&t=525s"
+        },
+        {
+          "text": "And so, we created an incredible Service Cloud business. His assets now stand at nearly $11 billion. And, uh, the foundation of the business was the acquisition we made in 2008 of a company called Instranet, which was Alex Deion's company. Uh, another person who later became our Chief Product Officer. He is amazing. He is exceptional.",
+          "at_s": 1258,
+          "url": "https://www.youtube.com/watch?v=y4BdOtm40SA&t=1258s"
+        },
+        {
+          "text": "We created a billion-dollar AI fund in early 2023, but in addition to Anthropic, we also invested in Mistral and Cohere, uh, a couple of companies that were more at the infrastructure level. Uh, we invested in voice with 11 Labs, we invested in video with Runway.",
+          "at_s": 1841,
+          "url": "https://www.youtube.com/watch?v=y4BdOtm40SA&t=1841s"
+        },
+        {
+          "text": "And once you get above, like, $10 billion , the universe of buyers is so small. And yet, as you see so many of these huge companies, worth several billion dollars, and there's just going to be a reckoning.",
+          "at_s": 2319,
+          "url": "https://www.youtube.com/watch?v=y4BdOtm40SA&t=2319s"
+        },
+        {
+          "text": "I think part of my optimism comes from the fact that the performance of the top 1% of companies 10 years ago is very different from what the performance of the top 1% of companies is today. Even in the area of ​​mergers and acquisitions, you mentioned Wiz earlier, Cursor.",
+          "at_s": 2452,
+          "url": "https://www.youtube.com/watch?v=y4BdOtm40SA&t=2452s"
+        },
+        {
+          "text": "By the way, we had other security incidents that could be fixed, and you can identify which issues are P0, P1, P2 issues, and set that as a condition of closure, or maybe it's even a condition of signing that we won't sign until those are fixed, we won't close until these others are fixed.",
+          "at_s": 2733,
+          "url": "https://www.youtube.com/watch?v=y4BdOtm40SA&t=2733s"
+        }
+      ],
+      "description": "What makes a startup worth acquiring when software has never been easier to build? Salesforce’s John Somorjai says the answer goes well beyond technology: the best acquisitions can accelerate a product roadmap, bring in exceptional talent, and put a startup in front of 15,000 Salesforce sales reps almost overnight. John joins a16z General Partner Alex Immerman to unpack the thinking behind nearly $100 billion in acquisitions during his tenure, from Slack and MuleSoft to a new generation of AI-native companies."
+    },
+    {
+      "id": "latent-space:3nAV2s4GYbs",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "From Cell Atlases to AI-Designed Experiments — Fabian Theis, Helmholtz Munich",
+      "url": "https://www.youtube.com/watch?v=3nAV2s4GYbs",
+      "video_id": "3nAV2s4GYbs",
+      "audio_url": null,
+      "published_at": "2026-11-06T14:47:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-07T00:17:00Z",
+      "duration_s": 3051,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 10279,
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Zymergen and Noetik may be good counterexamples, but Biohub just announced a $1.8 billion collaboration with the US Department of Energy, NIH, Meta, and Google to collect and publish open-source, multi-scale biological data that can be used to develop a new generation of virtual cells.",
+          "at_s": 148,
+          "url": "https://www.youtube.com/watch?v=3nAV2s4GYbs&t=148s"
+        },
+        {
+          "text": "In the paper we had a certain starting point because we compared to the previous Gene, which was assembled with about 30 million cells, but now in Hugging Face we have a model with 350 million cells, it seems like up to 100 million parameters, so we're really going to scale. And we already see good scaling behavior .",
+          "at_s": 1416,
+          "url": "https://www.youtube.com/watch?v=3nAV2s4GYbs&t=1416s"
+        },
+        {
+          "text": "I am setting up a so-called computational medicine center in Helmholtz, Munich, where I think there are now about 45 group leaders and professors, and maybe 500 to 600 people. So we are, I think, the largest academic place for research in AI in healthcare in Europe, where we have people who are really working at all levels.",
+          "at_s": 1908,
+          "url": "https://www.youtube.com/watch?v=3nAV2s4GYbs&t=1908s"
+        },
+        {
+          "text": "One thing you say about startups I find really fascinating. I heard that there were some problems with the startup ecosystem in Germany. It is difficult to create a startup there compared to other places in Europe. What is the competitive landscape for startups in Germany right now, and how exactly can Germany become more competitive overall?",
+          "at_s": 2044,
+          "url": "https://www.youtube.com/watch?v=3nAV2s4GYbs&t=2044s"
+        },
+        {
+          "text": "But once you have these models of the perturbation world, you can actually go back and run experiments, right? So I think computing startups can also be very good at generating data. And I think that's something that will also translate into not just good articles, which is mostly our thing, but also, I think, this next generation of startups.",
+          "at_s": 2278,
+          "url": "https://www.youtube.com/watch?v=3nAV2s4GYbs&t=2278s"
+        },
+        {
+          "text": "\"There's been some movement among Agent Tech AI, like we had a few guests, or we had a blog post about how wet lab scientists are starting to essentially become computational with Agent Tech AI.",
+          "at_s": 2766,
+          "url": "https://www.youtube.com/watch?v=3nAV2s4GYbs&t=2766s"
+        }
+      ],
+      "description": "Biohub, Google, Meta, DOE, and NIH have announced a $1.8B initiative to make biology predictable, with new technologies to measure living systems across molecular scales, space, and time. But why now? Despite training foundation models on hundreds of millions of cells, researchers still struggle to predict what happens when we perturb them. Sometimes even simple linear models or mean predictions are surprisingly difficult to beat. Is the problem the models, the benchmarks, or the biological questions we're asking? We sat"
+    },
+    {
+      "id": "ai-daily-brief:ssEWGHjKHTM",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "How a Data Center Slowdown Benefits Big Tech",
+      "url": "https://www.youtube.com/watch?v=ssEWGHjKHTM",
+      "video_id": "ssEWGHjKHTM",
+      "audio_url": null,
+      "published_at": "2026-11-06T13:47:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-07T00:17:00Z",
+      "duration_s": 1537,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "A data center slowdown after the blue wave could help Big Tech, and market reactions point to a more mixed AI trade than the doom headlines suggest. NLW breaks down why hyperscalers may welcome political cover to trim CapEx, what new state leaders will likely demand, and where AI pause proposals stand. In the headlines: ChatGPT reaches a fifth of Google’s search volume, Meta and OpenAI make coding acquisitions, and Apple trims internal AI budgets. The AI Daily Brief helps"
+    },
+    {
+      "id": "invest-like-the-best:r95bEutZUN4",
+      "show_id": "invest-like-the-best",
+      "show": "Invest Like the Best",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "The Hidden Capital Crunch Behind Silicon Valley’s AI Boom",
+      "url": "https://www.youtube.com/watch?v=r95bEutZUN4",
+      "video_id": "r95bEutZUN4",
+      "audio_url": null,
+      "published_at": "2026-11-06T12:47:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-07T00:17:00Z",
+      "duration_s": 2978,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Venture capital is moving faster than ever, but is today's AI boom just another 2021? Patrick sits down with Ramtin Naimi, founder and Managing Partner of Abstract Ventures, to explore the extraordinary pace of Silicon Valley, why investors are paying 3–5x to get into coveted deals, and how the potential for trillion-dollar companies is reshaping startup valuations. They discuss the liquidity crunch facing venture funds, the massive capital demands of AI infrastructure, and why today's explosive growth may be more"
+    },
     {
       "id": "cognitive-revolution:WueUrPQFVaI",
       "show_id": "cognitive-revolution",
@@ -25,8 +284,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-06T19:41:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Sentinel Bio co-founder and managing director Joshua Monrad joins Nathan Labenz to examine the evolving biosecurity risks posed by frontier artificial intelligence and autonomous agents. Drawing on recent in-lab uplift trials and multimodal troubleshooting benchmarks, Monrad explains how emerging models are rapidly dismantling tacit-knowledge barriers in wet labs. He analyzes potential governance interventions ranging from pathogen training-data filtering to DNA synthesis screening as robotics development looms as the final physical bottleneck. With biological tools advancing toward dual-use democratization, this discussion"
@@ -4834,13 +5093,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 3078,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9528,
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "How do we how does the average engineer use AI to move faster? That turns out to be like you have to sort of engineer your platform to make it uh easy to facilitate AI agents in your infrastructure. And then the second one is, you know, how do we deploy AI agents to the marketplace?",
+          "at_s": 153,
+          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=153s"
+        },
+        {
+          "text": "If they land that need to land a a PR in our pricing domain with a prompt and they were like, you know, apply a new pricing rule change to this to the to the pricing domain. Is it able to complete that task given that pricing engineers have been working with Everest giving it context?",
+          "at_s": 538,
+          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=538s"
+        },
+        {
+          "text": "Uh and then we look at all of the open source models and we we decide. It sounds like uh without a lot of care what you're seeing is that the model will generally say oh that's about 90% good. Yeah. Yeah.",
+          "at_s": 1008,
+          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=1008s"
+        },
+        {
+          "text": "the best indicator that you're using AI well is your road map is shifting to the right and compressing and so like we track that and I think we actually we shared stats there's so many confounding factors in everything you're saying though it is 100% granularity road map distance like yeah oh yeah totally totally uh but I think",
+          "at_s": 1256,
+          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=1256s"
+        },
+        {
+          "text": "So we've already deployed you know AI agents into production for customer support and um you know uh we've we've resol we resolve about uh 50% of all um chats with with AI. So our Agentic solutions already resolving a lot 50% of support chats in particular. Yes. Yes. All tickets. Yeah.",
+          "at_s": 1875,
+          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=1875s"
+        },
+        {
+          "text": "Including talking to friends or events or there's all sorts of or agents. Oh yeah, AI is definitely huge and like I think you know 40% or something like that of like humans in in the US use AI for uh for inspiration.",
+          "at_s": 2523,
+          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=2523s"
+        }
+      ],
       "description": ""
     },
     {
@@ -5270,8 +5560,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -5295,13 +5585,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2730,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7100,
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "And you know , in the first 72 hours since launch, almost 25 trillion tokens were used, which is about three times more than Gemini 3.0 had in its first 72 hours. So , uh, and we're limited in capacity because we're servicing it.",
+          "at_s": 162,
+          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=162s"
+        },
+        {
+          "text": "Some of our cloud customers definitely want a front-end model. I think the models at the forefront will be better for developing the next set of models in the era of recursive self-improvement. So I would argue that it matters. Internally, we definitely saw a big turning point by rolling out Oregon to our developers.",
+          "at_s": 324,
+          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=324s"
+        },
+        {
+          "text": "And, you know, there are some AI research efforts like OpenAI that have actually identified that LLM is the path to AGI, and they're actually exploring a subset of their research on models of the world that is similar to an AI model trying to understand the physical world. But you explore both.",
+          "at_s": 790,
+          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=790s"
+        },
+        {
+          "text": "This is an important topic for Google. I've often been told that Google should get out of the AI ​​research game, take all of its cloud computing resources and chips, and just sell them. And you look at the business world now, for example, at Nvidia, which has a company worth actually five trillion dollars.",
+          "at_s": 916,
+          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=916s"
+        },
+        {
+          "text": "But, you know, an ever- increasing percentage are already agency assignments at Gemini. And so, we're going to provide, uh, you know, personal agents to our consumers. It will work in the Gemini app, it will work in Google search, it will work in Gmail. You can send him the address, call him, etc.",
+          "at_s": 2009,
+          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=2009s"
+        },
+        {
+          "text": "You may have seen that with our source data we have a million source tokens, right? You know, you know, with our Gemini models in the beginning, we had 1 million context windows on the input side, right? These are all examples of breakthroughs that we are constantly working on. Do you know how you feel about synthetic data?",
+          "at_s": 2439,
+          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=2439s"
+        }
+      ],
       "description": ""
     },
     {
@@ -5325,8 +5646,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -5350,13 +5671,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 3232,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 10658,
+        "checked_at": "2026-11-07T00:17:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So what we do for ChatGPT and all the models that we deliver in ChatGPT, at every stage of training the model for ChatGPT, we actually add specialized healthcare data to every stage of training, starting with all of our models over the last year.",
+          "at_s": 401,
+          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=401s"
+        },
+        {
+          "text": "So we've been rolling this out as widely as possible from the beginning, both for our free and our pro users. And so, we have about 300 million active users of health information every week, the vast majority of them are free users, and we take that into account, and most of them are also outside the US. Hmm.",
+          "at_s": 566,
+          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=566s"
+        },
+        {
+          "text": "You mentioned personalized proactive agents, personal agents in general, which have emerged in terms of popularity over the last few months. Instinct , Muse, Grokbot, Open AI's Dots. Uh, you can give these AI apps a purpose for people who are unfamiliar, and it can perform a number of tasks.",
+          "at_s": 714,
+          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=714s"
+        },
+        {
+          "text": "And since then, we've improved both measuring whether models are capable of serving different types of users and training the models to do so. So a big part of our approach was not just how to improve the models for these different users, but how to engage them?",
+          "at_s": 942,
+          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=942s"
+        },
+        {
+          "text": "I think it's also a big part of how we think about APIs and how good our models are for healthcare, pricing, etc. You know, one of the recent updates was that we recently released, uh, GPT-6 Luna. Hmm. And GPT-6 Luna is, um, our current cheapest API model, um, or, you know, the cheapest, frontier API model.",
+          "at_s": 2633,
+          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=2633s"
+        },
+        {
+          "text": "Uh, there's an article in the New York Times about the AI ​​of providers and payers fighting each other, and there's an analysis by the Blue Cross Blue Shield Association that showed that the respective billing bots and paperwork bots actually increased costs by a billion dollars or something.",
+          "at_s": 2792,
+          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=2792s"
+        }
+      ],
       "description": ""
     },
     {
