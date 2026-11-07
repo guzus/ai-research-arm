@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-07T13:30:00Z",
+  "updated_at": "2026-11-07T19:00:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -84,8 +84,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T13:30:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-07T19:00:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Menlo’s latest enterprise AI report shows spending per company up nearly five times in a year, driven by agents. NLW breaks down ten key stats on frontier model demand, Anthropic’s rising market share, coding agent revenue, and whether AI is eating SaaS. In the headlines: AI stocks suffer the worst drawdown since 2020, Anthropic IPO doubts grow, and Meter reports AI-led research is accelerating. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -112,8 +112,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T13:30:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-07T19:00:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": ""
@@ -316,8 +316,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T13:30:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-07T19:00:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "A data center slowdown after the blue wave could help Big Tech, and market reactions point to a more mixed AI trade than the doom headlines suggest. NLW breaks down why hyperscalers may welcome political cover to trim CapEx, what new state leaders will likely demand, and where AI pause proposals stand. In the headlines: ChatGPT reaches a fifth of Google’s search volume, Meta and OpenAI make coding acquisitions, and Apple trims internal AI budgets. The AI Daily Brief helps"
@@ -344,8 +344,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T13:30:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-07T19:00:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Venture capital is moving faster than ever, but is today's AI boom just another 2021? Patrick sits down with Ramtin Naimi, founder and Managing Partner of Abstract Ventures, to explore the extraordinary pace of Silicon Valley, why investors are paying 3–5x to get into coveted deals, and how the potential for trillion-dollar companies is reshaping startup valuations. They discuss the liquidity crunch facing venture funds, the massive capital demands of AI infrastructure, and why today's explosive growth may be more"
