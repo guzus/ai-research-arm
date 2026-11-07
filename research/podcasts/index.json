@@ -1,9 +1,181 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-07T19:00:00Z",
+  "updated_at": "2026-11-07T23:54:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "cognitive-revolution:ZZwrUPxU1GY",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "AI:AM: Is THIS the AI We Want? Alarming Acceleration, AI Election Bets, GPU Trading & AI-Native VC",
+      "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY",
+      "video_id": "ZZwrUPxU1GY",
+      "audio_url": null,
+      "published_at": "2026-11-07T20:24:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-07T23:54:00Z",
+      "duration_s": 5177,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-07T23:54:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Nathan Labenz and Prakash Narayanan examine mounting evidence of rapid AI acceleration alongside guests Brian Zhou of Thoughtful, Mike San Miguel of Luxor Technology, and Bryan Bischof of Theory Ventures. The discussions unpack how frontier agents fared when trading real money on midterm election forecasts, the intense physical constraints and compliance rules shaping secondary GPU transactions, and how venture firms use thousands of agent runs to identify alpha. Anchored by METR's assessment and Anthropic's amended regulatory filings, the hosts explore"
+    },
+    {
+      "id": "all-in:2v8b062QzTI",
+      "show_id": "all-in",
+      "show": "All-In Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Midterm Blood Bath, $4T AI Sell Off, Data Center Freeze, What’s Next for Trump",
+      "url": "https://www.youtube.com/watch?v=2v8b062QzTI",
+      "video_id": "2v8b062QzTI",
+      "audio_url": null,
+      "published_at": "2026-11-07T18:24:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-07T23:54:00Z",
+      "duration_s": 5584,
+      "transcript": {
+        "available": true,
+        "source": "asr",
+        "words": 16776,
+        "checked_at": "2026-11-07T23:54:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Obviously, the Democrats sweeped both chambers of Congress. They won at least 29 governor races. Dems will wind up with 54 or 55 or 56 seats, depending on how Alaska and Mississippi wind up. They have a lot of votes still coming in. In the House, Dems will have at least 250 seats, maybe even 260.",
+          "at_s": 223,
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=223s"
+        },
+        {
+          "text": "You've got an employment tick down to almost record low, 4.1%. You've got still pretty healthy GDP growth. In the first half of the year, it was around 2.1 to 2.5%. Then third quarter, the tracking by GDP now is 3.7%.",
+          "at_s": 458,
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=458s"
+        },
+        {
+          "text": "The most optimistic country for AI is China. 93% of Chinese citizens think AI will mostly help people in the country. And 93% of people think AI will make their daily lives better in China. And we can believe or not believe how gallop does their surveys in China. The US is fourth last. We are worse than Afghanistan.",
+          "at_s": 950,
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=950s"
+        },
+        {
+          "text": "And we got a 10% cut in the price of Brent crude. It will go from, you know, it's been as high as 117. It'll go from 110 to 70. If this war ends, gas prices will drop, diesel will drop, the price of food will drop.",
+          "at_s": 2168,
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=2168s"
+        },
+        {
+          "text": "It was 95% before the midterms. And the Wall Street Journal reported today that the haircut could be baked in now instead of 1.5 to 2 trillion and then going to 3 or 4 trillion as Gavin Baker said on this podcast, we could be looking at a 1 trillion, 1.6 trillion. Today, markets have rebounded a bit.",
+          "at_s": 3249,
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=3249s"
+        },
+        {
+          "text": "Then the job of doing the next large model will not occur free bird on U.S. soil. It might occur in Saudi Arabia, UAE, Qatar, Malaysia, Singapore. We're going to be a net importer of tokens. And this will be the biggest cell phone ever, because all those $300, $400,000 jobs building these data centers are going to go away.",
+          "at_s": 3709,
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=3709s"
+        }
+      ],
+      "description": "*This episode was recorded Friday morning Bestie intros! Midterms postmortem: What led to a generational GOP collapse? How can Trump salvage his presidency? Market reaction: Data center fears, $4T in market cap shed, AI ban potential Science Corner: OpenAI solves Exponential Time Hypothesis Chamath on Tetragrammaton with Rick Rubin: Referenced in the show:"
+    },
+    {
+      "id": "20vc:iG0UO-KAByY",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Inside WashU's Endowment Fund | SpaceX Made Up 20% of Out AUM | Scott Wilson",
+      "url": "https://www.youtube.com/watch?v=iG0UO-KAByY",
+      "video_id": "iG0UO-KAByY",
+      "audio_url": null,
+      "published_at": "2026-11-07T15:24:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-07T23:54:00Z",
+      "duration_s": 3438,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 10271,
+        "checked_at": "2026-11-07T23:54:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Then the endowment was worth 8 billion. Dollars? Yes, it was 8 when I started. A little less than a billion dollars . Okay. And how much is it today? Total fund under management currently Probably a little over 20 billion dollars. It will be less. You will personally receive a 20% share. I hope. No, unfortunately, it doesn't work.",
+          "at_s": 259,
+          "url": "https://www.youtube.com/watch?v=iG0UO-KAByY&t=259s"
+        },
+        {
+          "text": "Also, if you think about it, you are our Having 1% or 2% of the portfolio, and 50 If it has % position, it will only give us 100 Only basis points, so we There will be no problem. You have a huge concentration of capital, Is there any position that does not yield results? Oh yes, that's right. Yes.",
+          "at_s": 735,
+          "url": "https://www.youtube.com/watch?v=iG0UO-KAByY&t=735s"
+        },
+        {
+          "text": "So we are very likely We will consider investments, but we Those who do will be less than 1%, maybe even 0.1%. I can say. This is as you grow. Feeling challenged? Because now You are close to $20 billion, Something that will make a difference is needed. That means $20 to $50 billion in growth.",
+          "at_s": 871,
+          "url": "https://www.youtube.com/watch?v=iG0UO-KAByY&t=871s"
+        },
+        {
+          "text": "Meaning: I have a billion dollar fund. And every investment I make If you get a 10% stake in the company, you will 100 million from a billion dollar fund If we give a dollar check, our 'look-through'- I say this for all who will listen—that is, You get 1% in each underlying company. As if there is a share.",
+          "at_s": 2282,
+          "url": "https://www.youtube.com/watch?v=iG0UO-KAByY&t=2282s"
+        },
+        {
+          "text": "They also cover their investment costs. Only businesses that can recover, At some point they will return to normal. But in the short term, you will be able to Those who sell a chip or memory for 3 dollars , now selling for 30 dollars, that All additional profit goes directly to net profit. Reaches. In multiples you have it.",
+          "at_s": 2456,
+          "url": "https://www.youtube.com/watch?v=iG0UO-KAByY&t=2456s"
+        },
+        {
+          "text": "You invest in a Chinese fund. When placed, the dollar denomination and The RMB (RB) will have a dollar denomination. Now the average is 9 RMB per $1. What is your opinion about that division? If You can trade chips and Investing in some exciting sectors If you can't, invest in China. Won't the total profit decrease?",
+          "at_s": 3133,
+          "url": "https://www.youtube.com/watch?v=iG0UO-KAByY&t=3133s"
+        }
+      ],
+      "description": "Scott Wilson is the CIO of WashU, one of the best-performing endowment funds in the world. Under his leadership, Scott has grown the endowment from $8BN to $19BN today. At one point, SpaceX was over 20% of the entire value of the endowment. Timestamps: Intro Why Scott Redeemed Over Half the Portfolio in His First Week How WashU Grew From ~$8BN to Nearly $20BN Why Scott Would Put 70–80% in Privates Without Payout Constraints Why WashU Puts More Than Half"
+    },
+    {
+      "id": "decoder:75kjtoOpFlo",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "How AI is breaking cybersecurity | Decoder",
+      "url": "https://www.youtube.com/watch?v=75kjtoOpFlo",
+      "video_id": "75kjtoOpFlo",
+      "audio_url": null,
+      "published_at": "2026-11-07T14:24:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-07T23:54:00Z",
+      "duration_s": 3638,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-07T23:54:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "I’ve always enjoyed talking to security expert Alex Stamos because he’s so direct — and he doesn't mince words about how the multibillion dollar cybersecurity industry as we’ve known it is all but doomed thanks to the unrelenting, AI-boosted waves of hacks, breaches, and attacks. That much disruption means a lot of places where bad guys can get in while everyone else is left scrambling. Alex isn’t a doomer in the long run, but he does think we've got a"
+    },
     {
       "id": "latent-space:P735f1xlpL0",
       "show_id": "latent-space",
@@ -112,8 +284,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T19:00:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-07T23:54:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": ""
@@ -371,8 +543,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T00:17:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-07T23:54:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Sentinel Bio co-founder and managing director Joshua Monrad joins Nathan Labenz to examine the evolving biosecurity risks posed by frontier artificial intelligence and autonomous agents. Drawing on recent in-lab uplift trials and multimodal troubleshooting benchmarks, Monrad explains how emerging models are rapidly dismantling tacit-knowledge barriers in wet labs. He analyzes potential governance interventions ranging from pathogen training-data filtering to DNA synthesis screening as robotics development looms as the final physical bottleneck. With biological tools advancing toward dual-use democratization, this discussion"
@@ -575,8 +747,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-06T19:41:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-07T23:54:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "Democrats sweep the midterms, and data centers proved to be a vote loser across both parties. NLW breaks down the key races in Ohio, Texas, Georgia, Michigan, and California, plus 41 data center ballot measures on track to pass. Likely policy shifts on whistleblower protections, incident reporting, and data center rules show how AI politics could shape 2028. The AI Daily Brief helps you understand the most important news and discussions in AI."
