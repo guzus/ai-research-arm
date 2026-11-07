@@ -1,9 +1,68 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-07T06:32:00Z",
+  "updated_at": "2026-11-07T13:30:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "latent-space:P735f1xlpL0",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Deep Dive: Anthropic S-1 Myths and Mythos — Jamin Ball, Altimeter",
+      "url": "https://www.youtube.com/watch?v=P735f1xlpL0",
+      "video_id": "P735f1xlpL0",
+      "audio_url": null,
+      "published_at": "2026-11-07T03:00:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-07T13:30:00Z",
+      "duration_s": 6148,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 19024,
+        "checked_at": "2026-11-07T13:30:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "And this, I I think it was one of the biggest S-1 surprises, right? Here is the business, which showed 85% gross margin, over 20 %free cash flow margin, 8% GAAP operating margin, so even on a GAAP basis, they are highly profitable. AND , probably my favorite statistic from total S-1—this $141 billion in capital raised for today.",
+          "at_s": 908,
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=908s"
+        },
+        {
+          "text": "And most people are now at the same level, say 0.1% or, well, 1 to 5%. Yes. The average rate for AI companies is 50%. And the top AI companies, let's say, in the 90s percentiles, spend on tokens in 10 times more than on salaries. Yes.",
+          "at_s": 1512,
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=1512s"
+        },
+        {
+          "text": "All hyperscalers that reported today if they were separate companies, would have an annual revenue of more than one hundred billion dollars. Google Cloud increased by more than 100%. It's simple. madness. Azure is growing by almost 50%. Amazon reported today, we we record this on Thursday, 39, almost 40%. These businesses simply accelerate and grow, This is madness.",
+          "at_s": 2557,
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=2557s"
+        },
+        {
+          "text": "And out of the $81 billion net loss income for the first 6 months of this year, 72 billions fall on the series Anthropic convertible tools for AWS and Google, and 9 billion for a separate SAFE and debt toolkit obligations. So, 100% of the loss for the first six months is just growth the value of their convertibles tools.",
+          "at_s": 4499,
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=4499s"
+        },
+        {
+          "text": "And, of course, everything has its price. Hey, great. You know what? Take 5 billions of debt at 20%. But you don't see it. You see this on stock levels, and, again, how is it that is there a hundred billion dollars of capital? Yes. that will go to Entropic, and Entropic cannot to raise $100 or $50 billion.",
+          "at_s": 5154,
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=5154s"
+        },
+        {
+          "text": "Let's say, OpenAI and Anthropic want to take the path from 0 to 30 in 5 years. So, you will add 60 gigawatts of AI power, from just two laboratories. Which assumption would be correct? regarding their total share of capacity ? I don't know, 40-50%. Um, let's say 40%.",
+          "at_s": 5334,
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=5334s"
+        }
+      ],
+      "description": "Will Anthropic make it from filing an S-1 to trading on Nasdaq? Jamin Ball, partner at Altimeter and author of Clouded Judgement, joins swyx to walk through the roadshow, the Thanksgiving window and what investors would need to believe about Claude. Jamin makes a case for going public that starts with the lenders financing GPU clusters. Then he opens the accounts: in the first half of 2026, Anthropic reported an $80.7 billion net loss and generated $3.9 billion in operating"
+    },
     {
       "id": "ai-daily-brief:INC89yHLexM",
       "show_id": "ai-daily-brief",
@@ -25,8 +84,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T06:32:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-07T13:30:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Menlo’s latest enterprise AI report shows spending per company up nearly five times in a year, driven by agents. NLW breaks down ten key stats on frontier model demand, Anthropic’s rising market share, coding agent revenue, and whether AI is eating SaaS. In the headlines: AI stocks suffer the worst drawdown since 2020, Anthropic IPO doubts grow, and Meter reports AI-led research is accelerating. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -53,8 +112,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T06:32:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-07T13:30:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -257,8 +316,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T06:32:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-07T13:30:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "A data center slowdown after the blue wave could help Big Tech, and market reactions point to a more mixed AI trade than the doom headlines suggest. NLW breaks down why hyperscalers may welcome political cover to trim CapEx, what new state leaders will likely demand, and where AI pause proposals stand. In the headlines: ChatGPT reaches a fifth of Google’s search volume, Meta and OpenAI make coding acquisitions, and Apple trims internal AI budgets. The AI Daily Brief helps"
@@ -285,8 +344,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T06:32:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-07T13:30:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Venture capital is moving faster than ever, but is today's AI boom just another 2021? Patrick sits down with Ramtin Naimi, founder and Managing Partner of Abstract Ventures, to explore the extraordinary pace of Silicon Valley, why investors are paying 3–5x to get into coveted deals, and how the potential for trillion-dollar companies is reshaping startup valuations. They discuss the liquidity crunch facing venture funds, the massive capital demands of AI infrastructure, and why today's explosive growth may be more"
