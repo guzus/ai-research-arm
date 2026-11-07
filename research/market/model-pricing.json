@@ -1,25 +1,25 @@
 {
   "benchmark": "GPQA diamond",
   "benchmarks_available": {
-    "Chess Puzzles": 89,
+    "Chess Puzzles": 90,
     "EBR-bench": 29,
     "FrontierMath-2025-02-28-Private": 69,
     "FrontierMath-2025-02-28-Public": 64,
     "FrontierMath-Erdos": 14,
     "FrontierMath-Tier-4-2025-07-01-Private": 55,
     "FrontierMath-Tier-4-2025-07-01-Public": 36,
-    "FrontierMath-Tier-4-v2-Private": 71,
-    "FrontierMath-Tiers-1-3-v2-Private": 89,
-    "Furniture Assembly": 35,
-    "GPQA diamond": 210,
+    "FrontierMath-Tier-4-v2-Private": 72,
+    "FrontierMath-Tiers-1-3-v2-Private": 90,
+    "Furniture Assembly": 36,
+    "GPQA diamond": 211,
     "MATH level 5": 88,
     "MirrorCode": 15,
-    "Mystery Game Puzzles": 80,
+    "Mystery Game Puzzles": 81,
     "OEIS Open": 3,
     "OEIS Open Lite": 5,
-    "OTIS Mock AIME 2024-2025": 193,
+    "OTIS Mock AIME 2024-2025": 194,
     "SWE-Bench verified": 32,
-    "SimpleQA Verified": 90,
+    "SimpleQA Verified": 91,
     "SpireClimb": 8,
     "SpireClimb (Slay the Spire 1, Ascension 20 Heart)": 8,
     "SpireClimb (Slay the Spire 2, Ascension 10)": 8
@@ -38,7 +38,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-11-06T20:57:03Z",
+  "generated_at": "2026-11-07T00:58:27Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -357,7 +357,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.3,"0.95":4.125},"pareto":8,"plotted":109,"ts":"2026-11-05T11:10:34Z"},
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.3,"0.95":4.125},"pareto":8,"plotted":109,"ts":"2026-11-05T21:29:35Z"},
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.3,"0.95":4.125},"pareto":8,"plotted":109,"ts":"2026-11-06T11:08:20Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.105,"0.6":0.105,"0.7":0.105,"0.8":0.13,"0.9":0.3,"0.95":4.125},"pareto":9,"plotted":109,"ts":"2026-11-06T20:57:03Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.105,"0.6":0.105,"0.7":0.105,"0.8":0.13,"0.9":0.3,"0.95":4.125},"pareto":9,"plotted":109,"ts":"2026-11-06T20:57:03Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.052,"0.6":0.052,"0.7":0.052,"0.8":0.13,"0.9":0.3,"0.95":4.125},"pareto":8,"plotted":110,"ts":"2026-11-07T00:58:27Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -618,6 +619,15 @@
           "score": 0.45,
           "stderr": 0.05,
           "vendor": "google"
+        },
+        {
+          "key": "kimik3.1pro",
+          "name": "Kimi K3.1 Pro",
+          "output_usd_per_mtok": 10.0,
+          "pareto": false,
+          "score": 0.45,
+          "stderr": 0.05,
+          "vendor": "moonshotai"
         },
         {
           "key": "claudesonnet5",
@@ -1232,6 +1242,15 @@
           "score": 0.7859649122807018,
           "stderr": 0.024338000553262393,
           "vendor": "openai"
+        },
+        {
+          "key": "kimik3.1pro",
+          "name": "Kimi K3.1 Pro",
+          "output_usd_per_mtok": 10.0,
+          "pareto": false,
+          "score": 0.7824561403508772,
+          "stderr": 0.024481850763866792,
+          "vendor": "moonshotai"
         },
         {
           "key": "claudehaiku5.5",
@@ -2057,6 +2076,15 @@
           "vendor": "qwen"
         },
         {
+          "key": "kimik3.1pro",
+          "name": "Kimi K3.1 Pro",
+          "output_usd_per_mtok": 10.0,
+          "pareto": false,
+          "score": 1.0,
+          "stderr": 0.0,
+          "vendor": "moonshotai"
+        },
+        {
           "key": "gemini4argon",
           "name": "Gemini 4 Argon",
           "output_usd_per_mtok": 10.0,
@@ -2518,7 +2546,7 @@
         {
           "key": "gptoss120b",
           "name": "gpt-oss-120b",
-          "output_usd_per_mtok": 0.105,
+          "output_usd_per_mtok": 0.052,
           "pareto": true,
           "score": 0.8888888888888888,
           "stderr": 0.04463343655613273,
@@ -2960,7 +2988,7 @@
           "key": "gemma34b",
           "name": "Gemma 3 4B",
           "output_usd_per_mtok": 0.1,
-          "pareto": true,
+          "pareto": false,
           "score": 0.075,
           "stderr": 0.02763853991962833,
           "vendor": "google"
@@ -2978,7 +3006,7 @@
           "key": "mistralsmall3",
           "name": "Mistral Small 3",
           "output_usd_per_mtok": 0.08,
-          "pareto": true,
+          "pareto": false,
           "score": 0.06666666666666667,
           "stderr": 0.02682716849943299,
           "vendor": "mistralai"
@@ -3146,6 +3174,15 @@
           "score": 0.63,
           "stderr": 0.015275252316519465,
           "vendor": "openai"
+        },
+        {
+          "key": "kimik3.1pro",
+          "name": "Kimi K3.1 Pro",
+          "output_usd_per_mtok": 10.0,
+          "pareto": false,
+          "score": 0.622,
+          "stderr": 0.015341165254026547,
+          "vendor": "moonshotai"
         },
         {
           "key": "gpt6sol",
@@ -3689,12 +3726,12 @@
         }
       ]
     },
-    "as_of": "2026-11-06T20:57:03Z",
+    "as_of": "2026-11-07T00:58:27Z",
     "counts": {
-      "pareto": 9,
-      "plotted": 109,
-      "priced": 350,
-      "scored": 200,
+      "pareto": 8,
+      "plotted": 110,
+      "priced": 351,
+      "scored": 201,
       "unscored": 241
     },
     "models": [
@@ -3868,6 +3905,25 @@
         "stderr": 0.014938512008159717,
         "variants_seen": 2,
         "vendor": "openai"
+      },
+      {
+        "blended_usd_per_mtok": 4.0,
+        "context_length": 1048576,
+        "epoch_model": "Kimi K3.1 Pro",
+        "input_usd_per_mtok": 2.0,
+        "key": "kimik3.1pro",
+        "name": "Kimi K3.1 Pro",
+        "openrouter_id": "moonshotai/kimi-k3.1-pro",
+        "output_usd_per_mtok": 10.0,
+        "pareto": false,
+        "price_variant": null,
+        "runs": 1,
+        "score": 0.9419191919191919,
+        "score_as_of": "2026-10-23",
+        "score_variant": "kimi-k3.1-pro-together_max",
+        "stderr": 0.01439446786793499,
+        "variants_seen": 1,
+        "vendor": "moonshotai"
       },
       {
         "blended_usd_per_mtok": 1.5,
@@ -5200,14 +5256,14 @@
         "vendor": "openai"
       },
       {
-        "blended_usd_per_mtok": 0.04725,
+        "blended_usd_per_mtok": 0.0235,
         "context_length": 131072,
         "epoch_model": "gpt-oss-120b",
-        "input_usd_per_mtok": 0.028,
+        "input_usd_per_mtok": 0.014,
         "key": "gptoss120b",
         "name": "gpt-oss-120b",
         "openrouter_id": "openai/gpt-oss-120b",
-        "output_usd_per_mtok": 0.105,
+        "output_usd_per_mtok": 0.052,
         "pareto": true,
         "price_variant": null,
         "runs": 1,
@@ -5588,7 +5644,7 @@
         "name": "Mistral Small 3",
         "openrouter_id": "mistralai/mistral-small-24b-instruct-2501",
         "output_usd_per_mtok": 0.08,
-        "pareto": true,
+        "pareto": false,
         "price_variant": null,
         "runs": 2,
         "score": 0.47285353535353536,
@@ -5905,6 +5961,13 @@
         "vendor": "deepseek"
       },
       {
+        "input_usd_per_mtok": 0.08,
+        "key": "lfm31.7b",
+        "name": "LFM3-1.7B",
+        "output_usd_per_mtok": 0.2,
+        "vendor": "liquid"
+      },
+      {
         "input_usd_per_mtok": 0.05,
         "key": "solarmini4",
         "name": "Solar Mini 4",
@@ -6094,13 +6157,6 @@
         "vendor": "qwen"
       },
       {
-        "input_usd_per_mtok": 0.0825,
-        "key": "hy3",
-        "name": "Hy3",
-        "output_usd_per_mtok": 0.33,
-        "vendor": "tencent"
-      },
-      {
         "input_usd_per_mtok": 0.0509,
         "key": "llama3.23binstruct",
         "name": "Llama 3.2 3B Instruct",
@@ -6246,6 +6302,13 @@
         "name": "Cydonia 24B V4.1",
         "output_usd_per_mtok": 0.5,
         "vendor": "thedrummer"
+      },
+      {
+        "input_usd_per_mtok": 0.132,
+        "key": "hy3",
+        "name": "Hy3",
+        "output_usd_per_mtok": 0.528,
+        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.351,
@@ -6437,13 +6500,6 @@
         "vendor": "cognitivecomputations"
       },
       {
-        "input_usd_per_mtok": 0.27,
-        "key": "minimaxm2.5",
-        "name": "MiniMax M2.5",
-        "output_usd_per_mtok": 0.95,
-        "vendor": "minimax"
-      },
-      {
         "input_usd_per_mtok": 0.25,
         "key": "deepseekv3.1",
         "name": "DeepSeek V3.1",
@@ -6549,6 +6605,13 @@
         "vendor": "openai"
       },
       {
+        "input_usd_per_mtok": 0.3,
+        "key": "minimaxm2.5",
+        "name": "MiniMax M2.5",
+        "output_usd_per_mtok": 1.2,
+        "vendor": "minimax"
+      },
+      {
         "input_usd_per_mtok": 0.8,
         "key": "morphv3fast",
         "name": "Morph V3 Fast",
@@ -6652,13 +6715,6 @@
         "name": "Mistral Large 3 2512",
         "output_usd_per_mtok": 1.5,
         "vendor": "mistralai"
-      },
-      {
-        "input_usd_per_mtok": 0.750114,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 1.500228,
-        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.26,
@@ -6815,13 +6871,6 @@
         "vendor": "minimax"
       },
       {
-        "input_usd_per_mtok": 0.7506,
-        "key": "hy4preview",
-        "name": "Hy4 preview",
-        "output_usd_per_mtok": 2.2509,
-        "vendor": "tencent"
-      },
-      {
         "input_usd_per_mtok": 0.57,
         "key": "kimik20711",
         "name": "Kimi K2 0711",
@@ -6899,6 +6948,13 @@
         "vendor": "google"
       },
       {
+        "input_usd_per_mtok": 0.834,
+        "key": "hy4preview",
+        "name": "Hy4 preview",
+        "output_usd_per_mtok": 2.501,
+        "vendor": "tencent"
+      },
+      {
         "input_usd_per_mtok": 0.26,
         "key": "qwen3.527b",
         "name": "Qwen3.5-27B",
@@ -6967,6 +7023,13 @@
         "name": "Pareto Latest",
         "output_usd_per_mtok": 3.2,
         "vendor": "~unbiased"
+      },
+      {
+        "input_usd_per_mtok": 1.6,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 3.2,
+        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.8,
@@ -7194,13 +7257,6 @@
       },
       {
         "input_usd_per_mtok": 2.0,
-        "key": "kimik3.1pro",
-        "name": "Kimi K3.1 Pro",
-        "output_usd_per_mtok": 10.0,
-        "vendor": "moonshotai"
-      },
-      {
-        "input_usd_per_mtok": 2.0,
         "key": "gpt6.1solpro",
         "name": "GPT-6.1 Sol Pro",
         "output_usd_per_mtok": 10.0,
@@ -7270,7 +7326,7 @@
         "vendor": "google"
       },
       {
-        "input_usd_per_mtok": 0.1824,
+        "input_usd_per_mtok": 0.1634,
         "key": "kimilatest",
         "name": "Kimi Latest",
         "output_usd_per_mtok": 10.1489,
