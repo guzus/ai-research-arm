@@ -1,0 +1,9 @@
+Daily AI Digest - 2026-11-08 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Expert Blogs] [[AINews] Anthropic IPO: Whither Now?](https://latent.space/p/ainews-anthropic-ipo-whither-now)
+• [YouTube] HUGE Claude Sonnet 6 LEAK, Anthropic's SECRET Fable 6?! GPT-6.2 Astra TODAY, & More! AI NEWS
+
+SOURCES: 2/8 lanes had data; missing: Twitter/X, RSS / Official Announcements, Hacker News, Reddit, Bluesky, arXiv Papers
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
