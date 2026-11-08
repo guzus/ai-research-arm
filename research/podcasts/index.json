@@ -1,9 +1,68 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-08T06:39:00Z",
+  "updated_at": "2026-11-08T13:52:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "latent-space:rSWiNE92xqM",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Rebuilding GitHub for the Agent Era — Jay Parikh, EVP of CoreAI, Microsoft",
+      "url": "https://www.youtube.com/watch?v=rSWiNE92xqM",
+      "video_id": "rSWiNE92xqM",
+      "audio_url": null,
+      "published_at": "2026-11-08T01:22:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-08T13:52:00Z",
+      "duration_s": 1395,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 4332,
+        "checked_at": "2026-11-08T13:52:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Even with all that shift, um the human adoption of GitHub has been growing as well. They're now up to 225 million developers. I remember when 80 million developers was was a big deal for them. And adding basically one developer every second of every of the year. And that's enormous and mindboggling.",
+          "at_s": 71,
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=71s"
+        },
+        {
+          "text": "And there's 17.9 billion code pushes. There's 34.3 billion commits. There is um 1.3 billion PRs. And then the open source community continues to build and share even more than it did last year. It's up two and a half times. So we saw 2 1.5 billion contributions on the platform in open-source community or projects.",
+          "at_s": 260,
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=260s"
+        },
+        {
+          "text": "One thing that uh is very important I feel like one of the endorsements you guys got was Pete Steinberger openclaw probably one of your top 0.001% 001 percentile users um like really pushing GitHub to its limits. I think one of his interesting pushes is the end of the pull request maybe.",
+          "at_s": 382,
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=382s"
+        },
+        {
+          "text": "And but like it does make me think like you know how GitHub has the the whole like language breakdown like oh this this repo is like 76% Rust 50% doesn't matter anymore, right? So like what is a repo? What is what is code even? What are we storing? Right?",
+          "at_s": 502,
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=502s"
+        },
+        {
+          "text": "I'm going to get rid of, you know, 1980 of them and then 20 of them I'll use, but the other 1980 I've got to maintain now, right? So, it is one of those where you have to choose where you're going to like put your dollars, your people, your time.",
+          "at_s": 1104,
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=1104s"
+        },
+        {
+          "text": "I think revenue is a bit too like I'm not responsible for revenue as a coder, right? But at least I ship features. I think being able to talk about how that turns into some ROI, maybe not revenue, cost savings, we know cost, cost savings or hey, this increased engagement or retention or it improved seesat.",
+          "at_s": 1325,
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=1325s"
+        }
+      ],
+      "description": "GitHub’s next scaling challenge is the agent workload. The platform has 225 million developers and handled 34.3 billion commits over the past year. Jay Parikh, EVP of CoreAI at Microsoft, joins us straight after his GitHub Universe keynote to talk about rebuilding the software-development stack for that scale. We get into Copilot Fusion’s approach to model orchestration and the quality–cost frontier; the harness underneath it; agents that carry a session across phone, desktop and VS Code; and the infrastructure work"
+    },
     {
       "id": "cognitive-revolution:ZZwrUPxU1GY",
       "show_id": "cognitive-revolution",
@@ -25,8 +84,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-08T06:39:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-08T13:52:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Nathan Labenz and Prakash Narayanan examine mounting evidence of rapid AI acceleration alongside guests Brian Zhou of Thoughtful, Mike San Miguel of Luxor Technology, and Bryan Bischof of Theory Ventures. The discussions unpack how frontier agents fared when trading real money on midterm election forecasts, the intense physical constraints and compliance rules shaping secondary GPU transactions, and how venture firms use thousands of agent runs to identify alpha. Anchored by METR's assessment and Anthropic's amended regulatory filings, the hosts explore"
@@ -170,8 +229,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-08T06:39:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-08T13:52:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "I’ve always enjoyed talking to security expert Alex Stamos because he’s so direct — and he doesn't mince words about how the multibillion dollar cybersecurity industry as we’ve known it is all but doomed thanks to the unrelenting, AI-boosted waves of hacks, breaches, and attacks. That much disruption means a lot of places where bad guys can get in while everyone else is left scrambling. Alex isn’t a doomer in the long run, but he does think we've got a"
@@ -256,8 +315,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-08T06:39:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-08T13:52:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "Menlo’s latest enterprise AI report shows spending per company up nearly five times in a year, driven by agents. NLW breaks down ten key stats on frontier model demand, Anthropic’s rising market share, coding agent revenue, and whether AI is eating SaaS. In the headlines: AI stocks suffer the worst drawdown since 2020, Anthropic IPO doubts grow, and Meter reports AI-led research is accelerating. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -521,6 +580,33 @@
       },
       "excerpts": [],
       "description": "Venture capital is moving faster than ever, but is today's AI boom just another 2021? Patrick sits down with Ramtin Naimi, founder and Managing Partner of Abstract Ventures, to explore the extraordinary pace of Silicon Valley, why investors are paying 3–5x to get into coveted deals, and how the potential for trillion-dollar companies is reshaping startup valuations. They discuss the liquidity crunch facing venture funds, the massive capital demands of AI infrastructure, and why today's explosive growth may be more"
+    },
+    {
+      "id": "decoder:U1mDAN7Bads",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "The hidden supply chain costs of the AI boom | Decoder",
+      "url": "https://www.youtube.com/watch?v=U1mDAN7Bads",
+      "video_id": "U1mDAN7Bads",
+      "audio_url": null,
+      "published_at": "2026-11-06T01:52:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-08T13:52:00Z",
+      "duration_s": 2751,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-08T13:52:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "My guest today is Willy Shih, an economist, a professor of management practice at Harvard Business School, and the author of the upcoming book, Where Does My Stuff Come From? The Powerful Economics Behind Global Supply Chains. Willy’s new book is all about the economics underlying global trade, which our politicians and regulators seem to insistently ignore. So we got into Trump’s tariffs, why the markets have reacted to supply chain disruptions the way they have, and why China remains"
     },
     {
       "id": "cognitive-revolution:WueUrPQFVaI",
