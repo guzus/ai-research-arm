@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-08T13:52:00Z",
+  "updated_at": "2026-11-08T19:03:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -84,8 +84,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-08T13:52:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-08T19:03:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Nathan Labenz and Prakash Narayanan examine mounting evidence of rapid AI acceleration alongside guests Brian Zhou of Thoughtful, Mike San Miguel of Luxor Technology, and Bryan Bischof of Theory Ventures. The discussions unpack how frontier agents fared when trading real money on midterm election forecasts, the intense physical constraints and compliance rules shaping secondary GPU transactions, and how venture firms use thousands of agent runs to identify alpha. Anchored by METR's assessment and Anthropic's amended regulatory filings, the hosts explore"
@@ -229,8 +229,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-08T13:52:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-08T19:03:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "I’ve always enjoyed talking to security expert Alex Stamos because he’s so direct — and he doesn't mince words about how the multibillion dollar cybersecurity industry as we’ve known it is all but doomed thanks to the unrelenting, AI-boosted waves of hacks, breaches, and attacks. That much disruption means a lot of places where bad guys can get in while everyone else is left scrambling. Alex isn’t a doomer in the long run, but he does think we've got a"
@@ -343,8 +343,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-08T06:39:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-08T19:03:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": ""
@@ -547,8 +547,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T19:00:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-08T19:03:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "A data center slowdown after the blue wave could help Big Tech, and market reactions point to a more mixed AI trade than the doom headlines suggest. NLW breaks down why hyperscalers may welcome political cover to trim CapEx, what new state leaders will likely demand, and where AI pause proposals stand. In the headlines: ChatGPT reaches a fifth of Google’s search volume, Meta and OpenAI make coding acquisitions, and Apple trims internal AI budgets. The AI Daily Brief helps"
