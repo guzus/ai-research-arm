@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-05T21:17:00Z",
-  "headline": "20VC hosts say OpenAI marked down to $1.25T from $1.4T; CoreWeave debt paying 15%",
+  "updated_at": "2026-11-09T19:08:00Z",
+  "headline": "Anthropic S-1 read as GAAP-profitable; $81B loss called convertibles; Dem sweep and a $1T-$1.6T capex haircut",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -9,11 +9,32 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-05T21:17:00Z",
-      "now": "On 20VC, the hosts said OpenAI's latest fundraise priced at $1.25 trillion, down from $1.4 trillion. Anthropic's amended S-1 still points to a possible November Nasdaq listing near $1.5T-$2T. Hosts cited about $5B, $11B and $17B in Q1-Q3 GAAP and argued sequential growth is slowing. Menlo: Anthropic 55% of enterprise LLM API dollars.",
-      "changed": "On 20VC, the hosts said OpenAI priced a fundraise at $1.25 trillion, down from $1.4 trillion, and argued Anthropic's sequential growth is decelerating after GAAP quarters of about $5B, $11B and $17B.",
-      "watch": "Roadshow and price range; whether OpenAI or a filing confirms the $1.25T mark; a named Claude Code successor.",
+      "updated_at": "2026-11-09T19:08:00Z",
+      "now": "On Latent Space, a guest introduced as Altimeter's Jamin Ball said Anthropic's S-1 shows 85% gross margin, over 20% free-cash-flow margin and 8% GAAP operating margin, and that the about $81B first-half net loss is 100% convertible revaluation. He cited about $141B raised and $134B cash. All-In hosts said the SpaceX-Anthropic compute deal has a mutual 90-day out.",
+      "changed": "On Latent Space, a guest said Anthropic's S-1 is GAAP-profitable at 8% operating margin and the about $81B first-half loss is convertible marks; All-In added a 90-day SpaceX compute out.",
+      "watch": "Roadshow and price range; whether a filing confirms the convertible-loss split and the 90-day SpaceX out; OpenAI or a filing on the $1.25T mark.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=908s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-07T03:00:00Z",
+          "quote": "Here is the business, which showed 85% gross margin, over 20 %free cash flow margin, 8% GAAP operating margin, so even on a GAAP basis, they are highly profitable."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=4499s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-07T03:00:00Z",
+          "quote": "So, 100% of the loss for the first six months is just growth the value of their convertibles tools."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-07T18:24:00Z",
+          "quote": "You and I talked about this before on the pod, but SpaceX and anthropics compute deal has a mutual 90 day out."
+        },
         {
           "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ",
           "kind": "podcast",
@@ -44,24 +65,6 @@
           "kind": "twitter",
           "label": "Menlo Ventures (2026 State of Enterprise AI)",
           "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/deedydas/status/2117803499102822424",
-          "kind": "twitter",
-          "label": "@deedydas on X (Menlo enterprise AI)",
-          "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/_catwu/status/2118137612577968402",
-          "kind": "twitter",
-          "label": "@_catwu on X (OpenAI Core Products)",
-          "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/helloitsaustin/status/2118161804463595931",
-          "kind": "twitter",
-          "label": "@helloitsaustin on X (move to OpenAI)",
-          "at": "2026-11-05T06:00:00Z"
         }
       ],
       "history": [
@@ -100,6 +103,10 @@
         {
           "at": "2026-11-05T21:17:00Z",
           "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
         }
       ]
     },
@@ -109,11 +116,29 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-05T21:17:00Z",
-      "now": "AMD Q3 revenue was a record $13.4B, Data Center $8.5B up 97%. Arm FY27 Q2 $1.443B up 27%; Super Micro Q1 net income $1.594B, sequential gross margin 12.7%. On 20VC, the hosts said CoreWeave debt is paying 15% and called that wobbliness in the debt markets. The FT reports Oracle scrapped a ~$7B Tencent chip lease; unconfirmed.",
-      "changed": "On 20VC, the hosts said CoreWeave debt is paying 15% and called that wobbliness in the debt markets, next to Alphabet's drop of about 12%.",
-      "watch": "AMD Q4 Helios and Venice ramp; whether CoreWeave's 15% debt is confirmed in a filing; an Oracle or Tencent statement on the reported lease.",
+      "updated_at": "2026-11-09T19:08:00Z",
+      "now": "All-In hosts said the Wall Street Journal reported an AI-capex haircut baked in at about $1T to $1.6T, versus a prior $1.5T-$2T path to $3T-$4T, after a multi-trillion-dollar AI selloff. On Latent Space, the Anthropic S-1 guest said multi-billion GPU debt has no offers and that debt markets are closed. AMD's record $13.4B quarter, Arm, and Super Micro prints are unchanged.",
+      "changed": "All-In: WSJ capex haircut at about $1T-$1.6T, not $3T-$4T; Latent Space guest says GPU debt markets are closed.",
+      "watch": "A company or WSJ-level confirmation of the $1T-$1.6T capex path; a CoreWeave filing on 15% debt; an Oracle or Tencent statement on the reported lease.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=3249s",
+          "kind": "podcast",
+          "label": "All-In Podcast (WSJ capex haircut)",
+          "at": "2026-11-07T18:24:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=5154s",
+          "kind": "podcast",
+          "label": "Latent Space (GPU debt markets)",
+          "at": "2026-11-07T03:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=2298s",
+          "kind": "podcast",
+          "label": "20VC (Cerebras and CoreWeave drawdown)",
+          "at": "2026-11-09T14:34:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ",
           "kind": "podcast",
@@ -146,24 +171,6 @@
           "kind": "earnings",
           "label": "Super Micro Computer, Inc. (SMCI)",
           "at": "2026-11-03T21:31:04Z"
-        },
-        {
-          "url": "https://www.investing.com/news/stock-market-news/oracle-cancels-7-bln-chip-leasing-deal-with-tencent-ft-reports-4997349",
-          "kind": "twitter",
-          "label": "Investing.com / Reuters (Oracle-Tencent FT report)",
-          "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/ns123abc/status/2117857386610454950",
-          "kind": "twitter",
-          "label": "@ns123abc on X (Oracle-Tencent lease)",
-          "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=p1Dy4e4ff0s",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-10-30T21:44:00Z"
         }
       ],
       "history": [
@@ -186,6 +193,82 @@
         {
           "at": "2026-11-05T21:17:00Z",
           "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
+        }
+      ]
+    },
+    {
+      "slug": "us-data-center-politics",
+      "title": "US data-center siting backlash after the midterms",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-11-05T06:41:00Z",
+      "updated_at": "2026-11-09T19:08:00Z",
+      "now": "On All-In, hosts said Democrats swept both chambers, with at least 250 House seats, and put 100% odds on a major Democratic AI-legislation push next Congress. They said 93% of Chinese respondents think AI will mostly help, with the US near the bottom of that survey. Hinojosa's Texas data-center pause still covers the state Wells Fargo puts at 27% of planned US capacity.",
+      "changed": "All-In: Democratic sweep, 100% odds of major AI legislation next Congress; hosts cite 93% China AI optimism versus the US near last on that survey.",
+      "watch": "What the new Congress actually files on AI and data centers; whether Hinojosa extends the Texas permit freeze past the December grid audit.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=223s",
+          "kind": "podcast",
+          "label": "All-In Podcast (midterm sweep)",
+          "at": "2026-11-07T18:24:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-07T18:24:00Z",
+          "quote": "Okay, so it's 100% that Democrats are going to make a major push for AI legislation in the next Congress."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=950s",
+          "kind": "podcast",
+          "label": "All-In Podcast (China vs US AI sentiment)",
+          "at": "2026-11-07T18:24:00Z"
+        },
+        {
+          "url": "https://www.cnbc.com/2026/11/04/ai-stocks-texas-governor-data-centers.html",
+          "kind": "twitter",
+          "label": "CNBC (Texas governor, data centers)",
+          "at": "2026-11-04T14:00:00Z"
+        },
+        {
+          "url": "https://x.com/rohanpaul_ai/status/2117978113686773775",
+          "kind": "twitter",
+          "label": "@rohanpaul_ai on X (Texas, neoclouds)",
+          "at": "2026-11-04T14:00:00Z"
+        },
+        {
+          "url": "https://www.nbcnews.com/politics/2026-election/exit-poll-trump-midterms-voters-economy-disapproval-rcna607045",
+          "kind": "twitter",
+          "label": "NBC News (national exit poll)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/econographs/status/2117859420516331979",
+          "kind": "twitter",
+          "label": "@econographs on X (exit poll)",
+          "at": "2026-11-04T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/benthompson/status/2117980910930862516",
+          "kind": "twitter",
+          "label": "@benthompson on X (AI on the Ballot)",
+          "at": "2026-11-04T14:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Created: Hinojosa wins Texas on a data-center pause; exit poll 57% AI-hurt / 76% local NIMBY."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "All-In: Dem sweep and 100% odds of major AI legislation next Congress; China 93% AI-optimism vs US near the bottom of that survey."
         }
       ]
     },
@@ -281,65 +364,35 @@
       ]
     },
     {
-      "slug": "us-data-center-politics",
-      "title": "US data-center siting backlash after the midterms",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-11-05T06:41:00Z",
-      "updated_at": "2026-11-05T06:41:00Z",
-      "now": "Democrat Gina Hinojosa unseated Texas Gov. Greg Abbott after campaigning for an immediate pause on new data-center permits. Wells Fargo puts 27% of planned U.S. data-center capacity in Texas; CNBC says CoreWeave fell 7% and Oracle 4.3%. A national exit poll found 57% of Tuesday's voters think AI will hurt society more than help, and 76% would oppose a new data center nearby.",
-      "changed": "Hinojosa beat Abbott on a data-center pause in the state Wells Fargo says holds 27% of planned U.S. capacity; a national exit poll found 76% would oppose a nearby data center.",
-      "watch": "Whether Hinojosa extends Abbott's September permit freeze past the December grid audit, and whether Georgia, Ohio or Pennsylvania follow with statewide pauses.",
-      "evidence": [
-        {
-          "url": "https://www.cnbc.com/2026/11/04/ai-stocks-texas-governor-data-centers.html",
-          "kind": "twitter",
-          "label": "CNBC (Texas governor, data centers)",
-          "at": "2026-11-04T14:00:00Z"
-        },
-        {
-          "url": "https://x.com/rohanpaul_ai/status/2117978113686773775",
-          "kind": "twitter",
-          "label": "@rohanpaul_ai on X (Texas, neoclouds)",
-          "at": "2026-11-04T14:00:00Z"
-        },
-        {
-          "url": "https://www.nbcnews.com/politics/2026-election/exit-poll-trump-midterms-voters-economy-disapproval-rcna607045",
-          "kind": "twitter",
-          "label": "NBC News (national exit poll)",
-          "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/econographs/status/2117859420516331979",
-          "kind": "twitter",
-          "label": "@econographs on X (exit poll)",
-          "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/benthompson/status/2117980910930862516",
-          "kind": "twitter",
-          "label": "@benthompson on X (AI on the Ballot)",
-          "at": "2026-11-04T14:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Created: Hinojosa wins Texas on a data-center pause; exit poll 57% AI-hurt / 76% local NIMBY."
-        }
-      ]
-    },
-    {
       "slug": "mistral-large-4-open-weights",
-      "title": "Open-weight race: Kimi K3.1 Pro, Ripple-65B, ERNIE and Mistral",
+      "title": "Mistral, sovereign AI, and the open-weight race",
       "status": "developing",
       "importance": 4,
       "first_seen": "2026-10-31T21:56:00Z",
-      "updated_at": "2026-11-05T06:41:00Z",
-      "now": "Moonshot ungated Kimi K3.1 Pro: 2.8T MoE, 104B active, 1M context; lab table 65.7 on Terminal-Bench 4.0 vs Opus 5.5 at 66.4. Ricursive's Ripple-65B Preview is Apache 2.0; it claims $32M R&D and 80.52 on Terminal-Bench 2.1. Baidu released ERNIE-5.5-Flash-Base (280B/14B). Tencent Hy4 is on APIs; weights promised. Independent evals pending.",
-      "changed": "Kimi K3.1 Pro, Ripple-65B Preview and ERNIE-5.5-Flash-Base dropped public weights; Tencent Hy4 went live on APIs with weights still promised.",
-      "watch": "Independent Terminal-Bench runs on the downloaded Kimi and Ripple weights; a Tencent Hy4 Hugging Face drop plus system card; a mid-trained ERNIE chat checkpoint.",
+      "updated_at": "2026-11-09T19:08:00Z",
+      "now": "On 20VC, a guest introduced as Mistral CEO Arthur Mensch said about 80% of token traffic is Mistral's own models and about 60% of revenue is European. The host called Mistral a $21B company. The guest said they now train and serve on owned infrastructure and can sell GPUs and tokens. Kimi K3.1 Pro, Ripple-65B Preview and ERNIE-5.5-Flash-Base weights are unchanged.",
+      "changed": "Mistral's CEO on 20VC: host calls it a $21B company; guest says about 80% of tokens are in-house and about 60% of revenue is European.",
+      "watch": "Whether Mistral confirms the $21B figure and token mix; independent evals of Kimi and Ripple weights; a Hy4 weight drop.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=534s",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-09T14:34:00Z",
+          "quote": "I would say about 80% comes from our own models."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw",
+          "kind": "podcast",
+          "label": "20VC (Mistral as a $21B company)",
+          "at": "2026-11-09T14:34:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=1348s",
+          "kind": "podcast",
+          "label": "20VC (Mistral revenue mix)",
+          "at": "2026-11-09T14:34:00Z"
+        },
         {
           "url": "https://x.com/scaling01/status/2118003733103600085",
           "kind": "twitter",
@@ -369,24 +422,6 @@
           "kind": "twitter",
           "label": "Hugging Face (Ripple-65B-Preview)",
           "at": "2026-11-04T21:00:00Z"
-        },
-        {
-          "url": "https://ernie.baidu.com/release/ernie-5-5-flash-base/",
-          "kind": "twitter",
-          "label": "Baidu ERNIE blog (ERNIE-5.5-Flash-Base)",
-          "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/teortaxesTex/status/2118217612513681648",
-          "kind": "twitter",
-          "label": "@teortaxesTex on X (ERNIE-5.5-Flash-Base)",
-          "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/testingcatalog/status/2117885727354548370",
-          "kind": "twitter",
-          "label": "@testingcatalog on X (Tencent Hy4)",
-          "at": "2026-11-04T14:00:00Z"
         }
       ],
       "history": [
@@ -401,90 +436,10 @@
         {
           "at": "2026-11-05T06:41:00Z",
           "change": "Kimi K3.1 Pro 2.8T ungated; Ripple-65B Apache 2.0 at claimed $32M; ERNIE-5.5-Flash-Base; Hy4 API live."
-        }
-      ]
-    },
-    {
-      "slug": "gemini-4-carbon-frontier-race",
-      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
-      "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-10-31T14:48:00Z",
-      "updated_at": "2026-11-02T21:46:00Z",
-      "now": "Google announced Gemini 4 Carbon on Alphabet's earnings call. Relays put it first on Artificial Analysis v5.0 at 59 versus 58 for Claude Opus 5.5, and first on Mercor's APEX-Agents. A relay reports intro API pricing of $2 and $10 per million tokens, rising to $4 and $20. Access is still gated to cyber defenders. Genie 4 adds audio.",
-      "changed": "On AI Explained, the host said SemiAnalysis's Dylan Patel publicly apologized to Google after GDPx put Carbon second to Opus 5.5 at about a third of the cost.",
-      "watch": "Broader Carbon availability, confirmation of pricing on a Google page, independent evals, lab responses to GDPx grading, and Genie 4 API access.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY",
-          "kind": "podcast",
-          "label": "AI Explained",
-          "at": "2026-11-02T16:59:00Z"
         },
         {
-          "url": "https://x.com/SemiAnalysis_/status/2117075900575477855",
-          "kind": "twitter",
-          "label": "@SemiAnalysis_ on X (GDPx benchmark)",
-          "at": "2026-11-02T10:00:00Z"
-        },
-        {
-          "url": "https://x.com/notlikeryo_/status/2117205312230838654",
-          "kind": "twitter",
-          "label": "@notlikeryo_ on X (GDPx scores)",
-          "at": "2026-11-02T10:00:00Z"
-        },
-        {
-          "url": "https://x.com/linktulu/status/2116885735684944155",
-          "kind": "ticket",
-          "label": "@linktulu on X (Carbon pricing relay)",
-          "at": "2026-11-01T00:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI",
-          "kind": "video",
-          "label": "Google for Developers (Genie 4)",
-          "at": "2026-10-27T15:14:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=sFfPkUJd_Jk",
-          "kind": "video",
-          "label": "Google DeepMind (Genie 4)",
-          "at": "2026-10-27T15:14:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
-          "kind": "earnings-call",
-          "label": "Alphabet earnings call",
-          "at": "2026-10-28T15:14:00Z",
-          "quote": "And with Gemini 4 Argon and now Carbon, which we announced today, we're excited to be leading at the frontier."
-        },
-        {
-          "url": "https://x.com/demishassabis/status/2116452833167814692",
-          "kind": "ticket",
-          "label": "Gemini 4 Carbon ticket (Hassabis on X)",
-          "at": "2026-10-31T00:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Gemini 4 Carbon announced; tops Artificial Analysis v5 and APEX-Agents per relays; access still gated to cyber defenders."
-        },
-        {
-          "at": "2026-11-01T06:51:00Z",
-          "change": "Genie 4 world-model video adds a second Gemini-based product: trusted-tester preview now, Google AI Ultra soon."
-        },
-        {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Carbon intro pricing reported via relay; Genie 4 transcript adds audio, Gemini steering and API plans."
-        },
-        {
-          "at": "2026-11-02T11:20:00Z",
-          "change": "SemiAnalysis GDPx: Opus 5.5 12.0%, Carbon 10.9% at $16 per task versus $51; top three within 2.4 points and order depends on domains counted."
-        },
-        {
-          "at": "2026-11-02T21:46:00Z",
-          "change": "AI Explained episode: Carbon second on GDPx at a third of the cost; a SemiAnalysis commentator apologized to Google."
+          "at": "2026-11-09T19:08:00Z",
+          "change": "20VC: Mistral CEO says about 80% of token traffic is in-house and about 60% of revenue is Europe; host puts the company at $21B."
         }
       ]
     },
@@ -528,6 +483,126 @@
         {
           "at": "2026-11-02T21:46:00Z",
           "change": "Traders report all-stock terms of 4.5:1, about $115B, 2028 close; both stocks fell sharply. Terms not yet in a company filing we hold."
+        }
+      ]
+    },
+    {
+      "slug": "github-agent-era-software-stack",
+      "title": "GitHub rebuilds the software stack for coding agents",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-11-09T19:08:00Z",
+      "updated_at": "2026-11-09T19:08:00Z",
+      "now": "On Latent Space after GitHub Universe, a guest introduced as Microsoft CoreAI EVP Jay Parikh said GitHub has 225 million developers, 34.3 billion commits over the past year, 17.9 billion code pushes and 1.3 billion pull requests, with open-source contributions up two and a half times. He said the next scaling problem is agent workloads and that Copilot's harness is multi-model.",
+      "changed": "Microsoft's CoreAI lead said GitHub is rebuilding for agent workloads, citing 225 million developers and 34.3 billion commits in the past year.",
+      "watch": "Copilot Fusion rollout and whether GitHub changes pull requests for agent sessions.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=71s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-08T01:22:00Z",
+          "quote": "They're now up to 225 million developers."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=260s",
+          "kind": "podcast",
+          "label": "Latent Space (GitHub commits and PRs)",
+          "at": "2026-11-08T01:22:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Created: GitHub at 225M developers and 34.3B commits; CoreAI EVP says the next scale problem is agents."
+        }
+      ]
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-11-01T15:32:00Z",
+      "updated_at": "2026-11-09T19:08:00Z",
+      "now": "On the Dwarkesh Podcast, the host said GPT-6 Astro was released in September 2026 and is the best model in Blood on the Clocktower, about 430 Elo ahead of Claude Opus 4.6 and winning about 92% of those games. He said OpenAI models gained about 580 Elo from GPT 5.4 to GPT 6 Astra in six months. OpenAI has not posted a first-party GPT-6.2 Astra note, and Qwen 4 is still unconfirmed.",
+      "changed": "Dwarkesh spent about $20,000 in API credits and says GPT-6 Astro, released in September, wins about 92% of Clocktower games against Opus 4.6, a 430 Elo gap.",
+      "watch": "A first-party OpenAI post that names GPT-6 Astra or GPT-6.2 Astra; a Qwen 4 confirmation from Alibaba.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=175s",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-05T21:00:00Z",
+          "quote": "The difference between them is about 430 Elo points."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast (Clocktower eval)",
+          "at": "2026-11-05T21:00:00Z"
+        },
+        {
+          "url": "https://openai.com/index/introducing-images-2-6/",
+          "kind": "twitter",
+          "label": "OpenAI (Introducing Images 2.6)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/OpenAI/status/2118124944928432327",
+          "kind": "twitter",
+          "label": "@OpenAI on X (Images 2.6)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://www.axios.com/2026/11/04/openai-pierre-computer-github",
+          "kind": "twitter",
+          "label": "Axios (OpenAI-Pierre)",
+          "at": "2026-11-04T14:00:00Z"
+        },
+        {
+          "url": "https://x.com/kimmonismus/status/2117966987888312763",
+          "kind": "twitter",
+          "label": "@kimmonismus on X (Pierre Computer)",
+          "at": "2026-11-04T14:00:00Z"
+        },
+        {
+          "url": "https://x.com/fableforge/status/2117624333656830210",
+          "kind": "ticket",
+          "label": "@fableforge on X (LongCat-2.5)",
+          "at": "2026-11-03T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/StarsLevels/status/2117622026554757616",
+          "kind": "ticket",
+          "label": "@StarsLevels on X (DeepSeek V5, Ascend)",
+          "at": "2026-11-03T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
+        },
+        {
+          "at": "2026-11-01T19:39:00Z",
+          "change": "Astra reportedly callable in Codex CLI; Mythos 5.5 string spotted on Anthropic's site. Both unconfirmed."
+        },
+        {
+          "at": "2026-11-02T16:29:00Z",
+          "change": "Two secondary accounts report Qwen powering Apple Intelligence in China: developer beta Nov 4, public in December. Unconfirmed by Apple or Alibaba."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "LongCat-2.5 relayed; DeepSeek V5 on Huawei Ascend reported by relay; Fable 5.5 ticket closed as unverified."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Images 2.6 live with GIFs; Qwen 4 and Astra still unconfirmed; Axios: OpenAI-Pierre, unverified."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Dwarkesh: GPT-6 Astro (Sept) leads Clocktower vs Opus 4.6 by about 430 Elo, about 92% win rate; a $20k API eval, not a lab announcement."
         }
       ]
     },
@@ -665,85 +740,90 @@
       ]
     },
     {
-      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
-      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-11-01T15:32:00Z",
-      "updated_at": "2026-11-05T06:41:00Z",
-      "now": "Qwen 4 was reported due the week of November 2 and has not been confirmed by Alibaba. Users still say gpt-6.2-astra works from Codex CLI. OpenAI instead shipped ChatGPT Images 2.6 globally, with GIF generation and API SKUs Flare and Sunburst. Axios reports OpenAI will acquire Pierre Computer to fold Code Storage into Codex; terms undisclosed, unconfirmed by OpenAI.",
-      "changed": "No first-party Qwen 4 or GPT-6.2 Astra; OpenAI shipped Images 2.6. Axios says OpenAI is buying Pierre Computer for Codex storage; OpenAI has not confirmed.",
-      "watch": "A first-party Qwen 4 or GPT-6.2 Astra post; OpenAI or Pierre confirmation of the Axios deal; Apple's reported China Qwen rollout in December.",
+      "slug": "gemini-4-carbon-frontier-race",
+      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
+      "status": "resolved",
+      "importance": 4,
+      "first_seen": "2026-10-31T14:48:00Z",
+      "updated_at": "2026-11-09T19:08:00Z",
+      "now": "Google announced Gemini 4 Carbon on Alphabet's earnings call. Relays put it first on Artificial Analysis v5.0 at 59 versus 58 for Claude Opus 5.5, and first on Mercor's APEX-Agents. A relay reports intro API pricing of $2 and $10 per million tokens, rising to $4 and $20. Access is still gated to cyber defenders. Genie 4 adds audio.",
+      "changed": "No new Carbon facts since the GDPx reading and SemiAnalysis apology; the launch is absorbed and access remains gated to cyber defenders.",
+      "watch": "Broader Carbon availability, confirmation of pricing on a Google page, independent evals, lab responses to GDPx grading, and Genie 4 API access.",
       "evidence": [
         {
-          "url": "https://openai.com/index/introducing-images-2-6/",
+          "url": "https://www.youtube.com/watch?v=0Kw6_DTZPrY",
+          "kind": "podcast",
+          "label": "AI Explained",
+          "at": "2026-11-02T16:59:00Z"
+        },
+        {
+          "url": "https://x.com/SemiAnalysis_/status/2117075900575477855",
           "kind": "twitter",
-          "label": "OpenAI (Introducing Images 2.6)",
-          "at": "2026-11-05T06:00:00Z"
+          "label": "@SemiAnalysis_ on X (GDPx benchmark)",
+          "at": "2026-11-02T10:00:00Z"
         },
         {
-          "url": "https://x.com/OpenAI/status/2118124944928432327",
+          "url": "https://x.com/notlikeryo_/status/2117205312230838654",
           "kind": "twitter",
-          "label": "@OpenAI on X (Images 2.6)",
-          "at": "2026-11-05T06:00:00Z"
+          "label": "@notlikeryo_ on X (GDPx scores)",
+          "at": "2026-11-02T10:00:00Z"
         },
         {
-          "url": "https://www.axios.com/2026/11/04/openai-pierre-computer-github",
-          "kind": "twitter",
-          "label": "Axios (OpenAI-Pierre)",
-          "at": "2026-11-04T14:00:00Z"
-        },
-        {
-          "url": "https://x.com/kimmonismus/status/2117966987888312763",
-          "kind": "twitter",
-          "label": "@kimmonismus on X (Pierre Computer)",
-          "at": "2026-11-04T14:00:00Z"
-        },
-        {
-          "url": "https://x.com/fableforge/status/2117624333656830210",
+          "url": "https://x.com/linktulu/status/2116885735684944155",
           "kind": "ticket",
-          "label": "@fableforge on X (LongCat-2.5)",
-          "at": "2026-11-03T00:00:00Z"
+          "label": "@linktulu on X (Carbon pricing relay)",
+          "at": "2026-11-01T00:00:00Z"
         },
         {
-          "url": "https://x.com/StarsLevels/status/2117622026554757616",
-          "kind": "ticket",
-          "label": "@StarsLevels on X (DeepSeek V5, Ascend)",
-          "at": "2026-11-03T00:00:00Z"
+          "url": "https://www.youtube.com/watch?v=LOP8ul3KqQI",
+          "kind": "video",
+          "label": "Google for Developers (Genie 4)",
+          "at": "2026-10-27T15:14:00Z"
         },
         {
-          "url": "https://x.com/jakeisinvestor/status/2116884638060920988",
-          "kind": "ticket",
-          "label": "@jakeisinvestor on X (Qwen in Apple Intelligence)",
-          "at": "2026-11-02T00:00:00Z"
+          "url": "https://www.youtube.com/watch?v=sFfPkUJd_Jk",
+          "kind": "video",
+          "label": "Google DeepMind (Genie 4)",
+          "at": "2026-10-27T15:14:00Z"
         },
         {
-          "url": "https://x.com/ticker_report/status/2117263734066364485",
+          "url": "https://www.youtube.com/watch?v=X9mmCagxJTo",
+          "kind": "earnings-call",
+          "label": "Alphabet earnings call",
+          "at": "2026-10-28T15:14:00Z",
+          "quote": "And with Gemini 4 Argon and now Carbon, which we announced today, we're excited to be leading at the frontier."
+        },
+        {
+          "url": "https://x.com/demishassabis/status/2116452833167814692",
           "kind": "ticket",
-          "label": "@ticker_report on X (Apple China schedule)",
-          "at": "2026-11-02T00:00:00Z"
+          "label": "Gemini 4 Carbon ticket (Hassabis on X)",
+          "at": "2026-10-31T00:00:00Z"
         }
       ],
       "history": [
         {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Gemini 4 Carbon announced; tops Artificial Analysis v5 and APEX-Agents per relays; access still gated to cyber defenders."
+        },
+        {
+          "at": "2026-11-01T06:51:00Z",
+          "change": "Genie 4 world-model video adds a second Gemini-based product: trusted-tester preview now, Google AI Ultra soon."
+        },
+        {
           "at": "2026-11-01T15:32:00Z",
-          "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
+          "change": "Carbon intro pricing reported via relay; Genie 4 transcript adds audio, Gemini steering and API plans."
         },
         {
-          "at": "2026-11-01T19:39:00Z",
-          "change": "Astra reportedly callable in Codex CLI; Mythos 5.5 string spotted on Anthropic's site. Both unconfirmed."
+          "at": "2026-11-02T11:20:00Z",
+          "change": "SemiAnalysis GDPx: Opus 5.5 12.0%, Carbon 10.9% at $16 per task versus $51; top three within 2.4 points and order depends on domains counted."
         },
         {
-          "at": "2026-11-02T16:29:00Z",
-          "change": "Two secondary accounts report Qwen powering Apple Intelligence in China: developer beta Nov 4, public in December. Unconfirmed by Apple or Alibaba."
+          "at": "2026-11-02T21:46:00Z",
+          "change": "AI Explained episode: Carbon second on GDPx at a third of the cost; a SemiAnalysis commentator apologized to Google."
         },
         {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "LongCat-2.5 relayed; DeepSeek V5 on Huawei Ascend reported by relay; Fable 5.5 ticket closed as unverified."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Images 2.6 live with GIFs; Qwen 4 and Astra still unconfirmed; Axios: OpenAI-Pierre, unverified."
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Resolved: Carbon launch absorbed; mixed evals, gated access, quiet for a week."
         }
       ]
     },
