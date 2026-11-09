@@ -1,0 +1,9 @@
+Daily AI Digest - 2026-11-09 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [Expert Blogs] How Stanford Teaches AI-Native Engineering — Mihail Eric, Monaco
+• [YouTube] NEW Claude Model Family LEAKED?! Stealth Model BEATS Opus 5.5, OpenAI Cactus, Qoduck! AI NEWS
+
+SOURCES: 2/8 lanes had data; missing: Twitter/X, RSS / Official Announcements, Hacker News, Reddit, Bluesky, arXiv Papers
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
