@@ -1,9 +1,68 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-08T19:03:00Z",
+  "updated_at": "2026-11-08T23:58:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "latent-space:dpY7YzZo4kE",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "[One Million AI Engineer Special] What Junior Engineers Need to Learn Now — Mihail Eric, Stanford",
+      "url": "https://www.youtube.com/watch?v=dpY7YzZo4kE",
+      "video_id": "dpY7YzZo4kE",
+      "audio_url": null,
+      "published_at": "2026-11-08T21:28:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-08T23:58:00Z",
+      "duration_s": 7245,
+      "transcript": {
+        "available": true,
+        "source": "asr",
+        "words": 26647,
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Yes, you'll be shocked Cloud Code has the longest system prompt of all the coding agents, something like 20,000 tokens. Yeah, yeah. Although, yeah, that is true. That is true, yeah, yeah. Although they've also reduced the site. They've reduced the site. They've cut it by 80 percent. Yeah. Yeah, I know. But then they grew again.",
+          "at_s": 1792,
+          "url": "https://www.youtube.com/watch?v=dpY7YzZo4kE&t=1792s"
+        },
+        {
+          "text": "Sam Blond came up with it $6,000 a day, uh, I don't necessarily think it directly causes me to Google what Monaco is, but all of, uh, Monaco's ads are just Monaco dollar sign. Right. Right. Yeah. We stand for like dollar sign in the next number. It starts the conversation. Right.",
+          "at_s": 2865,
+          "url": "https://www.youtube.com/watch?v=dpY7YzZo4kE&t=2865s"
+        },
+        {
+          "text": "And then, I think we've seen as I guess in the past week with the whole like Harvey sort of where they, like the 50 plus 50 percent, minus 50 percent margin kind of question.",
+          "at_s": 3236,
+          "url": "https://www.youtube.com/watch?v=dpY7YzZo4kE&t=3236s"
+        },
+        {
+          "text": "There's one argument from Malta of Versel, who's like, okay, guys, let's take every single, like, highly dependent on software that's written in C, C++, ported to Rust. And it's like, will be faster, more secure. And like, it won't probably take like six million dollars, but you get it done.",
+          "at_s": 5074,
+          "url": "https://www.youtube.com/watch?v=dpY7YzZo4kE&t=5074s"
+        },
+        {
+          "text": "- Sure. - You know, security, I think people were like, \"Did you lose money? \"Did you leak customer information?\" - Yeah, yeah, yeah, yeah. - Yeah, I would probably put that about that for sure. - Only DNS 'cause of up time, yeah, general up time. - Yeah. - SLA's into that. - Back on agents.",
+          "at_s": 5403,
+          "url": "https://www.youtube.com/watch?v=dpY7YzZo4kE&t=5403s"
+        },
+        {
+          "text": "And so if you're at the IDE stage, it's time to move into the Power User stage. If you're a single agent, you probably will tend to move to multi agent and blah, blah. And you probably should try to build your own orchestrator, right? And that's all that. Arguably, this is not, this is that kind of holiday now.",
+          "at_s": 6846,
+          "url": "https://www.youtube.com/watch?v=dpY7YzZo4kE&t=6846s"
+        }
+      ],
+      "description": "[One Million AI Engineer Special] We’re celebrating one million subscribers on the AI Engineer YouTube channel with Mihail Eric, who teaches Stanford’s Modern Software Developer course and leads AI at Monaco. What do you assign when students can finish last year’s homework with one prompt? For the second run of Stanford’s CS146S, Mihail Eric brought open-source maintainers into the course. Students have to understand an unfamiliar repo, propose a change, and explain it to the person who will review their"
+    },
     {
       "id": "latent-space:rSWiNE92xqM",
       "show_id": "latent-space",
@@ -315,8 +374,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-08T13:52:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": "Menlo’s latest enterprise AI report shows spending per company up nearly five times in a year, driven by agents. NLW breaks down ten key stats on frontier model demand, Anthropic’s rising market share, coding agent revenue, and whether AI is eating SaaS. In the headlines: AI stocks suffer the worst drawdown since 2020, Anthropic IPO doubts grow, and Meter reports AI-led research is accelerating. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -575,8 +634,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-07T19:00:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "Venture capital is moving faster than ever, but is today's AI boom just another 2021? Patrick sits down with Ramtin Naimi, founder and Managing Partner of Abstract Ventures, to explore the extraordinary pace of Silicon Valley, why investors are paying 3–5x to get into coveted deals, and how the potential for trillion-dollar companies is reshaping startup valuations. They discuss the liquidity crunch facing venture funds, the massive capital demands of AI infrastructure, and why today's explosive growth may be more"
@@ -602,8 +661,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-08T13:52:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "My guest today is Willy Shih, an economist, a professor of management practice at Harvard Business School, and the author of the upcoming book, Where Does My Stuff Come From? The Powerful Economics Behind Global Supply Chains. Willy’s new book is all about the economics underlying global trade, which our politicians and regulators seem to insistently ignore. So we got into Trump’s tariffs, why the markets have reacted to supply chain disruptions the way they have, and why China remains"
@@ -5819,13 +5878,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2712,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7159,
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "We visited various robotics laboratories. And what we saw around the end of '24: GPT began to develop rapidly. Robotics was still evolving from the era of traditional robotics, and it seemed obvious to us at least that data and computing power would become very important to the entire industry.",
+          "at_s": 433,
+          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=433s"
+        },
+        {
+          "text": "This sounds like a big revenue opportunity for robot data factories. On the other hand, as someone who invests in basic robotics models, I look at this and think, \"That's it.\" Will we ever reach this promised land? Because I did the same calculations as you: the car has two or three degrees of freedom.",
+          "at_s": 1215,
+          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=1215s"
+        },
+        {
+          "text": "Many of these robots are already widely used around the world. They are just starting to gain popularity in the US and North America. I think some of the first robots to be deployed will be even just industrial cleaning robots. Well, there's a lot of thematic robotics that exists now.",
+          "at_s": 1452,
+          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=1452s"
+        },
+        {
+          "text": "We also believe in an ecosystem where there will be a huge number of different shapes and sizes of robot hardware . And there will be different types of open models in the world. I think it will look like a modern version of a systems integrator for robotics. Where in the traditional version you just install the product .",
+          "at_s": 1655,
+          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=1655s"
+        },
+        {
+          "text": "The results of, say, GPT-6 Astra, generalize incredibly well to tasks for robots. I'm curious what you think about this and what it means for all these niche robotics companies. Will AGI labs ultimately defeat them, and will the bitter lesson also overtake robotics? What do you think? It takes a lot of courage to scale data with incomplete information.",
+          "at_s": 2335,
+          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=2335s"
+        },
+        {
+          "text": "Um, in terms of order of magnitude, how many robots will there be in the world in a decade? Many, many times more than people. Many orders of magnitude more? Than people, yes. About ten years later . Like 100 billion robots? Yes. This is really cool. 100 billion panther- dog-horses? Panther-dog-horses, at least an order of magnitude more.",
+          "at_s": 2559,
+          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=2559s"
+        }
+      ],
       "description": ""
     },
     {
@@ -5847,13 +5937,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2204,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7536,
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So, um a sort of standard metric I would say for someone who is using this is a customer who buys capacity from us, and they spend $100 to buy that capacity, will make back $25 on average from selling it back to somebody else.",
+          "at_s": 387,
+          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=387s"
+        },
+        {
+          "text": "Um, the early GB200s broke. The early H100s broke. Um, and so, if you were buying H100s or you were buying GB200s, you might really want the ones that were deployed after a certain time because you're not getting the first GD1s off the rack.",
+          "at_s": 720,
+          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=720s"
+        },
+        {
+          "text": "Any model, basically. Um and so that's if you use it at 100%, and maybe if you only have like 50% utilization or something, so like $25 an hour. Yeah. So, $25 an hour. Meanwhile, you can buy B300s at like $5 to $6 an hour. One of these numbers has to change. Yeah. It's a huge overcharge.",
+          "at_s": 1186,
+          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=1186s"
+        },
+        {
+          "text": "So if I want to buy black wells, I can say I'm willing to buy black wells at $6 an hour or less. Uh-huh. And you can match me against GB300s or you can match me against B300s and I don't care which black well as long as it's less than $6 an hour.",
+          "at_s": 1346,
+          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=1346s"
+        },
+        {
+          "text": "Like my options are I could sell the GPU cluster or I could sell the data center to somebody or I could become the cloud. And then we go to them and say, great, um we will turn you into the cloud, we're the supercomputing part, you're the data center cloud.",
+          "at_s": 1868,
+          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=1868s"
+        },
+        {
+          "text": "This is also why Crusoe and Coreweave and Lambda why the hyperscalers can't make it, why Base10 and Fireworks and Modal can't make it cuz they have too much demand on that side. Um this is the thing that benefits the entire industry because it makes the financing costs go down.",
+          "at_s": 2035,
+          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=2035s"
+        }
+      ],
       "description": ""
     },
     {
@@ -5878,8 +5999,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -6077,8 +6198,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -6102,13 +6223,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2433,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 6725,
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "\"You spoke to Nikesh.\" I'm just retelling the interview. Sorry, it's wonderful. As if that's good. As if we can fast forward. But I want to go back. You are the CEO of Figma, a public company. Maybe you can just briefly talk about Figma. And when did you start this business? Yes, we launched Figma back in August 2012.",
+          "at_s": 107,
+          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=107s"
+        },
+        {
+          "text": "And then I was using Bryce 3D and all these early 3D tools, and then when Kai's Power Tools came out ...Kai's Power Tools is really cool . He reimagined Adobe Photoshop. And for me, it was an incredible expansion of the creative potential of what could be done with Photoshop.",
+          "at_s": 270,
+          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=270s"
+        },
+        {
+          "text": "But for me, the story was telling 1,200 startup employees about one of the most incredible exits in history. This company's exit at $20 and that's not going to happen. What was it like when you stood up in front of everyone and said, \" Guys, this is not going to happen\"?",
+          "at_s": 408,
+          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=408s"
+        },
+        {
+          "text": "This is a huge market, and this deal represents 1 % and 0.2% of the market. For example, do you define the market by looking back at history, which is the only logical way to do it as a regulator, or do you do it as a technologist , looking forward?",
+          "at_s": 554,
+          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=554s"
+        },
+        {
+          "text": "For 40 years, they have moved at the speed of the market to protect lands at risk while supporting local communities. With 9 million acres protected in all 50 states, The Nature Conservancy is proving that it delivers long-term results that benefit communities and nature. Learn more at conservationfund.org.",
+          "at_s": 1111,
+          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=1111s"
+        },
+        {
+          "text": "But if you don't have one , if you have your own vision and you trust AI to make it happen, you do it through the lens of AI. And it seems that AI has its own distribution. The model adapts to it, yes. Yes. So you won't get exactly what you want.",
+          "at_s": 1569,
+          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=1569s"
+        }
+      ],
       "description": ""
     },
     {
@@ -6132,8 +6284,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -6157,13 +6309,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 3719,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 11577,
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So, if I showed you the revenue numbers and revenue growth in our first year , just under a million, and if I showed you what we could do in the second year, which is we thought we could do two and a half to three million in revenue, I think before the AI ​​era you would say, \"That makes",
+          "at_s": 242,
+          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=242s"
+        },
+        {
+          "text": "And I know you and I have talked about this a little bit : I remember when I had a BlackBerry. Yes. Let's say it's 2007, the iPhone comes out, and Steve Ballmer says, \"Nobody's going to buy an $800 phone.\" \"It will be a failure.\" \"This is just ridiculous.\" \"Blah blah blah.\" You know, Microsoft eventually buys Nokia.",
+          "at_s": 977,
+          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=977s"
+        },
+        {
+          "text": "Whereas if you said, \"Do you want to save money?\" \"It's like Geico, right? Like, 'Want to save 15% on your car insurance?'\" \" Like, 'Want to save on iceberg lettuce, and I can save you $500 a year by charging $50 a year?'\" \"The answer is yes. But how do you know?",
+          "at_s": 1641,
+          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=1641s"
+        },
+        {
+          "text": "If you have $0 in revenue and no one is using your product, they wouldn't care. But if you...probably, the programming ended up on the wrong side of that zone. Like, if you were a coding agent right now, who's adding $10 billion a week? Who knows what this is for Anthropic, it's so important to them.",
+          "at_s": 2559,
+          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=2559s"
+        },
+        {
+          "text": "So, \"if I were Amazon and I had $80 billion, or what, $70 billion in annual advertising business,\" the question I would ask would be, \" Hey, I should... I don't think you want to block agents, because I think that's...\"",
+          "at_s": 3427,
+          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=3427s"
+        },
+        {
+          "text": "Interestingly, there is a site called CamelCamelCamel associated with Amazon. This is a price tracking service for Amazon. You're literally saying, \"I want to know when Dr. Pepper, which is currently $8, will be reduced to $6.” And, in fact, buy it. As soon as it costs $6 . No, it does not make the purchase for you.",
+          "at_s": 3574,
+          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=3574s"
+        }
+      ],
       "description": ""
     },
     {
@@ -6185,13 +6368,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 4791,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 15247,
+        "checked_at": "2026-11-08T23:58:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Most people in They say that we we will see that 99% token traffic will pass through open models, but we will see that 99% dollars will pass through closed models. Do you think this is is it appropriate, are you Do you think this is some kind of stupid comment? I think that I think that this ratio wrong.",
+          "at_s": 791,
+          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=791s"
+        },
+        {
+          "text": "When we invested in Anthropic in that round 15 billions, I think they were a hundred millions. You know, approximately 150 times more than the current ARR. Algorand, you know, 20 million ARR when we invested and managed these 1.8 billion. dollar around. This is madness. .",
+          "at_s": 1006,
+          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=1006s"
+        },
+        {
+          "text": "fan You did it with 1.8 a billion, okay? Legal market in the USA is 300 billions. If we let's say 20% profit from software provision, and this is 60 billions of dollars, we we assume that he divided between several different players, including your Harvey of the World. You you can get approximately 5 to 10 billions of revenue.",
+          "at_s": 1260,
+          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=1260s"
+        },
+        {
+          "text": "So you mentioned 5.75 billion dollars. Ahem, that's quite a lot, honestly speaking. Let's let's just start with 1.75 billion dollars initial, early elementary and early. Yes. Ahem, initial and early. You need a billion dollars to make initial today? We just saw that literally today USV announced their 900 million dollars funds.",
+          "at_s": 1702,
+          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=1702s"
+        },
+        {
+          "text": "Um, and for funds late stage growth, so that there is Of course, for our late funds growth. Hmm, early growth a little is different. But late late growth, hmm, 5% feels good. AND I'll just say that our last fund growth, our Century 2, hmm, I think we had 20% under one name. The name was Anthropic.",
+          "at_s": 2255,
+          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=2255s"
+        },
+        {
+          "text": "I understand you, but Stripe carries out mergers and absorption for Open Road for 8 billion dollars. I have on meaning that they wanted buy PayPal, obviously, for 55 billion dollars. You already have it. there are. You have liquidity for employees and investors. Me just wondering if we really see victorious wing attractiveness of IPO? Yes. Perhaps. Perhaps.",
+          "at_s": 3587,
+          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=3587s"
+        }
+      ],
       "description": ""
     },
     {
