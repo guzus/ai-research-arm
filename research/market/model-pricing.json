@@ -1,28 +1,28 @@
 {
   "benchmark": "GPQA diamond",
   "benchmarks_available": {
-    "Chess Puzzles": 90,
-    "EBR-bench": 29,
+    "Chess Puzzles": 91,
+    "EBR-bench": 30,
     "FrontierMath-2025-02-28-Private": 69,
     "FrontierMath-2025-02-28-Public": 64,
     "FrontierMath-Erdos": 14,
     "FrontierMath-Tier-4-2025-07-01-Private": 55,
     "FrontierMath-Tier-4-2025-07-01-Public": 36,
-    "FrontierMath-Tier-4-v2-Private": 72,
-    "FrontierMath-Tiers-1-3-v2-Private": 90,
-    "Furniture Assembly": 36,
-    "GPQA diamond": 211,
+    "FrontierMath-Tier-4-v2-Private": 73,
+    "FrontierMath-Tiers-1-3-v2-Private": 91,
+    "Furniture Assembly": 37,
+    "GPQA diamond": 212,
     "MATH level 5": 88,
     "MirrorCode": 15,
-    "Mystery Game Puzzles": 81,
+    "Mystery Game Puzzles": 82,
     "OEIS Open": 3,
     "OEIS Open Lite": 5,
-    "OTIS Mock AIME 2024-2025": 194,
+    "OTIS Mock AIME 2024-2025": 195,
     "SWE-Bench verified": 32,
-    "SimpleQA Verified": 91,
-    "SpireClimb": 8,
-    "SpireClimb (Slay the Spire 1, Ascension 20 Heart)": 8,
-    "SpireClimb (Slay the Spire 2, Ascension 10)": 8
+    "SimpleQA Verified": 92,
+    "SpireClimb": 9,
+    "SpireClimb (Slay the Spire 1, Ascension 20 Heart)": 9,
+    "SpireClimb (Slay the Spire 2, Ascension 10)": 9
   },
   "blend_input_ratio": 3.0,
   "capability_attribution": "Epoch AI, 'AI Benchmarking Hub', https://epoch.ai/data/ai-benchmarking-dashboard \u2014 used under a Creative Commons Attribution license.",
@@ -38,7 +38,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-11-09T11:49:00Z",
+  "generated_at": "2026-11-09T23:48:15Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -365,7 +365,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.083,"0.6":0.083,"0.7":0.083,"0.8":0.083,"0.9":0.083,"0.95":4.125},"pareto":8,"plotted":110,"ts":"2026-11-08T10:34:02Z"},
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.083,"0.6":0.083,"0.7":0.083,"0.8":0.083,"0.9":0.083,"0.95":4.125},"pareto":8,"plotted":110,"ts":"2026-11-08T19:45:36Z"},
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.083,"0.6":0.083,"0.7":0.083,"0.8":0.083,"0.9":0.083,"0.95":4.125},"pareto":8,"plotted":110,"ts":"2026-11-09T00:59:44Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.083,"0.6":0.083,"0.7":0.083,"0.8":0.083,"0.9":0.083,"0.95":4.125},"pareto":8,"plotted":110,"ts":"2026-11-09T11:49:00Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.083,"0.6":0.083,"0.7":0.083,"0.8":0.083,"0.9":0.083,"0.95":4.125},"pareto":8,"plotted":110,"ts":"2026-11-09T11:49:00Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.3,"0.95":4.125},"pareto":8,"plotted":111,"ts":"2026-11-09T23:48:15Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -385,10 +386,19 @@
     "alternates": {
       "Chess Puzzles": [
         {
+          "key": "claudefable5.2",
+          "name": "Claude Fable 5.2",
+          "output_usd_per_mtok": 40.0,
+          "pareto": true,
+          "score": 0.79,
+          "stderr": 0.040936018074033236,
+          "vendor": "anthropic"
+        },
+        {
           "key": "gpt6astra",
           "name": "GPT-6 Astra",
           "output_usd_per_mtok": 50.0,
-          "pareto": true,
+          "pareto": false,
           "score": 0.76,
           "stderr": 0.04292346959909278,
           "vendor": "openai"
@@ -592,6 +602,15 @@
           "vendor": "deepseek"
         },
         {
+          "key": "qwen3.8max",
+          "name": "Qwen3.8 Max",
+          "output_usd_per_mtok": 3.45,
+          "pareto": false,
+          "score": 0.46,
+          "stderr": 0.05009082659620331,
+          "vendor": "qwen"
+        },
+        {
           "key": "deepseekv4pro0813",
           "name": "DeepSeek V4 Pro 0813",
           "output_usd_per_mtok": 4.44,
@@ -599,15 +618,6 @@
           "score": 0.46,
           "stderr": 0.05009082659620331,
           "vendor": "deepseek"
-        },
-        {
-          "key": "qwen3.8max",
-          "name": "Qwen3.8 Max",
-          "output_usd_per_mtok": 6.0,
-          "pareto": false,
-          "score": 0.46,
-          "stderr": 0.05009082659620331,
-          "vendor": "qwen"
         },
         {
           "key": "gpt5.4nano",
@@ -882,8 +892,8 @@
         {
           "key": "glm5.3flash",
           "name": "GLM 5.3 Flash",
-          "output_usd_per_mtok": 0.083,
-          "pareto": true,
+          "output_usd_per_mtok": 0.5,
+          "pareto": false,
           "score": 0.21,
           "stderr": 0.040936018074033236,
           "vendor": "z-ai"
@@ -973,7 +983,7 @@
           "key": "qwen3.5flash",
           "name": "Qwen3.5-Flash",
           "output_usd_per_mtok": 0.26,
-          "pareto": false,
+          "pareto": true,
           "score": 0.14,
           "stderr": 0.034873508801977704,
           "vendor": "qwen"
@@ -1070,6 +1080,15 @@
         }
       ],
       "FrontierMath-Tiers-1-3-v2-Private": [
+        {
+          "key": "claudefable5.2",
+          "name": "Claude Fable 5.2",
+          "output_usd_per_mtok": 40.0,
+          "pareto": true,
+          "score": 0.9508771929824561,
+          "stderr": 0.012824623769055387,
+          "vendor": "anthropic"
+        },
         {
           "key": "gpt6.1sol",
           "name": "GPT-6.1 Sol",
@@ -1271,7 +1290,7 @@
         {
           "key": "qwen3.8max",
           "name": "Qwen3.8 Max",
-          "output_usd_per_mtok": 6.0,
+          "output_usd_per_mtok": 3.45,
           "pareto": false,
           "score": 0.7473684210526316,
           "stderr": 0.0257841025556124,
@@ -1487,8 +1506,8 @@
         {
           "key": "glm5.3flash",
           "name": "GLM 5.3 Flash",
-          "output_usd_per_mtok": 0.083,
-          "pareto": true,
+          "output_usd_per_mtok": 0.5,
+          "pareto": false,
           "score": 0.5578947368421052,
           "stderr": 0.029469977528223976,
           "vendor": "z-ai"
@@ -1722,7 +1741,7 @@
           "key": "qwen3.7flash",
           "name": "Qwen3.7 Flash",
           "output_usd_per_mtok": 0.13,
-          "pareto": false,
+          "pareto": true,
           "score": 0.19298245614035087,
           "stderr": 0.02341753795065531,
           "vendor": "qwen"
@@ -1930,8 +1949,8 @@
         {
           "key": "gemma327b",
           "name": "Gemma 3 27B",
-          "output_usd_per_mtok": 0.45,
-          "pareto": false,
+          "output_usd_per_mtok": 0.35,
+          "pareto": true,
           "score": 0.740370090634441,
           "stderr": 0.011195857525727288,
           "vendor": "google"
@@ -2065,22 +2084,22 @@
       ],
       "OTIS Mock AIME 2024-2025": [
         {
-          "key": "gpt6.1terra",
-          "name": "GPT-6.1 Terra",
-          "output_usd_per_mtok": 5.0,
+          "key": "qwen3.8max",
+          "name": "Qwen3.8 Max",
+          "output_usd_per_mtok": 3.45,
           "pareto": true,
           "score": 1.0,
           "stderr": 0.0,
-          "vendor": "openai"
+          "vendor": "qwen"
         },
         {
-          "key": "qwen3.8max",
-          "name": "Qwen3.8 Max",
-          "output_usd_per_mtok": 6.0,
+          "key": "gpt6.1terra",
+          "name": "GPT-6.1 Terra",
+          "output_usd_per_mtok": 5.0,
           "pareto": false,
           "score": 1.0,
           "stderr": 0.0,
-          "vendor": "qwen"
+          "vendor": "openai"
         },
         {
           "key": "kimik3.1pro",
@@ -2198,6 +2217,15 @@
           "score": 0.9972222222222222,
           "stderr": 0.002777777777777778,
           "vendor": "openai"
+        },
+        {
+          "key": "claudefable5.2",
+          "name": "Claude Fable 5.2",
+          "output_usd_per_mtok": 40.0,
+          "pareto": false,
+          "score": 0.9972222222222222,
+          "stderr": 0.002777777777777778,
+          "vendor": "anthropic"
         },
         {
           "key": "deepseekv4.1flash1017",
@@ -2463,8 +2491,8 @@
         {
           "key": "glm5.3flash",
           "name": "GLM 5.3 Flash",
-          "output_usd_per_mtok": 0.083,
-          "pareto": true,
+          "output_usd_per_mtok": 0.5,
+          "pareto": false,
           "score": 0.9388888888888889,
           "stderr": 0.021622267380853318,
           "vendor": "z-ai"
@@ -2617,7 +2645,7 @@
           "key": "qwen3.7flash",
           "name": "Qwen3.7 Flash",
           "output_usd_per_mtok": 0.13,
-          "pareto": false,
+          "pareto": true,
           "score": 0.8666666666666667,
           "stderr": 0.051247074319053836,
           "vendor": "qwen"
@@ -2733,7 +2761,7 @@
         {
           "key": "gemma426ba4b",
           "name": "Gemma 4 26B A4B",
-          "output_usd_per_mtok": 0.3,
+          "output_usd_per_mtok": 0.255,
           "pareto": false,
           "score": 0.8222222222222222,
           "stderr": 0.05763774795025092,
@@ -2877,7 +2905,7 @@
         {
           "key": "gptoss20b",
           "name": "gpt-oss-20b",
-          "output_usd_per_mtok": 0.09,
+          "output_usd_per_mtok": 0.13,
           "pareto": false,
           "score": 0.6527777777777778,
           "stderr": 0.0593111883162336,
@@ -2940,7 +2968,7 @@
         {
           "key": "gemma327b",
           "name": "Gemma 3 27B",
-          "output_usd_per_mtok": 0.45,
+          "output_usd_per_mtok": 0.35,
           "pareto": false,
           "score": 0.225,
           "stderr": 0.052794388667238824,
@@ -2995,7 +3023,7 @@
           "key": "gemma34b",
           "name": "Gemma 3 4B",
           "output_usd_per_mtok": 0.1,
-          "pareto": false,
+          "pareto": true,
           "score": 0.075,
           "stderr": 0.02763853991962833,
           "vendor": "google"
@@ -3074,6 +3102,15 @@
         }
       ],
       "SimpleQA Verified": [
+        {
+          "key": "claudefable5.2",
+          "name": "Claude Fable 5.2",
+          "output_usd_per_mtok": 40.0,
+          "pareto": true,
+          "score": 0.94,
+          "stderr": 0.007513751157474972,
+          "vendor": "anthropic"
+        },
         {
           "key": "gemini4argon",
           "name": "Gemini 4 Argon",
@@ -3347,8 +3384,8 @@
         {
           "key": "qwen3.8max",
           "name": "Qwen3.8 Max",
-          "output_usd_per_mtok": 6.0,
-          "pareto": false,
+          "output_usd_per_mtok": 3.45,
+          "pareto": true,
           "score": 0.473,
           "stderr": 0.01579621855130273,
           "vendor": "qwen"
@@ -3733,12 +3770,12 @@
         }
       ]
     },
-    "as_of": "2026-11-09T11:49:00Z",
+    "as_of": "2026-11-09T23:48:15Z",
     "counts": {
       "pareto": 8,
-      "plotted": 110,
-      "priced": 348,
-      "scored": 201,
+      "plotted": 111,
+      "priced": 349,
+      "scored": 202,
       "unscored": 238
     },
     "models": [
@@ -4028,6 +4065,25 @@
         "vendor": "anthropic"
       },
       {
+        "blended_usd_per_mtok": 16.0,
+        "context_length": 1000000,
+        "epoch_model": "Claude Fable 5.2",
+        "input_usd_per_mtok": 8.0,
+        "key": "claudefable5.2",
+        "name": "Claude Fable 5.2",
+        "openrouter_id": "anthropic/claude-fable-5.2",
+        "output_usd_per_mtok": 40.0,
+        "pareto": false,
+        "price_variant": null,
+        "runs": 1,
+        "score": 0.9387626262626263,
+        "score_as_of": "2026-11-09",
+        "score_variant": "claude-fable-5-2_max",
+        "stderr": 0.016253431037635206,
+        "variants_seen": 2,
+        "vendor": "anthropic"
+      },
+      {
         "blended_usd_per_mtok": 8.0,
         "context_length": 1050000,
         "epoch_model": "GPT-5.6 Sol",
@@ -4180,22 +4236,22 @@
         "vendor": "x-ai"
       },
       {
-        "blended_usd_per_mtok": 3.0,
-        "context_length": 1000000,
+        "blended_usd_per_mtok": 1.725,
+        "context_length": 262144,
         "epoch_model": "Qwen3.8 Max (0902)",
-        "input_usd_per_mtok": 2.0,
+        "input_usd_per_mtok": 1.15,
         "key": "qwen3.8max",
         "name": "Qwen3.8 Max",
-        "openrouter_id": "qwen/qwen3.8-max-0902",
-        "output_usd_per_mtok": 6.0,
+        "openrouter_id": "qwen/qwen3.8-max-0902:batch",
+        "output_usd_per_mtok": 3.45,
         "pareto": false,
-        "price_variant": "0902",
+        "price_variant": "batch",
         "runs": 2,
         "score": 0.9267676767676768,
         "score_as_of": "2026-09-01",
         "score_variant": "qwen3.8-max_xhigh",
         "stderr": 0.01686498021450146,
-        "variants_seen": 1,
+        "variants_seen": 2,
         "vendor": "qwen"
       },
       {
@@ -4465,15 +4521,15 @@
         "vendor": "openai"
       },
       {
-        "blended_usd_per_mtok": 0.045875,
+        "blended_usd_per_mtok": 0.2375,
         "context_length": 1048576,
         "epoch_model": "GLM-5.3-Flash",
-        "input_usd_per_mtok": 0.0335,
+        "input_usd_per_mtok": 0.15,
         "key": "glm5.3flash",
         "name": "GLM 5.3 Flash",
         "openrouter_id": "z-ai/glm-5.3-flash",
-        "output_usd_per_mtok": 0.083,
-        "pareto": true,
+        "output_usd_per_mtok": 0.5,
+        "pareto": false,
         "price_variant": null,
         "runs": 1,
         "score": 0.9015151515151515,
@@ -5081,7 +5137,7 @@
         "name": "Qwen3.7 Flash",
         "openrouter_id": "qwen/qwen3.7-flash",
         "output_usd_per_mtok": 0.13,
-        "pareto": false,
+        "pareto": true,
         "price_variant": null,
         "runs": 2,
         "score": 0.8232323232323232,
@@ -5301,14 +5357,14 @@
         "vendor": "openai"
       },
       {
-        "blended_usd_per_mtok": 0.1425,
+        "blended_usd_per_mtok": 0.121125,
         "context_length": 262144,
         "epoch_model": "Gemma 4 26B A4B",
-        "input_usd_per_mtok": 0.09,
+        "input_usd_per_mtok": 0.0765,
         "key": "gemma426ba4b",
         "name": "Gemma 4 26B A4B",
         "openrouter_id": "google/gemma-4-26b-a4b-it",
-        "output_usd_per_mtok": 0.3,
+        "output_usd_per_mtok": 0.255,
         "pareto": false,
         "price_variant": null,
         "runs": 1,
@@ -5491,14 +5547,14 @@
         "vendor": "qwen"
       },
       {
-        "blended_usd_per_mtok": 0.036,
+        "blended_usd_per_mtok": 0.055,
         "context_length": 131072,
         "epoch_model": "gpt-oss-20b",
-        "input_usd_per_mtok": 0.018,
+        "input_usd_per_mtok": 0.03,
         "key": "gptoss20b",
         "name": "gpt-oss-20b",
         "openrouter_id": "openai/gpt-oss-20b",
-        "output_usd_per_mtok": 0.09,
+        "output_usd_per_mtok": 0.13,
         "pareto": false,
         "price_variant": null,
         "runs": 3,
@@ -5624,14 +5680,14 @@
         "vendor": "qwen"
       },
       {
-        "blended_usd_per_mtok": 0.1725,
+        "blended_usd_per_mtok": 0.1475,
         "context_length": 131072,
         "epoch_model": "Gemma 3 27B",
         "input_usd_per_mtok": 0.08,
         "key": "gemma327b",
         "name": "Gemma 3 27B",
         "openrouter_id": "google/gemma-3-27b-it",
-        "output_usd_per_mtok": 0.45,
+        "output_usd_per_mtok": 0.35,
         "pareto": false,
         "price_variant": null,
         "runs": 1,
@@ -6101,6 +6157,13 @@
         "vendor": "tencent"
       },
       {
+        "input_usd_per_mtok": 0.075,
+        "key": "minimaxm3.1flash",
+        "name": "MiniMax M3.1 Flash",
+        "output_usd_per_mtok": 0.3,
+        "vendor": "minimax"
+      },
+      {
         "input_usd_per_mtok": 0.0434,
         "key": "deepseekv4flashlatest",
         "name": "DeepSeek V4 Flash Latest",
@@ -6148,6 +6211,13 @@
         "name": "Mistral Small 3.2 24B",
         "output_usd_per_mtok": 0.3,
         "vendor": "mistralai"
+      },
+      {
+        "input_usd_per_mtok": 0.0825,
+        "key": "hy3",
+        "name": "Hy3",
+        "output_usd_per_mtok": 0.33,
+        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.05,
@@ -6214,6 +6284,13 @@
       },
       {
         "input_usd_per_mtok": 0.15,
+        "key": "nemotron3.5supervl",
+        "name": "Nemotron 3.5 Super VL",
+        "output_usd_per_mtok": 0.47,
+        "vendor": "nvidia"
+      },
+      {
+        "input_usd_per_mtok": 0.15,
         "key": "qwen3.8omniflash",
         "name": "Qwen3.8 Omni Flash",
         "output_usd_per_mtok": 0.47,
@@ -6227,18 +6304,18 @@
         "vendor": "qwen"
       },
       {
+        "input_usd_per_mtok": 0.1,
+        "key": "museember",
+        "name": "Muse Ember",
+        "output_usd_per_mtok": 0.5,
+        "vendor": "meta"
+      },
+      {
         "input_usd_per_mtok": 0.05,
         "key": "particle1",
         "name": "Particle-1",
         "output_usd_per_mtok": 0.5,
         "vendor": "particle-ai"
-      },
-      {
-        "input_usd_per_mtok": 0.15,
-        "key": "nemotron3.5supervl",
-        "name": "Nemotron 3.5 Super VL",
-        "output_usd_per_mtok": 0.5,
-        "vendor": "nvidia"
       },
       {
         "input_usd_per_mtok": 0.1,
@@ -6290,13 +6367,6 @@
         "vendor": "thedrummer"
       },
       {
-        "input_usd_per_mtok": 0.132,
-        "key": "hy3",
-        "name": "Hy3",
-        "output_usd_per_mtok": 0.528,
-        "vendor": "tencent"
-      },
-      {
         "input_usd_per_mtok": 0.351,
         "key": "mistralsmall3.124b",
         "name": "Mistral Small 3.1 24B",
@@ -6316,13 +6386,6 @@
         "name": "Ripple 65B Preview",
         "output_usd_per_mtok": 0.6,
         "vendor": "ricursiveai"
-      },
-      {
-        "input_usd_per_mtok": 0.15,
-        "key": "minimaxm3.1flash",
-        "name": "MiniMax M3.1 Flash",
-        "output_usd_per_mtok": 0.6,
-        "vendor": "minimax"
       },
       {
         "input_usd_per_mtok": 0.15,
@@ -6857,11 +6920,11 @@
         "vendor": "z-ai"
       },
       {
-        "input_usd_per_mtok": 0.55,
-        "key": "minimaxm1",
-        "name": "MiniMax M1",
-        "output_usd_per_mtok": 2.2,
-        "vendor": "minimax"
+        "input_usd_per_mtok": 0.7506,
+        "key": "hy4preview",
+        "name": "Hy4 preview",
+        "output_usd_per_mtok": 2.2509,
+        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.57,
@@ -6939,13 +7002,6 @@
         "name": "Gemini 2.5 Flash",
         "output_usd_per_mtok": 2.5,
         "vendor": "google"
-      },
-      {
-        "input_usd_per_mtok": 0.834,
-        "key": "hy4preview",
-        "name": "Hy4 preview",
-        "output_usd_per_mtok": 2.501,
-        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.26,
@@ -7242,13 +7298,6 @@
         "vendor": "google"
       },
       {
-        "input_usd_per_mtok": 0.1719,
-        "key": "kimilatest",
-        "name": "Kimi Latest",
-        "output_usd_per_mtok": 9.7471,
-        "vendor": "~moonshotai"
-      },
-      {
         "input_usd_per_mtok": 2.0,
         "key": "gpt6.1solpro",
         "name": "GPT-6.1 Sol Pro",
@@ -7317,6 +7366,13 @@
         "name": "Gemini 2.5 Pro Preview 06-05",
         "output_usd_per_mtok": 10.0,
         "vendor": "google"
+      },
+      {
+        "input_usd_per_mtok": 0.1529,
+        "key": "kimilatest",
+        "name": "Kimi Latest",
+        "output_usd_per_mtok": 10.5572,
+        "vendor": "~moonshotai"
       },
       {
         "input_usd_per_mtok": 4.0,
@@ -7452,6 +7508,13 @@
         "vendor": "openai"
       },
       {
+        "input_usd_per_mtok": 8.0,
+        "key": "claudefablelatest",
+        "name": "Claude Fable Latest",
+        "output_usd_per_mtok": 40.0,
+        "vendor": "~anthropic"
+      },
+      {
         "input_usd_per_mtok": 10.0,
         "key": "gptastralatest",
         "name": "GPT Astra Latest",
@@ -7471,13 +7534,6 @@
         "name": "Claude Fable 5.1",
         "output_usd_per_mtok": 50.0,
         "vendor": "anthropic"
-      },
-      {
-        "input_usd_per_mtok": 10.0,
-        "key": "claudefablelatest",
-        "name": "Claude Fable Latest",
-        "output_usd_per_mtok": 50.0,
-        "vendor": "~anthropic"
       },
       {
         "input_usd_per_mtok": 20.0,
