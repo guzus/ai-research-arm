@@ -1,9 +1,209 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-09T07:07:00Z",
+  "updated_at": "2026-11-09T19:04:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "big-technology:2mMI6iO6Qw4",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Will Jensen Huang's Affair Be The End of Nvidia?",
+      "url": "https://www.youtube.com/watch?v=2mMI6iO6Qw4",
+      "video_id": "2mMI6iO6Qw4",
+      "audio_url": null,
+      "published_at": "2026-11-09T17:34:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-09T19:04:00Z",
+      "duration_s": 1588,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-09T19:04:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:M-o7viCDaBw",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Agentic Video is Real and Here s What You Should Try",
+      "url": "https://www.youtube.com/watch?v=M-o7viCDaBw",
+      "video_id": "M-o7viCDaBw",
+      "audio_url": null,
+      "published_at": "2026-11-09T17:34:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-09T19:04:00Z",
+      "duration_s": 1831,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-09T19:04:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:v5IJwVnTxzg",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "What Frontier Labs Buy: A Data Deep Dive with Handshake AI — Garrett Lord & Team",
+      "url": "https://www.youtube.com/watch?v=v5IJwVnTxzg",
+      "video_id": "v5IJwVnTxzg",
+      "audio_url": null,
+      "published_at": "2026-11-09T16:34:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-09T19:04:00Z",
+      "duration_s": 9830,
+      "transcript": {
+        "available": true,
+        "source": "asr",
+        "words": 29466,
+        "checked_at": "2026-11-09T19:04:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "And so three years ago, this was a billion dollar market. It's now a 10 billion dollar market. Three years from now, I don't see how it's not a hundred billion dollar market. AI is not going to cure cancer before it can interpret these very basic types of images. If it's 95% right, it's 100% wrong.",
+          "at_s": 0,
+          "url": "https://www.youtube.com/watch?v=v5IJwVnTxzg&t=0s"
+        },
+        {
+          "text": "There are places where models are not at all good at for example life sciences that will talk about later today the models have even the frontier models have 20% pass rate on that benchmark in those cases you need extensive data and life sciences is such a broad field that.",
+          "at_s": 1364,
+          "url": "https://www.youtube.com/watch?v=v5IJwVnTxzg&t=1364s"
+        },
+        {
+          "text": "- And I'm Jonas, and I run a lot of our AI research on evaluating frontier AI. And previously have worked in AI research for about 15 years. Doing a bunch of work in computational biology, auto-ML and data curation. - Cool. - High as HENCH. - HENCH AI. - HENCH AI, HENCH AI. - And Viles.",
+          "at_s": 1927,
+          "url": "https://www.youtube.com/watch?v=v5IJwVnTxzg&t=1927s"
+        },
+        {
+          "text": "And I actually, you know, mess around with one of these in like 2018, 2019, and he said, hey, we just bought an apartment two months ago, you know, $70,000, we didn't tell them the price, he was like, you know, it was $70,000. Why don't you tell us what you think it's worth?",
+          "at_s": 4639,
+          "url": "https://www.youtube.com/watch?v=v5IJwVnTxzg&t=4639s"
+        },
+        {
+          "text": "Some of it could be a distraction, but you know, Project Falcon is, you know, 2019 sponsor LBO with a 3, 3, 8, 8, 10 election. So, you know, and LBO is pretty standard for a bank. I would say the tax treatment is a little unique, but we're not hiding the ball here, right?",
+          "at_s": 4952,
+          "url": "https://www.youtube.com/watch?v=v5IJwVnTxzg&t=4952s"
+        },
+        {
+          "text": "- Yeah, and it's not only you have a 1% tolerance for those that can't see the screen, it's 1.27% off. - With a 1% tolerance, which gives it a zero out of 30 on her word. - Yeah, strict, strict. Okay, I don't know if we covered semi-verifiable reward enough.",
+          "at_s": 6245,
+          "url": "https://www.youtube.com/watch?v=v5IJwVnTxzg&t=6245s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "20vc:KotQbLX8pOw",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Mistral CEO: Why Energy Is Not the Bottleneck | Why OpenAI & Anthropic Will Come for Your Business",
+      "url": "https://www.youtube.com/watch?v=KotQbLX8pOw",
+      "video_id": "KotQbLX8pOw",
+      "audio_url": null,
+      "published_at": "2026-11-09T14:34:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-09T19:04:00Z",
+      "duration_s": 3017,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 8357,
+        "checked_at": "2026-11-09T19:04:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "I would say about 80% comes from our own models. Wow. OK. This is much more than I thought. OK. As for the 20%, everyone tells me that, oh my God, American CIOs and IT directors will never use Chinese open source models. And in fact, this fear really exists. You have some clients. You have great clients.",
+          "at_s": 534,
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=534s"
+        },
+        {
+          "text": "We have very different energy systems than the US, and we have very different energy systems than China. You know , in China they're going to relocate 3 million people to create some kind of energy infrastructure, but in the UK we're not moving a birdhouse. Uh, that's pretty disturbing, despite the joke.",
+          "at_s": 801,
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=801s"
+        },
+        {
+          "text": "You could argue that the US is perhaps building a little too much computing power, but it's clear that Europe has plenty of resources to build capacity in a way that you can be 100% sure will be distributed. So, that's what we're working on. But we, you said, \"Hey, there's also a role for the state to play.\"",
+          "at_s": 1187,
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=1187s"
+        },
+        {
+          "text": "We are a French company, but we serve Europe, we serve the US, we serve Asia. And we need alternatives, but there will not be a single sovereign AI provider and model trainer at the state level. This will not happen. What percentage of your customers are European? If we look at our revenue base , it's about 60%.",
+          "at_s": 1348,
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=1348s"
+        },
+        {
+          "text": "Achieving one hundred billion training runs, I think, is clearly not for tomorrow. If everyone is so lacking in computing, why is Cerebras down 40%? Why is Cornwave down 40%? Why is AI trading taking off in public markets when it's so obvious that everyone lacks computing resources? I'm a little confused about how the markets are reacting today.",
+          "at_s": 2298,
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=2298s"
+        },
+        {
+          "text": "Will AI increase GDP growth by more than 2% per year? Well, that's the whole question. What bottleneck will you solve to actually impact GDP? That's why we were very optimistic about industrial engineering. Ultimately, if you want GDP growth, you need more production. You don't need more intelligence. You need more production.",
+          "at_s": 2657,
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=2657s"
+        }
+      ],
+      "description": "Arthur Mensch is the Co-Founder and CEO @ Mistral, the last remaining hope for frontier intelligence in Europe. Mistral has raised approximately $7.5BN, including debt, and reached a valuation above $24BN. Previously a researcher at Google DeepMind, Arthur co-authored the landmark Chinchilla research, showing how smaller, better-trained AI models could outperform much larger rivals. Timestamps: Intro Why Europe Needs Its Own Frontier AI Companies Why Sovereign AI Is an Economic Necessity, Not Just Politics What “Sovereign AI” Actually Means for"
+    },
+    {
+      "id": "decoder:i1K0iK1EIdE",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "AI could break the music industry | Decoder",
+      "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE",
+      "video_id": "i1K0iK1EIdE",
+      "audio_url": null,
+      "published_at": "2026-11-09T13:34:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-09T19:04:00Z",
+      "duration_s": 4207,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-09T19:04:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "latent-space:dpY7YzZo4kE",
       "show_id": "latent-space",
@@ -143,8 +343,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-09T07:07:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-09T19:04:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "Nathan Labenz and Prakash Narayanan examine mounting evidence of rapid AI acceleration alongside guests Brian Zhou of Thoughtful, Mike San Miguel of Luxor Technology, and Bryan Bischof of Theory Ventures. The discussions unpack how frontier agents fared when trading real money on midterm election forecasts, the intense physical constraints and compliance rules shaping secondary GPU transactions, and how venture firms use thousands of agent runs to identify alpha. Anchored by METR's assessment and Anthropic's amended regulatory filings, the hosts explore"
@@ -288,8 +488,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-09T07:07:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-09T19:04:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "I’ve always enjoyed talking to security expert Alex Stamos because he’s so direct — and he doesn't mince words about how the multibillion dollar cybersecurity industry as we’ve known it is all but doomed thanks to the unrelenting, AI-boosted waves of hacks, breaches, and attacks. That much disruption means a lot of places where bad guys can get in while everyone else is left scrambling. Alex isn’t a doomer in the long run, but he does think we've got a"
@@ -374,8 +574,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-09T07:07:00Z",
-        "attempts": 8
+        "checked_at": "2026-11-09T19:04:00Z",
+        "attempts": 9
       },
       "excerpts": [],
       "description": "Menlo’s latest enterprise AI report shows spending per company up nearly five times in a year, driven by agents. NLW breaks down ten key stats on frontier model demand, Anthropic’s rising market share, coding agent revenue, and whether AI is eating SaaS. In the headlines: AI stocks suffer the worst drawdown since 2020, Anthropic IPO doubts grow, and Meter reports AI-led research is accelerating. The AI Daily Brief helps you understand the most important news and discussions in AI."
