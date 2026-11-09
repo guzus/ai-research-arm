@@ -1,9 +1,66 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-05T21:17:00Z",
+  "updated_at": "2026-11-09T19:08:00Z",
   "degraded": false,
-  "latest": "2026-11-05-2117",
+  "latest": "2026-11-09-1908",
   "bulletins": [
+    {
+      "id": "2026-11-09-1908",
+      "aired_at": "2026-11-09T19:08:00Z",
+      "headline": "Anthropic S-1 read as GAAP-profitable; $81B loss called convertibles; Dem sweep and a $1T-$1.6T capex haircut",
+      "path": "bulletins/2026-11-09/1908.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-09-1908.mp3",
+        "bytes": 1139709,
+        "duration_s": 189.9,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 51.52,
+            "lines": [
+              0,
+              3
+            ]
+          },
+          {
+            "start_s": 52.97,
+            "end_s": 99.85,
+            "lines": [
+              4,
+              7
+            ]
+          },
+          {
+            "start_s": 101.3,
+            "end_s": 124.26,
+            "lines": [
+              8,
+              9
+            ]
+          },
+          {
+            "start_s": 125.71,
+            "end_s": 183.31,
+            "lines": [
+              10,
+              14
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "anthropic-ipo-and-ai-funding",
+        "us-data-center-politics",
+        "hyperscaler-capex-and-chip-selloff",
+        "mistral-large-4-open-weights",
+        "next-model-launches-qwen-4-gpt-6-2-astra",
+        "github-agent-era-software-stack",
+        "gemini-4-carbon-frontier-race"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-05-2117",
       "aired_at": "2026-11-05T21:17:00Z",

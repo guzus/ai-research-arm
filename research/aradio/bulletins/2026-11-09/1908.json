@@ -1,0 +1,291 @@
+{
+  "schema": 1,
+  "id": "2026-11-09-1908",
+  "aired_at": "2026-11-09T19:08:00Z",
+  "headline": "Anthropic S-1 read as GAAP-profitable; $81B loss called convertibles; Dem sweep and a $1T-$1.6T capex haircut",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's ten past seven UTC on Monday, November ninth. This is ARA AI News. Four days on, the picture around Anthropic's listing just changed."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Latent Space, a guest introduced as Altimeter's Jamin Ball walked the S-one and said it shows eighty-five percent gross margin, more than twenty percent free cash flow, and eight percent GAAP operating margin."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "He said the headline first-half net loss of about eighty-one billion dollars is one hundred percent convertible revaluation, not cash burn, with about one hundred forty-one billion raised and one hundred thirty-four billion in cash."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That is one guest's reading, not a company call. It still recasts the loss other hosts had treated as a growth scare. All-In hosts said SpaceX and Anthropic's compute deal has a mutual ninety-day out."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The same week, All-In said Democrats swept both chambers, with at least two hundred fifty House seats, and put one hundred percent odds on a major Democratic A.I. legislation push in the next Congress."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They said ninety-three percent of Chinese respondents think A.I. will mostly help, with the United States near the bottom of that survey. Texas is still the siting fight after Hinojosa campaigned for a data-center pause."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Capex is moving with that politics. All-In said the Wall Street Journal reported a baked-in path of about one trillion to one point six trillion dollars, not three to four trillion, after the A.I. selloff."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On that Latent Space episode, the same guest said multi-billion-dollar G.P.U. debt has no offers. In that telling, the debt markets are closed even while equity still reaches the labs."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Mistral's chief executive was on twenty V.C. The host called it a twenty-one billion dollar company. The guest said about eighty percent of token traffic is Mistral's own models, and about sixty percent of revenue is European."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "He said they now train and serve on infrastructure they own, and can sell both G.P.U.s and tokens. Energy, on that show, is not the bottleneck. Building the capacity still is."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On the Dwarkesh Podcast, the host spent about twenty thousand dollars in A.P.I. credits on Blood on the Clocktower. He said GPT six Astro, treated as a September release, wins about ninety-two percent of games against Claude Opus four point six."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "He put the gap at about four hundred thirty Elo. That is one researcher's leaderboard, not an OpenAI blog post. We still have no first-party GPT six point two Astra note, and Qwen four is still unconfirmed."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "After GitHub Universe, a guest introduced as Microsoft's Core A.I. lead said two hundred twenty-five million developers and thirty-four point three billion commits last year, and that the next scaling problem is agents. Gemini four Carbon, with no new facts in a week, is now a settled launch."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch the Anthropic roadshow and whether anyone confirms that convertible-loss split, what the new Congress actually files on A.I. and data centers, and a first-party Astra or Qwen four post."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's ten past seven UTC on Monday, November ninth. This is ARA AI News. Four days on, the picture around Anthropic's listing just changed.",
+    "Speaker 2: [high_energy] On Latent Space, a guest introduced as Altimeter's Jamin Ball walked the S-one and said it shows [emphasis]eighty-five percent[/emphasis] gross margin, more than twenty percent free cash flow, and [emphasis]eight percent[/emphasis] GAAP operating margin.",
+    "Speaker 1: He said the headline first-half net loss of about [emphasis]eighty-one billion dollars[/emphasis] is one hundred percent convertible revaluation, not cash burn, with about one hundred forty-one billion raised and one hundred thirty-four billion in cash.",
+    "Speaker 2: That is one guest's reading, not a company call. It still recasts the loss other hosts had treated as a growth scare. All-In hosts said SpaceX and Anthropic's compute deal has a mutual ninety-day out.",
+    "Speaker 1: [transition] The same week, All-In said Democrats swept both chambers, with at least two hundred fifty House seats, and put one hundred percent odds on a major Democratic A.I. legislation push in the next Congress.",
+    "Speaker 2: They said ninety-three percent of Chinese respondents think A.I. will mostly help, with the United States near the bottom of that survey. Texas is still the siting fight after Hinojosa campaigned for a data-center pause.",
+    "Speaker 1: Capex is moving with that politics. All-In said the Wall Street Journal reported a baked-in path of about one trillion to one point six trillion dollars, not three to four trillion, after the A.I. selloff.",
+    "Speaker 2: On that Latent Space episode, the same guest said multi-billion-dollar G.P.U. debt has no offers. In that telling, the debt markets are closed even while equity still reaches the labs.",
+    "Speaker 1: [transition] Mistral's chief executive was on twenty V.C. The host called it a twenty-one billion dollar company. The guest said about eighty percent of token traffic is Mistral's own models, and about sixty percent of revenue is European.",
+    "Speaker 2: He said they now train and serve on infrastructure they own, and can sell both G.P.U.s and tokens. Energy, on that show, is not the bottleneck. Building the capacity still is.",
+    "Speaker 1: [transition] On the Dwarkesh Podcast, the host spent about twenty thousand dollars in A.P.I. credits on Blood on the Clocktower. He said GPT six Astro, treated as a September release, wins about ninety-two percent of games against Claude Opus four point six.",
+    "Speaker 2: He put the gap at about four hundred thirty Elo. That is one researcher's leaderboard, not an OpenAI blog post. We still have no first-party GPT six point two Astra note, and Qwen four is still unconfirmed.",
+    "Speaker 1: After GitHub Universe, a guest introduced as Microsoft's Core A.I. lead said two hundred twenty-five million developers and thirty-four point three billion commits last year, and that the next scaling problem is agents. Gemini four Carbon, with no new facts in a week, is now a settled launch.",
+    "Speaker 2: Watch the Anthropic roadshow and whether anyone confirms that convertible-loss split, what the new Congress actually files on A.I. and data centers, and a first-party Astra or Qwen four post.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "anthropic-ipo-and-ai-funding",
+    "us-data-center-politics",
+    "hyperscaler-capex-and-chip-selloff",
+    "mistral-large-4-open-weights",
+    "next-model-launches-qwen-4-gpt-6-2-astra",
+    "github-agent-era-software-stack",
+    "gemini-4-carbon-frontier-race"
+  ],
+  "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "us-data-center-politics",
+      "title": "US data-center siting backlash after the midterms",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "mistral-large-4-open-weights",
+      "title": "Mistral, sovereign AI, and the open-weight race",
+      "status": "developing"
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing"
+    },
+    {
+      "slug": "github-agent-era-software-stack",
+      "title": "GitHub rebuilds the software stack for coding agents",
+      "status": "developing"
+    },
+    {
+      "slug": "gemini-4-carbon-frontier-race",
+      "title": "Google's Gemini 4 Carbon and the fight for the frontier",
+      "status": "resolved"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=908s",
+      "kind": "podcast",
+      "label": "Latent Space"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=4499s",
+      "kind": "podcast",
+      "label": "Latent Space"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2v8b062QzTI",
+      "kind": "podcast",
+      "label": "All-In Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=3249s",
+      "kind": "podcast",
+      "label": "All-In Podcast (WSJ capex haircut)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=5154s",
+      "kind": "podcast",
+      "label": "Latent Space (GPU debt markets)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=2298s",
+      "kind": "podcast",
+      "label": "20VC (Cerebras and CoreWeave drawdown)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=223s",
+      "kind": "podcast",
+      "label": "All-In Podcast (midterm sweep)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=950s",
+      "kind": "podcast",
+      "label": "All-In Podcast (China vs US AI sentiment)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=534s",
+      "kind": "podcast",
+      "label": "20VC"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=KotQbLX8pOw",
+      "kind": "podcast",
+      "label": "20VC (Mistral as a $21B company)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=1348s",
+      "kind": "podcast",
+      "label": "20VC (Mistral revenue mix)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=175s",
+      "kind": "podcast",
+      "label": "Dwarkesh Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=1NQwfImTseU",
+      "kind": "podcast",
+      "label": "Dwarkesh Podcast (Clocktower eval)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=71s",
+      "kind": "podcast",
+      "label": "Latent Space"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=260s",
+      "kind": "podcast",
+      "label": "Latent Space (GitHub commits and PRs)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    },
+    {
+      "op": "update",
+      "slug": "us-data-center-politics"
+    },
+    {
+      "op": "update",
+      "slug": "mistral-large-4-open-weights"
+    },
+    {
+      "op": "update",
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra"
+    },
+    {
+      "op": "resolve",
+      "slug": "gemini-4-carbon-frontier-race"
+    },
+    {
+      "op": "create",
+      "slug": "github-agent-era-software-stack"
+    }
+  ],
+  "warnings": [
+    "ops[4] update next-model-launches-qwen-4-gpt-6-2-astra evidence[1]: duplicate URL dropped"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-09-1908.mp3",
+    "bytes": 1139709,
+    "duration_s": 189.9,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 51.52,
+        "lines": [
+          0,
+          3
+        ]
+      },
+      {
+        "start_s": 52.97,
+        "end_s": 99.85,
+        "lines": [
+          4,
+          7
+        ]
+      },
+      {
+        "start_s": 101.3,
+        "end_s": 124.26,
+        "lines": [
+          8,
+          9
+        ]
+      },
+      {
+        "start_s": 125.71,
+        "end_s": 183.31,
+        "lines": [
+          10,
+          14
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 20,
+    "kinds": {
+      "podcast": 20
+    }
+  }
+}
