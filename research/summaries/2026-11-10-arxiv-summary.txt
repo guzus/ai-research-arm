@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-10
+
+TOP 5 PAPERS:
+• SWAM - 47k-hour world-action scaling; 40% real SR vs 23% baseline
+• WICL - frozen-model robot ICL, 83.4% on 50 RoboTwin tasks, 1 demo
+• Sage-Taiyi - metacognitive AI scientist beats AI Scientist-v2; real chem yields
+• Persona generalization sits on one probit line across Qwen and Llama
+• Double-blind evals - first crypto-private Gemini vs closed AILuminate
+
+CATEGORIES: LM/NLP 8, CV/Multimodal 10, Agents/Reasoning 12, Safety 8, Other 7
+
+Full report on GitHub.
