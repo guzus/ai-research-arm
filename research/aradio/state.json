@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-10T13:02:00Z",
-  "headline": "On Decoder, RIAA guest: US recorded music $11B wholesale vs one AI firm ~$2T; Warner-Suno; Spotify 90/10 split",
+  "updated_at": "2026-11-10T21:05:00Z",
+  "headline": "Kalshi: Anthropic IPO-by-December odds 90% to 57%; 38+ jurisdictions voted to restrict data centers",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -9,11 +9,24 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-10T03:00:00Z",
-      "now": "On The Cognitive Revolution, hosts said Anthropic amended its S-1 with language that it may imminently meet its own threshold for dramatically accelerated progress attributable to AI, and that recursive self-improvement is imminent. The Latent Space read still holds: 85% gross margin, 8% GAAP operating margin, and the about $81B first-half loss called convertible marks.",
-      "changed": "Cognitive Revolution hosts say Anthropic's S-1 update adds language that it may imminently meet its accelerated-progress threshold and that recursive self-improvement is imminent.",
-      "watch": "The amended S-1 text; roadshow and price range; whether a filing confirms the convertible-loss split and the 90-day SpaceX out.",
+      "updated_at": "2026-11-10T21:05:00Z",
+      "now": "Big Technology hosts said Kalshi odds Anthropic announces an IPO by December fell from nearly 90% to 57% in a week, and that a WSJ report has big investors skeptical of a $1.5T valuation. One host called a November 19 debut at about $1.3T. They cited Meter: October improvement about twice the March 2024-October 2025 pace, with about 80% of Anthropic's research acceleration from internal AI use.",
+      "changed": "Big Technology: Kalshi IPO-by-December odds fell 90% to 57%; WSJ-cited skepticism of $1.5T; a host calls November 19 at $1.3T; Meter says Oct improvement about 2x, about 80% from internal AI.",
+      "watch": "Whether Kalshi's December IPO contract keeps falling; a filing or roadshow around November 19; whether Meter's 2x and 80% figures show up in the S-1.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1652s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-10T17:30:00Z",
+          "quote": "Over the past week, the probability that Anthropic will announce an IPO by December has fallen from nearly 90% to 57% on Kalshi, a huge shift."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1517s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (WSJ valuation)",
+          "at": "2026-11-10T17:30:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY",
           "kind": "podcast",
@@ -54,18 +67,6 @@
           "kind": "podcast",
           "label": "20VC (Anthropic GAAP quarters)",
           "at": "2026-11-05T15:42:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=2388s",
-          "kind": "podcast",
-          "label": "No Priors (AI-lab IPO)",
-          "at": "2026-11-05T11:12:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=2574s",
-          "kind": "podcast",
-          "label": "No Priors (listed venture fund)",
-          "at": "2026-11-05T11:12:00Z"
         }
       ],
       "history": [
@@ -112,6 +113,10 @@
         {
           "at": "2026-11-10T03:00:00Z",
           "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
         }
       ]
     },
@@ -121,11 +126,23 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-10T03:00:00Z",
-      "now": "On The Cognitive Revolution, eight-GPU servers were quoted at $550,000-$650,000, mostly B300s, in lots up to about 128 or 256, with trades described at $50 million. Hosts said Nvidia typically checks GPU locations on site every six months, and a Vera Rubin rack draws about 230 kilowatts versus 30-35 for two B300s. All-In's WSJ capex haircut of about $1T-$1.6T still stands.",
-      "changed": "Cognitive Revolution: secondary 8-GPU boxes at $550k-$650k, mostly B300s, trades described at $50 million; Vera Rubin about 230 kW per rack.",
-      "watch": "Whether those secondary prices hold; a company or WSJ-level confirmation of the $1T-$1.6T capex path; a CoreWeave filing on 15% debt.",
+      "updated_at": "2026-11-10T21:05:00Z",
+      "now": "Big Technology hosts said trillions of public-company market cap rest on two labs with about $100 billion combined revenue, and that Anthropic might exit about $518 billion of compute commitments if data centers cannot be built. They argued banned sites force cuts to training, inference, or safety. Secondary 8-GPU boxes at $550k-$650k and the WSJ $1T-$1.6T capex haircut still stand.",
+      "changed": "Big Technology: hosts float Anthropic exiting about $518B compute commitments if data centers cannot be built; trillions of market cap vs two labs at about $100B combined revenue.",
+      "watch": "A company or filing confirmation of the $518B compute-commitment figure; whether those commitments are actually unwindable; whether secondary GPU prices hold.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=468s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (compute commitments)",
+          "at": "2026-11-10T17:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=779s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (lab revenue vs market cap)",
+          "at": "2026-11-10T17:30:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1938s",
           "kind": "podcast",
@@ -163,20 +180,6 @@
           "label": "20VC",
           "at": "2026-11-05T15:42:00Z",
           "quote": "Core weave debt is paying 15%."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=298s",
-          "kind": "podcast",
-          "label": "20VC (Alphabet price discovery)",
-          "at": "2026-11-05T15:42:00Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000188/",
-          "kind": "earnings",
-          "label": "Advanced Micro Devices, Inc. (AMD)",
-          "at": "2026-11-03T21:16:27Z",
-          "speaker": "Dr. Lisa Su, AMD chair and CEO",
-          "quote": "We delivered a record quarter with revenue exceeding the high end of our guidance as Data Center segment sales nearly doubled year-over-year"
         }
       ],
       "history": [
@@ -207,6 +210,10 @@
         {
           "at": "2026-11-10T03:00:00Z",
           "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
         }
       ]
     },
@@ -216,11 +223,24 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-11-05T06:41:00Z",
-      "updated_at": "2026-11-09T19:08:00Z",
-      "now": "On All-In, hosts said Democrats swept both chambers, with at least 250 House seats, and put 100% odds on a major Democratic AI-legislation push next Congress. They said 93% of Chinese respondents think AI will mostly help, with the US near the bottom of that survey. Hinojosa's Texas data-center pause still covers the state Wells Fargo puts at 27% of planned US capacity.",
-      "changed": "All-In: Democratic sweep, 100% odds of major AI legislation next Congress; hosts cite 93% China AI optimism versus the US near last on that survey.",
-      "watch": "What the new Congress actually files on AI and data centers; whether Hinojosa extends the Texas permit freeze past the December grid audit.",
+      "updated_at": "2026-11-10T21:05:00Z",
+      "now": "Big Technology hosts said 38 or more jurisdictions voted to restrict or ban data centers, and that 23 to over 60 percent of voters, depending on the poll, called AI crucial. They said Texas's pro-data-center governor lost to a Democrat they called very anti-data-center, and that New Mexico apparently sued Meta for $25 billion. Hinojosa's Texas permit pause still stands.",
+      "changed": "Big Technology: 38+ jurisdictions voted to restrict or ban data centers; 23-60% said AI was crucial; stocks plunged then bounced Friday; hosts say New Mexico sued Meta for $25B.",
+      "watch": "What those 38 jurisdictions enact; whether Hinojosa extends the Texas freeze past the December grid audit; a filing we can read in the New Mexico-Meta suit.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-10T17:30:00Z",
+          "quote": "There were many—38 jurisdictions or more— that voted to restrict or ban data centers, right?"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=215s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (Texas vote, AI polls)",
+          "at": "2026-11-10T17:30:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=223s",
           "kind": "podcast",
@@ -257,18 +277,6 @@
           "kind": "twitter",
           "label": "NBC News (national exit poll)",
           "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/econographs/status/2117859420516331979",
-          "kind": "twitter",
-          "label": "@econographs on X (exit poll)",
-          "at": "2026-11-04T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/benthompson/status/2117980910930862516",
-          "kind": "twitter",
-          "label": "@benthompson on X (AI on the Ballot)",
-          "at": "2026-11-04T14:00:00Z"
         }
       ],
       "history": [
@@ -279,6 +287,10 @@
         {
           "at": "2026-11-09T19:08:00Z",
           "change": "All-In: Dem sweep and 100% odds of major AI legislation next Congress; China 93% AI-optimism vs US near the bottom of that survey."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: 38+ jurisdictions voted to restrict or ban data centers; 23-60% called AI crucial; hosts say New Mexico sued Meta for $25B."
         }
       ]
     },
@@ -454,6 +466,60 @@
       ]
     },
     {
+      "slug": "github-agent-era-software-stack",
+      "title": "GitHub rebuilds the software stack for coding agents",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-11-09T19:08:00Z",
+      "updated_at": "2026-11-10T21:05:00Z",
+      "now": "On Latent Space, a Resend guest said the email API has 4.3 million users as of this morning, 120,000 paid customers, and about $10 million of annual revenue, with MCP usage at least doubling monthly and 1.2 million by end of August as people work from Claude Desktop or Codex. The guest said B2B buyers now expect an official MCP. GitHub's 225 million developers and agent-workload rebuild still…",
+      "changed": "Latent Space: Resend at 4.3M users, 120k paid, about $10M annual revenue; MCP at least 2x monthly, 1.2M by end of August; official MCP now a B2B buying test.",
+      "watch": "Whether more B2B vendors ship an official MCP; Resend's next usage print; Copilot Fusion rollout and whether GitHub changes pull requests for agent sessions.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=12s",
+          "kind": "podcast",
+          "label": "Latent Space (Resend users)",
+          "at": "2026-11-10T19:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=212s",
+          "kind": "podcast",
+          "label": "Latent Space (Resend paid customers)",
+          "at": "2026-11-10T19:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=2322s",
+          "kind": "podcast",
+          "label": "Latent Space (Resend MCP growth)",
+          "at": "2026-11-10T19:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=71s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-08T01:22:00Z",
+          "quote": "They're now up to 225 million developers."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=260s",
+          "kind": "podcast",
+          "label": "Latent Space (GitHub commits and PRs)",
+          "at": "2026-11-08T01:22:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Created: GitHub at 225M developers and 34.3B commits; CoreAI EVP says the next scale problem is agents."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Latent Space: Resend at 4.3M users, 120k paid, ~$10M AR; MCP at least 2x monthly, 1.2M by end of August; official MCP as a B2B test."
+        }
+      ]
+    },
+    {
       "slug": "ai-music-vs-recorded-music",
       "title": "AI music versus the recorded-music business",
       "status": "developing",
@@ -581,38 +647,6 @@
         {
           "at": "2026-11-10T03:00:00Z",
           "change": "Cognitive Revolution: Ballot Bench ran nine agents on midterm forecasts with real money; Theory Ventures guest cites thousands of agent jobs."
-        }
-      ]
-    },
-    {
-      "slug": "github-agent-era-software-stack",
-      "title": "GitHub rebuilds the software stack for coding agents",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-11-09T19:08:00Z",
-      "updated_at": "2026-11-09T19:08:00Z",
-      "now": "On Latent Space after GitHub Universe, a guest introduced as Microsoft CoreAI EVP Jay Parikh said GitHub has 225 million developers, 34.3 billion commits over the past year, 17.9 billion code pushes and 1.3 billion pull requests, with open-source contributions up two and a half times. He said the next scaling problem is agent workloads and that Copilot's harness is multi-model.",
-      "changed": "Microsoft's CoreAI lead said GitHub is rebuilding for agent workloads, citing 225 million developers and 34.3 billion commits in the past year.",
-      "watch": "Copilot Fusion rollout and whether GitHub changes pull requests for agent sessions.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=71s",
-          "kind": "podcast",
-          "label": "Latent Space",
-          "at": "2026-11-08T01:22:00Z",
-          "quote": "They're now up to 225 million developers."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=260s",
-          "kind": "podcast",
-          "label": "Latent Space (GitHub commits and PRs)",
-          "at": "2026-11-08T01:22:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "Created: GitHub at 225M developers and 34.3B commits; CoreAI EVP says the next scale problem is agents."
         }
       ]
     },

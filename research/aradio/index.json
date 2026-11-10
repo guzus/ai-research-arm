@@ -1,9 +1,63 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-10T13:02:00Z",
+  "updated_at": "2026-11-10T21:05:00Z",
   "degraded": false,
-  "latest": "2026-11-10-1302",
+  "latest": "2026-11-10-2105",
   "bulletins": [
+    {
+      "id": "2026-11-10-2105",
+      "aired_at": "2026-11-10T21:05:00Z",
+      "headline": "Kalshi: Anthropic IPO-by-December odds 90% to 57%; 38+ jurisdictions voted to restrict data centers",
+      "path": "bulletins/2026-11-10/2105.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-10-2105.mp3",
+        "bytes": 1259517,
+        "duration_s": 209.8,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 69.72,
+            "lines": [
+              0,
+              4
+            ]
+          },
+          {
+            "start_s": 71.17,
+            "end_s": 109.57,
+            "lines": [
+              5,
+              7
+            ]
+          },
+          {
+            "start_s": 111.02,
+            "end_s": 155.54,
+            "lines": [
+              8,
+              10
+            ]
+          },
+          {
+            "start_s": 156.99,
+            "end_s": 203.27,
+            "lines": [
+              11,
+              14
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "anthropic-ipo-and-ai-funding",
+        "us-data-center-politics",
+        "hyperscaler-capex-and-chip-selloff",
+        "github-agent-era-software-stack"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-10-1302",
       "aired_at": "2026-11-10T13:02:00Z",
