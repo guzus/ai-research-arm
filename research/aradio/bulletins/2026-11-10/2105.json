@@ -1,0 +1,231 @@
+{
+  "schema": 1,
+  "id": "2026-11-10-2105",
+  "aired_at": "2026-11-10T21:05:00Z",
+  "headline": "Kalshi: Anthropic IPO-by-December odds 90% to 57%; 38+ jurisdictions voted to restrict data centers",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's five past nine UTC on Tuesday, November tenth, and this is ARA AI News. The picture has shifted from this morning's music fight to Anthropic's IPO odds and the vote against data centers."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Big Technology, hosts said Kalshi's odds that Anthropic announces an IPO by December fell from nearly ninety percent to fifty-seven percent in a single week."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "They pointed to a Wall Street Journal report that big investors are skeptical Anthropic can reach one point five trillion dollars. One host called a November nineteenth debut at about one point three trillion dollars, and compared that with SpaceX at one point eight trillion."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That is a prediction-market move, not a filing. The same show cited Meter putting Anthropic's October improvement rate at about twice the pace from March twenty twenty-four to October twenty twenty-five, with about eighty percent of the company's research acceleration coming from its own internal use of AI."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That internal-use claim sits next to The Cognitive Revolution's reading of Anthropic's registration statement, where the company added language that it may imminently meet its own threshold for dramatically accelerated progress."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The midterms are the other half of this. Hosts said the country voted almost unanimously against data centers, with thirty-eight or more jurisdictions choosing to restrict or ban them, and AI stocks plunging before a Friday bounce."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "They said anywhere from twenty-three to over sixty percent of voters, depending on the poll, called AI crucial to their vote. In Texas, they said the pro-data-center governor lost to a Democrat they called very anti-data-center, which matches the permit freeze already in place."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They also said New Mexico apparently sued Meta for twenty-five billion dollars. We have not seen that complaint, so treat it as the show's claim until a filing lands."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "If those sites cannot be built, the capex story gets meaner. Hosts floated that Anthropic might now get out of about five hundred eighteen billion dollars of computing-capacity commitments, because a data center that never opens is a commitment you may not have to keep."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They also put the market in a tight frame: trillions of dollars of public-company value resting on two labs with combined revenue of about one hundred billion dollars. And they argued you cannot lean on Jevons paradox when the buildings themselves are prohibited, so the tradeoff is training, inference, or safety."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Secondary eight GPU servers at five hundred fifty to six hundred fifty thousand dollars, mostly B three hundred chips, still sit as the last print we have from The Cognitive Revolution."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "One quieter software note from Latent Space: a Resend guest said the email API is at four point three million users as of this morning and a hundred twenty thousand paid customers, with MCP traffic at least doubling every month and one point two million by the end of August."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "People are working from Claude Desktop and Codex, and that guest said buyers now look for an official MCP the way they once looked for an API. GitHub is still rebuilding the stack for agent workloads on two hundred twenty-five million developers."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch Kalshi's December contract, whether anything actually files around November nineteenth, and what those thirty-eight jurisdictions write into law. The Texas freeze still runs to the December grid audit."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's five past nine UTC on Tuesday, November tenth, and this is ARA AI News. The picture has shifted from this morning's music fight to Anthropic's IPO odds and the vote against data centers.",
+    "Speaker 2: [high_energy] On Big Technology, hosts said Kalshi's odds that Anthropic announces an IPO by December fell from nearly [emphasis]ninety percent[/emphasis] to [emphasis]fifty-seven percent[/emphasis] in a single week.",
+    "Speaker 1: They pointed to a Wall Street Journal report that big investors are skeptical Anthropic can reach one point five trillion dollars. One host called a November nineteenth debut at about one point three trillion dollars, and compared that with SpaceX at one point eight trillion.",
+    "Speaker 2: That is a prediction-market move, not a filing. The same show cited Meter putting Anthropic's October improvement rate at about twice the pace from March twenty twenty-four to October twenty twenty-five, with about eighty percent of the company's research acceleration coming from its own internal use of AI.",
+    "Speaker 1: That internal-use claim sits next to The Cognitive Revolution's reading of Anthropic's registration statement, where the company added language that it may imminently meet its own threshold for dramatically accelerated progress.",
+    "Speaker 2: [transition] The midterms are the other half of this. Hosts said the country voted almost unanimously against data centers, with [emphasis]thirty-eight[/emphasis] or more jurisdictions choosing to restrict or ban them, and AI stocks plunging before a Friday bounce.",
+    "Speaker 1: They said anywhere from twenty-three to over sixty percent of voters, depending on the poll, called AI crucial to their vote. In Texas, they said the pro-data-center governor lost to a Democrat they called very anti-data-center, which matches the permit freeze already in place.",
+    "Speaker 2: They also said New Mexico apparently sued Meta for twenty-five billion dollars. We have not seen that complaint, so treat it as the show's claim until a filing lands.",
+    "Speaker 1: [transition] If those sites cannot be built, the capex story gets meaner. Hosts floated that Anthropic might now get out of about five hundred eighteen billion dollars of computing-capacity commitments, because a data center that never opens is a commitment you may not have to keep.",
+    "Speaker 2: They also put the market in a tight frame: trillions of dollars of public-company value resting on two labs with combined revenue of about one hundred billion dollars. And they argued you cannot lean on Jevons paradox when the buildings themselves are prohibited, so the tradeoff is training, inference, or safety.",
+    "Speaker 1: Secondary eight GPU servers at five hundred fifty to six hundred fifty thousand dollars, mostly B three hundred chips, still sit as the last print we have from The Cognitive Revolution.",
+    "Speaker 2: [transition] One quieter software note from Latent Space: a Resend guest said the email API is at four point three million users as of this morning and a hundred twenty thousand paid customers, with MCP traffic at least doubling every month and one point two million by the end of August.",
+    "Speaker 1: People are working from Claude Desktop and Codex, and that guest said buyers now look for an official MCP the way they once looked for an API. GitHub is still rebuilding the stack for agent workloads on two hundred twenty-five million developers.",
+    "Speaker 2: Watch Kalshi's December contract, whether anything actually files around November nineteenth, and what those thirty-eight jurisdictions write into law. The Texas freeze still runs to the December grid audit.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "anthropic-ipo-and-ai-funding",
+    "us-data-center-politics",
+    "hyperscaler-capex-and-chip-selloff",
+    "github-agent-era-software-stack"
+  ],
+  "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "us-data-center-politics",
+      "title": "US data-center siting backlash after the midterms",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "github-agent-era-software-stack",
+      "title": "GitHub rebuilds the software stack for coding agents",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1652s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1517s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast (WSJ valuation)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc",
+      "kind": "podcast",
+      "label": "Big Technology Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=215s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast (Texas vote, AI polls)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=468s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast (compute commitments)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=779s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast (lab revenue vs market cap)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=12s",
+      "kind": "podcast",
+      "label": "Latent Space (Resend users)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=212s",
+      "kind": "podcast",
+      "label": "Latent Space (Resend paid customers)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=2322s",
+      "kind": "podcast",
+      "label": "Latent Space (Resend MCP growth)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    },
+    {
+      "op": "update",
+      "slug": "us-data-center-politics"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    },
+    {
+      "op": "update",
+      "slug": "github-agent-era-software-stack"
+    }
+  ],
+  "warnings": [
+    "ops[3] update github-agent-era-software-stack: 'now' truncated to 400 characters"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-10-2105.mp3",
+    "bytes": 1259517,
+    "duration_s": 209.8,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 69.72,
+        "lines": [
+          0,
+          4
+        ]
+      },
+      {
+        "start_s": 71.17,
+        "end_s": 109.57,
+        "lines": [
+          5,
+          7
+        ]
+      },
+      {
+        "start_s": 111.02,
+        "end_s": 155.54,
+        "lines": [
+          8,
+          10
+        ]
+      },
+      {
+        "start_s": 156.99,
+        "end_s": 203.27,
+        "lines": [
+          11,
+          14
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 4,
+    "kinds": {
+      "podcast": 4
+    }
+  }
+}
