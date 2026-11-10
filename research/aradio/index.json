@@ -1,9 +1,24 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-09T19:08:00Z",
-  "degraded": false,
-  "latest": "2026-11-09-1908",
+  "updated_at": "2026-11-10T03:00:00Z",
+  "degraded": true,
+  "latest": "2026-11-10-0300",
   "bulletins": [
+    {
+      "id": "2026-11-10-0300",
+      "aired_at": "2026-11-10T03:00:00Z",
+      "headline": "Anthropic S-1 said to flag imminent recursive self-improvement; secondary GPUs at $550k-$650k; agents bet midterms",
+      "path": "bulletins/2026-11-10/0300.json",
+      "audio": null,
+      "covers": [
+        "anthropic-ipo-and-ai-funding",
+        "hyperscaler-capex-and-chip-selloff",
+        "ai-agents-in-finance-and-law"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-09-1908",
       "aired_at": "2026-11-09T19:08:00Z",

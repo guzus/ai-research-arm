@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "id": "2026-11-10-0300",
+  "aired_at": "2026-11-10T03:00:00Z",
+  "headline": "Anthropic S-1 said to flag imminent recursive self-improvement; secondary GPUs at $550k-$650k; agents bet midterms",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's three in the morning UTC on Tuesday, November tenth. This is ARA AI News. The Anthropic IPO story just moved from the income statement to the risk factors."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On The Cognitive Revolution, the hosts said Anthropic amended its S-one with language that it may imminently meet its own threshold for dramatically accelerated progress attributable to A.I., and that recursive self-improvement is imminent."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is a podcast reading of the company's filing, not a lab keynote. It lands on top of the Latent Space walkthrough we already have, where a guest said the same S-one shows about an eight percent GAAP operating margin and that the roughly eighty-one billion dollar first-half loss is convertible marks."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "So listeners now have two facts from that filing as read on that show. The books are being described as already profitable on a GAAP basis, and the same paper is warning that the research may be about to speed up in a way Anthropic treats as a threshold event."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Underneath that paper, the boxes are still changing hands."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Same episode. A guest who trades new and used G.P.U. servers had eight-G.P.U. machines quoted at five hundred and fifty thousand to six hundred and fifty thousand dollars, mostly B three hundreds, in lots from a couple of units up to about a hundred and twenty-eight or two hundred and fifty-six."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The hosts put some of those tickets at fifty million dollars. They also said Nvidia typically comes on site every six months to check that the G.P.U.s have not left, and that a Vera Rubin rack draws about two hundred and thirty kilowatts, versus thirty to thirty-five for two B three hundred chips."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That is the physical side of the buildout, and it still sits under the All-In relay of a Wall Street Journal capex haircut to about one trillion to one point six trillion dollars after the A.I. selloff."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The same show also put agents on the midterms with real money."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "A guest introduced as Brian Joe of Thoughtful described Ballot Bench: nine frontier agents given a week to forecast the midterms, and trading agents putting real money on those forecasts."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On that show, a guest said Opus five point five would fan out something like a hundred and seventy or a hundred and eighty sub-agents, and that the best models were well calibrated, an eighty percent call coming in around eighty percent of the time."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "A Theory Ventures guest said the firm already runs thousands of A.I. agent jobs, and that the aim is to make an investor ten to a hundred times more effective, not to replace the investor."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "What to watch is the amended S-one text itself, not only the podcast gloss. Then we need to see whether those secondary G.P.U. prints hold, and whether Ballot Bench publishes how the agents actually did with real money."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's three in the morning UTC on Tuesday, November tenth. This is ARA AI News. The Anthropic IPO story just moved from the income statement to the risk factors.",
+    "Speaker 2: [high_energy] On The Cognitive Revolution, the hosts said Anthropic amended its S-one with language that it may imminently meet its own threshold for dramatically accelerated progress attributable to A.I., and that recursive self-improvement is imminent.",
+    "Speaker 1: That is a podcast reading of the company's filing, not a lab keynote. It lands on top of the Latent Space walkthrough we already have, where a guest said the same S-one shows about an [emphasis]eight percent[/emphasis] GAAP operating margin and that the roughly [emphasis]eighty-one billion dollar[/emphasis] first-half loss is convertible marks.",
+    "Speaker 2: So listeners now have two facts from that filing as read on that show. The books are being described as already profitable on a GAAP basis, and the same paper is warning that the research may be about to speed up in a way Anthropic treats as a threshold event.",
+    "Speaker 1: [transition] Underneath that paper, the boxes are still changing hands.",
+    "Speaker 2: Same episode. A guest who trades new and used G.P.U. servers had eight-G.P.U. machines quoted at [emphasis]five hundred and fifty thousand to six hundred and fifty thousand dollars[/emphasis], mostly B three hundreds, in lots from a couple of units up to about a hundred and twenty-eight or two hundred and fifty-six.",
+    "Speaker 1: The hosts put some of those tickets at fifty million dollars. They also said Nvidia typically comes on site every six months to check that the G.P.U.s have not left, and that a Vera Rubin rack draws about two hundred and thirty kilowatts, versus thirty to thirty-five for two B three hundred chips.",
+    "Speaker 2: That is the physical side of the buildout, and it still sits under the All-In relay of a Wall Street Journal capex haircut to about one trillion to one point six trillion dollars after the A.I. selloff.",
+    "Speaker 1: [transition] The same show also put agents on the midterms with real money.",
+    "Speaker 2: A guest introduced as Brian Joe of Thoughtful described Ballot Bench: nine frontier agents given a week to forecast the midterms, and trading agents putting real money on those forecasts.",
+    "Speaker 1: On that show, a guest said Opus five point five would fan out something like a hundred and seventy or a hundred and eighty sub-agents, and that the best models were well calibrated, an eighty percent call coming in around eighty percent of the time.",
+    "Speaker 2: A Theory Ventures guest said the firm already runs thousands of A.I. agent jobs, and that the aim is to make an investor ten to a hundred times more effective, not to replace the investor.",
+    "Speaker 1: What to watch is the amended S-one text itself, not only the podcast gloss. Then we need to see whether those secondary G.P.U. prints hold, and whether Ballot Bench publishes how the agents actually did with real money.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "anthropic-ipo-and-ai-funding",
+    "hyperscaler-capex-and-chip-selloff",
+    "ai-agents-in-finance-and-law"
+  ],
+  "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-agents-in-finance-and-law",
+      "title": "AI agents move into finance and legal work",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY",
+      "kind": "podcast",
+      "label": "The Cognitive Revolution"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1938s",
+      "kind": "podcast",
+      "label": "The Cognitive Revolution"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=2405s",
+      "kind": "podcast",
+      "label": "The Cognitive Revolution (GPU export rules)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1311s",
+      "kind": "podcast",
+      "label": "The Cognitive Revolution (Ballot Bench)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=2937s",
+      "kind": "podcast",
+      "label": "The Cognitive Revolution (Theory Ventures agents)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    },
+    {
+      "op": "update",
+      "slug": "ai-agents-in-finance-and-law"
+    }
+  ],
+  "warnings": [
+    "ops[2] update ai-agents-in-finance-and-law: 'now' truncated to 400 characters"
+  ],
+  "audio": null,
+  "audio_error": "audio upload to S3 failed",
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 4,
+    "kinds": {
+      "podcast": 4
+    }
+  }
+}
