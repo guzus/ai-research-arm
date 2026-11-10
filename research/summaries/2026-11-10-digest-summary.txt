@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-11-10 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] ChatGPT Enterprise now available in AWS Marketplace - Mon, 09 Nov 2026 19:00 GMT
+• [Hacker News] Google Gemini routes personal Drive files and emails to human annotators: Largest AI story on the p…
+• [Reddit] ICLR 2027 Reviews Discussion [D] — https://www.reddit.com/r/MachineLearning/comments/1xo6yzo/iclr_2…
+• [Expert Blogs] The Web Is More Than Enough, by Paul Ford
+• [Bluesky] @emollick.bsky.social: "I had early access to Fable 5.2 for a bit & I think it crosses the line int…
+
+SOURCES: 6/8 lanes had data; missing: Twitter/X, arXiv Papers
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
