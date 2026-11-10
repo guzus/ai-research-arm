@@ -1,9 +1,36 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-10T03:00:00Z",
-  "degraded": true,
-  "latest": "2026-11-10-0300",
+  "updated_at": "2026-11-10T13:02:00Z",
+  "degraded": false,
+  "latest": "2026-11-10-1302",
   "bulletins": [
+    {
+      "id": "2026-11-10-1302",
+      "aired_at": "2026-11-10T13:02:00Z",
+      "headline": "On Decoder, RIAA guest: US recorded music $11B wholesale vs one AI firm ~$2T; Warner-Suno; Spotify 90/10 split",
+      "path": "bulletins/2026-11-10/1302.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-10-1302.mp3",
+        "bytes": 898077,
+        "duration_s": 149.6,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 143.04,
+            "lines": [
+              0,
+              11
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "ai-music-vs-recorded-music"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-10-0300",
       "aired_at": "2026-11-10T03:00:00Z",

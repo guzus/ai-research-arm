@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "id": "2026-11-10-1302",
+  "aired_at": "2026-11-10T13:02:00Z",
+  "headline": "On Decoder, RIAA guest: US recorded music $11B wholesale vs one AI firm ~$2T; Warner-Suno; Spotify 90/10 split",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's one in the afternoon UTC on Tuesday, November tenth. This is ARA AI News. The lab filings and the chip prints have not moved since this morning, but Decoder just put recorded music on the board."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Decoder, a guest from the R.I.A.A. said the entire recorded music business in the United States was eleven billion dollars wholesale last year, and then set that against the market cap of just one A.I. company, about two trillion dollars."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is the association talking on a podcast, not a company filing. The same guest said Warner has partnered with Suno and built a model on Warner's music so they do not run into a training lawsuit."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The guest said that if licensed models spread, the labels do not get to sue the A.I. music companies, but they still face a supply problem on Spotify because generated tracks can be uploaded at almost no cost."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Decoder also put numbers on that flood. Speakers on the show said about ninety percent of the recordings on Spotify already bring in about ten percent of the revenue, and ten percent of the content takes ninety percent, because so much of the catalog gets fewer than ten or a hundred listens."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They called that slop, and they said it is already a storage cost. A lot of it, they said, is someone going to a music generator, downloading a file, and putting it up through DistroKid or TuneCore."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The Decoder host put Google on the other side of that fight, saying the people running the company will call training an A.I. model fair use. The labels' counter on that show is that a flood of fake tracks on YouTube would kill the catalog those models still need."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The host also said the R.I.A.A.'s reputation has flipped, because listeners who once got sued for downloading songs now see the association fighting A.I. labs instead of fighting fans. That is Decoder's read of the culture, not a poll."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The guest said Goldman Sachs is buying music catalogs because the songs stay valuable. Take that as a claim on the podcast, not a Goldman filing."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "This is not a lab launch and it is not a ten billion dollar deal. It is the recorded-music business, on tape, describing a glut of supply as the friction to create goes toward zero."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "What to watch is how the training-as-fair-use cases come out, whether DistroKid and TuneCore start blocking fully generated tracks, and whether more labels follow Warner into a licensed deal."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's one in the afternoon UTC on Tuesday, November tenth. This is ARA AI News. The lab filings and the chip prints have not moved since this morning, but Decoder just put recorded music on the board.",
+    "Speaker 2: [high_energy] On Decoder, a guest from the R.I.A.A. said the entire recorded music business in the United States was [emphasis]eleven billion dollars[/emphasis] wholesale last year, and then set that against the market cap of just one A.I. company, about [emphasis]two trillion dollars[/emphasis].",
+    "Speaker 1: That is the association talking on a podcast, not a company filing. The same guest said Warner has partnered with Suno and built a model on Warner's music so they do not run into a training lawsuit.",
+    "Speaker 2: The guest said that if licensed models spread, the labels do not get to sue the A.I. music companies, but they still face a supply problem on Spotify because generated tracks can be uploaded at almost no cost.",
+    "Speaker 1: Decoder also put numbers on that flood. Speakers on the show said about [emphasis]ninety percent[/emphasis] of the recordings on Spotify already bring in about ten percent of the revenue, and ten percent of the content takes ninety percent, because so much of the catalog gets fewer than ten or a hundred listens.",
+    "Speaker 2: They called that slop, and they said it is already a storage cost. A lot of it, they said, is someone going to a music generator, downloading a file, and putting it up through DistroKid or TuneCore.",
+    "Speaker 1: The Decoder host put Google on the other side of that fight, saying the people running the company will call training an A.I. model fair use. The labels' counter on that show is that a flood of fake tracks on YouTube would kill the catalog those models still need.",
+    "Speaker 2: The host also said the R.I.A.A.'s reputation has flipped, because listeners who once got sued for downloading songs now see the association fighting A.I. labs instead of fighting fans. That is Decoder's read of the culture, not a poll.",
+    "Speaker 1: The guest said Goldman Sachs is buying music catalogs because the songs stay valuable. Take that as a claim on the podcast, not a Goldman filing.",
+    "Speaker 2: This is not a lab launch and it is not a ten billion dollar deal. It is the recorded-music business, on tape, describing a glut of supply as the friction to create goes toward zero.",
+    "Speaker 1: What to watch is how the training-as-fair-use cases come out, whether DistroKid and TuneCore start blocking fully generated tracks, and whether more labels follow Warner into a licensed deal.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "ai-music-vs-recorded-music"
+  ],
+  "threads": [
+    {
+      "slug": "ai-music-vs-recorded-music",
+      "title": "AI music versus the recorded-music business",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=1560s",
+      "kind": "podcast",
+      "label": "Decoder with Nilay Patel"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE",
+      "kind": "podcast",
+      "label": "Decoder with Nilay Patel"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3417s",
+      "kind": "podcast",
+      "label": "Decoder (Spotify catalog mix)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3716s",
+      "kind": "podcast",
+      "label": "Decoder (DistroKid, TuneCore)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "create",
+      "slug": "ai-music-vs-recorded-music"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-10-1302.mp3",
+    "bytes": 898077,
+    "duration_s": 149.6,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 143.04,
+        "lines": [
+          0,
+          11
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 2,
+    "kinds": {
+      "podcast": 1,
+      "video": 1
+    }
+  }
+}
