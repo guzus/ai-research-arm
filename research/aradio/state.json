@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-10T03:00:00Z",
-  "headline": "Anthropic S-1 said to flag imminent recursive self-improvement; secondary GPUs at $550k-$650k; agents bet midterms",
+  "updated_at": "2026-11-10T13:02:00Z",
+  "headline": "On Decoder, RIAA guest: US recorded music $11B wholesale vs one AI firm ~$2T; Warner-Suno; Spotify 90/10 split",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -450,6 +450,51 @@
         {
           "at": "2026-11-09T19:08:00Z",
           "change": "20VC: Mistral CEO says about 80% of token traffic is in-house and about 60% of revenue is Europe; host puts the company at $21B."
+        }
+      ]
+    },
+    {
+      "slug": "ai-music-vs-recorded-music",
+      "title": "AI music versus the recorded-music business",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-11-10T13:02:00Z",
+      "updated_at": "2026-11-10T13:02:00Z",
+      "now": "On Decoder, an RIAA guest said US recorded-music wholesale was $11 billion last year against one AI company's about $2 trillion market cap, and that Warner has partnered with Suno on a licensed model. The same conversation said about 90% of Spotify recordings already yield about 10% of revenue as generated tracks fill the catalog. The host said Google's position is that training is fair use.",
+      "changed": "Decoder's RIAA guest: US recorded music was $11B wholesale last year vs one AI firm ~$2T; Warner has a licensed Suno model; ~90% of Spotify recordings already yield ~10% of revenue.",
+      "watch": "Rulings in the training-as-fair-use cases; whether DistroKid and TuneCore add detection for fully generated tracks; whether more labels follow Warner into licensed-model deals.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=1560s",
+          "kind": "podcast",
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-09T13:34:00Z",
+          "quote": "I mean, the entire recorded music business uh was $11 billion wholesale last year in the United States."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE",
+          "kind": "podcast",
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-09T13:34:00Z",
+          "quote": "If that proliferates, then you don't get to sue the AI music companies because they made their models with licensed music, but you'll face a supply problem on platforms like Spotify."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3417s",
+          "kind": "podcast",
+          "label": "Decoder (Spotify catalog mix)",
+          "at": "2026-11-09T13:34:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3716s",
+          "kind": "podcast",
+          "label": "Decoder (DistroKid, TuneCore)",
+          "at": "2026-11-09T13:34:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-10T13:02:00Z",
+          "change": "Decoder transcript: RIAA guest cites $11B US wholesale vs ~$2T AI market cap, a Warner-Suno licensed model, and a 90/10 Spotify split as generated music floods catalogs."
         }
       ]
     },
