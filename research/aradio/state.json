@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-09T19:08:00Z",
-  "headline": "Anthropic S-1 read as GAAP-profitable; $81B loss called convertibles; Dem sweep and a $1T-$1.6T capex haircut",
+  "updated_at": "2026-11-10T03:00:00Z",
+  "headline": "Anthropic S-1 said to flag imminent recursive self-improvement; secondary GPUs at $550k-$650k; agents bet midterms",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -9,11 +9,18 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-09T19:08:00Z",
-      "now": "On Latent Space, a guest introduced as Altimeter's Jamin Ball said Anthropic's S-1 shows 85% gross margin, over 20% free-cash-flow margin and 8% GAAP operating margin, and that the about $81B first-half net loss is 100% convertible revaluation. He cited about $141B raised and $134B cash. All-In hosts said the SpaceX-Anthropic compute deal has a mutual 90-day out.",
-      "changed": "On Latent Space, a guest said Anthropic's S-1 is GAAP-profitable at 8% operating margin and the about $81B first-half loss is convertible marks; All-In added a 90-day SpaceX compute out.",
-      "watch": "Roadshow and price range; whether a filing confirms the convertible-loss split and the 90-day SpaceX out; OpenAI or a filing on the $1.25T mark.",
+      "updated_at": "2026-11-10T03:00:00Z",
+      "now": "On The Cognitive Revolution, hosts said Anthropic amended its S-1 with language that it may imminently meet its own threshold for dramatically accelerated progress attributable to AI, and that recursive self-improvement is imminent. The Latent Space read still holds: 85% gross margin, 8% GAAP operating margin, and the about $81B first-half loss called convertible marks.",
+      "changed": "Cognitive Revolution hosts say Anthropic's S-1 update adds language that it may imminently meet its accelerated-progress threshold and that recursive self-improvement is imminent.",
+      "watch": "The amended S-1 text; roadshow and price range; whether a filing confirms the convertible-loss split and the 90-day SpaceX out.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-11-07T20:24:00Z",
+          "quote": "The new language, Anthropic says it may imminently meet its own threshold for dramatically accelerated progress attributable to AI."
+        },
         {
           "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=908s",
           "kind": "podcast",
@@ -59,12 +66,6 @@
           "kind": "podcast",
           "label": "No Priors (listed venture fund)",
           "at": "2026-11-05T11:12:00Z"
-        },
-        {
-          "url": "https://menlovc.com/perspective/2026-the-state-of-enterprise-ai/",
-          "kind": "twitter",
-          "label": "Menlo Ventures (2026 State of Enterprise AI)",
-          "at": "2026-11-04T06:00:00Z"
         }
       ],
       "history": [
@@ -107,6 +108,10 @@
         {
           "at": "2026-11-09T19:08:00Z",
           "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
         }
       ]
     },
@@ -116,11 +121,24 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-09T19:08:00Z",
-      "now": "All-In hosts said the Wall Street Journal reported an AI-capex haircut baked in at about $1T to $1.6T, versus a prior $1.5T-$2T path to $3T-$4T, after a multi-trillion-dollar AI selloff. On Latent Space, the Anthropic S-1 guest said multi-billion GPU debt has no offers and that debt markets are closed. AMD's record $13.4B quarter, Arm, and Super Micro prints are unchanged.",
-      "changed": "All-In: WSJ capex haircut at about $1T-$1.6T, not $3T-$4T; Latent Space guest says GPU debt markets are closed.",
-      "watch": "A company or WSJ-level confirmation of the $1T-$1.6T capex path; a CoreWeave filing on 15% debt; an Oracle or Tencent statement on the reported lease.",
+      "updated_at": "2026-11-10T03:00:00Z",
+      "now": "On The Cognitive Revolution, eight-GPU servers were quoted at $550,000-$650,000, mostly B300s, in lots up to about 128 or 256, with trades described at $50 million. Hosts said Nvidia typically checks GPU locations on site every six months, and a Vera Rubin rack draws about 230 kilowatts versus 30-35 for two B300s. All-In's WSJ capex haircut of about $1T-$1.6T still stands.",
+      "changed": "Cognitive Revolution: secondary 8-GPU boxes at $550k-$650k, mostly B300s, trades described at $50 million; Vera Rubin about 230 kW per rack.",
+      "watch": "Whether those secondary prices hold; a company or WSJ-level confirmation of the $1T-$1.6T capex path; a CoreWeave filing on 15% debt.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1938s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-11-07T20:24:00Z",
+          "quote": "When he says 550 to 650, he means $550,000 to $650,000 for one 8GPU server."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=2405s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution (GPU export rules)",
+          "at": "2026-11-07T20:24:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=3249s",
           "kind": "podcast",
@@ -159,18 +177,6 @@
           "at": "2026-11-03T21:16:27Z",
           "speaker": "Dr. Lisa Su, AMD chair and CEO",
           "quote": "We delivered a record quarter with revenue exceeding the high end of our guidance as Data Center segment sales nearly doubled year-over-year"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000141/",
-          "kind": "earnings",
-          "label": "Arm Holdings plc (ARM)",
-          "at": "2026-11-04T21:02:18Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1375365/000137536526000026/",
-          "kind": "earnings",
-          "label": "Super Micro Computer, Inc. (SMCI)",
-          "at": "2026-11-03T21:31:04Z"
         }
       ],
       "history": [
@@ -197,6 +203,10 @@
         {
           "at": "2026-11-09T19:08:00Z",
           "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
         }
       ]
     },
@@ -444,45 +454,88 @@
       ]
     },
     {
-      "slug": "marvell-lumentum-optical-ai-deal",
-      "title": "Marvell's deal for Lumentum and the shift to optical AI connectivity",
+      "slug": "ai-agents-in-finance-and-law",
+      "title": "AI agents move into finance and legal work",
       "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-11-02T19:46:00Z",
-      "updated_at": "2026-11-02T21:46:00Z",
-      "now": "Marvell announced with its fiscal third-quarter results that it will combine with optical maker Lumentum, expecting over $1B of run-rate synergies. Reportedly it is all stock at 4.5 Marvell shares per Lumentum share, about $115B, closing in 2028. Both CEOs cite a $550B interconnect market. Terms come from one trader's posts.",
-      "changed": "Reported terms: about 4.5 Marvell shares per Lumentum share, valuing Lumentum near $115B, closing in 2028. Marvell reportedly closed down 12.7% and Lumentum down 18.6%. Single-source on terms.",
-      "watch": "Merger 8-K and joint proxy: exchange ratio, breakup fee, antitrust review; whether Coherent and other optics names reprice as targets.",
+      "importance": 3,
+      "first_seen": "2026-11-01T06:51:00Z",
+      "updated_at": "2026-11-10T03:00:00Z",
+      "now": "On The Cognitive Revolution, a guest introduced as Brian Joe of Thoughtful described Ballot Bench: nine frontier agents forecasting the midterms with real-money trades. A guest said Opus 5.5 fanned out about 170 to 180 sub-agents and that the best models were well calibrated. A Theory Ventures guest said the firm runs thousands of AI-agent jobs. Robinhood's 150,000 agent-trading accounts still…",
+      "changed": "Cognitive Revolution: Ballot Bench ran nine frontier agents on midterm forecasts with real-money trades; Opus 5.5 said to spawn about 170-180 sub-agents.",
+      "watch": "A Ballot Bench write-up of the real-money results; a Robinhood filing on the 150,000 accounts; whether other CFOs describe the same builder shift.",
       "evidence": [
         {
-          "url": "https://x.com/aleabitoreddit/status/2117229519178498541",
-          "kind": "twitter",
-          "label": "@aleabitoreddit on X (Marvell-Lumentum)",
-          "at": "2026-11-02T21:00:00Z"
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1311s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution (Ballot Bench)",
+          "at": "2026-11-07T20:24:00Z"
         },
         {
-          "url": "https://x.com/njcAllocates/status/2117370511588204554",
-          "kind": "twitter",
-          "label": "@njcAllocates on X (stock moves)",
-          "at": "2026-11-02T21:00:00Z"
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=2937s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution (Theory Ventures agents)",
+          "at": "2026-11-07T20:24:00Z"
         },
         {
-          "url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526442714/",
-          "kind": "earnings",
-          "label": "Marvell Technology, Inc. (MRVL)",
-          "at": "2026-11-02T13:06:04Z",
-          "speaker": "Matt Murphy, Chairman and CEO of Marvell",
-          "quote": "AI infrastructure is undergoing a fundamental architectural shift toward optical connectivity, creating an opportunity that comes along once in a generation"
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-05T15:42:00Z",
+          "quote": "And I believe you shouldn't delegate your thinking today."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc&t=1228s",
+          "kind": "podcast",
+          "label": "a16z (internal tools falling out of use)",
+          "at": "2026-11-05T15:42:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg",
+          "kind": "podcast",
+          "label": "No Priors",
+          "at": "2026-11-05T11:12:00Z",
+          "quote": "We are seeing very strong adoption: over 150,000 clients have opened agent trading accounts with us in the few months since launch."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=1759s",
+          "kind": "podcast",
+          "label": "No Priors",
+          "at": "2026-11-05T11:12:00Z",
+          "quote": "And if you look at the tool calls, they follow a smooth exponential, where the last number we announced was around 30 million tool calls per day ."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=v-d1WTqIULs",
+          "kind": "podcast",
+          "label": "Latent Space (OpenAI finance)",
+          "at": "2026-10-31T03:21:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KM3VQZKjpiY",
+          "kind": "podcast",
+          "label": "Latent Space (Arca)",
+          "at": "2026-10-31T16:17:00Z"
         }
       ],
       "history": [
         {
-          "at": "2026-11-02T19:46:00Z",
-          "change": "Thread created: Marvell announces combination with Lumentum, citing optical AI connectivity, over $1B synergies and a $550B market."
+          "at": "2026-11-01T06:51:00Z",
+          "change": "Thread created from finance and legal agent episodes; no market-moving news."
         },
         {
-          "at": "2026-11-02T21:46:00Z",
-          "change": "Traders report all-stock terms of 4.5:1, about $115B, 2028 close; both stocks fell sharply. Terms not yet in a company filing we hold."
+          "at": "2026-11-03T03:03:00Z",
+          "change": "Resolved: quiet, low-importance thread; no new finance or legal agent news."
+        },
+        {
+          "at": "2026-11-05T12:49:00Z",
+          "change": "Reopened: No Priors says Robinhood has 150k agent-trading accounts and ~30M tool calls/day; Chain pitched for AI agents."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "a16z Figma episode: guest introduced as CFO says finance is becoming a builder function; ~90% of internal agents fall away; do not delegate thinking."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: Ballot Bench ran nine agents on midterm forecasts with real money; Theory Ventures guest cites thousands of agent jobs."
         }
       ]
     },
@@ -607,82 +660,6 @@
       ]
     },
     {
-      "slug": "ai-agents-in-finance-and-law",
-      "title": "AI agents move into finance and legal work",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-11-01T06:51:00Z",
-      "updated_at": "2026-11-05T21:17:00Z",
-      "now": "On No Priors, a guest introduced as Robinhood CEO Vlad Tenev said over 150,000 clients opened agent-trading accounts since launch, about 30 million tool calls a day. On a16z, a guest introduced as Figma's CFO said finance teams are becoming builders, that about 90% of internal AI tools and agents fall out of use, and that you should not delegate thinking to the model.",
-      "changed": "On a16z, a guest introduced as Figma's CFO said finance teams are becoming builders, that about 90% of internal AI tools fall out of use, and that you should not delegate thinking to the model.",
-      "watch": "A Robinhood filing repeating the 150,000 accounts and 30 million daily tool calls; whether other CFOs describe the same builder shift.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc",
-          "kind": "podcast",
-          "label": "a16z",
-          "at": "2026-11-05T15:42:00Z",
-          "quote": "And I believe you shouldn't delegate your thinking today."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc&t=1228s",
-          "kind": "podcast",
-          "label": "a16z (internal tools falling out of use)",
-          "at": "2026-11-05T15:42:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg",
-          "kind": "podcast",
-          "label": "No Priors",
-          "at": "2026-11-05T11:12:00Z",
-          "quote": "We are seeing very strong adoption: over 150,000 clients have opened agent trading accounts with us in the few months since launch."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=1759s",
-          "kind": "podcast",
-          "label": "No Priors",
-          "at": "2026-11-05T11:12:00Z",
-          "quote": "And if you look at the tool calls, they follow a smooth exponential, where the last number we announced was around 30 million tool calls per day ."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=v-d1WTqIULs",
-          "kind": "podcast",
-          "label": "Latent Space (OpenAI finance)",
-          "at": "2026-10-31T03:21:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=KM3VQZKjpiY",
-          "kind": "podcast",
-          "label": "Latent Space (Arca)",
-          "at": "2026-10-31T16:17:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=iRMmPjunm3Q",
-          "kind": "podcast",
-          "label": "a16z (Eve)",
-          "at": "2026-10-30T14:44:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-01T06:51:00Z",
-          "change": "Thread created from finance and legal agent episodes; no market-moving news."
-        },
-        {
-          "at": "2026-11-03T03:03:00Z",
-          "change": "Resolved: quiet, low-importance thread; no new finance or legal agent news."
-        },
-        {
-          "at": "2026-11-05T12:49:00Z",
-          "change": "Reopened: No Priors says Robinhood has 150k agent-trading accounts and ~30M tool calls/day; Chain pitched for AI agents."
-        },
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "a16z Figma episode: guest introduced as CFO says finance is becoming a builder function; ~90% of internal agents fall away; do not delegate thinking."
-        }
-      ]
-    },
-    {
       "slug": "ai-math-and-physics-discovery-claims",
       "title": "Labs claim AI-made math and physics discoveries; experts hold back",
       "status": "developing",
@@ -736,6 +713,53 @@
         {
           "at": "2026-11-05T06:41:00Z",
           "change": "Anthropic: Claude-assisted 3D map of a bacterial vault particle; preprint submitted, function unknown, unaudited."
+        }
+      ]
+    },
+    {
+      "slug": "marvell-lumentum-optical-ai-deal",
+      "title": "Marvell's deal for Lumentum and the shift to optical AI connectivity",
+      "status": "resolved",
+      "importance": 4,
+      "first_seen": "2026-11-02T19:46:00Z",
+      "updated_at": "2026-11-10T03:00:00Z",
+      "now": "Marvell announced with its fiscal third-quarter results that it will combine with optical maker Lumentum, expecting over $1B of run-rate synergies. Reportedly it is all stock at 4.5 Marvell shares per Lumentum share, about $115B, closing in 2028. Both CEOs cite a $550B interconnect market. Terms come from one trader's posts.",
+      "changed": "No new developments for 7 days.",
+      "watch": "Merger 8-K and joint proxy: exchange ratio, breakup fee, antitrust review; whether Coherent and other optics names reprice as targets.",
+      "evidence": [
+        {
+          "url": "https://x.com/aleabitoreddit/status/2117229519178498541",
+          "kind": "twitter",
+          "label": "@aleabitoreddit on X (Marvell-Lumentum)",
+          "at": "2026-11-02T21:00:00Z"
+        },
+        {
+          "url": "https://x.com/njcAllocates/status/2117370511588204554",
+          "kind": "twitter",
+          "label": "@njcAllocates on X (stock moves)",
+          "at": "2026-11-02T21:00:00Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1835632/000119312526442714/",
+          "kind": "earnings",
+          "label": "Marvell Technology, Inc. (MRVL)",
+          "at": "2026-11-02T13:06:04Z",
+          "speaker": "Matt Murphy, Chairman and CEO of Marvell",
+          "quote": "AI infrastructure is undergoing a fundamental architectural shift toward optical connectivity, creating an opportunity that comes along once in a generation"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-02T19:46:00Z",
+          "change": "Thread created: Marvell announces combination with Lumentum, citing optical AI connectivity, over $1B synergies and a $550B market."
+        },
+        {
+          "at": "2026-11-02T21:46:00Z",
+          "change": "Traders report all-stock terms of 4.5:1, about $115B, 2028 close; both stocks fell sharply. Terms not yet in a company filing we hold."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Went quiet: resolved automatically after 7 days without an update."
         }
       ]
     },
