@@ -1,9 +1,43 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-10T02:53:00Z",
+  "updated_at": "2026-11-10T12:56:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "openai:FNTz0CdqL6g",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Kuken Industries searches 70 years of drawings in minutes",
+      "url": "https://www.youtube.com/watch?v=FNTz0CdqL6g",
+      "video_id": "FNTz0CdqL6g",
+      "audio_url": null,
+      "published_at": "2026-11-10T02:26:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-10T12:56:00Z",
+      "duration_s": 180,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 359,
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "We are working with our open AI partner, Recursive, to build a system that will allow anyone to quickly search for drawings . The role of Rikasim this time is to combine Kuko Kogyo's 70 years of data with AI technologies, including OpenAI. First, we developed a drawing search function .",
+          "at_s": 62,
+          "url": "https://www.youtube.com/watch?v=FNTz0CdqL6g&t=62s"
+        }
+      ],
+      "description": "Kuken Industries is using the OpenAI API to help engineers search 70 years of drawings in minutes. Built with Recursive, a Japanese AI startup and an official OpenAI partner, the system gives teams more time to mentor younger engineers and take on more demanding work. ➡️ Read how Kuken Industries is putting decades of engineering knowledge to work:"
+    },
     {
       "id": "big-technology:2mMI6iO6Qw4",
       "show_id": "big-technology",
@@ -26,8 +60,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-10T02:53:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Alex Kantrowitz is the host of Big Technology Podcast. Today he joins for a solo episode digging into the news that Nvidia CEO Jensen Huang, the head of the world’s second largest company and the backbone of the AI buildout, has admitted to an affair with a woman that U.S. intelligence believes is a Chinese spy. His board is unsure whether Nvidia‘s or U.S. state secrets were compromised, and has opened an investigation. So today, we dig into what happened"
@@ -53,8 +87,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-10T02:53:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Opus 5.5 is unlocking a step change in AI video editing, much like Opus 4.5 did for agentic coding. NLW breaks down the eight changes behind agentic video and the use cases knowledge workers should try first. Ideas range from concept videos and meeting highlights to self-updating videos and personalized sales demos. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -195,13 +229,44 @@
       "first_seen_at": "2026-11-09T19:04:00Z",
       "duration_s": 4207,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-10T02:53:00Z",
-        "attempts": 2
+        "available": true,
+        "source": "youtube_captions",
+        "words": 13308,
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 3
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "You're going to settle for $5,000 because that's what the RIAA is running this program at. It's $5,000 settlements to break even on the cost and to deter you and then you're going to go work at the pizza place for a semester, pay your bill and move on. Right. And I thought this can't be accomplishing a goal. Right?",
+          "at_s": 659,
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=659s"
+        },
+        {
+          "text": "And now we're in the age of AI and the friction to create might be going to zero. So there's even less scarcity because you can just horsepower an AI pop star into existence singing an AI song and you're going to there's going to be a glut of supply.",
+          "at_s": 1059,
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=1059s"
+        },
+        {
+          "text": "I mean, the entire recorded music business uh was $11 billion wholesale last year in the United States. The market cap of just one AI company, Yeah. right? Uh is, you know, $2 trillion.",
+          "at_s": 1560,
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=1560s"
+        },
+        {
+          "text": "Where you're going to say, \"You're going to kill us if you if the AI models flood YouTube with fake music, you're actually going to kill the supply of the data that you need.\" So, there's the there's the legal side and the business side.",
+          "at_s": 2765,
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=2765s"
+        },
+        {
+          "text": "And then under that, they're looking at the fact that already 90% of the recordings available on Spotify give like 10% of the revenue and 10% of the content gets 90% of the revenue because most of what's on there gets less than 10 listens or less than 100 listens, because all of this slop is just going on, which",
+          "at_s": 3417,
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3417s"
+        },
+        {
+          "text": "So, your gateway is DistroKid, TuneCore. It's the distributors. You know, are they using AI detection technology to determine that it's fully generated? You might not be able to use AI detection technology to say your song is 5% of this or music for attribution yet. But you can definitely use it to say this is fully generated AI.",
+          "at_s": 3716,
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3716s"
+        }
+      ],
       "description": "I was in college when Napster hit, and the RIAA instantly became the big villain because it was suing kids for downloading music. That was when I decided to go be a copyright lawyer, which set the rest of my career in motion — and Mitch Glazier was in the background as a young lawyer at the RIAA, on the other side of those cases. So part of me was very deeply, very genuinely surprised to discover just how much"
     },
     {
@@ -519,8 +584,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-10T02:53:00Z",
-        "attempts": 7
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 8
       },
       "excerpts": [],
       "description": "I’ve always enjoyed talking to security expert Alex Stamos because he’s so direct — and he doesn't mince words about how the multibillion dollar cybersecurity industry as we’ve known it is all but doomed thanks to the unrelenting, AI-boosted waves of hacks, breaches, and attacks. That much disruption means a lot of places where bad guys can get in while everyone else is left scrambling. Alex isn’t a doomer in the long run, but he does think we've got a"
@@ -6893,8 +6958,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "This talk explores recent advancements in neural sampling using diffusion models. I will begin by highlighting the shortcomings of prior methods and explaining how recent approaches, inspired by the success of data-driven paradigms, overcome these limitations. I will conclude by showcasing practical applications in materials science and reinforcement learning. Speaker bio: Denis Blessing is a fourth-year PhD candidate at the Karlsruhe Institute of Technology (KIT) and a 2025 Google PhD Fellowship recipient. His research focuses on scalable algorithms for approximate"
@@ -6921,8 +6986,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "David Vélez, founder and CEO of Nubank, joins Patrick O’Shaughnessy to discuss how he built a bank serving 140 million customers and why he believes the $10 trillion banking industry is still in the earliest stages of disruption. They explore Nubank’s extraordinary growth, the advantages of digital-first banking, and how AI could fundamentally transform financial services by reducing costs and democratizing access to financial advice. David also shares his predictions for the future of cash, stablecoins, and global currencies, Nubank’s"
@@ -7484,13 +7549,19 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 128,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "asr",
+        "words": 343,
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "When we use Gemini 4 in shadow AB testing on real world systems, we saw that it was able to find over two times more vulnerabilities than other baseline models while using less tokens. After we saw the incredible performance of Gemini 4 on short or right on tasks, we've also put it to the test for longer ones.",
+          "at_s": 25,
+          "url": "https://www.youtube.com/watch?v=ftkic7Tdpcg&t=25s"
+        }
+      ],
       "description": ""
     },
     {
@@ -7512,13 +7583,24 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 155,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 485,
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "After I received early access to Gemini 4 Argon, I've spun up more changes into Chromium in the last two weeks than I would typically do in a matter of months.",
+          "at_s": 1,
+          "url": "https://www.youtube.com/watch?v=LVEfFyijQ2c&t=1s"
+        },
+        {
+          "text": "Gemini 4 can kind of stand up 20 of these changes at a time that pass all the tests. That's kind of one of the clearest signs of the quality of the model itself. That a typical engineer might put out one change a day. 20 changes is 20 days of work.",
+          "at_s": 122,
+          "url": "https://www.youtube.com/watch?v=LVEfFyijQ2c&t=122s"
+        }
+      ],
       "description": ""
     },
     {
@@ -7540,13 +7622,19 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 150,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 379,
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "I've been using Gemini 4 to unlock insights from academic papers. At Isomorphic Labs, we're reimagining drug discovery by developing AI models with the mission to solve all disease. So the models we develop are very specialized for specific tasks. Whereas general models like Gemini 4, they're good at summarizing tasks.",
+          "at_s": 14,
+          "url": "https://www.youtube.com/watch?v=9jQA7IgPhBE&t=14s"
+        }
+      ],
       "description": ""
     },
     {
@@ -7568,13 +7656,19 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 104,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 246,
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "We just showed it a video of a human doing the task and we prompted Gemini 4 to run the Mojoku simulator and like practice and then we let it learn from experience, iterate, make mistakes and look at each video of what went wrong. And with experience of each trial, it's able to improve what it can do better.",
+          "at_s": 13,
+          "url": "https://www.youtube.com/watch?v=9PICEmtfpWU&t=13s"
+        }
+      ],
       "description": ""
     },
     {
@@ -7734,13 +7828,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 5993,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 18602,
+        "checked_at": "2026-11-10T12:56:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "You you said it's not going to be a trillion, it's going to be two trillion at a minimum in terms of cumulative compute buildout. And of course, now we're over that. You said before everybody was thinking about it that inference, right, compute was going to 1 billionx because of inference time reasoning and thinking.",
+          "at_s": 426,
+          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=426s"
+        },
+        {
+          "text": "And so you you went from you went from $20 million, let's say $10 million to 100 bucks. And we did that in 10 years. Yeah. Okay. And so um I fully expect meanwhile uh our ambition got so large that the models that we're training now 3 trillion, 10 trillion, 30 trillion, we're talking about gigantic models now.",
+          "at_s": 1175,
+          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=1175s"
+        },
+        {
+          "text": "We we did $10 billion in the first six months. We did $10 billion in the last year. Mhm. And that was our first $10 billion year. The year before that we did five. Yeah. Okay. And so it went five 10. Let's say we did 20. Yeah. Who knows? Yeah. So maybe the hundred was a little understated.",
+          "at_s": 1612,
+          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=1612s"
+        },
+        {
+          "text": "But we're also expanding the market beyond the CSPs. And outside of the CSPs, whether it's onrem or neo clouds, half of our business, our percentage of capex is probably what 80%. Yeah. And so and so between 40 half of our business being 40%, half of our business being 80%. And both of us growing doubling every year.",
+          "at_s": 3289,
+          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=3289s"
+        },
+        {
+          "text": "and we add up, you know, some of the inference labs, it's about $200 billion. Okay? Um, we need to see that double next year to 400 billion. We need to see it double the year after that to 800 billion, right? In order to get in the zip code of the payback on trillions of dollars of capex.",
+          "at_s": 3666,
+          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=3666s"
+        },
+        {
+          "text": "You said as to next year, demand for Nvidia's chips well over 100%. You guided to 70% revenue growth. You gave a a year forward look because you said supplies constrained. That's all I had at the time. That's right. Yeah. You said I got 18 months to work here. Right. You said you were very confident.",
+          "at_s": 4386,
+          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=4386s"
+        }
+      ],
       "description": ""
     },
     {
