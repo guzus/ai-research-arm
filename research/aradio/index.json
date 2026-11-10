@@ -1,9 +1,54 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-10T21:05:00Z",
+  "updated_at": "2026-11-10T21:25:00Z",
   "degraded": false,
-  "latest": "2026-11-10-2105",
+  "latest": "2026-11-10-2125",
   "bulletins": [
+    {
+      "id": "2026-11-10-2125",
+      "aired_at": "2026-11-10T21:25:00Z",
+      "headline": "CoreWeave Q3: revenue up more than $1B sequentially, double-digit adj. margins a quarter early, $9B prepayments incoming",
+      "path": "bulletins/2026-11-10/2125.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-10-2125.mp3",
+        "bytes": 948477,
+        "duration_s": 158.0,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 15.6,
+            "lines": [
+              0,
+              0
+            ]
+          },
+          {
+            "start_s": 17.45,
+            "end_s": 106.45,
+            "lines": [
+              1,
+              7
+            ]
+          },
+          {
+            "start_s": 107.9,
+            "end_s": 151.42,
+            "lines": [
+              8,
+              11
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "hyperscaler-capex-and-chip-selloff",
+        "anthropic-ipo-and-ai-funding",
+        "us-data-center-politics"
+      ],
+      "kinds": [
+        "earnings"
+      ]
+    },
     {
       "id": "2026-11-10-2105",
       "aired_at": "2026-11-10T21:05:00Z",

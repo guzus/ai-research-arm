@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "id": "2026-11-10-2125",
+  "aired_at": "2026-11-10T21:25:00Z",
+  "headline": "CoreWeave Q3: revenue up more than $1B sequentially, double-digit adj. margins a quarter early, $9B prepayments incoming",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's twenty-five past nine UTC on Tuesday, November tenth. This is ARA AI News, and CoreWeave has just put a first-party earnings print under the AI infrastructure boom."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "In the third-quarter filing, chief executive Michael Intrator called it a breakout quarter. He said revenue rose by more than one billion dollars sequentially, and adjusted operating margins reached double digits a quarter ahead of plan."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is a company exhibit, not a tweet and not the call. There is no first-party transcript yet, so we are reading the written release."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The funding line is what changes the picture. Intrator said growth is supported by financing backed by customer contracts, operating cash flow, and about nine billion dollars in customer prepayments and deposits expected in the next three months alone."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Nine billion dollars of customer cash inbound is not a podcast estimate. It is contracted demand showing up as prepayments and deposits, which is the opposite of a neocloud that cannot fund itself."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Last week on the Twenty VC podcast, a guest said CoreWeave debt was paying fifteen percent. This filing is CoreWeave answering in its own words."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "It does not settle the rest of the tape. Secondary eight-GPU boxes are still changing hands at five hundred fifty to six hundred fifty thousand dollars, and All-In had relayed a Wall Street Journal capex haircut to about one to one point six trillion dollars after the selloff."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Big Technology hosts also floated Anthropic exiting about five hundred eighteen billion dollars of compute commitments if the data centers cannot be built. That claim is still only on a podcast, while CoreWeave's nine billion is in a company filing."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The Anthropic IPO clock and the data-center votes did not move in this window. Kalshi still has December announcement odds down from nearly ninety percent to fifty-seven percent, and the siting fight is still thirty-eight or more jurisdictions plus the Texas permit freeze."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "What to watch next is the CoreWeave call, and whether that nine billion dollars actually posts over the next three months. On the other live threads, watch whether Kalshi keeps sliding, whether a filing appears in the New Mexico Meta suit, and what Texas does after the December grid audit."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "If the prepayments land, the demand side of this boom is real even as the siting side gets harder. That is the tension the board is holding tonight."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's twenty-five past nine UTC on Tuesday, November tenth. This is ARA AI News, and CoreWeave has just put a first-party earnings print under the AI infrastructure boom.",
+    "Speaker 2: [gong] [high_energy] In the third-quarter filing, chief executive Michael Intrator called it a breakout quarter. He said revenue rose by more than [emphasis]one billion dollars[/emphasis] sequentially, and adjusted operating margins reached double digits a quarter ahead of plan.",
+    "Speaker 1: That is a company exhibit, not a tweet and not the call. There is no first-party transcript yet, so we are reading the written release.",
+    "Speaker 2: The funding line is what changes the picture. Intrator said growth is supported by financing backed by customer contracts, operating cash flow, and about [emphasis]nine billion dollars[/emphasis] in customer prepayments and deposits expected in the next three months alone.",
+    "Speaker 1: Nine billion dollars of customer cash inbound is not a podcast estimate. It is contracted demand showing up as prepayments and deposits, which is the opposite of a neocloud that cannot fund itself.",
+    "Speaker 2: Last week on the Twenty VC podcast, a guest said CoreWeave debt was paying fifteen percent. This filing is CoreWeave answering in its own words.",
+    "Speaker 1: It does not settle the rest of the tape. Secondary eight-GPU boxes are still changing hands at five hundred fifty to six hundred fifty thousand dollars, and All-In had relayed a Wall Street Journal capex haircut to about one to one point six trillion dollars after the selloff.",
+    "Speaker 2: Big Technology hosts also floated Anthropic exiting about five hundred eighteen billion dollars of compute commitments if the data centers cannot be built. That claim is still only on a podcast, while CoreWeave's nine billion is in a company filing.",
+    "Speaker 1: [transition] The Anthropic IPO clock and the data-center votes did not move in this window. Kalshi still has December announcement odds down from nearly ninety percent to fifty-seven percent, and the siting fight is still thirty-eight or more jurisdictions plus the Texas permit freeze.",
+    "Speaker 2: What to watch next is the CoreWeave call, and whether that nine billion dollars actually posts over the next three months. On the other live threads, watch whether Kalshi keeps sliding, whether a filing appears in the New Mexico Meta suit, and what Texas does after the December grid audit.",
+    "Speaker 1: If the prepayments land, the demand side of this boom is real even as the siting side gets harder. That is the tension the board is holding tonight.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "hyperscaler-capex-and-chip-selloff",
+    "anthropic-ipo-and-ai-funding",
+    "us-data-center-politics"
+  ],
+  "threads": [
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "us-data-center-politics",
+      "title": "US data-center siting backlash after the midterms",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm",
+      "kind": "earnings",
+      "label": "CoreWeave, Inc. (CRWV)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/",
+      "kind": "earnings",
+      "label": "CoreWeave FY26Q3 8-K"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-10-2125.mp3",
+    "bytes": 948477,
+    "duration_s": 158.0,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 15.6,
+        "lines": [
+          0,
+          0
+        ]
+      },
+      {
+        "start_s": 17.45,
+        "end_s": 106.45,
+        "lines": [
+          1,
+          7
+        ]
+      },
+      {
+        "start_s": 107.9,
+        "end_s": 151.42,
+        "lines": [
+          8,
+          11
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 1,
+    "kinds": {
+      "earnings": 1
+    }
+  }
+}

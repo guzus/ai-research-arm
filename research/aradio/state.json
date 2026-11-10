@@ -1,8 +1,110 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-10T21:05:00Z",
-  "headline": "Kalshi: Anthropic IPO-by-December odds 90% to 57%; 38+ jurisdictions voted to restrict data centers",
+  "updated_at": "2026-11-10T21:25:00Z",
+  "headline": "CoreWeave Q3: revenue up more than $1B sequentially, double-digit adj. margins a quarter early, $9B prepayments incoming",
   "threads": [
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-10T21:25:00Z",
+      "now": "CoreWeave Q3 8-K: CEO Michael Intrator said revenue rose more than $1 billion sequentially and adjusted operating margins hit double digits a quarter ahead of plan, with about $9 billion in customer prepayments and deposits due in the next three months. Big Technology still floats Anthropic exiting $518 billion of compute commitments if data centers cannot be built; 8-GPU boxes at $550k-$650k.",
+      "changed": "CoreWeave Q3 8-K: CEO Intrator calls a breakout quarter, revenue up more than $1B sequentially, adj. operating margins in double digits a quarter early, about $9B customer prepayments and deposits in the next three months.",
+      "watch": "CoreWeave's earnings call and whether the $9B prepayments post; a filing that confirms remaining contracted backlog versus the 15% debt-cost claim.",
+      "evidence": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm",
+          "kind": "earnings",
+          "label": "CoreWeave, Inc. (CRWV)",
+          "at": "2026-11-10T21:05:53Z",
+          "speaker": "Michael Intrator, co-founder, chairman and chief executive officer of CoreWeave",
+          "quote": "This was a breakout quarter for CoreWeave, with revenue increasing by more than $1 billion sequentially and adjusted operating margins reaching double digits a quarter ahead of plan"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/",
+          "kind": "earnings",
+          "label": "CoreWeave FY26Q3 8-K",
+          "at": "2026-11-10T21:05:53Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=468s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (compute commitments)",
+          "at": "2026-11-10T17:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=779s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (lab revenue vs market cap)",
+          "at": "2026-11-10T17:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1938s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-11-07T20:24:00Z",
+          "quote": "When he says 550 to 650, he means $550,000 to $650,000 for one 8GPU server."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=2405s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution (GPU export rules)",
+          "at": "2026-11-07T20:24:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=3249s",
+          "kind": "podcast",
+          "label": "All-In Podcast (WSJ capex haircut)",
+          "at": "2026-11-07T18:24:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=5154s",
+          "kind": "podcast",
+          "label": "Latent Space (GPU debt markets)",
+          "at": "2026-11-07T03:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added."
+        },
+        {
+          "at": "2026-10-31T18:49:00Z",
+          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
+        },
+        {
+          "at": "2026-11-10T21:25:00Z",
+          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
+        }
+      ]
+    },
     {
       "slug": "anthropic-ipo-and-ai-funding",
       "title": "Anthropic's IPO filing and the race to fund the frontier labs",
@@ -117,103 +219,6 @@
         {
           "at": "2026-11-10T21:05:00Z",
           "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
-        }
-      ]
-    },
-    {
-      "slug": "hyperscaler-capex-and-chip-selloff",
-      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-10T21:05:00Z",
-      "now": "Big Technology hosts said trillions of public-company market cap rest on two labs with about $100 billion combined revenue, and that Anthropic might exit about $518 billion of compute commitments if data centers cannot be built. They argued banned sites force cuts to training, inference, or safety. Secondary 8-GPU boxes at $550k-$650k and the WSJ $1T-$1.6T capex haircut still stand.",
-      "changed": "Big Technology: hosts float Anthropic exiting about $518B compute commitments if data centers cannot be built; trillions of market cap vs two labs at about $100B combined revenue.",
-      "watch": "A company or filing confirmation of the $518B compute-commitment figure; whether those commitments are actually unwindable; whether secondary GPU prices hold.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=468s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (compute commitments)",
-          "at": "2026-11-10T17:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=779s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (lab revenue vs market cap)",
-          "at": "2026-11-10T17:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1938s",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution",
-          "at": "2026-11-07T20:24:00Z",
-          "quote": "When he says 550 to 650, he means $550,000 to $650,000 for one 8GPU server."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=2405s",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution (GPU export rules)",
-          "at": "2026-11-07T20:24:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=3249s",
-          "kind": "podcast",
-          "label": "All-In Podcast (WSJ capex haircut)",
-          "at": "2026-11-07T18:24:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=5154s",
-          "kind": "podcast",
-          "label": "Latent Space (GPU debt markets)",
-          "at": "2026-11-07T03:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=2298s",
-          "kind": "podcast",
-          "label": "20VC (Cerebras and CoreWeave drawdown)",
-          "at": "2026-11-09T14:34:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-05T15:42:00Z",
-          "quote": "Core weave debt is paying 15%."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture."
-        },
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added."
-        },
-        {
-          "at": "2026-10-31T18:49:00Z",
-          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped."
-        },
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
         }
       ]
     },
