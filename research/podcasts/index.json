@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-09T19:04:00Z",
+  "updated_at": "2026-11-10T02:53:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -26,11 +26,11 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-09T19:04:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 2
       },
       "excerpts": [],
-      "description": ""
+      "description": "Alex Kantrowitz is the host of Big Technology Podcast. Today he joins for a solo episode digging into the news that Nvidia CEO Jensen Huang, the head of the world’s second largest company and the backbone of the AI buildout, has admitted to an affair with a woman that U.S. intelligence believes is a Chinese spy. His board is unsure whether Nvidia‘s or U.S. state secrets were compromised, and has opened an investigation. So today, we dig into what happened"
     },
     {
       "id": "ai-daily-brief:M-o7viCDaBw",
@@ -53,11 +53,11 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-09T19:04:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 2
       },
       "excerpts": [],
-      "description": ""
+      "description": "Opus 5.5 is unlocking a step change in AI video editing, much like Opus 4.5 did for agentic coding. NLW breaks down the eight changes behind agentic video and the use cases knowledge workers should try first. Ideas range from concept videos and meeting highlights to self-updating videos and personalized sales demos. The AI Daily Brief helps you understand the most important news and discussions in AI."
     },
     {
       "id": "latent-space:v5IJwVnTxzg",
@@ -116,7 +116,7 @@
           "url": "https://www.youtube.com/watch?v=v5IJwVnTxzg&t=6245s"
         }
       ],
-      "description": ""
+      "description": "Our first deep dive with an AI data company. Handshake AI went from launch to roughly $1 billion in annualized gross revenue in about a year. What are frontier labs actually buying? Garrett Lord and the team open up the reinforcement learning environments behind their expert training data, from biology and investment banking to alignment. An AI agent found a way to earn credit for net income: open a new Excel tab and fill it with every number from one"
     },
     {
       "id": "20vc:KotQbLX8pOw",
@@ -198,11 +198,11 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-09T19:04:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 2
       },
       "excerpts": [],
-      "description": ""
+      "description": "I was in college when Napster hit, and the RIAA instantly became the big villain because it was suing kids for downloading music. That was when I decided to go be a copyright lawyer, which set the rest of my career in motion — and Mitch Glazier was in the background as a young lawyer at the RIAA, on the other side of those cases. So part of me was very deeply, very genuinely surprised to discover just how much"
     },
     {
       "id": "latent-space:dpY7YzZo4kE",
@@ -340,13 +340,44 @@
       "first_seen_at": "2026-11-07T23:54:00Z",
       "duration_s": 5177,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-09T19:04:00Z",
-        "attempts": 6
+        "available": true,
+        "source": "youtube_captions",
+        "words": 14700,
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 7
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "But we also find these models are very well calibrated. For example, um if a model assigns an 80% chance of a candidate winning across all of the elections where assigns a similar 80% chance, it is right around 80% of the time, which is essentially what you do to measure the calibration of these models.",
+          "at_s": 1311,
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1311s"
+        },
+        {
+          "text": "Our Thursday guest was Mike San Miguel of Luxer Technology, which came up in Bitcoin mining and now trades new and refurbished GPU servers. When he says 550 to 650, he means $550,000 to $650,000 for one 8GPU server. So what what is what is trading frequently? Um right now it's mostly B300s. Uh 300s are trading frequently. Yeah.",
+          "at_s": 1938,
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1938s"
+        },
+        {
+          "text": "Like, uh, I think they might be going down to 49% uh, I know typically 50% or more. um you you can't sell uh to companies at around 50% by by a Chinese entity. Do do they do this but you know a lot of Chinese entities will go through a Cayman Islands or BBI or whatever.",
+          "at_s": 2405,
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=2405s"
+        },
+        {
+          "text": "Then Pash turned to China and the pressure on American companies over their Chinese customers. Like for example, Oracle selling capacity to Tencent, $7 billion of capacity that was cancelled, right? So the National Security Infrastructure is pressuring these companies to cancel that, right? It's an American company doing business. It's outside China. They're not sending chips into China.",
+          "at_s": 2643,
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=2643s"
+        },
+        {
+          "text": "And so uh we run you know thousands of jobs here at theory ventures that are powered by AI agents. If you ask me what's the distribution of immediacy for those jobs? Well, I'll tell you okay maybe 5 to 10% is right now and maybe 40 to 60% is I'd like to see it before my next meeting.",
+          "at_s": 2937,
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=2937s"
+        },
+        {
+          "text": "Like you're going to get 50 million Patrick Collison. You're going to get 50 million Elon Musks. You're going to get like humans who give them capital to deploy. You're going to get agents coordinating investments into businesses built by agents for agents.",
+          "at_s": 4322,
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=4322s"
+        }
+      ],
       "description": "Nathan Labenz and Prakash Narayanan examine mounting evidence of rapid AI acceleration alongside guests Brian Zhou of Thoughtful, Mike San Miguel of Luxor Technology, and Bryan Bischof of Theory Ventures. The discussions unpack how frontier agents fared when trading real money on midterm election forecasts, the intense physical constraints and compliance rules shaping secondary GPU transactions, and how venture firms use thousands of agent runs to identify alpha. Anchored by METR's assessment and Anthropic's amended regulatory filings, the hosts explore"
     },
     {
@@ -488,8 +519,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-09T19:04:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": "I’ve always enjoyed talking to security expert Alex Stamos because he’s so direct — and he doesn't mince words about how the multibillion dollar cybersecurity industry as we’ve known it is all but doomed thanks to the unrelenting, AI-boosted waves of hacks, breaches, and attacks. That much disruption means a lot of places where bad guys can get in while everyone else is left scrambling. Alex isn’t a doomer in the long run, but he does think we've got a"
@@ -6627,13 +6658,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 3389,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9011,
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So 45% of that base is incredible growth , but if you start extrapolating, they would have to accelerate growth to reach the 100 billion mark. Even the 80 billion mark. Overall, if they take it, it seems like it was about 7% quarterly, oh, sorry, monthly growth. If you extrapolate this, they will receive about 75 billion in revenue.",
+          "at_s": 187,
+          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=187s"
+        },
+        {
+          "text": "Again, I don't want to downplay the fact that a company that made $4 billion in 2025 made $16.8 billion in the third quarter. Is n't that right? So, 3.6 times the revenue of the entire company in one quarter. But the thing is , it all depends on expectations and what level those expectations are at.",
+          "at_s": 404,
+          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=404s"
+        },
+        {
+          "text": "Well, this is where it gets so confusing, because 100...Oh, sorry. 100 billion, that's not 100 billion ARR , right? Is that really true? Is the expected ARR of 100 billion, meaning that in December you're showing, well, somewhere around $8.5 billion per month or something? Compared to that, what are the expectations for total revenue for 2026?",
+          "at_s": 680,
+          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=680s"
+        },
+        {
+          "text": "Meanwhile, Social Capital founder Chamath Palihapitiya raised the issue of a private credit bubble, adding a screenshot showing that CoreWeave's bond yield had reached 15%. Elon Musk replied: \"Oh, oh.\" CoreWeave shares have plummeted, data center-related companies have also fallen 10%, and now CoreWeave options trading volume has increased more than seven times compared to the 30- day average.",
+          "at_s": 1041,
+          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=1041s"
+        },
+        {
+          "text": "I still realize that I shouldn't build a business in the AI ​​cloud infrastructure space. I say this even though I work in AI. Don't trust me with $ 30 or $15 billion in debt to build a data center. But no one will trust that guy. I mean, I'm sorry. Sorry.",
+          "at_s": 1224,
+          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=1224s"
+        },
+        {
+          "text": "And as for the debt, again CoreWeave, it's just crazy, because the bonds, well, they were issued at 9.625%. They are currently trading at a yield of 15, or it seems it was as high as 16%. CoreCivic Bonds. So, CoreCivic is now paying them 15 cents for every dollar borrowed.",
+          "at_s": 1377,
+          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=1377s"
+        }
+      ],
       "description": ""
     },
     {
@@ -6655,13 +6717,44 @@
       "first_seen_at": "2026-10-31T10:34:00Z",
       "duration_s": 3786,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 13469,
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "What about agents today sounds crazy that you think will be incredibly common in 2 to 3 years? I mean, I think this memory layer for agents is still massively unsolved. I think one thing about agents that is is rare today but will be incredibly common in the next few years is is this memory layer.",
+          "at_s": 1745,
+          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=1745s"
+        },
+        {
+          "text": "Do you think providers will allow agent usage or not? I think the future is providers exposing their own agent and having people either interact with that agent or having people's horizontal agents interact with that agent. So my horizontal agent, sorry, I just understand this would interact with res's vertical agent. I think that's exactly right.",
+          "at_s": 2079,
+          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=2079s"
+        },
+        {
+          "text": "To me that number is so central because it is the fundamental determinant of Anthropics enterprise value. If that number goes to 5% then the $2 trillion IPO might be a little bit overpriced. If that number actually goes to 300% like it is in Mccor's case then it's dramatically underpriced.",
+          "at_s": 2620,
+          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=2620s"
+        },
+        {
+          "text": "Do you think in the next 12 months we'll have comparable US open source models? I think in the next 12 months we will absolutely have comparable open source uh US open source models. I think you look at uh everything that Nvidia is doing to kind of like uh work with the ecosystem.",
+          "at_s": 2777,
+          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=2777s"
+        },
+        {
+          "text": "I just think there's so much demand for it. Where would you not be investing today like I so I can give you some examples. I think the the customer support space is like wildly uninteresting. 20 providers all funded with over 100 million in the last 18 months. You got Salesforce and Atlassian and big incumbents there too.",
+          "at_s": 2966,
+          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=2966s"
+        },
+        {
+          "text": "They basically invented a new model category are associated with it and have a talented team that can execute on that. Does taking money from benchmark change the trajectory of a company? 100%. And I I I think Benchmark when when Miles and really the whole Benchmark partnership invested in us, it was me and Ankush.",
+          "at_s": 3371,
+          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=3371s"
+        }
+      ],
       "description": "Harrison Chase is the co-founder and CEO of LangChain, which helps developers build, test and deploy AI agents. Backed by Sequoia Capital, Benchmark and IVP, LangChain has announced approximately $160 million in funding with the last round at a $1.25BN valuation. The company works with 35% of the Fortune 500, has surpassed one billion open-source downloads and processes over one billion events daily through LangSmith. Timestamps: Intro What Is LangChain and Why Are Agents Still So Hard to Build? Why"
     },
     {
@@ -6685,8 +6778,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -6738,13 +6831,44 @@
       "first_seen_at": "2026-10-31T10:34:00Z",
       "duration_s": 4083,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 10542,
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "They all rely on large language models with pre- training, retraining, programming— in general, on this path of LLM development. Will I be the hundred thousandth researcher to take this same approach? Will this be the most effective use of my time and energy? Eventually, I realized that there was another direction that no one was looking at right now.",
+          "at_s": 310,
+          "url": "https://www.youtube.com/watch?v=L4SWQebqhek&t=310s"
+        },
+        {
+          "text": "Many people now work with reinforcement learning (RL) and language models (LLM) in this way: say, the agent should learn this problem, then this one, and then this one. And by following this path, we are actually leading the agent by the nose to a certain desired outcome. We do not use this approach.",
+          "at_s": 997,
+          "url": "https://www.youtube.com/watch?v=L4SWQebqhek&t=997s"
+        },
+        {
+          "text": "For example, regarding computer Go, I made a prediction, I think, 10 years before the problem was solved, and I guessed to within a year. I guessed with Starcraft, which we also bet on, and made a prediction on AlphaProof when I predicted exactly when IMO would be defeated. So, you are a kind of super forecaster.",
+          "at_s": 2119,
+          "url": "https://www.youtube.com/watch?v=L4SWQebqhek&t=2119s"
+        },
+        {
+          "text": "Apparently, MetNet was just such an example. This is a weather forecasting model that we did at the Google Brain office in Amsterdam together with Google Research, where we use a machine learning model for short-term weather forecasts, and it's significantly better than physics-based simulations, right? Physical simulations accumulated errors over time.",
+          "at_s": 2348,
+          "url": "https://www.youtube.com/watch?v=L4SWQebqhek&t=2348s"
+        },
+        {
+          "text": "So we are extremely lucky, and I even feel sorry for the startups that are now trying to get capacity, because it is becoming increasingly difficult. But yes, we have this cluster built on GPUs, right ? On Nvidia GPUs, which is a real blessing for us because it means we can easily do simulations, training, and inference.",
+          "at_s": 3232,
+          "url": "https://www.youtube.com/watch?v=L4SWQebqhek&t=3232s"
+        },
+        {
+          "text": "So part of my work at Google Brain after I left DeepMind to start the Google Brain office in Amsterdam was scaling to whole racks of TPUs, and that project was called Seed RL . It was really about how to best utilize TPUs for both inference and training, while keeping the environments as flexible as possible .",
+          "at_s": 3554,
+          "url": "https://www.youtube.com/watch?v=L4SWQebqhek&t=3554s"
+        }
+      ],
       "description": "David Silver spent two years building AlphaGo on human data. When he removed human data altogether building AlphaGo Zero, the AI surpassed AlphaGo in under two days. He left DeepMind to run that same bet in pursuit of superintelligence. David and Lasse Espeholt, co-founders of Ineffable Intelligence, explain their plan to build a “superlearner”—an agent that starts knowing nothing and discovers science, mathematics, and language for itself by direct experience instead of through a pre-training run. Silver argues that human-language"
     },
     {
@@ -6821,13 +6945,44 @@
       "first_seen_at": "2026-10-31T10:34:00Z",
       "duration_s": 2586,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 8938,
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "There's $80 billion. Yeah. 80. But more important than the number is the reason that David Ellison was able to buy Warner Brothers is that the last owner couldn't deal with the debt that he took on to buy the company. And that was a mere 43 or $50 billion depending on who was counting.",
+          "at_s": 388,
+          "url": "https://www.youtube.com/watch?v=rmdMbp8jCCw&t=388s"
+        },
+        {
+          "text": "He has backstopped the Warner Brothers deal by pledging to come up with 40 or 50 billion if he needs to. Um, and there is a question of like, all right, not only is Oracle sort of intimately tied into this new media company, Oracle is also entirely dependent on one AI company, Open AI company for its new plan.",
+          "at_s": 595,
+          "url": "https://www.youtube.com/watch?v=rmdMbp8jCCw&t=595s"
+        },
+        {
+          "text": "His job is to go do the unpleasant work of finding $6 billion in synergy. Because you are a corporate structure lover, you probably have noticed that while Enan Kre is co-CEO of Sky Dance, David Ellison is not the other co-CEO, David Ellison is the CEO. So at a minimum, we have a 1A and 1B thing.",
+          "at_s": 1358,
+          "url": "https://www.youtube.com/watch?v=rmdMbp8jCCw&t=1358s"
+        },
+        {
+          "text": "Number three, they're going to pay him $50 million this year. So, that will help solve some of those wounds. And I think everyone sort of acknowledges like he's effectively the COO of Sky Dance if you think about it. Um, you just give him a different title so it sounds better. There's some other shuffling under that to do.",
+          "at_s": 1498,
+          "url": "https://www.youtube.com/watch?v=rmdMbp8jCCw&t=1498s"
+        },
+        {
+          "text": "YouTube pays 55%. Everyone else pays everyone else pays zero, right? Pays 0%. But yeah, but like for a average creator on t on YouTube, you're getting effectively nothing. It is a great business model and the real's Tik Tok business model is much better than the YouTube one because they pay 0% for There's something there.",
+          "at_s": 2093,
+          "url": "https://www.youtube.com/watch?v=rmdMbp8jCCw&t=2093s"
+        },
+        {
+          "text": "I don't think uh Ted Sandos was playing 3D 4D chess here. I think they thought this was a good idea. I think the much more obvious answer is Wall Street hated the idea. Wall Street kept telling Netflix, \"We hate this. We hate this. Please don't spend $80 billion on this.\"",
+          "at_s": 2393,
+          "url": "https://www.youtube.com/watch?v=rmdMbp8jCCw&t=2393s"
+        }
+      ],
       "description": "Acquiring Warner Bros. never goes well for anyone. AOL failed, AT&T failed, and Discovery failed — although it did succeed in flipping the assets to David Ellison’s Skydance. So I’m talking to Peter Kafka, Business Insider chief correspondent and host of Channels, to see if Skydance has a chance at succeeding where nobody else has yet. Spoiler alert: Peter doesn’t think Skydance has a clear business plan, either. But he’s got some really good guesses about what might come next."
     },
     {
@@ -6849,13 +7004,44 @@
       "first_seen_at": "2026-10-31T10:34:00Z",
       "duration_s": 2225,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 5225,
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So connecting these agents, these isolated islands, is exactly what we've been working on for the last 18 months. We have also launched several open source projects. Agency is something we launched about a year ago with Google, Dell, Oracle, and many other players to solve the problem of finding agents.",
+          "at_s": 121,
+          "url": "https://www.youtube.com/watch?v=BHYTlgGB0iY&t=121s"
+        },
+        {
+          "text": "Therefore, the desire to make agents work together will become the de facto model for implementing agents in any large company. You will get agents from Salesforce, Cisco , Microsoft, and ServiceNow. By the way, these are all our partners with whom we work to join forces and solve business challenges that, for example, may arise at Cisco.",
+          "at_s": 277,
+          "url": "https://www.youtube.com/watch?v=BHYTlgGB0iY&t=277s"
+        },
+        {
+          "text": "Second, they achieved 98% accuracy. With two cognitive failures, it dropped to about 80%. This is where it starts to pile up. This accumulates, and with three failures it dropped to 16%. So, just three cognitive failures, and by the way, we've seen many, many , many of these failures. That's right.",
+          "at_s": 436,
+          "url": "https://www.youtube.com/watch?v=BHYTlgGB0iY&t=436s"
+        },
+        {
+          "text": "Let's say a $2 million deal goes through your system . You will have a sales agent . You will have a legal agent from Harvey or someone else. You will have a financial agent. There will be developers, SREs, and security agents—that's what people most often associate with agent systems, but that's just one type of them.",
+          "at_s": 714,
+          "url": "https://www.youtube.com/watch?v=BHYTlgGB0iY&t=714s"
+        },
+        {
+          "text": "So, you already have individual nodes capable of operating with 1000 qubits. And within 2 years, every public roadmap from some of these companies shows 10,000 qubits. So we see a path from 1,000 to 10,000 in the next 2 years. But, VJ, you're still a long way from 100,000 or a million qubits. Yes .",
+          "at_s": 1645,
+          "url": "https://www.youtube.com/watch?v=BHYTlgGB0iY&t=1645s"
+        },
+        {
+          "text": "And maybe, just maybe, Bitcoin will become worthless. What do you think will happen ? Well, I would say there's going to be paranoia, because this isn't science fiction, it's happening just like the moment with ChatGPT where everyone woke up and realized, \"Wow, Transformers are real.\"",
+          "at_s": 1775,
+          "url": "https://www.youtube.com/watch?v=BHYTlgGB0iY&t=1775s"
+        }
+      ],
       "description": "Vijoy Pandey is SVP and General Manager of Outshift by Cisco, Cisco's frontier technology incubation engine. Pandey joins Big Technology to discuss what happens when AI agents start working together, and why connected systems can become more consistent without becoming more correct. Tune in to hear why multi-agent performance can collapse even while the dashboard stays green, how bad assumptions spread as agents share context, and why Pandey believes connectivity alone isn't enough. We also cover why scale-out computing matters"
     },
     {
@@ -6877,13 +7063,44 @@
       "first_seen_at": "2026-10-31T10:34:00Z",
       "duration_s": 3535,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 11107,
+        "checked_at": "2026-11-10T02:53:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "It's it's it's really easy to make an app I always think with a current you know say better than 90% of apps out there today that's easy but in 5 years time that app will be better than 20%. It you know experience degrades as we have higher and higher standards to upgrade app experiences is really hard.",
+          "at_s": 325,
+          "url": "https://www.youtube.com/watch?v=_qRv_CveLik&t=325s"
+        },
+        {
+          "text": "How do I deal with the problems of humans interacting with agents? Agents operating on behalf of humans. Knowing what is AI and what is not AI touched content and is that a good thing or a bad thing. It's like one thing for AI to 100% generate a piece of text.",
+          "at_s": 573,
+          "url": "https://www.youtube.com/watch?v=_qRv_CveLik&t=573s"
+        },
+        {
+          "text": "Our job again is to apply AI on behalf of our customers. It's not to pick a model. It's to use the best model for the best job. Blending all the models for the best price for the customer and to get the outcome they want, right? Applying the AI is our job.",
+          "at_s": 1088,
+          "url": "https://www.youtube.com/watch?v=_qRv_CveLik&t=1088s"
+        },
+        {
+          "text": "You see they train them for like a million bucks and I'm like there's no way you trained this for a million bucks. You took someone's billion dollar model and tailored it if you want to think about it generically for a particular application. That's totally fine but that's not really training your own model I would say. Right?",
+          "at_s": 1401,
+          "url": "https://www.youtube.com/watch?v=_qRv_CveLik&t=1401s"
+        },
+        {
+          "text": "If 5 million people use a feature, I'm going to care a lot about cost. And in the middle, I usually have a fair bit of time to keep optimizing. What costs a lot today that you don't think will cost a lot in 5 years time? Model inference.",
+          "at_s": 1925,
+          "url": "https://www.youtube.com/watch?v=_qRv_CveLik&t=1925s"
+        },
+        {
+          "text": "Uh I know we saw Macar or Google, I forget who actually end up winning buying the S and Southwest. It was Spirit Spirit Airlines data, you know, 30 million bucks for a million emails and a bunch of other sort of corporate data.",
+          "at_s": 2453,
+          "url": "https://www.youtube.com/watch?v=_qRv_CveLik&t=2453s"
+        }
+      ],
       "description": "Mike Cannon-Brookes is the Co-Founder and CEO of Atlassian, the company behind Jira, Confluence, Trello and Loom. Atlassian generated $6.5BN in ARR in 2026, and serves more than 350,000 customers, including over 85% of the Fortune 500. Today, Mike is leading its expansion into enterprise AI through Rovo and the Teamwork Graph, connecting company knowledge with AI agents. Timestamps: Intro Do AI Agents Turn Traditional Software Into Just Databases? Why “Headless” Software Is a Brainless Bet Why Design Becomes More"
     },
     {
