@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 28,
+  "count": 29,
   "events": [
+    {
+      "file": "2026-11-10-CRWV-FY26Q3.md",
+      "date": "2026-11-10",
+      "ticker": "CRWV",
+      "period": "FY26Q3",
+      "issuer": "CoreWeave, Inc.",
+      "form": "8-K",
+      "accession": "0001769628-26-000461",
+      "transcript": false
+    },
     {
       "file": "2026-11-04-ARM-FY27Q2.md",
       "date": "2026-11-04",
