@@ -1,9 +1,326 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-10T12:56:00Z",
+  "updated_at": "2026-11-10T21:00:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "latent-space:bdIoODXsu8k",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Designing for Agents — Zeno Rocha, Resend",
+      "url": "https://www.youtube.com/watch?v=bdIoODXsu8k",
+      "video_id": "bdIoODXsu8k",
+      "audio_url": null,
+      "published_at": "2026-11-10T19:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-10T21:00:00Z",
+      "duration_s": 5153,
+      "transcript": {
+        "available": true,
+        "source": "asr",
+        "words": 15482,
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "So recent now is powering 4.3 million users as of this morning. We have all sorts of customers like Warner Bros, HBO, there was a Japanese gang that recently came, they brought like maybe 20,000 domains at recent, like those are 20,000 different TLGs registered in different domain registrars and we are a 10 million AR company.",
+          "at_s": 12,
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=12s"
+        },
+        {
+          "text": "So recent now is powering 4.3 million users as of this morning. We have all sorts of customers like Warner Brothers, HBO. So customers that are really big and have all sorts of demands, but also a lot of indie hackers and folks who are just building a website, building their own application.",
+          "at_s": 212,
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=212s"
+        },
+        {
+          "text": "So my connection to this is I learned to code with Free Code Camp. Thank you. You can see Larsen and everything. Yeah. They have like five million subscribers on the newsletter. Yeah. Sent through Amazon SES for like $5,000 a month. Which is cheap. Cheap. I don't know how. I don't know what you will cost. One of that.",
+          "at_s": 1922,
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=1922s"
+        },
+        {
+          "text": "So let me just give the API, you do whatever you want. And with the MCP is just fascinating. Like every month, like, at least 2x growth and now in August. These numbers are even more. This was before the end of August, I think it was 1.2 million by the time it ended.",
+          "at_s": 2322,
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=2322s"
+        },
+        {
+          "text": "Like you can do only 90% of what your dashboard does. And that's one way of doing it. Or you can do 100. Getting to 100% coverage of what your dashboard can do is actually very, very difficult. 'Cause now you're doing usage, billing, team invites, account provisioning, deletion. Should that be exposed as an API or not?",
+          "at_s": 2627,
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=2627s"
+        },
+        {
+          "text": "What percent of your email goes to a G Suite? Or you know, like it was a market share, right? Like Google versus Outlook versus Apple versus Hotmail. Yeah. I don't have the number stuff on my head, but the vast majority. Like at least 60%, 60% Gmail.",
+          "at_s": 3270,
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=3270s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "cognitive-revolution:hqXYtqQq50g",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "The Neuron Basis: Goodfire's Curt Tigges on Agentic Interp, Monosemanticity & Reverse Engineering",
+      "url": "https://www.youtube.com/watch?v=hqXYtqQq50g",
+      "video_id": "hqXYtqQq50g",
+      "audio_url": null,
+      "published_at": "2026-11-10T19:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-10T21:00:00Z",
+      "duration_s": 6903,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "twiml:heE80uxOmus",
+      "show_id": "twiml",
+      "show": "The TWIML AI Podcast",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "How Canva Is Tackling AI Design’s Most Frustrating Problem",
+      "url": "https://www.youtube.com/watch?v=heE80uxOmus",
+      "video_id": "heE80uxOmus",
+      "audio_url": null,
+      "published_at": "2026-11-10T18:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-10T21:00:00Z",
+      "duration_s": 3421,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9964,
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "To get there, they've trained their own family of models using Canvas's design data and integrated those models right into their tools. Here's Stephano Kurazza, head of AI research at Canva, on what his team is trying to change. You have to build around iteration. AI will get 70% 80% there. I will never get to 100%.",
+          "at_s": 27,
+          "url": "https://www.youtube.com/watch?v=heE80uxOmus&t=27s"
+        },
+        {
+          "text": "We're like, okay, I have an image model. The image model creates an image. Then I have a next step an LLM looks at it and thinks oh we need to change something goes back to the image model and says hey can you make something different?",
+          "at_s": 422,
+          "url": "https://www.youtube.com/watch?v=heE80uxOmus&t=422s"
+        },
+        {
+          "text": "uh like the GPT2.5 image models are really really good at consistency between uh revisions, but it does strike me that if you could change the scene graph and move the thing over or make the thing bigger and not, you know, have to rerender that that would help with consistency as you're trying to move things around. Like 100%.",
+          "at_s": 760,
+          "url": "https://www.youtube.com/watch?v=heE80uxOmus&t=760s"
+        },
+        {
+          "text": "uh and we are seeing also a lot of other models also video models that leverage you know LLM as an input to create that uh structured data like the minimax H3 is another model that is has a similar approach even though it's a it's a video model but we are seeing the size of the basically uh vision",
+          "at_s": 1188,
+          "url": "https://www.youtube.com/watch?v=heE80uxOmus&t=1188s"
+        },
+        {
+          "text": "I I'm I'm not going to like forecast that AI inference is going to be as cheap as storage, but we have seen we have seen what happened with storage at the beginning.",
+          "at_s": 2535,
+          "url": "https://www.youtube.com/watch?v=heE80uxOmus&t=2535s"
+        },
+        {
+          "text": "You know this thing cost you now like a billion dollar and if I do this optimization it's going to cost you you know onetenth of that right everybody gets it.",
+          "at_s": 2725,
+          "url": "https://www.youtube.com/watch?v=heE80uxOmus&t=2725s"
+        }
+      ],
+      "description": "In this episode, Stefano Corazza, head of AI research at Canva, joins us to explore how his team is building custom models and agents around iterative design workflows. We discuss the trade-offs between training models from scratch and adapting open weights models, and how proprietary design data supports specialization. Stefano explains how Craft separates layout planning from pixel generation and how Brush uses design tools and visual feedback to create and revise compositions. We examine the challenges of evaluating design"
+    },
+    {
+      "id": "big-technology:Ucs8Z7Q5Zuc",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "AI Stockpocalypse, Anthropic Nears RSI?, Prediction Markets vs. Pollsters",
+      "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc",
+      "video_id": "Ucs8Z7Q5Zuc",
+      "audio_url": null,
+      "published_at": "2026-11-10T17:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-10T21:00:00Z",
+      "duration_s": 3345,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 8570,
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Moreover, the somewhat pro-data center governor of Texas lost the race to the newly elected Democratic governor of Texas, who is very anti-data center. So, basically we've seen all the negative surveys about AI. Many people—from 23 to over 60 percent, depending on which poll you believe—said AI was crucial to their vote .",
+          "at_s": 215,
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=215s"
+        },
+        {
+          "text": "One could even assume that Anthropic will now be able to get out of its $518 billion computing capacity commitments, because if data centers can't be built, then perhaps it will be more profitable. I mean, it's kind of a 4D chess logic to all of this.",
+          "at_s": 468,
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=468s"
+        },
+        {
+          "text": "We have trillions of dollars in market capitalization of public companies whose stock prices are based on the performance expectations of essentially two companies with combined revenue of $100 billion . The potential of AI labs was so great that they led to a stimulated demand for AI chips, and this demand skyrocketed.",
+          "at_s": 779,
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=779s"
+        },
+        {
+          "text": "The only reason Anthropic was considered for a $2 trillion or $1.5 trillion valuation is the story surrounding them. And now that we see a lot of facts supporting this story, but again, if some of the supports are knocked out, then what to do? So what do you think will happen with this IPO? Oh my God.",
+          "at_s": 1517,
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1517s"
+        },
+        {
+          "text": "Over the past week, the probability that Anthropic will announce an IPO by December has fallen from nearly 90% to 57% on Kalshi, a huge shift. So what do you think? Do you think there's a chance that Anthropic will delay this, and if so, what will be the implications for the rest of the AI ​​field?",
+          "at_s": 1652,
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1652s"
+        },
+        {
+          "text": "So, Tarek Mansour, CEO of Kalshi, said that the favorites of the prediction markets won 479 of the first 487 races. That's 98%. And Nate Silver, a famous sociologist and former guest on the show, said: \"Oh, never mind.\" Polls and models pointed the way, as opposed to “ vibes” and narrow-minded insiders.",
+          "at_s": 3093,
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=3093s"
+        }
+      ],
+      "description": "Ranjan Roy from Margins is back for our weekly discussion of the latest tech news. We cover: 1) The midterms impact on AI 2) Why the market struggles to trade AI in a normal way 3) Will the AI vision ever be realized as planned after this week? 4) A simple theory of the case on the AI trade 5) If datacenters are banned, do AI labs make tradeoffs in training, inference, or safety? 6) Will Anthropic's IPO still go"
+    },
+    {
+      "id": "ai-daily-brief:TGDVsntuFd0",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Nvidia CEO Admits Cheating with Suspected Chinese Spy",
+      "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
+      "video_id": "TGDVsntuFd0",
+      "audio_url": null,
+      "published_at": "2026-11-10T15:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-10T21:00:00Z",
+      "duration_s": 1574,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "The Nvidia CEO’s admission of an affair with a woman US officials believe is a Chinese spy raises big questions about chip export policy, congressional scrutiny, and the AI build-out. NLW breaks down the New York Times reporting, the board investigation, the market whiplash, and the fight over China trade policy. In the headlines: falling Anthropic and OpenAI valuations, Microsoft ending an Oracle compute deal, and Google taking over a stalled Crusoe data center. The AI Daily Brief helps you"
+    },
+    {
+      "id": "a16z:s4lXP9IuHjk",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Why HubSpot’s Co-Founder Is Betting Against the SaaSpocalypse",
+      "url": "https://www.youtube.com/watch?v=s4lXP9IuHjk",
+      "video_id": "s4lXP9IuHjk",
+      "audio_url": null,
+      "published_at": "2026-11-10T15:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-10T21:00:00Z",
+      "duration_s": 3547,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 10427,
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "And, you know, the second mistake that entrepreneurs make is they feel the need to start with a huge market, like, \"Oh, this could be a $100 billion business.\" It's great that you have ambition, but tell me what you're going to do in the first 30 days. What exactly are you going to focus on?",
+          "at_s": 564,
+          "url": "https://www.youtube.com/watch?v=s4lXP9IuHjk&t=564s"
+        },
+        {
+          "text": "This was probably a couple of years before the IPO. So, about five or six years after the company was founded, we just wanted to see what CRMs they were using, and we found that 20% were using salesforce.com. Another 20% used some other CRM besides salesforce.com. Yes. But 60% did not use CRM at all. Yes.",
+          "at_s": 981,
+          "url": "https://www.youtube.com/watch?v=s4lXP9IuHjk&t=981s"
+        },
+        {
+          "text": "One of them is they can say, “We’re going to go directly to everyone on the planet and sell them tokens,” and they’re going to do it through consumer products. And they can also say, \" Okay, we'll go straight to Fortune 500 companies like JP Morgan and sell tokens directly to them.\"",
+          "at_s": 1673,
+          "url": "https://www.youtube.com/watch?v=s4lXP9IuHjk&t=1673s"
+        },
+        {
+          "text": "But if you look at ChatGPT, Cloud or something like that, they are actually a new OS. Yes. They are new browsers. This is the way people get value. And there will be companies like HubSpot that will join in, and that's what we saw at Dev Day last year, and continue to see—they will expand the capabilities of ChatGPT.",
+          "at_s": 2115,
+          "url": "https://www.youtube.com/watch?v=s4lXP9IuHjk&t=2115s"
+        },
+        {
+          "text": "For example, a few years ago I launched a product called agent.ai. Ugh. And agent.ai was a marketplace for AI agents. That was back then, a long time ago. It was one of those stories where I accidentally became Sam Altman's competitor. Although it was market-oriented, it was too horizontal. But it had two components.",
+          "at_s": 2814,
+          "url": "https://www.youtube.com/watch?v=s4lXP9IuHjk&t=2814s"
+        },
+        {
+          "text": "It seems like it was around 5.6 million, getting closer to 6 million, which is great. This year, as of August, we already had over 4 million . So this will be another record year. This is not just a one-time spike after which everything returns to normal. This is the number one factor that is extremely interesting.",
+          "at_s": 3092,
+          "url": "https://www.youtube.com/watch?v=s4lXP9IuHjk&t=3092s"
+        }
+      ],
+      "description": "As frontier AI labs expand into applications, where should startups build? a16z Partner Joe Schmidt joins HubSpot co-founder and CTO Dharmesh Shah to explore why the software opportunity is growing, and how founders can stay off the “Yellow Brick Road” the labs are racing down. Drawing on HubSpot’s evolution, Dharmesh explains why founders should start with a narrow market, learn quickly, and solve the whole customer problem. They discuss where application companies can build lasting value as models become infrastructure:"
+    },
+    {
+      "id": "hard-fork:jxCTX_AyZVc",
+      "show_id": "hard-fork",
+      "show": "Hard Fork",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Everything You Need to Know About the Jensen Huang Spy Story | Hard Fork",
+      "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc",
+      "video_id": "jxCTX_AyZVc",
+      "audio_url": null,
+      "published_at": "2026-11-10T14:30:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-10T21:00:00Z",
+      "duration_s": 1879,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Jensen Huang, the chief executive of Nvidia, has admitted to an affair with a top executive at the data center company Megaspeed — a woman going by the name of Alice Huang who the U.S. government alleges is a Chinese spy. On this special episode of Hard Fork, we sit down with Stephen Witt, who wrote Jensen Huang biography “The Thinking Machine.” We’ll dig into what you need to know about this spiraling scandal and what it means for A.I."
+    },
     {
       "id": "openai:FNTz0CdqL6g",
       "show_id": "openai",
@@ -60,8 +377,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-10T12:56:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Alex Kantrowitz is the host of Big Technology Podcast. Today he joins for a solo episode digging into the news that Nvidia CEO Jensen Huang, the head of the world’s second largest company and the backbone of the AI buildout, has admitted to an affair with a woman that U.S. intelligence believes is a Chinese spy. His board is unsure whether Nvidia‘s or U.S. state secrets were compromised, and has opened an investigation. So today, we dig into what happened"
@@ -87,8 +404,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-10T12:56:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Opus 5.5 is unlocking a step change in AI video editing, much like Opus 4.5 did for agentic coding. NLW breaks down the eight changes behind agentic video and the use cases knowledge workers should try first. Ideas range from concept videos and meeting highlights to self-updating videos and personalized sales demos. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -7243,13 +7560,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 2363,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7107,
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "And, as you noted, it takes 15 years to develop a drug. It costs $1.5 billion . About 50 million is usually spent on preclinical research, mouse studies, the molecule itself, and then over 1.4 billion goes to clinical trials. So, your point is correct, and besides, it's 2-3 years versus the next 12 years.",
+          "at_s": 752,
+          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=752s"
+        },
+        {
+          "text": "But I think we'll see 80% of what's possible come to fruition very quickly. You've been around for a while now since the release of Astra and DevDay. Is there anything about how people inside or outside the company are using new products or capabilities that surprises you?",
+          "at_s": 1093,
+          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=1093s"
+        },
+        {
+          "text": "One of OpenAI's strengths is that we have 1.2 billion ChatGPT users, as well as a leading business in coding and enterprise solutions . And no one else has both at the same time . So a big part of our strategy is to bring that together so that we're not competing on two fronts.",
+          "at_s": 1326,
+          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=1326s"
+        },
+        {
+          "text": "And I think the world we're moving into now—and we've already done this within OpenAI—every time a new model comes out , you have to use it to protect yourself, find vulnerabilities, and then fix them. For example, we took about 25% of our production engineers and said, \"All your projects are on hold. Now you're just doing security.\"",
+          "at_s": 1851,
+          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=1851s"
+        },
+        {
+          "text": "And say: \"we'll use 25 % of the engineers\" or, God forbid , \"we'll freeze the development of new features for a quarter until we fix what really needs to be fixed.\" This is not like the state the world has reached yet.",
+          "at_s": 2013,
+          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=2013s"
+        },
+        {
+          "text": "It's important to remember here that these models are very heterogeneous, right? There are areas where these AIs are clearly more capable than anyone today, right? Even GPT-4 knows much more than any human. But the thing that's so important, and I'm reminded, for example, of the story of why Steve Jobs added a pen to the iMac, right?",
+          "at_s": 2244,
+          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=2244s"
+        }
+      ],
       "description": ""
     },
     {
@@ -8106,13 +8454,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 3529,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9000,
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Openness Models This is what To do Trying . Over time Openness In models Levels To be formed That I think, The best there is Closed Models More Profit Will receive . Next to that In the position, To the border Nearby Models There will be.",
+          "at_s": 323,
+          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=323s"
+        },
+        {
+          "text": "Formally Not reaching . That is, Open model Creators, Model Functional Companies and For training Later Companies And so on. Categories There are. Customers Expecting Like Information Model To the creator Easily Return Not going. Also, They have many For users Serving Economic The scale, Skilled Action Or more No profit, So this Long time It will take.",
+          "at_s": 1203,
+          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=1203s"
+        },
+        {
+          "text": "Very Curious There is. Open AI (Open AI) Price Severely Reduced We have seen , GPT Or Astra-like Big Models Price next 3 For years Every 8 For months Half What is decreasing? Meaning? For this Calculations When doing, 4 Over the years Cost 1% It will be over, Jevons By contradiction For them High profit Is it available?",
+          "at_s": 1596,
+          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=1596s"
+        },
+        {
+          "text": "But, profit Purpose Too much Because, This Environments Better Created To publish Thousands Or Tens of thousands Dollars Investment Will do Companies Very little. Too much. I am that To the teachers Jokingly I was talking. . \"Yes, you are.\" This data One million For the dollar After selling Then Thesis \"Let's publish\" That I I said.",
+          "at_s": 1939,
+          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=1939s"
+        },
+        {
+          "text": "AI Profit Aimless Settings Many like this Things To do Can. A As a professor, My 15% of the time, My Students 40% of the time We Will do Jobs To document Spending Education For companies Difficult. So, here it is. Ours That the tasks Saying a Best policy and social As a service There will be.",
+          "at_s": 2548,
+          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=2548s"
+        },
+        {
+          "text": "There are some Small Details And secret Things Maybe, But they Bigger Doesn't change. Modern Structures and GPUs are changing, But a The best pre- Training Sample Create Skyscraper Cost Not required . So, a good Basic Sample You get One billion Dollars To spend Needed Not necessary That I think. You How much does it cost?",
+          "at_s": 2709,
+          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=2709s"
+        }
+      ],
       "description": ""
     },
     {
@@ -8134,13 +8513,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 1927,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 5810,
+        "checked_at": "2026-11-10T21:00:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Then I did the PhD in reinforcement learning at the MIT Media Lab. I really like building things and I'm very excited to be building um a cool startup make a maker with Owen and Grace. My name is Owen.",
+          "at_s": 79,
+          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=79s"
+        },
+        {
+          "text": "Um I don't know if you know this nano GPT benchmark they are running. It's basically asking you to retrain GPD2 which when it just came out is a very expensive model to train and takes weeks I think on multiple GPUs and right now people can train on single GPU within hours and that number has been shrinking constantly.",
+          "at_s": 704,
+          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=704s"
+        },
+        {
+          "text": "and and everybody wants to use the latest for example open weight model Kim 3 or whatever just coming out and they want to be able to serve it as efficiently as possible right so it's it's an economically extremely important problem right now just for the sake of discussion if if I if I wanted to make the inference",
+          "at_s": 1152,
+          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=1152s"
+        },
+        {
+          "text": "And so that's why from the very beginning we've tried to think of our basically entire company as a multi- aent system where humans are a kind of agent that's cohabitating with other AI agents. Can we at least reduce bounds?",
+          "at_s": 1325,
+          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=1325s"
+        },
+        {
+          "text": "So, if you use um I don't know benchmark accuracy, it's upward bounded by 100%. You're never going to see exponential improvement on that because eventually bottleneck 100%. So, so for a long time we had this question, how do we even know if something has ticked off right if we don't have the right metric?",
+          "at_s": 1450,
+          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=1450s"
+        },
+        {
+          "text": "You could get like a thousand times faster or a million times faster. But if it's only 20% of your orbital time you're only going to get 20% speed up. Right? So, so for for domains where you still need to move atoms that interact with physical world that's really slow um you're still going to be bottlenecked by that.",
+          "at_s": 1713,
+          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=1713s"
+        }
+      ],
       "description": ""
     },
     {
