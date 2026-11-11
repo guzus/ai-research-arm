@@ -1,8 +1,163 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-11T06:00:00Z",
-  "headline": "Nvidia's Huang admits Megaspeed affair; U.S. alleges a Chinese spy. Microsoft-Oracle unwind, Google-Crusoe in headlines",
+  "updated_at": "2026-11-11T09:54:00Z",
+  "headline": "OpenAI DevDay: 8 million Sites, Agents API, GPT-Live, hacking going to zero, and a 10,000-agent Euler claim",
   "threads": [
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-11T09:54:00Z",
+      "now": "At DevDay, OpenAI said the cost of hacking is going to basically zero. A security talk cited a 0.81% false-positive rate scanning its own code and a less than 1% rollback rate on Codex-written fixes, with 36% of findings duplicates. Codex Security Cloud is said to expose Daybreak-class models. The Nov 4 write-up still stands: 948 distinct Linux kernel LPE exploits at about $359 each.",
+      "changed": "DevDay: OpenAI says hacking cost is going to basically zero; Codex Security Cloud offers Daybreak-class models; 0.81% false positives and <1% patch rollbacks internally; Astra beat 5.6 Sol on PatchBench at less than half the cost.",
+      "watch": "Whether Daybreak-class models ship outside OpenAI; named CVEs from the internal scan; independent PatchBench numbers for Astra versus 5.6 Sol.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "The cost of hacking stuff is going to basically zero."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI&t=980s",
+          "kind": "video",
+          "label": "OpenAI DevDay (PatchBench)",
+          "at": "2026-11-11T01:18:00Z"
+        },
+        {
+          "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
+          "kind": "twitter",
+          "label": "OpenAI (A thousand fewer paths to root)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/OpenAI/status/2118119451401048497",
+          "kind": "twitter",
+          "label": "@OpenAI on X (cyber pipeline)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/SteveAIStudio/status/2117623501997932686",
+          "kind": "ticket",
+          "label": "@SteveAIStudio on X (OpenAI security sprint)",
+          "at": "2026-11-03T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/OpenAI/status/2117444048227123277",
+          "kind": "ticket",
+          "label": "@OpenAI on X (Cathedral Systems)",
+          "at": "2026-11-03T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/lhchavez/status/2117496522656841766",
+          "kind": "twitter",
+          "label": "@lhchavez on X (Replit advisory)",
+          "at": "2026-11-03T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/amasad/status/2117504072416890937",
+          "kind": "twitter",
+          "label": "@amasad on X (Replit CEO)",
+          "at": "2026-11-03T06:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
+        },
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
+        },
+        {
+          "at": "2026-11-02T08:14:00Z",
+          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
+        },
+        {
+          "at": "2026-11-03T06:41:00Z",
+          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "DevDay Codex Security: hacking cost going to zero; 0.81% false positives, <1% rollbacks; Daybreak-class models on Security Cloud; Astra ahead on PatchBench."
+        }
+      ]
+    },
+    {
+      "slug": "openai-devday-2026",
+      "title": "OpenAI's DevDay 2026 platform launches",
+      "status": "developing",
+      "importance": 5,
+      "first_seen": "2026-11-11T09:54:00Z",
+      "updated_at": "2026-11-11T09:54:00Z",
+      "now": "OpenAI's DevDay 2026: Sites already hosts 8 million sites, with over 70% of employees making their own. It launched an Agents API on the Codex harness, GPT-Live full-duplex voice, computer use over the API, and a plugin directory of 4,000. ChatGPT token entitlements can fund third-party products. A Codex agent ran about 1,000 hours; GPT-6 Sol was put at about $16 an hour.",
+      "changed": "DevDay sessions: 8 million Sites, Agents API, GPT-Live, 4,000 plugins, ChatGPT tokens usable in third-party apps, and a 1,000-hour Codex run priced at about $16/hour on GPT-6 Sol.",
+      "watch": "Whether Sites, the Agents API, GPT-Live and Codex Security Cloud are generally available, and a first-party recap that names GPT-6 Sol, 6.1 Sol and Daybreak.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=71s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "Now, even though Sites only shipped a couple months ago, we're already hosting 8 million Sites."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=562s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "Over those 1,000 hours, the agent made just under half a million tool calls."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=1467s",
+          "kind": "video",
+          "label": "OpenAI DevDay (Codex pricing)",
+          "at": "2026-11-11T01:18:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=449s",
+          "kind": "video",
+          "label": "OpenAI DevDay (Agents API)",
+          "at": "2026-11-11T01:18:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jDxKzlGLCas",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "GPT Live is a full duplex voice model, meaning unlike other voice models which are architected around user and assistant turns, GPT Live is constantly streaming audio in and out."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=232s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "There are now 4,000 plugins in the directory."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "Created from DevDay 2026 talks: 8M Sites, Agents API, GPT-Live, 4,000 plugins, token entitlements, and a 1,000-hour Codex CI run at about $16/hour."
+        }
+      ]
+    },
     {
       "slug": "hyperscaler-capex-and-chip-selloff",
       "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
@@ -335,93 +490,174 @@
       ]
     },
     {
-      "slug": "ai-cyber-risk-and-key-theft",
-      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-05T06:41:00Z",
-      "now": "OpenAI says a five-stage scout-to-patch pipeline using an upcoming cyber model reproduced 1,724 Linux kernel bugs and produced 948 distinct root exploits for $1.213 million in API credits, about $359 per successful LPE, and is sending reports to maintainers. Wiz still reports nine AI developer platforms breached in October for stored API keys. OpenAI's Cathedral Systems sprint remains scheduled.",
-      "changed": "OpenAI's Nov 4 write-up: 948 distinct Linux kernel local-privilege-escalation exploits at about $359 each; a July GPT-5.6 Sol run had found 166 unique LPEs for $513,690.",
-      "watch": "Named CVEs or kernel commits from this scan; whether OpenAI ships the cyber model; Cathedral sprint findings.",
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-10-31T14:48:00Z",
+      "updated_at": "2026-11-11T09:54:00Z",
+      "now": "On a DevDay talk, OpenAI said an internal model and Codex found a solution with 10,000 agents, 2.7 million messages and about 130 billion output tokens, and that after an unforced Euler result in Navier-Stokes they diverted teams and solved it. That is an on-stage claim, not a paper. The ETH disproof still lacks reviewer certification; Anthropic's vault-particle preprint has not gone live.",
+      "changed": "DevDay: OpenAI says 10,000 agents and Codex produced a Navier-Stokes/unforced-Euler result; on-stage claim, no paper yet.",
+      "watch": "A paper or preprint for the Euler/Navier-Stokes claim; the bioRxiv vault-particle record; an expert verdict on OpenAI's ETH disproof.",
       "evidence": [
         {
-          "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
+          "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=1216s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "Here we used an internal model and Codex, and we found a solution with 10,000 agents working together."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=1362s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "In Navier Stokes, when we found the unforced Euler result, we diverted all the teams towards solving the problem, and by the end of it, we had solved the solution."
+        },
+        {
+          "url": "https://www.anthropic.com/research/investigating-vault-particles-with-claude",
           "kind": "twitter",
-          "label": "OpenAI (A thousand fewer paths to root)",
-          "at": "2026-11-05T06:00:00Z"
+          "label": "Anthropic (vault particles)",
+          "at": "2026-11-04T21:00:00Z"
         },
         {
-          "url": "https://x.com/OpenAI/status/2118119451401048497",
+          "url": "https://x.com/AnthropicAI/status/2118073665296228863",
           "kind": "twitter",
-          "label": "@OpenAI on X (cyber pipeline)",
-          "at": "2026-11-05T06:00:00Z"
+          "label": "@AnthropicAI on X (vault particle)",
+          "at": "2026-11-04T21:00:00Z"
         },
         {
-          "url": "https://x.com/SteveAIStudio/status/2117623501997932686",
-          "kind": "ticket",
-          "label": "@SteveAIStudio on X (OpenAI security sprint)",
-          "at": "2026-11-03T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/OpenAI/status/2117444048227123277",
-          "kind": "ticket",
-          "label": "@OpenAI on X (Cathedral Systems)",
-          "at": "2026-11-03T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/lhchavez/status/2117496522656841766",
-          "kind": "twitter",
-          "label": "@lhchavez on X (Replit advisory)",
-          "at": "2026-11-03T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/amasad/status/2117504072416890937",
-          "kind": "twitter",
-          "label": "@amasad on X (Replit CEO)",
-          "at": "2026-11-03T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/unusual_whales/status/2117345248074407981",
-          "kind": "twitter",
-          "label": "@unusual_whales on X (Bloomberg relay)",
-          "at": "2026-11-03T06:00:00Z"
-        },
-        {
-          "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/222715088/4f85e93f3a0b4991d5d73a09590320f8.mp3",
+          "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg",
           "kind": "podcast",
-          "label": "Interconnects (Black October essay)",
-          "at": "2026-10-30T17:36:00Z"
+          "label": "Lex Fridman Podcast #503",
+          "at": "2026-10-26T15:14:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=IRJDwtAreB4",
+          "kind": "podcast",
+          "label": "Machine Learning Street Talk",
+          "at": "2026-10-26T15:14:00Z"
+        },
+        {
+          "url": "https://x.com/OwenGregorian/status/2116491977319383467",
+          "kind": "ticket",
+          "label": "OpenAI discoveries ticket (StudyFinds via X)",
+          "at": "2026-10-31T00:00:00Z"
         }
       ],
       "history": [
         {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
-        },
-        {
           "at": "2026-10-31T14:48:00Z",
-          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
+          "change": "ETH disproof reviewers disclaim certification; verdict still pending."
         },
         {
-          "at": "2026-10-31T21:56:00Z",
-          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
-        },
-        {
-          "at": "2026-11-02T08:14:00Z",
-          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
-        },
-        {
-          "at": "2026-11-03T06:41:00Z",
-          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
+          "at": "2026-11-01T23:55:00Z",
+          "change": "Lex Fridman and MLST transcripts add context: Lean-checked Erdos results, guests favouring human-AI collaboration over AI-only maths."
         },
         {
           "at": "2026-11-05T06:41:00Z",
-          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
+          "change": "Anthropic: Claude-assisted 3D map of a bacterial vault particle; preprint submitted, function unknown, unaudited."
+        },
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Went quiet: no new math or physics discovery claims since November fifth; ETH and bioRxiv watches unmet."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "Reopened: DevDay architecture talk claims a Navier-Stokes/unforced-Euler result from 10,000 agents, 2.7M messages, ~130B output tokens."
+        }
+      ]
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-11-01T15:32:00Z",
+      "updated_at": "2026-11-11T09:54:00Z",
+      "now": "DevDay treated GPT-6 Astra as shipping: dozens of tools for hours or days, plus computer-use over the API. GPT-6 Sol was said to cut a six-week Codex CI run from about $32 to $16 an hour; 6.1 Sol is called more token-efficient. Qwen 4 is still unconfirmed. AI Explained says it read a 264-page Fable 5.2 report and a 30-page METR RSI paper.",
+      "changed": "DevDay: GPT-6 Astra using tools for hours or days and computer-use API; GPT-6 Sol about $16/hour; 6.1 Sol more efficient. AI Explained covers Fable 5.2 and a METR RSI report.",
+      "watch": "A first-party OpenAI page that names GPT-6 Sol, 6.1 Sol and Astra API access; the Fable 5.2 report itself; a Qwen 4 confirmation from Alibaba.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=119s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "GPT-6 Astra, on the other hand, can use dozens of tools effectively for hours or days on end."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=1467s",
+          "kind": "video",
+          "label": "OpenAI DevDay (GPT-6 Sol pricing)",
+          "at": "2026-11-11T01:18:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=583ThJIqQ7k",
+          "kind": "podcast",
+          "label": "AI Explained (Fable 5.2)",
+          "at": "2026-11-10T23:18:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=175s",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-05T21:00:00Z",
+          "quote": "The difference between them is about 430 Elo points."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast (Clocktower eval)",
+          "at": "2026-11-05T21:00:00Z"
+        },
+        {
+          "url": "https://openai.com/index/introducing-images-2-6/",
+          "kind": "twitter",
+          "label": "OpenAI (Introducing Images 2.6)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/OpenAI/status/2118124944928432327",
+          "kind": "twitter",
+          "label": "@OpenAI on X (Images 2.6)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://www.axios.com/2026/11/04/openai-pierre-computer-github",
+          "kind": "twitter",
+          "label": "Axios (OpenAI-Pierre)",
+          "at": "2026-11-04T14:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
+        },
+        {
+          "at": "2026-11-01T19:39:00Z",
+          "change": "Astra reportedly callable in Codex CLI; Mythos 5.5 string spotted on Anthropic's site. Both unconfirmed."
+        },
+        {
+          "at": "2026-11-02T16:29:00Z",
+          "change": "Two secondary accounts report Qwen powering Apple Intelligence in China: developer beta Nov 4, public in December. Unconfirmed by Apple or Alibaba."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "LongCat-2.5 relayed; DeepSeek V5 on Huawei Ascend reported by relay; Fable 5.5 ticket closed as unverified."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Images 2.6 live with GIFs; Qwen 4 and Astra still unconfirmed; Axios: OpenAI-Pierre, unverified."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Dwarkesh: GPT-6 Astro (Sept) leads Clocktower vs Opus 4.6 by about 430 Elo, about 92% win rate; a $20k API eval, not a lab announcement."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "DevDay treats GPT-6 Astra as shipping for hours-or-days tool use; GPT-6 Sol ~$16/hour, 6.1 Sol more efficient; AI Explained covers Fable 5.2."
         }
       ]
     },
@@ -502,105 +738,6 @@
         {
           "at": "2026-11-09T19:08:00Z",
           "change": "20VC: Mistral CEO says about 80% of token traffic is in-house and about 60% of revenue is Europe; host puts the company at $21B."
-        }
-      ]
-    },
-    {
-      "slug": "github-agent-era-software-stack",
-      "title": "GitHub rebuilds the software stack for coding agents",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-11-09T19:08:00Z",
-      "updated_at": "2026-11-10T21:05:00Z",
-      "now": "On Latent Space, a Resend guest said the email API has 4.3 million users as of this morning, 120,000 paid customers, and about $10 million of annual revenue, with MCP usage at least doubling monthly and 1.2 million by end of August as people work from Claude Desktop or Codex. The guest said B2B buyers now expect an official MCP. GitHub's 225 million developers and agent-workload rebuild still…",
-      "changed": "Latent Space: Resend at 4.3M users, 120k paid, about $10M annual revenue; MCP at least 2x monthly, 1.2M by end of August; official MCP now a B2B buying test.",
-      "watch": "Whether more B2B vendors ship an official MCP; Resend's next usage print; Copilot Fusion rollout and whether GitHub changes pull requests for agent sessions.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=12s",
-          "kind": "podcast",
-          "label": "Latent Space (Resend users)",
-          "at": "2026-11-10T19:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=212s",
-          "kind": "podcast",
-          "label": "Latent Space (Resend paid customers)",
-          "at": "2026-11-10T19:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=2322s",
-          "kind": "podcast",
-          "label": "Latent Space (Resend MCP growth)",
-          "at": "2026-11-10T19:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=71s",
-          "kind": "podcast",
-          "label": "Latent Space",
-          "at": "2026-11-08T01:22:00Z",
-          "quote": "They're now up to 225 million developers."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=260s",
-          "kind": "podcast",
-          "label": "Latent Space (GitHub commits and PRs)",
-          "at": "2026-11-08T01:22:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "Created: GitHub at 225M developers and 34.3B commits; CoreAI EVP says the next scale problem is agents."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Latent Space: Resend at 4.3M users, 120k paid, ~$10M AR; MCP at least 2x monthly, 1.2M by end of August; official MCP as a B2B test."
-        }
-      ]
-    },
-    {
-      "slug": "ai-music-vs-recorded-music",
-      "title": "AI music versus the recorded-music business",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-11-10T13:02:00Z",
-      "updated_at": "2026-11-10T13:02:00Z",
-      "now": "On Decoder, an RIAA guest said US recorded-music wholesale was $11 billion last year against one AI company's about $2 trillion market cap, and that Warner has partnered with Suno on a licensed model. The same conversation said about 90% of Spotify recordings already yield about 10% of revenue as generated tracks fill the catalog. The host said Google's position is that training is fair use.",
-      "changed": "Decoder's RIAA guest: US recorded music was $11B wholesale last year vs one AI firm ~$2T; Warner has a licensed Suno model; ~90% of Spotify recordings already yield ~10% of revenue.",
-      "watch": "Rulings in the training-as-fair-use cases; whether DistroKid and TuneCore add detection for fully generated tracks; whether more labels follow Warner into licensed-model deals.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=1560s",
-          "kind": "podcast",
-          "label": "Decoder with Nilay Patel",
-          "at": "2026-11-09T13:34:00Z",
-          "quote": "I mean, the entire recorded music business uh was $11 billion wholesale last year in the United States."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE",
-          "kind": "podcast",
-          "label": "Decoder with Nilay Patel",
-          "at": "2026-11-09T13:34:00Z",
-          "quote": "If that proliferates, then you don't get to sue the AI music companies because they made their models with licensed music, but you'll face a supply problem on platforms like Spotify."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3417s",
-          "kind": "podcast",
-          "label": "Decoder (Spotify catalog mix)",
-          "at": "2026-11-09T13:34:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3716s",
-          "kind": "podcast",
-          "label": "Decoder (DistroKid, TuneCore)",
-          "at": "2026-11-09T13:34:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-10T13:02:00Z",
-          "change": "Decoder transcript: RIAA guest cites $11B US wholesale vs ~$2T AI market cap, a Warner-Suno licensed model, and a 90/10 Spotify split as generated music floods catalogs."
         }
       ]
     },
@@ -691,151 +828,109 @@
       ]
     },
     {
-      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
-      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
-      "status": "developing",
+      "slug": "ai-music-vs-recorded-music",
+      "title": "AI music versus the recorded-music business",
+      "status": "resolved",
       "importance": 3,
-      "first_seen": "2026-11-01T15:32:00Z",
-      "updated_at": "2026-11-09T19:08:00Z",
-      "now": "On the Dwarkesh Podcast, the host said GPT-6 Astro was released in September 2026 and is the best model in Blood on the Clocktower, about 430 Elo ahead of Claude Opus 4.6 and winning about 92% of those games. He said OpenAI models gained about 580 Elo from GPT 5.4 to GPT 6 Astra in six months. OpenAI has not posted a first-party GPT-6.2 Astra note, and Qwen 4 is still unconfirmed.",
-      "changed": "Dwarkesh spent about $20,000 in API credits and says GPT-6 Astro, released in September, wins about 92% of Clocktower games against Opus 4.6, a 430 Elo gap.",
-      "watch": "A first-party OpenAI post that names GPT-6 Astra or GPT-6.2 Astra; a Qwen 4 confirmation from Alibaba.",
+      "first_seen": "2026-11-10T13:02:00Z",
+      "updated_at": "2026-11-11T09:54:00Z",
+      "now": "On Decoder, an RIAA guest said US recorded-music wholesale was $11 billion last year against one AI company's about $2 trillion market cap, and that Warner has partnered with Suno on a licensed model. The same conversation said about 90% of Spotify recordings already yield about 10% of revenue as generated tracks fill the catalog. The host said Google's position is that training is fair use.",
+      "changed": "No new music-industry facts in this run; the Decoder RIAA episode is absorbed.",
+      "watch": "Rulings in the training-as-fair-use cases; whether DistroKid and TuneCore add detection for fully generated tracks; whether more labels follow Warner into licensed-model deals.",
       "evidence": [
         {
-          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=175s",
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=1560s",
           "kind": "podcast",
-          "label": "Dwarkesh Podcast",
-          "at": "2026-11-05T21:00:00Z",
-          "quote": "The difference between them is about 430 Elo points."
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-09T13:34:00Z",
+          "quote": "I mean, the entire recorded music business uh was $11 billion wholesale last year in the United States."
         },
         {
-          "url": "https://www.youtube.com/watch?v=1NQwfImTseU",
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE",
           "kind": "podcast",
-          "label": "Dwarkesh Podcast (Clocktower eval)",
-          "at": "2026-11-05T21:00:00Z"
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-09T13:34:00Z",
+          "quote": "If that proliferates, then you don't get to sue the AI music companies because they made their models with licensed music, but you'll face a supply problem on platforms like Spotify."
         },
         {
-          "url": "https://openai.com/index/introducing-images-2-6/",
-          "kind": "twitter",
-          "label": "OpenAI (Introducing Images 2.6)",
-          "at": "2026-11-05T06:00:00Z"
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3417s",
+          "kind": "podcast",
+          "label": "Decoder (Spotify catalog mix)",
+          "at": "2026-11-09T13:34:00Z"
         },
         {
-          "url": "https://x.com/OpenAI/status/2118124944928432327",
-          "kind": "twitter",
-          "label": "@OpenAI on X (Images 2.6)",
-          "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://www.axios.com/2026/11/04/openai-pierre-computer-github",
-          "kind": "twitter",
-          "label": "Axios (OpenAI-Pierre)",
-          "at": "2026-11-04T14:00:00Z"
-        },
-        {
-          "url": "https://x.com/kimmonismus/status/2117966987888312763",
-          "kind": "twitter",
-          "label": "@kimmonismus on X (Pierre Computer)",
-          "at": "2026-11-04T14:00:00Z"
-        },
-        {
-          "url": "https://x.com/fableforge/status/2117624333656830210",
-          "kind": "ticket",
-          "label": "@fableforge on X (LongCat-2.5)",
-          "at": "2026-11-03T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/StarsLevels/status/2117622026554757616",
-          "kind": "ticket",
-          "label": "@StarsLevels on X (DeepSeek V5, Ascend)",
-          "at": "2026-11-03T00:00:00Z"
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3716s",
+          "kind": "podcast",
+          "label": "Decoder (DistroKid, TuneCore)",
+          "at": "2026-11-09T13:34:00Z"
         }
       ],
       "history": [
         {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
+          "at": "2026-11-10T13:02:00Z",
+          "change": "Decoder transcript: RIAA guest cites $11B US wholesale vs ~$2T AI market cap, a Warner-Suno licensed model, and a 90/10 Spotify split as generated music floods catalogs."
         },
         {
-          "at": "2026-11-01T19:39:00Z",
-          "change": "Astra reportedly callable in Codex CLI; Mythos 5.5 string spotted on Anthropic's site. Both unconfirmed."
-        },
-        {
-          "at": "2026-11-02T16:29:00Z",
-          "change": "Two secondary accounts report Qwen powering Apple Intelligence in China: developer beta Nov 4, public in December. Unconfirmed by Apple or Alibaba."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "LongCat-2.5 relayed; DeepSeek V5 on Huawei Ascend reported by relay; Fable 5.5 ticket closed as unverified."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Images 2.6 live with GIFs; Qwen 4 and Astra still unconfirmed; Axios: OpenAI-Pierre, unverified."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "Dwarkesh: GPT-6 Astro (Sept) leads Clocktower vs Opus 4.6 by about 430 Elo, about 92% win rate; a $20k API eval, not a lab announcement."
+          "at": "2026-11-11T09:54:00Z",
+          "change": "Resolved: Decoder episode absorbed; no new rulings or licensed-model deals in this inbox."
         }
       ]
     },
     {
-      "slug": "ai-math-and-physics-discovery-claims",
-      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "slug": "github-agent-era-software-stack",
+      "title": "GitHub rebuilds the software stack for coding agents",
       "status": "resolved",
       "importance": 3,
-      "first_seen": "2026-10-31T14:48:00Z",
-      "updated_at": "2026-11-11T06:00:00Z",
-      "now": "OpenAI's claimed ETH disproof still lacks reviewer certification. Anthropic says its science team, working with Claude, determined a 3D structure for a vault-like protein shell in prokaryotes, particles previously described only in plants and animals. Function is unknown; a preprint was submitted to bioRxiv. Anthropic says Claude sped the work and also made mistakes the team had to catch.",
-      "changed": "No new developments; the ETH disproof still lacks reviewer certification and Anthropic's vault-particle preprint has not gone live.",
-      "watch": "The bioRxiv record going live; an outside group reproducing the map; still waiting on an expert verdict on OpenAI's ETH claim.",
+      "first_seen": "2026-11-09T19:08:00Z",
+      "updated_at": "2026-11-11T09:54:00Z",
+      "now": "On Latent Space, a Resend guest said the email API has 4.3 million users as of this morning, 120,000 paid customers, and about $10 million of annual revenue, with MCP usage at least doubling monthly and 1.2 million by end of August as people work from Claude Desktop or Codex. The guest said B2B buyers now expect an official MCP. GitHub's 225 million developers and agent-workload rebuild still…",
+      "changed": "No new GitHub-specific facts; the live agent-platform news is OpenAI's DevDay slate.",
+      "watch": "Whether more B2B vendors ship an official MCP; Resend's next usage print; Copilot Fusion rollout and whether GitHub changes pull requests for agent sessions.",
       "evidence": [
         {
-          "url": "https://www.anthropic.com/research/investigating-vault-particles-with-claude",
-          "kind": "twitter",
-          "label": "Anthropic (vault particles)",
-          "at": "2026-11-04T21:00:00Z"
-        },
-        {
-          "url": "https://x.com/AnthropicAI/status/2118073665296228863",
-          "kind": "twitter",
-          "label": "@AnthropicAI on X (vault particle)",
-          "at": "2026-11-04T21:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg",
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=12s",
           "kind": "podcast",
-          "label": "Lex Fridman Podcast #503",
-          "at": "2026-10-26T15:14:00Z"
+          "label": "Latent Space (Resend users)",
+          "at": "2026-11-10T19:30:00Z"
         },
         {
-          "url": "https://www.youtube.com/watch?v=IRJDwtAreB4",
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=212s",
           "kind": "podcast",
-          "label": "Machine Learning Street Talk",
-          "at": "2026-10-26T15:14:00Z"
+          "label": "Latent Space (Resend paid customers)",
+          "at": "2026-11-10T19:30:00Z"
         },
         {
-          "url": "https://x.com/OwenGregorian/status/2116491977319383467",
-          "kind": "ticket",
-          "label": "OpenAI discoveries ticket (StudyFinds via X)",
-          "at": "2026-10-31T00:00:00Z"
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=2322s",
+          "kind": "podcast",
+          "label": "Latent Space (Resend MCP growth)",
+          "at": "2026-11-10T19:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=71s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-08T01:22:00Z",
+          "quote": "They're now up to 225 million developers."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=260s",
+          "kind": "podcast",
+          "label": "Latent Space (GitHub commits and PRs)",
+          "at": "2026-11-08T01:22:00Z"
         }
       ],
       "history": [
         {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "ETH disproof reviewers disclaim certification; verdict still pending."
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Created: GitHub at 225M developers and 34.3B commits; CoreAI EVP says the next scale problem is agents."
         },
         {
-          "at": "2026-11-01T23:55:00Z",
-          "change": "Lex Fridman and MLST transcripts add context: Lean-checked Erdos results, guests favouring human-AI collaboration over AI-only maths."
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Latent Space: Resend at 4.3M users, 120k paid, ~$10M AR; MCP at least 2x monthly, 1.2M by end of August; official MCP as a B2B test."
         },
         {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Anthropic: Claude-assisted 3D map of a bacterial vault particle; preprint submitted, function unknown, unaudited."
-        },
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "Went quiet: no new math or physics discovery claims since November fifth; ETH and bioRxiv watches unmet."
+          "at": "2026-11-11T09:54:00Z",
+          "change": "Resolved: GitHub 225M-developer print and Resend MCP numbers absorbed; DevDay now carries the agent-platform story."
         }
       ]
     },

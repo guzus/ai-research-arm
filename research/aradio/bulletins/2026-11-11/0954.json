@@ -1,0 +1,274 @@
+{
+  "schema": 1,
+  "id": "2026-11-11-0954",
+  "aired_at": "2026-11-11T09:54:00Z",
+  "headline": "OpenAI DevDay: 8 million Sites, Agents API, GPT-Live, hacking going to zero, and a 10,000-agent Euler claim",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's just before ten UTC on Wednesday, November eleventh. This is ARA AI News, and the picture just flipped to OpenAI's developer conference."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "At DevDay, OpenAI said Sites shipped only a couple of months ago and is already hosting eight million sites, with more than seventy percent of its own employees making them."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The same slate launched an Agents API as a managed Codex harness, computer use over the API, and GPT Live, a full-duplex voice model that listens and speaks at the same time."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "OpenAI put the plugin directory at four thousand, and said eligible users can bring ChatGPT token entitlements into a third-party product so the subscription pays for someone else's tool."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "One internal Codex job ran about a thousand hours on continuous integration, with just under half a million tool calls and more than five thousand eight hundred sub-agent sessions."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The company said that run worked out to about thirty-two dollars an hour for six weeks, then sixteen dollars an hour once GPT six Sol landed last week. GPT six point one Sol was called even more token-efficient."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The security session was blunter. OpenAI said the cost of hacking stuff is going to basically zero, and that the latest models have found thousands of latent vulnerabilities in software people depend on every day."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Scanning its own code, the company cited a zero point eight one percent false-positive rate and a less than one percent rollback rate on Codex-written fixes, with thirty-six percent of findings called duplicates."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Codex Security Cloud is the product wrap, and OpenAI said it exposes Daybreak class models built for that work. That continues the cyber thread from the November kernel-exploit pipeline."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On stage, GPT six Astra was treated as shipping, able to use dozens of tools for hours or days. AI Explained separately says it has read a two hundred sixty-four page Fable five point two report and a thirty-page METR paper on recursive self-improvement."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The architecture talk went further. OpenAI said an internal model and Codex found a result with ten thousand agents, two point seven million messages, and about one hundred thirty billion output tokens."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "It then said that after an unforced Euler result in Navier-Stokes, the teams were diverted and the problem was solved. That is an on-stage claim with no paper in our inbox, so the discovery thread is open again."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Two quieter storylines are now settled for the board: the Decoder episode on AI versus recorded music, and GitHub's agent-era software-stack print. The live platform story this hour is OpenAI's."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch for a first-party recap that names GPT six Sol, Daybreak, and general availability for Sites, the Agents API, and GPT Live, and for a preprint that can actually be read on that Euler claim."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's just before ten UTC on Wednesday, November eleventh. This is ARA AI News, and the picture just flipped to OpenAI's developer conference.",
+    "Speaker 2: [high_energy] At DevDay, OpenAI said Sites shipped only a couple of months ago and is already hosting [emphasis]eight million[/emphasis] sites, with more than seventy percent of its own employees making them.",
+    "Speaker 1: The same slate launched an Agents API as a managed Codex harness, computer use over the API, and GPT Live, a full-duplex voice model that listens and speaks at the same time.",
+    "Speaker 2: OpenAI put the plugin directory at four thousand, and said eligible users can bring ChatGPT token entitlements into a third-party product so the subscription pays for someone else's tool.",
+    "Speaker 1: One internal Codex job ran about a thousand hours on continuous integration, with just under half a million tool calls and more than five thousand eight hundred sub-agent sessions.",
+    "Speaker 2: The company said that run worked out to about thirty-two dollars an hour for six weeks, then [emphasis]sixteen dollars an hour[/emphasis] once GPT six Sol landed last week. GPT six point one Sol was called even more token-efficient.",
+    "Speaker 1: [transition] The security session was blunter. OpenAI said the cost of hacking stuff is going to basically zero, and that the latest models have found thousands of latent vulnerabilities in software people depend on every day.",
+    "Speaker 2: Scanning its own code, the company cited a zero point eight one percent false-positive rate and a less than one percent rollback rate on Codex-written fixes, with thirty-six percent of findings called duplicates.",
+    "Speaker 1: Codex Security Cloud is the product wrap, and OpenAI said it exposes Daybreak class models built for that work. That continues the cyber thread from the November kernel-exploit pipeline.",
+    "Speaker 2: [transition] On stage, GPT six Astra was treated as shipping, able to use dozens of tools for hours or days. AI Explained separately says it has read a two hundred sixty-four page Fable five point two report and a thirty-page METR paper on recursive self-improvement.",
+    "Speaker 1: [transition] The architecture talk went further. OpenAI said an internal model and Codex found a result with [emphasis]ten thousand[/emphasis] agents, two point seven million messages, and about one hundred thirty billion output tokens.",
+    "Speaker 2: It then said that after an unforced Euler result in Navier-Stokes, the teams were diverted and the problem was solved. That is an on-stage claim with no paper in our inbox, so the discovery thread is open again.",
+    "Speaker 1: Two quieter storylines are now settled for the board: the Decoder episode on AI versus recorded music, and GitHub's agent-era software-stack print. The live platform story this hour is OpenAI's.",
+    "Speaker 2: Watch for a first-party recap that names GPT six Sol, Daybreak, and general availability for Sites, the Agents API, and GPT Live, and for a preprint that can actually be read on that Euler claim.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "openai-devday-2026",
+    "ai-cyber-risk-and-key-theft",
+    "next-model-launches-qwen-4-gpt-6-2-astra",
+    "ai-math-and-physics-discovery-claims",
+    "ai-music-vs-recorded-music",
+    "github-agent-era-software-stack"
+  ],
+  "threads": [
+    {
+      "slug": "openai-devday-2026",
+      "title": "OpenAI's DevDay 2026 platform launches",
+      "status": "developing"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating"
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing"
+    },
+    {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "developing"
+    },
+    {
+      "slug": "ai-music-vs-recorded-music",
+      "title": "AI music versus the recorded-music business",
+      "status": "resolved"
+    },
+    {
+      "slug": "github-agent-era-software-stack",
+      "title": "GitHub rebuilds the software stack for coding agents",
+      "status": "resolved"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=71s",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=562s",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=1467s",
+      "kind": "video",
+      "label": "OpenAI DevDay (Codex pricing)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=449s",
+      "kind": "video",
+      "label": "OpenAI DevDay (Agents API)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=jDxKzlGLCas",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=232s",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=gUQN7juxvVI",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=gUQN7juxvVI&t=980s",
+      "kind": "video",
+      "label": "OpenAI DevDay (PatchBench)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=119s",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=583ThJIqQ7k",
+      "kind": "podcast",
+      "label": "AI Explained (Fable 5.2)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=1216s",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=1362s",
+      "kind": "video",
+      "label": "OpenAI"
+    }
+  ],
+  "ops": [
+    {
+      "op": "resolve",
+      "slug": "ai-music-vs-recorded-music"
+    },
+    {
+      "op": "resolve",
+      "slug": "github-agent-era-software-stack"
+    },
+    {
+      "op": "create",
+      "slug": "openai-devday-2026"
+    },
+    {
+      "op": "update",
+      "slug": "ai-cyber-risk-and-key-theft"
+    },
+    {
+      "op": "update",
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra"
+    },
+    {
+      "op": "update",
+      "slug": "ai-math-and-physics-discovery-claims"
+    }
+  ],
+  "warnings": [
+    "ops[2] create openai-devday-2026 evidence[0]: label set to the source's name because the evidence carries a quote",
+    "ops[2] create openai-devday-2026 evidence[1]: label set to the source's name because the evidence carries a quote",
+    "ops[2] create openai-devday-2026 evidence[4]: label set to the source's name because the evidence carries a quote",
+    "ops[2] create openai-devday-2026 evidence[5]: label set to the source's name because the evidence carries a quote",
+    "ops[3] update ai-cyber-risk-and-key-theft evidence[0]: label set to the source's name because the evidence carries a quote",
+    "ops[4] update next-model-launches-qwen-4-gpt-6-2-astra evidence[0]: label set to the source's name because the evidence carries a quote",
+    "ops[5] update ai-math-and-physics-discovery-claims evidence[0]: label set to the source's name because the evidence carries a quote",
+    "ops[5] update ai-math-and-physics-discovery-claims evidence[1]: label set to the source's name because the evidence carries a quote"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-11-0954.mp3",
+    "bytes": 1090317,
+    "duration_s": 181.6,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 63.24,
+        "lines": [
+          0,
+          5
+        ]
+      },
+      {
+        "start_s": 64.69,
+        "end_s": 99.61,
+        "lines": [
+          6,
+          8
+        ]
+      },
+      {
+        "start_s": 101.06,
+        "end_s": 119.22,
+        "lines": [
+          9,
+          9
+        ]
+      },
+      {
+        "start_s": 120.67,
+        "end_s": 175.07,
+        "lines": [
+          10,
+          14
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 10,
+    "kinds": {
+      "podcast": 2,
+      "video": 8
+    }
+  }
+}

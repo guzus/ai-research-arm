@@ -1,9 +1,66 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-11T06:00:00Z",
+  "updated_at": "2026-11-11T09:54:00Z",
   "degraded": false,
-  "latest": "2026-11-11-0600",
+  "latest": "2026-11-11-0954",
   "bulletins": [
+    {
+      "id": "2026-11-11-0954",
+      "aired_at": "2026-11-11T09:54:00Z",
+      "headline": "OpenAI DevDay: 8 million Sites, Agents API, GPT-Live, hacking going to zero, and a 10,000-agent Euler claim",
+      "path": "bulletins/2026-11-11/0954.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-11-0954.mp3",
+        "bytes": 1090317,
+        "duration_s": 181.6,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 63.24,
+            "lines": [
+              0,
+              5
+            ]
+          },
+          {
+            "start_s": 64.69,
+            "end_s": 99.61,
+            "lines": [
+              6,
+              8
+            ]
+          },
+          {
+            "start_s": 101.06,
+            "end_s": 119.22,
+            "lines": [
+              9,
+              9
+            ]
+          },
+          {
+            "start_s": 120.67,
+            "end_s": 175.07,
+            "lines": [
+              10,
+              14
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "openai-devday-2026",
+        "ai-cyber-risk-and-key-theft",
+        "next-model-launches-qwen-4-gpt-6-2-astra",
+        "ai-math-and-physics-discovery-claims",
+        "ai-music-vs-recorded-music",
+        "github-agent-era-software-stack"
+      ],
+      "kinds": [
+        "podcast",
+        "video"
+      ]
+    },
     {
       "id": "2026-11-11-0600",
       "aired_at": "2026-11-11T06:00:00Z",
