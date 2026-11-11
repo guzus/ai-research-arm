@@ -1,9 +1,55 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-10T21:25:00Z",
+  "updated_at": "2026-11-11T06:00:00Z",
   "degraded": false,
-  "latest": "2026-11-10-2125",
+  "latest": "2026-11-11-0600",
   "bulletins": [
+    {
+      "id": "2026-11-11-0600",
+      "aired_at": "2026-11-11T06:00:00Z",
+      "headline": "Nvidia's Huang admits Megaspeed affair; U.S. alleges a Chinese spy. Microsoft-Oracle unwind, Google-Crusoe in headlines",
+      "path": "bulletins/2026-11-11/0600.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-11-0600.mp3",
+        "bytes": 962589,
+        "duration_s": 160.3,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 67.16,
+            "lines": [
+              0,
+              4
+            ]
+          },
+          {
+            "start_s": 68.61,
+            "end_s": 106.61,
+            "lines": [
+              5,
+              7
+            ]
+          },
+          {
+            "start_s": 108.06,
+            "end_s": 153.78,
+            "lines": [
+              8,
+              11
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "nvidia-jensen-huang-spy-allegations",
+        "hyperscaler-capex-and-chip-selloff",
+        "ai-math-and-physics-discovery-claims",
+        "anthropic-ipo-and-ai-funding"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-10-2125",
       "aired_at": "2026-11-10T21:25:00Z",
