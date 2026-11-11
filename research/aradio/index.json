@@ -1,9 +1,54 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-11T09:54:00Z",
+  "updated_at": "2026-11-11T18:08:00Z",
   "degraded": false,
-  "latest": "2026-11-11-0954",
+  "latest": "2026-11-11-1808",
   "bulletins": [
+    {
+      "id": "2026-11-11-1808",
+      "aired_at": "2026-11-11T18:08:00Z",
+      "headline": "Hard Fork: alleged Nvidia chip diversion via Malaysia, and Huang as a U.S. key-man risk; a16z on the GPU buildout",
+      "path": "bulletins/2026-11-11/1808.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-11-1808.mp3",
+        "bytes": 1045821,
+        "duration_s": 174.2,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 81.52,
+            "lines": [
+              0,
+              5
+            ]
+          },
+          {
+            "start_s": 82.97,
+            "end_s": 135.33,
+            "lines": [
+              6,
+              9
+            ]
+          },
+          {
+            "start_s": 136.78,
+            "end_s": 167.66,
+            "lines": [
+              10,
+              12
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "nvidia-jensen-huang-spy-allegations",
+        "hyperscaler-capex-and-chip-selloff",
+        "ai-agents-in-finance-and-law"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-11-0954",
       "aired_at": "2026-11-11T09:54:00Z",

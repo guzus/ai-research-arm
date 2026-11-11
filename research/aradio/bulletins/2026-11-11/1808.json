@@ -1,0 +1,201 @@
+{
+  "schema": 1,
+  "id": "2026-11-11-1808",
+  "aired_at": "2026-11-11T18:08:00Z",
+  "headline": "Hard Fork: alleged Nvidia chip diversion via Malaysia, and Huang as a U.S. key-man risk; a16z on the GPU buildout",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's just after six UTC on Wednesday, November eleventh. This is ARA AI News, and the picture has moved from this morning's Dev Day launches to Nvidia's chief executive."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Hard Fork, the show walked the New York Times story in spoken detail. Jensen Huang admitted an affair with a Megaspeed executive whom United States officials allege is a Chinese spy, and the show said her Singaporean data center company was reportedly illegally funneling advanced Nvidia chips to Chinese companies."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That chip claim is the new fact. The show said if ten to fifteen percent of Nvidia's revenue was coming from Malaysia, those chips were being distributed to China, because Malaysia did not have an AI program that size."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They also said Nvidia named that company a preferred cloud partner in twenty twenty-three. And they described data centers dressed to look live while the real Nvidia gear is wheeled out the back door toward China."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "None of that is a company filing. It is what Hard Fork said on air, and they called Huang a key-man risk not just for Nvidia but for the United States economy."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The show said he has been an outspoken advocate for selling chips directly to China against United States export restrictions. Watch for an Nvidia board statement, and for whether those Malaysia numbers appear anywhere but a podcast."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On A sixteen Z, a guest comparing this boom to Cisco's late nineties fiber buildout said Anthropic and OpenAI are ramping revenue far faster than anything in that era. They said G.P.U.s are more than eighty percent of the AI spend."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Demand is still so high, they said, that even Hopper H one hundreds get used, even though Vera Rubin converts electricity into dollars more efficiently. And only Nvidia and Google can ship you a full rack system today."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Google's T.P.U.s, they said, are not enough. CoreWeave's breakout third quarter still stands, with sequential revenue up more than a billion dollars and about nine billion dollars in customer prepayments due in three months."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch whether those prepayments actually post, and whether anyone besides A sixteen Z confirms that rack-scale split. The Microsoft Oracle unwind and the Google Crusoe takeover still sit on the board unconfirmed."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On The Cognitive Revolution, a guest said enterprise agents from names like Salesforce and Harvey are connected but not thinking together. One semantic misalignment dropped five agent accuracy from ninety-nine percent to ninety-eight, and two cognitive failures took it to eighty-one percent."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The same guest said frontier labs are decoupling the model from the harness, so you can run an open-source model on an OpenAI harness. That is a show claim, not a lab announcement."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's just after six UTC on Wednesday, November eleventh. This is ARA AI News, and the picture has moved from this morning's Dev Day launches to Nvidia's chief executive.",
+    "Speaker 2: [high_energy] On Hard Fork, the show walked the New York Times story in spoken detail. Jensen Huang admitted an affair with a Megaspeed executive whom United States officials allege is a Chinese spy, and the show said her Singaporean data center company was reportedly illegally funneling advanced Nvidia chips to Chinese companies.",
+    "Speaker 1: That chip claim is the new fact. The show said if [emphasis]ten to fifteen percent[/emphasis] of Nvidia's revenue was coming from Malaysia, those chips were being distributed to China, because Malaysia did not have an AI program that size.",
+    "Speaker 2: They also said Nvidia named that company a preferred cloud partner in [emphasis]twenty twenty-three[/emphasis]. And they described data centers dressed to look live while the real Nvidia gear is wheeled out the back door toward China.",
+    "Speaker 1: None of that is a company filing. It is what Hard Fork said on air, and they called Huang a key-man risk not just for Nvidia but for the United States economy.",
+    "Speaker 2: The show said he has been an outspoken advocate for selling chips directly to China against United States export restrictions. Watch for an Nvidia board statement, and for whether those Malaysia numbers appear anywhere but a podcast.",
+    "Speaker 1: [transition] On A sixteen Z, a guest comparing this boom to Cisco's late nineties fiber buildout said Anthropic and OpenAI are ramping revenue far faster than anything in that era. They said G.P.U.s are more than [emphasis]eighty percent[/emphasis] of the AI spend.",
+    "Speaker 2: Demand is still so high, they said, that even Hopper H one hundreds get used, even though Vera Rubin converts electricity into dollars more efficiently. And only Nvidia and Google can ship you a full rack system today.",
+    "Speaker 1: Google's T.P.U.s, they said, are not enough. CoreWeave's breakout third quarter still stands, with sequential revenue up more than a billion dollars and about nine billion dollars in customer prepayments due in three months.",
+    "Speaker 2: Watch whether those prepayments actually post, and whether anyone besides A sixteen Z confirms that rack-scale split. The Microsoft Oracle unwind and the Google Crusoe takeover still sit on the board unconfirmed.",
+    "Speaker 1: [transition] On The Cognitive Revolution, a guest said enterprise agents from names like Salesforce and Harvey are connected but not thinking together. One semantic misalignment dropped five agent accuracy from ninety-nine percent to ninety-eight, and two cognitive failures took it to eighty-one percent.",
+    "Speaker 2: The same guest said frontier labs are decoupling the model from the harness, so you can run an open-source model on an OpenAI harness. That is a show claim, not a lab announcement.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "nvidia-jensen-huang-spy-allegations",
+    "hyperscaler-capex-and-chip-selloff",
+    "ai-agents-in-finance-and-law"
+  ],
+  "threads": [
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-agents-in-finance-and-law",
+      "title": "AI agents move into finance and legal work",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=201s",
+      "kind": "podcast",
+      "label": "Hard Fork"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc",
+      "kind": "podcast",
+      "label": "Hard Fork"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=861s",
+      "kind": "podcast",
+      "label": "Hard Fork (China export stance)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU",
+      "kind": "podcast",
+      "label": "a16z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=675s",
+      "kind": "podcast",
+      "label": "a16z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=2287s",
+      "kind": "podcast",
+      "label": "a16z (TPU supply and rack systems)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=lAG4njluIbQ",
+      "kind": "podcast",
+      "label": "The Cognitive Revolution"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=3137s",
+      "kind": "podcast",
+      "label": "The Cognitive Revolution"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=2204s",
+      "kind": "podcast",
+      "label": "The Cognitive Revolution (five-agent accuracy)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "nvidia-jensen-huang-spy-allegations"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    },
+    {
+      "op": "update",
+      "slug": "ai-agents-in-finance-and-law"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-11-1808.mp3",
+    "bytes": 1045821,
+    "duration_s": 174.2,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 81.52,
+        "lines": [
+          0,
+          5
+        ]
+      },
+      {
+        "start_s": 82.97,
+        "end_s": 135.33,
+        "lines": [
+          6,
+          9
+        ]
+      },
+      {
+        "start_s": 136.78,
+        "end_s": 167.66,
+        "lines": [
+          10,
+          12
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 4,
+    "kinds": {
+      "podcast": 4
+    }
+  }
+}

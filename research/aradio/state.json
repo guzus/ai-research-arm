@@ -1,8 +1,168 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-11T09:54:00Z",
-  "headline": "OpenAI DevDay: 8 million Sites, Agents API, GPT-Live, hacking going to zero, and a 10,000-agent Euler claim",
+  "updated_at": "2026-11-11T18:08:00Z",
+  "headline": "Hard Fork: alleged Nvidia chip diversion via Malaysia, and Huang as a U.S. key-man risk; a16z on the GPU buildout",
   "threads": [
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-11T18:08:00Z",
+      "now": "On a16z, a guest said Anthropic and OpenAI's revenue ramps far exceed the late-1990s internet buildout, that GPUs are 80% plus of the AI spend, and that demand is high enough that even weak watt-to-dollar H100s still get used. Only Nvidia and Google can ship a rack system. CoreWeave Q3 still stands: sequential revenue up more than $1 billion, about $9 billion in prepayments due in three months.",
+      "changed": "a16z: a guest says Anthropic and OpenAI ramps beat the 1990s internet boom, GPUs are 80% plus of spend, demand still uses H100s despite worse watt-to-dollar, and only Nvidia and Google ship racks.",
+      "watch": "CoreWeave's call and whether the $9 billion prepayments post; TPU supply and rack-scale competitors beyond a16z; confirmation of the Microsoft-Oracle unwind.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-11T15:32:00Z",
+          "quote": "If you look at the revenue ramp of Anthropic, OpenAI are definitely experiencing growth rates that were far superior to what we saw at the time."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=675s",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-11T15:32:00Z",
+          "quote": "But the problem is right now that the demand is so high that even if the watt to dollar conversion is low, you're going to still use the asset."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=2287s",
+          "kind": "podcast",
+          "label": "a16z (TPU supply and rack systems)",
+          "at": "2026-11-11T15:32:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-10T15:30:00Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm",
+          "kind": "earnings",
+          "label": "CoreWeave, Inc. (CRWV)",
+          "at": "2026-11-10T21:05:53Z",
+          "speaker": "Michael Intrator, co-founder, chairman and chief executive officer of CoreWeave",
+          "quote": "This was a breakout quarter for CoreWeave, with revenue increasing by more than $1 billion sequentially and adjusted operating margins reaching double digits a quarter ahead of plan"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/",
+          "kind": "earnings",
+          "label": "CoreWeave FY26Q3 8-K",
+          "at": "2026-11-10T21:05:53Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=468s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (compute commitments)",
+          "at": "2026-11-10T17:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=779s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (lab revenue vs market cap)",
+          "at": "2026-11-10T17:30:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added."
+        },
+        {
+          "at": "2026-10-31T18:49:00Z",
+          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
+        },
+        {
+          "at": "2026-11-10T21:25:00Z",
+          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
+        },
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
+        }
+      ]
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-11-11T06:00:00Z",
+      "updated_at": "2026-11-11T18:08:00Z",
+      "now": "Hard Fork said the Times reported Huang admitted an affair with a Megaspeed executive alleged to be a Chinese spy, and that her Singaporean data-center firm was reportedly illegally funneling Nvidia chips to Chinese companies. The show said 10 to 15 percent of Nvidia revenue from Malaysia meant chips were going to China, and that Nvidia named the firm a preferred cloud partner in 2023.",
+      "changed": "Hard Fork transcript: alleged illegal Nvidia chip funneling to China, Malaysia as 10 to 15 percent of revenue, Megaspeed a 2023 preferred cloud partner, and Huang as a key-man risk for Nvidia and the U.S. economy.",
+      "watch": "An Nvidia board or company statement; whether the Malaysia preferred-partner and chip-diversion claims appear outside Hard Fork; any Congressional or State Department move.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=201s",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-10T14:30:00Z",
+          "quote": "If if 10 or or 15% of Nvidia's revenue was coming from Malaysia really that meant that those chips were being kind of distributed to China in one way or another."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-10T14:30:00Z",
+          "quote": "Uh in 2023 Nvidia announced that they were a preferred cloud partner, meaning we're going to, you know, prefer selling our equipment to this company in Malaysia."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=861s",
+          "kind": "podcast",
+          "label": "Hard Fork (China export stance)",
+          "at": "2026-11-10T14:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-10T15:30:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
+        }
+      ]
+    },
     {
       "slug": "ai-cyber-risk-and-key-theft",
       "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
@@ -155,143 +315,6 @@
         {
           "at": "2026-11-11T09:54:00Z",
           "change": "Created from DevDay 2026 talks: 8M Sites, Agents API, GPT-Live, 4,000 plugins, token entitlements, and a 1,000-hour Codex CI run at about $16/hour."
-        }
-      ]
-    },
-    {
-      "slug": "hyperscaler-capex-and-chip-selloff",
-      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-11T06:00:00Z",
-      "now": "CoreWeave Q3: Intrator said sequential revenue rose more than $1 billion, adj. operating margins hit double digits a quarter early, with about $9 billion in prepayments due in three months. The AI Daily Brief said Microsoft is ending an Oracle compute deal and Google is taking over a stalled Crusoe data center. Anthropic may still exit $518 billion of compute if data centers cannot be built.",
-      "changed": "The AI Daily Brief said Microsoft is ending an Oracle compute deal and Google is taking over a stalled Crusoe data center.",
-      "watch": "CoreWeave's earnings call and whether the $9 billion prepayments post; confirmation of the Microsoft-Oracle unwind and the Google-Crusoe takeover beyond show notes.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-10T15:30:00Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm",
-          "kind": "earnings",
-          "label": "CoreWeave, Inc. (CRWV)",
-          "at": "2026-11-10T21:05:53Z",
-          "speaker": "Michael Intrator, co-founder, chairman and chief executive officer of CoreWeave",
-          "quote": "This was a breakout quarter for CoreWeave, with revenue increasing by more than $1 billion sequentially and adjusted operating margins reaching double digits a quarter ahead of plan"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/",
-          "kind": "earnings",
-          "label": "CoreWeave FY26Q3 8-K",
-          "at": "2026-11-10T21:05:53Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=468s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (compute commitments)",
-          "at": "2026-11-10T17:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=779s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (lab revenue vs market cap)",
-          "at": "2026-11-10T17:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1938s",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution",
-          "at": "2026-11-07T20:24:00Z",
-          "quote": "When he says 550 to 650, he means $550,000 to $650,000 for one 8GPU server."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=2405s",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution (GPU export rules)",
-          "at": "2026-11-07T20:24:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=3249s",
-          "kind": "podcast",
-          "label": "All-In Podcast (WSJ capex haircut)",
-          "at": "2026-11-07T18:24:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture."
-        },
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added."
-        },
-        {
-          "at": "2026-10-31T18:49:00Z",
-          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped."
-        },
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
-        },
-        {
-          "at": "2026-11-10T21:25:00Z",
-          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
-        },
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
-        }
-      ]
-    },
-    {
-      "slug": "nvidia-jensen-huang-spy-allegations",
-      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-11-11T06:00:00Z",
-      "updated_at": "2026-11-11T06:00:00Z",
-      "now": "Hard Fork and The AI Daily Brief say Nvidia CEO Jensen Huang admitted an affair with a Megaspeed executive going by Alice Huang, whom U.S. officials allege is a Chinese spy. Hard Fork cites New York Times reporting and biographer Stephen Witt. The AI Daily Brief cites a board investigation, market whiplash, and questions for chip-export policy and Congress.",
-      "changed": "Hard Fork and The AI Daily Brief say Huang admitted a Megaspeed affair; U.S. officials allege Alice Huang is a Chinese spy. Daily Brief cites a board investigation.",
-      "watch": "An Nvidia board or company statement; whether Congress takes up chip-export questions; a response from Megaspeed; transcripts of these episodes when they land.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc",
-          "kind": "podcast",
-          "label": "Hard Fork",
-          "at": "2026-11-10T14:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-10T15:30:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
         }
       ]
     },
@@ -747,11 +770,31 @@
       "status": "developing",
       "importance": 3,
       "first_seen": "2026-11-01T06:51:00Z",
-      "updated_at": "2026-11-10T03:00:00Z",
-      "now": "On The Cognitive Revolution, a guest introduced as Brian Joe of Thoughtful described Ballot Bench: nine frontier agents forecasting the midterms with real-money trades. A guest said Opus 5.5 fanned out about 170 to 180 sub-agents and that the best models were well calibrated. A Theory Ventures guest said the firm runs thousands of AI-agent jobs. Robinhood's 150,000 agent-trading accounts still…",
-      "changed": "Cognitive Revolution: Ballot Bench ran nine frontier agents on midterm forecasts with real-money trades; Opus 5.5 said to spawn about 170-180 sub-agents.",
-      "watch": "A Ballot Bench write-up of the real-money results; a Robinhood filing on the 150,000 accounts; whether other CFOs describe the same builder shift.",
+      "updated_at": "2026-11-11T18:08:00Z",
+      "now": "On The Cognitive Revolution, a guest said enterprise agents from names like Salesforce and Harvey are connected but not reasoning together. One semantic misalignment dropped five-agent accuracy from 99% to 98%, and two cognitive failures from 98% to 81%. The guest said labs are decoupling model from harness, so an OpenAI harness can run an open-source model.",
+      "changed": "Cognitive Revolution: a guest says five-agent accuracy fell from 99% to 81% after two cognitive failures; labs decoupling model from harness so an OpenAI harness can run an open-source model.",
+      "watch": "Whether Accord and Concord see adoption above MCP and A2A; a Ballot Bench write-up; whether labs confirm harness-model mixing.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-11-11T11:32:00Z",
+          "quote": "So we have connected agents but we've realized that connectivity is not the same as cognition."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=3137s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-11-11T11:32:00Z",
+          "quote": "You can now take the harness from open AI and attach an open-source or open core model to it."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=2204s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution (five-agent accuracy)",
+          "at": "2026-11-11T11:32:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1311s",
           "kind": "podcast",
@@ -783,25 +826,6 @@
           "label": "No Priors",
           "at": "2026-11-05T11:12:00Z",
           "quote": "We are seeing very strong adoption: over 150,000 clients have opened agent trading accounts with us in the few months since launch."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg&t=1759s",
-          "kind": "podcast",
-          "label": "No Priors",
-          "at": "2026-11-05T11:12:00Z",
-          "quote": "And if you look at the tool calls, they follow a smooth exponential, where the last number we announced was around 30 million tool calls per day ."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=v-d1WTqIULs",
-          "kind": "podcast",
-          "label": "Latent Space (OpenAI finance)",
-          "at": "2026-10-31T03:21:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=KM3VQZKjpiY",
-          "kind": "podcast",
-          "label": "Latent Space (Arca)",
-          "at": "2026-10-31T16:17:00Z"
         }
       ],
       "history": [
@@ -824,6 +848,10 @@
         {
           "at": "2026-11-10T03:00:00Z",
           "change": "Cognitive Revolution: Ballot Bench ran nine agents on midterm forecasts with real money; Theory Ventures guest cites thousands of agent jobs."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "Cognitive Revolution: 99% to 81% five-agent drop; Salesforce/Harvey in the mix; OpenAI harness said to run open-source models."
         }
       ]
     },
