@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-11
+
+TOP 5 PAPERS:
+• Coverage collapse - REINFORCE can drive optimal replies to ~0; reference resets restore PPO/GRPO
+• Bonbon - 3.2T-token protein-ligand FM; capabilities jump at 1.6B; 61.5% wet-lab hits
+• UGG - one generative model treats RGB, depth and pose as 4D conditional completion
+• Contrastive Discovery - competing explanations resolve 67% more questions from the same experiments
+• ARE-bench - real messy research workspaces; 66% all-item pass, 28-40% once session context counts
+
+CATEGORIES: LM/NLP 8, CV/Multimodal 10, Agents/Reasoning 11, Safety 9, Other 8
+
+Full report on GitHub.
