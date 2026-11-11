@@ -1,9 +1,587 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-11T02:12:00Z",
+  "updated_at": "2026-11-11T09:48:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "openai:pIW_8VyvCuQ",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Build What’s Next on the ChatGPT Platform with Plugins | DevDay 2026",
+      "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ",
+      "video_id": "pIW_8VyvCuQ",
+      "audio_url": null,
+      "published_at": "2026-11-11T01:18:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T09:48:00Z",
+      "duration_s": 1665,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 4992,
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "And we'll keep building new ways to connect users with what you built. And to everyone who's already bringing their tools and expertise into ChatGPT, thank you. You're expanding what people can do here from building an application to designing a product or exploring their data. There are now 4,000 plugins in the directory.",
+          "at_s": 232,
+          "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=232s"
+        },
+        {
+          "text": "Once you start running some of these agentic workloads with lots of back and forth, you really want the thing you're working on right where you're chatting with your agent. If we zoom back last year, we launched the Apps SDK, which let you bring interactive widgets into the conversation in ChatGPT from a tool from an MCP.",
+          "at_s": 373,
+          "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=373s"
+        },
+        {
+          "text": "So these pieces give you control over how your product works across ChatGPT. And let's take a look at some of the ones we've created ourselves. So we've used the same extension platform to build experiences like health, finance, Codex security, code review, and meetings. I'm going to show you one example by going through the meetings plugins myself.",
+          "at_s": 524,
+          "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=524s"
+        },
+        {
+          "text": "Magic Path is an AI design platform to help you get going and build those different assets. I've created all different forms here. And I'm going to go in and show how this looks with voice. So I'm going to go into a new chat. And I'm going to turn on ViDai. Hey there, chat.",
+          "at_s": 791,
+          "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=791s"
+        },
+        {
+          "text": "And so that same plugin also lets eligible users bring their ChatGPT token entitlements into your product. So this is an extremely exciting thing that was announced this morning. But just to double click on this, this allows users to bring their AI usage onto your tool and directly funded by their ChatGPT subscription.",
+          "at_s": 1014,
+          "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=1014s"
+        },
+        {
+          "text": "And to get started, I suggest to pick one thing that you can help your users experience within ChatGPT. Describe it to Plugin Creator, try the first version, and just keep iterating. Now, let's invite Max Neuber, who leads engineering for our Plugins Developer Platform. Thank you, Corey.",
+          "at_s": 1201,
+          "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=1201s"
+        }
+      ],
+      "description": "Bring your tools, knowledge, and interfaces into ChatGPT and Codex with plugin extensions. Through live demos, learn how to turn an idea into a useful experience, share it, and reach new users."
+    },
+    {
+      "id": "openai:nAubbmlhPfI",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "What Comes After Loops?: Deep Dive Into Agentic Architecture | DevDay 2026",
+      "url": "https://www.youtube.com/watch?v=nAubbmlhPfI",
+      "video_id": "nAubbmlhPfI",
+      "audio_url": null,
+      "published_at": "2026-11-11T01:18:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T09:48:00Z",
+      "duration_s": 1441,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 4430,
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "I would write something in ChatGPT, copy to my IDE. I hadn't seen what happened. But you know, that changes when we let AI take action. This video may look familiar. This is really when we let AI combine two things, reasoning and tool use. The video may look, this is from the 03 launch video.",
+          "at_s": 111,
+          "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=111s"
+        },
+        {
+          "text": "We want the model to generalize, and just like you and I would be using the computer. So how does it work? Really, at the center of everything is the Responses API. It's a loop that we manage in the Responses API. We pass the tool definitions to the model.",
+          "at_s": 278,
+          "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=278s"
+        },
+        {
+          "text": "Toby Luque, the CEO of Shopify, described it as the first model that no longer needed Dashgoal, it just kept going until it got the job done. And Ethan Mullica, Wharton professor of AI, said he gave Codex access to his computer and had it placed Slay the Spire 2 for about five hours straight.",
+          "at_s": 584,
+          "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=584s"
+        },
+        {
+          "text": "This won't always cost you less, as even Astra can't perfectly predict which model will solve the task at the best price, but in many cases, it can be a huge help in helping you reduce the decision anxiety in picking the right model for the job.",
+          "at_s": 828,
+          "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=828s"
+        },
+        {
+          "text": "Here we used an internal model and Codex, and we found a solution with 10,000 agents working together. Across the full effort, there were 2.7 million messages and about 130 billion output tokens. I want everybody to take a minute to just take that in, right? 2.7 million messages and 10,000 agents working together.",
+          "at_s": 1216,
+          "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=1216s"
+        },
+        {
+          "text": "In Navier Stokes, when we found the unforced Euler result, we diverted all the teams towards solving the problem, and by the end of it, we had solved the solution. So, whew! This pattern has shown some incredible results for us, right? Especially with models that are even more powerful than GPT-6.",
+          "at_s": 1362,
+          "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=1362s"
+        }
+      ],
+      "description": "Trace the evolution from simple agent loops to collaborating agents. Explore the design choices and model advances behind that shift, and take a closer look at what comes next."
+    },
+    {
+      "id": "openai:jDxKzlGLCas",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Building with GPT-Live and Image Generation | DevDay 2026",
+      "url": "https://www.youtube.com/watch?v=jDxKzlGLCas",
+      "video_id": "jDxKzlGLCas",
+      "audio_url": null,
+      "published_at": "2026-11-11T01:18:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T09:48:00Z",
+      "duration_s": 1358,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 3333,
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Marin, Colin, do you guys know the game Fortunately, Unfortunately? We go one sentence at a time. Marin, I'll give you Fortunately. Marin, I think, unfortunately, will come more naturally to you. Marin, we'll use a prompt like, we're all at DevDay and the demo is going perfectly.",
+          "at_s": 148,
+          "url": "https://www.youtube.com/watch?v=jDxKzlGLCas&t=148s"
+        },
+        {
+          "text": "The model handles turn-taking itself without needing a separate voice activity detector model to decide that someone is done speaking. And you can really hear that the model isn't limited by turn-taking. The little reactions, back channels, when it jumps in, when it lets Colin continue talking.",
+          "at_s": 273,
+          "url": "https://www.youtube.com/watch?v=jDxKzlGLCas&t=273s"
+        },
+        {
+          "text": "So thank you, Marin. We've covered tone, personality, and evals. Given GPT Live has a unique architecture splitting front-end and back-end work, I think the next thing to cover is one of the core ideas of this model, delegation and how to coordinate those complex tasks.",
+          "at_s": 455,
+          "url": "https://www.youtube.com/watch?v=jDxKzlGLCas&t=455s"
+        },
+        {
+          "text": "Like, if I'm kicking off a 20-minute Codex task, I don't want updates with all the tools that are being called every 30 seconds. But if I ask what's happening, the voice model should ideally have enough current context to answer. And so, your backend can keep it informed as that work progresses. Exactly.",
+          "at_s": 803,
+          "url": "https://www.youtube.com/watch?v=jDxKzlGLCas&t=803s"
+        },
+        {
+          "text": "So you choose a model running through OpenAI's responses API, configure its instructions and tools, and GPT Live supplies the conversation context. In this setup, OpenAI manages the delegations for you, so it can be much, much easier to get started. And if you've used tool calling with any text model before, responses delegation should feel really familiar.",
+          "at_s": 947,
+          "url": "https://www.youtube.com/watch?v=jDxKzlGLCas&t=947s"
+        },
+        {
+          "text": "And any voice model that uses voice activity detection or silence would just fall over here. Marin, I love this ambiance. I think we've proven our point. Can you turn it down to like 15 Yep. Lowering it. Okay. It's down to 15%. So this voice demo, I think, shows how the turnless architecture gives users so much more freedom.",
+          "at_s": 1134,
+          "url": "https://www.youtube.com/watch?v=jDxKzlGLCas&t=1134s"
+        }
+      ],
+      "description": "See GPT-Live brainstorm, play games, and create images while coordinating work in the background. Learn to add voice to agents and design for delegation, latency, interruptions, and changing requests."
+    },
+    {
+      "id": "openai:gUQN7juxvVI",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Codex Security: From Vulnerability to Verified Fix | DevDay 2026",
+      "url": "https://www.youtube.com/watch?v=gUQN7juxvVI",
+      "video_id": "gUQN7juxvVI",
+      "audio_url": null,
+      "published_at": "2026-11-11T01:18:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T09:48:00Z",
+      "duration_s": 1271,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 3089,
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "It's available as an open-source plug-in, CLI, and SDK. And today, we're launching a major update to the cloud version, which is a more turnkey solution. So Kyle is going to walk through some of the more critical and interesting problems that we ran into during our security sprint and show you how we address them. Thanks, Ian. Thanks.",
+          "at_s": 234,
+          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI&t=234s"
+        },
+        {
+          "text": "Let's see that in action with a deep scan of an example repository using the Codex security CLI. So here we go. This is our first catting our first prompt .md. This is the custom scan prompt with instructions for what the agent could focus on in this specific scan. So we're going to do a deep scan.",
+          "at_s": 474,
+          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI&t=474s"
+        },
+        {
+          "text": "So you don't have someone sending you an angry DM at like 1 o'clock in the morning asking you, why did you assign 32 tickets to me instead of just one? Because this is all just the same vulnerability. In our internal sprint, we found that across all of the scans, 36% of our findings were duplicates.",
+          "at_s": 632,
+          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI&t=632s"
+        },
+        {
+          "text": "And you can put it in a, you can, sorry, it can put up a PR to fix that vulnerability. When we started using this internally, we had a less than 1% rollback rate on auto-generated patches. The 0.81% that Ian mentioned earlier.",
+          "at_s": 843,
+          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI&t=843s"
+        },
+        {
+          "text": "So, this is PatchBench. It's a third-party eval which compares, in this case, 5.6 Sol versus 6 Astra using Codex Security's patch skill. Obviously, you can see that Astra at medium reasoning outperforms 5.6 Sol at X-high pretty substantially at less than half the cost per case. And for reference, humans at OpenAI benchmark right about here, 50%.",
+          "at_s": 980,
+          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI&t=980s"
+        },
+        {
+          "text": "You just hook up your GitHub repositories. And the best part about Codex Security Cloud, and really one of the most notable things about this launch, is that it gives you access to our Daybreak class models, which are designed specifically for security use cases. So, that's what's running under the hood in Codex Security Cloud.",
+          "at_s": 1133,
+          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI&t=1133s"
+        }
+      ],
+      "description": "Find and fix vulnerabilities with OpenAI’s cyber models and open-source CLI and SDK. Learn to scan large codebases, catch issues in pull requests, and verify fixes, drawing on OpenAI’s own security work."
+    },
+    {
+      "id": "openai:b7l_Dhe1h8M",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Harness-as-a-Service: Building with the Agents API | DevDay 2026",
+      "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M",
+      "video_id": "b7l_Dhe1h8M",
+      "audio_url": null,
+      "published_at": "2026-11-11T01:18:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T09:48:00Z",
+      "duration_s": 1185,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 3482,
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Back in 2023, GPT-4 Turbo could use these tools to accomplish workflows that lasted maybe a few seconds. GPT-6 Astra, on the other hand, can use dozens of tools effectively for hours or days on end. With reasoning models, we needed a more flexible foundation. We launched the responses API in 2025 to solve a more basic problem.",
+          "at_s": 119,
+          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=119s"
+        },
+        {
+          "text": "This is the core idea behind the agents API. A managed service built on the Codex harness. You define the tools, the data, and the instructions. You choose the environment that the agent works in. And we run the harness and the services around it.",
+          "at_s": 275,
+          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=275s"
+        },
+        {
+          "text": "Charlie Walsh, thanks, Steve. Once an agent can go off and use a computer or a sandbox, there's an immediate question for anyone that's building a product around it. What do you show people while it's working? You can't predict the path that an agent will take in advance.",
+          "at_s": 449,
+          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=449s"
+        },
+        {
+          "text": "Otherwise, every developer building a long-running agent has to decide how to manage that history themselves. But context is only one of the constraints that we run into. GPT-6 can work for days on end, but at some point we need to deploy our own code or our servers will die or otherwise get recycled.",
+          "at_s": 580,
+          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=580s"
+        },
+        {
+          "text": "It looks like our agents might be done, so let's go see how they did. Here we've got Erin. She needs to get to O'Hare. No other options are workable. Preferring to leave tomorrow morning. We can see in the activity tab here what the agent did.",
+          "at_s": 900,
+          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=900s"
+        },
+        {
+          "text": "And we're already seeing customers find some great use cases for the agents API. With Notion's external agents, teams who are working from Notion can assign work and have it done asynchronously. And now, Notion users can bring OpenAI agents into that workflow with the agents API.",
+          "at_s": 1057,
+          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=1057s"
+        }
+      ],
+      "description": "Build with the Codex harness through the Agents API. Learn how to run agents in your environment, keep long-running tasks going, and understand which infrastructure OpenAI manages."
+    },
+    {
+      "id": "openai:U1IVZy9FhVQ",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "What Will You Build With Coding Agents That Don’t Quit? | DevDay 2026",
+      "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ",
+      "video_id": "U1IVZy9FhVQ",
+      "audio_url": null,
+      "published_at": "2026-11-11T01:18:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T09:48:00Z",
+      "duration_s": 1629,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 4642,
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "So Codex set out with this goal to build this Grand Prix circuit. And when it started, it decided not to make the short version, but the longer, noted, life-way version. That's 21 kilometers. This entire video is 21 kilometers down to all 70 turns of the circuit itself.",
+          "at_s": 153,
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=153s"
+        },
+        {
+          "text": "This agent ran for six weeks before I shut it down, and not for any reason like it wasn't working. It was actually because my colleagues had started running agents of their own to do the same work. The starting prompt for this agent was only 200 words. What changed from last year?",
+          "at_s": 399,
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=399s"
+        },
+        {
+          "text": "Over those 1,000 hours, the agent made just under half a million tool calls. That's roughly how many steps that it took, and it used more than 5,800 sub-agent sessions.",
+          "at_s": 562,
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=562s"
+        },
+        {
+          "text": "And obviously, Codex can work for 1,000 hours a day. So, Vibi, can you talk us through the features in Codex that enabled this? Sure. So, first of all, one of the things that Frill didn't mention is that his agent was called Frillbot, which I find very cool and cute as well.",
+          "at_s": 725,
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=725s"
+        },
+        {
+          "text": "In fact, fun fact, today for all the stuff that we launched, I was actually merging those PR from the backstages via Codex Cloud. So it does work. It also works across the three surfaces that I mentioned before, which is desktop, mobile, and web.",
+          "at_s": 1050,
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=1050s"
+        },
+        {
+          "text": "And it turned out we did the we worked back from the pricing and it worked out to about $32 an hour to have Codex running for six weeks fixing CI across all of OpenAI. But with GPT-6 Sol last week, the price dropped to $16 an hour. GPT-6 stretches your token budget twice as far.",
+          "at_s": 1467,
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=1467s"
+        }
+      ],
+      "description": "Learn from a Codex run that spent over 1,000 hours keeping builds and tests passing. Explore how to choose recurring tasks, improve feedback, manage token budgets, and decide when engineers should step in."
+    },
+    {
+      "id": "openai:QRm7VNMnurA",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Sites and the Next Generation of Web Apps | DevDay 2026",
+      "url": "https://www.youtube.com/watch?v=QRm7VNMnurA",
+      "video_id": "QRm7VNMnurA",
+      "audio_url": null,
+      "published_at": "2026-11-11T01:18:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T09:48:00Z",
+      "duration_s": 1248,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 3183,
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Now, even though Sites only shipped a couple months ago, we're already hosting 8 million Sites. And here at OpenAI, over 70% of employees are making their own Sites.",
+          "at_s": 71,
+          "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=71s"
+        },
+        {
+          "text": "And then I am going to ask Codex, can you turn this sheet into a launch radar app in a new folder and then publish it as a site? You can use our shared Devday UI library and Sites system. And I want you to show milestones, what needs attention, with launches visible on the first screen.",
+          "at_s": 195,
+          "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=195s"
+        },
+        {
+          "text": "As you may know, Sites has built-in auth, powered by Sign-in with ChatGPT. Now your site can be made publicly available on the internet, along with a landing page for anonymous users, and you can also add a link that lets the users sign in to ChatGPT, enabling additional functionality, just like a standard web app.",
+          "at_s": 361,
+          "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=361s"
+        },
+        {
+          "text": "And that data was just fetched when I loaded the site and then fetched it via my existing linear connectors from ChatGPT. And there's no need to implement third-party integration. No need to get API keys. No need to reference API docs. It comes out of the box with sites. It's leveraging each user's existing connectors.",
+          "at_s": 678,
+          "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=678s"
+        },
+        {
+          "text": "So any app can expose WebMCP tools. And when they're used within a WebMCP-enabled browser, like ChatGPT's in-app browser, users can work with their agents to take actions that will update the live app. So the difference with something like computer use is that the agent can use a site via tools instead of clicking through the UI.",
+          "at_s": 970,
+          "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=970s"
+        },
+        {
+          "text": "And update the UI with it, please. So that's the beauty of UI MCP. If you build a site and you want it to be personalized to your users, you can actually just let your users' agents know how they can use what they know about the users to take action on your app. Great.",
+          "at_s": 1121,
+          "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=1121s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "lex-fridman:2hJkprFnzhY",
+      "show_id": "lex-fridman",
+      "show": "Lex Fridman Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Ukraine War: Putin, Zelenskyy, Trump, Drones and the Future of Warfare | Lex Fridman Podcast #504",
+      "url": "https://www.youtube.com/watch?v=2hJkprFnzhY",
+      "video_id": "2hJkprFnzhY",
+      "audio_url": null,
+      "published_at": "2026-11-11T00:18:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T09:48:00Z",
+      "duration_s": 10429,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 30896,
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "That's an extreme case, but most, as Preston said, is about 30 to 40. For an infantry fighting vehicle, about 15, maybe 15 to 20, depending, again. And you have some percentage of drones that are jammed, they don't make it to a target. You have some percentage of drones that may fail to detonate. So it's quite a few.",
+          "at_s": 1434,
+          "url": "https://www.youtube.com/watch?v=2hJkprFnzhY&t=1434s"
+        },
+        {
+          "text": "If you were around in '70s and 1980s, you would have recognized most of the things on the battlefield in 2022 through 2024. In fact, most of the equipment NATO sent was also what NATO had made all the way from '60s to, you know, the '90s.",
+          "at_s": 2824,
+          "url": "https://www.youtube.com/watch?v=2hJkprFnzhY&t=2824s"
+        },
+        {
+          "text": "- You've written about Prigozhin's mutiny in '23. What does that teach us about the structure of the Russian military? And going to Perplexity here, the Prigozhin mutiny was a short-lived armed rebellion led by the Wagner mercenary chief, Yevgeny Prigozhin, in Russia on June 23rd and 24th, 2023.",
+          "at_s": 4755,
+          "url": "https://www.youtube.com/watch?v=2hJkprFnzhY&t=4755s"
+        },
+        {
+          "text": "But it was clear to those of us who followed Russia that there was no way he was going to survive this. - Speaking of which, going to Perplexity, Yevgeny Prigozhin died on August 23rd, 2023, aged 62, when his private jet crashed in Russia's Tver region while flying from Moscow to St. Petersburg. Do you think he was killed?",
+          "at_s": 7310,
+          "url": "https://www.youtube.com/watch?v=2hJkprFnzhY&t=7310s"
+        },
+        {
+          "text": "And over time now, you have fewer and fewer convict staff groups, but nonetheless, thousands upon thousands of convicts were used by the Russian armed forces in assault units after Wagner. Prigozhin said that he lost, killed in action 20,000 people in just the Battle of Bakhmut, which lasts somewhere, I think, from August 2022 to May of '23.",
+          "at_s": 7687,
+          "url": "https://www.youtube.com/watch?v=2hJkprFnzhY&t=7687s"
+        },
+        {
+          "text": "Russia too has benefited significantly from China, Chinese economy, access to machine tools, components to China, to a lesser extent, North Korea, and much lesser extent, Iran, but North Korea ships so much-- You know, at one point in the war, North Korea was providing 40% of Russian artillery ammunition in this war, and shipping artillery, and actually North Korean",
+          "at_s": 8671,
+          "url": "https://www.youtube.com/watch?v=2hJkprFnzhY&t=8671s"
+        }
+      ],
+      "description": "See below for timestamps, transcript, and to give feedback, submit questions, contact Lex, etc. *Transcript:* *CONTACT LEX:* *EPISODE LINKS:* *GiveDirectly:* Direct donations to people living in extreme poverty. *Fin:* AI agent for customer service. *LMNT:* Zero-sugar electrolyte drink mix. *Wispr Flow:* AI-powered voice dictation app. *Shop:* Turns any AI agent into your personal shopper. *Perplexity:* AI-powered answer engine. *OUTLINE:* Introduction State of the war in Ukraine Drone warfare and the kill zone Who is winning the war? Military analysis of"
+    },
+    {
+      "id": "ai-explained:583ThJIqQ7k",
+      "show_id": "ai-explained",
+      "show": "AI Explained",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "commentary"
+      ],
+      "title": "Fable 5.2: The Self-Improvement Loop Keeps Loopin’ … (plus Gemini Carbon)",
+      "url": "https://www.youtube.com/watch?v=583ThJIqQ7k",
+      "video_id": "583ThJIqQ7k",
+      "audio_url": null,
+      "published_at": "2026-11-10T23:18:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T09:48:00Z",
+      "duration_s": 1901,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 5620,
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "The remote labor index created by Scale AI and the Center for AI Safety. A year ago, Opus 4.5 could automate 3.8% of the tasks created. Since then, we've seen a doubling of performance every 3.3 months with GPT6 Astra getting around 21% in September. And now Fable 5.2 getting 41%.",
+          "at_s": 144,
+          "url": "https://www.youtube.com/watch?v=583ThJIqQ7k&t=144s"
+        },
+        {
+          "text": "We're talking a quant trading firm creating a quant trading benchmark, a chip design firm creating a chip design benchmark and so on. Fable 5.2 gets 16.4% 4% whereas Gemini 4 Carbon gets 10.9%. But at maybe 1/5 the cost. 6 Astra from OpenAI gets even less 9.6% and cost more.",
+          "at_s": 305,
+          "url": "https://www.youtube.com/watch?v=583ThJIqQ7k&t=305s"
+        },
+        {
+          "text": "In terms of biomedical image analysis, where we really want models to get better, analyzing CT scans, MRIs, hystopathologies, and ultrasounds, we have mythos 5.2, which you can't quite use, but hopefully some doctors can getting 80.7% higher than any other model. For example, GP6 Astra gets 77.5%. Then on language, it's something we don't talk about enough.",
+          "at_s": 459,
+          "url": "https://www.youtube.com/watch?v=583ThJIqQ7k&t=459s"
+        },
+        {
+          "text": "And here, it's actually Gemini 4 carbon that does the best, bsing, or hallucinating just 11% of the time. That compares to Claude Fable 5.2 on Max BSing 59% of the time. That's worse, by the way, than Opus 5.5. That hallucination rate is an indirect way of measuring the propensity of models to BS.",
+          "at_s": 580,
+          "url": "https://www.youtube.com/watch?v=583ThJIqQ7k&t=580s"
+        },
+        {
+          "text": "They note the change in steepness that occurred at around October 2025 and how an internal model 4 fable 5.2 2 is model 3 by the way most likely. So is model 4 Opus 5.6 but whatever model 4 is you can see the steepness since October of last year.",
+          "at_s": 1094,
+          "url": "https://www.youtube.com/watch?v=583ThJIqQ7k&t=1094s"
+        },
+        {
+          "text": "And that's just with current AI models. And against arguably one of the most fortified companies in the world, or at least one of the most paranoid. In other words, don't underestimate incremental gains. Of course, the unreleased internal model is an incremental gain on Mythos 5.2 2 or Fable 5.2. Will they call this Fable 5.5 or Opus 5.6?",
+          "at_s": 1521,
+          "url": "https://www.youtube.com/watch?v=583ThJIqQ7k&t=1521s"
+        }
+      ],
+      "description": "I’ve read the full Fable 5.2 report at 264 pages, the 30 page METR RSI report, and tested Gemini Carbon and Fable 5.2 hundreds of times. There’s too much to cover in one video, but let’s explore everything from how fast AI is accelerating AI, five benchmarks few others will talk about, why Simple Bench got saturated but meta-simple bench might not have, Internal model 4, remote labour automation and much more Introduction how good are Fable 5.2 and Carbon?"
+    },
+    {
+      "id": "openai:5YXlrzC_RYE",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "GPT-Live Tech Support",
+      "url": "https://www.youtube.com/watch?v=5YXlrzC_RYE",
+      "video_id": "5YXlrzC_RYE",
+      "audio_url": null,
+      "published_at": "2026-11-10T21:18:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T09:48:00Z",
+      "duration_s": 553,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 1583,
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "And lastly, a text-to-speech model. As you can see, because it's three models chained together, each step adds latency. And so the responses can feel slow and stilted. The next generation of voice models, which is being asked about here, GPT Realtime, brought all of this into a single model.",
+          "at_s": 33,
+          "url": "https://www.youtube.com/watch?v=5YXlrzC_RYE&t=33s"
+        },
+        {
+          "text": "Fin is using it for customer support. Speak is using it for live language lessons. Cognition is using it to add voice to its AI software engineer, Devin. And those are just a few examples. We actually had a Build Hour recently with Cognition where they spoke more about how they're using GPT-Live.",
+          "at_s": 197,
+          "url": "https://www.youtube.com/watch?v=5YXlrzC_RYE&t=197s"
+        },
+        {
+          "text": "We've recently updated the prompt guidance for GPT-Live 1 to improve delegation. The model tends to do much better with a special SpawnThinking token. This only applies to GPT-Live 1, so I'd highly recommend checking out the documentation for the latest prompt guidance for the model that you're using.",
+          "at_s": 351,
+          "url": "https://www.youtube.com/watch?v=5YXlrzC_RYE&t=351s"
+        },
+        {
+          "text": "We are moving forward on migrating from GPT Realtime to GPT-Live. And one thing that seems to be missing in the new docs and the new API is how to manage the context for the brain behind the voice model. If I understand well, the voice model context compaction is taken care of by OpenAI directly.",
+          "at_s": 480,
+          "url": "https://www.youtube.com/watch?v=5YXlrzC_RYE&t=480s"
+        }
+      ],
+      "description": "We’re answering the internet’s questions about GPT-Live, starting with how it’s different from earlier voice models and what developers are using it for. Already building with GPT-Live? We’ll share practical tips for customizing your agent’s voice and improving delegation. What else would you like to know about building with GPT-Live? Leave us a question in the comments! Chapters Intro GPT Live vs. GPT Realtime Handling background noise Use cases Custom voices Improving delegation Collecting tool call parameters Managing delegation context"
+    },
     {
       "id": "latent-space:bdIoODXsu8k",
       "show_id": "latent-space",
@@ -84,8 +662,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-11T02:12:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Goodfire technical staff member Curt Tigges discusses research revealing that individual MLP neurons in modern language models are far more interpretable and functionally bounded than previously thought. Using an automated agent to test hypotheses across architectures like Qwen3.6-35B-A3B, Tigges explains how modern gated MLPs act as legible conjunctions and control signals capable of extensive dynamic sparsity without lasting benchmark loss. By showing that many internal representations can be directly enumerated, this work offers an alternative to complex external featurizers and"
@@ -229,8 +807,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-11T02:12:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-11T09:48:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "The Nvidia CEO’s admission of an affair with a woman US officials believe is a Chinese spy raises big questions about chip export policy, congressional scrutiny, and the AI build-out. NLW breaks down the New York Times reporting, the board investigation, the market whiplash, and the fight over China trade policy. In the headlines: falling Anthropic and OpenAI valuations, Microsoft ending an Oracle compute deal, and Google taking over a stalled Crusoe data center. The AI Daily Brief helps you"
