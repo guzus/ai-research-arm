@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-10T21:00:00Z",
+  "updated_at": "2026-11-11T02:12:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -61,7 +61,7 @@
           "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=3270s"
         }
       ],
-      "description": ""
+      "description": "A coding agent opens a pull request and picks an email provider for you. How did it choose? Resend co-founder and CEO Zeno Rocha explores answer engine optimization (AEO) through a concrete example: which email provider does Claude Code recommend, and how does that change across model versions? Then comes the agent experience itself. Once the agent picks Resend, can it find the price, set up the account and send its first email? We also follow an email after the"
     },
     {
       "id": "cognitive-revolution:hqXYtqQq50g",
@@ -84,11 +84,11 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-10T21:00:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-11T02:12:00Z",
+        "attempts": 2
       },
       "excerpts": [],
-      "description": ""
+      "description": "Goodfire technical staff member Curt Tigges discusses research revealing that individual MLP neurons in modern language models are far more interpretable and functionally bounded than previously thought. Using an automated agent to test hypotheses across architectures like Qwen3.6-35B-A3B, Tigges explains how modern gated MLPs act as legible conjunctions and control signals capable of extensive dynamic sparsity without lasting benchmark loss. By showing that many internal representations can be directly enumerated, this work offers an alternative to complex external featurizers and"
     },
     {
       "id": "twiml:heE80uxOmus",
@@ -229,8 +229,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-10T21:00:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-11T02:12:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "The Nvidia CEO’s admission of an affair with a woman US officials believe is a Chinese spy raises big questions about chip export policy, congressional scrutiny, and the AI build-out. NLW breaks down the New York Times reporting, the board investigation, the market whiplash, and the fight over China trade policy. In the headlines: falling Anthropic and OpenAI valuations, Microsoft ending an Oracle compute deal, and Google taking over a stalled Crusoe data center. The AI Daily Brief helps you"
@@ -315,8 +315,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-10T21:00:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-11T02:12:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Jensen Huang, the chief executive of Nvidia, has admitted to an affair with a top executive at the data center company Megaspeed — a woman going by the name of Alice Huang who the U.S. government alleges is a Chinese spy. On this special episode of Hard Fork, we sit down with Stephen Witt, who wrote Jensen Huang biography “The Thinking Machine.” We’ll dig into what you need to know about this spiraling scandal and what it means for A.I."
@@ -8292,8 +8292,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-11T02:12:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -8319,8 +8319,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-11T02:12:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -8346,8 +8346,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-11T02:12:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -8373,8 +8373,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-11T02:12:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -8398,13 +8398,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 3031,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9949,
+        "checked_at": "2026-11-11T02:12:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So maybe I have a 100 million cards in as as a merchant, but I have to store 100 million with Chase and 100 million with Stripe and 100 million with Brainree. And each of those vaults have to be updated at at their networks.",
+          "at_s": 536,
+          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=536s"
+        },
+        {
+          "text": "You have Shopify with Shopay similarish um you know consumer size probably more like 1.7 million merchants right then you have PayPal which has got you know over 400 million accounts depends on how you kind of you know sort of you know h how that's actually measured but they have on the order of 30 million merchants.",
+          "at_s": 853,
+          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=853s"
+        },
+        {
+          "text": "There's a whole process by which the agent says, \"I'm about to make a transaction. I'm a verified agent. I'm going to spend no more than $100.\" That um the token is nothing more than a new 16-digit number. Right? We give that safely to the agent.",
+          "at_s": 1541,
+          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=1541s"
+        },
+        {
+          "text": "But you've gotten to I mean, what what percentage of cards do you think you've seen or touch or store? It's probably what is it 80% of cards in America? I mean, we have like 10 billion credentials. Um, it's a lot of credentials.",
+          "at_s": 1679,
+          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=1679s"
+        },
+        {
+          "text": "I spent $10,000 on virtual gems. My wife and I share the I didn't actually do this. Just for disclosure, but let's just say I did. I spent $10,000 on virtual gems for some stupid game. The credit card bill comes due at the end of the month. I'm like, \"Honey, I never spent $10,000 on that wasn't me.",
+          "at_s": 2103,
+          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=2103s"
+        },
+        {
+          "text": "because they tried it three years ago and uh like you I just bought a new Tesla and I remember I had I had an old Model 3. I think this is a good metaphor for what we're talking about. Like I had an old Model 3 in 2017 with self-driving didn't work at all. It was a joke.",
+          "at_s": 2415,
+          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=2415s"
+        }
+      ],
       "description": ""
     },
     {
@@ -8426,13 +8457,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 3538,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9532,
+        "checked_at": "2026-11-11T02:12:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "First, people spent 5 to 20% of what they spent on infrastructure on observability. But in the end, what they were really trying to spend that money on was reliability. They wanted to buy reliability and, uh, predictability of costs, reliability of their infrastructure and programs. Of course. Of course. Of course. Yes.",
+          "at_s": 449,
+          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=449s"
+        },
+        {
+          "text": "So you put us in the data stream, connect, run the data through us, and cut costs by 90%. And, um, now we're building this second layer where we feed those signals into the AI ​​layer, which now does the troubleshooting, figuring out when something's going wrong, and fixing it.",
+          "at_s": 596,
+          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=596s"
+        },
+        {
+          "text": "um, with Claude Code I notice that if I don't tell it not to run you know, 20 agents for a normal study? He will go and launch 20 agents to investigate and burn all your tokens.",
+          "at_s": 758,
+          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=758s"
+        },
+        {
+          "text": "That is, they actually run the Linux kernel on Windows through a hypervisor and give you access to it. This is great. They did a great job. Perfectly. Windows WSL and Cloud Code. Cloud Code and, um, the last thing I'm doing is using Opus 5.5. I tell her she is a very good model. This is an amazing model.",
+          "at_s": 1183,
+          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=1183s"
+        },
+        {
+          "text": "I think, look, it's very simple: when we started using AI for coding, it was autocomplete. Yeah. And nobody knew how complex software could be built with AI. Yeah. When we looked at it , we thought, \" Oh, AI will never be able to build X, Y, Z, or whatever.\"",
+          "at_s": 2228,
+          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=2228s"
+        },
+        {
+          "text": "I remember Sebastian Thrun won the DARPA Grand Challenge when I was at Stanford. Remember that? And we were like, \"Yay!\" You know, self-driving cars are just around the corner. Seriously. And it took 20 years and $170 billion in investment to get worse unit economics than Uber, right?",
+          "at_s": 3252,
+          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=3252s"
+        }
+      ],
       "description": ""
     },
     {
