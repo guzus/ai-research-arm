@@ -1,9 +1,268 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-11T09:48:00Z",
+  "updated_at": "2026-11-11T18:02:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "google-deepmind:uND6iY2qp_c",
+      "show_id": "google-deepmind",
+      "show": "Google DeepMind",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "AlphaGenome 2: Teaching AI to read the entire human genome",
+      "url": "https://www.youtube.com/watch?v=uND6iY2qp_c",
+      "video_id": "uND6iY2qp_c",
+      "audio_url": null,
+      "published_at": "2026-11-11T18:00:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T18:02:00Z",
+      "duration_s": 2387,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "98% of human DNA doesn't build proteins—it controls how our cells work, and holds vital clues to why diseases happen and why 90% of new drugs fail in clinical trials. Understanding the genome at the molecular level is the key to deciphering the blueprint of human life. In this episode, Professor Hannah Fry speaks with Google DeepMind's Žiga Avsec and Adam Gayoso about AlphaGenome, the AlphaGenome Atlas, and AlphaGenome 2—exploring how AI reads non-coding DNA down to single-cell resolution to"
+    },
+    {
+      "id": "microsoft-research:yMev3Q_1fsQ",
+      "show_id": "microsoft-research",
+      "show": "Microsoft Research",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "research"
+      ],
+      "title": "Detecting and Mitigating Bias in Voice Activated Technologies",
+      "url": "https://www.youtube.com/watch?v=yMev3Q_1fsQ",
+      "video_id": "yMev3Q_1fsQ",
+      "audio_url": null,
+      "published_at": "2026-11-11T16:32:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T18:02:00Z",
+      "duration_s": 2734,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "In this talk Wiebke (Toussaint) Hutiri will share her work on FairEVA, an open-source project to gain insights and build tools for mitigating bias in voice biometrics. The project is supported by a Mozilla Technology Award for advancing trustworthy AI and motivated by research that Wiebke will present at ACM FAccT 2022 in Korea. Speaker verification is a voice-based biometric that identifies speakers from their voice. It is used in voice assistants, call centers, and forensics. There are many parallels"
+    },
+    {
+      "id": "a16z:LI3lxzHfRrU",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Inside the Economics of AI Supply and Demand | Mike Volpi",
+      "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU",
+      "video_id": "LI3lxzHfRrU",
+      "audio_url": null,
+      "published_at": "2026-11-11T15:32:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T18:02:00Z",
+      "duration_s": 3366,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9716,
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "It's it's it's GPUs. That's 80 plus%. Yeah. Yeah. It's the big chunk of it. All right. So, I remember back when people were very excited about Hopper H100's, right? You were you're they were like, \"Okay, well, maybe it has a 5year useful life and you're renting it out at a, you know, buck 80 $2 per GPU hour.\"",
+          "at_s": 675,
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=675s"
+        },
+        {
+          "text": "So a and so it ended up that during the period that I was there uh by I joined in '94 and I was like the one bisdev hire in 2000 uh in 2000 roughly uh 50% of Cisco's revenue came from acquired sources.",
+          "at_s": 969,
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=969s"
+        },
+        {
+          "text": "But in the end, you're like, \"All right, well, I I did I did 70 I think our team did 70 acquisitions. I was there and those turned into half the company's revenue and we were doing 30 billion in revenue.\" So, it's 15 billion in revenue.",
+          "at_s": 1148,
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=1148s"
+        },
+        {
+          "text": "And I think the topic of conversation today is model routers and how do I move stuff to, you know, the economic difference between a top-end Anthropic token and a top-end Kimmy token is like 5 to one or 7 to1 or whatever. It's a massive economic difference.",
+          "at_s": 2080,
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=2080s"
+        },
+        {
+          "text": "How do you see how do you see AI chips evolving and right now Jensen King of the Hill incredibly dominant right? Google TPU very successful. Um currently mostly sold by Google. It's expected to change. Not enough TPUs. Uh but not enough TPUs. Exactly. Uh how how will the how's the future looking like?",
+          "at_s": 2287,
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=2287s"
+        },
+        {
+          "text": "Stock went from 80ome dollars a share to $9 a share I want to say. So it's like literally onetenth the value over a period of 6 months. Very tough. Yeah.",
+          "at_s": 2758,
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=2758s"
+        }
+      ],
+      "description": "The internet boom built bandwidth. The AI boom is building intelligence. Mike Volpi, who helped shape Cisco’s strategy during the internet buildout, asks what that era can teach us about this one. Mike joins a16z’s Raghu Raghuram and Guido Appenzeller to compare today’s investment in GPUs, data centers, and power with the fiber boom of the late 1990s, and explain why the infrastructure could prove valuable even if the market corrects. They also discuss NVIDIA, custom silicon, networking, and the"
+    },
+    {
+      "id": "invest-like-the-best:aOSuI2qPeB8",
+      "show_id": "invest-like-the-best",
+      "show": "Invest Like the Best",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "GLP-1s Are a Bigger Business Than AI",
+      "url": "https://www.youtube.com/watch?v=aOSuI2qPeB8",
+      "video_id": "aOSuI2qPeB8",
+      "audio_url": null,
+      "published_at": "2026-11-11T13:32:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T18:02:00Z",
+      "duration_s": 5095,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 16795,
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Politicians and regulators have been trying to get transparent prices for 20 25 years, right? What happens? Pharma goes direct. What happens to the prices? Well, this as my loving Jewish mother would say, the faka prices of like list to net, right? You have like $1,300 drugs that people are paying behind the scenes $3 $400 for.",
+          "at_s": 403,
+          "url": "https://www.youtube.com/watch?v=aOSuI2qPeB8&t=403s"
+        },
+        {
+          "text": "The the fastest growing part of the business is GLP1s. And oftentimes people will say as this has happened, right, because we've grown uh over the last four years, we've gone from about a $250 million run rate to over a $3 billion run rate.",
+          "at_s": 647,
+          "url": "https://www.youtube.com/watch?v=aOSuI2qPeB8&t=647s"
+        },
+        {
+          "text": "So we've helped actually over 1% of the US population check their insurance for free. Done that entirely with AI. You can get it mailed to your door. You can pick it up in person. We also have worked with our pharma partners to offer multi-month subscriptions where we can actually save patients $600 to $1,800 a year.",
+          "at_s": 879,
+          "url": "https://www.youtube.com/watch?v=aOSuI2qPeB8&t=879s"
+        },
+        {
+          "text": "Do you think that if you had to predict the percent of people on some form of a GLP1 10 years from now or something? Yeah. What would you what would your prediction be from 10 or 15 to 50 plus% of people?",
+          "at_s": 1462,
+          "url": "https://www.youtube.com/watch?v=aOSuI2qPeB8&t=1462s"
+        },
+        {
+          "text": "Now, mind you, 11 months prior in January, we had raised $500 million at a $5 billion valuation. And we did like almost every textbook mistake in the book. It's like we confused our long-term vision with our near-term strategy and we decided to do everything and hire everyone and try to do everything all at once.",
+          "at_s": 1885,
+          "url": "https://www.youtube.com/watch?v=aOSuI2qPeB8&t=1885s"
+        },
+        {
+          "text": "What happened when it went direct went from $600 a month to 200, right? went down like 60 70% and hopefully it gets lower. There's a new oral coming out and an oral PCSK9. It's actually an oral peptide PCSK9.",
+          "at_s": 3452,
+          "url": "https://www.youtube.com/watch?v=aOSuI2qPeB8&t=3452s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:mJMKygU_G5g",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Fable 5.2 vs Opus 5.5 and When to Use Each",
+      "url": "https://www.youtube.com/watch?v=mJMKygU_G5g",
+      "video_id": "mJMKygU_G5g",
+      "audio_url": null,
+      "published_at": "2026-11-11T13:32:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T18:02:00Z",
+      "duration_s": 1796,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
+    {
+      "id": "cognitive-revolution:lAG4njluIbQ",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Agents That Think Together: Cisco's Vijoy Pandey on Semantic Alignment, Scope, Accord & Concord",
+      "url": "https://www.youtube.com/watch?v=lAG4njluIbQ",
+      "video_id": "lAG4njluIbQ",
+      "audio_url": null,
+      "published_at": "2026-11-11T11:32:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-11T18:02:00Z",
+      "duration_s": 5426,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 13659,
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "When we started looking at some of the deployments we've done, simple deployments of five agent systems, we saw that when these semantic alignments were not taken care of and if there was one misalignment, the accuracy of that multi- aent system dropped from 99% to 98%. Not too bad. two cognitive failures that accuracy dropped from 98% to 81%.",
+          "at_s": 2204,
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=2204s"
+        },
+        {
+          "text": "So if you are leveraging A2A, if you're leveraging MCP, Accord and Concord ride above those protocols, they will ride above A2A. They will ride above MCP through agent bridge.",
+          "at_s": 2601,
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=2601s"
+        },
+        {
+          "text": "Build a feature for 100,000 users. Sales being sales takes that number and says we're going to solve for this challenge. Comes back and says engineering and product this is what we need to go after 100,000 users. engineering assumes 100,000 users in total whereas the customer really meant 100,000 concurrent users. There is a grounding problem here.",
+          "at_s": 2748,
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=2748s"
+        },
+        {
+          "text": "Accelerating a model's outcomes or guard railing a model's outcomes depending on the situation. But those two things are getting decoupled as well. Like even the frontier labs are decoupling the model and the harness. You can now take the harness from open AI and attach an open-source or open core model to it.",
+          "at_s": 3137,
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=3137s"
+        },
+        {
+          "text": "So these protocols, these observability platforms, these skills that you can deploy are valuable not just in the consumer space in a simple situation like this, but then draw that out to that enterprise $2 million, $3 million deal desk and think of what happens there and the outcomes that can go wrong in that kind of a situation and",
+          "at_s": 4316,
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=4316s"
+        },
+        {
+          "text": "That's why people who are building those harnesses and those customizations in models within those verticals for those specialist agents will understand those systems. I will understand and infrastructure stack agent really really well. So you you need those specialist agents, the people who built them will understand those agents, will understand those harnesses.",
+          "at_s": 5021,
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=5021s"
+        }
+      ],
+      "description": "Vijoy Pandey, SVP and GM of Outshift by Cisco, discusses the challenges of multi-agent systems and Cisco's new open-source protocols designed to help AI agents collaborate effectively. He explains how tools like Scope, Accord, and Concord address semantic misalignments, intent negotiation, and cognitive failures across complex workflows. The conversation also dives into personal agent setups, avoiding model lock-in, and the rise of latent space communication. Finally, Pandey shares why proper guardrails will ensure humanity benefits as autonomous systems grow in"
+    },
     {
       "id": "openai:pIW_8VyvCuQ",
       "show_id": "openai",
@@ -415,7 +674,7 @@
           "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=1121s"
         }
       ],
-      "description": ""
+      "description": "Turn an idea into an interactive web experience with Astra, ChatGPT Sites, and WebMCP. Learn how to build new kinds of interfaces alongside your colleagues and agents."
     },
     {
       "id": "lex-fridman:2hJkprFnzhY",
@@ -662,8 +921,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-11T09:48:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Goodfire technical staff member Curt Tigges discusses research revealing that individual MLP neurons in modern language models are far more interpretable and functionally bounded than previously thought. Using an automated agent to test hypotheses across architectures like Qwen3.6-35B-A3B, Tigges explains how modern gated MLPs act as legible conjunctions and control signals capable of extensive dynamic sparsity without lasting benchmark loss. By showing that many internal representations can be directly enumerated, this work offers an alternative to complex external featurizers and"
@@ -807,8 +1066,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-11T09:48:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "The Nvidia CEO’s admission of an affair with a woman US officials believe is a Chinese spy raises big questions about chip export policy, congressional scrutiny, and the AI build-out. NLW breaks down the New York Times reporting, the board investigation, the market whiplash, and the fight over China trade policy. In the headlines: falling Anthropic and OpenAI valuations, Microsoft ending an Oracle compute deal, and Google taking over a stalled Crusoe data center. The AI Daily Brief helps you"
@@ -890,13 +1149,44 @@
       "first_seen_at": "2026-11-10T21:00:00Z",
       "duration_s": 1879,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-11T02:12:00Z",
-        "attempts": 2
+        "available": true,
+        "source": "youtube_captions",
+        "words": 6091,
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 3
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "And even before that people understood that you know Malaysia didn't have a big AI development program. If if 10 or or 15% of Nvidia's revenue was coming from Malaysia really that meant that those chips were being kind of distributed to China in one way or another.",
+          "at_s": 201,
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=201s"
+        },
+        {
+          "text": "You know, Tench Coxe has Tench Coxe has I think something like two to three billion dollars worth of NVIDIA stock. Like he he's not going to do anything to damage the company. Yeah. So I know that two of Jensen's kids and a son-in-law work at NVIDIA.",
+          "at_s": 634,
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=634s"
+        },
+        {
+          "text": "Let's talk about his Jensen's stance on China because that's important to the story on a couple different levels. He's been a pretty outspoken advocate for essentially selling his own chips directly to China in contravention of US export restrictions on those chips which have been put into place to try to slow down China's own AI development.",
+          "at_s": 861,
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=861s"
+        },
+        {
+          "text": "They didn't like that he was kind of pro free trade with China. These are the China hawks in the right. So, you know, guys like Peter Thiel, guys like Paul Lucky, uh and in particular, you know, Marco Rubio, who is a very long time China hawk and who is also Trump's Secretary of State.",
+          "at_s": 1018,
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=1018s"
+        },
+        {
+          "text": "So Jensen is sort of unique in this moment as a tech CEO, especially as an AI CEO, in that he's maybe he's the least safety focused or least he's the least afraid of AI as a technology. Yeah. It's almost the opposite of somebody like Dario Amodei who's constantly warning of the possible catastrophe.",
+          "at_s": 1634,
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=1634s"
+        },
+        {
+          "text": "If we stop doing this, China wins. China takes control of this technology. They are not afraid and they are not slowing down. And I think that's the strongest argument actually against against, um, the AI doomer narrative is that people out here in Asia, not just China but Japan and Korea, Singapore, they don't believe this at all. Yeah.",
+          "at_s": 1774,
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=1774s"
+        }
+      ],
       "description": "Jensen Huang, the chief executive of Nvidia, has admitted to an affair with a top executive at the data center company Megaspeed — a woman going by the name of Alice Huang who the U.S. government alleges is a Chinese spy. On this special episode of Hard Fork, we sit down with Stephen Witt, who wrote Jensen Huang biography “The Thinking Machine.” We’ll dig into what you need to know about this spiraling scandal and what it means for A.I."
     },
     {
@@ -955,8 +1245,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-10T21:00:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "Alex Kantrowitz is the host of Big Technology Podcast. Today he joins for a solo episode digging into the news that Nvidia CEO Jensen Huang, the head of the world’s second largest company and the backbone of the AI buildout, has admitted to an affair with a woman that U.S. intelligence believes is a Chinese spy. His board is unsure whether Nvidia‘s or U.S. state secrets were compromised, and has opened an investigation. So today, we dig into what happened"
@@ -982,8 +1272,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-10T21:00:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "Opus 5.5 is unlocking a step change in AI video editing, much like Opus 4.5 did for agentic coding. NLW breaks down the eight changes behind agentic video and the use cases knowledge workers should try first. Ideas range from concept videos and meeting highlights to self-updating videos and personalized sales demos. The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -8813,13 +9103,44 @@
       "first_seen_at": "2026-10-31T03:14:00Z",
       "duration_s": 5646,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "youtube_captions",
+        "words": 16960,
+        "checked_at": "2026-11-11T18:02:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "But if funding will increase and will reach a range of 10 , 11, 12, 13, 14, 15%, then these guys very, very, very close to that, which is not necessary will be able to cover all your obligations. By my estimates teams, they are plus- minus about 5 billions from the point break-even point.",
+          "at_s": 718,
+          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=718s"
+        },
+        {
+          "text": "It quite aggressive Polymarket. 15% chance at the end of 2027, next year. 23% at the end of 2028 seems a little far-fetched, considering the fact that that they have a huge demand for their equipment, like Ben noted. Listen, this is nonsense, because I think Michael explained it as if in you have such an OpCo scheme PropCo.",
+          "at_s": 1113,
+          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=1113s"
+        },
+        {
+          "text": "So, CoreWeave says that the term payback is 2.5 years. Their typical the deal is 5 years. They pay off within 2.5 years. SpaceX pay back approximately in 1 year. That makes sense, because I think that SpaceX is monetizing about 50 billion per gigawatt, and CoreWeave- about 20 billion per gigawatt.",
+          "at_s": 2433,
+          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=2433s"
+        },
+        {
+          "text": "Presented potential IPO investors in their headquarters in San Francisco. This is not Open AI headquarters with listening. They cleaned up. room for this, but we still have data. Income for the third quarter was 16.8 billion dollars. Think about it, Gentlemen. Anthropic already spends more than 5 billions of dollars for month. Maintenance net income amounted to 900%.",
+          "at_s": 2775,
+          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=2775s"
+        },
+        {
+          "text": "However, 16 billion, 16.8 billion per quarter. Madness, madness. How long has Anthropic been selling? things? You know, 3 years? Madness. Yes. I mean, this is simply absurd, how much is this thing good, so I think, that the IPO will be normal, regardless of whether Do you want to be in 2? trillion, or 1.9 trillion, or 2.3 trillion.",
+          "at_s": 3024,
+          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=3024s"
+        },
+        {
+          "text": "And I think, what if you want to be safe, quarter of a trillion will solve the problem. AND again, what is the price it must be so that to attract this extra dollar from the side? Can they to attract 80 billion in IPO for 1,7, 8 or 9 trillions? I think That's right, easy.",
+          "at_s": 3329,
+          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=3329s"
+        }
+      ],
       "description": ""
     },
     {
