@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-11-11 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] Helping caregivers use AI in everyday life - Tue, 10 Nov 2026 12:00 GMT
+• [Hacker News] AlphaProof Code: DeepMind blog (deepmind.google/blog/introducing-alphaproof-code/). Biggest AI-by-p…
+• [Reddit] ICLR 2027 Reviews Discussion [D] — https://www.reddit.com/r/MachineLearning/comments/1xo6yzo/iclr_2…
+• [Expert Blogs] Introducing Our Smallest, Most Efficient Model: Muse Ember
+• [Bluesky] @hardmaru.bsky.social: "We are building our first mobile app! This is a new direction for Sakana AI…
+
+SOURCES: 7/8 lanes had data; missing: Twitter/X
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
