@@ -1,25 +1,25 @@
 {
   "benchmark": "GPQA diamond",
   "benchmarks_available": {
-    "Chess Puzzles": 91,
-    "EBR-bench": 30,
+    "Chess Puzzles": 92,
+    "EBR-bench": 31,
     "FrontierMath-2025-02-28-Private": 69,
     "FrontierMath-2025-02-28-Public": 64,
-    "FrontierMath-Erdos": 14,
+    "FrontierMath-Erdos": 15,
     "FrontierMath-Tier-4-2025-07-01-Private": 55,
     "FrontierMath-Tier-4-2025-07-01-Public": 36,
-    "FrontierMath-Tier-4-v2-Private": 73,
-    "FrontierMath-Tiers-1-3-v2-Private": 91,
-    "Furniture Assembly": 37,
-    "GPQA diamond": 212,
+    "FrontierMath-Tier-4-v2-Private": 74,
+    "FrontierMath-Tiers-1-3-v2-Private": 92,
+    "Furniture Assembly": 38,
+    "GPQA diamond": 213,
     "MATH level 5": 88,
-    "MirrorCode": 15,
-    "Mystery Game Puzzles": 82,
+    "MirrorCode": 39,
+    "Mystery Game Puzzles": 83,
     "OEIS Open": 3,
     "OEIS Open Lite": 5,
-    "OTIS Mock AIME 2024-2025": 195,
+    "OTIS Mock AIME 2024-2025": 196,
     "SWE-Bench verified": 32,
-    "SimpleQA Verified": 92,
+    "SimpleQA Verified": 93,
     "SpireClimb": 9,
     "SpireClimb (Slay the Spire 1, Ascension 20 Heart)": 9,
     "SpireClimb (Slay the Spire 2, Ascension 10)": 9
@@ -38,7 +38,7 @@
     0.9,
     0.95
   ],
-  "generated_at": "2026-11-10T21:20:29Z",
+  "generated_at": "2026-11-11T01:18:01Z",
   "history": [
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.14,"0.6":0.17,"0.7":0.17,"0.8":0.18,"0.9":0.18,"0.95":null},"pareto":10,"plotted":76,"ts":"2026-08-06T17:50:12Z"},
     {"benchmark":"GPQA diamond","best_score":0.946,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.18,"0.95":null},"pareto":9,"plotted":85,"ts":"2026-08-08T09:57:44Z"},
@@ -368,7 +368,8 @@
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.083,"0.6":0.083,"0.7":0.083,"0.8":0.083,"0.9":0.083,"0.95":4.125},"pareto":8,"plotted":110,"ts":"2026-11-09T11:49:00Z"},
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.13,"0.6":0.13,"0.7":0.13,"0.8":0.13,"0.9":0.3,"0.95":4.125},"pareto":8,"plotted":111,"ts":"2026-11-09T23:48:15Z"},
     {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.1,"0.6":0.1,"0.7":0.1,"0.8":0.13,"0.9":0.3,"0.95":4.125},"pareto":9,"plotted":111,"ts":"2026-11-10T11:24:06Z"},
-    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.0784,"0.6":0.0784,"0.7":0.0784,"0.8":0.0784,"0.9":0.0784,"0.95":4.125},"pareto":7,"plotted":111,"ts":"2026-11-10T21:20:29Z"}
+    {"benchmark":"GPQA diamond","best_score":0.9640151515151515,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.0784,"0.6":0.0784,"0.7":0.0784,"0.8":0.0784,"0.9":0.0784,"0.95":4.125},"pareto":7,"plotted":111,"ts":"2026-11-10T21:20:29Z"},
+    {"benchmark":"GPQA diamond","best_score":0.9652777777777778,"cheapest_plotted":0.03,"frontier_price_at":{"0.5":0.0784,"0.6":0.0784,"0.7":0.0784,"0.8":0.0784,"0.9":0.0784,"0.95":4.125},"pareto":7,"plotted":112,"ts":"2026-11-11T01:18:01Z"}
   ],
   "history_fields": [
     "benchmark",
@@ -397,6 +398,15 @@
           "vendor": "anthropic"
         },
         {
+          "key": "gemini4carbon",
+          "name": "Gemini 4 Carbon",
+          "output_usd_per_mtok": 10.0,
+          "pareto": true,
+          "score": 0.78,
+          "stderr": 0.04163331998932266,
+          "vendor": "google"
+        },
+        {
           "key": "gpt6astra",
           "name": "GPT-6 Astra",
           "output_usd_per_mtok": 50.0,
@@ -409,7 +419,7 @@
           "key": "gpt6.1sol",
           "name": "GPT-6.1 Sol",
           "output_usd_per_mtok": 10.0,
-          "pareto": true,
+          "pareto": false,
           "score": 0.68,
           "stderr": 0.04688261722621507,
           "vendor": "openai"
@@ -534,7 +544,7 @@
         {
           "key": "deepseekv4.1flash",
           "name": "DeepSeek V4.1 Flash",
-          "output_usd_per_mtok": 1.2,
+          "output_usd_per_mtok": 0.567,
           "pareto": false,
           "score": 0.48,
           "stderr": 0.05021167315686782,
@@ -948,7 +958,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 4.4,
+          "output_usd_per_mtok": 4.18,
           "pareto": false,
           "score": 0.2,
           "stderr": 0.04020151261036849,
@@ -1126,6 +1136,15 @@
           "score": 0.9087719298245615,
           "stderr": 0.017085690144166794,
           "vendor": "openai"
+        },
+        {
+          "key": "gemini4carbon",
+          "name": "Gemini 4 Carbon",
+          "output_usd_per_mtok": 10.0,
+          "pareto": false,
+          "score": 0.9052631578947369,
+          "stderr": 0.017377516319276178,
+          "vendor": "google"
         },
         {
           "key": "claudefable5.1",
@@ -1391,7 +1410,7 @@
         {
           "key": "deepseekv4.1flash",
           "name": "DeepSeek V4.1 Flash",
-          "output_usd_per_mtok": 1.2,
+          "output_usd_per_mtok": 0.567,
           "pareto": false,
           "score": 0.6736842105263158,
           "stderr": 0.027821981570324446,
@@ -1607,7 +1626,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 4.4,
+          "output_usd_per_mtok": 4.18,
           "pareto": false,
           "score": 0.3684210526315789,
           "stderr": 0.028623772537150215,
@@ -2113,6 +2132,15 @@
           "vendor": "moonshotai"
         },
         {
+          "key": "gemini4carbon",
+          "name": "Gemini 4 Carbon",
+          "output_usd_per_mtok": 10.0,
+          "pareto": false,
+          "score": 1.0,
+          "stderr": 0.0,
+          "vendor": "google"
+        },
+        {
           "key": "gemini4argon",
           "name": "Gemini 4 Argon",
           "output_usd_per_mtok": 10.0,
@@ -2322,7 +2350,7 @@
         {
           "key": "deepseekv4.1flash",
           "name": "DeepSeek V4.1 Flash",
-          "output_usd_per_mtok": 1.2,
+          "output_usd_per_mtok": 0.567,
           "pareto": false,
           "score": 0.9833333333333333,
           "stderr": 0.006405884289881728,
@@ -2520,7 +2548,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 4.4,
+          "output_usd_per_mtok": 4.18,
           "pareto": false,
           "score": 0.9333333333333333,
           "stderr": 0.03760507165451774,
@@ -3114,10 +3142,19 @@
           "vendor": "anthropic"
         },
         {
+          "key": "gemini4carbon",
+          "name": "Gemini 4 Carbon",
+          "output_usd_per_mtok": 10.0,
+          "pareto": true,
+          "score": 0.777,
+          "stderr": 0.013169830843425608,
+          "vendor": "google"
+        },
+        {
           "key": "gemini4argon",
           "name": "Gemini 4 Argon",
           "output_usd_per_mtok": 10.0,
-          "pareto": true,
+          "pareto": false,
           "score": 0.76,
           "stderr": 0.013512312258920845,
           "vendor": "google"
@@ -3458,7 +3495,7 @@
         {
           "key": "deepseekv4.1flash",
           "name": "DeepSeek V4.1 Flash",
-          "output_usd_per_mtok": 1.2,
+          "output_usd_per_mtok": 0.567,
           "pareto": true,
           "score": 0.429,
           "stderr": 0.015658997547870177,
@@ -3566,7 +3603,7 @@
         {
           "key": "glm5.1",
           "name": "GLM 5.1",
-          "output_usd_per_mtok": 4.4,
+          "output_usd_per_mtok": 4.18,
           "pareto": false,
           "score": 0.34,
           "stderr": 0.014987482264363972,
@@ -3772,15 +3809,34 @@
         }
       ]
     },
-    "as_of": "2026-11-10T21:20:29Z",
+    "as_of": "2026-11-11T01:18:01Z",
     "counts": {
       "pareto": 7,
-      "plotted": 111,
-      "priced": 353,
-      "scored": 202,
+      "plotted": 112,
+      "priced": 354,
+      "scored": 203,
       "unscored": 242
     },
     "models": [
+      {
+        "blended_usd_per_mtok": 4.0,
+        "context_length": 1048576,
+        "epoch_model": "Gemini 4 Carbon",
+        "input_usd_per_mtok": 2.0,
+        "key": "gemini4carbon",
+        "name": "Gemini 4 Carbon",
+        "openrouter_id": "google/gemini-4-carbon",
+        "output_usd_per_mtok": 10.0,
+        "pareto": true,
+        "price_variant": null,
+        "runs": 1,
+        "score": 0.9652777777777778,
+        "score_as_of": "2026-10-28",
+        "score_variant": "gemini-4-carbon_high",
+        "stderr": 0.01207061012675132,
+        "variants_seen": 2,
+        "vendor": "google"
+      },
       {
         "blended_usd_per_mtok": 4.0,
         "context_length": 1048576,
@@ -3790,7 +3846,7 @@
         "name": "Gemini 4 Argon",
         "openrouter_id": "google/gemini-4-argon",
         "output_usd_per_mtok": 10.0,
-        "pareto": true,
+        "pareto": false,
         "price_variant": null,
         "runs": 1,
         "score": 0.9640151515151515,
@@ -4580,14 +4636,14 @@
         "vendor": "anthropic"
       },
       {
-        "blended_usd_per_mtok": 2.15,
+        "blended_usd_per_mtok": 2.0425,
         "context_length": 204800,
         "epoch_model": "GLM-5.1",
-        "input_usd_per_mtok": 1.4,
+        "input_usd_per_mtok": 1.33,
         "key": "glm5.1",
         "name": "GLM 5.1",
         "openrouter_id": "z-ai/glm-5.1",
-        "output_usd_per_mtok": 4.4,
+        "output_usd_per_mtok": 4.18,
         "pareto": false,
         "price_variant": null,
         "runs": 1,
@@ -4599,14 +4655,14 @@
         "vendor": "z-ai"
       },
       {
-        "blended_usd_per_mtok": 0.525,
+        "blended_usd_per_mtok": 0.18,
         "context_length": 1048576,
         "epoch_model": "DeepSeek V4.1 Flash",
-        "input_usd_per_mtok": 0.3,
+        "input_usd_per_mtok": 0.051,
         "key": "deepseekv4.1flash",
         "name": "DeepSeek V4.1 Flash",
         "openrouter_id": "deepseek/deepseek-v4.1-flash",
-        "output_usd_per_mtok": 1.2,
+        "output_usd_per_mtok": 0.567,
         "pareto": false,
         "price_variant": null,
         "runs": 1,
@@ -6012,18 +6068,18 @@
         "vendor": "inclusionai"
       },
       {
+        "input_usd_per_mtok": 0.09,
+        "key": "deepseekv4flash0423",
+        "name": "DeepSeek V4 Flash 0423",
+        "output_usd_per_mtok": 0.18,
+        "vendor": "deepseek"
+      },
+      {
         "input_usd_per_mtok": 0.18,
         "key": "llamaguard412b",
         "name": "Llama Guard 4 12B",
         "output_usd_per_mtok": 0.18,
         "vendor": "meta-llama"
-      },
-      {
-        "input_usd_per_mtok": 0.091,
-        "key": "deepseekv4flash0423",
-        "name": "DeepSeek V4 Flash 0423",
-        "output_usd_per_mtok": 0.182,
-        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 0.08,
@@ -6089,13 +6145,6 @@
         "vendor": "rekaai"
       },
       {
-        "input_usd_per_mtok": 0.1,
-        "key": "qwen2.57binstruct",
-        "name": "Qwen2.5 7B Instruct",
-        "output_usd_per_mtok": 0.2,
-        "vendor": "qwen"
-      },
-      {
         "input_usd_per_mtok": 0.027,
         "key": "llama3.21binstruct",
         "name": "Llama 3.2 1B Instruct",
@@ -6159,13 +6208,6 @@
         "vendor": "tencent"
       },
       {
-        "input_usd_per_mtok": 0.075,
-        "key": "minimaxm3.1flash",
-        "name": "MiniMax M3.1 Flash",
-        "output_usd_per_mtok": 0.3,
-        "vendor": "minimax"
-      },
-      {
         "input_usd_per_mtok": 0.0434,
         "key": "deepseekv4flashlatest",
         "name": "DeepSeek V4 Flash Latest",
@@ -6213,13 +6255,6 @@
         "name": "Mistral Small 3.2 24B",
         "output_usd_per_mtok": 0.3,
         "vendor": "mistralai"
-      },
-      {
-        "input_usd_per_mtok": 0.0825,
-        "key": "hy3",
-        "name": "Hy3",
-        "output_usd_per_mtok": 0.33,
-        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.05,
@@ -6390,6 +6425,13 @@
         "vendor": "undi95"
       },
       {
+        "input_usd_per_mtok": 0.132,
+        "key": "hy3",
+        "name": "Hy3",
+        "output_usd_per_mtok": 0.528,
+        "vendor": "tencent"
+      },
+      {
         "input_usd_per_mtok": 0.351,
         "key": "mistralsmall3.124b",
         "name": "Mistral Small 3.1 24B",
@@ -6409,6 +6451,13 @@
         "name": "Ripple 65B Preview",
         "output_usd_per_mtok": 0.6,
         "vendor": "ricursiveai"
+      },
+      {
+        "input_usd_per_mtok": 0.15,
+        "key": "minimaxm3.1flash",
+        "name": "MiniMax M3.1 Flash",
+        "output_usd_per_mtok": 0.6,
+        "vendor": "minimax"
       },
       {
         "input_usd_per_mtok": 0.15,
@@ -6486,6 +6535,13 @@
         "name": "Qwen3 VL 8B Instruct",
         "output_usd_per_mtok": 0.75,
         "vendor": "qwen"
+      },
+      {
+        "input_usd_per_mtok": 0.2,
+        "key": "midmk3.0pro",
+        "name": "Mi:dm K 3.0 Pro",
+        "output_usd_per_mtok": 0.8,
+        "vendor": "kt"
       },
       {
         "input_usd_per_mtok": 0.12,
@@ -6650,6 +6706,13 @@
       },
       {
         "input_usd_per_mtok": 0.3,
+        "key": "motif3",
+        "name": "Motif 3",
+        "output_usd_per_mtok": 1.2,
+        "vendor": "motif-technologies"
+      },
+      {
+        "input_usd_per_mtok": 0.3,
         "key": "museglimmer30b",
         "name": "Muse Glimmer 30B",
         "output_usd_per_mtok": 1.2,
@@ -6803,13 +6866,6 @@
         "vendor": "aion-labs"
       },
       {
-        "input_usd_per_mtok": 0.894012,
-        "key": "deepseekv4pro0423",
-        "name": "DeepSeek V4 Pro 0423",
-        "output_usd_per_mtok": 1.788024,
-        "vendor": "deepseek"
-      },
-      {
         "input_usd_per_mtok": 0.3,
         "key": "qwen3.5plus20260420",
         "name": "Qwen3.5 Plus 2026-04-20",
@@ -6850,6 +6906,13 @@
         "name": "Morph V3 Large",
         "output_usd_per_mtok": 1.9,
         "vendor": "morph"
+      },
+      {
+        "input_usd_per_mtok": 0.95526,
+        "key": "deepseekv4pro0423",
+        "name": "DeepSeek V4 Pro 0423",
+        "output_usd_per_mtok": 1.91052,
+        "vendor": "deepseek"
       },
       {
         "input_usd_per_mtok": 1.0,
@@ -6936,13 +6999,6 @@
         "vendor": "z-ai"
       },
       {
-        "input_usd_per_mtok": 0.7506,
-        "key": "hy4preview",
-        "name": "Hy4 preview",
-        "output_usd_per_mtok": 2.2509,
-        "vendor": "tencent"
-      },
-      {
         "input_usd_per_mtok": 0.57,
         "key": "kimik20711",
         "name": "Kimi K2 0711",
@@ -7018,6 +7074,13 @@
         "name": "Gemini 2.5 Flash",
         "output_usd_per_mtok": 2.5,
         "vendor": "google"
+      },
+      {
+        "input_usd_per_mtok": 0.834,
+        "key": "hy4preview",
+        "name": "Hy4 preview",
+        "output_usd_per_mtok": 2.501,
+        "vendor": "tencent"
       },
       {
         "input_usd_per_mtok": 0.26,
@@ -7326,13 +7389,6 @@
         "name": "Kimi Latest",
         "output_usd_per_mtok": 9.3388,
         "vendor": "~moonshotai"
-      },
-      {
-        "input_usd_per_mtok": 2.0,
-        "key": "gemini4carbon",
-        "name": "Gemini 4 Carbon",
-        "output_usd_per_mtok": 10.0,
-        "vendor": "google"
       },
       {
         "input_usd_per_mtok": 2.0,
