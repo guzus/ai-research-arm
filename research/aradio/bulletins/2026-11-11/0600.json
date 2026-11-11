@@ -1,0 +1,167 @@
+{
+  "schema": 1,
+  "id": "2026-11-11-0600",
+  "aired_at": "2026-11-11T06:00:00Z",
+  "headline": "Nvidia's Huang admits Megaspeed affair; U.S. alleges a Chinese spy. Microsoft-Oracle unwind, Google-Crusoe in headlines",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's six o'clock UTC on Wednesday, November eleventh. This is ARA AI News, and overnight the picture shifted from CoreWeave's breakout quarter to a national-security scandal around Nvidia's chief executive."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Hard Fork and The AI Daily Brief both say Jensen Huang has admitted an affair with a senior executive at the data-center firm Megaspeed, a woman going by Alice Huang, whom United States officials allege is a Chinese spy."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Hard Fork billed a special with Stephen Witt, who wrote Huang's biography The Thinking Machine, and is working from New York Times reporting. The AI Daily Brief cites a board investigation, market whiplash, and a live fight over chip-export policy and what Congress does next."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "We do not have transcripts yet, only show notes, so this is what those shows say they are covering, not a filing we can read. The admission is of the affair, while the spy charge remains an allegation by the government, not a verdict."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Megaspeed is a data-center company, which is why this is not only a personal story. It sits on the same map as export controls, who gets chips, and who is allowed to build."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "In the same Daily Brief headlines, Microsoft is said to be ending an Oracle compute deal, and Google is said to be taking over a stalled Crusoe data center."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That lands on top of last night's CoreWeave print, where sequential revenue rose more than one billion dollars and adjusted operating margins hit double digits a quarter early. About nine billion dollars of customer prepayments are due in the next three months."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "So the neoclouds are still running hot even as the hyperscalers appear to be shuffling who holds which campus. Watch whether the Microsoft-Oracle unwind and the Google-Crusoe takeover show up in a filing, not just a recap show."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "One quieter thread is now settled, and we are closing the math and physics discovery story. OpenAI's claimed ETH Zurich disproof still has no reviewer certification, and Anthropic's vault-particle preprint has not appeared."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Until a paper actually lands, that watch is closed. What stays open is Anthropic's public-offering clock, where Kalshi odds of an announcement by December were last quoted down from nearly ninety percent to fifty-seven percent in a week, with a host still calling a November nineteenth debut."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Next is an Nvidia board or company statement, and whether Congress uses the Huang story to reopen export rules. Also watch CoreWeave's earnings call, and whether those nine billion dollars of prepayments actually post."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's six o'clock UTC on Wednesday, November eleventh. This is ARA AI News, and overnight the picture shifted from CoreWeave's breakout quarter to a national-security scandal around Nvidia's chief executive.",
+    "Speaker 2: [high_energy] Hard Fork and The AI Daily Brief both say Jensen Huang has admitted an affair with a senior executive at the data-center firm Megaspeed, a woman going by Alice Huang, whom United States officials allege is a Chinese spy.",
+    "Speaker 1: Hard Fork billed a special with Stephen Witt, who wrote Huang's biography The Thinking Machine, and is working from New York Times reporting. The AI Daily Brief cites a board investigation, market whiplash, and a live fight over chip-export policy and what Congress does next.",
+    "Speaker 2: We do not have transcripts yet, only show notes, so this is what those shows say they are covering, not a filing we can read. The admission is of the affair, while the spy charge remains an allegation by the government, not a verdict.",
+    "Speaker 1: Megaspeed is a data-center company, which is why this is not only a personal story. It sits on the same map as export controls, who gets chips, and who is allowed to build.",
+    "Speaker 2: [transition] In the same Daily Brief headlines, Microsoft is said to be ending an Oracle compute deal, and Google is said to be taking over a stalled Crusoe data center.",
+    "Speaker 1: That lands on top of last night's CoreWeave print, where sequential revenue rose more than [emphasis]one billion dollars[/emphasis] and adjusted operating margins hit double digits a quarter early. About [emphasis]nine billion dollars[/emphasis] of customer prepayments are due in the next three months.",
+    "Speaker 2: So the neoclouds are still running hot even as the hyperscalers appear to be shuffling who holds which campus. Watch whether the Microsoft-Oracle unwind and the Google-Crusoe takeover show up in a filing, not just a recap show.",
+    "Speaker 1: [transition] One quieter thread is now settled, and we are closing the math and physics discovery story. OpenAI's claimed ETH Zurich disproof still has no reviewer certification, and Anthropic's vault-particle preprint has not appeared.",
+    "Speaker 2: Until a paper actually lands, that watch is closed. What stays open is Anthropic's public-offering clock, where Kalshi odds of an announcement by December were last quoted down from nearly ninety percent to [emphasis]fifty-seven percent[/emphasis] in a week, with a host still calling a November nineteenth debut.",
+    "Speaker 1: Next is an Nvidia board or company statement, and whether Congress uses the Huang story to reopen export rules. Also watch CoreWeave's earnings call, and whether those nine billion dollars of prepayments actually post.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "nvidia-jensen-huang-spy-allegations",
+    "hyperscaler-capex-and-chip-selloff",
+    "ai-math-and-physics-discovery-claims",
+    "anthropic-ipo-and-ai-funding"
+  ],
+  "threads": [
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "resolved"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc",
+      "kind": "podcast",
+      "label": "Hard Fork"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
+      "kind": "podcast",
+      "label": "The AI Daily Brief"
+    }
+  ],
+  "ops": [
+    {
+      "op": "resolve",
+      "slug": "ai-math-and-physics-discovery-claims"
+    },
+    {
+      "op": "create",
+      "slug": "nvidia-jensen-huang-spy-allegations"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-11-0600.mp3",
+    "bytes": 962589,
+    "duration_s": 160.3,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 67.16,
+        "lines": [
+          0,
+          4
+        ]
+      },
+      {
+        "start_s": 68.61,
+        "end_s": 106.61,
+        "lines": [
+          5,
+          7
+        ]
+      },
+      {
+        "start_s": 108.06,
+        "end_s": 153.78,
+        "lines": [
+          8,
+          11
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 3,
+    "kinds": {
+      "podcast": 3
+    }
+  }
+}

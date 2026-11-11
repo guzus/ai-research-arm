@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-10T21:25:00Z",
-  "headline": "CoreWeave Q3: revenue up more than $1B sequentially, double-digit adj. margins a quarter early, $9B prepayments incoming",
+  "updated_at": "2026-11-11T06:00:00Z",
+  "headline": "Nvidia's Huang admits Megaspeed affair; U.S. alleges a Chinese spy. Microsoft-Oracle unwind, Google-Crusoe in headlines",
   "threads": [
     {
       "slug": "hyperscaler-capex-and-chip-selloff",
@@ -9,11 +9,17 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-10T21:25:00Z",
-      "now": "CoreWeave Q3 8-K: CEO Michael Intrator said revenue rose more than $1 billion sequentially and adjusted operating margins hit double digits a quarter ahead of plan, with about $9 billion in customer prepayments and deposits due in the next three months. Big Technology still floats Anthropic exiting $518 billion of compute commitments if data centers cannot be built; 8-GPU boxes at $550k-$650k.",
-      "changed": "CoreWeave Q3 8-K: CEO Intrator calls a breakout quarter, revenue up more than $1B sequentially, adj. operating margins in double digits a quarter early, about $9B customer prepayments and deposits in the next three months.",
-      "watch": "CoreWeave's earnings call and whether the $9B prepayments post; a filing that confirms remaining contracted backlog versus the 15% debt-cost claim.",
+      "updated_at": "2026-11-11T06:00:00Z",
+      "now": "CoreWeave Q3: Intrator said sequential revenue rose more than $1 billion, adj. operating margins hit double digits a quarter early, with about $9 billion in prepayments due in three months. The AI Daily Brief said Microsoft is ending an Oracle compute deal and Google is taking over a stalled Crusoe data center. Anthropic may still exit $518 billion of compute if data centers cannot be built.",
+      "changed": "The AI Daily Brief said Microsoft is ending an Oracle compute deal and Google is taking over a stalled Crusoe data center.",
+      "watch": "CoreWeave's earnings call and whether the $9 billion prepayments post; confirmation of the Microsoft-Oracle unwind and the Google-Crusoe takeover beyond show notes.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-10T15:30:00Z"
+        },
         {
           "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm",
           "kind": "earnings",
@@ -58,12 +64,6 @@
           "kind": "podcast",
           "label": "All-In Podcast (WSJ capex haircut)",
           "at": "2026-11-07T18:24:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=5154s",
-          "kind": "podcast",
-          "label": "Latent Space (GPU debt markets)",
-          "at": "2026-11-07T03:00:00Z"
         }
       ],
       "history": [
@@ -102,6 +102,41 @@
         {
           "at": "2026-11-10T21:25:00Z",
           "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
+        },
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
+        }
+      ]
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-11-11T06:00:00Z",
+      "updated_at": "2026-11-11T06:00:00Z",
+      "now": "Hard Fork and The AI Daily Brief say Nvidia CEO Jensen Huang admitted an affair with a Megaspeed executive going by Alice Huang, whom U.S. officials allege is a Chinese spy. Hard Fork cites New York Times reporting and biographer Stephen Witt. The AI Daily Brief cites a board investigation, market whiplash, and questions for chip-export policy and Congress.",
+      "changed": "Hard Fork and The AI Daily Brief say Huang admitted a Megaspeed affair; U.S. officials allege Alice Huang is a Chinese spy. Daily Brief cites a board investigation.",
+      "watch": "An Nvidia board or company statement; whether Congress takes up chip-export questions; a response from Megaspeed; transcripts of these episodes when they land.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-10T14:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-10T15:30:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
         }
       ]
     },
@@ -746,12 +781,12 @@
     {
       "slug": "ai-math-and-physics-discovery-claims",
       "title": "Labs claim AI-made math and physics discoveries; experts hold back",
-      "status": "developing",
+      "status": "resolved",
       "importance": 3,
       "first_seen": "2026-10-31T14:48:00Z",
-      "updated_at": "2026-11-05T06:41:00Z",
+      "updated_at": "2026-11-11T06:00:00Z",
       "now": "OpenAI's claimed ETH disproof still lacks reviewer certification. Anthropic says its science team, working with Claude, determined a 3D structure for a vault-like protein shell in prokaryotes, particles previously described only in plants and animals. Function is unknown; a preprint was submitted to bioRxiv. Anthropic says Claude sped the work and also made mistakes the team had to catch.",
-      "changed": "Anthropic published a Nov 4 note claiming the first 3D structure of a prokaryotic vault particle with Claude; it is an in-house result, not a journal paper.",
+      "changed": "No new developments; the ETH disproof still lacks reviewer certification and Anthropic's vault-particle preprint has not gone live.",
       "watch": "The bioRxiv record going live; an outside group reproducing the map; still waiting on an expert verdict on OpenAI's ETH claim.",
       "evidence": [
         {
@@ -797,6 +832,10 @@
         {
           "at": "2026-11-05T06:41:00Z",
           "change": "Anthropic: Claude-assisted 3D map of a bacterial vault particle; preprint submitted, function unknown, unaudited."
+        },
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Went quiet: no new math or physics discovery claims since November fifth; ETH and bioRxiv watches unmet."
         }
       ]
     },
