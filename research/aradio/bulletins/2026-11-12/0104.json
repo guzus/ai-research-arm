@@ -1,0 +1,203 @@
+{
+  "schema": 1,
+  "id": "2026-11-12-0104",
+  "aired_at": "2026-11-12T01:04:00Z",
+  "headline": "DeepMind's AlphaGenome 2 at cell-type resolution with a free public API; Mistral thread closed",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's a few minutes past one UTC on Thursday, November twelfth. This is ARA AI News."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The new fact tonight is Google DeepMind walking through AlphaGenome two, a model the show says can finally read more of the genome than the protein-coding two percent."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On that podcast, the show said AlphaGenome two predicts how DNA variants land at the cell-type level, not from a bulk sample of heart or lung ground up together."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Earlier models in this class stopped at tissue-level calls. AlphaGenome two is built to work at the resolution of a cell type, which is what a rare-disease pipeline actually needs."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The show pointed to the Crick Institute, just down the street. A group there had already found that one variant very likely regulates a gene two hundred ninety thousand bases away."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The show said AlphaGenome two made that same prediction after the fact. That is a retrospective match of someone else's wet-lab work, not a new experiment DeepMind ran on air."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "They are putting it in people's hands. The show said the AlphaGenome family has a public API: install a Python package, and you can run those predictions for free."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Atlas is a no-code website on top of that stack. The show said you do not even need to fine-tune the model on your own data, which is the usability point the episode kept stressing."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The unread stretch is ninety-eight percent of the genome, the non-coding DNA that tells cells how many protein building blocks to produce so the right machines assemble."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They put a price on not knowing. Only ten percent of drugs make it through clinical trials, they said, mostly because biology still cannot name the true cause of disease."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Nvidia's alleged chip funnel through Malaysia, Anthropic's falling Kalshi IPO odds, hyperscaler capex, and OpenAI's DevDay slate did not move in this inbox. Those storylines still stand."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "We are closing the Mistral and open-weight thread. The twenty VC interview and the Kimi and Ripple weight drops are absorbed, and nothing new arrived, so that story is now settled."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Watch for the AlphaGenome two paper, and whether that free API stays up. On the older files, watch an Nvidia statement on Megaspeed, a filing around Anthropic's November nineteenth window, and CoreWeave's call on those nine billion dollars of prepayments."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's a few minutes past one UTC on Thursday, November twelfth. This is ARA AI News.",
+    "Speaker 2: The new fact tonight is Google DeepMind walking through AlphaGenome two, a model the show says can finally read more of the genome than the protein-coding two percent.",
+    "Speaker 1: [high_energy] On that podcast, the show said AlphaGenome two predicts how DNA variants land at the cell-type level, not from a bulk sample of heart or lung ground up together.",
+    "Speaker 2: Earlier models in this class stopped at tissue-level calls. AlphaGenome two is built to work at the resolution of a cell type, which is what a rare-disease pipeline actually needs.",
+    "Speaker 1: The show pointed to the Crick Institute, just down the street. A group there had already found that one variant very likely regulates a gene [emphasis]two hundred ninety thousand[/emphasis] bases away.",
+    "Speaker 2: The show said AlphaGenome two made that same prediction after the fact. That is a retrospective match of someone else's wet-lab work, not a new experiment DeepMind ran on air.",
+    "Speaker 1: They are putting it in people's hands. The show said the AlphaGenome family has a public API: install a Python package, and you can run those predictions for free.",
+    "Speaker 2: Atlas is a no-code website on top of that stack. The show said you do not even need to fine-tune the model on your own data, which is the usability point the episode kept stressing.",
+    "Speaker 1: The unread stretch is [emphasis]ninety-eight percent[/emphasis] of the genome, the non-coding DNA that tells cells how many protein building blocks to produce so the right machines assemble.",
+    "Speaker 2: They put a price on not knowing. Only [emphasis]ten percent[/emphasis] of drugs make it through clinical trials, they said, mostly because biology still cannot name the true cause of disease.",
+    "Speaker 1: [transition] Nvidia's alleged chip funnel through Malaysia, Anthropic's falling Kalshi IPO odds, hyperscaler capex, and OpenAI's DevDay slate did not move in this inbox. Those storylines still stand.",
+    "Speaker 2: [transition] We are closing the Mistral and open-weight thread. The twenty VC interview and the Kimi and Ripple weight drops are absorbed, and nothing new arrived, so that story is now settled.",
+    "Speaker 1: Watch for the AlphaGenome two paper, and whether that free API stays up. On the older files, watch an Nvidia statement on Megaspeed, a filing around Anthropic's November nineteenth window, and CoreWeave's call on those nine billion dollars of prepayments.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "deepmind-alphagenome",
+    "nvidia-jensen-huang-spy-allegations",
+    "anthropic-ipo-and-ai-funding",
+    "hyperscaler-capex-and-chip-selloff",
+    "openai-devday-2026",
+    "mistral-large-4-open-weights"
+  ],
+  "threads": [
+    {
+      "slug": "deepmind-alphagenome",
+      "title": "DeepMind's AlphaGenome and reading the human genome",
+      "status": "developing"
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "openai-devday-2026",
+      "title": "OpenAI's DevDay 2026 platform launches",
+      "status": "developing"
+    },
+    {
+      "slug": "mistral-large-4-open-weights",
+      "title": "Mistral, sovereign AI, and the open-weight race",
+      "status": "resolved"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=2103s",
+      "kind": "video",
+      "label": "Google DeepMind"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1508s",
+      "kind": "video",
+      "label": "Google DeepMind (cell-type resolution)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1671s",
+      "kind": "video",
+      "label": "Google DeepMind (Crick Institute check)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=646s",
+      "kind": "video",
+      "label": "Google DeepMind (non-coding genome)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=uND6iY2qp_c",
+      "kind": "video",
+      "label": "Google DeepMind"
+    }
+  ],
+  "ops": [
+    {
+      "op": "resolve",
+      "slug": "mistral-large-4-open-weights"
+    },
+    {
+      "op": "create",
+      "slug": "deepmind-alphagenome"
+    }
+  ],
+  "warnings": [
+    "ops[1] create deepmind-alphagenome evidence[1]: duplicate URL dropped"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-12-0104.mp3",
+    "bytes": 893037,
+    "duration_s": 148.7,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 98.12,
+        "lines": [
+          0,
+          9
+        ]
+      },
+      {
+        "start_s": 99.57,
+        "end_s": 112.29,
+        "lines": [
+          10,
+          10
+        ]
+      },
+      {
+        "start_s": 113.74,
+        "end_s": 142.18,
+        "lines": [
+          11,
+          13
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 3,
+    "kinds": {
+      "podcast": 1,
+      "video": 2
+    }
+  }
+}
