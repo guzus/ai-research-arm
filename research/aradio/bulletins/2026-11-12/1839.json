@@ -1,0 +1,190 @@
+{
+  "schema": 1,
+  "id": "2026-11-12-1839",
+  "aired_at": "2026-11-12T18:39:00Z",
+  "headline": "Isomorphic Labs will not license its drug-design model; OpenAI how-tos enable Daybreak Blue",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's twenty to seven UTC on Thursday, November twelfth, and this is ARA AI News. DeepMind's medicines company just drew a hard line: it will not sell the model."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On No Priors, Isomorphic Labs president Max Jaderberg said they are building an A.I. drug-design system in-house, and they do not sell it, license it, or sell access. They use it internally to create medicines."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "He put the early dish and mouse work at about fifty million dollars over two to three years, then another one point four five billion dollars and about twelve years in clinical trials. That is the pile the models are supposed to shrink."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "And on toxicity, he said rat studies are only about thirty percent predictive of what happens in human trials. That is the gap Isomorphic wants to close on a computer instead of in animals."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The same conversation noted that Anthropic has announced a wet lab in San Francisco, described as a possible closed loop robotic system. We do not have Anthropic's own description tonight, so that stays a claim from the show."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Jaderberg also said he would be disappointed if in five years the predictive understanding of disease biology had not taken a huge step forward. The watch is a clinical candidate, not another model card."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "OpenAI is separately putting last week's Dev Day security stack into customers' hands. New first-party how-to videos show how to enable Daybreak Blue for every user in a workspace and then mint an A.P.I. key around it."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Other videos walk through a first Codex Security scan with Daybreak as the model, an N P M install of the Codex Security command line tool, and automated security reviews on GitHub pull requests."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That answers the watch from Dev Day: whether Daybreak class models would ship outside OpenAI. The company is now teaching customers to turn them on."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "We are closing the finance and legal agents thread. The five agent accuracy drop and the harness mixing claim are absorbed, and nothing new arrived for that storyline."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The rest of the board is unchanged tonight. AlphaGenome two from this morning still stands, including the free public A.P.I."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch next for Isomorphic naming a drug that actually enters the clinic, a first party Anthropic description of that San Francisco lab, and whether Daybreak Blue shows up as a generally listed A.P.I. model rather than a workspace toggle."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's twenty to seven UTC on Thursday, November twelfth, and this is ARA AI News. DeepMind's medicines company just drew a hard line: it will not sell the model.",
+    "Speaker 2: [high_energy] On No Priors, Isomorphic Labs president Max Jaderberg said they are building an A.I. drug-design system in-house, and they do not sell it, license it, or sell access. They use it internally to create medicines.",
+    "Speaker 1: He put the early dish and mouse work at about [emphasis]fifty million dollars[/emphasis] over two to three years, then another [emphasis]one point four five billion dollars[/emphasis] and about twelve years in clinical trials. That is the pile the models are supposed to shrink.",
+    "Speaker 2: And on toxicity, he said rat studies are only about [emphasis]thirty percent[/emphasis] predictive of what happens in human trials. That is the gap Isomorphic wants to close on a computer instead of in animals.",
+    "Speaker 1: The same conversation noted that Anthropic has announced a wet lab in San Francisco, described as a possible closed loop robotic system. We do not have Anthropic's own description tonight, so that stays a claim from the show.",
+    "Speaker 2: Jaderberg also said he would be disappointed if in five years the predictive understanding of disease biology had not taken a huge step forward. The watch is a clinical candidate, not another model card.",
+    "Speaker 1: [transition] OpenAI is separately putting last week's Dev Day security stack into customers' hands. New first-party how-to videos show how to enable Daybreak Blue for every user in a workspace and then mint an A.P.I. key around it.",
+    "Speaker 2: Other videos walk through a first Codex Security scan with Daybreak as the model, an N P M install of the Codex Security command line tool, and automated security reviews on GitHub pull requests.",
+    "Speaker 1: That answers the watch from Dev Day: whether Daybreak class models would ship outside OpenAI. The company is now teaching customers to turn them on.",
+    "Speaker 2: We are closing the finance and legal agents thread. The five agent accuracy drop and the harness mixing claim are absorbed, and nothing new arrived for that storyline.",
+    "Speaker 1: The rest of the board is unchanged tonight. AlphaGenome two from this morning still stands, including the free public A.P.I.",
+    "Speaker 2: Watch next for Isomorphic naming a drug that actually enters the clinic, a first party Anthropic description of that San Francisco lab, and whether Daybreak Blue shows up as a generally listed A.P.I. model rather than a workspace toggle.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "ai-drug-discovery",
+    "ai-cyber-risk-and-key-theft",
+    "ai-agents-in-finance-and-law",
+    "deepmind-alphagenome"
+  ],
+  "threads": [
+    {
+      "slug": "ai-drug-discovery",
+      "title": "AI drug discovery at Isomorphic Labs and new wet labs",
+      "status": "developing"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-agents-in-finance-and-law",
+      "title": "AI agents move into finance and legal work",
+      "status": "resolved"
+    },
+    {
+      "slug": "deepmind-alphagenome",
+      "title": "DeepMind's AlphaGenome and reading the human genome",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=IiKf3BgBezE",
+      "kind": "podcast",
+      "label": "No Priors"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1289s",
+      "kind": "podcast",
+      "label": "No Priors"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1040s",
+      "kind": "podcast",
+      "label": "No Priors (drug cost breakdown)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=360s",
+      "kind": "podcast",
+      "label": "No Priors (industry cost and time)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=NS220dAaRMo&t=112s",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=hUhr0JiVZZs&t=300s",
+      "kind": "video",
+      "label": "OpenAI (Codex Security CLI)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=vdBDMj2UhDg",
+      "kind": "video",
+      "label": "OpenAI (PR security reviews)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "resolve",
+      "slug": "ai-agents-in-finance-and-law"
+    },
+    {
+      "op": "create",
+      "slug": "ai-drug-discovery"
+    },
+    {
+      "op": "update",
+      "slug": "ai-cyber-risk-and-key-theft"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-12-1839.mp3",
+    "bytes": 889005,
+    "duration_s": 148.1,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 74.8,
+        "lines": [
+          0,
+          5
+        ]
+      },
+      {
+        "start_s": 76.25,
+        "end_s": 141.53,
+        "lines": [
+          6,
+          12
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 7,
+    "kinds": {
+      "podcast": 2,
+      "video": 5
+    }
+  }
+}
