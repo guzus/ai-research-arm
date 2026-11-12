@@ -1,9 +1,57 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-11T18:08:00Z",
+  "updated_at": "2026-11-12T01:04:00Z",
   "degraded": false,
-  "latest": "2026-11-11-1808",
+  "latest": "2026-11-12-0104",
   "bulletins": [
+    {
+      "id": "2026-11-12-0104",
+      "aired_at": "2026-11-12T01:04:00Z",
+      "headline": "DeepMind's AlphaGenome 2 at cell-type resolution with a free public API; Mistral thread closed",
+      "path": "bulletins/2026-11-12/0104.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-12-0104.mp3",
+        "bytes": 893037,
+        "duration_s": 148.7,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 98.12,
+            "lines": [
+              0,
+              9
+            ]
+          },
+          {
+            "start_s": 99.57,
+            "end_s": 112.29,
+            "lines": [
+              10,
+              10
+            ]
+          },
+          {
+            "start_s": 113.74,
+            "end_s": 142.18,
+            "lines": [
+              11,
+              13
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "deepmind-alphagenome",
+        "nvidia-jensen-huang-spy-allegations",
+        "anthropic-ipo-and-ai-funding",
+        "hyperscaler-capex-and-chip-selloff",
+        "openai-devday-2026",
+        "mistral-large-4-open-weights"
+      ],
+      "kinds": [
+        "video"
+      ]
+    },
     {
       "id": "2026-11-11-1808",
       "aired_at": "2026-11-11T18:08:00Z",

@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-11T18:08:00Z",
-  "headline": "Hard Fork: alleged Nvidia chip diversion via Malaysia, and Huang as a U.S. key-man risk; a16z on the GPU buildout",
+  "updated_at": "2026-11-12T01:04:00Z",
+  "headline": "DeepMind's AlphaGenome 2 at cell-type resolution with a free public API; Mistral thread closed",
   "threads": [
     {
       "slug": "hyperscaler-capex-and-chip-selloff",
@@ -513,6 +513,56 @@
       ]
     },
     {
+      "slug": "deepmind-alphagenome",
+      "title": "DeepMind's AlphaGenome and reading the human genome",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-11-12T01:04:00Z",
+      "updated_at": "2026-11-12T01:04:00Z",
+      "now": "On Google DeepMind's podcast, the show said AlphaGenome 2 predicts variant effects at cell-type resolution, not bulk tissue, and retrospectively matched a Crick Institute finding that a variant regulates a gene 290,000 bases away. A public Python API offers free predictions; Atlas is a no-code site. The show said only 10% of drugs make trials.",
+      "changed": "DeepMind podcast: AlphaGenome 2 at cell-type resolution; retrospectively matched a 290,000-base Crick finding; public Python API with free predictions and a no-code Atlas.",
+      "watch": "The AlphaGenome 2 paper; whether the public API stays free; independent checks of the 290,000-base Crick prediction.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=2103s",
+          "kind": "video",
+          "label": "Google DeepMind",
+          "at": "2026-11-11T18:00:00Z",
+          "quote": "Yeah, so for the alpha genome family of models um we have a public API and basically you can install a Python package."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1508s",
+          "kind": "video",
+          "label": "Google DeepMind (cell-type resolution)",
+          "at": "2026-11-11T18:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1671s",
+          "kind": "video",
+          "label": "Google DeepMind (Crick Institute check)",
+          "at": "2026-11-11T18:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=646s",
+          "kind": "video",
+          "label": "Google DeepMind (non-coding genome)",
+          "at": "2026-11-11T18:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c",
+          "kind": "video",
+          "label": "Google DeepMind",
+          "at": "2026-11-11T18:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-12T01:04:00Z",
+          "change": "Created from DeepMind podcast: AlphaGenome 2 does cell-type predictions, matches a 290k-base Crick finding, and ships a free public API plus a no-code Atlas."
+        }
+      ]
+    },
+    {
       "slug": "ai-math-and-physics-discovery-claims",
       "title": "Labs claim AI-made math and physics discoveries; experts hold back",
       "status": "developing",
@@ -685,86 +735,6 @@
       ]
     },
     {
-      "slug": "mistral-large-4-open-weights",
-      "title": "Mistral, sovereign AI, and the open-weight race",
-      "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-10-31T21:56:00Z",
-      "updated_at": "2026-11-09T19:08:00Z",
-      "now": "On 20VC, a guest introduced as Mistral CEO Arthur Mensch said about 80% of token traffic is Mistral's own models and about 60% of revenue is European. The host called Mistral a $21B company. The guest said they now train and serve on owned infrastructure and can sell GPUs and tokens. Kimi K3.1 Pro, Ripple-65B Preview and ERNIE-5.5-Flash-Base weights are unchanged.",
-      "changed": "Mistral's CEO on 20VC: host calls it a $21B company; guest says about 80% of tokens are in-house and about 60% of revenue is European.",
-      "watch": "Whether Mistral confirms the $21B figure and token mix; independent evals of Kimi and Ripple weights; a Hy4 weight drop.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=534s",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-09T14:34:00Z",
-          "quote": "I would say about 80% comes from our own models."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw",
-          "kind": "podcast",
-          "label": "20VC (Mistral as a $21B company)",
-          "at": "2026-11-09T14:34:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=1348s",
-          "kind": "podcast",
-          "label": "20VC (Mistral revenue mix)",
-          "at": "2026-11-09T14:34:00Z"
-        },
-        {
-          "url": "https://x.com/scaling01/status/2118003733103600085",
-          "kind": "twitter",
-          "label": "@scaling01 on X (Kimi K3.1 Pro)",
-          "at": "2026-11-04T21:00:00Z"
-        },
-        {
-          "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
-          "kind": "twitter",
-          "label": "Hugging Face (Kimi-K3.1-Pro)",
-          "at": "2026-11-04T21:00:00Z"
-        },
-        {
-          "url": "https://x.com/kimmonismus/status/2118066494634369464",
-          "kind": "twitter",
-          "label": "@kimmonismus on X (Ripple-65B)",
-          "at": "2026-11-04T21:00:00Z"
-        },
-        {
-          "url": "https://www.ricursive.com/ripple",
-          "kind": "twitter",
-          "label": "Ricursive (Ripple-65B Preview)",
-          "at": "2026-11-04T21:00:00Z"
-        },
-        {
-          "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
-          "kind": "twitter",
-          "label": "Hugging Face (Ripple-65B-Preview)",
-          "at": "2026-11-04T21:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T21:56:00Z",
-          "change": "Mistral Large 4 open release discussed on The Cognitive Revolution: one trillion parameters, claimed tie with GLM 5.3 on coding at half the tokens."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "Technical report published; licence and token-efficiency claims are secondary and unverified."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Kimi K3.1 Pro 2.8T ungated; Ripple-65B Apache 2.0 at claimed $32M; ERNIE-5.5-Flash-Base; Hy4 API live."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "20VC: Mistral CEO says about 80% of token traffic is in-house and about 60% of revenue is Europe; host puts the company at $21B."
-        }
-      ]
-    },
-    {
       "slug": "ai-agents-in-finance-and-law",
       "title": "AI agents move into finance and legal work",
       "status": "developing",
@@ -852,6 +822,90 @@
         {
           "at": "2026-11-11T18:08:00Z",
           "change": "Cognitive Revolution: 99% to 81% five-agent drop; Salesforce/Harvey in the mix; OpenAI harness said to run open-source models."
+        }
+      ]
+    },
+    {
+      "slug": "mistral-large-4-open-weights",
+      "title": "Mistral, sovereign AI, and the open-weight race",
+      "status": "resolved",
+      "importance": 4,
+      "first_seen": "2026-10-31T21:56:00Z",
+      "updated_at": "2026-11-12T01:04:00Z",
+      "now": "On 20VC, a guest introduced as Mistral CEO Arthur Mensch said about 80% of token traffic is Mistral's own models and about 60% of revenue is European. The host called Mistral a $21B company. The guest said they now train and serve on owned infrastructure and can sell GPUs and tokens. Kimi K3.1 Pro, Ripple-65B Preview and ERNIE-5.5-Flash-Base weights are unchanged.",
+      "changed": "No new Mistral, Kimi, Ripple or ERNIE facts this run; the 20VC interview and open-weight drops are absorbed.",
+      "watch": "Whether Mistral confirms the $21B figure and token mix; independent evals of Kimi and Ripple weights; a Hy4 weight drop.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=534s",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-09T14:34:00Z",
+          "quote": "I would say about 80% comes from our own models."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw",
+          "kind": "podcast",
+          "label": "20VC (Mistral as a $21B company)",
+          "at": "2026-11-09T14:34:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=1348s",
+          "kind": "podcast",
+          "label": "20VC (Mistral revenue mix)",
+          "at": "2026-11-09T14:34:00Z"
+        },
+        {
+          "url": "https://x.com/scaling01/status/2118003733103600085",
+          "kind": "twitter",
+          "label": "@scaling01 on X (Kimi K3.1 Pro)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+          "kind": "twitter",
+          "label": "Hugging Face (Kimi-K3.1-Pro)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://x.com/kimmonismus/status/2118066494634369464",
+          "kind": "twitter",
+          "label": "@kimmonismus on X (Ripple-65B)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://www.ricursive.com/ripple",
+          "kind": "twitter",
+          "label": "Ricursive (Ripple-65B Preview)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
+          "kind": "twitter",
+          "label": "Hugging Face (Ripple-65B-Preview)",
+          "at": "2026-11-04T21:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Mistral Large 4 open release discussed on The Cognitive Revolution: one trillion parameters, claimed tie with GLM 5.3 on coding at half the tokens."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "Technical report published; licence and token-efficiency claims are secondary and unverified."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Kimi K3.1 Pro 2.8T ungated; Ripple-65B Apache 2.0 at claimed $32M; ERNIE-5.5-Flash-Base; Hy4 API live."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "20VC: Mistral CEO says about 80% of token traffic is in-house and about 60% of revenue is Europe; host puts the company at $21B."
+        },
+        {
+          "at": "2026-11-12T01:04:00Z",
+          "change": "Resolved: 20VC token-mix and $21B print plus Kimi and Ripple weights absorbed; no new sovereign-AI facts this run."
         }
       ]
     },
