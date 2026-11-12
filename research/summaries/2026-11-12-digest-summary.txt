@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-11-12 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] Gilbert + Tobin rethinks the business of law with AI - Thu, 12 Nov 2026 00:00 GMT
+• [Hacker News] Maya site / AI agents: Still the top AI-by-points story. 891 points / 323 comments (was 577 / 225 a…
+• [Reddit] ICLR 2027 Reviews Discussion [D] — https://www.reddit.com/r/MachineLearning/comments/1xo6yzo/iclr_2…
+• [Expert Blogs] AI Engineer Code Summit: OpenAI on New Ways of Working With Codex
+• [Bluesky] @emollick.bsky.social: "I had early access to Fable 5.2 for a bit & I think it crosses the line int…
+
+SOURCES: 7/8 lanes had data; missing: Twitter/X
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
