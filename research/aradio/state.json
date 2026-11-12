@@ -1,8 +1,109 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-12T01:04:00Z",
-  "headline": "DeepMind's AlphaGenome 2 at cell-type resolution with a free public API; Mistral thread closed",
+  "updated_at": "2026-11-12T18:39:00Z",
+  "headline": "Isomorphic Labs will not license its drug-design model; OpenAI how-tos enable Daybreak Blue",
   "threads": [
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-12T18:39:00Z",
+      "now": "OpenAI posted how-tos to enable Daybreak Blue for every user in a workspace, run Codex Security scans with Daybreak via a CLI from npm, and turn on automated GitHub PR security reviews. DevDay still stands: hacking cost going to basically zero, 0.81% false positives, under 1% patch rollbacks. The Nov 4 write-up still stands: 948 distinct Linux kernel LPE exploits at about $359 each.",
+      "changed": "OpenAI how-tos: enable Daybreak Blue for all workspace users, Codex Security CLI via npm with Daybreak as the scan model, and automated GitHub PR security reviews.",
+      "watch": "Whether Daybreak Blue is generally listed on the API; named CVEs from customer scans; independent PatchBench numbers for Astra versus 5.6 Sol.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=NS220dAaRMo&t=112s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T21:04:00Z",
+          "quote": "Important note: This will grant access to Daybreak Blue to all users in your workspace."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=hUhr0JiVZZs&t=300s",
+          "kind": "video",
+          "label": "OpenAI (Codex Security CLI)",
+          "at": "2026-11-11T21:04:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=vdBDMj2UhDg",
+          "kind": "video",
+          "label": "OpenAI (PR security reviews)",
+          "at": "2026-11-11T21:04:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "The cost of hacking stuff is going to basically zero."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI&t=980s",
+          "kind": "video",
+          "label": "OpenAI DevDay (PatchBench)",
+          "at": "2026-11-11T01:18:00Z"
+        },
+        {
+          "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
+          "kind": "twitter",
+          "label": "OpenAI (A thousand fewer paths to root)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/OpenAI/status/2118119451401048497",
+          "kind": "twitter",
+          "label": "@OpenAI on X (cyber pipeline)",
+          "at": "2026-11-05T06:00:00Z"
+        },
+        {
+          "url": "https://x.com/SteveAIStudio/status/2117623501997932686",
+          "kind": "ticket",
+          "label": "@SteveAIStudio on X (OpenAI security sprint)",
+          "at": "2026-11-03T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
+        },
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
+        },
+        {
+          "at": "2026-11-02T08:14:00Z",
+          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
+        },
+        {
+          "at": "2026-11-03T06:41:00Z",
+          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "DevDay Codex Security: hacking cost going to zero; 0.81% false positives, <1% rollbacks; Daybreak-class models on Security Cloud; Astra ahead on PatchBench."
+        },
+        {
+          "at": "2026-11-12T18:39:00Z",
+          "change": "OpenAI how-tos enable Daybreak Blue for a whole workspace, Codex Security CLI via npm, and GitHub PR security reviews."
+        }
+      ]
+    },
     {
       "slug": "hyperscaler-capex-and-chip-selloff",
       "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
@@ -160,102 +261,6 @@
         {
           "at": "2026-11-11T18:08:00Z",
           "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
-        }
-      ]
-    },
-    {
-      "slug": "ai-cyber-risk-and-key-theft",
-      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-11T09:54:00Z",
-      "now": "At DevDay, OpenAI said the cost of hacking is going to basically zero. A security talk cited a 0.81% false-positive rate scanning its own code and a less than 1% rollback rate on Codex-written fixes, with 36% of findings duplicates. Codex Security Cloud is said to expose Daybreak-class models. The Nov 4 write-up still stands: 948 distinct Linux kernel LPE exploits at about $359 each.",
-      "changed": "DevDay: OpenAI says hacking cost is going to basically zero; Codex Security Cloud offers Daybreak-class models; 0.81% false positives and <1% patch rollbacks internally; Astra beat 5.6 Sol on PatchBench at less than half the cost.",
-      "watch": "Whether Daybreak-class models ship outside OpenAI; named CVEs from the internal scan; independent PatchBench numbers for Astra versus 5.6 Sol.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "The cost of hacking stuff is going to basically zero."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI&t=980s",
-          "kind": "video",
-          "label": "OpenAI DevDay (PatchBench)",
-          "at": "2026-11-11T01:18:00Z"
-        },
-        {
-          "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
-          "kind": "twitter",
-          "label": "OpenAI (A thousand fewer paths to root)",
-          "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/OpenAI/status/2118119451401048497",
-          "kind": "twitter",
-          "label": "@OpenAI on X (cyber pipeline)",
-          "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/SteveAIStudio/status/2117623501997932686",
-          "kind": "ticket",
-          "label": "@SteveAIStudio on X (OpenAI security sprint)",
-          "at": "2026-11-03T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/OpenAI/status/2117444048227123277",
-          "kind": "ticket",
-          "label": "@OpenAI on X (Cathedral Systems)",
-          "at": "2026-11-03T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/lhchavez/status/2117496522656841766",
-          "kind": "twitter",
-          "label": "@lhchavez on X (Replit advisory)",
-          "at": "2026-11-03T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/amasad/status/2117504072416890937",
-          "kind": "twitter",
-          "label": "@amasad on X (Replit CEO)",
-          "at": "2026-11-03T06:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
-        },
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
-        },
-        {
-          "at": "2026-10-31T21:56:00Z",
-          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
-        },
-        {
-          "at": "2026-11-02T08:14:00Z",
-          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
-        },
-        {
-          "at": "2026-11-03T06:41:00Z",
-          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
-        },
-        {
-          "at": "2026-11-11T09:54:00Z",
-          "change": "DevDay Codex Security: hacking cost going to zero; 0.81% false positives, <1% rollbacks; Daybreak-class models on Security Cloud; Astra ahead on PatchBench."
         }
       ]
     },
@@ -513,6 +518,51 @@
       ]
     },
     {
+      "slug": "ai-drug-discovery",
+      "title": "AI drug discovery at Isomorphic Labs and new wet labs",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-11-12T18:39:00Z",
+      "updated_at": "2026-11-12T18:39:00Z",
+      "now": "On No Priors, Isomorphic Labs president Max Jaderberg said they build an AI drug-design system in-house and do not sell or license the model. The conversation put a typical drug at about $1.5 billion, early mouse work about $50 million over two to three years, and rat toxicity models about 30% predictive in humans. The show noted Anthropic's announced San Francisco wet lab.",
+      "changed": "No Priors: Isomorphic's president says they design drugs in-house and do not license the model; ~$1.5B per drug; rat toxicity ~30% predictive; Anthropic wet lab noted.",
+      "watch": "Whether Isomorphic names a clinical candidate; a first-party Anthropic wet-lab description; whether the 30% rat-to-human toxicity figure is sourced beyond this interview.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE",
+          "kind": "podcast",
+          "label": "No Priors",
+          "at": "2026-11-12T11:04:00Z",
+          "quote": "We are developing an AI-based drug design system ourselves and, in fact, we do not sell this model."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1289s",
+          "kind": "podcast",
+          "label": "No Priors",
+          "at": "2026-11-12T11:04:00Z",
+          "quote": "I think it depends on the study, but for rats it's about 30% predictive of clinical toxicity in humans."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1040s",
+          "kind": "podcast",
+          "label": "No Priors (drug cost breakdown)",
+          "at": "2026-11-12T11:04:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=360s",
+          "kind": "podcast",
+          "label": "No Priors (industry cost and time)",
+          "at": "2026-11-12T11:04:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-12T18:39:00Z",
+          "change": "Created from No Priors: Isomorphic builds drugs in-house, no model license; ~$1.5B per drug; rat toxicity ~30% predictive; Anthropic SF wet lab noted."
+        }
+      ]
+    },
+    {
       "slug": "deepmind-alphagenome",
       "title": "DeepMind's AlphaGenome and reading the human genome",
       "status": "developing",
@@ -737,12 +787,12 @@
     {
       "slug": "ai-agents-in-finance-and-law",
       "title": "AI agents move into finance and legal work",
-      "status": "developing",
+      "status": "resolved",
       "importance": 3,
       "first_seen": "2026-11-01T06:51:00Z",
-      "updated_at": "2026-11-11T18:08:00Z",
+      "updated_at": "2026-11-12T18:39:00Z",
       "now": "On The Cognitive Revolution, a guest said enterprise agents from names like Salesforce and Harvey are connected but not reasoning together. One semantic misalignment dropped five-agent accuracy from 99% to 98%, and two cognitive failures from 98% to 81%. The guest said labs are decoupling model from harness, so an OpenAI harness can run an open-source model.",
-      "changed": "Cognitive Revolution: a guest says five-agent accuracy fell from 99% to 81% after two cognitive failures; labs decoupling model from harness so an OpenAI harness can run an open-source model.",
+      "changed": "No new finance or legal-agent facts this run; the Cognitive Revolution accuracy and harness notes are absorbed.",
       "watch": "Whether Accord and Concord see adoption above MCP and A2A; a Ballot Bench write-up; whether labs confirm harness-model mixing.",
       "evidence": [
         {
@@ -822,6 +872,10 @@
         {
           "at": "2026-11-11T18:08:00Z",
           "change": "Cognitive Revolution: 99% to 81% five-agent drop; Salesforce/Harvey in the mix; OpenAI harness said to run open-source models."
+        },
+        {
+          "at": "2026-11-12T18:39:00Z",
+          "change": "Resolved: five-agent accuracy drop and harness-mixing claims absorbed; no new finance or legal product news."
         }
       ]
     },
@@ -1148,88 +1202,6 @@
         {
           "at": "2026-11-09T19:08:00Z",
           "change": "Resolved: Carbon launch absorbed; mixed evals, gated access, quiet for a week."
-        }
-      ]
-    },
-    {
-      "slug": "flat-rate-ai-agent-usage-limits",
-      "title": "Flat-rate AI agent plans tighten usage as serving costs bite",
-      "status": "resolved",
-      "importance": 2,
-      "first_seen": "2026-11-02T01:51:00Z",
-      "updated_at": "2026-11-05T12:49:00Z",
-      "now": "Elon Musk says Grok Bot serving costs outran revenue, explaining weekend limit cuts; new quotas are unpublished. OpenAI reportedly will give ChatGPT and Codex a shared token-based allowance on Plus, Pro and Business from December, with no sizes yet, after repeated Codex limit changes on the $200 plan.",
-      "changed": "No new quota sizes from xAI or OpenAI since November 2; the thread has gone quiet.",
-      "watch": "Whether xAI publishes new Grok Bot quotas; OpenAI's official allowance sizes and per-model token rates.",
-      "evidence": [
-        {
-          "url": "https://x.com/FeildenStuart/status/2117280400389099638",
-          "kind": "ticket",
-          "label": "@FeildenStuart on X (OpenAI shared allowance)",
-          "at": "2026-11-02T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/eth_ansh/status/2117285033795010896",
-          "kind": "ticket",
-          "label": "@eth_ansh on X (Codex limit changes)",
-          "at": "2026-11-02T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/elonmusk/status/2116992258520064397",
-          "kind": "twitter",
-          "label": "@elonmusk on X (Grok Bot costs)",
-          "at": "2026-11-02T00:00:00Z"
-        },
-        {
-          "url": "https://x.com/mark_k/status/2117001516867592576",
-          "kind": "twitter",
-          "label": "@mark_k on X (usage meters)",
-          "at": "2026-11-02T00:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-02T01:51:00Z",
-          "change": "Thread created: Musk attributes Grok Bot usage-limit cuts to serving costs; limits unpublished."
-        },
-        {
-          "at": "2026-11-02T16:29:00Z",
-          "change": "Reported OpenAI shift to a shared ChatGPT and Codex token allowance from December; sizes unpublished, unverified."
-        },
-        {
-          "at": "2026-11-05T12:49:00Z",
-          "change": "Resolved: unpublished Grok Bot and ChatGPT/Codex allowance sizes never arrived; no new facts this cycle."
-        }
-      ]
-    },
-    {
-      "slug": "palantir-q3-ai-demand",
-      "title": "Palantir's blowout quarter and enterprise AI demand",
-      "status": "resolved",
-      "importance": 4,
-      "first_seen": "2026-11-03T03:03:00Z",
-      "updated_at": "2026-11-05T06:41:00Z",
-      "now": "Palantir's third-quarter revenue rose 96% to $2.313B, its first quarter above $2B. GAAP net income was $1.128B, adjusted free cash flow $1.216B. U.S. commercial revenue grew 148% and now exceeds U.S. government revenue for the first time. Next-quarter revenue guidance is $2.649B to $2.653B.",
-      "changed": "No new Palantir facts this cycle; the Nov 2 $2.313B quarter is on the record and already aired.",
-      "watch": "Market reaction when trading opens, and whether the guidance of about $2.65B holds; no call transcript was available yet.",
-      "evidence": [
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/",
-          "kind": "earnings",
-          "label": "Palantir Technologies Inc. (PLTR)",
-          "at": "2026-11-02T21:06:48Z",
-          "speaker": "Alex Karp, Co-Founder and Chief Executive Officer of Palantir Technologies",
-          "quote": "Our U.S. commercial revenue has surpassed our U.S. government revenue for the first time in our company's history."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-03T03:03:00Z",
-          "change": "Palantir Q3: revenue $2.313B (+96%), GAAP net income $1.128B, U.S. commercial +148%, guidance about $2.65B."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Resolved after the Q3 print was aired; no call transcript or guidance change arrived."
         }
       ]
     }

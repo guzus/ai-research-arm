@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "month": "2026-11",
+  "updated_at": "2026-11-12T18:39:00Z",
+  "threads": [
+    {
+      "slug": "flat-rate-ai-agent-usage-limits",
+      "title": "Flat-rate AI agent plans tighten usage as serving costs bite",
+      "status": "resolved",
+      "importance": 2,
+      "first_seen": "2026-11-02T01:51:00Z",
+      "updated_at": "2026-11-05T12:49:00Z",
+      "now": "Elon Musk says Grok Bot serving costs outran revenue, explaining weekend limit cuts; new quotas are unpublished. OpenAI reportedly will give ChatGPT and Codex a shared token-based allowance on Plus, Pro and Business from December, with no sizes yet, after repeated Codex limit changes on the $200 plan.",
+      "changed": "No new quota sizes from xAI or OpenAI since November 2; the thread has gone quiet.",
+      "watch": "Whether xAI publishes new Grok Bot quotas; OpenAI's official allowance sizes and per-model token rates.",
+      "evidence": [
+        {
+          "url": "https://x.com/FeildenStuart/status/2117280400389099638",
+          "kind": "ticket",
+          "label": "@FeildenStuart on X (OpenAI shared allowance)",
+          "at": "2026-11-02T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/eth_ansh/status/2117285033795010896",
+          "kind": "ticket",
+          "label": "@eth_ansh on X (Codex limit changes)",
+          "at": "2026-11-02T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/elonmusk/status/2116992258520064397",
+          "kind": "twitter",
+          "label": "@elonmusk on X (Grok Bot costs)",
+          "at": "2026-11-02T00:00:00Z"
+        },
+        {
+          "url": "https://x.com/mark_k/status/2117001516867592576",
+          "kind": "twitter",
+          "label": "@mark_k on X (usage meters)",
+          "at": "2026-11-02T00:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-02T01:51:00Z",
+          "change": "Thread created: Musk attributes Grok Bot usage-limit cuts to serving costs; limits unpublished."
+        },
+        {
+          "at": "2026-11-02T16:29:00Z",
+          "change": "Reported OpenAI shift to a shared ChatGPT and Codex token allowance from December; sizes unpublished, unverified."
+        },
+        {
+          "at": "2026-11-05T12:49:00Z",
+          "change": "Resolved: unpublished Grok Bot and ChatGPT/Codex allowance sizes never arrived; no new facts this cycle."
+        }
+      ],
+      "archived_at": "2026-11-12T18:39:00Z"
+    },
+    {
+      "slug": "palantir-q3-ai-demand",
+      "title": "Palantir's blowout quarter and enterprise AI demand",
+      "status": "resolved",
+      "importance": 4,
+      "first_seen": "2026-11-03T03:03:00Z",
+      "updated_at": "2026-11-05T06:41:00Z",
+      "now": "Palantir's third-quarter revenue rose 96% to $2.313B, its first quarter above $2B. GAAP net income was $1.128B, adjusted free cash flow $1.216B. U.S. commercial revenue grew 148% and now exceeds U.S. government revenue for the first time. Next-quarter revenue guidance is $2.649B to $2.653B.",
+      "changed": "No new Palantir facts this cycle; the Nov 2 $2.313B quarter is on the record and already aired.",
+      "watch": "Market reaction when trading opens, and whether the guidance of about $2.65B holds; no call transcript was available yet.",
+      "evidence": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000045/",
+          "kind": "earnings",
+          "label": "Palantir Technologies Inc. (PLTR)",
+          "at": "2026-11-02T21:06:48Z",
+          "speaker": "Alex Karp, Co-Founder and Chief Executive Officer of Palantir Technologies",
+          "quote": "Our U.S. commercial revenue has surpassed our U.S. government revenue for the first time in our company's history."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-03T03:03:00Z",
+          "change": "Palantir Q3: revenue $2.313B (+96%), GAAP net income $1.128B, U.S. commercial +148%, guidance about $2.65B."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Resolved after the Q3 print was aired; no call transcript or guidance change arrived."
+        }
+      ],
+      "archived_at": "2026-11-12T18:39:00Z"
+    }
+  ],
+  "history": []
+}

@@ -1,9 +1,48 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-12T01:04:00Z",
+  "updated_at": "2026-11-12T18:39:00Z",
   "degraded": false,
-  "latest": "2026-11-12-0104",
+  "latest": "2026-11-12-1839",
   "bulletins": [
+    {
+      "id": "2026-11-12-1839",
+      "aired_at": "2026-11-12T18:39:00Z",
+      "headline": "Isomorphic Labs will not license its drug-design model; OpenAI how-tos enable Daybreak Blue",
+      "path": "bulletins/2026-11-12/1839.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-12-1839.mp3",
+        "bytes": 889005,
+        "duration_s": 148.1,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 74.8,
+            "lines": [
+              0,
+              5
+            ]
+          },
+          {
+            "start_s": 76.25,
+            "end_s": 141.53,
+            "lines": [
+              6,
+              12
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "ai-drug-discovery",
+        "ai-cyber-risk-and-key-theft",
+        "ai-agents-in-finance-and-law",
+        "deepmind-alphagenome"
+      ],
+      "kinds": [
+        "podcast",
+        "video"
+      ]
+    },
     {
       "id": "2026-11-12-0104",
       "aired_at": "2026-11-12T01:04:00Z",
