@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-12T00:59:00Z",
+  "updated_at": "2026-11-12T10:13:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -85,8 +85,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-12T00:59:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-12T10:13:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "In this talk Wiebke (Toussaint) Hutiri will share her work on FairEVA, an open-source project to gain insights and build tools for mitigating bias in voice biometrics. The project is supported by a Mozilla Technology Award for advancing trustworthy AI and motivated by research that Wiebke will present at ACM FAccT 2022 in Korea. Speaker verification is a voice-based biometric that identifies speakers from their voice. It is used in voice assistants, call centers, and forensics. There are many parallels"
@@ -230,8 +230,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-12T00:59:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-12T10:13:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -952,8 +952,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-12T00:59:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-12T10:13:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "Goodfire technical staff member Curt Tigges discusses research revealing that individual MLP neurons in modern language models are far more interpretable and functionally bounded than previously thought. Using an automated agent to test hypotheses across architectures like Qwen3.6-35B-A3B, Tigges explains how modern gated MLPs act as legible conjunctions and control signals capable of extensive dynamic sparsity without lasting benchmark loss. By showing that many internal representations can be directly enumerated, this work offers an alternative to complex external featurizers and"
@@ -1097,8 +1097,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-12T00:59:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-12T10:13:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "The Nvidia CEO’s admission of an affair with a woman US officials believe is a Chinese spy raises big questions about chip export policy, congressional scrutiny, and the AI build-out. NLW breaks down the New York Times reporting, the board investigation, the market whiplash, and the fight over China trade policy. In the headlines: falling Anthropic and OpenAI valuations, Microsoft ending an Oracle compute deal, and Google taking over a stalled Crusoe data center. The AI Daily Brief helps you"
