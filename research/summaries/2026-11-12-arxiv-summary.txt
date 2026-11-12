@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-12
+
+TOP 5 PAPERS:
+• CAMP-II - file-as-memory OPD; 2.97× OPD baseline; lifts Terminal-Bench 2.1 and SWE-Bench Pro
+• BioXArena-Pro - 64 biomedical ML-agent tasks; best 55.1/100; scaffold ≈ model
+• MoE beyond experts - domain neurons 58–74% overlap; RAMPr keeps 91–98% at 75% neurons
+• ZoomGain - zoom-gap VLM supervision; 9K samples, 9B hits 90.25 HR-Bench 4K
+• ActiveSecHarness - coding-agent LotL; Ring-0 11,200× faster than LLM judge, ABR=1
+
+CATEGORIES: LM/NLP 8, CV/Multimodal 9, Agents/Reasoning 10, Safety 8, Other 7
+
+Full report on GitHub.
