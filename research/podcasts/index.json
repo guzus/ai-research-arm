@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-11T18:02:00Z",
+  "updated_at": "2026-11-12T00:59:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -23,13 +23,44 @@
       "first_seen_at": "2026-11-11T18:02:00Z",
       "duration_s": 2387,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-11T18:02:00Z",
-        "attempts": 1
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7878,
+        "checked_at": "2026-11-12T00:59:00Z",
+        "attempts": 2
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So genotype is really the set of letters that we have in our DNA. ACGT I think a lot of people are familiar with that and humans have three billion uh the genome is three billion uh in length and the phenotype this is really an overused word in biology.",
+          "at_s": 258,
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=258s"
+        },
+        {
+          "text": "You know the you think of this as the shape and the color of the Lego Legos. But then the rest of the genome the 98% tells the cells how many of these building blocks should they produce so that they will assemble into the right machines to carry out the function.",
+          "at_s": 447,
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=447s"
+        },
+        {
+          "text": "There's still a lot of things we don't understand such as you know what precisely biohysically happens but um the accuracies of these models are getting quite good. Unfortunately, it's only for 2%. Exactly. Unfortunately, so this has bothered us basically that you know what do we do with the rest of the 98%.",
+          "at_s": 646,
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=646s"
+        },
+        {
+          "text": "The first question is we said that the we co-inherit DNA in blocks and then imagine you have 10 or 20 variants. They're all seem to be associated with a higher risk of having Alzheimer's. The first question is which of these variants actually is the cause of of making you have a higher chance.",
+          "at_s": 1508,
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1508s"
+        },
+        {
+          "text": "So what we did was we took a particular locus that had been studied and the model actually predicted that there was a particular variant that affected a gene that was 290,000 base pairs away which in genomic terms that's like really far.",
+          "at_s": 1671,
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1671s"
+        },
+        {
+          "text": "Yeah, so for the alpha genome family of models um we have a public API and basically you can install a Python package. You can basically make these predictions for free. For the atlas uh the Atlas we've created a no code website essentially.",
+          "at_s": 2103,
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=2103s"
+        }
+      ],
       "description": "98% of human DNA doesn't build proteins—it controls how our cells work, and holds vital clues to why diseases happen and why 90% of new drugs fail in clinical trials. Understanding the genome at the molecular level is the key to deciphering the blueprint of human life. In this episode, Professor Hannah Fry speaks with Google DeepMind's Žiga Avsec and Adam Gayoso about AlphaGenome, the AlphaGenome Atlas, and AlphaGenome 2—exploring how AI reads non-coding DNA down to single-cell resolution to"
     },
     {
@@ -54,8 +85,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-11T18:02:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-12T00:59:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "In this talk Wiebke (Toussaint) Hutiri will share her work on FairEVA, an open-source project to gain insights and build tools for mitigating bias in voice biometrics. The project is supported by a Mozilla Technology Award for advancing trustworthy AI and motivated by research that Wiebke will present at ACM FAccT 2022 in Korea. Speaker verification is a voice-based biometric that identifies speakers from their voice. It is used in voice assistants, call centers, and forensics. There are many parallels"
@@ -199,8 +230,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-11T18:02:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-12T00:59:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -921,8 +952,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-11T18:02:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-12T00:59:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "Goodfire technical staff member Curt Tigges discusses research revealing that individual MLP neurons in modern language models are far more interpretable and functionally bounded than previously thought. Using an automated agent to test hypotheses across architectures like Qwen3.6-35B-A3B, Tigges explains how modern gated MLPs act as legible conjunctions and control signals capable of extensive dynamic sparsity without lasting benchmark loss. By showing that many internal representations can be directly enumerated, this work offers an alternative to complex external featurizers and"
@@ -1066,8 +1097,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-11T18:02:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-12T00:59:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "The Nvidia CEO’s admission of an affair with a woman US officials believe is a Chinese spy raises big questions about chip export policy, congressional scrutiny, and the AI build-out. NLW breaks down the New York Times reporting, the board investigation, the market whiplash, and the fight over China trade policy. In the headlines: falling Anthropic and OpenAI valuations, Microsoft ending an Oracle compute deal, and Google taking over a stalled Crusoe data center. The AI Daily Brief helps you"
