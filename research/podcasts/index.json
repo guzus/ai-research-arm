@@ -1,9 +1,371 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-12T10:13:00Z",
+  "updated_at": "2026-11-12T18:34:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "decoder:QhCl-BoOHM4",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Jensen Huang is out — and this could all backfire for China | Decoder",
+      "url": "https://www.youtube.com/watch?v=QhCl-BoOHM4",
+      "video_id": "QhCl-BoOHM4",
+      "audio_url": null,
+      "published_at": "2026-11-12T16:04:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-12T18:34:00Z",
+      "duration_s": 2212,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:gCOMQPMhIL0",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Wall Street Has No Idea What Anthropic is Worth",
+      "url": "https://www.youtube.com/watch?v=gCOMQPMhIL0",
+      "video_id": "gCOMQPMhIL0",
+      "audio_url": null,
+      "published_at": "2026-11-12T16:04:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-12T18:34:00Z",
+      "duration_s": 1472,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:HDRy6XmE2RQ",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "How AI Could Bring Halo and Other Classic Games Back to Life",
+      "url": "https://www.youtube.com/watch?v=HDRy6XmE2RQ",
+      "video_id": "HDRy6XmE2RQ",
+      "audio_url": null,
+      "published_at": "2026-11-12T15:04:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-12T18:34:00Z",
+      "duration_s": 2772,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9215,
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "It's like um I think you and I were talking about this earlier, but like Grand Theft Auto 6 is finally coming out next month and like that game has been in production since like 2013 2014 it's like a 12 13 year development cycle. Crazy.",
+          "at_s": 233,
+          "url": "https://www.youtube.com/watch?v=HDRy6XmE2RQ&t=233s"
+        },
+        {
+          "text": "It's like you're going to you're going to greenlight sequels or the new IP. I think we're on like the 20th Call of Duty installment that's Grand Theft Auto 6, right? Yes. It's not a new IP. Um you're going to skew toward genres that have established demand, right?",
+          "at_s": 406,
+          "url": "https://www.youtube.com/watch?v=HDRy6XmE2RQ&t=406s"
+        },
+        {
+          "text": "Like I think that's the first 80%. The last 20% is so critical. It's like how does the world feel, right? Going back to your point in like a custom radio stations in Grand Theft Auto 6, like when you fire a gun, like what is the sound of the gun? Like the shotgun should sound different from the pistol.",
+          "at_s": 680,
+          "url": "https://www.youtube.com/watch?v=HDRy6XmE2RQ&t=680s"
+        },
+        {
+          "text": "And and have fun making 100%. Anish, you you built this Hobo Hotel themed kind of record shop. What was what was that process like? Oh, well, it actually started with a conversation with a friend who's a DJ and he was saying, \"Oh, all the online record stores look the same. It's just a list of songs.\"",
+          "at_s": 838,
+          "url": "https://www.youtube.com/watch?v=HDRy6XmE2RQ&t=838s"
+        },
+        {
+          "text": "And then um my favorite one like Fortnite and and PUBG um were itself inspired by um a Player Unknown Battle Royale mod of Arma. And so multi-billion dollar game franchises have been created using mods.",
+          "at_s": 1148,
+          "url": "https://www.youtube.com/watch?v=HDRy6XmE2RQ&t=1148s"
+        },
+        {
+          "text": "I'm a I'm a big Crusader Kings 3 fan, which isn't which isn't really RTS, but it is like it's it's really it's like I would I I describe it to people who don't know about it as like the Sims mixed with Age of Empires. It's like cuz you you get like kind of personality management, relationships, politics. Yeah.",
+          "at_s": 2373,
+          "url": "https://www.youtube.com/watch?v=HDRy6XmE2RQ&t=2373s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "no-priors:IiKf3BgBezE",
+      "show_id": "no-priors",
+      "show": "No Priors",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "Powering AI-Driven Drug Discovery with President of Isomorphic Labs Max Jaderberg",
+      "url": "https://www.youtube.com/watch?v=IiKf3BgBezE",
+      "video_id": "IiKf3BgBezE",
+      "audio_url": null,
+      "published_at": "2026-11-12T11:04:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-12T18:34:00Z",
+      "duration_s": 2356,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 6654,
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "I was part of the founding team of Isomorphic Labs. Before that, I worked at DeepMind for a long time. Personally, I was working on early generative models, language models, deep reinforcement learning, all these big challenges, like games. That was my passion, like AlphaGo and AlphaStar.",
+          "at_s": 115,
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=115s"
+        },
+        {
+          "text": "And the price has increased a lot, hasn't it? From several hundred million dollars for a drug to 1.5 billion. Development time increased from eight or nine to 15 years. So, all indicators have worsened, although the number of new products has not increased. The knowledge base exploded. The number of available types of molecules has increased significantly.",
+          "at_s": 360,
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=360s"
+        },
+        {
+          "text": "It seems like the last time a biopharmaceutical company worth over $50 billion, other than Moderna—and I think Moderna's success was almost a fluke because of COVID—came out in the '80s , I think it was Regeneron. Yes. So it's been almost 40 years since a new biotech company worth tens of billions of dollars emerged. Yes.",
+          "at_s": 543,
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=543s"
+        },
+        {
+          "text": "I think there is literally so much work that needs to be done at MGM. on basic simulation models like AlphaFold plus plus plus, and also on basic reasoning models , for example, taking all the cutting-edge and open source models and adapting them to our field. So I think this is a very important area for our hiring.",
+          "at_s": 854,
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=854s"
+        },
+        {
+          "text": "When I look at drug development, I think it's a process that takes about 15 years now. It costs $1.5 billion. In my opinion, working with small molecules and in vitro, tissue cultures and experiments on mice take, say, two to three years and cost about $50 million, that's the order of the numbers.",
+          "at_s": 1040,
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1040s"
+        },
+        {
+          "text": "I think it depends on the study, but for rats it's about 30% predictive of clinical toxicity in humans. And you know, if one of my AI scientists or engineers said to me, \" Hey, we have an incredible model, it's 30% accurate,\" you would say, \"Okay, maybe we should do a little better.\"",
+          "at_s": 1289,
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1289s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "openai:vu3YlUMkvyg",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "What Codex Unlocks for Holiday Extras",
+      "url": "https://www.youtube.com/watch?v=vu3YlUMkvyg",
+      "video_id": "vu3YlUMkvyg",
+      "audio_url": null,
+      "published_at": "2026-11-12T10:04:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-12T18:34:00Z",
+      "duration_s": 147,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 488,
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "We were the first to enter the mobile market, the first to appear on the Internet, and now our aspiration is to be the first to use AI for business development. The most important thing that Codex gives Holiday Extras is the opportunity for everyone in the company to engage in development.",
+          "at_s": 27,
+          "url": "https://www.youtube.com/watch?v=vu3YlUMkvyg&t=27s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "openai:vdBDMj2UhDg",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "How to enable PR security reviews with Codex Security",
+      "url": "https://www.youtube.com/watch?v=vdBDMj2UhDg",
+      "video_id": "vdBDMj2UhDg",
+      "audio_url": null,
+      "published_at": "2026-11-11T21:04:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-12T18:34:00Z",
+      "duration_s": 391,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 895,
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "So, there are a few things we need to get started with in GitHub. Let's head over to GitHub and make sure we have everything set up properly. I'm in my GitHub repository , going to settings, then GitHub apps to make sure I have the ChatGPT Codacy connector installed .",
+          "at_s": 27,
+          "url": "https://www.youtube.com/watch?v=vdBDMj2UhDg&t=27s"
+        },
+        {
+          "text": "In the settings, we will scroll the page to the very bottom and find the section \" Code verification\". Here it is, code verification. In this section, we configure the various validation capabilities that Codex offers for merge requests. At the very bottom, you will see the Personal Security Checkup settings section. I can turn it on.",
+          "at_s": 203,
+          "url": "https://www.youtube.com/watch?v=vdBDMj2UhDg&t=203s"
+        },
+        {
+          "text": "Wait a minute and we should see a message from Codex security review. Yes, that's it. Analysis is currently underway , and if any vulnerabilities have been discovered , they should be displayed. Yes, exactly as you see. Okay, quick summary.",
+          "at_s": 343,
+          "url": "https://www.youtube.com/watch?v=vdBDMj2UhDg&t=343s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "openai:hUhr0JiVZZs",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "How to run your first Codex Security scan",
+      "url": "https://www.youtube.com/watch?v=hUhr0JiVZZs",
+      "video_id": "hUhr0JiVZZs",
+      "audio_url": null,
+      "published_at": "2026-11-11T21:04:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-12T18:34:00Z",
+      "duration_s": 408,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 911,
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "I will choose the model and level of reasoning I want to use. In this case, I will choose Daybreak as the model. And finally, I can enable deep scanning, but more importantly, I will provide additional context for analysis. Additional context allows us to provide guidance to the model, guiding the analysis to produce more accurate results.",
+          "at_s": 113,
+          "url": "https://www.youtube.com/watch?v=hUhr0JiVZZs&t=113s"
+        },
+        {
+          "text": "We need to perform analysis simultaneously for many repositories and implement these security capabilities into our CI/CD processes. And this is where Codex Security CLI comes to the rescue . So, Codex Security CLI can be installed using npm. This is a fairly simple installation.",
+          "at_s": 300,
+          "url": "https://www.youtube.com/watch?v=hUhr0JiVZZs&t=300s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "openai:NS220dAaRMo",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "How to request and enable Daybreak Blue",
+      "url": "https://www.youtube.com/watch?v=NS220dAaRMo",
+      "video_id": "NS220dAaRMo",
+      "audio_url": null,
+      "published_at": "2026-11-11T21:04:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-12T18:34:00Z",
+      "duration_s": 348,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 858,
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "In the models section, we enable access to models for our environment. At the very bottom, you will see that you can also enable access to Daybreak Blue here. Important note: This will grant access to Daybreak Blue to all users in your workspace. Most organizations prefer to configure role-based access control for models .",
+          "at_s": 112,
+          "url": "https://www.youtube.com/watch?v=NS220dAaRMo&t=112s"
+        },
+        {
+          "text": "And the final step is to create an API key that users can use to build automation around it. We will select \"Create a new key\". We'll give it another creative name, like Daybreak Key. And then we will set the expiration date to 1 day. Uh, and then click \"Create Key.\"",
+          "at_s": 297,
+          "url": "https://www.youtube.com/watch?v=NS220dAaRMo&t=297s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "openai:CrrpfvbNyMw",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "ChatGPT Images: Three Ways to Get Started",
+      "url": "https://www.youtube.com/watch?v=CrrpfvbNyMw",
+      "video_id": "CrrpfvbNyMw",
+      "audio_url": null,
+      "published_at": "2026-11-11T21:04:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-12T18:34:00Z",
+      "duration_s": 171,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 554,
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "This gives ChatGPT an object and a plot, but there are many options for how the image will look . The mountains may be covered in snow, and the sky may be bright orange or pale pink. My first request actually leaves these details up to the AI. Looking at the result, we can understand that we want something calmer.",
+          "at_s": 57,
+          "url": "https://www.youtube.com/watch?v=CrrpfvbNyMw&t=57s"
+        }
+      ],
+      "description": ""
+    },
     {
       "id": "google-deepmind:uND6iY2qp_c",
       "show_id": "google-deepmind",
@@ -85,8 +447,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-12T10:13:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "In this talk Wiebke (Toussaint) Hutiri will share her work on FairEVA, an open-source project to gain insights and build tools for mitigating bias in voice biometrics. The project is supported by a Mozilla Technology Award for advancing trustworthy AI and motivated by research that Wiebke will present at ACM FAccT 2022 in Korea. Speaker verification is a voice-based biometric that identifies speakers from their voice. It is used in voice assistants, call centers, and forensics. There are many parallels"
@@ -230,8 +592,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-12T10:13:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "The AI Daily Brief helps you understand the most important news and discussions in AI."
@@ -952,8 +1314,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-12T10:13:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-12T18:34:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": "Goodfire technical staff member Curt Tigges discusses research revealing that individual MLP neurons in modern language models are far more interpretable and functionally bounded than previously thought. Using an automated agent to test hypotheses across architectures like Qwen3.6-35B-A3B, Tigges explains how modern gated MLPs act as legible conjunctions and control signals capable of extensive dynamic sparsity without lasting benchmark loss. By showing that many internal representations can be directly enumerated, this work offers an alternative to complex external featurizers and"
@@ -8383,1195 +8745,6 @@
         }
       ],
       "description": "Mike Cannon-Brookes is the Co-Founder and CEO of Atlassian, the company behind Jira, Confluence, Trello and Loom. Atlassian generated $6.5BN in ARR in 2026, and serves more than 350,000 customers, including over 85% of the Fortune 500. Today, Mike is leading its expansion into enterprise AI through Rovo and the Teamwork Graph, connecting company knowledge with AI agents. Timestamps: Intro Do AI Agents Turn Traditional Software Into Just Databases? Why “Headless” Software Is a Brainless Bet Why Design Becomes More"
-    },
-    {
-      "id": "twiml:MAABmDB51LY",
-      "show_id": "twiml",
-      "show": "The TWIML AI Podcast",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "interviews",
-        "research"
-      ],
-      "title": "Optimizing AI Recommendations for Revenue with Sequen Founder Zoe Weil",
-      "url": "https://www.youtube.com/watch?v=MAABmDB51LY",
-      "video_id": "MAABmDB51LY",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3135,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "practical-ai:9H1rwzV41fw",
-      "show_id": "practical-ai",
-      "show": "Practical AI",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "interviews",
-        "engineering"
-      ],
-      "title": "AI and Education, AI-Assisted Learning, Academic Integrity, Workforce Readiness |Episode 376|",
-      "url": "https://www.youtube.com/watch?v=9H1rwzV41fw",
-      "video_id": "9H1rwzV41fw",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2487,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "no-priors:AwuTTOJGEi0",
-      "show_id": "no-priors",
-      "show": "No Priors",
-      "kind": "podcast",
-      "priority": "P0",
-      "tags": [
-        "interviews",
-        "startups"
-      ],
-      "title": "The Changing Physics of Cybersecurity and Drug Development with OpenAI President Greg Brockman",
-      "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0",
-      "video_id": "AwuTTOJGEi0",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2363,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 7107,
-        "checked_at": "2026-11-10T21:00:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "And, as you noted, it takes 15 years to develop a drug. It costs $1.5 billion . About 50 million is usually spent on preclinical research, mouse studies, the molecule itself, and then over 1.4 billion goes to clinical trials. So, your point is correct, and besides, it's 2-3 years versus the next 12 years.",
-          "at_s": 752,
-          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=752s"
-        },
-        {
-          "text": "But I think we'll see 80% of what's possible come to fruition very quickly. You've been around for a while now since the release of Astra and DevDay. Is there anything about how people inside or outside the company are using new products or capabilities that surprises you?",
-          "at_s": 1093,
-          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=1093s"
-        },
-        {
-          "text": "One of OpenAI's strengths is that we have 1.2 billion ChatGPT users, as well as a leading business in coding and enterprise solutions . And no one else has both at the same time . So a big part of our strategy is to bring that together so that we're not competing on two fronts.",
-          "at_s": 1326,
-          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=1326s"
-        },
-        {
-          "text": "And I think the world we're moving into now—and we've already done this within OpenAI—every time a new model comes out , you have to use it to protect yourself, find vulnerabilities, and then fix them. For example, we took about 25% of our production engineers and said, \"All your projects are on hold. Now you're just doing security.\"",
-          "at_s": 1851,
-          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=1851s"
-        },
-        {
-          "text": "And say: \"we'll use 25 % of the engineers\" or, God forbid , \"we'll freeze the development of new features for a quarter until we fix what really needs to be fixed.\" This is not like the state the world has reached yet.",
-          "at_s": 2013,
-          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=2013s"
-        },
-        {
-          "text": "It's important to remember here that these models are very heterogeneous, right? There are areas where these AIs are clearly more capable than anyone today, right? Even GPT-4 knows much more than any human. But the thing that's so important, and I'm reminded, for example, of the story of why Steve Jobs added a pen to the iMac, right?",
-          "at_s": 2244,
-          "url": "https://www.youtube.com/watch?v=AwuTTOJGEi0&t=2244s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "mlst:615B5nyMFPk",
-      "show_id": "mlst",
-      "show": "Machine Learning Street Talk",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "research"
-      ],
-      "title": "What Most People Get Wrong About Evolution | Akarsh Kumar",
-      "url": "https://www.youtube.com/watch?v=615B5nyMFPk",
-      "video_id": "615B5nyMFPk",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2875,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "microsoft-research:CqiAGYP8jyo",
-      "show_id": "microsoft-research",
-      "show": "Microsoft Research",
-      "kind": "video",
-      "priority": "P2",
-      "tags": [
-        "official",
-        "research"
-      ],
-      "title": "AI World Models for Memory, Meaning, and Human Futures",
-      "url": "https://www.youtube.com/watch?v=CqiAGYP8jyo",
-      "video_id": "CqiAGYP8jyo",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2022,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "meta-ai:4ZwVP0-ylZU",
-      "show_id": "meta-ai",
-      "show": "AI at Meta",
-      "kind": "video",
-      "priority": "P1",
-      "tags": [
-        "official",
-        "frontier-lab"
-      ],
-      "title": "Introducing Muse Wonder & Muse Wonder Full: frontier models for agentic tasks",
-      "url": "https://www.youtube.com/watch?v=4ZwVP0-ylZU",
-      "video_id": "4ZwVP0-ylZU",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 153,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "lex-fridman:FGCP2F_7rQk",
-      "show_id": "lex-fridman",
-      "show": "Lex Fridman Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews"
-      ],
-      "title": "Taiwan: The Most Epic Night Market Experience w/ Jensen Huang | Lex Fridman",
-      "url": "https://www.youtube.com/watch?v=FGCP2F_7rQk",
-      "video_id": "FGCP2F_7rQk",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 5418,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "latent-space:zlD-CkLVKtU",
-      "show_id": "latent-space",
-      "show": "Latent Space",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "engineering"
-      ],
-      "title": "How to kill your SaaS: what we learned replacing a $43K/yr tool with AI agents",
-      "url": "https://www.youtube.com/watch?v=zlD-CkLVKtU",
-      "video_id": "zlD-CkLVKtU",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1685,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "latent-space:hQSBJVreLms",
-      "show_id": "latent-space",
-      "show": "Latent Space",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "engineering"
-      ],
-      "title": "From Wet Lab to RL Env: 10,000 Drug-Discovery Campaigns in a Weekend — Ian Quigley, Leash Bio",
-      "url": "https://www.youtube.com/watch?v=hQSBJVreLms",
-      "video_id": "hQSBJVreLms",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 6597,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "latent-space:ZOH8Q401vt0",
-      "show_id": "latent-space",
-      "show": "Latent Space",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "engineering"
-      ],
-      "title": "High Taste Testers: OpenAI Shipped Everything. What Actually Works?",
-      "url": "https://www.youtube.com/watch?v=ZOH8Q401vt0",
-      "video_id": "ZOH8Q401vt0",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 4521,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "latent-space:BHiYomkfoGQ",
-      "show_id": "latent-space",
-      "show": "Latent Space",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "engineering"
-      ],
-      "title": "Robots That Predict the Future: Dyna-2 & Physical AI — Jason Ma, Dyna Robotics",
-      "url": "https://www.youtube.com/watch?v=BHiYomkfoGQ",
-      "video_id": "BHiYomkfoGQ",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 4866,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "last-week-in-ai:1gwiZ0EfhM4",
-      "show_id": "last-week-in-ai",
-      "show": "Last Week in AI",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "news-show"
-      ],
-      "title": "Last Week in AI #259 - Dots, Sonnet, Self-Safety, Rogue AI",
-      "url": "https://www.youtube.com/watch?v=1gwiZ0EfhM4",
-      "video_id": "1gwiZ0EfhM4",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 5026,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "google-developers:Jh6mgf9M06M",
-      "show_id": "google-developers",
-      "show": "Google for Developers",
-      "kind": "video",
-      "priority": "P2",
-      "tags": [
-        "official",
-        "developer"
-      ],
-      "title": "Gemini 4 Argon: What’s new and what’s next",
-      "url": "https://www.youtube.com/watch?v=Jh6mgf9M06M",
-      "video_id": "Jh6mgf9M06M",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1821,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "google-deepmind:ftkic7Tdpcg",
-      "show_id": "google-deepmind",
-      "show": "Google DeepMind",
-      "kind": "video",
-      "priority": "P0",
-      "tags": [
-        "official",
-        "frontier-lab"
-      ],
-      "title": "Using Gemini 4 Argon to protect against Cyber attackers",
-      "url": "https://www.youtube.com/watch?v=ftkic7Tdpcg",
-      "video_id": "ftkic7Tdpcg",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 128,
-      "transcript": {
-        "available": true,
-        "source": "asr",
-        "words": 343,
-        "checked_at": "2026-11-10T12:56:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "When we use Gemini 4 in shadow AB testing on real world systems, we saw that it was able to find over two times more vulnerabilities than other baseline models while using less tokens. After we saw the incredible performance of Gemini 4 on short or right on tasks, we've also put it to the test for longer ones.",
-          "at_s": 25,
-          "url": "https://www.youtube.com/watch?v=ftkic7Tdpcg&t=25s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "google-deepmind:LVEfFyijQ2c",
-      "show_id": "google-deepmind",
-      "show": "Google DeepMind",
-      "kind": "video",
-      "priority": "P0",
-      "tags": [
-        "official",
-        "frontier-lab"
-      ],
-      "title": "Applying Gemini 4 for large-scale codebase maintenance in Chromium",
-      "url": "https://www.youtube.com/watch?v=LVEfFyijQ2c",
-      "video_id": "LVEfFyijQ2c",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 155,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 485,
-        "checked_at": "2026-11-10T12:56:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "After I received early access to Gemini 4 Argon, I've spun up more changes into Chromium in the last two weeks than I would typically do in a matter of months.",
-          "at_s": 1,
-          "url": "https://www.youtube.com/watch?v=LVEfFyijQ2c&t=1s"
-        },
-        {
-          "text": "Gemini 4 can kind of stand up 20 of these changes at a time that pass all the tests. That's kind of one of the clearest signs of the quality of the model itself. That a typical engineer might put out one change a day. 20 changes is 20 days of work.",
-          "at_s": 122,
-          "url": "https://www.youtube.com/watch?v=LVEfFyijQ2c&t=122s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "google-deepmind:9jQA7IgPhBE",
-      "show_id": "google-deepmind",
-      "show": "Google DeepMind",
-      "kind": "video",
-      "priority": "P0",
-      "tags": [
-        "official",
-        "frontier-lab"
-      ],
-      "title": "Untangling 500-page chemistry patents with Gemini 4",
-      "url": "https://www.youtube.com/watch?v=9jQA7IgPhBE",
-      "video_id": "9jQA7IgPhBE",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 150,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 379,
-        "checked_at": "2026-11-10T12:56:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "I've been using Gemini 4 to unlock insights from academic papers. At Isomorphic Labs, we're reimagining drug discovery by developing AI models with the mission to solve all disease. So the models we develop are very specialized for specific tasks. Whereas general models like Gemini 4, they're good at summarizing tasks.",
-          "at_s": 14,
-          "url": "https://www.youtube.com/watch?v=9jQA7IgPhBE&t=14s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "google-deepmind:9PICEmtfpWU",
-      "show_id": "google-deepmind",
-      "show": "Google DeepMind",
-      "kind": "video",
-      "priority": "P0",
-      "tags": [
-        "official",
-        "frontier-lab"
-      ],
-      "title": "Teaching a humanoid robot to play cornhole with Gemini 4 Argon",
-      "url": "https://www.youtube.com/watch?v=9PICEmtfpWU",
-      "video_id": "9PICEmtfpWU",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 104,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 246,
-        "checked_at": "2026-11-10T12:56:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "We just showed it a video of a human doing the task and we prompted Gemini 4 to run the Mojoku simulator and like practice and then we let it learn from experience, iterate, make mistakes and look at each video of what went wrong. And with experience of each trial, it's able to improve what it can do better.",
-          "at_s": 13,
-          "url": "https://www.youtube.com/watch?v=9PICEmtfpWU&t=13s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "cognitive-revolution:SBlVJyoT3IM",
-      "show_id": "cognitive-revolution",
-      "show": "The Cognitive Revolution",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews"
-      ],
-      "title": "Governing AI Agents: Alan Chan of GovAI on Monitoring, Agent IDs, Rogue Agents & Preparing for RSI",
-      "url": "https://www.youtube.com/watch?v=SBlVJyoT3IM",
-      "video_id": "SBlVJyoT3IM",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 8268,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "cognitive-revolution:LgX0QF2D9y0",
-      "show_id": "cognitive-revolution",
-      "show": "The Cognitive Revolution",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews"
-      ],
-      "title": "How Agents Decide: Goodfire's Eric Bigelow on Critical Tokens, Phase Shifts, & In-Context Learning",
-      "url": "https://www.youtube.com/watch?v=LgX0QF2D9y0",
-      "video_id": "LgX0QF2D9y0",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 7251,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "big-technology:x_Y-Ivc3HnU",
-      "show_id": "big-technology",
-      "show": "Big Technology Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "news-show"
-      ],
-      "title": "Anthropic's Top Customers Pull Back?, His Agent Leaked His Banking Info, Don’t Bully Your AI",
-      "url": "https://www.youtube.com/watch?v=x_Y-Ivc3HnU",
-      "video_id": "x_Y-Ivc3HnU",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3137,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "big-technology:a1mMpShAYXo",
-      "show_id": "big-technology",
-      "show": "Big Technology Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "news-show"
-      ],
-      "title": "How $31 Trillion In Datacenters Get Built By 2050 — With Dallas Dolen",
-      "url": "https://www.youtube.com/watch?v=a1mMpShAYXo",
-      "video_id": "a1mMpShAYXo",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2285,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "big-technology:TmMYvtp4abI",
-      "show_id": "big-technology",
-      "show": "Big Technology Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "news-show"
-      ],
-      "title": "AI Leaders Can't Get Along. So How Will They Keep Us Safe? — With Kevin Roose",
-      "url": "https://www.youtube.com/watch?v=TmMYvtp4abI",
-      "video_id": "TmMYvtp4abI",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3712,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "bg2:eS7qQ3WJSrw",
-      "show_id": "bg2",
-      "show": "BG2 Pod",
-      "kind": "podcast",
-      "priority": "P0",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Jensen Huang | Does AI Revenue Justify Capex, '27 AI Bottlenecks, Singularity, Open vs Closed & more",
-      "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw",
-      "video_id": "eS7qQ3WJSrw",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 5993,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 18602,
-        "checked_at": "2026-11-10T12:56:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "You you said it's not going to be a trillion, it's going to be two trillion at a minimum in terms of cumulative compute buildout. And of course, now we're over that. You said before everybody was thinking about it that inference, right, compute was going to 1 billionx because of inference time reasoning and thinking.",
-          "at_s": 426,
-          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=426s"
-        },
-        {
-          "text": "And so you you went from you went from $20 million, let's say $10 million to 100 bucks. And we did that in 10 years. Yeah. Okay. And so um I fully expect meanwhile uh our ambition got so large that the models that we're training now 3 trillion, 10 trillion, 30 trillion, we're talking about gigantic models now.",
-          "at_s": 1175,
-          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=1175s"
-        },
-        {
-          "text": "We we did $10 billion in the first six months. We did $10 billion in the last year. Mhm. And that was our first $10 billion year. The year before that we did five. Yeah. Okay. And so it went five 10. Let's say we did 20. Yeah. Who knows? Yeah. So maybe the hundred was a little understated.",
-          "at_s": 1612,
-          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=1612s"
-        },
-        {
-          "text": "But we're also expanding the market beyond the CSPs. And outside of the CSPs, whether it's onrem or neo clouds, half of our business, our percentage of capex is probably what 80%. Yeah. And so and so between 40 half of our business being 40%, half of our business being 80%. And both of us growing doubling every year.",
-          "at_s": 3289,
-          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=3289s"
-        },
-        {
-          "text": "and we add up, you know, some of the inference labs, it's about $200 billion. Okay? Um, we need to see that double next year to 400 billion. We need to see it double the year after that to 800 billion, right? In order to get in the zip code of the payback on trillions of dollars of capex.",
-          "at_s": 3666,
-          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=3666s"
-        },
-        {
-          "text": "You said as to next year, demand for Nvidia's chips well over 100%. You guided to 70% revenue growth. You gave a a year forward look because you said supplies constrained. That's all I had at the time. That's right. Yeah. You said I got 18 months to work here. Right. You said you were very confident.",
-          "at_s": 4386,
-          "url": "https://www.youtube.com/watch?v=eS7qQ3WJSrw&t=4386s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "all-in:_b3LfMflIGs",
-      "show_id": "all-in",
-      "show": "All-In Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "CoreWeave Crash, AI Trade Cracks, Anthropic IPO Red Flags, Bill Gates Doomer",
-      "url": "https://www.youtube.com/watch?v=_b3LfMflIGs",
-      "video_id": "_b3LfMflIGs",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 5646,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 16960,
-        "checked_at": "2026-11-11T18:02:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "But if funding will increase and will reach a range of 10 , 11, 12, 13, 14, 15%, then these guys very, very, very close to that, which is not necessary will be able to cover all your obligations. By my estimates teams, they are plus- minus about 5 billions from the point break-even point.",
-          "at_s": 718,
-          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=718s"
-        },
-        {
-          "text": "It quite aggressive Polymarket. 15% chance at the end of 2027, next year. 23% at the end of 2028 seems a little far-fetched, considering the fact that that they have a huge demand for their equipment, like Ben noted. Listen, this is nonsense, because I think Michael explained it as if in you have such an OpCo scheme PropCo.",
-          "at_s": 1113,
-          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=1113s"
-        },
-        {
-          "text": "So, CoreWeave says that the term payback is 2.5 years. Their typical the deal is 5 years. They pay off within 2.5 years. SpaceX pay back approximately in 1 year. That makes sense, because I think that SpaceX is monetizing about 50 billion per gigawatt, and CoreWeave- about 20 billion per gigawatt.",
-          "at_s": 2433,
-          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=2433s"
-        },
-        {
-          "text": "Presented potential IPO investors in their headquarters in San Francisco. This is not Open AI headquarters with listening. They cleaned up. room for this, but we still have data. Income for the third quarter was 16.8 billion dollars. Think about it, Gentlemen. Anthropic already spends more than 5 billions of dollars for month. Maintenance net income amounted to 900%.",
-          "at_s": 2775,
-          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=2775s"
-        },
-        {
-          "text": "However, 16 billion, 16.8 billion per quarter. Madness, madness. How long has Anthropic been selling? things? You know, 3 years? Madness. Yes. I mean, this is simply absurd, how much is this thing good, so I think, that the IPO will be normal, regardless of whether Do you want to be in 2? trillion, or 1.9 trillion, or 2.3 trillion.",
-          "at_s": 3024,
-          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=3024s"
-        },
-        {
-          "text": "And I think, what if you want to be safe, quarter of a trillion will solve the problem. AND again, what is the price it must be so that to attract this extra dollar from the side? Can they to attract 80 billion in IPO for 1,7, 8 or 9 trillions? I think That's right, easy.",
-          "at_s": 3329,
-          "url": "https://www.youtube.com/watch?v=_b3LfMflIGs&t=3329s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "ai-explained:C4Sq3Rot8FU",
-      "show_id": "ai-explained",
-      "show": "AI Explained",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "commentary"
-      ],
-      "title": "AI Labs Warn Race Makes Breach ‘Inevitable’",
-      "url": "https://www.youtube.com/watch?v=C4Sq3Rot8FU",
-      "video_id": "C4Sq3Rot8FU",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1861,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "ai-daily-brief:xIFMwhvvUUo",
-      "show_id": "ai-daily-brief",
-      "show": "The AI Daily Brief",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "news-show"
-      ],
-      "title": "How the Latest AI Model Jump is Disrupting Business Models",
-      "url": "https://www.youtube.com/watch?v=xIFMwhvvUUo",
-      "video_id": "xIFMwhvvUUo",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1631,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-11T02:12:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "ai-daily-brief:wdXF-5nn-T4",
-      "show_id": "ai-daily-brief",
-      "show": "The AI Daily Brief",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "news-show"
-      ],
-      "title": "How to Go from AI Power User to AI Leader",
-      "url": "https://www.youtube.com/watch?v=wdXF-5nn-T4",
-      "video_id": "wdXF-5nn-T4",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2143,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-11T02:12:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "ai-daily-brief:pmuGWJte_EY",
-      "show_id": "ai-daily-brief",
-      "show": "The AI Daily Brief",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "news-show"
-      ],
-      "title": "The Most Important AI Model Announcements This Week",
-      "url": "https://www.youtube.com/watch?v=pmuGWJte_EY",
-      "video_id": "pmuGWJte_EY",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1522,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-11T02:12:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "ai-daily-brief:SX9LQD3yINg",
-      "show_id": "ai-daily-brief",
-      "show": "The AI Daily Brief",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "news-show"
-      ],
-      "title": "Where Gemini 4 Argon Fits",
-      "url": "https://www.youtube.com/watch?v=SX9LQD3yINg",
-      "video_id": "SX9LQD3yINg",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1620,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-11T02:12:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "a16z:q8cb1XL9sXA",
-      "show_id": "a16z",
-      "show": "a16z",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Agentic Commerce: Why Your Wallet Is About to Change",
-      "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA",
-      "video_id": "q8cb1XL9sXA",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3031,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 9949,
-        "checked_at": "2026-11-11T02:12:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "So maybe I have a 100 million cards in as as a merchant, but I have to store 100 million with Chase and 100 million with Stripe and 100 million with Brainree. And each of those vaults have to be updated at at their networks.",
-          "at_s": 536,
-          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=536s"
-        },
-        {
-          "text": "You have Shopify with Shopay similarish um you know consumer size probably more like 1.7 million merchants right then you have PayPal which has got you know over 400 million accounts depends on how you kind of you know sort of you know h how that's actually measured but they have on the order of 30 million merchants.",
-          "at_s": 853,
-          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=853s"
-        },
-        {
-          "text": "There's a whole process by which the agent says, \"I'm about to make a transaction. I'm a verified agent. I'm going to spend no more than $100.\" That um the token is nothing more than a new 16-digit number. Right? We give that safely to the agent.",
-          "at_s": 1541,
-          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=1541s"
-        },
-        {
-          "text": "But you've gotten to I mean, what what percentage of cards do you think you've seen or touch or store? It's probably what is it 80% of cards in America? I mean, we have like 10 billion credentials. Um, it's a lot of credentials.",
-          "at_s": 1679,
-          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=1679s"
-        },
-        {
-          "text": "I spent $10,000 on virtual gems. My wife and I share the I didn't actually do this. Just for disclosure, but let's just say I did. I spent $10,000 on virtual gems for some stupid game. The credit card bill comes due at the end of the month. I'm like, \"Honey, I never spent $10,000 on that wasn't me.",
-          "at_s": 2103,
-          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=2103s"
-        },
-        {
-          "text": "because they tried it three years ago and uh like you I just bought a new Tesla and I remember I had I had an old Model 3. I think this is a good metaphor for what we're talking about. Like I had an old Model 3 in 2017 with self-driving didn't work at all. It was a joke.",
-          "at_s": 2415,
-          "url": "https://www.youtube.com/watch?v=q8cb1XL9sXA&t=2415s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "a16z:blkIGLlZePg",
-      "show_id": "a16z",
-      "show": "a16z",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Why AI Can Write Code But Can’t Keep It Running (Yet)",
-      "url": "https://www.youtube.com/watch?v=blkIGLlZePg",
-      "video_id": "blkIGLlZePg",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3538,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 9532,
-        "checked_at": "2026-11-11T02:12:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "First, people spent 5 to 20% of what they spent on infrastructure on observability. But in the end, what they were really trying to spend that money on was reliability. They wanted to buy reliability and, uh, predictability of costs, reliability of their infrastructure and programs. Of course. Of course. Of course. Yes.",
-          "at_s": 449,
-          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=449s"
-        },
-        {
-          "text": "So you put us in the data stream, connect, run the data through us, and cut costs by 90%. And, um, now we're building this second layer where we feed those signals into the AI ​​layer, which now does the troubleshooting, figuring out when something's going wrong, and fixing it.",
-          "at_s": 596,
-          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=596s"
-        },
-        {
-          "text": "um, with Claude Code I notice that if I don't tell it not to run you know, 20 agents for a normal study? He will go and launch 20 agents to investigate and burn all your tokens.",
-          "at_s": 758,
-          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=758s"
-        },
-        {
-          "text": "That is, they actually run the Linux kernel on Windows through a hypervisor and give you access to it. This is great. They did a great job. Perfectly. Windows WSL and Cloud Code. Cloud Code and, um, the last thing I'm doing is using Opus 5.5. I tell her she is a very good model. This is an amazing model.",
-          "at_s": 1183,
-          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=1183s"
-        },
-        {
-          "text": "I think, look, it's very simple: when we started using AI for coding, it was autocomplete. Yeah. And nobody knew how complex software could be built with AI. Yeah. When we looked at it , we thought, \" Oh, AI will never be able to build X, Y, Z, or whatever.\"",
-          "at_s": 2228,
-          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=2228s"
-        },
-        {
-          "text": "I remember Sebastian Thrun won the DARPA Grand Challenge when I was at Stanford. Remember that? And we were like, \"Yay!\" You know, self-driving cars are just around the corner. Seriously. And it took 20 years and $170 billion in investment to get worse unit economics than Uber, right?",
-          "at_s": 3252,
-          "url": "https://www.youtube.com/watch?v=blkIGLlZePg&t=3252s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "a16z:BKuK0M6oDTI",
-      "show_id": "a16z",
-      "show": "a16z",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Can Open Models Keep Up With OpenAI and Anthropic? | Nathan Lambert",
-      "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI",
-      "video_id": "BKuK0M6oDTI",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3529,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 9000,
-        "checked_at": "2026-11-10T21:00:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "Openness Models This is what To do Trying . Over time Openness In models Levels To be formed That I think, The best there is Closed Models More Profit Will receive . Next to that In the position, To the border Nearby Models There will be.",
-          "at_s": 323,
-          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=323s"
-        },
-        {
-          "text": "Formally Not reaching . That is, Open model Creators, Model Functional Companies and For training Later Companies And so on. Categories There are. Customers Expecting Like Information Model To the creator Easily Return Not going. Also, They have many For users Serving Economic The scale, Skilled Action Or more No profit, So this Long time It will take.",
-          "at_s": 1203,
-          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=1203s"
-        },
-        {
-          "text": "Very Curious There is. Open AI (Open AI) Price Severely Reduced We have seen , GPT Or Astra-like Big Models Price next 3 For years Every 8 For months Half What is decreasing? Meaning? For this Calculations When doing, 4 Over the years Cost 1% It will be over, Jevons By contradiction For them High profit Is it available?",
-          "at_s": 1596,
-          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=1596s"
-        },
-        {
-          "text": "But, profit Purpose Too much Because, This Environments Better Created To publish Thousands Or Tens of thousands Dollars Investment Will do Companies Very little. Too much. I am that To the teachers Jokingly I was talking. . \"Yes, you are.\" This data One million For the dollar After selling Then Thesis \"Let's publish\" That I I said.",
-          "at_s": 1939,
-          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=1939s"
-        },
-        {
-          "text": "AI Profit Aimless Settings Many like this Things To do Can. A As a professor, My 15% of the time, My Students 40% of the time We Will do Jobs To document Spending Education For companies Difficult. So, here it is. Ours That the tasks Saying a Best policy and social As a service There will be.",
-          "at_s": 2548,
-          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=2548s"
-        },
-        {
-          "text": "There are some Small Details And secret Things Maybe, But they Bigger Doesn't change. Modern Structures and GPUs are changing, But a The best pre- Training Sample Create Skyscraper Cost Not required . So, a good Basic Sample You get One billion Dollars To spend Needed Not necessary That I think. You How much does it cost?",
-          "at_s": 2709,
-          "url": "https://www.youtube.com/watch?v=BKuK0M6oDTI&t=2709s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "a16z:3Q1mdn5ZGvM",
-      "show_id": "a16z",
-      "show": "a16z",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Recursive Self-Improvement and the Future of AI",
-      "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM",
-      "video_id": "3Q1mdn5ZGvM",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1927,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 5810,
-        "checked_at": "2026-11-10T21:00:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "Then I did the PhD in reinforcement learning at the MIT Media Lab. I really like building things and I'm very excited to be building um a cool startup make a maker with Owen and Grace. My name is Owen.",
-          "at_s": 79,
-          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=79s"
-        },
-        {
-          "text": "Um I don't know if you know this nano GPT benchmark they are running. It's basically asking you to retrain GPD2 which when it just came out is a very expensive model to train and takes weeks I think on multiple GPUs and right now people can train on single GPU within hours and that number has been shrinking constantly.",
-          "at_s": 704,
-          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=704s"
-        },
-        {
-          "text": "and and everybody wants to use the latest for example open weight model Kim 3 or whatever just coming out and they want to be able to serve it as efficiently as possible right so it's it's an economically extremely important problem right now just for the sake of discussion if if I if I wanted to make the inference",
-          "at_s": 1152,
-          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=1152s"
-        },
-        {
-          "text": "And so that's why from the very beginning we've tried to think of our basically entire company as a multi- aent system where humans are a kind of agent that's cohabitating with other AI agents. Can we at least reduce bounds?",
-          "at_s": 1325,
-          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=1325s"
-        },
-        {
-          "text": "So, if you use um I don't know benchmark accuracy, it's upward bounded by 100%. You're never going to see exponential improvement on that because eventually bottleneck 100%. So, so for a long time we had this question, how do we even know if something has ticked off right if we don't have the right metric?",
-          "at_s": 1450,
-          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=1450s"
-        },
-        {
-          "text": "You could get like a thousand times faster or a million times faster. But if it's only 20% of your orbital time you're only going to get 20% speed up. Right? So, so for for domains where you still need to move atoms that interact with physical world that's really slow um you're still going to be bottlenecked by that.",
-          "at_s": 1713,
-          "url": "https://www.youtube.com/watch?v=3Q1mdn5ZGvM&t=1713s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "20vc:B-QeGihxbFE",
-      "show_id": "20vc",
-      "show": "20VC",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Valar Atomics Sues Day One Ventures | Meta's Back to the AI Frontier | NVIDIA's $30B Reflection Deal",
-      "url": "https://www.youtube.com/watch?v=B-QeGihxbFE",
-      "video_id": "B-QeGihxbFE",
-      "audio_url": null,
-      "published_at": "2026-10-13T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 4630,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": ""
     }
   ]
 }
