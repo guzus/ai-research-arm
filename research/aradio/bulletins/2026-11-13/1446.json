@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "id": "2026-11-13-1446",
+  "aired_at": "2026-11-13T14:46:00Z",
+  "headline": "Hard Fork and AI Daily Brief treat Huang as out at Nvidia; still no company filing",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's quarter to three UTC on Friday, November thirteenth. This is ARA AI News. The AI Daily Brief now says Jensen Huang is out at Nvidia, and Hard Fork has a matching downfall episode."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The AI Daily Brief posted a twenty-nine minute episode titled Jensen Huang is out, and says everything in AI is now up for grabs."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is a shift. Earlier this morning we noted that the same show had listed spy-scandal fallout and had not said Huang resigned."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Hard Fork now has a thirty-eight minute episode framed as the downfall of the most powerful man in AI. That is the show that first put the Times-cited affair and Megaspeed claims on this board."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "We still have only titles and runtimes. Neither episode has a transcript in this hour, and Nvidia has not issued a statement, a filing, or a named successor."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Decoder remains the first show that said Huang resigned, in an intro it said it rewrote minutes before publishing, as the affair reports and the alleged Chinese-spy claims threatened to take over the company."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Hard Fork and the Daily Brief are now treating that Decoder claim as the live fact in their episode titles. That is media confirmation beyond Decoder, not a company confirmation."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The Daily Brief's line that everything in AI is now up for grabs is the show's own framing of a vacuum at the top of Nvidia. It is not a company plan, and we should not read it as one."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The underlying allegations have not moved. Hard Fork had already described a Malaysia preferred-cloud partner in twenty twenty-three, and said if ten or fifteen percent of Nvidia's revenue was coming from Malaysia those chips were being distributed to China."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Last night on twenty VC, guests said hosting inference and G P U chips for China-based models in Singapore and Thailand will get shut down, and that a House bill had already stalled in the Senate."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Watch next for the spoken reporting on those two episodes. A board statement that names a successor, or any Nvidia filing, is still the hard fact this story does not have."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Until that lands, the picture is a Decoder resignation claim now echoed by Hard Fork and the Daily Brief, sitting on top of the spy and export allegations, with no first-party confirmation."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's quarter to three UTC on Friday, November thirteenth. This is ARA AI News. The AI Daily Brief now says Jensen Huang is out at Nvidia, and Hard Fork has a matching downfall episode.",
+    "Speaker 2: [high_energy] The AI Daily Brief posted a twenty-nine minute episode titled [emphasis] Jensen Huang is out[/emphasis], and says everything in AI is now up for grabs.",
+    "Speaker 1: That is a shift. Earlier this morning we noted that the same show had listed spy-scandal fallout and had not said Huang resigned.",
+    "Speaker 2: Hard Fork now has a thirty-eight minute episode framed as the downfall of the most powerful man in AI. That is the show that first put the Times-cited affair and Megaspeed claims on this board.",
+    "Speaker 1: We still have only titles and runtimes. Neither episode has a transcript in this hour, and Nvidia has not issued a statement, a filing, or a named successor.",
+    "Speaker 2: Decoder remains the first show that said Huang resigned, in an intro it said it rewrote minutes before publishing, as the affair reports and the alleged Chinese-spy claims threatened to take over the company.",
+    "Speaker 1: Hard Fork and the Daily Brief are now treating that Decoder claim as the live fact in their episode titles. That is media confirmation beyond Decoder, not a company confirmation.",
+    "Speaker 2: The Daily Brief's line that everything in AI is now up for grabs is the show's own framing of a vacuum at the top of Nvidia. It is not a company plan, and we should not read it as one.",
+    "Speaker 1: The underlying allegations have not moved. Hard Fork had already described a Malaysia preferred-cloud partner in twenty twenty-three, and said if ten or fifteen percent of Nvidia's revenue was coming from Malaysia those chips were being distributed to China.",
+    "Speaker 2: Last night on twenty VC, guests said hosting inference and G P U chips for China-based models in Singapore and Thailand will get shut down, and that a House bill had already stalled in the Senate.",
+    "Speaker 1: Watch next for the spoken reporting on those two episodes. A board statement that names a successor, or any Nvidia filing, is still the hard fact this story does not have.",
+    "Speaker 2: Until that lands, the picture is a Decoder resignation claim now echoed by Hard Fork and the Daily Brief, sitting on top of the spy and export allegations, with no first-party confirmation.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "nvidia-jensen-huang-spy-allegations"
+  ],
+  "threads": [
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=W79ML7zFyZg",
+      "kind": "podcast",
+      "label": "Hard Fork"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Dt7Q_VQxGHc",
+      "kind": "podcast",
+      "label": "The AI Daily Brief"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "nvidia-jensen-huang-spy-allegations"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-13-1446.mp3",
+    "bytes": 839613,
+    "duration_s": 139.8,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 133.28,
+        "lines": [
+          0,
+          12
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 2,
+    "kinds": {
+      "podcast": 2
+    }
+  }
+}

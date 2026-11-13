@@ -1,8 +1,93 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-13T07:16:00Z",
-  "headline": "OpenAI's GPT-6 Cyber patched almost 1,000 Linux bugs; Daybreak Red Team and Defense Factory land",
+  "updated_at": "2026-11-13T14:46:00Z",
+  "headline": "Hard Fork and AI Daily Brief treat Huang as out at Nvidia; still no company filing",
   "threads": [
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-11-11T06:00:00Z",
+      "updated_at": "2026-11-13T14:46:00Z",
+      "now": "Hard Fork and AI Daily Brief posted episodes treating Jensen Huang as out. Hard Fork calls it the downfall of the most powerful man in AI; the Daily Brief titles that he is out and everything in AI is up for grabs. Still show notes only; no Nvidia filing or successor. Decoder's resignation claim, the Times-cited affair and Megaspeed funneling, and 20VC's China-hosting comments still stand.",
+      "changed": "Hard Fork and AI Daily Brief episode titles now treat Huang as out. This morning the Daily Brief had not said he was gone. Still no transcripts, no Nvidia filing, and no named successor.",
+      "watch": "Transcripts of the Hard Fork and AI Daily Brief episodes; an Nvidia filing or board statement naming a successor; whether the Senate takes up the House China-hosting bill.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=W79ML7zFyZg",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Dt7Q_VQxGHc",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-12T18:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=QhCl-BoOHM4",
+          "kind": "podcast",
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-12T16:04:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
+          "kind": "podcast",
+          "label": "20VC (China GPU hosting)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=201s",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-10T14:30:00Z",
+          "quote": "If if 10 or or 15% of Nvidia's revenue was coming from Malaysia really that meant that those chips were being kind of distributed to China in one way or another."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-10T14:30:00Z",
+          "quote": "Uh in 2023 Nvidia announced that they were a preferred cloud partner, meaning we're going to, you know, prefer selling our equipment to this company in Malaysia."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=861s",
+          "kind": "podcast",
+          "label": "Hard Fork (China export stance)",
+          "at": "2026-11-10T14:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-10T15:30:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
+        },
+        {
+          "at": "2026-11-13T14:46:00Z",
+          "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
+        }
+      ]
+    },
     {
       "slug": "ai-cyber-risk-and-key-theft",
       "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
@@ -227,75 +312,6 @@
         {
           "at": "2026-11-13T03:38:00Z",
           "change": "AI Daily Brief show notes: IPO days away, pricing unclear; Claude productivity suite aimed at Microsoft. No transcript yet."
-        }
-      ]
-    },
-    {
-      "slug": "nvidia-jensen-huang-spy-allegations",
-      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-11-11T06:00:00Z",
-      "updated_at": "2026-11-13T03:38:00Z",
-      "now": "Decoder show notes say Jensen Huang resigned as Nvidia CEO after the affair and alleged Chinese-spy reports threatened to engulf the company, in an intro updated minutes before publish. Hard Fork's Times-cited affair and Megaspeed funneling claims still stand. On 20VC, guests said China-model GPU hosting in Singapore and Thailand will be shut down; a House bill stalled in the Senate.",
-      "changed": "Decoder show notes: Huang resigned as Nvidia CEO amid the affair and alleged Chinese-spy reports; the show updated its intro minutes before publishing.",
-      "watch": "An Nvidia filing or board statement naming a successor; confirmation beyond Decoder; whether the Senate takes up the House China-hosting bill.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=QhCl-BoOHM4",
-          "kind": "podcast",
-          "label": "Decoder with Nilay Patel",
-          "at": "2026-11-12T16:04:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
-          "kind": "podcast",
-          "label": "20VC (China GPU hosting)",
-          "at": "2026-11-12T20:22:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=201s",
-          "kind": "podcast",
-          "label": "Hard Fork",
-          "at": "2026-11-10T14:30:00Z",
-          "quote": "If if 10 or or 15% of Nvidia's revenue was coming from Malaysia really that meant that those chips were being kind of distributed to China in one way or another."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc",
-          "kind": "podcast",
-          "label": "Hard Fork",
-          "at": "2026-11-10T14:30:00Z",
-          "quote": "Uh in 2023 Nvidia announced that they were a preferred cloud partner, meaning we're going to, you know, prefer selling our equipment to this company in Malaysia."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=861s",
-          "kind": "podcast",
-          "label": "Hard Fork (China export stance)",
-          "at": "2026-11-10T14:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-10T15:30:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
-        },
-        {
-          "at": "2026-11-13T03:38:00Z",
-          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
         }
       ]
     },
