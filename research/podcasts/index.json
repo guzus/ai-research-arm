@@ -1,9 +1,95 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-12T23:52:00Z",
+  "updated_at": "2026-11-13T07:11:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "openai:YmxpxJZvm4M",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Cyber at the Frontier",
+      "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M",
+      "video_id": "YmxpxJZvm4M",
+      "audio_url": null,
+      "published_at": "2026-11-12T22:41:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-13T07:11:00Z",
+      "duration_s": 2078,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 6344,
+        "checked_at": "2026-11-13T07:11:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "From our frontier cyber models to the tools and hands-on support that we provide. A few months ago, our product engineers started on the journey of continuous defense, hardening our systems with Frontier models. We then productized those learnings into two products that we are announcing today. Daybreak Red Team and Daybreak Defense Factory. So, let's get into it.",
+          "at_s": 391,
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=391s"
+        },
+        {
+          "text": "We train six cyber to work harder and not give up as easily and able to achieve a much higher performance on this benchmark at 52%. For comparison, Anthropics Mythos 52, which released earlier this week, scores at about 38%.",
+          "at_s": 576,
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=576s"
+        },
+        {
+          "text": "Six Cyber shows significant improvements over past Frontier models and also on other alignment evaluations. When evaluated without cyber safeguards, it stayed within scope at 99.9% of those evaluated cases. And with our production safeguards, it stays within scope 100% of the time. We believe that everyone needs the ability to red team their own systems.",
+          "at_s": 720,
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=720s"
+        },
+        {
+          "text": "With more than 40 million lines of code, we developed an autonomous vulnerability discovery, exploitation, and patching pipeline and ran it with both GPT 5.6 Cyber and GPT6 Cyber. In one run with GPT6 Cyber, the pipeline validated and generated patches for almost a thousand local privilege escalation vulnerabilities in Linux.",
+          "at_s": 959,
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=959s"
+        },
+        {
+          "text": "You can connect up and import findings from thirdparty tools like Whiz, Sneak, and even Daybreak uh red team as Alex just showed you. And when you import your findings, Daybreak Defense Factory can help you dduplicate findings across different platforms. So Matt, can you maybe pull up a view that our customers can expect to see? Absolutely.",
+          "at_s": 1511,
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=1511s"
+        },
+        {
+          "text": "Next example block is using Daybreak models to improve their detection engineering and alert triaging workflows. And since models are the foundation for everything here at OpenAI, the API gives our customers the flexibility to automate across other security dimensions. One area in particular where our customers see a lot of success is in Agentic sock.",
+          "at_s": 1863,
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=1863s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "hard-fork:W79ML7zFyZg",
+      "show_id": "hard-fork",
+      "show": "Hard Fork",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Inside the Downfall of the Most Powerful Man in A.I. | Hard Fork",
+      "url": "https://www.youtube.com/watch?v=W79ML7zFyZg",
+      "video_id": "W79ML7zFyZg",
+      "audio_url": null,
+      "published_at": "2026-11-12T22:41:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-13T07:11:00Z",
+      "duration_s": 2253,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-13T07:11:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "20vc:ffh7fdwfrWU",
       "show_id": "20vc",
@@ -64,6 +150,33 @@
       "description": "Jason Lemkin is one of the leading SaaS investors of the last decade with a portfolio including the likes of Algolia, Talkdesk, Owner, RevenueCat, Saleloft and more. Rory O’Driscoll is a General Partner @ Scale where he has led investments in category leaders such as Bill.com (BILL), Box (BOX), DocuSign (DOCU), and WalkMe (WKME), among others. Timestamps: Intro Sequoia Restructures: London, Scouts and Evergreen Why Sequoia Is Ending the Evergreen Fund Why Sequoia Thinks It Can Cover Europe From the"
     },
     {
+      "id": "ai-daily-brief:Dt7Q_VQxGHc",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Jensen Huang Is Out. Everything in AI Is Now Up for Grabs.",
+      "url": "https://www.youtube.com/watch?v=Dt7Q_VQxGHc",
+      "video_id": "Dt7Q_VQxGHc",
+      "audio_url": null,
+      "published_at": "2026-11-12T18:41:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-13T07:11:00Z",
+      "duration_s": 1765,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-13T07:11:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
       "id": "decoder:QhCl-BoOHM4",
       "show_id": "decoder",
       "show": "Decoder with Nilay Patel",
@@ -84,8 +197,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-12T23:52:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-13T07:11:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Today, we’re talking about the Jensen Huang scandal at Nvidia, which is developing so quickly that we had to do an emergency update of this intro minutes before publishing this episode — Huang just resigned from his position as CEO of Nvidia as news of his affairs, including with an alleged Chinese spy, threatened to engulf the company. We’ll have more on that story as things develop. But just two days ago I talked to Kyle Chan, a foreign policy"
@@ -111,8 +224,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-12T23:52:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-13T07:11:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Anthropic’s IPO is days away, and nobody really knows how investors will price the biggest bet in AI. NLW breaks down the share price range, shifting valuation chatter, compute commitments, and the new Claude productivity suite aimed at Microsoft. In the headlines: Google’s Gemini 4 Carbon release, fallout from the Nvidia spy scandal, and a record quarter for OpenAI. The AI Daily Brief helps you understand the most important news and discussions in AI."
