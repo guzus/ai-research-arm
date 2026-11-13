@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-13
+
+TOP 5 PAPERS:
+• Unbundling vision encoding - dedicated vision capacity matters; pretrained visual prior does not
+• Goal Encoding in LLMs - sparse heads encode next sub-goal; transplantable across languages
+• NOPO - one-sided verifiers: train only on trusted negatives (NeurIPS Spotlight)
+• CRAM - Hopfield energy solves Sudoku 1,000× faster than looped models
+• CapLite - SLMs cannot write guardrails; schema policy: 0/13,935 attacks
+
+CATEGORIES: LM/NLP 9, CV/Multimodal 9, Agents/Reasoning 10, Safety 8, Other 8
+
+Full report on GitHub.
