@@ -1,9 +1,36 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-13T07:16:00Z",
+  "updated_at": "2026-11-13T14:46:00Z",
   "degraded": false,
-  "latest": "2026-11-13-0716",
+  "latest": "2026-11-13-1446",
   "bulletins": [
+    {
+      "id": "2026-11-13-1446",
+      "aired_at": "2026-11-13T14:46:00Z",
+      "headline": "Hard Fork and AI Daily Brief treat Huang as out at Nvidia; still no company filing",
+      "path": "bulletins/2026-11-13/1446.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-13-1446.mp3",
+        "bytes": 839613,
+        "duration_s": 139.8,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 133.28,
+            "lines": [
+              0,
+              12
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "nvidia-jensen-huang-spy-allegations"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-13-0716",
       "aired_at": "2026-11-13T07:16:00Z",
