@@ -1,8 +1,193 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-12T23:57:00Z",
-  "headline": "Nine AI labs disclosed an October API-key swarming; 20VC flags million-dollar theft bills",
+  "updated_at": "2026-11-13T03:38:00Z",
+  "headline": "Decoder says Jensen Huang resigned as Nvidia CEO; Anthropic IPO called days away",
   "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-13T03:38:00Z",
+      "now": "The AI Daily Brief's show notes say Anthropic's IPO is days away and investors do not know how to price it, and they flag a Claude productivity suite aimed at Microsoft. On 20VC, a guest put private-side options at $1.4 trillion versus $1 trillion, with per-share up about 20 to 30 percent. Kalshi December-IPO odds, WSJ $1.5T skepticism, and the November 19 $1.3T call still stand.",
+      "changed": "AI Daily Brief show notes: IPO is days away and Wall Street does not know how to price it; they also flag a Claude productivity suite aimed at Microsoft.",
+      "watch": "A filing or roadshow in the next few days; whether Kalshi's December IPO contract keeps falling; whether the Claude-for-Microsoft suite is a first-party product.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=gCOMQPMhIL0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-12T16:04:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1446s",
+          "kind": "podcast",
+          "label": "20VC (private valuations)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1652s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-10T17:30:00Z",
+          "quote": "Over the past week, the probability that Anthropic will announce an IPO by December has fallen from nearly 90% to 57% on Kalshi, a huge shift."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1517s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (WSJ valuation)",
+          "at": "2026-11-10T17:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-11-07T20:24:00Z",
+          "quote": "The new language, Anthropic says it may imminently meet its own threshold for dramatically accelerated progress attributable to AI."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=908s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-07T03:00:00Z",
+          "quote": "Here is the business, which showed 85% gross margin, over 20 %free cash flow margin, 8% GAAP operating margin, so even on a GAAP basis, they are highly profitable."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=4499s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-07T03:00:00Z",
+          "quote": "So, 100% of the loss for the first six months is just growth the value of their convertibles tools."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-07T18:24:00Z",
+          "quote": "You and I talked about this before on the pod, but SpaceX and anthropics compute deal has a mutual 90 day out."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T18:49:00Z",
+          "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk."
+        },
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
+        },
+        {
+          "at": "2026-11-01T23:55:00Z",
+          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
+        },
+        {
+          "at": "2026-11-02T21:46:00Z",
+          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
+        },
+        {
+          "at": "2026-11-05T12:49:00Z",
+          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: private-side 1.4T vs 1T is options; per-share up 20-30%; allocator unworried about $80B, worried the next $100B layer is thin."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "AI Daily Brief show notes: IPO days away, pricing unclear; Claude productivity suite aimed at Microsoft. No transcript yet."
+        }
+      ]
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-11-11T06:00:00Z",
+      "updated_at": "2026-11-13T03:38:00Z",
+      "now": "Decoder show notes say Jensen Huang resigned as Nvidia CEO after the affair and alleged Chinese-spy reports threatened to engulf the company, in an intro updated minutes before publish. Hard Fork's Times-cited affair and Megaspeed funneling claims still stand. On 20VC, guests said China-model GPU hosting in Singapore and Thailand will be shut down; a House bill stalled in the Senate.",
+      "changed": "Decoder show notes: Huang resigned as Nvidia CEO amid the affair and alleged Chinese-spy reports; the show updated its intro minutes before publishing.",
+      "watch": "An Nvidia filing or board statement naming a successor; confirmation beyond Decoder; whether the Senate takes up the House China-hosting bill.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=QhCl-BoOHM4",
+          "kind": "podcast",
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-12T16:04:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
+          "kind": "podcast",
+          "label": "20VC (China GPU hosting)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=201s",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-10T14:30:00Z",
+          "quote": "If if 10 or or 15% of Nvidia's revenue was coming from Malaysia really that meant that those chips were being kind of distributed to China in one way or another."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-10T14:30:00Z",
+          "quote": "Uh in 2023 Nvidia announced that they were a preferred cloud partner, meaning we're going to, you know, prefer selling our equipment to this company in Malaysia."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=861s",
+          "kind": "podcast",
+          "label": "Hard Fork (China export stance)",
+          "at": "2026-11-10T14:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-10T15:30:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
+        }
+      ]
+    },
     {
       "slug": "ai-cyber-risk-and-key-theft",
       "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
@@ -107,123 +292,6 @@
         {
           "at": "2026-11-12T23:57:00Z",
           "change": "20VC: nine labs disclosed an October API-key swarming; Unit 42 cites $1M bills before detection; $100k default Claude Ultra cap; syndicates steal Anthropic/OpenAI tokens."
-        }
-      ]
-    },
-    {
-      "slug": "anthropic-ipo-and-ai-funding",
-      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-12T23:57:00Z",
-      "now": "On 20VC, a guest said $1.4 trillion versus $1 trillion is options on the private side, with per-share value up about 20 to 30 percent. A trillion-dollar allocator, they said, was not worried about this $80 billion but the next $100 billion, because that layer is very thin. Kalshi December-IPO odds, WSJ $1.5T skepticism, and the November 19 $1.3T call still stand.",
-      "changed": "20VC: $1.4T vs $1T as options on a private valuation; per-share up 20-30%; a trillion-dollar allocator worries about the next $100B layer, not this $80B.",
-      "watch": "Whether Kalshi's December IPO contract keeps falling; a filing or roadshow around November 19; whether Meter's 2x and 80% figures show up in the S-1.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1446s",
-          "kind": "podcast",
-          "label": "20VC (private valuations)",
-          "at": "2026-11-12T20:22:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1652s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-10T17:30:00Z",
-          "quote": "Over the past week, the probability that Anthropic will announce an IPO by December has fallen from nearly 90% to 57% on Kalshi, a huge shift."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1517s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (WSJ valuation)",
-          "at": "2026-11-10T17:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution",
-          "at": "2026-11-07T20:24:00Z",
-          "quote": "The new language, Anthropic says it may imminently meet its own threshold for dramatically accelerated progress attributable to AI."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=908s",
-          "kind": "podcast",
-          "label": "Latent Space",
-          "at": "2026-11-07T03:00:00Z",
-          "quote": "Here is the business, which showed 85% gross margin, over 20 %free cash flow margin, 8% GAAP operating margin, so even on a GAAP basis, they are highly profitable."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=4499s",
-          "kind": "podcast",
-          "label": "Latent Space",
-          "at": "2026-11-07T03:00:00Z",
-          "quote": "So, 100% of the loss for the first six months is just growth the value of their convertibles tools."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2v8b062QzTI",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-11-07T18:24:00Z",
-          "quote": "You and I talked about this before on the pod, but SpaceX and anthropics compute deal has a mutual 90 day out."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-05T15:42:00Z",
-          "quote": "We can argue that anthropic's last quarter wasn't quite as crazy as some folks might thought."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "20VC adds Meta's reported equity raise and the scale of Anthropic's planned issuance."
-        },
-        {
-          "at": "2026-10-31T18:49:00Z",
-          "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk."
-        },
-        {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
-        },
-        {
-          "at": "2026-11-01T23:55:00Z",
-          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
-        },
-        {
-          "at": "2026-11-02T21:46:00Z",
-          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
-        },
-        {
-          "at": "2026-11-05T12:49:00Z",
-          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
-        },
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: private-side 1.4T vs 1T is options; per-share up 20-30%; allocator unworried about $80B, worried the next $100B layer is thin."
         }
       ]
     },
@@ -339,65 +407,6 @@
         {
           "at": "2026-11-12T23:57:00Z",
           "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
-        }
-      ]
-    },
-    {
-      "slug": "nvidia-jensen-huang-spy-allegations",
-      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-11-11T06:00:00Z",
-      "updated_at": "2026-11-12T23:57:00Z",
-      "now": "Hard Fork's Times-cited affair and Megaspeed chip-funneling claims still stand. On 20VC, a guest said hosting inference and GPUs for China-based models in Singapore and Thailand is unfortunate even beyond the spy case, and that selling GPUs to China and hosting them across the border will all get shut down. They said a measure passed the House and stalled in the Senate.",
-      "changed": "20VC: a guest says China-model GPU hosting in Singapore and Thailand is a problem beyond the spy case, and that sales to China and cross-border hosting will be shut down; House passed, Senate stalled.",
-      "watch": "An Nvidia board or company statement; whether the Senate takes up the House China-hosting bill; confirmation of the Malaysia preferred-partner and chip-diversion claims outside Hard Fork.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
-          "kind": "podcast",
-          "label": "20VC (China GPU hosting)",
-          "at": "2026-11-12T20:22:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=201s",
-          "kind": "podcast",
-          "label": "Hard Fork",
-          "at": "2026-11-10T14:30:00Z",
-          "quote": "If if 10 or or 15% of Nvidia's revenue was coming from Malaysia really that meant that those chips were being kind of distributed to China in one way or another."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc",
-          "kind": "podcast",
-          "label": "Hard Fork",
-          "at": "2026-11-10T14:30:00Z",
-          "quote": "Uh in 2023 Nvidia announced that they were a preferred cloud partner, meaning we're going to, you know, prefer selling our equipment to this company in Malaysia."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=861s",
-          "kind": "podcast",
-          "label": "Hard Fork (China export stance)",
-          "at": "2026-11-10T14:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-10T15:30:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
         }
       ]
     },

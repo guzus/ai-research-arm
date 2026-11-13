@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-12T23:57:00Z",
+  "updated_at": "2026-11-13T03:38:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -95,6 +95,13 @@
       "at": "2026-10-31T08:53:00Z",
       "change": "Anthropic S-1 digested on Hard Fork and Decoder; FT reportedly says OpenAI shrank its round to about $20B at $1.25T.",
       "archived_at": "2026-11-12T23:57:00Z"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-10-31T14:48:00Z",
+      "change": "20VC adds Meta's reported equity raise and the scale of Anthropic's planned issuance.",
+      "archived_at": "2026-11-13T03:38:00Z"
     }
   ]
 }

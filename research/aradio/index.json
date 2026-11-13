@@ -1,9 +1,45 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-12T23:57:00Z",
+  "updated_at": "2026-11-13T03:38:00Z",
   "degraded": false,
-  "latest": "2026-11-12-2357",
+  "latest": "2026-11-13-0338",
   "bulletins": [
+    {
+      "id": "2026-11-13-0338",
+      "aired_at": "2026-11-13T03:38:00Z",
+      "headline": "Decoder says Jensen Huang resigned as Nvidia CEO; Anthropic IPO called days away",
+      "path": "bulletins/2026-11-13/0338.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-13-0338.mp3",
+        "bytes": 1132365,
+        "duration_s": 188.6,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 96.36,
+            "lines": [
+              0,
+              7
+            ]
+          },
+          {
+            "start_s": 97.81,
+            "end_s": 182.09,
+            "lines": [
+              8,
+              14
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "nvidia-jensen-huang-spy-allegations",
+        "anthropic-ipo-and-ai-funding"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-12-2357",
       "aired_at": "2026-11-12T23:57:00Z",
