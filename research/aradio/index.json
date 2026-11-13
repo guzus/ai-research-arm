@@ -1,9 +1,63 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-12T18:39:00Z",
+  "updated_at": "2026-11-12T23:57:00Z",
   "degraded": false,
-  "latest": "2026-11-12-1839",
+  "latest": "2026-11-12-2357",
   "bulletins": [
+    {
+      "id": "2026-11-12-2357",
+      "aired_at": "2026-11-12T23:57:00Z",
+      "headline": "Nine AI labs disclosed an October API-key swarming; 20VC flags million-dollar theft bills",
+      "path": "bulletins/2026-11-12/2357.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-12-2357.mp3",
+        "bytes": 993837,
+        "duration_s": 165.5,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 48.72,
+            "lines": [
+              0,
+              4
+            ]
+          },
+          {
+            "start_s": 50.17,
+            "end_s": 75.01,
+            "lines": [
+              5,
+              7
+            ]
+          },
+          {
+            "start_s": 76.46,
+            "end_s": 110.98,
+            "lines": [
+              8,
+              11
+            ]
+          },
+          {
+            "start_s": 112.43,
+            "end_s": 158.99,
+            "lines": [
+              12,
+              16
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "ai-cyber-risk-and-key-theft",
+        "nvidia-jensen-huang-spy-allegations",
+        "hyperscaler-capex-and-chip-selloff",
+        "anthropic-ipo-and-ai-funding"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-12-1839",
       "aired_at": "2026-11-12T18:39:00Z",

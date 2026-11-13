@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-12T18:39:00Z",
-  "headline": "Isomorphic Labs will not license its drug-design model; OpenAI how-tos enable Daybreak Blue",
+  "updated_at": "2026-11-12T23:57:00Z",
+  "headline": "Nine AI labs disclosed an October API-key swarming; 20VC flags million-dollar theft bills",
   "threads": [
     {
       "slug": "ai-cyber-risk-and-key-theft",
@@ -9,11 +9,25 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-12T18:39:00Z",
-      "now": "OpenAI posted how-tos to enable Daybreak Blue for every user in a workspace, run Codex Security scans with Daybreak via a CLI from npm, and turn on automated GitHub PR security reviews. DevDay still stands: hacking cost going to basically zero, 0.81% false positives, under 1% patch rollbacks. The Nov 4 write-up still stands: 948 distinct Linux kernel LPE exploits at about $359 each.",
-      "changed": "OpenAI how-tos: enable Daybreak Blue for all workspace users, Codex Security CLI via npm with Daybreak as the scan model, and automated GitHub PR security reviews.",
-      "watch": "Whether Daybreak Blue is generally listed on the API; named CVEs from customer scans; independent PatchBench numbers for Astra versus 5.6 Sol.",
+      "updated_at": "2026-11-12T23:57:00Z",
+      "now": "On 20VC, a guest said nine leading AI developers disclosed a swarming incident in October, and that Unit 42 said bills hit one million dollars before detection. A guest said Ultra spend on Claude was one hundred thousand dollars by default and a stolen Fireworks key could burn it in minutes; crime syndicates steal Anthropic and OpenAI tokens. OpenAI's Daybreak Blue how-tos still stand.",
+      "changed": "20VC: a guest says nine leading AI labs disclosed an October swarming; Unit 42 bills of $1M before detection; $100k default Claude Ultra spend; stolen Fireworks keys can burn that in minutes.",
+      "watch": "Whether labs name the October swarming; default spend-cap changes at Anthropic or OpenAI; named CVEs from Daybreak scans; independent PatchBench numbers for Astra versus 5.6 Sol.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-12T20:22:00Z",
+          "quote": "Unit 42 said bills are one million dollars before detection."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=3115s",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-12T20:22:00Z",
+          "quote": "So if someone stole mine because it was on fireworks and evil, they could have charged $100,000 in minutes."
+        },
         {
           "url": "https://www.youtube.com/watch?v=NS220dAaRMo&t=112s",
           "kind": "video",
@@ -51,18 +65,6 @@
           "kind": "twitter",
           "label": "OpenAI (A thousand fewer paths to root)",
           "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/OpenAI/status/2118119451401048497",
-          "kind": "twitter",
-          "label": "@OpenAI on X (cyber pipeline)",
-          "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/SteveAIStudio/status/2117623501997932686",
-          "kind": "ticket",
-          "label": "@SteveAIStudio on X (OpenAI security sprint)",
-          "at": "2026-11-03T00:00:00Z"
         }
       ],
       "history": [
@@ -101,6 +103,127 @@
         {
           "at": "2026-11-12T18:39:00Z",
           "change": "OpenAI how-tos enable Daybreak Blue for a whole workspace, Codex Security CLI via npm, and GitHub PR security reviews."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: nine labs disclosed an October API-key swarming; Unit 42 cites $1M bills before detection; $100k default Claude Ultra cap; syndicates steal Anthropic/OpenAI tokens."
+        }
+      ]
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-12T23:57:00Z",
+      "now": "On 20VC, a guest said $1.4 trillion versus $1 trillion is options on the private side, with per-share value up about 20 to 30 percent. A trillion-dollar allocator, they said, was not worried about this $80 billion but the next $100 billion, because that layer is very thin. Kalshi December-IPO odds, WSJ $1.5T skepticism, and the November 19 $1.3T call still stand.",
+      "changed": "20VC: $1.4T vs $1T as options on a private valuation; per-share up 20-30%; a trillion-dollar allocator worries about the next $100B layer, not this $80B.",
+      "watch": "Whether Kalshi's December IPO contract keeps falling; a filing or roadshow around November 19; whether Meter's 2x and 80% figures show up in the S-1.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1446s",
+          "kind": "podcast",
+          "label": "20VC (private valuations)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1652s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-10T17:30:00Z",
+          "quote": "Over the past week, the probability that Anthropic will announce an IPO by December has fallen from nearly 90% to 57% on Kalshi, a huge shift."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1517s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (WSJ valuation)",
+          "at": "2026-11-10T17:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-11-07T20:24:00Z",
+          "quote": "The new language, Anthropic says it may imminently meet its own threshold for dramatically accelerated progress attributable to AI."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=908s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-07T03:00:00Z",
+          "quote": "Here is the business, which showed 85% gross margin, over 20 %free cash flow margin, 8% GAAP operating margin, so even on a GAAP basis, they are highly profitable."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=4499s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-07T03:00:00Z",
+          "quote": "So, 100% of the loss for the first six months is just growth the value of their convertibles tools."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-07T18:24:00Z",
+          "quote": "You and I talked about this before on the pod, but SpaceX and anthropics compute deal has a mutual 90 day out."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-05T15:42:00Z",
+          "quote": "We can argue that anthropic's last quarter wasn't quite as crazy as some folks might thought."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "20VC adds Meta's reported equity raise and the scale of Anthropic's planned issuance."
+        },
+        {
+          "at": "2026-10-31T18:49:00Z",
+          "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk."
+        },
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
+        },
+        {
+          "at": "2026-11-01T23:55:00Z",
+          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
+        },
+        {
+          "at": "2026-11-02T21:46:00Z",
+          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
+        },
+        {
+          "at": "2026-11-05T12:49:00Z",
+          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: private-side 1.4T vs 1T is options; per-share up 20-30%; allocator unworried about $80B, worried the next $100B layer is thin."
         }
       ]
     },
@@ -110,11 +233,23 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-11T18:08:00Z",
-      "now": "On a16z, a guest said Anthropic and OpenAI's revenue ramps far exceed the late-1990s internet buildout, that GPUs are 80% plus of the AI spend, and that demand is high enough that even weak watt-to-dollar H100s still get used. Only Nvidia and Google can ship a rack system. CoreWeave Q3 still stands: sequential revenue up more than $1 billion, about $9 billion in prepayments due in three months.",
-      "changed": "a16z: a guest says Anthropic and OpenAI ramps beat the 1990s internet boom, GPUs are 80% plus of spend, demand still uses H100s despite worse watt-to-dollar, and only Nvidia and Google ship racks.",
-      "watch": "CoreWeave's call and whether the $9 billion prepayments post; TPU supply and rack-scale competitors beyond a16z; confirmation of the Microsoft-Oracle unwind.",
+      "updated_at": "2026-11-12T23:57:00Z",
+      "now": "On 20VC, a guest said if OpenAI ARR demand is there, the selloff is noise and everything else is roughly fine. A 10 to 20 percent token-price cut lifts revenue only if usage rises about 21 percent, not 15. a16z and CoreWeave Q3 still stand: GPUs are 80% plus of AI spend, sequential revenue up more than $1 billion, about $9 billion in prepayments due in three months.",
+      "changed": "20VC: a guest says if OpenAI ARR demand is there the selloff is noise; a 10-20% token price cut lifts revenue only if usage rises ~21%, not 15%.",
+      "watch": "CoreWeave's call and whether the $9 billion prepayments post; whether token price cuts show 21% or 15% usage elasticity; TPU supply and rack-scale competitors.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1287s",
+          "kind": "podcast",
+          "label": "20VC (OpenAI demand test)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1805s",
+          "kind": "podcast",
+          "label": "20VC (token pricing)",
+          "at": "2026-11-12T20:22:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU",
           "kind": "podcast",
@@ -154,18 +289,6 @@
           "kind": "earnings",
           "label": "CoreWeave FY26Q3 8-K",
           "at": "2026-11-10T21:05:53Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=468s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (compute commitments)",
-          "at": "2026-11-10T17:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=779s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (lab revenue vs market cap)",
-          "at": "2026-11-10T17:30:00Z"
         }
       ],
       "history": [
@@ -212,6 +335,10 @@
         {
           "at": "2026-11-11T18:08:00Z",
           "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
         }
       ]
     },
@@ -221,11 +348,17 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-11-11T06:00:00Z",
-      "updated_at": "2026-11-11T18:08:00Z",
-      "now": "Hard Fork said the Times reported Huang admitted an affair with a Megaspeed executive alleged to be a Chinese spy, and that her Singaporean data-center firm was reportedly illegally funneling Nvidia chips to Chinese companies. The show said 10 to 15 percent of Nvidia revenue from Malaysia meant chips were going to China, and that Nvidia named the firm a preferred cloud partner in 2023.",
-      "changed": "Hard Fork transcript: alleged illegal Nvidia chip funneling to China, Malaysia as 10 to 15 percent of revenue, Megaspeed a 2023 preferred cloud partner, and Huang as a key-man risk for Nvidia and the U.S. economy.",
-      "watch": "An Nvidia board or company statement; whether the Malaysia preferred-partner and chip-diversion claims appear outside Hard Fork; any Congressional or State Department move.",
+      "updated_at": "2026-11-12T23:57:00Z",
+      "now": "Hard Fork's Times-cited affair and Megaspeed chip-funneling claims still stand. On 20VC, a guest said hosting inference and GPUs for China-based models in Singapore and Thailand is unfortunate even beyond the spy case, and that selling GPUs to China and hosting them across the border will all get shut down. They said a measure passed the House and stalled in the Senate.",
+      "changed": "20VC: a guest says China-model GPU hosting in Singapore and Thailand is a problem beyond the spy case, and that sales to China and cross-border hosting will be shut down; House passed, Senate stalled.",
+      "watch": "An Nvidia board or company statement; whether the Senate takes up the House China-hosting bill; confirmation of the Malaysia preferred-partner and chip-diversion claims outside Hard Fork.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
+          "kind": "podcast",
+          "label": "20VC (China GPU hosting)",
+          "at": "2026-11-12T20:22:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=201s",
           "kind": "podcast",
@@ -261,6 +394,10 @@
         {
           "at": "2026-11-11T18:08:00Z",
           "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
         }
       ]
     },
@@ -320,123 +457,6 @@
         {
           "at": "2026-11-11T09:54:00Z",
           "change": "Created from DevDay 2026 talks: 8M Sites, Agents API, GPT-Live, 4,000 plugins, token entitlements, and a 1,000-hour Codex CI run at about $16/hour."
-        }
-      ]
-    },
-    {
-      "slug": "anthropic-ipo-and-ai-funding",
-      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-10T21:05:00Z",
-      "now": "Big Technology hosts said Kalshi odds Anthropic announces an IPO by December fell from nearly 90% to 57% in a week, and that a WSJ report has big investors skeptical of a $1.5T valuation. One host called a November 19 debut at about $1.3T. They cited Meter: October improvement about twice the March 2024-October 2025 pace, with about 80% of Anthropic's research acceleration from internal AI use.",
-      "changed": "Big Technology: Kalshi IPO-by-December odds fell 90% to 57%; WSJ-cited skepticism of $1.5T; a host calls November 19 at $1.3T; Meter says Oct improvement about 2x, about 80% from internal AI.",
-      "watch": "Whether Kalshi's December IPO contract keeps falling; a filing or roadshow around November 19; whether Meter's 2x and 80% figures show up in the S-1.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1652s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-10T17:30:00Z",
-          "quote": "Over the past week, the probability that Anthropic will announce an IPO by December has fallen from nearly 90% to 57% on Kalshi, a huge shift."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1517s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (WSJ valuation)",
-          "at": "2026-11-10T17:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution",
-          "at": "2026-11-07T20:24:00Z",
-          "quote": "The new language, Anthropic says it may imminently meet its own threshold for dramatically accelerated progress attributable to AI."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=908s",
-          "kind": "podcast",
-          "label": "Latent Space",
-          "at": "2026-11-07T03:00:00Z",
-          "quote": "Here is the business, which showed 85% gross margin, over 20 %free cash flow margin, 8% GAAP operating margin, so even on a GAAP basis, they are highly profitable."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=4499s",
-          "kind": "podcast",
-          "label": "Latent Space",
-          "at": "2026-11-07T03:00:00Z",
-          "quote": "So, 100% of the loss for the first six months is just growth the value of their convertibles tools."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2v8b062QzTI",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-11-07T18:24:00Z",
-          "quote": "You and I talked about this before on the pod, but SpaceX and anthropics compute deal has a mutual 90 day out."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-05T15:42:00Z",
-          "quote": "We can argue that anthropic's last quarter wasn't quite as crazy as some folks might thought."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=4nKt18AZDsQ&t=492s",
-          "kind": "podcast",
-          "label": "20VC (Anthropic GAAP quarters)",
-          "at": "2026-11-05T15:42:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Anthropic S-1 digested on Hard Fork and Decoder; FT reportedly says OpenAI shrank its round to about $20B at $1.25T."
-        },
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "20VC adds Meta's reported equity raise and the scale of Anthropic's planned issuance."
-        },
-        {
-          "at": "2026-10-31T18:49:00Z",
-          "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk."
-        },
-        {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
-        },
-        {
-          "at": "2026-11-01T23:55:00Z",
-          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
-        },
-        {
-          "at": "2026-11-02T21:46:00Z",
-          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
-        },
-        {
-          "at": "2026-11-05T12:49:00Z",
-          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
-        },
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
         }
       ]
     },
