@@ -1,9 +1,55 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-13T03:38:00Z",
+  "updated_at": "2026-11-13T07:16:00Z",
   "degraded": false,
-  "latest": "2026-11-13-0338",
+  "latest": "2026-11-13-0716",
   "bulletins": [
+    {
+      "id": "2026-11-13-0716",
+      "aired_at": "2026-11-13T07:16:00Z",
+      "headline": "OpenAI's GPT-6 Cyber patched almost 1,000 Linux bugs; Daybreak Red Team and Defense Factory land",
+      "path": "bulletins/2026-11-13/0716.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-13-0716.mp3",
+        "bytes": 891741,
+        "duration_s": 148.5,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 82.56,
+            "lines": [
+              0,
+              6
+            ]
+          },
+          {
+            "start_s": 84.01,
+            "end_s": 105.33,
+            "lines": [
+              7,
+              8
+            ]
+          },
+          {
+            "start_s": 106.78,
+            "end_s": 141.98,
+            "lines": [
+              9,
+              11
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "ai-cyber-risk-and-key-theft",
+        "next-model-launches-qwen-4-gpt-6-2-astra",
+        "nvidia-jensen-huang-spy-allegations",
+        "anthropic-ipo-and-ai-funding"
+      ],
+      "kinds": [
+        "video"
+      ]
+    },
     {
       "id": "2026-11-13-0338",
       "aired_at": "2026-11-13T03:38:00Z",
