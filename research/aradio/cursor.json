@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-12T23:57:00Z",
-  "last_editor_run_at": "2026-11-12T23:57:00Z",
-  "last_bulletin_at": "2026-11-12T23:57:00Z",
+  "updated_at": "2026-11-13T03:38:00Z",
+  "last_editor_run_at": "2026-11-13T03:38:00Z",
+  "last_bulletin_at": "2026-11-13T03:38:00Z",
   "keys": {
     "earn:0000002488-26-000188": "2026-11-05T06:41:00Z",
     "earn:0001018724-26-000038": "2026-10-31T08:53:00Z",
@@ -48,6 +48,7 @@
     "ep:ai-daily-brief:M-o7viCDaBw:meta": "2026-11-10T03:00:00Z",
     "ep:ai-daily-brief:QSZKZHeGZr4:meta": "2026-11-05T06:41:00Z",
     "ep:ai-daily-brief:TGDVsntuFd0:meta": "2026-11-11T06:00:00Z",
+    "ep:ai-daily-brief:gCOMQPMhIL0:meta": "2026-11-13T03:38:00Z",
     "ep:ai-daily-brief:mJMKygU_G5g:meta": "2026-11-12T01:04:00Z",
     "ep:ai-daily-brief:rSzMJZEgYeU:meta": "2026-11-09T19:08:00Z",
     "ep:ai-daily-brief:ssEWGHjKHTM:meta": "2026-11-09T19:08:00Z",
@@ -80,6 +81,7 @@
     "ep:cognitive-revolution:vFfPWL9cRPI": "2026-10-31T14:48:00Z",
     "ep:decoder:75kjtoOpFlo:meta": "2026-11-09T19:08:00Z",
     "ep:decoder:FU2wls6TOyw:meta": "2026-10-31T18:49:00Z",
+    "ep:decoder:QhCl-BoOHM4:meta": "2026-11-13T03:38:00Z",
     "ep:decoder:U1mDAN7Bads:meta": "2026-11-09T19:08:00Z",
     "ep:decoder:Yvy_Qm14odU": "2026-10-31T08:53:00Z",
     "ep:decoder:i1K0iK1EIdE": "2026-11-10T13:02:00Z",

@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "id": "2026-11-13-0338",
+  "aired_at": "2026-11-13T03:38:00Z",
+  "headline": "Decoder says Jensen Huang resigned as Nvidia CEO; Anthropic IPO called days away",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's twenty to four UTC on Friday, November thirteenth. This is ARA AI News. Decoder is claiming a leadership break at Nvidia, and that is the change since our last bulletin."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Decoder says it rewrote its intro minutes before publishing because Jensen Huang resigned as Nvidia's chief executive, as the affair reports and the alleged Chinese-spy claims threatened to take over the company."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "We do not have an Nvidia statement, a board filing, or a named successor in this hour. The A I Daily Brief's headlines listed spy-scandal fallout and did not say Huang was out."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Decoder's notes call it an emergency intro update and say they will have more as it develops. The rest of that episode is a foreign-policy conversation with Kyle Chan from two days earlier, not a first-party Nvidia interview."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The board already had this story from Hard Fork. That show cited Times reporting that Huang admitted an affair with Megaspeed's Alice Huang, alleged by United States officials to be a Chinese spy."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Hard Fork guests also described a Malaysia preferred-cloud partner in twenty twenty-three. They said if ten or fifteen percent of Nvidia's revenue was coming from Malaysia, those chips were being distributed to China in one way or another."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Those remain allegations, not a company admission. Last night on twenty VC, guests said hosting inference and G P U chips for China-based models in Singapore and Thailand is a problem even beyond the spy case."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They argued that selling those chips into China and hosting them just across the border will all get shut down. They said a measure had already passed the House and then stalled in the Senate."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The other fresh notes this hour are on Anthropic. The A I Daily Brief says the I P O is days away, and that Wall Street still does not know how to price the company."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The show says it walks through a share-price range, shifting valuation chatter, compute commitments, and a new Claude productivity suite aimed at Microsoft. We do not have those figures, because this item is also show notes only."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is new color, not a filing. Last night on twenty VC, a guest still framed one point four trillion dollars versus one trillion as options on the private side, with per-share value up about twenty to thirty percent."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That same guest said a trillion-dollar allocator was not worried about this eighty billion dollars, but about the next hundred billion, because that layer is very thin. Kalshi's December I P O odds had already fallen from nearly ninety percent to fifty-seven."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The Wall Street Journal's skepticism of a one point five trillion dollar number, and that November nineteenth call at one point three trillion, still stand. Watch Anthropic for a filing or a roadshow in the next few days, and whether that Claude suite for Microsoft is a real product."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch Nvidia first. We need the company on the record, a successor, or a filing that names the handover, because until then the live fact is Decoder's claim sitting on top of the Hard Fork affair reporting and the twenty VC export warning."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's twenty to four UTC on Friday, November thirteenth. This is ARA AI News. Decoder is claiming a leadership break at Nvidia, and that is the change since our last bulletin.",
+    "Speaker 2: [high_energy] Decoder says it rewrote its intro minutes before publishing because [emphasis] Jensen Huang resigned as Nvidia's chief executive[/emphasis], as the affair reports and the alleged Chinese-spy claims threatened to take over the company.",
+    "Speaker 1: We do not have an Nvidia statement, a board filing, or a named successor in this hour. The A I Daily Brief's headlines listed spy-scandal fallout and did not say Huang was out.",
+    "Speaker 2: Decoder's notes call it an emergency intro update and say they will have more as it develops. The rest of that episode is a foreign-policy conversation with Kyle Chan from two days earlier, not a first-party Nvidia interview.",
+    "Speaker 1: The board already had this story from Hard Fork. That show cited Times reporting that Huang admitted an affair with Megaspeed's Alice Huang, alleged by United States officials to be a Chinese spy.",
+    "Speaker 2: Hard Fork guests also described a Malaysia preferred-cloud partner in twenty twenty-three. They said if ten or fifteen percent of Nvidia's revenue was coming from Malaysia, those chips were being distributed to China in one way or another.",
+    "Speaker 1: Those remain allegations, not a company admission. Last night on twenty VC, guests said hosting inference and G P U chips for China-based models in Singapore and Thailand is a problem even beyond the spy case.",
+    "Speaker 2: They argued that selling those chips into China and hosting them just across the border will all get shut down. They said a measure had already passed the House and then stalled in the Senate.",
+    "Speaker 1: [transition] The other fresh notes this hour are on Anthropic. The A I Daily Brief says the I P O is [emphasis] days away[/emphasis], and that Wall Street still does not know how to price the company.",
+    "Speaker 2: The show says it walks through a share-price range, shifting valuation chatter, compute commitments, and a new Claude productivity suite aimed at Microsoft. We do not have those figures, because this item is also show notes only.",
+    "Speaker 1: That is new color, not a filing. Last night on twenty VC, a guest still framed [emphasis] one point four trillion dollars versus one trillion[/emphasis] as options on the private side, with per-share value up about twenty to thirty percent.",
+    "Speaker 2: That same guest said a trillion-dollar allocator was not worried about this eighty billion dollars, but about the next hundred billion, because that layer is very thin. Kalshi's December I P O odds had already fallen from nearly ninety percent to fifty-seven.",
+    "Speaker 1: The Wall Street Journal's skepticism of a one point five trillion dollar number, and that November nineteenth call at one point three trillion, still stand. Watch Anthropic for a filing or a roadshow in the next few days, and whether that Claude suite for Microsoft is a real product.",
+    "Speaker 2: Watch Nvidia first. We need the company on the record, a successor, or a filing that names the handover, because until then the live fact is Decoder's claim sitting on top of the Hard Fork affair reporting and the twenty VC export warning.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "nvidia-jensen-huang-spy-allegations",
+    "anthropic-ipo-and-ai-funding"
+  ],
+  "threads": [
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=QhCl-BoOHM4",
+      "kind": "podcast",
+      "label": "Decoder with Nilay Patel"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=gCOMQPMhIL0",
+      "kind": "podcast",
+      "label": "The AI Daily Brief"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "nvidia-jensen-huang-spy-allegations"
+    },
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-13-0338.mp3",
+    "bytes": 1132365,
+    "duration_s": 188.6,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 96.36,
+        "lines": [
+          0,
+          7
+        ]
+      },
+      {
+        "start_s": 97.81,
+        "end_s": 182.09,
+        "lines": [
+          8,
+          14
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 2,
+    "kinds": {
+      "podcast": 2
+    }
+  }
+}
