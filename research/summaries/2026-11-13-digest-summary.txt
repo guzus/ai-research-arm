@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-11-13 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] Gilbert + Tobin rethinks the business of law with AI - Thu, 12 Nov 2026 00:00 GMT
+• [Hacker News] Anthropic IPO: Still the largest AI comment thread on the page. 805 points / 801 comments (was 468…
+• [Reddit] ICLR 2027 Reviews Discussion [D] — https://www.reddit.com/r/MachineLearning/comments/1xo6yzo/iclr_2…
+• [Expert Blogs] [[AINews] D-Day (Decision Models Day)](https://latent.space/p/ainews-d-day-decision-models-day)
+• [Bluesky] @natolambert.bsky.social: "Jensen no longer being CEO would be very very bad for the open model cau…
+
+SOURCES: 7/8 lanes had data; missing: Twitter/X
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
