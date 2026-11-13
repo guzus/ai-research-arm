@@ -1,0 +1,183 @@
+{
+  "schema": 1,
+  "id": "2026-11-13-0716",
+  "aired_at": "2026-11-13T07:16:00Z",
+  "headline": "OpenAI's GPT-6 Cyber patched almost 1,000 Linux bugs; Daybreak Red Team and Defense Factory land",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's quarter past seven UTC on Friday, November thirteenth. This is ARA AI News."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "OpenAI just staged a cyber-model jump and two Daybreak products, while the Nvidia CEO resignation claim and the Anthropic IPO watch from earlier this morning are still unconfirmed."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On a thirty-five minute talk called Cyber at the Frontier, OpenAI said it is announcing Daybreak Red Team and Daybreak Defense Factory, and that a GPT six Cyber pipeline patched almost a thousand local privilege-escalation bugs in Linux."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That is the company's own number. It said that is more than five times what GPT five point six Cyber found about three months earlier, on more than forty million lines of code."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "OpenAI also put GPT six Cyber at fifty-two percent on a benchmark it called exploit gym, against about thirty-eight percent for Anthropic's Mythos, which it said came out earlier this week."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On safeguards, the talk claimed the model stayed in scope ninety-nine point nine percent of the time without cyber safeguards, and one hundred percent with production ones. OpenAI said everyone should be able to red-team their own systems."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "It also cited a customer it called Sofos. Agents, it said, closed fifty-two percent of managed detection and response cases end to end, and average response time fell from thirty-eight minutes to eighty-nine seconds."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That same talk is a model-launch note, not only a security one. OpenAI described GPT six Cyber as a step-function model it is working to release to trusted defenders."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "And it treated Anthropic's Mythos as already shipping this week. We still do not have a first-party page that names GPT six Cyber access, and Qwen four is still unconfirmed."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Nothing new arrived this hour on the two stories we led with a few hours ago. Decoder still says Jensen Huang resigned as Nvidia CEO, and the AI Daily Brief still calls Anthropic's IPO days away with Wall Street unsure how to price it."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Watch next for Daybreak Red Team and Defense Factory actually going generally available, a write-up of those thousand Linux patches, and independent exploit-gym scores. An Nvidia board statement and an Anthropic filing remain the next hard facts on the older threads."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's quarter past seven UTC on Friday, November thirteenth. This is ARA AI News.",
+    "Speaker 2: OpenAI just staged a cyber-model jump and two Daybreak products, while the Nvidia CEO resignation claim and the Anthropic IPO watch from earlier this morning are still unconfirmed.",
+    "Speaker 1: [high_energy] On a thirty-five minute talk called Cyber at the Frontier, OpenAI said it is announcing Daybreak Red Team and Daybreak Defense Factory, and that a GPT six Cyber pipeline patched almost [emphasis] a thousand[/emphasis] local privilege-escalation bugs in Linux.",
+    "Speaker 2: That is the company's own number. It said that is more than [emphasis] five times[/emphasis] what GPT five point six Cyber found about three months earlier, on more than forty million lines of code.",
+    "Speaker 1: OpenAI also put GPT six Cyber at [emphasis] fifty-two percent[/emphasis] on a benchmark it called exploit gym, against about thirty-eight percent for Anthropic's Mythos, which it said came out earlier this week.",
+    "Speaker 2: On safeguards, the talk claimed the model stayed in scope ninety-nine point nine percent of the time without cyber safeguards, and one hundred percent with production ones. OpenAI said everyone should be able to red-team their own systems.",
+    "Speaker 1: It also cited a customer it called Sofos. Agents, it said, closed fifty-two percent of managed detection and response cases end to end, and average response time fell from thirty-eight minutes to eighty-nine seconds.",
+    "Speaker 2: [transition] That same talk is a model-launch note, not only a security one. OpenAI described GPT six Cyber as a step-function model it is working to release to trusted defenders.",
+    "Speaker 1: And it treated Anthropic's Mythos as already shipping this week. We still do not have a first-party page that names GPT six Cyber access, and Qwen four is still unconfirmed.",
+    "Speaker 2: [transition] Nothing new arrived this hour on the two stories we led with a few hours ago. Decoder still says Jensen Huang resigned as Nvidia CEO, and the AI Daily Brief still calls Anthropic's IPO days away with Wall Street unsure how to price it.",
+    "Speaker 1: Watch next for Daybreak Red Team and Defense Factory actually going generally available, a write-up of those thousand Linux patches, and independent exploit-gym scores. An Nvidia board statement and an Anthropic filing remain the next hard facts on the older threads.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "ai-cyber-risk-and-key-theft",
+    "next-model-launches-qwen-4-gpt-6-2-astra",
+    "nvidia-jensen-huang-spy-allegations",
+    "anthropic-ipo-and-ai-funding"
+  ],
+  "threads": [
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating"
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing"
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=959s",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=576s",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=391s",
+      "kind": "video",
+      "label": "OpenAI (Daybreak Red Team, Defense Factory)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=720s",
+      "kind": "video",
+      "label": "OpenAI (Six Cyber in-scope rates)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=1863s",
+      "kind": "video",
+      "label": "OpenAI (Sofos MDR agents)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M",
+      "kind": "video",
+      "label": "OpenAI (Cyber at the Frontier)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "ai-cyber-risk-and-key-theft"
+    },
+    {
+      "op": "update",
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-13-0716.mp3",
+    "bytes": 891741,
+    "duration_s": 148.5,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 82.56,
+        "lines": [
+          0,
+          6
+        ]
+      },
+      {
+        "start_s": 84.01,
+        "end_s": 105.33,
+        "lines": [
+          7,
+          8
+        ]
+      },
+      {
+        "start_s": 106.78,
+        "end_s": 141.98,
+        "lines": [
+          9,
+          11
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 1,
+    "kinds": {
+      "video": 1
+    }
+  }
+}

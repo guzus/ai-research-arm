@@ -1,8 +1,119 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-13T03:38:00Z",
-  "headline": "Decoder says Jensen Huang resigned as Nvidia CEO; Anthropic IPO called days away",
+  "updated_at": "2026-11-13T07:16:00Z",
+  "headline": "OpenAI's GPT-6 Cyber patched almost 1,000 Linux bugs; Daybreak Red Team and Defense Factory land",
   "threads": [
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-13T07:16:00Z",
+      "now": "OpenAI announced Daybreak Red Team and Daybreak Defense Factory. It said GPT-6 Cyber patched almost a thousand Linux LPE bugs, five times GPT-5.6 Cyber, and scored 52% on exploit gym versus Anthropic's Mythos at about 38%. In-scope 99.9% without safeguards, 100% with them. Sofos agents were said to close 52% of MDR cases, 38 minutes to 89 seconds. Key-theft claims still stand.",
+      "changed": "OpenAI's Cyber at the Frontier: Daybreak Red Team and Defense Factory; GPT-6 Cyber patched almost 1,000 Linux LPEs, 5x GPT-5.6 Cyber; 52% exploit gym vs Mythos ~38%; Sofos MDR 52% agent-closed, 38 min to 89 sec.",
+      "watch": "Whether Daybreak Red Team and Defense Factory are generally available; a first-party write-up of the Linux LPE patches; independent exploit-gym scores for GPT-6 Cyber versus Mythos.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=959s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-12T22:41:00Z",
+          "quote": "In one run with GPT6 Cyber, the pipeline validated and generated patches for almost a thousand local privilege escalation vulnerabilities in Linux."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=576s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-12T22:41:00Z",
+          "quote": "For comparison, Anthropics Mythos 52, which released earlier this week, scores at about 38%."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=391s",
+          "kind": "video",
+          "label": "OpenAI (Daybreak Red Team, Defense Factory)",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=720s",
+          "kind": "video",
+          "label": "OpenAI (Six Cyber in-scope rates)",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=1863s",
+          "kind": "video",
+          "label": "OpenAI (Sofos MDR agents)",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M",
+          "kind": "video",
+          "label": "OpenAI (Cyber at the Frontier)",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-12T20:22:00Z",
+          "quote": "Unit 42 said bills are one million dollars before detection."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=3115s",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-12T20:22:00Z",
+          "quote": "So if someone stole mine because it was on fireworks and evil, they could have charged $100,000 in minutes."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
+        },
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
+        },
+        {
+          "at": "2026-11-02T08:14:00Z",
+          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
+        },
+        {
+          "at": "2026-11-03T06:41:00Z",
+          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "DevDay Codex Security: hacking cost going to zero; 0.81% false positives, <1% rollbacks; Daybreak-class models on Security Cloud; Astra ahead on PatchBench."
+        },
+        {
+          "at": "2026-11-12T18:39:00Z",
+          "change": "OpenAI how-tos enable Daybreak Blue for a whole workspace, Codex Security CLI via npm, and GitHub PR security reviews."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: nine labs disclosed an October API-key swarming; Unit 42 cites $1M bills before detection; $100k default Claude Ultra cap; syndicates steal Anthropic/OpenAI tokens."
+        },
+        {
+          "at": "2026-11-13T07:16:00Z",
+          "change": "OpenAI Cyber at the Frontier: Daybreak Red Team and Defense Factory; GPT-6 Cyber ~1,000 Linux LPE patches, 5x 5.6 Cyber; 52% exploit gym vs Mythos ~38%; Sofos 52% MDR, 38 min to 89 sec."
+        }
+      ]
+    },
     {
       "slug": "anthropic-ipo-and-ai-funding",
       "title": "Anthropic's IPO filing and the race to fund the frontier labs",
@@ -185,113 +296,6 @@
         {
           "at": "2026-11-13T03:38:00Z",
           "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
-        }
-      ]
-    },
-    {
-      "slug": "ai-cyber-risk-and-key-theft",
-      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-12T23:57:00Z",
-      "now": "On 20VC, a guest said nine leading AI developers disclosed a swarming incident in October, and that Unit 42 said bills hit one million dollars before detection. A guest said Ultra spend on Claude was one hundred thousand dollars by default and a stolen Fireworks key could burn it in minutes; crime syndicates steal Anthropic and OpenAI tokens. OpenAI's Daybreak Blue how-tos still stand.",
-      "changed": "20VC: a guest says nine leading AI labs disclosed an October swarming; Unit 42 bills of $1M before detection; $100k default Claude Ultra spend; stolen Fireworks keys can burn that in minutes.",
-      "watch": "Whether labs name the October swarming; default spend-cap changes at Anthropic or OpenAI; named CVEs from Daybreak scans; independent PatchBench numbers for Astra versus 5.6 Sol.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-12T20:22:00Z",
-          "quote": "Unit 42 said bills are one million dollars before detection."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=3115s",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-12T20:22:00Z",
-          "quote": "So if someone stole mine because it was on fireworks and evil, they could have charged $100,000 in minutes."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NS220dAaRMo&t=112s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T21:04:00Z",
-          "quote": "Important note: This will grant access to Daybreak Blue to all users in your workspace."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=hUhr0JiVZZs&t=300s",
-          "kind": "video",
-          "label": "OpenAI (Codex Security CLI)",
-          "at": "2026-11-11T21:04:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=vdBDMj2UhDg",
-          "kind": "video",
-          "label": "OpenAI (PR security reviews)",
-          "at": "2026-11-11T21:04:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "The cost of hacking stuff is going to basically zero."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=gUQN7juxvVI&t=980s",
-          "kind": "video",
-          "label": "OpenAI DevDay (PatchBench)",
-          "at": "2026-11-11T01:18:00Z"
-        },
-        {
-          "url": "https://openai.com/index/a-thousand-fewer-paths-to-root/",
-          "kind": "twitter",
-          "label": "OpenAI (A thousand fewer paths to root)",
-          "at": "2026-11-05T06:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
-        },
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
-        },
-        {
-          "at": "2026-10-31T21:56:00Z",
-          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
-        },
-        {
-          "at": "2026-11-02T08:14:00Z",
-          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
-        },
-        {
-          "at": "2026-11-03T06:41:00Z",
-          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
-        },
-        {
-          "at": "2026-11-11T09:54:00Z",
-          "change": "DevDay Codex Security: hacking cost going to zero; 0.81% false positives, <1% rollbacks; Daybreak-class models on Security Cloud; Astra ahead on PatchBench."
-        },
-        {
-          "at": "2026-11-12T18:39:00Z",
-          "change": "OpenAI how-tos enable Daybreak Blue for a whole workspace, Codex Security CLI via npm, and GitHub PR security reviews."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: nine labs disclosed an October API-key swarming; Unit 42 cites $1M bills before detection; $100k default Claude Ultra cap; syndicates steal Anthropic/OpenAI tokens."
         }
       ]
     },
@@ -547,6 +551,103 @@
       ]
     },
     {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-11-01T15:32:00Z",
+      "updated_at": "2026-11-13T07:16:00Z",
+      "now": "DevDay treated GPT-6 Astra as shipping for hours-or-days tool use, with computer-use over the API; GPT-6 Sol about $16 an hour. OpenAI's cyber talk put GPT-6 Cyber at 52% on exploit gym versus Anthropic's Mythos at about 38%, said to have released earlier this week, and said the model is going to trusted defenders. Qwen 4 is still unconfirmed.",
+      "changed": "OpenAI's cyber talk names GPT-6 Cyber for trusted defenders at 52% on exploit gym, and says Anthropic's Mythos released earlier this week at about 38% on the same test.",
+      "watch": "A first-party OpenAI page naming GPT-6 Cyber access; which Mythos version OpenAI compared on exploit gym; a Qwen 4 confirmation from Alibaba.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=576s",
+          "kind": "video",
+          "label": "OpenAI (GPT-6 Cyber vs Mythos)",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M",
+          "kind": "video",
+          "label": "OpenAI (Cyber at the Frontier)",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=119s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "GPT-6 Astra, on the other hand, can use dozens of tools effectively for hours or days on end."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=1467s",
+          "kind": "video",
+          "label": "OpenAI DevDay (GPT-6 Sol pricing)",
+          "at": "2026-11-11T01:18:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=583ThJIqQ7k",
+          "kind": "podcast",
+          "label": "AI Explained (Fable 5.2)",
+          "at": "2026-11-10T23:18:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=175s",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-05T21:00:00Z",
+          "quote": "The difference between them is about 430 Elo points."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1NQwfImTseU",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast (Clocktower eval)",
+          "at": "2026-11-05T21:00:00Z"
+        },
+        {
+          "url": "https://openai.com/index/introducing-images-2-6/",
+          "kind": "twitter",
+          "label": "OpenAI (Introducing Images 2.6)",
+          "at": "2026-11-05T06:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
+        },
+        {
+          "at": "2026-11-01T19:39:00Z",
+          "change": "Astra reportedly callable in Codex CLI; Mythos 5.5 string spotted on Anthropic's site. Both unconfirmed."
+        },
+        {
+          "at": "2026-11-02T16:29:00Z",
+          "change": "Two secondary accounts report Qwen powering Apple Intelligence in China: developer beta Nov 4, public in December. Unconfirmed by Apple or Alibaba."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "LongCat-2.5 relayed; DeepSeek V5 on Huawei Ascend reported by relay; Fable 5.5 ticket closed as unverified."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Images 2.6 live with GIFs; Qwen 4 and Astra still unconfirmed; Axios: OpenAI-Pierre, unverified."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Dwarkesh: GPT-6 Astro (Sept) leads Clocktower vs Opus 4.6 by about 430 Elo, about 92% win rate; a $20k API eval, not a lab announcement."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "DevDay treats GPT-6 Astra as shipping for hours-or-days tool use; GPT-6 Sol ~$16/hour, 6.1 Sol more efficient; AI Explained covers Fable 5.2."
+        },
+        {
+          "at": "2026-11-13T07:16:00Z",
+          "change": "Cyber at the Frontier: GPT-6 Cyber for trusted defenders, 52% exploit gym; OpenAI says Anthropic Mythos released this week at about 38%."
+        }
+      ]
+    },
+    {
       "slug": "ai-drug-discovery",
       "title": "AI drug discovery at Isomorphic Labs and new wet labs",
       "status": "developing",
@@ -717,99 +818,6 @@
         {
           "at": "2026-11-11T09:54:00Z",
           "change": "Reopened: DevDay architecture talk claims a Navier-Stokes/unforced-Euler result from 10,000 agents, 2.7M messages, ~130B output tokens."
-        }
-      ]
-    },
-    {
-      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
-      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
-      "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-11-01T15:32:00Z",
-      "updated_at": "2026-11-11T09:54:00Z",
-      "now": "DevDay treated GPT-6 Astra as shipping: dozens of tools for hours or days, plus computer-use over the API. GPT-6 Sol was said to cut a six-week Codex CI run from about $32 to $16 an hour; 6.1 Sol is called more token-efficient. Qwen 4 is still unconfirmed. AI Explained says it read a 264-page Fable 5.2 report and a 30-page METR RSI paper.",
-      "changed": "DevDay: GPT-6 Astra using tools for hours or days and computer-use API; GPT-6 Sol about $16/hour; 6.1 Sol more efficient. AI Explained covers Fable 5.2 and a METR RSI report.",
-      "watch": "A first-party OpenAI page that names GPT-6 Sol, 6.1 Sol and Astra API access; the Fable 5.2 report itself; a Qwen 4 confirmation from Alibaba.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=119s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "GPT-6 Astra, on the other hand, can use dozens of tools effectively for hours or days on end."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=1467s",
-          "kind": "video",
-          "label": "OpenAI DevDay (GPT-6 Sol pricing)",
-          "at": "2026-11-11T01:18:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=583ThJIqQ7k",
-          "kind": "podcast",
-          "label": "AI Explained (Fable 5.2)",
-          "at": "2026-11-10T23:18:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=175s",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast",
-          "at": "2026-11-05T21:00:00Z",
-          "quote": "The difference between them is about 430 Elo points."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1NQwfImTseU",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast (Clocktower eval)",
-          "at": "2026-11-05T21:00:00Z"
-        },
-        {
-          "url": "https://openai.com/index/introducing-images-2-6/",
-          "kind": "twitter",
-          "label": "OpenAI (Introducing Images 2.6)",
-          "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://x.com/OpenAI/status/2118124944928432327",
-          "kind": "twitter",
-          "label": "@OpenAI on X (Images 2.6)",
-          "at": "2026-11-05T06:00:00Z"
-        },
-        {
-          "url": "https://www.axios.com/2026/11/04/openai-pierre-computer-github",
-          "kind": "twitter",
-          "label": "Axios (OpenAI-Pierre)",
-          "at": "2026-11-04T14:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Thread created: Qwen 4 reportedly due next week; gpt-6.2-astra string spotted in Codex analytics; both unconfirmed."
-        },
-        {
-          "at": "2026-11-01T19:39:00Z",
-          "change": "Astra reportedly callable in Codex CLI; Mythos 5.5 string spotted on Anthropic's site. Both unconfirmed."
-        },
-        {
-          "at": "2026-11-02T16:29:00Z",
-          "change": "Two secondary accounts report Qwen powering Apple Intelligence in China: developer beta Nov 4, public in December. Unconfirmed by Apple or Alibaba."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "LongCat-2.5 relayed; DeepSeek V5 on Huawei Ascend reported by relay; Fable 5.5 ticket closed as unverified."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Images 2.6 live with GIFs; Qwen 4 and Astra still unconfirmed; Axios: OpenAI-Pierre, unverified."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "Dwarkesh: GPT-6 Astro (Sept) leads Clocktower vs Opus 4.6 by about 430 Elo, about 92% win rate; a $20k API eval, not a lab announcement."
-        },
-        {
-          "at": "2026-11-11T09:54:00Z",
-          "change": "DevDay treats GPT-6 Astra as shipping for hours-or-days tool use; GPT-6 Sol ~$16/hour, 6.1 Sol more efficient; AI Explained covers Fable 5.2."
         }
       ]
     },
