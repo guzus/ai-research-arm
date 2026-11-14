@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "id": "2026-11-14-0703",
+  "aired_at": "2026-11-14T07:03:00Z",
+  "headline": "All-In treats Huang as out at Nvidia and flags 50-150 bps of growth at risk; Anthropic price leaks by November 20",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's just after seven UTC on Saturday, November fourteenth. This is ARA AI News. All-In has now joined Hard Fork and the AI Daily Brief in treating Jensen Huang as out at Nvidia, and the company still has not filed."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On All-In, treating Huang as gone, the hosts said hundreds of billions of dollars of capital flowing into the AI economy could be turned off."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "They said the risk of losing fifty basis points to one hundred or even one hundred and fifty basis points of growth now has to be taken seriously. They also said this will slow the United States economy."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They floated successor names. They pointed to Renee, who they said worked for Huang for years and has been running Arm, and to Nikesh, who they called one of the best capital allocators in the public markets."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "They said a large part of AI is going to be about security, and that Nikesh brings that. This is still show talk, not a filing, and Nvidia has not named a successor."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Decoder claimed a resignation on Friday, and Hard Fork called it the downfall of the most powerful man in AI."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "All-In is now asking who inside Nvidia keeps that capital engine running. We still have no board statement, no filing, and no first-party successor."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The same episode turned to Anthropic. The hosts said analysts have a bull case of four point two trillion dollars, fifteen times twenty twenty-eight expected revenue of two hundred and eighty-one billion."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "They called that a seventeen times current run rate. One host guessed they raise one hundred billion dollars at one point seven five trillion."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That sits against talk of one point three five to one point five trillion and a sixty billion dollar raise. They said the real price will be dictated by what leaks between now and November twentieth."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is the first dated watch we have on the roadshow. The AI Daily Brief still has the IPO days away, with Wall Street unsure how to price it."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Kalshi's December odds had already slumped from nearly ninety percent to fifty-seven percent last week, and the Wall Street Journal's skepticism of a one point five trillion dollar figure is still on the table."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Watch next for an Nvidia filing that names a successor, and for whatever leaks on Anthropic before November twentieth. Those are the two hard facts this hour still does not have."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's just after seven UTC on Saturday, November fourteenth. This is ARA AI News. All-In has now joined Hard Fork and the AI Daily Brief in treating Jensen Huang as out at Nvidia, and the company still has not filed.",
+    "Speaker 2: [high_energy] On All-In, treating Huang as gone, the hosts said hundreds of billions of dollars of capital flowing into the AI economy could be turned off.",
+    "Speaker 1: They said the risk of losing [emphasis] fifty basis points to one hundred or even one hundred and fifty basis points[/emphasis] of growth now has to be taken seriously. They also said this will slow the United States economy.",
+    "Speaker 2: They floated successor names. They pointed to Renee, who they said worked for Huang for years and has been running Arm, and to Nikesh, who they called one of the best capital allocators in the public markets.",
+    "Speaker 1: They said a large part of AI is going to be about security, and that Nikesh brings that. This is still show talk, not a filing, and Nvidia has not named a successor.",
+    "Speaker 2: Decoder claimed a resignation on Friday, and Hard Fork called it the downfall of the most powerful man in AI.",
+    "Speaker 1: All-In is now asking who inside Nvidia keeps that capital engine running. We still have no board statement, no filing, and no first-party successor.",
+    "Speaker 2: [transition] The same episode turned to Anthropic. The hosts said analysts have a bull case of [emphasis] four point two trillion dollars[/emphasis], fifteen times twenty twenty-eight expected revenue of two hundred and eighty-one billion.",
+    "Speaker 1: They called that a seventeen times current run rate. One host guessed they raise [emphasis] one hundred billion dollars[/emphasis] at one point seven five trillion.",
+    "Speaker 2: That sits against talk of one point three five to one point five trillion and a sixty billion dollar raise. They said the real price will be dictated by what leaks between now and November twentieth.",
+    "Speaker 1: That is the first dated watch we have on the roadshow. The AI Daily Brief still has the IPO days away, with Wall Street unsure how to price it.",
+    "Speaker 2: Kalshi's December odds had already slumped from nearly ninety percent to fifty-seven percent last week, and the Wall Street Journal's skepticism of a one point five trillion dollar figure is still on the table.",
+    "Speaker 1: Watch next for an Nvidia filing that names a successor, and for whatever leaks on Anthropic before November twentieth. Those are the two hard facts this hour still does not have.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "nvidia-jensen-huang-spy-allegations",
+    "anthropic-ipo-and-ai-funding"
+  ],
+  "threads": [
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ",
+      "kind": "podcast",
+      "label": "All-In Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=3197s",
+      "kind": "podcast",
+      "label": "All-In Podcast (export hawks)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4081s",
+      "kind": "podcast",
+      "label": "All-In Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4323s",
+      "kind": "podcast",
+      "label": "All-In Podcast (raise guess)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "nvidia-jensen-huang-spy-allegations"
+    },
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-14-0703.mp3",
+    "bytes": 901965,
+    "duration_s": 150.2,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 76.0,
+        "lines": [
+          0,
+          6
+        ]
+      },
+      {
+        "start_s": 77.45,
+        "end_s": 143.69,
+        "lines": [
+          7,
+          13
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 1,
+    "kinds": {
+      "podcast": 1
+    }
+  }
+}

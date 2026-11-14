@@ -1,19 +1,147 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-13T22:50:00Z",
-  "headline": "Hard Fork and AI Daily Brief treat Huang as out at Nvidia; still no company filing",
+  "updated_at": "2026-11-14T07:03:00Z",
+  "headline": "All-In treats Huang as out at Nvidia and flags 50-150 bps of growth at risk; Anthropic price leaks by November 20",
   "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-14T07:03:00Z",
+      "now": "On All-In, hosts said analysts' bull case is 4.2 trillion dollars, 15 times 2028 revenue of 281 billion, a 17-times run-rate. One guessed they raise 100 billion at 1.75 trillion, versus 1.35 to 1.5 trillion and a 60 billion raise. They said leaks before November 20 set the real price. Kalshi December odds and Daily Brief days-away still stand.",
+      "changed": "All-In: analysts' bull case 4.2 trillion on 281 billion 2028 revenue; a host guesses 100 billion raised at 1.75 trillion; real price said to leak before November 20.",
+      "watch": "Leaks or a filing before November 20; whether Kalshi's December IPO contract keeps falling; whether the Claude-for-Microsoft suite is a first-party product.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4081s",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-14T02:28:00Z",
+          "quote": "The question is, what is the real price and I think the real price will be more dictated by what gets leaked between now and November 20th more than anything else."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4323s",
+          "kind": "podcast",
+          "label": "All-In Podcast (raise guess)",
+          "at": "2026-11-14T02:28:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=gCOMQPMhIL0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-12T16:04:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1446s",
+          "kind": "podcast",
+          "label": "20VC (private valuations)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1652s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-10T17:30:00Z",
+          "quote": "Over the past week, the probability that Anthropic will announce an IPO by December has fallen from nearly 90% to 57% on Kalshi, a huge shift."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1517s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (WSJ valuation)",
+          "at": "2026-11-10T17:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-11-07T20:24:00Z",
+          "quote": "The new language, Anthropic says it may imminently meet its own threshold for dramatically accelerated progress attributable to AI."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=908s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-07T03:00:00Z",
+          "quote": "Here is the business, which showed 85% gross margin, over 20 %free cash flow margin, 8% GAAP operating margin, so even on a GAAP basis, they are highly profitable."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-01T15:32:00Z",
+          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
+        },
+        {
+          "at": "2026-11-01T23:55:00Z",
+          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
+        },
+        {
+          "at": "2026-11-02T21:46:00Z",
+          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
+        },
+        {
+          "at": "2026-11-05T12:49:00Z",
+          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: private-side 1.4T vs 1T is options; per-share up 20-30%; allocator unworried about $80B, worried the next $100B layer is thin."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "AI Daily Brief show notes: IPO days away, pricing unclear; Claude productivity suite aimed at Microsoft. No transcript yet."
+        },
+        {
+          "at": "2026-11-14T07:03:00Z",
+          "change": "All-In: 4.2T bull case on 281B 2028 revenue; host guesses 100B raise at 1.75T; price leaks said due by November 20."
+        }
+      ]
+    },
     {
       "slug": "nvidia-jensen-huang-spy-allegations",
       "title": "Nvidia's CEO and the alleged Megaspeed spy case",
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-11-11T06:00:00Z",
-      "updated_at": "2026-11-13T14:46:00Z",
-      "now": "Hard Fork and AI Daily Brief posted episodes treating Jensen Huang as out. Hard Fork calls it the downfall of the most powerful man in AI; the Daily Brief titles that he is out and everything in AI is up for grabs. Still show notes only; no Nvidia filing or successor. Decoder's resignation claim, the Times-cited affair and Megaspeed funneling, and 20VC's China-hosting comments still stand.",
-      "changed": "Hard Fork and AI Daily Brief episode titles now treat Huang as out. This morning the Daily Brief had not said he was gone. Still no transcripts, no Nvidia filing, and no named successor.",
-      "watch": "Transcripts of the Hard Fork and AI Daily Brief episodes; an Nvidia filing or board statement naming a successor; whether the Senate takes up the House China-hosting bill.",
+      "updated_at": "2026-11-14T07:03:00Z",
+      "now": "All-In now treats Jensen Huang as out, joining Hard Fork, AI Daily Brief, and Decoder. Hosts said hundreds of billions of AI-economy capital could turn off without him, and that 50 to 150 basis points of growth is now a credible risk. They floated Renee of Arm and Nikesh as successor talk. Still no Nvidia filing or named successor.",
+      "changed": "All-In treats Huang as out. Hosts warn of 50 to 150 basis points of growth at risk and hundreds of billions of AI capital, and name Renee of Arm and Nikesh as successor talk. Still no Nvidia filing.",
+      "watch": "An Nvidia filing or board statement naming a successor; whether Renee of Arm or Nikesh is confirmed; whether new Congress files a chip kill-switch; the Senate China-hosting bill.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-14T02:28:00Z",
+          "quote": "That's potentially hundreds of billions of dollars a capital that gets turned off that's flowing to the AI economy."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=3197s",
+          "kind": "podcast",
+          "label": "All-In Podcast (export hawks)",
+          "at": "2026-11-14T02:28:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=W79ML7zFyZg",
           "kind": "podcast",
@@ -51,18 +179,6 @@
           "label": "Hard Fork",
           "at": "2026-11-10T14:30:00Z",
           "quote": "Uh in 2023 Nvidia announced that they were a preferred cloud partner, meaning we're going to, you know, prefer selling our equipment to this company in Malaysia."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=861s",
-          "kind": "podcast",
-          "label": "Hard Fork (China export stance)",
-          "at": "2026-11-10T14:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-10T15:30:00Z"
         }
       ],
       "history": [
@@ -85,6 +201,10 @@
         {
           "at": "2026-11-13T14:46:00Z",
           "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
+        },
+        {
+          "at": "2026-11-14T07:03:00Z",
+          "change": "All-In treats Huang as out; 50-150 bps growth at risk; successor talk names Renee of Arm and Nikesh. Still no Nvidia filing."
         }
       ]
     },
@@ -196,122 +316,6 @@
         {
           "at": "2026-11-13T07:16:00Z",
           "change": "OpenAI Cyber at the Frontier: Daybreak Red Team and Defense Factory; GPT-6 Cyber ~1,000 Linux LPE patches, 5x 5.6 Cyber; 52% exploit gym vs Mythos ~38%; Sofos 52% MDR, 38 min to 89 sec."
-        }
-      ]
-    },
-    {
-      "slug": "anthropic-ipo-and-ai-funding",
-      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-13T03:38:00Z",
-      "now": "The AI Daily Brief's show notes say Anthropic's IPO is days away and investors do not know how to price it, and they flag a Claude productivity suite aimed at Microsoft. On 20VC, a guest put private-side options at $1.4 trillion versus $1 trillion, with per-share up about 20 to 30 percent. Kalshi December-IPO odds, WSJ $1.5T skepticism, and the November 19 $1.3T call still stand.",
-      "changed": "AI Daily Brief show notes: IPO is days away and Wall Street does not know how to price it; they also flag a Claude productivity suite aimed at Microsoft.",
-      "watch": "A filing or roadshow in the next few days; whether Kalshi's December IPO contract keeps falling; whether the Claude-for-Microsoft suite is a first-party product.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=gCOMQPMhIL0",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-12T16:04:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1446s",
-          "kind": "podcast",
-          "label": "20VC (private valuations)",
-          "at": "2026-11-12T20:22:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1652s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-10T17:30:00Z",
-          "quote": "Over the past week, the probability that Anthropic will announce an IPO by December has fallen from nearly 90% to 57% on Kalshi, a huge shift."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1517s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (WSJ valuation)",
-          "at": "2026-11-10T17:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution",
-          "at": "2026-11-07T20:24:00Z",
-          "quote": "The new language, Anthropic says it may imminently meet its own threshold for dramatically accelerated progress attributable to AI."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=908s",
-          "kind": "podcast",
-          "label": "Latent Space",
-          "at": "2026-11-07T03:00:00Z",
-          "quote": "Here is the business, which showed 85% gross margin, over 20 %free cash flow margin, 8% GAAP operating margin, so even on a GAAP basis, they are highly profitable."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=4499s",
-          "kind": "podcast",
-          "label": "Latent Space",
-          "at": "2026-11-07T03:00:00Z",
-          "quote": "So, 100% of the loss for the first six months is just growth the value of their convertibles tools."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2v8b062QzTI",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-11-07T18:24:00Z",
-          "quote": "You and I talked about this before on the pod, but SpaceX and anthropics compute deal has a mutual 90 day out."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T18:49:00Z",
-          "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk."
-        },
-        {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
-        },
-        {
-          "at": "2026-11-01T23:55:00Z",
-          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
-        },
-        {
-          "at": "2026-11-02T21:46:00Z",
-          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
-        },
-        {
-          "at": "2026-11-05T12:49:00Z",
-          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
-        },
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: private-side 1.4T vs 1T is options; per-share up 20-30%; allocator unworried about $80B, worried the next $100B layer is thin."
-        },
-        {
-          "at": "2026-11-13T03:38:00Z",
-          "change": "AI Daily Brief show notes: IPO days away, pricing unclear; Claude productivity suite aimed at Microsoft. No transcript yet."
         }
       ]
     },

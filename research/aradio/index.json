@@ -1,9 +1,45 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-13T14:46:00Z",
+  "updated_at": "2026-11-14T07:03:00Z",
   "degraded": false,
-  "latest": "2026-11-13-1446",
+  "latest": "2026-11-14-0703",
   "bulletins": [
+    {
+      "id": "2026-11-14-0703",
+      "aired_at": "2026-11-14T07:03:00Z",
+      "headline": "All-In treats Huang as out at Nvidia and flags 50-150 bps of growth at risk; Anthropic price leaks by November 20",
+      "path": "bulletins/2026-11-14/0703.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-14-0703.mp3",
+        "bytes": 901965,
+        "duration_s": 150.2,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 76.0,
+            "lines": [
+              0,
+              6
+            ]
+          },
+          {
+            "start_s": 77.45,
+            "end_s": 143.69,
+            "lines": [
+              7,
+              13
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "nvidia-jensen-huang-spy-allegations",
+        "anthropic-ipo-and-ai-funding"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-13-1446",
       "aired_at": "2026-11-13T14:46:00Z",
