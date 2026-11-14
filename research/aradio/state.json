@@ -1,8 +1,215 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-14T07:03:00Z",
-  "headline": "All-In treats Huang as out at Nvidia and flags 50-150 bps of growth at risk; Anthropic price leaks by November 20",
+  "updated_at": "2026-11-14T13:42:00Z",
+  "headline": "OpenAI titles Mozilla as a GPT-6 Cyber user on Firefox; Big Technology special treats Huang as out, still no filing",
   "threads": [
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-14T13:42:00Z",
+      "now": "OpenAI posted a 20-minute how-to titled How Mozilla uses GPT-6 Cyber to find and fix Firefox vulnerabilities; transcript not yet available. GPT-6 Cyber was said to patch almost a thousand Linux LPEs, five times GPT-5.6 Cyber, and score 52% on exploit gym versus Mythos at about 38%. Daybreak Red Team and Defense Factory still stand.",
+      "changed": "OpenAI posted a 20-minute how-to: Mozilla uses GPT-6 Cyber to find and fix Firefox vulnerabilities. Show notes only; no transcript yet.",
+      "watch": "The Mozilla how-to transcript and any bug counts; whether Daybreak Red Team and Defense Factory are generally available.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8",
+          "kind": "video",
+          "label": "OpenAI (Mozilla Firefox, GPT-6 Cyber)",
+          "at": "2026-11-13T16:28:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=959s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-12T22:41:00Z",
+          "quote": "In one run with GPT6 Cyber, the pipeline validated and generated patches for almost a thousand local privilege escalation vulnerabilities in Linux."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=576s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-12T22:41:00Z",
+          "quote": "For comparison, Anthropics Mythos 52, which released earlier this week, scores at about 38%."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=391s",
+          "kind": "video",
+          "label": "OpenAI (Daybreak Red Team, Defense Factory)",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=720s",
+          "kind": "video",
+          "label": "OpenAI (Six Cyber in-scope rates)",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=1863s",
+          "kind": "video",
+          "label": "OpenAI (Sofos MDR agents)",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M",
+          "kind": "video",
+          "label": "OpenAI (Cyber at the Frontier)",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-12T20:22:00Z",
+          "quote": "Unit 42 said bills are one million dollars before detection."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T08:53:00Z",
+          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
+        },
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
+        },
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
+        },
+        {
+          "at": "2026-11-02T08:14:00Z",
+          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
+        },
+        {
+          "at": "2026-11-03T06:41:00Z",
+          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "DevDay Codex Security: hacking cost going to zero; 0.81% false positives, <1% rollbacks; Daybreak-class models on Security Cloud; Astra ahead on PatchBench."
+        },
+        {
+          "at": "2026-11-12T18:39:00Z",
+          "change": "OpenAI how-tos enable Daybreak Blue for a whole workspace, Codex Security CLI via npm, and GitHub PR security reviews."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: nine labs disclosed an October API-key swarming; Unit 42 cites $1M bills before detection; $100k default Claude Ultra cap; syndicates steal Anthropic/OpenAI tokens."
+        },
+        {
+          "at": "2026-11-13T07:16:00Z",
+          "change": "OpenAI Cyber at the Frontier: Daybreak Red Team and Defense Factory; GPT-6 Cyber ~1,000 Linux LPE patches, 5x 5.6 Cyber; 52% exploit gym vs Mythos ~38%; Sofos 52% MDR, 38 min to 89 sec."
+        },
+        {
+          "at": "2026-11-14T13:42:00Z",
+          "change": "OpenAI how-to titles Mozilla as a GPT-6 Cyber user on Firefox; transcript not yet available."
+        }
+      ]
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-11-11T06:00:00Z",
+      "updated_at": "2026-11-14T13:42:00Z",
+      "now": "Big Technology posted a 61-minute special treating Jensen Huang as out, joining All-In, Hard Fork, the AI Daily Brief, and Decoder. All-In still warns of 50 to 150 basis points of growth at risk and names Renee of Arm and Nikesh as successor talk. Still no Nvidia filing or named successor.",
+      "changed": "Big Technology posted a 61-minute special titled The Fall Of Jensen Huang and What Comes Next. Show notes only; still no Nvidia filing.",
+      "watch": "An Nvidia filing or board statement naming a successor; the Big Technology transcript; whether Renee of Arm or Nikesh is confirmed.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-14T00:28:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-14T02:28:00Z",
+          "quote": "That's potentially hundreds of billions of dollars a capital that gets turned off that's flowing to the AI economy."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=3197s",
+          "kind": "podcast",
+          "label": "All-In Podcast (export hawks)",
+          "at": "2026-11-14T02:28:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=W79ML7zFyZg",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-12T22:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Dt7Q_VQxGHc",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-12T18:41:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=QhCl-BoOHM4",
+          "kind": "podcast",
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-12T16:04:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
+          "kind": "podcast",
+          "label": "20VC (China GPU hosting)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=201s",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-10T14:30:00Z",
+          "quote": "If if 10 or or 15% of Nvidia's revenue was coming from Malaysia really that meant that those chips were being kind of distributed to China in one way or another."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
+        },
+        {
+          "at": "2026-11-13T14:46:00Z",
+          "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
+        },
+        {
+          "at": "2026-11-14T07:03:00Z",
+          "change": "All-In treats Huang as out; 50-150 bps growth at risk; successor talk names Renee of Arm and Nikesh. Still no Nvidia filing."
+        },
+        {
+          "at": "2026-11-14T13:42:00Z",
+          "change": "Big Technology 61-min special treats Huang as out; titles only. Still no Nvidia filing or successor."
+        }
+      ]
+    },
     {
       "slug": "anthropic-ipo-and-ai-funding",
       "title": "Anthropic's IPO filing and the race to fund the frontier labs",
@@ -119,207 +326,6 @@
       ]
     },
     {
-      "slug": "nvidia-jensen-huang-spy-allegations",
-      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-11-11T06:00:00Z",
-      "updated_at": "2026-11-14T07:03:00Z",
-      "now": "All-In now treats Jensen Huang as out, joining Hard Fork, AI Daily Brief, and Decoder. Hosts said hundreds of billions of AI-economy capital could turn off without him, and that 50 to 150 basis points of growth is now a credible risk. They floated Renee of Arm and Nikesh as successor talk. Still no Nvidia filing or named successor.",
-      "changed": "All-In treats Huang as out. Hosts warn of 50 to 150 basis points of growth at risk and hundreds of billions of AI capital, and name Renee of Arm and Nikesh as successor talk. Still no Nvidia filing.",
-      "watch": "An Nvidia filing or board statement naming a successor; whether Renee of Arm or Nikesh is confirmed; whether new Congress files a chip kill-switch; the Senate China-hosting bill.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-11-14T02:28:00Z",
-          "quote": "That's potentially hundreds of billions of dollars a capital that gets turned off that's flowing to the AI economy."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=3197s",
-          "kind": "podcast",
-          "label": "All-In Podcast (export hawks)",
-          "at": "2026-11-14T02:28:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=W79ML7zFyZg",
-          "kind": "podcast",
-          "label": "Hard Fork",
-          "at": "2026-11-12T22:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Dt7Q_VQxGHc",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-12T18:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=QhCl-BoOHM4",
-          "kind": "podcast",
-          "label": "Decoder with Nilay Patel",
-          "at": "2026-11-12T16:04:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
-          "kind": "podcast",
-          "label": "20VC (China GPU hosting)",
-          "at": "2026-11-12T20:22:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc&t=201s",
-          "kind": "podcast",
-          "label": "Hard Fork",
-          "at": "2026-11-10T14:30:00Z",
-          "quote": "If if 10 or or 15% of Nvidia's revenue was coming from Malaysia really that meant that those chips were being kind of distributed to China in one way or another."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=jxCTX_AyZVc",
-          "kind": "podcast",
-          "label": "Hard Fork",
-          "at": "2026-11-10T14:30:00Z",
-          "quote": "Uh in 2023 Nvidia announced that they were a preferred cloud partner, meaning we're going to, you know, prefer selling our equipment to this company in Malaysia."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
-        },
-        {
-          "at": "2026-11-13T03:38:00Z",
-          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
-        },
-        {
-          "at": "2026-11-13T14:46:00Z",
-          "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
-        },
-        {
-          "at": "2026-11-14T07:03:00Z",
-          "change": "All-In treats Huang as out; 50-150 bps growth at risk; successor talk names Renee of Arm and Nikesh. Still no Nvidia filing."
-        }
-      ]
-    },
-    {
-      "slug": "ai-cyber-risk-and-key-theft",
-      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-13T07:16:00Z",
-      "now": "OpenAI announced Daybreak Red Team and Daybreak Defense Factory. It said GPT-6 Cyber patched almost a thousand Linux LPE bugs, five times GPT-5.6 Cyber, and scored 52% on exploit gym versus Anthropic's Mythos at about 38%. In-scope 99.9% without safeguards, 100% with them. Sofos agents were said to close 52% of MDR cases, 38 minutes to 89 seconds. Key-theft claims still stand.",
-      "changed": "OpenAI's Cyber at the Frontier: Daybreak Red Team and Defense Factory; GPT-6 Cyber patched almost 1,000 Linux LPEs, 5x GPT-5.6 Cyber; 52% exploit gym vs Mythos ~38%; Sofos MDR 52% agent-closed, 38 min to 89 sec.",
-      "watch": "Whether Daybreak Red Team and Defense Factory are generally available; a first-party write-up of the Linux LPE patches; independent exploit-gym scores for GPT-6 Cyber versus Mythos.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=959s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-12T22:41:00Z",
-          "quote": "In one run with GPT6 Cyber, the pipeline validated and generated patches for almost a thousand local privilege escalation vulnerabilities in Linux."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=576s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-12T22:41:00Z",
-          "quote": "For comparison, Anthropics Mythos 52, which released earlier this week, scores at about 38%."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=391s",
-          "kind": "video",
-          "label": "OpenAI (Daybreak Red Team, Defense Factory)",
-          "at": "2026-11-12T22:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=720s",
-          "kind": "video",
-          "label": "OpenAI (Six Cyber in-scope rates)",
-          "at": "2026-11-12T22:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=1863s",
-          "kind": "video",
-          "label": "OpenAI (Sofos MDR agents)",
-          "at": "2026-11-12T22:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M",
-          "kind": "video",
-          "label": "OpenAI (Cyber at the Frontier)",
-          "at": "2026-11-12T22:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-12T20:22:00Z",
-          "quote": "Unit 42 said bills are one million dollars before detection."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=3115s",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-12T20:22:00Z",
-          "quote": "So if someone stole mine because it was on fireworks and evil, they could have charged $100,000 in minutes."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
-        },
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
-        },
-        {
-          "at": "2026-10-31T21:56:00Z",
-          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
-        },
-        {
-          "at": "2026-11-02T08:14:00Z",
-          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
-        },
-        {
-          "at": "2026-11-03T06:41:00Z",
-          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
-        },
-        {
-          "at": "2026-11-11T09:54:00Z",
-          "change": "DevDay Codex Security: hacking cost going to zero; 0.81% false positives, <1% rollbacks; Daybreak-class models on Security Cloud; Astra ahead on PatchBench."
-        },
-        {
-          "at": "2026-11-12T18:39:00Z",
-          "change": "OpenAI how-tos enable Daybreak Blue for a whole workspace, Codex Security CLI via npm, and GitHub PR security reviews."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: nine labs disclosed an October API-key swarming; Unit 42 cites $1M bills before detection; $100k default Claude Ultra cap; syndicates steal Anthropic/OpenAI tokens."
-        },
-        {
-          "at": "2026-11-13T07:16:00Z",
-          "change": "OpenAI Cyber at the Frontier: Daybreak Red Team and Defense Factory; GPT-6 Cyber ~1,000 Linux LPE patches, 5x 5.6 Cyber; 52% exploit gym vs Mythos ~38%; Sofos 52% MDR, 38 min to 89 sec."
-        }
-      ]
-    },
-    {
       "slug": "hyperscaler-capex-and-chip-selloff",
       "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
       "status": "escalating",
@@ -431,65 +437,6 @@
         {
           "at": "2026-11-12T23:57:00Z",
           "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
-        }
-      ]
-    },
-    {
-      "slug": "openai-devday-2026",
-      "title": "OpenAI's DevDay 2026 platform launches",
-      "status": "developing",
-      "importance": 5,
-      "first_seen": "2026-11-11T09:54:00Z",
-      "updated_at": "2026-11-11T09:54:00Z",
-      "now": "OpenAI's DevDay 2026: Sites already hosts 8 million sites, with over 70% of employees making their own. It launched an Agents API on the Codex harness, GPT-Live full-duplex voice, computer use over the API, and a plugin directory of 4,000. ChatGPT token entitlements can fund third-party products. A Codex agent ran about 1,000 hours; GPT-6 Sol was put at about $16 an hour.",
-      "changed": "DevDay sessions: 8 million Sites, Agents API, GPT-Live, 4,000 plugins, ChatGPT tokens usable in third-party apps, and a 1,000-hour Codex run priced at about $16/hour on GPT-6 Sol.",
-      "watch": "Whether Sites, the Agents API, GPT-Live and Codex Security Cloud are generally available, and a first-party recap that names GPT-6 Sol, 6.1 Sol and Daybreak.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=71s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "Now, even though Sites only shipped a couple months ago, we're already hosting 8 million Sites."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=562s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "Over those 1,000 hours, the agent made just under half a million tool calls."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=1467s",
-          "kind": "video",
-          "label": "OpenAI DevDay (Codex pricing)",
-          "at": "2026-11-11T01:18:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=449s",
-          "kind": "video",
-          "label": "OpenAI DevDay (Agents API)",
-          "at": "2026-11-11T01:18:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=jDxKzlGLCas",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "GPT Live is a full duplex voice model, meaning unlike other voice models which are architected around user and assistant turns, GPT Live is constantly streaming audio in and out."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=232s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "There are now 4,000 plugins in the directory."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-11T09:54:00Z",
-          "change": "Created from DevDay 2026 talks: 8M Sites, Agents API, GPT-Live, 4,000 plugins, token entitlements, and a 1,000-hour Codex CI run at about $16/hour."
         }
       ]
     },
@@ -838,6 +785,69 @@
         {
           "at": "2026-11-11T09:54:00Z",
           "change": "Reopened: DevDay architecture talk claims a Navier-Stokes/unforced-Euler result from 10,000 agents, 2.7M messages, ~130B output tokens."
+        }
+      ]
+    },
+    {
+      "slug": "openai-devday-2026",
+      "title": "OpenAI's DevDay 2026 platform launches",
+      "status": "resolved",
+      "importance": 5,
+      "first_seen": "2026-11-11T09:54:00Z",
+      "updated_at": "2026-11-14T13:42:00Z",
+      "now": "OpenAI's DevDay 2026: Sites already hosts 8 million sites, with over 70% of employees making their own. It launched an Agents API on the Codex harness, GPT-Live full-duplex voice, computer use over the API, and a plugin directory of 4,000. ChatGPT token entitlements can fund third-party products. A Codex agent ran about 1,000 hours; GPT-6 Sol was put at about $16 an hour.",
+      "changed": "DevDay platform launches are absorbed into the cyber and next-model threads; no new Sites, Agents API, or GPT-Live facts this run.",
+      "watch": "Whether Sites, the Agents API, GPT-Live and Codex Security Cloud are generally available, and a first-party recap that names GPT-6 Sol, 6.1 Sol and Daybreak.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=71s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "Now, even though Sites only shipped a couple months ago, we're already hosting 8 million Sites."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=562s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "Over those 1,000 hours, the agent made just under half a million tool calls."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=1467s",
+          "kind": "video",
+          "label": "OpenAI DevDay (Codex pricing)",
+          "at": "2026-11-11T01:18:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=449s",
+          "kind": "video",
+          "label": "OpenAI DevDay (Agents API)",
+          "at": "2026-11-11T01:18:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jDxKzlGLCas",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "GPT Live is a full duplex voice model, meaning unlike other voice models which are architected around user and assistant turns, GPT Live is constantly streaming audio in and out."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=232s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "There are now 4,000 plugins in the directory."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "Created from DevDay 2026 talks: 8M Sites, Agents API, GPT-Live, 4,000 plugins, token entitlements, and a 1,000-hour Codex CI run at about $16/hour."
+        },
+        {
+          "at": "2026-11-14T13:42:00Z",
+          "change": "Resolved: DevDay 2026 launches absorbed; Mozilla GPT-6 Cyber follow-on lives on the cyber thread."
         }
       ]
     },

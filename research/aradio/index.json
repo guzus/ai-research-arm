@@ -1,9 +1,47 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-14T07:03:00Z",
+  "updated_at": "2026-11-14T13:42:00Z",
   "degraded": false,
-  "latest": "2026-11-14-0703",
+  "latest": "2026-11-14-1342",
   "bulletins": [
+    {
+      "id": "2026-11-14-1342",
+      "aired_at": "2026-11-14T13:42:00Z",
+      "headline": "OpenAI titles Mozilla as a GPT-6 Cyber user on Firefox; Big Technology special treats Huang as out, still no filing",
+      "path": "bulletins/2026-11-14/1342.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-14-1342.mp3",
+        "bytes": 816861,
+        "duration_s": 136.0,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 74.32,
+            "lines": [
+              0,
+              6
+            ]
+          },
+          {
+            "start_s": 75.77,
+            "end_s": 129.49,
+            "lines": [
+              7,
+              13
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "ai-cyber-risk-and-key-theft",
+        "nvidia-jensen-huang-spy-allegations",
+        "anthropic-ipo-and-ai-funding"
+      ],
+      "kinds": [
+        "podcast",
+        "video"
+      ]
+    },
     {
       "id": "2026-11-14-0703",
       "aired_at": "2026-11-14T07:03:00Z",
