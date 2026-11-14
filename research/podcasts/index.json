@@ -1,9 +1,180 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-13T23:50:00Z",
+  "updated_at": "2026-11-14T06:58:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "all-in:Uv2w4VTU-iQ",
+      "show_id": "all-in",
+      "show": "All-In Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Jensen OUT as Nvidia CEO: \"Spy\" Scandal, Export Restrictions, Market Impact",
+      "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ",
+      "video_id": "Uv2w4VTU-iQ",
+      "audio_url": null,
+      "published_at": "2026-11-14T02:28:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-14T06:58:00Z",
+      "duration_s": 5095,
+      "transcript": {
+        "available": true,
+        "source": "asr",
+        "words": 14792,
+        "checked_at": "2026-11-14T06:58:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "And the stock price was, you know, pennies compared to the price today. It was less than $2 a share 10 years ago. Under that. They're making video games cards and showing the Bitcoin from 2006 to 2016. The stock price did not move 10 years of just being a nothing company with a $12 billion market cap.",
+          "at_s": 1253,
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=1253s"
+        },
+        {
+          "text": "And then convincing folks like TSMC and others, Samsung to give them manufacturing capacity, HBM capacity, etc. And as we've learned the hard way, you can't just will your way to a training run of a million GPUs that just works. This has again been many, many hours of work. So they don't necessarily benefit in the short term.",
+          "at_s": 1613,
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=1613s"
+        },
+        {
+          "text": "So what they did is they networked 384 chips together in the thing called cloud matrix to create this rack system. Nvidia network 72 together and the NVL 72 is better than 384 of the Huawei chips. Nonetheless, they were getting closer and closer and Jason to your point. They have energy to spare.",
+          "at_s": 2281,
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=2281s"
+        },
+        {
+          "text": "China doesn't even want the chips. Didn't they put a ban on their parties? Yes, they banned the H20 chip. And then the H200 got approved. They basically have prevented those chips from entering the country. And they announced other Nvidia skews that they're against. So China doesn't even want the chips.",
+          "at_s": 3197,
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=3197s"
+        },
+        {
+          "text": "As we say in the business filling in that valuation, analysts have Anthropics bull case at 4.2 trillion valuation 15 times. It's 2028 expected revenue of 281 billion. That would be the second largest company in the world ahead of Nvidia at 1.4 trillion. That's a 17X multiple current run rate.",
+          "at_s": 4081,
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4081s"
+        },
+        {
+          "text": "1.35, 1.5, they said 60 billion. My guess is they raise 100 billion at 175 because I think they will be over subscription to this thing. I think it will get bit up. I think they will want to make sure it can run a little bit from what I am hearing.",
+          "at_s": 4323,
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4323s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "big-technology:NPLDSyxxt-0",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Special Report: The Fall Of Jensen Huang & What Comes Next",
+      "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0",
+      "video_id": "NPLDSyxxt-0",
+      "audio_url": null,
+      "published_at": "2026-11-14T00:28:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-14T06:58:00Z",
+      "duration_s": 3656,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-14T06:58:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "practical-ai:lz736qheRig",
+      "show_id": "practical-ai",
+      "show": "Practical AI",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Federated Learning, Privacy-Preserving AI, LLM Training, Open-Weight Models, Healthcare AI, Robotics",
+      "url": "https://www.youtube.com/watch?v=lz736qheRig",
+      "video_id": "lz736qheRig",
+      "audio_url": null,
+      "published_at": "2026-11-13T18:28:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-14T06:58:00Z",
+      "duration_s": 2396,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-14T06:58:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "nvidia:iC6H8KOQTFU",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "Meet the Startup: Prima Mente, an AI Biology Company",
+      "url": "https://www.youtube.com/watch?v=iC6H8KOQTFU",
+      "video_id": "iC6H8KOQTFU",
+      "audio_url": null,
+      "published_at": "2026-11-13T18:28:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-14T06:58:00Z",
+      "duration_s": 143,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-14T06:58:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "dwarkesh:1NHPDzpfR6Y",
+      "show_id": "dwarkesh",
+      "show": "Dwarkesh Podcast",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "frontier-labs"
+      ],
+      "title": "The avalanche that hit math is coming for AI development",
+      "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y",
+      "video_id": "1NHPDzpfR6Y",
+      "audio_url": null,
+      "published_at": "2026-11-13T18:28:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-14T06:58:00Z",
+      "duration_s": 2667,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-14T06:58:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "twiml:txg_Bl6VR6A",
       "show_id": "twiml",
@@ -28,6 +199,34 @@
         "words": 0,
         "checked_at": "2026-11-13T23:50:00Z",
         "attempts": 2
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "openai:PkAmyub12K8",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "How Mozilla uses GPT-6 Cyber to find and fix Firefox vulnerabilities",
+      "url": "https://www.youtube.com/watch?v=PkAmyub12K8",
+      "video_id": "PkAmyub12K8",
+      "audio_url": null,
+      "published_at": "2026-11-13T16:28:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-14T06:58:00Z",
+      "duration_s": 1219,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
       },
       "excerpts": [],
       "description": ""
