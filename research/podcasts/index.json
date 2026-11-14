@@ -1,9 +1,146 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-14T06:58:00Z",
+  "updated_at": "2026-11-14T15:19:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "20vc:UZ8eYaAf08M",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "The $7B Startup Building AI Chips to Challenge Nvidia | Fractile Founder & CEO, Walter Goodwin",
+      "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M",
+      "video_id": "UZ8eYaAf08M",
+      "audio_url": null,
+      "published_at": "2026-11-14T14:58:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-14T15:19:00Z",
+      "duration_s": 4559,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-14T15:19:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:1kf1QWG_YKQ",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Washington Fired Jensen Huang",
+      "url": "https://www.youtube.com/watch?v=1kf1QWG_YKQ",
+      "video_id": "1kf1QWG_YKQ",
+      "audio_url": null,
+      "published_at": "2026-11-14T14:35:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-14T15:19:00Z",
+      "duration_s": 1566,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-14T15:19:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "decoder:dOwqsYtXp6k",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Is AI safety solvable in the time we have left? | Decoder",
+      "url": "https://www.youtube.com/watch?v=dOwqsYtXp6k",
+      "video_id": "dOwqsYtXp6k",
+      "audio_url": null,
+      "published_at": "2026-11-14T13:49:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-14T15:19:00Z",
+      "duration_s": 4185,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-14T15:19:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "interconnects:pod-37qykjnh4qcm3",
+      "show_id": "interconnects",
+      "show": "Interconnects (narrated essays)",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "research",
+        "audio-only"
+      ],
+      "title": "Open-source AI without Jensen",
+      "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/224815412/82298ff260f17d1395dc9c2b5cd555a0.mp3",
+      "video_id": null,
+      "audio_url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/224815412/82298ff260f17d1395dc9c2b5cd555a0.mp3",
+      "published_at": "2026-11-14T12:23:00Z",
+      "published_precision": "exact",
+      "first_seen_at": "2026-11-14T15:19:00Z",
+      "duration_s": 449,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "The resignation of Nvidia CEO Jensen Huang is a major setback for the US development of an open model ecosystem. Nvidia still has the financial interests in supporting open models, which are to avoid concentration in power among a few customers who would develop their own chips and reduce Nvidia’s profits, but supporting the open ecosystem is a tricky puzzle more than an engineering problem to grind out a solution on.Nvidia’s business operations are famously extremely dependent on Jensen as"
+    },
+    {
+      "id": "cognitive-revolution:asHjYwa7naE",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "AI, the Modern Enigma: Nathan's Keynote at IT Revolution's Enterprise AI Summit at Bletchley Park",
+      "url": "https://www.youtube.com/watch?v=asHjYwa7naE",
+      "video_id": "asHjYwa7naE",
+      "audio_url": null,
+      "published_at": "2026-11-14T08:49:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-14T15:19:00Z",
+      "duration_s": 2617,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-14T15:19:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "all-in:Uv2w4VTU-iQ",
       "show_id": "all-in",
