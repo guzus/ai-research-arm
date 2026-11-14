@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-14
+
+TOP 5 PAPERS:
+• Sequence-level SL - decode-aware losses unbounded; teacher forcing may be all you need
+• daVinci-Prover - 33.7B-token agent mid-train; +13.7 MiniF2F/FATE-M/ProofNet
+• ACE-RL - learn playbook handoff by future-rollout value, not scalar-only RL
+• BlinkOPD - teacher blinks open/closed; SOTA fine-grained VLM with 12× less data
+• STEALTH - bit-exact stego dies across GPUs; hardware-agnostic scheme recovers all
+
+CATEGORIES: LM/NLP 9, CV/Multimodal 9, Agents/Reasoning 9, Safety 8, Other 8
+
+Full report on GitHub.
