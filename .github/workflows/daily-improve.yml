@@ -111,7 +111,7 @@ jobs:
         uses: ./.github/actions/setup-claude-sandbox
 
       - name: Analyze and Improve Methodology
-        uses: anthropics/claude-code-action@fd1c128679612beff4ca259c78021c506e8aa7a7 # v1.0.237
+        uses: anthropics/claude-code-action@16f9f71ab9c490faf367f94dd294897edc25be33 # v1.0.261
         env:
           # `gh pr create` invoked from the agent prompt needs GH_TOKEN.
           # Without this the agent silently fails at the PR-create step
