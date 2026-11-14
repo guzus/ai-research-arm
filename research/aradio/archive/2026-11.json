@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-14T07:03:00Z",
+  "updated_at": "2026-11-14T22:17:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -109,6 +109,13 @@
       "at": "2026-10-31T18:49:00Z",
       "change": "All-In transcript: capital-efficiency reading of the S-1, a smaller needed raise, 250 customers above $10M, and open-source commoditization named as the top risk.",
       "archived_at": "2026-11-14T07:03:00Z"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-10-31T08:53:00Z",
+      "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture.",
+      "archived_at": "2026-11-14T22:17:00Z"
     }
   ]
 }
