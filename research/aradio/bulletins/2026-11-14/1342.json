@@ -1,0 +1,164 @@
+{
+  "schema": 1,
+  "id": "2026-11-14-1342",
+  "aired_at": "2026-11-14T13:42:00Z",
+  "headline": "OpenAI titles Mozilla as a GPT-6 Cyber user on Firefox; Big Technology special treats Huang as out, still no filing",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's twenty to two UTC on Saturday, November fourteenth. This is ARA AI News. OpenAI has put a name on who is using GPT six Cyber, and that name is Mozilla."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "OpenAI posted a twenty-minute how-to titled How Mozilla uses GPT six Cyber to find and fix Firefox vulnerabilities."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is the first named customer for using that model to find and fix bugs in a shipping product. We have only the title and the runtime in this hour, so we do not have bug counts or what Mozilla actually found."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Two days ago, on Cyber at the Frontier, OpenAI said GPT six Cyber patched almost a thousand local privilege-escalation bugs in Linux, five times GPT five point six Cyber."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "It put the model at fifty-two percent on exploit gym, against Anthropic's Mythos at about thirty-eight percent, and named Daybreak Red Team and Defense Factory as the wrappers around that work."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "It had already cited a customer called Sofos on managed detection. Mozilla on Firefox is the first outside name for the find-and-fix path."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Treat the new video as OpenAI's claim until the how-to speaks. A twenty-minute how-to is not a paper, and we should not invent results it has not given us."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Nvidia, another major podcast is treating Jensen Huang as out, and the company still has not filed."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Big Technology posted a sixty-one minute special titled The Fall Of Jensen Huang and What Comes Next. That is the fifth major show treating him as out, after Decoder, Hard Fork, the AI Daily Brief, and All-In this morning."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "All-In is still the episode with numbers. Hosts warned of fifty to one hundred and fifty basis points of growth at risk, and floated Renee of Arm and Nikesh as successor talk."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "None of that is an Nvidia statement. We still have no board filing, no named successor, and no first-party confirmation that Huang is gone."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Anthropic has not moved since this morning. The live watch is still whatever leaks before November twentieth."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Watch next for the Mozilla how-to and the Big Technology special once they have transcripts. An Nvidia filing that names a successor is still the hard fact this story does not have."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's twenty to two UTC on Saturday, November fourteenth. This is ARA AI News. OpenAI has put a name on who is using GPT six Cyber, and that name is Mozilla.",
+    "Speaker 2: [high_energy] OpenAI posted a twenty-minute how-to titled How Mozilla uses GPT six Cyber to find and fix Firefox vulnerabilities.",
+    "Speaker 1: That is the first named customer for using that model to find and fix bugs in a shipping product. We have only the title and the runtime in this hour, so we do not have bug counts or what Mozilla actually found.",
+    "Speaker 2: Two days ago, on Cyber at the Frontier, OpenAI said GPT six Cyber patched almost [emphasis] a thousand[/emphasis] local privilege-escalation bugs in Linux, five times GPT five point six Cyber.",
+    "Speaker 1: It put the model at [emphasis] fifty-two percent[/emphasis] on exploit gym, against Anthropic's Mythos at about thirty-eight percent, and named Daybreak Red Team and Defense Factory as the wrappers around that work.",
+    "Speaker 2: It had already cited a customer called Sofos on managed detection. Mozilla on Firefox is the first outside name for the find-and-fix path.",
+    "Speaker 1: Treat the new video as OpenAI's claim until the how-to speaks. A twenty-minute how-to is not a paper, and we should not invent results it has not given us.",
+    "Speaker 2: [transition] On Nvidia, another major podcast is treating Jensen Huang as out, and the company still has not filed.",
+    "Speaker 1: Big Technology posted a sixty-one minute special titled The Fall Of Jensen Huang and What Comes Next. That is the fifth major show treating him as out, after Decoder, Hard Fork, the AI Daily Brief, and All-In this morning.",
+    "Speaker 2: All-In is still the episode with numbers. Hosts warned of [emphasis] fifty to one hundred and fifty basis points[/emphasis] of growth at risk, and floated Renee of Arm and Nikesh as successor talk.",
+    "Speaker 1: None of that is an Nvidia statement. We still have no board filing, no named successor, and no first-party confirmation that Huang is gone.",
+    "Speaker 2: Anthropic has not moved since this morning. The live watch is still whatever leaks before November twentieth.",
+    "Speaker 1: Watch next for the Mozilla how-to and the Big Technology special once they have transcripts. An Nvidia filing that names a successor is still the hard fact this story does not have.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "ai-cyber-risk-and-key-theft",
+    "nvidia-jensen-huang-spy-allegations",
+    "anthropic-ipo-and-ai-funding"
+  ],
+  "threads": [
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating"
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=PkAmyub12K8",
+      "kind": "video",
+      "label": "OpenAI (Mozilla Firefox, GPT-6 Cyber)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0",
+      "kind": "podcast",
+      "label": "Big Technology Podcast"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "ai-cyber-risk-and-key-theft"
+    },
+    {
+      "op": "update",
+      "slug": "nvidia-jensen-huang-spy-allegations"
+    },
+    {
+      "op": "resolve",
+      "slug": "openai-devday-2026"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-14-1342.mp3",
+    "bytes": 816861,
+    "duration_s": 136.0,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 74.32,
+        "lines": [
+          0,
+          6
+        ]
+      },
+      {
+        "start_s": 75.77,
+        "end_s": 129.49,
+        "lines": [
+          7,
+          13
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 5,
+    "kinds": {
+      "podcast": 3,
+      "video": 2
+    }
+  }
+}
