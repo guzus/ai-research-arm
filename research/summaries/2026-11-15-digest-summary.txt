@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-11-15 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] _google_ai.xml is a stale 2024 Blogger Atom feed; no new official Google AI Blog entries._
+• [Hacker News] Lovable data exposure: Now the largest AI-by-points story and the largest AI comment thread. 581 po…
+• [Reddit] ICLR 2027 Reviews Discussion [D] — https://www.reddit.com/r/MachineLearning/comments/1xo6yzo/iclr_2…
+• [Expert Blogs] Open-source AI without Jensen
+• [Bluesky] @emollick.bsky.social: "Our Generative AI Lab is releasing Primer: an open source agent-driven syst…
+
+SOURCES: 7/8 lanes had data; missing: Twitter/X
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
