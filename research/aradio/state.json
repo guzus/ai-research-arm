@@ -1,230 +1,40 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-14T22:17:00Z",
-  "headline": "AI Daily Brief titles Washington Fired Jensen Huang; Interconnects calls it an open-model setback; still no filing",
+  "updated_at": "2026-11-15T09:57:00Z",
+  "headline": "Huang case gets 240k-chip numbers; Fractile $720M Series C; Mozilla 8x at Firefox; Claude 26% of Anthropic R&D",
   "threads": [
-    {
-      "slug": "hyperscaler-capex-and-chip-selloff",
-      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-14T22:17:00Z",
-      "now": "20VC posted a 76-minute interview with Fractile founder Walter Goodwin, titled as a $7B startup building AI chips to challenge Nvidia; no transcript yet. Prior 20VC still stands: if OpenAI ARR is there the selloff is noise; a 10-20% token cut lifts revenue only if usage rises ~21%, not 15%. CoreWeave Q3: sequential revenue up more than $1B, about $9B in prepayments due in three months.",
-      "changed": "20VC hosted Fractile founder Walter Goodwin on a $7B Nvidia-challenger chip startup. Show notes only; no transcript yet.",
-      "watch": "The Fractile transcript; CoreWeave's call and whether the $9 billion prepayments post; TPU supply and rack-scale competitors.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M",
-          "kind": "podcast",
-          "label": "20VC (Fractile, Walter Goodwin)",
-          "at": "2026-11-14T14:58:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1287s",
-          "kind": "podcast",
-          "label": "20VC (OpenAI demand test)",
-          "at": "2026-11-12T20:22:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1805s",
-          "kind": "podcast",
-          "label": "20VC (token pricing)",
-          "at": "2026-11-12T20:22:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU",
-          "kind": "podcast",
-          "label": "a16z",
-          "at": "2026-11-11T15:32:00Z",
-          "quote": "If you look at the revenue ramp of Anthropic, OpenAI are definitely experiencing growth rates that were far superior to what we saw at the time."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=675s",
-          "kind": "podcast",
-          "label": "a16z",
-          "at": "2026-11-11T15:32:00Z",
-          "quote": "But the problem is right now that the demand is so high that even if the watt to dollar conversion is low, you're going to still use the asset."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=2287s",
-          "kind": "podcast",
-          "label": "a16z (TPU supply and rack systems)",
-          "at": "2026-11-11T15:32:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-10T15:30:00Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000461/coreweave3q26earningspress.htm",
-          "kind": "earnings",
-          "label": "CoreWeave, Inc. (CRWV)",
-          "at": "2026-11-10T21:05:53Z",
-          "speaker": "Michael Intrator, co-founder, chairman and chief executive officer of CoreWeave",
-          "quote": "This was a breakout quarter for CoreWeave, with revenue increasing by more than $1 billion sequentially and adjusted operating margins reaching double digits a quarter ahead of plan"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added."
-        },
-        {
-          "at": "2026-10-31T18:49:00Z",
-          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped."
-        },
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
-        },
-        {
-          "at": "2026-11-10T21:25:00Z",
-          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
-        },
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
-        },
-        {
-          "at": "2026-11-14T22:17:00Z",
-          "change": "20VC: Fractile founder Walter Goodwin on a $7B AI-chip Nvidia challenger; titles only, no transcript yet."
-        }
-      ]
-    },
-    {
-      "slug": "nvidia-jensen-huang-spy-allegations",
-      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-11-11T06:00:00Z",
-      "updated_at": "2026-11-14T22:17:00Z",
-      "now": "AI Daily Brief titled Washington Fired Jensen Huang, joining All-In, Big Technology, Hard Fork and Decoder. Interconnects notes call the resignation a major setback for US open models, saying Nvidia still has reason to back them so customers do not build their own chips. All-In still cites 50-150 bps of growth at risk and names Renee of Arm and Nikesh. Still no Nvidia filing or named successor.",
-      "changed": "AI Daily Brief titled Washington Fired Jensen Huang; Interconnects notes call the resignation a major setback for US open models. Still show notes only; still no Nvidia filing.",
-      "watch": "An Nvidia filing or board statement naming a successor; Daily Brief, Big Technology and Interconnects transcripts; whether Renee of Arm or Nikesh is confirmed.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=1kf1QWG_YKQ",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-14T14:35:00Z"
-        },
-        {
-          "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/224815412/82298ff260f17d1395dc9c2b5cd555a0.mp3",
-          "kind": "podcast",
-          "label": "Interconnects",
-          "at": "2026-11-14T12:23:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-14T00:28:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-11-14T02:28:00Z",
-          "quote": "That's potentially hundreds of billions of dollars a capital that gets turned off that's flowing to the AI economy."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=3197s",
-          "kind": "podcast",
-          "label": "All-In Podcast (export hawks)",
-          "at": "2026-11-14T02:28:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=W79ML7zFyZg",
-          "kind": "podcast",
-          "label": "Hard Fork",
-          "at": "2026-11-12T22:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Dt7Q_VQxGHc",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-12T18:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=QhCl-BoOHM4",
-          "kind": "podcast",
-          "label": "Decoder with Nilay Patel",
-          "at": "2026-11-12T16:04:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
-        },
-        {
-          "at": "2026-11-13T03:38:00Z",
-          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
-        },
-        {
-          "at": "2026-11-13T14:46:00Z",
-          "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
-        },
-        {
-          "at": "2026-11-14T07:03:00Z",
-          "change": "All-In treats Huang as out; 50-150 bps growth at risk; successor talk names Renee of Arm and Nikesh. Still no Nvidia filing."
-        },
-        {
-          "at": "2026-11-14T13:42:00Z",
-          "change": "Big Technology 61-min special treats Huang as out; titles only. Still no Nvidia filing or successor."
-        },
-        {
-          "at": "2026-11-14T22:17:00Z",
-          "change": "AI Daily Brief titles Washington Fired Jensen Huang; Interconnects notes call the resignation a US open-model setback. Still no filing."
-        }
-      ]
-    },
     {
       "slug": "ai-cyber-risk-and-key-theft",
       "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-14T13:42:00Z",
-      "now": "OpenAI posted a 20-minute how-to titled How Mozilla uses GPT-6 Cyber to find and fix Firefox vulnerabilities; transcript not yet available. GPT-6 Cyber was said to patch almost a thousand Linux LPEs, five times GPT-5.6 Cyber, and score 52% on exploit gym versus Mythos at about 38%. Daybreak Red Team and Defense Factory still stand.",
-      "changed": "OpenAI posted a 20-minute how-to: Mozilla uses GPT-6 Cyber to find and fix Firefox vulnerabilities. Show notes only; no transcript yet.",
-      "watch": "The Mozilla how-to transcript and any bug counts; whether Daybreak Red Team and Defense Factory are generally available.",
+      "updated_at": "2026-11-15T09:57:00Z",
+      "now": "On OpenAI's Mozilla how-to, speakers said Firefox went unbeaten at Pwn2Own and that detection and remediation rose about 8x from 2025 to 2026 with a GPT-6 Cyber agent pipeline. On a16z, a Wiz guest said AI attackers can complete a chain in about 20 minutes while Linux distro patches still take weeks. GPT-6 Cyber's ~1,000 Linux LPE patches and 52% exploit-gym score versus Mythos ~38% still stand.",
+      "changed": "Mozilla how-to: Firefox unbeaten at Pwn2Own; about 8x detection and remediation from 2025 to 2026. a16z/Wiz: AI exploit chains in about 20 minutes.",
+      "watch": "Whether Daybreak Red Team and Defense Factory are generally available; any Mozilla bug counts beyond the 8x claim.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=68s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-13T16:28:00Z",
+          "quote": "We had a great result–no one was able to hack Firefox."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=1016s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-13T16:28:00Z",
+          "quote": "Yes, we now have about an 8x increase from 2025 to 2026 for both detection and, importantly, remediation."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=PbD9pVXxsYM",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-13T15:12:00Z",
+          "quote": "We will once again see security breaches crop up all the time."
+        },
         {
           "url": "https://www.youtube.com/watch?v=PkAmyub12K8",
           "kind": "video",
@@ -256,32 +66,9 @@
           "kind": "video",
           "label": "OpenAI (Six Cyber in-scope rates)",
           "at": "2026-11-12T22:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=1863s",
-          "kind": "video",
-          "label": "OpenAI (Sofos MDR agents)",
-          "at": "2026-11-12T22:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M",
-          "kind": "video",
-          "label": "OpenAI (Cyber at the Frontier)",
-          "at": "2026-11-12T22:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-12T20:22:00Z",
-          "quote": "Unit 42 said bills are one million dollars before detection."
         }
       ],
       "history": [
-        {
-          "at": "2026-10-31T08:53:00Z",
-          "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board."
-        },
         {
           "at": "2026-10-31T14:48:00Z",
           "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
@@ -325,6 +112,10 @@
         {
           "at": "2026-11-14T13:42:00Z",
           "change": "OpenAI how-to titles Mozilla as a GPT-6 Cyber user on Firefox; transcript not yet available."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Mozilla transcript: Firefox unbeaten at Pwn2Own, ~8x detect-and-fix 2025-2026. Wiz on a16z: AI attacks in ~20 minutes vs weeks for distro patches."
         }
       ]
     },
@@ -334,11 +125,17 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-14T07:03:00Z",
-      "now": "On All-In, hosts said analysts' bull case is 4.2 trillion dollars, 15 times 2028 revenue of 281 billion, a 17-times run-rate. One guessed they raise 100 billion at 1.75 trillion, versus 1.35 to 1.5 trillion and a 60 billion raise. They said leaks before November 20 set the real price. Kalshi December odds and Daily Brief days-away still stand.",
-      "changed": "All-In: analysts' bull case 4.2 trillion on 281 billion 2028 revenue; a host guesses 100 billion raised at 1.75 trillion; real price said to leak before November 20.",
-      "watch": "Leaks or a filing before November 20; whether Kalshi's December IPO contract keeps falling; whether the Claude-for-Microsoft suite is a first-party product.",
+      "updated_at": "2026-11-15T09:57:00Z",
+      "now": "On Big Technology, hosts said they expect a successful Anthropic IPO next week and that Nvidia is set to be a $10 billion anchor investor, while warning about circular AI financing. All-In's 4.2 trillion bull case on 281 billion 2028 revenue, a host guess of 100 billion raised at 1.75 trillion, and leaks before November 20 still stand. Kalshi December odds had fallen to 57%.",
+      "changed": "Big Technology hosts say Anthropic IPOs next week with Nvidia as a $10 billion anchor, and they still flag circular financing.",
+      "watch": "A filing or pricing this week; whether Nvidia remains the $10B anchor; leaks before November 20; Kalshi December IPO odds.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=3051s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-14T00:28:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4081s",
           "kind": "podcast",
@@ -383,20 +180,9 @@
           "label": "The Cognitive Revolution",
           "at": "2026-11-07T20:24:00Z",
           "quote": "The new language, Anthropic says it may imminently meet its own threshold for dramatically accelerated progress attributable to AI."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=P735f1xlpL0&t=908s",
-          "kind": "podcast",
-          "label": "Latent Space",
-          "at": "2026-11-07T03:00:00Z",
-          "quote": "Here is the business, which showed 85% gross margin, over 20 %free cash flow margin, 8% GAAP operating margin, so even on a GAAP basis, they are highly profitable."
         }
       ],
       "history": [
-        {
-          "at": "2026-11-01T15:32:00Z",
-          "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T."
-        },
         {
           "at": "2026-11-01T23:55:00Z",
           "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
@@ -440,6 +226,226 @@
         {
           "at": "2026-11-14T07:03:00Z",
           "change": "All-In: 4.2T bull case on 281B 2028 revenue; host guesses 100B raise at 1.75T; price leaks said due by November 20."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Big Technology: hosts expect Anthropic IPO next week with Nvidia as $10B anchor; circular-financing warning stands."
+        }
+      ]
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-15T09:57:00Z",
+      "now": "On 20VC, Fractile founder Walter Goodwin said a $720 million Series C from Thrive, Founders Fund, Lightspeed and Radpoint values the company at $7 billion. He said they will not monetize internal models, that memory bandwidth caps tokens per second, and he described Nvidia pairing Rubin GPUs with Groq chips after acquiring Groq. CoreWeave's ~$9B prepayments still stand.",
+      "changed": "Fractile confirms $720M Series C at $7B. Goodwin says they will not sell models and talks as if Nvidia already bought Groq. TWIML: Qualcomm's Max claimed on Nvidia, AMD, TPU, AWS, Qualcomm and Apple GPUs.",
+      "watch": "Whether Fractile names a ship date; whether Nvidia confirms a Groq deal; CoreWeave's $9B prepayments; TPU supply.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-14T14:58:00Z",
+          "quote": "The company just raised $720 million in a Series C round from Thrive, Founders Fund , Lightspeed and Radpoint, valuing it at $7 billion."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A",
+          "kind": "podcast",
+          "label": "The TWIML AI Podcast",
+          "at": "2026-11-13T16:37:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1287s",
+          "kind": "podcast",
+          "label": "20VC (OpenAI demand test)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1805s",
+          "kind": "podcast",
+          "label": "20VC (token pricing)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-11T15:32:00Z",
+          "quote": "If you look at the revenue ramp of Anthropic, OpenAI are definitely experiencing growth rates that were far superior to what we saw at the time."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=675s",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-11T15:32:00Z",
+          "quote": "But the problem is right now that the demand is so high that even if the watt to dollar conversion is low, you're going to still use the asset."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=2287s",
+          "kind": "podcast",
+          "label": "a16z (TPU supply and rack systems)",
+          "at": "2026-11-11T15:32:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-10T15:30:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T18:49:00Z",
+          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
+        },
+        {
+          "at": "2026-11-10T21:25:00Z",
+          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
+        },
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
+        },
+        {
+          "at": "2026-11-14T22:17:00Z",
+          "change": "20VC: Fractile founder Walter Goodwin on a $7B AI-chip Nvidia challenger; titles only, no transcript yet."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "20VC transcript: Fractile $720M Series C at $7B; no model sales; memory-bandwidth bottleneck; Nvidia-Groq pairing claimed."
+        }
+      ]
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-11-11T06:00:00Z",
+      "updated_at": "2026-11-15T09:57:00Z",
+      "now": "Big Technology hosts now treat Huang as out. They said Alice Wang reportedly helped move $7.5B of Nvidia processors and smuggle 240,000 banned H100/H200 chips to China; Singapore was 22% of Nvidia revenue then vanished after MegaSpeed was blacklisted; and DeepSeek, Moonshot, MiniMax and Ant Group trained on banned Blackwell. Still no Nvidia filing or named successor.",
+      "changed": "Big Technology transcript: Alice Wang reportedly 240,000 banned chips and $7.5B of processors; Singapore 22% then vanished; four Chinese labs on Blackwell. Still no filing.",
+      "watch": "An Nvidia filing or board statement naming a successor; whether Renee of Arm or Nikesh is confirmed; whether the 240,000-chip and Blackwell-lab claims get a first-party document.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=438s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-14T00:28:00Z",
+          "quote": "Alice Wang reportedly played a key role in securing over $7.5 billion worth of Nvidia AI processors during her three-year relationship with Jensen Wang."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=1376s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-14T00:28:00Z",
+          "quote": "I found compelling forensic evidence that four leading Chinese AI labs: Deep Seeker, Moonshot, MiniMax, and Ant Group built their latest models on Nvidia's cutting-edge Blackwell chips, the export of which to China is prohibited."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1kf1QWG_YKQ",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-14T14:35:00Z"
+        },
+        {
+          "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/224815412/82298ff260f17d1395dc9c2b5cd555a0.mp3",
+          "kind": "podcast",
+          "label": "Interconnects",
+          "at": "2026-11-14T12:23:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-14T00:28:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-14T02:28:00Z",
+          "quote": "That's potentially hundreds of billions of dollars a capital that gets turned off that's flowing to the AI economy."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=3197s",
+          "kind": "podcast",
+          "label": "All-In Podcast (export hawks)",
+          "at": "2026-11-14T02:28:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=W79ML7zFyZg",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-12T22:41:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
+        },
+        {
+          "at": "2026-11-13T14:46:00Z",
+          "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
+        },
+        {
+          "at": "2026-11-14T07:03:00Z",
+          "change": "All-In treats Huang as out; 50-150 bps growth at risk; successor talk names Renee of Arm and Nikesh. Still no Nvidia filing."
+        },
+        {
+          "at": "2026-11-14T13:42:00Z",
+          "change": "Big Technology 61-min special treats Huang as out; titles only. Still no Nvidia filing or successor."
+        },
+        {
+          "at": "2026-11-14T22:17:00Z",
+          "change": "AI Daily Brief titles Washington Fired Jensen Huang; Interconnects notes call the resignation a US open-model setback. Still no filing."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Big Technology transcript: 240k banned chips, $7.5B via Alice Wang, Singapore 22% vanished, Blackwell at DeepSeek/Moonshot/MiniMax/Ant. Still no filing."
         }
       ]
     },
@@ -517,6 +523,39 @@
         {
           "at": "2026-11-10T21:05:00Z",
           "change": "Big Technology: 38+ jurisdictions voted to restrict or ban data centers; 23-60% called AI crucial; hosts say New Mexico sued Meta for $25B."
+        }
+      ]
+    },
+    {
+      "slug": "labs-automating-ai-research",
+      "title": "Frontier labs automating their own AI research",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-11-15T09:57:00Z",
+      "updated_at": "2026-11-15T09:57:00Z",
+      "now": "On Dwarkesh, the host said Anthropic reported Claude now leads 26% of its AI research and development, up from 1% in February. He put about 80% of a frontier lab's algorithmic progress on its top 50 researchers, and a 25% chance Ilya-level research work is not automated until 2032. He cited AI Lab Magic claiming a DeepSeek V4 Pro-level model at half of original GPT-3 compute, about $500,000 today.",
+      "changed": "Dwarkesh transcript: Claude leads 26% of Anthropic R&D, up from 1% in February; 25% chance Ilya-level automation waits until 2032.",
+      "watch": "Whether Anthropic first-parties the 26% R&D share; Magic's claimed DeepSeek V4 Pro match at half GPT-3 compute; any lab paper on automated research.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=111s",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-13T18:28:00Z",
+          "quote": "They reported that Claude now leads 26% of AI research and development at Anthropic, up from 1% back in February."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-13T18:28:00Z",
+          "quote": "That's why I believe there's a 25% chance that we'll automate the work of top Ilya-level researchers by 2032 ."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Created from Dwarkesh: Claude 26% of Anthropic R&D from 1% in Feb; 25% chance Ilya-level automation waits until 2032; Magic half-GPT-3 compute claim."
         }
       ]
     },

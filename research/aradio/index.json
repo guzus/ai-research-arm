@@ -1,9 +1,65 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-14T13:42:00Z",
+  "updated_at": "2026-11-15T09:57:00Z",
   "degraded": false,
-  "latest": "2026-11-14-1342",
+  "latest": "2026-11-15-0957",
   "bulletins": [
+    {
+      "id": "2026-11-15-0957",
+      "aired_at": "2026-11-15T09:57:00Z",
+      "headline": "Huang case gets 240k-chip numbers; Fractile $720M Series C; Mozilla 8x at Firefox; Claude 26% of Anthropic R&D",
+      "path": "bulletins/2026-11-15/0957.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-15-0957.mp3",
+        "bytes": 1254045,
+        "duration_s": 208.9,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 72.6,
+            "lines": [
+              0,
+              4
+            ]
+          },
+          {
+            "start_s": 74.05,
+            "end_s": 120.29,
+            "lines": [
+              5,
+              7
+            ]
+          },
+          {
+            "start_s": 121.74,
+            "end_s": 149.9,
+            "lines": [
+              8,
+              9
+            ]
+          },
+          {
+            "start_s": 151.35,
+            "end_s": 202.35,
+            "lines": [
+              10,
+              14
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "nvidia-jensen-huang-spy-allegations",
+        "hyperscaler-capex-and-chip-selloff",
+        "ai-cyber-risk-and-key-theft",
+        "labs-automating-ai-research",
+        "anthropic-ipo-and-ai-funding"
+      ],
+      "kinds": [
+        "podcast",
+        "video"
+      ]
+    },
     {
       "id": "2026-11-14-1342",
       "aired_at": "2026-11-14T13:42:00Z",
