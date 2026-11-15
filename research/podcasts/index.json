@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-15T02:05:00Z",
+  "updated_at": "2026-11-15T09:51:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -23,13 +23,44 @@
       "first_seen_at": "2026-11-15T02:05:00Z",
       "duration_s": 1114,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-15T02:05:00Z",
-        "attempts": 1
+        "available": true,
+        "source": "youtube_captions",
+        "words": 2691,
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 2
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "So for the next 10 minutes or so, I'm going to try and focus on how AI factors are going to be a booster and a foundational elements in the way you look at building intelligent cities for tomorrow.",
+          "at_s": 138,
+          "url": "https://www.youtube.com/watch?v=ha-gDrDm8Es&t=138s"
+        },
+        {
+          "text": "Secondly, it's about vision AI that's implemented for sake of improving operations. And thirdly, it's about agentic AI that is used to deliver citizen services and resident services. So I want to double click on a few of these examples. So the first one comes from France, right?",
+          "at_s": 275,
+          "url": "https://www.youtube.com/watch?v=ha-gDrDm8Es&t=275s"
+        },
+        {
+          "text": "And of course, the likes of Aquila and Think Deep have been building on models that come from NVIDIA and are running this simulation in France on Sovereign Cloud as we speak. The second example comes from the world of vision agents.",
+          "at_s": 395,
+          "url": "https://www.youtube.com/watch?v=ha-gDrDm8Es&t=395s"
+        },
+        {
+          "text": "And the third example takes us back here to Barcelona. In Barcelona, an AI native called 1 Million Bot has created an agentic platform. This agentic platform utilizes a model called Alia. Alia has been developed on Barcelona infrastructure at the super computing center in collaboration with the government.",
+          "at_s": 544,
+          "url": "https://www.youtube.com/watch?v=ha-gDrDm8Es&t=544s"
+        },
+        {
+          "text": "That harness is the power of data. So, as we talked about at the very beginning, infrastructure build out for the next 1 years is going to mean building intelligence that is at your fingertips that help you run your cities more effectively, more economically, and going to kickstart the economic flywheel.",
+          "at_s": 728,
+          "url": "https://www.youtube.com/watch?v=ha-gDrDm8Es&t=728s"
+        },
+        {
+          "text": "You go across regions, economic opportunity will happen where compute resides. Talent will stay where computing infrastructure is built. The lion share of the startups that are created today are AI native startups. And entrepreneurs and innovators will always follow where computing infrastructure is built.",
+          "at_s": 874,
+          "url": "https://www.youtube.com/watch?v=ha-gDrDm8Es&t=874s"
+        }
+      ],
       "description": ""
     },
     {
@@ -51,13 +82,44 @@
       "first_seen_at": "2026-11-14T15:19:00Z",
       "duration_s": 4559,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-15T02:05:00Z",
-        "attempts": 3
+        "available": true,
+        "source": "youtube_captions",
+        "words": 12174,
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 4
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "And around it are other silicon components, HBM memory, which seem to drive up this \"highway\", delivering data. Thanks to Moore's Law, we have become extremely good at scaling the number of flops. Over the last 25 years, we have increased this figure on these chips by about a million times.",
+          "at_s": 910,
+          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M&t=910s"
+        },
+        {
+          "text": "So what if I want to take a model with many trillions of parameters and run it at thousands of tokens per second, but my data center has 500 megawatts of power and I don't have enough overall bandwidth? You know, I won't be able to serve my user base on chips like that.",
+          "at_s": 2305,
+          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M&t=2305s"
+        },
+        {
+          "text": "But given Mike Cannon- Brooks's view, what happens to the value of inference? I think there's a point here: if you look at the costs, how much will the token cost in 10 years? It's one of those questions that, you know, begs another question, right? For example, what model will we launch?",
+          "at_s": 3066,
+          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M&t=3066s"
+        },
+        {
+          "text": "So I need to go back to the GPU and GPU memory to run this part. This is the logic of NVIDIA's data center operation with these two types of chips today. But when I design a data center, how many Groq chips should I put in ?",
+          "at_s": 3491,
+          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M&t=3491s"
+        },
+        {
+          "text": "I think it can be a worrying moment if you're running a trillion-dollar GPU company and one of your biggest customers suddenly signs up for something you may not have previously considered vital—a fast-delivery platform. And what will be your answer? I think both agreements were signed on December 24th, which must have been a fun time for the lawyers.",
+          "at_s": 3688,
+          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M&t=3688s"
+        },
+        {
+          "text": "I think there will be several companies worth hundreds of billions of dollars in this industry. Can you tell us about the new round of funding? How much did we raise? Uh, it was a $720 million Series C round . How was the process? Was that interesting? Because now you are like the star of the evening.",
+          "at_s": 3878,
+          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M&t=3878s"
+        }
+      ],
       "description": ""
     },
     {
@@ -81,8 +143,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-15T02:05:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": ""
@@ -108,8 +170,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-15T02:05:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": ""
@@ -163,8 +225,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-14T15:19:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -247,13 +309,44 @@
       "first_seen_at": "2026-11-14T06:58:00Z",
       "duration_s": 3656,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-14T06:58:00Z",
-        "attempts": 1
+        "available": true,
+        "source": "youtube_captions",
+        "words": 9717,
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 2
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "This is a message from Tom's Hardware. Alice Wang reportedly played a key role in securing over $7.5 billion worth of Nvidia AI processors during her three-year relationship with Jensen Wang. She helped smuggle 240,000 banned chips to China, mostly H100 and H200. Hmm, that's an interesting side note to this story.",
+          "at_s": 438,
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=438s"
+        },
+        {
+          "text": "Back in the summer of last year, Singapore was officially one of Nvidia's largest markets, generating 22% of the chipmaker's revenue. Then, almost overnight, he disappeared from the company's financial statements. And the timeline indicates that Nvidia changed its methodology for reporting geographic revenue distribution shortly after MegaSpeed ​​International was placed on an internal blacklist.",
+          "at_s": 829,
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=829s"
+        },
+        {
+          "text": "So, the Deep Seeker V4 Pro was built on Blackwell, he says. Moonshot's Kimi K3 was built on Blackwell, as was the MiniMax M3, also built on Blackwell. Ling 3.1 Flash by Ant Group is built on Blackwell. There should have been no access to these chips in China at all .",
+          "at_s": 1376,
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=1376s"
+        },
+        {
+          "text": "He called in Kress and the senior finance team to diagnose the burgeoning problem. Nvidia has been negotiating billions of dollars in guarantees to companies that couldn't afford its chips, including deals led by Huang's son-in-law , Nico Caprese, who offered financing to startup cloud providers and data center developers , hoping to turn them into long-term customers.",
+          "at_s": 2099,
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=2099s"
+        },
+        {
+          "text": "So, Anthropic talked about how they recently connected AMD GPUs. According to them, it used to take 6 to 12 months to adapt their models to run on AMD GPUs or to train them , right? And that kind of points to the \"moat\" that Nvidia had, right? It wasn't just about the chips. And it's not just chips.",
+          "at_s": 2440,
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=2440s"
+        },
+        {
+          "text": "But there should have been $300 billion, and apparently there were more financial risks in that Colette Kress article that she refuted . But let's also remember that Nvidia is set to become an anchor investor worth $10 billion in the IPO next week. Will they remain like that ? I don't even know. Anthropic IPO.",
+          "at_s": 3051,
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=3051s"
+        }
+      ],
       "description": ""
     },
     {
@@ -278,8 +371,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-14T06:58:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -303,13 +396,19 @@
       "first_seen_at": "2026-11-14T06:58:00Z",
       "duration_s": 143,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-14T06:58:00Z",
-        "attempts": 1
+        "available": true,
+        "source": "youtube_captions",
+        "words": 388,
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 2
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "NVIDIA and Nebius are always there whenever I ask for something, whether that's events, whether that's compute, whether that's just a chat about what we should be doing strategically. We built our first model, Pleiades 1, which was 90 million parameters, 600 million parameter, and a 7 billion model.",
+          "at_s": 94,
+          "url": "https://www.youtube.com/watch?v=iC6H8KOQTFU&t=94s"
+        }
+      ],
       "description": ""
     },
     {
@@ -331,13 +430,44 @@
       "first_seen_at": "2026-11-14T06:58:00Z",
       "duration_s": 2667,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-14T06:58:00Z",
-        "attempts": 1
+        "available": true,
+        "source": "youtube_captions",
+        "words": 8064,
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 2
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "They reported that Claude now leads 26% of AI research and development at Anthropic, up from 1% back in February. When thinking about how important automation of AI research would be and how much it would accelerate the progress of AI, I think a really important update has been how quickly the capabilities of AI models in mathematics have developed.",
+          "at_s": 111,
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=111s"
+        },
+        {
+          "text": "Now, I want to make it clear that there is a fairly high probability that reaching this milestone will take longer, as some important parts of AI research remain difficult to automate. It's just very difficult to predict in advance, and I think there's at least a 25% chance that it won't happen until 2032.",
+          "at_s": 589,
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=589s"
+        },
+        {
+          "text": "If I were pressed, I would give a 50% chance to the spark scenario and a 50% chance to the singularity , based solely on software. But to be clear, even in a spark scenario where we achieve roughly four years of progress in the first calendar year after AI research is automated, it will all look crazy.",
+          "at_s": 962,
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=962s"
+        },
+        {
+          "text": "For example, one could create an RL environment where GPT 7 has to predict whether an algorithmic improvement made at the 100 million parameter level will also work at the 10 billion parameter level.",
+          "at_s": 1767,
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=1767s"
+        },
+        {
+          "text": "For example, AI Lab Magic recently announced that they have pre- trained a model that matches today's leading open source baseline models , such as DeepSeek-V 4-Pro, for only half the computation that was used to train the original GPT-3, which would cost around $500,000 today. Further improvements of orders of magnitude seem quite plausible. Now let's talk about post-training.",
+          "at_s": 1902,
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=1902s"
+        },
+        {
+          "text": "Keep in mind that the final model trained in the original Transformers paper in 2017 took three days on eight P 100s, which would cost about $50 if you rented them today, or about 1/10,000th of the GPT 3 training computation.",
+          "at_s": 2452,
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=2452s"
+        }
+      ],
       "description": ""
     },
     {
@@ -359,13 +489,44 @@
       "first_seen_at": "2026-11-13T16:42:00Z",
       "duration_s": 1094,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-13T23:50:00Z",
-        "attempts": 2
+        "available": true,
+        "source": "youtube_captions",
+        "words": 3544,
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 3
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "We quickly realized that AI was so important, so computationally intensive, that it needed specialized chips. And so GPUs came along, and NVIDIA is the leader in many data center computing applications. But there's also Google, which makes various TPU processors and other specialized chips.",
+          "at_s": 138,
+          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A&t=138s"
+        },
+        {
+          "text": "So I don't see this as a suggestion to make all chips the same, because they aren't. If you do this, you will lose the power of each individual chip. Instead, the question is how to make it as widespread as possible.",
+          "at_s": 289,
+          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A&t=289s"
+        },
+        {
+          "text": "It's Mojo and then the Max layer to turn the chip into a neural network and model so you can actually service it and work with it and so on. So Qualcomm is interested in, for example, opening this data center. And Qualcomm makes chips for data centers. This also embeds many different players into the data center value chain.",
+          "at_s": 409,
+          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A&t=409s"
+        },
+        {
+          "text": "Max is really great if you want to get the full power of running a model on a data center GPU, as we support NVIDIA, AMD, Google's TPU, AWS learning, Qualcomm of course, and Apple's GPUs. And that's really cool, but the number of people who want to write operators to implement a neural network is a pretty small audience.",
+          "at_s": 615,
+          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A&t=615s"
+        },
+        {
+          "text": "Like, agents are cool. I am a fan of AI . But to say that I spent 3 months and now found a solution for chip design , AI software, programming, or some mathematics, right? That's right. We have been doing this for a long time. This goes to the point where we won't need radiologists in 6 months.",
+          "at_s": 800,
+          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A&t=800s"
+        },
+        {
+          "text": "And what drives AI, in my opinion, is not a strict exponent. This is the addition of S-curves. You know, the pre- training was amazing, and GPT 4 was such a huge step up from GPT 3 5. But then it leveled off. But then RL appeared, and then other S-curves that are layered.",
+          "at_s": 1022,
+          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A&t=1022s"
+        }
+      ],
       "description": ""
     },
     {
@@ -387,13 +548,44 @@
       "first_seen_at": "2026-11-14T06:58:00Z",
       "duration_s": 1219,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-14T20:54:00Z",
-        "attempts": 1
+        "available": true,
+        "source": "youtube_captions",
+        "words": 3604,
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 2
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "In the days leading up to Pwn2Own, some teams claimed to have exploits for it. How was that, and then what happened to that scrambler at the last minute? We had a great result–no one was able to hack Firefox.",
+          "at_s": 68,
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=68s"
+        },
+        {
+          "text": "What are the memory security features or other risk models, etc.? So the initial version basically takes this list of files with ratings and some idea of ​​the history, like how many times have you run it? And in a very simple model, they just say: here are the next 50 goals that are important to launch .",
+          "at_s": 231,
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=231s"
+        },
+        {
+          "text": "But we didn't get burned by this problem of, you know, a markdown file that explains what's wrong with a feature, and then an engineer spends an hour reading it, gets to 80% and realizes it's wrong. This was not a problem in our system because of these checks.",
+          "at_s": 455,
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=455s"
+        },
+        {
+          "text": "So one of the things that we both intentionally tested in our environment, but also just saw happen with more powerful cyber models like GPT- 6 Cyber, is that it detects the same error as before, but actually has high-level security signals.",
+          "at_s": 700,
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=700s"
+        },
+        {
+          "text": "This has recently proven very effective, where we could take, say, every security bug we fixed in 2025. Try to find things that look something like this. Right? And could it be that this is close to the code ? Is this throughout the code? But it's something like a similar pattern that has been picked up by the ages.",
+          "at_s": 843,
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=843s"
+        },
+        {
+          "text": "Yes, we now have about an 8x increase from 2025 to 2026 for both detection and, importantly, remediation. So, you described your overall, uh, agent security pipeline, which is, uh, super cool. You also described an agent-based vulnerability desktop that a security engineer can use. I'm wondering if you could show us a little bit of what it looks like?",
+          "at_s": 1016,
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=1016s"
+        }
+      ],
       "description": ""
     },
     {
@@ -415,13 +607,44 @@
       "first_seen_at": "2026-11-13T16:42:00Z",
       "duration_s": 2767,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-13T23:50:00Z",
-        "attempts": 2
+        "available": true,
+        "source": "youtube_captions",
+        "words": 7799,
+        "checked_at": "2026-11-15T09:51:00Z",
+        "attempts": 3
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "This could just be a bug in your API, right? They can find and exploit these zero-days in your code, right? And, in fact, launch an entire attack that would normally take the best attackers weeks or months to complete in about 20 minutes. This is what we see now. So, how far behind are open source models?",
+          "at_s": 291,
+          "url": "https://www.youtube.com/watch?v=PbD9pVXxsYM&t=291s"
+        },
+        {
+          "text": "They say it's about 70% of the internet or something? Yes. Yes. That's right. That's right. So, you know, the impact is that almost 100% of our customers had PHP running, right? So we saw a significant drop very quickly . So now customers, I wouldn't say they've automated patching yet, but they're very aware of the importance of patching.",
+          "at_s": 453,
+          "url": "https://www.youtube.com/watch?v=PbD9pVXxsYM&t=453s"
+        },
+        {
+          "text": "The internal vulnerability team that we created, basically also for the Wheels product, we created what we call Atlas, which is the vulnerability detection engine, right? So we use this all the time with different models because each model has its own unique capabilities from OpenAI , Google, or Carbon. Each of them has its own capabilities.",
+          "at_s": 797,
+          "url": "https://www.youtube.com/watch?v=PbD9pVXxsYM&t=797s"
+        },
+        {
+          "text": "And that's why many Fortune 500, Global 2000 companies still face many cloud security challenges. I wonder if, for the first part of this question, let's just put AI aside. Can you talk about the state of cloud adoption and security in 2026?",
+          "at_s": 1178,
+          "url": "https://www.youtube.com/watch?v=PbD9pVXxsYM&t=1178s"
+        },
+        {
+          "text": "Over 50% of Fortune 100 companies, as well as cutting-edge startups, are in your customer base . How many people actually do this? So most customers are already using Red Agent. I think that's not enough in the industry. I think everyone should do this right now.",
+          "at_s": 1623,
+          "url": "https://www.youtube.com/watch?v=PbD9pVXxsYM&t=1623s"
+        },
+        {
+          "text": "I...I...I'll start with my own prediction, which is that we'll go back to the 90s and 2000s again . Completely remote, er, unauthenticated, full ODAS will keep popping up. Now we will see violations again all the time. It will now look very different than the last 15 years of security.",
+          "at_s": 2405,
+          "url": "https://www.youtube.com/watch?v=PbD9pVXxsYM&t=2405s"
+        }
+      ],
       "description": ""
     },
     {
