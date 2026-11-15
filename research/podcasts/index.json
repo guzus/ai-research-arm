@@ -1,9 +1,37 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-14T20:54:00Z",
+  "updated_at": "2026-11-15T02:05:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "nvidia:ha-gDrDm8Es",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "From AI Factories to Intelligent Cities",
+      "url": "https://www.youtube.com/watch?v=ha-gDrDm8Es",
+      "video_id": "ha-gDrDm8Es",
+      "audio_url": null,
+      "published_at": "2026-11-14T17:35:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-15T02:05:00Z",
+      "duration_s": 1114,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-15T02:05:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "20vc:UZ8eYaAf08M",
       "show_id": "20vc",
@@ -26,8 +54,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-14T20:54:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-15T02:05:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": ""
@@ -53,8 +81,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-14T20:54:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-15T02:05:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": ""
@@ -80,8 +108,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-14T20:54:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-15T02:05:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": ""
