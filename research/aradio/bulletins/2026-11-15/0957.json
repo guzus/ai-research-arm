@@ -1,0 +1,247 @@
+{
+  "schema": 1,
+  "id": "2026-11-15-0957",
+  "aired_at": "2026-11-15T09:57:00Z",
+  "headline": "Huang case gets 240k-chip numbers; Fractile $720M Series C; Mozilla 8x at Firefox; Claude 26% of Anthropic R&D",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's just before ten UTC on Sunday, November fifteenth, and this is ARA AI News. Transcripts just filled in the Huang spy case, Fractile's chip raise, and Mozilla's Firefox cyber pipeline."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Big Technology's hour-long special, the hosts now treat Jensen Huang as out, and they put numbers on the MegaSpeed case. They said Alice Wang reportedly helped move seven point five billion dollars of Nvidia processors and smuggle two hundred and forty thousand banned H one hundred and H two hundred chips to China."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "They also said Singapore was twenty-two percent of Nvidia's revenue and then vanished from the geographic tables after MegaSpeed hit an internal blacklist. They claimed DeepSeek, Moonshot, MiniMax, and Ant Group trained latest models on banned Blackwell chips."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That Blackwell claim is a podcast forensic argument, not a company filing, and there is still no Nvidia filing and no named successor. The hosts said Elizabeth Warren argued that resigning does not end the investigations."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Elon Musk replied that hiring Huang would be an honor. Until the company files, this remains an allegation storm with no official successor."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On the chip buildout, Twenty VC's interview with Fractile founder Walter Goodwin is no longer just a seven billion dollar headline. He said the company just closed a seven hundred and twenty million dollar Series C from Thrive, Founders Fund, Lightspeed, and Radpoint, at that seven billion dollar valuation."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Goodwin said Fractile will never monetize internal models and is competing at the chip, because memory bandwidth, not math, is what caps tokens per second. He also talked as if Nvidia has already bought Groq and will sit Rubin chips next to Groq silicon."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That Groq purchase is his account, not a filing we can read. On Twimmel, Qualcomm is described as running Modular's Max across Nvidia, AMD, Google TPUs, Amazon, Qualcomm, and Apple chips."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Cyber got two spoken sources. On OpenAI's Mozilla how-to, the speakers said no one hacked Firefox at Pone to Own, and that detection and remediation are up about eight times from twenty twenty-five to twenty twenty-six with a GPT six Cyber agent pipeline."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Andreessen Horowitz, a Wiz guest said AI attackers can now run a full chain in about twenty minutes, while Linux distribution patches still take weeks. The stolen-keys story is not slowing down."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Dwarkesh's latest is a new thread. He said Anthropic reported Claude now leads twenty-six percent of its own research and development, up from one percent in February, with a twenty-five percent chance Ilya-level work waits until twenty thirty-two."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "He also cited a lab called Magic claiming a DeepSeek V four Pro-level model at half of original GPT three compute, about five hundred thousand dollars today. If labs are already handing a quarter of research and development to their own models, that is the avalanche he named."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "One more on the funding race. Those same Big Technology hosts said they expect Anthropic to go public next week, with Nvidia still slated as a ten billion dollar anchor."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch for an Nvidia statement that names a successor, and watch November twentieth for Anthropic price leaks."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's just before ten UTC on Sunday, November fifteenth, and this is ARA AI News. Transcripts just filled in the Huang spy case, Fractile's chip raise, and Mozilla's Firefox cyber pipeline.",
+    "Speaker 2: [high_energy] On Big Technology's hour-long special, the hosts now treat Jensen Huang as out, and they put numbers on the MegaSpeed case. They said Alice Wang reportedly helped move [emphasis]seven point five billion dollars[/emphasis] of Nvidia processors and smuggle [emphasis]two hundred and forty thousand[/emphasis] banned H one hundred and H two hundred chips to China.",
+    "Speaker 1: They also said Singapore was [emphasis]twenty-two percent[/emphasis] of Nvidia's revenue and then vanished from the geographic tables after MegaSpeed hit an internal blacklist. They claimed DeepSeek, Moonshot, MiniMax, and Ant Group trained latest models on banned Blackwell chips.",
+    "Speaker 2: That Blackwell claim is a podcast forensic argument, not a company filing, and there is still no Nvidia filing and no named successor. The hosts said Elizabeth Warren argued that resigning does not end the investigations.",
+    "Speaker 1: Elon Musk replied that hiring Huang would be an honor. Until the company files, this remains an allegation storm with no official successor.",
+    "Speaker 2: [transition] On the chip buildout, Twenty VC's interview with Fractile founder Walter Goodwin is no longer just a seven billion dollar headline. He said the company just closed a seven hundred and twenty million dollar Series C from Thrive, Founders Fund, Lightspeed, and Radpoint, at that seven billion dollar valuation.",
+    "Speaker 1: Goodwin said Fractile will never monetize internal models and is competing at the chip, because memory bandwidth, not math, is what caps tokens per second. He also talked as if Nvidia has already bought Groq and will sit Rubin chips next to Groq silicon.",
+    "Speaker 2: That Groq purchase is his account, not a filing we can read. On Twimmel, Qualcomm is described as running Modular's Max across Nvidia, AMD, Google TPUs, Amazon, Qualcomm, and Apple chips.",
+    "Speaker 1: [transition] Cyber got two spoken sources. On OpenAI's Mozilla how-to, the speakers said no one hacked Firefox at Pone to Own, and that detection and remediation are up about eight times from twenty twenty-five to twenty twenty-six with a GPT six Cyber agent pipeline.",
+    "Speaker 2: On Andreessen Horowitz, a Wiz guest said AI attackers can now run a full chain in about twenty minutes, while Linux distribution patches still take weeks. The stolen-keys story is not slowing down.",
+    "Speaker 1: [transition] Dwarkesh's latest is a new thread. He said Anthropic reported Claude now leads twenty-six percent of its own research and development, up from one percent in February, with a twenty-five percent chance Ilya-level work waits until twenty thirty-two.",
+    "Speaker 2: He also cited a lab called Magic claiming a DeepSeek V four Pro-level model at half of original GPT three compute, about five hundred thousand dollars today. If labs are already handing a quarter of research and development to their own models, that is the avalanche he named.",
+    "Speaker 1: One more on the funding race. Those same Big Technology hosts said they expect Anthropic to go public next week, with Nvidia still slated as a ten billion dollar anchor.",
+    "Speaker 2: Watch for an Nvidia statement that names a successor, and watch November twentieth for Anthropic price leaks.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "nvidia-jensen-huang-spy-allegations",
+    "hyperscaler-capex-and-chip-selloff",
+    "ai-cyber-risk-and-key-theft",
+    "labs-automating-ai-research",
+    "anthropic-ipo-and-ai-funding"
+  ],
+  "threads": [
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating"
+    },
+    {
+      "slug": "labs-automating-ai-research",
+      "title": "Frontier labs automating their own AI research",
+      "status": "developing"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=438s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=1376s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M",
+      "kind": "podcast",
+      "label": "20VC"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A",
+      "kind": "podcast",
+      "label": "The TWIML AI Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=68s",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=1016s",
+      "kind": "video",
+      "label": "OpenAI"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=PbD9pVXxsYM",
+      "kind": "podcast",
+      "label": "a16z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=111s",
+      "kind": "podcast",
+      "label": "Dwarkesh Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y",
+      "kind": "podcast",
+      "label": "Dwarkesh Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=3051s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "nvidia-jensen-huang-spy-allegations"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    },
+    {
+      "op": "update",
+      "slug": "ai-cyber-risk-and-key-theft"
+    },
+    {
+      "op": "create",
+      "slug": "labs-automating-ai-research"
+    },
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    }
+  ],
+  "warnings": [
+    "ops[3] create labs-automating-ai-research evidence[1]: quote replaced by the source's exact wording"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-15-0957.mp3",
+    "bytes": 1254045,
+    "duration_s": 208.9,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 72.6,
+        "lines": [
+          0,
+          4
+        ]
+      },
+      {
+        "start_s": 74.05,
+        "end_s": 120.29,
+        "lines": [
+          5,
+          7
+        ]
+      },
+      {
+        "start_s": 121.74,
+        "end_s": 149.9,
+        "lines": [
+          8,
+          9
+        ]
+      },
+      {
+        "start_s": 151.35,
+        "end_s": 202.35,
+        "lines": [
+          10,
+          14
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 8,
+    "kinds": {
+      "podcast": 5,
+      "video": 3
+    }
+  }
+}

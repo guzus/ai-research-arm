@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-14T22:17:00Z",
+  "updated_at": "2026-11-15T09:57:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -116,6 +116,27 @@
       "at": "2026-10-31T08:53:00Z",
       "change": "Alphabet, Microsoft, Amazon and Vertiv report huge AI-driven growth; Thursday's chip rout and Amazon cash-flow worries cloud the picture.",
       "archived_at": "2026-11-14T22:17:00Z"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-10-31T14:48:00Z",
+      "change": "Alphabet earnings call detail: capex guidance unchanged, free cash flow negative, outside compute capacity added.",
+      "archived_at": "2026-11-15T09:57:00Z"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-10-31T08:53:00Z",
+      "change": "Wiz-reported wave of AI platform breaches, Epoch's GLM-5.3 Firefox exploit study and Anthropic's monitor-evasion data enter the board.",
+      "archived_at": "2026-11-15T09:57:00Z"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-11-01T15:32:00Z",
+      "change": "Latent Space episode frames the IPO as about two weeks away at roughly $2T.",
+      "archived_at": "2026-11-15T09:57:00Z"
     }
   ]
 }
