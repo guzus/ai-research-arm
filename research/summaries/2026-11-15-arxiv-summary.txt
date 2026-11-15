@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-15
+
+TOP 5 PAPERS:
+• Bait - $20 harmful agentic RL strips safety; reward-probe defense holds
+• DRAMA - training-free 18.67× speedup of multimodal dLLMs (NeurIPS)
+• StateAlign - state-contrastive tool RL: BFCL 45.5→55.2, less hallucination
+• WorldDraft - code-built 4D worlds: video renderers leak the wrong source
+• JudgeMix - Apple: judge-gated mixed rollouts, +10 pass@1 agent SFT
+
+CATEGORIES: LM/NLP 8, CV/Multimodal 8, Agents/Reasoning 9, Safety 8, Other 8
+
+Full report on GitHub.
