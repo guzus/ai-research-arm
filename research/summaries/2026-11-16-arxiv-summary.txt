@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-16
+
+TOP 5 PAPERS:
+• Robot-use RL - 27B open-weight trained in sim uses real robots; LIBERO 1.6→74.4%
+• Soteria - NeurIPS Oral: verified plans, 1.7× success, zero policy violations
+• V-JEPA-LM - video LMs that read dynamics; 4B 72.1 vs best open 8B 64.8
+• AnisoFlow - learnable flow targets; ImageNet FID 1.90→1.55, no arch change
+• ModHarness-RL - harnesses as evolving programs for agentic RL
+
+CATEGORIES: LM/NLP 8, CV/Multimodal 8, Agents/Reasoning 9, Safety 8, Other 8
+
+Full report on GitHub.
