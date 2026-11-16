@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-11-16 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] _google_ai.xml is a stale 2024 Blogger Atom feed; no new official Google AI Blog entries._
+• [Hacker News] All AI-generated code should be Open Source: Overnight jump — now the largest AI-by-points story an…
+• [Reddit] ICLR 2027 Reviews Discussion [D] — https://www.reddit.com/r/MachineLearning/comments/1xo6yzo/iclr_2…
+• [Expert Blogs] Understanding Positional Embeddings in Modern LLMs
+• [Bluesky] @natolambert.bsky.social: "The open model world faces two main challenges in a post-Jensen world: 1…
+
+SOURCES: 7/8 lanes had data; missing: Twitter/X
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
