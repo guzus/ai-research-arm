@@ -1,0 +1,173 @@
+{
+  "schema": 1,
+  "id": "2026-11-16-0718",
+  "aired_at": "2026-11-16T07:18:00Z",
+  "headline": "Siri AI called fully on, with a China-only variant; Apple AI spend hits margins; Watch listening beta vs Amazon Bee",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's twenty past seven UTC on Monday, November sixteenth. This is ARA AI News. Overnight the live picture moved to Apple, where hosts on Big Technology said Siri AI is now fully operational and the company's own AI work is starting to hit its margins."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They treated that as more than a feature drop. Apple, they said, has introduced a new Siri to developers that can call third-party apps, and has partnered on a China-only Siri that the West and the European Union will not get for political reasons."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That China split is the part that will last. The hosts said the Chinese Siri will be very different from the one people in the West know, and that politics, not product taste, is why Europe does not get the same system."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They also said Apple is spending to build AI in-house, including a project they called Spyglass, and that the spend is starting to show up in the numbers. Two quarters ago, they said, total gross margin was over fifty percent."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Now those margins are declining for the first time in a long time. The hosts said Apple may still be the only five trillion dollar company, and they called that a gathering storm, not a victory lap."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The same pressure is in components. Apple used to tell memory makers it would take chips at a set price and would not sign long-term deals, and the hosts said that power is gone."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is the AI memory crunch landing on a phone company, not only on the clouds. On devices, they spent a long stretch on Amazon's Bee, a seventy-five dollar bracelet that listens in the background, writes short summaries of conversations, and pulls out tasks."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They liked the backup memory use, and they still thought people would hate the social side. They do not think that product is accepted in twenty twenty-six, and maybe not until twenty thirty, when norms may have moved."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Apple is already there. The hosts said a feature that does the same job as Bee, listening in the background, is in beta on the Apple Watch."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Their close was about who owns the interface. Apple, they said, is telling developers that apps still sit at the heart of the system, and that Siri is how you call them, not a replacement for them."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "One older storyline is now settled. DeepMind's AlphaGenome two, the cell-type genome model with a free public interface and a no-code Atlas, has been absorbed, and it is no longer a live thread while the paper is pending."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Nothing else on the board moved with this inbox. Yesterday's leads on Anthropic, Huang, Fractile, and Mozilla stay as they were."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "What to watch next is a first-party Apple page that names Siri AI and the China partner, and whether Spyglass shows up on a results call. This week still holds the Anthropic filing window, including whether Nvidia is a ten billion dollar anchor."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "And we still do not have an Nvidia filing on Huang, or a named successor. That is the document that would turn those podcast claims into a company fact."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's twenty past seven UTC on Monday, November sixteenth. This is ARA AI News. Overnight the live picture moved to Apple, where hosts on Big Technology said Siri AI is now fully operational and the company's own AI work is starting to hit its margins.",
+    "Speaker 2: [high_energy] They treated that as more than a feature drop. Apple, they said, has introduced a new Siri to developers that can call third-party apps, and has partnered on a China-only Siri that the West and the European Union will not get for political reasons.",
+    "Speaker 1: That China split is the part that will last. The hosts said the Chinese Siri will be very different from the one people in the West know, and that politics, not product taste, is why Europe does not get the same system.",
+    "Speaker 2: They also said Apple is spending to build AI in-house, including a project they called Spyglass, and that the spend is starting to show up in the numbers. Two quarters ago, they said, total gross margin was over [emphasis]fifty percent[/emphasis].",
+    "Speaker 1: Now those margins are declining for the first time in a long time. The hosts said Apple may still be the only [emphasis]five trillion dollar[/emphasis] company, and they called that a gathering storm, not a victory lap.",
+    "Speaker 2: The same pressure is in components. Apple used to tell memory makers it would take chips at a set price and would not sign long-term deals, and the hosts said that power is gone.",
+    "Speaker 1: That is the AI memory crunch landing on a phone company, not only on the clouds. On devices, they spent a long stretch on Amazon's Bee, a [emphasis]seventy-five dollar[/emphasis] bracelet that listens in the background, writes short summaries of conversations, and pulls out tasks.",
+    "Speaker 2: They liked the backup memory use, and they still thought people would hate the social side. They do not think that product is accepted in twenty twenty-six, and maybe not until twenty thirty, when norms may have moved.",
+    "Speaker 1: Apple is already there. The hosts said a feature that does the same job as Bee, listening in the background, is in beta on the Apple Watch.",
+    "Speaker 2: Their close was about who owns the interface. Apple, they said, is telling developers that apps still sit at the heart of the system, and that Siri is how you call them, not a replacement for them.",
+    "Speaker 1: [transition] One older storyline is now settled. DeepMind's AlphaGenome two, the cell-type genome model with a free public interface and a no-code Atlas, has been absorbed, and it is no longer a live thread while the paper is pending.",
+    "Speaker 2: Nothing else on the board moved with this inbox. Yesterday's leads on Anthropic, Huang, Fractile, and Mozilla stay as they were.",
+    "Speaker 1: What to watch next is a first-party Apple page that names Siri AI and the China partner, and whether Spyglass shows up on a results call. This week still holds the Anthropic filing window, including whether Nvidia is a ten billion dollar anchor.",
+    "Speaker 2: And we still do not have an Nvidia filing on Huang, or a named successor. That is the document that would turn those podcast claims into a company fact.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "apple-ai-and-siri",
+    "deepmind-alphagenome"
+  ],
+  "threads": [
+    {
+      "slug": "apple-ai-and-siri",
+      "title": "Apple's Siri AI, a China-only variant, and the margin squeeze",
+      "status": "developing"
+    },
+    {
+      "slug": "deepmind-alphagenome",
+      "title": "DeepMind's AlphaGenome and reading the human genome",
+      "status": "resolved"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU",
+      "kind": "podcast",
+      "label": "Big Technology Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=223s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=483s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast (Spyglass AI spend)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=1063s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast (China Siri)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=2546s",
+      "kind": "podcast",
+      "label": "Big Technology Podcast (Bee and Watch)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "create",
+      "slug": "apple-ai-and-siri"
+    },
+    {
+      "op": "resolve",
+      "slug": "deepmind-alphagenome"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-16-0718.mp3",
+    "bytes": 1104861,
+    "duration_s": 184.0,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 124.08,
+        "lines": [
+          0,
+          9
+        ]
+      },
+      {
+        "start_s": 125.53,
+        "end_s": 177.49,
+        "lines": [
+          10,
+          14
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 2,
+    "kinds": {
+      "podcast": 2
+    }
+  }
+}
