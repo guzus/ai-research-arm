@@ -1,8 +1,237 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-16T07:18:00Z",
-  "headline": "Siri AI called fully on, with a China-only variant; Apple AI spend hits margins; Watch listening beta vs Amazon Bee",
+  "updated_at": "2026-11-16T18:55:00Z",
+  "headline": "Cathedral said to reach Anthropic Slack in 12 hours; IPO markets not above $2T; Q3 growth $5.4B vs $6.9B",
   "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-16T18:55:00Z",
+      "now": "On Dwarkesh, speakers said Anthropic's third-quarter revenue grew about $5.4 billion versus $6.9 billion of second-quarter growth. On a16z, speakers said IPO prediction markets are not flying above $2 trillion and that Anthropic's IPO revenue projections are not fast-takeoff numbers. Next-week filing talk and a $10 billion Nvidia anchor still stand; Kalshi December odds had been 57%.",
+      "changed": "Dwarkesh: Anthropic Q3 revenue growth about $5.4B versus $6.9B in Q2. a16z: IPO prediction markets not above $2T; speakers say projected IPO revenue is not a fast-takeoff print.",
+      "watch": "A filing or pricing this week; whether Nvidia remains the $10B anchor; a first-party Q3 growth figure; Kalshi December IPO odds.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=5014s",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast (Anthropic Q3 growth)",
+          "at": "2026-11-16T18:07:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=352s",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-16T15:21:00Z",
+          "quote": "If you look at prediction markets for what the anthropic IPO will go for, they bounce up and down, but it's not flying above two trillion."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=3051s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-14T00:28:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4081s",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-14T02:28:00Z",
+          "quote": "The question is, what is the real price and I think the real price will be more dictated by what gets leaked between now and November 20th more than anything else."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4323s",
+          "kind": "podcast",
+          "label": "All-In Podcast (raise guess)",
+          "at": "2026-11-14T02:28:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=gCOMQPMhIL0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-12T16:04:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1446s",
+          "kind": "podcast",
+          "label": "20VC (private valuations)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1652s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-10T17:30:00Z",
+          "quote": "Over the past week, the probability that Anthropic will announce an IPO by December has fallen from nearly 90% to 57% on Kalshi, a huge shift."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-02T21:46:00Z",
+          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
+        },
+        {
+          "at": "2026-11-05T12:49:00Z",
+          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: private-side 1.4T vs 1T is options; per-share up 20-30%; allocator unworried about $80B, worried the next $100B layer is thin."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "AI Daily Brief show notes: IPO days away, pricing unclear; Claude productivity suite aimed at Microsoft. No transcript yet."
+        },
+        {
+          "at": "2026-11-14T07:03:00Z",
+          "change": "All-In: 4.2T bull case on 281B 2028 revenue; host guesses 100B raise at 1.75T; price leaks said due by November 20."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Big Technology: hosts expect Anthropic IPO next week with Nvidia as $10B anchor; circular-financing warning stands."
+        },
+        {
+          "at": "2026-11-16T18:55:00Z",
+          "change": "Dwarkesh: Q3 revenue growth about $5.4B vs $6.9B in Q2. a16z: prediction markets not above $2T; IPO revenue projections called not fast-takeoff."
+        }
+      ]
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-16T18:55:00Z",
+      "now": "On a16z, speakers cited Ramp data showing exponential token usage and flat revenue as frontier prices fall. Fractile's $720 million Series C at $7 billion, a no-model-sales stance, and a claimed Nvidia-Groq pairing still stand, as do CoreWeave's about $9 billion prepayments.",
+      "changed": "a16z: Ramp data said to show exponential token usage and flat revenue as frontier prices fall. Fractile $720M at $7B and CoreWeave ~$9B prepayments still stand.",
+      "watch": "Whether Fractile names a ship date; whether Nvidia confirms a Groq deal; CoreWeave's $9B prepayments; whether Ramp's usage-vs-revenue split holds.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=570s",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-16T15:21:00Z",
+          "quote": "And you saw exponential increases in token usage and flat revenue numbers, right?"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-14T14:58:00Z",
+          "quote": "The company just raised $720 million in a Series C round from Thrive, Founders Fund , Lightspeed and Radpoint, valuing it at $7 billion."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A",
+          "kind": "podcast",
+          "label": "The TWIML AI Podcast",
+          "at": "2026-11-13T16:37:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1287s",
+          "kind": "podcast",
+          "label": "20VC (OpenAI demand test)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1805s",
+          "kind": "podcast",
+          "label": "20VC (token pricing)",
+          "at": "2026-11-12T20:22:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-11T15:32:00Z",
+          "quote": "If you look at the revenue ramp of Anthropic, OpenAI are definitely experiencing growth rates that were far superior to what we saw at the time."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=675s",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-11T15:32:00Z",
+          "quote": "But the problem is right now that the demand is so high that even if the watt to dollar conversion is low, you're going to still use the asset."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=2287s",
+          "kind": "podcast",
+          "label": "a16z (TPU supply and rack systems)",
+          "at": "2026-11-11T15:32:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
+        },
+        {
+          "at": "2026-11-10T21:25:00Z",
+          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
+        },
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
+        },
+        {
+          "at": "2026-11-14T22:17:00Z",
+          "change": "20VC: Fractile founder Walter Goodwin on a $7B AI-chip Nvidia challenger; titles only, no transcript yet."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "20VC transcript: Fractile $720M Series C at $7B; no model sales; memory-bandwidth bottleneck; Nvidia-Groq pairing claimed."
+        },
+        {
+          "at": "2026-11-16T18:55:00Z",
+          "change": "a16z: Ramp data cited for exponential token usage and flat revenue from frontier price competition."
+        }
+      ]
+    },
     {
       "slug": "ai-cyber-risk-and-key-theft",
       "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
@@ -116,234 +345,6 @@
         {
           "at": "2026-11-15T09:57:00Z",
           "change": "Mozilla transcript: Firefox unbeaten at Pwn2Own, ~8x detect-and-fix 2025-2026. Wiz on a16z: AI attacks in ~20 minutes vs weeks for distro patches."
-        }
-      ]
-    },
-    {
-      "slug": "anthropic-ipo-and-ai-funding",
-      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-15T09:57:00Z",
-      "now": "On Big Technology, hosts said they expect a successful Anthropic IPO next week and that Nvidia is set to be a $10 billion anchor investor, while warning about circular AI financing. All-In's 4.2 trillion bull case on 281 billion 2028 revenue, a host guess of 100 billion raised at 1.75 trillion, and leaks before November 20 still stand. Kalshi December odds had fallen to 57%.",
-      "changed": "Big Technology hosts say Anthropic IPOs next week with Nvidia as a $10 billion anchor, and they still flag circular financing.",
-      "watch": "A filing or pricing this week; whether Nvidia remains the $10B anchor; leaks before November 20; Kalshi December IPO odds.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=3051s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-14T00:28:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4081s",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-11-14T02:28:00Z",
-          "quote": "The question is, what is the real price and I think the real price will be more dictated by what gets leaked between now and November 20th more than anything else."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4323s",
-          "kind": "podcast",
-          "label": "All-In Podcast (raise guess)",
-          "at": "2026-11-14T02:28:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=gCOMQPMhIL0",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-12T16:04:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1446s",
-          "kind": "podcast",
-          "label": "20VC (private valuations)",
-          "at": "2026-11-12T20:22:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1652s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-10T17:30:00Z",
-          "quote": "Over the past week, the probability that Anthropic will announce an IPO by December has fallen from nearly 90% to 57% on Kalshi, a huge shift."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=1517s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (WSJ valuation)",
-          "at": "2026-11-10T17:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY",
-          "kind": "podcast",
-          "label": "The Cognitive Revolution",
-          "at": "2026-11-07T20:24:00Z",
-          "quote": "The new language, Anthropic says it may imminently meet its own threshold for dramatically accelerated progress attributable to AI."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-01T23:55:00Z",
-          "change": "Big Technology transcript adds S-1 detail: revenue growth, customer diversification, compute-efficiency chart and compute risk factor."
-        },
-        {
-          "at": "2026-11-02T21:46:00Z",
-          "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
-        },
-        {
-          "at": "2026-11-05T12:49:00Z",
-          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
-        },
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: private-side 1.4T vs 1T is options; per-share up 20-30%; allocator unworried about $80B, worried the next $100B layer is thin."
-        },
-        {
-          "at": "2026-11-13T03:38:00Z",
-          "change": "AI Daily Brief show notes: IPO days away, pricing unclear; Claude productivity suite aimed at Microsoft. No transcript yet."
-        },
-        {
-          "at": "2026-11-14T07:03:00Z",
-          "change": "All-In: 4.2T bull case on 281B 2028 revenue; host guesses 100B raise at 1.75T; price leaks said due by November 20."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "Big Technology: hosts expect Anthropic IPO next week with Nvidia as $10B anchor; circular-financing warning stands."
-        }
-      ]
-    },
-    {
-      "slug": "hyperscaler-capex-and-chip-selloff",
-      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-15T09:57:00Z",
-      "now": "On 20VC, Fractile founder Walter Goodwin said a $720 million Series C from Thrive, Founders Fund, Lightspeed and Radpoint values the company at $7 billion. He said they will not monetize internal models, that memory bandwidth caps tokens per second, and he described Nvidia pairing Rubin GPUs with Groq chips after acquiring Groq. CoreWeave's ~$9B prepayments still stand.",
-      "changed": "Fractile confirms $720M Series C at $7B. Goodwin says they will not sell models and talks as if Nvidia already bought Groq. TWIML: Qualcomm's Max claimed on Nvidia, AMD, TPU, AWS, Qualcomm and Apple GPUs.",
-      "watch": "Whether Fractile names a ship date; whether Nvidia confirms a Groq deal; CoreWeave's $9B prepayments; TPU supply.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-14T14:58:00Z",
-          "quote": "The company just raised $720 million in a Series C round from Thrive, Founders Fund , Lightspeed and Radpoint, valuing it at $7 billion."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A",
-          "kind": "podcast",
-          "label": "The TWIML AI Podcast",
-          "at": "2026-11-13T16:37:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1287s",
-          "kind": "podcast",
-          "label": "20VC (OpenAI demand test)",
-          "at": "2026-11-12T20:22:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1805s",
-          "kind": "podcast",
-          "label": "20VC (token pricing)",
-          "at": "2026-11-12T20:22:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU",
-          "kind": "podcast",
-          "label": "a16z",
-          "at": "2026-11-11T15:32:00Z",
-          "quote": "If you look at the revenue ramp of Anthropic, OpenAI are definitely experiencing growth rates that were far superior to what we saw at the time."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=675s",
-          "kind": "podcast",
-          "label": "a16z",
-          "at": "2026-11-11T15:32:00Z",
-          "quote": "But the problem is right now that the demand is so high that even if the watt to dollar conversion is low, you're going to still use the asset."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=LI3lxzHfRrU&t=2287s",
-          "kind": "podcast",
-          "label": "a16z (TPU supply and rack systems)",
-          "at": "2026-11-11T15:32:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=TGDVsntuFd0",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-10T15:30:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T18:49:00Z",
-          "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped."
-        },
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
-        },
-        {
-          "at": "2026-11-10T21:25:00Z",
-          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
-        },
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
-        },
-        {
-          "at": "2026-11-14T22:17:00Z",
-          "change": "20VC: Fractile founder Walter Goodwin on a $7B AI-chip Nvidia challenger; titles only, no transcript yet."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "20VC transcript: Fractile $720M Series C at $7B; no model sales; memory-bandwidth bottleneck; Nvidia-Groq pairing claimed."
         }
       ]
     },
@@ -527,6 +528,81 @@
       ]
     },
     {
+      "slug": "lab-weight-security-vs-china",
+      "title": "Frontier labs' weight security versus China",
+      "status": "escalating",
+      "importance": 4,
+      "first_seen": "2026-11-16T18:55:00Z",
+      "updated_at": "2026-11-16T18:55:00Z",
+      "now": "On Dwarkesh, speakers said the cybersecurity startup Cathedral got access to all of Anthropic's Slack in 12 hours, where algorithmic secrets are discussed, and that the US lead over China is 12 hours, not six to twelve months. The same conversation put takeover-scale risk nearer 10% than 1% over the next year if developers do not slow down for precautions.",
+      "changed": "Dwarkesh: Cathedral said to have reached Anthropic Slack in 12 hours; speakers put the US-China lead at 12 hours, not months, and next-year catastrophe risk nearer 10% than 1%.",
+      "watch": "Whether Anthropic or Cathedral first-parties the Slack access; any lab note on weight or Slack security; whether the 12-hour China-lead claim is backed by a document.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=2319s",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-16T18:07:00Z",
+          "quote": "Then recently it was also announced that Cathedral, which is another random cybersecurity startup, within 12 hours was able to get access to all of Anthropic’s Slack, where, of course, these algorithmic secrets are discussed."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-16T18:07:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-16T18:55:00Z",
+          "change": "Created from Dwarkesh: Cathedral said to hit Anthropic Slack in 12 hours; US-China lead called 12 hours; next-year risk nearer 10% than 1%."
+        }
+      ]
+    },
+    {
+      "slug": "labs-automating-ai-research",
+      "title": "Frontier labs automating their own AI research",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-11-15T09:57:00Z",
+      "updated_at": "2026-11-16T18:55:00Z",
+      "now": "On Dwarkesh, speakers said Anthropic and METR just reported the net effect of AI systems on Anthropic's rate of progress, and that on METR's index Opus 5.5 is not far below Anthropic's latest internal model, called Model 4. Claude leading 26% of Anthropic R&D, up from 1% in February, and a 25% chance Ilya-level work waits until 2032, still stand.",
+      "changed": "Dwarkesh: Anthropic and METR said to have reported AI's net effect on Anthropic's progress; Opus 5.5 described as not far below internal Model 4.",
+      "watch": "Whether METR publishes the net-effect figure; whether Anthropic first-parties the 26% R&D share; any lab paper on automated research.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast (METR, Opus 5.5 vs Model 4)",
+          "at": "2026-11-16T18:07:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=111s",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-13T18:28:00Z",
+          "quote": "They reported that Claude now leads 26% of AI research and development at Anthropic, up from 1% back in February."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-13T18:28:00Z",
+          "quote": "That's why I believe there's a 25% chance that we'll automate the work of top Ilya-level researchers by 2032 ."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Created from Dwarkesh: Claude 26% of Anthropic R&D from 1% in Feb; 25% chance Ilya-level automation waits until 2032; Magic half-GPT-3 compute claim."
+        },
+        {
+          "at": "2026-11-16T18:55:00Z",
+          "change": "Dwarkesh: Anthropic and METR on AI's net effect on Anthropic's progress; Opus 5.5 said not far below internal Model 4."
+        }
+      ]
+    },
+    {
       "slug": "apple-ai-and-siri",
       "title": "Apple's Siri AI, a China-only variant, and the margin squeeze",
       "status": "developing",
@@ -574,39 +650,6 @@
         {
           "at": "2026-11-16T07:18:00Z",
           "change": "Created from Big Technology: Siri AI said fully on; China-only Siri; developer third-party apps; Spyglass hitting margins; Watch listening beta vs Amazon Bee."
-        }
-      ]
-    },
-    {
-      "slug": "labs-automating-ai-research",
-      "title": "Frontier labs automating their own AI research",
-      "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-11-15T09:57:00Z",
-      "updated_at": "2026-11-15T09:57:00Z",
-      "now": "On Dwarkesh, the host said Anthropic reported Claude now leads 26% of its AI research and development, up from 1% in February. He put about 80% of a frontier lab's algorithmic progress on its top 50 researchers, and a 25% chance Ilya-level research work is not automated until 2032. He cited AI Lab Magic claiming a DeepSeek V4 Pro-level model at half of original GPT-3 compute, about $500,000 today.",
-      "changed": "Dwarkesh transcript: Claude leads 26% of Anthropic R&D, up from 1% in February; 25% chance Ilya-level automation waits until 2032.",
-      "watch": "Whether Anthropic first-parties the 26% R&D share; Magic's claimed DeepSeek V4 Pro match at half GPT-3 compute; any lab paper on automated research.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=111s",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast",
-          "at": "2026-11-13T18:28:00Z",
-          "quote": "They reported that Claude now leads 26% of AI research and development at Anthropic, up from 1% back in February."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast",
-          "at": "2026-11-13T18:28:00Z",
-          "quote": "That's why I believe there's a 25% chance that we'll automate the work of top Ilya-level researchers by 2032 ."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "Created from Dwarkesh: Claude 26% of Anthropic R&D from 1% in Feb; 25% chance Ilya-level automation waits until 2032; Magic half-GPT-3 compute claim."
         }
       ]
     },
@@ -708,51 +751,6 @@
       ]
     },
     {
-      "slug": "ai-drug-discovery",
-      "title": "AI drug discovery at Isomorphic Labs and new wet labs",
-      "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-11-12T18:39:00Z",
-      "updated_at": "2026-11-12T18:39:00Z",
-      "now": "On No Priors, Isomorphic Labs president Max Jaderberg said they build an AI drug-design system in-house and do not sell or license the model. The conversation put a typical drug at about $1.5 billion, early mouse work about $50 million over two to three years, and rat toxicity models about 30% predictive in humans. The show noted Anthropic's announced San Francisco wet lab.",
-      "changed": "No Priors: Isomorphic's president says they design drugs in-house and do not license the model; ~$1.5B per drug; rat toxicity ~30% predictive; Anthropic wet lab noted.",
-      "watch": "Whether Isomorphic names a clinical candidate; a first-party Anthropic wet-lab description; whether the 30% rat-to-human toxicity figure is sourced beyond this interview.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE",
-          "kind": "podcast",
-          "label": "No Priors",
-          "at": "2026-11-12T11:04:00Z",
-          "quote": "We are developing an AI-based drug design system ourselves and, in fact, we do not sell this model."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1289s",
-          "kind": "podcast",
-          "label": "No Priors",
-          "at": "2026-11-12T11:04:00Z",
-          "quote": "I think it depends on the study, but for rats it's about 30% predictive of clinical toxicity in humans."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1040s",
-          "kind": "podcast",
-          "label": "No Priors (drug cost breakdown)",
-          "at": "2026-11-12T11:04:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=360s",
-          "kind": "podcast",
-          "label": "No Priors (industry cost and time)",
-          "at": "2026-11-12T11:04:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-12T18:39:00Z",
-          "change": "Created from No Priors: Isomorphic builds drugs in-house, no model license; ~$1.5B per drug; rat toxicity ~30% predictive; Anthropic SF wet lab noted."
-        }
-      ]
-    },
-    {
       "slug": "ai-math-and-physics-discovery-claims",
       "title": "Labs claim AI-made math and physics discoveries; experts hold back",
       "status": "developing",
@@ -828,6 +826,55 @@
         {
           "at": "2026-11-11T09:54:00Z",
           "change": "Reopened: DevDay architecture talk claims a Navier-Stokes/unforced-Euler result from 10,000 agents, 2.7M messages, ~130B output tokens."
+        }
+      ]
+    },
+    {
+      "slug": "ai-drug-discovery",
+      "title": "AI drug discovery at Isomorphic Labs and new wet labs",
+      "status": "resolved",
+      "importance": 4,
+      "first_seen": "2026-11-12T18:39:00Z",
+      "updated_at": "2026-11-16T18:55:00Z",
+      "now": "On No Priors, Isomorphic Labs president Max Jaderberg said they build an AI drug-design system in-house and do not sell or license the model. The conversation put a typical drug at about $1.5 billion, early mouse work about $50 million over two to three years, and rat toxicity models about 30% predictive in humans. The show noted Anthropic's announced San Francisco wet lab.",
+      "changed": "No new Isomorphic or wet-lab facts since November twelfth; the in-house design interview is absorbed.",
+      "watch": "Whether Isomorphic names a clinical candidate; a first-party Anthropic wet-lab description; whether the 30% rat-to-human toxicity figure is sourced beyond this interview.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE",
+          "kind": "podcast",
+          "label": "No Priors",
+          "at": "2026-11-12T11:04:00Z",
+          "quote": "We are developing an AI-based drug design system ourselves and, in fact, we do not sell this model."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1289s",
+          "kind": "podcast",
+          "label": "No Priors",
+          "at": "2026-11-12T11:04:00Z",
+          "quote": "I think it depends on the study, but for rats it's about 30% predictive of clinical toxicity in humans."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1040s",
+          "kind": "podcast",
+          "label": "No Priors (drug cost breakdown)",
+          "at": "2026-11-12T11:04:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=360s",
+          "kind": "podcast",
+          "label": "No Priors (industry cost and time)",
+          "at": "2026-11-12T11:04:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-12T18:39:00Z",
+          "change": "Created from No Priors: Isomorphic builds drugs in-house, no model license; ~$1.5B per drug; rat toxicity ~30% predictive; Anthropic SF wet lab noted."
+        },
+        {
+          "at": "2026-11-16T18:55:00Z",
+          "change": "Resolved after four quiet days; Isomorphic in-house design and the ~$1.5B-per-drug figures remain the last facts."
         }
       ]
     },

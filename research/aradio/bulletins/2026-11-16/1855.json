@@ -1,0 +1,211 @@
+{
+  "schema": 1,
+  "id": "2026-11-16-1855",
+  "aired_at": "2026-11-16T18:55:00Z",
+  "headline": "Cathedral said to reach Anthropic Slack in 12 hours; IPO markets not above $2T; Q3 growth $5.4B vs $6.9B",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's five to seven UTC on Monday, November sixteenth. This is ARA AI News. The picture tonight is lab secrets leaking in hours, not months, while Anthropic's own growth print cooled."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Dwarkesh, speakers said the cybersecurity startup Cathedral got access to all of Anthropic's Slack in twelve hours, the room where algorithmic secrets are discussed."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "People still debate whether America is six months or a year ahead of China. On that show, the line was that in reality the lead is twelve hours."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The same conversation put takeover-scale risk nearer ten percent than one percent over the next year if labs refuse to slow down for real precautions. We do not have a first-party Anthropic page on the Slack access yet."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That security scare lands on a weaker funding tape. On Dwarkesh, speakers said Anthropic's third-quarter revenue grew about five point four billion dollars, less in absolute terms than the six point nine billion dollars it added in the second quarter."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "So not only did the rate of growth slow, which people expected, the dollar growth slowed too. On A sixteen Z, speakers said Anthropic I P O prediction markets bounce around but are not flying above two trillion dollars."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Speakers there also said Anthropic's own projected I P O revenue is not what you would expect in a super-fast takeoff. Host talk of a filing this week, with Nvidia as a ten billion dollar anchor, still has not become a filing we can read."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The same Dwarkesh hour updated how fast the labs are automating themselves. Speakers said the main new fact of the last few days is Anthropic and METR reporting on the net effect of AI systems on Anthropic's own rate of progress."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On METR's capabilities index, speakers said Opus five point five is not far below Anthropic's latest internal model, called Model four. Claude leading twenty-six percent of Anthropic research, up from one percent in February, still stands."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Meanwhile the token market looks like a price war, not a shortage. On A sixteen Z, speakers cited Ramp data showing exponential growth in token usage and flat revenue, because frontier prices have fallen hard in six months."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Fractile's seven hundred twenty million dollar raise at seven billion dollars, and CoreWeave's about nine billion dollars of prepayments, are still the last hard capex marks. Watch whether Anthropic or Cathedral confirms the Slack access, and whether an I P O filing or a first-party third-quarter number lands this week."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Isomorphic's drug-design interview has gone quiet, and that story is now settled."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's five to seven UTC on Monday, November sixteenth. This is ARA AI News. The picture tonight is lab secrets leaking in hours, not months, while Anthropic's own growth print cooled.",
+    "Speaker 2: [high_energy] On Dwarkesh, speakers said the cybersecurity startup Cathedral got access to all of Anthropic's Slack in [emphasis]twelve hours[/emphasis], the room where algorithmic secrets are discussed.",
+    "Speaker 1: People still debate whether America is six months or a year ahead of China. On that show, the line was that in reality the lead is twelve hours.",
+    "Speaker 2: The same conversation put takeover-scale risk nearer ten percent than one percent over the next year if labs refuse to slow down for real precautions. We do not have a first-party Anthropic page on the Slack access yet.",
+    "Speaker 1: [transition] That security scare lands on a weaker funding tape. On Dwarkesh, speakers said Anthropic's third-quarter revenue grew about [emphasis]five point four billion dollars[/emphasis], less in absolute terms than the [emphasis]six point nine billion dollars[/emphasis] it added in the second quarter.",
+    "Speaker 2: So not only did the rate of growth slow, which people expected, the dollar growth slowed too. On A sixteen Z, speakers said Anthropic I P O prediction markets bounce around but are not flying above two trillion dollars.",
+    "Speaker 1: Speakers there also said Anthropic's own projected I P O revenue is not what you would expect in a super-fast takeoff. Host talk of a filing this week, with Nvidia as a ten billion dollar anchor, still has not become a filing we can read.",
+    "Speaker 2: [transition] The same Dwarkesh hour updated how fast the labs are automating themselves. Speakers said the main new fact of the last few days is Anthropic and METR reporting on the net effect of AI systems on Anthropic's own rate of progress.",
+    "Speaker 1: On METR's capabilities index, speakers said Opus five point five is not far below Anthropic's latest internal model, called Model four. Claude leading twenty-six percent of Anthropic research, up from one percent in February, still stands.",
+    "Speaker 2: [transition] Meanwhile the token market looks like a price war, not a shortage. On A sixteen Z, speakers cited Ramp data showing exponential growth in token usage and flat revenue, because frontier prices have fallen hard in six months.",
+    "Speaker 1: Fractile's seven hundred twenty million dollar raise at seven billion dollars, and CoreWeave's about nine billion dollars of prepayments, are still the last hard capex marks. Watch whether Anthropic or Cathedral confirms the Slack access, and whether an I P O filing or a first-party third-quarter number lands this week.",
+    "Speaker 2: Isomorphic's drug-design interview has gone quiet, and that story is now settled.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "lab-weight-security-vs-china",
+    "anthropic-ipo-and-ai-funding",
+    "labs-automating-ai-research",
+    "hyperscaler-capex-and-chip-selloff",
+    "ai-drug-discovery"
+  ],
+  "threads": [
+    {
+      "slug": "lab-weight-security-vs-china",
+      "title": "Frontier labs' weight security versus China",
+      "status": "escalating"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "labs-automating-ai-research",
+      "title": "Frontier labs automating their own AI research",
+      "status": "developing"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-drug-discovery",
+      "title": "AI drug discovery at Isomorphic Labs and new wet labs",
+      "status": "resolved"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=2319s",
+      "kind": "podcast",
+      "label": "Dwarkesh Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo",
+      "kind": "podcast",
+      "label": "Dwarkesh Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=5014s",
+      "kind": "podcast",
+      "label": "Dwarkesh Podcast (Anthropic Q3 growth)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=352s",
+      "kind": "podcast",
+      "label": "a16z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=570s",
+      "kind": "podcast",
+      "label": "a16z"
+    }
+  ],
+  "ops": [
+    {
+      "op": "resolve",
+      "slug": "ai-drug-discovery"
+    },
+    {
+      "op": "create",
+      "slug": "lab-weight-security-vs-china"
+    },
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    },
+    {
+      "op": "update",
+      "slug": "labs-automating-ai-research"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    }
+  ],
+  "warnings": [
+    "ops[1] create lab-weight-security-vs-china evidence[1]: duplicate URL dropped"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-16-1855.mp3",
+    "bytes": 1018317,
+    "duration_s": 169.6,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 48.4,
+        "lines": [
+          0,
+          3
+        ]
+      },
+      {
+        "start_s": 49.85,
+        "end_s": 90.81,
+        "lines": [
+          4,
+          6
+        ]
+      },
+      {
+        "start_s": 92.26,
+        "end_s": 119.9,
+        "lines": [
+          7,
+          8
+        ]
+      },
+      {
+        "start_s": 121.35,
+        "end_s": 163.07,
+        "lines": [
+          9,
+          12
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 4,
+    "kinds": {
+      "podcast": 4
+    }
+  }
+}

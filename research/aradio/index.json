@@ -1,9 +1,64 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-16T07:18:00Z",
+  "updated_at": "2026-11-16T18:55:00Z",
   "degraded": false,
-  "latest": "2026-11-16-0718",
+  "latest": "2026-11-16-1855",
   "bulletins": [
+    {
+      "id": "2026-11-16-1855",
+      "aired_at": "2026-11-16T18:55:00Z",
+      "headline": "Cathedral said to reach Anthropic Slack in 12 hours; IPO markets not above $2T; Q3 growth $5.4B vs $6.9B",
+      "path": "bulletins/2026-11-16/1855.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-16-1855.mp3",
+        "bytes": 1018317,
+        "duration_s": 169.6,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 48.4,
+            "lines": [
+              0,
+              3
+            ]
+          },
+          {
+            "start_s": 49.85,
+            "end_s": 90.81,
+            "lines": [
+              4,
+              6
+            ]
+          },
+          {
+            "start_s": 92.26,
+            "end_s": 119.9,
+            "lines": [
+              7,
+              8
+            ]
+          },
+          {
+            "start_s": 121.35,
+            "end_s": 163.07,
+            "lines": [
+              9,
+              12
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "lab-weight-security-vs-china",
+        "anthropic-ipo-and-ai-funding",
+        "labs-automating-ai-research",
+        "hyperscaler-capex-and-chip-selloff",
+        "ai-drug-discovery"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-16-0718",
       "aired_at": "2026-11-16T07:18:00Z",
