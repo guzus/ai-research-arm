@@ -1,9 +1,273 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-16T07:13:00Z",
+  "updated_at": "2026-11-16T18:51:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "nvidia:E3Hy-WRJbXE",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "NVIDIA cuPhoton Brings Real-Time Black Hole Science to GPUs",
+      "url": "https://www.youtube.com/watch?v=E3Hy-WRJbXE",
+      "video_id": "E3Hy-WRJbXE",
+      "audio_url": null,
+      "published_at": "2026-11-16T18:31:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-16T18:51:00Z",
+      "duration_s": 132,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-16T18:51:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "dwarkesh:SyHM5hNPAEo",
+      "show_id": "dwarkesh",
+      "show": "Dwarkesh Podcast",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "frontier-labs"
+      ],
+      "title": "If AI labs don't secure the weights, China will just steal them",
+      "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo",
+      "video_id": "SyHM5hNPAEo",
+      "audio_url": null,
+      "published_at": "2026-11-16T18:07:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-16T18:51:00Z",
+      "duration_s": 5926,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 19506,
+        "checked_at": "2026-11-16T18:51:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "Is that 90% or 50% or 10%? But I think at this point, there is no way anyone could say that was a really surprising, trend-breaking development. We are seeing exactly the set of metrics you would expect to see 6-12 months in advance.",
+          "at_s": 488,
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=488s"
+        },
+        {
+          "text": "You have to pull apart algorithmic progress from progress in scaling training. If I say 10 years of progress, the natural thing would be 10 years of algorithmic progress, which will be less than the improvements in models over the last 10 years. I think it is more like GPT-9, GPT-10-ish.",
+          "at_s": 718,
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=718s"
+        },
+        {
+          "text": "Then recently it was also announced that Cathedral, which is another random cybersecurity startup, within 12 hours was able to get access to all of Anthropic’s Slack, where, of course, these algorithmic secrets are discussed. People often debate, \"Are we eight months ahead of China or 12 months ahead of China or six months ahead of China?\"",
+          "at_s": 2319,
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=2319s"
+        },
+        {
+          "text": "Now you just have to go ahead and build GPT-11, which could take over if it wanted to, or at least cause catastrophic harm, because you’re worried that China is going to use GPT-9 to make GPT-10 to make GPT-11. Your GPT-11 may try to overthrow you, but you’re sure China’s GPT-11 will definitely at least try to attack you.",
+          "at_s": 2732,
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=2732s"
+        },
+        {
+          "text": "It’s also the case that you’ll have extremely power-efficient systems. If you’re a human, you can’t say, \"Well, I’m going to make 10,000 simple agents, each of which uses only 1% of a brain or 0.01% of a brain, and is better than a human at doing cyber operations.\"",
+          "at_s": 4194,
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=4194s"
+        },
+        {
+          "text": "In Q3, Anthropic’s revenue grew something like $5.4 billion. That was less in absolute terms than Anthropic’s revenue grew in Q2, $6.9 billion. So not only has the rate of growth slowed down, which people expected, but the absolute growth has also slowed down.",
+          "at_s": 5014,
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=5014s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "big-technology:YArzCW6uQaU",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Atlassian CEO: How Humans Will Work Alongside AI Agents — With Mike Cannon-Brookes",
+      "url": "https://www.youtube.com/watch?v=YArzCW6uQaU",
+      "video_id": "YArzCW6uQaU",
+      "audio_url": null,
+      "published_at": "2026-11-16T17:21:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-16T18:51:00Z",
+      "duration_s": 1313,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 4308,
+        "checked_at": "2026-11-16T18:51:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "And in fact, if you look at the last 10 years, bank branches are growing, at least in Australia and America. And the reason for this is because it's a violation of the narrative, but bank branches in 2026 are not doing what they did in 2000. They do a completely different job for the client.",
+          "at_s": 193,
+          "url": "https://www.youtube.com/watch?v=YArzCW6uQaU&t=193s"
+        },
+        {
+          "text": "Um, so when you think about how humans will work alongside AI agents , how these humans will change the way their workflows exist, um, you know, in the age of AI, what have you discovered? First of all, I don't like to say that we sell AI products. I know this sounds strange to many CEOs these days.",
+          "at_s": 326,
+          "url": "https://www.youtube.com/watch?v=YArzCW6uQaU&t=326s"
+        },
+        {
+          "text": "Um, if you're thinking about the output of a financial model, you need to think about how would I test the correctness of that model? Because if you ask an AI to create a really advanced model for me that does X , Y, and Z, you'll get an answer.",
+          "at_s": 485,
+          "url": "https://www.youtube.com/watch?v=YArzCW6uQaU&t=485s"
+        },
+        {
+          "text": "This way, you will get some comprehensive improvement in your agent's efficiency. If your CFO asks, it will result in using fewer tokens . What's really interesting about what you just said is that you didn't actually mention the model you're using underneath it.",
+          "at_s": 841,
+          "url": "https://www.youtube.com/watch?v=YArzCW6uQaU&t=841s"
+        },
+        {
+          "text": "So now you see cloud code, cloud collaboration, cloud design. If you think about how you work with models, even Satya Nadella said that every time you work with a model, you leave breadcrumbs and they can absorb what you do and start competing with you.",
+          "at_s": 1009,
+          "url": "https://www.youtube.com/watch?v=YArzCW6uQaU&t=1009s"
+        },
+        {
+          "text": "So the progress that, you know, Opus , Astro or Gemini, uh, or all the open-weight models, Meta, Nemo, Tron, etc., that progress is available to all vendors pretty evenly. So that makes it a pretty level playing field in a way, which is pretty exciting. But you need to decide where to draw the line.",
+          "at_s": 1135,
+          "url": "https://www.youtube.com/watch?v=YArzCW6uQaU&t=1135s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "a16z:g_67TmQ8lGY",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "What History Tells Us About the AI Revolution | Tyler Cowen & Alex Imas",
+      "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY",
+      "video_id": "g_67TmQ8lGY",
+      "audio_url": null,
+      "published_at": "2026-11-16T15:21:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-16T18:51:00Z",
+      "duration_s": 3798,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 11716,
+        "checked_at": "2026-11-16T18:51:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "If you look at prediction markets for what the anthropic IPO will go for, they bounce up and down, but it's not flying above two trillion. You look at Anthropic's own projected revenue numbers. I forget the exact numbers. I wouldn't say I was underwhelmed, but they're not numbers that you would expect under the super fast takeoff scenarios.",
+          "at_s": 352,
+          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=352s"
+        },
+        {
+          "text": "And so you're seeing token prices come down a lot. And so, you know, RAMP has a really nice data set of to track these things. And you saw exponential increases in token usage and flat revenue numbers, right? Where's that coming from? It's because of price price competition.",
+          "at_s": 570,
+          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=570s"
+        },
+        {
+          "text": "Hard to estimate, but you don't just see them popping into trillion dollar companies. I mean, you could count Tesla as a kind of robotics company, but the market data suggests, you know, it will happen. and it's making good progress but not going to give us 20% growth like three or four years from now. No. Right. Right.",
+          "at_s": 882,
+          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=882s"
+        },
+        {
+          "text": "If you ask me the question when will agents be 10% of GDP? I don't think it's soon. Now if they rose from basically 0ero to 6% you could call that an explosion. 6% of GDP is enormous. Even that doesn't seem that soon.",
+          "at_s": 2234,
+          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=2234s"
+        },
+        {
+          "text": "And if scarcity is is energy, that's where the rents will go. Now, maybe AI itself makes energy less scarce. So that's why I'm reluctant to predict, but I at least see the case to think, well, the the Gulf countries will make out like bandits and so on or the land owners, but AI will change enough things.",
+          "at_s": 3173,
+          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=3173s"
+        },
+        {
+          "text": "But again, Eric, I think you'll live to 120 and I think I will not. That's a simple way to put it. I I think we're going to get better models of a to the extent that AI will create better models of micro and macro phenomenon like better structural models.",
+          "at_s": 3513,
+          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=3513s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "20vc:BE2JqjsN4aY",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Jev Creator: Why Data Matters More Than Compute | The Cost of Intelligence & Tokens | Diogo Almeida",
+      "url": "https://www.youtube.com/watch?v=BE2JqjsN4aY",
+      "video_id": "BE2JqjsN4aY",
+      "audio_url": null,
+      "published_at": "2026-11-16T15:21:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-16T18:51:00Z",
+      "duration_s": 4410,
+      "transcript": {
+        "available": true,
+        "source": "asr",
+        "words": 13693,
+        "checked_at": "2026-11-16T18:51:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "It's that you get, people love this, this saying that I've coined, so, but it's like, you get Einstein, like maybe 95% of the time, and Mr. Bean the other 5%, and the problem is that in expected value, it just doesn't work out, therefore companies quite wisely learn that you can't actually automate stuff.",
+          "at_s": 207,
+          "url": "https://www.youtube.com/watch?v=BE2JqjsN4aY&t=207s"
+        },
+        {
+          "text": "And GPT 4.5 is what broke that narrative. I obviously don't know what's going on behind the labs. But if we believe that the labs were pricing roughly based on, you know, inference compute, then GPT 4.5 is still the largest model ever by token cost. And it was not, you know, commercially successful, right?",
+          "at_s": 468,
+          "url": "https://www.youtube.com/watch?v=BE2JqjsN4aY&t=468s"
+        },
+        {
+          "text": "I would 100% believe narrow models would, the number one benchmarks are incredibly misleading. And the people who are making these have like a lot of perverse incentive to look like their models are better at if internally and also from an external narrative perspective to not seem like there will be completely bound by the large models.",
+          "at_s": 2040,
+          "url": "https://www.youtube.com/watch?v=BE2JqjsN4aY&t=2040s"
+        },
+        {
+          "text": "I actually think even the 180 to a 90 IQ person is an extremely generous analogy to what LM's are doing right now because I wouldn't call them 180 IQ people or 190, you know, like I would call them like occasionally, maybe it's 180, I don't really know, but like then sometimes you get like an 80 or even",
+          "at_s": 2408,
+          "url": "https://www.youtube.com/watch?v=BE2JqjsN4aY&t=2408s"
+        },
+        {
+          "text": "Because to me, it's not going to be a supply side, it's just going to be a demand side. And we're seeing no demand side shock. And so what will cause a bubble burst? OK, we can get into that. That's a spicy one. Coding agents have definitely changed the game for AI.",
+          "at_s": 3015,
+          "url": "https://www.youtube.com/watch?v=BE2JqjsN4aY&t=3015s"
+        },
+        {
+          "text": "Is that a bigger than larger, thicker than coding agent assisting software engineers, ala making software like 20% more efficient to write or something like that. How do you analyze the coding agent market today? I mean, you know, you see cognition, fourth place so far, be a 1.6 billion dollar revenue business. The depth this market is so large.",
+          "at_s": 3286,
+          "url": "https://www.youtube.com/watch?v=BE2JqjsN4aY&t=3286s"
+        }
+      ],
+      "description": ""
+    },
     {
       "id": "big-technology:nS3sR1Wn2VU",
       "show_id": "big-technology",
@@ -202,8 +466,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-16T07:13:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-16T18:51:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": ""
@@ -229,8 +493,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-16T07:13:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-16T18:51:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": ""
@@ -284,8 +548,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-16T07:13:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-16T18:51:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": ""
@@ -9304,61 +9568,6 @@
         }
       ],
       "description": "Harrison Chase is the co-founder and CEO of LangChain, which helps developers build, test and deploy AI agents. Backed by Sequoia Capital, Benchmark and IVP, LangChain has announced approximately $160 million in funding with the last round at a $1.25BN valuation. The company works with 35% of the Fortune 500, has surpassed one billion open-source downloads and processes over one billion events daily through LangSmith. Timestamps: Intro What Is LangChain and Why Are Agents Still So Hard to Build? Why"
-    },
-    {
-      "id": "cognitive-revolution:F1GDX_G9Bhw",
-      "show_id": "cognitive-revolution",
-      "show": "The Cognitive Revolution",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews"
-      ],
-      "title": "AI:AM: Where's the Steering Wheel? My Agent Set the Password, Hidden Valence, Proofs Find Linux Bugs",
-      "url": "https://www.youtube.com/watch?v=F1GDX_G9Bhw",
-      "video_id": "F1GDX_G9Bhw",
-      "audio_url": null,
-      "published_at": "2026-10-17T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 5156,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-10T02:53:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "interconnects:pod-5jw9i4i063h7",
-      "show_id": "interconnects",
-      "show": "Interconnects (narrated essays)",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "research",
-        "audio-only"
-      ],
-      "title": "Meta shakes up the frontiers, open and closed",
-      "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/220749685/cef802d73b37fbdee58a57c96b0307f3.mp3",
-      "video_id": null,
-      "audio_url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/220749685/cef802d73b37fbdee58a57c96b0307f3.mp3",
-      "published_at": "2026-10-17T14:06:00Z",
-      "published_precision": "exact",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 704,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": "This has been a week where the balance of American open-weight models took a step change back toward the frontier. Meta took the lead of this charge with Muse Spark Open, which is now the strongest American-made open model by quite some margin, but the addition of Reflection’s first model Beam is also relevant. Without these two models, there would be 20+ open-weight models built and released by Chinese companies better than the best Western models. At the time of"
     }
   ]
 }
