@@ -1,9 +1,68 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-15T23:07:00Z",
+  "updated_at": "2026-11-16T07:13:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "big-technology:nS3sR1Wn2VU",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Storm Clouds Ahead For Apple?, Debating Amazon’s Bee Frontier, AI as UI",
+      "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU",
+      "video_id": "nS3sR1Wn2VU",
+      "audio_url": null,
+      "published_at": "2026-11-15T23:43:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-16T07:13:00Z",
+      "duration_s": 3517,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 10699,
+        "checked_at": "2026-11-16T07:13:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "It seems like two quarters ago they reached over 50% total gross margin. This is their highest figure in history. Yes, of course, this is incredible, especially for a company specializing in equipment. This was largely due to the growth of the services sector. And also, over the years, thanks to Tim Cook's excellent control over the entire supply chain.",
+          "at_s": 223,
+          "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=223s"
+        },
+        {
+          "text": "So it's not just about these agreements with memory manufacturers. There are other factors that affect margins, right? Besides, Apple is currently spending money on developing its own AI, right? This is something that has n't happened yet, but it's starting to show up and impact margins, as you mentioned in the case of Spyglass.",
+          "at_s": 483,
+          "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=483s"
+        },
+        {
+          "text": "Now we have iPhones costing over $2,000. We have several models priced over $1,000. We have a new MacBook with an OLED touchscreen, which I think will cost around $12,000 in the top configuration, if fully equipped. But even the regular version will probably cost around 3 thousand. Wait, maybe it costs 12,000?",
+          "at_s": 804,
+          "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=804s"
+        },
+        {
+          "text": "As you have seen, of course, they have finally partnered to create Siri AI, but it will be a very different version of Siri AI than the one the West is used to and the one the EU would like to get used to, but they can have nothing to do with it for political reasons.",
+          "at_s": 1063,
+          "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=1063s"
+        },
+        {
+          "text": "I mean, the iPhone Duo is probably going to be more expensive than any laptop people have ever bought in their lives. Especially if they buy the MacBook Neo, which, by all accounts, is selling very well, and the price of it also had to be raised. But the price increase there is about $600 to $700.",
+          "at_s": 2118,
+          "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=2118s"
+        },
+        {
+          "text": "It seems to me that this is one of those things that will definitely not be accepted in 2026. Probably not in 2027. Maybe not in 28 . Maybe on the 29th. And in 2030, maybe, yeah, that sounds cool. It's one of those things where, you know, societal norms will just change.",
+          "at_s": 2546,
+          "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=2546s"
+        }
+      ],
+      "description": ""
+    },
     {
       "id": "nvidia:ha-gDrDm8Es",
       "show_id": "nvidia",
@@ -143,8 +202,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-15T17:22:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-16T07:13:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": ""
@@ -170,8 +229,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-15T17:22:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-16T07:13:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": ""
@@ -225,8 +284,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-15T23:07:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-16T07:13:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": ""
@@ -368,13 +427,44 @@
       "first_seen_at": "2026-11-14T06:58:00Z",
       "duration_s": 2396,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-15T23:07:00Z",
-        "attempts": 4
+        "available": true,
+        "source": "youtube_captions",
+        "words": 5956,
+        "checked_at": "2026-11-16T07:13:00Z",
+        "attempts": 5
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "From my perspective, this raises an interesting question: when you think about the industry, about model building, you have these big cutting-edge models that are private and closed. There is also a world of open source models and open weights.",
+          "at_s": 604,
+          "url": "https://www.youtube.com/watch?v=lz736qheRig&t=604s"
+        },
+        {
+          "text": "And if something breaks in this open source model , I know it can be fixed and I can do it. On the other hand, with closed source models it is very difficult to say: \"Yes, 100% if something breaks, I can fix it.\" OK.",
+          "at_s": 730,
+          "url": "https://www.youtube.com/watch?v=lz736qheRig&t=730s"
+        },
+        {
+          "text": "Or perhaps some third-party component , like an MCP server, a RAG system—anything that interacts with the language model to provide it with more information about the query you just passed. And all of these trajectories are extremely useful for improving these agent-based AI systems. Why are they useful? Because trajectories can become confusing. They are very long.",
+          "at_s": 885,
+          "url": "https://www.youtube.com/watch?v=lz736qheRig&t=885s"
+        },
+        {
+          "text": "Yes, it gets very confusing very quickly, and you're right, especially because agents—what's the difference between a single model and an agent—agents can take action, right? This is the definition of an agent, the simplest definition you can get.",
+          "at_s": 1057,
+          "url": "https://www.youtube.com/watch?v=lz736qheRig&t=1057s"
+        },
+        {
+          "text": "Now with all this technology, I can code a website in 50 minutes, right? I can create all these programs very quickly. And when you augment them with an AI agent, you can also allow them to perform certain actions. So some of the projects we plan to implement are related to home management.",
+          "at_s": 1478,
+          "url": "https://www.youtube.com/watch?v=lz736qheRig&t=1478s"
+        },
+        {
+          "text": "We are also seeing more and more models where instead of one model, multiple models can be used for a given application or use case, which can be either cloud-based or embedded in robotics, drones, or other things that impact the physical world.",
+          "at_s": 2000,
+          "url": "https://www.youtube.com/watch?v=lz736qheRig&t=2000s"
+        }
+      ],
       "description": ""
     },
     {
