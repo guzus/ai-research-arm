@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-15T09:57:00Z",
-  "headline": "Huang case gets 240k-chip numbers; Fractile $720M Series C; Mozilla 8x at Firefox; Claude 26% of Anthropic R&D",
+  "updated_at": "2026-11-16T07:18:00Z",
+  "headline": "Siri AI called fully on, with a China-only variant; Apple AI spend hits margins; Watch listening beta vs Amazon Bee",
   "threads": [
     {
       "slug": "ai-cyber-risk-and-key-theft",
@@ -527,6 +527,57 @@
       ]
     },
     {
+      "slug": "apple-ai-and-siri",
+      "title": "Apple's Siri AI, a China-only variant, and the margin squeeze",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-11-16T07:18:00Z",
+      "updated_at": "2026-11-16T07:18:00Z",
+      "now": "On Big Technology, hosts said Siri AI is now fully operational, a developer Siri can call third-party apps, and Apple partnered on a China-only Siri the West and EU will not get for political reasons. They said in-house AI including Spyglass is hitting margins after 50%+ gross margin two quarters ago, and an Apple Watch background-listening beta matches Amazon's $75 Bee.",
+      "changed": "Big Technology: Siri AI called fully operational; China-only Siri partnership; developer Siri for third-party apps; Spyglass AI spend hitting margins; Apple Watch listening beta vs Amazon Bee at $75.",
+      "watch": "A first-party Apple page naming Siri AI and the China partner; whether Spyglass appears in a results call; whether the Watch listening beta ships.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-15T23:43:00Z",
+          "quote": "The bottom line is that Apple, with the new Siri they just introduced to developers, has started talking about how to integrate third-party apps into Siri's AI."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=223s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-15T23:43:00Z",
+          "quote": "But again, storm clouds are gathering , because, as we saw in the report, margins have started to decline for the first time in a long time ."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=483s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (Spyglass AI spend)",
+          "at": "2026-11-15T23:43:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=1063s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (China Siri)",
+          "at": "2026-11-15T23:43:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=nS3sR1Wn2VU&t=2546s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (Bee and Watch)",
+          "at": "2026-11-15T23:43:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-16T07:18:00Z",
+          "change": "Created from Big Technology: Siri AI said fully on; China-only Siri; developer third-party apps; Spyglass hitting margins; Watch listening beta vs Amazon Bee."
+        }
+      ]
+    },
+    {
       "slug": "labs-automating-ai-research",
       "title": "Frontier labs automating their own AI research",
       "status": "developing",
@@ -702,56 +753,6 @@
       ]
     },
     {
-      "slug": "deepmind-alphagenome",
-      "title": "DeepMind's AlphaGenome and reading the human genome",
-      "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-11-12T01:04:00Z",
-      "updated_at": "2026-11-12T01:04:00Z",
-      "now": "On Google DeepMind's podcast, the show said AlphaGenome 2 predicts variant effects at cell-type resolution, not bulk tissue, and retrospectively matched a Crick Institute finding that a variant regulates a gene 290,000 bases away. A public Python API offers free predictions; Atlas is a no-code site. The show said only 10% of drugs make trials.",
-      "changed": "DeepMind podcast: AlphaGenome 2 at cell-type resolution; retrospectively matched a 290,000-base Crick finding; public Python API with free predictions and a no-code Atlas.",
-      "watch": "The AlphaGenome 2 paper; whether the public API stays free; independent checks of the 290,000-base Crick prediction.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=2103s",
-          "kind": "video",
-          "label": "Google DeepMind",
-          "at": "2026-11-11T18:00:00Z",
-          "quote": "Yeah, so for the alpha genome family of models um we have a public API and basically you can install a Python package."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1508s",
-          "kind": "video",
-          "label": "Google DeepMind (cell-type resolution)",
-          "at": "2026-11-11T18:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1671s",
-          "kind": "video",
-          "label": "Google DeepMind (Crick Institute check)",
-          "at": "2026-11-11T18:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=646s",
-          "kind": "video",
-          "label": "Google DeepMind (non-coding genome)",
-          "at": "2026-11-11T18:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c",
-          "kind": "video",
-          "label": "Google DeepMind",
-          "at": "2026-11-11T18:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-12T01:04:00Z",
-          "change": "Created from DeepMind podcast: AlphaGenome 2 does cell-type predictions, matches a 290k-base Crick finding, and ships a free public API plus a no-code Atlas."
-        }
-      ]
-    },
-    {
       "slug": "ai-math-and-physics-discovery-claims",
       "title": "Labs claim AI-made math and physics discoveries; experts hold back",
       "status": "developing",
@@ -827,6 +828,60 @@
         {
           "at": "2026-11-11T09:54:00Z",
           "change": "Reopened: DevDay architecture talk claims a Navier-Stokes/unforced-Euler result from 10,000 agents, 2.7M messages, ~130B output tokens."
+        }
+      ]
+    },
+    {
+      "slug": "deepmind-alphagenome",
+      "title": "DeepMind's AlphaGenome and reading the human genome",
+      "status": "resolved",
+      "importance": 4,
+      "first_seen": "2026-11-12T01:04:00Z",
+      "updated_at": "2026-11-16T07:18:00Z",
+      "now": "On Google DeepMind's podcast, the show said AlphaGenome 2 predicts variant effects at cell-type resolution, not bulk tissue, and retrospectively matched a Crick Institute finding that a variant regulates a gene 290,000 bases away. A public Python API offers free predictions; Atlas is a no-code site. The show said only 10% of drugs make trials.",
+      "changed": "The AlphaGenome 2 launch is absorbed: public API and Atlas are out, and it is no longer a live storyline while the paper is pending.",
+      "watch": "The AlphaGenome 2 paper; whether the public API stays free; independent checks of the 290,000-base Crick prediction.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=2103s",
+          "kind": "video",
+          "label": "Google DeepMind",
+          "at": "2026-11-11T18:00:00Z",
+          "quote": "Yeah, so for the alpha genome family of models um we have a public API and basically you can install a Python package."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1508s",
+          "kind": "video",
+          "label": "Google DeepMind (cell-type resolution)",
+          "at": "2026-11-11T18:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1671s",
+          "kind": "video",
+          "label": "Google DeepMind (Crick Institute check)",
+          "at": "2026-11-11T18:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=646s",
+          "kind": "video",
+          "label": "Google DeepMind (non-coding genome)",
+          "at": "2026-11-11T18:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c",
+          "kind": "video",
+          "label": "Google DeepMind",
+          "at": "2026-11-11T18:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-12T01:04:00Z",
+          "change": "Created from DeepMind podcast: AlphaGenome 2 does cell-type predictions, matches a 290k-base Crick finding, and ships a free public API plus a no-code Atlas."
+        },
+        {
+          "at": "2026-11-16T07:18:00Z",
+          "change": "Resolved: launch absorbed after four quiet days; cell-type API and Atlas remain the facts; paper watch unmet."
         }
       ]
     },

@@ -1,9 +1,45 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-15T09:57:00Z",
+  "updated_at": "2026-11-16T07:18:00Z",
   "degraded": false,
-  "latest": "2026-11-15-0957",
+  "latest": "2026-11-16-0718",
   "bulletins": [
+    {
+      "id": "2026-11-16-0718",
+      "aired_at": "2026-11-16T07:18:00Z",
+      "headline": "Siri AI called fully on, with a China-only variant; Apple AI spend hits margins; Watch listening beta vs Amazon Bee",
+      "path": "bulletins/2026-11-16/0718.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-16-0718.mp3",
+        "bytes": 1104861,
+        "duration_s": 184.0,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 124.08,
+            "lines": [
+              0,
+              9
+            ]
+          },
+          {
+            "start_s": 125.53,
+            "end_s": 177.49,
+            "lines": [
+              10,
+              14
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "apple-ai-and-siri",
+        "deepmind-alphagenome"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-15-0957",
       "aired_at": "2026-11-15T09:57:00Z",
