@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-11-17 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] Broadening access to AI for scientists - Mon, 16 Nov 2026 17:00 GMT
+• [Hacker News] Windows 11 coding-agent telemetry: New, and the largest AI-by-points story and the largest AI comme…
+• [Reddit] AISTATS 2027 paper discussion [D] — https://www.reddit.com/r/MachineLearning/comments/1xxqa3i/aista…
+• [Expert Blogs] Building Visual Intelligence — Andreas Blattmann & Dustin Podell, Black Forest Labs
+• [Bluesky] @alexhanna.bsky.social: "Sports journalism is more than just writing. We speak with @shireenahmed.b…
+
+SOURCES: 7/8 lanes had data; missing: Twitter/X
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
