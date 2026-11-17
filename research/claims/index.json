@@ -1,5 +1,5 @@
 {
-  "article_count": 112,
+  "article_count": 113,
   "articles": [
     {
       "claim_count": 18,
@@ -1065,6 +1065,16 @@
         "twitter-seed"
       ],
       "title": "The Harness Is the Price Tag: What DeepSeek Harness Is, and What the 269,000 Stars Do Not Show"
+    },
+    {
+      "claim_count": 54,
+      "created_at": "2026-11-17T00:28:29Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "stem": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill"
     }
   ],
   "by_host": {
@@ -1183,6 +1193,9 @@
     "ai-primer.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-1",
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-2"
+    ],
+    "ai-spend.larridin.com": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c43"
     ],
     "ai.google.dev": [
       "2026-06-25T170208--native-computer-use-gemini-3-5-flash#c1",
@@ -1449,10 +1462,17 @@
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c16",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c13",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c6",
-      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7"
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c12",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c33",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c8"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
+    ],
+    "antigravity.google": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c13",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c14"
     ],
     "aol.com": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c5"
@@ -1468,7 +1488,8 @@
       "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c10",
       "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c6",
       "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c7",
-      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c9"
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c9",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c22"
     ],
     "api.comfy.org": [
       "2026-08-04T171206--comfyui-company#c13"
@@ -1476,7 +1497,11 @@
     "api.fxtwitter.com": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c16",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c33",
-      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c1"
+      "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c1",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c1",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c2",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c36",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c5"
     ],
     "api.github.com": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c6",
@@ -1924,7 +1949,21 @@
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c9",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c12",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c13",
-      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c5"
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c5",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c10",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c15",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c18",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c19",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c20",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c25",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c27",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c28",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c29",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c34",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c38",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c42",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c44",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c9"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -2139,7 +2178,8 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c4",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c1",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c3",
-      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12"
+      "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c7"
     ],
     "blog.janestreet.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17",
@@ -2618,6 +2658,9 @@
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c14",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c15"
     ],
+    "code.claude.com": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c16"
+    ],
     "codeant.ai": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c15"
     ],
@@ -2632,7 +2675,8 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c24"
     ],
     "cognition.com": [
-      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c6"
+      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c6",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c38"
     ],
     "coincentral.com": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c5",
@@ -2893,7 +2937,8 @@
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c17",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c11",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c12",
-      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c9"
+      "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c9",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c11"
     ],
     "cybernews.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c11"
@@ -3028,7 +3073,8 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c18",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c5",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c6",
-      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c9"
+      "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c9",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c40"
     ],
     "deepquarry.substack.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c24"
@@ -3267,6 +3313,9 @@
     "docs.usd.ai": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c12"
     ],
+    "docs.x.ai": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c17"
+    ],
     "docs.xstocks.fi": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c16"
     ],
@@ -3483,7 +3532,8 @@
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c9",
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c11",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c14",
-      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c21"
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c21",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c34"
     ],
     "epochai.substack.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c35"
@@ -3993,7 +4043,10 @@
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c10",
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c9",
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c11",
-      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c2"
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c2",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c23",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c24",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c40"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -4425,7 +4478,8 @@
     "investor.atmeta.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C12",
       "2026-07-31T051841--situational-awareness-lp-collapse#c30",
-      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c34"
+      "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c34",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c30"
     ],
     "investor.nvidia.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c16",
@@ -4529,6 +4583,11 @@
     "japanir.jp": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c14"
     ],
+    "jellyfish.co": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c3",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c37",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c4"
+    ],
     "jingletree.com": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c25"
     ],
@@ -4582,7 +4641,8 @@
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c16",
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c3",
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c4",
-      "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c35"
+      "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c35",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c15"
     ],
     "kingy.ai": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c3",
@@ -4709,6 +4769,9 @@
     ],
     "leanprover-community.github.io": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c35"
+    ],
+    "learn.chatgpt.com": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c17"
     ],
     "legifrance.gouv.fr": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c26"
@@ -4911,7 +4974,9 @@
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c11",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c13",
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c14",
-      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c12"
+      "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c12",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c26",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c39"
     ],
     "mevwatch.info": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c17"
@@ -4928,7 +4993,9 @@
       "2026-06-24T160453--test-ornn-com-codex-2#C11",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c1",
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c3",
-      "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c5"
+      "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c5",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c30",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c31"
     ],
     "mikekalil.com": [
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c25"
@@ -5349,7 +5416,8 @@
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c13",
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c12",
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c13",
-      "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c15"
+      "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c15",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c32"
     ],
     "opensearch.org": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c4"
@@ -5437,7 +5505,8 @@
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c48"
     ],
     "paradigm.xyz": [
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c19"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c19",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c2"
     ],
     "paulgraham.com": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c30"
@@ -5495,7 +5564,8 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c3",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c32",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c4",
-      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c6"
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c6",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c21"
     ],
     "platform.minimax.io": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c7",
@@ -6094,7 +6164,10 @@
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c22",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c22",
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c17",
-      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c3"
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c3",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c30",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c41",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c6"
     ],
     "securityaffairs.com": [
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c8"
@@ -6634,7 +6707,8 @@
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c3",
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c4",
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c5",
-      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c6"
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c6",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c35"
     ],
     "term.finance": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c14"
@@ -6770,7 +6844,8 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c21",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c30",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c9"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c9",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c35"
     ],
     "thenota.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c13"
@@ -7525,6 +7600,9 @@
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c03",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c20"
     ],
+    "https://ai-spend.larridin.com/data": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c43"
+    ],
     "https://ai.google.dev/gemini-api/docs/changelog": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c18"
     ],
@@ -7704,6 +7782,15 @@
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c13",
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c25"
     ],
+    "https://antigravity.google/blog/gemini-4-carbon-in-google-antigravity": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c13"
+    ],
+    "https://antigravity.google/changelog.md": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c14"
+    ],
+    "https://antigravity.google/docs/swarm": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c13"
+    ],
     "https://api-docs.deepseek.com/guides/anthropic_api": [
       "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c10"
     ],
@@ -7722,7 +7809,8 @@
     ],
     "https://api-docs.deepseek.com/quick_start/pricing": [
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c3",
-      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c6"
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c6",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c22"
     ],
     "https://api-docs.deepseek.com/updates": [
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c4",
@@ -7739,6 +7827,18 @@
     ],
     "https://api.fxtwitter.com/i/status/2114799287645393098": [
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c1"
+    ],
+    "https://api.fxtwitter.com/illscience/status/2122367199625290028": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c1"
+    ],
+    "https://api.fxtwitter.com/jsnnsa/status/2115623382721126826": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c5"
+    ],
+    "https://api.fxtwitter.com/matthuang/status/2120209025099043286": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c2"
+    ],
+    "https://api.fxtwitter.com/pirroh/status/2104976589180252218": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c36"
     ],
     "https://api.github.com/repos/AUTOMATIC1111/stable-diffusion-webui": [
       "2026-08-04T171206--comfyui-company#c10"
@@ -8123,6 +8223,9 @@
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c17",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c27"
     ],
+    "https://arxiv.org/abs/2310.06452": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c44"
+    ],
     "https://arxiv.org/abs/2310.11616": [
       "2026-09-22T181309--xiaomi-s-mimo-v2-6-pro-scored-46-on-the-aa-intelligence-inde#c29"
     ],
@@ -8190,6 +8293,9 @@
     "https://arxiv.org/abs/2407.21783": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c12"
     ],
+    "https://arxiv.org/abs/2407.21787": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c25"
+    ],
     "https://arxiv.org/abs/2409.01658v3": [
       "2026-06-14T221424--openai-42-state-ag-subpoena#c28"
     ],
@@ -8241,6 +8347,9 @@
     "https://arxiv.org/abs/2501.12948": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c10"
     ],
+    "https://arxiv.org/abs/2502.00674": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c18"
+    ],
     "https://arxiv.org/abs/2502.10517": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c14"
     ],
@@ -8256,6 +8365,9 @@
     ],
     "https://arxiv.org/abs/2502.18683": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c26"
+    ],
+    "https://arxiv.org/abs/2503.13657": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c38"
     ],
     "https://arxiv.org/abs/2503.14499": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c11",
@@ -8277,7 +8389,8 @@
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c35"
     ],
     "https://arxiv.org/abs/2504.13837": [
-      "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c11"
+      "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c11",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c44"
     ],
     "https://arxiv.org/abs/2504.17950": [
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c16"
@@ -8286,6 +8399,9 @@
       "2026-06-22T061332--frontier-ai-data-supply-chain#c22",
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c12",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c33"
+    ],
+    "https://arxiv.org/abs/2505.05115": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c27"
     ],
     "https://arxiv.org/abs/2505.19395": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c12"
@@ -8334,6 +8450,9 @@
       "2026-06-22T052035--zhipu-ai-glm#c5",
       "2026-06-22T052035--zhipu-ai-glm#c7"
     ],
+    "https://arxiv.org/abs/2508.17536": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c29"
+    ],
     "https://arxiv.org/abs/2508.20816": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c19"
     ],
@@ -8359,7 +8478,8 @@
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c30"
     ],
     "https://arxiv.org/abs/2511.23455": [
-      "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c25"
+      "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c25",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c34"
     ],
     "https://arxiv.org/abs/2512.05198": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c35"
@@ -8381,6 +8501,9 @@
     ],
     "https://arxiv.org/abs/2601.22952": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c7"
+    ],
+    "https://arxiv.org/abs/2602.02276": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c15"
     ],
     "https://arxiv.org/abs/2603.00520": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c12",
@@ -8405,8 +8528,14 @@
     "https://arxiv.org/abs/2603.21454": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c17"
     ],
+    "https://arxiv.org/abs/2603.26458": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c20"
+    ],
     "https://arxiv.org/abs/2603.28925": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c27"
+    ],
+    "https://arxiv.org/abs/2604.02460": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c28"
     ],
     "https://arxiv.org/abs/2604.13051": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c36"
@@ -8440,6 +8569,9 @@
     ],
     "https://arxiv.org/abs/2606.19890": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c30"
+    ],
+    "https://arxiv.org/abs/2606.20629": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c19"
     ],
     "https://arxiv.org/abs/2606.25592": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c22"
@@ -8487,6 +8619,9 @@
     ],
     "https://arxiv.org/abs/2608.25512": [
       "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c5"
+    ],
+    "https://arxiv.org/abs/2609.26781": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c42"
     ],
     "https://arxiv.org/abs/2609.28115": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c1",
@@ -8609,6 +8744,10 @@
     ],
     "https://arxiv.org/html/2512.02556v1": [
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c14"
+    ],
+    "https://arxiv.org/html/2512.08296v3": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c10",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c9"
     ],
     "https://arxiv.org/html/2602.02132v1": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c14"
@@ -8938,6 +9077,9 @@
     "https://blog.google/innovation-and-ai/technology/research/google-project-suncatcher": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c3"
     ],
+    "https://blog.google/intl/en-ie/products/sundar-pichai-io-2026": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c7"
+    ],
     "https://blog.google/security/vrp-2025-year-in-review": [
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12"
     ],
@@ -9191,6 +9333,12 @@
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c23",
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c36"
     ],
+    "https://code.claude.com/docs/en/agent-teams.md": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c16"
+    ],
+    "https://code.claude.com/docs/en/costs": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c16"
+    ],
     "https://codeant.ai/blogs/swe-bench-scores": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c15"
     ],
@@ -9202,6 +9350,9 @@
     ],
     "https://codingfleet.com/blog/glm-5-2-vs-deepseek-v4-pro": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c19"
+    ],
+    "https://cognition.com/blog/dont-build-multi-agents": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c38"
     ],
     "https://cognition.com/blog/frontier-code": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c6"
@@ -9397,6 +9548,12 @@
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c9",
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c17"
     ],
+    "https://cursor.com/blog/scaling-agents": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c11"
+    ],
+    "https://cursor.com/blog/self-driving-codebases": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c11"
+    ],
     "https://cursor.com/cursorbench": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c20",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c11",
@@ -9516,6 +9673,9 @@
     ],
     "https://deepmind.google/blog/watermarking-ai-generated-text-and-video-with-synthid": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c35"
+    ],
+    "https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c40"
     ],
     "https://deepmind.google/models/model-cards/gemini-3-1-pro": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c55"
@@ -9805,6 +9965,9 @@
     "https://docs.usd.ai/governance/chip": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c12"
     ],
+    "https://docs.x.ai/developers/model-capabilities/text/multi-agent": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c17"
+    ],
     "https://docs.xstocks.fi/docs": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c16"
     ],
@@ -10019,7 +10182,8 @@
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c5"
     ],
     "https://epoch.ai/data-insights/llm-inference-price-trends": [
-      "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c26"
+      "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c26",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c34"
     ],
     "https://epoch.ai/data/ai-data-centers": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c37"
@@ -10657,6 +10821,10 @@
     "https://github.com/guzus/ai-research-arm/blob/main/research/market/gpu-spot.json": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c15"
     ],
+    "https://github.com/guzus/ai-research-arm/blob/main/research/market/model-pricing.json": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c23",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c24"
+    ],
     "https://github.com/huggingface/datasets/issues/6400": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c9"
     ],
@@ -10729,6 +10897,9 @@
     ],
     "https://github.com/swe-bench/SWE-bench/pull/471": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c13"
+    ],
+    "https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c40"
     ],
     "https://github.com/teorth/erdosproblems/wiki/Disclaimers-and-caveats": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c37"
@@ -11111,6 +11282,9 @@
       "2026-07-31T051841--situational-awareness-lp-collapse#c30",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c34"
     ],
+    "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c30"
+    ],
     "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c1",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c2",
@@ -11194,6 +11368,13 @@
     ],
     "https://japanir.jp/company/company-3436/ir/3436-20260512-01_wp_financial_summary": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c14"
+    ],
+    "https://jellyfish.co/blog/is-tokenmaxxing-cost-effective-new-data-from-jellyfish-explains": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c3"
+    ],
+    "https://jellyfish.co/state-of-ai-software-engineering": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c37",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c4"
     ],
     "https://jingletree.com/startup-founders-urge-trump-not-to-shut-off-chinese-open-weight-ai-237211.html": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c25"
@@ -11288,6 +11469,9 @@
     ],
     "https://leanprover-community.github.io/mathlib_stats.html": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c35"
+    ],
+    "https://learn.chatgpt.com/docs/agent-configuration/subagents": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c17"
     ],
     "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB53": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c21"
@@ -11410,6 +11594,12 @@
     ],
     "https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c22"
+    ],
+    "https://metr.org/blog/2025-06-05-recent-reward-hacking": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c26"
+    ],
+    "https://metr.org/blog/2026-02-24-uplift-update": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c39"
     ],
     "https://metr.org/blog/2026-03-12-sabotage-risk-report-opus-4-6-review": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c19"
@@ -11879,6 +12069,9 @@
     "https://openrouter.ai/data/newsletter/cache-is-crucial": [
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c12"
     ],
+    "https://openrouter.ai/data/october-2026": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c32"
+    ],
     "https://openrouter.ai/docs/guides/routing/provider-selection": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c1"
     ],
@@ -12022,7 +12215,8 @@
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c20"
     ],
     "https://platform.claude.com/docs/en/about-claude/models/overview": [
-      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c3"
+      "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c3",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c21"
     ],
     "https://platform.claude.com/docs/en/about-claude/models/whats-new-opus-5": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c3"
@@ -13188,6 +13382,9 @@
     "https://tei.forrester.com/go/Glean/workAIplatform": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c19"
     ],
+    "https://tempo.xyz": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c35"
+    ],
     "https://tempo.xyz/customer-stories/link": [
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c1",
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c2"
@@ -13317,6 +13514,9 @@
     "https://thenextweb.com/news/anthropic-ipo-prospectus-42bn-loss-518bn-compute": [
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c9"
+    ],
+    "https://thenextweb.com/news/cathedral-doge-alumni-military-cyber-startup-1-4-billion": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c35"
     ],
     "https://thenextweb.com/news/google-44-billion-data-centre-lease-guarantees-tpu-anthropic": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c21"
@@ -13684,8 +13884,14 @@
     "https://www.anthropic.com/coordinated-vulnerability-disclosure": [
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c5"
     ],
+    "https://www.anthropic.com/engineering/building-c-compiler": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c12"
+    ],
     "https://www.anthropic.com/engineering/code-execution-with-mcp": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c8"
+    ],
+    "https://www.anthropic.com/engineering/multi-agent-research-system": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c8"
     ],
     "https://www.anthropic.com/events/the-briefing-ai-for-science-virtual-event": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c29"
@@ -13791,6 +13997,9 @@
     ],
     "https://www.anthropic.com/news/google-broadcom-partnership-compute": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c13"
+    ],
+    "https://www.anthropic.com/news/higher-limits-spacex": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c33"
     ],
     "https://www.anthropic.com/news/improving-alignment-security-efforts": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c40"
@@ -15652,12 +15861,18 @@
     "https://www.khaleejtimes.com/business/anthropic-ipo-prospectus-lays-bare-deep-dependence-on-big-tech-partners": [
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c14"
     ],
+    "https://www.kimi.com/blog/kimi-k2-5": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c15"
+    ],
     "https://www.kimi.com/blog/kimi-k3": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c1",
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c16",
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c3",
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c4",
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c35"
+    ],
+    "https://www.kimi.com/en/help/agent/agent-swarm": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c15"
     ],
     "https://www.kioxia.com/en-jp/business/news/2026/20260804-1.html": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c39",
@@ -15928,6 +16143,10 @@
     "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q3": [
       "2026-06-24T160453--test-ornn-com-codex-2#C11"
     ],
+    "https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c30",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c31"
+    ],
     "https://www.militarytimes.com/news/your-military/2026/03/24/deadly-iran-school-strike-casts-shadow-over-pentagons-ai-targeting-push": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c16"
     ],
@@ -16152,6 +16371,9 @@
     ],
     "https://www.paradigm.xyz/2020/08/ethereum-is-a-dark-forest": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c19"
+    ],
+    "https://www.paradigm.xyz/writing/swarm-riders-and-swarm-native-companies": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c2"
     ],
     "https://www.pearlcohen.com/anthropic-sues-department-of-defense-over-supply-chain-risk-designation": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c9"
@@ -16476,6 +16698,9 @@
     "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000002/amzn-20251231xex991.htm": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c21"
     ],
+    "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/amzn-20260930xex991.htm": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c30"
+    ],
     "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c31"
     ],
@@ -16496,7 +16721,8 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c18"
     ],
     "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm": [
-      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c19"
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c19",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c41"
     ],
     "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c30"
@@ -16532,6 +16758,10 @@
     "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c26",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c27"
+    ],
+    "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm": [
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c30",
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c6"
     ],
     "https://www.sec.gov/Archives/edgar/data/1717115/000119312526066931/tem-ex99_1.htm": [
       "2026-05-25T053654--ai-adoption-in-bio-industry#c15"
@@ -17910,7 +18140,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3194,
+  "claim_count": 3248,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -93947,9 +94177,1230 @@
         "https://api-docs.deepseek.com/news/news261017"
       ],
       "type": "event"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-16",
+      "claim": "On 2026-11-16 Anish Acharya (a16z) wrote that swarm gains come from parallelization, entropy and specialization, that mixing frontier and non-frontier models may imply a new Pareto curve, and that swarms use orders of magnitude more tokens than agents.",
+      "confidence": "high",
+      "hosts": [
+        "api.fxtwitter.com"
+      ],
+      "id": "c1",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://api.fxtwitter.com/illscience/status/2122367199625290028"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-04-08",
+      "claim": "The same study measures trace-level error amplification of 17.2x for independent agents versus 4.4x for centralized coordination; task-level error amplification is much smaller.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c10",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2512.08296v3"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-02-05",
+      "claim": "Cursor reported that with equal-status agents sharing a lock file, twenty agents slowed to the throughput of two or three, and that a hierarchy of planners and workers fixed this.",
+      "confidence": "high",
+      "hosts": [
+        "cursor.com"
+      ],
+      "id": "c11",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://cursor.com/blog/scaling-agents",
+        "https://cursor.com/blog/self-driving-codebases"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-02-05",
+      "claim": "Anthropic built a 100,000-line Rust C compiler with 16 parallel Claude agents over nearly 2,000 sessions for just under $20,000, using lock files and no orchestrator, and agents got stuck on one kernel bug until GCC was used as an oracle.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c12",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/engineering/building-c-compiler"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-17",
+      "claim": "Google's Antigravity /swarm docs describe a coordinator that does no technical work, named workers on a shared board, about one verifier per 2-4 workers, per-worker model choice, preview availability on AI Pro and Ultra, and warn that a swarm uses quota much faster than a single conversation.",
+      "confidence": "high",
+      "hosts": [
+        "antigravity.google"
+      ],
+      "id": "c13",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://antigravity.google/docs/swarm",
+        "https://antigravity.google/blog/gemini-4-carbon-in-google-antigravity"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-09",
+      "claim": "Antigravity app v2.31.0 shipped /swarm on 2026-11-09.",
+      "confidence": "high",
+      "hosts": [
+        "antigravity.google"
+      ],
+      "id": "c14",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://antigravity.google/changelog.md"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-04-20",
+      "claim": "Moonshot's Kimi K2.5 Agent Swarm uses a trained orchestrator with up to 100 frozen sub-agents and claims up to 4.5x lower latency than a single agent; K2.6 raised the cap to 300 sub-agents.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org",
+        "kimi.com"
+      ],
+      "id": "c15",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c15",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "academic",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.kimi.com/blog/kimi-k2-5",
+        "https://arxiv.org/abs/2602.02276",
+        "https://www.kimi.com/en/help/agent/agent-swarm"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-17",
+      "claim": "Claude Code agent teams are experimental, use a lead plus teammates with a shared task list, recommend 3-5 teammates, and use about 7x more tokens than standard sessions when teammates run in plan mode; the enterprise average is about $13 per developer per active day and under $30 for 90% of users.",
+      "confidence": "high",
+      "hosts": [
+        "code.claude.com"
+      ],
+      "id": "c16",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c16",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://code.claude.com/docs/en/agent-teams.md",
+        "https://code.claude.com/docs/en/costs"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-17",
+      "claim": "OpenAI Codex subagents run under a parent that merges results with a configurable concurrency cap, and OpenAI warns subagent workflows consume more tokens than single-agent runs; xAI's grok-4.20-multi-agent runs a fixed 4 or 16 agents with a leader.",
+      "confidence": "medium",
+      "hosts": [
+        "docs.x.ai",
+        "learn.chatgpt.com"
+      ],
+      "id": "c17",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c17",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+        "https://docs.x.ai/developers/model-capabilities/text/multi-agent"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2025-02-02",
+      "claim": "Self-MoA found that aggregating samples from only the single best model beats mixing different models by 6.6% on AlpacaEval 2.0 and 3.8% on average across MMLU, CRUX and MATH.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c18",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2502.00674"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-05-28",
+      "claim": "AgentCARD (2026-05-28) reports heterogeneous teams occupy the cost-accuracy frontier, with up to +44% accuracy over cost-equivalent homogeneous teams and up to 12x lower cost to match the strongest homogeneous team.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c19",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2606.20629"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-10",
+      "claim": "Matt Huang (Paradigm) wrote on 2026-11-10 that swarm riders reach productive token spend 1000x-10000x that of median software engineers, based on riders he knows.",
+      "confidence": "high",
+      "hosts": [
+        "api.fxtwitter.com",
+        "paradigm.xyz"
+      ],
+      "id": "c2",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.paradigm.xyz/writing/swarm-riders-and-swarm-native-companies",
+        "https://api.fxtwitter.com/matthuang/status/2120209025099043286"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-03-27",
+      "claim": "A 2026 SWE-bench Lite study found a strong manager directing a weak worker scored 62%, matching a strong single agent at 60%, while a weak manager with a weak worker scored 42%, below the weak agent alone at 44%.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c20",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c20",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2603.26458"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-17",
+      "claim": "Claude Opus 5.5 lists at $4 input and $20 output per million tokens, with cache reads at 5% of input price.",
+      "confidence": "high",
+      "hosts": [
+        "platform.claude.com"
+      ],
+      "id": "c21",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c21",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://platform.claude.com/docs/en/about-claude/models/overview"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-17",
+      "claim": "DeepSeek's flash model lists at $0.60 per million output tokens off-peak and $1.20 at peak.",
+      "confidence": "high",
+      "hosts": [
+        "api-docs.deepseek.com"
+      ],
+      "id": "c22",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c22",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api-docs.deepseek.com/quick_start/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-16",
+      "claim": "The repo's model-pricing snapshot of 2026-11-16 joins OpenRouter prices to Epoch AI GPQA-diamond scores and finds seven Pareto-frontier models; Gemini 4 Carbon scores 0.965 at $10 per million output tokens while GLM 5.3 Flash scores 0.902 at $0.0784.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c23",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c23",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://github.com/guzus/ai-research-arm/blob/main/research/market/model-pricing.json"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-16",
+      "claim": "In the same snapshot, on FrontierMath tiers 1-3 Claude Fable 5.2 scores 0.951, DeepSeek V4.1 Flash 0.712 and GLM 5.3 Flash 0.558, while on GPQA diamond they score 0.960, 0.932 and 0.902.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c24",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c24",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://github.com/guzus/ai-research-arm/blob/main/research/market/model-pricing.json"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2024-07-31",
+      "claim": "Large Language Monkeys found SWE-bench Lite coverage rises from 15.9% with one sample to 56% with 250 samples using an automatic verifier, versus a 43% single-attempt state of the art, while majority voting and reward models plateau beyond several hundred samples.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c25",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c25",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2407.21787"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2025-06-05",
+      "claim": "METR found o3 reward-hacked in 39 of 128 RE-Bench runs (30.4%) versus 8 of 1,087 HCAST runs (0.7%), and in 21 of 21 runs on one task.",
+      "confidence": "high",
+      "hosts": [
+        "metr.org"
+      ],
+      "id": "c26",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://metr.org/blog/2025-06-05-recent-reward-hacking"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2025-05-08",
+      "claim": "Toby Ord models agent success as decaying exponentially with task length, consistent with a constant per-step failure chance, so success over n independent steps at reliability p is p^n.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c27",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c27",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2505.05115"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-04-11",
+      "claim": "Stanford researchers found single agents match or beat multi-agent systems on multi-hop reasoning when reasoning tokens are held constant.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c28",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c28",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2604.02460"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2025-08-24",
+      "claim": "Debate or Vote (NeurIPS 2025) finds majority voting alone accounts for most of the performance gains typically attributed to multi-agent debate.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c29",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c29",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2508.17536"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-04-15",
+      "claim": "Jellyfish Q1 2026 telemetry across 12,000 developers puts median usage at about 51 million tokens a month, about $52.38 a month at list prices, with the 90th percentile near 380M tokens.",
+      "confidence": "medium",
+      "hosts": [
+        "jellyfish.co"
+      ],
+      "id": "c3",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://jellyfish.co/blog/is-tokenmaxxing-cost-effective-new-data-from-jellyfish-explains"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-10-29",
+      "claim": "Alphabet, Microsoft, Amazon and Meta reported Q3 2026 capital expenditure of $51.36B, $45.2B, $75.9B (net) and $34.91B respectively, with differing definitions.",
+      "confidence": "high",
+      "hosts": [
+        "investor.atmeta.com",
+        "microsoft.com",
+        "sec.gov"
+      ],
+      "id": "c30",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c30",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary",
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm",
+        "https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1",
+        "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000038/amzn-20260930xex991.htm",
+        "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-10-28",
+      "claim": "Microsoft CFO Amy Hood said on the Q1 FY27 call that customer demand continues to exceed available supply.",
+      "confidence": "high",
+      "hosts": [
+        "microsoft.com"
+      ],
+      "id": "c31",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c31",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-10-31",
+      "claim": "OpenRouter reported October 2026 as its largest month at 790 trillion tokens, up 37% from September, with agentic keys taking 76% of tokens versus 8% a year earlier; blended prices fell January to October from $1.21 to $0.52 per million tokens for closed models and $0.28 to $0.084 for open models.",
+      "confidence": "medium",
+      "hosts": [
+        "openrouter.ai"
+      ],
+      "id": "c32",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c32",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://openrouter.ai/data/october-2026"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-05-06",
+      "claim": "Anthropic doubled Claude Code five-hour limits and removed the peak-hours reduction on 2026-05-06 after taking all compute at SpaceX's Colossus 1 data center, more than 300 MW and over 220,000 NVIDIA GPUs.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c33",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c33",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/higher-limits-spacex"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-03-23",
+      "claim": "Epoch AI found the price to reach a fixed benchmark level fell 9x to 900x per year depending on threshold, while Gundlach et al. find the cost of running frontier models rising 3x to 18x per year because of bigger models and longer reasoning.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org",
+        "epoch.ai"
+      ],
+      "id": "c34",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c34",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "academic"
+      ],
+      "source_urls": [
+        "https://epoch.ai/data-insights/llm-inference-price-trends",
+        "https://arxiv.org/abs/2511.23455"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-07-23",
+      "claim": "Cathedral Systems, a military-cyber startup founded by former DOGE staff, raised $160M at a $1.4B valuation in a round Reuters reported was led by a16z and Sequoia; Tempo says it was incubated by Stripe and Paradigm, and Huang's X profile says he founded it.",
+      "confidence": "medium",
+      "hosts": [
+        "tempo.xyz",
+        "thenextweb.com"
+      ],
+      "id": "c35",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c35",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://thenextweb.com/news/cathedral-doge-alumni-military-cyber-startup-1-4-billion",
+        "https://tempo.xyz"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-09-29",
+      "claim": "Replit's Michele Catasta published Terminal-Bench 4.0 runs: Replit Agent Max 49% at $2.53 per task, Astra xhigh 60% at $5.86, Astra low effort 42% at $2.25 and a Sidekick architecture 33% at $1.84.",
+      "confidence": "medium",
+      "hosts": [
+        "api.fxtwitter.com"
+      ],
+      "id": "c36",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c36",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api.fxtwitter.com/pirroh/status/2104976589180252218"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-05-31",
+      "claim": "Jellyfish found the first 0.7 million tokens per user per month return almost 11 PRs per million with diminishing returns after about 2 million, and that cache reads are about 96% of tokens.",
+      "confidence": "medium",
+      "hosts": [
+        "jellyfish.co"
+      ],
+      "id": "c37",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c37",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://jellyfish.co/state-of-ai-software-engineering"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2025-10-26",
+      "claim": "Cognition argues multi-agent setups that work keep writes single-threaded and share full traces, and the MAST study annotated over 1,600 multi-agent traces across 7 frameworks into 14 failure modes.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org",
+        "cognition.com"
+      ],
+      "id": "c38",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c38",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "academic"
+      ],
+      "source_urls": [
+        "https://cognition.com/blog/dont-build-multi-agents",
+        "https://arxiv.org/abs/2503.13657"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-02-24",
+      "claim": "METR's 2026-02-24 update estimates AI speedup of -18% (95% CI -38% to +9%) for returning developers, and says multi-agent work makes time measurement unreliable.",
+      "confidence": "medium",
+      "hosts": [
+        "metr.org"
+      ],
+      "id": "c39",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c39",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://metr.org/blog/2026-02-24-uplift-update"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-05-31",
+      "claim": "Jellyfish reports the median user's monthly token spend rose from about $5 to $81 in ten months to May 2026, with mean $248 and P99 $2,452.",
+      "confidence": "medium",
+      "hosts": [
+        "jellyfish.co"
+      ],
+      "id": "c4",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://jellyfish.co/state-of-ai-software-engineering"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-06-30",
+      "claim": "Erdos problems with full AI solutions came mostly from single frontier models, often with Lean formalization, not from swarms, per Terence Tao's community wiki as of 2026-06-30; AlphaEvolve and Google's AI co-scientist rely on automated evaluators or tournament ranking inside many-candidate search.",
+      "confidence": "medium",
+      "hosts": [
+        "deepmind.google",
+        "github.com"
+      ],
+      "id": "c40",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c40",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems",
+        "https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-08-26",
+      "claim": "Nvidia's Q2 FY27 Data Center revenue was a record $89.0 billion, up 117% year on year, and the Q3 FY27 call was scheduled for 2026-11-17.",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c41",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c41",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-09-22",
+      "claim": "Microsoft Research's Agensh preprint (2026-09-22) describes a multi-agent harness without a central orchestrator; on ProgramBench pandoc the final test-pass rate rises from 33.89% with one agent to 55.06% with 1,024 agents.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c42",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c42",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2609.26781"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-08-02",
+      "claim": "Larridin's billing-feed data reports a median of about $920 per engineer per month (about $213 per week) for the four weeks to 2026-08-02, among engineers who merged code and had billed AI spend.",
+      "confidence": "low",
+      "hosts": [
+        "ai-spend.larridin.com"
+      ],
+      "id": "c43",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c43",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://ai-spend.larridin.com/data"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2025-04-18",
+      "claim": "Kirk et al. find RLHF significantly reduces output diversity compared with supervised fine-tuning; Yue et al. find RLVR-trained models beat base models at small k but lose at large k.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c44",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c44",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic",
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2310.06452",
+        "https://arxiv.org/abs/2504.13837"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-10-29",
+      "claim": "Spawn's founder said the company spent $3.1 million on tokens in the prior month with a ten-person team, about 30x payroll.",
+      "confidence": "low",
+      "hosts": [
+        "api.fxtwitter.com"
+      ],
+      "id": "c5",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c5",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://api.fxtwitter.com/jsnnsa/status/2115623382721126826"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-10-28",
+      "claim": "Alphabet's Q3 2026 release says Google's model APIs process nearly 32 billion tokens per minute, more than four times a year earlier.",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c6",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-05-19",
+      "claim": "At I/O on 2026-05-19 Google said its model APIs processed roughly 19 billion tokens per minute and tokens across all surfaces reached over 3.2 quadrillion per month.",
+      "confidence": "high",
+      "hosts": [
+        "blog.google"
+      ],
+      "id": "c7",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://blog.google/intl/en-ie/products/sundar-pichai-io-2026"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2025-06-13",
+      "claim": "Anthropic reported that agents use about 4x the tokens of chat and multi-agent systems about 15x, that token usage alone explains 80% of BrowseComp variance, and that its Opus-lead multi-agent system beat single-agent Opus 4 by 90.2% on an internal research eval.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c8",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/engineering/multi-agent-research-system"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-04-08",
+      "claim": "Kim et al. (260 configurations) found multi-agent systems gain +80.8% on decomposable financial reasoning but lose 39% to 70% on sequential planning, and degrade when a single agent already scores above about 45%.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c9",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2512.08296v3"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-17",
+      "claim": "At Huang's 1000x multiple, the Jellyfish Q1 median of $52.38 a month implies about $52,380 a month at list price.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#d1",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-17",
+      "claim": "At 1,000x Larridin's roughly $920 monthly median, spend would be about $920,000 a month.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d10",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#d10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-17",
+      "claim": "At 10000x the Jellyfish May 2026 median of $81 a month, a swarm rider would spend about $810,000 a month.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#d2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-10-29",
+      "claim": "Spawn's reported $3.1M monthly token bill across ten people is about $310,000 per person per month.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#d3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-10-28",
+      "claim": "Google's 32 billion tokens per minute of API traffic is about 46 trillion tokens per day.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#d4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-17",
+      "claim": "Opus 5.5 output tokens cost about 33 times DeepSeek flash off-peak output tokens.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#d5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-16",
+      "claim": "On the 2026-11-16 snapshot the top GPQA model's $10 output price is about 128 times GLM 5.3 Flash's $0.0784.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#d6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-17",
+      "claim": "A 50-step chain at 95% independent per-step reliability succeeds about 7.7% of the time.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d7",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#d7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-10-29",
+      "claim": "The four hyperscalers' reported Q3 2026 capex sums to about $207 billion.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d8",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#d8",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta",
+      "article_created_at": "2026-11-17T00:28:29Z",
+      "article_title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+      "as_of": "2026-11-17",
+      "claim": "One rider at 10000x the Jellyfish Q1 median token volume would draw about 0.037% of Google's API token throughput.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d9",
+      "key": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#d9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1533,
+  "reusable_count": 1549,
   "schema_version": 1
 }

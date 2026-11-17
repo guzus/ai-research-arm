@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "It finds multi-agent systems gain up to 80.8% on decomposable financial reasoning but lose 39% to 70% on sequential planning, and that coordination returns shrink or turn negative once a single agent already scores above about 45%.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "The vendor products tell a different story, because every one that documents its architecture has a coordinator.",
+      "contradicting_url": "https://arxiv.org/abs/2609.26781",
+      "contradicting_quote": "a scalable self-organized multi-agent harness without a central orchestrator",
+      "severity": "high",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "Jellyfish telemetry across 12,000 developers in the first quarter put the median at about 51 million tokens, about $52 a month at published Claude API prices.",
+      "contradicting_url": "https://ai-spend.larridin.com/data",
+      "contradicting_quote": "Median $213 per engineer per week (roughly $920 per month), four weeks ending August 2, 2026",
+      "severity": "medium",
+      "no_contradiction_found": false
+    }
+  ]
+}
