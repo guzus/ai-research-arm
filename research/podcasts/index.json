@@ -1,9 +1,177 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-17T13:47:00Z",
+  "updated_at": "2026-11-17T22:36:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "all-in:1bR0gtecoHU",
+      "show_id": "all-in",
+      "show": "All-In Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Databricks CEO: AGI Is Already Here, Why Companies Are Behind, and the Superintelligence Debate",
+      "url": "https://www.youtube.com/watch?v=1bR0gtecoHU",
+      "video_id": "1bR0gtecoHU",
+      "audio_url": null,
+      "published_at": "2026-11-17T22:18:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T22:36:00Z",
+      "duration_s": 3726,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-17T22:36:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "twiml:wHc_AGPsAzk",
+      "show_id": "twiml",
+      "show": "The TWIML AI Podcast",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "How HPE Decides When a Smaller AI Model Can Do the Job",
+      "url": "https://www.youtube.com/watch?v=wHc_AGPsAzk",
+      "video_id": "wHc_AGPsAzk",
+      "audio_url": null,
+      "published_at": "2026-11-17T21:06:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T22:36:00Z",
+      "duration_s": 1332,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-17T22:36:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "big-technology:9Y4HDQnvCas",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Why The Anthropic IPO Will Fail — With Gary Marcus",
+      "url": "https://www.youtube.com/watch?v=9Y4HDQnvCas",
+      "video_id": "9Y4HDQnvCas",
+      "audio_url": null,
+      "published_at": "2026-11-17T19:06:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T22:36:00Z",
+      "duration_s": 3472,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-17T22:36:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "openai:C1zYX5jwqq4",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "GPT-6.2 Astra and GPT-6.2 Sol—Models built for the real world",
+      "url": "https://www.youtube.com/watch?v=C1zYX5jwqq4",
+      "video_id": "C1zYX5jwqq4",
+      "audio_url": null,
+      "published_at": "2026-11-17T18:06:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T22:36:00Z",
+      "duration_s": 119,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-17T22:36:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:h_aA1-R70E8",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "OpenAI’s Cofounder & Research Chief Explain Self-Improving AI",
+      "url": "https://www.youtube.com/watch?v=h_aA1-R70E8",
+      "video_id": "h_aA1-R70E8",
+      "audio_url": null,
+      "published_at": "2026-11-17T18:06:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T22:36:00Z",
+      "duration_s": 979,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "microsoft-research:K1iNbVIFcJE",
+      "show_id": "microsoft-research",
+      "show": "Microsoft Research",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "research"
+      ],
+      "title": "Can AI help build a healthier future?",
+      "url": "https://www.youtube.com/watch?v=K1iNbVIFcJE",
+      "video_id": "K1iNbVIFcJE",
+      "audio_url": null,
+      "published_at": "2026-11-17T17:06:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T22:36:00Z",
+      "duration_s": 3429,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "openai:xkeXefmxArU",
       "show_id": "openai",
@@ -9679,65 +9847,6 @@
           "text": "I understand you, but Stripe carries out mergers and absorption for Open Road for 8 billion dollars. I have on meaning that they wanted buy PayPal, obviously, for 55 billion dollars. You already have it. there are. You have liquidity for employees and investors. Me just wondering if we really see victorious wing attractiveness of IPO? Yes. Perhaps. Perhaps.",
           "at_s": 3587,
           "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=3587s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "big-technology:WFdzr_oZtP4",
-      "show_id": "big-technology",
-      "show": "Big Technology Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "news-show"
-      ],
-      "title": "Anthropic IPO Panic, A Spy At OpenAI?, The Great Food Slop Debate",
-      "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4",
-      "video_id": "WFdzr_oZtP4",
-      "audio_url": null,
-      "published_at": "2026-10-18T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3389,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 9011,
-        "checked_at": "2026-11-10T02:53:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "So 45% of that base is incredible growth , but if you start extrapolating, they would have to accelerate growth to reach the 100 billion mark. Even the 80 billion mark. Overall, if they take it, it seems like it was about 7% quarterly, oh, sorry, monthly growth. If you extrapolate this, they will receive about 75 billion in revenue.",
-          "at_s": 187,
-          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=187s"
-        },
-        {
-          "text": "Again, I don't want to downplay the fact that a company that made $4 billion in 2025 made $16.8 billion in the third quarter. Is n't that right? So, 3.6 times the revenue of the entire company in one quarter. But the thing is , it all depends on expectations and what level those expectations are at.",
-          "at_s": 404,
-          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=404s"
-        },
-        {
-          "text": "Well, this is where it gets so confusing, because 100...Oh, sorry. 100 billion, that's not 100 billion ARR , right? Is that really true? Is the expected ARR of 100 billion, meaning that in December you're showing, well, somewhere around $8.5 billion per month or something? Compared to that, what are the expectations for total revenue for 2026?",
-          "at_s": 680,
-          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=680s"
-        },
-        {
-          "text": "Meanwhile, Social Capital founder Chamath Palihapitiya raised the issue of a private credit bubble, adding a screenshot showing that CoreWeave's bond yield had reached 15%. Elon Musk replied: \"Oh, oh.\" CoreWeave shares have plummeted, data center-related companies have also fallen 10%, and now CoreWeave options trading volume has increased more than seven times compared to the 30- day average.",
-          "at_s": 1041,
-          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=1041s"
-        },
-        {
-          "text": "I still realize that I shouldn't build a business in the AI ​​cloud infrastructure space. I say this even though I work in AI. Don't trust me with $ 30 or $15 billion in debt to build a data center. But no one will trust that guy. I mean, I'm sorry. Sorry.",
-          "at_s": 1224,
-          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=1224s"
-        },
-        {
-          "text": "And as for the debt, again CoreWeave, it's just crazy, because the bonds, well, they were issued at 9.625%. They are currently trading at a yield of 15, or it seems it was as high as 16%. CoreCivic Bonds. So, CoreCivic is now paying them 15 cents for every dollar borrowed.",
-          "at_s": 1377,
-          "url": "https://www.youtube.com/watch?v=WFdzr_oZtP4&t=1377s"
         }
       ],
       "description": ""
