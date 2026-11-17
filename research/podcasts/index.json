@@ -1,9 +1,149 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-17T03:07:00Z",
+  "updated_at": "2026-11-17T13:47:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "openai:xkeXefmxArU",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Making marketing feel local across 40 markets | Revolut’s Kim Maniovich",
+      "url": "https://www.youtube.com/watch?v=xkeXefmxArU",
+      "video_id": "xkeXefmxArU",
+      "audio_url": null,
+      "published_at": "2026-11-17T09:17:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T13:47:00Z",
+      "duration_s": 129,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "openai:hAASMPKkaXA",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Making seven years of design documentation AI-readable in a day | Revolut’s Dmytro Pavlov",
+      "url": "https://www.youtube.com/watch?v=hAASMPKkaXA",
+      "video_id": "hAASMPKkaXA",
+      "audio_url": null,
+      "published_at": "2026-11-17T09:17:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T13:47:00Z",
+      "duration_s": 139,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-17T13:47:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "openai:ZIpm-0RczCk",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "How Revolut’s lean teams take on bigger challenges with OpenAI",
+      "url": "https://www.youtube.com/watch?v=ZIpm-0RczCk",
+      "video_id": "ZIpm-0RczCk",
+      "audio_url": null,
+      "published_at": "2026-11-17T09:17:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T13:47:00Z",
+      "duration_s": 163,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-17T13:47:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "openai:R_sl8zEp9ng",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "How one engineer built a code review service with Codex | Revolut’s Dmitry Pitik",
+      "url": "https://www.youtube.com/watch?v=R_sl8zEp9ng",
+      "video_id": "R_sl8zEp9ng",
+      "audio_url": null,
+      "published_at": "2026-11-17T09:17:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T13:47:00Z",
+      "duration_s": 120,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-17T13:47:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "openai:-O0tMcyH4Wo",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Faster fraud response for safer shopping | Revolut’s David Abitbol",
+      "url": "https://www.youtube.com/watch?v=-O0tMcyH4Wo",
+      "video_id": "-O0tMcyH4Wo",
+      "audio_url": null,
+      "published_at": "2026-11-17T09:17:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T13:47:00Z",
+      "duration_s": 134,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-17T13:47:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "ai-daily-brief:zXrty-ZAIUo",
       "show_id": "ai-daily-brief",
