@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 29,
+  "count": 30,
   "events": [
+    {
+      "file": "2026-11-17-NVDA-FY27Q3.md",
+      "date": "2026-11-17",
+      "ticker": "NVDA",
+      "period": "FY27Q3",
+      "issuer": "NVIDIA Corporation",
+      "form": "8-K",
+      "accession": "0001045810-26-000088",
+      "transcript": false
+    },
     {
       "file": "2026-11-10-CRWV-FY26Q3.md",
       "date": "2026-11-10",
