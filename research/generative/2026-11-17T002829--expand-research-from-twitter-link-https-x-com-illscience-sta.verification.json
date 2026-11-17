@@ -1,0 +1,262 @@
+{
+  "claims": [
+    {
+      "id": "c1",
+      "text": "On 16 November 2026 a16z's Anish Acharya wrote that \"swarms\" are becoming a major topic in Silicon Valley, that their gains come from parallelization, entropy and specialization, and that mixing frontier and non-frontier models could imply a new Pareto curve.[^1]",
+      "verdict": "supported",
+      "citation": "https://api.fxtwitter.com/illscience/status/2122367199625290028"
+    },
+    {
+      "id": "c2",
+      "text": "Huang's headline figure is that swarm riders reach productive token spend 1,000x to 10,000x that of median software engineers, and about 100x that of the top 5% of Claude Code users.[^3]",
+      "verdict": "supported",
+      "citation": "https://www.paradigm.xyz/writing/swarm-riders-and-swarm-native-companies"
+    },
+    {
+      "id": "c3",
+      "text": "Jellyfish telemetry across 12,000 developers in the first quarter put the median at about 51 million tokens, about $52 a month at list prices, and by May the median user's spend had risen to $81 a month, a 16-fold climb in ten months, with a mean of $248 and a 99th percentile of $2,452.[^41][^42]",
+      "verdict": "supported",
+      "citation": "https://jellyfish.co/blog/is-tokenmaxxing-cost-effective-new-data-from-jellyfish-explains/"
+    },
+    {
+      "id": "c4",
+      "text": "Jellyfish telemetry across 12,000 developers in the first quarter put the median at about 51 million tokens, about $52 a month at list prices, and by May the median user's spend had risen to $81 a month, a 16-fold climb in ten months, with a mean of $248 and a 99th percentile of $2,452.[^41][^42]",
+      "verdict": "supported",
+      "citation": "https://jellyfish.co/state-of-ai-software-engineering/"
+    },
+    {
+      "id": "c5",
+      "text": "Spawn's founder said the company spent $3.1 million on tokens in a month with ten people, about 30 times payroll.[^7]",
+      "verdict": "supported",
+      "citation": "https://api.fxtwitter.com/jsnnsa/status/2115623382721126826"
+    },
+    {
+      "id": "c6",
+      "text": "Google says its model APIs process nearly 32 billion tokens a minute, more than four times a year earlier and up from 19 billion at I/O in May, which is about 46 trillion tokens a day.[^43][^44]",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm"
+    },
+    {
+      "id": "c7",
+      "text": "Across all Google surfaces tokens passed 3.2 quadrillion a month in May.[^44]",
+      "verdict": "supported",
+      "citation": "https://blog.google/intl/en-ie/products/sundar-pichai-io-2026/"
+    },
+    {
+      "id": "c8",
+      "text": "Anthropic's own multi-agent research system reports a 90.2% improvement over single-agent Opus 4 on its internal eval, but at about 15 times the tokens of a chat (a single agent uses about 4x), and with token usage alone explaining 80% of the variance on BrowseComp.[^17]",
+      "verdict": "supported",
+      "citation": "https://www.anthropic.com/engineering/multi-agent-research-system"
+    },
+    {
+      "id": "c9",
+      "text": "It finds multi-agent systems gain 80.8% on decomposable financial reasoning, but lose 39% to 70% on sequential planning, and degrade further when a single agent already scores above about 45%.[^23]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2512.08296v3"
+    },
+    {
+      "id": "c10",
+      "text": "In the Google-and-partners study, independent agents amplify trace-level errors 17.2 times versus 4.4 times under centralized coordination, a figure the paper itself defines as extra work in execution logs; the gap in task-level errors is far smaller.[^23]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/html/2512.08296v3"
+    },
+    {
+      "id": "c11",
+      "text": "Cursor tried the opposite design, equal-status agents sharing a lock file, and reported that twenty agents slowed to the effective throughput of two or three; agents without hierarchy also became risk-averse, and the working design became recursive planners and sub-planners with workers handing results up.[^20][^21]",
+      "verdict": "supported",
+      "citation": "https://cursor.com/blog/scaling-agents"
+    },
+    {
+      "id": "c12",
+      "text": "Anthropic's 16-agent C compiler, nearly 2,000 sessions for just under $20,000, used flat peers claiming tasks through lock files rather than an orchestrator, and produced a 100,000-line Rust compiler that builds Linux 6.9 on x86, ARM and RISC-V.[^22]",
+      "verdict": "supported",
+      "citation": "https://www.anthropic.com/engineering/building-c-compiler"
+    },
+    {
+      "id": "c13",
+      "text": "Google's `/swarm` turns the user's conversation into a coordinator that does no technical work itself, creates named workers on a shared message board, and assigns roughly one `@verifier` per two to four workers; workers can get their own copy of the repo and run on different models.[^4][^6]",
+      "verdict": "supported",
+      "citation": "https://antigravity.google/docs/swarm"
+    },
+    {
+      "id": "c14",
+      "text": "Google's documentation and changelog use the singular; the feature shipped in Antigravity app v2.31.0 on 9 November 2026.[^4][^5]",
+      "verdict": "supported",
+      "citation": "https://antigravity.google/changelog.md"
+    },
+    {
+      "id": "c15",
+      "text": "Moonshot's Kimi K2.5 Agent Swarm trains an orchestrator with reinforcement learning to direct up to 100 frozen sub-agents, and its failure mode is named \"serial collapse\", where the orchestrator falls back to doing things one at a time.[^12][^13]",
+      "verdict": "supported",
+      "citation": "https://www.kimi.com/blog/kimi-k2-5"
+    },
+    {
+      "id": "c16",
+      "text": "Anthropic reports that across enterprise Claude Code deployments the average is about $13 per developer per active day, with spending under $30 a day for 90% of users, and agent teams use roughly 7 times the tokens of a standard session when teammates run in plan mode.[^16]",
+      "verdict": "supported",
+      "citation": "https://code.claude.com/docs/en/costs"
+    },
+    {
+      "id": "c17",
+      "text": "OpenAI's Codex subagents report to a parent that merges results under a configurable concurrency cap, and xAI's multi-agent Grok runs a fixed 4 or 16 agents behind a leader.[^18][^19]",
+      "verdict": "supported",
+      "citation": "https://learn.chatgpt.com/docs/agent-configuration/subagents"
+    },
+    {
+      "id": "c18",
+      "text": "Self-MoA shows that aggregating samples from the single best model beats mixing different models by 6.6% on AlpacaEval 2.0 and 3.8% on average elsewhere, because mixing often lowers average quality.[^26]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2502.00674"
+    },
+    {
+      "id": "c19",
+      "text": "A May 2026 study reports that heterogeneous teams occupy the cost-accuracy frontier, with up to 44% higher accuracy than cost-equivalent homogeneous teams and up to 12 times lower cost to match the strongest homogeneous team, though both are \"up to\" maxima on a small model pool.[^27]",
+      "verdict": "weak",
+      "citation": "https://arxiv.org/abs/2606.20629"
+    },
+    {
+      "id": "c20",
+      "text": "A March 2026 SWE-bench Lite study finds a strong manager directing a weak worker scores 62%, matching a strong single agent at 60%.[^34]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2603.26458"
+    },
+    {
+      "id": "c21",
+      "text": "First, most agent tokens are cheap re-reads: Jellyfish reports cache reads at about 96% of tokens, and cached reads on Opus 5.5 are priced at 5% of base input.[^42][^38]",
+      "verdict": "supported",
+      "citation": "https://platform.claude.com/docs/en/about-claude/models/overview"
+    },
+    {
+      "id": "c22",
+      "text": "The price list shows the gap that makes mixing attractive: Opus 5.5 output lists at $20 per million tokens against $0.60 off-peak for DeepSeek's flash model, about 33 times more.[^38][^39]",
+      "verdict": "supported",
+      "citation": "https://api-docs.deepseek.com/quick_start/pricing"
+    },
+    {
+      "id": "c23",
+      "text": "On GPQA diamond, seven models form the price frontier, and Gemini 4 Carbon leads at 0.965 for $10 per million output tokens, while GLM 5.3 Flash scores 0.902 at $0.0784, about 128 times cheaper for a 6.3-point deficit.[^40]",
+      "verdict": "supported",
+      "citation": "https://github.com/guzus/ai-research-arm/blob/main/research/market/model-pricing.json"
+    },
+    {
+      "id": "c24",
+      "text": "On GPQA, yes; on FrontierMath a cheap model trails by about 39 points.",
+      "verdict": "supported",
+      "citation": "https://github.com/guzus/ai-research-arm/blob/main/research/market/model-pricing.json"
+    },
+    {
+      "id": "c25",
+      "text": "On SWE-bench Lite, the fraction of problems solved by at least one of many samples rises from 15.9% with one sample to 56% with 250, against a 43% single-attempt state of the art at the time.[^28]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2407.21787"
+    },
+    {
+      "id": "c26",
+      "text": "METR found o3 reward-hacked in 39 of 128 RE-Bench runs (30.4%), against 8 of 1,087 on HCAST, and in 21 of 21 runs on one task where the scorer was visible.[^31]",
+      "verdict": "supported",
+      "citation": "https://metr.org/blog/2025-06-05-recent-reward-hacking/"
+    },
+    {
+      "id": "c27",
+      "text": "Ord models agent success as decaying exponentially with task length.[^32]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2505.05115"
+    },
+    {
+      "id": "c28",
+      "text": "A Stanford study found the same pattern from the other direction: with reasoning tokens held constant, single agents match or beat multi-agent systems on multi-hop reasoning.[^24]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2604.02460"
+    },
+    {
+      "id": "c29",
+      "text": "And when the \"diversity\" comes from agents talking to each other, much of it evaporates: a NeurIPS 2025 study finds majority voting alone accounts for most of the gains typically credited to multi-agent debate.[^25]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2508.17536"
+    },
+    {
+      "id": "c30",
+      "text": "Together the four reported about $207 billion of capex for the quarter.[^43][^46][^47][^48]",
+      "verdict": "supported",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm"
+    },
+    {
+      "id": "c31",
+      "text": "Microsoft's CFO told investors that customer demand continues to exceed available supply and that some third-party capacity deliveries expected in the quarter were delayed.[^47]",
+      "verdict": "supported",
+      "citation": "https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1"
+    },
+    {
+      "id": "c32",
+      "text": "OpenRouter's October 2026 was its largest month at 790 trillion tokens, up 37% on September, with agentic keys taking 76% of tokens versus 8% a year earlier.[^45]",
+      "verdict": "supported",
+      "citation": "https://openrouter.ai/data/october-2026"
+    },
+    {
+      "id": "c33",
+      "text": "Anthropic's own limits moved the other way from \"tightening\" in May, when it doubled Claude Code five-hour limits and removed the peak-hours reduction after taking all compute at SpaceX's Colossus 1 data center, over 300 megawatts and more than 220,000 NVIDIA GPUs.[^49]",
+      "verdict": "supported",
+      "citation": "https://www.anthropic.com/news/higher-limits-spacex"
+    },
+    {
+      "id": "c34",
+      "text": "A fixed capability tier is getting cheaper fast, with Epoch AI measuring declines of 9x to 900x per year depending on the threshold, but the cost of running the frontier is rising 3x to 18x per year because models are bigger and reason longer.[^36][^37]",
+      "verdict": "supported",
+      "citation": "https://arxiv.org/abs/2511.23455"
+    },
+    {
+      "id": "c35",
+      "text": "Another named company, Cathedral Systems, raised $160M at a $1.4B valuation in a round Reuters reported was led by a16z and Sequoia, which makes Acharya's firm an investor in an example his quoted source cites.[^8]",
+      "verdict": "weak",
+      "citation": "https://thenextweb.com/news/cathedral-doge-alumni-military-cyber-startup-1-4-billion"
+    },
+    {
+      "id": "c36",
+      "text": "And Replit's own numbers are not a clean Pareto win for mixing: its cheapest architecture scored 33% at $1.84 per task, its main agent 49% at $2.53, and a frontier-only high-effort setting scored the highest, 60% at $5.86.[^11]",
+      "verdict": "weak",
+      "citation": "https://api.fxtwitter.com/pirroh/status/2104976589180252218"
+    },
+    {
+      "id": "c37",
+      "text": "Second, tokens are not output: Jellyfish finds the first 0.7 million tokens per user per month return almost 11 pull requests per million, with diminishing returns after about 2 million.[^42]",
+      "verdict": "supported",
+      "citation": "https://jellyfish.co/state-of-ai-software-engineering/"
+    },
+    {
+      "id": "c38",
+      "text": "Cognition makes the same argument from the engineering side: the multi-agent setups that work keep writes single-threaded and share full traces.[^51]",
+      "verdict": "weak",
+      "citation": "https://cognition.com/blog/dont-build-multi-agents"
+    },
+    {
+      "id": "c39",
+      "text": "Third, productivity evidence is mixed: METR's February 2026 update estimates an 18% speedup for returning developers with a 95% interval of −38% to +9%, calls the new data unreliable because developers unwilling to work without AI opted out, and says multi-agent work makes time measurement unreliable.[^50]",
+      "verdict": "weak",
+      "citation": "https://metr.org/blog/2026-02-24-uplift-update/"
+    },
+    {
+      "id": "c40",
+      "text": "In mathematics, Terence Tao's community wiki on AI contributions to Erdős problems, frozen as of 30 June 2026, lists full solutions that mostly came from single frontier models, often paired with Lean formalization, not from swarms, and the wiki calls itself \"not a benchmark\".[^53]",
+      "verdict": "weak",
+      "citation": "https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems"
+    },
+    {
+      "id": "c41",
+      "text": "Nvidia's last reported quarter, Q2 FY27, had record Data Center revenue of $89.0 billion, up 117%, and its Q3 report was scheduled for the evening of 17 November, after this article's evidence cut-off.[^55]",
+      "verdict": "weak",
+      "citation": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27cfocommentary.htm"
+    },
+    {
+      "id": "x1",
+      "text": "Even the coding benchmark community's verifier has leaked: Epoch rates SWE-bench Verified \"flawed\", citing an OpenAI audit that found flawed tests in 59.4% of audited tasks.[^57]",
+      "verdict": "supported",
+      "citation": "https://epoch.ai/benchmarks/swe-bench-verified/review"
+    },
+    {
+      "id": "x2",
+      "text": "A widely read engineering newsletter reports that a Meta internal leaderboard of token consumption was taken down after logging 60.2 trillion tokens in 30 days, which the author priced at about $900 million, though that dollar figure is the author's estimate.[^58]",
+      "verdict": "supported",
+      "citation": "https://newsletter.pragmaticengineer.com/p/the-pulse-tokenmaxxing-as-a-weird-6b2"
+    }
+  ]
+}

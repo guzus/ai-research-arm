@@ -3640,5 +3640,19 @@
         "source_sha256": "b150e7d80a26080a5bcfc65704716c6746fea9ac015a21abedf4e8f6b1fff6d6"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-illscience-sta",
+    "file": "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-11-17T00:28:29Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/illscience/status/2122367199625290028\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
