@@ -1,9 +1,95 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-16T18:51:00Z",
+  "updated_at": "2026-11-17T03:07:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "ai-daily-brief:zXrty-ZAIUo",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Why Agents as Teammates Is the Wrong Mental Model",
+      "url": "https://www.youtube.com/watch?v=zXrty-ZAIUo",
+      "video_id": "zXrty-ZAIUo",
+      "audio_url": null,
+      "published_at": "2026-11-17T01:37:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T03:07:00Z",
+      "duration_s": 1329,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-17T03:07:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:8cGfJOU3AlQ",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Why FLUX 3 Trains on Images, Video and Sound — Andreas Blattmann & Dustin Podell, Black Forest Labs",
+      "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ",
+      "video_id": "8cGfJOU3AlQ",
+      "audio_url": null,
+      "published_at": "2026-11-16T21:37:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-17T03:07:00Z",
+      "duration_s": 5904,
+      "transcript": {
+        "available": true,
+        "source": "asr",
+        "words": 19805,
+        "checked_at": "2026-11-17T03:07:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "We raised all the models, 450 million dollars of funding so far. Currently, the last that was published in December was 100 million revenue. PFL was not founded to be an image generation lab. Video modeling is actually the central means to understanding how our world basically works.",
+          "at_s": 236,
+          "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ&t=236s"
+        },
+        {
+          "text": "Any of that, all in all, 450 million dollars in funding so far. So we monitor from, you know, we monitor stability. Any revenue nonsense that you've announced? Cannot disclose currently the last that was published in December, it was more 100 million revenue across that since I can tell you that clearly, of course, daily for 50.",
+          "at_s": 1187,
+          "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ&t=1187s"
+        },
+        {
+          "text": "Only 1K steps in 5D, that shows that this video model, although only trained on plain video, actually have this insane amount of 3D understanding, and you just took a bit of a focus to get a 3D model out of it.",
+          "at_s": 2228,
+          "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ&t=2228s"
+        },
+        {
+          "text": "Even to the latest Flux3 Max is post-strain with Fowl, they do a lot of entrance distillation, they're good at that, right? So it's interesting, but it seems like you're expanding now towards, what's the latest one with Robotics? Flux3 action? Yes, Flux3 action. Before we get there, there's one more one to cover, which is image editing in context.",
+          "at_s": 3284,
+          "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ&t=3284s"
+        },
+        {
+          "text": "Obviously, the model would overfit if you would only train on this one example. Theoretically, it's just like one training example is giving or one data point is giving rise to infinitely many training examples. Whereas auto-regressive models can train on all the tokens in parallel, basically, and get the maximum gradient from each training example. That's the training side.",
+          "at_s": 4485,
+          "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ&t=4485s"
+        },
+        {
+          "text": "I cannot tell too much, but they're will be soon for the new LBFL power drawbots in productions all life. And it's 2027 will be the year of robotics. Oh absolutely. Okay, same wire on predictions. Where do we go from this in 2027? How fast do things? Single shot learning. Yeah, yeah. Is a big thing.",
+          "at_s": 5393,
+          "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ&t=5393s"
+        }
+      ],
+      "description": ""
+    },
     {
       "id": "nvidia:E3Hy-WRJbXE",
       "show_id": "nvidia",
@@ -23,13 +109,19 @@
       "first_seen_at": "2026-11-16T18:51:00Z",
       "duration_s": 132,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-16T18:51:00Z",
-        "attempts": 1
+        "available": true,
+        "source": "youtube_captions",
+        "words": 241,
+        "checked_at": "2026-11-17T03:07:00Z",
+        "attempts": 2
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "It brings the scientific pipeline onto GPUs, streaming only the data needed for each moment while overlapping loading with signal processing, reconstruction, analysis, and visualization, all of which AI agents can run. cuPhoton accelerates data loading by up to 3,700 times and correlation by up to 460 times, scaling across multi-node systems powered by the NVIDIA Vera Rubin platform.",
+          "at_s": 68,
+          "url": "https://www.youtube.com/watch?v=E3Hy-WRJbXE&t=68s"
+        }
+      ],
       "description": ""
     },
     {
@@ -466,8 +558,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-16T18:51:00Z",
-        "attempts": 7
+        "checked_at": "2026-11-17T03:07:00Z",
+        "attempts": 8
       },
       "excerpts": [],
       "description": ""
@@ -493,8 +585,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-16T18:51:00Z",
-        "attempts": 7
+        "checked_at": "2026-11-17T03:07:00Z",
+        "attempts": 8
       },
       "excerpts": [],
       "description": ""
@@ -548,8 +640,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-16T18:51:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-17T03:07:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": ""
@@ -9509,65 +9601,6 @@
         }
       ],
       "description": ""
-    },
-    {
-      "id": "20vc:1jDCPEHwQfI",
-      "show_id": "20vc",
-      "show": "20VC",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Horizontal vs Vertical Agents: Who Wins? | Model Routing: Commodity or Increasing in Value?",
-      "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI",
-      "video_id": "1jDCPEHwQfI",
-      "audio_url": null,
-      "published_at": "2026-10-17T22:34:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T10:34:00Z",
-      "duration_s": 3786,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 13469,
-        "checked_at": "2026-11-10T02:53:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "What about agents today sounds crazy that you think will be incredibly common in 2 to 3 years? I mean, I think this memory layer for agents is still massively unsolved. I think one thing about agents that is is rare today but will be incredibly common in the next few years is is this memory layer.",
-          "at_s": 1745,
-          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=1745s"
-        },
-        {
-          "text": "Do you think providers will allow agent usage or not? I think the future is providers exposing their own agent and having people either interact with that agent or having people's horizontal agents interact with that agent. So my horizontal agent, sorry, I just understand this would interact with res's vertical agent. I think that's exactly right.",
-          "at_s": 2079,
-          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=2079s"
-        },
-        {
-          "text": "To me that number is so central because it is the fundamental determinant of Anthropics enterprise value. If that number goes to 5% then the $2 trillion IPO might be a little bit overpriced. If that number actually goes to 300% like it is in Mccor's case then it's dramatically underpriced.",
-          "at_s": 2620,
-          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=2620s"
-        },
-        {
-          "text": "Do you think in the next 12 months we'll have comparable US open source models? I think in the next 12 months we will absolutely have comparable open source uh US open source models. I think you look at uh everything that Nvidia is doing to kind of like uh work with the ecosystem.",
-          "at_s": 2777,
-          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=2777s"
-        },
-        {
-          "text": "I just think there's so much demand for it. Where would you not be investing today like I so I can give you some examples. I think the the customer support space is like wildly uninteresting. 20 providers all funded with over 100 million in the last 18 months. You got Salesforce and Atlassian and big incumbents there too.",
-          "at_s": 2966,
-          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=2966s"
-        },
-        {
-          "text": "They basically invented a new model category are associated with it and have a talented team that can execute on that. Does taking money from benchmark change the trajectory of a company? 100%. And I I I think Benchmark when when Miles and really the whole Benchmark partnership invested in us, it was me and Ankush.",
-          "at_s": 3371,
-          "url": "https://www.youtube.com/watch?v=1jDCPEHwQfI&t=3371s"
-        }
-      ],
-      "description": "Harrison Chase is the co-founder and CEO of LangChain, which helps developers build, test and deploy AI agents. Backed by Sequoia Capital, Benchmark and IVP, LangChain has announced approximately $160 million in funding with the last round at a $1.25BN valuation. The company works with 35% of the Fortune 500, has surpassed one billion open-source downloads and processes over one billion events daily through LangSmith. Timestamps: Intro What Is LangChain and Why Are Agents Still So Hard to Build? Why"
     }
   ]
 }
