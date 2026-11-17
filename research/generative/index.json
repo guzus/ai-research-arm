@@ -3653,6 +3653,24 @@
     "prompt": "Seed Twitter/X URL: https://x.com/illscience/status/2122367199625290028\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-11-17T003900--expand-research-from-twitter-link-https-x-com-illscience-sta.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "스웜은 실재하지만 ‘창발’은 대부분 산술이다: 병렬 에이전트, 혼합 모델 파레토 곡선, 토큰 비용에 대한 증거가 말하는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-11-17T00:39:00Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-illscience-sta",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-11-17T00:39:00Z",
+        "source_file": "research/generative/2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta.ara.md",
+        "source_sha256": "85e8d93f3968325e9f2217a32c22f1ed1f65f30cfedc11c127155f67e335209a"
+      }
+    }
   }
 ]
