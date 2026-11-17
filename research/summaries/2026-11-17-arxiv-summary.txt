@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-17
+
+TOP 5 PAPERS:
+• Latent Lattice LMs - persistent per-layer states; 406M ppl 15.41→14.40, stacks with mHC
+• ViRA/CrossRPO - UHR visual agents must read evidence; 27B beats Haiku 5.5 and GPT-6 Luna
+• Differentiable Exact Learning - NeurIPS: DFSTs + env = extreme length gen, proven TM sim
+• SciResearch-Eval - agents vs flawed lab simulators; Fable 5.2 99% coverage vs 20–62%
+• Benchleaking - contamination hit pretraining; ERNIE-5.5-Flash-Base leaks 96% of HumanEval
+
+CATEGORIES: LM/NLP 8, CV/Multimodal 8, Agents/Reasoning 9, Safety 8, Other 8
+
+Full report on GitHub.
