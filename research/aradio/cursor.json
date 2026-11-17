@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-16T18:55:00Z",
-  "last_editor_run_at": "2026-11-16T18:55:00Z",
-  "last_bulletin_at": "2026-11-16T18:55:00Z",
+  "updated_at": "2026-11-17T03:11:00Z",
+  "last_editor_run_at": "2026-11-17T03:11:00Z",
+  "last_bulletin_at": "2026-11-17T03:11:00Z",
   "keys": {
     "earn:0000002488-26-000188": "2026-11-05T06:41:00Z",
     "earn:0001018724-26-000038": "2026-10-31T08:53:00Z",
@@ -126,6 +126,7 @@
     "ep:invest-like-the-best:aOSuI2qPeB8": "2026-11-11T18:08:00Z",
     "ep:invest-like-the-best:r95bEutZUN4:meta": "2026-11-09T19:08:00Z",
     "ep:latent-space:3nAV2s4GYbs": "2026-11-09T19:08:00Z",
+    "ep:latent-space:8cGfJOU3AlQ": "2026-11-17T03:11:00Z",
     "ep:latent-space:KM3VQZKjpiY": "2026-11-01T06:51:00Z",
     "ep:latent-space:KgqWyVVH4Oc": "2026-11-09T19:08:00Z",
     "ep:latent-space:LL0YmIyBKSU": "2026-11-05T06:41:00Z",
@@ -157,6 +158,7 @@
     "ep:no-priors:EZcWEsMuLb4": "2026-10-31T08:53:00Z",
     "ep:no-priors:IiKf3BgBezE": "2026-11-12T18:39:00Z",
     "ep:no-priors:yULk8eNa2mg": "2026-11-05T12:49:00Z",
+    "ep:nvidia:E3Hy-WRJbXE": "2026-11-17T03:11:00Z",
     "ep:nvidia:JXEMFLQwi4A": "2026-10-31T08:53:00Z",
     "ep:nvidia:QqeKRvAkIc8": "2026-11-01T15:32:00Z",
     "ep:nvidia:QqeKRvAkIc8:meta": "2026-10-31T14:48:00Z",

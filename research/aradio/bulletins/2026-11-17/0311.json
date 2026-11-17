@@ -1,0 +1,191 @@
+{
+  "schema": 1,
+  "id": "2026-11-17-0311",
+  "aired_at": "2026-11-17T03:11:00Z",
+  "headline": "Black Forest Labs cites $450M raised and $100M Dec revenue; Flux 3 Action aimed at 2027 robotics",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's ten past three UTC on Tuesday, November seventeenth. This is ARA AI News. The I.P.O. and lab-security picture is the one we aired this afternoon, and the new tape is a generative-media lab putting robotics on a twenty twenty-seven calendar."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On Latent Space, guests from Black Forest Labs said the company has raised four hundred and fifty million dollars so far. The last revenue number they said they could publish was one hundred million dollars last December, and they would not disclose a current figure."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "They were clear that the lab was not founded to be an image-generation shop. Video modeling, they said, is the central way they try to understand how the world works, and they described taking a trained video model, running about a thousand fine-tuning steps on three-D data, and getting a three-D model out of it."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Commercially they walked through Flux one landing about three months after they incorporated, then Flux three Max, in-context image editing, and the latest line they named for robotics, Flux three Action."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That Action model, on the same show, is a seven-billion-parameter system they said currently runs around ten frames per second. They also said mid-training already gets the model somewhat good at the tasks, with a further bump once high-quality robotics data goes in at fine-tuning."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "And they made a prediction. Speakers on Latent Space called twenty twenty-seven the year of robotics, and said we will see the first commercial applications of these systems in real manufacturers."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is a forecast from the interview, not a ship date and not a named customer. What to watch on this thread is whether Black Forest Labs puts a current revenue number on the record, and whether Flux three Action gets a date instead of a year."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "One older storyline is now settled. OpenAI's on-stage claim of a Navier-Stokes result from thousands of agents, and Anthropic's vault-particle preprint, never produced a paper we can read, and after six quiet days that discovery thread is closed."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Everything else on the board is where we left it this afternoon. Anthropic's I.P.O. talk still sits on those third-quarter growth figures of about five point four billion dollars versus six point nine billion in the second quarter, with prediction markets said not to be flying above two trillion."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Cathedral is still described as a twelve-hour path into Anthropic Slack, with the United States lead over China called twelve hours rather than months. Nvidia still has no filing on succession, and the capex tape still has Fractile's seven billion dollar round and CoreWeave's about nine billion dollars of prepayments."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Watch this week for an Anthropic filing or a first-party note on that Slack access, and for any Flux three Action date from Black Forest Labs. That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's ten past three UTC on Tuesday, November seventeenth. This is ARA AI News. The I.P.O. and lab-security picture is the one we aired this afternoon, and the new tape is a generative-media lab putting robotics on a twenty twenty-seven calendar.",
+    "Speaker 2: [high_energy] On Latent Space, guests from Black Forest Labs said the company has raised [emphasis] four hundred and fifty million dollars[/emphasis] so far. The last revenue number they said they could publish was [emphasis] one hundred million dollars[/emphasis] last December, and they would not disclose a current figure.",
+    "Speaker 1: They were clear that the lab was not founded to be an image-generation shop. Video modeling, they said, is the central way they try to understand how the world works, and they described taking a trained video model, running about a thousand fine-tuning steps on three-D data, and getting a three-D model out of it.",
+    "Speaker 2: Commercially they walked through Flux one landing about three months after they incorporated, then Flux three Max, in-context image editing, and the latest line they named for robotics, Flux three Action.",
+    "Speaker 1: That Action model, on the same show, is a seven-billion-parameter system they said currently runs around ten frames per second. They also said mid-training already gets the model somewhat good at the tasks, with a further bump once high-quality robotics data goes in at fine-tuning.",
+    "Speaker 2: And they made a prediction. Speakers on Latent Space called [emphasis] twenty twenty-seven[/emphasis] the year of robotics, and said we will see the first commercial applications of these systems in real manufacturers.",
+    "Speaker 1: That is a forecast from the interview, not a ship date and not a named customer. What to watch on this thread is whether Black Forest Labs puts a current revenue number on the record, and whether Flux three Action gets a date instead of a year.",
+    "Speaker 2: [transition] One older storyline is now settled. OpenAI's on-stage claim of a Navier-Stokes result from thousands of agents, and Anthropic's vault-particle preprint, never produced a paper we can read, and after six quiet days that discovery thread is closed.",
+    "Speaker 1: [transition] Everything else on the board is where we left it this afternoon. Anthropic's I.P.O. talk still sits on those third-quarter growth figures of about five point four billion dollars versus six point nine billion in the second quarter, with prediction markets said not to be flying above two trillion.",
+    "Speaker 2: Cathedral is still described as a twelve-hour path into Anthropic Slack, with the United States lead over China called twelve hours rather than months. Nvidia still has no filing on succession, and the capex tape still has Fractile's seven billion dollar round and CoreWeave's about nine billion dollars of prepayments.",
+    "Speaker 1: Watch this week for an Anthropic filing or a first-party note on that Slack access, and for any Flux three Action date from Black Forest Labs. That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "black-forest-labs-flux",
+    "ai-math-and-physics-discovery-claims",
+    "anthropic-ipo-and-ai-funding",
+    "lab-weight-security-vs-china",
+    "nvidia-jensen-huang-spy-allegations",
+    "hyperscaler-capex-and-chip-selloff"
+  ],
+  "threads": [
+    {
+      "slug": "black-forest-labs-flux",
+      "title": "Black Forest Labs' Flux 3 and the push into robotics",
+      "status": "developing"
+    },
+    {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "resolved"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "lab-weight-security-vs-china",
+      "title": "Frontier labs' weight security versus China",
+      "status": "escalating"
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ&t=1187s",
+      "kind": "podcast",
+      "label": "Latent Space"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ&t=5393s",
+      "kind": "podcast",
+      "label": "Latent Space"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ&t=236s",
+      "kind": "podcast",
+      "label": "Latent Space (December revenue, not an image lab)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ&t=2228s",
+      "kind": "podcast",
+      "label": "Latent Space (video model to 3D)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ&t=3284s",
+      "kind": "podcast",
+      "label": "Latent Space (Flux 3 Action)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=8cGfJOU3AlQ",
+      "kind": "podcast",
+      "label": "Latent Space (7B model, 10 FPS)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "create",
+      "slug": "black-forest-labs-flux"
+    },
+    {
+      "op": "resolve",
+      "slug": "ai-math-and-physics-discovery-claims"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-17-0311.mp3",
+    "bytes": 1028109,
+    "duration_s": 171.2,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 98.48,
+        "lines": [
+          0,
+          6
+        ]
+      },
+      {
+        "start_s": 99.93,
+        "end_s": 116.37,
+        "lines": [
+          7,
+          7
+        ]
+      },
+      {
+        "start_s": 117.82,
+        "end_s": 164.7,
+        "lines": [
+          8,
+          10
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 2,
+    "kinds": {
+      "podcast": 1,
+      "video": 1
+    }
+  }
+}

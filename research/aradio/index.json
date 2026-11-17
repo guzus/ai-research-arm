@@ -1,9 +1,57 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-16T18:55:00Z",
+  "updated_at": "2026-11-17T03:11:00Z",
   "degraded": false,
-  "latest": "2026-11-16-1855",
+  "latest": "2026-11-17-0311",
   "bulletins": [
+    {
+      "id": "2026-11-17-0311",
+      "aired_at": "2026-11-17T03:11:00Z",
+      "headline": "Black Forest Labs cites $450M raised and $100M Dec revenue; Flux 3 Action aimed at 2027 robotics",
+      "path": "bulletins/2026-11-17/0311.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-17-0311.mp3",
+        "bytes": 1028109,
+        "duration_s": 171.2,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 98.48,
+            "lines": [
+              0,
+              6
+            ]
+          },
+          {
+            "start_s": 99.93,
+            "end_s": 116.37,
+            "lines": [
+              7,
+              7
+            ]
+          },
+          {
+            "start_s": 117.82,
+            "end_s": 164.7,
+            "lines": [
+              8,
+              10
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "black-forest-labs-flux",
+        "ai-math-and-physics-discovery-claims",
+        "anthropic-ipo-and-ai-funding",
+        "lab-weight-security-vs-china",
+        "nvidia-jensen-huang-spy-allegations",
+        "hyperscaler-capex-and-chip-selloff"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-16-1855",
       "aired_at": "2026-11-16T18:55:00Z",
