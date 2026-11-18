@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-11-18 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] Broadening access to AI for scientists - Mon, 16 Nov 2026 17:00 GMT
+• [Hacker News] Windows 11 coding-agent telemetry: Still on the page, and still the largest AI-by-points story and…
+• [Reddit] AISTATS 2027 paper discussion [D] — https://www.reddit.com/r/MachineLearning/comments/1xxqa3i/aista…
+• [Expert Blogs] Running the full server-side Datasette Python app in the browser with service workers and Pyodide
+• [Bluesky] @natolambert.bsky.social: "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight st…
+
+SOURCES: 7/8 lanes had data; missing: Twitter/X
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
