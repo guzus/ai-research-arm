@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-18T03:54:00Z",
+  "updated_at": "2026-11-18T11:31:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -223,6 +223,115 @@
         }
       ],
       "archived_at": "2026-11-17T03:11:00Z"
+    },
+    {
+      "slug": "ai-music-vs-recorded-music",
+      "title": "AI music versus the recorded-music business",
+      "status": "resolved",
+      "importance": 3,
+      "first_seen": "2026-11-10T13:02:00Z",
+      "updated_at": "2026-11-11T09:54:00Z",
+      "now": "On Decoder, an RIAA guest said US recorded-music wholesale was $11 billion last year against one AI company's about $2 trillion market cap, and that Warner has partnered with Suno on a licensed model. The same conversation said about 90% of Spotify recordings already yield about 10% of revenue as generated tracks fill the catalog. The host said Google's position is that training is fair use.",
+      "changed": "No new music-industry facts in this run; the Decoder RIAA episode is absorbed.",
+      "watch": "Rulings in the training-as-fair-use cases; whether DistroKid and TuneCore add detection for fully generated tracks; whether more labels follow Warner into licensed-model deals.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=1560s",
+          "kind": "podcast",
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-09T13:34:00Z",
+          "quote": "I mean, the entire recorded music business uh was $11 billion wholesale last year in the United States."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE",
+          "kind": "podcast",
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-09T13:34:00Z",
+          "quote": "If that proliferates, then you don't get to sue the AI music companies because they made their models with licensed music, but you'll face a supply problem on platforms like Spotify."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3417s",
+          "kind": "podcast",
+          "label": "Decoder (Spotify catalog mix)",
+          "at": "2026-11-09T13:34:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=i1K0iK1EIdE&t=3716s",
+          "kind": "podcast",
+          "label": "Decoder (DistroKid, TuneCore)",
+          "at": "2026-11-09T13:34:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-10T13:02:00Z",
+          "change": "Decoder transcript: RIAA guest cites $11B US wholesale vs ~$2T AI market cap, a Warner-Suno licensed model, and a 90/10 Spotify split as generated music floods catalogs."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "Resolved: Decoder episode absorbed; no new rulings or licensed-model deals in this inbox."
+        }
+      ],
+      "archived_at": "2026-11-18T11:31:00Z"
+    },
+    {
+      "slug": "github-agent-era-software-stack",
+      "title": "GitHub rebuilds the software stack for coding agents",
+      "status": "resolved",
+      "importance": 3,
+      "first_seen": "2026-11-09T19:08:00Z",
+      "updated_at": "2026-11-11T09:54:00Z",
+      "now": "On Latent Space, a Resend guest said the email API has 4.3 million users as of this morning, 120,000 paid customers, and about $10 million of annual revenue, with MCP usage at least doubling monthly and 1.2 million by end of August as people work from Claude Desktop or Codex. The guest said B2B buyers now expect an official MCP. GitHub's 225 million developers and agent-workload rebuild still…",
+      "changed": "No new GitHub-specific facts; the live agent-platform news is OpenAI's DevDay slate.",
+      "watch": "Whether more B2B vendors ship an official MCP; Resend's next usage print; Copilot Fusion rollout and whether GitHub changes pull requests for agent sessions.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=12s",
+          "kind": "podcast",
+          "label": "Latent Space (Resend users)",
+          "at": "2026-11-10T19:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=212s",
+          "kind": "podcast",
+          "label": "Latent Space (Resend paid customers)",
+          "at": "2026-11-10T19:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=bdIoODXsu8k&t=2322s",
+          "kind": "podcast",
+          "label": "Latent Space (Resend MCP growth)",
+          "at": "2026-11-10T19:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=71s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-08T01:22:00Z",
+          "quote": "They're now up to 225 million developers."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=rSWiNE92xqM&t=260s",
+          "kind": "podcast",
+          "label": "Latent Space (GitHub commits and PRs)",
+          "at": "2026-11-08T01:22:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Created: GitHub at 225M developers and 34.3B commits; CoreAI EVP says the next scale problem is agents."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Latent Space: Resend at 4.3M users, 120k paid, ~$10M AR; MCP at least 2x monthly, 1.2M by end of August; official MCP as a B2B test."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "Resolved: GitHub 225M-developer print and Resend MCP numbers absorbed; DevDay now carries the agent-platform story."
+        }
+      ],
+      "archived_at": "2026-11-18T11:31:00Z"
     }
   ],
   "history": [
@@ -295,6 +404,13 @@
       "at": "2026-11-05T06:41:00Z",
       "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped.",
       "archived_at": "2026-11-18T03:54:00Z"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-11-02T21:46:00Z",
+      "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near.",
+      "archived_at": "2026-11-18T11:31:00Z"
     }
   ]
 }
