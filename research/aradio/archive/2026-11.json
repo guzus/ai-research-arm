@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-18T11:31:00Z",
+  "updated_at": "2026-11-18T20:25:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -411,6 +411,13 @@
       "at": "2026-11-02T21:46:00Z",
       "change": "Amended S-1: Q3 revenue $16.96B, operating loss $567M, $895B compute commitments, and new warning that the acceleration threshold may be near.",
       "archived_at": "2026-11-18T11:31:00Z"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-10-31T14:48:00Z",
+      "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected.",
+      "archived_at": "2026-11-18T20:25:00Z"
     }
   ]
 }
