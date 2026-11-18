@@ -1,8 +1,124 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-18T13:29:00Z",
-  "headline": "TWIML: agents use 20-50x chatbot tokens; HPE claims on-prem ROI at 60-70% GPU utilization; Asian auto firms leave AWS",
+  "updated_at": "2026-11-18T20:25:00Z",
+  "headline": "NVIDIA titled a 17-minute agent-safety video; transcript pending. Board otherwise unchanged.",
   "threads": [
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-18T20:25:00Z",
+      "now": "NVIDIA posted a 17-minute video titled Making AI Agents Safer With Open Source; transcript not yet available. Mozilla how-to: Firefox unbeaten at Pwn2Own; about 8x detection and remediation from 2025 to 2026 with GPT-6 Cyber. a16z/Wiz: AI exploit chains in about 20 minutes. GPT-6 Cyber ~1,000 Linux LPE patches and 52% exploit gym vs Mythos ~38% still stand.",
+      "changed": "NVIDIA posted a 17-minute video titled Making AI Agents Safer With Open Source. Transcript not yet available.",
+      "watch": "The NVIDIA transcript; whether Daybreak Red Team and Defense Factory are generally available; any Mozilla bug counts beyond the 8x claim.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=y9AALMeAeGI",
+          "kind": "video",
+          "label": "NVIDIA (Making AI Agents Safer With Open Source)",
+          "at": "2026-11-18T10:53:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=68s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-13T16:28:00Z",
+          "quote": "We had a great result–no one was able to hack Firefox."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=1016s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-13T16:28:00Z",
+          "quote": "Yes, we now have about an 8x increase from 2025 to 2026 for both detection and, importantly, remediation."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=PbD9pVXxsYM",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-13T15:12:00Z",
+          "quote": "We will once again see security breaches crop up all the time."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=PkAmyub12K8",
+          "kind": "video",
+          "label": "OpenAI (Mozilla Firefox, GPT-6 Cyber)",
+          "at": "2026-11-13T16:28:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=959s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-12T22:41:00Z",
+          "quote": "In one run with GPT6 Cyber, the pipeline validated and generated patches for almost a thousand local privilege escalation vulnerabilities in Linux."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=576s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-12T22:41:00Z",
+          "quote": "For comparison, Anthropics Mythos 52, which released earlier this week, scores at about 38%."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=391s",
+          "kind": "video",
+          "label": "OpenAI (Daybreak Red Team, Defense Factory)",
+          "at": "2026-11-12T22:41:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
+        },
+        {
+          "at": "2026-11-02T08:14:00Z",
+          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
+        },
+        {
+          "at": "2026-11-03T06:41:00Z",
+          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "DevDay Codex Security: hacking cost going to zero; 0.81% false positives, <1% rollbacks; Daybreak-class models on Security Cloud; Astra ahead on PatchBench."
+        },
+        {
+          "at": "2026-11-12T18:39:00Z",
+          "change": "OpenAI how-tos enable Daybreak Blue for a whole workspace, Codex Security CLI via npm, and GitHub PR security reviews."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: nine labs disclosed an October API-key swarming; Unit 42 cites $1M bills before detection; $100k default Claude Ultra cap; syndicates steal Anthropic/OpenAI tokens."
+        },
+        {
+          "at": "2026-11-13T07:16:00Z",
+          "change": "OpenAI Cyber at the Frontier: Daybreak Red Team and Defense Factory; GPT-6 Cyber ~1,000 Linux LPE patches, 5x 5.6 Cyber; 52% exploit gym vs Mythos ~38%; Sofos 52% MDR, 38 min to 89 sec."
+        },
+        {
+          "at": "2026-11-14T13:42:00Z",
+          "change": "OpenAI how-to titles Mozilla as a GPT-6 Cyber user on Firefox; transcript not yet available."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Mozilla transcript: Firefox unbeaten at Pwn2Own, ~8x detect-and-fix 2025-2026. Wiz on a16z: AI attacks in ~20 minutes vs weeks for distro patches."
+        },
+        {
+          "at": "2026-11-18T20:25:00Z",
+          "change": "NVIDIA titles a 17-min video Making AI Agents Safer With Open Source; transcript pending."
+        }
+      ]
+    },
     {
       "slug": "anthropic-ipo-and-ai-funding",
       "title": "Anthropic's IPO filing and the race to fund the frontier labs",
@@ -334,122 +450,6 @@
         {
           "at": "2026-11-18T03:54:00Z",
           "change": "NVIDIA 8-K names Colette Kress interim CEO, first-party confirmation Huang is out; Q4 outlook assumes no China DC compute."
-        }
-      ]
-    },
-    {
-      "slug": "ai-cyber-risk-and-key-theft",
-      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-15T09:57:00Z",
-      "now": "On OpenAI's Mozilla how-to, speakers said Firefox went unbeaten at Pwn2Own and that detection and remediation rose about 8x from 2025 to 2026 with a GPT-6 Cyber agent pipeline. On a16z, a Wiz guest said AI attackers can complete a chain in about 20 minutes while Linux distro patches still take weeks. GPT-6 Cyber's ~1,000 Linux LPE patches and 52% exploit-gym score versus Mythos ~38% still stand.",
-      "changed": "Mozilla how-to: Firefox unbeaten at Pwn2Own; about 8x detection and remediation from 2025 to 2026. a16z/Wiz: AI exploit chains in about 20 minutes.",
-      "watch": "Whether Daybreak Red Team and Defense Factory are generally available; any Mozilla bug counts beyond the 8x claim.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=68s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-13T16:28:00Z",
-          "quote": "We had a great result–no one was able to hack Firefox."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=1016s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-13T16:28:00Z",
-          "quote": "Yes, we now have about an 8x increase from 2025 to 2026 for both detection and, importantly, remediation."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=PbD9pVXxsYM",
-          "kind": "podcast",
-          "label": "a16z",
-          "at": "2026-11-13T15:12:00Z",
-          "quote": "We will once again see security breaches crop up all the time."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=PkAmyub12K8",
-          "kind": "video",
-          "label": "OpenAI (Mozilla Firefox, GPT-6 Cyber)",
-          "at": "2026-11-13T16:28:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=959s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-12T22:41:00Z",
-          "quote": "In one run with GPT6 Cyber, the pipeline validated and generated patches for almost a thousand local privilege escalation vulnerabilities in Linux."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=576s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-12T22:41:00Z",
-          "quote": "For comparison, Anthropics Mythos 52, which released earlier this week, scores at about 38%."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=391s",
-          "kind": "video",
-          "label": "OpenAI (Daybreak Red Team, Defense Factory)",
-          "at": "2026-11-12T22:41:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=720s",
-          "kind": "video",
-          "label": "OpenAI (Six Cyber in-scope rates)",
-          "at": "2026-11-12T22:41:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected."
-        },
-        {
-          "at": "2026-10-31T21:56:00Z",
-          "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating."
-        },
-        {
-          "at": "2026-11-02T08:14:00Z",
-          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
-        },
-        {
-          "at": "2026-11-03T06:41:00Z",
-          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
-        },
-        {
-          "at": "2026-11-11T09:54:00Z",
-          "change": "DevDay Codex Security: hacking cost going to zero; 0.81% false positives, <1% rollbacks; Daybreak-class models on Security Cloud; Astra ahead on PatchBench."
-        },
-        {
-          "at": "2026-11-12T18:39:00Z",
-          "change": "OpenAI how-tos enable Daybreak Blue for a whole workspace, Codex Security CLI via npm, and GitHub PR security reviews."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: nine labs disclosed an October API-key swarming; Unit 42 cites $1M bills before detection; $100k default Claude Ultra cap; syndicates steal Anthropic/OpenAI tokens."
-        },
-        {
-          "at": "2026-11-13T07:16:00Z",
-          "change": "OpenAI Cyber at the Frontier: Daybreak Red Team and Defense Factory; GPT-6 Cyber ~1,000 Linux LPE patches, 5x 5.6 Cyber; 52% exploit gym vs Mythos ~38%; Sofos 52% MDR, 38 min to 89 sec."
-        },
-        {
-          "at": "2026-11-14T13:42:00Z",
-          "change": "OpenAI how-to titles Mozilla as a GPT-6 Cyber user on Firefox; transcript not yet available."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "Mozilla transcript: Firefox unbeaten at Pwn2Own, ~8x detect-and-fix 2025-2026. Wiz on a16z: AI attacks in ~20 minutes vs weeks for distro patches."
         }
       ]
     },
