@@ -1,0 +1,166 @@
+{
+ "claims": [
+  {
+   "id": "v1",
+   "text": "@LumaoDoggie, a verified account with about 21.5K followers whose bio describes a former big-tech programmer posting about DeFi, airdrops and AI",
+   "verdict": "supported",
+   "citation": "https://api.fxtwitter.com/LumaoDoggie/status/2122919849982820473"
+  },
+  {
+   "id": "v2",
+   "text": "The post carried one image whose content we could not retrieve; at fetch time it had about 16.5K views and 166 bookmarks.",
+   "verdict": "supported",
+   "citation": "https://api.fxtwitter.com/LumaoDoggie/status/2122919849982820473"
+  },
+  {
+   "id": "v3",
+   "text": "The author's \"Claude 20X\" most likely refers to the $200 tier, which Anthropic's pricing page now lists as Ultra at $200 per month",
+   "verdict": "weak",
+   "citation": "https://claude.com/pricing"
+  },
+  {
+   "id": "v4",
+   "text": "weekly-limit windows, which Anthropic raised 25% above their pre-promotion level on 2026-09-14 after a 50%-higher promotion",
+   "verdict": "supported",
+   "citation": "https://support.claude.com/en/articles/15910845-claude-code-may-july-2026-weekly-limits-promotion"
+  },
+  {
+   "id": "v5",
+   "text": "The Global Interpreter Lock \"prevents multiple threads from executing Python code at the same time\"",
+   "verdict": "supported",
+   "citation": "https://peps.python.org/pep-0703/"
+  },
+  {
+   "id": "v6",
+   "text": "CPython's reference counting is supplemented by a generational cycle collector whose collection starts when allocations minus deallocations exceed a threshold",
+   "verdict": "supported",
+   "citation": "https://docs.python.org/3/library/gc.html"
+  },
+  {
+   "id": "v8",
+   "text": "costs about 1% to 8% average overhead on pyperformance, depending on platform",
+   "verdict": "supported",
+   "citation": "https://docs.python.org/3/howto/free-threading-python.html"
+  },
+  {
+   "id": "v9",
+   "text": "PEP 703 measured 5\u20136% single-thread overhead on its test machines.",
+   "verdict": "supported",
+   "citation": "https://peps.python.org/pep-0703/"
+  },
+  {
+   "id": "v10",
+   "text": "Ethereum divides time into twelve-second slots with one proposer per slot.",
+   "verdict": "supported",
+   "citation": "https://ethereum.org/en/developers/docs/blocks/"
+  },
+  {
+   "id": "v11",
+   "text": "parallel bundle auctions run at 50 ms ticks, so the same tail spans a whole auction round",
+   "verdict": "supported",
+   "citation": "https://docs.jito.wtf/lowlatencytxnsend/"
+  },
+  {
+   "id": "v12",
+   "text": "Bundles hold up to five transactions executed atomically, compete on tips, and are ordered within a 50 ms auction by tip relative to requested compute.",
+   "verdict": "supported",
+   "citation": "https://docs.jito.wtf/lowlatencytxnsend/"
+  },
+  {
+   "id": "v13",
+   "text": "Hyperliquid's docs give a co-located median end-to-end latency of 0.2 seconds and a 99th percentile of 0.9 seconds, at roughly 200k orders per second.",
+   "verdict": "supported",
+   "citation": "https://hyperliquid.gitbook.io/hyperliquid-docs/hypercore/overview"
+  },
+  {
+   "id": "v14",
+   "text": "Flashblocks were replaced by a complete canonical block every 200 ms, so \"there are no preconfirmed receipts\"",
+   "verdict": "supported",
+   "citation": "https://docs.base.org/base-chain/flashblocks/overview"
+  },
+  {
+   "id": "v15",
+   "text": "Fiber carries light at about 200,000 km/s, so New York to London's 5,585 km costs 28 ms one way and 56 ms round trip on the idealized path.",
+   "verdict": "supported",
+   "citation": "https://hpbn.co/primer-on-latency-and-bandwidth/"
+  },
+  {
+   "id": "v16",
+   "text": "searchers submitting bundles directly to builders and bidding by gas price or a direct coinbase transfer in a \"first-price sealed-bid auction\"",
+   "verdict": "supported",
+   "citation": "https://docs.flashbots.net/flashbots-auction/overview"
+  },
+  {
+   "id": "v17",
+   "text": "bidders \"invest into latency until they make zero profit in expectation\"",
+   "verdict": "supported",
+   "citation": "https://arxiv.org/abs/2312.02055"
+  },
+  {
+   "id": "v18",
+   "text": "paid bids fell from 62.7% to 14.8% of the top bid while total searcher profits stayed broadly similar",
+   "verdict": "supported",
+   "citation": "https://arxiv.org/abs/2603.20175"
+  },
+  {
+   "id": "v19",
+   "text": "estimates $233.8M extracted by 19 major searchers across 7,203,560 arbitrages, with three searchers capturing about 75% of both volume and value",
+   "verdict": "supported",
+   "citation": "https://arxiv.org/abs/2507.13023"
+  },
+  {
+   "id": "v21",
+   "text": "two builders produced more than 85% of Ethereum blocks when measured",
+   "verdict": "supported",
+   "citation": "https://arxiv.org/abs/2405.01329"
+  },
+  {
+   "id": "v22",
+   "text": "about 21% of user transactions appeared in candidate blocks yet missed the winning block",
+   "verdict": "supported",
+   "citation": "https://arxiv.org/abs/2506.04940"
+  },
+  {
+   "id": "v23",
+   "text": "Opus 5.5 lists at $4 per million input tokens, $20 per million output tokens and $0.20 per million cache-read tokens",
+   "verdict": "supported",
+   "citation": "https://www.anthropic.com/news/claude-opus-5-5"
+  },
+  {
+   "id": "v24",
+   "text": "Claude Code resends the full conversation with each request and bills it at the cached rate",
+   "verdict": "supported",
+   "citation": "https://code.claude.com/docs/en/costs"
+  },
+  {
+   "id": "v26",
+   "text": "Typical enterprise Claude Code use averages $13 per developer per active day, with 90% of users under $30.",
+   "verdict": "supported",
+   "citation": "https://code.claude.com/docs/en/costs"
+  },
+  {
+   "id": "v27",
+   "text": "nearly 2,000 sessions, about 2 billion input and 140 million output tokens, and just under $20,000",
+   "verdict": "supported",
+   "citation": "https://www.anthropic.com/engineering/building-c-compiler"
+  },
+  {
+   "id": "v28",
+   "text": "the author warned the task verifier must be \"nearly perfect, otherwise Claude will solve the wrong problem\"",
+   "verdict": "supported",
+   "citation": "https://www.anthropic.com/engineering/building-c-compiler"
+  },
+  {
+   "id": "v29",
+   "text": "used differential fuzzing to check I/O equivalence and found the best of five LLMs translated 47% of benchmarks",
+   "verdict": "supported",
+   "citation": "https://arxiv.org/abs/2405.11514"
+  },
+  {
+   "id": "v30",
+   "text": "RustRepoTrans, a repository-level benchmark of 375 tasks, saw Claude-3.5 reach 43.5% Pass@1, a 30.8-point drop from 74.3% on benchmarks without repository context.",
+   "verdict": "unsupported",
+   "citation": "https://arxiv.org/abs/2411.13990"
+  }
+ ]
+}

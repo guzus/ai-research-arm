@@ -3672,5 +3672,19 @@
         "source_sha256": "85e8d93f3968325e9f2217a32c22f1ed1f65f30cfedc11c127155f67e335209a"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+    "file": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-11-18T08:10:29Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/LumaoDoggie/status/2122919849982820473\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

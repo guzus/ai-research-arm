@@ -1,0 +1,652 @@
+{
+ "claims": [
+  {
+   "id": "c1",
+   "claim": "On 2026-11-18 @LumaoDoggie wrote that they rewrote their on-chain arbitrage scripts from Python to Rust in three days using two Claude 20X plans and Opus 5.5, about 34.5 billion tokens, with P99 tick-to-trade and tick-to-cancel latency under 1 ms versus Python P99 often above 50 ms.",
+   "type": "event",
+   "source_urls": [
+    "https://api.fxtwitter.com/LumaoDoggie/status/2122919849982820473"
+   ],
+   "source_tiers": [
+    "opinion"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "c2",
+   "claim": "Claude Opus 5.5 (released 2026-09-22) is priced at $4 per million input tokens, $20 per million output tokens and $0.20 per million cache-read tokens, with cache writes at $5.",
+   "type": "metric",
+   "source_urls": [
+    "https://www.anthropic.com/news/claude-opus-5-5"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c3",
+   "claim": "Anthropic says Opus 5.5 uses fewer tokens per task than Opus 5, netting typical workloads about 40% cheaper.",
+   "type": "comparison",
+   "source_urls": [
+    "https://www.anthropic.com/news/claude-opus-5-5"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "c4",
+   "claim": "CPython's gc module documents gc.disable, gc.freeze and generational thresholds as the controls for collector behavior, and exposes duration in collection stats in 3.15.",
+   "type": "technical",
+   "source_urls": [
+    "https://docs.python.org/3/library/gc.html"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c5",
+   "claim": "PEP 703 states the GIL prevents multiple threads from executing Python code at the same time, and measured the free-threaded build's single-thread overhead at 5-6% on pyperformance.",
+   "type": "technical",
+   "source_urls": [
+    "https://peps.python.org/pep-0703/"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c6",
+   "claim": "The Python free-threading HOWTO says the free-threaded build is optional, can re-enable the GIL when an unready C extension is imported, and costs about 1% to 8% average overhead on pyperformance.",
+   "type": "technical",
+   "source_urls": [
+    "https://docs.python.org/3/howto/free-threading-python.html"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c7",
+   "claim": "Flashbots documents that searchers submit bundles directly to block builders, bidding via gas price or a coinbase transfer in a first-price sealed-bid auction, so selection is bid-driven rather than arrival-time-driven.",
+   "type": "technical",
+   "source_urls": [
+    "https://docs.flashbots.net/flashbots-auction/overview"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c8",
+   "claim": "Jito documents that parallel bundle auctions run at 50 ms ticks, bundles hold up to five transactions executed atomically, and ordering within an auction is by tip relative to requested compute.",
+   "type": "technical",
+   "source_urls": [
+    "https://docs.jito.wtf/lowlatencytxnsend/"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c9",
+   "claim": "Base's docs say that at the Denim activation (Sepolia 2026-10-21, mainnet 2026-11-05) Flashblocks were replaced by a complete canonical block every 200 ms, with no preconfirmed receipts.",
+   "type": "event",
+   "source_urls": [
+    "https://docs.base.org/base-chain/flashblocks/overview"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c10",
+   "claim": "Ethereum divides time into twelve-second slots, one validator proposing per slot.",
+   "type": "definition",
+   "source_urls": [
+    "https://ethereum.org/en/developers/docs/blocks/"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c11",
+   "claim": "Yang, Nayak and Zhang found that two builders produced more than 85% of Ethereum blocks at the time of writing.",
+   "type": "metric",
+   "source_urls": [
+    "https://arxiv.org/abs/2405.01329"
+   ],
+   "source_tiers": [
+    "academic"
+   ],
+   "as_of": "2025-04-29",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c12",
+   "claim": "Hyperliquid's docs give co-located end-to-end order latency of median 0.2 seconds and 99th percentile 0.9 seconds, and about 200k orders per second on mainnet.",
+   "type": "metric",
+   "source_urls": [
+    "https://hyperliquid.gitbook.io/hyperliquid-docs/hypercore/overview"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c13",
+   "claim": "Wu, Sui, Thiery and Pai estimate $233.8M extracted by 19 major CEX-DEX searchers across 7,203,560 arbitrages from August 2023 to March 2025, with three searchers capturing about 75% of volume and value.",
+   "type": "metric",
+   "source_urls": [
+    "https://arxiv.org/abs/2507.13023"
+   ],
+   "source_tiers": [
+    "academic"
+   ],
+   "as_of": "2025-03-31",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c14",
+   "claim": "Arbitrum's Timeboost auctions a 200 ms ordering edge; Oz et al. find bids are noisy predictors of short-horizon CEX-DEX profit and that paid bids fell from 62.7% to 14.8% of the top bid after resale intermediary Kairos arrived, with total profits broadly similar.",
+   "type": "metric",
+   "source_urls": [
+    "https://arxiv.org/abs/2603.20175"
+   ],
+   "source_tiers": [
+    "academic"
+   ],
+   "as_of": "2026-08-10",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c15",
+   "claim": "Schlegel's theory paper shows that in the ex-ante stage bidders invest in latency until they make zero profit in expectation.",
+   "type": "causal",
+   "source_urls": [
+    "https://arxiv.org/abs/2312.02055"
+   ],
+   "source_tiers": [
+    "academic"
+   ],
+   "as_of": "2026-02-26",
+   "confidence": "medium",
+   "risk": "contested"
+  },
+  {
+   "id": "c16",
+   "claim": "Canidio and Pahari find about 21% of user transactions appear in candidate blocks yet miss the winning block, and that two CEX-DEX arbitrage bots change execution probability and price for same-direction and opposite-direction swaps.",
+   "type": "metric",
+   "source_urls": [
+    "https://arxiv.org/abs/2506.04940"
+   ],
+   "source_tiers": [
+    "academic"
+   ],
+   "as_of": "2026-05-01",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c17",
+   "claim": "Anthropic's C-compiler experiment used nearly 2,000 Claude Code sessions, about 2 billion input tokens and 140 million output tokens for just under $20,000, produced a Rust compiler whose output with all optimizations was less efficient than GCC with none, and the author stressed the task verifier must be nearly perfect.",
+   "type": "metric",
+   "source_urls": [
+    "https://www.anthropic.com/engineering/building-c-compiler"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-02-09",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c18",
+   "claim": "The Fluorine study (arXiv 2405.11514) found the best of five LLMs translated 47% of benchmarks to Rust, using differential fuzzing for I/O equivalence.",
+   "type": "metric",
+   "source_urls": [
+    "https://arxiv.org/abs/2405.11514"
+   ],
+   "source_tiers": [
+    "academic"
+   ],
+   "as_of": "2024-05-19",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c19",
+   "claim": "RustRepoTrans is a repository-level benchmark of 375 tasks translating C, Java and Python into Rust.",
+   "type": "metric",
+   "source_urls": [
+    "https://arxiv.org/abs/2411.13990"
+   ],
+   "source_tiers": [
+    "academic"
+   ],
+   "as_of": "2025-01-01",
+   "confidence": "medium",
+   "risk": "stable"
+  },
+  {
+   "id": "c20",
+   "claim": "Anthropic's help center says Claude Code weekly limits were 50% higher from May 13 to September 13, 2026, and from September 14, 2026 are 25% higher than before the promotion.",
+   "type": "regulatory",
+   "source_urls": [
+    "https://support.claude.com/en/articles/15910845-claude-code-may-july-2026-weekly-limits-promotion"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-09-14",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c21",
+   "claim": "Claude Code docs report an average enterprise cost around $13 per developer per active day and $150-250 per developer per month, below $30 per active day for 90% of users, and say agent teams use roughly 7x more tokens than standard sessions.",
+   "type": "metric",
+   "source_urls": [
+    "https://code.claude.com/docs/en/costs"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c22",
+   "claim": "Light in fiber travels at about 200,000,000 m/s (refractive index about 1.5); New York to London over 5,585 km has a 56 ms fiber round trip on the idealized great-circle path.",
+   "type": "technical",
+   "source_urls": [
+    "https://hpbn.co/primer-on-latency-and-bandwidth/"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c23",
+   "claim": "Anthropic's pricing page lists Max at $100 per month and Ultra at $200 per month with 10x Pro weekly usage and no 5-hour limit for verified accounts.",
+   "type": "metric",
+   "source_urls": [
+    "https://claude.com/pricing"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c24",
+   "claim": "Claude Code docs say thinking cannot be turned off on Opus 5.5 and thinking tokens are billed as output tokens.",
+   "type": "technical",
+   "source_urls": [
+    "https://code.claude.com/docs/en/costs"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c25",
+   "claim": "A secondary report (The Cryptonomist, 2026-03-30) puts Hyperliquid median order-to-fill at about 884 ms from Tokyo and 1,079 ms from Ashburn, without describing methodology.",
+   "type": "metric",
+   "source_urls": [
+    "https://en.cryptonomist.ch/2026/03/30/hyperliquid-latency-tokyo-edge"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-03-30",
+   "confidence": "low",
+   "risk": "single-source"
+  },
+  {
+   "id": "d1",
+   "type": "derived",
+   "claim": "34.5 billion tokens over three days averages about 133,000 tokens per second.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "tokens",
+     "value": 34500000000,
+     "unit": "tokens"
+    },
+    {
+     "ref": "c1",
+     "name": "seconds",
+     "value": 259200,
+     "unit": "s"
+    }
+   ],
+   "formula": "tokens / seconds",
+   "result": 133101.85185185185,
+   "unit": "tokens/s",
+   "assumptions": [
+    "Three days is 72 hours of wall-clock time"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "d2",
+   "type": "derived",
+   "claim": "If every one of the 34.5B tokens were an Opus 5.5 cache read at $0.20 per million, list-price cost would be $6,900.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "mtok",
+     "value": 34500,
+     "unit": "MTok"
+    },
+    {
+     "ref": "c2",
+     "name": "cache_read",
+     "value": 0.2,
+     "unit": "USD/MTok"
+    }
+   ],
+   "formula": "mtok * cache_read",
+   "result": 6900,
+   "unit": "USD",
+   "assumptions": [
+    "Lower bound: no uncached input, cache writes or output"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "low",
+   "risk": "single-source"
+  },
+  {
+   "id": "d3",
+   "type": "derived",
+   "claim": "With a mix of 95% cache reads, 3% 5-minute cache writes, 1.5% fresh input and 0.5% output, the blended price is $0.50 per million tokens and 34.5B tokens cost about $17,250 at list price.",
+   "inputs": [
+    {
+     "ref": "c2",
+     "name": "read_rate",
+     "value": 0.2,
+     "unit": "USD/MTok"
+    },
+    {
+     "ref": "c2",
+     "name": "write_rate",
+     "value": 5,
+     "unit": "USD/MTok"
+    },
+    {
+     "ref": "c2",
+     "name": "input_rate",
+     "value": 4,
+     "unit": "USD/MTok"
+    },
+    {
+     "ref": "c2",
+     "name": "output_rate",
+     "value": 20,
+     "unit": "USD/MTok"
+    },
+    {
+     "ref": "c1",
+     "name": "mtok",
+     "value": 34500,
+     "unit": "MTok"
+    }
+   ],
+   "formula": "mtok * (0.95 * read_rate + 0.03 * write_rate + 0.015 * input_rate + 0.005 * output_rate)",
+   "result": 17250,
+   "unit": "USD",
+   "assumptions": [
+    "The token mix is an illustrative assumption, not reported by the author"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "low",
+   "risk": "single-source"
+  },
+  {
+   "id": "d4",
+   "type": "derived",
+   "claim": "The $6,900 floor equals 17.25 months of two $200 subscriptions ($400 per month).",
+   "inputs": [
+    {
+     "ref": "d2",
+     "name": "floor",
+     "value": 6900,
+     "unit": "USD"
+    },
+    {
+     "ref": "c23",
+     "name": "two_plans",
+     "value": 400,
+     "unit": "USD/month"
+    }
+   ],
+   "formula": "floor / two_plans",
+   "result": 17.25,
+   "unit": "months",
+   "assumptions": [
+    "Two Ultra-tier plans at $200 each"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "low",
+   "risk": "single-source"
+  },
+  {
+   "id": "d5",
+   "type": "derived",
+   "claim": "34.5B tokens is about 16 times the 2.14B tokens (2B input plus 140M output) of Anthropic's C-compiler experiment.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "tweet_tokens",
+     "value": 34500000000,
+     "unit": "tokens"
+    },
+    {
+     "ref": "c17",
+     "name": "compiler_tokens",
+     "value": 2140000000,
+     "unit": "tokens"
+    }
+   ],
+   "formula": "tweet_tokens / compiler_tokens",
+   "result": 16.121495327102803,
+   "unit": "x",
+   "assumptions": [
+    "Compiler figure counts input plus output tokens only"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "d6",
+   "type": "derived",
+   "claim": "Cutting P99 from 50 ms to 1 ms is at least a 50x reduction, saving 49 ms.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "python_p99",
+     "value": 50,
+     "unit": "ms"
+    },
+    {
+     "ref": "c1",
+     "name": "rust_p99",
+     "value": 1,
+     "unit": "ms"
+    }
+   ],
+   "formula": "python_p99 / rust_p99",
+   "result": 50,
+   "unit": "x",
+   "assumptions": [
+    "Python figure is 'often above 50 ms', so 50x is a floor; Rust figure is an upper bound"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "low",
+   "risk": "single-source"
+  },
+  {
+   "id": "d7",
+   "type": "derived",
+   "claim": "A 50 ms Python P99 equals about 0.42% of an Ethereum 12-second slot.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "python_p99",
+     "value": 50,
+     "unit": "ms"
+    },
+    {
+     "ref": "c10",
+     "name": "slot_ms",
+     "value": 12000,
+     "unit": "ms"
+    }
+   ],
+   "formula": "python_p99 / slot_ms * 100",
+   "result": 0.4166666666666667,
+   "unit": "%",
+   "assumptions": [
+    "Slot is exactly 12,000 ms; 50 ms is the author's 'often above' figure"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "d8",
+   "type": "derived",
+   "claim": "A 50 ms Python P99 equals a full 50 ms Jito auction tick, i.e. one entire auction round.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "python_p99",
+     "value": 50,
+     "unit": "ms"
+    },
+    {
+     "ref": "c8",
+     "name": "tick_ms",
+     "value": 50,
+     "unit": "ms"
+    }
+   ],
+   "formula": "python_p99 / tick_ms",
+   "result": 1,
+   "unit": "ticks",
+   "assumptions": [
+    "Jito tick is 50 ms per its docs; Python P99 taken at the author's 50 ms floor"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "d9",
+   "type": "derived",
+   "claim": "A 50 ms Python P99 is 25% of Hyperliquid's 200 ms co-located median end-to-end latency and 5.6% of its 900 ms P99.",
+   "inputs": [
+    {
+     "ref": "c1",
+     "name": "python_p99",
+     "value": 50,
+     "unit": "ms"
+    },
+    {
+     "ref": "c12",
+     "name": "hl_p99",
+     "value": 900,
+     "unit": "ms"
+    }
+   ],
+   "formula": "python_p99 / hl_p99 * 100",
+   "result": 5.555555555555555,
+   "unit": "%",
+   "assumptions": [
+    "Share shown is against the 900 ms P99; against the 200 ms median it is 25%"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "d10",
+   "type": "derived",
+   "claim": "The idealized New York-London fiber round trip of 5,585 km is about 56 ms, comparable to the 50 ms Python P99.",
+   "inputs": [
+    {
+     "ref": "c22",
+     "name": "km",
+     "value": 5585,
+     "unit": "km"
+    },
+    {
+     "ref": "c22",
+     "name": "us_per_km",
+     "value": 5,
+     "unit": "us/km"
+    }
+   ],
+   "formula": "km * us_per_km * 2 / 1000",
+   "result": 55.85,
+   "unit": "ms",
+   "assumptions": [
+    "Great-circle path, no routing or processing delay"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "high",
+   "risk": "stable"
+  }
+ ]
+}
