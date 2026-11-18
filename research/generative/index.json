@@ -3685,6 +3685,24 @@
     "prompt": "Seed Twitter/X URL: https://x.com/LumaoDoggie/status/2122919849982820473\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-11-18T081546--expand-research-from-twitter-link-https-x-com-lumaodoggie-st.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "50 ms에서 1 ms 미만으로: Claude가 쓴 파이썬-러스트 차익거래 재작성이 증명하는 것과 증명하지 못하는 것",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-11-18T08:15:46Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-11-18T08:15:46Z",
+        "source_file": "research/generative/2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st.ara.md",
+        "source_sha256": "f24c2b3d6ad3fd9c4c83e06b817b504e5edf75a8fad02a8b358fbe6201589ba5"
+      }
+    }
   }
 ]
