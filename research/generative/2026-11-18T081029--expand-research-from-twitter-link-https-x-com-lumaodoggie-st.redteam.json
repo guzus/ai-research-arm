@@ -1,0 +1,28 @@
+{
+ "findings": [
+  {
+   "claim_id": "c1",
+   "claim_text": "On Jito's documented Block Engine path, parallel bundle auctions run at 50 ms ticks, so the same tail spans a whole auction round",
+   "contradicting_url": null,
+   "contradicting_quote": null,
+   "severity": null,
+   "no_contradiction_found": true
+  },
+  {
+   "claim_id": "c2",
+   "claim_text": "Hyperliquid's docs give a co-located median end-to-end latency of 0.2 seconds and a 99th percentile of 0.9 seconds, at roughly 200k orders per second.",
+   "contradicting_url": "https://en.cryptonomist.ch/2026/03/30/hyperliquid-latency-tokyo-edge",
+   "contradicting_quote": "Median order-to-fill times for Hyperliquid are about 884 milliseconds when accessed from Tokyo",
+   "severity": "medium",
+   "no_contradiction_found": false
+  },
+  {
+   "claim_id": "c3",
+   "claim_text": "Opus 5.5 lists at $4 per million input tokens, $20 per million output tokens and $0.20 per million cache-read tokens",
+   "contradicting_url": null,
+   "contradicting_quote": null,
+   "severity": null,
+   "no_contradiction_found": true
+  }
+ ]
+}

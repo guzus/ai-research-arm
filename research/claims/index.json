@@ -1,5 +1,5 @@
 {
-  "article_count": 113,
+  "article_count": 114,
   "articles": [
     {
       "claim_count": 18,
@@ -1075,6 +1075,16 @@
         "twitter-seed"
       ],
       "title": "Swarms are real, but the 'emergence' is mostly arithmetic: what the evidence says about parallel agents, mixed-model Pareto curves and the token bill"
+    },
+    {
+      "claim_count": 35,
+      "created_at": "2026-11-18T08:10:29Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "stem": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't"
     }
   ],
   "by_host": {
@@ -1465,7 +1475,10 @@
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7",
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c12",
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c33",
-      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c8"
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c8",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c17",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c2",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c3"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -1501,7 +1514,8 @@
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c1",
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c2",
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c36",
-      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c5"
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c5",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c1"
     ],
     "api.github.com": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c6",
@@ -1963,7 +1977,14 @@
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c38",
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c42",
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c44",
-      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c9"
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c9",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c11",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c13",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c14",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c15",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c16",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c18",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c19"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -2536,7 +2557,8 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c36",
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9",
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c10",
-      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c8"
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c8",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c23"
     ],
     "clinicalgenome.org": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c40"
@@ -2659,7 +2681,9 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c15"
     ],
     "code.claude.com": [
-      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c16"
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c16",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c21",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c24"
     ],
     "codeant.ai": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c15"
@@ -3252,6 +3276,9 @@
     "docs.aws.amazon.com": [
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c14"
     ],
+    "docs.base.org": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c9"
+    ],
     "docs.comfy.org": [
       "2026-08-04T171206--comfyui-company#c15",
       "2026-08-04T171206--comfyui-company#c46"
@@ -3265,7 +3292,8 @@
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c14"
     ],
     "docs.flashbots.net": [
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c20"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c20",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c7"
     ],
     "docs.giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c12",
@@ -3274,7 +3302,8 @@
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c7"
     ],
     "docs.jito.wtf": [
-      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c10"
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c10",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c8"
     ],
     "docs.kernel.org": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c18"
@@ -3288,6 +3317,10 @@
     ],
     "docs.perplexity.ai": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2"
+    ],
+    "docs.python.org": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c4",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c6"
     ],
     "docs.ripe.finance": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c5"
@@ -3403,7 +3436,8 @@
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c12"
     ],
     "en.cryptonomist.ch": [
-      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c20"
+      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c20",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c25"
     ],
     "en.ilsole24ore.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c19"
@@ -3560,6 +3594,9 @@
     ],
     "ethcc.io": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c31"
+    ],
+    "ethereum.org": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c10"
     ],
     "etherscan.io": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c11",
@@ -4221,6 +4258,9 @@
     "hoodline.com": [
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c10"
     ],
+    "hpbn.co": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c22"
+    ],
     "huggingface.co": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6",
       "2026-06-22T052035--zhipu-ai-glm#c10",
@@ -4340,7 +4380,8 @@
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c5",
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c6",
       "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c5",
-      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c6"
+      "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c6",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c12"
     ],
     "hyundai.com": [
       "2026-05-27T035557--800-vdc-architecture#c22"
@@ -5523,6 +5564,9 @@
     "people.math.harvard.edu": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c9"
     ],
+    "peps.python.org": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c5"
+    ],
     "ph.investing.com": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c45",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c5"
@@ -6466,7 +6510,8 @@
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c10",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c2",
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c34",
-      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7"
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c20"
     ],
     "support.google.com": [
       "2026-08-20T103407--expand-research-from-twitter-link-https-x-com-fin465-status#c23"
@@ -7825,6 +7870,9 @@
     "https://api.fxtwitter.com/Daveeemor": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c16"
     ],
+    "https://api.fxtwitter.com/LumaoDoggie/status/2122919849982820473": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c1"
+    ],
     "https://api.fxtwitter.com/i/status/2114799287645393098": [
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c1"
     ],
@@ -8232,6 +8280,9 @@
     "https://arxiv.org/abs/2311.04378": [
       "2026-08-11T084945--eu-ai-act-article-50-2-claude-s-text-watermark-the-six-signa#c19"
     ],
+    "https://arxiv.org/abs/2312.02055": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c15"
+    ],
     "https://arxiv.org/abs/2312.06942": [
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c12"
     ],
@@ -8249,6 +8300,12 @@
     ],
     "https://arxiv.org/abs/2405.00138": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c16"
+    ],
+    "https://arxiv.org/abs/2405.01329": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c11"
+    ],
+    "https://arxiv.org/abs/2405.11514": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c18"
     ],
     "https://arxiv.org/abs/2405.20748": [
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c20"
@@ -8315,6 +8372,9 @@
     ],
     "https://arxiv.org/abs/2411.11192": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c10"
+    ],
+    "https://arxiv.org/abs/2411.13990": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c19"
     ],
     "https://arxiv.org/abs/2411.15114": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c37"
@@ -8413,6 +8473,9 @@
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c17",
       "2026-07-29T121916--anthropic-s-claude-mythos-autonomously-breaks-nist-post-quan#c18"
     ],
+    "https://arxiv.org/abs/2506.04940": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c16"
+    ],
     "https://arxiv.org/abs/2506.09289": [
       "2026-08-25T100846--swe-bench-science-s-49-point-gap-what-96-64-on-visible-tests#c16"
     ],
@@ -8427,6 +8490,9 @@
     ],
     "https://arxiv.org/abs/2507.09089": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c16"
+    ],
+    "https://arxiv.org/abs/2507.13023": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c13"
     ],
     "https://arxiv.org/abs/2507.14417": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c8"
@@ -8524,6 +8590,9 @@
     ],
     "https://arxiv.org/abs/2603.16093": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c40"
+    ],
+    "https://arxiv.org/abs/2603.20175": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c14"
     ],
     "https://arxiv.org/abs/2603.21454": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c17"
@@ -9310,7 +9379,8 @@
     ],
     "https://claude.com/pricing": [
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9",
-      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c8"
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c8",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c23"
     ],
     "https://clinicalgenome.org/working-groups/sequence-variant-interpretation": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c40"
@@ -9337,7 +9407,9 @@
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c16"
     ],
     "https://code.claude.com/docs/en/costs": [
-      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c16"
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c16",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c21",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c24"
     ],
     "https://codeant.ai/blogs/swe-bench-scores": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c15"
@@ -9886,6 +9958,9 @@
     "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-deepseek-deepseek-r1.html": [
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c14"
     ],
+    "https://docs.base.org/base-chain/flashblocks/overview": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c9"
+    ],
     "https://docs.comfy.org/registry/standards": [
       "2026-08-04T171206--comfyui-company#c46"
     ],
@@ -9902,6 +9977,9 @@
       "2026-08-20T152813--unitree-star-market-ipo-debut#c11",
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c14"
     ],
+    "https://docs.flashbots.net/flashbots-auction/overview": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c7"
+    ],
     "https://docs.flashbots.net/flashbots-mev-boost/introduction": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c20"
     ],
@@ -9914,7 +9992,8 @@
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c6"
     ],
     "https://docs.jito.wtf/lowlatencytxnsend": [
-      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c10"
+      "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c10",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c8"
     ],
     "https://docs.kernel.org/process/coding-assistants.html": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c18"
@@ -9930,6 +10009,12 @@
     ],
     "https://docs.perplexity.ai/docs/getting-started/pricing": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2"
+    ],
+    "https://docs.python.org/3/howto/free-threading-python.html": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c6"
+    ],
+    "https://docs.python.org/3/library/gc.html": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c4"
     ],
     "https://docs.ripe.finance/resources/audits": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c5"
@@ -10029,6 +10114,9 @@
     ],
     "https://en.bloomingbit.io/feed/news/99879": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c12"
+    ],
+    "https://en.cryptonomist.ch/2026/03/30/hyperliquid-latency-tokyo-edge": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c25"
     ],
     "https://en.cryptonomist.ch/2026/08/23/term-labs-governance-exploit": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c20"
@@ -10238,6 +10326,9 @@
     ],
     "https://ethcc.io/speakers/kubi-mensah": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c31"
+    ],
+    "https://ethereum.org/en/developers/docs/blocks": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c10"
     ],
     "https://etherscan.io/address/0xD5183d8BfC65a50863C62aF2538198A8288FFc13": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c3"
@@ -10999,6 +11090,9 @@
     "https://hoodline.com/2026/08/s-f-startup-wants-its-30-an-hour-robots-cleaning-your-home": [
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c10"
     ],
+    "https://hpbn.co/primer-on-latency-and-bandwidth": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c22"
+    ],
     "https://huggingface.co/Aleph-Alpha/Kolibri-1": [
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c1",
       "2026-10-03T213914--aleph-alpha-kolibri-a-78b-3-46b-active-apache-2-0-moe-and-wh#c10",
@@ -11219,7 +11313,8 @@
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c4"
     ],
     "https://hyperliquid.gitbook.io/hyperliquid-docs/hypercore/overview": [
-      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c6"
+      "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c6",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c12"
     ],
     "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees": [
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c14"
@@ -12186,6 +12281,9 @@
     "https://people.math.harvard.edu/~alpoge/papers/my%20thesis.pdf": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c9"
     ],
+    "https://peps.python.org/pep-0703": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c5"
+    ],
     "https://ph.investing.com/news/company-news/globalwafers-q2-2026-slides-ai-demand-drives-growth-amid-margin-pressure-93CH-2527748": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c45",
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c5"
@@ -13087,6 +13185,9 @@
     "https://stripe.com/newsroom/news/stripe-2025-update": [
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c6"
     ],
+    "https://support.claude.com/en/articles/15910845-claude-code-may-july-2026-weekly-limits-promotion": [
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c20"
+    ],
     "https://support.claude.com/en/articles/16049681": [
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7"
     ],
@@ -13885,7 +13986,8 @@
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c5"
     ],
     "https://www.anthropic.com/engineering/building-c-compiler": [
-      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c12"
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c12",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c17"
     ],
     "https://www.anthropic.com/engineering/code-execution-with-mcp": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c8"
@@ -13968,7 +14070,9 @@
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c8",
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c9",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c6",
-      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7"
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c7",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c2",
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c3"
     ],
     "https://www.anthropic.com/news/claude-sonnet-4-6": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c9"
@@ -18140,7 +18244,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3248,
+  "claim_count": 3283,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -95398,9 +95502,754 @@
       "source_tiers": [],
       "source_urls": [],
       "type": "derived"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "On 2026-11-18 @LumaoDoggie wrote that they rewrote their on-chain arbitrage scripts from Python to Rust in three days using two Claude 20X plans and Opus 5.5, about 34.5 billion tokens, with P99 tick-to-trade and tick-to-cancel latency under 1 ms versus Python P99 often above 50 ms.",
+      "confidence": "medium",
+      "hosts": [
+        "api.fxtwitter.com"
+      ],
+      "id": "c1",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://api.fxtwitter.com/LumaoDoggie/status/2122919849982820473"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Ethereum divides time into twelve-second slots, one validator proposing per slot.",
+      "confidence": "high",
+      "hosts": [
+        "ethereum.org"
+      ],
+      "id": "c10",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://ethereum.org/en/developers/docs/blocks"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2025-04-29",
+      "claim": "Yang, Nayak and Zhang found that two builders produced more than 85% of Ethereum blocks at the time of writing.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c11",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2405.01329"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Hyperliquid's docs give co-located end-to-end order latency of median 0.2 seconds and 99th percentile 0.9 seconds, and about 200k orders per second on mainnet.",
+      "confidence": "high",
+      "hosts": [
+        "hyperliquid.gitbook.io"
+      ],
+      "id": "c12",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c12",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://hyperliquid.gitbook.io/hyperliquid-docs/hypercore/overview"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2025-03-31",
+      "claim": "Wu, Sui, Thiery and Pai estimate $233.8M extracted by 19 major CEX-DEX searchers across 7,203,560 arbitrages from August 2023 to March 2025, with three searchers capturing about 75% of volume and value.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c13",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2507.13023"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-08-10",
+      "claim": "Arbitrum's Timeboost auctions a 200 ms ordering edge; Oz et al. find bids are noisy predictors of short-horizon CEX-DEX profit and that paid bids fell from 62.7% to 14.8% of the top bid after resale intermediary Kairos arrived, with total profits broadly similar.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c14",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2603.20175"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-02-26",
+      "claim": "Schlegel's theory paper shows that in the ex-ante stage bidders invest in latency until they make zero profit in expectation.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c15",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c15",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2312.02055"
+      ],
+      "type": "causal"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-05-01",
+      "claim": "Canidio and Pahari find about 21% of user transactions appear in candidate blocks yet miss the winning block, and that two CEX-DEX arbitrage bots change execution probability and price for same-direction and opposite-direction swaps.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c16",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c16",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2506.04940"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-02-09",
+      "claim": "Anthropic's C-compiler experiment used nearly 2,000 Claude Code sessions, about 2 billion input tokens and 140 million output tokens for just under $20,000, produced a Rust compiler whose output with all optimizations was less efficient than GCC with none, and the author stressed the task verifier must be nearly perfect.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c17",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/engineering/building-c-compiler"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2024-05-19",
+      "claim": "The Fluorine study (arXiv 2405.11514) found the best of five LLMs translated 47% of benchmarks to Rust, using differential fuzzing for I/O equivalence.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c18",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2405.11514"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2025-01-01",
+      "claim": "RustRepoTrans is a repository-level benchmark of 375 tasks translating C, Java and Python into Rust.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c19",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2411.13990"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Claude Opus 5.5 (released 2026-09-22) is priced at $4 per million input tokens, $20 per million output tokens and $0.20 per million cache-read tokens, with cache writes at $5.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c2",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/claude-opus-5-5"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-09-14",
+      "claim": "Anthropic's help center says Claude Code weekly limits were 50% higher from May 13 to September 13, 2026, and from September 14, 2026 are 25% higher than before the promotion.",
+      "confidence": "high",
+      "hosts": [
+        "support.claude.com"
+      ],
+      "id": "c20",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c20",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://support.claude.com/en/articles/15910845-claude-code-may-july-2026-weekly-limits-promotion"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Claude Code docs report an average enterprise cost around $13 per developer per active day and $150-250 per developer per month, below $30 per active day for 90% of users, and say agent teams use roughly 7x more tokens than standard sessions.",
+      "confidence": "high",
+      "hosts": [
+        "code.claude.com"
+      ],
+      "id": "c21",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c21",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://code.claude.com/docs/en/costs"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Light in fiber travels at about 200,000,000 m/s (refractive index about 1.5); New York to London over 5,585 km has a 56 ms fiber round trip on the idealized great-circle path.",
+      "confidence": "high",
+      "hosts": [
+        "hpbn.co"
+      ],
+      "id": "c22",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c22",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://hpbn.co/primer-on-latency-and-bandwidth"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Anthropic's pricing page lists Max at $100 per month and Ultra at $200 per month with 10x Pro weekly usage and no 5-hour limit for verified accounts.",
+      "confidence": "medium",
+      "hosts": [
+        "claude.com"
+      ],
+      "id": "c23",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c23",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://claude.com/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Claude Code docs say thinking cannot be turned off on Opus 5.5 and thinking tokens are billed as output tokens.",
+      "confidence": "high",
+      "hosts": [
+        "code.claude.com"
+      ],
+      "id": "c24",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c24",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://code.claude.com/docs/en/costs"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-03-30",
+      "claim": "A secondary report (The Cryptonomist, 2026-03-30) puts Hyperliquid median order-to-fill at about 884 ms from Tokyo and 1,079 ms from Ashburn, without describing methodology.",
+      "confidence": "low",
+      "hosts": [
+        "en.cryptonomist.ch"
+      ],
+      "id": "c25",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c25",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://en.cryptonomist.ch/2026/03/30/hyperliquid-latency-tokyo-edge"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Anthropic says Opus 5.5 uses fewer tokens per task than Opus 5, netting typical workloads about 40% cheaper.",
+      "confidence": "medium",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c3",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/claude-opus-5-5"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "CPython's gc module documents gc.disable, gc.freeze and generational thresholds as the controls for collector behavior, and exposes duration in collection stats in 3.15.",
+      "confidence": "high",
+      "hosts": [
+        "docs.python.org"
+      ],
+      "id": "c4",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.python.org/3/library/gc.html"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "PEP 703 states the GIL prevents multiple threads from executing Python code at the same time, and measured the free-threaded build's single-thread overhead at 5-6% on pyperformance.",
+      "confidence": "high",
+      "hosts": [
+        "peps.python.org"
+      ],
+      "id": "c5",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://peps.python.org/pep-0703"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "The Python free-threading HOWTO says the free-threaded build is optional, can re-enable the GIL when an unready C extension is imported, and costs about 1% to 8% average overhead on pyperformance.",
+      "confidence": "high",
+      "hosts": [
+        "docs.python.org"
+      ],
+      "id": "c6",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.python.org/3/howto/free-threading-python.html"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Flashbots documents that searchers submit bundles directly to block builders, bidding via gas price or a coinbase transfer in a first-price sealed-bid auction, so selection is bid-driven rather than arrival-time-driven.",
+      "confidence": "high",
+      "hosts": [
+        "docs.flashbots.net"
+      ],
+      "id": "c7",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.flashbots.net/flashbots-auction/overview"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Jito documents that parallel bundle auctions run at 50 ms ticks, bundles hold up to five transactions executed atomically, and ordering within an auction is by tip relative to requested compute.",
+      "confidence": "high",
+      "hosts": [
+        "docs.jito.wtf"
+      ],
+      "id": "c8",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c8",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.jito.wtf/lowlatencytxnsend"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Base's docs say that at the Denim activation (Sepolia 2026-10-21, mainnet 2026-11-05) Flashblocks were replaced by a complete canonical block every 200 ms, with no preconfirmed receipts.",
+      "confidence": "medium",
+      "hosts": [
+        "docs.base.org"
+      ],
+      "id": "c9",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c9",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.base.org/base-chain/flashblocks/overview"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "34.5 billion tokens over three days averages about 133,000 tokens per second.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#d1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "The idealized New York-London fiber round trip of 5,585 km is about 56 ms, comparable to the 50 ms Python P99.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d10",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#d10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "If every one of the 34.5B tokens were an Opus 5.5 cache read at $0.20 per million, list-price cost would be $6,900.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#d2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "With a mix of 95% cache reads, 3% 5-minute cache writes, 1.5% fresh input and 0.5% output, the blended price is $0.50 per million tokens and 34.5B tokens cost about $17,250 at list price.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#d3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "The $6,900 floor equals 17.25 months of two $200 subscriptions ($400 per month).",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#d4",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "34.5B tokens is about 16 times the 2.14B tokens (2B input plus 140M output) of Anthropic's C-compiler experiment.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#d5",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "Cutting P99 from 50 ms to 1 ms is at least a 50x reduction, saving 49 ms.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#d6",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "A 50 ms Python P99 equals about 0.42% of an Ethereum 12-second slot.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d7",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#d7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "A 50 ms Python P99 equals a full 50 ms Jito auction tick, i.e. one entire auction round.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d8",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#d8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st",
+      "article_created_at": "2026-11-18T08:10:29Z",
+      "article_title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't",
+      "as_of": "2026-11-18",
+      "claim": "A 50 ms Python P99 is 25% of Hyperliquid's 200 ms co-located median end-to-end latency and 5.6% of its 900 ms P99.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d9",
+      "key": "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#d9",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1549,
+  "reusable_count": 1560,
   "schema_version": 1
 }
