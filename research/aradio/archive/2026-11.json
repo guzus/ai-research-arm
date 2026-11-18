@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-17T03:11:00Z",
+  "updated_at": "2026-11-18T03:54:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -288,6 +288,13 @@
       "at": "2026-10-31T18:49:00Z",
       "change": "All-In transcript: Google's earnings-day drop of about $500B in market value, cloud profit tripled, search revenue still up 12% per the hosts.",
       "archived_at": "2026-11-16T18:55:00Z"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-11-05T06:41:00Z",
+      "change": "AMD $13.4B / DC $8.5B (+97%); Arm Q2 $1.443B (+27%); SMCI NI $1.594B; FT: Oracle-Tencent $7B lease scrapped.",
+      "archived_at": "2026-11-18T03:54:00Z"
     }
   ]
 }
