@@ -1,9 +1,37 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-18T03:54:00Z",
+  "updated_at": "2026-11-18T13:29:00Z",
   "degraded": false,
-  "latest": "2026-11-18-0354",
+  "latest": "2026-11-18-1329",
   "bulletins": [
+    {
+      "id": "2026-11-18-1329",
+      "aired_at": "2026-11-18T13:29:00Z",
+      "headline": "TWIML: agents use 20-50x chatbot tokens; HPE claims on-prem ROI at 60-70% GPU utilization; Asian auto firms leave AWS",
+      "path": "bulletins/2026-11-18/1329.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-18-1329.mp3",
+        "bytes": 969357,
+        "duration_s": 161.5,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 154.92,
+            "lines": [
+              0,
+              14
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "enterprise-agent-economics",
+        "hyperscaler-capex-and-chip-selloff"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-18-0354",
       "aired_at": "2026-11-18T03:54:00Z",

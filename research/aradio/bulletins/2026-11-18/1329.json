@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "id": "2026-11-18-1329",
+  "aired_at": "2026-11-18T13:29:00Z",
+  "headline": "TWIML: agents use 20-50x chatbot tokens; HPE claims on-prem ROI at 60-70% GPU utilization; Asian auto firms leave AWS",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's half past one UTC on Wednesday, November eighteenth. This is ARA AI News, and the picture now includes a new fight over which agent tasks actually need a frontier model."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On The TWIML AI Podcast, speakers said agent workloads consume about twenty to fifty times more tokens than a chatbot."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "They said that even when the price per token falls, a fifty-times jump in usage still sends the total bill up."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They also said workers will not police that by themselves. If someone has a twenty dollar OpenAI subscription and cannot see the enterprise cost, they just keep the best model and never switch."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "You cannot manage it from one number either. Speakers said you cannot just say the company spent ten million dollars on tokens, because software as a service apps are already burning tokens inside someone else's price."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That is the demand side of Nvidia's one hundred fifteen point eight billion dollar quarter, which has not moved since this morning. The customer still has to decide whether a frontier model belongs on every agent task."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On TWIML, speakers said HPE still sees a return versus public frontier models at sixty to seventy percent GPU utilization. The host said that is lower than a traditional cloud return, where utilization would need to be higher before the math works."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They said standing the GPUs up does not make inference cheaper by itself. You have to optimize the system against the actual workloads, or the boxes in your building do not win."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Speakers said HPE is bringing more of that work inside as open-weight models improve, including models like Kimi, and is building an internal AI factory around that for the savings."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They also described well-known automotive companies in Asia that were running agents on Amazon Web Services and then pulled the plug when the agents needed sensitive data to work."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Public cloud agent runtimes, they said, often lack confidential computing that keeps even an administrator from seeing prompts in memory. A chief technology officer who cannot see what those agents connect to is going to be worried."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The scale is not a lab demo either. They talked about sizing a system for about sixty thousand engineers sending requests, which is a different problem from a chatbot with a short prompt."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Their starting advice was to run a three-year or five-year return comparison on the exact same model or the exact same GPU, on a public cloud versus on premises, and look at the difference."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "What to watch is whether that twenty-to-fifty-times token figure or the Asia auto pullback is confirmed outside this interview, and whether anyone publishes that three-to-five-year on-premises math."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's half past one UTC on Wednesday, November eighteenth. This is ARA AI News, and the picture now includes a new fight over which agent tasks actually need a frontier model.",
+    "Speaker 2: [high_energy] On The TWIML AI Podcast, speakers said agent workloads consume about [emphasis]twenty to fifty times[/emphasis] more tokens than a chatbot.",
+    "Speaker 1: They said that even when the price per token falls, a fifty-times jump in usage still sends the total bill up.",
+    "Speaker 2: They also said workers will not police that by themselves. If someone has a twenty dollar OpenAI subscription and cannot see the enterprise cost, they just keep the best model and never switch.",
+    "Speaker 1: You cannot manage it from one number either. Speakers said you cannot just say the company spent ten million dollars on tokens, because software as a service apps are already burning tokens inside someone else's price.",
+    "Speaker 2: That is the demand side of Nvidia's [emphasis]one hundred fifteen point eight billion dollar[/emphasis] quarter, which has not moved since this morning. The customer still has to decide whether a frontier model belongs on every agent task.",
+    "Speaker 1: On TWIML, speakers said HPE still sees a return versus public frontier models at [emphasis]sixty to seventy percent[/emphasis] GPU utilization. The host said that is lower than a traditional cloud return, where utilization would need to be higher before the math works.",
+    "Speaker 2: They said standing the GPUs up does not make inference cheaper by itself. You have to optimize the system against the actual workloads, or the boxes in your building do not win.",
+    "Speaker 1: Speakers said HPE is bringing more of that work inside as open-weight models improve, including models like Kimi, and is building an internal AI factory around that for the savings.",
+    "Speaker 2: They also described well-known automotive companies in Asia that were running agents on Amazon Web Services and then pulled the plug when the agents needed sensitive data to work.",
+    "Speaker 1: Public cloud agent runtimes, they said, often lack confidential computing that keeps even an administrator from seeing prompts in memory. A chief technology officer who cannot see what those agents connect to is going to be worried.",
+    "Speaker 2: The scale is not a lab demo either. They talked about sizing a system for about sixty thousand engineers sending requests, which is a different problem from a chatbot with a short prompt.",
+    "Speaker 1: Their starting advice was to run a three-year or five-year return comparison on the exact same model or the exact same GPU, on a public cloud versus on premises, and look at the difference.",
+    "Speaker 2: What to watch is whether that twenty-to-fifty-times token figure or the Asia auto pullback is confirmed outside this interview, and whether anyone publishes that three-to-five-year on-premises math.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "enterprise-agent-economics",
+    "hyperscaler-capex-and-chip-selloff"
+  ],
+  "threads": [
+    {
+      "slug": "enterprise-agent-economics",
+      "title": "Enterprise agent economics: frontier models vs on-prem",
+      "status": "developing"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=247s",
+      "kind": "podcast",
+      "label": "The TWIML AI Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=1422s",
+      "kind": "podcast",
+      "label": "The TWIML AI Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk",
+      "kind": "podcast",
+      "label": "The TWIML AI Podcast (Asia auto AWS pullback)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=2590s",
+      "kind": "podcast",
+      "label": "The TWIML AI Podcast (on-prem vs cloud ROI)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "create",
+      "slug": "enterprise-agent-economics"
+    }
+  ],
+  "warnings": [
+    "ops[0] create enterprise-agent-economics evidence[1]: quote (12 words) is part of a sentence, or joins sentences, in the source; a quote is exactly one whole sentence; dropped"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-18-1329.mp3",
+    "bytes": 969357,
+    "duration_s": 161.5,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 154.92,
+        "lines": [
+          0,
+          14
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 1,
+    "kinds": {
+      "podcast": 1
+    }
+  }
+}

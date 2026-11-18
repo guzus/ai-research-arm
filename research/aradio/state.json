@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-18T11:31:00Z",
-  "headline": "Nvidia names Colette Kress interim CEO in a $115.8B quarter; $130B outlook assumes no China compute",
+  "updated_at": "2026-11-18T13:29:00Z",
+  "headline": "TWIML: agents use 20-50x chatbot tokens; HPE claims on-prem ROI at 60-70% GPU utilization; Asian auto firms leave AWS",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -450,6 +450,50 @@
         {
           "at": "2026-11-15T09:57:00Z",
           "change": "Mozilla transcript: Firefox unbeaten at Pwn2Own, ~8x detect-and-fix 2025-2026. Wiz on a16z: AI attacks in ~20 minutes vs weeks for distro patches."
+        }
+      ]
+    },
+    {
+      "slug": "enterprise-agent-economics",
+      "title": "Enterprise agent economics: frontier models vs on-prem",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-11-18T13:29:00Z",
+      "updated_at": "2026-11-18T13:29:00Z",
+      "now": "On TWIML, speakers said agents consume about 20x to 50x more tokens than chatbots, so a cheaper per-token price still lifts the bill. They said HPE still sees ROI versus public frontier models at 60-70% GPU utilization, is building an internal AI factory on open-weight models such as Kimi, and that well-known automotive companies in Asia pulled agent work off AWS over sensitive data.",
+      "changed": "TWIML: speakers said agents use 20x to 50x more tokens than chatbots; HPE claims ROI at 60-70% GPU utilization versus public models; well-known Asian auto companies pulled agents off AWS over sensitive data.",
+      "watch": "Whether HPE or the auto companies first-party the AWS pullback; a 3-to-5-year on-prem versus cloud ROI; whether the 20-50x agent-token figure is sourced beyond this interview.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=247s",
+          "kind": "podcast",
+          "label": "The TWIML AI Podcast",
+          "at": "2026-11-17T22:53:00Z",
+          "quote": "I think we we saw the numbers from like 20x to 50x more for agents on the token consumption."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=1422s",
+          "kind": "podcast",
+          "label": "The TWIML AI Podcast",
+          "at": "2026-11-17T22:53:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk",
+          "kind": "podcast",
+          "label": "The TWIML AI Podcast (Asia auto AWS pullback)",
+          "at": "2026-11-17T22:53:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=2590s",
+          "kind": "podcast",
+          "label": "The TWIML AI Podcast (on-prem vs cloud ROI)",
+          "at": "2026-11-17T22:53:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-18T13:29:00Z",
+          "change": "Created from TWIML: agents 20-50x chatbot tokens; HPE ROI at 60-70% utilization vs public models; internal AI factory on open weights; Asia auto firms pulled agents off AWS."
         }
       ]
     },
