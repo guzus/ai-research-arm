@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-18
+
+TOP 5 PAPERS:
+• FastFrames - Apple/Koltun interactive AR video; 1.3B at 36ms/frame, matches SOTA ~8× slower
+• Pixel is All You Need - pixel-only models do CoT on canvas; power-law + RL, no text tokens
+• Kernel Reality Check - NeurIPS: FlashAttention beats linear attention; quality gap closable, speed wall isn't
+• Isola et al. - capable agents invent their own self-improve loop from primitives, no imposed algorithm
+• SEAM - CUAs compose harm across benign screens in up to 92% of runs, even after writing the conflict
+
+CATEGORIES: LM/NLP 10, CV/Multimodal 10, Agents/Reasoning 10, Safety 9, Other 8
+
+Full report on GitHub.
