@@ -1,9 +1,148 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-18T13:23:00Z",
+  "updated_at": "2026-11-18T22:17:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "latent-space:wX8nDtGIfYA",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "⚡️Anthropic: Know Before You IPO — Tanay Jaipuria, Wing VC",
+      "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA",
+      "video_id": "wX8nDtGIfYA",
+      "audio_url": null,
+      "published_at": "2026-11-18T19:47:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-18T22:17:00Z",
+      "duration_s": 3218,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-18T22:17:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "nvidia:uJG53ligJt4",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "NVIDIA SC26 Special Address",
+      "url": "https://www.youtube.com/watch?v=uJG53ligJt4",
+      "video_id": "uJG53ligJt4",
+      "audio_url": null,
+      "published_at": "2026-11-18T18:47:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-18T22:17:00Z",
+      "duration_s": 2899,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-18T22:17:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "google-deepmind:pVc6KkjeCfU",
+      "show_id": "google-deepmind",
+      "show": "Google DeepMind",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Behind the scenes with Genie 4",
+      "url": "https://www.youtube.com/watch?v=pVc6KkjeCfU",
+      "video_id": "pVc6KkjeCfU",
+      "audio_url": null,
+      "published_at": "2026-11-18T17:47:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-18T22:17:00Z",
+      "duration_s": 154,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-18T22:17:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "google-deepmind:EDp4IoAUsXY",
+      "show_id": "google-deepmind",
+      "show": "Google DeepMind",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Step inside your imagination with Project Genie and Genie 4",
+      "url": "https://www.youtube.com/watch?v=EDp4IoAUsXY",
+      "video_id": "EDp4IoAUsXY",
+      "audio_url": null,
+      "published_at": "2026-11-18T17:47:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-18T22:17:00Z",
+      "duration_s": 92,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-18T22:17:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:YN4fId6Jn8k",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "How Business AI Use is Changing",
+      "url": "https://www.youtube.com/watch?v=YN4fId6Jn8k",
+      "video_id": "YN4fId6Jn8k",
+      "audio_url": null,
+      "published_at": "2026-11-18T16:47:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-18T22:17:00Z",
+      "duration_s": 1462,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "nvidia:y9AALMeAeGI",
       "show_id": "nvidia",
@@ -544,7 +683,7 @@
           "url": "https://www.youtube.com/watch?v=E3Hy-WRJbXE&t=68s"
         }
       ],
-      "description": ""
+      "description": "NVIDIA cuPhoton moves the scientific data pipeline onto GPUs, helping researchers study black holes as events unfold. - Eight radio observatories worked together as a virtual telescope the size of Earth to capture the first image of a black hole in the M87 galaxy - cuPhoton streams only the data needed for black hole jets and overlaps loading with signal processing, reconstruction, analysis and visualization, all of which AI agents can run - It speeds up data loading by up"
     },
     {
       "id": "dwarkesh:SyHM5hNPAEo",
@@ -603,7 +742,7 @@
           "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=5014s"
         }
       ],
-      "description": ""
+      "description": "Paul Christiano is head of the Alignment Research Center. Previously, he was head of AI safety at the US AI Safety Institute. Before that, he led alignment at OpenAI, where he invented RLHF. He’s recently joined OpenAI’s board (though here he is speaking as a private citizen). Paul thinks that on the current trajectory (absent any slowing down), there is a 1 in 3 chance that we could have superintelligence powerful enough to overthrow the government within a year. (He"
     },
     {
       "id": "big-technology:YArzCW6uQaU",
@@ -662,7 +801,7 @@
           "url": "https://www.youtube.com/watch?v=YArzCW6uQaU&t=1135s"
         }
       ],
-      "description": ""
+      "description": "Mike Cannon-Brookes is the CEO of Atlassian, the company behind Jira, Confluence, and Loom. Mike joins Big Technology to discuss how AI is changing work and the software businesses use to get it done, recorded live at Web Summit. Tune in to hear how AI agents will work alongside people, why better models haven’t always translated into productivity gains, and whether AI will eliminate jobs or change them. We also cover model commoditization, competition from OpenAI and Anthropic, and why"
     },
     {
       "id": "a16z:g_67TmQ8lGY",
@@ -721,7 +860,7 @@
           "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=3513s"
         }
       ],
-      "description": ""
+      "description": "AI capabilities are improving fast. But will the economy move just as quickly? a16z General Partner Erik Torenberg sits down with Google DeepMind economist Alex Imas and economist Tyler Cowen to examine how advances in AI translate into growth, jobs, wages, and productivity. They debate what it would take to reach double-digit economic growth, why bottlenecks and falling AI costs could slow the impact, and whether frontier lab valuations require much larger productivity gains. They also explore the “economics of"
     },
     {
       "id": "20vc:BE2JqjsN4aY",
@@ -780,6 +919,33 @@
           "url": "https://www.youtube.com/watch?v=BE2JqjsN4aY&t=3286s"
         }
       ],
+      "description": "Diogo Almeida is the Co-Founder and CEO of TypeSafe AI, the company behind Jev. Jev is an AI model that lets software make decisions automatically and tells developers how confident it is in each call. According to Sequoia's Pat Grady, it went from zero to $100M in revenue in seven days. TypeSafe's latest round valued the company at $7.5BN, with Martin Casado at Andreessen Horowitz leading and Sequoia also investing. Before TypeSafe, Diogo was a researcher at OpenAI, where he"
+    },
+    {
+      "id": "decoder:VjyW8eOl4vM",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "New Jersey’s governor on AI, Elon Musk, and the future of privacy",
+      "url": "https://www.youtube.com/watch?v=VjyW8eOl4vM",
+      "video_id": "VjyW8eOl4vM",
+      "audio_url": null,
+      "published_at": "2026-11-16T10:17:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-18T22:17:00Z",
+      "duration_s": 3923,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
       "description": ""
     },
     {
@@ -9730,237 +9896,6 @@
           "text": "Uh, there's an article in the New York Times about the AI ​​of providers and payers fighting each other, and there's an analysis by the Blue Cross Blue Shield Association that showed that the respective billing bots and paperwork bots actually increased costs by a billion dollars or something.",
           "at_s": 2792,
           "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=2792s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "decoder:MlssX23UMbo",
-      "show_id": "decoder",
-      "show": "Decoder with Nilay Patel",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews"
-      ],
-      "title": "JB Pritzker’s frightening theory about AI and jobs | Decoder",
-      "url": "https://www.youtube.com/watch?v=MlssX23UMbo",
-      "video_id": "MlssX23UMbo",
-      "audio_url": null,
-      "published_at": "2026-10-19T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3473,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-08T23:58:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "all-in:2Zj6uMv3kTA",
-      "show_id": "all-in",
-      "show": "All-In Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Dylan Field: Is AI Replacing Designers?, Design is the New Code & Democratizing Creativity",
-      "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA",
-      "video_id": "2Zj6uMv3kTA",
-      "audio_url": null,
-      "published_at": "2026-10-19T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2433,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 6725,
-        "checked_at": "2026-11-08T23:58:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "\"You spoke to Nikesh.\" I'm just retelling the interview. Sorry, it's wonderful. As if that's good. As if we can fast forward. But I want to go back. You are the CEO of Figma, a public company. Maybe you can just briefly talk about Figma. And when did you start this business? Yes, we launched Figma back in August 2012.",
-          "at_s": 107,
-          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=107s"
-        },
-        {
-          "text": "And then I was using Bryce 3D and all these early 3D tools, and then when Kai's Power Tools came out ...Kai's Power Tools is really cool . He reimagined Adobe Photoshop. And for me, it was an incredible expansion of the creative potential of what could be done with Photoshop.",
-          "at_s": 270,
-          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=270s"
-        },
-        {
-          "text": "But for me, the story was telling 1,200 startup employees about one of the most incredible exits in history. This company's exit at $20 and that's not going to happen. What was it like when you stood up in front of everyone and said, \" Guys, this is not going to happen\"?",
-          "at_s": 408,
-          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=408s"
-        },
-        {
-          "text": "This is a huge market, and this deal represents 1 % and 0.2% of the market. For example, do you define the market by looking back at history, which is the only logical way to do it as a regulator, or do you do it as a technologist , looking forward?",
-          "at_s": 554,
-          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=554s"
-        },
-        {
-          "text": "For 40 years, they have moved at the speed of the market to protect lands at risk while supporting local communities. With 9 million acres protected in all 50 states, The Nature Conservancy is proving that it delivers long-term results that benefit communities and nature. Learn more at conservationfund.org.",
-          "at_s": 1111,
-          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=1111s"
-        },
-        {
-          "text": "But if you don't have one , if you have your own vision and you trust AI to make it happen, you do it through the lens of AI. And it seems that AI has its own distribution. The model adapts to it, yes. Yes. So you won't get exactly what you want.",
-          "at_s": 1569,
-          "url": "https://www.youtube.com/watch?v=2Zj6uMv3kTA&t=1569s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "ai-daily-brief:d6SO10ihpL4",
-      "show_id": "ai-daily-brief",
-      "show": "The AI Daily Brief",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "news-show"
-      ],
-      "title": "A Potentially Historic AI Breakthrough",
-      "url": "https://www.youtube.com/watch?v=d6SO10ihpL4",
-      "video_id": "d6SO10ihpL4",
-      "audio_url": null,
-      "published_at": "2026-10-19T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1224,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-08T23:58:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "a16z:o_5f4N6Nq80",
-      "show_id": "a16z",
-      "show": "a16z",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Why a $1M Startup Wasn’t Worth Building in the Age of AI",
-      "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80",
-      "video_id": "o_5f4N6Nq80",
-      "audio_url": null,
-      "published_at": "2026-10-19T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3719,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 11577,
-        "checked_at": "2026-11-08T23:58:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "So, if I showed you the revenue numbers and revenue growth in our first year , just under a million, and if I showed you what we could do in the second year, which is we thought we could do two and a half to three million in revenue, I think before the AI ​​era you would say, \"That makes",
-          "at_s": 242,
-          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=242s"
-        },
-        {
-          "text": "And I know you and I have talked about this a little bit : I remember when I had a BlackBerry. Yes. Let's say it's 2007, the iPhone comes out, and Steve Ballmer says, \"Nobody's going to buy an $800 phone.\" \"It will be a failure.\" \"This is just ridiculous.\" \"Blah blah blah.\" You know, Microsoft eventually buys Nokia.",
-          "at_s": 977,
-          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=977s"
-        },
-        {
-          "text": "Whereas if you said, \"Do you want to save money?\" \"It's like Geico, right? Like, 'Want to save 15% on your car insurance?'\" \" Like, 'Want to save on iceberg lettuce, and I can save you $500 a year by charging $50 a year?'\" \"The answer is yes. But how do you know?",
-          "at_s": 1641,
-          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=1641s"
-        },
-        {
-          "text": "If you have $0 in revenue and no one is using your product, they wouldn't care. But if you...probably, the programming ended up on the wrong side of that zone. Like, if you were a coding agent right now, who's adding $10 billion a week? Who knows what this is for Anthropic, it's so important to them.",
-          "at_s": 2559,
-          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=2559s"
-        },
-        {
-          "text": "So, \"if I were Amazon and I had $80 billion, or what, $70 billion in annual advertising business,\" the question I would ask would be, \" Hey, I should... I don't think you want to block agents, because I think that's...\"",
-          "at_s": 3427,
-          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=3427s"
-        },
-        {
-          "text": "Interestingly, there is a site called CamelCamelCamel associated with Amazon. This is a price tracking service for Amazon. You're literally saying, \"I want to know when Dr. Pepper, which is currently $8, will be reduced to $6.” And, in fact, buy it. As soon as it costs $6 . No, it does not make the purchase for you.",
-          "at_s": 3574,
-          "url": "https://www.youtube.com/watch?v=o_5f4N6Nq80&t=3574s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "20vc:-r2_5LboWL8",
-      "show_id": "20vc",
-      "show": "20VC",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Who Wins in the Next Decade of VC | Margin and Price Matter Less in a World of AI | Sameer Dholakia",
-      "url": "https://www.youtube.com/watch?v=-r2_5LboWL8",
-      "video_id": "-r2_5LboWL8",
-      "audio_url": null,
-      "published_at": "2026-10-19T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 4791,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 15247,
-        "checked_at": "2026-11-08T23:58:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "Most people in They say that we we will see that 99% token traffic will pass through open models, but we will see that 99% dollars will pass through closed models. Do you think this is is it appropriate, are you Do you think this is some kind of stupid comment? I think that I think that this ratio wrong.",
-          "at_s": 791,
-          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=791s"
-        },
-        {
-          "text": "When we invested in Anthropic in that round 15 billions, I think they were a hundred millions. You know, approximately 150 times more than the current ARR. Algorand, you know, 20 million ARR when we invested and managed these 1.8 billion. dollar around. This is madness. .",
-          "at_s": 1006,
-          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=1006s"
-        },
-        {
-          "text": "fan You did it with 1.8 a billion, okay? Legal market in the USA is 300 billions. If we let's say 20% profit from software provision, and this is 60 billions of dollars, we we assume that he divided between several different players, including your Harvey of the World. You you can get approximately 5 to 10 billions of revenue.",
-          "at_s": 1260,
-          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=1260s"
-        },
-        {
-          "text": "So you mentioned 5.75 billion dollars. Ahem, that's quite a lot, honestly speaking. Let's let's just start with 1.75 billion dollars initial, early elementary and early. Yes. Ahem, initial and early. You need a billion dollars to make initial today? We just saw that literally today USV announced their 900 million dollars funds.",
-          "at_s": 1702,
-          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=1702s"
-        },
-        {
-          "text": "Um, and for funds late stage growth, so that there is Of course, for our late funds growth. Hmm, early growth a little is different. But late late growth, hmm, 5% feels good. AND I'll just say that our last fund growth, our Century 2, hmm, I think we had 20% under one name. The name was Anthropic.",
-          "at_s": 2255,
-          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=2255s"
-        },
-        {
-          "text": "I understand you, but Stripe carries out mergers and absorption for Open Road for 8 billion dollars. I have on meaning that they wanted buy PayPal, obviously, for 55 billion dollars. You already have it. there are. You have liquidity for employees and investors. Me just wondering if we really see victorious wing attractiveness of IPO? Yes. Perhaps. Perhaps.",
-          "at_s": 3587,
-          "url": "https://www.youtube.com/watch?v=-r2_5LboWL8&t=3587s"
         }
       ],
       "description": ""
