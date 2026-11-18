@@ -1,9 +1,123 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-18T03:50:00Z",
+  "updated_at": "2026-11-18T13:23:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "nvidia:y9AALMeAeGI",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "Making AI Agents Safer With Open Source",
+      "url": "https://www.youtube.com/watch?v=y9AALMeAeGI",
+      "video_id": "y9AALMeAeGI",
+      "audio_url": null,
+      "published_at": "2026-11-18T10:53:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-18T13:23:00Z",
+      "duration_s": 1000,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-18T13:23:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "twiml:WFXlWYCXiTk",
+      "show_id": "twiml",
+      "show": "The TWIML AI Podcast",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "Which Agent Tasks Actually Need a Frontier Model?",
+      "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk",
+      "video_id": "WFXlWYCXiTk",
+      "audio_url": null,
+      "published_at": "2026-11-17T22:53:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-18T13:23:00Z",
+      "duration_s": 3468,
+      "transcript": {
+        "available": true,
+        "source": "youtube_captions",
+        "words": 10192,
+        "checked_at": "2026-11-18T13:23:00Z",
+        "attempts": 1
+      },
+      "excerpts": [
+        {
+          "text": "I think we we saw the numbers from like 20x to 50x more for agents on the token consumption. So even the uh per token price goes down when you have a 50x increase in the usage the total bill is going to be up. So I think that that is the reality that our customers are facing today.",
+          "at_s": 247,
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=247s"
+        },
+        {
+          "text": "I know that's a kind of a big open-ended question, but so you you first you need to understand at a very granular level what's happening for the token spend. You cannot just say I'm I spend you know $10 million on token spend.",
+          "at_s": 695,
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=695s"
+        },
+        {
+          "text": "GPU optimization like you you know whether you buy private cloud AI or you you know get GPUs from wherever you get GPUs you stand them up you know just doing that doesn't necessarily make your inference cheaper you you have to to kind of optimize this system that you have against your workloads like how should folks think about",
+          "at_s": 1197,
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=1197s"
+        },
+        {
+          "text": "It it we we calculate based on like a 60 70% utilization. uh we we still get the ROI compared to the frontier or the public models. That strikes me as quite a bit lower than like traditional a traditional cloud ROI model where you would need utilization to be a bit higher to get ROI.",
+          "at_s": 1422,
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=1422s"
+        },
+        {
+          "text": "I would say like let's do a cost calculation right to to really see the the ROI between a exact same model or exact GPU on a cloud or on prem and then look at the 5year ROI or a three year ROI on that and you'll see the difference right like that's that's kind of the starting point of",
+          "at_s": 2590,
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=2590s"
+        },
+        {
+          "text": "So uh the the customers buying u HP private cloud AI they the majority I would say the large number is using that for as a shared in shared inferencing capability for the whole organization. So they can so their version of my HPE or Exactly. my customer GPT whatever. Right. Right.",
+          "at_s": 3106,
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=3106s"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:X8Nfe1smEYI",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "5 Questions Shaping AI This Week",
+      "url": "https://www.youtube.com/watch?v=X8Nfe1smEYI",
+      "video_id": "X8Nfe1smEYI",
+      "audio_url": null,
+      "published_at": "2026-11-17T22:53:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-18T13:23:00Z",
+      "duration_s": 1709,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-18T13:23:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "all-in:1bR0gtecoHU",
       "show_id": "all-in",
@@ -26,8 +140,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-18T03:50:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-18T13:23:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": ""
@@ -54,8 +168,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-17T22:36:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-18T13:23:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -82,8 +196,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-17T22:36:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-18T13:23:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -110,8 +224,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-17T22:36:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-18T13:23:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
