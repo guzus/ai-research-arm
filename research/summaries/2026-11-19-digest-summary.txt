@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-11-19 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] The Silent Consensus - Wed, 18 Nov 2026 10:00 GMT
+• [Hacker News] Seven new models at scalable price-performance: Still on the page, and now the largest AI-by-points…
+• [Reddit] No data: ml.rss was a Reddit “Not Found” stub with 0 entries — -
+• [Expert Blogs] Quoting Daniel Stenberg
+• [Bluesky] @natolambert.bsky.social: "Everyone online: OMG Qwen 4 Max is closed source, Chinese open-weight st…
+
+SOURCES: 7/8 lanes had data; missing: Twitter/X
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
