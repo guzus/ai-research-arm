@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-18T20:25:00Z",
+  "updated_at": "2026-11-19T04:42:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -332,6 +332,91 @@
         }
       ],
       "archived_at": "2026-11-18T11:31:00Z"
+    },
+    {
+      "slug": "mistral-large-4-open-weights",
+      "title": "Mistral, sovereign AI, and the open-weight race",
+      "status": "resolved",
+      "importance": 4,
+      "first_seen": "2026-10-31T21:56:00Z",
+      "updated_at": "2026-11-12T01:04:00Z",
+      "now": "On 20VC, a guest introduced as Mistral CEO Arthur Mensch said about 80% of token traffic is Mistral's own models and about 60% of revenue is European. The host called Mistral a $21B company. The guest said they now train and serve on owned infrastructure and can sell GPUs and tokens. Kimi K3.1 Pro, Ripple-65B Preview and ERNIE-5.5-Flash-Base weights are unchanged.",
+      "changed": "No new Mistral, Kimi, Ripple or ERNIE facts this run; the 20VC interview and open-weight drops are absorbed.",
+      "watch": "Whether Mistral confirms the $21B figure and token mix; independent evals of Kimi and Ripple weights; a Hy4 weight drop.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=534s",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-09T14:34:00Z",
+          "quote": "I would say about 80% comes from our own models."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw",
+          "kind": "podcast",
+          "label": "20VC (Mistral as a $21B company)",
+          "at": "2026-11-09T14:34:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=1348s",
+          "kind": "podcast",
+          "label": "20VC (Mistral revenue mix)",
+          "at": "2026-11-09T14:34:00Z"
+        },
+        {
+          "url": "https://x.com/scaling01/status/2118003733103600085",
+          "kind": "twitter",
+          "label": "@scaling01 on X (Kimi K3.1 Pro)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
+          "kind": "twitter",
+          "label": "Hugging Face (Kimi-K3.1-Pro)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://x.com/kimmonismus/status/2118066494634369464",
+          "kind": "twitter",
+          "label": "@kimmonismus on X (Ripple-65B)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://www.ricursive.com/ripple",
+          "kind": "twitter",
+          "label": "Ricursive (Ripple-65B Preview)",
+          "at": "2026-11-04T21:00:00Z"
+        },
+        {
+          "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
+          "kind": "twitter",
+          "label": "Hugging Face (Ripple-65B-Preview)",
+          "at": "2026-11-04T21:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T21:56:00Z",
+          "change": "Mistral Large 4 open release discussed on The Cognitive Revolution: one trillion parameters, claimed tie with GLM 5.3 on coding at half the tokens."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "Technical report published; licence and token-efficiency claims are secondary and unverified."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Kimi K3.1 Pro 2.8T ungated; Ripple-65B Apache 2.0 at claimed $32M; ERNIE-5.5-Flash-Base; Hy4 API live."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "20VC: Mistral CEO says about 80% of token traffic is in-house and about 60% of revenue is Europe; host puts the company at $21B."
+        },
+        {
+          "at": "2026-11-12T01:04:00Z",
+          "change": "Resolved: 20VC token-mix and $21B print plus Kimi and Ripple weights absorbed; no new sovereign-AI facts this run."
+        }
+      ],
+      "archived_at": "2026-11-19T04:42:00Z"
     }
   ],
   "history": [
@@ -418,6 +503,20 @@
       "at": "2026-10-31T14:48:00Z",
       "change": "Tampered Claude Code extension found on Cursor's marketplace; Anthropic says its systems are unaffected.",
       "archived_at": "2026-11-18T20:25:00Z"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-11-05T06:41:00Z",
+      "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain.",
+      "archived_at": "2026-11-19T04:42:00Z"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-11-05T21:17:00Z",
+      "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged.",
+      "archived_at": "2026-11-19T04:42:00Z"
     }
   ]
 }

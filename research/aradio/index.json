@@ -1,9 +1,46 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-18T13:29:00Z",
+  "updated_at": "2026-11-19T04:42:00Z",
   "degraded": false,
-  "latest": "2026-11-18-1329",
+  "latest": "2026-11-19-0442",
   "bulletins": [
+    {
+      "id": "2026-11-19-0442",
+      "aired_at": "2026-11-19T04:42:00Z",
+      "headline": "Latent Space: Anthropic IPO said for Nov 19, ~7x oversubscribed around $80; S1-style margins 19% to 15%",
+      "path": "bulletins/2026-11-19/0442.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-19-0442.mp3",
+        "bytes": 979293,
+        "duration_s": 163.1,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 111.08,
+            "lines": [
+              0,
+              8
+            ]
+          },
+          {
+            "start_s": 112.53,
+            "end_s": 156.57,
+            "lines": [
+              9,
+              12
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "anthropic-ipo-and-ai-funding",
+        "hyperscaler-capex-and-chip-selloff"
+      ],
+      "kinds": [
+        "podcast",
+        "video"
+      ]
+    },
     {
       "id": "2026-11-18-1329",
       "aired_at": "2026-11-18T13:29:00Z",

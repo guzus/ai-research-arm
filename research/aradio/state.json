@@ -1,8 +1,237 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-18T20:25:00Z",
-  "headline": "NVIDIA titled a 17-minute agent-safety video; transcript pending. Board otherwise unchanged.",
+  "updated_at": "2026-11-19T04:42:00Z",
+  "headline": "Latent Space: Anthropic IPO said for Nov 19, ~7x oversubscribed around $80; S1-style margins 19% to 15%",
   "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-19T04:42:00Z",
+      "now": "On Latent Space, speakers said Anthropic IPOs the day after a Nov 18 episode, about 7x oversubscribed around $80. They cited S1-style figures: margin 19% to 15%, a slight GAAP loss called intentional, 80% consumption vs 20% subscriptions, customers over $100K up 8x to 12K, ~70% of compute on training. Claude Code guessed at ~$50B and 3 of 4 S1 products. Nvidia $10B anchor stands; no filing on…",
+      "changed": "On Latent Space, speakers said Anthropic IPOs the day after a Nov 18 episode, about 7x oversubscribed around $80, and cited S1-style figures: margin 19% to 15%, slight GAAP loss, 12K customers over $100K, ~70% of compute on training.",
+      "watch": "A first-party S1 or priced deal on November 19; whether Nvidia remains the $10B anchor; the Big Technology Gary Marcus transcript.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=274s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-18T19:47:00Z",
+          "quote": "Um we know that margin went down from 19% to 15% and using an adjusted margin."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-18T19:47:00Z",
+          "quote": "Uh it went from a gap operating profit to a slight gap loss and that is just intentional not a big deal."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=1489s",
+          "kind": "podcast",
+          "label": "Latent Space (training vs inference compute)",
+          "at": "2026-11-18T19:47:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=1910s",
+          "kind": "podcast",
+          "label": "Latent Space (Claude Code on the S1)",
+          "at": "2026-11-18T19:47:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=2057s",
+          "kind": "podcast",
+          "label": "Latent Space (usage from models in last six months)",
+          "at": "2026-11-18T19:47:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=9Y4HDQnvCas",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (Gary Marcus)",
+          "at": "2026-11-17T19:06:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=5014s",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast (Anthropic Q3 growth)",
+          "at": "2026-11-16T18:07:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=352s",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-16T15:21:00Z",
+          "quote": "If you look at prediction markets for what the anthropic IPO will go for, they bounce up and down, but it's not flying above two trillion."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-05T12:49:00Z",
+          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: private-side 1.4T vs 1T is options; per-share up 20-30%; allocator unworried about $80B, worried the next $100B layer is thin."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "AI Daily Brief show notes: IPO days away, pricing unclear; Claude productivity suite aimed at Microsoft. No transcript yet."
+        },
+        {
+          "at": "2026-11-14T07:03:00Z",
+          "change": "All-In: 4.2T bull case on 281B 2028 revenue; host guesses 100B raise at 1.75T; price leaks said due by November 20."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Big Technology: hosts expect Anthropic IPO next week with Nvidia as $10B anchor; circular-financing warning stands."
+        },
+        {
+          "at": "2026-11-16T18:55:00Z",
+          "change": "Dwarkesh: Q3 revenue growth about $5.4B vs $6.9B in Q2. a16z: prediction markets not above $2T; IPO revenue projections called not fast-takeoff."
+        },
+        {
+          "at": "2026-11-18T11:31:00Z",
+          "change": "Big Technology titles a Gary Marcus episode Why The Anthropic IPO Will Fail; transcript pending. Still no filing this week."
+        },
+        {
+          "at": "2026-11-19T04:42:00Z",
+          "change": "Latent Space: speakers say IPO the day after Nov 18, ~7x oversubscribed around $80; S1-style margins 19% to 15%, 12K customers over $100K, ~70% compute on training."
+        }
+      ]
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-19T04:42:00Z",
+      "now": "NVIDIA's FY27 Q3 8-K: $115.8B revenue, up 103% from a year ago; Data Center $107.6B, up 110% year-over-year and 21% from last quarter. Q4 revenue is guided to $130.0B plus or minus 3%, with no China Data Center compute assumed. Interim CEO Colette Kress said Vera Rubin is off to an explosive start. NVIDIA posted a 48-minute SC26 Special Address; transcript not yet available.",
+      "changed": "NVIDIA posted a 48-minute SC26 Special Address. Transcript not yet available.",
+      "watch": "The SC26 transcript; a Vera Rubin shipment figure; whether China Data Center compute stays at zero in the next outlook.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=uJG53ligJt4",
+          "kind": "video",
+          "label": "NVIDIA (SC26 Special Address)",
+          "at": "2026-11-18T18:47:00Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27pr.htm",
+          "kind": "earnings",
+          "label": "NVIDIA Corporation (NVDA)",
+          "at": "2026-11-17T21:20:51Z",
+          "speaker": "Colette Kress, interim CEO and executive vice president and chief financial…",
+          "quote": "Vera Rubin is off to an explosive start, our roadmap is on track and our ambition has never been greater."
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
+          "kind": "earnings",
+          "label": "NVIDIA FY27 Q3 8-K",
+          "at": "2026-11-17T21:20:51Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/supplementalfinancialinfor.htm",
+          "kind": "earnings",
+          "label": "NVIDIA Q3 supplemental financials",
+          "at": "2026-11-17T21:20:51Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=570s",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-16T15:21:00Z",
+          "quote": "And you saw exponential increases in token usage and flat revenue numbers, right?"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-14T14:58:00Z",
+          "quote": "The company just raised $720 million in a Series C round from Thrive, Founders Fund , Lightspeed and Radpoint, valuing it at $7 billion."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A",
+          "kind": "podcast",
+          "label": "The TWIML AI Podcast",
+          "at": "2026-11-13T16:37:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1287s",
+          "kind": "podcast",
+          "label": "20VC (OpenAI demand test)",
+          "at": "2026-11-12T20:22:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
+        },
+        {
+          "at": "2026-11-10T21:25:00Z",
+          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
+        },
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
+        },
+        {
+          "at": "2026-11-14T22:17:00Z",
+          "change": "20VC: Fractile founder Walter Goodwin on a $7B AI-chip Nvidia challenger; titles only, no transcript yet."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "20VC transcript: Fractile $720M Series C at $7B; no model sales; memory-bandwidth bottleneck; Nvidia-Groq pairing claimed."
+        },
+        {
+          "at": "2026-11-16T18:55:00Z",
+          "change": "a16z: Ramp data cited for exponential token usage and flat revenue from frontier price competition."
+        },
+        {
+          "at": "2026-11-18T03:54:00Z",
+          "change": "NVIDIA Q3 FY27 8-K: $115.8B revenue, Data Center $107.6B; Q4 guide $130B with no China DC compute; Kress says Vera Rubin off to an explosive start."
+        },
+        {
+          "at": "2026-11-19T04:42:00Z",
+          "change": "NVIDIA titles a 48-min SC26 Special Address; transcript pending."
+        }
+      ]
+    },
     {
       "slug": "ai-cyber-risk-and-key-theft",
       "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
@@ -116,234 +345,6 @@
         {
           "at": "2026-11-18T20:25:00Z",
           "change": "NVIDIA titles a 17-min video Making AI Agents Safer With Open Source; transcript pending."
-        }
-      ]
-    },
-    {
-      "slug": "anthropic-ipo-and-ai-funding",
-      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-18T11:31:00Z",
-      "now": "On Dwarkesh, speakers said Anthropic Q3 revenue grew about $5.4 billion versus $6.9 billion in Q2. On a16z, speakers said IPO prediction markets are not above $2 trillion and projected IPO revenue is not a fast-takeoff print. A $10 billion Nvidia anchor still stands. Big Technology titled a 58-minute Gary Marcus episode Why The Anthropic IPO Will Fail; no transcript yet.",
-      "changed": "Big Technology posted a 58-minute episode titled Why The Anthropic IPO Will Fail, with Gary Marcus. Transcript not yet available. No filing this week yet.",
-      "watch": "The Big Technology transcript; a filing or pricing this week; whether Nvidia remains the $10 billion anchor; Kalshi December IPO odds.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=9Y4HDQnvCas",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (Gary Marcus)",
-          "at": "2026-11-17T19:06:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=5014s",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast (Anthropic Q3 growth)",
-          "at": "2026-11-16T18:07:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=352s",
-          "kind": "podcast",
-          "label": "a16z",
-          "at": "2026-11-16T15:21:00Z",
-          "quote": "If you look at prediction markets for what the anthropic IPO will go for, they bounce up and down, but it's not flying above two trillion."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=3051s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-14T00:28:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4081s",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-11-14T02:28:00Z",
-          "quote": "The question is, what is the real price and I think the real price will be more dictated by what gets leaked between now and November 20th more than anything else."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ&t=4323s",
-          "kind": "podcast",
-          "label": "All-In Podcast (raise guess)",
-          "at": "2026-11-14T02:28:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=gCOMQPMhIL0",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-12T16:04:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1446s",
-          "kind": "podcast",
-          "label": "20VC (private valuations)",
-          "at": "2026-11-12T20:22:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Menlo: Anthropic 55% of enterprise LLM API $; Wu and Lau post OpenAI moves. Two PMs, not a research drain."
-        },
-        {
-          "at": "2026-11-05T12:49:00Z",
-          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
-        },
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: private-side 1.4T vs 1T is options; per-share up 20-30%; allocator unworried about $80B, worried the next $100B layer is thin."
-        },
-        {
-          "at": "2026-11-13T03:38:00Z",
-          "change": "AI Daily Brief show notes: IPO days away, pricing unclear; Claude productivity suite aimed at Microsoft. No transcript yet."
-        },
-        {
-          "at": "2026-11-14T07:03:00Z",
-          "change": "All-In: 4.2T bull case on 281B 2028 revenue; host guesses 100B raise at 1.75T; price leaks said due by November 20."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "Big Technology: hosts expect Anthropic IPO next week with Nvidia as $10B anchor; circular-financing warning stands."
-        },
-        {
-          "at": "2026-11-16T18:55:00Z",
-          "change": "Dwarkesh: Q3 revenue growth about $5.4B vs $6.9B in Q2. a16z: prediction markets not above $2T; IPO revenue projections called not fast-takeoff."
-        },
-        {
-          "at": "2026-11-18T11:31:00Z",
-          "change": "Big Technology titles a Gary Marcus episode Why The Anthropic IPO Will Fail; transcript pending. Still no filing this week."
-        }
-      ]
-    },
-    {
-      "slug": "hyperscaler-capex-and-chip-selloff",
-      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-18T03:54:00Z",
-      "now": "NVIDIA's FY27 Q3 8-K: $115.8B revenue, up 103% from a year ago; Data Center $107.6B, up 110% year-over-year and 21% from last quarter; Edge Computing $8.2B, up 42% year-over-year. Q4 revenue is guided to $130.0B plus or minus 3%, with no China Data Center compute assumed. Interim CEO Colette Kress said Vera Rubin is off to an explosive start.",
-      "changed": "NVIDIA Q3 FY27: $115.8B revenue, up 103% year-over-year; Data Center $107.6B, up 110% and 21% quarter-over-quarter. Q4 guided to $130.0B plus or minus 3% with no China DC compute. Kress said Vera Rubin is off to an explosive start.",
-      "watch": "The earnings-call transcript; a Vera Rubin shipment figure; whether China Data Center compute stays at zero in the next outlook.",
-      "evidence": [
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27pr.htm",
-          "kind": "earnings",
-          "label": "NVIDIA Corporation (NVDA)",
-          "at": "2026-11-17T21:20:51Z",
-          "speaker": "Colette Kress, interim CEO and executive vice president and chief financial…",
-          "quote": "Vera Rubin is off to an explosive start, our roadmap is on track and our ambition has never been greater."
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
-          "kind": "earnings",
-          "label": "NVIDIA FY27 Q3 8-K",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/supplementalfinancialinfor.htm",
-          "kind": "earnings",
-          "label": "NVIDIA Q3 supplemental financials",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=570s",
-          "kind": "podcast",
-          "label": "a16z",
-          "at": "2026-11-16T15:21:00Z",
-          "quote": "And you saw exponential increases in token usage and flat revenue numbers, right?"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-14T14:58:00Z",
-          "quote": "The company just raised $720 million in a Series C round from Thrive, Founders Fund , Lightspeed and Radpoint, valuing it at $7 billion."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A",
-          "kind": "podcast",
-          "label": "The TWIML AI Podcast",
-          "at": "2026-11-13T16:37:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1287s",
-          "kind": "podcast",
-          "label": "20VC (OpenAI demand test)",
-          "at": "2026-11-12T20:22:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1805s",
-          "kind": "podcast",
-          "label": "20VC (token pricing)",
-          "at": "2026-11-12T20:22:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "20VC hosts: CoreWeave debt paying 15%; Alphabet's ~12% drop framed as price discovery. Hardware quarters unchanged."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
-        },
-        {
-          "at": "2026-11-10T21:25:00Z",
-          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
-        },
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
-        },
-        {
-          "at": "2026-11-14T22:17:00Z",
-          "change": "20VC: Fractile founder Walter Goodwin on a $7B AI-chip Nvidia challenger; titles only, no transcript yet."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "20VC transcript: Fractile $720M Series C at $7B; no model sales; memory-bandwidth bottleneck; Nvidia-Groq pairing claimed."
-        },
-        {
-          "at": "2026-11-16T18:55:00Z",
-          "change": "a16z: Ramp data cited for exponential token usage and flat revenue from frontier price competition."
-        },
-        {
-          "at": "2026-11-18T03:54:00Z",
-          "change": "NVIDIA Q3 FY27 8-K: $115.8B revenue, Data Center $107.6B; Q4 guide $130B with no China DC compute; Kress says Vera Rubin off to an explosive start."
         }
       ]
     },
@@ -1213,90 +1214,6 @@
         {
           "at": "2026-11-12T18:39:00Z",
           "change": "Resolved: five-agent accuracy drop and harness-mixing claims absorbed; no new finance or legal product news."
-        }
-      ]
-    },
-    {
-      "slug": "mistral-large-4-open-weights",
-      "title": "Mistral, sovereign AI, and the open-weight race",
-      "status": "resolved",
-      "importance": 4,
-      "first_seen": "2026-10-31T21:56:00Z",
-      "updated_at": "2026-11-12T01:04:00Z",
-      "now": "On 20VC, a guest introduced as Mistral CEO Arthur Mensch said about 80% of token traffic is Mistral's own models and about 60% of revenue is European. The host called Mistral a $21B company. The guest said they now train and serve on owned infrastructure and can sell GPUs and tokens. Kimi K3.1 Pro, Ripple-65B Preview and ERNIE-5.5-Flash-Base weights are unchanged.",
-      "changed": "No new Mistral, Kimi, Ripple or ERNIE facts this run; the 20VC interview and open-weight drops are absorbed.",
-      "watch": "Whether Mistral confirms the $21B figure and token mix; independent evals of Kimi and Ripple weights; a Hy4 weight drop.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=534s",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-09T14:34:00Z",
-          "quote": "I would say about 80% comes from our own models."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw",
-          "kind": "podcast",
-          "label": "20VC (Mistral as a $21B company)",
-          "at": "2026-11-09T14:34:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=KotQbLX8pOw&t=1348s",
-          "kind": "podcast",
-          "label": "20VC (Mistral revenue mix)",
-          "at": "2026-11-09T14:34:00Z"
-        },
-        {
-          "url": "https://x.com/scaling01/status/2118003733103600085",
-          "kind": "twitter",
-          "label": "@scaling01 on X (Kimi K3.1 Pro)",
-          "at": "2026-11-04T21:00:00Z"
-        },
-        {
-          "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
-          "kind": "twitter",
-          "label": "Hugging Face (Kimi-K3.1-Pro)",
-          "at": "2026-11-04T21:00:00Z"
-        },
-        {
-          "url": "https://x.com/kimmonismus/status/2118066494634369464",
-          "kind": "twitter",
-          "label": "@kimmonismus on X (Ripple-65B)",
-          "at": "2026-11-04T21:00:00Z"
-        },
-        {
-          "url": "https://www.ricursive.com/ripple",
-          "kind": "twitter",
-          "label": "Ricursive (Ripple-65B Preview)",
-          "at": "2026-11-04T21:00:00Z"
-        },
-        {
-          "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
-          "kind": "twitter",
-          "label": "Hugging Face (Ripple-65B-Preview)",
-          "at": "2026-11-04T21:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T21:56:00Z",
-          "change": "Mistral Large 4 open release discussed on The Cognitive Revolution: one trillion parameters, claimed tie with GLM 5.3 on coding at half the tokens."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "Technical report published; licence and token-efficiency claims are secondary and unverified."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Kimi K3.1 Pro 2.8T ungated; Ripple-65B Apache 2.0 at claimed $32M; ERNIE-5.5-Flash-Base; Hy4 API live."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "20VC: Mistral CEO says about 80% of token traffic is in-house and about 60% of revenue is Europe; host puts the company at $21B."
-        },
-        {
-          "at": "2026-11-12T01:04:00Z",
-          "change": "Resolved: 20VC token-mix and $21B print plus Kimi and Ripple weights absorbed; no new sovereign-AI facts this run."
         }
       ]
     }
