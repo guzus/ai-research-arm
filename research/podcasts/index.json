@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-18T22:17:00Z",
+  "updated_at": "2026-11-19T04:30:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -23,13 +23,44 @@
       "first_seen_at": "2026-11-18T22:17:00Z",
       "duration_s": 3218,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-18T22:17:00Z",
-        "attempts": 1
+        "available": true,
+        "source": "youtube_captions",
+        "words": 10818,
+        "checked_at": "2026-11-19T04:30:00Z",
+        "attempts": 2
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Third is margins. Um so we have a little bit more in terms of disclosures on margins. Um we know that margin went down from 19% to 15% and using an adjusted margin. Uh it went from a gap operating profit to a slight gap loss and that is just intentional not a big deal.",
+          "at_s": 274,
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=274s"
+        },
+        {
+          "text": "I was thinking about this like like Meta is still burning like 10 $10 billion on their reality labs initiatives every like two quarters or so. Uh I think it's now down to like 16 billion a year. So maybe they burn like 8 billion but they're still burning every year. Way more absurd. Yeah.",
+          "at_s": 835,
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=835s"
+        },
+        {
+          "text": "And so I think the most common number like you know is like this kind of idea of 85% gross margins that they report and the way to think about that is that essentially like as a percent of revenue their like inference on paid users is about 15%.",
+          "at_s": 1081,
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=1081s"
+        },
+        {
+          "text": "Yeah, I mean I personally was pretty surprised by in some ways the the share of the compute that was on training and research still like like you know it's basically they're using about 70% of their compute on training and research and only like 30% is going towards inference and that I think we're surprised both one that just",
+          "at_s": 1489,
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=1489s"
+        },
+        {
+          "text": "Um so so yeah I think the other thing that I always press people on is like what percent is cloud code? Do we care? You know we used to have these disclosures of like oh cloud code is like 1 billion in revenue. CL code is two billion in revenue.",
+          "at_s": 1910,
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=1910s"
+        },
+        {
+          "text": "Um, but I think the other reason this important is that they disclose that about 80% of their uh most of the model usage uh or most of their revenue comes from models that were released in the last 80% of the usage comes from models released in the last six months.",
+          "at_s": 2057,
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=2057s"
+        }
+      ],
       "description": ""
     },
     {
@@ -54,8 +85,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-18T22:17:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-19T04:30:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -82,8 +113,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-18T22:17:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-19T04:30:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -110,8 +141,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-18T22:17:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-19T04:30:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -137,8 +168,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-19T04:30:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -165,8 +196,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-18T13:23:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-19T04:30:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -942,8 +973,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-19T04:30:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
