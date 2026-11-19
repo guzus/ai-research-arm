@@ -3704,5 +3704,19 @@
         "source_sha256": "f24c2b3d6ad3fd9c4c83e06b817b504e5edf75a8fad02a8b358fbe6201589ba5"
       }
     }
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-anzep13-status",
+    "file": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-11-19T04:28:44Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/anzep13/status/2123121413733109813\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

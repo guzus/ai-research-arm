@@ -1,5 +1,5 @@
 {
-  "article_count": 114,
+  "article_count": 115,
   "articles": [
     {
       "claim_count": 18,
@@ -1085,6 +1085,16 @@
         "twitter-seed"
       ],
       "title": "50 ms to under 1 ms: what a Claude-written Python-to-Rust arbitrage rewrite proves, and what it can't"
+    },
+    {
+      "claim_count": 52,
+      "created_at": "2026-11-19T04:28:44Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "stem": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?"
     }
   ],
   "by_host": {
@@ -1135,6 +1145,9 @@
     "a16zcrypto.com": [
       "2026-06-24T160453--test-ornn-com-codex-2#C6",
       "2026-06-24T160453--test-ornn-com-codex-2#C7"
+    ],
+    "aave.com": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c38"
     ],
     "aavescan.com": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8"
@@ -1542,7 +1555,9 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c12",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c13",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c34",
-      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4"
+      "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c4",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c11",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c34"
     ],
     "api.semanticscholar.org": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c21"
@@ -2131,6 +2146,9 @@
     ],
     "bitcoinworld.co.in": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c16"
+    ],
+    "bitquery.io": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c41"
     ],
     "bleeckerstreetresearch.com": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c8"
@@ -2722,7 +2740,8 @@
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c9",
       "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c6",
       "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c9",
-      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c7"
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c7",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c12"
     ],
     "coinfomania.com": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c10"
@@ -2752,6 +2771,12 @@
     "coinmetrics.substack.com": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c2",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c29"
+    ],
+    "coinpaprika.com": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c1",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c2",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c3",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c36"
     ],
     "coinspeaker.com": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c9"
@@ -2894,6 +2919,9 @@
     ],
     "cryptodaily.co.uk": [
       "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c8"
+    ],
+    "cryptonews.net": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c27"
     ],
     "cryptopolitan.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c30"
@@ -3311,6 +3339,9 @@
     "docs.lighter.xyz": [
       "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c7"
     ],
+    "docs.morpho.org": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c24"
+    ],
     "docs.nvidia.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c2",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c25"
@@ -3388,7 +3419,8 @@
       "2026-05-27T035557--800-vdc-architecture#c35"
     ],
     "eco.com": [
-      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8"
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c35"
     ],
     "economicshelp.org": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c8"
@@ -3902,7 +3934,8 @@
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c15",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8",
       "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c10",
-      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c7"
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c7",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c18"
     ],
     "fortunebusinessinsights.com": [
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c26"
@@ -3950,6 +3983,9 @@
     ],
     "fxstreet.com": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c21"
+    ],
+    "galaxy.com": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c13"
     ],
     "gale.finance": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c17"
@@ -4144,6 +4180,15 @@
     ],
     "govconwire.com": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c12"
+    ],
+    "governance.aave.com": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c15",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c16",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c28",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c31",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c7",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c8",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c9"
     ],
     "governmentcontractsnavigator.com": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c27"
@@ -4694,6 +4739,9 @@
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c4",
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c5"
     ],
+    "kitchen.steakhouse.financial": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c22"
+    ],
     "knightcolumbia.org": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c43"
     ],
@@ -5105,6 +5153,15 @@
     "morphllm.com": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c17"
     ],
+    "morpho.org": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c17",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c19",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c20",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c21",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c32",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c39",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c40"
+    ],
     "motherduck.com": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c11"
     ],
@@ -5175,6 +5232,9 @@
     ],
     "news.bgov.com": [
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c13"
+    ],
+    "news.bitcoin.com": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c10"
     ],
     "news.bloomberglaw.com": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c15",
@@ -5754,6 +5814,12 @@
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c11",
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9"
     ],
+    "protofire.io": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c25",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c26",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c5",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c6"
+    ],
     "protos.com": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c30"
     ],
@@ -5926,11 +5992,17 @@
       "2026-08-04T171206--comfyui-company#c39",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c39"
     ],
+    "reports.tiger-research.com": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c33"
+    ],
     "reports.zksecurity.xyz": [
       "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c13"
     ],
     "research": [
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c19"
+    ],
+    "research.4pillars.io": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c40"
     ],
     "research.google": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c4",
@@ -6364,7 +6436,8 @@
     ],
     "stablecoininsider.org": [
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c12",
-      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c13"
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c13",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c23"
     ],
     "stablecoins.llama.fi": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c21"
@@ -6806,7 +6879,12 @@
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c4",
       "2026-10-30T055440--expand-research-from-twitter-link-https-x-com-odysseas-eth-s#c12",
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c8",
-      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c9"
+      "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c9",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c14",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c18",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c29",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c30",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c4"
     ],
     "thechinaacademy.org": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c1"
@@ -7478,7 +7556,8 @@
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c18",
       "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c4",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c16",
-      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c17"
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c17",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c37"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -7592,6 +7671,9 @@
     "https://a16zcrypto.com/posts/article/investing-in-ornn": [
       "2026-06-24T160453--test-ornn-com-codex-2#C6",
       "2026-06-24T160453--test-ornn-com-codex-2#C7"
+    ],
+    "https://aave.com/blog/aave-2025-recap": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c38"
     ],
     "https://aavescan.com/rates/ethena-susde": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8"
@@ -7938,8 +8020,20 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c13",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c34"
     ],
+    "https://api.llama.fi/summary/fees/aave?dataType=dailyFees": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c11"
+    ],
+    "https://api.llama.fi/summary/fees/morpho": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c11"
+    ],
     "https://api.llama.fi/summary/fees/usd-ai?dataType=dailyRevenue": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c10"
+    ],
+    "https://api.llama.fi/tvl/aave-v3": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c34"
+    ],
+    "https://api.llama.fi/tvl/morpho-v1": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c34"
     ],
     "https://api.llama.fi/tvl/uniswap-v4": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c34"
@@ -9055,6 +9149,9 @@
     "https://bitcoinworld.co.in/dunamu-pauses-upbit-d-conference-2026-kbw-sponsorship": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c16"
     ],
+    "https://bitquery.io/investigations/aave-rseth-exploit-run": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c41"
+    ],
     "https://bleepingcomputer.com/news/google/google-paid-171-million-for-vulnerability-reports-in-2025": [
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12"
     ],
@@ -9457,6 +9554,12 @@
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c2",
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c29"
     ],
+    "https://coinpaprika.com/education/defi-lending": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c1",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c2",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c3",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c36"
+    ],
     "https://cointelegraph.com/news/term-finance-8-5m-vault-governance-exploit": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c1",
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c5"
@@ -9566,6 +9669,9 @@
     ],
     "https://cryptodaily.co.uk/2026/06/akt-after-ai-rally-decentralized-compute-utilization": [
       "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c8"
+    ],
+    "https://cryptonews.net/news/defi/33567416": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c27"
     ],
     "https://cryptorank.io/fundraising-platforms/uniswap-cca": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c20"
@@ -10001,6 +10107,9 @@
     "https://docs.lighter.xyz/trading/trading-fees.md": [
       "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c7"
     ],
+    "https://docs.morpho.org/curate/tutorials-market-v1/creating-market": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c24"
+    ],
     "https://docs.nvidia.com/attestation/attestation-client-tools-sdk/latest/gpu_and_switch_attestation.html": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c25"
     ],
@@ -10095,6 +10204,9 @@
     ],
     "https://eco.com/support/en/articles/14798653-susde-explained-ethena-s-yield-bearing-stablecoin": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8"
+    ],
+    "https://eco.com/support/en/articles/14800882-best-defi-lending-protocols-2026-tvl-rates-risk": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c35"
     ],
     "https://edgen.dev.edgen.tech/news/post/marvell-grants-google-7-warrant-in-122-billion-custom-chip-deal": [
       "2026-08-22T155949--marvell-s-58-97m-share-google-warrant-what-240-tranches-of-5#mrvl-15",
@@ -10681,6 +10793,9 @@
     "https://fortune.com/2026/05/18/billionaire-ken-griffin-ai-garbage-depressed-dramatic-impact-society": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c52"
     ],
+    "https://fortune.com/2026/06/09/morpho-fundraise-a16z-crypto-paradigm-ribbit-capital-175-million": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c18"
+    ],
     "https://fortune.com/2026/06/09/openai-files-confidential-s-1-sec-ipo": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c24"
     ],
@@ -11045,6 +11160,27 @@
     ],
     "https://gov.ethenafoundation.com/t/reserve-fund-march-2026-update/775": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c7"
+    ],
+    "https://governance.aave.com/t/aave-labs-180-day-report/26342": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c15",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c7",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c8",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c9"
+    ],
+    "https://governance.aave.com/t/al-development-update-august-2026/25579": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c31"
+    ],
+    "https://governance.aave.com/t/al-development-update-october-2026/25979": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c31"
+    ],
+    "https://governance.aave.com/t/arfc-pause-aave-buybacks/24686": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c28"
+    ],
+    "https://governance.aave.com/t/restart-aave-buy-backs/24936": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c28"
+    ],
+    "https://governance.aave.com/t/temp-check-aave-will-win-framework/24055": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c16"
     ],
     "https://governmentcontractsnavigator.com/2026/07/22/dow-updates-section-1260h-list-expanding-compliance-obligations-for-government-contractors": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c27"
@@ -11495,6 +11631,9 @@
     "https://kingy.ai/blog/openai-math-722-manuscripts-results-proofs-compute-costs": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c11"
     ],
+    "https://kitchen.steakhouse.financial/p/defi-markets-update-2026-07-14": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c22"
+    ],
     "https://knightcolumbia.org/content/ai-as-normal-technology": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c43"
     ],
@@ -11779,6 +11918,29 @@
     "https://money.usnews.com/investing/news/articles/2026-08-27/nvidia-pauses-revenue-sharing-deals-with-ai-cloud-companies-wsj-reports": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c32"
     ],
+    "https://morpho.org/blog/aligning-around-morpho-the-only-asset-for-morpho": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c40"
+    ],
+    "https://morpho.org/blog/morpho-association-announces-cooperation-agreement-with-apollo": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c19"
+    ],
+    "https://morpho.org/blog/morpho-association-raises-175m-to-build-the-open-credit-network-for-the-world": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c17"
+    ],
+    "https://morpho.org/blog/morpho-vaults-v2-a-new-standard-for-asset-curation": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c39"
+    ],
+    "https://morpho.org/blog/now-live-morpho-midnight": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c20"
+    ],
+    "https://morpho.org/blog/the-morpho-effect-october-2026": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c21",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c32"
+    ],
+    "https://morpho.org/blog/the-morpho-effect-september-2026": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c21",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c32"
+    ],
     "https://motherduck.com/blog/motherduck-supports-jev": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c11"
     ],
@@ -11802,6 +11964,9 @@
     ],
     "https://news.bgov.com/financial-accounting/anthropic-revenue-run-rate-surpasses-65-billion-ahead-of-ipo": [
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c13"
+    ],
+    "https://news.bitcoin.com/finance/onchain-lending-fees-plunge-50-as-morpho-bucks-the-trend": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c10"
     ],
     "https://news.bloomberglaw.com/artificial-intelligence/shutterstocks-ai-licensing-business-generated-104-million": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c15"
@@ -12536,6 +12701,12 @@
     "https://proteinbase.com/collections/gem-x-adaptyv-rbx1-binder-design-competition-results": [
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c9"
     ],
+    "https://protofire.io/guides/lending-against-tokenized-assets": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c25",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c26",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c5",
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c6"
+    ],
     "https://protos.com/gauntlets-2-3m-contract-renewal-with-compound-faces-backlash": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c30"
     ],
@@ -12742,8 +12913,14 @@
     "https://replicate.com/docs/guides/extend/comfyui": [
       "2026-08-04T171206--comfyui-company#c39"
     ],
+    "https://reports.tiger-research.com/p/defi-lending-is-modularizing-the-eng": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c33"
+    ],
     "https://reports.zksecurity.xyz/reports/zklighter-block": [
       "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c13"
+    ],
+    "https://research.4pillars.io/en/research/morpho-the-apollo-pump-is-your-exit": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c40"
     ],
     "https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c4",
@@ -13007,6 +13184,9 @@
     ],
     "https://ssi.inc": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c5"
+    ],
+    "https://stablecoininsider.org/base-earn-and-borrow": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c23"
     ],
     "https://stablecoininsider.org/link-balance": [
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c12",
@@ -13551,6 +13731,9 @@
     ],
     "https://theairankings.com/zhipu": [
       "2026-06-22T052035--zhipu-ai-glm#c26"
+    ],
+    "https://theblock.co/news/defi/2026-09-22-coinbase-fixed-rate-bitcoin-loans-morpho-midnight-416050": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c4"
     ],
     "https://thechinaacademy.org/interview-with-deepseek-founder-were-done-following-its-time-to-lead": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c1"
@@ -14893,6 +15076,9 @@
     "https://www.coindesk.com/tech/2026/03/18/stripe-led-payments-blockchain-tempo-goes-live-with-protocol-for-ai-agents": [
       "2026-10-30T161254--expand-research-from-twitter-link-https-x-com-khushjammu-sta#c7"
     ],
+    "https://www.coindesk.com/tech/2026/04/19/aave-records-usd6-billion-tvl-drop-as-kelp-hack-exposes-structural-risk-at-defi-lender": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c12"
+    ],
     "https://www.coindesk.com/tech/2026/07/13/robinhood-built-a-blockchain-for-tokenized-stocks-memecoins-took-over": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c14"
     ],
@@ -15555,6 +15741,9 @@
     ],
     "https://www.fxstreet.com/news/nvidia-slips-14-as-china-reportedly-blocks-h200-ai-chip-imports-202601151321": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c21"
+    ],
+    "https://www.galaxy.com/insights/research/kelpdao-layerzero-exploit-defi": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c13"
     ],
     "https://www.gale.finance/compare/nvda-vs-spy": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c17"
@@ -17274,6 +17463,15 @@
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c1",
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c4"
     ],
+    "https://www.theblock.co/news/defi/2025-11-04-analysts-map-285m-in-potential-exposure-across-defi-after-stream-finances-93m-loss-377491": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c30"
+    ],
+    "https://www.theblock.co/news/defi/2026-03-30-aave-v4-launches-ethereum-mainnet-395617": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c14"
+    ],
+    "https://www.theblock.co/news/defi/2026-07-14-galaxy-blends-aave-morpho-other-defi-rates-new-gofr-crypto-borrowing-product-408267": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c29"
+    ],
     "https://www.theblock.co/news/defi/2026-08-03-dexs-capture-record-spot-crypto-trading-as-cex-volumes-sink-410476": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c4"
     ],
@@ -17314,6 +17512,9 @@
     ],
     "https://www.theblock.co/post/395643/upbit-operator-dunamu-sees-10-revenue-drop-to-1-billion-in-2025-as-crypto-trading-cools": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c9"
+    ],
+    "https://www.theblock.co/post/404111/morpho-raises-175m-paradigm-a16z-crypto-ribbit-capital": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c18"
     ],
     "https://www.theblock.co/post/74810/yam-token-market-cap-collapses-by-more-than-90-flaw": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c10"
@@ -17935,6 +18136,9 @@
     "https://x.com/anishmoonka/status/2039097880489984380": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c10"
     ],
+    "https://x.com/anzep13/status/2123121413733109813": [
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c37"
+    ],
     "https://x.com/arcprize/status/1999182732845547795": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c6"
     ],
@@ -18244,7 +18448,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3283,
+  "claim_count": 3335,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -96247,9 +96451,1157 @@
       "source_tiers": [],
       "source_urls": [],
       "type": "derived"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-16",
+      "claim": "On 2026-11-16 Aave (V3+V4) TVL was $15.11B and Morpho TVL was $10.22B per DefiLlama; Morpho was about 12% below its 2026-11-05 record.",
+      "confidence": "medium",
+      "hosts": [
+        "coinpaprika.com"
+      ],
+      "id": "c1",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c1",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://coinpaprika.com/education/defi-lending"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-29",
+      "claim": "Per the 1kx 2026 blockchain revenue report, Morpho took $62M in user-paid fees in Q3 2026, ranked second among lending markets, much going to curators; onchain lending user-paid fees fell about 50% year over year.",
+      "confidence": "medium",
+      "hosts": [
+        "news.bitcoin.com"
+      ],
+      "id": "c10",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://news.bitcoin.com/finance/onchain-lending-fees-plunge-50-as-morpho-bucks-the-trend"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-19",
+      "claim": "DefiLlama showed 30-day fees of $42,019,860 for Aave and $34,068,051 for Morpho, and trailing-year fees of $601,839,047 and $214,918,206; DefiLlama states no revenue accrues to the Morpho protocol.",
+      "confidence": "medium",
+      "hosts": [
+        "api.llama.fi"
+      ],
+      "id": "c11",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://api.llama.fi/summary/fees/aave?dataType=dailyFees",
+        "https://api.llama.fi/summary/fees/morpho"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-04-19",
+      "claim": "On 2026-04-18 116,500 rsETH (about $292M) was taken from Kelp's bridge; Aave-specific bad-debt exposure was roughly $196M, Aave TVL fell from $26.4B to nearly $20B and AAVE fell 16%.",
+      "confidence": "medium",
+      "hosts": [
+        "coindesk.com"
+      ],
+      "id": "c12",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c12",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.coindesk.com/tech/2026/04/19/aave-records-usd6-billion-tvl-drop-as-kelp-hack-exposes-structural-risk-at-defi-lender"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-04-22",
+      "claim": "Morpho's CEO reported only about $1M of rsETH exposure across two isolated markets, which Galaxy attributes to per-market isolation.",
+      "confidence": "low",
+      "hosts": [
+        "galaxy.com"
+      ],
+      "id": "c13",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c13",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.galaxy.com/insights/research/kelpdao-layerzero-exploit-defi"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-03-30",
+      "claim": "Aave V4 launched on Ethereum on 2026-03-30 with Prime, Core and Plus hubs and launch spokes including Lido, EtherFi, Kelp, Ethena and Lombard; each hub gives a credit line to each spoke.",
+      "confidence": "high",
+      "hosts": [
+        "theblock.co"
+      ],
+      "id": "c14",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.theblock.co/news/defi/2026-03-30-aave-v4-launches-ethereum-mainnet-395617"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-01",
+      "claim": "Aave V4 supplied grew from $212.6M on 2026-07-01 to $1.34B on 2026-10-01 (borrowed $402.9M, TVL $932.8M on Oct 1; high of $1.41B on Oct 12).",
+      "confidence": "high",
+      "hosts": [
+        "governance.aave.com"
+      ],
+      "id": "c15",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c15",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://governance.aave.com/t/aave-labs-180-day-report/26342"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-02-12",
+      "claim": "The Aave Will Win temp check proposed routing 100% of Aave-branded product revenue to the DAO treasury, with Aave Labs funded $25M in stablecoins and 75,000 AAVE vesting over two years.",
+      "confidence": "high",
+      "hosts": [
+        "governance.aave.com"
+      ],
+      "id": "c16",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://governance.aave.com/t/temp-check-aave-will-win-framework/24055"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-06-09",
+      "claim": "Morpho Association raised $175M co-led by Paradigm, a16z crypto and Ribbit, with Apollo Funds, Circle Ventures, VanEck and Ledger Cathay as strategic participants, and states $11B+ in deposits.",
+      "confidence": "high",
+      "hosts": [
+        "morpho.org"
+      ],
+      "id": "c17",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://morpho.org/blog/morpho-association-raises-175m-to-build-the-open-credit-network-for-the-world"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-06-09",
+      "claim": "The June 2026 Morpho raise was a purchase of MORPHO tokens at the monthly average price, reported at a valuation of up to $2B.",
+      "confidence": "medium",
+      "hosts": [
+        "fortune.com",
+        "theblock.co"
+      ],
+      "id": "c18",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c18",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://fortune.com/2026/06/09/morpho-fundraise-a16z-crypto-paradigm-ribbit-capital-175-million",
+        "https://www.theblock.co/post/404111/morpho-raises-175m-paradigm-a16z-crypto-ribbit-capital"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-02-13",
+      "claim": "Apollo affiliates may acquire up to 90M MORPHO over 48 months under a cooperation agreement announced 2026-02-13, with transfer and trading restrictions.",
+      "confidence": "high",
+      "hosts": [
+        "morpho.org"
+      ],
+      "id": "c19",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c19",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://morpho.org/blog/morpho-association-announces-cooperation-agreement-with-apollo"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-16",
+      "claim": "On 2026-11-16 Aave borrowed was $11.10B and Morpho borrowed was $5.34B per DefiLlama.",
+      "confidence": "medium",
+      "hosts": [
+        "coinpaprika.com"
+      ],
+      "id": "c2",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c2",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://coinpaprika.com/education/defi-lending"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-07-21",
+      "claim": "Morpho Midnight, a noncustodial fixed-rate fixed-term credit protocol, launched on Base on 2026-07-21 with a cbBTC/USDC pair and limited maturities.",
+      "confidence": "high",
+      "hosts": [
+        "morpho.org"
+      ],
+      "id": "c20",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c20",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://morpho.org/blog/now-live-morpho-midnight"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-31",
+      "claim": "Morpho's October 2026 recap puts Midnight deposits at about $200M and its September recap puts total Morpho deposits above $17B (two different months).",
+      "confidence": "medium",
+      "hosts": [
+        "morpho.org"
+      ],
+      "id": "c21",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c21",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://morpho.org/blog/the-morpho-effect-september-2026",
+        "https://morpho.org/blog/the-morpho-effect-october-2026"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-07-14",
+      "claim": "On 2026-07-14 Steakhouse reported Morpho USDC supply above $2.8B, over half in Steakhouse vaults (about $1.4B), about 65% of Base USDC via Steakhouse including about $368M from the Coinbase App lending product.",
+      "confidence": "medium",
+      "hosts": [
+        "kitchen.steakhouse.financial"
+      ],
+      "id": "c22",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c22",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://kitchen.steakhouse.financial/p/defi-markets-update-2026-07-14"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-15",
+      "claim": "Base announced Earn & Borrow on 2026-10-13 letting apps embed lending through Morpho and Aave; a secondary summary puts Morpho on Base at about $4.38B TVL and Aave V3 on Base at about $533M.",
+      "confidence": "medium",
+      "hosts": [
+        "stablecoininsider.org"
+      ],
+      "id": "c23",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c23",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://stablecoininsider.org/base-earn-and-borrow"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-19",
+      "claim": "Anyone can create a Morpho Blue market via createMarket with five parameters (loan token, collateral token, oracle, LLTV, IRM), but the LLTV must be one governance has enabled.",
+      "confidence": "high",
+      "hosts": [
+        "docs.morpho.org"
+      ],
+      "id": "c24",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c24",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.morpho.org/curate/tutorials-market-v1/creating-market"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-18",
+      "claim": "Since 2026-08-14 Aave Horizon listings require an ARFC with a business case, a LlamaRisk assessment, an Aave Labs technical assessment and a binding Snapshot vote.",
+      "confidence": "medium",
+      "hosts": [
+        "protofire.io"
+      ],
+      "id": "c25",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c25",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://protofire.io/guides/lending-against-tokenized-assets"
+      ],
+      "type": "regulatory"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-18",
+      "claim": "In Protofire's 2026-10-18 snapshot, six Morpho Treasury-token markets (BUIDL, USTB, USDY, JTRSY, VBILL, USYC) held $0, while one PRIME/PYUSD market had $186.1M borrowed against $259.4M.",
+      "confidence": "medium",
+      "hosts": [
+        "protofire.io"
+      ],
+      "id": "c26",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c26",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://protofire.io/guides/lending-against-tokenized-assets"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-09",
+      "claim": "Token Terminal's September 2026 figures: Aave active loans $12.6B (47% of tracked loans, down 17.4 points year on year), fees $36.5M (-65.7% YoY), DAO revenue $5.2M.",
+      "confidence": "medium",
+      "hosts": [
+        "cryptonews.net"
+      ],
+      "id": "c27",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c27",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://cryptonews.net/news/defi/33567416"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-07-26",
+      "claim": "Aave buybacks were halted effective 2026-04-19 by an ARFC after the rsETH incident, and a thread to restart them auto-closed on 2026-07-26 without a vote.",
+      "confidence": "medium",
+      "hosts": [
+        "governance.aave.com"
+      ],
+      "id": "c28",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c28",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://governance.aave.com/t/arfc-pause-aave-buybacks/24686",
+        "https://governance.aave.com/t/restart-aave-buy-backs/24936"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-07-14",
+      "claim": "Galaxy's GOFR product blends rates from Aave, Morpho, Spark, Kamino and others into a single continuously rebalanced rate, with Galaxy committing up to $100M of first-loss capital.",
+      "confidence": "medium",
+      "hosts": [
+        "theblock.co"
+      ],
+      "id": "c29",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c29",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.theblock.co/news/defi/2026-07-14-galaxy-blends-aave-morpho-other-defi-rates-new-gofr-crypto-borrowing-product-408267"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-16",
+      "claim": "Since 2025-09-01 Aave V3 borrowed fell from $28.13B to $10.59B while Morpho borrowed rose from $3.49B to $5.34B; Aave TVL -61.4%, Morpho TVL +37.8%.",
+      "confidence": "medium",
+      "hosts": [
+        "coinpaprika.com"
+      ],
+      "id": "c3",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://coinpaprika.com/education/defi-lending"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2025-11-04",
+      "claim": "After Stream Finance's $93M loss in November 2025, Yields and More mapped about $285M of potential exposure across DeFi and put MEV Capital's at about $25.4M.",
+      "confidence": "medium",
+      "hosts": [
+        "theblock.co"
+      ],
+      "id": "c30",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c30",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.theblock.co/news/defi/2025-11-04-analysts-map-285m-in-potential-exposure-across-defi-after-stream-finances-93m-loss-377491"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-02",
+      "claim": "Aave Labs reports partners building on V4 and Horizon: EtherFi Cash with over 100,000 cardholders, Coinbase tokenized stocks on Base citing Aave as the sole credit infrastructure, and Circle Mint USDC borrowing against cirBTC on Arc.",
+      "confidence": "medium",
+      "hosts": [
+        "governance.aave.com"
+      ],
+      "id": "c31",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c31",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://governance.aave.com/t/al-development-update-october-2026/25979",
+        "https://governance.aave.com/t/al-development-update-august-2026/25579"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-31",
+      "claim": "Morpho's recaps report Arc launching with $220M+ of day-one deposits, Robinhood Chain deposits reaching $1B within three months, and total deposits above $17B.",
+      "confidence": "medium",
+      "hosts": [
+        "morpho.org"
+      ],
+      "id": "c32",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c32",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://morpho.org/blog/the-morpho-effect-september-2026",
+        "https://morpho.org/blog/the-morpho-effect-october-2026"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-06-16",
+      "claim": "Tiger Research (June 2026) says Morpho Blue is immutable with five fixed parameters per market and independent curators, Aave V4 uses a hub assigning credit lines to spokes, and capital concentrates with Steakhouse, Gauntlet and Sentora; all three protocols converge on modular design.",
+      "confidence": "medium",
+      "hosts": [
+        "reports.tiger-research.com"
+      ],
+      "id": "c33",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c33",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://reports.tiger-research.com/p/defi-lending-is-modularizing-the-eng"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-19",
+      "claim": "DefiLlama's tvl endpoints returned $13.666B for Aave V3 and $9.908B for Morpho (morpho-v1) when fetched on 2026-11-19.",
+      "confidence": "medium",
+      "hosts": [
+        "api.llama.fi"
+      ],
+      "id": "c34",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c34",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data",
+        "market-data"
+      ],
+      "source_urls": [
+        "https://api.llama.fi/tvl/aave-v3",
+        "https://api.llama.fi/tvl/morpho-v1"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-09-15",
+      "claim": "DefiLlama lending ranking on 2026-09-15: Aave V3 $16.8B, Morpho Blue $9.8B, SparkLend $4.9B, JustLend $3.6B, Compound V3 $1.4B, Kamino $1.3B, Fluid $748M, Euler V2 $328M.",
+      "confidence": "low",
+      "hosts": [
+        "eco.com"
+      ],
+      "id": "c35",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c35",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://eco.com/support/en/articles/14800882-best-defi-lending-protocols-2026-tvl-rates-risk"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-16",
+      "claim": "On 2026-11-16 Aave V3 lent out 43% of deposits versus 35% for Morpho Blue.",
+      "confidence": "medium",
+      "hosts": [
+        "coinpaprika.com"
+      ],
+      "id": "c36",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c36",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://coinpaprika.com/education/defi-lending"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-18",
+      "claim": "On 2026-11-18 @anzep13 wrote that Morpho and Aave are in a full BD war, taking different strategies, with liquidity and asset support the obvious factors.",
+      "confidence": "medium",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c37",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c37",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://x.com/anzep13/status/2123121413733109813"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2025-12-31",
+      "claim": "Aave's 2025 recap says Horizon ended 2025 with over $570 million in deposits and lists partners including VanEck, Circle, Securitize, Ripple, WisdomTree and Superstate.",
+      "confidence": "medium",
+      "hosts": [
+        "aave.com"
+      ],
+      "id": "c38",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c38",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aave.com/blog/aave-2025-recap"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-19",
+      "claim": "Morpho Vaults V2 splits roles into owner, curator, allocator and sentinel, with timelocks and an adapter architecture.",
+      "confidence": "medium",
+      "hosts": [
+        "morpho.org"
+      ],
+      "id": "c39",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c39",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://morpho.org/blog/morpho-vaults-v2-a-new-standard-for-asset-curation"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-09-22",
+      "claim": "Coinbase's variable-rate bitcoin-backed loans exceeded $1.4B outstanding while Morpho Blue had about $5.2B of loans and $16B of deposits across all integrations (2026-09-22).",
+      "confidence": "medium",
+      "hosts": [
+        "theblock.co"
+      ],
+      "id": "c4",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://theblock.co/news/defi/2026-09-22-coinbase-fixed-rate-bitcoin-loans-morpho-midnight-416050"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-09-30",
+      "claim": "Morpho's Association says the DAO is considering protocol fees and that MORPHO is the only asset; 4Pillars noted in March 2026 that no fee-switch proposal had appeared in 128 Snapshot votes.",
+      "confidence": "medium",
+      "hosts": [
+        "morpho.org",
+        "research.4pillars.io"
+      ],
+      "id": "c40",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c40",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "opinion"
+      ],
+      "source_urls": [
+        "https://morpho.org/blog/aligning-around-morpho-the-only-asset-for-morpho",
+        "https://research.4pillars.io/en/research/morpho-the-apollo-pump-is-your-exit"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-05-06",
+      "claim": "A secondary investigation reports Aave wrote off about $124.5M of rsETH-related bad debt on 2026-05-06.",
+      "confidence": "low",
+      "hosts": [
+        "bitquery.io"
+      ],
+      "id": "c41",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c41",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://bitquery.io/investigations/aave-rseth-exploit-run"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-18",
+      "claim": "Protofire's 2026-10-18 snapshot counted 59 Morpho RWA-type markets with about $657.2M borrowed and Aave Horizon with $121.4M borrowed.",
+      "confidence": "medium",
+      "hosts": [
+        "protofire.io"
+      ],
+      "id": "c5",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://protofire.io/guides/lending-against-tokenized-assets"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-18",
+      "claim": "Aave Horizon TVL excluding loans was $254.3M on 2026-10-18, down from $420.9M on 2026-01-12.",
+      "confidence": "medium",
+      "hosts": [
+        "protofire.io"
+      ],
+      "id": "c6",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://protofire.io/guides/lending-against-tokenized-assets"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-13",
+      "claim": "Aave protocol revenue was $27,288,040 in Q2 2026 and $17,292,461 in Q3 2026, $44,580,501 over 180 days, per Aave Labs' unaudited report.",
+      "confidence": "high",
+      "hosts": [
+        "governance.aave.com"
+      ],
+      "id": "c7",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://governance.aave.com/t/aave-labs-180-day-report/26342"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-13",
+      "claim": "Aave Labs net product revenue was $1,174,178.39 in Q2 and $1,307,808 in Q3 2026, mostly Aave Pro/aave.com CoW fees; Horizon contributed about $100K per quarter.",
+      "confidence": "high",
+      "hosts": [
+        "governance.aave.com"
+      ],
+      "id": "c8",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://governance.aave.com/t/aave-labs-180-day-report/26342"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-13",
+      "claim": "Aave Labs spent $19,477,553 excluding token compensation in Q2+Q3 2026, of which BD & Growth was $3,565,083; headcount was 97.",
+      "confidence": "high",
+      "hosts": [
+        "governance.aave.com"
+      ],
+      "id": "c9",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://governance.aave.com/t/aave-labs-180-day-report/26342"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-09-22",
+      "claim": "Coinbase's >$1.4B of loans is about 27% of Morpho Blue's roughly $5.2B outstanding loans.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#d1",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-19",
+      "claim": "Aave's 30-day DefiLlama fees were about 1.23 times Morpho's, and its trailing-year fees about 2.8 times Morpho's.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d10",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#d10",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-01",
+      "claim": "Aave V4 supplied grew about 6.3 times from $212.6M (2026-07-01) to $1.34B (2026-10-01).",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d11",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#d11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-13",
+      "claim": "Aave Labs' net product revenue ($2.48M over Q2+Q3) equals about 5.6% of the $44.58M protocol revenue over the same 180 days.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#d2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-18",
+      "claim": "Horizon TVL fell about 39.6% from $420.9M to $254.3M between 2026-01-12 and 2026-10-18.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#d3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-16",
+      "claim": "Morpho's borrowed balance was about 48% of Aave's on 2026-11-16, up from about 12% against Aave V3 borrowed on 2025-09-01.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#d4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-18",
+      "claim": "Morpho's borrowed RWA-type markets ($657.2M) were about 5.4 times Horizon's borrowed ($121.4M) on 2026-10-18 on Protofire's scope.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#d5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-13",
+      "claim": "Aave protocol revenue fell about 36.6% from Q2 ($27.29M) to Q3 ($17.29M) 2026.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#d6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-10-31",
+      "claim": "Midnight's roughly $200M is about 1.2% of Morpho's $17B+ total deposits.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d7",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#d7",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-09-22",
+      "claim": "Morpho Blue's $5.2B of loans against $16B of deposits implies about 32.5% utilization (2026-09-22).",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d8",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#d8",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status",
+      "article_created_at": "2026-11-19T04:28:44Z",
+      "article_title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?",
+      "as_of": "2026-11-13",
+      "claim": "BD & Growth was about 18.3% of Aave Labs' $19.48M spend over Q2+Q3 2026.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d9",
+      "key": "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#d9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1560,
+  "reusable_count": 1576,
   "schema_version": 1
 }
