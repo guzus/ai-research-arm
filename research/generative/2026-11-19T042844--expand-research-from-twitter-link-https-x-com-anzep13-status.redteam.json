@@ -1,0 +1,28 @@
+{
+ "findings": [
+  {
+   "claim_id": "c1",
+   "claim_text": "On 2026-04-18, 116,500 rsETH (about $292M) was taken from Kelp's bridge; Aave-specific bad-debt exposure was roughly $196M, Aave's TVL fell from $26.4B to nearly $20B, and AAVE dropped 16% to $92.",
+   "contradicting_url": "https://bitquery.io/investigations/aave-rseth-exploit-run",
+   "contradicting_quote": "Aave was left with $124.5M of bad debt... Aave wrote off its loss on May 6, 2026",
+   "severity": "medium",
+   "no_contradiction_found": false
+  },
+  {
+   "claim_id": "c2",
+   "claim_text": "Morpho's TVL as share of Aave's: 68%, from 19% at 2025-09-01, as of 2026-11-16 (DefiLlama figures of $15.11B vs $10.22B TVL)",
+   "contradicting_url": null,
+   "contradicting_quote": null,
+   "severity": null,
+   "no_contradiction_found": true
+  },
+  {
+   "claim_id": "c3",
+   "claim_text": "DefiLlama's 30-day fees on 2026-11-19 were $42.0M for Aave and $34.1M for Morpho, with trailing-year fees of $601.8M and $214.9M, so Aave's 30-day fees were about 1.23 times Morpho's, but about 2.8 times over the year.",
+   "contradicting_url": null,
+   "contradicting_quote": null,
+   "severity": null,
+   "no_contradiction_found": true
+  }
+ ]
+}

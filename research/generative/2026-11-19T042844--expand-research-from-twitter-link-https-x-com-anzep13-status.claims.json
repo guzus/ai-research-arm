@@ -1,0 +1,909 @@
+{
+ "claims": [
+  {
+   "id": "c1",
+   "claim": "On 2026-11-16 Aave (V3+V4) TVL was $15.11B and Morpho TVL was $10.22B per DefiLlama; Morpho was about 12% below its 2026-11-05 record.",
+   "type": "metric",
+   "source_urls": [
+    "https://coinpaprika.com/education/defi-lending/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-11-16",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c2",
+   "claim": "On 2026-11-16 Aave borrowed was $11.10B and Morpho borrowed was $5.34B per DefiLlama.",
+   "type": "metric",
+   "source_urls": [
+    "https://coinpaprika.com/education/defi-lending/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-11-16",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c3",
+   "claim": "Since 2025-09-01 Aave V3 borrowed fell from $28.13B to $10.59B while Morpho borrowed rose from $3.49B to $5.34B; Aave TVL -61.4%, Morpho TVL +37.8%.",
+   "type": "comparison",
+   "source_urls": [
+    "https://coinpaprika.com/education/defi-lending/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-11-16",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c4",
+   "claim": "Coinbase's variable-rate bitcoin-backed loans exceeded $1.4B outstanding while Morpho Blue had about $5.2B of loans and $16B of deposits across all integrations (2026-09-22).",
+   "type": "metric",
+   "source_urls": [
+    "https://theblock.co/news/defi/2026-09-22-coinbase-fixed-rate-bitcoin-loans-morpho-midnight-416050"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-09-22",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c5",
+   "claim": "Protofire's 2026-10-18 snapshot counted 59 Morpho RWA-type markets with about $657.2M borrowed and Aave Horizon with $121.4M borrowed.",
+   "type": "metric",
+   "source_urls": [
+    "https://protofire.io/guides/lending-against-tokenized-assets/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-10-18",
+   "confidence": "medium",
+   "risk": "contested"
+  },
+  {
+   "id": "c6",
+   "claim": "Aave Horizon TVL excluding loans was $254.3M on 2026-10-18, down from $420.9M on 2026-01-12.",
+   "type": "metric",
+   "source_urls": [
+    "https://protofire.io/guides/lending-against-tokenized-assets/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-10-18",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c7",
+   "claim": "Aave protocol revenue was $27,288,040 in Q2 2026 and $17,292,461 in Q3 2026, $44,580,501 over 180 days, per Aave Labs' unaudited report.",
+   "type": "metric",
+   "source_urls": [
+    "https://governance.aave.com/t/aave-labs-180-day-report/26342"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-13",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c8",
+   "claim": "Aave Labs net product revenue was $1,174,178.39 in Q2 and $1,307,808 in Q3 2026, mostly Aave Pro/aave.com CoW fees; Horizon contributed about $100K per quarter.",
+   "type": "metric",
+   "source_urls": [
+    "https://governance.aave.com/t/aave-labs-180-day-report/26342"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-13",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c9",
+   "claim": "Aave Labs spent $19,477,553 excluding token compensation in Q2+Q3 2026, of which BD & Growth was $3,565,083; headcount was 97.",
+   "type": "metric",
+   "source_urls": [
+    "https://governance.aave.com/t/aave-labs-180-day-report/26342"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-13",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c10",
+   "claim": "Per the 1kx 2026 blockchain revenue report, Morpho took $62M in user-paid fees in Q3 2026, ranked second among lending markets, much going to curators; onchain lending user-paid fees fell about 50% year over year.",
+   "type": "metric",
+   "source_urls": [
+    "https://news.bitcoin.com/finance/onchain-lending-fees-plunge-50-as-morpho-bucks-the-trend/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-10-29",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c11",
+   "claim": "DefiLlama showed 30-day fees of $42,019,860 for Aave and $34,068,051 for Morpho, and trailing-year fees of $601,839,047 and $214,918,206; DefiLlama states no revenue accrues to the Morpho protocol.",
+   "type": "metric",
+   "source_urls": [
+    "https://api.llama.fi/summary/fees/aave?dataType=dailyFees",
+    "https://api.llama.fi/summary/fees/morpho"
+   ],
+   "source_tiers": [
+    "market-data",
+    "market-data"
+   ],
+   "as_of": "2026-11-19",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c12",
+   "claim": "On 2026-04-18 116,500 rsETH (about $292M) was taken from Kelp's bridge; Aave-specific bad-debt exposure was roughly $196M, Aave TVL fell from $26.4B to nearly $20B and AAVE fell 16%.",
+   "type": "event",
+   "source_urls": [
+    "https://www.coindesk.com/tech/2026/04/19/aave-records-usd6-billion-tvl-drop-as-kelp-hack-exposes-structural-risk-at-defi-lender"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-04-19",
+   "confidence": "medium",
+   "risk": "contested"
+  },
+  {
+   "id": "c13",
+   "claim": "Morpho's CEO reported only about $1M of rsETH exposure across two isolated markets, which Galaxy attributes to per-market isolation.",
+   "type": "event",
+   "source_urls": [
+    "https://www.galaxy.com/insights/research/kelpdao-layerzero-exploit-defi"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-04-22",
+   "confidence": "low",
+   "risk": "single-source"
+  },
+  {
+   "id": "c14",
+   "claim": "Aave V4 launched on Ethereum on 2026-03-30 with Prime, Core and Plus hubs and launch spokes including Lido, EtherFi, Kelp, Ethena and Lombard; each hub gives a credit line to each spoke.",
+   "type": "event",
+   "source_urls": [
+    "https://www.theblock.co/news/defi/2026-03-30-aave-v4-launches-ethereum-mainnet-395617"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-03-30",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c15",
+   "claim": "Aave V4 supplied grew from $212.6M on 2026-07-01 to $1.34B on 2026-10-01 (borrowed $402.9M, TVL $932.8M on Oct 1; high of $1.41B on Oct 12).",
+   "type": "metric",
+   "source_urls": [
+    "https://governance.aave.com/t/aave-labs-180-day-report/26342"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-10-01",
+   "confidence": "high",
+   "risk": "volatile"
+  },
+  {
+   "id": "c16",
+   "claim": "The Aave Will Win temp check proposed routing 100% of Aave-branded product revenue to the DAO treasury, with Aave Labs funded $25M in stablecoins and 75,000 AAVE vesting over two years.",
+   "type": "event",
+   "source_urls": [
+    "https://governance.aave.com/t/temp-check-aave-will-win-framework/24055"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-02-12",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c17",
+   "claim": "Morpho Association raised $175M co-led by Paradigm, a16z crypto and Ribbit, with Apollo Funds, Circle Ventures, VanEck and Ledger Cathay as strategic participants, and states $11B+ in deposits.",
+   "type": "event",
+   "source_urls": [
+    "https://morpho.org/blog/morpho-association-raises-175m-to-build-the-open-credit-network-for-the-world"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-06-09",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c18",
+   "claim": "The June 2026 Morpho raise was a purchase of MORPHO tokens at the monthly average price, reported at a valuation of up to $2B.",
+   "type": "event",
+   "source_urls": [
+    "https://fortune.com/2026/06/09/morpho-fundraise-a16z-crypto-paradigm-ribbit-capital-175-million/",
+    "https://www.theblock.co/post/404111/morpho-raises-175m-paradigm-a16z-crypto-ribbit-capital"
+   ],
+   "source_tiers": [
+    "secondary",
+    "secondary"
+   ],
+   "as_of": "2026-06-09",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "c19",
+   "claim": "Apollo affiliates may acquire up to 90M MORPHO over 48 months under a cooperation agreement announced 2026-02-13, with transfer and trading restrictions.",
+   "type": "event",
+   "source_urls": [
+    "https://morpho.org/blog/morpho-association-announces-cooperation-agreement-with-apollo/"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-02-13",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c20",
+   "claim": "Morpho Midnight, a noncustodial fixed-rate fixed-term credit protocol, launched on Base on 2026-07-21 with a cbBTC/USDC pair and limited maturities.",
+   "type": "event",
+   "source_urls": [
+    "https://morpho.org/blog/now-live-morpho-midnight"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-07-21",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c21",
+   "claim": "Morpho's October 2026 recap puts Midnight deposits at about $200M and its September recap puts total Morpho deposits above $17B (two different months).",
+   "type": "metric",
+   "source_urls": [
+    "https://morpho.org/blog/the-morpho-effect-september-2026",
+    "https://morpho.org/blog/the-morpho-effect-october-2026"
+   ],
+   "source_tiers": [
+    "primary",
+    "primary"
+   ],
+   "as_of": "2026-10-31",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c22",
+   "claim": "On 2026-07-14 Steakhouse reported Morpho USDC supply above $2.8B, over half in Steakhouse vaults (about $1.4B), about 65% of Base USDC via Steakhouse including about $368M from the Coinbase App lending product.",
+   "type": "metric",
+   "source_urls": [
+    "https://kitchen.steakhouse.financial/p/defi-markets-update-2026-07-14"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-07-14",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "c23",
+   "claim": "Base announced Earn & Borrow on 2026-10-13 letting apps embed lending through Morpho and Aave; a secondary summary puts Morpho on Base at about $4.38B TVL and Aave V3 on Base at about $533M.",
+   "type": "comparison",
+   "source_urls": [
+    "https://stablecoininsider.org/base-earn-and-borrow/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-10-15",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c24",
+   "claim": "Anyone can create a Morpho Blue market via createMarket with five parameters (loan token, collateral token, oracle, LLTV, IRM), but the LLTV must be one governance has enabled.",
+   "type": "technical",
+   "source_urls": [
+    "https://docs.morpho.org/curate/tutorials-market-v1/creating-market/"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-19",
+   "confidence": "high",
+   "risk": "stable"
+  },
+  {
+   "id": "c25",
+   "claim": "Since 2026-08-14 Aave Horizon listings require an ARFC with a business case, a LlamaRisk assessment, an Aave Labs technical assessment and a binding Snapshot vote.",
+   "type": "regulatory",
+   "source_urls": [
+    "https://protofire.io/guides/lending-against-tokenized-assets/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-10-18",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "c26",
+   "claim": "In Protofire's 2026-10-18 snapshot, six Morpho Treasury-token markets (BUIDL, USTB, USDY, JTRSY, VBILL, USYC) held $0, while one PRIME/PYUSD market had $186.1M borrowed against $259.4M.",
+   "type": "metric",
+   "source_urls": [
+    "https://protofire.io/guides/lending-against-tokenized-assets/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-10-18",
+   "confidence": "medium",
+   "risk": "contested"
+  },
+  {
+   "id": "c27",
+   "claim": "Token Terminal's September 2026 figures: Aave active loans $12.6B (47% of tracked loans, down 17.4 points year on year), fees $36.5M (-65.7% YoY), DAO revenue $5.2M.",
+   "type": "metric",
+   "source_urls": [
+    "https://cryptonews.net/news/defi/33567416/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-10-09",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c28",
+   "claim": "Aave buybacks were halted effective 2026-04-19 by an ARFC after the rsETH incident, and a thread to restart them auto-closed on 2026-07-26 without a vote.",
+   "type": "event",
+   "source_urls": [
+    "https://governance.aave.com/t/arfc-pause-aave-buybacks/24686",
+    "https://governance.aave.com/t/restart-aave-buy-backs/24936"
+   ],
+   "source_tiers": [
+    "primary",
+    "primary"
+   ],
+   "as_of": "2026-07-26",
+   "confidence": "medium",
+   "risk": "contested"
+  },
+  {
+   "id": "c29",
+   "claim": "Galaxy's GOFR product blends rates from Aave, Morpho, Spark, Kamino and others into a single continuously rebalanced rate, with Galaxy committing up to $100M of first-loss capital.",
+   "type": "event",
+   "source_urls": [
+    "https://www.theblock.co/news/defi/2026-07-14-galaxy-blends-aave-morpho-other-defi-rates-new-gofr-crypto-borrowing-product-408267"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-07-14",
+   "confidence": "medium",
+   "risk": "stable"
+  },
+  {
+   "id": "c30",
+   "claim": "After Stream Finance's $93M loss in November 2025, Yields and More mapped about $285M of potential exposure across DeFi and put MEV Capital's at about $25.4M.",
+   "type": "event",
+   "source_urls": [
+    "https://www.theblock.co/news/defi/2025-11-04-analysts-map-285m-in-potential-exposure-across-defi-after-stream-finances-93m-loss-377491"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2025-11-04",
+   "confidence": "medium",
+   "risk": "contested"
+  },
+  {
+   "id": "c31",
+   "claim": "Aave Labs reports partners building on V4 and Horizon: EtherFi Cash with over 100,000 cardholders, Coinbase tokenized stocks on Base citing Aave as the sole credit infrastructure, and Circle Mint USDC borrowing against cirBTC on Arc.",
+   "type": "event",
+   "source_urls": [
+    "https://governance.aave.com/t/al-development-update-october-2026/25979",
+    "https://governance.aave.com/t/al-development-update-august-2026/25579"
+   ],
+   "source_tiers": [
+    "primary",
+    "primary"
+   ],
+   "as_of": "2026-11-02",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "c32",
+   "claim": "Morpho's recaps report Arc launching with $220M+ of day-one deposits, Robinhood Chain deposits reaching $1B within three months, and total deposits above $17B.",
+   "type": "metric",
+   "source_urls": [
+    "https://morpho.org/blog/the-morpho-effect-september-2026",
+    "https://morpho.org/blog/the-morpho-effect-october-2026"
+   ],
+   "source_tiers": [
+    "primary",
+    "primary"
+   ],
+   "as_of": "2026-10-31",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "c33",
+   "claim": "Tiger Research (June 2026) says Morpho Blue is immutable with five fixed parameters per market and independent curators, Aave V4 uses a hub assigning credit lines to spokes, and capital concentrates with Steakhouse, Gauntlet and Sentora; all three protocols converge on modular design.",
+   "type": "technical",
+   "source_urls": [
+    "https://reports.tiger-research.com/p/defi-lending-is-modularizing-the-eng"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-06-16",
+   "confidence": "medium",
+   "risk": "stable"
+  },
+  {
+   "id": "c34",
+   "claim": "DefiLlama's tvl endpoints returned $13.666B for Aave V3 and $9.908B for Morpho (morpho-v1) when fetched on 2026-11-19.",
+   "type": "metric",
+   "source_urls": [
+    "https://api.llama.fi/tvl/aave-v3",
+    "https://api.llama.fi/tvl/morpho-v1"
+   ],
+   "source_tiers": [
+    "market-data",
+    "market-data"
+   ],
+   "as_of": "2026-11-19",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c35",
+   "claim": "DefiLlama lending ranking on 2026-09-15: Aave V3 $16.8B, Morpho Blue $9.8B, SparkLend $4.9B, JustLend $3.6B, Compound V3 $1.4B, Kamino $1.3B, Fluid $748M, Euler V2 $328M.",
+   "type": "comparison",
+   "source_urls": [
+    "https://eco.com/support/en/articles/14800882-best-defi-lending-protocols-2026-tvl-rates-risk"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-09-15",
+   "confidence": "low",
+   "risk": "contested"
+  },
+  {
+   "id": "c36",
+   "claim": "On 2026-11-16 Aave V3 lent out 43% of deposits versus 35% for Morpho Blue.",
+   "type": "metric",
+   "source_urls": [
+    "https://coinpaprika.com/education/defi-lending/"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-11-16",
+   "confidence": "medium",
+   "risk": "volatile"
+  },
+  {
+   "id": "c37",
+   "claim": "On 2026-11-18 @anzep13 wrote that Morpho and Aave are in a full BD war, taking different strategies, with liquidity and asset support the obvious factors.",
+   "type": "quote",
+   "source_urls": [
+    "https://x.com/anzep13/status/2123121413733109813"
+   ],
+   "source_tiers": [
+    "opinion"
+   ],
+   "as_of": "2026-11-18",
+   "confidence": "medium",
+   "risk": "single-source"
+  },
+  {
+   "id": "c38",
+   "claim": "Aave's 2025 recap says Horizon ended 2025 with over $570 million in deposits and lists partners including VanEck, Circle, Securitize, Ripple, WisdomTree and Superstate.",
+   "type": "metric",
+   "source_urls": [
+    "https://aave.com/blog/aave-2025-recap"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2025-12-31",
+   "confidence": "medium",
+   "risk": "stable"
+  },
+  {
+   "id": "c39",
+   "claim": "Morpho Vaults V2 splits roles into owner, curator, allocator and sentinel, with timelocks and an adapter architecture.",
+   "type": "technical",
+   "source_urls": [
+    "https://morpho.org/blog/morpho-vaults-v2-a-new-standard-for-asset-curation"
+   ],
+   "source_tiers": [
+    "primary"
+   ],
+   "as_of": "2026-11-19",
+   "confidence": "medium",
+   "risk": "stable"
+  },
+  {
+   "id": "c40",
+   "claim": "Morpho's Association says the DAO is considering protocol fees and that MORPHO is the only asset; 4Pillars noted in March 2026 that no fee-switch proposal had appeared in 128 Snapshot votes.",
+   "type": "other",
+   "source_urls": [
+    "https://morpho.org/blog/aligning-around-morpho-the-only-asset-for-morpho",
+    "https://research.4pillars.io/en/research/morpho-the-apollo-pump-is-your-exit"
+   ],
+   "source_tiers": [
+    "primary",
+    "opinion"
+   ],
+   "as_of": "2026-09-30",
+   "confidence": "medium",
+   "risk": "contested"
+  },
+  {
+   "id": "d1",
+   "type": "derived",
+   "claim": "Coinbase's >$1.4B of loans is about 27% of Morpho Blue's roughly $5.2B outstanding loans.",
+   "inputs": [
+    {
+     "ref": "c4",
+     "name": "coinbase_loans",
+     "value": 1.4,
+     "unit": "USD B"
+    },
+    {
+     "ref": "c4",
+     "name": "blue_loans",
+     "value": 5.2,
+     "unit": "USD B"
+    }
+   ],
+   "formula": "coinbase_loans / blue_loans",
+   "result": 0.2692307692307692,
+   "as_of": "2026-09-22",
+   "confidence": "medium",
+   "risk": "volatile",
+   "unit": "ratio",
+   "assumptions": [
+    "Coinbase and Blue figures are as reported 2026-09-22; Coinbase's >$1.4B is a floor"
+   ]
+  },
+  {
+   "id": "d2",
+   "type": "derived",
+   "claim": "Aave Labs' net product revenue ($2.48M over Q2+Q3) equals about 5.6% of the $44.58M protocol revenue over the same 180 days.",
+   "inputs": [
+    {
+     "ref": "c8",
+     "name": "product_q2",
+     "value": 1174178.39,
+     "unit": "USD"
+    },
+    {
+     "ref": "c8",
+     "name": "product_q3",
+     "value": 1307808,
+     "unit": "USD"
+    },
+    {
+     "ref": "c7",
+     "name": "protocol_rev",
+     "value": 44580501,
+     "unit": "USD"
+    }
+   ],
+   "formula": "(product_q2 + product_q3) / protocol_rev",
+   "result": 0.05567425969483832,
+   "as_of": "2026-11-13",
+   "confidence": "high",
+   "risk": "stable",
+   "unit": "ratio",
+   "assumptions": [
+    "Product revenue is net of partner sharing as reported by Aave Labs",
+    "Both figures cover Q2+Q3 2026"
+   ]
+  },
+  {
+   "id": "d3",
+   "type": "derived",
+   "claim": "Horizon TVL fell about 39.6% from $420.9M to $254.3M between 2026-01-12 and 2026-10-18.",
+   "inputs": [
+    {
+     "ref": "c6",
+     "name": "tvl_oct",
+     "value": 254.3,
+     "unit": "USD M"
+    },
+    {
+     "ref": "c6",
+     "name": "tvl_jan",
+     "value": 420.9,
+     "unit": "USD M"
+    }
+   ],
+   "formula": "tvl_oct / tvl_jan - 1",
+   "result": -0.3958184842005227,
+   "as_of": "2026-10-18",
+   "confidence": "medium",
+   "risk": "volatile",
+   "unit": "ratio",
+   "assumptions": [
+    "Both figures are Protofire's TVL excluding loans on different dates"
+   ]
+  },
+  {
+   "id": "d4",
+   "type": "derived",
+   "claim": "Morpho's borrowed balance was about 48% of Aave's on 2026-11-16, up from about 12% against Aave V3 borrowed on 2025-09-01.",
+   "inputs": [
+    {
+     "ref": "c2",
+     "name": "morpho_now",
+     "value": 5.34,
+     "unit": "USD B"
+    },
+    {
+     "ref": "c2",
+     "name": "aave_now",
+     "value": 11.1,
+     "unit": "USD B"
+    }
+   ],
+   "formula": "morpho_now / aave_now",
+   "result": 0.4810810810810811,
+   "as_of": "2026-11-16",
+   "confidence": "medium",
+   "risk": "volatile",
+   "unit": "ratio",
+   "assumptions": [
+    "Aave figure is V3+V4 borrowed; Morpho is Morpho total borrowed; DefiLlama via CoinPaprika"
+   ]
+  },
+  {
+   "id": "d5",
+   "type": "derived",
+   "claim": "Morpho's borrowed RWA-type markets ($657.2M) were about 5.4 times Horizon's borrowed ($121.4M) on 2026-10-18 on Protofire's scope.",
+   "inputs": [
+    {
+     "ref": "c5",
+     "name": "morpho_rwa",
+     "value": 657.2,
+     "unit": "USD M"
+    },
+    {
+     "ref": "c5",
+     "name": "horizon_loans",
+     "value": 121.4,
+     "unit": "USD M"
+    }
+   ],
+   "formula": "morpho_rwa / horizon_loans",
+   "result": 5.413509060955519,
+   "as_of": "2026-10-18",
+   "confidence": "medium",
+   "risk": "contested",
+   "unit": "ratio",
+   "assumptions": [
+    "Protofire's scope counts credit, fund, share and Pendle PT tokens and excludes stablecoins"
+   ]
+  },
+  {
+   "id": "d6",
+   "type": "derived",
+   "claim": "Aave protocol revenue fell about 36.6% from Q2 ($27.29M) to Q3 ($17.29M) 2026.",
+   "inputs": [
+    {
+     "ref": "c7",
+     "name": "q3",
+     "value": 17292461,
+     "unit": "USD"
+    },
+    {
+     "ref": "c7",
+     "name": "q2",
+     "value": 27288040,
+     "unit": "USD"
+    }
+   ],
+   "formula": "q3 / q2 - 1",
+   "result": -0.36629889871167,
+   "as_of": "2026-11-13",
+   "confidence": "high",
+   "risk": "stable",
+   "unit": "ratio",
+   "assumptions": [
+    "Unaudited quarterly protocol revenue per Aave Labs"
+   ]
+  },
+  {
+   "id": "d7",
+   "type": "derived",
+   "claim": "Midnight's roughly $200M is about 1.2% of Morpho's $17B+ total deposits.",
+   "inputs": [
+    {
+     "ref": "c21",
+     "name": "midnight",
+     "value": 0.2,
+     "unit": "USD B"
+    },
+    {
+     "ref": "c21",
+     "name": "total",
+     "value": 17,
+     "unit": "USD B"
+    }
+   ],
+   "formula": "midnight / total",
+   "result": 0.011764705882352941,
+   "as_of": "2026-10-31",
+   "confidence": "medium",
+   "risk": "volatile",
+   "unit": "ratio",
+   "assumptions": [
+    "Midnight ~$200M and total deposits $17B+ are Morpho's own approximate figures"
+   ]
+  },
+  {
+   "id": "d8",
+   "type": "derived",
+   "claim": "Morpho Blue's $5.2B of loans against $16B of deposits implies about 32.5% utilization (2026-09-22).",
+   "inputs": [
+    {
+     "ref": "c4",
+     "name": "loans",
+     "value": 5.2,
+     "unit": "USD B"
+    },
+    {
+     "ref": "c4",
+     "name": "deposits",
+     "value": 16,
+     "unit": "USD B"
+    }
+   ],
+   "formula": "loans / deposits",
+   "result": 0.325,
+   "as_of": "2026-09-22",
+   "confidence": "medium",
+   "risk": "volatile",
+   "unit": "ratio",
+   "assumptions": [
+    "Loans and deposits are The Block's reported September figures for Morpho Blue"
+   ]
+  },
+  {
+   "id": "d9",
+   "type": "derived",
+   "claim": "BD & Growth was about 18.3% of Aave Labs' $19.48M spend over Q2+Q3 2026.",
+   "inputs": [
+    {
+     "ref": "c9",
+     "name": "bd",
+     "value": 3565083,
+     "unit": "USD"
+    },
+    {
+     "ref": "c9",
+     "name": "total",
+     "value": 19477553,
+     "unit": "USD"
+    }
+   ],
+   "formula": "bd / total",
+   "result": 0.18303546651881783,
+   "as_of": "2026-11-13",
+   "confidence": "high",
+   "risk": "stable",
+   "unit": "ratio",
+   "assumptions": [
+    "Spend excludes token compensation"
+   ]
+  },
+  {
+   "id": "d10",
+   "type": "derived",
+   "claim": "Aave's 30-day DefiLlama fees were about 1.23 times Morpho's, and its trailing-year fees about 2.8 times Morpho's.",
+   "inputs": [
+    {
+     "ref": "c11",
+     "name": "aave30",
+     "value": 42019860,
+     "unit": "USD"
+    },
+    {
+     "ref": "c11",
+     "name": "morpho30",
+     "value": 34068051,
+     "unit": "USD"
+    }
+   ],
+   "formula": "aave30 / morpho30",
+   "result": 1.2334095660476732,
+   "as_of": "2026-11-19",
+   "confidence": "medium",
+   "risk": "volatile",
+   "unit": "ratio",
+   "assumptions": [
+    "Fees as defined by DefiLlama slugs aave and morpho"
+   ]
+  },
+  {
+   "id": "d11",
+   "type": "derived",
+   "claim": "Aave V4 supplied grew about 6.3 times from $212.6M (2026-07-01) to $1.34B (2026-10-01).",
+   "inputs": [
+    {
+     "ref": "c15",
+     "name": "oct",
+     "value": 1340,
+     "unit": "USD M"
+    },
+    {
+     "ref": "c15",
+     "name": "jul",
+     "value": 212.6,
+     "unit": "USD M"
+    }
+   ],
+   "formula": "oct / jul",
+   "result": 6.302916274694262,
+   "as_of": "2026-10-01",
+   "confidence": "high",
+   "risk": "volatile",
+   "unit": "ratio",
+   "assumptions": [
+    "Supplied balances on 2026-07-01 and 2026-10-01 per Aave Labs"
+   ]
+  },
+  {
+   "id": "c41",
+   "claim": "A secondary investigation reports Aave wrote off about $124.5M of rsETH-related bad debt on 2026-05-06.",
+   "type": "event",
+   "source_urls": [
+    "https://bitquery.io/investigations/aave-rseth-exploit-run"
+   ],
+   "source_tiers": [
+    "secondary"
+   ],
+   "as_of": "2026-05-06",
+   "confidence": "low",
+   "risk": "single-source"
+  }
+ ]
+}
