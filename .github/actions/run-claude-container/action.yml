@@ -624,7 +624,11 @@ runs:
           ln -sfn /opt/claude-code/claude /usr/local/bin/claude
         COPY --from=ghcr.io/astral-sh/uv:0.9.7@sha256:ba4857bf2a068e9bc0e64eed8563b065908a4cd6bfb66b531a9c424c8e25e142 /uv /uvx /usr/local/bin/
         COPY tool-guard.mjs /opt/ara-claude/tool-guard.mjs
+        # The settings file is bind-mounted :ro over this placeholder: its parent
+        # is on the read-only rootfs, so even container root (rootless daemon)
+        # cannot rename the directory and swap in its own policy.
         RUN chmod 644 /opt/ara-claude/tool-guard.mjs \
+          && touch /opt/ara-claude/settings.json \
           && uv --version \
           && HOME=/tmp/claude-version-home claude --version \
           && rm -rf /tmp/claude-version-home
@@ -690,9 +694,11 @@ runs:
         # subordinate id that cannot write the mounted clone. Only there the
         # agent runs as container root; rootful daemons keep the host uid.
         # Either way: read-only rootfs, cap-drop ALL, no-new-privileges.
+        # A failed `docker info` keeps the host uid (fails closed).
         container_user=(--user "$(id -u):$(id -g)")
-        if docker info --format '{{.SecurityOptions}}' 2>/dev/null | grep -q 'name=rootless'; then
-          container_user=()
+        if security_options="$(docker info --format '{{range .SecurityOptions}}{{println .}}{{end}}' 2>/dev/null)" \
+          && printf '%s\n' "$security_options" | grep -qx 'name=rootless'; then
+          container_user=(--user 0:0)
         fi
         docker_cmd=(docker run --rm -i \
           --name "$container_name" \
@@ -733,7 +739,7 @@ runs:
           --env "PRE_SHA=$pre_sha" \
           --volume "$isolated_workspace:/workspace" \
           --volume "$PROMPT_FILE:/tmp/claude-prompt.md:ro" \
-          --volume "$generated_claude_settings:/tmp/claude-config/settings.json:ro" \
+          --volume "$generated_claude_settings:/opt/ara-claude/settings.json:ro" \
           "$image" \
           bash -lc '
             set -uo pipefail
@@ -790,7 +796,7 @@ runs:
               --permission-prompts none
               --strict-mcp-config
               --mcp-config "{\"mcpServers\":{}}"
-              --settings /tmp/claude-config/settings.json
+              --settings /opt/ara-claude/settings.json
               --disable-slash-commands
               --no-session-persistence
             )

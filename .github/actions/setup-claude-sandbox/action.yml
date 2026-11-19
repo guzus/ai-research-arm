@@ -28,7 +28,8 @@ runs:
         # runner users) cannot, and should not, change a host kernel setting.
         restrict=/proc/sys/kernel/apparmor_restrict_unprivileged_userns
         if [ -f "$restrict" ] && [ "$(cat "$restrict")" != 0 ] && command -v sudo >/dev/null 2>&1; then
-          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+          sudo -n sysctl -w kernel.apparmor_restrict_unprivileged_userns=0 \
+            || { echo "::error::kernel.apparmor_restrict_unprivileged_userns is on and this runner cannot change it (no sudo); set it to 0 on the host."; exit 1; }
         fi
 
         # The production gunux runner is a native host with working user, PID,

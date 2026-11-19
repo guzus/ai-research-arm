@@ -98,7 +98,7 @@ BASELINE_DENY = (
 # then admits only the exact command forms its allow rules describe.
 SHELL_BASELINE_DENY = tuple(rule for rule in BASELINE_DENY if rule != "Bash")
 # Container paths owned by .github/actions/run-claude-container/action.yml.
-CONTAINER_SETTINGS = "/tmp/claude-config/settings.json"
+CONTAINER_SETTINGS = "/opt/ara-claude/settings.json"
 CONTAINER_GUARD = "/opt/ara-claude/tool-guard.mjs"
 CONTAINER_WORKSPACE = "/workspace"
 # The guard appends one "<tool>\t<reason code>" line per refusal here, never an

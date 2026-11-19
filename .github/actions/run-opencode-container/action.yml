@@ -751,9 +751,11 @@ runs:
         # subordinate id that cannot write the mounted clone. Only there the
         # agent runs as container root; rootful daemons keep the host uid.
         # Either way: read-only rootfs, cap-drop ALL, no-new-privileges.
+        # A failed `docker info` keeps the host uid (fails closed).
         container_user=(--user "$(id -u):$(id -g)")
-        if docker info --format '{{.SecurityOptions}}' 2>/dev/null | grep -q 'name=rootless'; then
-          container_user=()
+        if security_options="$(docker info --format '{{range .SecurityOptions}}{{println .}}{{end}}' 2>/dev/null)" \
+          && printf '%s\n' "$security_options" | grep -qx 'name=rootless'; then
+          container_user=(--user 0:0)
         fi
         docker_cmd=(docker run --rm \
           --name "$container_name" \
@@ -762,6 +764,8 @@ runs:
           --cap-drop ALL \
           --security-opt no-new-privileges \
           --pids-limit 512 \
+          --read-only \
+          --tmpfs /tmp:rw,exec,nosuid,nodev,mode=1777 \
           --env HOME=/tmp/opencode-home \
           --env XDG_CONFIG_HOME=/tmp/opencode-home/.config \
           --env XDG_DATA_HOME=/tmp/opencode-home/.local/share \
