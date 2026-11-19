@@ -24,7 +24,10 @@ runs:
 
         # Ubuntu 24.04+ can block unprivileged user namespaces via AppArmor.
         # Older kernels do not expose this sysctl, so guard the write.
-        if [ -f /proc/sys/kernel/apparmor_restrict_unprivileged_userns ] && command -v sudo >/dev/null 2>&1; then
+        # Only write it when it is actually on: runners without sudo (the gunux
+        # runner users) cannot, and should not, change a host kernel setting.
+        restrict=/proc/sys/kernel/apparmor_restrict_unprivileged_userns
+        if [ -f "$restrict" ] && [ "$(cat "$restrict")" != 0 ] && command -v sudo >/dev/null 2>&1; then
           sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
         fi
 

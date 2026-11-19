@@ -600,9 +600,19 @@ runs:
         # The only writable mount is the disposable clone. The bird cookies and
         # the Fireworks key stay in the step environment and reach the
         # container by name only, never in an argv.
+        # On a rootless Docker daemon (the gunux runners since 2026-11-19, one
+        # daemon per runner user) the container's root is the runner's own
+        # unprivileged user on the host, and any other uid maps to a
+        # subordinate id that cannot write the mounted clone. Only there the
+        # agent runs as container root; rootful daemons keep the host uid.
+        # Either way: read-only rootfs, cap-drop ALL, no-new-privileges.
+        container_user=(--user "$(id -u):$(id -g)")
+        if docker info --format '{{.SecurityOptions}}' 2>/dev/null | grep -q 'name=rootless'; then
+          container_user=()
+        fi
         docker_cmd=(docker run --rm \
           --name "$container_name" \
-          --user "$(id -u):$(id -g)" \
+          ${container_user[@]+"${container_user[@]}"} \
           --workdir /workspace \
           --cap-drop ALL \
           --security-opt no-new-privileges \

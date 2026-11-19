@@ -52,6 +52,23 @@ def observations():
     return {p.name: observe_workflow(p) for p in workflow_files()}
 
 
+
+ROOTLESS_USER_GATE = [
+    'container_user=(--user "$(id -u):$(id -g)")',
+    "if docker info --format '{{.SecurityOptions}}' 2>/dev/null | grep -q 'name=rootless'; then",
+    "container_user=()",
+    "fi",
+]
+
+
+def assert_rootless_user_gate(test, code_lines):
+    """--user is dropped only when the daemon itself reports rootless mode."""
+    stripped = [line.strip() for line in code_lines]
+    start = stripped.index(ROOTLESS_USER_GATE[0])
+    test.assertEqual(ROOTLESS_USER_GATE, stripped[start:start + 4])
+    # Exactly the default and the rootless override; nothing else rewrites it.
+    test.assertEqual(2, sum(1 for line in stripped if line.startswith("container_user=")))
+
 class DeterministicFallbackAttribution(unittest.TestCase):
     def agent(self, lane, step_id=None, action="agent-run"):
         step = {"uses": f"./.github/actions/{action}", "with": {"lane": lane}}
@@ -925,6 +942,7 @@ class RoutingInvariants(unittest.TestCase):
         run = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
         code = "\n".join(line for line in run.splitlines()
                          if not line.lstrip().startswith("#"))
+        assert_rootless_user_gate(self, code.splitlines())
         def array(opening: str) -> list[str]:
             """The stripped lines of a bash array literal, opening line excluded."""
             lines = code.splitlines()
@@ -939,7 +957,7 @@ class RoutingInvariants(unittest.TestCase):
         # The exact container flag set: an allowlist, so an added --cap-add,
         # seccomp/apparmor override, env file, device, or host namespace fails.
         self.assertEqual([
-            '--name "$container_name" \\', '--user "$(id -u):$(id -g)" \\',
+            '--name "$container_name" \\', '${container_user[@]+"${container_user[@]}"} \\',
             "--workdir /workspace \\", "--cap-drop ALL \\",
             "--security-opt no-new-privileges \\", "--pids-limit 512 \\", "--read-only \\",
             "--tmpfs /tmp:rw,nosuid,nodev,mode=1777 \\", "--env HOME=/tmp/claude-home \\",
@@ -2442,6 +2460,8 @@ exit "$FAKE_RUN_STATUS"
                      "--pids-limit", '--user "$(id -u):$(id -g)"',
                      "HOME=/tmp/opencode-home"):
             self.assertIn(flag, action, f"container lost {flag}")
+        assert_rootless_user_gate(self, [line for line in action.splitlines()
+                                         if not line.lstrip().startswith("#")])
         # A missing Docker daemon must FAIL, never silently degrade to a host
         # run — that is the exact posture this action removes.
         self.assertIn("Docker is required for sandboxed opencode runs", action)
@@ -2577,6 +2597,8 @@ exit "$FAKE_RUN_STATUS"
                      "--pids-limit", '--user "$(id -u):$(id -g)"',
                      "HOME=/tmp/cursor-home"):
             self.assertIn(flag, action, f"container lost {flag}")
+        assert_rootless_user_gate(self, [line for line in action.splitlines()
+                                         if not line.lstrip().startswith("#")])
         self.assertIn("Docker is required for sandboxed Cursor CLI runs", action)
         self.assertIn("trap cleanup EXIT", action)
         self.assertIn('docker image rm -f "$image"', action)
@@ -3554,9 +3576,10 @@ esac
         self.assertNotIn('"$GITHUB_WORKSPACE:', run)
         # The exact container flag set: an allowlist, so an added --cap-add,
         # seccomp/apparmor override, env file, device, or host namespace fails.
+        assert_rootless_user_gate(self, code)
         start = code.index("docker_cmd=(docker run --rm \\")
         self.assertEqual([
-            '--name "$container_name" \\', '--user "$(id -u):$(id -g)" \\',
+            '--name "$container_name" \\', '${container_user[@]+"${container_user[@]}"} \\',
             "--workdir /workspace \\", "--cap-drop ALL \\",
             "--security-opt no-new-privileges \\", "--pids-limit 512 \\",
             "--env HOME=/tmp/pi-home \\", "--env XDG_CONFIG_HOME=/tmp/pi-home/.config \\",
