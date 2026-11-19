@@ -23,7 +23,8 @@ description: >-
 # masking; neither is enforcement.
 #
 # This mirrors run-pi-container: same --cap-drop ALL, --security-opt
-# no-new-privileges, --pids-limit, non-root --user matching the host uid so
+# no-new-privileges, --pids-limit, non-root --user matching the host uid (container root on a rootless
+# daemon, where that is the runner's own unprivileged user) so
 # writes into the disposable clone keep correct ownership, and a container HOME
 # under /tmp so the agent never sees the runner's real home. The host imports
 # only a validated one-commit static bundle plus explicitly named data files.
@@ -744,13 +745,27 @@ runs:
         # real home holds other lanes' credentials and must never be reachable.
         # UV_* keep uv's python + cache inside the container too, so a package
         # download can't write to shared runner state.
+        # On a rootless Docker daemon (the gunux runners since 2026-11-19, one
+        # daemon per runner user) the container's root is the runner's own
+        # unprivileged user on the host, and any other uid maps to a
+        # subordinate id that cannot write the mounted clone. Only there the
+        # agent runs as container root; rootful daemons keep the host uid.
+        # Either way: read-only rootfs, cap-drop ALL, no-new-privileges.
+        # A failed `docker info` keeps the host uid (fails closed).
+        container_user=(--user "$(id -u):$(id -g)")
+        if security_options="$(docker info --format '{{range .SecurityOptions}}{{println .}}{{end}}' 2>/dev/null)" \
+          && printf '%s\n' "$security_options" | grep -qx 'name=rootless'; then
+          container_user=(--user 0:0)
+        fi
         docker_cmd=(docker run --rm \
           --name "$container_name" \
-          --user "$(id -u):$(id -g)" \
+          ${container_user[@]+"${container_user[@]}"} \
           --workdir /workspace \
           --cap-drop ALL \
           --security-opt no-new-privileges \
           --pids-limit 512 \
+          --read-only \
+          --tmpfs /tmp:rw,exec,nosuid,nodev,mode=1777 \
           --env HOME=/tmp/opencode-home \
           --env XDG_CONFIG_HOME=/tmp/opencode-home/.config \
           --env XDG_DATA_HOME=/tmp/opencode-home/.local/share \

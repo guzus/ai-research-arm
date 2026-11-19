@@ -52,6 +52,44 @@ def observations():
     return {p.name: observe_workflow(p) for p in workflow_files()}
 
 
+
+ROOTLESS_USER_GATE = [
+    'container_user=(--user "$(id -u):$(id -g)")',
+    "if security_options=\"$(docker info --format '{{range .SecurityOptions}}{{println .}}{{end}}' 2>/dev/null)\" \\",
+    "&& printf '%s\\n' \"$security_options\" | grep -qx 'name=rootless'; then",
+    "container_user=(--user 0:0)",
+    "fi",
+]
+CONTAINER_USER_ARG = '${container_user[@]+"${container_user[@]}"} \\'
+
+
+
+def assert_rootless_user_gate(test, code_lines):
+    """--user is dropped only when the daemon itself reports rootless mode."""
+    stripped = [line.strip() for line in code_lines]
+    start = stripped.index(ROOTLESS_USER_GATE[0])
+    test.assertEqual(ROOTLESS_USER_GATE, stripped[start:start + len(ROOTLESS_USER_GATE)])
+    # Exactly the default and the rootless override; nothing else rewrites it.
+    test.assertEqual(2, sum(1 for line in stripped if line.startswith("container_user")))
+    # ...and docker run really uses it.
+    test.assertIn(CONTAINER_USER_ARG, stripped)
+
+
+def run_rootless_user_gate(docker_info_stdout: str, docker_info_status: int) -> list[str]:
+    """Run the gate with a fake `docker` and return the resulting --user args."""
+    import os, subprocess, tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        fake = os.path.join(tmp, "docker")
+        with open(fake, "w", encoding="utf-8") as handle:
+            handle.write("#!/bin/sh\nprintf '%s' \"$FAKE_INFO\"\nexit \"$FAKE_STATUS\"\n")
+        os.chmod(fake, 0o755)
+        script = "set -eu\n" + "\n".join(ROOTLESS_USER_GATE) + '\nprintf "%s\\n" "${container_user[@]}"\n'
+        out = subprocess.run(
+            ["bash", "-c", script], check=True, capture_output=True, text=True,
+            env={**os.environ, "PATH": tmp + os.pathsep + os.environ["PATH"],
+                 "FAKE_INFO": docker_info_stdout, "FAKE_STATUS": str(docker_info_status)})
+        return out.stdout.split()
+
 class DeterministicFallbackAttribution(unittest.TestCase):
     def agent(self, lane, step_id=None, action="agent-run"):
         step = {"uses": f"./.github/actions/{action}", "with": {"lane": lane}}
@@ -115,6 +153,15 @@ class DeterministicFallbackAttribution(unittest.TestCase):
 
 
 class RoutingInvariants(unittest.TestCase):
+    def test_rootless_user_gate_only_drops_the_host_uid_on_a_rootless_daemon(self):
+        host = ["--user", f"{os.getuid()}:{os.getgid()}"]
+        self.assertEqual(["--user", "0:0"],
+                         run_rootless_user_gate("name=seccomp,profile=builtin\nname=rootless\nname=cgroupns\n", 0))
+        self.assertEqual(host, run_rootless_user_gate("name=seccomp,profile=builtin\nname=cgroupns\n", 0))
+        # A lookalike option is not rootless mode, and a failed `docker info` fails closed.
+        self.assertEqual(host, run_rootless_user_gate("name=rootlessish\n", 0))
+        self.assertEqual(host, run_rootless_user_gate("name=rootless\n", 1))
+
     @classmethod
     def setUpClass(cls):
         cls.lanes, cls.fallback = load_lanes()
@@ -925,6 +972,7 @@ class RoutingInvariants(unittest.TestCase):
         run = "\n".join(st.get("run") or "" for st in action_doc["runs"]["steps"])
         code = "\n".join(line for line in run.splitlines()
                          if not line.lstrip().startswith("#"))
+        assert_rootless_user_gate(self, code.splitlines())
         def array(opening: str) -> list[str]:
             """The stripped lines of a bash array literal, opening line excluded."""
             lines = code.splitlines()
@@ -939,7 +987,7 @@ class RoutingInvariants(unittest.TestCase):
         # The exact container flag set: an allowlist, so an added --cap-add,
         # seccomp/apparmor override, env file, device, or host namespace fails.
         self.assertEqual([
-            '--name "$container_name" \\', '--user "$(id -u):$(id -g)" \\',
+            '--name "$container_name" \\', '${container_user[@]+"${container_user[@]}"} \\',
             "--workdir /workspace \\", "--cap-drop ALL \\",
             "--security-opt no-new-privileges \\", "--pids-limit 512 \\", "--read-only \\",
             "--tmpfs /tmp:rw,nosuid,nodev,mode=1777 \\", "--env HOME=/tmp/claude-home \\",
@@ -966,7 +1014,7 @@ class RoutingInvariants(unittest.TestCase):
             "--env RETURN_ARTIFACTS \\", '--env "PRE_SHA=$pre_sha" \\',
             '--volume "$isolated_workspace:/workspace" \\',
             '--volume "$PROMPT_FILE:/tmp/claude-prompt.md:ro" \\',
-            '--volume "$generated_claude_settings:/tmp/claude-config/settings.json:ro" \\',
+            '--volume "$generated_claude_settings:/opt/ara-claude/settings.json:ro" \\',
             '"$image" \\',
         ], array("docker_cmd=(docker run --rm -i \\"))
         # The exact CLI lockdown flag set, shared by the liveness probe and
@@ -975,7 +1023,7 @@ class RoutingInvariants(unittest.TestCase):
             "--restricted", '--tools "$CLAUDE_TOOLS"', "--permission-mode dontAsk",
             "--permission-prompts none", "--strict-mcp-config",
             '--mcp-config "{\\"mcpServers\\":{}}"',
-            "--settings /tmp/claude-config/settings.json", "--disable-slash-commands",
+            "--settings /opt/ara-claude/settings.json", "--disable-slash-commands",
             "--no-session-persistence",
         ], array("claude_flags=("))
         for flag in ('claude --init-only "${claude_flags[@]}" \\',
@@ -2440,8 +2488,11 @@ exit "$FAKE_RUN_STATUS"
         # Container hardening, mirroring run-pi-container.
         for flag in ("--cap-drop ALL", "--security-opt no-new-privileges",
                      "--pids-limit", '--user "$(id -u):$(id -g)"',
+                     "--read-only", "--tmpfs /tmp:rw,exec,nosuid,nodev,mode=1777",
                      "HOME=/tmp/opencode-home"):
             self.assertIn(flag, action, f"container lost {flag}")
+        assert_rootless_user_gate(self, [line for line in action.splitlines()
+                                         if not line.lstrip().startswith("#")])
         # A missing Docker daemon must FAIL, never silently degrade to a host
         # run — that is the exact posture this action removes.
         self.assertIn("Docker is required for sandboxed opencode runs", action)
@@ -2575,8 +2626,11 @@ exit "$FAKE_RUN_STATUS"
                             "wiring as least privilege")
         for flag in ("--cap-drop ALL", "--security-opt no-new-privileges",
                      "--pids-limit", '--user "$(id -u):$(id -g)"',
+                     "--read-only", "--tmpfs /tmp:rw,exec,nosuid,nodev,mode=1777",
                      "HOME=/tmp/cursor-home"):
             self.assertIn(flag, action, f"container lost {flag}")
+        assert_rootless_user_gate(self, [line for line in action.splitlines()
+                                         if not line.lstrip().startswith("#")])
         self.assertIn("Docker is required for sandboxed Cursor CLI runs", action)
         self.assertIn("trap cleanup EXIT", action)
         self.assertIn('docker image rm -f "$image"', action)
@@ -3554,11 +3608,13 @@ esac
         self.assertNotIn('"$GITHUB_WORKSPACE:', run)
         # The exact container flag set: an allowlist, so an added --cap-add,
         # seccomp/apparmor override, env file, device, or host namespace fails.
+        assert_rootless_user_gate(self, code)
         start = code.index("docker_cmd=(docker run --rm \\")
         self.assertEqual([
-            '--name "$container_name" \\', '--user "$(id -u):$(id -g)" \\',
+            '--name "$container_name" \\', '${container_user[@]+"${container_user[@]}"} \\',
             "--workdir /workspace \\", "--cap-drop ALL \\",
             "--security-opt no-new-privileges \\", "--pids-limit 512 \\",
+            "--read-only \\", "--tmpfs /tmp:rw,exec,nosuid,nodev,mode=1777 \\",
             "--env HOME=/tmp/pi-home \\", "--env XDG_CONFIG_HOME=/tmp/pi-home/.config \\",
             "--env FIREWORKS_API_KEY \\", "--env AUTH_TOKEN \\", "--env CT0 \\",
             "--env BIRDY_READ_ONLY=1 \\",
