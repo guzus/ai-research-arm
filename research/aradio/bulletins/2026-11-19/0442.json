@@ -1,0 +1,171 @@
+{
+  "schema": 1,
+  "id": "2026-11-19-0442",
+  "aired_at": "2026-11-19T04:42:00Z",
+  "headline": "Latent Space: Anthropic IPO said for Nov 19, ~7x oversubscribed around $80; S1-style margins 19% to 15%",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's about twenty to five UTC on Thursday, November nineteenth. This is ARA AI News."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The live story is Anthropic's offering. On Latent Space, speakers said it was going public the day after their November eighteenth episode, that the book looked about seven times oversubscribed, and that it would probably price around eighty dollars a share."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "They talked as if an S one was already in hand. Margin, they said, went from nineteen percent to fifteen percent, and the company went from a G A A P operating profit to a slight loss they called intentional, with a long-run aim above thirty-five percent."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Mix of revenue on that show is about eighty percent consumption and twenty percent subscriptions. Customers spending over a hundred thousand dollars are up eight times, to twelve thousand."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "About seventy percent of compute still goes to training and research, and only thirty percent to inference. Eighty percent of usage, they said, still comes from models released in the last six months."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They also said Claude Code as a command line tool has been folded into other Claude products, and that three of the four products listed on the S one are Claude Code based. One speaker guessed Claude Code accounts for something like fifty billion dollars of revenue, which is a guess, not a filing."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The third quarter slowdown was already on the board from Dwarkesh, about five point four billion dollars of growth versus six point nine billion in the second quarter. Latent Space described that second-quarter spike as about twenty-five billion dollars of annualized run-rate added, then a decline you can already see in the third quarter."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "A failed listing, they argued, would read through badly alongside the Nvidia drama. We still have not read a first-party prospectus, and Nvidia as a ten billion dollar anchor is still the last named check."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Big Technology's Gary Marcus episode, titled Why The Anthropic I P O Will Fail, still has no transcript."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "NVIDIA posted a forty-eight minute Supercomputing twenty twenty-six special address. Captions are not up, so we are not quoting it."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The third-quarter print is unchanged: one hundred fifteen point eight billion dollars of revenue, data center one hundred seven point six billion, and a fourth-quarter guide of one hundred thirty billion plus or minus three percent, with no China data-center compute in the outlook. Colette Kress is still interim C E O."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch for a priced Anthropic deal today, November nineteenth, and for whether that Nvidia ten billion dollar anchor shows up in a real filing. Also watch the Supercomputing transcript, and what Gary Marcus actually says once that episode is transcribed."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's about twenty to five UTC on Thursday, November nineteenth. This is ARA AI News.",
+    "Speaker 2: [high_energy] The live story is Anthropic's offering. On Latent Space, speakers said it was going public the day after their November eighteenth episode, that the book looked about [emphasis]seven times[/emphasis] oversubscribed, and that it would probably price around [emphasis]eighty dollars[/emphasis] a share.",
+    "Speaker 1: They talked as if an S one was already in hand. Margin, they said, went from nineteen percent to fifteen percent, and the company went from a G A A P operating profit to a slight loss they called intentional, with a long-run aim above thirty-five percent.",
+    "Speaker 2: Mix of revenue on that show is about eighty percent consumption and twenty percent subscriptions. Customers spending over a hundred thousand dollars are up eight times, to twelve thousand.",
+    "Speaker 1: About seventy percent of compute still goes to training and research, and only thirty percent to inference. Eighty percent of usage, they said, still comes from models released in the last six months.",
+    "Speaker 2: They also said Claude Code as a command line tool has been folded into other Claude products, and that three of the four products listed on the S one are Claude Code based. One speaker guessed Claude Code accounts for something like fifty billion dollars of revenue, which is a guess, not a filing.",
+    "Speaker 1: The third quarter slowdown was already on the board from Dwarkesh, about five point four billion dollars of growth versus six point nine billion in the second quarter. Latent Space described that second-quarter spike as about twenty-five billion dollars of annualized run-rate added, then a decline you can already see in the third quarter.",
+    "Speaker 2: A failed listing, they argued, would read through badly alongside the Nvidia drama. We still have not read a first-party prospectus, and Nvidia as a [emphasis]ten billion dollar[/emphasis] anchor is still the last named check.",
+    "Speaker 1: Big Technology's Gary Marcus episode, titled Why The Anthropic I P O Will Fail, still has no transcript.",
+    "Speaker 2: [transition] NVIDIA posted a forty-eight minute Supercomputing twenty twenty-six special address. Captions are not up, so we are not quoting it.",
+    "Speaker 1: The third-quarter print is unchanged: one hundred fifteen point eight billion dollars of revenue, data center one hundred seven point six billion, and a fourth-quarter guide of one hundred thirty billion plus or minus three percent, with no China data-center compute in the outlook. Colette Kress is still interim C E O.",
+    "Speaker 2: Watch for a priced Anthropic deal today, November nineteenth, and for whether that Nvidia ten billion dollar anchor shows up in a real filing. Also watch the Supercomputing transcript, and what Gary Marcus actually says once that episode is transcribed.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "anthropic-ipo-and-ai-funding",
+    "hyperscaler-capex-and-chip-selloff"
+  ],
+  "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=274s",
+      "kind": "podcast",
+      "label": "Latent Space"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA",
+      "kind": "podcast",
+      "label": "Latent Space"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=1489s",
+      "kind": "podcast",
+      "label": "Latent Space (training vs inference compute)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=1910s",
+      "kind": "podcast",
+      "label": "Latent Space (Claude Code on the S1)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=2057s",
+      "kind": "podcast",
+      "label": "Latent Space (usage from models in last six months)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=uJG53ligJt4",
+      "kind": "video",
+      "label": "NVIDIA (SC26 Special Address)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    },
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    }
+  ],
+  "warnings": [
+    "ops[0] update anthropic-ipo-and-ai-funding: 'now' truncated to 400 characters"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-19-0442.mp3",
+    "bytes": 979293,
+    "duration_s": 163.1,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 111.08,
+        "lines": [
+          0,
+          8
+        ]
+      },
+      {
+        "start_s": 112.53,
+        "end_s": 156.57,
+        "lines": [
+          9,
+          12
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 6,
+    "kinds": {
+      "podcast": 3,
+      "video": 3
+    }
+  }
+}
