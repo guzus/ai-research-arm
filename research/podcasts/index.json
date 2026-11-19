@@ -1,9 +1,65 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-19T04:30:00Z",
+  "updated_at": "2026-11-19T13:50:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "no-priors:_wLzJINt9iQ",
+      "show_id": "no-priors",
+      "show": "No Priors",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "Superintelligence Needs the Physical World with CEO and Co-Founder of Arda Bob McGrew",
+      "url": "https://www.youtube.com/watch?v=_wLzJINt9iQ",
+      "video_id": "_wLzJINt9iQ",
+      "audio_url": null,
+      "published_at": "2026-11-19T12:20:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T13:50:00Z",
+      "duration_s": 3598,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-19T13:50:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "practical-ai:E_dSIQ3I2_I",
+      "show_id": "practical-ai",
+      "show": "Practical AI",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Multi-Agent Systems, AI Agent Swarms, Collaborative AI Teams, Human Oversight |Episode #381|",
+      "url": "https://www.youtube.com/watch?v=E_dSIQ3I2_I",
+      "video_id": "E_dSIQ3I2_I",
+      "audio_url": null,
+      "published_at": "2026-11-18T23:20:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T13:50:00Z",
+      "duration_s": 2624,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-19T13:50:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "latent-space:wX8nDtGIfYA",
       "show_id": "latent-space",
@@ -85,8 +141,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-19T04:30:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-19T13:50:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": ""
@@ -169,6 +225,34 @@
         "source": null,
         "words": 0,
         "checked_at": "2026-11-19T04:30:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:kBJe4H_WobA",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "What It Takes to Build an AI That Actually Knows You",
+      "url": "https://www.youtube.com/watch?v=kBJe4H_WobA",
+      "video_id": "kBJe4H_WobA",
+      "audio_url": null,
+      "published_at": "2026-11-18T15:20:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T13:50:00Z",
+      "duration_s": 1991,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-19T13:50:00Z",
         "attempts": 1
       },
       "excerpts": [],
