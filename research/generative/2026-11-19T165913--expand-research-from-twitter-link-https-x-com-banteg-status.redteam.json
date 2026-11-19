@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "On those numbers the unit-price ratio is 1.5 on both input and output (as of 2026-11-16 for Hydrogen and Terra).", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c2", "claim_text": "So at matched score on a broad agentic index the cost gap between Hydrogen and Terra is about 2x, which is not 7.5x.", "contradicting_url": "https://artificialanalysis.ai/models/comparisons/gemini-4-hydrogen-vs-gpt-6-1-terra-xhigh", "contradicting_quote": "Output tokens to run the Intelligence Index: 304M for Hydrogen and 34.7M for Terra (xhigh vs xhigh).", "severity": "medium", "no_contradiction_found": false},
+    {"claim_id": "c3", "claim_text": "Independent trackers put Neon at 61 on the Artificial Analysis Intelligence Index at xhigh, with $6.44 per index task", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true}
+  ]
+}
