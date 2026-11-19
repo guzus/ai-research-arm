@@ -1,9 +1,314 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-19T13:50:00Z",
+  "updated_at": "2026-11-19T22:24:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "anthropic:sof3vW4mHTs",
+      "show_id": "anthropic",
+      "show": "Anthropic",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Why we built Anthropic",
+      "url": "https://www.youtube.com/watch?v=sof3vW4mHTs",
+      "video_id": "sof3vW4mHTs",
+      "audio_url": null,
+      "published_at": "2026-11-19T20:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 881,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-19T22:24:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Anthropic’s co-founders on why they started the company, what they’ve learned, and the work still ahead. Told by Dario Amodei, Daniela Amodei, Tom Brown, Jack Clark, Jared Kaplan, Sam McCandlish, and Chris Olah."
+    },
+    {
+      "id": "nvidia:N5YwZjN4_oI",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "Europe’s AI Future With Judith Dada | Pub Conversations",
+      "url": "https://www.youtube.com/watch?v=N5YwZjN4_oI",
+      "video_id": "N5YwZjN4_oI",
+      "audio_url": null,
+      "published_at": "2026-11-19T19:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 2175,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-19T22:24:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "What does Europe need to get right about AI? Langdock Co-CEO Judith Dada joins NVIDIA’s Chris Alexiuk to talk about Europe’s AI future, from building computing infrastructure to bringing AI’s benefits to everyday life. They discuss her move from venture capital to Langdock, the scenario she co-wrote in Europe 2031, and why human dignity matters as AI becomes more capable. Learn more about Judith’s work at Langdock: Judith: Pub Conversations brings people together over a drink to talk about AI,"
+    },
+    {
+      "id": "latent-space:x0VSm6IjcDQ",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "How Linear Pivoted Beyond Issue Tracking — Cristina Cordova, COO",
+      "url": "https://www.youtube.com/watch?v=x0VSm6IjcDQ",
+      "video_id": "x0VSm6IjcDQ",
+      "audio_url": null,
+      "published_at": "2026-11-19T19:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 5012,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-19T22:24:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Over half the issues created in Linear now come from agents instead of people. I sat down with Cristina Cordova (COO at Linear) to talk about what that does to the software industry. They shipped an MCP server early, watched agents take over half the work, and then had to answer an uncomfortable question: if your product is mostly a database an agent writes to, why would humans open the app? A few things I didn't expect. Three weeks into"
+    },
+    {
+      "id": "google-deepmind:FORdPIWOH5k",
+      "show_id": "google-deepmind",
+      "show": "Google DeepMind",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Gemini and the path to AGI with Koray Kavukcuoglu",
+      "url": "https://www.youtube.com/watch?v=FORdPIWOH5k",
+      "video_id": "FORdPIWOH5k",
+      "audio_url": null,
+      "published_at": "2026-11-19T19:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 2818,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-19T22:24:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Seven years after their last conversation at Google DeepMind’s London office, Professor Hannah Fry reunites with Koray Kavukcuoglu, SVP at Google DeepMind and Chief AI Architect at Google. Back then, DeepMind was focused on specialized breakthroughs; today, Koray is leading the charge toward general-purpose intelligence with Gemini. In this episode, they discuss why real-world products are essential to building artificial general intelligence (AGI), how Gemini’s architecture continuously evolves, and the topic on everyone's mind: recursive self-improvement (RSI). Introduction Evolution of"
+    },
+    {
+      "id": "ai-explained:KGA7B_c_S4s",
+      "show_id": "ai-explained",
+      "show": "AI Explained",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "commentary"
+      ],
+      "title": "Anthropic IPOs, GPT 6.2 Astra Arrives, But There’s a Bigger Story",
+      "url": "https://www.youtube.com/watch?v=KGA7B_c_S4s",
+      "video_id": "KGA7B_c_S4s",
+      "audio_url": null,
+      "published_at": "2026-11-19T19:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 1842,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "GPT 6.2 Astra is OpenAI’s best model, so for each of the last 4 years this would have been the only headline. But now Gemini is catching up fast, with 4 Carbon and Neon, and Anthropic are IPO-ing after promising imminent RSI. And even all this isn’t quite the main story, is it? We now have data on what drives model improvement, how close AI is to automating AI, and whether, as Dario Amodei of Anthropic promised, we are witnessing"
+    },
+    {
+      "id": "a16z:gDW9An30_c0",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Nick Bostrom on Superintelligence, Longer Lives, and Deep Utopia",
+      "url": "https://www.youtube.com/watch?v=gDW9An30_c0",
+      "video_id": "gDW9An30_c0",
+      "audio_url": null,
+      "published_at": "2026-11-19T15:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 2329,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "The question isn’t simply whether humanity should race toward superintelligence or stop. Nick Bostrom argues the harder challenge is preserving the ability to slow down when safety falls behind, without turning a temporary pause into permanent technological stagnation. a16z’s Eddy Lazzarin and Elena Burger sit down with Bostrom to revisit the ideas he helped bring into the mainstream, now that increasingly capable AI systems actually exist. They discuss why alignment may become harder as models grow more situationally aware, which"
+    },
+    {
+      "id": "big-technology:2n24npKhP6g",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Why The Anthropic IPO Will Succeed — With Aaron Levie",
+      "url": "https://www.youtube.com/watch?v=2n24npKhP6g",
+      "video_id": "2n24npKhP6g",
+      "audio_url": null,
+      "published_at": "2026-11-19T14:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 3210,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Aaron Levie is the CEO of Box. Aaron joins Big Technology to discuss the bull case for Anthropic’s IPO and the future of enterprise AI. Tune in to hear why he believes AI agents will drive massive demand, how adoption could expand beyond coding, and why cheaper models could benefit the frontier labs. We also cover AI’s reliability challenges, the risk that revenue won’t arrive before the bills come due, and how Box is putting agents to work. Hit play"
+    },
+    {
+      "id": "20vc:RZ4BBkSZ3io",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Anthropic Set for Largest IPO of All Time | Kalshi, Mercor, Fractile Mega-Rounds Continue",
+      "url": "https://www.youtube.com/watch?v=RZ4BBkSZ3io",
+      "video_id": "RZ4BBkSZ3io",
+      "audio_url": null,
+      "published_at": "2026-11-19T14:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 4512,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Jason Lemkin is one of the leading SaaS investors of the last decade with a portfolio including the likes of Algolia, Talkdesk, Owner, RevenueCat, Saleloft and more. Rory O’Driscoll is a General Partner @ Scale where he has led investments in category leaders such as Bill.com (BILL), Box (BOX), DocuSign (DOCU), and WalkMe (WKME), among others. Timestamps: Intro Should Jensen Huang Be Reinstated at Nvidia? Could Jensen’s Exit Strengthen Anthropic’s Position? Anthropic's $1.5 Trillion IPO: A New Era for Tech?"
+    },
+    {
+      "id": "mlst:io7qhEjJoik",
+      "show_id": "mlst",
+      "show": "Machine Learning Street Talk",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "What It Would Actually Take for a Machine to Have Agency (Michael Tomasello)",
+      "url": "https://www.youtube.com/watch?v=io7qhEjJoik",
+      "video_id": "io7qhEjJoik",
+      "audio_url": null,
+      "published_at": "2026-11-19T13:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 3994,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Michael Tomasello is a developmental psychologist who spent twenty years at the Max Planck Institute in Germany putting children and great apes into the same experiments, and is now back at Duke University. His book The Evolution of Agency asks what it takes for a living thing, or a machine, to act for its own reasons."
+    },
+    {
+      "id": "decoder:qipZy90Mz6U",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "How Silicon Valley lost the public (w/Crooked Media’s Jon Favreau)",
+      "url": "https://www.youtube.com/watch?v=qipZy90Mz6U",
+      "video_id": "qipZy90Mz6U",
+      "audio_url": null,
+      "published_at": "2026-11-19T13:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 3891,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "My guest today is Jon Favreau, a political commentator and cofounder of Crooked Media. You probably know Jon best from a little show called Pod Save America, which Jon started with a group of fellow Obama staffers in the wake of Donald Trump’s election in 2016. It’s now one of the most popular podcasts in the country. So I wanted Jon to come on the show to talk through what just happened in the midterms, what helping run Crooked has"
+    },
+    {
+      "id": "ai-daily-brief:uSzew8QPRX0",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Is GPT-6.2 Astra Actually a Flop or Just Misunderstood",
+      "url": "https://www.youtube.com/watch?v=uSzew8QPRX0",
+      "video_id": "uSzew8QPRX0",
+      "audio_url": null,
+      "published_at": "2026-11-19T13:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 1492,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "OpenAI’s GPT-6.2 Astra and Sol launch drew some of the worst first impressions on record, yet the efficiency numbers tell a different story. NLW breaks down the benchmarks, the early tester backlash, and what the release says about OpenAI’s push toward cost-efficient enterprise work. In the headlines: the Nvidia board refusing to bring Jensen back, a wave of infrastructure outages, and strong Nvidia earnings. The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
     {
       "id": "no-priors:_wLzJINt9iQ",
       "show_id": "no-priors",
@@ -30,7 +335,34 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Is the AI singularity actually coming? Bob McGrew, former Chief Research Officer at OpenAI, argues that superintelligence won’t arrive without changes in the physical world, and that the “hard takeoff” argument is wrong. Sarah Guo and Elad Gil sit down with Bob, an early key executive at Palantir who later led research at OpenAI. He is now CEO and co-founder of Arda, which is leveraging AI to make American manufacturing competitive. Bob explains why automating AI researchers is a one-time"
+    },
+    {
+      "id": "lex-fridman:v1X9Fqs5a14",
+      "show_id": "lex-fridman",
+      "show": "Lex Fridman Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "GTA 6, Crime, Money, Prison & the Biggest Jewel Thief in US History | Lex Fridman Podcast #505",
+      "url": "https://www.youtube.com/watch?v=v1X9Fqs5a14",
+      "video_id": "v1X9Fqs5a14",
+      "audio_url": null,
+      "published_at": "2026-11-19T02:54:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 12074,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Larry Lawton is one of the most notorious and prolific jewelry thieves in US history, who was eventually caught by the FBI, spent more than a decade in prison, including a lot of time in the hole, and then he turned his life around to run the Reality Check Program, that helps keep at-risk youth out of prison. See below for timestamps, transcript, and to give feedback, submit questions, contact Lex, etc. *Transcript:* *CONTACT LEX:* *EPISODE LINKS:* *Fin:* AI agent"
     },
     {
       "id": "practical-ai:E_dSIQ3I2_I",
@@ -58,7 +390,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "How can enterprises adopt AI and agentic systems while keeping people, business value, and trust at the center? Chris is joined by Dr. Gautham Pallapa, Principal Director of AI and Innovation at Scotiabank and author of Invaluable, to explore how organizations can approach AI-driven transformation. They discuss identifying meaningful opportunities for AI in highly regulated industries like banking, rethinking developer productivity, and using multi-agent systems to bring different roles and capabilities together. FEATURING:"
     },
     {
       "id": "latent-space:wX8nDtGIfYA",
@@ -117,7 +449,7 @@
           "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=2057s"
         }
       ],
-      "description": ""
+      "description": "Anthropic reported $17B in quarterly revenue. What did it cost to get there? Tanay Jaipuria, a partner at Wing Venture Capital, opens the S-1 with swyx and explains how the picture changes when you count the compute spent on free users and model training. The opening update walks through the preliminary IPO price range, Anthropic’s roadshow, Cowork adoption, the AMD inference slide, and where Claude Fable 5.2 and GPT-6.2 Astra landed on the leaderboard, with Fable demos in motion. Then"
     },
     {
       "id": "nvidia:uJG53ligJt4",
@@ -145,7 +477,7 @@
         "attempts": 3
       },
       "excerpts": [],
-      "description": ""
+      "description": "Scientific computing is entering the era of agentic AI. Bringing simulation, AI, and agents together gives researchers new ways to tackle complex problems and accelerate scientific discovery. Watch Ian Buck, VP of Hyperscale and HPC at NVIDIA, highlight the latest cutting-edge breakthroughs revolutionizing the scientific computing community."
     },
     {
       "id": "google-deepmind:pVc6KkjeCfU",
@@ -173,7 +505,7 @@
         "attempts": 2
       },
       "excerpts": [],
-      "description": ""
+      "description": "Go behind the scenes of our recent Genie 4 film as we explore our most realistic and interactive world model yet. Instead of generating static video, Genie 4 simulates dynamic worlds in real time. Watch how our team used Genie 4 and Project Genie to turn text prompts into explorable environments in seconds, navigate scenes with keyboard controls, and direct action on the fly with live prompts. Using the built-in agent in Project Genie, the team also built custom apps"
     },
     {
       "id": "google-deepmind:EDp4IoAUsXY",
@@ -201,7 +533,7 @@
         "attempts": 2
       },
       "excerpts": [],
-      "description": ""
+      "description": "Step inside your imagination with Project Genie, now powered by Google DeepMind’s most realistic and interactive world model yet, Genie 4. Project Genie brings our most advanced world and multimodal models together with Gemini so you can turn ideas into explorable, shareable worlds right in your browser: • Shape worlds in real time with Genie 4: Trigger dynamic events using natural language—like shifting the weather, introducing new characters, or changing the action mid-session—complete with simulated physics, natural lighting, and native"
     },
     {
       "id": "ai-daily-brief:YN4fId6Jn8k",
@@ -228,7 +560,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Business AI usage is growing much faster than spending as token prices fall and buyers gain leverage. NLW breaks down new data from Ramp, Databricks, and Arcana on model switching, spend concentration, and where enterprise agents really stand. In the headlines: the Nvidia board shutting the door on a Jensen return, new remote-access chip rules, and OpenAI’s embedded safety evaluators. The AI Daily Brief helps you understand the most important news and discussions in AI."
     },
     {
       "id": "a16z:kBJe4H_WobA",
@@ -256,7 +588,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "AI agents are getting smarter, but every new agent still has to learn who you are. What if your preferences, priorities, relationships, and digital context could move with you instead? First Person Labs co-founder Ken Liu joins a16z’s Martin Casado and Joel de la Garza to introduce Second, a personal context layer designed to understand what you’re doing across your digital life and make that context available to the agents you choose. They discuss how Second can proactively connect information"
     },
     {
       "id": "nvidia:y9AALMeAeGI",
@@ -284,7 +616,35 @@
         "attempts": 2
       },
       "excerpts": [],
-      "description": ""
+      "description": "Hugging Face co-founder Thomas Wolf and ServiceNow’s Amanda Grady, SVP of AI Platform Security, join the NVIDIA AI Podcast to explain how to keep AI agents safe when telling a model “please don’t” is no longer enough. They cover why firm boundaries beat persuadable models, what happened when Hugging Face was attacked by a swarm of AI agents, and why security is what lets companies put agents to real work. This is the 15-minute best-moments edit. The full-length episode is"
+    },
+    {
+      "id": "training-data:uMO3zS5FLoc",
+      "show_id": "training-data",
+      "show": "Sequoia Capital (Training Data)",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "The Boomerang CEO(s): With MongoDB’s Dev Ittycheria",
+      "url": "https://www.youtube.com/watch?v=uMO3zS5FLoc",
+      "video_id": "uMO3zS5FLoc",
+      "audio_url": null,
+      "published_at": "2026-11-18T10:24:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 3350,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Dev Ittycheria ran MongoDB for 11 years, took it from about $35 million in revenue to more than $2.3 billion, and retired. Ten months later his successor left, and within a week Dev was back in the chair. Since we recorded this, I’ve announced that I’m going back to HubSpot as CEO in addition to my work at Sequoia, so I’ve been replaying his advice with a lot more at stake. The center of this conversation is Dev’s definition of"
     },
     {
       "id": "twiml:WFXlWYCXiTk",
@@ -343,7 +703,7 @@
           "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=3106s"
         }
       ],
-      "description": ""
+      "description": "An AI agent can make many model calls to finish a single job. Some need frontier reasoning. Others can run on an open-weight model, and some involve data that has to stay in-house. How do you decide which inference to buy and which to run yourself? Sadeepa Wijesekara, who leads engineering for HPE Private Cloud AI, joins Sam Charrington to discuss how enterprises make those decisions. They get into what it takes to see the cost of individual calls, how"
     },
     {
       "id": "ai-daily-brief:X8Nfe1smEYI",
@@ -370,7 +730,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Anthropic’s IPO could change how Wall Street judges the entire AI industry, while the fight over Jensen Huang’s future could reshape its most important chipmaker. NLW breaks down five questions defining the week: how Anthropic’s debut will land, whether OpenAI will release a new model, whether Huang can return to Nvidia, how far the political fallout will spread, and whether Congress will tighten chip export controls. The AI Daily Brief helps you understand the most important news and discussions in"
     },
     {
       "id": "all-in:1bR0gtecoHU",
@@ -398,7 +758,7 @@
         "attempts": 3
       },
       "excerpts": [],
-      "description": ""
+      "description": "Ali Ghodsi joins the show: Databricks’ early bets on cloud, AI, and open source Is AGI Already Here? Why Enterprise AI Is Falling Behind Live Demo: How Databricks Uses Agentic AI For Efficiency Databricks IPO: The Case for Staying Private RSI, Cyber Risk & the Doom Debate Thanks to our partner for making this possible: Airwallex is a leading global payments and financial platform for modern businesses, offering trusted solutions to manage everything from business accounts, payments,"
     },
     {
       "id": "twiml:wHc_AGPsAzk",
@@ -426,7 +786,7 @@
         "attempts": 2
       },
       "excerpts": [],
-      "description": ""
+      "description": "How do you keep AI spending under control as agents consume more tokens, while giving teams room to experiment and keeping the quality of the work high? In this TWIML Briefing Room episode, Sam Charrington talks with Dan Waibel, HPE’s Global Chief Data and AI Officer, about how HPE is managing that trade-off across its own business. Waibel explains how HPE uses token usage data and quality evaluations to decide which models handle which jobs, where running inference in-house makes"
     },
     {
       "id": "big-technology:9Y4HDQnvCas",
@@ -454,7 +814,7 @@
         "attempts": 2
       },
       "excerpts": [],
-      "description": ""
+      "description": "Gary Marcus is a professor emeritus at NYU and the author of Marcus on AI. Marcus joins Big Technology to discuss his bear case for Anthropic’s IPO and whether its business can justify its enormous valuation. Tune in to hear us debate the company’s explosive revenue growth, massive compute commitments, and prospects for turning AI into a profitable business. We also cover competition from Chinese models, Anthropic’s push into software, and why Gary is becoming more optimistic about the technology"
     },
     {
       "id": "openai:C1zYX5jwqq4",
@@ -482,7 +842,7 @@
         "attempts": 2
       },
       "excerpts": [],
-      "description": ""
+      "description": "We’re introducing GPT‑6.2 Astra, our new frontier model for your hardest projects, and GPT‑6.2 Sol, our efficient, versatile model for everyday work. Both models deliver better results on demanding tasks with fewer output tokens, so you can get more done within your usage limits. For businesses and developers, that means frontier performance at costs that make sense at scale. GPT‑6.2 Astra sets a new quality bar for AI in complex professional work. Its slides, spreadsheets, and documents read less like"
     },
     {
       "id": "a16z:h_aA1-R70E8",
@@ -510,7 +870,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "For decades, the idea of AI improving itself was just a thought experiment. Today, AI is already helping researchers at frontier labs run experiments, write code and test ideas faster. Mark Chen says OpenAI has built “AI research interns.” So how far are we from AI that can do the research on its own? In our first episode of Working Theory, a16z general partner Sarah Wang explores recursive self-improvement with two leading AI researchers: Mark Chen, Chief Research Officer at"
     },
     {
       "id": "microsoft-research:K1iNbVIFcJE",
@@ -538,7 +898,63 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "What can AI enable in medicine, and how do we get there? Microsoft Research lead Doug Burger, Microsoft Principal Research Manager Ava Amini, Microsoft Chief Scientific Officer Eric Horvitz, and physician-scientist Eric Topol of Scripps Research explore these questions and more."
+    },
+    {
+      "id": "invest-like-the-best:u6pCmQd0Wrg",
+      "show_id": "invest-like-the-best",
+      "show": "Invest Like the Best",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "The Kids’ Account That Could Save American Capitalism",
+      "url": "https://www.youtube.com/watch?v=u6pCmQd0Wrg",
+      "video_id": "u6pCmQd0Wrg",
+      "audio_url": null,
+      "published_at": "2026-11-17T10:24:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 5063,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "In this episode of Invest Like The Best, Patrick O'Shaughnessy sits down with Brad Gerstner, founder and CEO of Altimeter Capital and the force behind Invest America, and Geoffrey Canada, founder of Harlem Children's Zone, to unpack the children's investment accounts now known as Trump accounts. Geoffrey explains why decades of getting kids to college convinced him education isn't enough without capital, and why he worries about a country where parents sacrifice and their kids still fall behind. Brad walks"
+    },
+    {
+      "id": "google-developers:aRIFzzr_Mi0",
+      "show_id": "google-developers",
+      "show": "Google for Developers",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "developer"
+      ],
+      "title": "EmbeddingGemma 2: How natively multimodal embeddings work",
+      "url": "https://www.youtube.com/watch?v=aRIFzzr_Mi0",
+      "video_id": "aRIFzzr_Mi0",
+      "audio_url": null,
+      "published_at": "2026-11-17T10:24:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 301,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "Learn how EmbeddingGemma 2, Google's open, lightweight multimodal embedding model, maps text, code, images, video, and audio into a single, unified embedding space. The video covers: * How modality-specific encoders and a bidirectional transformer turn multimodal data into a single representation. * The two-stage training recipe: initializing from Gemma 4 and distilling from Gemini Embedding 2, then finetuning with contrastive and spread-out losses. * Efficiency techniques for running in resource-constrained environments. Have questions? Drop them in the comments. 🔗Resources: Speakers:"
     },
     {
       "id": "openai:xkeXefmxArU",
@@ -566,7 +982,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "A campaign that works in one market can need a different approach in the next. Kim Maniovich, Global Head of Business Marketing at Revolut, shares how her team uses AI to understand local differences and tailor campaigns faster. She also explains why she asks her team to challenge an answer even when it sounds convincing."
     },
     {
       "id": "openai:hAASMPKkaXA",
@@ -594,7 +1010,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Revolut’s designers had spent seven years documenting how their design system works. Senior Designer Dmytro Pavlov shares how his team used Codex to turn that material into a format AI could read in a single day. Along the way, they spotted gaps in their templates and made the guidance clearer for the designers who use it."
     },
     {
       "id": "openai:ZIpm-0RczCk",
@@ -622,7 +1038,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "What can one engineer build when a project looks like it needs a whole team? At Revolut, an engineer used Codex to build an internal code review service himself. Its designers used Codex to turn seven years of design documentation into a format AI could read in a single day. OpenAI also helps Revolut’s financial crime team investigate flagged payments and respond faster to make shopping safer."
     },
     {
       "id": "openai:R_sl8zEp9ng",
@@ -650,7 +1066,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Dmitry Pitik thought he’d need a team of developers to build Revolut’s internal code review service. In this film, the Senior Platform Engineer explains how he broke the design into tasks, assigned them to Codex agents working in parallel and reviewed the code himself. That gave him more time for the engineering decisions he wanted to get right."
     },
     {
       "id": "openai:-O0tMcyH4Wo",
@@ -678,7 +1094,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "OpenAI helps Revolut’s financial crime team investigate flagged payments and respond faster to make shopping safer. David Abitbol, AI Lead at Revolut, explains how his team tests AI systems before putting them to work. He also shares how Codex gives engineers more time to weigh up different designs and decide what to build."
     },
     {
       "id": "ai-daily-brief:zXrty-ZAIUo",
@@ -705,7 +1121,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "The AI Daily Brief helps you understand the most important news and discussions in AI."
     },
     {
       "id": "latent-space:8cGfJOU3AlQ",
@@ -2139,6 +2555,34 @@
         }
       ],
       "description": "Drug discovery and development has long relied on expensive, time-consuming empirical trial and error. By shifting the discovery process onto computers, Isomorphic Labs wants to fundamentally change medicine from a process of discovery to one of precision engineering. Elad Gil sits down with Isomorphic’s president Max Jaderberg to discuss his vision for using predictive AI models to achieve experimental accuracy. Max details how the success of AlphaFold provided the first proof of concept that a deep learning model could generalize"
+    },
+    {
+      "id": "microsoft-research:Hcc6Ua7uTas",
+      "show_id": "microsoft-research",
+      "show": "Microsoft Research",
+      "kind": "video",
+      "priority": "P2",
+      "tags": [
+        "official",
+        "research"
+      ],
+      "title": "Microsoft Research Focus – Edition #98",
+      "url": "https://www.youtube.com/watch?v=Hcc6Ua7uTas",
+      "video_id": "Hcc6Ua7uTas",
+      "audio_url": null,
+      "published_at": "2026-11-12T10:24:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-19T22:24:00Z",
+      "duration_s": 343,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "What's new in research at Microsoft? Host Anson Ho explores the latest, including AI-powered universal translation, a breakthrough in a 31-year-old mathematics challenge, and advances making AI coding agents faster and more efficient. Introduction Internship: Growing expertise, building community Breaking the language barrier with AI Solving a 31-year-old mathematics challenge Making AI coding agents more efficient Improving AI tokenization across 104 languages"
     },
     {
       "id": "openai:vu3YlUMkvyg",
@@ -9695,324 +10139,6 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "training-data:0idrTKCDhuE",
-      "show_id": "training-data",
-      "show": "Sequoia Capital (Training Data)",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "startups"
-      ],
-      "title": "Inside the Robot Data Factory: Mecka's Josh Gao on Sensorizing Humans to Train Robots",
-      "url": "https://www.youtube.com/watch?v=0idrTKCDhuE",
-      "video_id": "0idrTKCDhuE",
-      "audio_url": null,
-      "published_at": "2026-10-20T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2712,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 7159,
-        "checked_at": "2026-11-08T23:58:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "We visited various robotics laboratories. And what we saw around the end of '24: GPT began to develop rapidly. Robotics was still evolving from the era of traditional robotics, and it seemed obvious to us at least that data and computing power would become very important to the entire industry.",
-          "at_s": 433,
-          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=433s"
-        },
-        {
-          "text": "This sounds like a big revenue opportunity for robot data factories. On the other hand, as someone who invests in basic robotics models, I look at this and think, \"That's it.\" Will we ever reach this promised land? Because I did the same calculations as you: the car has two or three degrees of freedom.",
-          "at_s": 1215,
-          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=1215s"
-        },
-        {
-          "text": "Many of these robots are already widely used around the world. They are just starting to gain popularity in the US and North America. I think some of the first robots to be deployed will be even just industrial cleaning robots. Well, there's a lot of thematic robotics that exists now.",
-          "at_s": 1452,
-          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=1452s"
-        },
-        {
-          "text": "We also believe in an ecosystem where there will be a huge number of different shapes and sizes of robot hardware . And there will be different types of open models in the world. I think it will look like a modern version of a systems integrator for robotics. Where in the traditional version you just install the product .",
-          "at_s": 1655,
-          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=1655s"
-        },
-        {
-          "text": "The results of, say, GPT-6 Astra, generalize incredibly well to tasks for robots. I'm curious what you think about this and what it means for all these niche robotics companies. Will AGI labs ultimately defeat them, and will the bitter lesson also overtake robotics? What do you think? It takes a lot of courage to scale data with incomplete information.",
-          "at_s": 2335,
-          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=2335s"
-        },
-        {
-          "text": "Um, in terms of order of magnitude, how many robots will there be in the world in a decade? Many, many times more than people. Many orders of magnitude more? Than people, yes. About ten years later . Like 100 billion robots? Yes. This is really cool. 100 billion panther- dog-horses? Panther-dog-horses, at least an order of magnitude more.",
-          "at_s": 2559,
-          "url": "https://www.youtube.com/watch?v=0idrTKCDhuE&t=2559s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "latent-space:EAtLq9_vrE0",
-      "show_id": "latent-space",
-      "show": "Latent Space",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "engineering"
-      ],
-      "title": "The Programmable Data Center — Evan Conrad, SF Compute",
-      "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0",
-      "video_id": "EAtLq9_vrE0",
-      "audio_url": null,
-      "published_at": "2026-10-20T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2204,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 7536,
-        "checked_at": "2026-11-08T23:58:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "So, um a sort of standard metric I would say for someone who is using this is a customer who buys capacity from us, and they spend $100 to buy that capacity, will make back $25 on average from selling it back to somebody else.",
-          "at_s": 387,
-          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=387s"
-        },
-        {
-          "text": "Um, the early GB200s broke. The early H100s broke. Um, and so, if you were buying H100s or you were buying GB200s, you might really want the ones that were deployed after a certain time because you're not getting the first GD1s off the rack.",
-          "at_s": 720,
-          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=720s"
-        },
-        {
-          "text": "Any model, basically. Um and so that's if you use it at 100%, and maybe if you only have like 50% utilization or something, so like $25 an hour. Yeah. So, $25 an hour. Meanwhile, you can buy B300s at like $5 to $6 an hour. One of these numbers has to change. Yeah. It's a huge overcharge.",
-          "at_s": 1186,
-          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=1186s"
-        },
-        {
-          "text": "So if I want to buy black wells, I can say I'm willing to buy black wells at $6 an hour or less. Uh-huh. And you can match me against GB300s or you can match me against B300s and I don't care which black well as long as it's less than $6 an hour.",
-          "at_s": 1346,
-          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=1346s"
-        },
-        {
-          "text": "Like my options are I could sell the GPU cluster or I could sell the data center to somebody or I could become the cloud. And then we go to them and say, great, um we will turn you into the cloud, we're the supercomputing part, you're the data center cloud.",
-          "at_s": 1868,
-          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=1868s"
-        },
-        {
-          "text": "This is also why Crusoe and Coreweave and Lambda why the hyperscalers can't make it, why Base10 and Fireworks and Modal can't make it cuz they have too much demand on that side. Um this is the thing that benefits the entire industry because it makes the financing costs go down.",
-          "at_s": 2035,
-          "url": "https://www.youtube.com/watch?v=EAtLq9_vrE0&t=2035s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "invest-like-the-best:sQaM5oPlUYs",
-      "show_id": "invest-like-the-best",
-      "show": "Invest Like the Best",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "How AI Is Repricing Every Software Company",
-      "url": "https://www.youtube.com/watch?v=sQaM5oPlUYs",
-      "video_id": "sQaM5oPlUYs",
-      "audio_url": null,
-      "published_at": "2026-10-20T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3897,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-08T23:58:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "cognitive-revolution:l6DPAwgUr-8",
-      "show_id": "cognitive-revolution",
-      "show": "The Cognitive Revolution",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews"
-      ],
-      "title": "A World Model of Life: Biohub's Alex Rives on Virtual Cells, Measurement, & the $1.8B Data Push",
-      "url": "https://www.youtube.com/watch?v=l6DPAwgUr-8",
-      "video_id": "l6DPAwgUr-8",
-      "audio_url": null,
-      "published_at": "2026-10-20T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3840,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-07T00:17:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "big-technology:F3ItSTZNtT0",
-      "show_id": "big-technology",
-      "show": "Big Technology Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "news-show"
-      ],
-      "title": "Google CEO Sundar Pichai: AI’s Infinite Possibilities, Compute Scarcity Dilemmas, Future AI Products",
-      "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0",
-      "video_id": "F3ItSTZNtT0",
-      "audio_url": null,
-      "published_at": "2026-10-20T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2730,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 7100,
-        "checked_at": "2026-11-07T00:17:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "And you know , in the first 72 hours since launch, almost 25 trillion tokens were used, which is about three times more than Gemini 3.0 had in its first 72 hours. So , uh, and we're limited in capacity because we're servicing it.",
-          "at_s": 162,
-          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=162s"
-        },
-        {
-          "text": "Some of our cloud customers definitely want a front-end model. I think the models at the forefront will be better for developing the next set of models in the era of recursive self-improvement. So I would argue that it matters. Internally, we definitely saw a big turning point by rolling out Oregon to our developers.",
-          "at_s": 324,
-          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=324s"
-        },
-        {
-          "text": "And, you know, there are some AI research efforts like OpenAI that have actually identified that LLM is the path to AGI, and they're actually exploring a subset of their research on models of the world that is similar to an AI model trying to understand the physical world. But you explore both.",
-          "at_s": 790,
-          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=790s"
-        },
-        {
-          "text": "This is an important topic for Google. I've often been told that Google should get out of the AI ​​research game, take all of its cloud computing resources and chips, and just sell them. And you look at the business world now, for example, at Nvidia, which has a company worth actually five trillion dollars.",
-          "at_s": 916,
-          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=916s"
-        },
-        {
-          "text": "But, you know, an ever- increasing percentage are already agency assignments at Gemini. And so, we're going to provide, uh, you know, personal agents to our consumers. It will work in the Gemini app, it will work in Google search, it will work in Gmail. You can send him the address, call him, etc.",
-          "at_s": 2009,
-          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=2009s"
-        },
-        {
-          "text": "You may have seen that with our source data we have a million source tokens, right? You know, you know, with our Gemini models in the beginning, we had 1 million context windows on the input side, right? These are all examples of breakthroughs that we are constantly working on. Do you know how you feel about synthetic data?",
-          "at_s": 2439,
-          "url": "https://www.youtube.com/watch?v=F3ItSTZNtT0&t=2439s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "ai-daily-brief:bw8nHS0_cl0",
-      "show_id": "ai-daily-brief",
-      "show": "The AI Daily Brief",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "news-show"
-      ],
-      "title": "The AI Wealth Problem",
-      "url": "https://www.youtube.com/watch?v=bw8nHS0_cl0",
-      "video_id": "bw8nHS0_cl0",
-      "audio_url": null,
-      "published_at": "2026-10-20T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1761,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-07T00:17:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "a16z:9n0MI4D7TCM",
-      "show_id": "a16z",
-      "show": "a16z",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "OpenAI’s Head of Health AI on Whether You Should Trust ChatGPT",
-      "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM",
-      "video_id": "9n0MI4D7TCM",
-      "audio_url": null,
-      "published_at": "2026-10-20T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3232,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 10658,
-        "checked_at": "2026-11-07T00:17:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "So what we do for ChatGPT and all the models that we deliver in ChatGPT, at every stage of training the model for ChatGPT, we actually add specialized healthcare data to every stage of training, starting with all of our models over the last year.",
-          "at_s": 401,
-          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=401s"
-        },
-        {
-          "text": "So we've been rolling this out as widely as possible from the beginning, both for our free and our pro users. And so, we have about 300 million active users of health information every week, the vast majority of them are free users, and we take that into account, and most of them are also outside the US. Hmm.",
-          "at_s": 566,
-          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=566s"
-        },
-        {
-          "text": "You mentioned personalized proactive agents, personal agents in general, which have emerged in terms of popularity over the last few months. Instinct , Muse, Grokbot, Open AI's Dots. Uh, you can give these AI apps a purpose for people who are unfamiliar, and it can perform a number of tasks.",
-          "at_s": 714,
-          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=714s"
-        },
-        {
-          "text": "And since then, we've improved both measuring whether models are capable of serving different types of users and training the models to do so. So a big part of our approach was not just how to improve the models for these different users, but how to engage them?",
-          "at_s": 942,
-          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=942s"
-        },
-        {
-          "text": "I think it's also a big part of how we think about APIs and how good our models are for healthcare, pricing, etc. You know, one of the recent updates was that we recently released, uh, GPT-6 Luna. Hmm. And GPT-6 Luna is, um, our current cheapest API model, um, or, you know, the cheapest, frontier API model.",
-          "at_s": 2633,
-          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=2633s"
-        },
-        {
-          "text": "Uh, there's an article in the New York Times about the AI ​​of providers and payers fighting each other, and there's an analysis by the Blue Cross Blue Shield Association that showed that the respective billing bots and paperwork bots actually increased costs by a billion dollars or something.",
-          "at_s": 2792,
-          "url": "https://www.youtube.com/watch?v=9n0MI4D7TCM&t=2792s"
-        }
-      ],
       "description": ""
     }
   ]
