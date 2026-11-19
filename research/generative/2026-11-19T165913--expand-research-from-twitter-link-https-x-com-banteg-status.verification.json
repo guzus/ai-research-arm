@@ -1,0 +1,16 @@
+{
+  "claims": [
+    {"id": "c1", "text": "On 2026-11-19 the developer banteg posted that Gemini 4 Neon \"takes 4th place\" in his Sokoban eval", "verdict": "supported", "citation": "https://x.com/banteg/status/2123449380921594315"},
+    {"id": "c2", "text": "The public site states one scored attempt per model, medium reasoning effort, and a budget per part of 5 hours of active time, 1,000 turns and 10,000 keys.", "verdict": "supported", "citation": "https://soko.banteg.xyz/"},
+    {"id": "c3", "text": "With a Python notebook the order changed in ways that matter for tool-use comparisons", "verdict": "supported", "citation": "https://banteg.xyz/posts/sokoban/"},
+    {"id": "c4", "text": "the first-race write-up states that cost is measured in time, turns and keys, with no dollar accounting.", "verdict": "supported", "citation": "https://banteg.xyz/posts/sokoban/"},
+    {"id": "c5", "text": "Its direct standard price is $1.50 input and $7.50 output per million tokens, with cached input at $0.075.", "verdict": "supported", "citation": "https://www.eesel.ai/blog/gemini-4-hydrogen-review"},
+    {"id": "c6", "text": "Hydrogen at high effort scores 51 at $1.87 per task, Terra also scores 51 at $0.96 per task", "verdict": "weak", "citation": "https://www.eesel.ai/blog/gemini-4-hydrogen-review"},
+    {"id": "c7", "text": "Google announced Neon on 2026-11-18.", "verdict": "supported", "citation": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"},
+    {"id": "c8", "text": "Independent trackers put Neon at 61 on the Artificial Analysis Intelligence Index at xhigh, with $6.44 per index task", "verdict": "supported", "citation": "https://artificialanalysis.ai/models/gemini-4-neon"},
+    {"id": "c9", "text": "Google reports Neon at 32% lower cost per task than Carbon at default high thinking.", "verdict": "supported", "citation": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"},
+    {"id": "c10", "text": "A dollar comparison relayed on 2026-11-18 reported Astra 6.2 finishing all 66 rooms about 33 minutes after Fable 5.2 for roughly $20 against $52", "verdict": "weak", "citation": "https://www.kucoin.com/news/insight/ASTRA/6afd4b109278e40007d87a20"},
+    {"id": "c11", "text": "The decision problem is PSPACE-complete (Culberson 1997; Hearn 2006)", "verdict": "supported", "citation": "https://en.wikipedia.org/wiki/Sokoban"},
+    {"id": "c12", "text": "Argon lost 154 turns, 105 of them to filter blocks", "verdict": "supported", "citation": "https://banteg.xyz/posts/sokoban/"}
+  ]
+}

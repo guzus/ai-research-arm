@@ -1,5 +1,5 @@
 {
-  "article_count": 115,
+  "article_count": 116,
   "articles": [
     {
       "claim_count": 18,
@@ -1095,6 +1095,16 @@
         "twitter-seed"
       ],
       "title": "Morpho vs. Aave: Is the \"BD War\" Real, and Who Is Winning It?"
+    },
+    {
+      "claim_count": 12,
+      "created_at": "2026-11-19T16:59:13Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-banteg-status",
+      "stem": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish"
     }
   ],
   "by_host": {
@@ -1131,7 +1141,8 @@
     ],
     "9to5google.com": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c2",
-      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c23"
+      "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c23",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c7"
     ],
     "9to5mac.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c33",
@@ -1568,6 +1579,9 @@
     "apidog.com": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c4"
     ],
+    "apimaster.ai": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c5"
+    ],
     "apollo.com": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c1",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c24"
@@ -1684,7 +1698,8 @@
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c15",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c7",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c8",
-      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c11"
+      "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c11",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c8"
     ],
     "artificialintelligenceact.eu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c30",
@@ -2072,6 +2087,12 @@
     "banodoco.ai": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c38"
     ],
+    "banteg.xyz": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c12",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c2",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c3",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c4"
+    ],
     "barchart.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c4",
       "2026-07-31T051841--situational-awareness-lp-collapse#c6",
@@ -2218,7 +2239,9 @@
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c1",
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c3",
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12",
-      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c7"
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c7",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c7",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c9"
     ],
     "blog.janestreet.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17",
@@ -3435,6 +3458,10 @@
     "eeo.com.cn": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c20"
     ],
+    "eesel.ai": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c5",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c6"
+    ],
     "efinancialcareers.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c9"
     ],
@@ -3516,7 +3543,8 @@
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c23",
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c24",
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c22",
-      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c17"
+      "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c17",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c11"
     ],
     "encyclopediaofmath.org": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c2"
@@ -4773,7 +4801,8 @@
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c22",
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c29",
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c15",
-      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c19"
+      "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c19",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c10"
     ],
     "kvcache.ai": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c26"
@@ -6402,6 +6431,9 @@
     "socket.dev": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c35"
     ],
+    "soko.banteg.xyz": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c2"
+    ],
     "sonarsource.com": [
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c19"
     ],
@@ -7557,7 +7589,8 @@
       "2026-11-01T102020--expand-research-from-twitter-link-https-x-com-will-price-sta#c4",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c16",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c17",
-      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c37"
+      "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c37",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c1"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -7584,6 +7617,9 @@
     ],
     "yicaiglobal.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c22"
+    ],
+    "yourstory.com": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c5"
     ],
     "youtube.com": [
       "2026-07-29T232306--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op#c5"
@@ -7652,6 +7688,9 @@
     ],
     "https://9to5google.com/2026/07/16/gemini-3-5-pro-delays": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c23"
+    ],
+    "https://9to5google.com/2026/11/18/gemini-4-neon-announcement": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c7"
     ],
     "https://9to5mac.com/2026/07/13/apple-lawsuit-reveals-how-many-former-employees-now-work-at-openai": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c33"
@@ -8050,6 +8089,9 @@
     "https://apidog.com/blog/qwen-3-8-benchmarks": [
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c4"
     ],
+    "https://apimaster.ai/blog/gemini-4-hydrogen-vs-sonnet-5-5-vs-gpt-6-1-terra": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c5"
+    ],
     "https://app.hedgeye.com/insights/185196-goldman-s-high-beta-momentum-basket-on-track-for-worst-monthly-perform?type=macro": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c14"
     ],
@@ -8197,6 +8239,9 @@
     ],
     "https://artificialanalysis.ai/models/deepseek-v4-1-flash": [
       "2026-10-17T111018--deepseek-v4-1-flash-1017-do-self-reported-deepswe-77-0-and-t#c11"
+    ],
+    "https://artificialanalysis.ai/models/gemini-4-neon": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c8"
     ],
     "https://artificialanalysis.ai/models/glm-5-2": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c7",
@@ -9116,6 +9161,12 @@
     "https://bam.brookfield.com/press-releases/nvidia-partners-apollo-blackrock-blackstone-brookfield-goldman-sachs-and-kkr": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c26"
     ],
+    "https://banteg.xyz/posts/sokoban": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c12",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c2",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c3",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c4"
+    ],
     "https://bean.money/blog/beanstalk-governance-exploit": [
       "2026-08-24T085649--expand-research-from-twitter-link-https-x-com-d2-finance-sta#c18"
     ],
@@ -9226,6 +9277,10 @@
     ],
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash": [
       "2026-06-25T170208--native-computer-use-gemini-3-5-flash#c20"
+    ],
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c7",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c9"
     ],
     "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/synthid-bio": [
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c19",
@@ -10307,6 +10362,9 @@
     "https://en.wikipedia.org/wiki/Self-reconfigurable_robot": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c12",
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c29"
+    ],
+    "https://en.wikipedia.org/wiki/Sokoban": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c11"
     ],
     "https://en.wikipedia.org/wiki/Sowood_Capital": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c25"
@@ -13161,6 +13219,9 @@
     "https://socket.dev/blog/unauthorized-ai-agent-execution-code-published-to-openvsx-in-aqua-trivy-vs-code-extension": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c35"
     ],
+    "https://soko.banteg.xyz": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c2"
+    ],
     "https://sources.news/p/sam-altman-on-openais-next-model": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c2"
     ],
@@ -15455,6 +15516,10 @@
     "https://www.eeo.com.cn/2026/0320/813654.shtml": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c20"
     ],
+    "https://www.eesel.ai/blog/gemini-4-hydrogen-review": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c5",
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c6"
+    ],
     "https://www.efinancialcareers.com/news/2023/08/jane-street-intern-pay": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c9"
     ],
@@ -16213,6 +16278,9 @@
     ],
     "https://www.kucoin.com/news/flash/tokenized-treasuries-dip-to-34-67-billion-as-rwa-sector-expands": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c22"
+    ],
+    "https://www.kucoin.com/news/insight/ASTRA/6afd4b109278e40007d87a20": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c10"
     ],
     "https://www.latent.space/p/ainews-glm-52-the-top-frontend-coding": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c18"
@@ -18152,6 +18220,9 @@
     "https://x.com/bankrbot/status/2070728427951575375": [
       "2026-06-27T050233--gpt-5-6-sol-terra-luna-openai-s-three-tier-launch-under-fede#c19"
     ],
+    "https://x.com/banteg/status/2123449380921594315": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c1"
+    ],
     "https://x.com/baoshu88/status/2066756006818779300": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c2",
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c3"
@@ -18434,6 +18505,9 @@
     "https://xlab.tencent.com/en/2026/01/06/xlab-26-001": [
       "2026-08-04T171206--comfyui-company#c30"
     ],
+    "https://yourstory.com/ai-story/gpt-6-1-terra-lower-api-pricing-developers": [
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c5"
+    ],
     "https://yuantrends.com/zhipu-ai-hong-kong-ipo-24-4b-valuation-6-2b-losses": [
       "2026-06-22T052035--zhipu-ai-glm#c16"
     ],
@@ -18448,7 +18522,7 @@
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
     ]
   },
-  "claim_count": 3335,
+  "claim_count": 3347,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -97599,9 +97673,297 @@
       "source_tiers": [],
       "source_urls": [],
       "type": "derived"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "2026-11-19",
+      "claim": "banteg posted on 2026-11-19 that Gemini 4 Neon takes 4th place in his Sokoban eval and that Hydrogen has matched Terra at 7.5x higher cost.",
+      "confidence": "high",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/banteg/status/2123449380921594315"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "2026-11-18",
+      "claim": "A post relayed by KuCoin reports Astra 6.2 cleared all 66 rooms about 33 minutes after Fable 5.2 for about $20 versus $52, in 540 versus 198 turns.",
+      "confidence": "low",
+      "hosts": [
+        "kucoin.com"
+      ],
+      "id": "c10",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://www.kucoin.com/news/insight/ASTRA/6afd4b109278e40007d87a20"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "",
+      "claim": "Sokoban is PSPACE-complete (Culberson 1997; Hearn 2006).",
+      "confidence": "high",
+      "hosts": [
+        "en.wikipedia.org"
+      ],
+      "id": "c11",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c11",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Sokoban"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "2026-11-10",
+      "claim": "Argon lost 154 turns in the first race, 105 of them to filter blocks; Opus lost 2h09m to 55 format rejections in keys-only.",
+      "confidence": "high",
+      "hosts": [
+        "banteg.xyz"
+      ],
+      "id": "c12",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://banteg.xyz/posts/sokoban"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "2026-11-20",
+      "claim": "The Sokoban Eval uses 66 rooms in 3 parts of 22 rooms, one scored attempt per model, medium reasoning effort, and per-part budgets of 5 hours, 1,000 turns and 10,000 keys.",
+      "confidence": "high",
+      "hosts": [
+        "banteg.xyz",
+        "soko.banteg.xyz"
+      ],
+      "id": "c2",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://soko.banteg.xyz",
+        "https://banteg.xyz/posts/sokoban"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "2026-11-10",
+      "claim": "In the first race (2026-11-10) Fable 5.2 cleared 66/66 in both conditions; Terra scored 41 keys-only and 43 with Python; Argon 43 and 54.",
+      "confidence": "high",
+      "hosts": [
+        "banteg.xyz"
+      ],
+      "id": "c3",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://banteg.xyz/posts/sokoban"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "2026-11-10",
+      "claim": "The first-race write-up keeps no dollar accounting; cost is measured in time, turns and keys.",
+      "confidence": "high",
+      "hosts": [
+        "banteg.xyz"
+      ],
+      "id": "c4",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://banteg.xyz/posts/sokoban"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "2026-11-16",
+      "claim": "Gemini 4 Hydrogen list price is $1.50 input / $7.50 output per million tokens; GPT-6.1 Terra is $1 / $5.",
+      "confidence": "medium",
+      "hosts": [
+        "apimaster.ai",
+        "eesel.ai",
+        "yourstory.com"
+      ],
+      "id": "c5",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c5",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://apimaster.ai/blog/gemini-4-hydrogen-vs-sonnet-5-5-vs-gpt-6-1-terra",
+        "https://www.eesel.ai/blog/gemini-4-hydrogen-review",
+        "https://yourstory.com/ai-story/gpt-6-1-terra-lower-api-pricing-developers"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "2026-11-16",
+      "claim": "On Artificial Analysis's index workload Hydrogen (high) scores 51 at $1.87 per task and 8.3 minutes; Terra scores 51 at $0.96 and 14.2 minutes.",
+      "confidence": "medium",
+      "hosts": [
+        "eesel.ai"
+      ],
+      "id": "c6",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c6",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.eesel.ai/blog/gemini-4-hydrogen-review"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "2026-11-18",
+      "claim": "Gemini 4 Neon launched 2026-11-18 at $3 / $15 per million tokens with a 1M context window; Hydrogen launched 2026-11-12.",
+      "confidence": "high",
+      "hosts": [
+        "9to5google.com",
+        "blog.google"
+      ],
+      "id": "c7",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon",
+        "https://9to5google.com/2026/11/18/gemini-4-neon-announcement"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "2026-11-20",
+      "claim": "Neon scores 61 on the Artificial Analysis Intelligence Index at xhigh at $6.44 per index task and 21.5 minutes per task.",
+      "confidence": "medium",
+      "hosts": [
+        "artificialanalysis.ai"
+      ],
+      "id": "c8",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c8",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://artificialanalysis.ai/models/gemini-4-neon"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status",
+      "article_created_at": "2026-11-19T16:59:13Z",
+      "article_title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish",
+      "as_of": "2026-11-18",
+      "claim": "Google reports Neon costs 32% less per task than Carbon at default high thinking.",
+      "confidence": "medium",
+      "hosts": [
+        "blog.google"
+      ],
+      "id": "c9",
+      "key": "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c9",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon"
+      ],
+      "type": "comparison"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1576,
+  "reusable_count": 1580,
   "schema_version": 1
 }
