@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-19
+
+TOP 5 PAPERS:
+• Counterfactual World Models - LeCun/Balestriero: JEPAs answer "what if" from factual data; R² 38–46% → 86–96%
+• General progress substitutes for withheld data - filtering delays skills; larger models need less data to regain them
+• Introspective Oversight - Transluce/Thinking Machines: observer AUROC 0.907 vs honesty 0.864
+• Toaster - Google: nonlinear memory from cascaded linear kernels; beats KDA/Titans, matches attention
+• Think Offline - code-as-policy game agents 47.8% vs 30.9% for a trained 2B controller
+
+CATEGORIES: LM/NLP 10, CV/Multimodal 10, Agents/Reasoning 10, Safety 9, Other 8
+
+Full report on GitHub.
