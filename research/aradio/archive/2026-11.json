@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-19T04:42:00Z",
+  "updated_at": "2026-11-19T20:29:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -417,6 +417,102 @@
         }
       ],
       "archived_at": "2026-11-19T04:42:00Z"
+    },
+    {
+      "slug": "ai-agents-in-finance-and-law",
+      "title": "AI agents move into finance and legal work",
+      "status": "resolved",
+      "importance": 3,
+      "first_seen": "2026-11-01T06:51:00Z",
+      "updated_at": "2026-11-12T18:39:00Z",
+      "now": "On The Cognitive Revolution, a guest said enterprise agents from names like Salesforce and Harvey are connected but not reasoning together. One semantic misalignment dropped five-agent accuracy from 99% to 98%, and two cognitive failures from 98% to 81%. The guest said labs are decoupling model from harness, so an OpenAI harness can run an open-source model.",
+      "changed": "No new finance or legal-agent facts this run; the Cognitive Revolution accuracy and harness notes are absorbed.",
+      "watch": "Whether Accord and Concord see adoption above MCP and A2A; a Ballot Bench write-up; whether labs confirm harness-model mixing.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-11-11T11:32:00Z",
+          "quote": "So we have connected agents but we've realized that connectivity is not the same as cognition."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=3137s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-11-11T11:32:00Z",
+          "quote": "You can now take the harness from open AI and attach an open-source or open core model to it."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=lAG4njluIbQ&t=2204s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution (five-agent accuracy)",
+          "at": "2026-11-11T11:32:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=1311s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution (Ballot Bench)",
+          "at": "2026-11-07T20:24:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ZZwrUPxU1GY&t=2937s",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution (Theory Ventures agents)",
+          "at": "2026-11-07T20:24:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-05T15:42:00Z",
+          "quote": "And I believe you shouldn't delegate your thinking today."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=9iAQdKxyiQc&t=1228s",
+          "kind": "podcast",
+          "label": "a16z (internal tools falling out of use)",
+          "at": "2026-11-05T15:42:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=yULk8eNa2mg",
+          "kind": "podcast",
+          "label": "No Priors",
+          "at": "2026-11-05T11:12:00Z",
+          "quote": "We are seeing very strong adoption: over 150,000 clients have opened agent trading accounts with us in the few months since launch."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-01T06:51:00Z",
+          "change": "Thread created from finance and legal agent episodes; no market-moving news."
+        },
+        {
+          "at": "2026-11-03T03:03:00Z",
+          "change": "Resolved: quiet, low-importance thread; no new finance or legal agent news."
+        },
+        {
+          "at": "2026-11-05T12:49:00Z",
+          "change": "Reopened: No Priors says Robinhood has 150k agent-trading accounts and ~30M tool calls/day; Chain pitched for AI agents."
+        },
+        {
+          "at": "2026-11-05T21:17:00Z",
+          "change": "a16z Figma episode: guest introduced as CFO says finance is becoming a builder function; ~90% of internal agents fall away; do not delegate thinking."
+        },
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: Ballot Bench ran nine agents on midterm forecasts with real money; Theory Ventures guest cites thousands of agent jobs."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "Cognitive Revolution: 99% to 81% five-agent drop; Salesforce/Harvey in the mix; OpenAI harness said to run open-source models."
+        },
+        {
+          "at": "2026-11-12T18:39:00Z",
+          "change": "Resolved: five-agent accuracy drop and harness-mixing claims absorbed; no new finance or legal product news."
+        }
+      ],
+      "archived_at": "2026-11-19T20:29:00Z"
     }
   ],
   "history": [
