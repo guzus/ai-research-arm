@@ -3717,6 +3717,24 @@
     "prompt": "Seed Twitter/X URL: https://x.com/anzep13/status/2123121413733109813\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
     "tags": [
       "twitter-seed"
-    ]
+    ],
+    "translations": {
+      "ko": {
+        "file": "2026-11-19T044207--expand-research-from-twitter-link-https-x-com-anzep13-status.ko.html",
+        "kind": "fragment",
+        "language": "ko",
+        "title": "Morpho vs. Aave: 「BD 전쟁」은 실재하는가, 그리고 누가 이기고 있는가?",
+        "model": "cursor-grok-4.6-high-fast",
+        "created_at": "2026-11-19T04:42:07Z",
+        "source": "workflow_dispatch-ko-backfill",
+        "prompt": "Korean translation backfill for expand-research-from-twitter-link-https-x-com-anzep13-status",
+        "tags": [
+          "twitter-seed"
+        ],
+        "translated_at": "2026-11-19T04:42:07Z",
+        "source_file": "research/generative/2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status.ara.md",
+        "source_sha256": "14d6a6bfbbe0cf7c43cfaf4b072e875153833a7fd26b7553bb98787487dc7240"
+      }
+    }
   }
 ]
