@@ -1,9 +1,91 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-20T03:41:00Z",
+  "updated_at": "2026-11-20T13:31:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "hard-fork:CaAKSCQiIrE",
+      "show_id": "hard-fork",
+      "show": "Hard Fork",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "Why Grand Theft Auto VI Is Such a Big Deal | Hard Fork",
+      "url": "https://www.youtube.com/watch?v=CaAKSCQiIrE",
+      "video_id": "CaAKSCQiIrE",
+      "audio_url": null,
+      "published_at": "2026-11-20T13:29:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-20T13:31:00Z",
+      "duration_s": 3840,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-20T13:31:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Grand Theft Auto VI is finally out, the first release of the video game franchise in 13 years. The new installment from Rockstar Games is rapturous and mesmerizing — a monumental human achievement. Max Read, our guest host, is joined by the reporter Joseph Bernstein, who had early access to the video game, as well as the tech reporters Erin Griffith and Mike Isaac. They discuss the making of G.T.A.VI, how the franchise grew so big, and why we might"
+    },
+    {
+      "id": "openai:KrlfehIapEA",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Meet the Data Agent in ChatGPT",
+      "url": "https://www.youtube.com/watch?v=KrlfehIapEA",
+      "video_id": "KrlfehIapEA",
+      "audio_url": null,
+      "published_at": "2026-11-20T06:01:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-20T13:31:00Z",
+      "duration_s": 97,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-20T13:31:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Get started with the Data plugin in ChatGPT. Take a quick tour of how to ask questions about your data, create visualizations, build dashboards, and share reports with your team. See where to find Data in the plugin marketplace, how it works with your files and connected tools, and the skills available for tasks like checking data quality, defining KPIs, and business analysis. Explore the Data plugin: Plugin availability depends on your workspace settings. Part 1 of the Data Agent"
+    },
+    {
+      "id": "ai-daily-brief:xskAzAc_0ws",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "The 10 Biggest Days in AI History",
+      "url": "https://www.youtube.com/watch?v=xskAzAc_0ws",
+      "video_id": "xskAzAc_0ws",
+      "audio_url": null,
+      "published_at": "2026-11-20T02:01:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-20T13:31:00Z",
+      "duration_s": 1584,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-20T13:31:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Anthropic’s first day of trading makes a fitting moment to look back at the biggest days in AI history. NLW counts down ten dates, from the founding of OpenAI and the launch of ChatGPT to the DeepSeek sell-off, the agentic era, and the Anthropic IPO. Honorable mentions include Stable Diffusion, the first reasoning models, Project Stargate, and Jensen Huang’s resignation. The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
     {
       "id": "anthropic:sof3vW4mHTs",
       "show_id": "anthropic",
@@ -303,8 +385,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-20T13:31:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "OpenAI’s GPT-6.2 Astra and Sol launch drew some of the worst first impressions on record, yet the efficiency numbers tell a different story. NLW breaks down the benchmarks, the early tester backlash, and what the release says about OpenAI’s push toward cost-efficient enterprise work. In the headlines: the Nvidia board refusing to bring Jensen back, a wave of infrastructure outages, and strong Nvidia earnings. The AI Daily Brief helps you understand the most important news and discussions in AI."
