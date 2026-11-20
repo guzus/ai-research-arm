@@ -1,0 +1,12 @@
+Daily AI Digest - 2026-11-20 (deterministic fallback)
+
+TOP OF EACH LANE:
+• [RSS / Official Announcements] How OpenAI’s Performance Factory keeps ChatGPT fast - Thu, 19 Nov 2026 08:00 GMT
+• [Hacker News] Anthropic hits $2T in Nasdaq debut: New, and the largest AI-by-points story and the largest AI comm…
+• [Reddit] No data: ml.rss was a Reddit “Not Found” stub with 0 entries — -
+• [Expert Blogs] [[AINews] Gemini 4 Neon: GDM's Opus/Sol Contender](https://latent.space/p/ainews-gemini-4-neon-gdm-…
+• [Bluesky] @emollick.bsky.social: "A rush of patches to address security concerns is exactly the most plausibl…
+
+SOURCES: 7/8 lanes had data; missing: Twitter/X
+
+Verbatim, unranked lane excerpts. Full digest on GitHub.
