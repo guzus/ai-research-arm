@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "id": "2026-11-20-0912",
+  "aired_at": "2026-11-20T09:12:00Z",
+  "headline": "No Anthropic S1 after the Nov 19 date; 20VC titles a $1.5T IPO; Astra mixed; Nvidia board said to refuse Jensen",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's about ten past nine UTC on Friday, November twentieth. This is ARA AI News."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The live story is still Anthropic's offering. Yesterday was the day Latent Space said it would go public, and we still have no prospectus and no priced deal in our sources."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On that show, speakers had said the book was about seven times oversubscribed and would probably price around eighty dollars a share. Those figures have not been replaced by a filing."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "What arrived instead is commentary. Twenty V C titled the episode Anthropic set for the largest I P O of all time, and a timestamp on that show names a one point five trillion dollar I P O."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "A I Explained titled its episode as if the listing is already happening, after Anthropic promised imminent recursive self-improvement. Big Technology posted the bull case with Box C E O Aaron Levie, opposite last week's still-untranscribed Gary Marcus episode arguing the I P O will fail."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Anthropic itself posted a fifteen-minute founders video, Why we built Anthropic, with Dario and Daniela Amodei and the other co-founders. Captions are not up, so we are not quoting it."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The last spoken operating picture is unchanged: margins from nineteen percent to fifteen percent, a slight G A A P loss they called intentional, twelve thousand customers over a hundred thousand dollars, and about seventy percent of compute still on training. Nvidia as a ten billion dollar anchor is still the last named check."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On models, the A I Daily Brief titles G P T six point two Astra and Sol as drawing some of the worst first impressions on record, then argues the efficiency numbers tell a different story."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "A I Explained still calls Astra OpenAI's best model, and says Gemini is catching up fast with Four Carbon and Neon. OpenAI's own two-minute launch clip still has no transcript."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That same Daily Brief's headlines say Nvidia's board is refusing to bring Jensen Huang back. Twenty V C timestamps a segment on whether he should be reinstated, and whether his exit strengthens Anthropic."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That is a podcast claim, not an eight K. Colette Kress remains interim C E O, and the fourth-quarter outlook still assumes no China data-center compute."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Latent Space sat down with Linear C O O Cristina Cordova. The show notes say over half the issues created in Linear now come from agents, after they shipped an M C P server early."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Google DeepMind posted a forty-seven minute conversation with Koray Kavukcuoglu on Gemini, A G I, and recursive self-improvement. Again, no transcript yet."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch for a real Anthropic S one, for whether that Nvidia ten billion dollar check is in it, and for captions on Twenty V C, the Levie episode, the founders video, Astra, and Linear."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's about ten past nine UTC on Friday, November twentieth. This is ARA AI News.",
+    "Speaker 2: [high_energy] The live story is still Anthropic's offering. Yesterday was the day Latent Space said it would go public, and we still have no prospectus and no priced deal in our sources.",
+    "Speaker 1: On that show, speakers had said the book was about [emphasis]seven times[/emphasis] oversubscribed and would probably price around [emphasis]eighty dollars[/emphasis] a share. Those figures have not been replaced by a filing.",
+    "Speaker 2: What arrived instead is commentary. Twenty V C titled the episode Anthropic set for the largest I P O of all time, and a timestamp on that show names a [emphasis]one point five trillion dollar[/emphasis] I P O.",
+    "Speaker 1: A I Explained titled its episode as if the listing is already happening, after Anthropic promised imminent recursive self-improvement. Big Technology posted the bull case with Box C E O Aaron Levie, opposite last week's still-untranscribed Gary Marcus episode arguing the I P O will fail.",
+    "Speaker 2: Anthropic itself posted a fifteen-minute founders video, Why we built Anthropic, with Dario and Daniela Amodei and the other co-founders. Captions are not up, so we are not quoting it.",
+    "Speaker 1: The last spoken operating picture is unchanged: margins from nineteen percent to fifteen percent, a slight G A A P loss they called intentional, twelve thousand customers over a hundred thousand dollars, and about seventy percent of compute still on training. Nvidia as a ten billion dollar anchor is still the last named check.",
+    "Speaker 2: [transition] On models, the A I Daily Brief titles G P T six point two Astra and Sol as drawing some of the worst first impressions on record, then argues the efficiency numbers tell a different story.",
+    "Speaker 1: A I Explained still calls Astra OpenAI's best model, and says Gemini is catching up fast with Four Carbon and Neon. OpenAI's own two-minute launch clip still has no transcript.",
+    "Speaker 2: [transition] That same Daily Brief's headlines say Nvidia's board is refusing to bring Jensen Huang back. Twenty V C timestamps a segment on whether he should be reinstated, and whether his exit strengthens Anthropic.",
+    "Speaker 1: That is a podcast claim, not an eight K. Colette Kress remains interim C E O, and the fourth-quarter outlook still assumes no China data-center compute.",
+    "Speaker 2: [transition] Latent Space sat down with Linear C O O Cristina Cordova. The show notes say over half the issues created in Linear now come from agents, after they shipped an M C P server early.",
+    "Speaker 1: Google DeepMind posted a forty-seven minute conversation with Koray Kavukcuoglu on Gemini, A G I, and recursive self-improvement. Again, no transcript yet.",
+    "Speaker 2: Watch for a real Anthropic S one, for whether that Nvidia ten billion dollar check is in it, and for captions on Twenty V C, the Levie episode, the founders video, Astra, and Linear.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "anthropic-ipo-and-ai-funding",
+    "next-model-launches-qwen-4-gpt-6-2-astra",
+    "nvidia-jensen-huang-spy-allegations",
+    "enterprise-agent-economics",
+    "labs-automating-ai-research"
+  ],
+  "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing"
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "enterprise-agent-economics",
+      "title": "Enterprise agent economics: frontier models vs on-prem",
+      "status": "developing"
+    },
+    {
+      "slug": "labs-automating-ai-research",
+      "title": "Frontier labs automating their own AI research",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=RZ4BBkSZ3io",
+      "kind": "podcast",
+      "label": "20VC"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2n24npKhP6g",
+      "kind": "podcast",
+      "label": "Big Technology Podcast (Aaron Levie)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=sof3vW4mHTs",
+      "kind": "video",
+      "label": "Anthropic (Why we built Anthropic)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=KGA7B_c_S4s",
+      "kind": "podcast",
+      "label": "AI Explained"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=uSzew8QPRX0",
+      "kind": "podcast",
+      "label": "The AI Daily Brief"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=x0VSm6IjcDQ",
+      "kind": "podcast",
+      "label": "Latent Space (Linear, Cristina Cordova)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=FORdPIWOH5k",
+      "kind": "video",
+      "label": "Google DeepMind (Koray Kavukcuoglu)"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    },
+    {
+      "op": "update",
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra"
+    },
+    {
+      "op": "update",
+      "slug": "nvidia-jensen-huang-spy-allegations"
+    },
+    {
+      "op": "update",
+      "slug": "enterprise-agent-economics"
+    },
+    {
+      "op": "update",
+      "slug": "labs-automating-ai-research"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-20-0912.mp3",
+    "bytes": 1059645,
+    "duration_s": 176.5,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 87.88,
+        "lines": [
+          0,
+          6
+        ]
+      },
+      {
+        "start_s": 89.33,
+        "end_s": 111.49,
+        "lines": [
+          7,
+          8
+        ]
+      },
+      {
+        "start_s": 112.94,
+        "end_s": 133.98,
+        "lines": [
+          9,
+          10
+        ]
+      },
+      {
+        "start_s": 135.43,
+        "end_s": 169.95,
+        "lines": [
+          11,
+          14
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 15,
+    "kinds": {
+      "podcast": 11,
+      "video": 4
+    }
+  }
+}

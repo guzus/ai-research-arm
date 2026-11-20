@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-19T20:29:00Z",
-  "headline": "Latent Space: Anthropic IPO said for Nov 19, ~7x oversubscribed around $80; S1-style margins 19% to 15%",
+  "updated_at": "2026-11-20T09:12:00Z",
+  "headline": "No Anthropic S1 after the Nov 19 date; 20VC titles a $1.5T IPO; Astra mixed; Nvidia board said to refuse Jensen",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -9,11 +9,35 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-19T04:42:00Z",
-      "now": "On Latent Space, speakers said Anthropic IPOs the day after a Nov 18 episode, about 7x oversubscribed around $80. They cited S1-style figures: margin 19% to 15%, a slight GAAP loss called intentional, 80% consumption vs 20% subscriptions, customers over $100K up 8x to 12K, ~70% of compute on training. Claude Code guessed at ~$50B and 3 of 4 S1 products. Nvidia $10B anchor stands; no filing on…",
-      "changed": "On Latent Space, speakers said Anthropic IPOs the day after a Nov 18 episode, about 7x oversubscribed around $80, and cited S1-style figures: margin 19% to 15%, slight GAAP loss, 12K customers over $100K, ~70% of compute on training.",
-      "watch": "A first-party S1 or priced deal on November 19; whether Nvidia remains the $10B anchor; the Big Technology Gary Marcus transcript.",
+      "updated_at": "2026-11-20T09:12:00Z",
+      "now": "Nov 19 passed with no first-party S1 in our sources. 20VC titles a $1.5T largest-ever IPO; AI Explained titles it as happening; Big Technology posted the Aaron Levie bull case after Gary Marcus's still-untranscribed will-fail episode. Anthropic posted a 15-min founders video; transcript pending. Last spoken: Latent Space ~7x oversubscribed around $80, margins 19% to 15%.",
+      "changed": "Nov 19 passed with no S1 in our sources. 20VC titles a $1.5T largest-ever IPO; Big Technology posted the Levie bull case; Anthropic posted a founders origin video. Transcripts pending.",
+      "watch": "A first-party S1 or priced deal; whether Nvidia remains the $10B anchor; transcripts of 20VC, the Levie episode, and Anthropic's founders video.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=RZ4BBkSZ3io",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-19T14:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2n24npKhP6g",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (Aaron Levie)",
+          "at": "2026-11-19T14:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=sof3vW4mHTs",
+          "kind": "video",
+          "label": "Anthropic (Why we built Anthropic)",
+          "at": "2026-11-19T20:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KGA7B_c_S4s",
+          "kind": "podcast",
+          "label": "AI Explained",
+          "at": "2026-11-19T19:54:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=274s",
           "kind": "podcast",
@@ -39,38 +63,9 @@
           "kind": "podcast",
           "label": "Latent Space (Claude Code on the S1)",
           "at": "2026-11-18T19:47:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=2057s",
-          "kind": "podcast",
-          "label": "Latent Space (usage from models in last six months)",
-          "at": "2026-11-18T19:47:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=9Y4HDQnvCas",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (Gary Marcus)",
-          "at": "2026-11-17T19:06:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=5014s",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast (Anthropic Q3 growth)",
-          "at": "2026-11-16T18:07:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=352s",
-          "kind": "podcast",
-          "label": "a16z",
-          "at": "2026-11-16T15:21:00Z",
-          "quote": "If you look at prediction markets for what the anthropic IPO will go for, they bounce up and down, but it's not flying above two trillion."
         }
       ],
       "history": [
-        {
-          "at": "2026-11-05T12:49:00Z",
-          "change": "No Priors: Robinhood guest says $1-2T AI-lab IPOs leave retail almost no remaining public upside; listed VC fund pitched as the pre-IPO path."
-        },
         {
           "at": "2026-11-05T21:17:00Z",
           "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
@@ -114,6 +109,119 @@
         {
           "at": "2026-11-19T04:42:00Z",
           "change": "Latent Space: speakers say IPO the day after Nov 18, ~7x oversubscribed around $80; S1-style margins 19% to 15%, 12K customers over $100K, ~70% compute on training."
+        },
+        {
+          "at": "2026-11-20T09:12:00Z",
+          "change": "Nov 19 passed with no S1. 20VC titles $1.5T/largest-ever IPO; Levie bull case on Big Technology; Anthropic posts founders origin video. Transcripts pending."
+        }
+      ]
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-11-11T06:00:00Z",
+      "updated_at": "2026-11-20T09:12:00Z",
+      "now": "AI Daily Brief headlines say Nvidia's board is refusing to bring Jensen Huang back; 20VC timestamps a reinstatement segment. The FY27 Q3 8-K still names Colette Kress interim CEO, the first filing confirming Huang is out. Alice Wang reports of $7.5B in processors and 240,000 banned chips still lack a first-party document. Q4 outlook assumes no China Data Center compute.",
+      "changed": "AI Daily Brief headlines say the Nvidia board is refusing to bring Jensen back; 20VC timestamps a reinstatement segment. Still no 8-K on a permanent CEO.",
+      "watch": "A permanent CEO; any 8-K on the Megaspeed allegations; transcripts of AI Daily Brief and 20VC on reinstatement; whether China Data Center compute returns.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=uSzew8QPRX0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-19T13:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=RZ4BBkSZ3io",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-19T14:54:00Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
+          "kind": "earnings",
+          "label": "NVIDIA FY27 Q3 8-K",
+          "at": "2026-11-17T21:20:51Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27pr.htm",
+          "kind": "earnings",
+          "label": "NVIDIA Q3 press release (EX-99.1)",
+          "at": "2026-11-17T21:20:51Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=438s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-14T00:28:00Z",
+          "quote": "Alice Wang reportedly played a key role in securing over $7.5 billion worth of Nvidia AI processors during her three-year relationship with Jensen Wang."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=1376s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-14T00:28:00Z",
+          "quote": "I found compelling forensic evidence that four leading Chinese AI labs: Deep Seeker, Moonshot, MiniMax, and Ant Group built their latest models on Nvidia's cutting-edge Blackwell chips, the export of which to China is prohibited."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1kf1QWG_YKQ",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-14T14:35:00Z"
+        },
+        {
+          "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/224815412/82298ff260f17d1395dc9c2b5cd555a0.mp3",
+          "kind": "podcast",
+          "label": "Interconnects",
+          "at": "2026-11-14T12:23:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
+        },
+        {
+          "at": "2026-11-13T14:46:00Z",
+          "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
+        },
+        {
+          "at": "2026-11-14T07:03:00Z",
+          "change": "All-In treats Huang as out; 50-150 bps growth at risk; successor talk names Renee of Arm and Nikesh. Still no Nvidia filing."
+        },
+        {
+          "at": "2026-11-14T13:42:00Z",
+          "change": "Big Technology 61-min special treats Huang as out; titles only. Still no Nvidia filing or successor."
+        },
+        {
+          "at": "2026-11-14T22:17:00Z",
+          "change": "AI Daily Brief titles Washington Fired Jensen Huang; Interconnects notes call the resignation a US open-model setback. Still no filing."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Big Technology transcript: 240k banned chips, $7.5B via Alice Wang, Singapore 22% vanished, Blackwell at DeepSeek/Moonshot/MiniMax/Ant. Still no filing."
+        },
+        {
+          "at": "2026-11-18T03:54:00Z",
+          "change": "NVIDIA 8-K names Colette Kress interim CEO, first-party confirmation Huang is out; Q4 outlook assumes no China DC compute."
+        },
+        {
+          "at": "2026-11-20T09:12:00Z",
+          "change": "AI Daily Brief headlines Nvidia board refusing to bring Jensen back; 20VC timestamps a reinstatement segment. Still no permanent-CEO 8-K."
         }
       ]
     },
@@ -349,122 +457,22 @@
       ]
     },
     {
-      "slug": "nvidia-jensen-huang-spy-allegations",
-      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-11-11T06:00:00Z",
-      "updated_at": "2026-11-18T03:54:00Z",
-      "now": "NVIDIA's FY27 Q3 8-K names Colette Kress, already CFO, as interim CEO, the first company filing to confirm Jensen Huang is out. The Alice Wang reports of $7.5B in processors and 240,000 banned H100/H200 chips still lack a first-party document. The Q4 outlook assumes no Data Center compute revenue from China. Still no permanent successor.",
-      "changed": "NVIDIA's FY27 Q3 8-K names Colette Kress interim CEO, the first company filing confirming Huang is out. Q4 outlook assumes no China Data Center compute.",
-      "watch": "A permanent CEO; any 8-K on the Megaspeed allegations; whether China Data Center compute returns in a later outlook.",
-      "evidence": [
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
-          "kind": "earnings",
-          "label": "NVIDIA FY27 Q3 8-K",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27pr.htm",
-          "kind": "earnings",
-          "label": "NVIDIA Q3 press release (EX-99.1)",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=438s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-14T00:28:00Z",
-          "quote": "Alice Wang reportedly played a key role in securing over $7.5 billion worth of Nvidia AI processors during her three-year relationship with Jensen Wang."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=1376s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-14T00:28:00Z",
-          "quote": "I found compelling forensic evidence that four leading Chinese AI labs: Deep Seeker, Moonshot, MiniMax, and Ant Group built their latest models on Nvidia's cutting-edge Blackwell chips, the export of which to China is prohibited."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1kf1QWG_YKQ",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-14T14:35:00Z"
-        },
-        {
-          "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/224815412/82298ff260f17d1395dc9c2b5cd555a0.mp3",
-          "kind": "podcast",
-          "label": "Interconnects",
-          "at": "2026-11-14T12:23:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-14T00:28:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Uv2w4VTU-iQ",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-11-14T02:28:00Z",
-          "quote": "That's potentially hundreds of billions of dollars a capital that gets turned off that's flowing to the AI economy."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
-        },
-        {
-          "at": "2026-11-13T03:38:00Z",
-          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
-        },
-        {
-          "at": "2026-11-13T14:46:00Z",
-          "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
-        },
-        {
-          "at": "2026-11-14T07:03:00Z",
-          "change": "All-In treats Huang as out; 50-150 bps growth at risk; successor talk names Renee of Arm and Nikesh. Still no Nvidia filing."
-        },
-        {
-          "at": "2026-11-14T13:42:00Z",
-          "change": "Big Technology 61-min special treats Huang as out; titles only. Still no Nvidia filing or successor."
-        },
-        {
-          "at": "2026-11-14T22:17:00Z",
-          "change": "AI Daily Brief titles Washington Fired Jensen Huang; Interconnects notes call the resignation a US open-model setback. Still no filing."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "Big Technology transcript: 240k banned chips, $7.5B via Alice Wang, Singapore 22% vanished, Blackwell at DeepSeek/Moonshot/MiniMax/Ant. Still no filing."
-        },
-        {
-          "at": "2026-11-18T03:54:00Z",
-          "change": "NVIDIA 8-K names Colette Kress interim CEO, first-party confirmation Huang is out; Q4 outlook assumes no China DC compute."
-        }
-      ]
-    },
-    {
       "slug": "enterprise-agent-economics",
       "title": "Enterprise agent economics: frontier models vs on-prem",
       "status": "developing",
       "importance": 4,
       "first_seen": "2026-11-18T13:29:00Z",
-      "updated_at": "2026-11-18T13:29:00Z",
-      "now": "On TWIML, speakers said agents consume about 20x to 50x more tokens than chatbots, so a cheaper per-token price still lifts the bill. They said HPE still sees ROI versus public frontier models at 60-70% GPU utilization, is building an internal AI factory on open-weight models such as Kimi, and that well-known automotive companies in Asia pulled agent work off AWS over sensitive data.",
-      "changed": "TWIML: speakers said agents use 20x to 50x more tokens than chatbots; HPE claims ROI at 60-70% GPU utilization versus public models; well-known Asian auto companies pulled agents off AWS over sensitive data.",
-      "watch": "Whether HPE or the auto companies first-party the AWS pullback; a 3-to-5-year on-prem versus cloud ROI; whether the 20-50x agent-token figure is sourced beyond this interview.",
+      "updated_at": "2026-11-20T09:12:00Z",
+      "now": "Latent Space titles Linear COO Cristina Cordova: over half of Linear issues now come from agents after an early MCP server; the product is billed as a database agents write to. Transcript pending. TWIML still has agents at 20x-50x chatbot tokens, HPE ROI at 60-70% GPU utilization versus public models, and well-known Asian auto companies pulling agents off AWS over sensitive data.",
+      "changed": "Latent Space: Linear COO Cristina Cordova billed as saying over half of Linear issues now come from agents; MCP server shipped early. Transcript pending.",
+      "watch": "The Linear transcript; whether Linear first-parties the >50% agent-issue figure; whether HPE or the auto companies first-party the AWS pullback.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=x0VSm6IjcDQ",
+          "kind": "podcast",
+          "label": "Latent Space (Linear, Cristina Cordova)",
+          "at": "2026-11-19T19:54:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=247s",
           "kind": "podcast",
@@ -495,6 +503,10 @@
         {
           "at": "2026-11-18T13:29:00Z",
           "change": "Created from TWIML: agents 20-50x chatbot tokens; HPE ROI at 60-70% utilization vs public models; internal AI factory on open weights; Asia auto firms pulled agents off AWS."
+        },
+        {
+          "at": "2026-11-20T09:12:00Z",
+          "change": "Latent Space titles Linear COO Cristina Cordova: over half of issues now from agents; MCP shipped early. Transcript pending."
         }
       ]
     },
@@ -504,11 +516,17 @@
       "status": "developing",
       "importance": 4,
       "first_seen": "2026-11-15T09:57:00Z",
-      "updated_at": "2026-11-18T11:31:00Z",
-      "now": "a16z titled a 16-minute episode as OpenAI's cofounder and research chief explaining self-improving AI; transcript not yet available. On Dwarkesh, speakers said Anthropic and METR reported AI's net effect on Anthropic's progress, and that Opus 5.5 is not far below internal Model 4. Claude leading 26% of Anthropic R&D, up from 1% in February, still stands.",
-      "changed": "a16z posted a 16-minute episode titled as OpenAI's cofounder and research chief explaining self-improving AI. Transcript not yet available.",
-      "watch": "The a16z transcript; whether METR publishes the net-effect figure; whether Anthropic first-parties the 26% R&D share.",
+      "updated_at": "2026-11-20T09:12:00Z",
+      "now": "Google DeepMind posted a 47-min conversation with Koray Kavukcuoglu on Gemini, AGI, and recursive self-improvement; transcript pending. a16z's OpenAI-cofounder self-improving-AI episode still has no transcript. Dwarkesh: Claude leading 26% of Anthropic R&D, up from 1% in February, still stands; Opus 5.5 said not far below internal Model 4.",
+      "changed": "DeepMind posted a 47-min Koray Kavukcuoglu conversation on Gemini, AGI, and recursive self-improvement. Transcript pending.",
+      "watch": "The DeepMind and a16z transcripts; whether METR publishes the net-effect figure; whether Anthropic first-parties the 26% R&D share.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=FORdPIWOH5k",
+          "kind": "video",
+          "label": "Google DeepMind (Koray Kavukcuoglu)",
+          "at": "2026-11-19T19:54:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=h_aA1-R70E8",
           "kind": "podcast",
@@ -548,6 +566,10 @@
         {
           "at": "2026-11-18T11:31:00Z",
           "change": "a16z titles OpenAI cofounder and research chief on self-improving AI; transcript pending."
+        },
+        {
+          "at": "2026-11-20T09:12:00Z",
+          "change": "DeepMind titles a 47-min Koray Kavukcuoglu talk on Gemini, AGI, and RSI; transcript pending."
         }
       ]
     },
@@ -557,11 +579,23 @@
       "status": "developing",
       "importance": 4,
       "first_seen": "2026-11-01T15:32:00Z",
-      "updated_at": "2026-11-18T11:31:00Z",
-      "now": "OpenAI posted a 2-minute video titled GPT-6.2 Astra and GPT-6.2 Sol, models built for the real world; transcript not yet available. DevDay treated GPT-6 Astra as shipping for hours-or-days tool use; GPT-6 Sol about $16 an hour. GPT-6 Cyber is at 52% on exploit gym versus Anthropic Mythos at about 38%, for trusted defenders. Qwen 4 is still unconfirmed.",
-      "changed": "OpenAI posted a 2-minute video titled GPT-6.2 Astra and GPT-6.2 Sol, models built for the real world. Transcript not yet available.",
-      "watch": "The OpenAI clip transcript; a first-party page naming GPT-6.2 access or pricing; a Qwen 4 confirmation from Alibaba.",
+      "updated_at": "2026-11-20T09:12:00Z",
+      "now": "AI Daily Brief titles GPT-6.2 Astra and Sol as drawing some of the worst first impressions on record, while arguing efficiency numbers tell a different story. AI Explained calls Astra OpenAI's best model and says Gemini is catching up with 4 Carbon and Neon. DevDay's hours-or-days Astra tool use and ~$16/hour Sol still stand. Qwen 4 remains unconfirmed.",
+      "changed": "AI Daily Brief titles GPT-6.2 Astra and Sol as some of the worst first impressions on record; efficiency argued as the real story. AI Explained calls Astra OpenAI's best and cites Gemini 4 Carbon and Neon.",
+      "watch": "Transcripts of AI Daily Brief and AI Explained; a first-party page naming GPT-6.2 access or pricing; a Qwen 4 confirmation from Alibaba.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=uSzew8QPRX0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-19T13:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KGA7B_c_S4s",
+          "kind": "podcast",
+          "label": "AI Explained",
+          "at": "2026-11-19T19:54:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=C1zYX5jwqq4",
           "kind": "video",
@@ -598,19 +632,6 @@
           "kind": "podcast",
           "label": "AI Explained (Fable 5.2)",
           "at": "2026-11-10T23:18:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1NQwfImTseU&t=175s",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast",
-          "at": "2026-11-05T21:00:00Z",
-          "quote": "The difference between them is about 430 Elo points."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1NQwfImTseU",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast (Clocktower eval)",
-          "at": "2026-11-05T21:00:00Z"
         }
       ],
       "history": [
@@ -649,6 +670,10 @@
         {
           "at": "2026-11-18T11:31:00Z",
           "change": "OpenAI 2-min video titles GPT-6.2 Astra and GPT-6.2 Sol; transcript pending. Qwen 4 still unconfirmed."
+        },
+        {
+          "at": "2026-11-20T09:12:00Z",
+          "change": "AI Daily Brief titles Astra/Sol worst first impressions vs efficiency; AI Explained calls Astra OpenAI's best and cites Gemini 4 Carbon/Neon. Transcripts pending."
         }
       ]
     },
