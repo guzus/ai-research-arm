@@ -1,9 +1,54 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-20T09:12:00Z",
+  "updated_at": "2026-11-20T20:02:00Z",
   "degraded": false,
-  "latest": "2026-11-20-0912",
+  "latest": "2026-11-20-2002",
   "bulletins": [
+    {
+      "id": "2026-11-20-2002",
+      "aired_at": "2026-11-20T20:02:00Z",
+      "headline": "AI Daily Brief titles Anthropic's first day of trading; still no first-party S1",
+      "path": "bulletins/2026-11-20/2002.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-20-2002.mp3",
+        "bytes": 893181,
+        "duration_s": 148.8,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 84.52,
+            "lines": [
+              0,
+              6
+            ]
+          },
+          {
+            "start_s": 85.97,
+            "end_s": 107.77,
+            "lines": [
+              7,
+              8
+            ]
+          },
+          {
+            "start_s": 109.22,
+            "end_s": 142.22,
+            "lines": [
+              9,
+              12
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "anthropic-ipo-and-ai-funding",
+        "nvidia-jensen-huang-spy-allegations",
+        "next-model-launches-qwen-4-gpt-6-2-astra"
+      ],
+      "kinds": [
+        "podcast"
+      ]
+    },
     {
       "id": "2026-11-20-0912",
       "aired_at": "2026-11-20T09:12:00Z",

@@ -1,0 +1,154 @@
+{
+  "schema": 1,
+  "id": "2026-11-20-2002",
+  "aired_at": "2026-11-20T20:02:00Z",
+  "headline": "AI Daily Brief titles Anthropic's first day of trading; still no first-party S1",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's just after eight UTC on Friday, November twentieth. This is ARA AI News."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The A I Daily Brief now titles Anthropic's first day of trading. This morning we were still saying November nineteenth had passed with no S one."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The new episode is a twenty-six minute countdown of the ten biggest days in A I history, and the show notes put Anthropic's I P O on that list with Chat G P T and the Deep Seek sell-off. Captions are not up, so we are not treating a title as a tape."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "We still have no first-party S one, no priced deal, and no exchange listing in our sources. What moved this afternoon is a podcast headline, not a prospectus."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That headline goes further than this morning's commentary. Twenty V C had billed a one point five trillion dollar largest-ever I P O, and A I Explained had already titled its episode as if the listing were happening."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The last spoken numbers have not been replaced. Latent Space had speakers saying the book was about seven times oversubscribed around eighty dollars a share, with margins from nineteen percent to fifteen, and a slight G A A P loss they called intentional."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Twelve thousand customers over a hundred thousand dollars and about seventy percent of compute still on training also still stand. Anthropic's own fifteen-minute founders video still has no captions, and Nvidia as a ten billion dollar anchor is still the last named check."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Nvidia did not move this afternoon. The last eight K still names Colette Kress as interim C E O, and this morning's Daily Brief was already saying the board is refusing to bring Jensen Huang back."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That remains a podcast claim, not a filing. The fourth-quarter outlook still assumes no China data-center compute, and there is still no eight K on a permanent chief."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "On models, G P T six point two Astra is where we left it. The Daily Brief had called the first impressions some of the worst on record, then argued the efficiency numbers tell a different story."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "A I Explained still calls Astra OpenAI's best model, and says Gemini is catching up with Four Carbon and Neon. Qwen four remains unconfirmed from Alibaba."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch for a real Anthropic S one or an exchange listing, for captions on this Daily Brief countdown, and for any Nvidia eight K that names a permanent C E O."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's just after eight UTC on Friday, November twentieth. This is ARA AI News.",
+    "Speaker 2: [high_energy] The A I Daily Brief now titles Anthropic's first day of trading. This morning we were still saying November nineteenth had passed with no S one.",
+    "Speaker 1: The new episode is a twenty-six minute countdown of the ten biggest days in A I history, and the show notes put Anthropic's I P O on that list with Chat G P T and the Deep Seek sell-off. Captions are not up, so we are not treating a title as a tape.",
+    "Speaker 2: We still have no first-party S one, no priced deal, and no exchange listing in our sources. What moved this afternoon is a podcast headline, not a prospectus.",
+    "Speaker 1: That headline goes further than this morning's commentary. Twenty V C had billed a [emphasis]one point five trillion dollar[/emphasis] largest-ever I P O, and A I Explained had already titled its episode as if the listing were happening.",
+    "Speaker 2: The last spoken numbers have not been replaced. Latent Space had speakers saying the book was about [emphasis]seven times[/emphasis] oversubscribed around [emphasis]eighty dollars[/emphasis] a share, with margins from nineteen percent to fifteen, and a slight G A A P loss they called intentional.",
+    "Speaker 1: Twelve thousand customers over a hundred thousand dollars and about seventy percent of compute still on training also still stand. Anthropic's own fifteen-minute founders video still has no captions, and Nvidia as a ten billion dollar anchor is still the last named check.",
+    "Speaker 2: [transition] Nvidia did not move this afternoon. The last eight K still names Colette Kress as interim C E O, and this morning's Daily Brief was already saying the board is refusing to bring Jensen Huang back.",
+    "Speaker 1: That remains a podcast claim, not a filing. The fourth-quarter outlook still assumes no China data-center compute, and there is still no eight K on a permanent chief.",
+    "Speaker 2: [transition] On models, G P T six point two Astra is where we left it. The Daily Brief had called the first impressions some of the worst on record, then argued the efficiency numbers tell a different story.",
+    "Speaker 1: A I Explained still calls Astra OpenAI's best model, and says Gemini is catching up with Four Carbon and Neon. Qwen four remains unconfirmed from Alibaba.",
+    "Speaker 2: Watch for a real Anthropic S one or an exchange listing, for captions on this Daily Brief countdown, and for any Nvidia eight K that names a permanent C E O.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "anthropic-ipo-and-ai-funding",
+    "nvidia-jensen-huang-spy-allegations",
+    "next-model-launches-qwen-4-gpt-6-2-astra"
+  ],
+  "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating"
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=xskAzAc_0ws",
+      "kind": "podcast",
+      "label": "The AI Daily Brief"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "anthropic-ipo-and-ai-funding"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-20-2002.mp3",
+    "bytes": 893181,
+    "duration_s": 148.8,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 84.52,
+        "lines": [
+          0,
+          6
+        ]
+      },
+      {
+        "start_s": 85.97,
+        "end_s": 107.77,
+        "lines": [
+          7,
+          8
+        ]
+      },
+      {
+        "start_s": 109.22,
+        "end_s": 142.22,
+        "lines": [
+          9,
+          12
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 3,
+    "kinds": {
+      "podcast": 2,
+      "video": 1
+    }
+  }
+}

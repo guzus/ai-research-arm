@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-20T09:12:00Z",
-  "headline": "No Anthropic S1 after the Nov 19 date; 20VC titles a $1.5T IPO; Astra mixed; Nvidia board said to refuse Jensen",
+  "updated_at": "2026-11-20T20:02:00Z",
+  "headline": "AI Daily Brief titles Anthropic's first day of trading; still no first-party S1",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -9,11 +9,17 @@
       "status": "escalating",
       "importance": 5,
       "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-20T09:12:00Z",
-      "now": "Nov 19 passed with no first-party S1 in our sources. 20VC titles a $1.5T largest-ever IPO; AI Explained titles it as happening; Big Technology posted the Aaron Levie bull case after Gary Marcus's still-untranscribed will-fail episode. Anthropic posted a 15-min founders video; transcript pending. Last spoken: Latent Space ~7x oversubscribed around $80, margins 19% to 15%.",
-      "changed": "Nov 19 passed with no S1 in our sources. 20VC titles a $1.5T largest-ever IPO; Big Technology posted the Levie bull case; Anthropic posted a founders origin video. Transcripts pending.",
-      "watch": "A first-party S1 or priced deal; whether Nvidia remains the $10B anchor; transcripts of 20VC, the Levie episode, and Anthropic's founders video.",
+      "updated_at": "2026-11-20T20:02:00Z",
+      "now": "AI Daily Brief titles Anthropic's first day of trading and lists the IPO among the ten biggest days in AI history; still no first-party S1 or exchange listing in our sources. 20VC titles a $1.5T largest-ever IPO. Latent Space last said ~7x oversubscribed around $80, margins 19% to 15%. Founders video still untranscribed.",
+      "changed": "AI Daily Brief titles Anthropic's first day of trading and counts the IPO among AI's ten biggest days. Still no first-party S1 or listing in our sources. Transcript pending.",
+      "watch": "A first-party S1, priced deal, or exchange listing; the AI Daily Brief transcript of the trading-day claim; whether Nvidia remains the $10B anchor.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=xskAzAc_0ws",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-20T02:01:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=RZ4BBkSZ3io",
           "kind": "podcast",
@@ -57,19 +63,9 @@
           "kind": "podcast",
           "label": "Latent Space (training vs inference compute)",
           "at": "2026-11-18T19:47:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=1910s",
-          "kind": "podcast",
-          "label": "Latent Space (Claude Code on the S1)",
-          "at": "2026-11-18T19:47:00Z"
         }
       ],
       "history": [
-        {
-          "at": "2026-11-05T21:17:00Z",
-          "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP."
-        },
         {
           "at": "2026-11-09T19:08:00Z",
           "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
@@ -113,6 +109,10 @@
         {
           "at": "2026-11-20T09:12:00Z",
           "change": "Nov 19 passed with no S1. 20VC titles $1.5T/largest-ever IPO; Levie bull case on Big Technology; Anthropic posts founders origin video. Transcripts pending."
+        },
+        {
+          "at": "2026-11-20T20:02:00Z",
+          "change": "AI Daily Brief titles Anthropic first day of trading and lists the IPO in a ten-biggest-days countdown. Still no first-party S1. Transcript pending."
         }
       ]
     },
