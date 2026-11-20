@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-20
+
+TOP 5 PAPERS:
+• Beam - 501B/23.4B coding-agent MoE, 1M ctx, 100M RL rollouts; 3–4× cheaper inference
+• RL is Activation Steering - DiT RL ≈ constant vectors; 90–96% of reward, 65× fewer params
+• TideCache - Song Han hybrid serving: 2.04× agent turns, 20–59% lower P50 latency
+• ViDecide - video DiTs as planners; 83.8% strict success vs 23.3% standard FT
+• Awaken-HI - 50k h whole-body humanoid VLA 93.75%; beats GR00T N1.7 and π0.5
+
+CATEGORIES: LM/NLP 10, CV/Multimodal 10, Agents/Reasoning 10, Safety 9, Other 9
+
+Full report on GitHub.
