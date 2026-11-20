@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-19T22:24:00Z",
+  "updated_at": "2026-11-20T03:41:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -137,8 +137,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-20T03:41:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "GPT 6.2 Astra is OpenAI’s best model, so for each of the last 4 years this would have been the only headline. But now Gemini is catching up fast, with 4 Carbon and Neon, and Anthropic are IPO-ing after promising imminent RSI. And even all this isn’t quite the main story, is it? We now have data on what drives model improvement, how close AI is to automating AI, and whether, as Dario Amodei of Anthropic promised, we are witnessing"
@@ -165,8 +165,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-20T03:41:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "The question isn’t simply whether humanity should race toward superintelligence or stop. Nick Bostrom argues the harder challenge is preserving the ability to slow down when safety falls behind, without turning a temporary pause into permanent technological stagnation. a16z’s Eddy Lazzarin and Elena Burger sit down with Bostrom to revisit the ideas he helped bring into the mainstream, now that increasingly capable AI systems actually exist. They discuss why alignment may become harder as models grow more situationally aware, which"
@@ -193,8 +193,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-20T03:41:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Aaron Levie is the CEO of Box. Aaron joins Big Technology to discuss the bull case for Anthropic’s IPO and the future of enterprise AI. Tune in to hear why he believes AI agents will drive massive demand, how adoption could expand beyond coding, and why cheaper models could benefit the frontier labs. We also cover AI’s reliability challenges, the risk that revenue won’t arrive before the bills come due, and how Box is putting agents to work. Hit play"
@@ -221,8 +221,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-20T03:41:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Jason Lemkin is one of the leading SaaS investors of the last decade with a portfolio including the likes of Algolia, Talkdesk, Owner, RevenueCat, Saleloft and more. Rory O’Driscoll is a General Partner @ Scale where he has led investments in category leaders such as Bill.com (BILL), Box (BOX), DocuSign (DOCU), and WalkMe (WKME), among others. Timestamps: Intro Should Jensen Huang Be Reinstated at Nvidia? Could Jensen’s Exit Strengthen Anthropic’s Position? Anthropic's $1.5 Trillion IPO: A New Era for Tech?"
