@@ -1,9 +1,65 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-20T13:31:00Z",
+  "updated_at": "2026-11-20T21:57:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "openai:WGvsk0LIveU",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "3 Tips to Save Money With ChatGPT",
+      "url": "https://www.youtube.com/watch?v=WGvsk0LIveU",
+      "video_id": "WGvsk0LIveU",
+      "audio_url": null,
+      "published_at": "2026-11-20T16:27:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-20T21:57:00Z",
+      "duration_s": 147,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-20T21:57:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "a16z:TtOoLanFzGw",
+      "show_id": "a16z",
+      "show": "a16z",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Why AI Has DHH Working 16-Hour Days",
+      "url": "https://www.youtube.com/watch?v=TtOoLanFzGw",
+      "video_id": "TtOoLanFzGw",
+      "audio_url": null,
+      "published_at": "2026-11-20T15:27:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-20T21:57:00Z",
+      "duration_s": 3136,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-20T21:57:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "hard-fork:CaAKSCQiIrE",
       "show_id": "hard-fork",
@@ -331,8 +387,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-20T21:57:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Michael Tomasello is a developmental psychologist who spent twenty years at the Max Planck Institute in Germany putting children and great apes into the same experiments, and is now back at Duke University. His book The Evolution of Agency asks what it takes for a living thing, or a machine, to act for its own reasons."
@@ -358,8 +414,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-20T21:57:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "My guest today is Jon Favreau, a political commentator and cofounder of Crooked Media. You probably know Jon best from a little show called Pod Save America, which Jon started with a group of fellow Obama staffers in the wake of Donald Trump’s election in 2016. It’s now one of the most popular podcasts in the country. So I wanted Jon to come on the show to talk through what just happened in the midterms, what helping run Crooked has"
@@ -9840,387 +9896,6 @@
           "url": "https://www.youtube.com/watch?v=OJX2L21e4fA&t=3297s"
         }
       ],
-      "description": ""
-    },
-    {
-      "id": "twiml:Dqn4sK4DWTI",
-      "show_id": "twiml",
-      "show": "The TWIML AI Podcast",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "interviews",
-        "research"
-      ],
-      "title": "How Airbnb Prevents Stale Knowledge From Poisoning Agent Context",
-      "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI",
-      "video_id": "Dqn4sK4DWTI",
-      "audio_url": null,
-      "published_at": "2026-10-21T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3078,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 9528,
-        "checked_at": "2026-11-07T00:17:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "How do we how does the average engineer use AI to move faster? That turns out to be like you have to sort of engineer your platform to make it uh easy to facilitate AI agents in your infrastructure. And then the second one is, you know, how do we deploy AI agents to the marketplace?",
-          "at_s": 153,
-          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=153s"
-        },
-        {
-          "text": "If they land that need to land a a PR in our pricing domain with a prompt and they were like, you know, apply a new pricing rule change to this to the to the pricing domain. Is it able to complete that task given that pricing engineers have been working with Everest giving it context?",
-          "at_s": 538,
-          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=538s"
-        },
-        {
-          "text": "Uh and then we look at all of the open source models and we we decide. It sounds like uh without a lot of care what you're seeing is that the model will generally say oh that's about 90% good. Yeah. Yeah.",
-          "at_s": 1008,
-          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=1008s"
-        },
-        {
-          "text": "the best indicator that you're using AI well is your road map is shifting to the right and compressing and so like we track that and I think we actually we shared stats there's so many confounding factors in everything you're saying though it is 100% granularity road map distance like yeah oh yeah totally totally uh but I think",
-          "at_s": 1256,
-          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=1256s"
-        },
-        {
-          "text": "So we've already deployed you know AI agents into production for customer support and um you know uh we've we've resol we resolve about uh 50% of all um chats with with AI. So our Agentic solutions already resolving a lot 50% of support chats in particular. Yes. Yes. All tickets. Yeah.",
-          "at_s": 1875,
-          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=1875s"
-        },
-        {
-          "text": "Including talking to friends or events or there's all sorts of or agents. Oh yeah, AI is definitely huge and like I think you know 40% or something like that of like humans in in the US use AI for uh for inspiration.",
-          "at_s": 2523,
-          "url": "https://www.youtube.com/watch?v=Dqn4sK4DWTI&t=2523s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "tesla-earnings-call:tFezqXBF-gw",
-      "show_id": "tesla-earnings-call",
-      "show": "Tesla earnings webcast",
-      "kind": "earnings-call",
-      "priority": "P1",
-      "tags": [
-        "official",
-        "earnings-call"
-      ],
-      "title": "Tesla Q3 2026 Financial Results and Q&A Webcast",
-      "url": "https://www.youtube.com/watch?v=tFezqXBF-gw",
-      "video_id": "tFezqXBF-gw",
-      "audio_url": null,
-      "published_at": "2026-10-21T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3596,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-06T02:47:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "practical-ai:rrc0ec_r6ls",
-      "show_id": "practical-ai",
-      "show": "Practical AI",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "interviews",
-        "engineering"
-      ],
-      "title": "Exploit Development, Agentic Vulnerability Discovery, and Fake PoCs |Episode #377|",
-      "url": "https://www.youtube.com/watch?v=rrc0ec_r6ls",
-      "video_id": "rrc0ec_r6ls",
-      "audio_url": null,
-      "published_at": "2026-10-21T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2547,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-06T19:41:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "nvidia:S2rX2NHzwOs",
-      "show_id": "nvidia",
-      "show": "NVIDIA",
-      "kind": "video",
-      "priority": "P1",
-      "tags": [
-        "official",
-        "compute"
-      ],
-      "title": "RFD4-Proteina: How IPD Researchers and NVIDIA Design New Proteins with AI",
-      "url": "https://www.youtube.com/watch?v=S2rX2NHzwOs",
-      "video_id": "S2rX2NHzwOs",
-      "audio_url": null,
-      "published_at": "2026-10-21T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 187,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 438,
-        "checked_at": "2026-11-06T02:47:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "It's like a 10-to-12-year process, and it's like $1 billion in between. With the introduction of RFD4-Proteina, we see these molecules that we can take directly off the computer, and not only do they bind to the target that we intend, there's this 10-to-1,000-fold increase in the tightness with which these designs are binding.",
-          "at_s": 108,
-          "url": "https://www.youtube.com/watch?v=S2rX2NHzwOs&t=108s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "latent-space:Vki6cklFqxo",
-      "show_id": "latent-space",
-      "show": "Latent Space",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "engineering"
-      ],
-      "title": "AI in NYC: How Tenex Builds an AI-Native Engineering Team — Alex Lieberman & CJ Hess",
-      "url": "https://www.youtube.com/watch?v=Vki6cklFqxo",
-      "video_id": "Vki6cklFqxo",
-      "audio_url": null,
-      "published_at": "2026-10-21T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2613,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 7552,
-        "checked_at": "2026-11-06T02:47:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "Then, when we started going upmarket from startups and mid- market companies, now, you know, 50% of our clients are Fortune 2000, and another 50% are mid-market businesses with revenue between $ 100 million and $500 million. They weren't just asking for more AI engineers. They asked for artificial intelligence as a service to transform their business.",
-          "at_s": 278,
-          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=278s"
-        },
-        {
-          "text": "Uh, roughly speaking, most companies spend, say, $ 10 to $200 per employee . Um, more AI- focused companies translate this into percentages. So, approximately 10%. Um, the average AI startup spends about 1x of its payroll on tokens. And then it grows to 5–10x in token costs. So where are you in this range?",
-          "at_s": 888,
-          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=888s"
-        },
-        {
-          "text": "For example, Micro 1, Recore, Handshake. And just what does the long-term outlook look like for these businesses, right? Because over 90 percent of their income comes from laboratories. And many of these founders would argue that they believe the situation will reverse and that in the next few years, everything will be up to corporations.",
-          "at_s": 1024,
-          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=1024s"
-        },
-        {
-          "text": "Then, after training and development within the universal LLM, agents come for programming. And the most interesting thing I've asked a few people here is, \" What percentage of companies do you think have implemented agents for programming in their engineering departments?\" And most answered: \"It should be 70 or 80%.\" This figure is closer to 50%.",
-          "at_s": 1235,
-          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=1235s"
-        },
-        {
-          "text": "So everyone owns some part of your data and says, \"Please use my agent.\" Please pay me this $20 per month. But you can't just pile up all those $10-a-month subscriptions; Ultimately, a small group of companies will likely own the interface, and everyone else will simply plug into it. Aha.",
-          "at_s": 1795,
-          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=1795s"
-        },
-        {
-          "text": "I'm even trying to imagine a corporation, let 's say, with some average SaaS product that brings in several million dollars a year. I think the first question is, will this change the situation enough to allocate engineering resources to it, in terms of a percentage of revenue or costs? I think this will be decided individually.",
-          "at_s": 1933,
-          "url": "https://www.youtube.com/watch?v=Vki6cklFqxo&t=1933s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "google-developers:SOF3_evPje8",
-      "show_id": "google-developers",
-      "show": "Google for Developers",
-      "kind": "video",
-      "priority": "P2",
-      "tags": [
-        "official",
-        "developer"
-      ],
-      "title": "Design and replicate voices with Gemini 3.8 Flash TTS",
-      "url": "https://www.youtube.com/watch?v=SOF3_evPje8",
-      "video_id": "SOF3_evPje8",
-      "audio_url": null,
-      "published_at": "2026-10-21T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 849,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 1686,
-        "checked_at": "2026-11-06T02:47:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "High energy, mid-twenties female podcast host with a strong local Buenos Aires Argentine Spanish accent hosting a radio show in Spanish. All right, there we go. And now we can also click and proof my prompt. And so now this will be a bit more detailed. And then we can click Generate Voice.",
-          "at_s": 82,
-          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=82s"
-        },
-        {
-          "text": "-Frühling less sein blaues BandWeider flatten durch die Lufte Süße, wohlbekannte DüfteStreifen ahnungsvoll dan Land. Veilchen traumen schon, Wollen balde kommen. Horch, von fern ein leiser Harfenton Frühling ja du bist's! Dich hab 'ich vernommen! -So you can hear. Now it's actually speaking German with sort of a Spanish accent.",
-          "at_s": 204,
-          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=204s"
-        },
-        {
-          "text": "We will use the latest Google Gen AI Python client. And then we will need to set up a .env file. So what we can do is we can simply copy the .env.example into a .env file. And then in a .env file we can simply go back to our AI Studio. We can click on our API key here.",
-          "at_s": 326,
-          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=326s"
-        },
-        {
-          "text": "And so we can see here we got our Argentine podcast host, we got Thor's, studio voice, and, uh, we got a bunch of other tests that we've done here. We can also say, \"create a new script to list all the pre-built voices that are available on the Gemini API in the extended voice library.\" Okay, great.",
-          "at_s": 450,
-          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=450s"
-        },
-        {
-          "text": "So yeah you can see I have a custom Irish voice there. Already custom dialog length as well. So let's do exactly this. We want a podcast with these voices about the history of Dublin. Okay, so first of all, we're using Gemini 3.8. Flash just like we instructed it to do the research. From Viking Longships to Silicon Docks.",
-          "at_s": 648,
-          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=648s"
-        },
-        {
-          "text": "This is the new Gemini 3.8 text-to-speech. You have the 3.8 Flash TTS version, which is the most expressive, most languages supported. And then we have Gemini 3.8 Flash-Lite TTS, really, for your high volume, cost efficient projects where you're generating a lot of speech a little bit less language is supported, but still really, really strong in the benchmarks.",
-          "at_s": 777,
-          "url": "https://www.youtube.com/watch?v=SOF3_evPje8&t=777s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "cognitive-revolution-live:ldpIOdGwCF0",
-      "show_id": "cognitive-revolution-live",
-      "show": "The Cognitive Revolution (live)",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "livestream"
-      ],
-      "title": "Frontier AI and the Fight Over How to Pace It | Zvi Mowshowitz",
-      "url": "https://www.youtube.com/watch?v=ldpIOdGwCF0",
-      "video_id": "ldpIOdGwCF0",
-      "audio_url": null,
-      "published_at": "2026-10-21T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 9658,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-06T02:47:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "all-in:yzk44lz-RGI",
-      "show_id": "all-in",
-      "show": "All-In Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Arvind Krishna & Nikesh Arora: Quantum Threat, Open vs Frontier AI, AI Cyber Warfare & SaaS Collapse",
-      "url": "https://www.youtube.com/watch?v=yzk44lz-RGI",
-      "video_id": "yzk44lz-RGI",
-      "audio_url": null,
-      "published_at": "2026-10-21T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2400,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 7512,
-        "checked_at": "2026-11-06T02:47:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "So, the door calculations, is anyone scaling from 10,000? Are they adding a zero every year? That's the second milestone I would mention. If you add those two steps and now add a zero for each year, that means you could reach 10 million by 2029. That's extraordinary. He can do things that will surprise everyone .",
-          "at_s": 228,
-          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=228s"
-        },
-        {
-          "text": "We are 3 years apart. We're 3 years away and I'm pretty sure everyone in this room has a few hundred million dollars of IT spending earmarked for this year and I'm guessing 50% of their spending is on infrastructure that isn't quantum secure. There was a fairly experienced AI researcher who said we don't need it. 2029? Hm? 2029?",
-          "at_s": 386,
-          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=386s"
-        },
-        {
-          "text": "We inspected all the traffic on one endpoint at a cost of $20 a year. Right? Hundreds of megabytes of traffic per endpoint at a cost of between $20 and $40 a year because machine learning runs on your endpoint, your compute, and we run it on a payload of 20, 30, or 40 megabytes.",
-          "at_s": 635,
-          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=635s"
-        },
-        {
-          "text": "We could take one of the Chinese open weighting models, take a Kimikay3, something like 800 billion parameters; and if you run your own GPUs with a little optimization—but I'm talking about a week's worth of engineering work— you could reduce the cost to around one or two dollars for a million tokens.",
-          "at_s": 781,
-          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=781s"
-        },
-        {
-          "text": "We've been paying billions of dollars to coding agents. Well, guess what? Basically, not everyone has ZVR in coding. There are tons of people who use cloud-based code and have no problem with that data training the models. So, we train these models with end users who code. These models just keep getting better at each other. Well, guess what?",
-          "at_s": 985,
-          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=985s"
-        },
-        {
-          "text": "This question has been there since 2022. The Senate had closed hearings in 2022, they had open hearings in 2023, Congress had them, the White House had them in both administrations, and they keep going around and around this question. The issue of AI regulation and data centers is driven by the Populism, not because of any reality.",
-          "at_s": 1568,
-          "url": "https://www.youtube.com/watch?v=yzk44lz-RGI&t=1568s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "ai-daily-brief:FSX5JFJS9PQ",
-      "show_id": "ai-daily-brief",
-      "show": "The AI Daily Brief",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "news-show"
-      ],
-      "title": "Why AI Companies Are Betting Personality Beats Intelligence",
-      "url": "https://www.youtube.com/watch?v=FSX5JFJS9PQ",
-      "video_id": "FSX5JFJS9PQ",
-      "audio_url": null,
-      "published_at": "2026-10-21T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1703,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-04T22:08:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
       "description": ""
     }
   ]
