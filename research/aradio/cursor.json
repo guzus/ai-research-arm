@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-20T20:02:00Z",
-  "last_editor_run_at": "2026-11-20T20:02:00Z",
+  "updated_at": "2026-11-21T03:28:00Z",
+  "last_editor_run_at": "2026-11-21T03:28:00Z",
   "last_bulletin_at": "2026-11-20T20:02:00Z",
   "keys": {
     "earn:0000002488-26-000188": "2026-11-05T06:41:00Z",
@@ -172,6 +172,7 @@
     "ep:lex-fridman:2hJkprFnzhY": "2026-11-11T09:54:00Z",
     "ep:lex-fridman:ZAzWPE9CItg": "2026-11-01T23:55:00Z",
     "ep:lex-fridman:ZAzWPE9CItg:meta": "2026-10-31T18:49:00Z",
+    "ep:lex-fridman:v1X9Fqs5a14": "2026-11-21T03:28:00Z",
     "ep:lex-fridman:v1X9Fqs5a14:meta": "2026-11-20T09:12:00Z",
     "ep:microsoft-research:K1iNbVIFcJE:meta": "2026-11-18T11:31:00Z",
     "ep:microsoft-research:KyX-aQ-pw4I:meta": "2026-11-05T06:41:00Z",
