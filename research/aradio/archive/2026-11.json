@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-20T20:02:00Z",
+  "updated_at": "2026-11-21T19:13:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -513,6 +513,70 @@
         }
       ],
       "archived_at": "2026-11-19T20:29:00Z"
+    },
+    {
+      "slug": "openai-devday-2026",
+      "title": "OpenAI's DevDay 2026 platform launches",
+      "status": "resolved",
+      "importance": 5,
+      "first_seen": "2026-11-11T09:54:00Z",
+      "updated_at": "2026-11-14T13:42:00Z",
+      "now": "OpenAI's DevDay 2026: Sites already hosts 8 million sites, with over 70% of employees making their own. It launched an Agents API on the Codex harness, GPT-Live full-duplex voice, computer use over the API, and a plugin directory of 4,000. ChatGPT token entitlements can fund third-party products. A Codex agent ran about 1,000 hours; GPT-6 Sol was put at about $16 an hour.",
+      "changed": "DevDay platform launches are absorbed into the cyber and next-model threads; no new Sites, Agents API, or GPT-Live facts this run.",
+      "watch": "Whether Sites, the Agents API, GPT-Live and Codex Security Cloud are generally available, and a first-party recap that names GPT-6 Sol, 6.1 Sol and Daybreak.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=71s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "Now, even though Sites only shipped a couple months ago, we're already hosting 8 million Sites."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=562s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "Over those 1,000 hours, the agent made just under half a million tool calls."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=1467s",
+          "kind": "video",
+          "label": "OpenAI DevDay (Codex pricing)",
+          "at": "2026-11-11T01:18:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=449s",
+          "kind": "video",
+          "label": "OpenAI DevDay (Agents API)",
+          "at": "2026-11-11T01:18:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jDxKzlGLCas",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "GPT Live is a full duplex voice model, meaning unlike other voice models which are architected around user and assistant turns, GPT Live is constantly streaming audio in and out."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=232s",
+          "kind": "video",
+          "label": "OpenAI",
+          "at": "2026-11-11T01:18:00Z",
+          "quote": "There are now 4,000 plugins in the directory."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "Created from DevDay 2026 talks: 8M Sites, Agents API, GPT-Live, 4,000 plugins, token entitlements, and a 1,000-hour Codex CI run at about $16/hour."
+        },
+        {
+          "at": "2026-11-14T13:42:00Z",
+          "change": "Resolved: DevDay 2026 launches absorbed; Mozilla GPT-6 Cyber follow-on lives on the cyber thread."
+        }
+      ],
+      "archived_at": "2026-11-21T19:13:00Z"
     }
   ],
   "history": [
