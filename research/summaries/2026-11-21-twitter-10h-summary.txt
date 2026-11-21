@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-11-21 10:53:42 UTC
+
+CYCLE: Elon hedges Alpöge’s Claude-assisted RH Lean proof; OpenAI posts GPT-6.2 distillation numbers; Inkling 2 Mini runs on 16GB
+
+TOP STORIES:
+• Elon hedges Alpöge’s Claude-assisted Riemann Lean proof after an independent compile reports it typechecks [⚠]
+• OpenAI distillation paper treats GPT-6.2 Astra as shipped; reasoning-trace extraction 54%→0.2% [✓]
+• Thinking Machines ships Inkling 2 Mini: 26.4B looped MoE, Apache 2.0, 16GB RAM [✓]
+
+WATCH: Anthropic statement or a named mathematician on whether the Lean RH is classical RH
+
+Full update on GitHub.
