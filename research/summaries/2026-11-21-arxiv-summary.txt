@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-21
+
+TOP 5 PAPERS:
+• One text unmasks the author - Fable 5.2 names 39% of Oct–Nov 2026 reviews; Opus 5.5 98% lab ID
+• Budget Internalization - RLVR caps freeze test-time scaling; in-budget win, worse if you spend more
+• TwinLab-Bench - AI scientists in real-lab twins; Fable 5.2 only 45.0 on 52 self-designed experiments
+• Streaming-AAA - 1080p game video at 43 FPS / 198 ms on A800s; infinite play without collapse
+• G-MTP - Gemma 4 multi-token drafter; 3.1× server / 2.2× phone GPU speculative decoding
+
+CATEGORIES: LM/NLP 10, CV/Multimodal 10, Agents/Reasoning 10, Safety 9, Other 9
+
+Full report on GitHub.
