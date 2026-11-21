@@ -4,10 +4,11 @@ title: The verification bottleneck
 type: concept
 aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics", "Math 2.0", "Exponential Time Hypothesis"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: Models emit research-shaped output faster than specialists can check it; Anthropic is the second lab in a day to claim ETH is false, and Axiom says agent swarms produced ~40M lines of Lean for CFSG.
+description: Models emit research-shaped output faster than specialists can check it; Anthropic mathematician Levent Alpöge posted a Claude-assisted Lean RH/GRH artifact, while a competing 940-page human GRH draft is under major revision.
 created_at: 2026-08-02
-timestamp: 2026-10-28T00:00:00Z
+timestamp: 2026-11-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
@@ -659,3 +660,12 @@ new dump or a Clay decision
   Same unverified-artifact
   class (@psipbc; ARA
   daily digest 2026-10-28).
+
+## Alpöge RH/GRH Lean dump vs Masullo human GRH (2026-11-21)
+
+- **[[anthropic]] mathematician Levent Alpöge posted a four-page note plus a 14-part Lean archive** arguing a Claude-assisted proof of the Riemann Hypothesis that “easily extends” to GRH. The dump is **not an arXiv paper**. Hacker News jumped overnight to **2,347 points / 1,587 comments** (from 1,160 / 750 at 2026-11-20 16:59 UTC), the largest AI story and comment thread of the cycle (HN, The Verge, TechCrunch, Simon Willison; ARA daily digest 2026-11-21).
+- **Formal certificates still do not settle the social claim.** Terence Tao ranks that Lean-only artifact the **least digested of three AI-assisted claims**. Scott Aaronson stamps **17.4 million Lean lines** and bets the proof will stand, noting that so far no AI result with Lean certificates has needed retraction. Clay’s **$1M Millennium Prize** still requires publication, two years, and general acceptance — Lean type-checking is not that process. See [[astra]] for the same certificate-vs-significance split.
+- **Stanford’s Ravi Vakil hurried out Alessandro Masullo’s 940-page GRH draft** after Brian Conrad’s months of review, stressing it is **“all human, with no AI.”** Conrad says the paper is undergoing **major revision**; an in-progress Lean autoformalization notes **Chapter 13 does not yet state its main theorem**. HN 1,533 / 696. Competing human and AI-assisted artifacts, neither independently accepted (HN, Simon Willison, Latent Space; ARA daily digest 2026-11-21).
+- **Tao split two fluid-dynamics claims from GRH.** Alpöge/Buckmaster/Coiculescu have a human-readable Lean-formalized finite-time blowup for **unforced 3D Euler**; the unforced Navier–Stokes companion is “technically human-readable” but still needs a professionally written proof. Distinct from [[openai]]’s September forced-breakdown claim; not independently reproduced in this digest (HN, Terence Tao; ARA daily digest 2026-11-21).
+- **AlphaProof Lean-proves no complex monochromatic photonic GHZ graph for even N≥4** (arXiv 2611.26291). Another Lean certificate whose mathematical significance is still for specialists, not the digest, to judge. See [[google]].
+- **A related checking problem sits on [[weight-space-programming]]:** a multi-lab paper says Qwen3.5 can rewrite its own weights, but only the 27B improves or repairs — 4B/9B break themselves. The artifact is a checkpoint, not a proof, and still needs independent eval.

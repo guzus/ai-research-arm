@@ -2,17 +2,18 @@
 slug: nvidia
 title: NVIDIA
 type: entity
-aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra", "Nemotron 3.5 Bolt", "Nemotron 3.5 Bolt E4B", OpenShell, "NVIDIA Sentry", "Open Agent Safety Platform", "BlueField-4", "DGX Spark"]
+aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra", "Nemotron 3.5 Bolt", "Nemotron 3.5 Bolt E4B", OpenShell, "NVIDIA Sentry", "Open Agent Safety Platform", "BlueField-4", "DGX Spark", "Nemotron-Labs-Sigma", "Nemotron Labs Sigma"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: Dominant AI-accelerator supplier; says it will put $3B into Meta's common-stock raise and that Meta will expand Vera Rubin deployments.
+description: Dominant AI-accelerator supplier; Reuters sources say SEC staff are looking at accounting issues, and The Information says Nvidia is close to buying Inception for at least $500 million.
 created_at: 2026-06-05
-timestamp: 2026-10-28T00:00:00Z
+timestamp: 2026-11-21T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-19", path: research/digest/2026-10-19-digest.md}
@@ -854,4 +855,31 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   the Meta print
   (TechCrunch; ARA daily
   digest 2026-10-28).
+
+## SEC inquiry, Inception talks, Sigma diffusion (2026-11-21)
+
+- **Reuters sources say SEC enforcement staff are scrutinizing potential
+  accounting issues.** Neither the SEC nor Nvidia commented, and Reuters
+  could not say when the inquiry opened. It is a confidential inquiry
+  described by two anonymous people, **not an SEC filing and not a finding
+  of wrongdoing.** Local sources recap the same window against a **Huang
+  ouster**, alleged Megaspeed export-control shipments (China denies Alice
+  Huang is a spy; Megaspeed says she left August 2025), and a **DOJ review
+  of the $12.9 billion [[hugging-face]] deal**. Shares have been tumbling
+  **more than a third**. Treat the ouster and export-control items as
+  digest-stated context for the tape, not as adjudicated facts here (HN /
+  Reuters, TechCrunch; ARA daily digest 2026-11-21).
+- **The Information says Nvidia is close to acquiring two-year-old
+  Inception for at least $500 million** to add diffusion language models to
+  Nemotron. The deal has **not closed**. Same-day, NVIDIA AI released
+  **Nemotron-Labs-Sigma**: **14 open 3B/8B continuous-diffusion
+  checkpoints**. Sigma denoises in a **16-D embedding space**; the vendor
+  says it decodes up to **4.20×** faster than autoregressive decoding. The
+  checkpoints make the diffusion thesis visible even if Inception talks
+  stall. See [[open-weights]] (The Decoder, MarkTechPost; ARA daily digest
+  2026-11-21).
+- **[[thinking-machines|Inkling 2 Mini]]’s Stanford Hazy “intelligence per
+  joule” number was measured on DGX Spark** (0.703 vs 0.430 for a Qwen 3.6
+  MoE). Hardware context for that open-weights drop, not an Nvidia product
+  announcement.
 

@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha", "Pierre Computer", "Images 2.6", "GPT-Image-2.6"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; a cyber pipeline produced 948 Linux LPEs at $1,279 each, Images 2.6 added GIFs, and the company agreed to acquire Pierre Computer.
+description: Frontier lab behind the GPT family; a layered mix of training, detection, and enforcement cut protected-reasoning extraction from GPT-6.2 Astra and Sol from 54% to 0.2% in adaptive red-teaming.
 created_at: 2026-05-30
-timestamp: 2026-11-05T00:00:00Z
+timestamp: 2026-11-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA model ticket — OpenAI Cathedral security sprint", path: research/models/tickets/openai-cathedral-security-sprint-2026-11.md}
@@ -3731,9 +3732,20 @@ materially reshape how the lab is positioned heading into its IPO window:
   Decoder; ARA daily digest 2026-11-05).
 - **Secondary posts still float GPT-6.2 Astra, Sol, and a Cyber
   SKU as soon as Friday 2026-11-07.** OpenAI posted nothing in the
-  captured window; treat Friday as a rumor until an API row or
+  captured window;   treat Friday as a rumor until an API row or
   model card appears (Twitter 21:00 UTC; ARA daily digest
   2026-11-05).
+
+## Distillation defenses on GPT-6.2 Astra and Sol (2026-11-21)
+
+- **OpenAI says a layered mix of training, detection, and enforcement cut
+  protected-reasoning extraction from [[astra|GPT-6.2 Astra]] and
+  [[gpt-6|GPT-6.2 Sol]] from 54% to 0.2% success in adaptive red-teaming.**
+  That is a first-party red-team result, not an independent audit of whether
+  traces still leak in the wild. The 2026-11-05 ingest still treated GPT-6.2
+  Astra/Sol as a rumor SKU; this write-up names them as the protected
+  targets of the defense stack. See [[agentic-ai-security]] (OpenAI, The
+  Decoder; ARA daily digest 2026-11-21).
 
 ## Open questions
 

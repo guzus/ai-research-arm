@@ -4,15 +4,16 @@ title: Google
 type: entity
 aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub, "Gemini Enterprise", "AlphaProof Nexus", AlphaProof, "Genie 4", "UK AI Biosecurity Lab"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; Alphabet Q3 Cloud more than doubled to $30.7B, and Gemini 4 Carbon took the AA v5 lead behind a Fairwind gate.
+description: Hyperscaler behind Gemini; desktop Search dropped the search button for an AI chat-history sidebar, and Gemini for Mac can operate desktop apps via Computer Use.
 created_at: 2026-07-17
-timestamp: 2026-10-29T00:00:00Z
+timestamp: 2026-11-21T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA model ticket — UK AI Biosecurity Lab", path: research/models/tickets/google-deepmind-uk-ai-biosecurity-lab-2026-10.md}
@@ -1181,6 +1182,28 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   objects vanish (DeepMind,
   TechCrunch, Ars; ARA daily
   digest 2026-10-29).
+
+## Search button gone; Gemini Computer Use; Duplex history (2026-11-21)
+
+- **Google Search dropped the search button.** The desktop homepage now
+  opens with an AI chat-history sidebar and no search button. Unsaved
+  temporary threads also roll out worldwide as Search leans further toward
+  an answer engine (Ars Technica, The Decoder; ARA daily digest
+  2026-11-21).
+- **Gemini for Mac Computer Use** can operate desktop apps, local files,
+  and websites in an isolated background window with a live preview.
+  [[apple]] is separately building its own device-control agent while
+  tightening rival-agent access — the platform-policy counterpart of
+  Signal’s screenshot block on [[agentic-ai-security]] (The Decoder; ARA
+  daily digest 2026-11-21).
+- **Google Research traces Duplex from the 2018 demo to placing business
+  calls from Gemini.** The feed blurb is only the category tag, so treat
+  the post as a **product-history note rather than a new API launch**
+  (Google Research; ARA daily digest 2026-11-21).
+- **AlphaProof Lean-proves no complex monochromatic photonic GHZ graph
+  for even N≥4** (arXiv 2611.26291). Certificate-class math, same
+  verification problem as the Alpöge RH dump on
+  [[verification-bottleneck]].
 
 ## Open questions
 

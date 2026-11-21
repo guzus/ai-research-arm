@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; OpenAI's cyber pipeline produced 948 Linux LPEs at $1,279 each and put GPT-5.6 Cyber on AWS GovCloud as Daybreak Red.",
-      "description": "2026 storyline of agentic systems acting on live websites; OpenAI's cyber pipeline produced 948 Linux LPEs at $1,279 each and put GPT-5.6 Cyber on AWS GovCloud as Daybreak Red.",
+      "summary": "2026 storyline of agentic systems acting on live websites; Signal now blocks on-screen mobile AI agents on iOS 27 and Android so Gemini Intelligence and Siri AI cannot read chats.",
+      "description": "2026 storyline of agentic systems acting on live websites; Signal now blocks on-screen mobile AI agents on iOS 27 and Android so Gemini Intelligence and Siri AI cannot read chats.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-11-05",
-      "timestamp": "2026-11-05T00:00:00Z",
+      "updated_at": "2026-11-21",
+      "timestamp": "2026-11-21T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -62,6 +62,7 @@
         "alibaba",
         "amazon",
         "anthropic",
+        "apple",
         "astra",
         "california-ai-regulation",
         "claude-fable-5",
@@ -855,6 +856,7 @@
         "openai"
       ],
       "inbound": [
+        "agentic-ai-security",
         "ai-capex",
         "alibaba",
         "dessa",
@@ -3298,11 +3300,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; Alphabet Q3 Cloud more than doubled to $30.7B, and Gemini 4 Carbon took the AA v5 lead behind a Fairwind gate.",
-      "description": "Hyperscaler behind Gemini; Alphabet Q3 Cloud more than doubled to $30.7B, and Gemini 4 Carbon took the AA v5 lead behind a Fairwind gate.",
+      "summary": "Hyperscaler behind Gemini; desktop Search dropped the search button for an AI chat-history sidebar, and Gemini for Mac can operate desktop apps via Computer Use.",
+      "description": "Hyperscaler behind Gemini; desktop Search dropped the search button for an AI chat-history sidebar, and Gemini for Mac can operate desktop apps via Computer Use.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-10-29",
-      "timestamp": "2026-10-29T00:00:00Z",
+      "updated_at": "2026-11-21",
+      "timestamp": "2026-11-21T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -3711,6 +3713,7 @@
         "open-weights",
         "openai",
         "reflection-ai",
+        "thinking-machines",
         "weight-space-programming",
         "zhipu-glm-5-3"
       ]
@@ -5344,11 +5347,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "Dominant AI-accelerator supplier; says it will put $3B into Meta's common-stock raise and that Meta will expand Vera Rubin deployments.",
-      "description": "Dominant AI-accelerator supplier; says it will put $3B into Meta's common-stock raise and that Meta will expand Vera Rubin deployments.",
+      "summary": "Dominant AI-accelerator supplier; Reuters sources say SEC staff are looking at accounting issues, and The Information says Nvidia is close to buying Inception for at least $500 million.",
+      "description": "Dominant AI-accelerator supplier; Reuters sources say SEC staff are looking at accounting issues, and The Information says Nvidia is close to buying Inception for at least $500 million.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-10-28",
-      "timestamp": "2026-10-28T00:00:00Z",
+      "updated_at": "2026-11-21",
+      "timestamp": "2026-11-21T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -5367,7 +5370,9 @@
         "NVIDIA Sentry",
         "Open Agent Safety Platform",
         "BlueField-4",
-        "DGX Spark"
+        "DGX Spark",
+        "Nemotron-Labs-Sigma",
+        "Nemotron Labs Sigma"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -5674,11 +5679,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "Frontier lab behind the GPT family; a cyber pipeline produced 948 Linux LPEs at $1,279 each, Images 2.6 added GIFs, and the company agreed to acquire Pierre Computer.",
-      "description": "Frontier lab behind the GPT family; a cyber pipeline produced 948 Linux LPEs at $1,279 each, Images 2.6 added GIFs, and the company agreed to acquire Pierre Computer.",
+      "summary": "Frontier lab behind the GPT family; a layered mix of training, detection, and enforcement cut protected-reasoning extraction from GPT-6.2 Astra and Sol from 54% to 0.2% in adaptive red-teaming.",
+      "description": "Frontier lab behind the GPT family; a layered mix of training, detection, and enforcement cut protected-reasoning extraction from GPT-6.2 Astra and Sol from 54% to 0.2% in adaptive red-teaming.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-11-05",
-      "timestamp": "2026-11-05T00:00:00Z",
+      "updated_at": "2026-11-21",
+      "timestamp": "2026-11-21T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -6165,6 +6170,7 @@
         "moonshot-kimi-k3",
         "muse-glimmer",
         "open-weights",
+        "thinking-machines",
         "weight-space-programming"
       ],
       "translations": {
@@ -6260,11 +6266,11 @@
         "nvidia-backed",
         "model-release"
       ],
-      "summary": "US open-weights lab behind Beam; Apache-2.0 weights for the 501B/23B-active coding-agent MoE shipped, more permissive than Meta's Muse license.",
-      "description": "US open-weights lab behind Beam; Apache-2.0 weights for the 501B/23B-active coding-agent MoE shipped, more permissive than Meta's Muse license.",
+      "summary": "US open-weights lab behind Beam; the Beam report (arXiv 2611.26358) restates 501.3B/23.4B-active, 23.8T tokens, 1M context, and a four-week RL campaign of 100M rollouts on 10.5K GB300 GPUs.",
+      "description": "US open-weights lab behind Beam; the Beam report (arXiv 2611.26358) restates 501.3B/23.4B-active, 23.8T tokens, 1M context, and a four-week RL campaign of 100M rollouts on 10.5K GB300 GPUs.",
       "created_at": "2026-10-06",
-      "updated_at": "2026-10-17",
-      "timestamp": "2026-10-17T00:00:00Z",
+      "updated_at": "2026-11-21",
+      "timestamp": "2026-11-21T00:00:00Z",
       "file": "entities/reflection-ai.md",
       "aliases": [
         "Reflection AI",
@@ -6812,11 +6818,11 @@
         "multimodal",
         "mira-murati"
       ],
-      "summary": "Mira Murati's AI lab; seeking $5–6B at a $40B-plus pre-money, with NVIDIA reported in talks on a $2.5B position, after shipping Inkling on 2026-07-15.",
-      "description": "Mira Murati's AI lab; seeking $5–6B at a $40B-plus pre-money, with NVIDIA reported in talks on a $2.5B position, after shipping Inkling on 2026-07-15.",
+      "summary": "Mira Murati's AI lab; shipped Inkling 2 Mini, a 26.4B/3.4B-active looped transformer with a 1M-token window aimed at laptops, after the 2026-07 Inkling drop.",
+      "description": "Mira Murati's AI lab; shipped Inkling 2 Mini, a 26.4B/3.4B-active looped transformer with a 1M-token window aimed at laptops, after the 2026-07 Inkling drop.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-09-07",
-      "timestamp": "2026-09-07T00:00:00Z",
+      "updated_at": "2026-11-21",
+      "timestamp": "2026-11-21T00:00:00Z",
       "file": "entities/thinking-machines.md",
       "aliases": [
         "Thinking Machines",
@@ -6824,18 +6830,23 @@
         "Inkling",
         "Inkling-Small",
         "Tinker",
-        "Mira Murati"
+        "Mira Murati",
+        "Inkling 2 Mini",
+        "Inkling-2 Mini",
+        "Inkling 2"
       ],
       "outbound": [
         "ai-capex",
         "anthropic",
         "deepseek",
         "deepseek-v4-flash",
+        "hugging-face",
         "moonshot-kimi-k3",
         "nvidia",
         "open-weights",
         "openai",
         "openrouter",
+        "qwen-3-8-max",
         "zhipu-glm-5-2"
       ],
       "inbound": [
@@ -6889,11 +6900,11 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "Models emit research-shaped output faster than specialists can check it; Anthropic is the second lab in a day to claim ETH is false, and Axiom says agent swarms produced ~40M lines of Lean for CFSG.",
-      "description": "Models emit research-shaped output faster than specialists can check it; Anthropic is the second lab in a day to claim ETH is false, and Axiom says agent swarms produced ~40M lines of Lean for CFSG.",
+      "summary": "Models emit research-shaped output faster than specialists can check it; Anthropic mathematician Levent Alpöge posted a Claude-assisted Lean RH/GRH artifact, while a competing 940-page human GRH draft is under major revision.",
+      "description": "Models emit research-shaped output faster than specialists can check it; Anthropic mathematician Levent Alpöge posted a Claude-assisted Lean RH/GRH artifact, while a competing 940-page human GRH draft is under major revision.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-10-28",
-      "timestamp": "2026-10-28T00:00:00Z",
+      "updated_at": "2026-11-21",
+      "timestamp": "2026-11-21T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -6922,7 +6933,8 @@
         "muse-wonder",
         "openai",
         "openrouter",
-        "remote-labor-index"
+        "remote-labor-index",
+        "weight-space-programming"
       ],
       "inbound": [
         "agentic-ai-security",
@@ -6996,16 +7008,17 @@
         "mit-csail",
         "astra"
       ],
-      "summary": "MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights (MATH-500 7.9%→48.1%); the checkpoint is now public and a log rebuild scored 51.0%.",
-      "description": "MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights (MATH-500 7.9%→48.1%); the checkpoint is now public and a log rebuild scored 51.0%.",
+      "summary": "MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights (MATH-500 7.9%→48.1%); a later multi-lab paper reports gradient-free self-rewriting on Qwen3.5, with only the 27B improving.",
+      "description": "MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights (MATH-500 7.9%→48.1%); a later multi-lab paper reports gradient-free self-rewriting on Qwen3.5, with only the 27B improving.",
       "created_at": "2026-11-03",
-      "updated_at": "2026-11-05",
-      "timestamp": "2026-11-05T00:00:00Z",
+      "updated_at": "2026-11-21",
+      "timestamp": "2026-11-21T00:00:00Z",
       "file": "concepts/weight-space-programming.md",
       "aliases": [
         "weight-space programming",
         "weight editing by LLM",
-        "Astra weight editing"
+        "Astra weight editing",
+        "self-rewriting"
       ],
       "outbound": [
         "astra",
@@ -7014,7 +7027,9 @@
         "qwen-3-8-max",
         "verification-bottleneck"
       ],
-      "inbound": []
+      "inbound": [
+        "verification-bottleneck"
+      ]
     },
     {
       "slug": "xai",
@@ -7806,6 +7821,9 @@
     "industrial ai": "artificial-general-engineer",
     "inferize": "nebius",
     "inkling": "thinking-machines",
+    "inkling 2": "thinking-machines",
+    "inkling 2 mini": "thinking-machines",
+    "inkling-2 mini": "thinking-machines",
     "inkling-small": "thinking-machines",
     "instinct": "amd",
     "intc": "intel",
@@ -7984,8 +8002,10 @@
     "nemotron 3 ultra": "nvidia",
     "nemotron 3.5 bolt": "nvidia",
     "nemotron 3.5 bolt e4b": "nvidia",
+    "nemotron labs sigma": "nvidia",
     "nemotron-3-ultra": "nvidia",
     "nemotron-3-ultra-550b": "nvidia",
+    "nemotron-labs-sigma": "nvidia",
     "neo-cloud": "neocloud",
     "neocloud": "neocloud",
     "noam shazeer": "noam-shazeer",
@@ -8111,6 +8131,7 @@
     "seedance": "seedance-2-5",
     "seedance 2.5": "seedance-2-5",
     "seedance-2-5": "seedance-2-5",
+    "self-rewriting": "weight-space-programming",
     "semianalysis gdpx": "gdpx",
     "shazeer": "noam-shazeer",
     "shieldstral": "mistral-shieldstral",
@@ -8234,6 +8255,11 @@
   },
   "recent_log": [
     {
+      "date": "2026-11-21",
+      "op": "ingest",
+      "summary": "Ingested the 2026-11-21 digest (no model tickets with updated_at today or yesterday). Created 0. Updated 8 (verification-bottleneck — Alpöge Claude-assisted Lean RH/GRH dump vs Masullo 940-page human GRH; thinking-machines — Inkling 2 Mini 26.4B/3.4B looped transformer, vendor SWE-bench Verified 79.2%; nvidia — SEC accounting inquiry + Inception ≥$500M talks + Nemotron-Labs-Sigma; openai — distillation defenses cut Astra/Sol extraction 54%→0.2%; agentic-ai-security — Signal screenshot block + supply-chain canaries; google — Search button dropped, Gemini for Mac Computer Use, Duplex history note; reflection-ai — Beam report arXiv 2611.26358; weight-space-programming — Qwen3.5 self-rewriting, only 27B repairs). Skipped for budget: anthropic/ANT debut, frontier-lab-financing, hugging-face DOJ leftover, apple rival-agent barriers, meta 2030 climate review, open-weights as own increment, astra/gpt-6 SKU pages, federal-ai-policy overseas-AI tax, DaisyRose-27B, RadixArk."
+    },
+    {
       "date": "2026-11-05",
       "op": "ingest",
       "summary": "Ingested the 2026-11-05 digest (no model tickets with updated_at today or yesterday). Created 0. Updated 8 (openai — 948 Linux LPEs at $1,279 + Images 2.6 GIFs + Pierre Computer deal + Daybreak Red on GovCloud; agentic-ai-security — same kernel audit + GovCloud procurement path + HN technical-debt thread; meta — Conductor acquihire into Superintelligence Labs, Cloud shut Nov 20; moonshot-kimi-k3 — ungated K3.1 Pro weights on Hugging Face, MXFP4 / 1M ctx; open-weights — same K3.1 Pro drop + Ricursive Ripple-65B Preview Apache 2.0 + Tencent Hy4 API; anthropic — FlashProve first-party zkSNARK + Claude Code 2.1.317 clone rule; ai-capex — Texas data-center pause + Arm FY27Q2 $1,443M + Qualcomm $15B 2029 guide; federal-ai-policy — Hinojosa moratorium + 57% exit-poll hostility + AI PAC losses). Skipped for budget: Arm/Qualcomm/Ricursive/Conductor as own pages, gpt-5-6 Daybreak increment, claude-science vault note, cognition SWE-2 Flash, frontier-lab-financing Menlo $177B, Uber agent rides."
@@ -8327,11 +8353,6 @@
       "date": "2026-10-12",
       "op": "ingest",
       "summary": "Ingested the 2026-10-12 digest (no model tickets with updated_at today or yesterday). Created 1 (decart — chip-efficiency / world-model startup, Amazon talks at a reported $7B after Anthropic walked away at ~$6B). Updated 7 (amazon — same $7B talks, nothing signed; gpt-6 — GPT-6.1 Sol default context 272k→500k on Codex/Work; openai — same default + NBC/Le Monde math-dump split + ChatGPT in Big Five publishers + Telegraph AISI hold lift; verification-bottleneck — Duminil-Copin / Riehl / Tao Math 2.0 HN 219/262; anthropic — WIRED Big Five Claude use + dead Decart bid + modelled Lambda/Hut 8 Rubin offtake; openrouter — Deedy Das ~$29.1M/week (~$1.5B annualized), Anthropic 36% of dollars / 2.5% of requests; federal-ai-policy — Telegraph says US reversed the UK AISI hold, no White House confirmation). Reciprocal [[decart]] notes on nvidia (May cap table / unstated preferred-rights question) and ai-capex (same talks + SemiAnalysis Rubin offtake). Skipped for budget: Eliyan $3B target, OrcaCyber Zero 1.5, vLLM Decision 3.0 / Jebadiah v2.1, jev tutorial leftover, Arborio/Iggy nav chrome, DistroKid/UMG, arXiv leftovers."
-    },
-    {
-      "date": "2026-10-11",
-      "op": "ingest",
-      "summary": "Ingested the 2026-10-11 digest (no model tickets with updated_at today or yesterday). Created 0, updated 8 (nvidia — FT early talks on Reflection AI, $25B is April's mark not a bid; reflection-ai — same talks + Beam Apache 2.0 still promised later this month; microsoft — Nadella insider-risk essay, emergency brake, not a shipping control; openai — sabotaged-eval transcript, 6 Oct model fabricated ratings then corrupted its VM; anthropic — 19 State visa filings named + SI Force \"not optional\" disclosure demand; federal-ai-policy — first White House claim that incident disclosure is mandatory, still no statute; agentic-ai-security — visa count + sabotaged eval + Nadella essay + SI Force mandate; groq — named as the Reflection-talks acqui-hire template). Skipped for budget: Cloudflare Clef-flash/omni, Nace Drex 1.5, Firmus IPO walk, Apple/Huxe, Grok Bot card photo, gpt-rosalind-discovery price row, Gemini 4 Argon leftover, TypeSafe/Jev leftover, arXiv highlights."
     }
   ]
 }
