@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-21T12:57:00Z",
+  "updated_at": "2026-11-21T20:40:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -25,8 +25,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-21T12:57:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-21T20:40:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Former Biden administration AI advisors Ben Buchanan and Tantum Collins join Nathan to discuss their book, The Bitter Struggle, and their experience shaping U.S. policy on compute supply chains and export controls. Drawing on their backgrounds in government and DeepMind, they unpack the geopolitical strategy of building an allied compute lead over China in order to spend that advantage on safety. The conversation probes the clash between frontier lab idealism and national security, bilateral talks over AI risks in nuclear"
@@ -53,8 +53,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-21T12:57:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-21T20:40:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Chamath's theory on 10 AI Megacorps that go \"Dirt to Application\" Anthropic goes public, how companies are handling AI disruption Bull/bear case for Anthropic and the market White House weighs new open source disclosure rule for Chinese models State of Nvidia: Tanking stock, talent crisis, legal issues, Jensen's future Referenced in the show:"
@@ -81,8 +81,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-21T12:57:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-21T20:40:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "ChatGPT can help you find ways to save, whether you’re shopping for a desk chair or wondering what you’re still paying for after a free trial ends. Learn three ways to save money with ChatGPT. Use a product screenshot to compare prices before you buy, spot subscriptions you no longer use, and build a monthly budget that leaves room for things you enjoy."
@@ -109,8 +109,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-21T12:57:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-21T20:40:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "David Heinemeier Hansson thinks the agent era is reopening a window in computing that has been closed for decades: the chance to build a new operating system people actually want to use. DHH joins a16z General Partners Martin Casado and Anish Acharya to explain why he’s building Omarchy, an agent-first Linux distribution designed around a computer that users can modify simply by asking. They discuss why the command lines, config files, and detailed error messages that once made Linux intimidating"
@@ -9603,386 +9603,6 @@
         }
       ],
       "description": "a16z is expanding a16z crypto into a16z Frontier, a broader mandate to back founders building at the edges of what's possible. Chris Dixon joins Marc Andreessen, Ben Horowitz, and Erik Torenberg to explain why founders should increasingly ask not “is this too ambitious?” but “is this ambitious enough?” — and how AI could pull decades of technological progress forward across hardware, robotics, entertainment, science, and entirely new forms of media. They also explore the coming internet of AI agents, why"
-    },
-    {
-      "id": "no-priors:PST8yesYOSo",
-      "show_id": "no-priors",
-      "show": "No Priors",
-      "kind": "podcast",
-      "priority": "P0",
-      "tags": [
-        "interviews",
-        "startups"
-      ],
-      "title": "The New Apex Predator: CrowdStrike CEO George Kurtz on Adversaries Armed With AI Agents",
-      "url": "https://www.youtube.com/watch?v=PST8yesYOSo",
-      "video_id": "PST8yesYOSo",
-      "audio_url": null,
-      "published_at": "2026-10-22T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2728,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 8525,
-        "checked_at": "2026-11-04T22:08:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "I know we talked earlier, um, we talked a little bit about our open source models versus closed source models or open weight models. Do you see a change where most of them are open-weight models? Is it a mix, meaning people using state-of-the-art laboratories and capabilities? What are people actually using to carry out these attacks at the moment?",
-          "at_s": 293,
-          "url": "https://www.youtube.com/watch?v=PST8yesYOSo&t=293s"
-        },
-        {
-          "text": "If you want to use our models, fantastic. Our models will be much cheaper. So , just to give you an example, for a general recovery, if you use, for example, the top-tier cybersecurity frontier model, it's probably going to cost you about $10. Ours costs about 3 cents. So, there is a huge difference in cost, which is important.",
-          "at_s": 1251,
-          "url": "https://www.youtube.com/watch?v=PST8yesYOSo&t=1251s"
-        },
-        {
-          "text": "Of course, within 2 years you will have local models that will all run on people's computers. Um, you know, you could have a combination of local models plus some sort of last mile routing to the borders in terms of what they look like. You will have many more open weight models.",
-          "at_s": 1443,
-          "url": "https://www.youtube.com/watch?v=PST8yesYOSo&t=1443s"
-        },
-        {
-          "text": "But ultimately, there's just too much cost now, and when ... You look at a lot of these advanced models, that is, they become commercialized. If Chinese models are 3 months behind, you know, many companies think: 3 months is not what I will get from this? I do whatever I want. And therein lies the challenge.",
-          "at_s": 1748,
-          "url": "https://www.youtube.com/watch?v=PST8yesYOSo&t=1748s"
-        },
-        {
-          "text": "So I think chips are important. Regarding open-weight models, I think there is a lot of room for development, especially regarding models for the US. And I think there's going to be a lot of progress in shrinking these models, you know, and being able to run them on a phone, as an example.",
-          "at_s": 2028,
-          "url": "https://www.youtube.com/watch?v=PST8yesYOSo&t=2028s"
-        },
-        {
-          "text": "Our sensors, we call them security agents, right? But I mean, not to confuse them with AI agents, but with the software that these endpoint agents use , right? This is a network data creator. So we create approximately 7 trillion events every day.",
-          "at_s": 2498,
-          "url": "https://www.youtube.com/watch?v=PST8yesYOSo&t=2498s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "latent-space:IiZ9yd2Do8I",
-      "show_id": "latent-space",
-      "show": "Latent Space",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "engineering"
-      ],
-      "title": "Why AI Compute Comes in Rectangles — Erik Bernhardsson, Modal",
-      "url": "https://www.youtube.com/watch?v=IiZ9yd2Do8I",
-      "video_id": "IiZ9yd2Do8I",
-      "audio_url": null,
-      "published_at": "2026-10-22T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 5133,
-      "transcript": {
-        "available": true,
-        "source": "asr",
-        "words": 18386,
-        "checked_at": "2026-11-04T22:08:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "That's sort of, so we went from like, you know, $100 a month in like, I think like November, 2022. And the next month we did like $2,000 a month. And then like January of 2023 we did like $30,000 all the sudden. And you know, so finally I felt this like massive just like anxiety thing off my chest.",
-          "at_s": 515,
-          "url": "https://www.youtube.com/watch?v=IiZ9yd2Do8I&t=515s"
-        },
-        {
-          "text": "Like running a pretty low utilization because CPUs are normally pretty cheap. And so people don't really worry so much about cost. But now you're entering this new world and you have, you know, very expensive GPUs. You want to manage capacity and utilization. You have very large models that you need to load over network into CPU into GPU.",
-          "at_s": 686,
-          "url": "https://www.youtube.com/watch?v=IiZ9yd2Do8I&t=686s"
-        },
-        {
-          "text": "Anyway, like I have like mixed feelings about like the word agentic because I feel like in certain ways, like I think all software will become agentic. So it's almost like to me, like what does it mean to be agentic? Like I think I think all software in a certain way will become like AI powered over time.",
-          "at_s": 2222,
-          "url": "https://www.youtube.com/watch?v=IiZ9yd2Do8I&t=2222s"
-        },
-        {
-          "text": "Yeah, I would say like the open-source models are so good that like, you can basically just like swap them out and just run, you know, instead of, you know, the frontier ones, you can run, you know, Kimi K3 or whatever, deep seek 4.1 or GLM 5.3, and they're like, basically almost as good as like the frontier model",
-          "at_s": 2439,
-          "url": "https://www.youtube.com/watch?v=IiZ9yd2Do8I&t=2439s"
-        },
-        {
-          "text": "Um, I think Model to me. I'm a cloud maximalist and maybe to take a step back like when when the cloud came in 2008 2009 or whatever my first reaction was like That's crazy like why would I want to take my code and run it on someone else's computer? That's like insane and I like six months later.",
-          "at_s": 3966,
-          "url": "https://www.youtube.com/watch?v=IiZ9yd2Do8I&t=3966s"
-        },
-        {
-          "text": "I don't know if I ran an IPO ready startup engaged in cat fax arms race for the confederate It would be nice to coordinate and paste arms race a bit no comment The biggest downside of GPU scarcity is not that it's hard to get GPUs But that almost all capacity is sold as three years As a three",
-          "at_s": 4699,
-          "url": "https://www.youtube.com/watch?v=IiZ9yd2Do8I&t=4699s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "latent-space:DWHyPWnzGAI",
-      "show_id": "latent-space",
-      "show": "Latent Space",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "engineering"
-      ],
-      "title": "The Recommendation Engine for Commodity Traders — Anekha Sokhal, Moshi",
-      "url": "https://www.youtube.com/watch?v=DWHyPWnzGAI",
-      "video_id": "DWHyPWnzGAI",
-      "audio_url": null,
-      "published_at": "2026-10-22T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1601,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 4523,
-        "checked_at": "2026-11-04T22:08:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "And now it's like: \"Wow\". You know, everyone's like, \"Oh my God, machine learning, AI.\" Yes. Yes, yes, yes. And then derivatives. So, I did it. So, my training started in that in Warwick, England, and then I knew I wanted to work in trading.",
-          "at_s": 142,
-          "url": "https://www.youtube.com/watch?v=DWHyPWnzGAI&t=142s"
-        },
-        {
-          "text": "And that led me to the USA . I came here to delve deeper into machine learning research, I published on ICLR with Stability AI, I collaborated with NASA, and I did a lot of super interesting work that led me to Moshi. And what is Moshi?",
-          "at_s": 327,
-          "url": "https://www.youtube.com/watch?v=DWHyPWnzGAI&t=327s"
-        },
-        {
-          "text": "So, LLM, I'll give you the answers in 30 seconds, which would normally take days. So, people often say \"new Bloomberg,\" or is that something you disagree with? Don't you like being characterized as the new Bloomberg? Yes, it is... That's an interesting question. This is the £800 gorilla, or whatever the British version of saying £800 gorilla is.",
-          "at_s": 537,
-          "url": "https://www.youtube.com/watch?v=DWHyPWnzGAI&t=537s"
-        },
-        {
-          "text": "I think Rexis is one of the most important parts of AI. And as curator of the AIEs, I create an annual L&M Rexis trail. And engineers generally don't give this the importance it deserves. There aren't many people involved, even though some of the people behind these things, like, they manage Rexes for YouTube, Netflix, Instagram, and TikTok.",
-          "at_s": 677,
-          "url": "https://www.youtube.com/watch?v=DWHyPWnzGAI&t=677s"
-        },
-        {
-          "text": "Actually, We were one of the first in Balyasny to do the X firehose or Twitter firehose. This is like a ridiculously expensive data thing, like $300,000 a month, that you have to pay to get all the tweets. And it kind of set the price. It used to be, I think, I don't know if it was free.",
-          "at_s": 840,
-          "url": "https://www.youtube.com/watch?v=DWHyPWnzGAI&t=840s"
-        },
-        {
-          "text": "So, I actually extended my stay in New York because we, like, now I was supposed to leave today. Now we have meetings on Thursday, we extend to another day on Friday, we extend to another day on Monday. And so now I have meetings where people are like, ' Hey, we're on the energy.'\" Let's talk in Houston.",
-          "at_s": 1202,
-          "url": "https://www.youtube.com/watch?v=DWHyPWnzGAI&t=1202s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "dwarkesh:frYSOKvNiiE",
-      "show_id": "dwarkesh",
-      "show": "Dwarkesh Podcast",
-      "kind": "podcast",
-      "priority": "P0",
-      "tags": [
-        "interviews",
-        "frontier-labs"
-      ],
-      "title": "What will computer chips look like in 2045?",
-      "url": "https://www.youtube.com/watch?v=frYSOKvNiiE",
-      "video_id": "frYSOKvNiiE",
-      "audio_url": null,
-      "published_at": "2026-10-22T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 4141,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 11777,
-        "checked_at": "2026-11-04T22:08:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "Usually Intel has been the keeper of Moore’s Law, a new cadence of manufacturing every two years, but their last set of products slipped almost four years. Intel today having its worst day in four months, the stock now down more than 15%. I also want to point out Taiwan Semiconductor up 13% off of Intel’s bad news.",
-          "at_s": 208,
-          "url": "https://www.youtube.com/watch?v=frYSOKvNiiE&t=208s"
-        },
-        {
-          "text": "We’re starting to get PDKs that have this, and 14A will have that from the get-go. It has very high quality PDKs. Again, there are maturity metrics for what is a PDK 0.5 versus a 0.9 versus a 1.0. We’re constantly going through and taking customer feedback and incorporating that into the quality of our PDK.",
-          "at_s": 1060,
-          "url": "https://www.youtube.com/watch?v=frYSOKvNiiE&t=1060s"
-        },
-        {
-          "text": "There’s also memory and other things. But it’s crazy that a couple billion dollars of CapEx, which can be amortized over many different years, produces $100 billion of revenue every single year. That seems to suggest that at some point that should percolate down. At some point, the AI labs could just say, “We’ll just buy everything.",
-          "at_s": 3092,
-          "url": "https://www.youtube.com/watch?v=frYSOKvNiiE&t=3092s"
-        },
-        {
-          "text": "We’ll fight for every extra percent of fab utilization, but also every extra percentage of fab output. Let’s say I’m making some wafers today and the yield is 60%. If I improve the process and the die yield becomes 65% or 70%, it’s not a linear advantage. I’m getting way more output for the given footprint.",
-          "at_s": 3256,
-          "url": "https://www.youtube.com/watch?v=frYSOKvNiiE&t=3256s"
-        },
-        {
-          "text": "TSMC is on track to do around $50 billion in CapEx this year. You’re on track to do around $20 billion. If the tools you’re buying right now will determine who can service all this crazy AI demand that’s coming up, it makes the difference in CapEx right now even more important, or for the US versus other countries.",
-          "at_s": 3514,
-          "url": "https://www.youtube.com/watch?v=frYSOKvNiiE&t=3514s"
-        },
-        {
-          "text": "Today, a High-NA EUV scanner and all its associated equipment costs like $400 million. So what does that mean? If that rate were to continue, if you just draw the line, does that mean four years from now the cost of patterning is going to be like $800 million? It doesn’t really make sense.",
-          "at_s": 3811,
-          "url": "https://www.youtube.com/watch?v=frYSOKvNiiE&t=3811s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "decoder:A0kTUP7fWtk",
-      "show_id": "decoder",
-      "show": "Decoder with Nilay Patel",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews"
-      ],
-      "title": "Bill Gates says to prepare for 20 years of tumultuous AI disruption",
-      "url": "https://www.youtube.com/watch?v=A0kTUP7fWtk",
-      "video_id": "A0kTUP7fWtk",
-      "audio_url": null,
-      "published_at": "2026-10-22T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 4264,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 11725,
-        "checked_at": "2026-11-04T22:08:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "He said that you induced COVID-19 via global pandemic preparation efforts, particularly gain-of-function research, and compared that to safety research in AI, and said we're going to we're going to induce our own disaster. accused me or the Gates Foundation of being involved in any gain-of-function research. That's That's just bizarre.",
-          "at_s": 1193,
-          "url": "https://www.youtube.com/watch?v=A0kTUP7fWtk&t=1193s"
-        },
-        {
-          "text": "These AI data centers, because these, you know, say a uh 1 gigawatt is say a $40 billion investment. The idea of building new schools, buying police cars, you know, paying the taxes. Data centers will find a way to be built somewhere in the United States.",
-          "at_s": 1917,
-          "url": "https://www.youtube.com/watch?v=A0kTUP7fWtk&t=1917s"
-        },
-        {
-          "text": "Uh all of my resources will be spent over the next 19 years to eradicate a number of diseases and cut that those deaths in half again from 5 million a year down below 2 and 1/2 million a year. And that's all about shortages. Shortages of, \"Okay, we need to invent a vaccine.",
-          "at_s": 2744,
-          "url": "https://www.youtube.com/watch?v=A0kTUP7fWtk&t=2744s"
-        },
-        {
-          "text": "The fact that AI uh eventually will be able to model human biology in such a way that you'll understand the side effects of a drug without having to do human trials. We're not there, Yeah. but in the next 5 to 10 years, I think there's a very good chance these in silico models will give us that capability.",
-          "at_s": 2907,
-          "url": "https://www.youtube.com/watch?v=A0kTUP7fWtk&t=2907s"
-        },
-        {
-          "text": "It's the people who take particularly the the models without safeguards and and do these things. So, we will take AI safety more seriously than we take AI airline safety, drug safety, car safety. That is guaranteed. Whether it's going to be enough, this is harder, harder than nuclear weapons, harder than any of those other domains.",
-          "at_s": 3259,
-          "url": "https://www.youtube.com/watch?v=A0kTUP7fWtk&t=3259s"
-        },
-        {
-          "text": "There isn't Most of those people don't spend that much time in China, so the uh concern about job markets in China is very, very high. Um and you can't characterize China as one model. There's the private companies doing the AI work, like we have in the United States, and then there's the Chinese government.",
-          "at_s": 3878,
-          "url": "https://www.youtube.com/watch?v=A0kTUP7fWtk&t=3878s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "ai-daily-brief:65EUWUM-clM",
-      "show_id": "ai-daily-brief",
-      "show": "The AI Daily Brief",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "news-show"
-      ],
-      "title": "How AI is Changing What Work Means",
-      "url": "https://www.youtube.com/watch?v=65EUWUM-clM",
-      "video_id": "65EUWUM-clM",
-      "audio_url": null,
-      "published_at": "2026-10-22T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1683,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-04T22:08:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "20vc:OJX2L21e4fA",
-      "show_id": "20vc",
-      "show": "20VC",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "The New VC Game | CoreWeave Sell-Off Creates Panic | Revenue Multiples Out of Control",
-      "url": "https://www.youtube.com/watch?v=OJX2L21e4fA",
-      "video_id": "OJX2L21e4fA",
-      "audio_url": null,
-      "published_at": "2026-10-22T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3581,
-      "transcript": {
-        "available": true,
-        "source": "asr",
-        "words": 12202,
-        "checked_at": "2026-11-04T22:08:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "A billion dollar position, not an exit building position, it's just the B outcome, right? This is 10% probability analysis, 25 billion or higher, 25, you know, this percent, we only make a billion on the deal. We're raising these funds every 18 months, these five to 10 billion dollar funds.",
-          "at_s": 463,
-          "url": "https://www.youtube.com/watch?v=OJX2L21e4fA&t=463s"
-        },
-        {
-          "text": "It's okay, and we can talk about what may be caused a slight crack in that, which is anthropic numbers, anthropic announced that they're turn profitable on an adjusted basis, gross slows, IPO price potentially rumored to be going down from two trillion to 1.5 trillion, Q3 revenue was 16.8 billion, up 45% on Q2, 85% gross margin, which we'll",
-          "at_s": 1017,
-          "url": "https://www.youtube.com/watch?v=OJX2L21e4fA&t=1017s"
-        },
-        {
-          "text": "And you can say, no, no, these are agentic guys. Okay. These are agentic, these are agentic players, pie growth. But when the growth even just be close to 70 or 60, okay, will it, will it trade at a cloud flare revenue or will it trade at a better than braze revenue, right?",
-          "at_s": 2510,
-          "url": "https://www.youtube.com/watch?v=OJX2L21e4fA&t=2510s"
-        },
-        {
-          "text": "So if you do 37 million of profit sharing, it's 10%, Rory can help me with the math. I think that would suggest overall profits for 370. I don't think it could make that much money. I'm guessing it does 60 to 70, 60-ish million a year, right?",
-          "at_s": 2801,
-          "url": "https://www.youtube.com/watch?v=OJX2L21e4fA&t=2801s"
-        },
-        {
-          "text": "So you're probably looking at having to have 800 million in fee income. Now you said yourself at 2%, what's that 50 times, 800, 50 times, yeah, you've got a couple of a million dollars, well more of actual AUM.",
-          "at_s": 3073,
-          "url": "https://www.youtube.com/watch?v=OJX2L21e4fA&t=3073s"
-        },
-        {
-          "text": "And I think LP's will come in with more money into venture. In 2021, the average college in university did 36.6% from venture in PE, 41% with top quartile, and Cambridge had 62%. So the Harvard's great, but I'm waiting for a Banger 27.",
-          "at_s": 3297,
-          "url": "https://www.youtube.com/watch?v=OJX2L21e4fA&t=3297s"
-        }
-      ],
-      "description": ""
     }
   ]
 }
