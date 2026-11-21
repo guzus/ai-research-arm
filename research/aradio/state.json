@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-21T03:28:00Z",
-  "headline": "AI Daily Brief titles Anthropic's first day of trading; still no first-party S1",
+  "updated_at": "2026-11-21T07:52:00Z",
+  "headline": "Still no first-party S1 for Anthropic's reported IPO; a16z titles a DHH 16-hour-days episode",
   "threads": [
     {
       "slug": "anthropic-ipo-and-ai-funding",
@@ -462,11 +462,17 @@
       "status": "developing",
       "importance": 4,
       "first_seen": "2026-11-18T13:29:00Z",
-      "updated_at": "2026-11-20T09:12:00Z",
-      "now": "Latent Space titles Linear COO Cristina Cordova: over half of Linear issues now come from agents after an early MCP server; the product is billed as a database agents write to. Transcript pending. TWIML still has agents at 20x-50x chatbot tokens, HPE ROI at 60-70% GPU utilization versus public models, and well-known Asian auto companies pulling agents off AWS over sensitive data.",
-      "changed": "Latent Space: Linear COO Cristina Cordova billed as saying over half of Linear issues now come from agents; MCP server shipped early. Transcript pending.",
-      "watch": "The Linear transcript; whether Linear first-parties the >50% agent-issue figure; whether HPE or the auto companies first-party the AWS pullback.",
+      "updated_at": "2026-11-21T07:52:00Z",
+      "now": "a16z titles a 52-minute episode on why AI has DHH working 16-hour days; transcript pending. Latent Space still bills Linear COO Cristina Cordova as saying over half of Linear issues come from agents after an early MCP server. TWIML: agents 20x-50x chatbot tokens; HPE ROI at 60-70% GPU utilization versus public models; Asian auto firms pulled agents off AWS over sensitive data.",
+      "changed": "a16z titles a 52-minute episode on why AI has DHH working 16-hour days. Transcript not yet available.",
+      "watch": "The a16z DHH transcript; whether Linear first-parties the over-50-percent agent-issue figure; whether HPE or the auto companies first-party the AWS pullback.",
       "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=TtOoLanFzGw",
+          "kind": "podcast",
+          "label": "a16z (DHH 16-hour days)",
+          "at": "2026-11-20T15:27:00Z"
+        },
         {
           "url": "https://www.youtube.com/watch?v=x0VSm6IjcDQ",
           "kind": "podcast",
@@ -507,6 +513,10 @@
         {
           "at": "2026-11-20T09:12:00Z",
           "change": "Latent Space titles Linear COO Cristina Cordova: over half of issues now from agents; MCP shipped early. Transcript pending."
+        },
+        {
+          "at": "2026-11-21T07:52:00Z",
+          "change": "a16z titles a 52-min episode on AI putting DHH on 16-hour days. Transcript pending."
         }
       ]
     },
