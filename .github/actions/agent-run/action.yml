@@ -585,7 +585,14 @@ runs:
         CHUBBY_BASE_URL: ${{ inputs.chubby-base-url }}
         CHUBBY_MODEL: ${{ steps.select.outputs.model-id }}
         CLAUDE_ARGS: ${{ inputs.claude-args }}
-      run: python3 scripts/prepare_chubby_run.py --github-output "$GITHUB_OUTPUT"
+      run: |
+        # The child action can only override one spelling of each proxy key.
+        # On Linux an inherited lowercase proxy would reach its launcher.
+        if [[ -n "${https_proxy:-}${http_proxy:-}${all_proxy:-}" ]]; then
+          echo "::error::Chubby requires a runner without inherited lowercase proxy settings."
+          exit 1
+        fi
+        python3 scripts/prepare_chubby_run.py --github-output "$GITHUB_OUTPUT"
 
     - name: Run agent with Chubby Messages
       id: run-chubby
@@ -612,12 +619,8 @@ runs:
         CLAUDE_CODE_RETRY_WATCHDOG: ""
         HTTPS_PROXY: ""
         HTTP_PROXY: ""
-        https_proxy: ""
-        http_proxy: ""
         ALL_PROXY: ""
-        all_proxy: ""
         NO_PROXY: ""
-        no_proxy: ""
         NODE_TLS_REJECT_UNAUTHORIZED: "1"
         NODE_EXTRA_CA_CERTS: ""
         ARA_AGENT_BACKEND: ${{ steps.select.outputs.backend }}

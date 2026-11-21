@@ -256,6 +256,13 @@ class ChubbyWorkflowTest(unittest.TestCase):
         errors = cross_check(self.lanes, obs, self.profiles)
         self.assertTrue(any("workflow_dispatch-only" in e for e in errors), errors)
 
+    def test_agent_run_step_environment_keys_are_case_insensitively_unique(self):
+        action = yaml.safe_load((ROOT / ".github/actions/agent-run/action.yml").read_text())
+        for step in action["runs"]["steps"]:
+            with self.subTest(step=step.get("name")):
+                keys = step.get("env", {})
+                self.assertCountEqual([key.upper() for key in keys], {key.upper() for key in keys})
+
     def test_action_passes_bearer_only_to_child_with_private_home_and_always_cleanup(self):
         action = yaml.safe_load((ROOT / ".github/actions/agent-run/action.yml").read_text())
         steps = action["runs"]["steps"]
