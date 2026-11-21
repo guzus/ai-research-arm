@@ -1,12 +1,15 @@
-Daily AI Digest - 2026-11-21 (deterministic fallback)
+Daily AI Digest - 2026-11-21
 
-TOP OF EACH LANE:
-• [RSS / Official Announcements] Combatting adversarial distillation - Fri, 20 Nov 2026 10:00 GMT
-• [Hacker News] Levent Alpöge claims proof of the Generalized Riemann Hypothesis: Still on the page. Same objectID…
-• [Reddit] No data: ml.rss was a Reddit “Not Found” stub with 0 entries — -
-• [Expert Blogs] Quoting Ravi Vakil
-• [Bluesky] @simonwillison.net: "The most useful thing about the pelican riding a bicycle test continues to be…
+TOP STORIES:
+• Alpöge claims Claude proved Riemann Hypothesis
+• Masullo posts competing human GRH proof
+• Thinking Machines shipped Inkling 2 Mini
 
-SOURCES: 7/8 lanes had data; missing: Twitter/X
+KEY NUMBERS:
+• HN: 2347 pts / 1587 comments on Alpöge; Aaronson stamps 17.4M Lean lines
+• Inkling 2 Mini: 26.4B total / 3.4B active; SWE-bench Verified 79.2%
+• Distillation extraction on GPT-6.2 Astra/Sol: 54% → 0.2%
 
-Verbatim, unranked lane excerpts. Full digest on GitHub.
+TRENDING: Dual RH/GRH claims (Claude-assisted Lean vs all-human Masullo draft)
+
+Full digest on GitHub.
