@@ -1,0 +1,15 @@
+AI News - 2026-11-21
+
+TOP STORIES:
+• Alpöge says Claude proved RH; Stanford posts rival all-human GRH draft
+• Signal blocks iOS 27/Android screenshots so Gemini/Siri AI cannot read chats
+• Thinking Machines shipped Inkling 2 Mini (26.4B/3.4B, ~20GB laptop MoE)
+• OpenAI cut GPT-6.2 Astra reasoning-extraction attacks 54% → 0.2%
+• Trump threatens a “tremendous tax” on overseas AI data centers
+
+KEY NUMBERS:
+• Inkling 2 Mini: 79.2% SWE-bench Verified (bash); DeepSWE 48.2%
+• Nvidia near Inception buy: ≥$500M (The Information); LATO seed $4.7M
+• Nasdaq 100 −10.4% on the week; Nvidia −14% Friday on accounting-probe reports
+
+Full report on GitHub.
