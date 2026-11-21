@@ -1,9 +1,64 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-21T03:25:00Z",
+  "updated_at": "2026-11-21T12:57:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "cognitive-revolution:6bSzdXKkE2M",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Spend the Lead on Safety: Biden AI Advisors Ben Buchanan & Tantum Collins on the Fate of the World",
+      "url": "https://www.youtube.com/watch?v=6bSzdXKkE2M",
+      "video_id": "6bSzdXKkE2M",
+      "audio_url": null,
+      "published_at": "2026-11-21T08:27:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-21T12:57:00Z",
+      "duration_s": 6508,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-21T12:57:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Former Biden administration AI advisors Ben Buchanan and Tantum Collins join Nathan to discuss their book, The Bitter Struggle, and their experience shaping U.S. policy on compute supply chains and export controls. Drawing on their backgrounds in government and DeepMind, they unpack the geopolitical strategy of building an allied compute lead over China in order to spend that advantage on safety. The conversation probes the clash between frontier lab idealism and national security, bilateral talks over AI risks in nuclear"
+    },
+    {
+      "id": "all-in:G5w7EyF-aFQ",
+      "show_id": "all-in",
+      "show": "All-In Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Anthropic Goes Public, Nvidia in Crisis, Markets Tank, Open Source Crackdown?",
+      "url": "https://www.youtube.com/watch?v=G5w7EyF-aFQ",
+      "video_id": "G5w7EyF-aFQ",
+      "audio_url": null,
+      "published_at": "2026-11-20T22:27:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-21T12:57:00Z",
+      "duration_s": 4601,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-21T12:57:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Chamath's theory on 10 AI Megacorps that go \"Dirt to Application\" Anthropic goes public, how companies are handling AI disruption Bull/bear case for Anthropic and the market White House weighs new open source disclosure rule for Chinese models State of Nvidia: Tanking stock, talent crisis, legal issues, Jensen's future Referenced in the show:"
+    },
     {
       "id": "openai:WGvsk0LIveU",
       "show_id": "openai",
@@ -26,11 +81,11 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-21T03:25:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-21T12:57:00Z",
+        "attempts": 3
       },
       "excerpts": [],
-      "description": ""
+      "description": "ChatGPT can help you find ways to save, whether you’re shopping for a desk chair or wondering what you’re still paying for after a free trial ends. Learn three ways to save money with ChatGPT. Use a product screenshot to compare prices before you buy, spot subscriptions you no longer use, and build a monthly budget that leaves room for things you enjoy."
     },
     {
       "id": "a16z:TtOoLanFzGw",
@@ -54,11 +109,11 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-21T03:25:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-21T12:57:00Z",
+        "attempts": 3
       },
       "excerpts": [],
-      "description": ""
+      "description": "David Heinemeier Hansson thinks the agent era is reopening a window in computing that has been closed for decades: the chance to build a new operating system people actually want to use. DHH joins a16z General Partners Martin Casado and Anish Acharya to explain why he’s building Omarchy, an agent-first Linux distribution designed around a computer that users can modify simply by asking. They discuss why the command lines, config files, and detailed error messages that once made Linux intimidating"
     },
     {
       "id": "hard-fork:CaAKSCQiIrE",
