@@ -1,8 +1,103 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-21T11:00:00Z",
-  "headline": "OpenAI treats GPT-6.2 Astra as shipped in a distillation note; Claude-assisted Riemann Lean archive typechecks",
+  "updated_at": "2026-11-21T19:13:00Z",
+  "headline": "Lean FRO and Mathlib certify Alpöge's 17-million-line Riemann proof; Amazon reported near a $7.5B Decart deal",
   "threads": [
+    {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T14:48:00Z",
+      "updated_at": "2026-11-21T19:13:00Z",
+      "now": "Lean FRO and Mathlib certified both the statement and the proof of the Riemann Hypothesis in Alpöge's 17-million-line Lean library from November 20, depending only on Mathlib. They say Buzzard's four Xena tests pass; Sutherland's MIT checker is live. Clay has not awarded a prize and there is no human-readable paper. Musk says RH conditionals lift; Anthropic is silent.",
+      "changed": "Lean FRO and Mathlib certified Alpöge's 17-million-line Riemann Hypothesis library as a correct statement and proof. Clay has not awarded a prize; no human-readable paper yet.",
+      "watch": "A Clay Institute verdict, a public critique from Tao, Sarnak, or Soundararajan, or Alpöge's promised write-up.",
+      "evidence": [
+        {
+          "url": "https://x.com/leanprover/status/2124159121645801562",
+          "kind": "twitter",
+          "label": "@leanprover on X",
+          "at": "2026-11-21T19:00:00Z"
+        },
+        {
+          "url": "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/",
+          "kind": "twitter",
+          "label": "Lean and Mathlib community blog",
+          "at": "2026-11-21T19:00:00Z"
+        },
+        {
+          "url": "https://math.mit.edu/~drew/grh/",
+          "kind": "twitter",
+          "label": "Andrew Sutherland MIT GRH checker",
+          "at": "2026-11-21T19:00:00Z"
+        },
+        {
+          "url": "https://x.com/AndrewCurran_/status/2124178939287687297",
+          "kind": "twitter",
+          "label": "@AndrewCurran_ on X",
+          "at": "2026-11-21T19:00:00Z"
+        },
+        {
+          "url": "https://x.com/elonmusk/status/2124213680422387741",
+          "kind": "twitter",
+          "label": "@elonmusk on X",
+          "at": "2026-11-21T19:00:00Z"
+        },
+        {
+          "url": "https://alpo.ge/remark.pdf",
+          "kind": "twitter",
+          "label": "Alpöge remark.pdf",
+          "at": "2026-11-21T10:00:00Z"
+        },
+        {
+          "url": "https://github.com/Infatoshi/rh-verification-receipts",
+          "kind": "twitter",
+          "label": "rh-verification-receipts",
+          "at": "2026-11-21T10:00:00Z"
+        },
+        {
+          "url": "https://x.com/elliotarledge/status/2123897560104599647",
+          "kind": "twitter",
+          "label": "@elliotarledge on X",
+          "at": "2026-11-21T10:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "ETH disproof reviewers disclaim certification; verdict still pending."
+        },
+        {
+          "at": "2026-11-01T23:55:00Z",
+          "change": "Lex Fridman and MLST transcripts add context: Lean-checked Erdos results, guests favouring human-AI collaboration over AI-only maths."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Anthropic: Claude-assisted 3D map of a bacterial vault particle; preprint submitted, function unknown, unaudited."
+        },
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Went quiet: no new math or physics discovery claims since November fifth; ETH and bioRxiv watches unmet."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "Reopened: DevDay architecture talk claims a Navier-Stokes/unforced-Euler result from 10,000 agents, 2.7M messages, ~130B output tokens."
+        },
+        {
+          "at": "2026-11-17T03:11:00Z",
+          "change": "Resolved after six quiet days; DevDay Euler claim and vault-particle preprint watches unmet."
+        },
+        {
+          "at": "2026-11-21T11:00:00Z",
+          "change": "Reopened: Alpöge Lean archive of a Claude-assisted RH proof; Arledge reports Lean 4.33.1 plus Rust-kernel check with 0 errors. Musk hedges; Anthropic silent."
+        },
+        {
+          "at": "2026-11-21T19:13:00Z",
+          "change": "Lean FRO and Mathlib certify Alpöge's 17-million-line RH proof as correct; MIT checker live. Clay has not awarded; no readable paper."
+        }
+      ]
+    },
     {
       "slug": "anthropic-ipo-and-ai-funding",
       "title": "Anthropic's IPO filing and the race to fund the frontier labs",
@@ -457,95 +552,50 @@
       ]
     },
     {
-      "slug": "ai-math-and-physics-discovery-claims",
-      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
-      "status": "developing",
+      "slug": "lab-weight-security-vs-china",
+      "title": "Frontier labs' weight security versus China",
+      "status": "escalating",
       "importance": 4,
-      "first_seen": "2026-10-31T14:48:00Z",
-      "updated_at": "2026-11-21T11:00:00Z",
-      "now": "Alpöge posted a Lean archive he says is a Claude-assisted Riemann Hypothesis proof; a readable paper is not ready. Elliot Arledge reported a Lean 4.33.1 compile of 175,187 files and a 61.57 GB Rust-kernel replay with zero errors. Musk hedged that even if RH is not fully solved yet, it will be soon. Anthropic is silent. The Millennium Prize claim is not settled.",
-      "changed": "Independent Lean 4.33.1 and Rust-kernel checks of Alpöge's Claude-assisted RH archive report zero errors. Musk hedges; Anthropic is silent; no human-readable proof.",
-      "watch": "An Anthropic statement, a Clay/Sarnak/Aaronson critique of Mathlib's RiemannHypothesis statement, or Alpöge's promised write-up.",
+      "first_seen": "2026-11-16T18:55:00Z",
+      "updated_at": "2026-11-21T19:13:00Z",
+      "now": "Dwarkesh still stands: Cathedral said to have reached Anthropic Slack in 12 hours; US-China lead called 12 hours, not months; next-year catastrophe risk nearer 10% than 1%. Cognitive Revolution posted Biden advisors Buchanan and Collins on spending an allied compute lead on safety. All-In titles a White House open-source disclosure rule for Chinese models. Transcripts pending.",
+      "changed": "Cognitive Revolution posted Biden AI advisors on spending a compute lead on safety; All-In titles a White House open-source disclosure rule for Chinese models. Transcripts pending.",
+      "watch": "Those transcripts; whether Anthropic or Cathedral first-parties the Slack access; any first-party White House open-source disclosure rule.",
       "evidence": [
         {
-          "url": "https://alpo.ge/remark.pdf",
-          "kind": "twitter",
-          "label": "Alpöge remark.pdf",
-          "at": "2026-11-21T10:00:00Z"
+          "url": "https://www.youtube.com/watch?v=6bSzdXKkE2M",
+          "kind": "podcast",
+          "label": "The Cognitive Revolution",
+          "at": "2026-11-21T08:27:00Z"
         },
         {
-          "url": "https://github.com/Infatoshi/rh-verification-receipts",
-          "kind": "twitter",
-          "label": "rh-verification-receipts",
-          "at": "2026-11-21T10:00:00Z"
+          "url": "https://www.youtube.com/watch?v=G5w7EyF-aFQ",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-20T22:27:00Z"
         },
         {
-          "url": "https://x.com/elliotarledge/status/2123897560104599647",
-          "kind": "twitter",
-          "label": "@elliotarledge on X",
-          "at": "2026-11-21T10:00:00Z"
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=2319s",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-16T18:07:00Z",
+          "quote": "Then recently it was also announced that Cathedral, which is another random cybersecurity startup, within 12 hours was able to get access to all of Anthropic’s Slack, where, of course, these algorithmic secrets are discussed."
         },
         {
-          "url": "https://x.com/elonmusk/status/2124046857659650295",
-          "kind": "twitter",
-          "label": "@elonmusk on X",
-          "at": "2026-11-21T10:00:00Z"
-        },
-        {
-          "url": "https://x.com/AndrewCurran_/status/2123819916768039149",
-          "kind": "twitter",
-          "label": "@AndrewCurran_ on X",
-          "at": "2026-11-21T10:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=1216s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "Here we used an internal model and Codex, and we found a solution with 10,000 agents working together."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=nAubbmlhPfI&t=1362s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "In Navier Stokes, when we found the unforced Euler result, we diverted all the teams towards solving the problem, and by the end of it, we had solved the solution."
-        },
-        {
-          "url": "https://www.anthropic.com/research/investigating-vault-particles-with-claude",
-          "kind": "twitter",
-          "label": "Anthropic (vault particles)",
-          "at": "2026-11-04T21:00:00Z"
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-16T18:07:00Z"
         }
       ],
       "history": [
         {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "ETH disproof reviewers disclaim certification; verdict still pending."
+          "at": "2026-11-16T18:55:00Z",
+          "change": "Created from Dwarkesh: Cathedral said to hit Anthropic Slack in 12 hours; US-China lead called 12 hours; next-year risk nearer 10% than 1%."
         },
         {
-          "at": "2026-11-01T23:55:00Z",
-          "change": "Lex Fridman and MLST transcripts add context: Lean-checked Erdos results, guests favouring human-AI collaboration over AI-only maths."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Anthropic: Claude-assisted 3D map of a bacterial vault particle; preprint submitted, function unknown, unaudited."
-        },
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "Went quiet: no new math or physics discovery claims since November fifth; ETH and bioRxiv watches unmet."
-        },
-        {
-          "at": "2026-11-11T09:54:00Z",
-          "change": "Reopened: DevDay architecture talk claims a Navier-Stokes/unforced-Euler result from 10,000 agents, 2.7M messages, ~130B output tokens."
-        },
-        {
-          "at": "2026-11-17T03:11:00Z",
-          "change": "Resolved after six quiet days; DevDay Euler claim and vault-particle preprint watches unmet."
-        },
-        {
-          "at": "2026-11-21T11:00:00Z",
-          "change": "Reopened: Alpöge Lean archive of a Claude-assisted RH proof; Arledge reports Lean 4.33.1 plus Rust-kernel check with 0 errors. Musk hedges; Anthropic silent."
+          "at": "2026-11-21T19:13:00Z",
+          "change": "Cognitive Revolution titles Biden advisors on spending a compute lead on safety; All-In titles a White House open-source rule for Chinese models. Transcripts pending."
         }
       ]
     },
@@ -784,46 +834,45 @@
       ]
     },
     {
-      "slug": "lab-weight-security-vs-china",
-      "title": "Frontier labs' weight security versus China",
-      "status": "escalating",
-      "importance": 4,
-      "first_seen": "2026-11-16T18:55:00Z",
-      "updated_at": "2026-11-16T18:55:00Z",
-      "now": "On Dwarkesh, speakers said the cybersecurity startup Cathedral got access to all of Anthropic's Slack in 12 hours, where algorithmic secrets are discussed, and that the US lead over China is 12 hours, not six to twelve months. The same conversation put takeover-scale risk nearer 10% than 1% over the next year if developers do not slow down for precautions.",
-      "changed": "Dwarkesh: Cathedral said to have reached Anthropic Slack in 12 hours; speakers put the US-China lead at 12 hours, not months, and next-year catastrophe risk nearer 10% than 1%.",
-      "watch": "Whether Anthropic or Cathedral first-parties the Slack access; any lab note on weight or Slack security; whether the 12-hour China-lead claim is backed by a document.",
+      "slug": "amazon-decart-acquisition",
+      "title": "Amazon's reported purchase of Decart",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-11-21T19:13:00Z",
+      "updated_at": "2026-11-21T19:13:00Z",
+      "now": "Reports citing the Financial Times say Amazon is near a roughly $7.5 billion purchase of Decart, possibly next week. Neither Amazon nor Decart has confirmed, and the FT text was not independently retrieved. Decart is said to run models across Nvidia GPUs, Google TPUs and Amazon Trainium, plus video models Lucy and Oasis. Calcalist said Anthropic walked away from about $6 billion in September.",
+      "changed": "Unconfirmed FT-cited reports put Amazon near a $7.5 billion Decart deal, possibly next week. Neither company has confirmed.",
+      "watch": "An Amazon or Decart confirmation, an SEC filing if it closes, or a walk-away before next week.",
       "evidence": [
         {
-          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo&t=2319s",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast",
-          "at": "2026-11-16T18:07:00Z",
-          "quote": "Then recently it was also announced that Cathedral, which is another random cybersecurity startup, within 12 hours was able to get access to all of Anthropic’s Slack, where, of course, these algorithmic secrets are discussed."
+          "url": "https://x.com/lucasjamali/status/2124213430244557101",
+          "kind": "twitter",
+          "label": "@lucasjamali on X",
+          "at": "2026-11-21T19:00:00Z"
         },
         {
-          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast",
-          "at": "2026-11-16T18:07:00Z"
+          "url": "https://x.com/aiaffairscom/status/2124216473543422394",
+          "kind": "twitter",
+          "label": "@aiaffairscom on X",
+          "at": "2026-11-21T19:00:00Z"
         }
       ],
       "history": [
         {
-          "at": "2026-11-16T18:55:00Z",
-          "change": "Created from Dwarkesh: Cathedral said to hit Anthropic Slack in 12 hours; US-China lead called 12 hours; next-year risk nearer 10% than 1%."
+          "at": "2026-11-21T19:13:00Z",
+          "change": "Created from unconfirmed FT-cited reports of a $7.5B Amazon purchase of Decart, possibly next week. Neither company has confirmed."
         }
       ]
     },
     {
       "slug": "apple-ai-and-siri",
       "title": "Apple's Siri AI, a China-only variant, and the margin squeeze",
-      "status": "developing",
+      "status": "resolved",
       "importance": 4,
       "first_seen": "2026-11-16T07:18:00Z",
-      "updated_at": "2026-11-16T07:18:00Z",
+      "updated_at": "2026-11-21T19:13:00Z",
       "now": "On Big Technology, hosts said Siri AI is now fully operational, a developer Siri can call third-party apps, and Apple partnered on a China-only Siri the West and EU will not get for political reasons. They said in-house AI including Spyglass is hitting margins after 50%+ gross margin two quarters ago, and an Apple Watch background-listening beta matches Amazon's $75 Bee.",
-      "changed": "Big Technology: Siri AI called fully operational; China-only Siri partnership; developer Siri for third-party apps; Spyglass AI spend hitting margins; Apple Watch listening beta vs Amazon Bee at $75.",
+      "changed": "No first-party Apple page naming Siri AI, the China partner, or Spyglass since the Nov 15 Big Technology episode.",
       "watch": "A first-party Apple page naming Siri AI and the China partner; whether Spyglass appears in a results call; whether the Watch listening beta ships.",
       "evidence": [
         {
@@ -863,6 +912,10 @@
         {
           "at": "2026-11-16T07:18:00Z",
           "change": "Created from Big Technology: Siri AI said fully on; China-only Siri; developer third-party apps; Spyglass hitting margins; Watch listening beta vs Amazon Bee."
+        },
+        {
+          "at": "2026-11-21T19:13:00Z",
+          "change": "Resolved as quiet: Siri AI, China-only variant, and Spyglass margin claims never first-partied since the Nov 15 Big Technology episode."
         }
       ]
     },
@@ -1108,69 +1161,6 @@
         {
           "at": "2026-11-16T07:18:00Z",
           "change": "Resolved: launch absorbed after four quiet days; cell-type API and Atlas remain the facts; paper watch unmet."
-        }
-      ]
-    },
-    {
-      "slug": "openai-devday-2026",
-      "title": "OpenAI's DevDay 2026 platform launches",
-      "status": "resolved",
-      "importance": 5,
-      "first_seen": "2026-11-11T09:54:00Z",
-      "updated_at": "2026-11-14T13:42:00Z",
-      "now": "OpenAI's DevDay 2026: Sites already hosts 8 million sites, with over 70% of employees making their own. It launched an Agents API on the Codex harness, GPT-Live full-duplex voice, computer use over the API, and a plugin directory of 4,000. ChatGPT token entitlements can fund third-party products. A Codex agent ran about 1,000 hours; GPT-6 Sol was put at about $16 an hour.",
-      "changed": "DevDay platform launches are absorbed into the cyber and next-model threads; no new Sites, Agents API, or GPT-Live facts this run.",
-      "watch": "Whether Sites, the Agents API, GPT-Live and Codex Security Cloud are generally available, and a first-party recap that names GPT-6 Sol, 6.1 Sol and Daybreak.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=QRm7VNMnurA&t=71s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "Now, even though Sites only shipped a couple months ago, we're already hosting 8 million Sites."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=562s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "Over those 1,000 hours, the agent made just under half a million tool calls."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=U1IVZy9FhVQ&t=1467s",
-          "kind": "video",
-          "label": "OpenAI DevDay (Codex pricing)",
-          "at": "2026-11-11T01:18:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=b7l_Dhe1h8M&t=449s",
-          "kind": "video",
-          "label": "OpenAI DevDay (Agents API)",
-          "at": "2026-11-11T01:18:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=jDxKzlGLCas",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "GPT Live is a full duplex voice model, meaning unlike other voice models which are architected around user and assistant turns, GPT Live is constantly streaming audio in and out."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=pIW_8VyvCuQ&t=232s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-11T01:18:00Z",
-          "quote": "There are now 4,000 plugins in the directory."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-11T09:54:00Z",
-          "change": "Created from DevDay 2026 talks: 8M Sites, Agents API, GPT-Live, 4,000 plugins, token entitlements, and a 1,000-hour Codex CI run at about $16/hour."
-        },
-        {
-          "at": "2026-11-14T13:42:00Z",
-          "change": "Resolved: DevDay 2026 launches absorbed; Mozilla GPT-6 Cyber follow-on lives on the cyber thread."
         }
       ]
     }

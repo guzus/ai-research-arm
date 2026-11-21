@@ -1,0 +1,240 @@
+{
+  "schema": 1,
+  "id": "2026-11-21-1913",
+  "aired_at": "2026-11-21T19:13:00Z",
+  "headline": "Lean FRO and Mathlib certify Alpöge's 17-million-line Riemann proof; Amazon reported near a $7.5B Decart deal",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's a little after seven UTC on Saturday, November twenty-first. This is ARA AI News."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The situation has moved since this morning. Lean FRO and Mathlib have certified both the statement and the proof of the Riemann Hypothesis in Levent Alpöge's seventeen-million-line Lean library."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Eight hours ago we only had independent typechecks of a Claude-assisted archive. This afternoon the Lean and Mathlib communities, endorsed by the Lean FRO, published a joint statement that the proof is correct."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "They say Alpöge released the library on November twentieth, that it depends directly only on Mathlib, and that Kevin Buzzard's four Xena tests all pass. Andrew Sutherland's MIT checker table is already live, so the compilation claim can be inspected."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Clay has not awarded the Millennium Prize, and there is still no human-readable paper. Named analytic number theorists have not yet given a public verdict on the argument itself."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Elon Musk posted that the result, so far, removes the conditional nature of other theorems that depended on the Hypothesis. Anthropic has not said a word."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "A second story opened this hour, and it is only a leak. Accounts citing the Financial Times say Amazon is near a purchase of Decart, a three-year-old AI startup."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The figure being circulated is seven point five billion dollars, with talks advanced enough that a deal could come next week. Neither Amazon nor Decart has confirmed, and we have not seen the Times article ourselves."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Decart is described as selling software that runs models across Nvidia GPUs, Google TPUs, and Amazon's Trainium chips, and as an early Trainium three user. It also sells real-time video and world models called Lucy and Oasis."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Aggregator accounts say Calcalist described a cash, stock, and deferred mix with a five-year founder lockup. They also say Anthropic walked away from about six billion dollars in September, and that Nvidia, already an investor, declined to reopen talks."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "On the China-lead board, two long episodes landed without transcripts. We are not putting words in anyone's mouth until we can hear them."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "All-In titles a White House plan that would make Chinese open-source models disclose more. Cognitive Revolution posted a hundred-and-eight-minute conversation with former Biden AI advisors Ben Buchanan and Tantum Collins on building an allied compute lead over China and spending that lead on safety."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The older Cathedral claim that a cybersecurity startup reached all of Anthropic's Slack in twelve hours still has no confirmation from Anthropic or from Cathedral."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "We are taking Apple's Siri AI story off the live board. Five days after Big Technology called Siri fully operational and described a China-only variant the West will not get, Apple has not confirmed any of it."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Spyglass and the margin squeeze were never named on a results call either. If Apple ships a page, that story can come back."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch next for a Clay Institute or named number-theorist verdict on the Riemann argument, Alpöge's promised write-up, and whether Amazon or Decart confirm or walk away before next week."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's a little after seven UTC on Saturday, November twenty-first. This is ARA AI News.",
+    "Speaker 2: [high_energy] The situation has moved since this morning. Lean FRO and Mathlib have certified both the statement and the proof of the Riemann Hypothesis in Levent Alpöge's [emphasis] seventeen-million-line [/emphasis] Lean library.",
+    "Speaker 1: Eight hours ago we only had independent typechecks of a Claude-assisted archive. This afternoon the Lean and Mathlib communities, endorsed by the Lean FRO, published a joint statement that the proof is correct.",
+    "Speaker 2: They say Alpöge released the library on November twentieth, that it depends directly only on Mathlib, and that Kevin Buzzard's four Xena tests all pass. Andrew Sutherland's MIT checker table is already live, so the compilation claim can be inspected.",
+    "Speaker 1: Clay has not awarded the Millennium Prize, and there is still no human-readable paper. Named analytic number theorists have not yet given a public verdict on the argument itself.",
+    "Speaker 2: Elon Musk posted that the result, so far, removes the conditional nature of other theorems that depended on the Hypothesis. Anthropic has not said a word.",
+    "Speaker 1: [transition] A second story opened this hour, and it is only a leak. Accounts citing the Financial Times say Amazon is near a purchase of Decart, a three-year-old AI startup.",
+    "Speaker 2: The figure being circulated is [emphasis] seven point five billion dollars [/emphasis], with talks advanced enough that a deal could come next week. Neither Amazon nor Decart has confirmed, and we have not seen the Times article ourselves.",
+    "Speaker 1: Decart is described as selling software that runs models across Nvidia GPUs, Google TPUs, and Amazon's Trainium chips, and as an early Trainium three user. It also sells real-time video and world models called Lucy and Oasis.",
+    "Speaker 2: Aggregator accounts say Calcalist described a cash, stock, and deferred mix with a five-year founder lockup. They also say Anthropic walked away from about six billion dollars in September, and that Nvidia, already an investor, declined to reopen talks.",
+    "Speaker 1: [transition] On the China-lead board, two long episodes landed without transcripts. We are not putting words in anyone's mouth until we can hear them.",
+    "Speaker 2: All-In titles a White House plan that would make Chinese open-source models disclose more. Cognitive Revolution posted a hundred-and-eight-minute conversation with former Biden AI advisors Ben Buchanan and Tantum Collins on building an allied compute lead over China and spending that lead on safety.",
+    "Speaker 1: The older Cathedral claim that a cybersecurity startup reached all of Anthropic's Slack in twelve hours still has no confirmation from Anthropic or from Cathedral.",
+    "Speaker 2: [transition] We are taking Apple's Siri AI story off the live board. Five days after Big Technology called Siri fully operational and described a China-only variant the West will not get, Apple has not confirmed any of it.",
+    "Speaker 1: Spyglass and the margin squeeze were never named on a results call either. If Apple ships a page, that story can come back.",
+    "Speaker 2: Watch next for a Clay Institute or named number-theorist verdict on the Riemann argument, Alpöge's promised write-up, and whether Amazon or Decart confirm or walk away before next week.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "ai-math-and-physics-discovery-claims",
+    "amazon-decart-acquisition",
+    "lab-weight-security-vs-china",
+    "apple-ai-and-siri"
+  ],
+  "threads": [
+    {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "escalating"
+    },
+    {
+      "slug": "amazon-decart-acquisition",
+      "title": "Amazon's reported purchase of Decart",
+      "status": "developing"
+    },
+    {
+      "slug": "lab-weight-security-vs-china",
+      "title": "Frontier labs' weight security versus China",
+      "status": "escalating"
+    },
+    {
+      "slug": "apple-ai-and-siri",
+      "title": "Apple's Siri AI, a China-only variant, and the margin squeeze",
+      "status": "resolved"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://x.com/leanprover/status/2124159121645801562",
+      "kind": "twitter",
+      "label": "@leanprover on X"
+    },
+    {
+      "url": "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/",
+      "kind": "twitter",
+      "label": "Lean and Mathlib community blog"
+    },
+    {
+      "url": "https://math.mit.edu/~drew/grh/",
+      "kind": "twitter",
+      "label": "Andrew Sutherland MIT GRH checker"
+    },
+    {
+      "url": "https://x.com/AndrewCurran_/status/2124178939287687297",
+      "kind": "twitter",
+      "label": "@AndrewCurran_ on X"
+    },
+    {
+      "url": "https://x.com/elonmusk/status/2124213680422387741",
+      "kind": "twitter",
+      "label": "@elonmusk on X"
+    },
+    {
+      "url": "https://x.com/lucasjamali/status/2124213430244557101",
+      "kind": "twitter",
+      "label": "@lucasjamali on X"
+    },
+    {
+      "url": "https://x.com/aiaffairscom/status/2124216473543422394",
+      "kind": "twitter",
+      "label": "@aiaffairscom on X"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=6bSzdXKkE2M",
+      "kind": "podcast",
+      "label": "The Cognitive Revolution"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=G5w7EyF-aFQ",
+      "kind": "podcast",
+      "label": "All-In Podcast"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "ai-math-and-physics-discovery-claims"
+    },
+    {
+      "op": "create",
+      "slug": "amazon-decart-acquisition"
+    },
+    {
+      "op": "update",
+      "slug": "lab-weight-security-vs-china"
+    },
+    {
+      "op": "resolve",
+      "slug": "apple-ai-and-siri"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-21-1913.mp3",
+    "bytes": 1170525,
+    "duration_s": 195.0,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 66.36,
+        "lines": [
+          0,
+          5
+        ]
+      },
+      {
+        "start_s": 67.81,
+        "end_s": 118.09,
+        "lines": [
+          6,
+          9
+        ]
+      },
+      {
+        "start_s": 119.54,
+        "end_s": 152.98,
+        "lines": [
+          10,
+          12
+        ]
+      },
+      {
+        "start_s": 154.43,
+        "end_s": 188.43,
+        "lines": [
+          13,
+          16
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 4,
+    "kinds": {
+      "podcast": 2,
+      "twitter": 2
+    }
+  }
+}

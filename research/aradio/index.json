@@ -1,9 +1,64 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-21T11:00:00Z",
-  "degraded": true,
-  "latest": "2026-11-21-1100",
+  "updated_at": "2026-11-21T19:13:00Z",
+  "degraded": false,
+  "latest": "2026-11-21-1913",
   "bulletins": [
+    {
+      "id": "2026-11-21-1913",
+      "aired_at": "2026-11-21T19:13:00Z",
+      "headline": "Lean FRO and Mathlib certify Alpöge's 17-million-line Riemann proof; Amazon reported near a $7.5B Decart deal",
+      "path": "bulletins/2026-11-21/1913.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-21-1913.mp3",
+        "bytes": 1170525,
+        "duration_s": 195.0,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 66.36,
+            "lines": [
+              0,
+              5
+            ]
+          },
+          {
+            "start_s": 67.81,
+            "end_s": 118.09,
+            "lines": [
+              6,
+              9
+            ]
+          },
+          {
+            "start_s": 119.54,
+            "end_s": 152.98,
+            "lines": [
+              10,
+              12
+            ]
+          },
+          {
+            "start_s": 154.43,
+            "end_s": 188.43,
+            "lines": [
+              13,
+              16
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "ai-math-and-physics-discovery-claims",
+        "amazon-decart-acquisition",
+        "lab-weight-security-vs-china",
+        "apple-ai-and-siri"
+      ],
+      "kinds": [
+        "podcast",
+        "twitter"
+      ]
+    },
     {
       "id": "2026-11-21-1100",
       "aired_at": "2026-11-21T11:00:00Z",
