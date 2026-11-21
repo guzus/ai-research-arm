@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-20T21:57:00Z",
+  "updated_at": "2026-11-21T03:25:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -26,8 +26,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-20T21:57:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-21T03:25:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -54,8 +54,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-20T21:57:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-21T03:25:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -81,8 +81,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-20T13:31:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-21T03:25:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Grand Theft Auto VI is finally out, the first release of the video game franchise in 13 years. The new installment from Rockstar Games is rapturous and mesmerizing — a monumental human achievement. Max Read, our guest host, is joined by the reporter Joseph Bernstein, who had early access to the video game, as well as the tech reporters Erin Griffith and Mike Isaac. They discuss the making of G.T.A.VI, how the franchise grew so big, and why we might"
@@ -493,13 +493,44 @@
       "first_seen_at": "2026-11-19T22:24:00Z",
       "duration_s": 12074,
       "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "available": true,
+        "source": "asr",
+        "words": 36603,
+        "checked_at": "2026-11-21T03:25:00Z",
+        "attempts": 1
       },
-      "excerpts": [],
+      "excerpts": [
+        {
+          "text": "Diamonds, you could pick up a hundred and thirty six million, whatever it was and walk out in a briefcase. Now, let's say you got 20% of that. You know, you still talk of 25 million dollars. You're talking about a lot of money. How do you carry 25 million dollars? So these guys, the cops found out.",
+          "at_s": 834,
+          "url": "https://www.youtube.com/watch?v=v1X9Fqs5a14&t=834s"
+        },
+        {
+          "text": "It was really something like, because he, he paid $5 million for a juror. It's in the news. You can, I'm sure you can look it up. Going to Proplexity here, Willie Falcone, born Augusto Guillermo Falcone is a Cuban born former cocaine trafficker best known for running a major Miami smuggling organization with his partner. So, I'm a gludo.",
+          "at_s": 1114,
+          "url": "https://www.youtube.com/watch?v=v1X9Fqs5a14&t=1114s"
+        },
+        {
+          "text": "Sure enough, everybody, $600, $600, $600. Now remember, after 26 weeks of $600, that's a lot of money. Now I said, where's my money? Man, like, I'm just joking. You go, tell what we're going to do. I'm going to do it for six more months and it's going to be five points. What are you going to say?",
+          "at_s": 5151,
+          "url": "https://www.youtube.com/watch?v=v1X9Fqs5a14&t=5151s"
+        },
+        {
+          "text": "1.4 million Chinese, 1.4, whatever to in India, they have less prisoners per. Oh, they cut their arms. No, they don't. No, they don't stop that bullshit because that's just an excuse. In India, their number four, they got 530,000 inmates. And I think it's got 1.9 million. 1.9 million. China has got 1.6 million.",
+          "at_s": 5897,
+          "url": "https://www.youtube.com/watch?v=v1X9Fqs5a14&t=5897s"
+        },
+        {
+          "text": "The same exact crime that Bill Clinton was charged with 18 USC 1,001 filing a false statement because I, you know, John Rodriguez. Well, I cost the government over a million dollars in that trial. The judge went nuts. And I ended up getting the time run concurrent because of knowing the law.",
+          "at_s": 9320,
+          "url": "https://www.youtube.com/watch?v=v1X9Fqs5a14&t=9320s"
+        },
+        {
+          "text": "We have a 90% success rate in keeping kids out of jail. We have a 70% success rate by changed attitudes from the parents. We have a 43% success rate in increased education better grades and a 31% increase in attendance. And I didn't do that survey. Florida's Eastern Florida State College did that.",
+          "at_s": 11471,
+          "url": "https://www.youtube.com/watch?v=v1X9Fqs5a14&t=11471s"
+        }
+      ],
       "description": "Larry Lawton is one of the most notorious and prolific jewelry thieves in US history, who was eventually caught by the FBI, spent more than a decade in prison, including a lot of time in the hole, and then he turned his life around to run the Reality Check Program, that helps keep at-risk youth out of prison. See below for timestamps, transcript, and to give feedback, submit questions, contact Lex, etc. *Transcript:* *CONTACT LEX:* *EPISODE LINKS:* *Fin:* AI agent"
     },
     {
@@ -778,8 +809,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-21T03:25:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Dev Ittycheria ran MongoDB for 11 years, took it from about $35 million in revenue to more than $2.3 billion, and retired. Ten months later his successor left, and within a week Dev was back in the chair. Since we recorded this, I’ve announced that I’m going back to HubSpot as CEO in addition to my work at Sequoia, so I’ve been replaying his advice with a lot more at stake. The center of this conversation is Dev’s definition of"
