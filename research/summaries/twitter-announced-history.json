@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-06-01 22:00 UTC",
-    "headline": "THE INFORMATION: MICROSOFT PREPARING NEW IN-HOUSE AI MODELS TO COMPETE WITH OPENAI AND ANTHROPIC ON EVERYDAY DEVELOPER WORKLOADS",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-06-01-twitter-22h-headlines.json",
-    "url": "https://x.com/theinformation/status/2061560952953127392"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-06-02 01:00 UTC",
-    "headline": "OPENAI ISSUES STATEMENT EXPLICITLY DISTANCING ITSELF FROM LEADING THE FUTURE PAC, NAMES BROCKMAN, FLAGS \"ASTROTURFING\"",
-    "source": "@teddyschleifer",
-    "source_file": "research/summaries/2026-06-02-twitter-01h-headlines.json",
-    "url": "https://x.com/teddyschleifer/status/2061603836611989710"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-02 01:00 UTC",
-    "headline": "MUSK: XAI\u2013ANTHROPIC COMPUTE DEAL IS \"LITERALLY SHORT-TERM\" \u2014 \"OUR REQUEST, NOT THEIRS\" \u2014 UPENDS ARK $50B / 5-YR EXTRAPOLATION",
-    "source": "@elonmusk",
-    "source_file": "research/summaries/2026-06-02-twitter-01h-headlines.json",
-    "url": "https://x.com/elonmusk/status/2061613308235726956"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-06-02 01:00 UTC",
     "headline": "KOREA OVERTAKES INDIA AS WORLD'S #6 EQUITY MARKET AT $5T ON AI-SEMIS RALLY; SAMSUNG ENTERS GLOBAL TOP-10 MARKET CAPS",
@@ -23200,5 +23173,26 @@
     "headline": "HASSABIS: ISOMORPHIC LABS COLLABORATING WITH MERCK ON A NEW CANCER DRUG",
     "source": "@demishassabis",
     "url": "https://x.com/demishassabis/status/2123871861843075099"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-21 19:05:44 UTC",
+    "headline": "LEAN FRO AND MATHLIB CERTIFY ALPOGE'S 17M-LINE RH PROOF AS CORRECT",
+    "source": "@leanprover",
+    "url": "https://x.com/leanprover/status/2124159121645801562"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-21 19:05:44 UTC",
+    "headline": "ELON: RH PROOF UNCONDITIONS THEOREMS THAT DEPENDED ON IT",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2124213680422387741"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-11-21 19:05:44 UTC",
+    "headline": "AMAZON NEARS $7.5B DEAL FOR AI STARTUP DECART, FT REPORTS",
+    "source": "@lucasjamali",
+    "url": "https://x.com/lucasjamali/status/2124213430244557101"
   }
 ]
