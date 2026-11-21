@@ -1,0 +1,186 @@
+{
+  "schema": 1,
+  "id": "2026-11-21-1100",
+  "aired_at": "2026-11-21T11:00:00Z",
+  "headline": "OpenAI treats GPT-6.2 Astra as shipped in a distillation note; Claude-assisted Riemann Lean archive typechecks",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's eleven o'clock UTC on Saturday, November twenty-first. This is ARA AI News, and today OpenAI is writing about GPT six point two as a model it already ships."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "OpenAI posted a November twentieth research note on combatting adversarial distillation, and it names GPT six point two Astra and Sol as the models that received the tighter safeguard stack."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The note argues that exact chain-of-thought traces can transfer dual-use cyber skill even from allowed coding and defense tasks. In an internal adaptive red-team, recovering protected reasoning fell from fifty-four percent on GPT six Astra to zero point two percent on GPT six point two Astra."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That comparison is OpenAI testing OpenAI, not an outside lab. A companion MedChemBench post scores GPT six point two Astra at eighty-four point five percent, just above GPT six Astra at eighty-three point three percent, with GPT six point one Sol at eighty-two percent and GPT five point six Sol at fifty-eight point two percent."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "MedChemBench is ninety-nine problems from papers and patents. Structure reconstruction is the easy slice, while compound selection and numerical property prediction sit near half credit."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Trending copy that six point two tops robotics and chemistry overstates what OpenAI actually published. This is not a launch thread, and there is still no dedicated product page or API pricing."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "What changed is first-party confirmation. The six point two stack is the one OpenAI is hardening, not a rumor from a podcast title."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The other new fact is mathematical, and it is not settled. Levent Alpöge posted a Lean archive he says is a Claude-assisted proof of the Riemann Hypothesis, and he says a readable paper is not ready."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "He dates the discovery to Sunday night, says the method extends to the generalized Riemann Hypothesis for Dirichlet L-functions, and says he messaged Dario Amodei about announcing."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Anthropic's account has still not mentioned the claim. Overnight, Elliot Arledge reported compiling all one hundred seventy-five thousand one hundred eighty-seven reachable files on stock Lean four point thirty-three point one."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That compile covered more than seventeen million lines, pinned five theorems to unmodified Mathlib, and replayed a sixty-one point five seven gigabyte proof closure into the independent Rust kernel nanoda with zero errors."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Elon Musk posted this morning that even if the Riemann Hypothesis turns out not to be fully solved yet, it will be soon enough. That is a hedge, not an endorsement."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The Lean artifact exists and an independent compile is documented. The Millennium Prize claim is not settled, and Alpöge has not published a human-readable proof."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "One quieter thread is leaving the board. Black Forest Labs' Flux three robotics storyline has had no first-party revenue figure or ship date since that Latent Space episode, so we are marking it settled for now."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Watch next for a real GPT six point two product or API page, and for an independent lab repeating that reasoning-extraction eval. On the math claim, watch for an Anthropic statement or a serious critique of Mathlib's Riemann Hypothesis statement."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's eleven o'clock UTC on Saturday, November twenty-first. This is ARA AI News, and today OpenAI is writing about GPT six point two as a model it already ships.",
+    "Speaker 2: [high_energy] OpenAI posted a November twentieth research note on combatting adversarial distillation, and it names [emphasis]GPT six point two Astra[/emphasis] and Sol as the models that received the tighter safeguard stack.",
+    "Speaker 1: The note argues that exact chain-of-thought traces can transfer dual-use cyber skill even from allowed coding and defense tasks. In an internal adaptive red-team, recovering protected reasoning fell from [emphasis]fifty-four percent[/emphasis] on GPT six Astra to [emphasis]zero point two percent[/emphasis] on GPT six point two Astra.",
+    "Speaker 2: That comparison is OpenAI testing OpenAI, not an outside lab. A companion MedChemBench post scores GPT six point two Astra at eighty-four point five percent, just above GPT six Astra at eighty-three point three percent, with GPT six point one Sol at eighty-two percent and GPT five point six Sol at fifty-eight point two percent.",
+    "Speaker 1: MedChemBench is ninety-nine problems from papers and patents. Structure reconstruction is the easy slice, while compound selection and numerical property prediction sit near half credit.",
+    "Speaker 2: Trending copy that six point two tops robotics and chemistry overstates what OpenAI actually published. This is not a launch thread, and there is still no dedicated product page or API pricing.",
+    "Speaker 1: What changed is first-party confirmation. The six point two stack is the one OpenAI is hardening, not a rumor from a podcast title.",
+    "Speaker 2: [transition] The other new fact is mathematical, and it is not settled. Levent Alpöge posted a Lean archive he says is a Claude-assisted proof of the Riemann Hypothesis, and he says a readable paper is not ready.",
+    "Speaker 1: He dates the discovery to Sunday night, says the method extends to the generalized Riemann Hypothesis for Dirichlet L-functions, and says he messaged Dario Amodei about announcing.",
+    "Speaker 2: Anthropic's account has still not mentioned the claim. Overnight, Elliot Arledge reported compiling all one hundred seventy-five thousand one hundred eighty-seven reachable files on stock Lean four point thirty-three point one.",
+    "Speaker 1: That compile covered more than seventeen million lines, pinned five theorems to unmodified Mathlib, and replayed a sixty-one point five seven gigabyte proof closure into the independent Rust kernel nanoda with zero errors.",
+    "Speaker 2: Elon Musk posted this morning that even if the Riemann Hypothesis turns out not to be fully solved yet, it will be soon enough. That is a hedge, not an endorsement.",
+    "Speaker 1: The Lean artifact exists and an independent compile is documented. The Millennium Prize claim is not settled, and Alpöge has not published a human-readable proof.",
+    "Speaker 2: [transition] One quieter thread is leaving the board. Black Forest Labs' Flux three robotics storyline has had no first-party revenue figure or ship date since that Latent Space episode, so we are marking it settled for now.",
+    "Speaker 1: Watch next for a real GPT six point two product or API page, and for an independent lab repeating that reasoning-extraction eval. On the math claim, watch for an Anthropic statement or a serious critique of Mathlib's Riemann Hypothesis statement.",
+    "Speaker 2: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "next-model-launches-qwen-4-gpt-6-2-astra",
+    "ai-math-and-physics-discovery-claims",
+    "black-forest-labs-flux"
+  ],
+  "threads": [
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "developing"
+    },
+    {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "developing"
+    },
+    {
+      "slug": "black-forest-labs-flux",
+      "title": "Black Forest Labs' Flux 3 and the push into robotics",
+      "status": "resolved"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://openai.com/index/combatting-adversarial-distillation/",
+      "kind": "twitter",
+      "label": "OpenAI (Combatting adversarial distillation)"
+    },
+    {
+      "url": "https://openai.com/index/introducing-medchembench/",
+      "kind": "twitter",
+      "label": "OpenAI (MedChemBench)"
+    },
+    {
+      "url": "https://x.com/OpenAI/status/2123862344422088794",
+      "kind": "twitter",
+      "label": "@OpenAI on X"
+    },
+    {
+      "url": "https://x.com/OpenAI/status/2123856316187975756",
+      "kind": "twitter",
+      "label": "@OpenAI on X (MedChemBench)"
+    },
+    {
+      "url": "https://alpo.ge/remark.pdf",
+      "kind": "twitter",
+      "label": "Alpöge remark.pdf"
+    },
+    {
+      "url": "https://github.com/Infatoshi/rh-verification-receipts",
+      "kind": "twitter",
+      "label": "rh-verification-receipts"
+    },
+    {
+      "url": "https://x.com/elliotarledge/status/2123897560104599647",
+      "kind": "twitter",
+      "label": "@elliotarledge on X"
+    },
+    {
+      "url": "https://x.com/elonmusk/status/2124046857659650295",
+      "kind": "twitter",
+      "label": "@elonmusk on X"
+    },
+    {
+      "url": "https://x.com/AndrewCurran_/status/2123819916768039149",
+      "kind": "twitter",
+      "label": "@AndrewCurran_ on X"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra"
+    },
+    {
+      "op": "update",
+      "slug": "ai-math-and-physics-discovery-claims"
+    },
+    {
+      "op": "resolve",
+      "slug": "black-forest-labs-flux"
+    }
+  ],
+  "warnings": [],
+  "audio": null,
+  "audio_error": "audio upload to S3 failed",
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 3,
+    "kinds": {
+      "twitter": 3
+    }
+  }
+}

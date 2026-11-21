@@ -1,9 +1,24 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-20T20:02:00Z",
-  "degraded": false,
-  "latest": "2026-11-20-2002",
+  "updated_at": "2026-11-21T11:00:00Z",
+  "degraded": true,
+  "latest": "2026-11-21-1100",
   "bulletins": [
+    {
+      "id": "2026-11-21-1100",
+      "aired_at": "2026-11-21T11:00:00Z",
+      "headline": "OpenAI treats GPT-6.2 Astra as shipped in a distillation note; Claude-assisted Riemann Lean archive typechecks",
+      "path": "bulletins/2026-11-21/1100.json",
+      "audio": null,
+      "covers": [
+        "next-model-launches-qwen-4-gpt-6-2-astra",
+        "ai-math-and-physics-discovery-claims",
+        "black-forest-labs-flux"
+      ],
+      "kinds": [
+        "twitter"
+      ]
+    },
     {
       "id": "2026-11-20-2002",
       "aired_at": "2026-11-20T20:02:00Z",
