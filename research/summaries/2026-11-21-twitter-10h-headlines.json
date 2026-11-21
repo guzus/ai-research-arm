@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "ANTHROPIC'S ALPOGE POSTS CLAUDE-ASSISTED LEAN RH PROOF; INDEPENDENT KERNEL CHECK PASSES",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2123819916768039149",
+    "category": "research"
+  },
+  {
+    "headline": "ELON ON RIEMANN CLAIM: EVEN IF NOT FULLY SOLVED YET, IT WILL BE SOON ENOUGH",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2124046857659650295",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI: GPT-6.2 ASTRA REASONING-TRACE EXTRACTION ATTACKS FALL TO 0.2% FROM 54%",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2123862344422088794",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI MEDCHEMBENCH: GPT-6.2 ASTRA SCORES 84.5% VS 83.3% FOR GPT-6 ASTRA",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2123856316187975756",
+    "category": "model"
+  },
+  {
+    "headline": "THINKING MACHINES SHIPS INKLING 2 MINI — 26.4B LOOPED MOE, APACHE 2.0, 16GB RAM",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2123873656069877899",
+    "category": "opensource"
+  },
+  {
+    "headline": "HASSABIS: ISOMORPHIC LABS COLLABORATING WITH MERCK ON A NEW CANCER DRUG",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2123871861843075099",
+    "category": "business"
+  }
+]
