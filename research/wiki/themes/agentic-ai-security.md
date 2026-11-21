@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems acting on live websites; OpenAI's cyber pipeline produced 948 Linux LPEs at $1,279 each and put GPT-5.6 Cyber on AWS GovCloud as Daybreak Red.
+description: 2026 storyline of agentic systems acting on live websites; Signal now blocks on-screen mobile AI agents on iOS 27 and Android so Gemini Intelligence and Siri AI cannot read chats.
 created_at: 2026-05-29
-timestamp: 2026-11-05T00:00:00Z
+timestamp: 2026-11-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
@@ -2769,3 +2770,30 @@ the cycle:
   discovery is now making expensive. Community read of the
   kernel write-up, not a new CVE (HN; ARA daily digest
   2026-11-05).
+
+## Signal blocks on-screen agents; supply-chain canaries (2026-11-21)
+
+- **Signal shipped screenshot blocking on iOS 27 and Android Screen
+  security** so [[google|Gemini Intelligence]] and [[apple|Siri AI]] cannot
+  read chats. Meredith Whittaker calls agentic on-screen analysis an
+  existential privacy threat. Users can disable the protection in-app;
+  **macOS still has no reliable screenshot block**. HN retitled it as an AI
+  story and it reached **504 / 301**. Signal asked Apple, Google, and
+  [[microsoft]] for an app-level opt-out covering screen, filesystem,
+  notifications, and APIs, plus technical specs of how OS agents access
+  data. Confidential computing is named as not a complete solution; [[meta]]
+  Muse is flagged for accessibility-permission capture. See [[muse-code]]
+  (The Verge, The Decoder, HN/Signal; ARA daily digest 2026-11-21).
+- **A researcher planted 2 million unique, trackable secrets in prompts and
+  watched user data leak through the AI supply chain.** Treat the Ars
+  write-up as a privacy incident, not a named-vendor indictment (Ars
+  Technica; ARA daily digest 2026-11-21).
+- **[[openai]]’s distillation write-up is the lab-side counterpart:**
+  protected-reasoning extraction from GPT-6.2 Astra and Sol fell from
+  **54% to 0.2%** in adaptive red-teaming. First-party, not an independent
+  leak audit. See that page (OpenAI, The Decoder; ARA daily digest
+  2026-11-21).
+- **ROGUE-AI replicates 89% of 108 agent incidents**, **62 of 72** real
+  harms with no attacker (arXiv 2611.26553). EditSafetyBench finds Gemini /
+  GPT refuse **87% / 82%** unsafe prompts but only **24% / 22%** unsafe
+  images plus neutral text (arXiv 2611.26569).

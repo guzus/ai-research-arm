@@ -2,12 +2,13 @@
 slug: thinking-machines
 title: Thinking Machines Lab
 type: entity
-aliases: ["Thinking Machines", "Thinking Machines Lab", Inkling, "Inkling-Small", Tinker, "Mira Murati"]
+aliases: ["Thinking Machines", "Thinking Machines Lab", Inkling, "Inkling-Small", Tinker, "Mira Murati", "Inkling 2 Mini", "Inkling-2 Mini", "Inkling 2"]
 tags: [frontier-lab, open-weights, multimodal, mira-murati]
-description: Mira Murati's AI lab; seeking $5–6B at a $40B-plus pre-money, with NVIDIA reported in talks on a $2.5B position, after shipping Inkling on 2026-07-15.
+description: Mira Murati's AI lab; shipped Inkling 2 Mini, a 26.4B/3.4B-active looped transformer with a 1M-token window aimed at laptops, after the 2026-07 Inkling drop.
 created_at: 2026-07-17
-timestamp: 2026-09-07T00:00:00Z
+timestamp: 2026-11-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-09-07", path: research/digest/2026-09-07-digest.md}
   - {title: "ARA daily digest 2026-08-22", path: research/digest/2026-08-22-digest.md}
   - {title: "ARA daily digest 2026-08-01", path: research/digest/2026-08-01-digest.md}
@@ -80,14 +81,38 @@ account, corroborated within 15 minutes by @ns123abc and @kimmonismus.
   See [[nvidia]] and [[ai-capex]] (The Information, Twitter;
   ARA daily digest 2026-09-07).
 
+## Inkling 2 Mini (2026-11-21)
+
+- **Thinking Machines shipped Inkling 2 Mini**, an open-weights looped
+  transformer aimed at laptops: **26.4B total, 3.4B active**, about **20GB**
+  of memory, and a **1M-token** window. Architecture is **24 stored layers
+  in four blocks of six**, with the two middle blocks run three times, so
+  **48 layer applications per token from 24 stored layers**. Most weights
+  train and serve in **NVFP4**, last four layers **MXFP8**; [[hugging-face]]
+  lists hidden size **2,304**, **8-of-128** experts, and GGUF IQ4_NL / Q8_0
+  (HN, Thinking Machines; ARA daily digest 2026-11-21).
+- **Vendor benches under 100B total** include SWE-bench Verified **79.2%**,
+  a tie with [[qwen-3-8-max|Qwen3.8-27B]] on AA Index, DeepSWE v1.1
+  **48.2%**, SWE-bench Pro v2 Hard **77.9%**, BrowseComp **79.0%**, and MCP
+  Atlas **82.7%**. MultiChallenge **50.0%** and ComplexConstraints **33.4%**
+  still trail Qwen3.8-27B. Treat those as first-party until independent
+  evals land. Stanford Hazy’s “intelligence per joule” on [[nvidia|DGX
+  Spark]] is **0.703 versus 0.430** for a Qwen 3.6 MoE (HN, Thinking
+  Machines; ARA daily digest 2026-11-21).
+- **Tinker list prices** in a minutesofai recap are **$0.15 / $0.50 /
+  $0.015** per 1M input / output / cache-hit — secondary, not a lab price
+  card. HN’s Inkling 2 Mini thread was the largest new-model thread of the
+  day at **651 points / 104 comments**. See [[open-weights]].
+
 ## Open questions
 
-- **Does Inkling's quality catch up to its launch billing?** The strong
-  ecosystem uptake (fast quantization/hosting support) sits in tension with
-  early negative independent benchmark reports.
-- **Follow-on cadence.** Is Inkling a one-off open-weights entrant or the
-  start of a regular release cadence from Thinking Machines, mirroring the
-  Chinese open-weight labs it is positioned against?
-- **Official benchmarks.** No official Thinking Machines blog post or model
-  card with published benchmarks has landed yet; watch for one that could
-  firm up the quality claims either way.
+- **Do independent evals hold the vendor SWE-bench / AA Index / MCP Atlas
+  numbers?** Inkling’s 2026-07 launch quality was contested within a day;
+  Mini’s 79.2% SWE-bench Verified is the same class of claim until a third
+  party reruns it.
+- **Is the looped-transformer recipe the product, or a one-off efficiency
+  cut?** 48 layer applications from 24 stored layers is a distinct serving
+  story from the 975B/41B Inkling MoE.
+- **Does the $40B-plus raise close, and does [[nvidia]] take the reported
+  $2.5B seat?** Unchanged from 2026-09-07; no principal comment in this
+  digest.

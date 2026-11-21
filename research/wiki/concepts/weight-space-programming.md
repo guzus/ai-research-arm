@@ -2,12 +2,13 @@
 slug: weight-space-programming
 title: Weight-space programming
 type: concept
-aliases: ["weight-space programming", "weight editing by LLM", "Astra weight editing"]
+aliases: ["weight-space programming", "weight editing by LLM", "Astra weight editing", "self-rewriting"]
 tags: [interpretability, model-editing, mit-csail, astra]
-description: MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights (MATH-500 7.9%→48.1%); the checkpoint is now public and a log rebuild scored 51.0%.
+description: MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights (MATH-500 7.9%→48.1%); a later multi-lab paper reports gradient-free self-rewriting on Qwen3.5, with only the 27B improving.
 created_at: 2026-11-03
-timestamp: 2026-11-05T00:00:00Z
+timestamp: 2026-11-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA daily digest 2026-11-03", path: research/digest/2026-11-03-digest.md}
 ---
@@ -47,3 +48,16 @@ comments, "Astra can read and write weights to improve Qwen").
 - Related checking problem: [[verification-bottleneck]]. A separate claim on
   2026-11-03 that Astra is a major Chinese distillation target (The Information,
   headline only) concerns [[openai]]'s defenses, not this result.
+
+## Gradient-free self-rewriting on Qwen3.5 (2026-11-21)
+
+- **UIUC / CMU / Rutgers / Princeton / Stanford / Yale report
+  gradient-free “self-rewriting” on Qwen3.5.** Only the **27B** improves
+  or repairs; **2B makes no edit** and **4B / 9B break themselves**.
+  Repair of eight rows of layer-30 MLP noise lifts a held-out copy from
+  **0.0% to 33.0%**. This is a different mechanism from the Astra-edits-Qwen
+  MIT CSAIL claim: the model rewrites *its own* weights, not a smaller
+  student's, and the effect is size-gated. Link the 27B sibling via
+  [[qwen-3-8-max|Qwen3.8-27B]] only as the nearby Qwen 27B card already on
+  this wiki — the paper names Qwen3.5, not Qwen3.8 (arXiv 2611.21885, HN;
+  ARA daily digest 2026-11-21).

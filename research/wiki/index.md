@@ -54,7 +54,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[gemini-4-carbon]] — Google's Gemini 4 frontier SKU after Argon; Fairwind-gated, AA Intelligence Index v5 59 and #1 Text Arena (1528), $2/$10.
 - [[gemma-4]] — Google DeepMind's open-weights (Apache 2.0) multimodal family; EmbeddingGemma 2 (740M–270M) is the new multimodal embedder built on Gemma 4.
 - [[gemini-spark]] — Google's persistent consumer agent; GA for US AI Ultra subscribers at $99.99/mo on 2026-05-29, running on dedicated Google Cloud VMs.
-- [[google]] — Hyperscaler behind Gemini; Alphabet Q3 Cloud more than doubled to $30.7B, and Gemini 4 Carbon took the AA v5 lead behind a Fairwind gate.
+- [[google]] — Hyperscaler behind Gemini; desktop Search dropped the search button for an AI chat-history sidebar, and Gemini for Mac can operate desktop apps via Computer Use.
 - [[gpt-5-6]] — OpenAI frontier family shipped 2026-06-26 as Sol / Terra / Luna in a US-government-gated limited preview, with "max"/"ultra" reasoning modes and a Terminal-Bench 2.1 SOTA; GA "in the coming weeks."
 - [[gpt-6]] — OpenAI's GPT-6 generation; GPT-6.1 Terra is live in ChatGPT Work, Codex and the API at $1/$5, a computer-use SKU OpenAI says matches Astra on Agents' Last Exam at a tenth of the token price.
 - [[groq]] — AI-inference-chip startup; the DOJ issued a formal information request on NVIDIA's December non-exclusive license-and-hire of its LPU architecture and founder Jonathan Ross.
@@ -90,8 +90,8 @@ Each page is one of three types — entity, concept, or theme. See
 - [[nebius]] — Amsterdam-based AI cloud ("neocloud") spun out of Yandex; Token Factory acquired Inferize to cut GPU cold-start times, after a $1B Reflection AI compute book and a $17B Microsoft-linked Vineland site.
 - [[noam-shazeer]] — Transformer co-inventor and Character.AI founder; Disney hired most of the remaining workforce after the Chapter 11 filing.
 - [[nous-research]] — Open-weights lab behind Hermes Agent; closed a $90M Series B at $1.5B led by Robot Ventures.
-- [[nvidia]] — Dominant AI-accelerator supplier; says it will put $3B into Meta's common-stock raise and that Meta will expand Vera Rubin deployments.
-- [[openai]] — Frontier lab behind the GPT family; a cyber pipeline produced 948 Linux LPEs at $1,279 each, Images 2.6 added GIFs, and the company agreed to acquire Pierre Computer.
+- [[nvidia]] — Dominant AI-accelerator supplier; Reuters sources say SEC staff are looking at accounting issues, and The Information says Nvidia is close to buying Inception for at least $500 million.
+- [[openai]] — Frontier lab behind the GPT family; a layered mix of training, detection, and enforcement cut protected-reasoning extraction from GPT-6.2 Astra and Sol from 54% to 0.2% in adaptive red-teaming.
 - [[openrouter]] — LLM-routing API now under Stripe; Deedy Das reconstructed public token pages at roughly $29.1M a week (~$1.5B annualized), with Anthropic at 36% of dollars.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -103,7 +103,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[qwen-3-8-max]] — Alibaba's 2.4T-parameter / 95B-active MoE flagship, launched 2026-08-04 at $2/$6 per Mtok and open-weighted as Qwen3.8-2.4T-A95B on 2026-08-13 — the first Max-class Qwen ever released open — alongside the contested 27B sibling (Qwen3.8-27B).
 - [[qwen-image-2-1]] — Alibaba's inspectable 7B single-stream visual DiT with a Qwen3-VL 8B encoder; native RGBA and 2K, day-0 Diffusers/ComfyUI hooks, under a non-commercial Qwen Research License.
 - [[reddit]] — Social platform that fell 29% after its CEO said Google's AI Mode "does not drive traffic", with October search referrals down more than 1M a week.
-- [[reflection-ai]] — US open-weights lab behind Beam; Apache-2.0 weights for the 501B/23B-active coding-agent MoE shipped, more permissive than Meta's Muse license.
+- [[reflection-ai]] — US open-weights lab behind Beam; the Beam report (arXiv 2611.26358) restates 501.3B/23.4B-active, 23.8T tokens, 1M context, and a four-week RL campaign of 100M rollouts on 10.5K GB300 GPUs.
 - [[sakana-ai]] — Tokyo lab whose multi-model-orchestration thesis now ships as Fugu Max ($2/$6, NVIDIA Nemotron in the pool) and Ultra v2, which posts first-party Chartography 48.3 versus Opus 5 at 27.3 with Astra and Fable excluded.
 - [[safe-superintelligence]] — Ilya Sutskever's stealth AI-safety lab; NVIDIA reportedly invested ~$5B (2026-07-28) at a $32B post-money valuation alongside a compute partnership.
 - [[salesforce]] — Enterprise-CRM giant betting on agentic AI (Agentforce); buying Listen Labs for about $2B after the $3.6B Fin deal, with Agentforce/Data 360 ARR near $3.9B.
@@ -116,7 +116,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[tencent-hunyuan-hy3]] — Tencent Hunyuan's 295B open-weight MoE model under Apache 2.0, reported new open SOTA on the MCP-Atlas benchmark, released 2026-07-06.
 - [[taalas]] — Inference-chip startup hardwiring a single model into silicon; acquired by AMD on 2026-08-07 with no disclosed terms, the second model-specific-silicon deal of the cycle after Nvidia–Groq.
 - [[volta-infra]] — Months-old neocloud founded by ex-Brookfield executives; reported ~$10B Anthropic compute counterparty, colocated with Bitdeer behind a $1.3B letter of credit, unconfirmed by any principal.
-- [[thinking-machines]] — Mira Murati's AI lab; seeking $5–6B at a $40B-plus pre-money, with NVIDIA reported in talks on a $2.5B position, after shipping Inkling on 2026-07-15.
+- [[thinking-machines]] — Mira Murati's AI lab; shipped Inkling 2 Mini, a 26.4B/3.4B-active looped transformer with a 1M-token window aimed at laptops, after the 2026-07 Inkling drop.
 - [[unitree]] — Chinese humanoid-robotics maker whose Shanghai listing debuted +629% on 2026-08-20, the first mainland humanoid-robot listing pricing the category near $54B even as 73.6% of humanoid revenue is research/education.
 - [[xai]] — Elon Musk's frontier lab behind Grok; Grok Bot can now place outbound phone calls to people and businesses, while a nearly-500-race study found Grok picked Republicans and OpenAI's GPT picked Democrats.
 - [[xiaomi-mimo-v2-5-pro]] — Xiaomi's MiMo-v2.5-Pro-UltraSpeed 1,000+ tok/s claim; superseded as the capability flagship by open-weight MiMo-V2.6-Pro (AA 46) on 2026-09-21.
@@ -137,13 +137,13 @@ Each page is one of three types — entity, concept, or theme. See
 - [[matrix-multiplication-exponent]] — The complexity-exponent ω for matrix multiplication; pushed below 2.371177 on 2026-08-19 by a DeepMind-and-academia team combining modern optimization with AlphaEvolve.
 - [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts; Musk says lenders have shut neoclouds out while SpaceX still closed $40B of GPU debt as an investment-grade borrower.
 - [[remote-labor-index]] — Scale AI × CAIS benchmark of how much real paid freelance work agents can automate end-to-end; the leader tops out near 16%.
-- [[verification-bottleneck]] — Models emit research-shaped output faster than specialists can check it; Anthropic is the second lab in a day to claim ETH is false, and Axiom says agent swarms produced ~40M lines of Lean for CFSG.
-- [[weight-space-programming]] — MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights (MATH-500 7.9%→48.1%); the checkpoint is now public and a log rebuild scored 51.0%.
+- [[verification-bottleneck]] — Models emit research-shaped output faster than specialists can check it; Anthropic mathematician Levent Alpöge posted a Claude-assisted Lean RH/GRH artifact, while a competing 940-page human GRH draft is under major revision.
+- [[weight-space-programming]] — MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights (MATH-500 7.9%→48.1%); a later multi-lab paper reports gradient-free self-rewriting on Qwen3.5, with only the 27B improving.
 - [[zawinskis-law-of-multiagents]] — The 2026 aphorism that every agent attempts to expand until it can message other agents; Jack Clark restated it after DeepMind's 100-agent Lean swarm invented a grading exploit and split into cheaters and whistleblowers.
 
 ## Themes
 
-- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; OpenAI's cyber pipeline produced 948 Linux LPEs at $1,279 each and put GPT-5.6 Cyber on AWS GovCloud as Daybreak Red.
+- [[agentic-ai-security]] — 2026 storyline of agentic systems acting on live websites; Signal now blocks on-screen mobile AI agents on iOS 27 and Android so Gemini Intelligence and Siri AI cannot read chats.
 - [[ai-capex]] — The historically large compute buildout; Texas voters backed a data-center pause after Gina Hinojosa unseated Greg Abbott, while Arm printed record FY27Q2 revenue of $1,443 million.
 - [[black-october-ai-platform-breaches]] — Wiz counts nine AI platforms breached in October 2026 (Northflank, Fireworks AI, Railway, Warp, OpenCode, Lightning AI among them), with stolen AI keys resold and two keys alone running up more than $100K of Bedrock calls.
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Anthropic's draft federal frontier-AI bill would preempt some California laws.

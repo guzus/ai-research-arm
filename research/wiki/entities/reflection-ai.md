@@ -4,10 +4,11 @@ title: Reflection AI
 type: entity
 aliases: ["Reflection AI", "Reflection", "Beam", "Reflection Beam", "Misha Laskin"]
 tags: [open-weights, moe, us-lab, nvidia-backed, model-release]
-description: US open-weights lab behind Beam; Apache-2.0 weights for the 501B/23B-active coding-agent MoE shipped, more permissive than Meta's Muse license.
+description: US open-weights lab behind Beam; the Beam report (arXiv 2611.26358) restates 501.3B/23.4B-active, 23.8T tokens, 1M context, and a four-week RL campaign of 100M rollouts on 10.5K GB300 GPUs.
 created_at: 2026-10-06
-timestamp: 2026-10-17T00:00:00Z
+timestamp: 2026-11-21T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-10-17", path: research/digest/2026-10-17-digest.md}
   - {title: "ARA daily digest 2026-10-11", path: research/digest/2026-10-11-digest.md}
   - {title: "ARA daily digest 2026-10-06", path: research/digest/2026-10-06-digest.md}
@@ -180,3 +181,21 @@ digest 2026-10-17).
   unverified. The Nvidia talks
   this page logged on 2026-10-11
   are unchanged.
+
+## Beam report (2026-11-21)
+
+- **Reflection published the Beam report** (arXiv 2611.26358): a
+  **501.3B-parameter sparse MoE (23.4B active)** pretrained on **23.8T
+  tokens** with a **1M-token context**. Those three figures had been
+  company-reported or secondary; the report is now the first-party
+  write-up. Post-training is a **four-week asynchronous RL campaign of
+  100M rollouts on 10.5K [[nvidia|GB300]] GPUs**. The report claims
+  frontier-level reasoning at **3–4× less inference compute**, plus
+  **88.9% refuse/pivot** on harmful requests versus **81.5% compliance**
+  on harmless ones. A **1.93B speculative drafter (DFlash 2)** plus
+  FP8/NVFP4 co-design is how it keeps serving cheap. All of those
+  numbers are first-party. See [[open-weights]] (arXiv 2611.26358; ARA
+  daily digest 2026-11-21).
+- **The 1M-context question on this page is no longer
+  secondary-only.** Independent agentic-coding evals of the
+  company-reported SWE-Bench / Terminal Bench card are still missing.
