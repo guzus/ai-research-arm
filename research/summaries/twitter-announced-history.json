@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-01 22:00 UTC",
-    "headline": "ALPHABET ANNOUNCES $80B AI-INFRA EQUITY RAISE \u2014 $15B COMMON + $15B CONVERTIBLE PFD + $40B ATM Q3'26 + $10B BERKSHIRE PRIVATE PLACEMENT",
-    "source": "@StockMKTNewz",
-    "source_file": "research/summaries/2026-06-01-twitter-22h-headlines.json",
-    "url": "https://x.com/StockMKTNewz/status/2061550400046809587"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-01 22:00 UTC",
-    "headline": "BERKSHIRE HATHAWAY TAKES $10B PRIVATE PLACEMENT IN ALPHABET \u2014 FIRST DIRECT BUFFETT PRIMARY-ISSUANCE STAKE IN A MAG7 NAME",
-    "source": "@Gemini",
-    "source_file": "research/summaries/2026-06-01-twitter-22h-headlines.json",
-    "url": "https://x.com/Gemini/status/2061554848143708548"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-06-01 22:00 UTC",
-    "headline": "OPENAI FRONTIER MODELS GO GA ON AWS BEDROCK \u2014 GPT-5.5, GPT-5.4 AND CODEX, ZERO OPERATOR ACCESS, NO MARKUP, COUNTS TOWARD AWS SPEND",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-06-01-twitter-22h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2061564502160892138"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-06-01 22:00 UTC",
-    "headline": "AWS: OPENAI'S DAYBREAK CYBER STACK COMING TO BEDROCK NEXT \u2014 CODEX SECURITY + CYBER-DEFENDER MODELS",
-    "source": "@SwamiSivasubram",
-    "source_file": "research/summaries/2026-06-01-twitter-22h-headlines.json",
-    "url": "https://x.com/SwamiSivasubram/status/2061564503238594665"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-01 22:00 UTC",
-    "headline": "HPE +33% AFTER-HOURS ON Q2 AI-SERVER BLOWOUT \u2014 REVENUE +40% YoY, EPS +108% YoY, AI ORDERS AND BACKLOG NEARLY DOUBLED",
-    "source": "@StockJohnKuya",
-    "source_file": "research/summaries/2026-06-01-twitter-22h-headlines.json",
-    "url": "https://x.com/StockJohnKuya/status/2061560727681601581"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-06-01 22:00 UTC",
-    "headline": "ANTHROPIC GRANTS EU CYBER AGENCY ENISA FIRST NON-US ACCESS TO MYTHOS VIA PROJECT GLASSWING \u2014 EU CLEARED ACCESS THROUGH US ADMIN FIRST",
-    "source": "@Cointelegraph",
-    "source_file": "research/summaries/2026-06-01-twitter-22h-headlines.json",
-    "url": "https://x.com/Cointelegraph/status/2061513307433902458"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-06-01 22:00 UTC",
     "headline": "THE INFORMATION: MICROSOFT PREPARING NEW IN-HOUSE AI MODELS TO COMPETE WITH OPENAI AND ANTHROPIC ON EVERYDAY DEVELOPER WORKLOADS",
@@ -23212,5 +23158,47 @@
     "headline": "AXIOM DROPS 16M-LINE LEAN FORMALIZATION OF THE ENTIRE STACKS PROJECT",
     "source": "@axiommathai",
     "url": "https://x.com/axiommathai/status/2118028834515874112"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-21 10:53:42 UTC",
+    "headline": "ANTHROPIC'S ALPOGE POSTS CLAUDE-ASSISTED LEAN RH PROOF; INDEPENDENT KERNEL CHECK PASSES",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2123819916768039149"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-21 10:53:42 UTC",
+    "headline": "ELON ON RIEMANN CLAIM: EVEN IF NOT FULLY SOLVED YET, IT WILL BE SOON ENOUGH",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2124046857659650295"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-21 10:53:42 UTC",
+    "headline": "OPENAI: GPT-6.2 ASTRA REASONING-TRACE EXTRACTION ATTACKS FALL TO 0.2% FROM 54%",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2123862344422088794"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-21 10:53:42 UTC",
+    "headline": "OPENAI MEDCHEMBENCH: GPT-6.2 ASTRA SCORES 84.5% VS 83.3% FOR GPT-6 ASTRA",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2123856316187975756"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-11-21 10:53:42 UTC",
+    "headline": "THINKING MACHINES SHIPS INKLING 2 MINI \u2014 26.4B LOOPED MOE, APACHE 2.0, 16GB RAM",
+    "source": "@UnslothAI",
+    "url": "https://x.com/UnslothAI/status/2123873656069877899"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-11-21 10:53:42 UTC",
+    "headline": "HASSABIS: ISOMORPHIC LABS COLLABORATING WITH MERCK ON A NEW CANCER DRUG",
+    "source": "@demishassabis",
+    "url": "https://x.com/demishassabis/status/2123871861843075099"
   }
 ]
