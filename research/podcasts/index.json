@@ -1,9 +1,64 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-21T20:40:00Z",
+  "updated_at": "2026-11-22T00:39:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "20vc:3ZkDiDrxDeY",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "The State of Compute: What Everyone Needs to Know | Why Neo-Clouds are Great Businesses",
+      "url": "https://www.youtube.com/watch?v=3ZkDiDrxDeY",
+      "video_id": "3ZkDiDrxDeY",
+      "audio_url": null,
+      "published_at": "2026-11-21T15:09:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-22T00:39:00Z",
+      "duration_s": 4371,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-22T00:39:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "decoder:yTR5sD5KwD4",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "Jensen Huang’s fall makes Anthropic’s IPO look even stranger",
+      "url": "https://www.youtube.com/watch?v=yTR5sD5KwD4",
+      "video_id": "yTR5sD5KwD4",
+      "audio_url": null,
+      "published_at": "2026-11-21T14:09:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-22T00:39:00Z",
+      "duration_s": 2151,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-22T00:39:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "cognitive-revolution:6bSzdXKkE2M",
       "show_id": "cognitive-revolution",
@@ -25,8 +80,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-21T20:40:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-22T00:39:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Former Biden administration AI advisors Ben Buchanan and Tantum Collins join Nathan to discuss their book, The Bitter Struggle, and their experience shaping U.S. policy on compute supply chains and export controls. Drawing on their backgrounds in government and DeepMind, they unpack the geopolitical strategy of building an allied compute lead over China in order to spend that advantage on safety. The conversation probes the clash between frontier lab idealism and national security, bilateral talks over AI risks in nuclear"
@@ -53,8 +108,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-21T20:40:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-22T00:39:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Chamath's theory on 10 AI Megacorps that go \"Dirt to Application\" Anthropic goes public, how companies are handling AI disruption Bull/bear case for Anthropic and the market White House weighs new open source disclosure rule for Chinese models State of Nvidia: Tanking stock, talent crisis, legal issues, Jensen's future Referenced in the show:"
@@ -9544,65 +9599,6 @@
         }
       ],
       "description": ""
-    },
-    {
-      "id": "a16z:-9XQMHhpypc",
-      "show_id": "a16z",
-      "show": "a16z",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Marc Andreessen: The Biggest Gap I’ve Seen in My Career",
-      "url": "https://www.youtube.com/watch?v=-9XQMHhpypc",
-      "video_id": "-9XQMHhpypc",
-      "audio_url": null,
-      "published_at": "2026-10-22T22:34:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T10:34:00Z",
-      "duration_s": 3635,
-      "transcript": {
-        "available": true,
-        "source": "asr",
-        "words": 13314,
-        "checked_at": "2026-11-04T22:08:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "Like it, the, yeah, the, the, the, the, the, the super empowered 24-year-old, the AI is going to just achieve like amazing things in the next decade.",
-          "at_s": 1316,
-          "url": "https://www.youtube.com/watch?v=-9XQMHhpypc&t=1316s"
-        },
-        {
-          "text": "And so, me, so, I think that the, I used to talk about this in time, like the market has sort of gone from, you know, the 10 big tech companies fighting with each other to the 10 tech company or 10 in all the startups, going against the, the other Fortune 500 or the rest of the economy.",
-          "at_s": 1485,
-          "url": "https://www.youtube.com/watch?v=-9XQMHhpypc&t=1485s"
-        },
-        {
-          "text": "And then it turned out the agents figured out how to do their own. Yeah, the notebook. in the hugging facelift, yeah, it's gonna be a lot more. Yeah, the agent, the agent ecology online is gonna be spectacular. Yeah. People are gonna plug into that in all kinds of ways.",
-          "at_s": 1793,
-          "url": "https://www.youtube.com/watch?v=-9XQMHhpypc&t=1793s"
-        },
-        {
-          "text": "Anyway, so it's this incredible creative achievement, but it's a $200 million cash loss for the studio, but it's best because it had $180 million production budget. And so it's like, with AI, what if that movie had had a $20 million production budget? And I wonder if it had made, you know, or a $2 million production budget, right?",
-          "at_s": 2055,
-          "url": "https://www.youtube.com/watch?v=-9XQMHhpypc&t=2055s"
-        },
-        {
-          "text": "But, you know, the current US administration is 100% pro open source has been very encouraging. In fact, very much so 100% of the current administration 100% wants American open source to happen and to win AI globally.",
-          "at_s": 2475,
-          "url": "https://www.youtube.com/watch?v=-9XQMHhpypc&t=2475s"
-        },
-        {
-          "text": "Mobile obviously, you know, I think, you know, made the Internet go from whatever 500 million to 5 billion people and increased engagement and a bunch of other things, you know, empowered people with all the information in their pocket, had a lot of good effects.",
-          "at_s": 2927,
-          "url": "https://www.youtube.com/watch?v=-9XQMHhpypc&t=2927s"
-        }
-      ],
-      "description": "a16z is expanding a16z crypto into a16z Frontier, a broader mandate to back founders building at the edges of what's possible. Chris Dixon joins Marc Andreessen, Ben Horowitz, and Erik Torenberg to explain why founders should increasingly ask not “is this too ambitious?” but “is this ambitious enough?” — and how AI could pull decades of technological progress forward across hardware, robotics, entertainment, science, and entirely new forms of media. They also explore the coming internet of AI agents, why"
     }
   ]
 }
