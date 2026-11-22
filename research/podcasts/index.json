@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-22T16:36:00Z",
+  "updated_at": "2026-11-22T21:59:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -26,8 +26,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T16:36:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-22T21:59:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": ""
@@ -53,8 +53,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T16:36:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-22T21:59:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": ""
@@ -136,8 +136,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-21T20:40:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-22T21:59:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "ChatGPT can help you find ways to save, whether you’re shopping for a desk chair or wondering what you’re still paying for after a free trial ends. Learn three ways to save money with ChatGPT. Use a product screenshot to compare prices before you buy, spot subscriptions you no longer use, and build a monthly budget that leaves room for things you enjoy."
@@ -164,8 +164,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-21T20:40:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-22T21:59:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "David Heinemeier Hansson thinks the agent era is reopening a window in computing that has been closed for decades: the chance to build a new operating system people actually want to use. DHH joins a16z General Partners Martin Casado and Anish Acharya to explain why he’s building Omarchy, an agent-first Linux distribution designed around a computer that users can modify simply by asking. They discuss why the command lines, config files, and detailed error messages that once made Linux intimidating"
