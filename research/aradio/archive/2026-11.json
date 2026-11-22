@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-22T01:16:00Z",
+  "updated_at": "2026-11-22T07:29:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -698,6 +698,20 @@
       "at": "2026-10-31T21:56:00Z",
       "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating.",
       "archived_at": "2026-11-22T01:16:00Z"
+    },
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-11-09T19:08:00Z",
+      "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out.",
+      "archived_at": "2026-11-22T07:29:00Z"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-11-09T19:08:00Z",
+      "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed.",
+      "archived_at": "2026-11-22T07:29:00Z"
     }
   ]
 }
