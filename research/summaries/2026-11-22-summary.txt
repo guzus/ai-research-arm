@@ -1,0 +1,14 @@
+AI News - 2026-11-22
+
+TOP STORIES:
+• Lean FRO/Mathlib certify Alpöge’s 17M-line Riemann Hypothesis Lean proof
+• House panels urge ban on PRC open-weight models; Cursor exploring Kimi K2.5 phase-out
+• UN Geneva talks on “killer robots” end with no rules, only a 2-year proposal window
+• Baseten ships bison-1/groundhog-1 decision models; bison-1 leads AA Decision Index at 76
+
+KEY NUMBERS:
+• RH Lean: 175,187 modules compile; nanoda accepts in 27m42s
+• bison-1: 31B, 128k ctx, $0.10/1M input tokens (vendor)
+• House report: 12 recommendations, not a statute
+
+Full report on GitHub.
