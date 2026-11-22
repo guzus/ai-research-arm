@@ -4,10 +4,11 @@ title: Cursor (Anysphere)
 type: entity
 aliases: [Cursor, Anysphere, "@cursor_ai", "Cursor AI", "SpaceXAI", "Cursor Origin", "Origin"]
 tags: [ai-coding, ide, acquisition, agentic-coding, capital-markets]
-description: AI coding tool / IDE maker Anysphere; SpaceXAI is a named defendant in Buist v. Anthropic PBC, after the reported $60B SpaceX deal and OpenAI's November 12 model-access cutoff.
+description: AI coding tool/IDE maker Anysphere; exploring a Kimi K2.5 phase-out after House correspondence on PRC open-weight models, with no replacement timeline.
 created_at: 2026-06-17
-timestamp: 2026-09-20T00:00:00Z
+timestamp: 2026-11-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-09-20", path: research/digest/2026-09-20-digest.md}
   - {title: "ARA daily digest 2026-08-29", path: research/digest/2026-08-29-digest.md}
   - {title: "ARA daily digest 2026-08-18", path: research/digest/2026-08-18-digest.md}
@@ -116,6 +117,28 @@ the cycle's largest AI-coding M&A: a **$60B all-stock acquisition by
   frontier labs. See [[federal-ai-policy]]
   (The Hill, Bloomberg Law; ARA daily
   digest 2026-09-20).
+
+## Exploring a Kimi K2.5 phase-out (2026-11-22)
+
+- **Anysphere told House investigators it plans
+  to explore phasing out PRC model bases**, with
+  **no replacement timeline**. The House Homeland
+  Security / Select Committee on the CCP joint
+  report names Cursor’s maker among the firms
+  it corresponded with (Airbnb and DoorDash
+  too) and asks to keep PRC open-weight models
+  out of federal systems, contracts, and
+  high-risk infrastructure. The digest’s named
+  example is **Kimi K2.5**; that is not a
+  distinct wiki page — see
+  [[moonshot-kimi-k3]] for the current
+  Moonshot flagship and
+  [[moonshot-kimi-k2-7-code]] for the earlier
+  coding SKU. Exploratory, not a completed
+  swap, and not a statute. See
+  [[federal-ai-policy]] and [[open-weights]]
+  (House Homeland Security; ARA daily digest
+  2026-11-22).
 
 ## Open questions
 

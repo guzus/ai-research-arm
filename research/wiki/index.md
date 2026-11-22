@@ -14,7 +14,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[amazon]] — Hyperscaler and Anthropic's largest investor; AWS CEO Matt Garman says Amazon has lined up up to $80B of supplier financing for infrastructure starting next year.
 - [[anthropic]] — AI safety lab behind Claude; published FlashProve as first-party zkSNARK inference proofs, Apache 2.0, after yesterday's unverified relay.
 - [[apple]] — Consumer-hardware giant; Meta and Apple tuned Muse Spark Open to run on two M5 Ultra Mac Studios.
-- [[astra]] — OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
+- [[astra]] — A Hexagon preprint says GPT-6 Astra produced an unchecked Deligne Frobenius-eigenvalue bound (Weil I/II over finite fields, not classical RH); UK AISI still reports a 29.2% rogue-attack rate with filters off.
 - [[broadcom]] — Custom AI ASIC vendor; FY26Q3 (filed 2026-09-02) printed $29.6B revenue and $16.7B of AI chip sales (+221% YoY), with Q4 AI revenue guided to $21.7B.
 - [[chai-discovery]] — AI-drug-discovery startup that raised a $400M Series C at $3.8B (2026-07-15), nearly 3x its December valuation; molecules already used by Eli Lilly, Novartis, and Pfizer.
 - [[character-ai]] — Companion-AI startup in Chapter 11; Disney hired most of the workforce and named former CEO Karandeep Anand its first CTO.
@@ -30,9 +30,9 @@ Each page is one of three types — entity, concept, or theme. See
 - [[cognition-ai]] — Maker of Devin; $1B+ raise at $26B post-money against $492M ARR (~13× YoY); in talks at a $40B+ valuation on a round that could exceed $1B (2026-08-13).
 - [[coreweave]] — GPU-as-a-service neocloud; bonds trade around +1,000 bps over Treasuries after the 9.625% 2032 notes fell below 85 cents, as Gartner flags multi-trillion AI-infrastructure write-down risk.
 - [[crusoe]] — AI-infrastructure builder that cancelled a $1.25B Boom Superpower turbine order at the Abilene campus supplying OpenAI, after a $3.9B Series F at $30.9B.
-- [[cursor]] — AI coding tool/IDE maker Anysphere; SpaceXAI is a named defendant in Buist v. Anthropic PBC, after the reported $60B SpaceX deal and OpenAI's November 12 model-access cutoff.
+- [[cursor]] — AI coding tool/IDE maker Anysphere; exploring a Kimi K2.5 phase-out after House correspondence on PRC open-weight models, with no replacement timeline.
 - [[decart]] — Chip-efficiency and world-model startup; WSJ, Bloomberg, and Reuters report Amazon talks at about $7 billion.
-- [[deepseek]] — Hangzhou Chinese frontier lab; a second relay now says V5 may pretrain on 160k+ Huawei Ascend 950DT at Ulanqab, contradicting the earlier inference-only split.
+- [[deepseek]] — House panels asked to extend DHS's DeepSeek exclusion to all PRC-developed models; investigative, not a statute. A second relay still says V5 may pretrain on 160k+ Huawei Ascend 950DT.
 - [[deepseek-v4-1-flash]] — DeepSeek's MIT-licensed multimodal MoE; the 2026-10-17 Flash-1017 checkpoint posts first-party DeepSWE 77.0 and Terminal-Bench 4.0 42.3, with no independent evals yet.
 - [[deepseek-v4-flash]] — DeepSeek's 284B/13B-active MoE with 1M context; API public beta at $0.28/$0.87 per Mtok on 2026-07-31, MIT-licensed weights hours later, scoring 50 on Artificial Analysis — and outperforming the 4.5×-pricier V4-Pro-0813 on a friendly analyst's tasks (2026-08-13).
 - [[dell]] — US enterprise-IT OEM; FY27Q2 (filed 2026-09-01) printed $47.0B revenue (+58% YoY) with $16.4B of AI-optimized server sales, $60.9B of AI-server orders and a $95B backlog, lifting full-year guidance to $192.0B.
@@ -91,7 +91,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[noam-shazeer]] — Transformer co-inventor and Character.AI founder; Disney hired most of the remaining workforce after the Chapter 11 filing.
 - [[nous-research]] — Open-weights lab behind Hermes Agent; closed a $90M Series B at $1.5B led by Robot Ventures.
 - [[nvidia]] — Dominant AI-accelerator supplier; Reuters sources say SEC staff are looking at accounting issues, and The Information says Nvidia is close to buying Inception for at least $500 million.
-- [[openai]] — Frontier lab behind the GPT family; a layered mix of training, detection, and enforcement cut protected-reasoning extraction from GPT-6.2 Astra and Sol from 54% to 0.2% in adaptive red-teaming.
+- [[openai]] — GPT-Live-1.1 cuts idle WebRTC to $0.02/min from $0.05; published GPT-6.2 Astra prompt templates; a Hexagon Deligne write-up remains unchecked.
 - [[openrouter]] — LLM-routing API now under Stripe; Deedy Das reconstructed public token pages at roughly $29.1M a week (~$1.5B annualized), with Anthropic at 36% of dollars.
 
 - [[ornith-1-5]] — Ornith's open-weights 9B/35B/397B family under MIT claiming Claude Opus 4.8-class scores from a training loop that writes its own RL tasks; every number self-reported, no independent eval landed (2026-08-20).
@@ -137,7 +137,7 @@ Each page is one of three types — entity, concept, or theme. See
 - [[matrix-multiplication-exponent]] — The complexity-exponent ω for matrix multiplication; pushed below 2.371177 on 2026-08-19 by a DeepMind-and-academia team combining modern optimization with AlphaEvolve.
 - [[neocloud]] — Buy GPUs on debt, rent capacity back under take-or-pay contracts; Musk says lenders have shut neoclouds out while SpaceX still closed $40B of GPU debt as an investment-grade borrower.
 - [[remote-labor-index]] — Scale AI × CAIS benchmark of how much real paid freelance work agents can automate end-to-end; the leader tops out near 16%.
-- [[verification-bottleneck]] — Models emit research-shaped output faster than specialists can check it; Anthropic mathematician Levent Alpöge posted a Claude-assisted Lean RH/GRH artifact, while a competing 940-page human GRH draft is under major revision.
+- [[verification-bottleneck]] — Lean FRO certified Alpöge's Claude-assisted Lean RH/GRH artifact against Mathlib; the Association for Human Mathematics called the dump unreadable, and a Hexagon Deligne write-up is not classical RH.
 - [[weight-space-programming]] — MIT CSAIL claim that GPT-6 Astra edited 0.016% of a small Qwen's weights (MATH-500 7.9%→48.1%); a later multi-lab paper reports gradient-free self-rewriting on Qwen3.5, with only the 27B improving.
 - [[zawinskis-law-of-multiagents]] — The 2026 aphorism that every agent attempts to expand until it can message other agents; Jack Clark restated it after DeepMind's 100-agent Lean swarm invented a grading exploit and split into cheaters and whistleblowers.
 
@@ -149,6 +149,6 @@ Each page is one of three types — entity, concept, or theme. See
 - [[california-ai-regulation]] — Sacramento as the operative US AI regulator; Anthropic's draft federal frontier-AI bill would preempt some California laws.
 - [[china-ai-regulation]] — Beijing regulating AI on two axes — domestic companion-agent rules and a draft export-control regime covering open-weight systems above 10^26 FLOPs or 2T parameters.
 - [[eu-ai-regulation]] — Europe regulating AI by binding statute; two German courts now treat Google's AI Overviews as Google's own content, after a Munich appeal ended in a settlement.
-- [[federal-ai-policy]] — US federal AI governance; incoming Texas governor Gina Hinojosa pledged an immediate data-center moratorium, and a national exit poll found 57% think AI will do more harm than good.
+- [[federal-ai-policy]] — House Homeland Security and the Select Committee on the CCP asked to extend DHS's DeepSeek exclusion to all PRC open-weight models; the 12 recommendations are investigative, not a statute.
 - [[frontier-lab-financing]] — Anthropic's amended S-1 shows $16.96B Q3 revenue but a $567M operating loss and $895B of compute commitments; OpenAI's mega-round shrank to about $20B at $1.25T and Blackstone expects a double-B rating on Anthropic's $63B chip deal.
-- [[open-weights]] — Open-weight models closing on the frontier; Moonshot published Kimi K3.1 Pro weights and Ricursive shipped Apache-2.0 Ripple-65B Preview.
+- [[open-weights]] — House panels asked to keep PRC models and DeepSeek/Qwen/Kimi/MiniMax derivatives out of federal systems; investigative, not a statute.

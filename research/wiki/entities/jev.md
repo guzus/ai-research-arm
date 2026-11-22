@@ -6,8 +6,9 @@ aliases: [Jev, "TypeSafe Jev", TypeSafe, OpenJev, JevBench, RLCD, "Tev1-4B-exper
 tags: [decision-model, classifier, open-weights, system-one, structured-output]
 description: TypeSafe's non-autoregressive decision model; closed an $870M Series A at $7.5B led by a16z, three weeks after launch.
 created_at: 2026-09-20
-timestamp: 2026-10-10T00:00:00Z
+timestamp: 2026-11-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-10-10", path: research/digest/2026-10-10-digest.md}
   - {title: "ARA daily digest 2026-10-02", path: research/digest/2026-10-02-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
@@ -296,3 +297,25 @@ than a launch blurb. See [[open-weights]].
   remains the $0.10 cousin
   (TypeSafe, Microsoft; ARA
   daily digest 2026-10-10).
+
+## Baseten bison-1 / groundhog-1 as a Gemma-4 decision peer (2026-11-22)
+
+- **Baseten shipped bison-1 and groundhog-1**,
+  open-weight [[gemma-4|Gemma 4]] models that
+  return calibrated yes/no, choice, or score
+  probabilities in a **single prefill** and
+  generate **no output tokens** — the same
+  non-generative decision shape this page
+  tracks for Jev. bison-1 is **31B dense** at
+  **76** on AA Decision Index v2.1 (#1 of 19)
+  and **$0.10 per 1M input tokens**;
+  groundhog-1 is a **26B MoE with ~4B active**
+  at **$0.035**; both take **128k** context
+  and images. Vendor/MarkTechPost numbers, not
+  an independent bake-off against Jev,
+  [[perplexity|pplx-decider-27b]], or
+  [[openai]]’s Decisions API. Fold here as a
+  peer SKU rather than minting a Baseten page
+  until a second ship or a Jev-head-to-head
+  lands (MarkTechPost; ARA daily digest
+  2026-11-22).

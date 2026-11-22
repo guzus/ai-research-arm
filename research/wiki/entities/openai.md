@@ -2,12 +2,13 @@
 slug: openai
 title: OpenAI
 type: entity
-aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha", "Pierre Computer", "Images 2.6", "GPT-Image-2.6"]
+aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha", "Pierre Computer", "Images 2.6", "GPT-Image-2.6", "GPT-Live-1.1", "gpt-live-1.1"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: Frontier lab behind the GPT family; a layered mix of training, detection, and enforcement cut protected-reasoning extraction from GPT-6.2 Astra and Sol from 54% to 0.2% in adaptive red-teaming.
+description: GPT-Live-1.1 cuts idle WebRTC to $0.02/min from $0.05; published GPT-6.2 Astra prompt templates; a Hexagon Deligne write-up remains unchecked.
 created_at: 2026-05-30
-timestamp: 2026-11-21T00:00:00Z
+timestamp: 2026-11-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
@@ -3746,6 +3747,26 @@ materially reshape how the lab is positioned heading into its IPO window:
   Astra/Sol as a rumor SKU; this write-up names them as the protected
   targets of the defense stack. See [[agentic-ai-security]] (OpenAI, The
   Decoder; ARA daily digest 2026-11-21).
+
+## GPT-Live-1.1 standby; Astra templates; unchecked Deligne (2026-11-22)
+
+- **Full-duplex `gpt-live-1.1` in the API cuts idle WebRTC time to $0.02/min
+  from $0.05.** That is a voice-agent billing change on the GPT-Live-1 SKU
+  this page logged at $0.05/min on 2026-09-11, not a new flagship. See
+  [[gemini-3-8-live]] for the speech-to-speech cost comparison that still
+  cites GPT-Live 1 (MarkTechPost; ARA daily digest 2026-11-22).
+- **OpenAI published [[astra|GPT-6.2 Astra]] prompt templates.** The model
+  is more concise by default; templates tell it to make reversible
+  assumptions, skip unsolicited tests, and write a self-contained final
+  answer. Starting with GPT-6.2, the Responses API drops prior reasoning
+  items after prefix edits or some model switches, so token use can rise as
+  work is repeated. Docs change, not a new SKU (The Decoder, OpenAI docs;
+  ARA daily digest 2026-11-22).
+- **A Hexagon preprint says GPT-6 Astra produced an unchecked Deligne
+  Frobenius-eigenvalue bound** from a footnote in Alpöge’s Nov 20 note.
+  Tagged “primarily AI-generated,” no human check; it restates Weil I/II
+  over finite fields, **not classical RH**. See [[verification-bottleneck]]
+  and [[astra]] (Twitter, Hexagon; ARA daily digest 2026-11-22).
 
 ## Open questions
 

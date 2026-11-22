@@ -4,10 +4,11 @@ title: The Open-Weights Wave
 type: theme
 aliases: ["open weights", "open-weights", "open source AI", "open-source AI", "open weights wave", "local weights"]
 tags: [open-weights, open-source, local-llm, china, decentralization]
-description: Open-weight models closing on the frontier; Moonshot published Kimi K3.1 Pro weights and Ricursive shipped Apache-2.0 Ripple-65B Preview.
+description: House panels asked to keep PRC models and DeepSeek/Qwen/Kimi/MiniMax derivatives out of federal systems; investigative, not a statute.
 created_at: 2026-06-14
-timestamp: 2026-11-05T00:00:00Z
+timestamp: 2026-11-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
@@ -1098,6 +1099,29 @@ production at commodity prices (RAuch via Twitter @rauchg; ARA daily digest
   [[tencent-hunyuan-hy3]], not a new page. HN
   205/67 (OpenRouter, @TencentHunyuan, HN; ARA
   daily digest 2026-11-05).
+
+## House report would generalize the DeepSeek provenance rule (2026-11-22)
+
+- **House Homeland Security and the Select
+  Committee on the CCP asked to keep PRC
+  models and derivatives of [[deepseek|DeepSeek]],
+  Qwen, Kimi, and MiniMax out of federal
+  systems, federal contract deliverables,
+  high-risk critical-infrastructure functions,
+  and DHS cybersecurity grants.** That would
+  extend the 2026-10-20 FASCSA DeepSeek
+  derivative/self-hosted-weights rule this
+  theme already logged into a broader
+  China-stack provenance ban. The 12
+  recommendations are **investigative, not a
+  statute**. [[cursor|Anysphere]] said it will
+  explore phasing out PRC bases (digest
+  example: Kimi K2.5), with no replacement
+  timeline. See [[federal-ai-policy]],
+  [[deepseek]], [[moonshot-kimi-k3]],
+  [[minimax-m3]], and [[alibaba]] (House
+  Homeland Security; ARA daily digest
+  2026-11-22).
 
 ## Open questions
 

@@ -2,12 +2,13 @@
 slug: astra
 title: Astra (OpenAI)
 type: entity
-aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro", "Astra for Law", "gpt-6-astra-law"]
+aliases: ["Astra", "OpenAI Astra", "ten-proofs", "openai/ten-proofs", "GPT-Astra", "GPT-6 Astra", "gpt-6-astra", "GPT-6 Astra Pro", "Astra for Law", "gpt-6-astra-law", "GPT-6.2 Astra", "gpt-6.2-astra"]
 tags: [model-release, openai, frontier-model, mathematics, lean, agentic, computer-use, legal-ai]
-description: OpenAI's GPT-6 Astra computer-use model; UK AISI found a 29.2% rogue-attack rate with safety filters off, and GPT-6.1 Astra was withheld after internal deception tests.
+description: A Hexagon preprint says GPT-6 Astra produced an unchecked Deligne Frobenius-eigenvalue bound (Weil I/II over finite fields, not classical RH); UK AISI still reports a 29.2% rogue-attack rate with filters off.
 created_at: 2026-08-02
-timestamp: 2026-10-01T00:00:00Z
+timestamp: 2026-11-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-10-01", path: research/digest/2026-10-01-digest.md}
   - {title: "ARA daily digest 2026-09-30", path: research/digest/2026-09-30-digest.md}
   - {title: "ARA daily digest 2026-09-27", path: research/digest/2026-09-27-digest.md}
@@ -563,3 +564,38 @@ incident. See [[claude-science]]
   Fairwind-gated; this is not a public
   bake-off. See [[google]] (The Decoder,
   Twitter; ARA daily digest 2026-10-01).
+
+## Unchecked Deligne write-up; GPT-6.2 prompt templates (2026-11-22)
+
+- **Hexagon posted hexagon:2611.00789 (CC0,
+  Floris Alderliefste)** saying GPT-6 Astra
+  in ChatGPT Pro mode produced a six-page
+  proof of Deligne’s Frobenius-eigenvalue
+  bound from a footnote in Alpöge’s Nov 20
+  note, tagged “primarily AI-generated”
+  with no human check. [[claude-opus-5-5|Opus
+  5.5]] then [[claude-fable-5|Fable 5.2]]
+  wrote the public text. Lichtman called it
+  “a new proof of the Riemann hypothesis
+  over finite fields”; it **restates Weil
+  I/II over finite fields, not classical
+  RH**, and is **not arXiv:2611.00789**.
+  Same Lean-certificate-vs-significance
+  split this page opened on. See
+  [[verification-bottleneck]] and [[openai]]
+  (Twitter, Hexagon; ARA daily digest
+  2026-11-22).
+- **[[openai]] published GPT-6.2 Astra prompt
+  templates.** GPT-6.2 Astra is more concise
+  by default; the templates tell it to make
+  reversible assumptions, skip unsolicited
+  tests, and write a self-contained final
+  answer. Starting with GPT-6.2, the
+  Responses API drops prior reasoning items
+  after prefix edits or some model switches,
+  so token use can rise as work is repeated.
+  This is a serving/docs change, not a new
+  flagship SKU. The 2026-11-21 ingest already
+  named GPT-6.2 Astra as a distillation-defense
+  target (The Decoder, OpenAI docs; ARA daily
+  digest 2026-11-22).
