@@ -2,42 +2,6 @@
   {
     "backfilled": true,
     "category": "business",
-    "delivered_at": "2026-06-02 01:00 UTC",
-    "headline": "KOREA OVERTAKES INDIA AS WORLD'S #6 EQUITY MARKET AT $5T ON AI-SEMIS RALLY; SAMSUNG ENTERS GLOBAL TOP-10 MARKET CAPS",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-06-02-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2061607373492584852"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-02 01:00 UTC",
-    "headline": "LOTTE ENERGY MATERIALS BEGINS SUPPLYING AI CIRCUIT FOIL FOR NVIDIA VERA RUBIN GPUS THIS MONTH \u2014 BREAKS MITSUI'S NEAR-MONOPOLY",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-06-02-twitter-01h-headlines.json",
-    "url": "https://x.com/jukan05/status/2061594665938530791"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-06-02 01:00 UTC",
-    "headline": "OPENAI CODEX SHIPS PREVIEW INSIDE CHATGPT IOS / ANDROID APPS \u2014 START, REVIEW, STEER LONG-RUNNING TASKS FROM PHONE",
-    "source": "@OpenAI",
-    "source_file": "research/summaries/2026-06-02-twitter-01h-headlines.json",
-    "url": "https://x.com/OpenAI/status/2061564502160892138"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-06-02 01:00 UTC",
-    "headline": "THE INFORMATION: MICROSOFT PREPPING NEW DEVELOPER-CLASS AI MODELS TO COMPETE WITH OPENAI AND ANTHROPIC AHEAD OF BUILD 2026 KEYNOTE",
-    "source": "@theinformation",
-    "source_file": "research/summaries/2026-06-02-twitter-01h-headlines.json",
-    "url": "https://x.com/theinformation/status/2061560952953127392"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
     "delivered_at": "2026-06-02 04:00 UTC",
     "headline": "JENSEN HUANG AT COMPUTEX: MARVELL WILL BECOME NEXT TRILLION-DOLLAR COMPANY \u2014 $MRVL +12-17% OVERNIGHT",
     "source": "@amitisinvesting",
@@ -23194,5 +23158,33 @@
     "headline": "AMAZON NEARS $7.5B DEAL FOR AI STARTUP DECART, FT REPORTS",
     "source": "@lucasjamali",
     "url": "https://x.com/lucasjamali/status/2124213430244557101"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-22 01:10:03 UTC",
+    "headline": "GPT-6 ASTRA WRITES 6-PAGE DELIGNE/WEIL BOUND FROM ALP\u00d6GE FOOTNOTE; NO HUMAN CHECK",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2124288484563440073"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-11-22 01:10:03 UTC",
+    "headline": "TESLA FSD V15 STARTS ROLLING OUT WITH 25X SAFETY-CRITICAL HANDLING CLAIM",
+    "source": "@Tesla",
+    "url": "https://x.com/Tesla/status/2124222447855743019"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-11-22 01:10:03 UTC",
+    "headline": "MUSK: FSD V15 REALITY VIEW IS REAL-TIME AI VIDEO GEN ON HALF OF ONE AI4 TRIP",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2124270426402836626"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-11-22 01:10:03 UTC",
+    "headline": "HUMAN-MATH GROUP AHM CALLS ALP\u00d6GE RH LEAN DUMP UNREADABLE LAB PUBLICITY",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2124305168888144211"
   }
 ]
