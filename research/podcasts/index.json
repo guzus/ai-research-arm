@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-22T00:39:00Z",
+  "updated_at": "2026-11-22T07:26:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -26,8 +26,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T00:39:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-22T07:26:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -53,8 +53,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T00:39:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-22T07:26:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -80,8 +80,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T00:39:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-22T07:26:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Former Biden administration AI advisors Ben Buchanan and Tantum Collins join Nathan to discuss their book, The Bitter Struggle, and their experience shaping U.S. policy on compute supply chains and export controls. Drawing on their backgrounds in government and DeepMind, they unpack the geopolitical strategy of building an allied compute lead over China in order to spend that advantage on safety. The conversation probes the clash between frontier lab idealism and national security, bilateral talks over AI risks in nuclear"
@@ -108,8 +108,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T00:39:00Z",
-        "attempts": 3
+        "checked_at": "2026-11-22T07:26:00Z",
+        "attempts": 4
       },
       "excerpts": [],
       "description": "Chamath's theory on 10 AI Megacorps that go \"Dirt to Application\" Anthropic goes public, how companies are handling AI disruption Bull/bear case for Anthropic and the market White House weighs new open source disclosure rule for Chinese models State of Nvidia: Tanking stock, talent crisis, legal issues, Jensen's future Referenced in the show:"
