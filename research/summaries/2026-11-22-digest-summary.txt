@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-11-22
+
+TOP STORIES:
+• Lean communities certified Alpöge Riemann proof
+• House panels urge PRC model ban
+• Tesla started rolling out FSD v15
+
+KEY NUMBERS:
+• RH Lean: 175,187 modules compile; nanoda accepts in 27m 42s
+• HN: 2849 pts / 2018 comments on Alpöge; Lean verification 656/528
+• Tesla FSD v15: vendor 25× safety-critical handling (not independent)
+
+TRENDING: Lean FRO/Mathlib RH certification vs still-unread human write-up
+
+Full digest on GitHub.
