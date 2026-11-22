@@ -1,0 +1,12 @@
+arXiv Papers - 2026-11-22
+
+TOP 5 PAPERS:
+• VR-SparseQuant - Vera Rubin FP4 + 2:4 sparsity; WikiText-2 PPL 6.85→5.57, 3.1× GEMM
+• Tether - Lean-verified agent sandbox; 100% in-scope attacks blocked, <5% FPR
+• WeightCode - LLM writes weight programs; 0%→99.8% new commands, no gradients
+• Skill self-evolution - Rewriting agent skills without feedback loses 15 pts on SkillsBench
+• PosteriorBench - 1B labeled samples; no cheap sampler is faithful to rare LM behaviors
+
+CATEGORIES: LM/NLP 10, CV/Multimodal 10, Agents/Reasoning 10, Safety 10, Other 10
+
+Full report on GitHub.
