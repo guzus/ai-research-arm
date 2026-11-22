@@ -1,8 +1,349 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-22T01:16:00Z",
+  "updated_at": "2026-11-22T07:29:00Z",
   "headline": "GPT-6 Astra writes an unchecked Deligne bound from Alpöge's RH footnote; Tesla starts FSD v15",
   "threads": [
+    {
+      "slug": "anthropic-ipo-and-ai-funding",
+      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-22T07:29:00Z",
+      "now": "Decoder titled Huang's fall making Anthropic's IPO look stranger; transcript pending. AI Daily Brief still titles a first day of trading among AI's ten biggest days; still no first-party S1 or exchange listing. 20VC titles a $1.5T largest-ever IPO. Latent Space last said ~7x oversubscribed around $80, margins 19% to 15%.",
+      "changed": "Decoder with Nilay Patel titled an episode that Huang's fall makes Anthropic's IPO look even stranger. Transcript pending. Still no first-party S1 or listing.",
+      "watch": "A first-party S1, priced deal, or exchange listing; the Decoder transcript; whether Nvidia remains the $10B anchor.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=yTR5sD5KwD4",
+          "kind": "podcast",
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-21T14:09:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=xskAzAc_0ws",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-20T02:01:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=RZ4BBkSZ3io",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-19T14:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2n24npKhP6g",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (Aaron Levie)",
+          "at": "2026-11-19T14:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=sof3vW4mHTs",
+          "kind": "video",
+          "label": "Anthropic (Why we built Anthropic)",
+          "at": "2026-11-19T20:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=KGA7B_c_S4s",
+          "kind": "podcast",
+          "label": "AI Explained",
+          "at": "2026-11-19T19:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=274s",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-18T19:47:00Z",
+          "quote": "Um we know that margin went down from 19% to 15% and using an adjusted margin."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA",
+          "kind": "podcast",
+          "label": "Latent Space",
+          "at": "2026-11-18T19:47:00Z",
+          "quote": "Uh it went from a gap operating profit to a slight gap loss and that is just intentional not a big deal."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: private-side 1.4T vs 1T is options; per-share up 20-30%; allocator unworried about $80B, worried the next $100B layer is thin."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "AI Daily Brief show notes: IPO days away, pricing unclear; Claude productivity suite aimed at Microsoft. No transcript yet."
+        },
+        {
+          "at": "2026-11-14T07:03:00Z",
+          "change": "All-In: 4.2T bull case on 281B 2028 revenue; host guesses 100B raise at 1.75T; price leaks said due by November 20."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Big Technology: hosts expect Anthropic IPO next week with Nvidia as $10B anchor; circular-financing warning stands."
+        },
+        {
+          "at": "2026-11-16T18:55:00Z",
+          "change": "Dwarkesh: Q3 revenue growth about $5.4B vs $6.9B in Q2. a16z: prediction markets not above $2T; IPO revenue projections called not fast-takeoff."
+        },
+        {
+          "at": "2026-11-18T11:31:00Z",
+          "change": "Big Technology titles a Gary Marcus episode Why The Anthropic IPO Will Fail; transcript pending. Still no filing this week."
+        },
+        {
+          "at": "2026-11-19T04:42:00Z",
+          "change": "Latent Space: speakers say IPO the day after Nov 18, ~7x oversubscribed around $80; S1-style margins 19% to 15%, 12K customers over $100K, ~70% compute on training."
+        },
+        {
+          "at": "2026-11-20T09:12:00Z",
+          "change": "Nov 19 passed with no S1. 20VC titles $1.5T/largest-ever IPO; Levie bull case on Big Technology; Anthropic posts founders origin video. Transcripts pending."
+        },
+        {
+          "at": "2026-11-20T20:02:00Z",
+          "change": "AI Daily Brief titles Anthropic first day of trading and lists the IPO in a ten-biggest-days countdown. Still no first-party S1. Transcript pending."
+        },
+        {
+          "at": "2026-11-22T07:29:00Z",
+          "change": "Decoder titles Huang's fall making the IPO look stranger. Still no first-party S1 or listing. Transcript pending."
+        }
+      ]
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "developing",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-22T07:29:00Z",
+      "now": "20VC titled a 73-minute state-of-compute episode on why neo-clouds are great businesses; transcript pending. NVIDIA FY27 Q3 8-K: $115.8B revenue, up 103% year-over-year; Data Center $107.6B, up 110%. Q4 guided to $130.0B plus or minus 3%, no China Data Center compute. Colette Kress said Vera Rubin is off to an explosive start. SC26 Special Address still untranscribed.",
+      "changed": "20VC titled a 73-minute episode on the state of compute and why neo-clouds are great businesses. Transcript not yet available.",
+      "watch": "The 20VC and SC26 transcripts; a Vera Rubin shipment figure; whether China Data Center compute stays at zero in the next outlook.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=3ZkDiDrxDeY",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-21T15:09:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uJG53ligJt4",
+          "kind": "video",
+          "label": "NVIDIA (SC26 Special Address)",
+          "at": "2026-11-18T18:47:00Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27pr.htm",
+          "kind": "earnings",
+          "label": "NVIDIA Corporation (NVDA)",
+          "at": "2026-11-17T21:20:51Z",
+          "speaker": "Colette Kress, interim CEO and executive vice president and chief financial…",
+          "quote": "Vera Rubin is off to an explosive start, our roadmap is on track and our ambition has never been greater."
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
+          "kind": "earnings",
+          "label": "NVIDIA FY27 Q3 8-K",
+          "at": "2026-11-17T21:20:51Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/supplementalfinancialinfor.htm",
+          "kind": "earnings",
+          "label": "NVIDIA Q3 supplemental financials",
+          "at": "2026-11-17T21:20:51Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=570s",
+          "kind": "podcast",
+          "label": "a16z",
+          "at": "2026-11-16T15:21:00Z",
+          "quote": "And you saw exponential increases in token usage and flat revenue numbers, right?"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-14T14:58:00Z",
+          "quote": "The company just raised $720 million in a Series C round from Thrive, Founders Fund , Lightspeed and Radpoint, valuing it at $7 billion."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A",
+          "kind": "podcast",
+          "label": "The TWIML AI Podcast",
+          "at": "2026-11-13T16:37:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-10T03:00:00Z",
+          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
+        },
+        {
+          "at": "2026-11-10T21:25:00Z",
+          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
+        },
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
+        },
+        {
+          "at": "2026-11-14T22:17:00Z",
+          "change": "20VC: Fractile founder Walter Goodwin on a $7B AI-chip Nvidia challenger; titles only, no transcript yet."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "20VC transcript: Fractile $720M Series C at $7B; no model sales; memory-bandwidth bottleneck; Nvidia-Groq pairing claimed."
+        },
+        {
+          "at": "2026-11-16T18:55:00Z",
+          "change": "a16z: Ramp data cited for exponential token usage and flat revenue from frontier price competition."
+        },
+        {
+          "at": "2026-11-18T03:54:00Z",
+          "change": "NVIDIA Q3 FY27 8-K: $115.8B revenue, Data Center $107.6B; Q4 guide $130B with no China DC compute; Kress says Vera Rubin off to an explosive start."
+        },
+        {
+          "at": "2026-11-19T04:42:00Z",
+          "change": "NVIDIA titles a 48-min SC26 Special Address; transcript pending."
+        },
+        {
+          "at": "2026-11-22T07:29:00Z",
+          "change": "20VC titles a 73-min state-of-compute episode on neo-clouds as businesses. Transcript pending."
+        }
+      ]
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-11-11T06:00:00Z",
+      "updated_at": "2026-11-22T07:29:00Z",
+      "now": "Decoder titled Huang's fall making Anthropic's IPO look stranger; transcript pending. AI Daily Brief still says Nvidia's board will not bring Jensen back; 20VC timestamps a reinstatement segment. The FY27 Q3 8-K names Colette Kress interim CEO, confirming Huang is out. Alice Wang's $7.5B and 240,000 banned-chip reports still lack a filing. Q4 outlook assumes no China Data Center compute.",
+      "changed": "Decoder with Nilay Patel titled an episode that Huang's fall makes Anthropic's IPO look stranger. Transcript pending. Still no 8-K on a permanent CEO.",
+      "watch": "A permanent CEO 8-K; any filing on the Megaspeed allegations; the Decoder transcript; whether China Data Center compute returns.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=yTR5sD5KwD4",
+          "kind": "podcast",
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-21T14:09:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uSzew8QPRX0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-19T13:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=RZ4BBkSZ3io",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-19T14:54:00Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
+          "kind": "earnings",
+          "label": "NVIDIA FY27 Q3 8-K",
+          "at": "2026-11-17T21:20:51Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27pr.htm",
+          "kind": "earnings",
+          "label": "NVIDIA Q3 press release (EX-99.1)",
+          "at": "2026-11-17T21:20:51Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=438s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-14T00:28:00Z",
+          "quote": "Alice Wang reportedly played a key role in securing over $7.5 billion worth of Nvidia AI processors during her three-year relationship with Jensen Wang."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=1376s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-14T00:28:00Z",
+          "quote": "I found compelling forensic evidence that four leading Chinese AI labs: Deep Seeker, Moonshot, MiniMax, and Ant Group built their latest models on Nvidia's cutting-edge Blackwell chips, the export of which to China is prohibited."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1kf1QWG_YKQ",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-14T14:35:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
+        },
+        {
+          "at": "2026-11-13T14:46:00Z",
+          "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
+        },
+        {
+          "at": "2026-11-14T07:03:00Z",
+          "change": "All-In treats Huang as out; 50-150 bps growth at risk; successor talk names Renee of Arm and Nikesh. Still no Nvidia filing."
+        },
+        {
+          "at": "2026-11-14T13:42:00Z",
+          "change": "Big Technology 61-min special treats Huang as out; titles only. Still no Nvidia filing or successor."
+        },
+        {
+          "at": "2026-11-14T22:17:00Z",
+          "change": "AI Daily Brief titles Washington Fired Jensen Huang; Interconnects notes call the resignation a US open-model setback. Still no filing."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Big Technology transcript: 240k banned chips, $7.5B via Alice Wang, Singapore 22% vanished, Blackwell at DeepSeek/Moonshot/MiniMax/Ant. Still no filing."
+        },
+        {
+          "at": "2026-11-18T03:54:00Z",
+          "change": "NVIDIA 8-K names Colette Kress interim CEO, first-party confirmation Huang is out; Q4 outlook assumes no China DC compute."
+        },
+        {
+          "at": "2026-11-20T09:12:00Z",
+          "change": "AI Daily Brief headlines Nvidia board refusing to bring Jensen back; 20VC timestamps a reinstatement segment. Still no permanent-CEO 8-K."
+        },
+        {
+          "at": "2026-11-22T07:29:00Z",
+          "change": "Decoder titles Huang's fall making Anthropic's IPO look stranger. Transcript pending. Still no permanent-CEO 8-K."
+        }
+      ]
+    },
     {
       "slug": "ai-math-and-physics-discovery-claims",
       "title": "Labs claim AI-made math and physics discoveries; experts hold back",
@@ -99,343 +440,6 @@
         {
           "at": "2026-11-22T01:16:00Z",
           "change": "Hexagon posts an AI-generated six-page Deligne bound from Alpöge's footnote; GPT-6 Astra wrote it, no human has checked it."
-        }
-      ]
-    },
-    {
-      "slug": "anthropic-ipo-and-ai-funding",
-      "title": "Anthropic's IPO filing and the race to fund the frontier labs",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-20T20:02:00Z",
-      "now": "AI Daily Brief titles Anthropic's first day of trading and lists the IPO among the ten biggest days in AI history; still no first-party S1 or exchange listing in our sources. 20VC titles a $1.5T largest-ever IPO. Latent Space last said ~7x oversubscribed around $80, margins 19% to 15%. Founders video still untranscribed.",
-      "changed": "AI Daily Brief titles Anthropic's first day of trading and counts the IPO among AI's ten biggest days. Still no first-party S1 or listing in our sources. Transcript pending.",
-      "watch": "A first-party S1, priced deal, or exchange listing; the AI Daily Brief transcript of the trading-day claim; whether Nvidia remains the $10B anchor.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=xskAzAc_0ws",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-20T02:01:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=RZ4BBkSZ3io",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-19T14:54:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2n24npKhP6g",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (Aaron Levie)",
-          "at": "2026-11-19T14:54:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=sof3vW4mHTs",
-          "kind": "video",
-          "label": "Anthropic (Why we built Anthropic)",
-          "at": "2026-11-19T20:54:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=KGA7B_c_S4s",
-          "kind": "podcast",
-          "label": "AI Explained",
-          "at": "2026-11-19T19:54:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=274s",
-          "kind": "podcast",
-          "label": "Latent Space",
-          "at": "2026-11-18T19:47:00Z",
-          "quote": "Um we know that margin went down from 19% to 15% and using an adjusted margin."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA",
-          "kind": "podcast",
-          "label": "Latent Space",
-          "at": "2026-11-18T19:47:00Z",
-          "quote": "Uh it went from a gap operating profit to a slight gap loss and that is just intentional not a big deal."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=wX8nDtGIfYA&t=1489s",
-          "kind": "podcast",
-          "label": "Latent Space (training vs inference compute)",
-          "at": "2026-11-18T19:47:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "Latent Space S-1 walkthrough: 8% GAAP operating margin, $81B H1 loss called convertible marks; All-In: SpaceX-Anthropic compute has a 90-day out."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: hosts say Anthropic amended the S-1 with imminent accelerated-progress and recursive-self-improvement language."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: Kalshi December-IPO odds 90% to 57%; WSJ skepticism of $1.5T; host calls Nov 19 at $1.3T; Meter 2x Oct pace, 80% from internal AI."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: private-side 1.4T vs 1T is options; per-share up 20-30%; allocator unworried about $80B, worried the next $100B layer is thin."
-        },
-        {
-          "at": "2026-11-13T03:38:00Z",
-          "change": "AI Daily Brief show notes: IPO days away, pricing unclear; Claude productivity suite aimed at Microsoft. No transcript yet."
-        },
-        {
-          "at": "2026-11-14T07:03:00Z",
-          "change": "All-In: 4.2T bull case on 281B 2028 revenue; host guesses 100B raise at 1.75T; price leaks said due by November 20."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "Big Technology: hosts expect Anthropic IPO next week with Nvidia as $10B anchor; circular-financing warning stands."
-        },
-        {
-          "at": "2026-11-16T18:55:00Z",
-          "change": "Dwarkesh: Q3 revenue growth about $5.4B vs $6.9B in Q2. a16z: prediction markets not above $2T; IPO revenue projections called not fast-takeoff."
-        },
-        {
-          "at": "2026-11-18T11:31:00Z",
-          "change": "Big Technology titles a Gary Marcus episode Why The Anthropic IPO Will Fail; transcript pending. Still no filing this week."
-        },
-        {
-          "at": "2026-11-19T04:42:00Z",
-          "change": "Latent Space: speakers say IPO the day after Nov 18, ~7x oversubscribed around $80; S1-style margins 19% to 15%, 12K customers over $100K, ~70% compute on training."
-        },
-        {
-          "at": "2026-11-20T09:12:00Z",
-          "change": "Nov 19 passed with no S1. 20VC titles $1.5T/largest-ever IPO; Levie bull case on Big Technology; Anthropic posts founders origin video. Transcripts pending."
-        },
-        {
-          "at": "2026-11-20T20:02:00Z",
-          "change": "AI Daily Brief titles Anthropic first day of trading and lists the IPO in a ten-biggest-days countdown. Still no first-party S1. Transcript pending."
-        }
-      ]
-    },
-    {
-      "slug": "nvidia-jensen-huang-spy-allegations",
-      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-11-11T06:00:00Z",
-      "updated_at": "2026-11-20T09:12:00Z",
-      "now": "AI Daily Brief headlines say Nvidia's board is refusing to bring Jensen Huang back; 20VC timestamps a reinstatement segment. The FY27 Q3 8-K still names Colette Kress interim CEO, the first filing confirming Huang is out. Alice Wang reports of $7.5B in processors and 240,000 banned chips still lack a first-party document. Q4 outlook assumes no China Data Center compute.",
-      "changed": "AI Daily Brief headlines say the Nvidia board is refusing to bring Jensen back; 20VC timestamps a reinstatement segment. Still no 8-K on a permanent CEO.",
-      "watch": "A permanent CEO; any 8-K on the Megaspeed allegations; transcripts of AI Daily Brief and 20VC on reinstatement; whether China Data Center compute returns.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=uSzew8QPRX0",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-19T13:54:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=RZ4BBkSZ3io",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-19T14:54:00Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
-          "kind": "earnings",
-          "label": "NVIDIA FY27 Q3 8-K",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27pr.htm",
-          "kind": "earnings",
-          "label": "NVIDIA Q3 press release (EX-99.1)",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=438s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-14T00:28:00Z",
-          "quote": "Alice Wang reportedly played a key role in securing over $7.5 billion worth of Nvidia AI processors during her three-year relationship with Jensen Wang."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=1376s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-14T00:28:00Z",
-          "quote": "I found compelling forensic evidence that four leading Chinese AI labs: Deep Seeker, Moonshot, MiniMax, and Ant Group built their latest models on Nvidia's cutting-edge Blackwell chips, the export of which to China is prohibited."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1kf1QWG_YKQ",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-14T14:35:00Z"
-        },
-        {
-          "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/224815412/82298ff260f17d1395dc9c2b5cd555a0.mp3",
-          "kind": "podcast",
-          "label": "Interconnects",
-          "at": "2026-11-14T12:23:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
-        },
-        {
-          "at": "2026-11-13T03:38:00Z",
-          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
-        },
-        {
-          "at": "2026-11-13T14:46:00Z",
-          "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
-        },
-        {
-          "at": "2026-11-14T07:03:00Z",
-          "change": "All-In treats Huang as out; 50-150 bps growth at risk; successor talk names Renee of Arm and Nikesh. Still no Nvidia filing."
-        },
-        {
-          "at": "2026-11-14T13:42:00Z",
-          "change": "Big Technology 61-min special treats Huang as out; titles only. Still no Nvidia filing or successor."
-        },
-        {
-          "at": "2026-11-14T22:17:00Z",
-          "change": "AI Daily Brief titles Washington Fired Jensen Huang; Interconnects notes call the resignation a US open-model setback. Still no filing."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "Big Technology transcript: 240k banned chips, $7.5B via Alice Wang, Singapore 22% vanished, Blackwell at DeepSeek/Moonshot/MiniMax/Ant. Still no filing."
-        },
-        {
-          "at": "2026-11-18T03:54:00Z",
-          "change": "NVIDIA 8-K names Colette Kress interim CEO, first-party confirmation Huang is out; Q4 outlook assumes no China DC compute."
-        },
-        {
-          "at": "2026-11-20T09:12:00Z",
-          "change": "AI Daily Brief headlines Nvidia board refusing to bring Jensen back; 20VC timestamps a reinstatement segment. Still no permanent-CEO 8-K."
-        }
-      ]
-    },
-    {
-      "slug": "hyperscaler-capex-and-chip-selloff",
-      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-19T04:42:00Z",
-      "now": "NVIDIA's FY27 Q3 8-K: $115.8B revenue, up 103% from a year ago; Data Center $107.6B, up 110% year-over-year and 21% from last quarter. Q4 revenue is guided to $130.0B plus or minus 3%, with no China Data Center compute assumed. Interim CEO Colette Kress said Vera Rubin is off to an explosive start. NVIDIA posted a 48-minute SC26 Special Address; transcript not yet available.",
-      "changed": "NVIDIA posted a 48-minute SC26 Special Address. Transcript not yet available.",
-      "watch": "The SC26 transcript; a Vera Rubin shipment figure; whether China Data Center compute stays at zero in the next outlook.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=uJG53ligJt4",
-          "kind": "video",
-          "label": "NVIDIA (SC26 Special Address)",
-          "at": "2026-11-18T18:47:00Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27pr.htm",
-          "kind": "earnings",
-          "label": "NVIDIA Corporation (NVDA)",
-          "at": "2026-11-17T21:20:51Z",
-          "speaker": "Colette Kress, interim CEO and executive vice president and chief financial…",
-          "quote": "Vera Rubin is off to an explosive start, our roadmap is on track and our ambition has never been greater."
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
-          "kind": "earnings",
-          "label": "NVIDIA FY27 Q3 8-K",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/supplementalfinancialinfor.htm",
-          "kind": "earnings",
-          "label": "NVIDIA Q3 supplemental financials",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=570s",
-          "kind": "podcast",
-          "label": "a16z",
-          "at": "2026-11-16T15:21:00Z",
-          "quote": "And you saw exponential increases in token usage and flat revenue numbers, right?"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-14T14:58:00Z",
-          "quote": "The company just raised $720 million in a Series C round from Thrive, Founders Fund , Lightspeed and Radpoint, valuing it at $7 billion."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A",
-          "kind": "podcast",
-          "label": "The TWIML AI Podcast",
-          "at": "2026-11-13T16:37:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=ffh7fdwfrWU&t=1287s",
-          "kind": "podcast",
-          "label": "20VC (OpenAI demand test)",
-          "at": "2026-11-12T20:22:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed."
-        },
-        {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
-        },
-        {
-          "at": "2026-11-10T21:25:00Z",
-          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
-        },
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
-        },
-        {
-          "at": "2026-11-14T22:17:00Z",
-          "change": "20VC: Fractile founder Walter Goodwin on a $7B AI-chip Nvidia challenger; titles only, no transcript yet."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "20VC transcript: Fractile $720M Series C at $7B; no model sales; memory-bandwidth bottleneck; Nvidia-Groq pairing claimed."
-        },
-        {
-          "at": "2026-11-16T18:55:00Z",
-          "change": "a16z: Ramp data cited for exponential token usage and flat revenue from frontier price competition."
-        },
-        {
-          "at": "2026-11-18T03:54:00Z",
-          "change": "NVIDIA Q3 FY27 8-K: $115.8B revenue, Data Center $107.6B; Q4 guide $130B with no China DC compute; Kress says Vera Rubin off to an explosive start."
-        },
-        {
-          "at": "2026-11-19T04:42:00Z",
-          "change": "NVIDIA titles a 48-min SC26 Special Address; transcript pending."
         }
       ]
     },
