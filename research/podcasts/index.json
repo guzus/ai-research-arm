@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-22T07:26:00Z",
+  "updated_at": "2026-11-22T16:36:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -26,8 +26,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T07:26:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-22T16:36:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": ""
@@ -53,8 +53,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T07:26:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-22T16:36:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": ""
@@ -80,8 +80,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T07:26:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-22T16:36:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "Former Biden administration AI advisors Ben Buchanan and Tantum Collins join Nathan to discuss their book, The Bitter Struggle, and their experience shaping U.S. policy on compute supply chains and export controls. Drawing on their backgrounds in government and DeepMind, they unpack the geopolitical strategy of building an allied compute lead over China in order to spend that advantage on safety. The conversation probes the clash between frontier lab idealism and national security, bilateral talks over AI risks in nuclear"
@@ -108,8 +108,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T07:26:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-22T16:36:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": "Chamath's theory on 10 AI Megacorps that go \"Dirt to Application\" Anthropic goes public, how companies are handling AI disruption Bull/bear case for Anthropic and the market White House weighs new open source disclosure rule for Chinese models State of Nvidia: Tanking stock, talent crisis, legal issues, Jensen's future Referenced in the show:"
@@ -9215,390 +9215,6 @@
       },
       "excerpts": [],
       "description": "Alex Stamos is the Chief Information Security Officer at Cognition. Ranjan Roy is the Author of Margins Stamos joins Big Technology to discuss a massive wave of cyberattacks unleashed by AI-discovered software vulnerabilities, including a critical PHP flaw that could put millions of websites at risk. Tune in to hear how hackers are exploiting these vulnerabilities, why AI is accelerating cyberattacks, and what the next several months could mean for businesses and everyday internet users. We also cover China's hacking"
-    },
-    {
-      "id": "nvidia:v-NGxyPjcrE",
-      "show_id": "nvidia",
-      "show": "NVIDIA",
-      "kind": "video",
-      "priority": "P1",
-      "tags": [
-        "official",
-        "compute"
-      ],
-      "title": "NVIDIA GTC Berlin 2026 Keynote With CEO Jensen Huang",
-      "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE",
-      "video_id": "v-NGxyPjcrE",
-      "audio_url": null,
-      "published_at": "2026-10-23T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 5519,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 11115,
-        "checked_at": "2026-11-02T20:29:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "Everybody everybody here is all activated on the AI ecosystem and working towards the AI economy. We've been working here in Europe now for 33 years. You probably don't realize that NV1, Nvidia's first chip, NV2, and NV3, which became Riva 128, the chip that saved our company really and launched our company, were all built in Europe.",
-          "at_s": 279,
-          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=279s"
-        },
-        {
-          "text": "The beginnings of the AI economy. In the last year alone, we've invested nearly 10 billion dollars in Europe across startups, big partnerships, small partnerships all over all over Europe. This last week alone as I journeyed from France and UK to Sweden and now here in Berlin, we announced the investments of 14 startup companies.",
-          "at_s": 401,
-          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=401s"
-        },
-        {
-          "text": "The first part is the system software that runs the AI factory. These systems are gigantic. A 1-gigawatt data center, 1-gigawatt AI factory, costs about $50 billion. Land, power, shell, all of the compute, networking, storage, power, cooling, all connected together, multiple acres of AI factory. Just turning it on and operating it is a marvel in itself.",
-          "at_s": 869,
-          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=869s"
-        },
-        {
-          "text": "It connects 72 GPUs into one gigantic GPU. Okay, so each GPU is 20 petaflops, connecting 72 of them into one gigantic system. And this is our new Vera computer. So this this auditorium is packed. We have 100 other watch parties around the world. 100 watch parties, 15,000 people are watching us right now.",
-          "at_s": 1333,
-          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=1333s"
-        },
-        {
-          "text": "And Procore supports construction phase planning. Power limits how much an AI factory can produce. DSX Max LPS is an end-to-end control loop that dynamically steers power to match workload demand. It uses 30% less power for the same output. DSX rethinks cooling. Nvidia Vera Rubin systems are designed for closed-loop liquid cooling with coolant temperatures up to 45°C.",
-          "at_s": 1691,
-          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=1691s"
-        },
-        {
-          "text": "Each gigawatt each gigawatt data center is $50 the revenue generation you expect is tens of billions of dollars per year. And so if we just said it's $40 per year of revenue generation that comes out of that infrastructure. $40 if delayed by just 3 months that's $5 excuse me, what is that? $10 worth of revenues.",
-          "at_s": 1968,
-          "url": "https://www.youtube.com/watch?v=v-NGxyPjcrE&t=1968s"
-        }
-      ],
-      "description": "Join NVIDIA founder and CEO Jensen Huang live from Berlin for the latest in AI and accelerated computing. Discover how Europe is building its own intelligence—with the control, knowledge, and tools to put AI to work."
-    },
-    {
-      "id": "nvidia:roUZ7_Rsf5c",
-      "show_id": "nvidia",
-      "show": "NVIDIA",
-      "kind": "video",
-      "priority": "P1",
-      "tags": [
-        "official",
-        "compute"
-      ],
-      "title": "Accelerating Robot Development With AI Agents and NVIDIA Isaac",
-      "url": "https://www.youtube.com/watch?v=roUZ7_Rsf5c",
-      "video_id": "roUZ7_Rsf5c",
-      "audio_url": null,
-      "published_at": "2026-10-23T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 123,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 184,
-        "checked_at": "2026-11-02T20:29:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "Developers are training robots to learn tasks of every kind at home, in hospitals, stores, factories, and beyond. Then these learned skills move from simulation to the real world. Introducing Agile 1SN, a full stack reference robot built on NVIDIA Isaac Groot and powered by Jetson Thor, giving developers a starting point to train and deploy new skills.",
-          "at_s": 66,
-          "url": "https://www.youtube.com/watch?v=roUZ7_Rsf5c&t=66s"
-        }
-      ],
-      "description": "From prompts and data to real-world robot skills, frontier AI agents build training worlds, replay real-world motion, and tune physics using NVIDIA open libraries and models. Skills are trained with NVIDIA Isaac Lab and Newton and evaluated with NVIDIA Isaac Lab-Arena, locally on NVIDIA DGX Station. Agile ONE brings those skills into the physical world, built on NVIDIA Isaac GR00T and powered by NVIDIA Jetson Thor."
-    },
-    {
-      "id": "no-priors:6VprwfSc4Xk",
-      "show_id": "no-priors",
-      "show": "No Priors",
-      "kind": "podcast",
-      "priority": "P0",
-      "tags": [
-        "interviews",
-        "startups"
-      ],
-      "title": "Democratizing Security for the Agentic Web with Cloudflare CTO Dane Knecht",
-      "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk",
-      "video_id": "6VprwfSc4Xk",
-      "audio_url": null,
-      "published_at": "2026-10-23T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2484,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 6418,
-        "checked_at": "2026-11-02T09:55:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "You know, uh, I think today in one of our talks, they gave a statistic that showed that it looks like over 50% of engineers' time is going to be spent on security, and I don't think that's going to last forever .",
-          "at_s": 177,
-          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=177s"
-        },
-        {
-          "text": "Currently, about 50% of engineers do not work on security. Last week, I had Greg Brockman from OpenAI on the No Priors podcast, and he said that he thinks that by 2027, people will be spending as much on security tokens as they do on engineering. You are talking about a very similar idea. What will drive this change?",
-          "at_s": 452,
-          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=452s"
-        },
-        {
-          "text": "Um, is this the role of engineering and safety engineering today? Is this something that will be resolved at the model level? Just like people did before, agents, this needs to be addressed at all levels. You have to train the engineers who write the code, the product engineers.",
-          "at_s": 695,
-          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=695s"
-        },
-        {
-          "text": "So, you know, there's a whole bunch of new laws on the internet, and I'm really excited to see them evolve, like X42 when Stripe introduced it. I liked this because it's a reference to the 402 code. The HTTP code that Tim Berners-Lee created over 20 or 30 years ago for payments.",
-          "at_s": 1113,
-          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=1113s"
-        },
-        {
-          "text": "Also, the reason my company called it Cloud OS is because we started to realize that as we were bringing in more agents, we needed to educate them on what makes Cloudflare special, how we build Cloudflare, and for people, we did that through Cloudflare University, the onboarding process, and getting to know our colleagues.",
-          "at_s": 1251,
-          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=1251s"
-        },
-        {
-          "text": "We had about 200 interns, and we saw that these interns were probably the first to be completely “ AI-native”—if they took away the AI, they probably wouldn’t be able to work. Is that good? I think so. They know how to use the tools better than we do.",
-          "at_s": 1787,
-          "url": "https://www.youtube.com/watch?v=6VprwfSc4Xk&t=1787s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "microsoft-research:xbPxl1bPVZA",
-      "show_id": "microsoft-research",
-      "show": "Microsoft Research",
-      "kind": "video",
-      "priority": "P2",
-      "tags": [
-        "official",
-        "research"
-      ],
-      "title": "uGAP: A Unified Geospatial AI Platform for African Geographic Data",
-      "url": "https://www.youtube.com/watch?v=xbPxl1bPVZA",
-      "video_id": "xbPxl1bPVZA",
-      "audio_url": null,
-      "published_at": "2026-10-23T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2532,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-02T20:29:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "big-technology:JYjLK2ZH3Ac",
-      "show_id": "big-technology",
-      "show": "Big Technology Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "news-show"
-      ],
-      "title": "What Makes a Company Exponential in the Age of AI? — With Anthony Pappas",
-      "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac",
-      "video_id": "JYjLK2ZH3Ac",
-      "audio_url": null,
-      "published_at": "2026-10-23T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2660,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 6752,
-        "checked_at": "2026-11-02T20:29:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "You know, if we look at what we do, we spend 80% of our time searching and finding information and 20, maybe 20 or even less, 10% of our time actually doing something with it.",
-          "at_s": 286,
-          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=286s"
-        },
-        {
-          "text": "So , you know, we have a wealth of experience working with clients for 60, 50, 30, 40, 50 , 60 years. And we are one of those organizations that truly loves a challenge. And when I talk about complex problems, AI is a great example. It's a challenging environment. It covers all enterprises.",
-          "at_s": 730,
-          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=730s"
-        },
-        {
-          "text": "We look, we have Claude running as a suite of enterprise applications. We have AW Quick, AWS Quick, running across the organization. So we're implementing that to...120 000 of our employees. We have Copilot, ChatGPT, and additional modules. We've also built our own AI testing ground.",
-          "at_s": 1329,
-          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=1329s"
-        },
-        {
-          "text": "What I didn't tell you is : the demand was enormous. But I also saved $15 million right off the bat, in my marketing organization and budget, reduced my reliance on third parties, and gave my team complete control over what we produce, how we produce it, and how we launch it into the world.",
-          "at_s": 1983,
-          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=1983s"
-        },
-        {
-          "text": "My team developed our own token calculator based on the models we use . Before we run AI tools using different models, or run agents in a certain way, or a skill set that requires a lot of computing power, we evaluate the cost and We use free models for the draft or the final version.",
-          "at_s": 2180,
-          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=2180s"
-        },
-        {
-          "text": "So when you start generating agent compute power, which is 100 % of the compute and coding in Oasis and a lot of the execution of these operations, you understand those dollars and cents before you even start the operation. So, you know, we take that into account. It's going to be constantly evolving.",
-          "at_s": 2317,
-          "url": "https://www.youtube.com/watch?v=JYjLK2ZH3Ac&t=2317s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "all-in:6czo-C3FU7I",
-      "show_id": "all-in",
-      "show": "All-In Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "AI Cyber Panic, Ken Griffin’s Bubble Warning, The Fall of France?",
-      "url": "https://www.youtube.com/watch?v=6czo-C3FU7I",
-      "video_id": "6czo-C3FU7I",
-      "audio_url": null,
-      "published_at": "2026-10-23T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 6203,
-      "transcript": {
-        "available": true,
-        "source": "asr",
-        "words": 19801,
-        "checked_at": "2026-11-02T20:29:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "Now, when we brought that data to ramp, the quote is incredible because this is what my researcher told me, \"I prepared a list of factors to see if your thesis, this is him texting me around VC money being 80% to 90% of the top 1% of AI spend.\" But he said, \"Chimaltz Actual Estimate is pretty much correct.\"",
-          "at_s": 254,
-          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=254s"
-        },
-        {
-          "text": "Same time, investors are dumping French debt, Friedberg, France's 10 year has surpassed 5% this week, high since 2002, on the other hand, and this is an ongoing issue here in the United States, 10 year dropped just under 5% for the first time in a month.\"",
-          "at_s": 2789,
-          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=2789s"
-        },
-        {
-          "text": "Take a guess where the U.S. is today. What percentage of our GDP, 20%, yeah, I was going to say 25. Federal government spending is 7.4 trillion. State and local government spending is 4.6. You add those two together. That's $12 trillion out of a $33 trillion GDP. U.S. public spending is roughly 36% of GDP. Okay, we're there.",
-          "at_s": 3208,
-          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=3208s"
-        },
-        {
-          "text": "And Norway. And Norway. If you're forced to do that, and then we have this incredible thing this week, which dovetails with this, which is Elon said he's going to give every American child, which I think is to find us under 18, a share of SpaceX worth $150, $160, $70.",
-          "at_s": 4302,
-          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=4302s"
-        },
-        {
-          "text": "We're a larger group of 50 states. And they're at, by the way, I think France is almost that 56% is their top tax rate. Maybe it's 55, 56. The only place that's higher, I think, in Europe is Denmark, which is like 60% top tax rate. It doesn't matter. Take it to 90%. Nothing will get better, folks.",
-          "at_s": 5184,
-          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=5184s"
-        },
-        {
-          "text": "I'm going to guess 20%. Youth unemployment in Brazil is around 15, 16%. That's all right. And it's rising. And it's rising. It's almost at 20%. US is still fortunately below a low 10% and the same is true in many of these other countries.",
-          "at_s": 5386,
-          "url": "https://www.youtube.com/watch?v=6czo-C3FU7I&t=5386s"
-        }
-      ],
-      "description": ""
-    },
-    {
-      "id": "ai-daily-brief:8R8FUxRn7fY",
-      "show_id": "ai-daily-brief",
-      "show": "The AI Daily Brief",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "news-show"
-      ],
-      "title": "The AI vs AI Battle for the Internet",
-      "url": "https://www.youtube.com/watch?v=8R8FUxRn7fY",
-      "video_id": "8R8FUxRn7fY",
-      "audio_url": null,
-      "published_at": "2026-10-23T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1682,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-02T20:29:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": ""
-    },
-    {
-      "id": "a16z:-YMMRQ1qscI",
-      "show_id": "a16z",
-      "show": "a16z",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Amazon CEO Andy Jassy on Reinventing Amazon for the AI Era",
-      "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI",
-      "video_id": "-YMMRQ1qscI",
-      "audio_url": null,
-      "published_at": "2026-10-23T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3639,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 11285,
-        "checked_at": "2026-11-02T09:55:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "I mean, last quarter we grew 36.7% year-over-year on $169 billion annual revenue run rate business.",
-          "at_s": 267,
-          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=267s"
-        },
-        {
-          "text": "And you know what I would tell you is you know we've said this year in 2026 we expect to spend about um $220 billion of capex. By the way, I'll just tell you that I remember being at leadership team breakfast, you know, 15 years ago when we couldn't believe the telco company spent $50 billion in capex.",
-          "at_s": 806,
-          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=806s"
-        },
-        {
-          "text": "Let's go back to the capex for a second. You the $220 billion, you know, that's $600 million a day. just to you put put in perspective. I'm I'm curious how you think about AI demand right now offline.",
-          "at_s": 1256,
-          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=1256s"
-        },
-        {
-          "text": "There is just an incredible demand right now. So, kind of speaking of that, you you did something back in 2015 uh when you bought Annaperna Labs, which was probably before you probably weren't really thinking, I mean, maybe you were about like giant AI demand in 2015 because there just wasn't much AI demand in 2015.",
-          "at_s": 1688,
-          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=1688s"
-        },
-        {
-          "text": "So the next thing we turned that Anaperna team loose on was to build a CPU chip and that they built Graviton which um uh 99% of our top thousand EC2 customers use it very pervasively today. It's about 40% more price performant than other x86 processors.",
-          "at_s": 1872,
-          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=1872s"
-        },
-        {
-          "text": "No, I was like okay this inference is not that cheap. Um yeah. So you know one of the things that you've done is you've you've made some investments um particularly in anthropic and open AI like very large investments I think like 18 billion in anthropic and like 50 billion in open AI or something like that.",
-          "at_s": 2031,
-          "url": "https://www.youtube.com/watch?v=-YMMRQ1qscI&t=2031s"
-        }
-      ],
-      "description": ""
     }
   ]
 }
