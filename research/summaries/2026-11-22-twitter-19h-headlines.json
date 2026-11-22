@@ -1,0 +1,20 @@
+[
+  {
+    "headline": "OPENAI PROPOSES INDUSTRY-WIDE PERPLEXITY LIMITS ON FRONTIER MODELS UNTIL MONITORING CATCHES UP",
+    "source": "@merettm",
+    "url": "https://x.com/merettm/status/2124549218995949967",
+    "category": "policy"
+  },
+  {
+    "headline": "OPENAI CHIEF SCIENTIST: MODELS AT ~0.76 LOG-PERPLEXITY BEGAN PRODUCING GROUNDBREAKING MATH RESULTS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2124555086039015911",
+    "category": "research"
+  },
+  {
+    "headline": "SAFETY-STRIPPED INKLING-2-MINI POSTED TO HUGGING FACE; HARMBENCH COMPLIANCE 4% TO 73%",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2124568066688434669",
+    "category": "opensource"
+  }
+]

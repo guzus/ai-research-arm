@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-11-22 19:28:58 UTC
+
+CYCLE: OpenAI goes public with its pretraining curve and pitches perplexity as the industry's pacing limit
+
+TOP STORIES:
+• Pachocki's "Perplexity and Intelligence" proposes cross-lab perplexity limits gated on interpretability; Altman calls it OpenAI's most important recent publication [✓]
+• Pachocki: math results turned "groundbreaking" at ~0.76 log-perplexity; a pretraining-research avalanche is "conceivable" in 2027 [⚠]
+• Abliterated Inkling-2-Mini "heretic" posted to Hugging Face: HarmBench 4% -> 73% [⚠]
+
+WATCH: Whether Anthropic/DeepMind/xAI respond, and whether OpenAI names the eval corpus or a numeric limit
+
+Full update on GitHub.
