@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-21T19:13:00Z",
+  "updated_at": "2026-11-22T01:16:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -691,6 +691,13 @@
       "at": "2026-11-05T21:17:00Z",
       "change": "20VC hosts say OpenAI fundraise priced at $1.25T, down from $1.4T; they argue Anthropic sequential growth is slowing after ~$5B/$11B/$17B GAAP.",
       "archived_at": "2026-11-20T20:02:00Z"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-10-31T21:56:00Z",
+      "change": "Cognitive Revolution guest: agentic attacks cost five to ten cents per company; open cyber models proliferating.",
+      "archived_at": "2026-11-22T01:16:00Z"
     }
   ]
 }

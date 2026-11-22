@@ -1,0 +1,206 @@
+{
+  "schema": 1,
+  "id": "2026-11-22-0116",
+  "aired_at": "2026-11-22T01:16:00Z",
+  "headline": "GPT-6 Astra writes an unchecked Deligne bound from Alpöge's RH footnote; Tesla starts FSD v15",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's quarter past one UTC on Sunday, November twenty-second. This is ARA AI News. Six hours after Lean and Mathlib certified Alpöge's Riemann Hypothesis library, an AI model has already written a second proof from a footnote, and nobody has checked that one."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Andrew Curran highlighted a Hexagon preprint tonight whose abstract says GPT six Astra, running in Chat GPT Pro, produced a short proof of Deligne's bound on Frobenius eigenvalues from a footnote in Levent Alpöge's November twentieth note."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Hexagon's own record tags the text as primarily AI-generated and says human understanding covers no parts. The provenance is unusually explicit: Claude Opus five point five wrote a research prompt on November twentieth, GPT six Astra produced the proof on November twenty-first, then Opus and Fable five point two wrote the text."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The authors say this is not a new theorem. Granted étale cohomology formalism and a weak Lefschetz theorem, they claim the argument takes less than six pages, and that its only estimate is Cauchy-Schwarz on a finite-field character sum."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "And they say no human has checked it, even though Opus and Fable checked it, which is the opposite of a refereed paper. The Hexagon deposit and GitHub check logs exist, but a named algebraic geometer has not signed off."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "The bigger claim is unchanged: Lean FRO and Mathlib certified both the statement and the proof of the Riemann Hypothesis in Alpöge's seventeen-million-line Lean library, depending only on Mathlib. They say Buzzard's four Xena tests pass and Andrew Sutherland's MIT checker is live, but Clay has not awarded a prize and there is still no human-readable paper."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "What to watch is a Clay Institute verdict, a public critique from Tao, Sarnak, or Soundararajan, Alpöge's promised write-up, and now whether a named algebraic geometer accepts or rejects this Hexagon note, or whether anyone Lean-formalizes the six-page argument. Anthropic is still silent on the Claude-assisted Riemann archive."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Meanwhile Tesla started putting Full Self-Driving version fifteen on cars this evening."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Tesla's rollout note claims twenty-five times better handling of safety-critical cases, a live Reality View of what the stack plans to do, better detection of signs, animals, debris, potholes, and standing water, and a Bike Rack Mode. Later version fifteen builds are meant to expand end-to-end navigation from fleet preferences to the whole route."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Elon Musk said Reality View is real-time AI video generation, not a game engine, running on half of one AI four TRIP accelerator. Tesla S I's notes add an upgraded vision encoder shared across FSD, Robotaxi, and Optimus, trained on millions of internet videos, and say Reality View replaces explicit model signals with a single end-to-end visualization using less total compute."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Owner download screenshots match the posts, so the rollout and Reality View are confirmed across Tesla, Tesla S I, and owner screens. The twenty-five times figure is Tesla's own critical-intervention metric, not an independent crash study."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Watch the December holiday wider release Tesla accounts are pointing to, or a miles-and-interventions table that is not a Tesla screenshot."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "We are taking the AI-era security thread off the live board. NVIDIA's open-source agent-safety video never received a transcript, and the Mozilla Pown two Own and GPT six Cyber patch figures have not moved since mid-November."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That's a quiet close, not a verdict that the risk went away. If Daybreak or Defense Factory actually ships, that storyline comes back."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's quarter past one UTC on Sunday, November twenty-second. This is ARA AI News. Six hours after Lean and Mathlib certified Alpöge's Riemann Hypothesis library, an AI model has already written a second proof from a footnote, and nobody has checked that one.",
+    "Speaker 2: [high_energy] Andrew Curran highlighted a Hexagon preprint tonight whose abstract says GPT six Astra, running in Chat GPT Pro, produced a short proof of Deligne's bound on Frobenius eigenvalues from a footnote in Levent Alpöge's November twentieth note.",
+    "Speaker 1: Hexagon's own record tags the text as primarily AI-generated and says human understanding covers no parts. The provenance is unusually explicit: Claude Opus five point five wrote a research prompt on November twentieth, GPT six Astra produced the proof on November twenty-first, then Opus and Fable five point two wrote the text.",
+    "Speaker 2: The authors say this is not a new theorem. Granted étale cohomology formalism and a weak Lefschetz theorem, they claim the argument takes less than six pages, and that its only estimate is Cauchy-Schwarz on a finite-field character sum.",
+    "Speaker 1: And they say [emphasis]no human has checked it[/emphasis], even though Opus and Fable checked it, which is the opposite of a refereed paper. The Hexagon deposit and GitHub check logs exist, but a named algebraic geometer has not signed off.",
+    "Speaker 2: The bigger claim is unchanged: Lean FRO and Mathlib certified both the statement and the proof of the Riemann Hypothesis in Alpöge's seventeen-million-line Lean library, depending only on Mathlib. They say Buzzard's four Xena tests pass and Andrew Sutherland's MIT checker is live, but Clay has not awarded a prize and there is still no human-readable paper.",
+    "Speaker 1: What to watch is a Clay Institute verdict, a public critique from Tao, Sarnak, or Soundararajan, Alpöge's promised write-up, and now whether a named algebraic geometer accepts or rejects this Hexagon note, or whether anyone Lean-formalizes the six-page argument. Anthropic is still silent on the Claude-assisted Riemann archive.",
+    "Speaker 2: [transition] Meanwhile Tesla started putting Full Self-Driving version fifteen on cars this evening.",
+    "Speaker 1: Tesla's rollout note claims [emphasis]twenty-five times[/emphasis] better handling of safety-critical cases, a live Reality View of what the stack plans to do, better detection of signs, animals, debris, potholes, and standing water, and a Bike Rack Mode. Later version fifteen builds are meant to expand end-to-end navigation from fleet preferences to the whole route.",
+    "Speaker 2: Elon Musk said Reality View is real-time AI video generation, not a game engine, running on half of one AI four TRIP accelerator. Tesla S I's notes add an upgraded vision encoder shared across FSD, Robotaxi, and Optimus, trained on millions of internet videos, and say Reality View replaces explicit model signals with a single end-to-end visualization using less total compute.",
+    "Speaker 1: Owner download screenshots match the posts, so the rollout and Reality View are confirmed across Tesla, Tesla S I, and owner screens. The twenty-five times figure is Tesla's own critical-intervention metric, not an independent crash study.",
+    "Speaker 2: Watch the December holiday wider release Tesla accounts are pointing to, or a miles-and-interventions table that is not a Tesla screenshot.",
+    "Speaker 1: [transition] We are taking the AI-era security thread off the live board. NVIDIA's open-source agent-safety video never received a transcript, and the Mozilla Pown two Own and GPT six Cyber patch figures have not moved since mid-November.",
+    "Speaker 2: That's a quiet close, not a verdict that the risk went away. If Daybreak or Defense Factory actually ships, that storyline comes back.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "ai-math-and-physics-discovery-claims",
+    "tesla-fsd-v15-reality-view",
+    "ai-cyber-risk-and-key-theft"
+  ],
+  "threads": [
+    {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "escalating"
+    },
+    {
+      "slug": "tesla-fsd-v15-reality-view",
+      "title": "Tesla FSD v15 and on-car neural Reality View",
+      "status": "developing"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "resolved"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://x.com/AndrewCurran_/status/2124288484563440073",
+      "kind": "twitter",
+      "label": "@AndrewCurran_ on X"
+    },
+    {
+      "url": "https://x.com/jdlichtman/status/2124244181417906543",
+      "kind": "twitter",
+      "label": "@jdlichtman on X"
+    },
+    {
+      "url": "https://hexagonmath.org/2611.00789v1",
+      "kind": "twitter",
+      "label": "Hexagon 2611.00789v1"
+    },
+    {
+      "url": "https://github.com/KokunoYumeto/grothendieck-montpellier-archive/tree/main/research/grh_20261120/deligne_sign_only",
+      "kind": "twitter",
+      "label": "deligne_sign_only GitHub archive"
+    },
+    {
+      "url": "https://x.com/Tesla/status/2124222447855743019",
+      "kind": "twitter",
+      "label": "@Tesla on X"
+    },
+    {
+      "url": "https://x.com/TeslaSI/status/2124229673056113100",
+      "kind": "twitter",
+      "label": "@TeslaSI on X"
+    },
+    {
+      "url": "https://x.com/elonmusk/status/2124270426402836626",
+      "kind": "twitter",
+      "label": "@elonmusk on X"
+    },
+    {
+      "url": "https://x.com/SawyerMerritt/status/2124271378073530460",
+      "kind": "twitter",
+      "label": "@SawyerMerritt on X"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "ai-math-and-physics-discovery-claims"
+    },
+    {
+      "op": "create",
+      "slug": "tesla-fsd-v15-reality-view"
+    },
+    {
+      "op": "resolve",
+      "slug": "ai-cyber-risk-and-key-theft"
+    }
+  ],
+  "warnings": [],
+  "audio": {
+    "key": "audio/aradio/2026-11-22-0116.mp3",
+    "bytes": 1404669,
+    "duration_s": 234.0,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 126.52,
+        "lines": [
+          0,
+          6
+        ]
+      },
+      {
+        "start_s": 127.97,
+        "end_s": 199.33,
+        "lines": [
+          7,
+          11
+        ]
+      },
+      {
+        "start_s": 200.78,
+        "end_s": 227.46,
+        "lines": [
+          12,
+          14
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 2,
+    "kinds": {
+      "twitter": 2
+    }
+  }
+}
