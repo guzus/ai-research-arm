@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-02 04:00 UTC",
-    "headline": "JENSEN HUANG AT COMPUTEX: MARVELL WILL BECOME NEXT TRILLION-DOLLAR COMPANY \u2014 $MRVL +12-17% OVERNIGHT",
-    "source": "@amitisinvesting",
-    "source_file": "research/summaries/2026-06-02-twitter-04h-headlines.json",
-    "url": "https://x.com/amitisinvesting/status/2061657300318765250"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-02 04:00 UTC",
-    "headline": "SATYA NADELLA POSTS MICROSOFT BUILD 2026 STAGE SNEAK-PEEK \u2014 KEYNOTE OPENS 16:30 UTC WITH JENSEN HUANG LIVE FROM TAIWAN",
-    "source": "@satyanadella",
-    "source_file": "research/summaries/2026-06-02-twitter-04h-headlines.json",
-    "url": "https://x.com/satyanadella/status/2061650162460839954"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-06-02 04:00 UTC",
-    "headline": "OPENAI CONFIRMS CODEX LIVESTREAM JUNE 2 AT 15:30 UTC \u2014 ONE HOUR BEFORE MICROSOFT BUILD OPENS",
-    "source": "@derrickcchoi",
-    "source_file": "research/summaries/2026-06-02-twitter-04h-headlines.json",
-    "url": "https://x.com/derrickcchoi/status/2061515948503269572"
-  },
-  {
-    "backfilled": true,
     "category": "model",
     "delivered_at": "2026-06-02 04:00 UTC",
     "headline": "KIMMONISMUS LEAK: OPENAI CODEX UPDATE 'MONTHS IN DEVELOPMENT, SOUNDS DIFFERENT FROM GPT-5.6'",
@@ -23186,5 +23159,26 @@
     "headline": "HUMAN-MATH GROUP AHM CALLS ALP\u00d6GE RH LEAN DUMP UNREADABLE LAB PUBLICITY",
     "source": "@AndrewCurran_",
     "url": "https://x.com/AndrewCurran_/status/2124305168888144211"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-11-22 19:28:58 UTC",
+    "headline": "OPENAI PROPOSES INDUSTRY-WIDE PERPLEXITY LIMITS ON FRONTIER MODELS UNTIL MONITORING CATCHES UP",
+    "source": "@merettm",
+    "url": "https://x.com/merettm/status/2124549218995949967"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-22 19:28:58 UTC",
+    "headline": "OPENAI CHIEF SCIENTIST: MODELS AT ~0.76 LOG-PERPLEXITY BEGAN PRODUCING GROUNDBREAKING MATH RESULTS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2124555086039015911"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-11-22 19:28:58 UTC",
+    "headline": "SAFETY-STRIPPED INKLING-2-MINI POSTED TO HUGGING FACE; HARMBENCH COMPLIANCE 4% TO 73%",
+    "source": "@elliotarledge",
+    "url": "https://x.com/elliotarledge/status/2124568066688434669"
   }
 ]
