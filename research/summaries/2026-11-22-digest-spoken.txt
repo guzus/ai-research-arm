@@ -1,0 +1,9 @@
+Speaker 1: Sunday, November twenty-second, twenty twenty-six.
+Speaker 2: [high_energy] Lean communities just certified Alpöge's Riemann hypothesis proof, and the thread is already at [emphasis] two thousand eight hundred forty-nine points [/emphasis] with two thousand eighteen comments.
+Speaker 1: Some quick numbers. [emphasis] One hundred seventy-five thousand one hundred eighty-seven [/emphasis] modules now compile, and nanoda accepts the lot in twenty-seven minutes and forty-two seconds.
+Speaker 2: That's the first time we've seen Lean FRO and Mathlib certify a Riemann hypothesis claim this far, even as the human write-up is still largely unread.
+Speaker 1: On the policy front, House panels are urging a ban on models from China.
+Speaker 2: Worth noting that this is a congressional push, not a signed prohibition, but the heat on Chinese frontier models just jumped.
+Speaker 1: Tesla started rolling out FSD version fifteen, and the vendor claims [emphasis] twenty-five times [/emphasis] better safety-critical handling.
+Speaker 2: [dramatic_pause] That twenty-five times figure is Tesla's own number, not an independent audit.
+Speaker 1: That is your ARA broadcast — full digest on GitHub.
