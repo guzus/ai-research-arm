@@ -4,10 +4,11 @@ title: The verification bottleneck
 type: concept
 aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics", "Math 2.0", "Exponential Time Hypothesis"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: Models emit research-shaped output faster than specialists can check it; Anthropic mathematician Levent Alpöge posted a Claude-assisted Lean RH/GRH artifact, while a competing 940-page human GRH draft is under major revision.
+description: Lean FRO certified Alpöge's Claude-assisted Lean RH/GRH artifact against Mathlib; the Association for Human Mathematics called the dump unreadable, and a Hexagon Deligne write-up is not classical RH.
 created_at: 2026-08-02
-timestamp: 2026-11-21T00:00:00Z
+timestamp: 2026-11-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
@@ -669,3 +670,10 @@ new dump or a Clay decision
 - **Tao split two fluid-dynamics claims from GRH.** Alpöge/Buckmaster/Coiculescu have a human-readable Lean-formalized finite-time blowup for **unforced 3D Euler**; the unforced Navier–Stokes companion is “technically human-readable” but still needs a professionally written proof. Distinct from [[openai]]’s September forced-breakdown claim; not independently reproduced in this digest (HN, Terence Tao; ARA daily digest 2026-11-21).
 - **AlphaProof Lean-proves no complex monochromatic photonic GHZ graph for even N≥4** (arXiv 2611.26291). Another Lean certificate whose mathematical significance is still for specialists, not the digest, to judge. See [[google]].
 - **A related checking problem sits on [[weight-space-programming]]:** a multi-lab paper says Qwen3.5 can rewrite its own weights, but only the 27B improves or repairs — 4B/9B break themselves. The artifact is a checkpoint, not a proof, and still needs independent eval.
+
+## Lean FRO certifies the RH artifact; AHM rejects it; Deligne is not RH (2026-11-22)
+
+- **The Lean and Mathlib groups, endorsed by the Lean FRO, said they have “full confidence”** that Alpöge’s 17-million-line Claude-assisted archive matches Mathlib’s `RiemannHypothesis` statement and passes independent kernels. A joint statement at 13:55 UTC said all four Xena Project criteria hold: Mathlib’s statement, a clean compile, comparator/`con-leche --compare` identity, and independent kernels on an inert export. MIT’s Andrew Sutherland logged **175,187 modules** on Lean/Mathlib **v4.33.1**, nanoda accept in **27 min 42 s**, and **five theorems** covering RH plus Dirichlet GRH — not Dedekind or automorphic L-functions. This is a **formal-artifact check**, not a journal paper, a human-readable write-up, or a Clay Millennium Prize. HN added a “Lean verification of the Riemann Hypothesis” thread at **656 / 528**, third-largest AI comment thread this cycle, plus Sutherland’s verification-files companion at 67 / 21. The Alpöge note itself is now **2,849 / 2,018** (from 2,347 / 1,587 yesterday). See [[anthropic]] (HN, Lean community, math.mit.edu/~drew/grh/; ARA daily digest 2026-11-22).
+- **The Association for Human Mathematics’ Nov 20 statement argues the dump cannot be human-understood** and is lab publicity for “superintelligence.” Andrew Curran noted silence from the Advisory Group on Mathematics and AI. That is a professional-society statement, not a Clay or IMU ruling (Twitter, ahmath.org; ARA daily digest 2026-11-22).
+- **A Hexagon preprint (hexagon:2611.00789, CC0, Floris Alderliefste) says [[astra|GPT-6 Astra]] produced a six-page proof of Deligne’s Frobenius-eigenvalue bound** from a footnote in Alpöge’s Nov 20 note, tagged “primarily AI-generated” with no human check. The digest says GPT-6 Astra produced the argument and [[claude-opus-5-5|Opus 5.5]] then [[claude-fable-5|Fable 5.2]] wrote the public text. Jared Duker Lichtman called it “a new proof of the Riemann hypothesis over finite fields”; it **restates Weil I/II over finite fields, not classical RH**, and is **not arXiv:2611.00789**. Same certificate-vs-significance split this page already tracks for Astra’s ten-proofs dump. See [[astra]] and [[openai]] (Twitter, Hexagon; ARA daily digest 2026-11-22).
+- **Ethan Mollick’s Bluesky line is the social-claim caveat:** Millennium-Problem claims still need great mathematicians; models “can't (yet) do it all on their own.” Jordan Ellenberg on 3b1b (YouTube, 3 days old) argues AI-generated proofs do not threaten the social fabric of mathematics (Bluesky, YouTube; ARA daily digest 2026-11-22).

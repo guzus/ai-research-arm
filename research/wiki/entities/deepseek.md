@@ -4,10 +4,11 @@ title: DeepSeek
 type: entity
 aliases: [DeepSeek, "DeepSeek AI", "深度求索", "DeepSeek-V4", "DeepSeek V4 Pro", "Liang Wenfeng", DeepInfer, "deepseek-recipe"]
 tags: [frontier-lab, chinese-llm, open-weights, foundation-models, commercialization]
-description: Hangzhou Chinese frontier lab; a second relay now says V5 may pretrain on 160k+ Huawei Ascend 950DT at Ulanqab, contradicting the earlier inference-only split.
+description: House panels asked to extend DHS's DeepSeek exclusion to all PRC-developed models; investigative, not a statute. A second relay still says V5 may pretrain on 160k+ Huawei Ascend 950DT.
 created_at: 2026-06-04
-timestamp: 2026-11-05T00:00:00Z
+timestamp: 2026-11-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA model ticket — DeepSeek Huawei Ascend 950DT", path: research/models/tickets/deepseek-huawei-ascend-950dt-2026-09.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
@@ -550,6 +551,26 @@ High-Flyer); the 2026-06-04 cycle marks its decisive pivot to
   (model ticket
   `deepseek-huawei-ascend-950dt-2026-09`;
   ARA daily digest 2026-11-04).
+
+## House report would generalize the FASCSA exclusion (2026-11-22)
+
+- **House Homeland Security and the Select
+  Committee on the CCP asked to extend DHS’s
+  DeepSeek exclusion to all PRC-developed
+  models**, including derivatives of DeepSeek,
+  Qwen, Kimi, and MiniMax, across federal
+  systems, federal contract deliverables,
+  high-risk critical-infrastructure functions,
+  and DHS cybersecurity grants. The 12
+  recommendations are **investigative, not a
+  statute**. The 2026-10-20 FASCSA order on
+  this page already reaches DeepSeek
+  derivatives and self-hosted weights; the
+  new ask is to treat that as the template
+  for the rest of the Chinese
+  [[open-weights]] stack. See
+  [[federal-ai-policy]] (House Homeland
+  Security; ARA daily digest 2026-11-22).
 
 ## Open questions
 

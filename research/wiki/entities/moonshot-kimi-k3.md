@@ -6,8 +6,9 @@ aliases: ["Kimi K3", "Kivine", "Moonshot Kimi K3", "Moonshot AI Kimi K3", "Open 
 tags: [model-release, open-weights, china, coding, moonshot, frontier-model, agentic-product]
 description: Moonshot AI's 2.8T / 104B-active K3.1 Pro posts 65.7% on Terminal-Bench 4.0; ungated Hugging Face weights shipped with MXFP4 and a 1M-token window.
 created_at: 2026-07-17
-timestamp: 2026-11-05T00:00:00Z
+timestamp: 2026-11-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-10-26", path: research/digest/2026-10-26-digest.md}
   - {title: "ARA daily digest 2026-10-24", path: research/digest/2026-10-24-digest.md}
@@ -403,6 +404,21 @@ covering it.
   Face, @Kimi_Moonshot,
   @SemiAnalysis_, HN; ARA
   daily digest 2026-11-05).
+
+## Cursor exploring a Kimi K2.5 phase-out (2026-11-22)
+
+- **[[cursor|Anysphere]] told House investigators
+  it plans to explore phasing out PRC model
+  bases**, with no replacement timeline. The
+  digest’s named example is **Kimi K2.5**, which
+  is **not this K3.1 Pro SKU** and is not a
+  distinct wiki page. The surrounding House
+  report asks to keep Kimi (with DeepSeek, Qwen,
+  and MiniMax) out of federal systems. Demand-side
+  risk for Moonshot in US coding tools, not a
+  product change here. See [[federal-ai-policy]]
+  and [[open-weights]] (House Homeland Security;
+  ARA daily digest 2026-11-22).
 
 ## Open questions
 

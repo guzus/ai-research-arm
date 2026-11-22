@@ -4,10 +4,11 @@ title: Federal AI Policy
 type: theme
 aliases: ["federal AI policy", "Trump AI executive order", "federal AI executive order", "Promoting Advanced AI Innovation and Security", "30-day pre-release access", "CAISI MOU", "remote-access chip rule", "RIN 0694-AJ90", "CATSR", "AI Force", "Super Intelligence Force", SIF, "Buist v. Anthropic", "Ban Artificial Superintelligence Act", SAFA, "Standards Authority for Frontier AI", "White House Accord on Super Intelligence", "Joint Commitment on Frontier Responsibilities", "Super Intelligence renaming order", "Jay Clayton", "White House Genesis", "Genesis credits", FASCSA, "Federal Acquisition Supply Chain Security Act", "DHS DeepSeek order", "Pennsylvania AI Deceptive Advertising Act", "Josh Shapiro", "Gina Hinojosa"]
 tags: [policy, regulation, federal, executive-order, ai-governance, frontier-ai]
-description: US federal AI governance; incoming Texas governor Gina Hinojosa pledged an immediate data-center moratorium, and a national exit poll found 57% think AI will do more harm than good.
+description: House Homeland Security and the Select Committee on the CCP asked to extend DHS's DeepSeek exclusion to all PRC open-weight models; the 12 recommendations are investigative, not a statute.
 created_at: 2026-06-03
-timestamp: 2026-11-05T00:00:00Z
+timestamp: 2026-11-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-20", path: research/digest/2026-10-20-digest.md}
@@ -2479,6 +2480,39 @@ footing for the first time in the cycle.
   Planet channels. See [[openai]] and
   [[agentic-ai-security]] (ARA daily digest
   2026-11-05).
+
+## House PRC open-weight report (2026-11-22)
+
+- **House Homeland Security chair Garbarino and
+  Select Committee on the CCP chair Moolenaar
+  released a joint report** after corresponding
+  with Airbnb, [[cursor|Anysphere]], and DoorDash,
+  and asked to **extend DHS’s [[deepseek|DeepSeek]]
+  exclusion to all PRC-developed models**. The
+  12 recommendations ask to keep PRC models and
+  derivatives of DeepSeek, Qwen, Kimi, and MiniMax
+  out of federal systems, federal contract
+  deliverables, high-risk critical-infrastructure
+  functions, and DHS cybersecurity grants. This
+  is **investigative, not a statute**. The
+  2026-10-20 FASCSA order on this page already
+  reaches DeepSeek derivatives and self-hosted
+  weights; the new ask is to generalize that
+  provenance rule across the Chinese
+  [[open-weights]] stack. See [[deepseek]],
+  [[open-weights]], and [[cursor]] (House
+  Homeland Security; ARA daily digest 2026-11-22).
+- **[[cursor|Anysphere]] confirmed only that it
+  plans to explore phasing out PRC bases**, with
+  no replacement timeline. The digest names
+  Kimi K2.5 as the phase-out example; that is
+  not a new Moonshot SKU on this wiki. UN
+  autonomous-weapons talks in Geneva produced
+  no binding rules and only a two-year window
+  to propose some, possibly optional, guidelines
+  — a separate diplomatic track, not this House
+  report (House Homeland Security, The Verge;
+  ARA daily digest 2026-11-22).
 
 ## Open questions
 

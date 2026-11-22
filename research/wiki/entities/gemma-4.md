@@ -6,8 +6,9 @@ aliases: ["Gemma 4", "Gemma 4 12B", "Gemma-4", "Gemma 4 family", "Gemma"]
 tags: [open-weights, model, multimodal, google-deepmind, apache-2-0, on-device]
 description: Google DeepMind's open-weights (Apache 2.0) multimodal family; EmbeddingGemma 2 (740M–270M) is the new multimodal embedder built on Gemma 4.
 created_at: 2026-06-04
-timestamp: 2026-10-25T00:00:00Z
+timestamp: 2026-11-22T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
   - {title: "ARA daily digest 2026-10-07", path: research/digest/2026-10-07-digest.md}
   - {title: "ARA daily digest 2026-06-05", path: research/digest/2026-06-05-digest.md}
@@ -92,3 +93,17 @@ demos of the 12B. See
 [[open-weights]]
 (MarkTechPost; ARA daily
 digest 2026-10-25).
+
+## Baseten bison-1 / groundhog-1 (2026-11-22)
+
+Baseten shipped **bison-1** (31B dense, AA
+Decision Index v2.1 **76**, $0.10/M input)
+and **groundhog-1** (26B MoE / ~4B active,
+$0.035/M), open-weight Gemma 4 models that
+return calibrated yes/no, choice, or score
+probabilities in a single prefill and
+generate no output tokens. 128k context
+and images. Vendor numbers; see [[jev]]
+for the decision-model cluster
+(MarkTechPost; ARA daily digest
+2026-11-22).
