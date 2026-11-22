@@ -1,9 +1,54 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-21T19:13:00Z",
+  "updated_at": "2026-11-22T01:16:00Z",
   "degraded": false,
-  "latest": "2026-11-21-1913",
+  "latest": "2026-11-22-0116",
   "bulletins": [
+    {
+      "id": "2026-11-22-0116",
+      "aired_at": "2026-11-22T01:16:00Z",
+      "headline": "GPT-6 Astra writes an unchecked Deligne bound from Alpöge's RH footnote; Tesla starts FSD v15",
+      "path": "bulletins/2026-11-22/0116.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-22-0116.mp3",
+        "bytes": 1404669,
+        "duration_s": 234.0,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 126.52,
+            "lines": [
+              0,
+              6
+            ]
+          },
+          {
+            "start_s": 127.97,
+            "end_s": 199.33,
+            "lines": [
+              7,
+              11
+            ]
+          },
+          {
+            "start_s": 200.78,
+            "end_s": 227.46,
+            "lines": [
+              12,
+              14
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "ai-math-and-physics-discovery-claims",
+        "tesla-fsd-v15-reality-view",
+        "ai-cyber-risk-and-key-theft"
+      ],
+      "kinds": [
+        "twitter"
+      ]
+    },
     {
       "id": "2026-11-21-1913",
       "aired_at": "2026-11-21T19:13:00Z",
