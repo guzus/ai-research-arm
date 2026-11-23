@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-11-23
+
+TOP STORIES:
+• OpenAI's Pachocki proposes shared lab limits on pretraining perplexity
+• Meta's Alexandr Wang: superintelligence is arriving, leave the "default path"
+• OpenRouter drops 3 inference providers after data incidents
+
+KEY NUMBERS:
+• Log-perplexity ~0.76: where OpenAI says math breakthroughs began
+• 87% gas / 11% coal: study's 2028 estimate for Anthropic's power
+• 125 endpoints pulled from Zero Data Retention eligibility
+• Gemini 4 Neon 87.4 on LiveBench 2.0 vs 84.9 for Fable 5.2
+
+TRENDING: Lean RH verification thread passes 1,147 HN points
+
+Full digest on GitHub.
