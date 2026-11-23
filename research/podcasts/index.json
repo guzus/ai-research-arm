@@ -1,9 +1,37 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-23T03:02:00Z",
+  "updated_at": "2026-11-23T15:16:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "20vc:mg4yo5HUMuQ",
+      "show_id": "20vc",
+      "show": "20VC",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "\"Fire the Bankers\": Most VCs Won't Survive AI | Why the Inference Layer is Uninvestable | Anj Midha",
+      "url": "https://www.youtube.com/watch?v=mg4yo5HUMuQ",
+      "video_id": "mg4yo5HUMuQ",
+      "audio_url": null,
+      "published_at": "2026-11-23T15:07:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-23T15:16:00Z",
+      "duration_s": 3501,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-23T15:16:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "20vc:3ZkDiDrxDeY",
       "show_id": "20vc",
@@ -26,8 +54,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T21:59:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-23T15:16:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": ""
@@ -53,8 +81,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T21:59:00Z",
-        "attempts": 4
+        "checked_at": "2026-11-23T15:16:00Z",
+        "attempts": 5
       },
       "excerpts": [],
       "description": ""
@@ -80,8 +108,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-23T03:02:00Z",
-        "attempts": 6
+        "checked_at": "2026-11-23T15:16:00Z",
+        "attempts": 7
       },
       "excerpts": [],
       "description": "Former Biden administration AI advisors Ben Buchanan and Tantum Collins join Nathan to discuss their book, The Bitter Struggle, and their experience shaping U.S. policy on compute supply chains and export controls. Drawing on their backgrounds in government and DeepMind, they unpack the geopolitical strategy of building an allied compute lead over China in order to spend that advantage on safety. The conversation probes the clash between frontier lab idealism and national security, bilateral talks over AI risks in nuclear"
@@ -9015,178 +9043,6 @@
       },
       "excerpts": [],
       "description": "We — Nathan and Florian — wanted to discuss all the messy trade-offs of a busy week in AI and ask all the pressing questions like:* Why did Kimi K3.1 Pro have a mixed reaction with such incredible benchmarks? Will it be adopted?* Were we wrong about the risks of open-weight models and cybersecurity?* Why do cyber experts discuss recent events so differently than AI experts?* What comes next in the few months? What will change our minds?We will write"
-    },
-    {
-      "id": "nvidia:rySnll4sgu4",
-      "show_id": "nvidia",
-      "show": "NVIDIA",
-      "kind": "video",
-      "priority": "P1",
-      "tags": [
-        "official",
-        "compute"
-      ],
-      "title": "NVIDIA GTC Berlin 2026 | Live Keynote Pregame",
-      "url": "https://www.youtube.com/watch?v=rySnll4sgu4",
-      "video_id": "rySnll4sgu4",
-      "audio_url": null,
-      "published_at": "2026-10-24T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 6914,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 21587,
-        "checked_at": "2026-11-02T09:55:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "Robin Rambach, co-founder and CEO, Blackforce Labs, and Andreas Cleave, co-founder and CEO, Corti. Good morning to all of you. So, Janette, you and GC, we have the uh EU AI Champions Fund, $150 billion. What have we done with that $150 billion so far, and what are we going to do with it? It's a lot of money.",
-          "at_s": 1710,
-          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=1710s"
-        },
-        {
-          "text": "Um we'll start with you Janette. Will AI give Europe its first trillion dollar tech company? And you know, who's willing to put a date on it? I think it's going to give Europe a multiple trillion dollar tech ecosystem if we play it right.",
-          "at_s": 2777,
-          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=2777s"
-        },
-        {
-          "text": "So maybe we need to talk about 10 trillion evidence here certainly the benchmark. Awesome. Well thank you guys this was great really grateful for either one $1 trillion company or at least 10 hundred billion dollar companies. We'll start there. Thank you. Thanks. When a company hires someone new it doesn't hand them all the keys on day one.",
-          "at_s": 2913,
-          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=2913s"
-        },
-        {
-          "text": "you behind the AI boom is also an enormous physical buildout. AI factories, chips, energy, billions of dollars in investment. Europe wants a bigger role in that buildout. We've been talking about that over the last hour. But what will it actually take? Take a look. Artificial intelligence will be infrastructure. Our customers want to build AI factories.",
-          "at_s": 4348,
-          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=4348s"
-        },
-        {
-          "text": "The US alone needs 100 gawatts of power for AI in infrastructure. The grid can only provide 30 gawatt. So a simple solution is behind the meter power. You take computing centers to the power sources. And Brookfield uh with Bloom Energy has announced that $25 billion partnership which probably will increase in due course to address that issue.",
-          "at_s": 5322,
-          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=5322s"
-        },
-        {
-          "text": "Actually, if you look on a world level, 1 million 50 Okay, make that make that one 1 million. Okay. 1 million. Yeah. Why Why is that not front page news? Uh tragically, about 1 million people uh have uh accidents around the world every year.",
-          "at_s": 6140,
-          "url": "https://www.youtube.com/watch?v=rySnll4sgu4&t=6140s"
-        }
-      ],
-      "description": "Join Deirdre Bosa and Gavin Baker live from Berlin’s Tempodrom ahead of Jensen Huang’s keynote. Hear from Europe’s leading founders, investors and industry leaders on how Europe is building its AI future."
-    },
-    {
-      "id": "cognitive-revolution:ZLgvW9rqdTM",
-      "show_id": "cognitive-revolution",
-      "show": "The Cognitive Revolution",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews"
-      ],
-      "title": "AI:AM Highlights: Clean Neurons, Black October, the GPU Credit Crunch, and Buying the Supply Chain",
-      "url": "https://www.youtube.com/watch?v=ZLgvW9rqdTM",
-      "video_id": "ZLgvW9rqdTM",
-      "audio_url": null,
-      "published_at": "2026-10-24T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 5317,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-02T09:55:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": "Hosts Nathan Labenz and Prakash Narayanan examine whether capital, physical infrastructure, or regulation will set the pace of artificial intelligence. Zvi Mowshowitz evaluates aggressive recursive self-improvement timelines pointing toward 2027, the oversold claims surrounding clean neural networks, and models learning to detect internal probes. SF Compute CEO Evan Conrad argues that credit availability rather than power or chips forms the true bottleneck in AI, while Cambrian managing partner Lonis Hamaili explains why the physical supply chain will capture more value"
-    },
-    {
-      "id": "ai-daily-brief:3WYxicCws8k",
-      "show_id": "ai-daily-brief",
-      "show": "The AI Daily Brief",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "news-show"
-      ],
-      "title": "The Most Concerning AI Bubble Signals",
-      "url": "https://www.youtube.com/watch?v=3WYxicCws8k",
-      "video_id": "3WYxicCws8k",
-      "audio_url": null,
-      "published_at": "2026-10-24T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1701,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-02T09:55:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": "AI bubble fears are growing louder as the Anthropic IPO nears, but not every warning sign deserves equal weight. NLW sorts through Neocloud debt, idle GPUs at Amazon, pension and insurer exposure, and concentrated enterprise revenue to separate real risks from noise. Demand is the question behind every concern, with clear markers for what would make each signal more worrying. The AI Daily Brief helps you understand the most important news and discussions in AI."
-    },
-    {
-      "id": "20vc:4UmFfI8CWuA",
-      "show_id": "20vc",
-      "show": "20VC",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Why Robotics Will be 100X Bigger Than Coding Agents & Inference Will Be $10TRN Market | Naveen Rao",
-      "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA",
-      "video_id": "4UmFfI8CWuA",
-      "audio_url": null,
-      "published_at": "2026-10-24T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 4406,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 13829,
-        "checked_at": "2026-11-02T09:55:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "model something untouchable. Our thinking is based on priority energy. Naveen Rao—serial entrepreneur. He sold his last one business, Mosaic ML, Databricks for 1.3 billion dollars. Now he is back. with Unconventional AI, which attracted hundreds millions of dollars. Their last round funding estimated company in almost 5 billions of dollars.",
-          "at_s": 6,
-          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=6s"
-        },
-        {
-          "text": "But as of today we we will not build 40 gigawatts per year. Maybe we can build 10. If we build 10, this will be amazing. It half a trillion dollars, just to you understood the scale.",
-          "at_s": 338,
-          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=338s"
-        },
-        {
-          "text": "You saw how Benioff said that they will spend 300 million dollars from 6 billion budget for salaries developers on basic tools for programming. My question to you is: whether this will be left on equal to 5% for developers? Or will it increase to 30%, 50%, or will it fall to 1%?",
-          "at_s": 3063,
-          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=3063s"
-        },
-        {
-          "text": "You would never thought that something was wrong technologies will become a trillion market dollars. And I think, that only the models themselves AI will become a market in trillion dollars during the next several years. AND inference market will become ten trillion market for 10 years. So this is Crazy, isn't it?",
-          "at_s": 3417,
-          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=3417s"
-        },
-        {
-          "text": "So, it is important model and those the opportunities that she provides. Therefore, I believe what is agent programming as market, for deduction suppliers models, is what I wouldn't today. invested. What percentage? token traffic will pass through open and closed models in 3 years? I think it will be 80% open traffic.",
-          "at_s": 3969,
-          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=3969s"
-        },
-        {
-          "text": "The most difficult thing, and in I have this problem, in I have a real...Okay, Let's do this. Now there is series A, and they all building spaceships projects. I don't at all. I don't understand . The team is great. They cool. But man, this a check for 20 million from fund of 400 million. This...this is 5%. Yes.",
-          "at_s": 4184,
-          "url": "https://www.youtube.com/watch?v=4UmFfI8CWuA&t=4184s"
-        }
-      ],
-      "description": "Naveen Rao is the Founder and CEO of Unconventional AI, an AI hardware startup focused on rethinking how AI systems are built and powered. A serial entrepreneur, Naveen previously founded Nervana Systems, acquired by Intel, and co-founded MosaicML, acquired by Databricks for $1.3 billion. He later served as VP of AI at Databricks before launching Unconventional AI. Timestamps: Intro Why Energy Will Be the Biggest Bottleneck for AI Why the US Could Run Out of Excess Power Capacity What Compute"
     }
   ]
 }
