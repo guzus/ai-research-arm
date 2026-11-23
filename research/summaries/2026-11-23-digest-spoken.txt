@@ -1,0 +1,13 @@
+Speaker 1: Monday, November twenty-third, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI's Jakub Pachocki is proposing that the big labs agree on shared limits on pretraining perplexity.
+Speaker 1: The marker OpenAI points to is a log-perplexity of about [emphasis] zero point seven six [/emphasis], which it says is roughly where math breakthroughs started showing up.
+Speaker 2: That's a lab naming a specific capability threshold out loud, and asking its rivals to stop near it together.
+Speaker 1: Over at Meta, Alexandr Wang says superintelligence is arriving and urges people to leave what he calls the default path.
+Speaker 2: Worth noting that the two stories pull in opposite directions, one lab talking limits while another talks arrival.
+Speaker 1: On the infrastructure front, OpenRouter has dropped three inference providers after data incidents.
+Speaker 2: And it pulled [emphasis] one hundred twenty-five endpoints [/emphasis] from Zero Data Retention eligibility, so check where your traffic is going.
+Speaker 1: Some quick numbers. A new study estimates Anthropic's power in twenty twenty-eight would be eighty-seven percent gas and eleven percent coal.
+Speaker 2: On benchmarks, Gemini four Neon scores [emphasis] eighty-seven point four [/emphasis] on LiveBench two point oh, against eighty-four point nine for Fable five point two.
+Speaker 1: And trending on Hacker News, a thread on verifying the Riemann Hypothesis work in Lean has passed one thousand one hundred forty-seven points.
+Speaker 2: [dramatic_pause] Formal proof checking is drawing a crowd on Hacker News.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
