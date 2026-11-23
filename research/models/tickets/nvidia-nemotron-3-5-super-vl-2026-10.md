@@ -3,8 +3,10 @@ slug: nvidia-nemotron-3-5-super-vl-2026-10
 title: "NVIDIA Nemotron 3.5 Super VL — 120B-total / 12B-active open multimodal model for long-running agents"
 company: NVIDIA
 model: Nemotron 3.5 Super VL
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-16 (38 days ago); see the final history entry.
+
   **Released 2026-10-16 (multiple independent secondary sources).**
   @testingcatalog's 2026-10-16 brief: "NVIDIA released Nemotron 3.5 Super VL, an open
   120B-total, 12B-active multimodal model for long-running AI agents." It is also
@@ -31,12 +33,14 @@ sources:
   - "https://x.com/Mekarly/status/2111407881585136042"
   - "https://x.com/DogukanUrker/status/2111337663286706405"
 created_at: 2026-10-17
-updated_at: 2026-10-17
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-17
     change: "Created — RELEASED / partial. Nemotron 3.5 Super VL, a 120B-total / 12B-active open multimodal model for long-running agents, launched 2026-10-16 per @testingcatalog's 2026-10-16 brief. @ArtificialAnlys scores it 26 on its Intelligence Index, second among US open-weights models behind [[meta-muse-spark-open-2026-10]]. Perplexity added it for Pro/Max and the Agent API. Sibling small model: [[nvidia-nemotron-3-5-bolt-2026-10]]. No NVIDIA primary captured."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Nemotron 3.5 Super VL was launched 2026-10-16, 38 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: partial. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 This is the larger member of the Nemotron 3.5 family that showed up this week,

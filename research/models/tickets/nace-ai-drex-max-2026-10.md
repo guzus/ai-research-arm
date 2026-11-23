@@ -3,8 +3,10 @@ slug: nace-ai-drex-max-2026-10
 title: Nace AI releases Drex Max, a multimodal decision model for computer-use agents
 company: Nace AI
 model: Drex Max
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-19 (35 days ago); see the final history entry.
+
   **Primary launch.** @NaceAI (2026-10-19 13:33 UTC): "Drex Max is here: our multimodal
   decision model — text, images, and video. 34 ms/decision, under 1s at 262K tokens.
   $0.06 / 1M input tokens. Available today."
@@ -27,12 +29,14 @@ sources:
   - "https://x.com/NaceAI/status/2112175183448461683"
   - "https://x.com/systemdesignone/status/2112176629816438895"
 created_at: 2026-10-19
-updated_at: 2026-10-19
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-19
     change: "Created — RELEASED / confirmed. @NaceAI announced Drex Max on 2026-10-19 13:33 UTC as available today: a text/image/video decision model at 34 ms per decision, under 1s at 262K tokens, priced at $0.06 per 1M input tokens. Benchmark claims (67.59 Decision Index across 37 benchmarks vs 60.70 for Jev 1.14; 88.3% Mind2Web) are company-reported, relayed by @systemdesignone. Joins the October decision-model cluster with [[liquid-ai-d1-ultra-2026-10]], [[microsoft-decision-1-2026-10]], [[perplexity-decider-v1-2-2026-10]] and [[typesafe-jev-1-14-2026-10]]."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Drex Max was available from 2026-10-19, 35 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: confirmed. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 "Decision models" became a product category in October 2026. They score or pick

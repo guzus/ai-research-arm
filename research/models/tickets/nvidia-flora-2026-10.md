@@ -3,8 +3,10 @@ slug: nvidia-flora-2026-10
 title: "NVIDIA open-sources Flora — open model suite that labels robot and human video for robotics data engines (used to train GR00T)"
 company: "NVIDIA"
 model: "Flora"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-20 (34 days ago); see the final history entry.
+
   **Announcement from NVIDIA's robotics lead.** @DrJimFan (NVIDIA, 2026-10-20 17:31 UTC):
   "Introducing Flora, a suite of open models to parse the physical world and turn raw
   footage into rich training signals", with weights open-sourced the same day. Claimed:
@@ -31,12 +33,14 @@ sources:
   - "https://x.com/DrJimFan/status/2112597589388652719"
   - "https://x.com/DrJimFan/status/2112597590571450505"
 created_at: 2026-10-21
-updated_at: 2026-10-21
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-21
     change: "Created — RELEASED / confirmed. @DrJimFan (NVIDIA, 2026-10-20 17:31 UTC) open-sourced Flora, a suite of models that annotate robot and human video with timestamped captions, dense progress rewards and rubric scores. NVIDIA claims Astra-level labeling at 125x lower cost; it labels 200K hours of video a day on 500 GPUs in NVIDIA's own data engine and is used to train GR00T (@yunzeman thread). Cost/quality claims are NVIDIA's own."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Flora was open-sourced 2026-10-20, 34 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: confirmed. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 Robot learning is data-limited, and most of the cost is turning raw footage into

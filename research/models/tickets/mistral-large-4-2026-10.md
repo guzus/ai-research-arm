@@ -3,8 +3,10 @@ slug: mistral-large-4-2026-10
 title: "Mistral Large 4 (\"Le Chonk\") — 1T-parameter / 49B-active multimodal model; final version with open weights released 2026-10-29"
 company: Mistral AI
 model: Mistral Large 4
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-06 (48 days ago); see the final history entry.
+
   **First-party launch, 2026-10-06 13:06 UTC (@MistralAI):** "Meet Mistral Large 4,
   aka Le Chonk. 1T parameters, natively multimodal. 49B active. It is the best open
   weights model from US or Europe on aggregated benchmarks. State-of-the-art on
@@ -67,9 +69,9 @@ sources:
   - "https://x.com/MistralAI/status/2117574509179900410"
   - "https://x.com/alexxhashemi/status/2117621284443971936"
 created_at: 2026-10-06
-updated_at: 2026-11-03
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-06
     change: "Created — RELEASED / confirmed. @MistralAI announced Mistral Large 4 ('Le Chonk') on 2026-10-06 13:06 UTC: 1T total / 49B active parameters, natively multimodal, claimed best open-weights model from the US or Europe on aggregated benchmarks, SOTA on cyber defense, manufacturing and finance, ahead of closed frontier models on visual grounding, available to all via API today, open weights end of October. Co-founder @GuillaumeLample says it is a preview — the RL run is still in flight and a final version ships with weights before month-end — and self-reports 82% vulnerability reproduction/patching and 93% Cybench. Released because API access is open to all now; weights are not yet out. Secondary: 4,000 Grace Blackwell GPUs, 160+ languages, Oct 27 weights date, DeepSWE 62% / FinWorkBench 67% / Harvey legal 15%. Covered by CNBC, WSJ, WIRED. Mistral's first model release since April per @GenAISpotlight; follows the ~€3B round at [[mistral-funding-round-2026-06]]."
@@ -79,6 +81,8 @@ history:
     change: "Open weights published; status stays released, verification stays confirmed; title updated. @MistralAI (2026-10-29 14:21 UTC, ~5.8K likes): 'Today, we release the weights of a new and improved Le Chonk', with a Hugging Face download link and Mistral Forge customisation. This is two days after the Oct 27 date in secondary reports, and inside the 'end of October' promise. Mistral self-reports #1 among open models on Cognition's FrontierCode, a new Pareto-efficiency point on Artificial Analysis, and SOTA cyber defence tested with CrowdStrike, Cloudflare, Rubrik and Zscaler. Mistral (2026-10-30 09:48 UTC) quotes @ThibaultJaigu: the update ranks as the 2nd-best OSS model on Requesty's coding benchmark. Kilo Code shipped it in Kilo Desktop the same day. Secondary only (@chikitleung): 1M context, commercial use permitted, API price halved to $0.70 / $2.10 per 1M tokens, and Claude Opus 5.5 still wins Mistral's blind coding test 78/22. @virtualbacon relays a claim of 47% fewer tokens per task than GLM-5.3. The exact licence name was not captured in-window."
   - ts: 2026-11-03
     change: "Released, unchanged — technical report published. @MistralAI (2026-11-03 10:18 UTC): 'The story of how Le Chonk was built, told by the team behind it', now on alphaXiv, and RT'd @askalphaxiv announcing the 'Mistral Large 4' paper published exclusively there. It quotes @PierreStock: 'ML4 is now open-weight!', calling the final model 'way more efficient and compact than its Preview version three weeks ago', with frontier capabilities on code agents and cyber. @MistralAI (11:08 UTC) also posted a demo: Large 4 built 'Orbital Trace', a real-time 3D tracker of about 19,000 satellites and debris fragments. Secondary roundup (@alexxhashemi): modified MIT-style licence with restrictions on hosting it as a service, and about 47% fewer tokens than leading open rivals on agent tasks. The licence detail is not first-party in this window. Closure plan unchanged (released-and-aged on or after 2026-11-26)."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Mistral Large 4 was released in preview 2026-10-06 (open weights followed 2026-10-29), 48 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: confirmed. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 Mistral's first frontier-scale release in roughly six months, and its first model

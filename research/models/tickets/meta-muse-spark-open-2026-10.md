@@ -3,8 +3,10 @@ slug: meta-muse-spark-open-2026-10
 title: "Meta releases Muse Spark Open — 816B-total / 42B-active open-weight model for coding and agents"
 company: "Meta (Meta Superintelligence Labs)"
 model: "Muse Spark Open"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-16 (38 days ago); see the final history entry.
+
   **2026-10-17 — verification confirmed.** @alexandr_wang names the Muse Spark Open launch on
   his own handle (2026-10-16 23:26 UTC), and @ArtificialAnlys, which had pre-release access,
   scores it 39 on its Intelligence Index: #1 among US open-weights models, 40K output
@@ -46,14 +48,16 @@ sources:
   - "https://x.com/BT_Bazaar/status/2111057704072741231"
   - "https://x.com/lionofkurdistan/status/2111021350060019917"
 created_at: 2026-10-16
-updated_at: 2026-10-17
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-16
     change: "Created — RELEASED / partial. Multiple independent relays on 2026-10-16 report Meta launched Muse Spark Open, an open-weight model for coding and agentic work: 816B total / 42B active parameters, 1M-token context, weights on Hugging Face and major clouds, local inference via MLX on two M5 Ultra Mac Studios (@ithertz). Meta's AI chief reportedly calls it the most capable U.S. open-weight model to date (@Shadowfetch), and coverage says Meta claims parity with or wins over leading Chinese open models (@pricepertoken, @BT_Bazaar). A single-source claim of an Apple co-development partnership (@lionofkurdistan, 'reportedly') is logged, not adopted. No @AIatMeta post or model card captured, so verification is partial. This fulfils Meta's 2026-10-12 statement that open weights were coming for Muse Spark rather than Muse Wonder ([[meta-watermelon-2026-10]]). It is a new artifact, distinct from the closed [[meta-muse-spark-1-4-2026-09]] and [[meta-hatch-muse-spark-2026-06]], which are untouched. Hardware context: [[apple-m5-ultra-mac-studio-2026-08]]."
   - ts: 2026-10-17
     change: "Released, unchanged; verification partial -> confirmed. Two primary-grade sources. (1) MSL chief @alexandr_wang (2026-10-16 23:26 UTC), on his own handle, thanks the team after 'an exciting week of launches (muse wonder [full] & muse spark open)' and calls the open release 'thoughtfully open-sourcing strong models'. (2) @ArtificialAnlys (2026-10-16 00:41 UTC, quoted by @Mekarly) says Meta shared pre-release access and scores Muse Spark Open (xhigh) 39 on its Intelligence Index, the #1 US open-weights model. That is ahead of NVIDIA's Nemotron 3.5 Super VL (26, [[nvidia-nemotron-3-5-super-vl-2026-10]]), within a point of Muse Spark 1.2 (xhigh, 40), and behind Muse Wonder (52) and Muse Wonder Full (56). It uses 40K output tokens per task, the fewest of the top nine open-weights models, and has a 24% AA-Omniscience hallucination rate. Hosting is reported at Together AI and Fireworks, among others. A single-source report that Meta 'teamed up with Apple to run Muse locally on the Mac' (@AlchemyJ_io) is still logged, not adopted."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Muse Spark Open was launched 2026-10-16, 38 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: confirmed. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 When Meta launched the closed Muse Wonder on 2026-10-12, it said open weights would

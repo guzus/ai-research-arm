@@ -3,8 +3,10 @@ slug: microsoft-decision-1-2026-10
 title: "Microsoft-Decision-1 — decision-scoring model (scores options, generates no text), measured by Artificial Analysis"
 company: Microsoft
 model: Microsoft-Decision-1
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-14 (40 days ago); see the final history entry.
+
   **2026-10-16 — independently measured → `released` / `partial`.**
   @ArtificialAnlys scores Microsoft-Decision-1 at 54 on its Decision Index v1.0 and
   prices it at $31 per 1M tasks. That makes the model live and purchasable. No
@@ -30,14 +32,16 @@ sources:
   - "https://x.com/AntonMartyniuk/status/2110334967209165310"
   - "https://x.com/ArtificialAnlys/status/2111052531166249039"
 created_at: 2026-10-14
-updated_at: 2026-10-16
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-14
     change: "Created — RUMORED / unverified. A single secondary post (@AntonMartyniuk, 2026-10-14 11:40 UTC) claims Microsoft released 'Microsoft-Decision-1', a decision-scoring model that returns a score per option instead of generating text. It claims 2x Jev's speed and 35x Sol's. The post has no link, model card or Microsoft post, and its claim that this is Microsoft's 'first AI model' is wrong. Opened as rumored despite the 'released' wording because nothing in the signal corroborates it."
   - ts: 2026-10-16
     change: "RUMORED -> RELEASED; verification unverified -> partial. The model is now independently measured. @ArtificialAnlys (2026-10-16 11:11 UTC), in its d1-ultra write-up, lists Microsoft-Decision-1 on its Decision Index v1.0 at 54 (tied with GLiDE, behind d1-ultra 65 and Jev 1.14 57) and prices it at $31 per 1M tasks. A third-party benchmarker publishing a score and a per-task price means the model is live and purchasable, which matches the 2026-10-14 'released' claim this ticket held as rumor. Verification is partial, not confirmed, because no Microsoft, Azure or MAI post or Foundry entry has been captured. The source's 2x-Jev speed claim is not supported by the AA numbers, which do not put Decision-1 among the three fastest decision models."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Microsoft-Decision-1 was reported released 2026-10-14, 40 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: partial. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 This follows the decision-model category set by OpenAI's Decisions API on GPT-6

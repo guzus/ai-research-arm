@@ -3,8 +3,10 @@ slug: xai-grok-voice-3-2026-10
 title: "Grok Voice 3.0 — speech-to-speech model tops Artificial Analysis, same $0.08/min price"
 company: "SpaceX / xAI"
 model: "Grok Voice 3.0"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-14 (40 days ago); see the final history entry.
+
   **Official.** @SpaceXSI (2026-10-14 17:04 UTC): "Introducing Grok Voice 3.0, the
   world's most intelligent speech-to-speech model. It excels at resolving customer
   calls, responds in under a second, and costs less than other frontier models."
@@ -39,12 +41,14 @@ sources:
   - "https://x.com/DevKazu42/status/2110700656415945143"
   - "https://x.com/Sdyahaya_/status/2110677945819783440"
 created_at: 2026-10-15
-updated_at: 2026-10-15
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-15
     change: "Created — RELEASED / confirmed. @SpaceXSI announced Grok Voice 3.0 on 2026-10-14 17:04 UTC as 'the world's most intelligent speech-to-speech model', citing customer-call resolution, sub-second response and lower cost than other frontier models. Relays agree on the specifics: AA Speech-to-Speech Index 86.9 (#1, ahead of GPT-Live-1 Astra at 83.2 and Gemini 3.8 Live at 82.6); 0.81s mean time to first audio (GPT-Live-1 1.34s; Grok Voice 2.0 0.70s, so a small latency regression); τ-Voice 71.6% (#2 behind GPT-Live-1 at 74.5%); #3 on AA blind-preference Elo; price unchanged at $0.08/min; the 'grok-voice-latest' alias moved to 3.0 with no API change. It also powers voice in Tesla vehicles and Grok Bot. This is a new artifact, not an update: the predecessor [[xai-grok-voice-2-2026-08]] is closed (released-and-aged) and stays untouched. Its closure note anticipated a Grok Voice 3 successor. Competitor context: [[openai-gpt-live-1-api-2026-09]]."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Grok Voice 3.0 was announced and live 2026-10-14, 40 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: confirmed. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 Successor to [[xai-grok-voice-2-2026-08]], which is closed and untouched.
 

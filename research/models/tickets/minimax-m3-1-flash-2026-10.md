@@ -3,8 +3,10 @@ slug: minimax-m3-1-flash-2026-10
 title: "MiniMax M3.1 Flash — the stealth 'Space Bunny' model, now named and on sale"
 company: MiniMax
 model: MiniMax-M3.1-Flash
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-19 (35 days ago); see the final history entry.
+
   **Identity confirmed by MiniMax.** @MiniMax_AI (2026-10-19 09:21 UTC): "Welcome back.
   Space Bunny. 🚀 MiniMax-M3.1-Flash is coming." This settles the attribution of the
   anonymous OpenRouter model tracked (and closed as stale) in
@@ -42,9 +44,9 @@ sources:
   - "https://x.com/ChinaAIDaily/status/2114707775658037337"
   - "@thenameisdlord"
 created_at: 2026-10-19
-updated_at: 2026-10-26
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-19
     change: "Created — RELEASED / partial. Successor to the closed [[minimax-space-bunny-alpha-2026-09]] (closed 2026-10-13 as stale-rumor-unverified, with the standing condition that a primary-sourced signal open a successor). Condition met: @MiniMax_AI (2026-10-19 09:21 UTC) names Space Bunny as MiniMax-M3.1-Flash. Status is released because several independent accounts report it live the same day: pay-as-you-go API at $0.15/$0.60 per MTok (@cdiamond), free for three days on OpenCode (@kreoxi), and inside MiniMax Code since 2026-09-27 (@Startup_Fortune). Verification is partial because MiniMax's own post says 'coming' and the launch, price and token-volume figures come only from secondary accounts."
@@ -54,6 +56,8 @@ history:
     change: "Released, unchanged; verification stays partial. First mainstream-press coverage: Caixin Global, 'MiniMax Cuts API Prices With New Flash AI Model' (headline shared by @arnaudmercier, 2026-10-21 12:06 UTC). That is an outlet report, not a MiniMax post, so verification is not raised. @NextBillionLab (2026-10-21) repeats the $0.15/MTok input price and a 2026-10-19 release date, and attributes to Artificial Analysis an Intelligence Index of 42 (+13 vs M3) and $0.22 per average agentic task (-57%). The AA figures are relay-strength until seen on AA's own page."
   - ts: 2026-10-26
     change: "Released, unchanged; verification stays partial. Open weights now reported. @AINativeF (2026-10-26 13:16 UTC) headlines 'MiniMax Open-Sources M3.1 Flash Model Weights With 428B Parameters', and @ChinaAIDaily's 2026-10-26 brief adds that the 428B-total MoE processed over 100 trillion tokens in its first 72 hours, with ~3x faster inference, ~70% lower cost and day-one adaptation across multiple hardware stacks. Separately B.AI is running a 50%-off promotion on the model from 2026-10-26 to 11-02 (@thenameisdlord). All relays; no MiniMax post or Hugging Face repo captured, so the open-weights claim should be checked against the repo before reuse."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. MiniMax-M3.1-Flash was launched by 2026-10-19, 35 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: partial. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 MiniMax ran M3.1 Flash anonymously as "Space Bunny" on OpenRouter and OpenCode for

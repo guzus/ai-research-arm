@@ -3,8 +3,10 @@ slug: stepfun-step-5-preview-2026-10
 title: "StepFun Step-5-Preview — ~600B MoE, 1M context, API launch then open weights on Hugging Face"
 company: "StepFun"
 model: "Step-5-Preview"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-15 (39 days ago); see the final history entry.
+
   **Two independent secondary sources, no StepFun post in this signal.**
   @oscarsuiza (2026-10-15 11:45 UTC) reports open weights for
   `stepfun-ai/Step-5-Preview` on Hugging Face, last updated early on 15 Oct. It
@@ -30,12 +32,14 @@ sources:
   - "https://x.com/JulianGoldieSEO/status/2110680418379010264"
   - "https://huggingface.co/stepfun-ai/Step-5-Preview"
 created_at: 2026-10-15
-updated_at: 2026-10-15
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-15
     change: "Created — RELEASED / partial. Two independent secondary accounts describe StepFun's Step-5-Preview as publicly available. @oscarsuiza (2026-10-15 11:45 UTC) reports open weights on Hugging Face (stepfun-ai/Step-5-Preview, last updated early 15 Oct) following an earlier API launch, and warns that the model-card benchmarks are StepFun's and Artificial Analysis's. @JulianGoldieSEO (10:33 UTC) describes ~600B total parameters as a sparse MoE, a 1M-token context, image and video input, and free launch-window access via OpenRouter, OpenCode, Cline and Kilo Code. This is the first StepFun ticket in the set. Verification is partial because no StepFun post was captured and this run's sandbox could not reach huggingface.co to read the card. The Hugging Face URL is recorded as reported, not as fetched."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Step-5-Preview was publicly available by 2026-10-15, 39 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: partial. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 This is the first StepFun ticket in the set. StepFun is one of the Chinese labs
 competing in large open-weight MoE releases, alongside DeepSeek, Qwen, Kimi and

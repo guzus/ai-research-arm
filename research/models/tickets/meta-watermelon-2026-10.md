@@ -3,8 +3,10 @@ slug: meta-watermelon-2026-10
 title: "Meta Muse Wonder / Muse Wonder Full (codename \"Watermelon\") — Meta's frontier agent model, launched 2026-10-12"
 company: Meta (Meta Superintelligence Labs)
 model: "Muse Wonder / Muse Wonder Full (codename Watermelon)"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-12 (42 days ago); see the final history entry.
+
   **2026-10-16 — Vals Index placement (relay).** @RodrigoESPorto reports Muse Wonder
   Full at 64.57% on the Vals Index, fifth overall, behind Gemini 4 Argon (68.90%) and
   Sonnet 5.5 (67.04%) and ahead of GPT-6 Astra (63.13%). It is the cheapest of those
@@ -76,9 +78,9 @@ sources:
   - "https://x.com/DavidBorish/status/2110341380983693323"
   - "https://x.com/RodrigoESPorto/status/2111060033719218528"
 created_at: 2026-10-04
-updated_at: 2026-10-17
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-04
     change: "Created — RUMORED / partial. @TalkOnPointApp (2026-10-04) summarises Zuckerberg on the Sources podcast pointing to 'Watermelon' as an upcoming release after Muse Spark 1.3. The codename was previously carried by Business Insider (via @kimmonismus) and a Citi analyst note, tracked as pending on the closed [[meta-hatch-muse-spark-2026-06]], which is left untouched. It gets its own ticket now that the CEO reportedly names it. Advances to confirmed on a primary clip, transcript or Meta post."
@@ -92,6 +94,8 @@ history:
     change: "Released, unchanged — first independent aggregate placement, relay-strength. @RodrigoESPorto (2026-10-16 11:41 UTC, English and Portuguese posts) reports Vals AI's Vals Index: Muse Wonder Full 64.57%, fifth overall, ahead of GPT-6 Astra (63.13%) and behind Claude Sonnet 5.5 (67.04%) and Gemini 4 Argon (68.90%). Standard Muse Wonder is tenth at 61.06% and first on CyberBench v1.1 at 80.36%. Average cost per battery is $8.56 for Wonder Full vs $15.68 for Argon and $21.34 for Sonnet 5.5. The post repeats $4/$20 per MTok, a 1M context, up to 131k output, and developer rate limits hit within hours. Separately, Meta shipped the open-weight Muse Spark Open on 2026-10-16, fulfilling the 'open weights are coming for Muse Spark, not Wonder' line logged on 2026-10-13. It is tracked on its own ticket, [[meta-muse-spark-open-2026-10]]."
   - ts: 2026-10-17
     change: "Released, unchanged — leadership retrospective and an independent score. @alexandr_wang (2026-10-16 23:26 UTC) writes that MSL and TBD were set up 'a little more than a year ago' to produce a frontier model 'within a year or so' after Llama 4. He calls muse wonder [full] and muse spark open the result and says the lab has 'built a machine that builds new models'. @ArtificialAnlys's Muse Spark Open write-up (2026-10-16) places Muse Wonder (max) at 52 and Muse Wonder Full (max) at 56 on its Intelligence Index. Sibling open release: [[meta-muse-spark-open-2026-10]]."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Muse Wonder / Muse Wonder Full (codename Watermelon) was launched as Muse Wonder 2026-10-12, 42 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: confirmed. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 Watermelon has been a codename in analyst and press reporting since the summer,

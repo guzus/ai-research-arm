@@ -3,8 +3,10 @@ slug: nvidia-nemotron-3-5-bolt-2026-10
 title: "NVIDIA Nemotron 3.5 Bolt 74B-A9B — reported open-weight multimodal MoE with ~2-bit QAT weights"
 company: "NVIDIA"
 model: "Nemotron 3.5 Bolt 74B-A9B"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-16 (38 days ago); see the final history entry.
+
   **2026-10-17 — verification partial.** Now corroborated by @testingcatalog (2026-10-16
   brief, "Nemotron 3.5 Bolt 24GB"), @Narra_Creator (links an official NVIDIA model
   page) and @DogukanUrker's open-weights roundup, which also says a Bolt E4B variant
@@ -38,14 +40,16 @@ sources:
   - "https://x.com/Oluwaphilemon1/status/2111051657916064053"
   - "https://x.com/iamlukethedev/status/2111056522470174956"
 created_at: 2026-10-16
-updated_at: 2026-10-17
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-16
     change: "Created — RELEASED / unverified. A single secondary post (@Oluwaphilemon1, 2026-10-16 11:08 UTC) reports NVIDIA released Nemotron 3.5 Bolt 74B-A9B as open weights on Hugging Face. It is a 74B-total / 9B-active MoE shipped at ~2-bit via quantization-aware training (~22GB), with text/image/video input, 256K context and LiLiCorr speculative decoding. The post quotes NVIDIA's BF16-vs-IQ2 retention numbers (e.g. GPQA Diamond 88.83 -> 86.43). Model-card-level detail, but no NVIDIA primary captured, so unverified. Family context only: a Hermes changelog relay (@iamlukethedev) mentions 'Nemotron Super 3.5 defaults'. Prior Nemotron tickets are closed and untouched ([[nvidia-nemotron-3-ultra-imo-2026-09]])."
   - ts: 2026-10-17
     change: "Released, unchanged; verification unverified -> partial. Independent corroboration, still no NVIDIA post captured. (1) @testingcatalog's 2026-10-16 brief: 'NVIDIA also introduced Nemotron 3.5 Bolt 24GB, a model that fits into 24GB of memory', next to the Nemotron 3.5 Super VL launch ([[nvidia-nemotron-3-5-super-vl-2026-10]]). (2) @Narra_Creator (2026-10-17 10:53 UTC) restates 74B total / 9B active compressed to 24GB, built for local agents, and links an 'official NVIDIA model' page. (3) @DogukanUrker's week-in-open-weights list (2026-10-17 06:05 UTC) includes 'Nemotron 3.5 Bolt 74B' and says 'next week Nemotron 3.5 Bolt E4B lands'. The E4B variant comes from that one source and is not adopted as a date."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Nemotron 3.5 Bolt 74B-A9B was released as open weights by 2026-10-16, 38 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: partial. No NVIDIA primary post was ever captured; verification closes at partial. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 The notable part is the packaging. NVIDIA ships the 2-bit weights as the main
