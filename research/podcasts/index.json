@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-22T21:59:00Z",
+  "updated_at": "2026-11-23T03:02:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -80,8 +80,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T16:36:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-23T03:02:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "Former Biden administration AI advisors Ben Buchanan and Tantum Collins join Nathan to discuss their book, The Bitter Struggle, and their experience shaping U.S. policy on compute supply chains and export controls. Drawing on their backgrounds in government and DeepMind, they unpack the geopolitical strategy of building an allied compute lead over China in order to spend that advantage on safety. The conversation probes the clash between frontier lab idealism and national security, bilateral talks over AI risks in nuclear"
@@ -108,8 +108,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-22T16:36:00Z",
-        "attempts": 5
+        "checked_at": "2026-11-23T03:02:00Z",
+        "attempts": 6
       },
       "excerpts": [],
       "description": "Chamath's theory on 10 AI Megacorps that go \"Dirt to Application\" Anthropic goes public, how companies are handling AI disruption Bull/bear case for Anthropic and the market White House weighs new open source disclosure rule for Chinese models State of Nvidia: Tanking stock, talent crisis, legal issues, Jensen's future Referenced in the show:"
@@ -191,8 +191,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-21T03:25:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-23T03:02:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": "Grand Theft Auto VI is finally out, the first release of the video game franchise in 13 years. The new installment from Rockstar Games is rapturous and mesmerizing — a monumental human achievement. Max Read, our guest host, is joined by the reporter Joseph Bernstein, who had early access to the video game, as well as the tech reporters Erin Griffith and Mike Isaac. They discuss the making of G.T.A.VI, how the franchise grew so big, and why we might"
@@ -219,8 +219,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-20T13:31:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-23T03:02:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": "Get started with the Data plugin in ChatGPT. Take a quick tour of how to ask questions about your data, create visualizations, build dashboards, and share reports with your team. See where to find Data in the plugin marketplace, how it works with your files and connected tools, and the skills available for tasks like checking data quality, defining KPIs, and business analysis. Explore the Data plugin: Plugin availability depends on your workspace settings. Part 1 of the Data Agent"
@@ -9187,34 +9187,6 @@
         }
       ],
       "description": "Naveen Rao is the Founder and CEO of Unconventional AI, an AI hardware startup focused on rethinking how AI systems are built and powered. A serial entrepreneur, Naveen previously founded Nervana Systems, acquired by Intel, and co-founded MosaicML, acquired by Databricks for $1.3 billion. He later served as VP of AI at Databricks before launching Unconventional AI. Timestamps: Intro Why Energy Will Be the Biggest Bottleneck for AI Why the US Could Run Out of Excess Power Capacity What Compute"
-    },
-    {
-      "id": "big-technology:pCD8IueJHqc",
-      "show_id": "big-technology",
-      "show": "Big Technology Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "news-show"
-      ],
-      "title": "The PHP Bug's Stunning Consequences + Cybersecurity's Black October — With Alex Stamos",
-      "url": "https://www.youtube.com/watch?v=pCD8IueJHqc",
-      "video_id": "pCD8IueJHqc",
-      "audio_url": null,
-      "published_at": "2026-10-23T22:34:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T10:34:00Z",
-      "duration_s": 1596,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-02T09:55:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": "Alex Stamos is the Chief Information Security Officer at Cognition. Ranjan Roy is the Author of Margins Stamos joins Big Technology to discuss a massive wave of cyberattacks unleashed by AI-discovered software vulnerabilities, including a critical PHP flaw that could put millions of websites at risk. Tune in to hear how hackers are exploiting these vulnerabilities, why AI is accelerating cyberattacks, and what the next several months could mean for businesses and everyday internet users. We also cover China's hacking"
     }
   ]
 }
