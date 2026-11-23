@@ -1,0 +1,10 @@
+Twitter/X AI Pulse - 2026-11-23 12:16:32 UTC
+
+CYCLE: Z.ai's GLM-5.4 debuts as a loop transformer, gated behind chat and the Coding Plan
+
+TOP STORIES:
+• Z.ai launches GLM-5.4: GLM-5's 28 layers run twice with shared weights, adds vision, claims 2-3T-param-class quality; API waits on a safety evaluation, no weights date [✓ launch / ⚠ capability claim]
+
+WATCH: GLM-5.4 API opening or weights date, plus first independent benchmarks
+
+Full update on GitHub.
