@@ -3,8 +3,10 @@ slug: openai-decisions-api-2026-09
 title: OpenAI Decisions API — GPT-6 Luna-backed choice endpoint in limited preview
 company: OpenAI
 model: GPT-6 Luna
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-07 (47 days ago); see the final history entry.
+
   **~2026-10-07 — public beta (secondary relay of OpenAI's Tibo).** Decisions
   API opened to developers in public beta: GPT-6 Luna, up to ~10x faster than the
   Responses API for selection tasks, text+image in, outputs as true/false
@@ -58,14 +60,16 @@ sources:
   - https://x.com/davidarngar/status/2105149492357976295
   - https://x.com/AI_Levela/status/2107828005687181382
 created_at: 2026-09-30
-updated_at: 2026-10-07
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-30
     change: "Created — CONFIRMED / partial. OpenAI announced the Decisions API at DevDay on 2026-09-29. Per @masahirochaen's item #5 of 25, the most detailed account in signal: it runs on GPT-6 Luna, is specialised for selecting one option from a predefined set, returns in a few hundred milliseconds, takes text and image input, targets inquiry routing, classification and agent next-action selection, and is in limited preview for a subset of customers with expansion expected within days. @insanekrishnaa and @MagicPower21M describe the same product independently; @mickcodez attended DevDay and refers to 'the coming decision model', which supports the preview-not-GA reading. Status CONFIRMED (announced, multi-source) rather than released, because every account describes a gated preview rather than general availability. Verification partial: no OpenAI post in this cycle's fetch, no pricing, and the GPT-6 Luna attribution rests on one recap while others name no model — recorded as reported, not established. Treated as its own ticket rather than folded into the DevDay agent products because it is an API primitive for control flow, not an agent or a model: the value is a guaranteed response shape plus a latency budget small enough for a request path, both of which are infrastructure properties. Positioned by two independent recaps as a competitor to Jev ([[typesafe-jev-2026-09]]), one of them dismissively ('Jev clone'). It is also the first dedicated product surface for GPT-6 Luna, the cheap tier that shipped 2026-09-22 ([[openai-gpt-6]]), which is consistent with that ticket's recorded fast/cheap-tier inference. Several recaps flagged it as the most underrated item of the event despite ranking it low on measured attention — recorded as a judgement, not a measurement."
   - ts: 2026-10-07
     change: "CONFIRMED -> RELEASED (public beta for developers). Per a Japanese recap of OpenAI's Tibo (@thsottiaux) 'Day 2 of 28 days of improvements' post (@AI_Levela, 2026-10-07 13:38 UTC): the Decisions API is now in public beta for developers; it runs on GPT-6 Luna (the attribution this ticket held as single-source is now repeated), is up to ~10x faster than the standard Responses API for choosing models, tools or next actions, takes text and image input, returns three output kinds (true/false probability, a choice, a numeric score), and costs $0.10 per 1M input tokens with no output-token charge. OpenAI says it uses it internally to improve app experiences. Verification stays partial — secondary relay, no first-party post in this fetch."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. GPT-6 Luna was in public developer beta by 2026-10-07 (announced at DevDay 2026-09-29), 47 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: partial. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 This is the smallest announcement of DevDay and the one most likely to end up

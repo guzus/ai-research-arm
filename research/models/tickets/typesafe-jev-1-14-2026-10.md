@@ -3,8 +3,10 @@ slug: typesafe-jev-1-14-2026-10
 title: "TypeSafe AI ships Jev 1.14.0 with opt-in 'danger zone' features (images, box type, longer context)"
 company: "TypeSafe AI"
 model: "Jev 1.14.0"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-14 (40 days ago); see the final history entry.
+
   **2026-10-16 — corroborated by Artificial Analysis; distributed by OpenRouter.**
   @ArtificialAnlys measures "the recently released Jev 1.14" at 57 on its Decision
   Index v1.0, with a 78 ms Time per Task. @OpenRouter's Armor beta (a tool-call safety
@@ -33,14 +35,16 @@ sources:
   - "https://x.com/stretchcloud/status/2111048256272888005"
   - "@OpenRouter"
 created_at: 2026-10-15
-updated_at: 2026-10-16
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-15
     change: "Created — RELEASED / unverified. @bykimdohoon (2026-10-15 11:37 UTC) reports TypeSafe AI shipped Jev 1.14.0 on 2026-10-14. It adds opt-in 'danger zone' API headers gating image input, a new single-bounding-box 'box' type and longer context. The jev-latest alias moves to 1.14.0 in one week, and 1.13.0 will get 60 days' deprecation notice. Single secondary source with no TypeSafe changelog captured, hence unverified. The predecessor [[typesafe-jev-2026-09]] is closed and untouched. Company context: [[typesafe-funding-round-2026-09]]."
   - ts: 2026-10-16
     change: "Released, unchanged; verification unverified -> partial. Two independent corroborations, neither a TypeSafe changelog. (1) @ArtificialAnlys (2026-10-16 11:11 UTC) measures 'the recently released Jev 1.14' on its Decision Index v1.0: score 57 (second, behind Liquid AI's new d1-ultra at 65) and the lowest-but-one Time per Task at 78 ms. A third-party benchmarker measuring the exact version confirms it is live. (2) @OpenRouter launched OpenRouter Armor in beta this week (quoted by @stretchcloud, 2026-10-16 10:55 UTC). It is a tool-call safety classifier that 'uses @typesafeai's Jev model' and claims better performance than Claude Code's auto classifier at a fraction of the cost, with 279 ms median added latency on the Claude Code-compatible ruleset, free during beta. That is a primary third-party distribution of the Jev line, but it does not name a version. Competitor context: [[liquid-ai-d1-ultra-2026-10]], [[microsoft-decision-1-2026-10]]."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Jev 1.14.0 was shipped 2026-10-14, 40 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: partial. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 This is a point release, tracked because it adds a modality (images) and a
 structured-output type to a model line already in the set

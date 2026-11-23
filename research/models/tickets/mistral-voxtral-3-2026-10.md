@@ -3,8 +3,10 @@ slug: mistral-voxtral-3-2026-10
 title: "Mistral releases Voxtral 3 (Transcribe + Speech) and a voice agents API with a LiveKit-based SDK"
 company: "Mistral AI"
 model: "Voxtral 3"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-20 (34 days ago); see the final history entry.
+
   **Primary announcement.** @MistralAI (2026-10-20 16:00 UTC): "Introducing Voxtral 3:
   state-of-the-art Transcribe and Speech models powering Mistral's new voice agents API."
   The thread adds a voice agent SDK built on LiveKit: Transcribe listens, a reasoning
@@ -30,12 +32,14 @@ sources:
   - "https://x.com/MistralAI/status/2112574629181116644"
   - "https://x.com/MistralAI/status/2112807891094716723"
 created_at: 2026-10-21
-updated_at: 2026-10-21
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-21
     change: "Created — RELEASED / confirmed. @MistralAI (2026-10-20 16:00 UTC) introduced Voxtral 3, Transcribe and Speech models powering a new Mistral voice agents API, plus a LiveKit-based voice agent SDK that streams transcribe -> reasoning model with tool calls -> speech as one pipeline. Mistral's account retweeted an outside user testing the new transcription model on 2026-10-21, so it is live. Benchmark claims are company-stated; pricing and weights status not captured."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Voxtral 3 was introduced 2026-10-20, 34 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: confirmed. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 Voxtral 3 is Mistral's move from selling speech models to selling a voice-agent

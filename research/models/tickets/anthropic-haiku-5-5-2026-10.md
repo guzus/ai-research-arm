@@ -3,8 +3,10 @@ slug: anthropic-haiku-5-5-2026-10
 title: "Claude Haiku 5.5 — live via third-party API resellers (Oct 5–11), completing the 5.5 family"
 company: "Anthropic"
 model: "Claude Haiku 5.5"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-12 (42 days ago); see the final history entry.
+
   **2026-10-12 — RELEASED (third-party evidence).** B.AI's weekly report
   (@BAI_AGI, Oct 5–11, relayed by @vortexlane922 / @BON_DEFI / @Uty_bby) lists
   Claude Haiku 5.5 as added to its API and web chat. It carries a consistent
@@ -31,14 +33,16 @@ sources:
   - "https://x.com/aipulseda1ly/status/2109671637184340333"
   - https://x.com/ashawv5i/status/2105624114216251428
 created_at: 2026-10-01
-updated_at: 2026-10-12
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-01
     change: "Created — RUMORED / unverified. Single-source claim that Claude Haiku 5.5 is coming 'in the coming weeks', completing the 5.5 family after Opus 5.5 and Sonnet 5.5; no date, price, model ID or Anthropic statement."
   - ts: 2026-10-12
     change: "RUMORED -> RELEASED; verification unverified -> partial; title updated. Claude Haiku 5.5 is now being served by third parties with a consistent spec. B.AI's own weekly report (@BAI_AGI, 2026-10-12 06:47 UTC, relayed by @vortexlane922, @BON_DEFI and @Uty_bby) says it added Claude Haiku 5.5 to its API and web chat during Oct 5–11. The listing gives adaptive thinking with five reasoning levels, image understanding, tool use, a 1M-token context window and up to 128K output tokens. @aipulseda1ly (2026-10-12) counts Haiku 5.5 among Anthropic's shipped models since September 1. Practitioners describe routing on-call log-watching to Haiku 5.5 (@Supriik_). Still no Anthropic post, model ID or price in this desk's fetch, so verification stays partial. That matches the Sonnet 5.5 path, which went released on reseller evidence before Anthropic's own mention."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Claude Haiku 5.5 was served by third parties with a consistent spec from 2026-10-12, 42 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: partial. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 Family context: [[anthropic-opus-5-5-2026-09]], [[anthropic-sonnet-5-5-2026-09]].

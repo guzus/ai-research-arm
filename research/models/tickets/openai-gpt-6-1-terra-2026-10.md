@@ -3,8 +3,10 @@ slug: openai-gpt-6-1-terra-2026-10
 title: "GPT-6.1 Terra — OpenAI's low-cost computer-use model, live in ChatGPT, Codex and the API"
 company: "OpenAI"
 model: "GPT-6.1 Terra"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-26 (28 days ago); see the final history entry.
+
   **First-party, 2026-10-26 18:06 UTC (@OpenAI, three-post thread).** "GPT-6.1 Terra:
   delivering fast and capable computer use at a lower price." OpenAI says it substantially
   outperforms GPT-5.6 Terra on Agents' Last Exam, matches GPT-6 Astra "at one-tenth the
@@ -35,14 +37,16 @@ sources:
   - "https://x.com/HypePakistan/status/2115058434005446937"
   - https://x.com/muratnakmuay/status/2116153363075100977
 created_at: 2026-10-27
-updated_at: 2026-10-30
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-27
     change: "Created — RELEASED / confirmed. @OpenAI (2026-10-26 18:06 UTC) launched GPT-6.1 Terra for computer use: it matches GPT-6 Astra on Agents' Last Exam at one-tenth the price per token and runs over 3x faster than Astra and GPT-6.1 Sol. It is rolling out to Plus/Pro/Enterprise/Edu in ChatGPT Work and Codex, and in the API as gpt-6.1-terra. @ArtificialAnlys puts it at $1/$5 per Mtok (GPT-5.6 Terra: $2/$12), +6 Intelligence Index points over GPT-5.6 Terra at under a third of the cost per task, and a hallucination rate down from 88% to 38%."
   - ts: 2026-10-30
     change: "Released, unchanged — distribution widening, single secondary source. A summary of the Codex CLI 0.166.0 release notes (tagged on GitHub 2026-10-29, per @muratnakmuay) says GPT-6.1 Terra is now in the bundled, Vertex AI and Amazon Bedrock model catalogs. If accurate, that makes Terra buyable through Google Cloud and AWS. The same release fixes premature compaction of resumed Codex threads. Neither OpenAI, Google nor AWS confirms the catalog listing in this signal, so it is recorded as reported."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. GPT-6.1 Terra was launched 2026-10-26, 28 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: confirmed. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 OpenAI's GPT-6.1 Terra is the first Terra-class model since GPT-5.6. It fills the cheap, fast slot
 below [[openai-gpt-6-1-sol-2026-09]] and GPT-6 Astra ([[openai-gpt-6]]). The pitch is cost per

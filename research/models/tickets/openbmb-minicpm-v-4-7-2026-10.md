@@ -3,8 +3,10 @@ slug: openbmb-minicpm-v-4-7-2026-10
 title: "MiniCPM-V 4.7 — OpenBMB weights appear on ModelScope with no announcement"
 company: "OpenBMB"
 model: "MiniCPM-V 4.7"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-17 (37 days ago); see the final history entry.
+
   **2026-10-17 — RELEASED / partial.** @DogukanUrker's week-in-open-weights roundup lists
   "MiniCPM-V 4.7 1B + 35B-A3B" as released this week. That is independent of the
   2026-10-07 ModelScope sighting below. There is still no OpenBMB post or populated card.
@@ -32,14 +34,16 @@ sources:
   - "https://x.com/xeonai44/status/2111394393383141839"
   - https://x.com/anxuanng/status/2107811004726014141
 created_at: 2026-10-07
-updated_at: 2026-10-17
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-07
     change: "Created — IN-TESTING / unverified. @anxuanng (2026-10-07 12:31 UTC) reports OpenBMB uploaded MiniCPM-V 4.7 to ModelScope with no announcement and an empty model card: 35B total / 3B active per the name, ~70 GB bf16, config resembling a Qwen3.5-35B-A3B backbone with hybrid linear attention and 262K context. Single source; no OpenBMB statement, licence or benchmarks."
   - ts: 2026-10-17
     change: "IN-TESTING -> RELEASED; verification unverified -> partial. A second, independent account now treats MiniCPM-V 4.7 as a released open-weight model. @DogukanUrker's 2026-10-17 06:05 UTC roundup of this week's open-weight releases lists 'MiniCPM-V 4.7 1B + 35B-A3B' and says they ran configs and benchmarks for several models on the list. @xeonai44 relayed the list. That matches the 35B-A3B shape @anxuanng read from the ModelScope config on 2026-10-07 and adds a 1B variant. Still no OpenBMB announcement, model card, or licence captured, so verification stops at partial."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. MiniCPM-V 4.7 was treated as a released open-weight model by 2026-10-17 (weights first uploaded 2026-10-07), 37 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: partial. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 MiniCPM-V is OpenBMB's on-device vision-language line, historically small

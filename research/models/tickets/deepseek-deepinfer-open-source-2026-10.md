@@ -3,8 +3,10 @@ slug: deepseek-deepinfer-open-source-2026-10
 title: "DeepSeek open-sources DeepInfer, the inference framework behind V4.1-Flash"
 company: DeepSeek
 model: DeepInfer (inference framework)
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-20 (34 days ago); see the final history entry.
+
   **Primary announcement, 2026-10-20 09:30 UTC (@deepseek_ai, ~11.7K likes):**
   "Introducing DeepInfer, our in-house inference framework, now fully open source!
   Powering DeepSeek-V4.1-Flash at scale with high throughput and low latency."
@@ -29,12 +31,14 @@ sources:
   - "https://x.com/teortaxesTex/status/2112493775465443641"
   - "https://x.com/cheese_cakee_9/status/2112506742257205556"
 created_at: 2026-10-20
-updated_at: 2026-10-20
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-20
     change: "Created — RELEASED / confirmed. @deepseek_ai (2026-10-20 09:30 UTC) open-sourced DeepInfer, its production inference framework for DeepSeek-V4.1-Flash, plus the deepseek-recipe encode/decode component. Per the translated Chinese announcement (@teortaxesTex): distributed inference, speculative decoding, SWA Bounded Replay, structured output; NVIDIA and Huawei Ascend support; future DeepSeek models' inference code to land in the same repo. Related model ticket: [[deepseek-v4-1-flash-1017-2026-10]]."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. DeepInfer (inference framework) was open-sourced 2026-10-20, 34 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: confirmed. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 DeepSeek has now open-sourced each layer of its serving stack: model weights, the

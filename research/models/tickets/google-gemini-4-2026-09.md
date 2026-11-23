@@ -3,8 +3,10 @@ slug: google-gemini-4-2026-09
 title: "Gemini 4 Argon — announced 2026-09-30, rolled out globally 2026-10-13 (Gemini API paid tier, Gemini App Pro/Ultra, Antigravity Ultra)"
 company: Google / DeepMind
 model: Gemini 4
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-13 (41 days ago); see the final history entry.
+
   **2026-10-16 — Antigravity access widens to AI Pro; ARC-AGI-3 placement.**
   @antigravity (RT'd by @demishassabis, 2026-10-15 23:35 UTC) is rolling Argon out in
   Antigravity to paid Google AI Pro subscribers, down from Ultra-only. @arcprize
@@ -138,9 +140,9 @@ sources:
   - "https://x.com/onloglogn/status/2114624056385540407"
   - "https://x.com/tvytlx/status/2114708625738658245"
 created_at: 2026-09-24
-updated_at: 2026-10-26
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-09-24
     change: "Created — IN-TESTING. Successor to [[gemini-4-2026-07]], closed 2026-08-19 as stale-rumor-unverified with the standing condition that a named artifact or a DeepMind statement would open a successor. Condition met: @kimmonismus (2026-09-24, citing The Information) reports Gemini 4 has almost finished training with release 'hopefully much earlier than end of year', and @testingcatalog's same-day brief attributes the statement to Koray (Kavukcuoglu, DeepMind CTO) with the more specific claim that Gemini 4 is in early post-training. Opened at in-testing rather than rumored because the claim is a falsifiable training-stage assertion from a named principal, not an anonymous roadmap tease; verification partial because it still arrives via an outlet and two relay accounts with no Google or DeepMind post, no date, no specs and no model card in this cycle's signal. The predecessor's central failure — a timing claim that never resolved — is the specific risk being carried forward, so the 'well before year-end' target is recorded as an aspiration to hold accountable, not a schedule."
@@ -170,6 +172,8 @@ history:
     change: "Released, unchanged — demand figure from Google. @OfficialLoganK (2026-10-21 04:45 UTC, RT'd by @demishassabis): 'In just the first 72 hours since Gemini 4 Argon launched, we processed ~25 trillion tokens.' The post does not say which launch the 72 hours count from; the 2026-10-13 global rollout is eight days earlier, so the figure may refer to a later access widening. Recorded as Google's own number without assigning a window. @GoogleDeepMind (2026-10-20 14:53 UTC) also posted an Antigravity demo (a 3D periodic table built by Argon). Still no free API tier and no smaller Gemini 4 model."
   - ts: 2026-10-26
     change: "Released, unchanged — a third-party agentic-engineering result. @onloglogn (2026-10-26 07:43 UTC), who runs the RSI-Inference Bench, reports Gemini 4 Argon with Antigravity in a close tie with GPT-6 Astra, and the first model outside Anthropic and OpenAI to pass a Day-0 model-support task. A Chinese breakdown (@tvytlx) adds a 1.39x inference speedup (4th place), 81% of hidden tests on Day-0 support, but Pass@1 of only 6.7%. These are the benchmark owner's own numbers, not independently reproduced."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Gemini 4 was rolled out globally 2026-10-13, 41 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: confirmed. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 The July ticket died of exactly one thing: nobody in a position to know would

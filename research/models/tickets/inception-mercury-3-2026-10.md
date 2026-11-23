@@ -3,8 +3,10 @@ slug: inception-mercury-3-2026-10
 title: "Inception Labs Mercury 3 — diffusion LLM claimed at 1,000 tok/s with 1M context"
 company: Inception Labs
 model: Mercury 3
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-20 (34 days ago); see the final history entry.
+
   Single secondary source. A weekly AI roundup by @nidhikayadav123 (2026-10-20 10:51 UTC)
   lists Mercury 3 from Inception Labs among this week's launches: a diffusion-based
   LLM said to run at 1,000 tokens/s on NVIDIA GPUs with a 1M-token context, and quotes
@@ -22,12 +24,14 @@ verification: unverified
 sources:
   - "https://x.com/nidhikayadav123/status/2112496958934044776"
 created_at: 2026-10-20
-updated_at: 2026-10-20
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-20
     change: "Created — RELEASED / unverified. @nidhikayadav123's weekly roundup (2026-10-20 10:51 UTC) reports Inception Labs launched Mercury 3, a diffusion LLM at ~1,000 tok/s on NVIDIA GPUs with 1M context, quoting 'up to 10x faster than frontier speed-optimized LLMs'. Single secondary source with no engagement; no first-party post in signal."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. Mercury 3 was reported launched in a 2026-10-20 roundup, 34 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: unverified. Verification stays unverified: no Inception Labs post was captured, so the closure does not confirm the launch details. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 Mercury is the best-known commercial diffusion language model line. It generates

@@ -3,8 +3,10 @@ slug: nvidia-rfd4-proteina-2026-10
 title: "NVIDIA and UW Institute for Protein Design release RFD4-Proteina, an open protein design model (GTC Berlin)"
 company: "NVIDIA / UW Institute for Protein Design"
 model: "RFD4-Proteina"
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-21 (33 days ago); see the final history entry.
+
   **What was released.** Per a headline relay of NVIDIA investor news (@MKRlimitless,
   2026-10-21 10:17 UTC), NVIDIA and the UW Medicine Institute for Protein Design
   (David Baker's lab) debuted RFD4-Proteina, an open model for programmable protein
@@ -33,12 +35,14 @@ sources:
   - "https://x.com/RoehmRobin/status/2112876877891121314"
   - "https://x.com/DrNHJ/status/2112878636009439296"
 created_at: 2026-10-21
-updated_at: 2026-10-21
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-21
     change: "Created — RELEASED / partial. NVIDIA and the UW Institute for Protein Design released RFD4-Proteina, an open model that co-designs protein sequence and structure against a target, at GTC Berlin on 2026-10-21 (headline relay of NVIDIA investor news via @MKRlimitless; launch partner Apheris via @RoehmRobin). GTC Berlin keynote context (Vera Rubin in volume production, ~$10B European investment) from a @DrNHJ summary. No NVIDIA/IPD primary post or model card captured."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. RFD4-Proteina was released at GTC Berlin 2026-10-21, 33 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: partial. No NVIDIA/IPD primary post or model card was captured; verification closes at partial. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 RFdiffusion is the Baker lab's standard protein-design tool, and Proteina is

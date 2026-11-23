@@ -3,8 +3,10 @@ slug: bfl-flux-3-klein-2026-10
 title: "Black Forest Labs releases FLUX 3 Image Klein — 5.6B open-weight image model with native 4K"
 company: Black Forest Labs
 model: FLUX 3 Image Klein
-status: released
+status: closed
 status_note: |
+  **2026-11-23 — CLOSED, `released-and-aged`.** Released 2026-10-17 (37 days ago); see the final history entry.
+
   **Two independent secondary sources.** @testingcatalog's 2026-10-16 brief (quoted in
   its 2026-10-17 brief): "Black Forest Labs released FLUX 3 Image Klein, a 5.6B
   open-weight image model with native 4K that runs on a single consumer GPU."
@@ -23,12 +25,14 @@ sources:
   - "https://x.com/testingcatalog/status/2111409303701577925"
   - "https://x.com/DogukanUrker/status/2111337663286706405"
 created_at: 2026-10-17
-updated_at: 2026-10-17
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-23
+closed_at: 2026-11-23
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-17
     change: "Created — RELEASED / partial. Black Forest Labs released FLUX 3 Image Klein, a 5.6B open-weight image model with native 4K output that runs on a single consumer GPU (@testingcatalog 2026-10-16 brief, quoted 2026-10-17; listed in @DogukanUrker's 2026-10-17 open-weights roundup). No BFL primary or licence captured."
+  - ts: 2026-11-23
+    change: "CLOSED — released-and-aged. FLUX 3 Image Klein was released 2026-10-17, 37 days ago, past the four-week threshold, so the lifecycle close trigger applies. Verification at close: partial. No signal was captured for this ticket after its last history entry (the timeline lane did not publish 2026-11-04 to 2026-11-22, and today's fetch returned no posts), so later developments are not reflected here. Closure means the release event has aged out of active tracking; any successor version is a new ticket, not a reopening."
 ---
 
 "Klein" is BFL's small tier. A 5.6B model generating natively at 4K on one
