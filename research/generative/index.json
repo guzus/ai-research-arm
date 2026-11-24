@@ -3750,5 +3750,19 @@
     "tags": [
       "twitter-seed"
     ]
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+    "file": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-11-24T04:22:43Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/tensorfish/status/2124975715141689818\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]

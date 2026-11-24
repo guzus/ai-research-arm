@@ -1,5 +1,5 @@
 {
-  "article_count": 116,
+  "article_count": 117,
   "articles": [
     {
       "claim_count": 18,
@@ -1105,6 +1105,16 @@
         "twitter-seed"
       ],
       "title": "Gemini 4 Neon, Hydrogen and Terra on a Sokoban eval: what one tweet does and does not establish"
+    },
+    {
+      "claim_count": 42,
+      "created_at": "2026-11-24T04:22:43Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "stem": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't"
     }
   ],
   "by_host": {
@@ -1142,7 +1152,8 @@
     "9to5google.com": [
       "2026-06-22T101547--shazeer-google-openai-talent-moat#c2",
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c23",
-      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c7"
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c7",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c14"
     ],
     "9to5mac.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c33",
@@ -2014,7 +2025,10 @@
       "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c15",
       "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c16",
       "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c18",
-      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c19"
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c19",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c19",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c22",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c23"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -2102,7 +2116,8 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c23"
     ],
     "baseten.co": [
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c24"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c24",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c17"
     ],
     "bcg.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c29",
@@ -3013,7 +3028,8 @@
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c11",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c12",
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c9",
-      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c11"
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c11",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c18"
     ],
     "cybernews.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c11"
@@ -3207,7 +3223,8 @@
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c8",
       "2026-07-30T162031--gpt-5-6-sol-rewriting-its-own-production-gpu-kernels-what-op-2#c9",
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c11",
-      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c9"
+      "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c9",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c26"
     ],
     "developers.cloudflare.com": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c3"
@@ -3239,7 +3256,8 @@
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c5"
     ],
     "developersdigest.tech": [
-      "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c18"
+      "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c18",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c25"
     ],
     "dexerto.com": [
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c15"
@@ -3367,7 +3385,8 @@
     ],
     "docs.nvidia.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c2",
-      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c25"
+      "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c25",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c26"
     ],
     "docs.perplexity.ai": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c2"
@@ -3399,6 +3418,9 @@
     ],
     "docs.usd.ai": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c12"
+    ],
+    "docs.vllm.ai": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c28"
     ],
     "docs.x.ai": [
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c17"
@@ -4147,7 +4169,16 @@
       "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c2",
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c23",
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c24",
-      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c40"
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c40",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c10",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c11",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c12",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c2",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c20",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c25",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c27",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c28",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c3"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -4431,7 +4462,10 @@
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c20",
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c15",
       "2026-10-30T053600--expand-research-from-twitter-link-https-x-com-alexkoch-ai-st#c22",
-      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c12"
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c12",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c13",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c7",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c8"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
@@ -4737,6 +4771,9 @@
     ],
     "kbra.com": [
       "2026-07-31T051841--situational-awareness-lp-collapse#c44"
+    ],
+    "kdnuggets.com": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c13"
     ],
     "kedglobal.com": [
       "2026-06-08T075713--naver-nvidia-sovereign-ai-gigawatt-bet#c3"
@@ -5256,6 +5293,9 @@
     "newmedialaw.proskauer.com": [
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c6"
     ],
+    "newreleases.io": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c13"
+    ],
     "news.aibase.com": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15"
     ],
@@ -5457,7 +5497,8 @@
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c19",
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c5",
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-1",
-      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5"
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c15"
     ],
     "ofox.ai": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c17"
@@ -5974,7 +6015,10 @@
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c9",
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c4",
       "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c3",
-      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c4"
+      "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c4",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c4",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c5",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c6"
     ],
     "rdi.berkeley.edu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
@@ -6070,6 +6114,9 @@
     "ripe.finance": [
       "2026-09-01T153149--expand-research-from-twitter-link-https-x-com-vfat0-status-2#c6"
     ],
+    "rits.shanghai.nyu.edu": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c24"
+    ],
     "robinhood.com": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c18"
     ],
@@ -6159,6 +6206,9 @@
     ],
     "saga-s.co.jp": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c32"
+    ],
+    "sakana.ai": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c21"
     ],
     "salestechstar.com": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c28"
@@ -6388,6 +6438,9 @@
     "silicondata.com": [
       "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c4",
       "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c6"
+    ],
+    "siliconreport.com": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c16"
     ],
     "siltronic.com": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c10"
@@ -7034,6 +7087,9 @@
     "theverge.com": [
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c49"
     ],
+    "thinkingmachines.ai": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c9"
+    ],
     "ti.com": [
       "2026-05-27T035557--800-vdc-architecture#c16"
     ],
@@ -7590,7 +7646,8 @@
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c16",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c17",
       "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c37",
-      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c1"
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c1",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c1"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -7633,7 +7690,8 @@
     ],
     "zapier.com": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c20",
-      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
+      "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21",
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c16"
     ],
     "zerodayinitiative.com": [
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c11"
@@ -7688,6 +7746,9 @@
     ],
     "https://9to5google.com/2026/07/16/gemini-3-5-pro-delays": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c23"
+    ],
+    "https://9to5google.com/2026/11/18/gemini-4-neon": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c14"
     ],
     "https://9to5google.com/2026/11/18/gemini-4-neon-announcement": [
       "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c7"
@@ -8793,6 +8854,12 @@
     "https://arxiv.org/abs/2607.09692": [
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c16"
     ],
+    "https://arxiv.org/abs/2607.16241": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c23"
+    ],
+    "https://arxiv.org/abs/2607.17979": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c19"
+    ],
     "https://arxiv.org/abs/2607.19353": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c26"
     ],
@@ -8968,6 +9035,9 @@
     ],
     "https://arxiv.org/html/2603.13372v1": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c7"
+    ],
+    "https://arxiv.org/html/2603.19173": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c22"
     ],
     "https://arxiv.org/html/2604.07190": [
       "2026-10-05T222832--reflection-ai-s-beam-a-501b-23b-active-apache-2-0-moe-its-gb#c27"
@@ -9767,6 +9837,9 @@
     "https://curl.se/docs/vuln.json": [
       "2026-10-20T090416--anthropic-oss-scanner-s-first-week-what-77-critical-and-803#c14"
     ],
+    "https://cursor.com/blog/multi-agent-kernels": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c18"
+    ],
     "https://cursor.com/blog/reward-hacking-coding-benchmarks": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c1",
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c13",
@@ -9991,6 +10064,9 @@
       "2026-05-27T035557--800-vdc-architecture#c5",
       "2026-05-27T035557--800-vdc-architecture#c6"
     ],
+    "https://developer.nvidia.com/blog/nvidia-blackwell-and-nvidia-cuda-12-9-introduce-family-specific-architecture-features": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c26"
+    ],
     "https://developer.nvidia.com/blog/nvidia-nemotron-3-ultra-powers-faster-more-efficient-reasoning-for-long-running-agents": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c6"
     ],
@@ -10168,6 +10244,9 @@
     "https://docs.nvidia.com/attestation/attestation-client-tools-sdk/latest/gpu_and_switch_attestation.html": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c25"
     ],
+    "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/compute-capabilities.html": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c26"
+    ],
     "https://docs.nvidia.com/gpudirect-storage/api-reference-guide/index.html": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c2"
     ],
@@ -10213,6 +10292,9 @@
     ],
     "https://docs.usd.ai/governance/chip": [
       "2026-08-20T161810--expand-research-from-twitter-link-https-x-com-crypto-mckenna#c12"
+    ],
+    "https://docs.vllm.ai/en/latest/features/quantization/b12x": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c28"
     ],
     "https://docs.x.ai/developers/model-capabilities/text/multi-agent": [
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c17"
@@ -11066,6 +11148,12 @@
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c10",
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c24"
     ],
+    "https://github.com/ggml-org/llama.cpp": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c27"
+    ],
+    "https://github.com/ggml-org/llama.cpp/blob/master/src/llama-arch.cpp": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c27"
+    ],
     "https://github.com/gnosis/ido-contracts": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c31"
     ],
@@ -11098,8 +11186,20 @@
     "https://github.com/hyperliquid-dex/node": [
       "2026-10-27T132807--expand-research-from-twitter-link-https-x-com-ust-mean-statu#c10"
     ],
+    "https://github.com/iamwavecut/ninfer-all/blob/master/docs/inkling2.md": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c12"
+    ],
+    "https://github.com/jesdga95/basalt": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c11"
+    ],
+    "https://github.com/jesdga95/basalt/blob/main/docs/models/inkling2.md": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c11"
+    ],
     "https://github.com/junkoda/kaggle_contrails_solution": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c15"
+    ],
+    "https://github.com/kekzl/imp": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c20"
     ],
     "https://github.com/leanprover/comparator": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c18"
@@ -11112,6 +11212,9 @@
     ],
     "https://github.com/liobaheimbach/No-Place-to-Hide-An-Analysis-on-Protected-Order-Flow-Sandwich-Attacks": [
       "2026-09-24T205227--expand-research-from-twitter-link-https-x-com-liobaheimbach#c19"
+    ],
+    "https://github.com/mirage-project/mirage": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c28"
     ],
     "https://github.com/onyx-dot-app/onyx": [
       "2026-07-18T182528--expand-research-from-twitter-link-https-x-com-cerebras-statu#c20"
@@ -11147,6 +11250,12 @@
     "https://github.com/rmalde/minecraft-agent": [
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c8"
     ],
+    "https://github.com/satellitedown/inkling-2-mini-abliterated-ingine": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c10"
+    ],
+    "https://github.com/satellitedown/inkling-2-mini-abliterated-ingine/commits/main": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c10"
+    ],
     "https://github.com/seitanism/ComfyUI-H3-Motion-Context-MultiRef": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c31"
     ],
@@ -11161,6 +11270,15 @@
     ],
     "https://github.com/swe-bench/SWE-bench/pull/471": [
       "2026-06-26T051353--cursor-eval-integrity-research-opus-4-8-and-composer-2-5#c13"
+    ],
+    "https://github.com/sybil-solutions/inference-optimisation-skill": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c25"
+    ],
+    "https://github.com/tensorfish/squid5090": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c2"
+    ],
+    "https://github.com/tensorfish/squid5090/commits/main": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c3"
     ],
     "https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems": [
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c40"
@@ -11196,8 +11314,14 @@
     "https://github.com/ubisoft/ComfyUI-Chord": [
       "2026-08-04T171206--comfyui-company#c19"
     ],
+    "https://github.com/vllm-project/vllm": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c27"
+    ],
     "https://github.com/xio-sig": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c3"
+    ],
+    "https://github.com/yatesdr/b12x": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c28"
     ],
     "https://giwa.io/gasok": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -11466,6 +11590,15 @@
     "https://huggingface.co/spaces/multimodalart/jev-decision-index/blob/main/README.md": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c8"
     ],
+    "https://huggingface.co/thinkingmachines/Inkling-2-Mini": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c7"
+    ],
+    "https://huggingface.co/thinkingmachines/Inkling-2-Mini/raw/main/config.json": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c8"
+    ],
+    "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c13"
+    ],
     "https://huggingface.co/zai-org/GLM-4.5": [
       "2026-06-22T052035--zhipu-ai-glm#c5"
     ],
@@ -11676,6 +11809,9 @@
     ],
     "https://kabuyoho.jp/sp/report?bcode=3436": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c13"
+    ],
+    "https://kdnuggets.com/speed-up-llm-inference-with-dspark-speculative-decoding": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c13"
     ],
     "https://keg.cs.tsinghua.edu.cn/jietang": [
       "2026-06-22T052035--zhipu-ai-glm#c1"
@@ -12017,6 +12153,9 @@
     "https://newmedialaw.proskauer.com/2022/12/08/hiq-and-linkedin-reach-proposed-settlement-in-landmark-scraping-case": [
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c6"
     ],
+    "https://newreleases.io/project/github/ggml-org/llama.cpp/release/b12549": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c13"
+    ],
     "https://news.aibase.com/news/30090": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c15"
     ],
@@ -12233,6 +12372,9 @@
     ],
     "https://officechai.com/ai/claude-opus-5-5-tops-semi-analysis-gdpx-benchmark-gemini-4-carbon-placed-second": [
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5"
+    ],
+    "https://officechai.com/ai/gemini-4-neon-benchmarks": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c15"
     ],
     "https://officechai.com/ai/how-the-math-community-has-reacted-to-fable-helping-disprove-the-jacobian-conjecture": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c17",
@@ -12932,6 +13074,15 @@
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c4",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c5"
     ],
+    "https://raw.githubusercontent.com/tensorfish/squid5090/main/LEARNINGS.md": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c4"
+    ],
+    "https://raw.githubusercontent.com/tensorfish/squid5090/main/NOTICE": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c6"
+    ],
+    "https://raw.githubusercontent.com/tensorfish/squid5090/main/PLAN.md": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c5"
+    ],
     "https://rdi.berkeley.edu/blog/exploitgym": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
     ],
@@ -12996,6 +13147,9 @@
     ],
     "https://research/2026-06-05-ai-news.md": [
       "2026-06-13T065002--us-export-controls-reach-a-frontier-model-anthropic-s-forced#c19"
+    ],
+    "https://rits.shanghai.nyu.edu/ai/ninfer-700-tok-s-on-one-rtx-5090-with-a-rare-honest-audit": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c24"
     ],
     "https://robinhood.com/eu/en/support/articles/about-stock-tokens": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c18"
@@ -13112,6 +13266,9 @@
     ],
     "https://saemobilus.sae.org/papers/space-station-heat-rejection-subsystem-radiator-assembly-design-development-951651": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c20"
+    ],
+    "https://sakana.ai/ai-cuda-engineer-post-mortem": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c21"
     ],
     "https://salestechstar.com/sales-engagement/oomnitza-survey-reveals-over-a-quarter-of-enterprises-lose-more-than-10-of-their-technology-assets-when-offboarding-workers": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c28"
@@ -13890,6 +14047,9 @@
     "https://theteardown.co/kimi": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c22"
     ],
+    "https://thinkingmachines.ai/news/inkling-2-mini": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c9"
+    ],
     "https://tienmphan.github.io/blog/2025/RFDiffusion": [
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c5"
     ],
@@ -14509,6 +14669,9 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c2",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c21",
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c23"
+    ],
+    "https://www.baseten.co/blog/agentic-inference-optimization-faster-than-sota": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c17"
     ],
     "https://www.baseten.co/blog/real-time-video-generation-inference-on-baseten": [
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c24"
@@ -15436,6 +15599,9 @@
     ],
     "https://www.developersdigest.tech/blog/glm-5-2-vs-deepseek-v4-vs-qwen3-open-weights-coding-showdown": [
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c18"
+    ],
+    "https://www.developersdigest.tech/blog/local-llm-speed-agent-skill-ceilings-first-inference-optimisation-2026": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c25"
     ],
     "https://www.dexerto.com/minecraft/minecraft-speedrunner-finally-sets-world-record-one-year-after-devastating-last-second-fail-3393560": [
       "2026-10-16T165851--gemini-4-argon-beats-minecraft-in-27h-what-four-agents-a-min#c15"
@@ -17277,6 +17443,9 @@
     "https://www.silicondata.com/products/silicon-index/h100": [
       "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c6"
     ],
+    "https://www.siliconreport.com/google-introduces-gemini-4-neon-for-complex-software-workflows": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c16"
+    ],
     "https://www.siltronic.com/fileadmin/investorrelations/2026/Q2/20260730_Press_release_Wafer_demand_supports_2026_sales_outlook.pdf": [
       "2026-08-06T125446--globalwafers-flags-a-300mm-silicon-shortage-spot-prices-turn#c10"
     ],
@@ -18442,6 +18611,9 @@
     "https://x.com/tarunchitra/status/2089395679227441409": [
       "2026-08-18T184417--expand-research-from-twitter-link-https-x-com-gakonst-status#c2"
     ],
+    "https://x.com/tensorfish/status/2124975715141689818": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c1"
+    ],
     "https://x.com/teortaxesTex/status/2092268381269323815": [
       "2026-08-25T215952--openai-s-jalape-o-asic-beats-vera-rubin-on-throughput-per-mw#jal-15"
     ],
@@ -18520,9 +18692,12 @@
     "https://zapier.com/benchmarks": [
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c20",
       "2026-07-25T150015--claude-opus-5-launch-the-non-monotonic-effort-scaling-anomal#c21"
+    ],
+    "https://zapier.com/benchmarks/gemini-neon-4-report": [
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c16"
     ]
   },
-  "claim_count": 3347,
+  "claim_count": 3389,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -97961,9 +98136,919 @@
         "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon"
       ],
       "type": "comparison"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "@tensorfish posted on 2026-11-23 that a Gemini 4 Neon agent using a 0xSero skill produced a Zig engine with sm_120a kernels at 370-440 tok/s (4x llama.cpp) and 1M context in 22.7 GB, with no repo link; ~60.7K views.",
+      "confidence": "high",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://x.com/tensorfish/status/2124975715141689818"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "ingine README claims 490-560 tok/s on RTX 5090 (chat 487/501, code 554/561), tool calls ~740, prose ~450; 50 commits, at least 34 on Nov 21-22.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c10",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/satellitedown/inkling-2-mini-abliterated-ingine",
+        "https://github.com/satellitedown/inkling-2-mini-abliterated-ingine/commits/main"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Basalt's own Inkling 2 doc reports 347 conversation, 628 structured, 296 prose tok/s on RTX 5090 and supports 1,048,576 context; repo has AGENTS.md.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c11",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c11",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/jesdga95/basalt/blob/main/docs/models/inkling2.md",
+        "https://github.com/jesdga95/basalt"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "ninfer-all Inkling-2 doc: llama.cpp UD-IQ4_XS 96.9 (decode 128) and 90.1 (after 10k) tok/s on RTX 5090 vs ninfer 182.1/163.6; with DSpark 179.4->213.3 essay, 243.1 at 32K; llama.cpp with drafter 37.0 vs 57.3 on RTX 3090.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c12",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c12",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://github.com/iamwavecut/ninfer-all/blob/master/docs/inkling2.md"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "llama.cpp release b12549 mentions Inkling 2 attention-mask fixes and no DSpark/MTP/speculative support; Unsloth page repeats looped-model-support warning; a KDnuggets tutorial builds llama.cpp from source to use its DSpark implementation.",
+      "confidence": "low",
+      "hosts": [
+        "huggingface.co",
+        "kdnuggets.com",
+        "newreleases.io"
+      ],
+      "id": "c13",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c13",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://newreleases.io/project/github/ggml-org/llama.cpp/release/b12549",
+        "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
+        "https://kdnuggets.com/speed-up-llm-inference-with-dspark-speculative-decoding"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Gemini 4 Neon released 2026-11-18: 1M context, four thinking levels, $3/$15 per Mtok.",
+      "confidence": "high",
+      "hosts": [
+        "9to5google.com"
+      ],
+      "id": "c14",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://9to5google.com/2026/11/18/gemini-4-neon"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "On Google's table Neon trails Opus 5.5 on Terminal-Bench 4.1 (65.2 vs 65.8) and FrontierCode 2.0 (46.2 vs 47.3).",
+      "confidence": "medium",
+      "hosts": [
+        "officechai.com"
+      ],
+      "id": "c15",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c15",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://officechai.com/ai/gemini-4-neon-benchmarks"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Artificial Analysis Intelligence Index 61 for Neon, third behind Fable 5.2 and GPT-6.2 Astra; Zapier AutomationBench 56.3% at highest effort.",
+      "confidence": "medium",
+      "hosts": [
+        "siliconreport.com",
+        "zapier.com"
+      ],
+      "id": "c16",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c16",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.siliconreport.com/google-introduces-gemini-4-neon-for-complex-software-workflows",
+        "https://zapier.com/benchmarks/gemini-neon-4-report"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Baseten: Claude Code with Fable 5, ~1 week, ~1.7B tokens, ~200 B200 hours, $1000s for VibeQwen; 1,792 vs 943 tok/s vs vLLM 0.25.1 on speculator-friendly text; BF16 accuracy oracle; experimental; human steering needed.",
+      "confidence": "high",
+      "hosts": [
+        "baseten.co"
+      ],
+      "id": "c17",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c17",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.baseten.co/blog/agentic-inference-optimization-faster-than-sota"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Cursor+NVIDIA multi-agent harness: 235 Blackwell kernel problems, 3 weeks, 1.38x geomean, beat baseline on 149 of 235; SGLang attention swap gave 3% TTFT gain.",
+      "confidence": "medium",
+      "hosts": [
+        "cursor.com"
+      ],
+      "id": "c18",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c18",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://cursor.com/blog/multi-agent-kernels"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "FlashInfer contest paper: agent-assisted kernels beat full-agent kernels on every evaluated definition; expert direction remains critical.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c19",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c19",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2607.17979"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "tensorfish/squid5090 is a single-binary Zig + CUDA sm_120a engine for thinkingmachines/Inkling-2-Mini; README reports 589.5 tok/s code, 771.6 code-copy/RAG, 332.5 chat, c=1 on one RTX 5090; 15.6 GiB at 8K and 23.2 GiB at 1M with q4 KV.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c2",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c2",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/tensorfish/squid5090"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "imp README: every line written by Claude Code; 95.5 vs 70.4 tok/s vs vLLM 0.31.0 at one user on Qwen3.8-27B NVFP4; trails vLLM by 4.2% on Qwen3-14B long-prompt 32 users.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c20",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c20",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/kekzl/imp"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Sakana AI CUDA Engineer reported speedups that its post-mortem traced to exploiting the evaluation harness.",
+      "confidence": "medium",
+      "hosts": [
+        "sakana.ai"
+      ],
+      "id": "c21",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c21",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://sakana.ai/ai-cuda-engineer-post-mortem"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "SOL-ExecBench flagged 589 submissions (14.5%) as reward hacking: precision downgrade 259, timing monkey-patch 134, stream injection 100, cached output reuse 67.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c22",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c22",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/html/2603.19173"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "KernelBench-Verified: best of seven LLMs falls from 1.43x to 0.88x geomean under TF32 baseline and hidden four-distribution tests.",
+      "confidence": "medium",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c23",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c23",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2607.16241"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-07-28",
+      "claim": "NInfer audit: fastest case 994.9 tok/s was a repetition loop with an empty answer and was excluded; plain decode 271.1 vs 695-714 with MTP3.",
+      "confidence": "medium",
+      "hosts": [
+        "rits.shanghai.nyu.edu"
+      ],
+      "id": "c24",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c24",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://rits.shanghai.nyu.edu/ai/ninfer-700-tok-s-on-one-rtx-5090-with-a-rare-honest-audit"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "The sybil-solutions skill prescribes roofline-first, single-variable changes against interleaved controls, accepted only if beating both neighbouring controls with no regression over 3%; it tunes existing servers.",
+      "confidence": "medium",
+      "hosts": [
+        "developersdigest.tech",
+        "github.com"
+      ],
+      "id": "c25",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c25",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://github.com/sybil-solutions/inference-optimisation-skill",
+        "https://www.developersdigest.tech/blog/local-llm-speed-agent-skill-ceilings-first-inference-optimisation-2026"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "NVIDIA: code built with the a suffix runs only on the exact compute capability; no forward compatibility for PTX or cubin with the a suffix; compute_120f covers 12.0 and 12.1.",
+      "confidence": "high",
+      "hosts": [
+        "developer.nvidia.com",
+        "docs.nvidia.com"
+      ],
+      "id": "c26",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/compute-capabilities.html",
+        "https://developer.nvidia.com/blog/nvidia-blackwell-and-nvidia-cuda-12-9-introduce-family-specific-architecture-features"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "llama.cpp ~136k stars and well over 100 architecture entries; vLLM lists continuous batching, prefix caching, structured outputs, tool calling, parallelism modes.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c27",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c27",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/ggml-org/llama.cpp",
+        "https://github.com/vllm-project/vllm",
+        "https://github.com/ggml-org/llama.cpp/blob/master/src/llama-arch.cpp"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Mirage MPK fuses all computation and communication into a single megakernel and its build is tied to the GPU's SM count; b12x is an SM120/SM121 kernel library usable as a vLLM backend.",
+      "confidence": "low",
+      "hosts": [
+        "docs.vllm.ai",
+        "github.com"
+      ],
+      "id": "c28",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c28",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary",
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/mirage-project/mirage",
+        "https://github.com/yatesdr/b12x",
+        "https://docs.vllm.ai/en/latest/features/quantization/b12x"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "squid5090 has 22 commits by a single author across Nov 23-24 2026, no co-author trailers; first commit was a CUDA engine with a C++ host, Zig made the sole implementation later on Nov 23; peak figures committed Nov 24.",
+      "confidence": "medium",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c3",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/tensorfish/squid5090/commits/main"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "LEARNINGS.md: measured read bandwidth 1512.9 GB/s vs 1792.1 spec; NVFP4 B=1 ceiling 540 tok/s; mtp=0 achieves 262.8; per-token traffic 2.80 GB; 1M ctx decode 108.0 tok/s B=4 and 48.5 B=1 in 23.22 GiB; prompt-lookup 91.5% acceptance; no logprob or accuracy benchmarks reported; single-slot c=1; full 1M soak not done.",
+      "confidence": "medium",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c4",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c4",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/tensorfish/squid5090/main/LEARNINGS.md"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-23",
+      "claim": "PLAN.md: final P1 median at mtp=3 is 372.80 tok/s; all log entries dated 2026-11-23; 1M run with q4 KV and host embed at 22.47 GiB; fp8 KV 432K context; synthetic 1M B=4 96.1 and B=1 45.0 tok/s.",
+      "confidence": "medium",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c5",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c5",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/tensorfish/squid5090/main/PLAN.md"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "squid5090 NOTICE credits ingine (PDL overlap, NVFP4 GEMV layouts, adaptive verify width, prefill GEMM, ablation tools), atomic-engine (prompt-lookup inspiration), sybil-solutions inference-optimisation-skill (roofline method), and Inkling-2-Mini.",
+      "confidence": "medium",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c6",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c6",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/tensorfish/squid5090/main/NOTICE"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Inkling-2-Mini: released 2026-11-20, Apache 2.0, 26.4B total / 3.4B active MoE, 128 experts 8 routed, 24 layers with middle 12 looped 3x (5.4B effective active), ~20GB mixed NVFP4+MXFP8, 1M context (1,048,576 tokens).",
+      "confidence": "high",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c7",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/thinkingmachines/Inkling-2-Mini"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Inkling-2-Mini config.json: 24 layers, 8 KV heads, head_dim 128, sliding window 1024, global layers 5/11/17/23, core loop layers 6-18 with 3 passes, MTP module.",
+      "confidence": "medium",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c8",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/thinkingmachines/Inkling-2-Mini/raw/main/config.json"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Thinking Machines: most weights trained natively in NVFP4; MRCR v2 8-needle 256K-512K 46.4%.",
+      "confidence": "medium",
+      "hosts": [
+        "thinkingmachines.ai"
+      ],
+      "id": "c9",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c9",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://thinkingmachines.ai/news/inkling-2-mini"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Bandwidth ceiling: 1512.9 GB/s measured read bandwidth divided by 2.80 GB per token gives about 540 tok/s.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "KV at 1,048,576 tokens with 8 global-layer applications, K and V, 8 KV heads, 128 head_dim and 0.5 byte per element, in GiB.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d10",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Observed README memory increase from 8K to 1M: 23.2 - 15.6 GiB.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d11",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "1M-context decode at B=4 as a share of the 589.5 headline: 108.0 / 589.5.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d12",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "1M-context decode at B=1 as a share of the 589.5 headline: 48.5 / 589.5.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d13",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "SOL-ExecBench other-exploit remainder: 589 - 259 - 134 - 100 - 67.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d14",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d14",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "The no-speculation run (262.8 tok/s) reaches about 48.6% of the 540 tok/s ceiling.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Speculation multiplier on code: 589.5 / 262.8.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Tweet low end over the llama.cpp decode-128 row: 370 / 96.9.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Tweet high end over the llama.cpp after-10k row: 440 / 90.1.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Spec-free engine over the llama.cpp row: 262.8 / 96.9.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Chat speculation multiplier: 332.5 / 262.8.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d7",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "The README's 23.2 GiB at 1M context in GB: 23.2 * 1.073741824.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d8",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta",
+      "article_created_at": "2026-11-24T04:22:43Z",
+      "article_title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't",
+      "as_of": "2026-11-24",
+      "claim": "Bits per effective active parameter: 2.80 GB * 8 / 5.4B.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d9",
+      "key": "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#d9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1580,
+  "reusable_count": 1600,
   "schema_version": 1
 }

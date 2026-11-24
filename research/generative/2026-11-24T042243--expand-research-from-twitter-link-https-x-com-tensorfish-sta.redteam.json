@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "claim_id": "c1",
+      "claim_text": "If the baseline ran without a drafter, the \"4x\" divides a speculative decoder by a non-speculative one. I could not confirm that, so treat it as the likeliest reading and not a finding.",
+      "contradicting_url": "https://kdnuggets.com/speed-up-llm-inference-with-dspark-speculative-decoding",
+      "contradicting_quote": "We will build the latest llama.cpp from source so we can use its current DSpark implementation with CUDA acceleration.",
+      "severity": "medium",
+      "no_contradiction_found": false
+    },
+    {
+      "claim_id": "c2",
+      "claim_text": "the NOTICE credits earlier engines for the kernel designs",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    },
+    {
+      "claim_id": "c3",
+      "claim_text": "the tweet's \"370–440 tok/s\" and \"1M context\" describe two different operating points of the same engine, not one.",
+      "contradicting_url": null,
+      "contradicting_quote": null,
+      "severity": null,
+      "no_contradiction_found": true
+    }
+  ]
+}
