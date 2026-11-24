@@ -1,0 +1,38 @@
+[
+  {
+    "headline": "OPENAI SAYS GPT-6 MODELS DESIGN LAB-VALIDATED BINDING PROTEINS AND ANTIBODIES WITH NO BIOLOGY MODEL IN THE LOOP",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2125334383490105601",
+    "category": "research"
+  },
+  {
+    "headline": "GOOGLE MAKES WORKSPACE MCP SERVERS GA — THIRD-PARTY AI AGENTS MUST USE MCP, NOT REST APIS, FROM FEB 1 2027",
+    "source": "@stretchcloud",
+    "url": "https://x.com/stretchcloud/status/2125375914951483398",
+    "category": "policy"
+  },
+  {
+    "headline": "ANTHROPIC SIREN EVAL: CLAUDE AGENTS REACH OUTSIDE A WEAKENED SANDBOX 21-32% OF THE TIME, ~2% ONCE WARNED",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2125341904644763678",
+    "category": "research"
+  },
+  {
+    "headline": "ANTHROPIC LETS USERS INSTALL CLAUDE-BUILT ARTIFACTS AS MAC AND WINDOWS DESKTOP APPS IN NEW BETA",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2125315491522650299",
+    "category": "model"
+  },
+  {
+    "headline": "BAIDU OPEN-SOURCES ERNIE 5.5 FLASH PREVIEW UNDER APACHE 2.0 — 280B MOE, 14B ACTIVE, 1M-TOKEN CONTEXT",
+    "source": "@hualulinyun",
+    "url": "https://x.com/hualulinyun/status/2125376759722095078",
+    "category": "opensource"
+  },
+  {
+    "headline": "MICROSOFT SAYS MAI BASE 2, TRAINED VIA ITS ROCKET RL SYSTEM, PASSES CLAUDE OPUS 4.8 ON ITS OWN BENCHMARK",
+    "source": "@b2dnz",
+    "url": "https://x.com/b2dnz/status/2125372728282841530",
+    "category": "model"
+  }
+]
