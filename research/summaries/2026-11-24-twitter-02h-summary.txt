@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-11-24 02:08:06 UTC
+
+CYCLE: AI proofs and AI cyber-defense
+
+TOP STORIES:
+• Internal Claude model claims VP ≠ VNP proof; 70-page paper + Lean, no human check yet [⚠]
+• OpenAI/Cisco open-source Shirudo eBPF exploit shields; GPT-6 Cyber validates 948 kernel root bugs [✓/⚠]
+• Anthropic launches Claude Ship beta: Claude reviews, fixes and policy-approves PRs [✓]
+
+WATCH: First named expert audit of the VP ≠ VNP Lean statement
+
+Full update on GitHub.
