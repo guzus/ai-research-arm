@@ -1,0 +1,11 @@
+Speaker 1: Tuesday, November twenty-fourth, twenty twenty-six.
+Speaker 2: [high_energy] Anthropic quietly posted an AI-authored proof that V P does not equal V N P, checked in Lean, but with no human review yet.
+Speaker 1: And that is exactly today's big debate, whether Lean-checked AI proofs actually prove what they claim to prove.
+Speaker 2: Worth noting that a machine-checked proof is only as good as the statement it formalizes, so mathematicians will want to read the fine print.
+Speaker 1: On the security front, OpenAI and Cisco open-sourced Shirudo, agent-written eBPF shields that block exploits in the Linux kernel.
+Speaker 2: And OpenAI says GPT six Cyber validated [emphasis] nine hundred forty-eight [/emphasis] kernel root bugs in a single run.
+Speaker 1: Anthropic also launched Claude Ship, where Claude reviews, fixes, and approves pull requests according to each repo's policy.
+Speaker 2: In leadership news, NVIDIA's board has reinstated Jensen Huang as chief executive.
+Speaker 1: Some quick numbers. LangChain raised a [emphasis] three hundred million dollar [/emphasis] Series C at a three billion dollar valuation.
+Speaker 2: And GLM five point four loops twenty-eight layers twice, claiming quality on par with [emphasis] two to three trillion [/emphasis] parameter models.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
