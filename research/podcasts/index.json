@@ -1,9 +1,149 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-24T03:00:00Z",
+  "updated_at": "2026-11-24T15:12:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "openai:5p8CdiQGqV4",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Conheça o novíssimo ChatGPT Modo Voz.",
+      "url": "https://www.youtube.com/watch?v=5p8CdiQGqV4",
+      "video_id": "5p8CdiQGqV4",
+      "audio_url": null,
+      "published_at": "2026-11-24T13:42:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-24T15:12:00Z",
+      "duration_s": 254,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-24T15:12:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "big-technology:Fvqq3ar5Ric",
+      "show_id": "big-technology",
+      "show": "Big Technology Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "news-show"
+      ],
+      "title": "Anthropic’s Moment of Truth, Jensen's Limbo, Apple’s AI Agent",
+      "url": "https://www.youtube.com/watch?v=Fvqq3ar5Ric",
+      "video_id": "Fvqq3ar5Ric",
+      "audio_url": null,
+      "published_at": "2026-11-24T13:42:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-24T15:12:00Z",
+      "duration_s": 3663,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-24T15:12:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "training-data:tRaFbDFBl_A",
+      "show_id": "training-data",
+      "show": "Sequoia Capital (Training Data)",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "startups"
+      ],
+      "title": "OpenAI’s Noam Brown on Teaching AI to Think Before Acting (Live at No Limit Finals)",
+      "url": "https://www.youtube.com/watch?v=tRaFbDFBl_A",
+      "video_id": "tRaFbDFBl_A",
+      "audio_url": null,
+      "published_at": "2026-11-24T12:42:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-24T15:12:00Z",
+      "duration_s": 1839,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-24T15:12:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "all-in:o6KIjtkRdOI",
+      "show_id": "all-in",
+      "show": "All-In Podcast",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "CrowdStrike CEO: AI Cyberattack Wave, Hyperspeed Hacks, & The Patching Problem",
+      "url": "https://www.youtube.com/watch?v=o6KIjtkRdOI",
+      "video_id": "o6KIjtkRdOI",
+      "audio_url": null,
+      "published_at": "2026-11-24T12:42:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-24T15:12:00Z",
+      "duration_s": 3208,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-24T15:12:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "nvidia:aAbtjH0-oQQ",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "Why Transparency Matters for AI Security",
+      "url": "https://www.youtube.com/watch?v=aAbtjH0-oQQ",
+      "video_id": "aAbtjH0-oQQ",
+      "audio_url": null,
+      "published_at": "2026-11-24T10:42:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-24T15:12:00Z",
+      "duration_s": 908,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "hard-fork:HyQrNGvW4G0",
       "show_id": "hard-fork",
@@ -9208,34 +9348,6 @@
       },
       "excerpts": [],
       "description": "Ethan Mollick is a professor at the Wharton School and author of Coexistence: The Next Phase of AI. Mollick joins Big Technology to discuss why AI's remarkable advances haven't yet translated into massive productivity gains across the economy. Tune in to hear why companies need to fundamentally rethink how they operate to unlock AI's full potential, where businesses are already seeing returns, and what organizational transformation could look like. We also cover whether AI development will hit a wall, the"
-    },
-    {
-      "id": "interconnects:pod-1tg92nf4xe4zm",
-      "show_id": "interconnects",
-      "show": "Interconnects (narrated essays)",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "research",
-        "audio-only"
-      ],
-      "title": "Podcast: Kimi K3.1 Pro, the new cyber reality, and Muse musings",
-      "url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/221950500/4da5de3ef602c8af28717b19c5991b65.mp3",
-      "video_id": null,
-      "audio_url": "https://pscrb.fm/rss/p/prfx.byspotify.com/e/claritaspod.com/measure/api.substack.com/feed/podcast/221950500/4da5de3ef602c8af28717b19c5991b65.mp3",
-      "published_at": "2026-10-25T11:49:00Z",
-      "published_precision": "exact",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2802,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": null,
-        "attempts": 0
-      },
-      "excerpts": [],
-      "description": "We — Nathan and Florian — wanted to discuss all the messy trade-offs of a busy week in AI and ask all the pressing questions like:* Why did Kimi K3.1 Pro have a mixed reaction with such incredible benchmarks? Will it be adopted?* Were we wrong about the risks of open-weight models and cybersecurity?* Why do cyber experts discuss recent events so differently than AI experts?* What comes next in the few months? What will change our minds?We will write"
     }
   ]
 }
