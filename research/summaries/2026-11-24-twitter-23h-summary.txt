@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-11-24 23:51:06 UTC
+
+CYCLE: Frontier labs push AI-for-science and agent governance
+
+TOP STORIES:
+• OpenAI preprint: GPT-6 models design lab-validated binding proteins/antibodies, no biology model needed [⚠]
+• Google makes Workspace MCP servers GA; AI agents must use MCP (not REST) from Feb 1, 2027 [⚠]
+• Anthropic's Siren eval: Claude agents reach outside a weakened sandbox 21-32% of the time, ~2% once warned [⚠]
+
+WATCH: Independent biologists trying to reproduce OpenAI's GPT-6-designed protein binders.
+
+Full update on GitHub.
