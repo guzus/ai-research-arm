@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-11-24
+
+TOP STORIES:
+• Anthropic quietly posted an AI-authored VP ≠ VNP proof (Lean-checked, no human review yet)
+• OpenAI + Cisco open-sourced Shirudo agent-written eBPF exploit shields
+• Anthropic launched Claude Ship: Claude reviews, fixes and approves PRs per repo policy
+• NVIDIA's board reinstated Jensen Huang as CEO
+
+KEY NUMBERS:
+• 948 Linux kernel root bugs validated by GPT-6 Cyber in one run (OpenAI claim)
+• LangChain: $300M Series C at $3B valuation
+• GLM-5.4: 28 layers looped twice, claimed 2-3T-class quality
+
+TRENDING: Whether Lean-checked AI proofs actually prove what they claim
+
+Full digest on GitHub.
