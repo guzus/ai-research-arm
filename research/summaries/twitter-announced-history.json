@@ -2,42 +2,6 @@
   {
     "backfilled": true,
     "category": "model",
-    "delivered_at": "2026-06-02 04:00 UTC",
-    "headline": "KIMMONISMUS LEAK: OPENAI CODEX UPDATE 'MONTHS IN DEVELOPMENT, SOUNDS DIFFERENT FROM GPT-5.6'",
-    "source": "@kimmonismus",
-    "source_file": "research/summaries/2026-06-02-twitter-04h-headlines.json",
-    "url": "https://x.com/kimmonismus/status/2061631867712139323"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-06-02 04:00 UTC",
-    "headline": "OPENAI NEWSROOM POSTS LEADING THE FUTURE DISTANCING STATEMENT ON PRIMARY HANDLE \u2014 NAMES BROCKMAN, ANNA BROCKMAN, ASTROTURFING",
-    "source": "@OpenAINewsroom",
-    "source_file": "research/summaries/2026-06-02-twitter-04h-headlines.json",
-    "url": "https://x.com/OpenAINewsroom/status/2061601425701142586"
-  },
-  {
-    "backfilled": true,
-    "category": "opensource",
-    "delivered_at": "2026-06-02 04:00 UTC",
-    "headline": "BYTEDANCE OPEN-WEIGHTS BERNINI DIFFUSION VIDEO MODEL \u2014 'FIRST TIER AMONG LEADING CLOSED-SOURCE' ON VIDEO EDITING, SAME DAY AS NVIDIA COSMOS 3",
-    "source": "@aisearchio",
-    "source_file": "research/summaries/2026-06-02-twitter-04h-headlines.json",
-    "url": "https://x.com/aisearchio/status/2061572022074020174"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-02 04:00 UTC",
-    "headline": "WALSIN TECHNOLOGY HIKES CHIP-RESISTOR PRICES \u2014 PASSIVE-COMPONENTS COST CURVE NOW SPREADS FROM MLCC AND TANTALUM TO RESISTORS",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-06-02-twitter-04h-headlines.json",
-    "url": "https://x.com/jukan05/status/2061625448405381323"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
     "delivered_at": "2026-06-02 08:00 UTC",
     "headline": "MICROSOFT BUILD KEYNOTE LEAKS HARDEN \u2014 PROJECT POLARIS MOE CODING MODEL SET TO REPLACE GPT-4 INSIDE GITHUB COPILOT BY AUGUST",
     "source": "@tomwarren",
@@ -23180,5 +23144,33 @@
     "headline": "SAFETY-STRIPPED INKLING-2-MINI POSTED TO HUGGING FACE; HARMBENCH COMPLIANCE 4% TO 73%",
     "source": "@elliotarledge",
     "url": "https://x.com/elliotarledge/status/2124568066688434669"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-24 02:08:06 UTC",
+    "headline": "ANTHROPIC UPLOADS CLAUDE-AUTHORED PROOF CLAIM OF VP \u2260 VNP \u2014 LEAN-CHECKED, NO HUMAN REVIEW YET",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2125001971690315858"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-11-24 02:08:06 UTC",
+    "headline": "OPENAI AND CISCO OPEN-SOURCE SHIRUDO, AGENT-WRITTEN EBPF SHIELDS FOR UNPATCHED LINUX SYSTEMS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2124980590717911527"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-24 02:08:06 UTC",
+    "headline": "OPENAI: GPT-6 CYBER VALIDATED 948 LINUX KERNEL LOCAL-ROOT BUGS IN ONE RUN",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2125007927098699827"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-24 02:08:06 UTC",
+    "headline": "ANTHROPIC LAUNCHES CLAUDE SHIP BETA \u2014 CLAUDE REVIEWS, FIXES AND POLICY-APPROVES PULL REQUESTS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2124959436640858475"
   }
 ]
