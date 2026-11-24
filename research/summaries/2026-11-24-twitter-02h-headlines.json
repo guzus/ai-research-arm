@@ -1,0 +1,26 @@
+[
+  {
+    "headline": "ANTHROPIC UPLOADS CLAUDE-AUTHORED PROOF CLAIM OF VP ≠ VNP — LEAN-CHECKED, NO HUMAN REVIEW YET",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2125001971690315858",
+    "category": "research"
+  },
+  {
+    "headline": "OPENAI AND CISCO OPEN-SOURCE SHIRUDO, AGENT-WRITTEN EBPF SHIELDS FOR UNPATCHED LINUX SYSTEMS",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2124980590717911527",
+    "category": "opensource"
+  },
+  {
+    "headline": "OPENAI: GPT-6 CYBER VALIDATED 948 LINUX KERNEL LOCAL-ROOT BUGS IN ONE RUN",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2125007927098699827",
+    "category": "model"
+  },
+  {
+    "headline": "ANTHROPIC LAUNCHES CLAUDE SHIP BETA — CLAUDE REVIEWS, FIXES AND POLICY-APPROVES PULL REQUESTS",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2124959436640858475",
+    "category": "model"
+  }
+]
