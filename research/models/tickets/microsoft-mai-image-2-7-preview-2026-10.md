@@ -3,7 +3,7 @@ slug: microsoft-mai-image-2-7-preview-2026-10
 title: "Microsoft AI releases MAI-Image-2.7-Preview (image editing) in MAI Playground"
 company: "Microsoft AI"
 model: "MAI-Image-2.7-Preview"
-status: released
+status: closed
 status_note: |
   **Released 2026-10-27 in MAI Playground, image editing only.** @ArtificialAnlys (15:05 UTC):
   MAI-Image-2.7-Preview, which succeeds MAI-Image-2.6, takes #2 on AA-Image-Editing v2.1. It trails only
@@ -24,12 +24,14 @@ sources:
   - "https://x.com/mustafasuleyman/status/2115099284224008200"
   - "https://x.com/ArtificialAnlys/status/2115097540320506069"
 created_at: 2026-10-28
-updated_at: 2026-10-28
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-24
+closed_at: 2026-11-24
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-28
     change: "Created — RELEASED / confirmed. MAI-Image-2.7-Preview, successor to MAI-Image-2.6, is available in MAI Playground for image editing (2026-10-27). Artificial Analysis ranks it #2 on AA-Image-Editing v2.1 behind GPT Image 2.5 Sunburst, and @mustafasuleyman confirms it. Text-to-image is 'coming soon'."
+  - ts: 2026-11-24
+    change: "Closed — released-and-aged. Released 2026-10-27 in MAI Playground, now 4 weeks ago. No newer signal in this window (all feeds empty)."
 ---
 This follows [[microsoft-mai-image-2-6-2026-08]], which this set still has at `in-testing`. Microsoft
 shipped 2.7 as a Playground preview for editing before any Foundry or API listing, the same staged
