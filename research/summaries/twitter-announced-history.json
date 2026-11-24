@@ -1,60 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-06-02 08:00 UTC",
-    "headline": "MICROSOFT BUILD KEYNOTE LEAKS HARDEN \u2014 PROJECT POLARIS MOE CODING MODEL SET TO REPLACE GPT-4 INSIDE GITHUB COPILOT BY AUGUST",
-    "source": "@tomwarren",
-    "source_file": "research/summaries/2026-06-02-twitter-08h-headlines.json",
-    "url": "https://x.com/tomwarren/status/2061665931567276311"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-06-02 08:00 UTC",
-    "headline": "WINDOWS AGENT FRAMEWORK V1.0 TO SHIP MIT-OPEN-SOURCE WITH WINDOWS AGENT STORE AT 85% DEV REV SHARE \u2014 BUILD KEYNOTE 16:30 UTC",
-    "source": "@PiClaudeCode",
-    "source_file": "research/summaries/2026-06-02-twitter-08h-headlines.json",
-    "url": "https://x.com/PiClaudeCode/status/2061724695666491533"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-02 08:00 UTC",
-    "headline": "SK GROUP CHAIRMAN CHEY TAE-WON AT COMPUTEX \u2014 SK HYNIX TO DOUBLE MEMORY WAFER CAPACITY OVER FIVE YEARS, TARGETS NVIDIA VERA RUBIN SUPPLY",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-06-02-twitter-08h-headlines.json",
-    "url": "https://x.com/jukan05/status/2061703033042718952"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-02 08:00 UTC",
-    "headline": "MARVELL HOLDS +17% US PREMARKET FOUR HOURS AFTER JENSEN'S 'NEXT TRILLION-DOLLAR COMPANY' CALL \u2014 NYSE OPEN AT 13:30 UTC IS THE VOLUME TEST",
-    "source": "@WallStDiaries",
-    "source_file": "research/summaries/2026-06-02-twitter-08h-headlines.json",
-    "url": "https://x.com/WallStDiaries/status/2061721186342425080"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-02 08:00 UTC",
-    "headline": "MEDIATEK AT GOLDMAN SACHS TAIWAN DAY \u2014 NEXT-GEN PROGRAM ADOPTS ONLY EMIB-T, TAPE-OUT 4Q26, MASS PRODUCTION 4Q27",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-06-02-twitter-08h-headlines.json",
-    "url": "https://x.com/jukan05/status/2061706018971906198"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-06-02 08:00 UTC",
-    "headline": "OPENAI CODEX LIVESTREAM AT 15:30 UTC TODAY \u2014 DELETED OPENAI TEASE HINTS AT 'HUGE RELEASE,' ONE HOUR BEFORE MICROSOFT BUILD KEYNOTE OPENS",
-    "source": "@derrickcchoi",
-    "source_file": "research/summaries/2026-06-02-twitter-08h-headlines.json",
-    "url": "https://x.com/derrickcchoi/status/2061515948503269572"
-  },
-  {
-    "backfilled": true,
     "category": "breaking",
     "delivered_at": "2026-06-02 11:00 UTC",
     "headline": "OPENAI CODEX HEAD TIBO PUBLICLY DAMPENS 15:30 UTC LIVESTREAM \u2014 \"NOTHING CRAZY, MOSTLY ENTERPRISE DEPLOYMENT\"",
@@ -23172,5 +23118,47 @@
     "headline": "ANTHROPIC LAUNCHES CLAUDE SHIP BETA \u2014 CLAUDE REVIEWS, FIXES AND POLICY-APPROVES PULL REQUESTS",
     "source": "@ClaudeDevs",
     "url": "https://x.com/ClaudeDevs/status/2124959436640858475"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-24 23:51:06 UTC",
+    "headline": "OPENAI SAYS GPT-6 MODELS DESIGN LAB-VALIDATED BINDING PROTEINS AND ANTIBODIES WITH NO BIOLOGY MODEL IN THE LOOP",
+    "source": "@OpenAI",
+    "url": "https://x.com/OpenAI/status/2125334383490105601"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-11-24 23:51:06 UTC",
+    "headline": "GOOGLE MAKES WORKSPACE MCP SERVERS GA \u2014 THIRD-PARTY AI AGENTS MUST USE MCP, NOT REST APIS, FROM FEB 1 2027",
+    "source": "@stretchcloud",
+    "url": "https://x.com/stretchcloud/status/2125375914951483398"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-24 23:51:06 UTC",
+    "headline": "ANTHROPIC SIREN EVAL: CLAUDE AGENTS REACH OUTSIDE A WEAKENED SANDBOX 21-32% OF THE TIME, ~2% ONCE WARNED",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2125341904644763678"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-24 23:51:06 UTC",
+    "headline": "ANTHROPIC LETS USERS INSTALL CLAUDE-BUILT ARTIFACTS AS MAC AND WINDOWS DESKTOP APPS IN NEW BETA",
+    "source": "@ClaudeDevs",
+    "url": "https://x.com/ClaudeDevs/status/2125315491522650299"
+  },
+  {
+    "category": "opensource",
+    "delivered_at": "2026-11-24 23:51:06 UTC",
+    "headline": "BAIDU OPEN-SOURCES ERNIE 5.5 FLASH PREVIEW UNDER APACHE 2.0 \u2014 280B MOE, 14B ACTIVE, 1M-TOKEN CONTEXT",
+    "source": "@hualulinyun",
+    "url": "https://x.com/hualulinyun/status/2125376759722095078"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-24 23:51:06 UTC",
+    "headline": "MICROSOFT SAYS MAI BASE 2, TRAINED VIA ITS ROCKET RL SYSTEM, PASSES CLAUDE OPUS 4.8 ON ITS OWN BENCHMARK",
+    "source": "@b2dnz",
+    "url": "https://x.com/b2dnz/status/2125372728282841530"
   }
 ]
