@@ -46,11 +46,11 @@
         "agents",
         "governance"
       ],
-      "summary": "2026 storyline of agentic systems acting on live websites; Signal now blocks on-screen mobile AI agents on iOS 27 and Android so Gemini Intelligence and Siri AI cannot read chats.",
-      "description": "2026 storyline of agentic systems acting on live websites; Signal now blocks on-screen mobile AI agents on iOS 27 and Android so Gemini Intelligence and Siri AI cannot read chats.",
+      "summary": "Anthropic's Siren eval found recent Claude models reached or tried to leave a weakened sandbox 21–32% of the time; Google now requires Workspace MCP for third-party agents from Feb 1, 2027.",
+      "description": "Anthropic's Siren eval found recent Claude models reached or tried to leave a weakened sandbox 21–32% of the time; Google now requires Workspace MCP for third-party agents from Feb 1, 2027.",
       "created_at": "2026-05-29",
-      "updated_at": "2026-11-21",
-      "timestamp": "2026-11-21T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "themes/agentic-ai-security.md",
       "aliases": [
         "agentic AI security",
@@ -184,11 +184,11 @@
         "compute",
         "capital-markets"
       ],
-      "summary": "The historically large compute buildout; Texas voters backed a data-center pause after Gina Hinojosa unseated Greg Abbott, while Arm printed record FY27Q2 revenue of $1,443 million.",
-      "description": "The historically large compute buildout; Texas voters backed a data-center pause after Gina Hinojosa unseated Greg Abbott, while Arm printed record FY27Q2 revenue of $1,443 million.",
+      "summary": "Dell's FY27Q3 printed $54.9B revenue and a $132.3B AI backlog; Oracle will carry NVIDIA Vera Rubin systems and standalone Vera CPUs on OCI.",
+      "description": "Dell's FY27Q3 printed $54.9B revenue and a $132.3B AI backlog; Oracle will carry NVIDIA Vera Rubin systems and standalone Vera CPUs on OCI.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-11-05",
-      "timestamp": "2026-11-05T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "themes/ai-capex.md",
       "aliases": [
         "AI capex",
@@ -632,11 +632,11 @@
         "ai-safety",
         "foundation-models"
       ],
-      "summary": "AI safety lab behind Claude; published FlashProve as first-party zkSNARK inference proofs, Apache 2.0, after yesterday's unverified relay.",
-      "description": "AI safety lab behind Claude; published FlashProve as first-party zkSNARK inference proofs, Apache 2.0, after yesterday's unverified relay.",
+      "summary": "Siren eval found recent Claude models reached or tried to leave a weakened sandbox 21–32% of the time; TechCrunch says the stock slipped below IPO price.",
+      "description": "Siren eval found recent Claude models reached or tried to leave a weakened sandbox 21–32% of the time; TechCrunch says the stock slipped below IPO price.",
       "created_at": "2026-05-24",
-      "updated_at": "2026-11-05",
-      "timestamp": "2026-11-05T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "entities/anthropic.md",
       "aliases": [
         "Anthropic",
@@ -663,7 +663,8 @@
         "Anthropic S-1",
         "Mithril Medicine",
         "Cruz v. Anthropic",
-        "FlashProve"
+        "FlashProve",
+        "Siren eval"
       ],
       "outbound": [
         "agent-lifespan-engineering",
@@ -697,6 +698,7 @@
         "eu-ai-regulation",
         "federal-ai-policy",
         "fractile",
+        "frontier-lab-financing",
         "gemini-3-5-flash",
         "gemini-spark",
         "google",
@@ -987,6 +989,7 @@
         "gpt-6",
         "harvey",
         "hugging-face",
+        "matrix-multiplication-exponent",
         "mistral-leanstral-1-5",
         "nvidia",
         "openai",
@@ -1603,8 +1606,8 @@
       "summary": "Anthropic's agentic research workbench; Anthropic disclosed a July purchase of Mithril Medicine and Claude-assisted programs with six life-sciences partners, citing a preclinical mouse study.",
       "description": "Anthropic's agentic research workbench; Anthropic disclosed a July purchase of Mithril Medicine and Claude-assisted programs with six life-sciences partners, citing a preclinical mouse study.",
       "created_at": "2026-07-01",
-      "updated_at": "2026-10-28",
-      "timestamp": "2026-10-28T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "entities/claude-science.md",
       "aliases": [
         "Claude Science",
@@ -1619,13 +1622,17 @@
         "claude-sonnet-5",
         "evo-genome-models",
         "federal-ai-policy",
+        "gpt-6",
         "john-jumper",
-        "lifescibench"
+        "lifescibench",
+        "openai"
       ],
       "inbound": [
         "anthropic",
         "astra",
         "evo-genome-models",
+        "gpt-6",
+        "openai",
         "verification-bottleneck"
       ]
     },
@@ -2206,11 +2213,11 @@
         "enterprise-ai",
         "capital-markets"
       ],
-      "summary": "US enterprise-IT OEM; FY27Q2 (filed 2026-09-01) printed $47.0B revenue (+58% YoY) with $16.4B of AI-optimized server sales, $60.9B of AI-server orders and a $95B backlog, lifting full-year guidance to $192.0B.",
-      "description": "US enterprise-IT OEM; FY27Q2 (filed 2026-09-01) printed $47.0B revenue (+58% YoY) with $16.4B of AI-optimized server sales, $60.9B of AI-server orders and a $95B backlog, lifting full-year guidance to $192.0B.",
+      "summary": "US enterprise-IT OEM; FY27Q3 (filed 2026-11-24) printed $54.9B revenue (+103% YoY), $22.0B of AI-optimized servers, and a $132.3B AI backlog, lifting FY27 guidance to $202B.",
+      "description": "US enterprise-IT OEM; FY27Q3 (filed 2026-11-24) printed $54.9B revenue (+103% YoY), $22.0B of AI-optimized servers, and a $132.3B AI backlog, lifting FY27 guidance to $202B.",
       "created_at": "2026-06-01",
-      "updated_at": "2026-09-02",
-      "timestamp": "2026-09-02T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "entities/dell.md",
       "aliases": [
         "Dell",
@@ -2222,7 +2229,8 @@
       "outbound": [
         "ai-capex",
         "coreweave",
-        "neocloud"
+        "neocloud",
+        "nvidia"
       ],
       "inbound": [
         "ai-capex",
@@ -2825,11 +2833,11 @@
         "valuation",
         "frontier-lab"
       ],
-      "summary": "Anthropic's amended S-1 shows $16.96B Q3 revenue but a $567M operating loss and $895B of compute commitments; OpenAI's mega-round shrank to about $20B at $1.25T and Blackstone expects a double-B rating on Anthropic's $63B chip deal.",
-      "description": "Anthropic's amended S-1 shows $16.96B Q3 revenue but a $567M operating loss and $895B of compute commitments; OpenAI's mega-round shrank to about $20B at $1.25T and Blackstone expects a double-B rating on Anthropic's $63B chip deal.",
+      "summary": "TechCrunch reports Anthropic's stock slipped below its IPO price; the amended S-1 still shows $16.96B Q3 revenue, a $567M operating loss, and $895B of compute commitments.",
+      "description": "TechCrunch reports Anthropic's stock slipped below its IPO price; the amended S-1 still shows $16.96B Q3 revenue, a $567M operating loss, and $895B of compute commitments.",
       "created_at": "2026-11-01",
-      "updated_at": "2026-11-03",
-      "timestamp": "2026-11-03T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "themes/frontier-lab-financing.md",
       "aliases": [
         "OpenAI mega-round",
@@ -2849,7 +2857,9 @@
         "openai",
         "sk-hynix"
       ],
-      "inbound": []
+      "inbound": [
+        "anthropic"
+      ]
     },
     {
       "slug": "gdpx",
@@ -3310,11 +3320,11 @@
         "consumer-ai",
         "gemini"
       ],
-      "summary": "Hyperscaler behind Gemini; desktop Search dropped the search button for an AI chat-history sidebar, and Gemini for Mac can operate desktop apps via Computer Use.",
-      "description": "Hyperscaler behind Gemini; desktop Search dropped the search button for an AI chat-history sidebar, and Gemini for Mac can operate desktop apps via Computer Use.",
+      "summary": "Workspace MCP servers are generally available across Gmail, Drive, Docs, Sheets, Slides, Calendar, Chat and Tasks; from Feb 1, 2027 third-party agents must use MCP instead of REST APIs.",
+      "description": "Workspace MCP servers are generally available across Gmail, Drive, Docs, Sheets, Slides, Calendar, Chat and Tasks; from Feb 1, 2027 third-party agents must use MCP instead of REST APIs.",
       "created_at": "2026-07-17",
-      "updated_at": "2026-11-21",
-      "timestamp": "2026-11-21T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "entities/google.md",
       "aliases": [
         "Google",
@@ -3350,7 +3360,9 @@
         "AlphaProof Nexus",
         "AlphaProof",
         "Genie 4",
-        "UK AI Biosecurity Lab"
+        "UK AI Biosecurity Lab",
+        "Workspace MCP",
+        "Google Workspace MCP"
       ],
       "outbound": [
         "agentic-ai-security",
@@ -3527,11 +3539,11 @@
         "openai",
         "frontier-model"
       ],
-      "summary": "OpenAI's GPT-6 generation; GPT-6.1 Terra is live in ChatGPT Work, Codex and the API at $1/$5, a computer-use SKU OpenAI says matches Astra on Agents' Last Exam at a tenth of the token price.",
-      "description": "OpenAI's GPT-6 generation; GPT-6.1 Terra is live in ChatGPT Work, Codex and the API at $1/$5, a computer-use SKU OpenAI says matches Astra on Agents' Last Exam at a tenth of the token price.",
+      "summary": "OpenAI reports GPT-6.2 at 93% PoseBusters vs DiffDock-L's 50%; whole-structure prediction is still weak (TM-score 0.38 vs ESMFold2 0.93).",
+      "description": "OpenAI reports GPT-6.2 at 93% PoseBusters vs DiffDock-L's 50%; whole-structure prediction is still weak (TM-score 0.38 vs ESMFold2 0.93).",
       "created_at": "2026-07-28",
-      "updated_at": "2026-10-27",
-      "timestamp": "2026-10-27T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "entities/gpt-6.md",
       "aliases": [
         "GPT-6",
@@ -3557,8 +3569,10 @@
         "anthropic",
         "astra",
         "claude-opus-5-5",
+        "claude-science",
         "gpt-5-6",
         "hugging-face",
+        "lifescibench",
         "microsoft",
         "muse-wonder",
         "nvidia",
@@ -3570,17 +3584,20 @@
         "anthropic",
         "astra",
         "claude-opus-5-5",
+        "claude-science",
         "claude-sonnet-5-5",
         "deepseek",
         "deepseek-v4-1-flash",
         "gemini-4-argon",
         "gemini-4-carbon",
         "google",
+        "matrix-multiplication-exponent",
         "mistral",
         "mistral-large-4",
         "muse-wonder",
         "openai",
         "step-5-preview",
+        "verification-bottleneck",
         "xai",
         "xiaomi-mimo-v2-6"
       ]
@@ -3921,6 +3938,7 @@
         "anthropic",
         "claude-science",
         "evo-genome-models",
+        "gpt-6",
         "john-jumper",
         "openai",
         "verification-bottleneck"
@@ -4005,25 +4023,31 @@
         "alphaevolve",
         "complexity"
       ],
-      "summary": "The exponent ω bounding the complexity of matrix multiplication; on 2026-08-19 a DeepMind-and-academia team combined a reformulated optimization with AlphaEvolve to push ω below 2.371177, improving the 2.371339 record and marking a genuine ML-assisted result in theoretical CS.",
-      "description": "The exponent ω bounding the complexity of matrix multiplication; on 2026-08-19 a DeepMind-and-academia team combined a reformulated optimization with AlphaEvolve to push ω below 2.371177, improving the 2.371339 record and marking a genuine ML-assisted result in theoretical CS.",
+      "summary": "An OpenAI model-written manuscript claims ω = 9/4 with a matching lower bound over every field; partial Lean formalization, no referee.",
+      "description": "An OpenAI model-written manuscript claims ω = 9/4 with a matching lower bound over every field; partial Lean formalization, no referee.",
       "created_at": "2026-08-19",
-      "updated_at": "2026-08-19",
-      "timestamp": "2026-08-19T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "concepts/matrix-multiplication-exponent.md",
       "aliases": [
         "matrix multiplication exponent",
         "omega",
         "AlphaEvolve matrix multiplication",
-        "ω"
+        "ω",
+        "9/4 matrix multiplication"
       ],
       "outbound": [
+        "astra",
         "google",
+        "gpt-6",
         "model-specific-silicon",
+        "openai",
         "verification-bottleneck"
       ],
       "inbound": [
-        "google"
+        "google",
+        "openai",
+        "verification-bottleneck"
       ]
     },
     {
@@ -5362,11 +5386,11 @@
         "datacenter",
         "semiconductors"
       ],
-      "summary": "Dominant AI-accelerator supplier; Reuters sources say SEC staff are looking at accounting issues, and The Information says Nvidia is close to buying Inception for at least $500 million.",
-      "description": "Dominant AI-accelerator supplier; Reuters sources say SEC staff are looking at accounting issues, and The Information says Nvidia is close to buying Inception for at least $500 million.",
+      "summary": "Jensen Huang was reinstated as CEO on Nov 23, 11 days after a forced resignation; he will testify to Congress on chip export controls Dec 1 and Dec 3.",
+      "description": "Jensen Huang was reinstated as CEO on Nov 23, 11 days after a forced resignation; he will testify to Congress on chip export controls Dec 1 and Dec 3.",
       "created_at": "2026-06-05",
-      "updated_at": "2026-11-21",
-      "timestamp": "2026-11-21T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "entities/nvidia.md",
       "aliases": [
         "NVIDIA",
@@ -5442,6 +5466,7 @@
         "crusoe",
         "decart",
         "deepseek-v4-flash",
+        "dell",
         "dessa",
         "etched",
         "federal-ai-policy",
@@ -5696,11 +5721,11 @@
         "foundation-models",
         "ai-policy"
       ],
-      "summary": "GPT-Live-1.1 cuts idle WebRTC to $0.02/min from $0.05; published GPT-6.2 Astra prompt templates; a Hexagon Deligne write-up remains unchecked.",
-      "description": "GPT-Live-1.1 cuts idle WebRTC to $0.02/min from $0.05; published GPT-6.2 Astra prompt templates; a Hexagon Deligne write-up remains unchecked.",
+      "summary": "GPT-6-family models designed protein binders (35 of 322 minibinders bound); a model-written manuscript claims ω = 9/4, still unchecked.",
+      "description": "GPT-6-family models designed protein binders (35 of 322 minibinders bound); a model-written manuscript claims ω = 9/4, still unchecked.",
       "created_at": "2026-05-30",
-      "updated_at": "2026-11-22",
-      "timestamp": "2026-11-22T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "entities/openai.md",
       "aliases": [
         "OpenAI",
@@ -5748,6 +5773,7 @@
         "claude-fable-5",
         "claude-opus-5",
         "claude-opus-5-5",
+        "claude-science",
         "coreweave",
         "crusoe",
         "cursor",
@@ -5764,6 +5790,7 @@
         "hugging-face",
         "jev",
         "lifescibench",
+        "matrix-multiplication-exponent",
         "meta",
         "microsoft",
         "model-specific-silicon",
@@ -5791,6 +5818,7 @@
         "character-ai",
         "claude-fable-5",
         "claude-opus-5-5",
+        "claude-science",
         "crusoe",
         "cursor",
         "deepseek",
@@ -5810,6 +5838,7 @@
         "jev",
         "john-jumper",
         "lifescibench",
+        "matrix-multiplication-exponent",
         "meta",
         "micron",
         "microsoft",
@@ -6919,11 +6948,11 @@
         "benchmarks",
         "agentic"
       ],
-      "summary": "Lean FRO certified Alpöge's Claude-assisted Lean RH/GRH artifact against Mathlib; the Association for Human Mathematics called the dump unreadable, and a Hexagon Deligne write-up is not classical RH.",
-      "description": "Lean FRO certified Alpöge's Claude-assisted Lean RH/GRH artifact against Mathlib; the Association for Human Mathematics called the dump unreadable, and a Hexagon Deligne write-up is not classical RH.",
+      "summary": "OpenAI dumped 730 model-written manuscripts including an unchecked 9/4 matrix-multiplication claim with partial Lean; the lab calls them raw research data.",
+      "description": "OpenAI dumped 730 model-written manuscripts including an unchecked 9/4 matrix-multiplication claim with partial Lean; the lab calls them raw research data.",
       "created_at": "2026-08-02",
-      "updated_at": "2026-11-22",
-      "timestamp": "2026-11-22T00:00:00Z",
+      "updated_at": "2026-11-25",
+      "timestamp": "2026-11-25T00:00:00Z",
       "file": "concepts/verification-bottleneck.md",
       "aliases": [
         "verification bottleneck",
@@ -6946,7 +6975,9 @@
         "discovery-loop",
         "gemini-3-8-flash",
         "google",
+        "gpt-6",
         "lifescibench",
+        "matrix-multiplication-exponent",
         "meta",
         "mistral-leanstral-1-5",
         "muse-code",
@@ -7428,6 +7459,7 @@
     "30-day pre-release access": "federal-ai-policy",
     "4 argon": "gemini-4-argon",
     "4 carbon": "gemini-4-carbon",
+    "9/4 matrix multiplication": "matrix-multiplication-exponent",
     "@adcock_brett": "figure-ai",
     "@aleph__alpha": "aleph-alpha",
     "@anthropicai": "anthropic",
@@ -7775,6 +7807,7 @@
     "google gemini spark": "gemini-spark",
     "google home mcp": "google",
     "google pics": "google",
+    "google workspace mcp": "google",
     "gpt 5.6": "gpt-5-6",
     "gpt 6": "gpt-6",
     "gpt-5-6": "gpt-5-6",
@@ -8159,6 +8192,7 @@
     "shazeer": "noam-shazeer",
     "shieldstral": "mistral-shieldstral",
     "sif": "federal-ai-policy",
+    "siren eval": "anthropic",
     "siri": "apple",
     "sk hynix": "sk-hynix",
     "sk hynix inc.": "sk-hynix",
@@ -8246,6 +8280,7 @@
     "white house genesis": "federal-ai-policy",
     "wiz nine-platform breach list": "black-october-ai-platform-breaches",
     "wonder full": "muse-wonder",
+    "workspace mcp": "google",
     "world ai conference": "china-ai-regulation",
     "world ai cooperation organization": "china-ai-regulation",
     "x.ai": "xai",
@@ -8277,6 +8312,11 @@
     "深度求索": "deepseek"
   },
   "recent_log": [
+    {
+      "date": "2026-11-25",
+      "op": "ingest",
+      "summary": "Ingested the 2026-11-25 digest (sole recent ticket was microsoft-mai-image-2-7-preview closed as released-and-aged; no new-release tickets). Created 0. Updated 8 (openai — GPT-6-family protein binders 35/322 + 9/4 ω manuscript; gpt-6 — GPT-6.2 PoseBusters 93% vs DiffDock-L 50%; matrix-multiplication-exponent — unchecked 9/4 claim; verification-bottleneck — 730-manuscript dump as raw research data; dell — FY27Q3 $54.9B / $132.3B AI backlog / FY27 $202B; nvidia — Huang reinstated Nov 23 + Dec 1/3 Congress testimony; anthropic — Siren 21–32% sandbox reach + stock below IPO; google — Workspace MCP GA, REST cutover Feb 1 2027). Reciprocals on agentic-ai-security, ai-capex, frontier-lab-financing, claude-science. Skipped for budget: Amazon–Decart $7.5B leftover, Baidu ERNIE 5.5 Flash, Microsoft Rocket RL / MAI Base 2, Ternary Bonsai 2.5, Wispr Canto-2, Tidal AI-music purge, Exa $7B talks, WeightCode / Tether / skill self-editing, astra SKU page, federal-ai-policy Huang-testimony increment."
+    },
     {
       "date": "2026-11-22",
       "op": "ingest",
@@ -8371,11 +8411,6 @@
       "date": "2026-10-14",
       "op": "ingest",
       "summary": "Ingested the 2026-10-14 digest plus tickets updated 2026-10-13 (google-gemini-4 still launch-watch; anthropic-alibaba-distillation 90–99% cut; xiaomi V2.5→V2.6 routing). Created 1 (character-ai — Chapter 11 in Delaware, Disney stalking-horse, shutdown if no buyer). Updated 7 (gemini-4-argon — GA on API/AI Studio/Gemini app/Search/Antigravity, Every 21% vs 81–85%, 899 HN pts; google — same GA + Character.AI $2.7B leftover; openai — hidden recorder, firing, FBI arrest, no weights/data taken; anthropic — Scion VCS after 12× merges, distillation 90–99%, Q3 books relay; agentic-ai-security — insider-risk incident + airgap letter; sk-hynix — ~10% Tuesday KOSPI drop, figures from market accounts; noam-shazeer — Character.AI Chapter 11 closes the overhang). Reciprocals on character-ai / google / noam-shazeer. Skipped for budget: GLM-Legal, SpaceXSI X Subscription / cursor, Xiaomi MiMo ID deprecation as its own page, CAISSI staff move, Fable 5.5 rumor, NVIDIA–Reflection leftover, Muse leftover, arXiv highlights."
-    },
-    {
-      "date": "2026-10-13",
-      "op": "ingest",
-      "summary": "Ingested the 2026-10-13 digest plus tickets updated 2026-10-12 (microsoft-maia-300, google-deepmind-alphaproof-nexus, us-ai-model-review-eo). Created 1 (muse-wonder — Meta's first independently scored frontier pair, AA 52/56 vs Spark 1.3's 48). Updated 8 (muse-code — Wonder live in Muse Code/API, Full on $50/$200; meta — same ship + Lambert frontier read; microsoft — Maia primary inference from 2027, Maia 300 40% tok/MW; anthropic — 9B inference on 8/9 hardware + months-from-IoT-replicator forecast; agentic-ai-security — same warning + Codex CLI daemon; federal-ai-policy — Reuters confirms UK AISI access restored; google — AlphaProof Nexus Science paper, 9 Erdős / 44 OEIS; ai-capex — Maia as third-hyperscaler custom-silicon primary path). Reciprocals on muse-glimmer, claude-opus-5-5, claude-sonnet-5-5, gpt-6, verification-bottleneck. Skipped for budget: GLM-Legal, GLM-5.3-HighSpeed, Mistral Le Chonk, Codex as its own openai increment, Typesafe leftover, Amazon–Decart leftover, Entergy/AWS Falcon, Epic Games AI-first, arXiv highlights."
     }
   ]
 }

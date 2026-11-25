@@ -4,10 +4,11 @@ title: The verification bottleneck
 type: concept
 aliases: ["verification bottleneck", "agent-reviewed", "evaluation validity gap", "Fields Medalists letter", "A Severe Misalignment of AI in Mathematics", "Math 2.0", "Exponential Time Hypothesis"]
 tags: [evaluation, ai-for-science, epistemics, benchmarks, agentic]
-description: Lean FRO certified Alpöge's Claude-assisted Lean RH/GRH artifact against Mathlib; the Association for Human Mathematics called the dump unreadable, and a Hexagon Deligne write-up is not classical RH.
+description: OpenAI dumped 730 model-written manuscripts including an unchecked 9/4 matrix-multiplication claim with partial Lean; the lab calls them raw research data.
 created_at: 2026-08-02
-timestamp: 2026-11-22T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
@@ -677,3 +678,8 @@ new dump or a Clay decision
 - **The Association for Human Mathematics’ Nov 20 statement argues the dump cannot be human-understood** and is lab publicity for “superintelligence.” Andrew Curran noted silence from the Advisory Group on Mathematics and AI. That is a professional-society statement, not a Clay or IMU ruling (Twitter, ahmath.org; ARA daily digest 2026-11-22).
 - **A Hexagon preprint (hexagon:2611.00789, CC0, Floris Alderliefste) says [[astra|GPT-6 Astra]] produced a six-page proof of Deligne’s Frobenius-eigenvalue bound** from a footnote in Alpöge’s Nov 20 note, tagged “primarily AI-generated” with no human check. The digest says GPT-6 Astra produced the argument and [[claude-opus-5-5|Opus 5.5]] then [[claude-fable-5|Fable 5.2]] wrote the public text. Jared Duker Lichtman called it “a new proof of the Riemann hypothesis over finite fields”; it **restates Weil I/II over finite fields, not classical RH**, and is **not arXiv:2611.00789**. Same certificate-vs-significance split this page already tracks for Astra’s ten-proofs dump. See [[astra]] and [[openai]] (Twitter, Hexagon; ARA daily digest 2026-11-22).
 - **Ethan Mollick’s Bluesky line is the social-claim caveat:** Millennium-Problem claims still need great mathematicians; models “can't (yet) do it all on their own.” Jordan Ellenberg on 3b1b (YouTube, 3 days old) argues AI-generated proofs do not threaten the social fabric of mathematics (Bluesky, YouTube; ARA daily digest 2026-11-22).
+
+## OpenAI's 730-manuscript dump and a 9/4 ω claim (2026-11-25)
+
+- **[[openai]]'s math-repo README says an unnamed internal model produced 730 manuscripts in 375 families** and calls them "raw research data, rather than polished academic papers." One of those manuscripts claims the [[matrix-multiplication-exponent|matrix-multiplication exponent]] **ω = 9/4**, with a matching lower bound over every field and a **partial Lean formalization**. No referee has checked it. The same edition lists results on the Valiant hierarchy and Smale's ninth problem. HN threads on the protein-design and 9/4 posts ran **195 and 199 points**. Same produce-faster-than-check shape as the Alpöge dump and [[astra]]'s ten-proofs manuscript; the lab's own "raw research data" label is the honest framing (Hacker News; ARA daily digest 2026-11-25).
+- **The protein-design preprint is a wet-lab counterpart, not a Lean artifact:** [[gpt-6|GPT-6-family]] models designed binders that bound in **35 of 322** minibinders, and OpenAI says the results do not yet establish end-to-end design without specialised models. Fold the science numbers onto [[openai]] and [[gpt-6]]; the verification question here is whether a lab-run binding assay is being read as a drug (OpenAI blog, HN; ARA daily digest 2026-11-25).

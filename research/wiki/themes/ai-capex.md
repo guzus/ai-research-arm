@@ -4,10 +4,11 @@ title: The AI Capex Supercycle
 type: theme
 aliases: ["AI capex", "AI capex supercycle", "compute buildout", "AI infrastructure buildout"]
 tags: [macro, ai-infrastructure, compute, capital-markets]
-description: The historically large compute buildout; Texas voters backed a data-center pause after Gina Hinojosa unseated Greg Abbott, while Arm printed record FY27Q2 revenue of $1,443 million.
+description: Dell's FY27Q3 printed $54.9B revenue and a $132.3B AI backlog; Oracle will carry NVIDIA Vera Rubin systems and standalone Vera CPUs on OCI.
 created_at: 2026-05-24
-timestamp: 2026-11-05T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
   - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
@@ -2118,3 +2119,18 @@ and [[openai]] to grade its own work (Bloomberg via relay; ARA daily digest
   story this theme skipped on 2026-10-02; still
   unconfirmed (Twitter 06:00 UTC, Investing.com /
   Reuters; ARA daily digest 2026-11-05).
+
+## Dell $132.3B backlog; Rubin on OCI (2026-11-25)
+
+- **[[dell]] FY27Q3 (filed 2026-11-24) printed $54.9B revenue
+  (+103% YoY)**, **$22.0B** of AI-optimized server revenue, and a
+  record **$132.3B AI backlog** after **$60.2B** of new AI orders.
+  FY27 revenue guidance is **$202B**. COO Jeff Clarke: ISG now
+  drives most of the profit; non-GAAP opex fell to **7% of
+  revenue**, a 42-year low. This is the enterprise-OEM demand
+  print of the window, not a hyperscaler capex slide (Dell 8-K
+  EX-99.1; ARA daily digest 2026-11-25).
+- **Oracle is bringing [[nvidia|NVIDIA]] Vera Rubin systems and
+  standalone Vera CPUs to OCI** under an expanded partnership.
+  Availability note, no disclosed offtake size (Twitter, citing
+  VentureBeat; ARA daily digest 2026-11-25).

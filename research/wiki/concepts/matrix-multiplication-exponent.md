@@ -2,12 +2,13 @@
 slug: matrix-multiplication-exponent
 title: Matrix multiplication exponent (ω)
 type: concept
-aliases: ["matrix multiplication exponent", "omega", "AlphaEvolve matrix multiplication", "ω"]
+aliases: ["matrix multiplication exponent", "omega", "AlphaEvolve matrix multiplication", "ω", "9/4 matrix multiplication"]
 tags: [theoretical-cs, algorithms, ml-for-math, alphaevolve, complexity]
-description: The exponent ω bounding the complexity of matrix multiplication; on 2026-08-19 a DeepMind-and-academia team combined a reformulated optimization with AlphaEvolve to push ω below 2.371177, improving the 2.371339 record and marking a genuine ML-assisted result in theoretical CS.
+description: An OpenAI model-written manuscript claims ω = 9/4 with a matching lower bound over every field; partial Lean formalization, no referee.
 created_at: 2026-08-19
-timestamp: 2026-08-19T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-08-19", path: research/digest/2026-08-19-digest.md}
   - {title: "Improving the matrix multiplication exponent with modern optimization and AlphaEvolve", url: "https://arxiv.org/abs/2608.16884", date: 2026-08-18}
 ---
@@ -39,11 +40,30 @@ setting, and **refines the result with AlphaEvolve** to push **ω below
   manuscript, an ML-assisted bound invites scrutiny about verification — see
   [[verification-bottleneck]].
 
+## OpenAI's 9/4 claim (2026-11-25)
+
+- **A model-written manuscript in [[openai]]'s math repo claims ω = 9/4**,
+  with a matching lower bound over every field and a **partial Lean
+  formalization**. No referee has checked it. If the claim held it would
+  smash the 2026-08-19 AlphaEvolve record (ω < 2.371177) all the way to
+  **2.25** — a jump of a different kind from the 0.000162 improvement
+  that paper recorded. Treat it as an **unchecked lab dump**, not a
+  published bound. See [[verification-bottleneck]] and [[gpt-6]]
+  (Hacker News; ARA daily digest 2026-11-25).
+- **The same repo edition is a 730-manuscript dump** (375 families)
+  from an unnamed internal model, labelled "raw research data, rather
+  than polished academic papers," and also lists results on the
+  Valiant hierarchy and Smale's ninth problem. That is the
+  produce-faster-than-check pattern this concept already shares with
+  [[astra]]'s ten-proofs manuscript.
+
 ## Open questions
 
 - **Does the bound hold under independent review?** As with any automated/
   learned result, reproduction and formal checking matter before the number is
-  fully accepted.
+  fully accepted. The 9/4 manuscript is the sharper version of this question:
+  a claimed closed-form exponent with only a partial Lean artifact.
 - **How far can the optimization+AlphaEvolve loop push ω?** The paper extends
   the setting in which the combination-loss optimization is solved; whether the
-  technique has further headroom is open.
+  technique has further headroom is open. The OpenAI dump does not use that
+  loop; it is a different production path.

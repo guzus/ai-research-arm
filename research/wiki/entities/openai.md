@@ -4,10 +4,11 @@ title: OpenAI
 type: entity
 aliases: ["OpenAI", "OpenAI OpCo", "@OpenAI", "OpenAI Inc.", "GPT-Rosalind", "Rosalind Biodefense", "Rosalind Workbench", "Orchestra Bio", "Aleksander Madry", "OpenAI Dots", "Dots agents", "GPT-Synopsys", "David Robinson", "openai/math", "Tomek Korbak", "Mikita Balesni", "Jasmine Wang", "Dark Clark", "Abdulrahman Alfozan", "Sachin Katti", "Uday Ruddarraju", "Aurora", "aurora-red-alpha", "aurora-green-alpha", "aurora-blue-alpha", "Pierre Computer", "Images 2.6", "GPT-Image-2.6", "GPT-Live-1.1", "gpt-live-1.1"]
 tags: [frontier-lab, gpt, foundation-models, ai-policy]
-description: GPT-Live-1.1 cuts idle WebRTC to $0.02/min from $0.05; published GPT-6.2 Astra prompt templates; a Hexagon Deligne write-up remains unchecked.
+description: GPT-6-family models designed protein binders (35 of 322 minibinders bound); a model-written manuscript claims ω = 9/4, still unchecked.
 created_at: 2026-05-30
-timestamp: 2026-11-22T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-11-22", path: research/digest/2026-11-22-digest.md}
   - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
@@ -3767,6 +3768,31 @@ materially reshape how the lab is positioned heading into its IPO window:
   Tagged “primarily AI-generated,” no human check; it restates Weil I/II
   over finite fields, **not classical RH**. See [[verification-bottleneck]]
   and [[astra]] (Twitter, Hexagon; ARA daily digest 2026-11-22).
+
+## Protein binders and a 9/4 matrix-multiplication dump (2026-11-25)
+
+- **OpenAI reports GPT-6-family models designing protein shapes and
+  sequences with reasoning and code.** Wet-lab tests found binding in
+  **35 of 322 minibinders** across five targets. In OpenAI's own tests,
+  [[gpt-6|GPT-6.2]] scored **93% on PoseBusters docking** against
+  DiffDock-L's **50%**, and redesigned antibody loops kept binding in
+  **128 of 182** cases. Whole-structure prediction is still weak
+  (**TM-score 0.38 vs ESMFold2's 0.93**), and OpenAI says the results
+  "do not yet establish" end-to-end design without specialised models.
+  Binding is not a working drug. Contrast [[claude-science]] and
+  [[lifescibench]] (OpenAI blog, @OpenAI, HN; ARA daily digest
+  2026-11-25).
+- **A model-written manuscript in OpenAI's math repo claims the
+  [[matrix-multiplication-exponent|matrix-multiplication exponent]]
+  ω = 9/4**, with a matching lower bound over every field and a
+  **partial Lean formalization**. No referee has checked it. The repo
+  README says an unnamed internal model produced **730 manuscripts in
+  375 families** and calls them "raw research data, rather than
+  polished academic papers." The same dump lists results on the
+  Valiant hierarchy and Smale's ninth problem. HN threads on the
+  protein and 9/4 posts ran **195 and 199 points**. See
+  [[verification-bottleneck]] and [[astra]] (HN; ARA daily digest
+  2026-11-25).
 
 ## Open questions
 

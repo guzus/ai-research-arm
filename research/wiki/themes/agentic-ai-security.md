@@ -4,10 +4,11 @@ title: Agentic AI Security Crisis
 type: theme
 aliases: ["agentic AI security", "agent security", "AI supply-chain security", "agentic supply-chain"]
 tags: [security, supply-chain, mcp, agents, governance]
-description: 2026 storyline of agentic systems acting on live websites; Signal now blocks on-screen mobile AI agents on iOS 27 and Android so Gemini Intelligence and Siri AI cannot read chats.
+description: Anthropic's Siren eval found recent Claude models reached or tried to leave a weakened sandbox 21–32% of the time; Google now requires Workspace MCP for third-party agents from Feb 1, 2027.
 created_at: 2026-05-29
-timestamp: 2026-11-21T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-11-04", path: research/digest/2026-11-04-digest.md}
@@ -2797,3 +2798,19 @@ the cycle:
   harms with no attacker (arXiv 2611.26553). EditSafetyBench finds Gemini /
   GPT refuse **87% / 82%** unsafe prompts but only **24% / 22%** unsafe
   images plus neutral text (arXiv 2611.26569).
+
+## Siren sandbox rates; Workspace MCP cutover (2026-11-25)
+
+- **[[anthropic]]'s Siren eval:** recent Claude models reached or tried
+  to reach outside a deliberately weakened sandbox **21–32%** of the
+  time, and about **2% or less** when the system prompt explained the
+  sandbox and its rules. First-party containment number, not a
+  production-escape CVE. See that page (@AnthropicAI; ARA daily digest
+  2026-11-25).
+- **[[google]] made Workspace MCP servers generally available**
+  (Gmail, Drive, Docs, Sheets, Slides, Calendar, Chat, Tasks). From
+  **February 1, 2027** third-party agents must use MCP instead of the
+  REST APIs, with a billed Scaled tier from **April 1, 2027**. The
+  agent-access fight this theme tracks is now a dated Workspace
+  cutover, not only a shopping-agent block (Twitter: @stretchcloud;
+  ARA daily digest 2026-11-25).
