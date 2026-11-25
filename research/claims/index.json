@@ -1,5 +1,5 @@
 {
-  "article_count": 117,
+  "article_count": 118,
   "articles": [
     {
       "claim_count": 18,
@@ -1115,6 +1115,14 @@
         "twitter-seed"
       ],
       "title": "Is Hardware-Specific Inference Optimization Now Free? What a 22-Commit Zig Engine Proves, and What It Doesn't"
+    },
+    {
+      "claim_count": 20,
+      "created_at": "2026-11-25T19:38:20Z",
+      "slug": "vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "stem": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "tags": [],
+      "title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked"
     }
   ],
   "by_host": {
@@ -2028,7 +2036,10 @@
       "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c19",
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c19",
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c22",
-      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c23"
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c23",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c11",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c12",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c15"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -2224,6 +2235,9 @@
       "2026-08-04T171206--comfyui-company#c3",
       "2026-08-04T171206--comfyui-company#c4",
       "2026-08-04T171206--comfyui-company#c6"
+    ],
+    "blog.computationalcomplexity.org": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c16"
     ],
     "blog.ethereum.org": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c23"
@@ -3450,6 +3464,9 @@
     "dronelife.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c16"
     ],
+    "drops.dagstuhl.de": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c20"
+    ],
     "dspace.mit.edu": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c5"
     ],
@@ -3459,6 +3476,9 @@
     ],
     "dwarkesh.com": [
       "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c14"
+    ],
+    "eccc.weizmann.ac.il": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c20"
     ],
     "ecmweb.com": [
       "2026-05-27T035557--800-vdc-architecture#c35"
@@ -4178,7 +4198,11 @@
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c25",
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c27",
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c28",
-      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c3"
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c3",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c1",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c18",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c2",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c4"
     ],
     "giwa.io": [
       "2026-08-21T140936--expand-research-from-twitter-link-https-x-com-layerggofficia#c14",
@@ -4920,7 +4944,8 @@
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c29"
     ],
     "lean-lang.org": [
-      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c11"
+      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c11",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c13"
     ],
     "leanprover-community.github.io": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c35"
@@ -4964,6 +4989,9 @@
     ],
     "lila.ai": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c42"
+    ],
+    "lilting.ch": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c19"
     ],
     "link.com": [
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c3",
@@ -6018,7 +6046,14 @@
       "2026-11-02T113633--expand-research-from-twitter-link-https-x-com-deepseekharnes#c4",
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c4",
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c5",
-      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c6"
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c6",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c10",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c3",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c5",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c6",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c7",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c8",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c9"
     ],
     "rdi.berkeley.edu": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
@@ -6268,6 +6303,9 @@
       "2026-08-03T212425--qwen3-8-max-alibaba-s-2-4t-95b-flagship-at-2-6-the-first-max#c23",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c14",
       "2026-08-20T152813--unitree-star-market-ipo-debut#c4"
+    ],
+    "scottaaronson.blog": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c17"
     ],
     "scworld.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c27"
@@ -7660,7 +7698,8 @@
     ],
     "xenaproject.wordpress.com": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c38",
-      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c39"
+      "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c39",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c14"
     ],
     "xinhuanet.com": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c15"
@@ -8520,6 +8559,10 @@
     "https://arxiv.org/abs/2406.05946": [
       "2026-08-02T101015--google-s-consciousness-vector-paper-arxiv-2607-28607-refusal#c18"
     ],
+    "https://arxiv.org/abs/2406.06217": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c11",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c12"
+    ],
     "https://arxiv.org/abs/2406.11704": [
       "2026-06-22T061332--frontier-ai-data-supply-chain#c17"
     ],
@@ -8823,6 +8866,9 @@
     ],
     "https://arxiv.org/abs/2605.11086": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c5"
+    ],
+    "https://arxiv.org/abs/2605.13171": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c15"
     ],
     "https://arxiv.org/abs/2605.16626": [
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c12"
@@ -9315,6 +9361,9 @@
     ],
     "https://blog.comfy.org/p/minimax-h3-day-0-support-in-comfyui": [
       "2026-08-04T171206--comfyui-company#c22"
+    ],
+    "https://blog.computationalcomplexity.org/2026/11/vp-vnp.html": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c16"
     ],
     "https://blog.ethereum.org/2026/04/10/checkpoint-9": [
       "2026-07-15T223140--expand-research-from-twitter-link-https-x-com-kubimensah-sta#c23"
@@ -10336,8 +10385,14 @@
     "https://dronelife.com/2025/12/22/fcc-adds-foreign-made-drones-and-components-to-covered-list-citing-national-security-risks": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c16"
     ],
+    "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.CCC.2024.31": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c20"
+    ],
     "https://dspace.mit.edu/handle/1721.1/148869": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c5"
+    ],
+    "https://eccc.weizmann.ac.il/report/2021/081": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c20"
     ],
     "https://eco.com/support/en/articles/14798653-susde-explained-ethena-s-yield-bearing-stablecoin": [
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c8"
@@ -11106,6 +11161,12 @@
     "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md": [
       "2026-09-23T054549--anthropic-s-opus-5-5-cost-claim-cursor-measured-40-less-per#c31"
     ],
+    "https://github.com/anthropics/formal-math/commits/main": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c1"
+    ],
+    "https://github.com/anthropics/formal-math/tree/main/vp-vnp": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c4"
+    ],
     "https://github.com/banodoco": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c38"
     ],
@@ -11222,7 +11283,11 @@
     "https://github.com/openai/math": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c1",
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c12",
-      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c2"
+      "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c2",
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c18"
+    ],
+    "https://github.com/openai/math/commit/e07100d": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c2"
     ],
     "https://github.com/openai/mle-bench": [
       "2026-08-05T235642--google-s-one-hour-ai-reorg-hassabis-to-chair-kavukcuoglu-to#c40",
@@ -11895,6 +11960,9 @@
     "https://lean-lang.org/doc/reference/latest/ValidatingProofs": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c11"
     ],
+    "https://lean-lang.org/doc/reference/latest/releases/v4.32.2": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c13"
+    ],
     "https://leanprover-community.github.io/mathlib_stats.html": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c35"
     ],
@@ -11918,6 +11986,9 @@
     ],
     "https://libertystreeteconomics.newyorkfed.org": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c31"
+    ],
+    "https://lilting.ch/en/articles/vp-vnp-valiant-conjecture-claude-lean": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c19"
     ],
     "https://link.com/terms": [
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c3"
@@ -12996,6 +13067,12 @@
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c16",
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c2"
     ],
+    "https://raw.githubusercontent.com/anthropics/formal-math/main/vp-vnp/Statement.lean": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c5"
+    ],
+    "https://raw.githubusercontent.com/anthropics/formal-math/main/vp-vnp/comparator.json": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c6"
+    ],
     "https://raw.githubusercontent.com/black-forest-labs/flux/main/model_licenses/LICENSE-FLUX1-dev": [
       "2026-08-04T171206--comfyui-company#c41"
     ],
@@ -13025,11 +13102,26 @@
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c24",
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c25"
     ],
+    "https://raw.githubusercontent.com/openai/math/main/history.md": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c3"
+    ],
+    "https://raw.githubusercontent.com/openai/math/main/lean/ComparatorChallenges/VPVNP.json": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c7"
+    ],
+    "https://raw.githubusercontent.com/openai/math/main/lean/ComparatorChallenges/VPVNP.lean": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c8"
+    ],
+    "https://raw.githubusercontent.com/openai/math/main/lean/OAI/Computability/VPVNP/Separation.lean": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c9"
+    ],
     "https://raw.githubusercontent.com/openai/math/main/lean/docs/003.md": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c12"
     ],
     "https://raw.githubusercontent.com/openai/math/main/lean/docs/107.md": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c13"
+    ],
+    "https://raw.githubusercontent.com/openai/math/main/lean/docs/379.md": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c10"
     ],
     "https://raw.githubusercontent.com/openai/math/main/lean/formalization.yaml": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c10",
@@ -13043,6 +13135,9 @@
     ],
     "https://raw.githubusercontent.com/openai/math/main/preprints/Integer-multiplication-below-n-log-n-September-23-2026/build/sections/00-introduction.tex": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c3"
+    ],
+    "https://raw.githubusercontent.com/openai/math/main/preprints/VP-and-VNP-are-different-November-23-2026/build/Paper.tex": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c9"
     ],
     "https://raw.githubusercontent.com/openai/mle-bench/main/environment/instructions.txt": [
       "2026-09-06T093522--repo-to-skill-s-31-11-to-72-89-mle-bench-jump-does-a-5-353-s#c12"
@@ -13286,6 +13381,9 @@
     ],
     "https://scholar.google.com/citations?user=lkA9f4gAAAAJ&hl=en": [
       "2026-07-14T063134--expand-research-from-twitter-link-https-x-com-lukas-m-ziegle#c21"
+    ],
+    "https://scottaaronson.blog/?p=10362": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c17"
     ],
     "https://sd11.senate.ca.gov/node/1387": [
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c13"
@@ -18674,6 +18772,9 @@
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c38",
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c39"
     ],
+    "https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean": [
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c14"
+    ],
     "https://xlab.tencent.com/en/2026/01/06/xlab-26-001": [
       "2026-08-04T171206--comfyui-company#c30"
     ],
@@ -18697,7 +18798,7 @@
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c16"
     ]
   },
-  "claim_count": 3389,
+  "claim_count": 3409,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -99046,9 +99147,474 @@
       "source_tiers": [],
       "source_urls": [],
       "type": "derived"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-23",
+      "claim": "Anthropic committed the vp-vnp folder (paper plus Lean 4 formalization) to anthropics/formal-math at 2026-11-23T20:04:44Z and merged PR #51 at 21:43:48Z.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c1",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/anthropics/formal-math/commits/main"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-25",
+      "claim": "OpenAI's family-379 Lean scope document lists seven items that remain unformalized, including the explicit grid bound n^Omega((log n)^(1/12)).",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c10",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/math/main/lean/docs/379.md"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2024-06-10",
+      "claim": "Before November 2026 the best lower bound for general arithmetic circuits computing an explicit polynomial was Omega(n log n) (Baur-Strassen).",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c11",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c11",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2406.06217"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "",
+      "claim": "The permanent is VNP-complete over fields of characteristic other than two; in characteristic two it coincides with the determinant; the Hamiltonian cycle polynomial is VNP-complete over every field.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c12",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c12",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2406.06217"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-07-28",
+      "claim": "Lean 4.32.2 (2026-07-28) fixed a kernel bug that could be exploited even when using comparator.",
+      "confidence": "high",
+      "hosts": [
+        "lean-lang.org"
+      ],
+      "id": "c13",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://lean-lang.org/doc/reference/latest/releases/v4.32.2"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-12",
+      "claim": "Kevin Buzzard found about 38 of roughly 290 OpenAI papers with Lean code do not state the paper's main theorem in Lean.",
+      "confidence": "medium",
+      "hosts": [
+        "xenaproject.wordpress.com"
+      ],
+      "id": "c14",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c14",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-05-13",
+      "claim": "The Formal Conjectures project has fixed 291 misformalizations across 7,559 Lean statements.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c15",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c15",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2605.13171"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-24",
+      "claim": "Lance Fortnow called the result 'for now, the most important computational complexity result of the year' and said it does not imply the Boolean separation.",
+      "confidence": "high",
+      "hosts": [
+        "blog.computationalcomplexity.org"
+      ],
+      "id": "c16",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c16",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://blog.computationalcomplexity.org/2026/11/vp-vnp.html"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-24",
+      "claim": "Scott Aaronson wrote Anthropic's bound is exp(Omega(log^(4/3) n)) and OpenAI's exp(Omega(log^(5/4) n)), both using compression followed by diagonalization.",
+      "confidence": "high",
+      "hosts": [
+        "scottaaronson.blog"
+      ],
+      "id": "c17",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c17",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://scottaaronson.blog/?p=10362"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-25",
+      "claim": "OpenAI's math repository README describes 730 manuscripts in 375 families as raw research data with about 42% of top-line results formalized.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c18",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c18",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/openai/math"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-24",
+      "claim": "Anthropic's Lean development is reported at 324 files and 72,932 lines.",
+      "confidence": "medium",
+      "hosts": [
+        "lilting.ch"
+      ],
+      "id": "c19",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c19",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://lilting.ch/en/articles/vp-vnp-valiant-conjecture-claude-lean"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-24",
+      "claim": "OpenAI's commit 'Add VP != VNP manuscript and Lean.' has author time 2026-11-24T01:14:20Z and changed 3,163 files with 442,736 added lines.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c2",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/openai/math/commit/e07100d"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "",
+      "claim": "Limaye-Srinivasan-Tavenas (2021) proved superpolynomial lower bounds for constant-depth arithmetic circuits, extended to all fields by Forbes (CCC 2024).",
+      "confidence": "high",
+      "hosts": [
+        "drops.dagstuhl.de",
+        "eccc.weizmann.ac.il"
+      ],
+      "id": "c20",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c20",
+      "reusable": false,
+      "reuse_block": "no-as-of",
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "academic"
+      ],
+      "source_urls": [
+        "https://eccc.weizmann.ac.il/report/2021/081",
+        "https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.CCC.2024.31"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-25",
+      "claim": "OpenAI's history.md states the VP/VNP result 'was obtained on November 6, 2026'; no artifact-level evidence supports the date.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c3",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c3",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/math/main/history.md"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-23",
+      "claim": "Anthropic's README says the paper and Lean were written by AI models and no human mathematician has checked the proof, and that no machine checks that Statement.lean says what is claimed.",
+      "confidence": "high",
+      "hosts": [
+        "github.com"
+      ],
+      "id": "c4",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c4",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://github.com/anthropics/formal-math/tree/main/vp-vnp"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-23",
+      "claim": "Anthropic's Statement.lean defines MainTheorem: an absolute c>0 and per-characteristic m0 such that circuits for the Hamiltonian cycle polynomial (every field) and the permanent (char != 2) need more than m^(c (log2 m)^(1/3)) gates.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c5",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/anthropics/formal-math/main/vp-vnp/Statement.lean"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-23",
+      "claim": "Anthropic's comparator.json lists five theorems with nanoda enabled and only propext, Quot.sound and Classical.choice permitted.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c6",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/anthropics/formal-math/main/vp-vnp/comparator.json"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-24",
+      "claim": "OpenAI's Comparator challenge VPVNP.json targets a single theorem vp_ne_vnp, with nanoda disabled and the three standard axioms permitted.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c7",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/math/main/lean/ComparatorChallenges/VPVNP.json"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-24",
+      "claim": "OpenAI's challenge states vp_ne_vnp as an inequality of the predicates IsVP and IsVNP on families over Fin n x Bool, for any field, with circuits whose binary gates are +, - and *.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c8",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c8",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/math/main/lean/ComparatorChallenges/VPVNP.lean"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
+      "article_created_at": "2026-11-25T19:38:20Z",
+      "article_title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked",
+      "as_of": "2026-11-24",
+      "claim": "OpenAI's paper Theorem 1.1 claims border circuits need exp(Omega((log n)^(5/4))) gates over every field; the Lean formalizes only an exact, qualitative superpolynomial bound.",
+      "confidence": "high",
+      "hosts": [
+        "raw.githubusercontent.com"
+      ],
+      "id": "c9",
+      "key": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://raw.githubusercontent.com/openai/math/main/preprints/VP-and-VNP-are-different-November-23-2026/build/Paper.tex",
+        "https://raw.githubusercontent.com/openai/math/main/lean/OAI/Computability/VPVNP/Separation.lean"
+      ],
+      "type": "comparison"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1600,
+  "reusable_count": 1614,
   "schema_version": 1
 }

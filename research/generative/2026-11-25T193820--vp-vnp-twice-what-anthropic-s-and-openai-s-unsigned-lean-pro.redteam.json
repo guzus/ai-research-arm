@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "`comparator.json` lists five targets: `mainTheorem`, `mainTheoremApprox`, `separation`, `separationClosure` and a fifth, `permanent_over_real`, which the README does not mention [^3].", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c2", "claim_text": "Its paper's headline result, an exp(Ω((log n)^(5/4))) lower bound for *border* circuits, is not formalized. The Lean proves only an exact, qualitative superpolynomial bound [^13,16].", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c3", "claim_text": "ARA found no such audit published by Saraf, Srinivasan, Limaye, Tavenas, Bürgisser, Grochow or any other specialist as of 26 November.", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true}
+  ]
+}
