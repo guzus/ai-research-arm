@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-11-25
+
+TOP STORIES:
+• OpenAI says GPT-6 models design working protein binders (lab-validated, proof of concept)
+• OpenAI preprint claims matrix multiplication exponent is 9/4 (model-written, unrefereed)
+• Dell posts record $54.9B quarter on AI servers; $132.3B AI backlog
+
+KEY NUMBERS:
+• Dell: revenue +103% YoY, FY27 guide $202B, $60.2B new AI orders
+• GPT-6 proteins: 35/322 minibinders bound across 5 targets
+• Google Workspace MCP GA; agents MCP-only from Feb 1, 2027
+
+TRENDING: HN debates "LLM agents work for their parent companies, not for you" (936 pts)
+
+Full digest on GitHub.
