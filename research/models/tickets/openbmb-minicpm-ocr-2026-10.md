@@ -3,7 +3,7 @@ slug: openbmb-minicpm-ocr-2026-10
 title: "OpenBMB open-sources MiniCPM-OCR 1.0 and the MiniCPM-OCR Jev verifier"
 company: "OpenBMB"
 model: "MiniCPM-OCR 1.0 / MiniCPM-OCR Jev"
-status: released
+status: closed
 status_note: |
   **Open-source release, reported 2026-10-28.** Per @AINativeF (13:16 UTC): the MiniCPM-OCR suite has
   two models. MiniCPM-OCR 1.0 is a ~1B model with claimed SOTA OCR speed and accuracy (93.68 on
@@ -26,12 +26,14 @@ sources:
   - "https://x.com/AINativeF/status/2115432525992779910"
   - "https://x.com/xiaoanlab/status/2115432164829671614"
 created_at: 2026-10-28
-updated_at: 2026-10-28
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-25
+closed_at: 2026-11-25
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-28
     change: "Created — RELEASED / partial. Two relays report OpenBMB open-sourced MiniCPM-OCR 1.0 (~1B; one relay says 1.3B) and a 2B MiniCPM-OCR Jev verifier for OCR output, with self-reported SOTA on Real5-OmniDocBench and OCRBench v2, plus a DSpark SDK at up to 128 pages/min."
+  - ts: 2026-11-25
+    change: "Closed — released-and-aged. Open-sourced 2026-10-28 per relays; 4+ weeks old, rolled into normal coverage. The 1B vs 1.3B size question remains unresolved."
 ---
 Separate artifact from [[openbmb-minicpm-v-4-7-2026-10]], the general vision-language model.
 
