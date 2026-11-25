@@ -1,0 +1,13 @@
+Speaker 1: Wednesday, November twenty-fifth, twenty twenty-six.
+Speaker 2: [high_energy] OpenAI says its GPT six models designed protein binders that actually worked in the lab, a proof of concept, but a real one.
+Speaker 1: How real are we talking?
+Speaker 2: Thirty-five out of three hundred twenty-two minibinders bound across five targets, so most missed, but the hits were lab-validated.
+Speaker 1: OpenAI also put out a preprint claiming the matrix multiplication exponent is nine over four.
+Speaker 2: Worth noting that one is model-written and unrefereed, so treat it as a claim, not a result, until mathematicians check it.
+Speaker 1: Over to hardware, where Dell just posted a record quarter on AI servers.
+Speaker 2: [emphasis] Fifty-four point nine billion dollars [/emphasis] in revenue, up one hundred three percent year over year, with a [emphasis] one hundred thirty-two point three billion dollar [/emphasis] AI backlog.
+Speaker 1: Plus sixty point two billion dollars in new AI orders, and a fiscal twenty twenty-seven guide of [emphasis] two hundred two billion dollars [/emphasis].
+Speaker 2: In agent plumbing, Google Workspace MCP is now generally available, and agents go MCP-only starting February first, twenty twenty-seven.
+Speaker 1: And trending on Hacker News, a heated debate over the idea that LLM agents work for their parent companies, not for you.
+Speaker 2: [dramatic_pause] Nine hundred thirty-six points says a lot of people have opinions on that.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
