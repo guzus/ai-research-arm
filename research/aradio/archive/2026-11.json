@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "month": "2026-11",
-  "updated_at": "2026-11-22T07:29:00Z",
+  "updated_at": "2026-11-25T03:10:00Z",
   "threads": [
     {
       "slug": "flat-rate-ai-agent-usage-limits",
@@ -577,6 +577,143 @@
         }
       ],
       "archived_at": "2026-11-21T19:13:00Z"
+    },
+    {
+      "slug": "us-data-center-politics",
+      "title": "US data-center siting backlash after the midterms",
+      "status": "resolved",
+      "importance": 5,
+      "first_seen": "2026-11-05T06:41:00Z",
+      "updated_at": "2026-11-17T13:51:00Z",
+      "now": "Big Technology hosts said 38 or more jurisdictions voted to restrict or ban data centers, and that 23 to over 60 percent of voters, depending on the poll, called AI crucial. They said Texas's pro-data-center governor lost to a Democrat they called very anti-data-center, and that New Mexico apparently sued Meta for $25 billion. Hinojosa's Texas permit pause still stands.",
+      "changed": "No new siting or midterm facts since November tenth; the 38-jurisdiction votes, the Texas permit pause, and the reported New Mexico-Meta suit are absorbed.",
+      "watch": "What those 38 jurisdictions enact; whether Hinojosa extends the Texas freeze past the December grid audit; a filing we can read in the New Mexico-Meta suit.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-10T17:30:00Z",
+          "quote": "There were many—38 jurisdictions or more— that voted to restrict or ban data centers, right?"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=215s",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (Texas vote, AI polls)",
+          "at": "2026-11-10T17:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=223s",
+          "kind": "podcast",
+          "label": "All-In Podcast (midterm sweep)",
+          "at": "2026-11-07T18:24:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-07T18:24:00Z",
+          "quote": "Okay, so it's 100% that Democrats are going to make a major push for AI legislation in the next Congress."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=950s",
+          "kind": "podcast",
+          "label": "All-In Podcast (China vs US AI sentiment)",
+          "at": "2026-11-07T18:24:00Z"
+        },
+        {
+          "url": "https://www.cnbc.com/2026/11/04/ai-stocks-texas-governor-data-centers.html",
+          "kind": "twitter",
+          "label": "CNBC (Texas governor, data centers)",
+          "at": "2026-11-04T14:00:00Z"
+        },
+        {
+          "url": "https://x.com/rohanpaul_ai/status/2117978113686773775",
+          "kind": "twitter",
+          "label": "@rohanpaul_ai on X (Texas, neoclouds)",
+          "at": "2026-11-04T14:00:00Z"
+        },
+        {
+          "url": "https://www.nbcnews.com/politics/2026-election/exit-poll-trump-midterms-voters-economy-disapproval-rcna607045",
+          "kind": "twitter",
+          "label": "NBC News (national exit poll)",
+          "at": "2026-11-04T06:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Created: Hinojosa wins Texas on a data-center pause; exit poll 57% AI-hurt / 76% local NIMBY."
+        },
+        {
+          "at": "2026-11-09T19:08:00Z",
+          "change": "All-In: Dem sweep and 100% odds of major AI legislation next Congress; China 93% AI-optimism vs US near the bottom of that survey."
+        },
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: 38+ jurisdictions voted to restrict or ban data centers; 23-60% called AI crucial; hosts say New Mexico sued Meta for $25B."
+        },
+        {
+          "at": "2026-11-17T13:51:00Z",
+          "change": "Resolved after seven quiet days; 38+ jurisdiction votes and the Texas freeze remain the last facts; December grid-audit watch unmet."
+        }
+      ],
+      "archived_at": "2026-11-25T03:10:00Z"
+    },
+    {
+      "slug": "deepmind-alphagenome",
+      "title": "DeepMind's AlphaGenome and reading the human genome",
+      "status": "resolved",
+      "importance": 4,
+      "first_seen": "2026-11-12T01:04:00Z",
+      "updated_at": "2026-11-16T07:18:00Z",
+      "now": "On Google DeepMind's podcast, the show said AlphaGenome 2 predicts variant effects at cell-type resolution, not bulk tissue, and retrospectively matched a Crick Institute finding that a variant regulates a gene 290,000 bases away. A public Python API offers free predictions; Atlas is a no-code site. The show said only 10% of drugs make trials.",
+      "changed": "The AlphaGenome 2 launch is absorbed: public API and Atlas are out, and it is no longer a live storyline while the paper is pending.",
+      "watch": "The AlphaGenome 2 paper; whether the public API stays free; independent checks of the 290,000-base Crick prediction.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=2103s",
+          "kind": "video",
+          "label": "Google DeepMind",
+          "at": "2026-11-11T18:00:00Z",
+          "quote": "Yeah, so for the alpha genome family of models um we have a public API and basically you can install a Python package."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1508s",
+          "kind": "video",
+          "label": "Google DeepMind (cell-type resolution)",
+          "at": "2026-11-11T18:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1671s",
+          "kind": "video",
+          "label": "Google DeepMind (Crick Institute check)",
+          "at": "2026-11-11T18:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=646s",
+          "kind": "video",
+          "label": "Google DeepMind (non-coding genome)",
+          "at": "2026-11-11T18:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c",
+          "kind": "video",
+          "label": "Google DeepMind",
+          "at": "2026-11-11T18:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-12T01:04:00Z",
+          "change": "Created from DeepMind podcast: AlphaGenome 2 does cell-type predictions, matches a 290k-base Crick finding, and ships a free public API plus a no-code Atlas."
+        },
+        {
+          "at": "2026-11-16T07:18:00Z",
+          "change": "Resolved: launch absorbed after four quiet days; cell-type API and Atlas remain the facts; paper watch unmet."
+        }
+      ],
+      "archived_at": "2026-11-25T03:10:00Z"
     }
   ],
   "history": [
@@ -712,6 +849,27 @@
       "at": "2026-11-09T19:08:00Z",
       "change": "All-In relays a WSJ capex haircut to about $1T-$1.6T after the AI selloff; S-1 guest says GPU-backed debt markets are closed.",
       "archived_at": "2026-11-22T07:29:00Z"
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-11-10T03:00:00Z",
+      "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack.",
+      "archived_at": "2026-11-25T03:10:00Z"
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "first_seen": "2026-11-11T06:00:00Z",
+      "at": "2026-11-11T06:00:00Z",
+      "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy.",
+      "archived_at": "2026-11-25T03:10:00Z"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "first_seen": "2026-10-31T08:53:00Z",
+      "at": "2026-11-02T08:14:00Z",
+      "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only.",
+      "archived_at": "2026-11-25T03:10:00Z"
     }
   ]
 }

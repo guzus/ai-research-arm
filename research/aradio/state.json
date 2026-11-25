@@ -1,8 +1,450 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-22T07:29:00Z",
-  "headline": "GPT-6 Astra writes an unchecked Deligne bound from Alpöge's RH footnote; Tesla starts FSD v15",
+  "updated_at": "2026-11-25T03:10:00Z",
+  "headline": "Dell's record $54.9B quarter and $132B AI backlog; an unchecked Claude paper claims VP ≠ VNP",
   "threads": [
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-25T03:10:00Z",
+      "now": "OpenAI and Cisco open-sourced Shirudo, an agent-written eBPF exploit shield. OpenAI says GPT-6 Cyber helped validate 948 local-root kernel bugs in one run; that count is OpenAI's, not maintainers'. Anthropic's Siren: Claude looked outside a weakened sandbox in 21-32% of 1,700-plus tests, about 2% with a sandbox prompt. All-In titled a CrowdStrike AI-attack show; transcript pending.",
+      "changed": "OpenAI and Cisco shipped Shirudo; OpenAI claims GPT-6 Cyber validated 948 local-root kernel bugs. Anthropic's Siren puts sandbox look-outs at 21-32%, or about 2% with a prompt.",
+      "watch": "Kernel maintainers on how many of the 948 bugs are distinct and fixed; independent Siren replication; the All-In CrowdStrike transcript.",
+      "evidence": [
+        {
+          "url": "https://x.com/OpenAI/status/2124980590717911527",
+          "kind": "twitter",
+          "label": "@OpenAI on X (Shirudo)",
+          "at": "2026-11-24T02:00:00Z"
+        },
+        {
+          "url": "https://x.com/OpenAI/status/2125007927098699827",
+          "kind": "twitter",
+          "label": "@OpenAI on X (GPT-6 Cyber)",
+          "at": "2026-11-24T02:00:00Z"
+        },
+        {
+          "url": "https://x.com/jpsharada/status/2125048224054685994",
+          "kind": "twitter",
+          "label": "@jpsharada on X",
+          "at": "2026-11-24T02:00:00Z"
+        },
+        {
+          "url": "https://x.com/AnthropicAI/status/2125341904644763678",
+          "kind": "twitter",
+          "label": "@AnthropicAI on X",
+          "at": "2026-11-24T23:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=o6KIjtkRdOI",
+          "kind": "podcast",
+          "label": "All-In Podcast",
+          "at": "2026-11-24T12:42:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=aAbtjH0-oQQ",
+          "kind": "video",
+          "label": "NVIDIA (AI security transparency)",
+          "at": "2026-11-24T10:42:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=MpsO8Ds8uyo",
+          "kind": "video",
+          "label": "OpenAI (GPT-6 Cyber Linux)",
+          "at": "2026-11-23T20:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=y9AALMeAeGI",
+          "kind": "video",
+          "label": "NVIDIA (Making AI Agents Safer With Open Source)",
+          "at": "2026-11-18T10:53:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-03T06:41:00Z",
+          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
+        },
+        {
+          "at": "2026-11-03T14:35:00Z",
+          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "DevDay Codex Security: hacking cost going to zero; 0.81% false positives, <1% rollbacks; Daybreak-class models on Security Cloud; Astra ahead on PatchBench."
+        },
+        {
+          "at": "2026-11-12T18:39:00Z",
+          "change": "OpenAI how-tos enable Daybreak Blue for a whole workspace, Codex Security CLI via npm, and GitHub PR security reviews."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: nine labs disclosed an October API-key swarming; Unit 42 cites $1M bills before detection; $100k default Claude Ultra cap; syndicates steal Anthropic/OpenAI tokens."
+        },
+        {
+          "at": "2026-11-13T07:16:00Z",
+          "change": "OpenAI Cyber at the Frontier: Daybreak Red Team and Defense Factory; GPT-6 Cyber ~1,000 Linux LPE patches, 5x 5.6 Cyber; 52% exploit gym vs Mythos ~38%; Sofos 52% MDR, 38 min to 89 sec."
+        },
+        {
+          "at": "2026-11-14T13:42:00Z",
+          "change": "OpenAI how-to titles Mozilla as a GPT-6 Cyber user on Firefox; transcript not yet available."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Mozilla transcript: Firefox unbeaten at Pwn2Own, ~8x detect-and-fix 2025-2026. Wiz on a16z: AI attacks in ~20 minutes vs weeks for distro patches."
+        },
+        {
+          "at": "2026-11-18T20:25:00Z",
+          "change": "NVIDIA titles a 17-min video Making AI Agents Safer With Open Source; transcript pending."
+        },
+        {
+          "at": "2026-11-22T01:16:00Z",
+          "change": "Resolved as quiet: NVIDIA agent-safety transcript never arrived; Pwn2Own and GPT-6 Cyber numbers unchanged since mid-November."
+        },
+        {
+          "at": "2026-11-25T03:10:00Z",
+          "change": "Reopened: OpenAI+Cisco Shirudo; OpenAI claims 948 GPT-6 Cyber local-root bugs; Anthropic Siren sandbox look-outs 21-32%."
+        }
+      ]
+    },
+    {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T14:48:00Z",
+      "updated_at": "2026-11-25T03:10:00Z",
+      "now": "Lean FRO and Mathlib still certify Alpöge's 17-million-line RH library; the Hexagon GPT-6 Astra Deligne bound remains unchecked by a human. Readers say Anthropic added a vp-vnp folder: a 70-page paper with Claude as sole author and a Lean 4 formalization claiming VP ≠ VNP. The README says no human mathematician has checked it; Anthropic posted no announcement. Clay has not awarded.",
+      "changed": "An internal Claude model is said to have written a 70-page Lean-checked claim of VP ≠ VNP, uploaded without announcement; no human mathematician has checked it.",
+      "watch": "A complexity theorist auditing whether the Lean statement encodes VP ≠ VNP; any Anthropic announcement; a named algebraic geometer on the Hexagon Deligne note.",
+      "evidence": [
+        {
+          "url": "https://x.com/AndrewCurran_/status/2125001971690315858",
+          "kind": "twitter",
+          "label": "@AndrewCurran_ on X",
+          "at": "2026-11-24T02:00:00Z"
+        },
+        {
+          "url": "https://x.com/AndrewCurran_/status/2125022397820735489",
+          "kind": "twitter",
+          "label": "@AndrewCurran_ on X (no announcement)",
+          "at": "2026-11-24T02:00:00Z"
+        },
+        {
+          "url": "https://x.com/RyanYanBuilds/status/2125048248989794382",
+          "kind": "twitter",
+          "label": "@RyanYanBuilds on X",
+          "at": "2026-11-24T02:00:00Z"
+        },
+        {
+          "url": "https://x.com/MTSlive/status/2125046834628571250",
+          "kind": "twitter",
+          "label": "@MTSlive on X",
+          "at": "2026-11-24T02:00:00Z"
+        },
+        {
+          "url": "https://x.com/AndrewCurran_/status/2124288484563440073",
+          "kind": "twitter",
+          "label": "@AndrewCurran_ on X",
+          "at": "2026-11-22T01:00:00Z"
+        },
+        {
+          "url": "https://x.com/jdlichtman/status/2124244181417906543",
+          "kind": "twitter",
+          "label": "@jdlichtman on X",
+          "at": "2026-11-22T01:00:00Z"
+        },
+        {
+          "url": "https://hexagonmath.org/2611.00789v1",
+          "kind": "twitter",
+          "label": "Hexagon 2611.00789v1",
+          "at": "2026-11-22T01:00:00Z"
+        },
+        {
+          "url": "https://github.com/KokunoYumeto/grothendieck-montpellier-archive/tree/main/research/grh_20261120/deligne_sign_only",
+          "kind": "twitter",
+          "label": "deligne_sign_only GitHub archive",
+          "at": "2026-11-22T01:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-10-31T14:48:00Z",
+          "change": "ETH disproof reviewers disclaim certification; verdict still pending."
+        },
+        {
+          "at": "2026-11-01T23:55:00Z",
+          "change": "Lex Fridman and MLST transcripts add context: Lean-checked Erdos results, guests favouring human-AI collaboration over AI-only maths."
+        },
+        {
+          "at": "2026-11-05T06:41:00Z",
+          "change": "Anthropic: Claude-assisted 3D map of a bacterial vault particle; preprint submitted, function unknown, unaudited."
+        },
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "Went quiet: no new math or physics discovery claims since November fifth; ETH and bioRxiv watches unmet."
+        },
+        {
+          "at": "2026-11-11T09:54:00Z",
+          "change": "Reopened: DevDay architecture talk claims a Navier-Stokes/unforced-Euler result from 10,000 agents, 2.7M messages, ~130B output tokens."
+        },
+        {
+          "at": "2026-11-17T03:11:00Z",
+          "change": "Resolved after six quiet days; DevDay Euler claim and vault-particle preprint watches unmet."
+        },
+        {
+          "at": "2026-11-21T11:00:00Z",
+          "change": "Reopened: Alpöge Lean archive of a Claude-assisted RH proof; Arledge reports Lean 4.33.1 plus Rust-kernel check with 0 errors. Musk hedges; Anthropic silent."
+        },
+        {
+          "at": "2026-11-21T19:13:00Z",
+          "change": "Lean FRO and Mathlib certify Alpöge's 17-million-line RH proof as correct; MIT checker live. Clay has not awarded; no readable paper."
+        },
+        {
+          "at": "2026-11-22T01:16:00Z",
+          "change": "Hexagon posts an AI-generated six-page Deligne bound from Alpöge's footnote; GPT-6 Astra wrote it, no human has checked it."
+        },
+        {
+          "at": "2026-11-25T03:10:00Z",
+          "change": "Anthropic GitHub: Claude-authored VP ≠ VNP paper plus Lean 4; README says unchecked; no company post."
+        }
+      ]
+    },
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-10-31T08:53:00Z",
+      "updated_at": "2026-11-25T03:10:00Z",
+      "now": "Dell's FY27 Q3 8-K: record revenue $54.9B, up 103% year over year; record diluted EPS $8.82, up 287%. AI-optimized servers $22.0B, up 291%. Full-year FY27 revenue guided to $202.0B, up 78%. COO Jeff Clarke said a record $132.3B AI backlog after $60.2B of orders, vetted for capital, land and power, and that ISG now drives most profit and growth.",
+      "changed": "Dell's FY27 Q3 8-K: record $54.9B revenue, up 103%; $22.0B AI-optimized servers, up 291%; $132.3B AI backlog; FY27 revenue guided to $202.0B, up 78%.",
+      "watch": "Whether the $132.3B AI backlog converts on the $202B FY27 guide; a first-party earnings-call transcript.",
+      "evidence": [
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000050/",
+          "kind": "earnings",
+          "label": "Dell FY27 Q3 8-K",
+          "at": "2026-11-24T21:09:13Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000050/exhibit991earnings8kq3fy27.htm",
+          "kind": "earnings",
+          "label": "Dell Technologies Inc. (DELL)",
+          "at": "2026-11-24T21:09:13Z",
+          "speaker": "Jeff Clarke, vice chairman and chief operating officer, Dell Technologies",
+          "quote": "We expect record full-year revenue of $202 billion , up 78%."
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000050/dell-20261124.htm",
+          "kind": "earnings",
+          "label": "Dell Technologies Inc. (DELL)",
+          "at": "2026-11-24T21:09:13Z",
+          "speaker": "Jeff Clarke, vice chairman and chief operating officer, Dell Technologies",
+          "quote": "We ended the quarter with a record $132.3 billion AI backlog after booking $60.2 billion of orders, each rigorously vetted for customer quality and access to capital , land and power."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=3ZkDiDrxDeY",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-21T15:09:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uJG53ligJt4",
+          "kind": "video",
+          "label": "NVIDIA (SC26 Special Address)",
+          "at": "2026-11-18T18:47:00Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27pr.htm",
+          "kind": "earnings",
+          "label": "NVIDIA Corporation (NVDA)",
+          "at": "2026-11-17T21:20:51Z",
+          "speaker": "Colette Kress, interim CEO and executive vice president and chief financial…",
+          "quote": "Vera Rubin is off to an explosive start, our roadmap is on track and our ambition has never been greater."
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
+          "kind": "earnings",
+          "label": "NVIDIA FY27 Q3 8-K",
+          "at": "2026-11-17T21:20:51Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/supplementalfinancialinfor.htm",
+          "kind": "earnings",
+          "label": "NVIDIA Q3 supplemental financials",
+          "at": "2026-11-17T21:20:51Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-10T21:05:00Z",
+          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
+        },
+        {
+          "at": "2026-11-10T21:25:00Z",
+          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
+        },
+        {
+          "at": "2026-11-11T06:00:00Z",
+          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
+        },
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
+        },
+        {
+          "at": "2026-11-14T22:17:00Z",
+          "change": "20VC: Fractile founder Walter Goodwin on a $7B AI-chip Nvidia challenger; titles only, no transcript yet."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "20VC transcript: Fractile $720M Series C at $7B; no model sales; memory-bandwidth bottleneck; Nvidia-Groq pairing claimed."
+        },
+        {
+          "at": "2026-11-16T18:55:00Z",
+          "change": "a16z: Ramp data cited for exponential token usage and flat revenue from frontier price competition."
+        },
+        {
+          "at": "2026-11-18T03:54:00Z",
+          "change": "NVIDIA Q3 FY27 8-K: $115.8B revenue, Data Center $107.6B; Q4 guide $130B with no China DC compute; Kress says Vera Rubin off to an explosive start."
+        },
+        {
+          "at": "2026-11-19T04:42:00Z",
+          "change": "NVIDIA titles a 48-min SC26 Special Address; transcript pending."
+        },
+        {
+          "at": "2026-11-22T07:29:00Z",
+          "change": "20VC titles a 73-min state-of-compute episode on neo-clouds as businesses. Transcript pending."
+        },
+        {
+          "at": "2026-11-25T03:10:00Z",
+          "change": "Dell FY27 Q3 8-K: $54.9B revenue (+103%), $22.0B AI servers (+291%), $132.3B AI backlog, $202B FY27 guide."
+        }
+      ]
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating",
+      "importance": 5,
+      "first_seen": "2026-11-11T06:00:00Z",
+      "updated_at": "2026-11-25T03:10:00Z",
+      "now": "Hard Fork, the AI Daily Brief, and Big Technology titled Huang as back, naming Trump or the White House; a later Big Technology episode still titles his limbo. No transcripts yet, and no 8-K names a permanent CEO. Colette Kress remains interim CEO on the FY27 Q3 8-K. Alice Wang's $7.5B banned-chip reports still lack a filing. Q4 still assumes no China Data Center compute.",
+      "changed": "Hard Fork, the AI Daily Brief, and Big Technology titled a Huang return involving Trump or the White House. Still no permanent-CEO 8-K; transcripts pending.",
+      "watch": "A permanent-CEO 8-K; the Hard Fork, Daily Brief, and Big Technology transcripts; any filing on the Megaspeed allegations.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=HyQrNGvW4G0",
+          "kind": "podcast",
+          "label": "Hard Fork",
+          "at": "2026-11-24T01:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=3m3nnfJfAxA",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-23T23:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=CXUGcp2PmnU",
+          "kind": "podcast",
+          "label": "Big Technology Podcast",
+          "at": "2026-11-23T18:30:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Fvqq3ar5Ric",
+          "kind": "podcast",
+          "label": "Big Technology Podcast (Jensen's Limbo)",
+          "at": "2026-11-24T13:42:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=yTR5sD5KwD4",
+          "kind": "podcast",
+          "label": "Decoder with Nilay Patel",
+          "at": "2026-11-21T14:09:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=uSzew8QPRX0",
+          "kind": "podcast",
+          "label": "The AI Daily Brief",
+          "at": "2026-11-19T13:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=RZ4BBkSZ3io",
+          "kind": "podcast",
+          "label": "20VC",
+          "at": "2026-11-19T14:54:00Z"
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
+          "kind": "earnings",
+          "label": "NVIDIA FY27 Q3 8-K",
+          "at": "2026-11-17T21:20:51Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-11T18:08:00Z",
+          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
+        },
+        {
+          "at": "2026-11-12T23:57:00Z",
+          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
+        },
+        {
+          "at": "2026-11-13T03:38:00Z",
+          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
+        },
+        {
+          "at": "2026-11-13T14:46:00Z",
+          "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
+        },
+        {
+          "at": "2026-11-14T07:03:00Z",
+          "change": "All-In treats Huang as out; 50-150 bps growth at risk; successor talk names Renee of Arm and Nikesh. Still no Nvidia filing."
+        },
+        {
+          "at": "2026-11-14T13:42:00Z",
+          "change": "Big Technology 61-min special treats Huang as out; titles only. Still no Nvidia filing or successor."
+        },
+        {
+          "at": "2026-11-14T22:17:00Z",
+          "change": "AI Daily Brief titles Washington Fired Jensen Huang; Interconnects notes call the resignation a US open-model setback. Still no filing."
+        },
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Big Technology transcript: 240k banned chips, $7.5B via Alice Wang, Singapore 22% vanished, Blackwell at DeepSeek/Moonshot/MiniMax/Ant. Still no filing."
+        },
+        {
+          "at": "2026-11-18T03:54:00Z",
+          "change": "NVIDIA 8-K names Colette Kress interim CEO, first-party confirmation Huang is out; Q4 outlook assumes no China DC compute."
+        },
+        {
+          "at": "2026-11-20T09:12:00Z",
+          "change": "AI Daily Brief headlines Nvidia board refusing to bring Jensen back; 20VC timestamps a reinstatement segment. Still no permanent-CEO 8-K."
+        },
+        {
+          "at": "2026-11-22T07:29:00Z",
+          "change": "Decoder titles Huang's fall making Anthropic's IPO look stranger. Transcript pending. Still no permanent-CEO 8-K."
+        },
+        {
+          "at": "2026-11-25T03:10:00Z",
+          "change": "Hard Fork, AI Daily Brief, and Big Technology title a Huang return with White House/Trump; still no permanent-CEO 8-K."
+        }
+      ]
+    },
     {
       "slug": "anthropic-ipo-and-ai-funding",
       "title": "Anthropic's IPO filing and the race to fund the frontier labs",
@@ -117,329 +559,159 @@
       ]
     },
     {
-      "slug": "hyperscaler-capex-and-chip-selloff",
-      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "slug": "ai-drug-discovery",
+      "title": "AI drug discovery: OpenAI proteins and Isomorphic wet labs",
       "status": "developing",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-22T07:29:00Z",
-      "now": "20VC titled a 73-minute state-of-compute episode on why neo-clouds are great businesses; transcript pending. NVIDIA FY27 Q3 8-K: $115.8B revenue, up 103% year-over-year; Data Center $107.6B, up 110%. Q4 guided to $130.0B plus or minus 3%, no China Data Center compute. Colette Kress said Vera Rubin is off to an explosive start. SC26 Special Address still untranscribed.",
-      "changed": "20VC titled a 73-minute episode on the state of compute and why neo-clouds are great businesses. Transcript not yet available.",
-      "watch": "The 20VC and SC26 transcripts; a Vera Rubin shipment figure; whether China Data Center compute stays at zero in the next outlook.",
+      "importance": 4,
+      "first_seen": "2026-11-12T18:39:00Z",
+      "updated_at": "2026-11-25T03:10:00Z",
+      "now": "OpenAI says GPT-6 models designed proteins using only reasoning and code, with wet-lab binding in 14 of 107 GPT-6.2 sequences and in 128 of 182 small antibodies and 179 of 272 fragments. Numbers are OpenAI's; no independent replication. a16z titled OpenAI reinventing drug discovery; transcript pending. Isomorphic still says it does not sell its design model.",
+      "changed": "OpenAI claims GPT-6.2 designed proteins and antibody parts with wet-lab binding; 14 of 107 proteins bound. No independent lab has reproduced it.",
+      "watch": "An independent structural-biology group reproducing any binder, or peer review of the preprint; the a16z transcript.",
       "evidence": [
         {
-          "url": "https://www.youtube.com/watch?v=3ZkDiDrxDeY",
-          "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-21T15:09:00Z"
+          "url": "https://x.com/OpenAI/status/2125334383490105601",
+          "kind": "twitter",
+          "label": "@OpenAI on X",
+          "at": "2026-11-24T23:00:00Z"
         },
         {
-          "url": "https://www.youtube.com/watch?v=uJG53ligJt4",
-          "kind": "video",
-          "label": "NVIDIA (SC26 Special Address)",
-          "at": "2026-11-18T18:47:00Z"
+          "url": "https://x.com/OpenAI/status/2125334392814051724",
+          "kind": "twitter",
+          "label": "@OpenAI on X (results)",
+          "at": "2026-11-24T23:00:00Z"
         },
         {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27pr.htm",
-          "kind": "earnings",
-          "label": "NVIDIA Corporation (NVDA)",
-          "at": "2026-11-17T21:20:51Z",
-          "speaker": "Colette Kress, interim CEO and executive vice president and chief financial…",
-          "quote": "Vera Rubin is off to an explosive start, our roadmap is on track and our ambition has never been greater."
+          "url": "https://x.com/AndrewCurran_/status/2125336072389570726",
+          "kind": "twitter",
+          "label": "@AndrewCurran_ on X",
+          "at": "2026-11-24T23:00:00Z"
         },
         {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
-          "kind": "earnings",
-          "label": "NVIDIA FY27 Q3 8-K",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/supplementalfinancialinfor.htm",
-          "kind": "earnings",
-          "label": "NVIDIA Q3 supplemental financials",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=g_67TmQ8lGY&t=570s",
+          "url": "https://www.youtube.com/watch?v=RwYz8XhZiu0",
           "kind": "podcast",
           "label": "a16z",
-          "at": "2026-11-16T15:21:00Z",
-          "quote": "And you saw exponential increases in token usage and flat revenue numbers, right?"
+          "at": "2026-11-23T15:30:00Z"
         },
         {
-          "url": "https://www.youtube.com/watch?v=UZ8eYaAf08M",
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE",
           "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-14T14:58:00Z",
-          "quote": "The company just raised $720 million in a Series C round from Thrive, Founders Fund , Lightspeed and Radpoint, valuing it at $7 billion."
+          "label": "No Priors",
+          "at": "2026-11-12T11:04:00Z",
+          "quote": "We are developing an AI-based drug design system ourselves and, in fact, we do not sell this model."
         },
         {
-          "url": "https://www.youtube.com/watch?v=txg_Bl6VR6A",
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1289s",
           "kind": "podcast",
-          "label": "The TWIML AI Podcast",
-          "at": "2026-11-13T16:37:00Z"
+          "label": "No Priors",
+          "at": "2026-11-12T11:04:00Z",
+          "quote": "I think it depends on the study, but for rats it's about 30% predictive of clinical toxicity in humans."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1040s",
+          "kind": "podcast",
+          "label": "No Priors (drug cost breakdown)",
+          "at": "2026-11-12T11:04:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=360s",
+          "kind": "podcast",
+          "label": "No Priors (industry cost and time)",
+          "at": "2026-11-12T11:04:00Z"
         }
       ],
       "history": [
         {
-          "at": "2026-11-10T03:00:00Z",
-          "change": "Cognitive Revolution: $550k-$650k per 8-GPU server on the secondary, mostly B300s; trades described at $50M; Vera Rubin ~230 kW/rack."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: hosts float Anthropic exiting ~$518B compute commitments if DCs cannot be built; trillions of cap vs two labs at ~$100B revenue."
-        },
-        {
-          "at": "2026-11-10T21:25:00Z",
-          "change": "CoreWeave Q3: Intrator cites >$1B sequential revenue, double-digit adj. operating margins a quarter early, ~$9B customer prepayments/deposits in next three months."
-        },
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "AI Daily Brief show notes: Microsoft ending an Oracle compute deal; Google taking over a stalled Crusoe data center."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "a16z guest: AI ramps beat the 90s; GPUs 80%+ of spend; H100s still run; only Nvidia and Google ship racks; TPU supply short."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC guest: OpenAI ARR is the demand test; 10-20% token price cuts vs 21% or 15% usage elasticity; competition is compute capital and token pricing."
-        },
-        {
-          "at": "2026-11-14T22:17:00Z",
-          "change": "20VC: Fractile founder Walter Goodwin on a $7B AI-chip Nvidia challenger; titles only, no transcript yet."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "20VC transcript: Fractile $720M Series C at $7B; no model sales; memory-bandwidth bottleneck; Nvidia-Groq pairing claimed."
+          "at": "2026-11-12T18:39:00Z",
+          "change": "Created from No Priors: Isomorphic builds drugs in-house, no model license; ~$1.5B per drug; rat toxicity ~30% predictive; Anthropic SF wet lab noted."
         },
         {
           "at": "2026-11-16T18:55:00Z",
-          "change": "a16z: Ramp data cited for exponential token usage and flat revenue from frontier price competition."
+          "change": "Resolved after four quiet days; Isomorphic in-house design and the ~$1.5B-per-drug figures remain the last facts."
         },
         {
-          "at": "2026-11-18T03:54:00Z",
-          "change": "NVIDIA Q3 FY27 8-K: $115.8B revenue, Data Center $107.6B; Q4 guide $130B with no China DC compute; Kress says Vera Rubin off to an explosive start."
-        },
-        {
-          "at": "2026-11-19T04:42:00Z",
-          "change": "NVIDIA titles a 48-min SC26 Special Address; transcript pending."
-        },
-        {
-          "at": "2026-11-22T07:29:00Z",
-          "change": "20VC titles a 73-min state-of-compute episode on neo-clouds as businesses. Transcript pending."
+          "at": "2026-11-25T03:10:00Z",
+          "change": "Reopened: OpenAI claims GPT-6.2 wet-lab protein and antibody binding; numbers are OpenAI's. a16z drug-discovery episode pending."
         }
       ]
     },
     {
-      "slug": "nvidia-jensen-huang-spy-allegations",
-      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-11-11T06:00:00Z",
-      "updated_at": "2026-11-22T07:29:00Z",
-      "now": "Decoder titled Huang's fall making Anthropic's IPO look stranger; transcript pending. AI Daily Brief still says Nvidia's board will not bring Jensen back; 20VC timestamps a reinstatement segment. The FY27 Q3 8-K names Colette Kress interim CEO, confirming Huang is out. Alice Wang's $7.5B and 240,000 banned-chip reports still lack a filing. Q4 outlook assumes no China Data Center compute.",
-      "changed": "Decoder with Nilay Patel titled an episode that Huang's fall makes Anthropic's IPO look stranger. Transcript pending. Still no 8-K on a permanent CEO.",
-      "watch": "A permanent CEO 8-K; any filing on the Megaspeed allegations; the Decoder transcript; whether China Data Center compute returns.",
+      "slug": "enterprise-agent-economics",
+      "title": "Enterprise agent economics: frontier models vs on-prem",
+      "status": "developing",
+      "importance": 4,
+      "first_seen": "2026-11-18T13:29:00Z",
+      "updated_at": "2026-11-25T03:10:00Z",
+      "now": "Google Workspace MCP servers are reported generally available for Gmail, Drive, Docs and Sheets, with third-party agents forced onto MCP from February 1, 2027. Google's own post was not fetched this cycle. Anthropic launched Claude Ship: pull-request review, CI fixes, and policy-gated approvals on Team and Enterprise. Linear's over-half agent-issue figure is still not first-partied.",
+      "changed": "Google Workspace MCP servers are reported generally available, with an MCP-only cutover dated February 1, 2027. Anthropic launched Claude Ship for PR review and policy-gated approvals.",
+      "watch": "Google's own Workspace post; Scaled-tier billing on April 1, 2027; early reports of Claude Approvals auto-approving on real repos.",
       "evidence": [
         {
-          "url": "https://www.youtube.com/watch?v=yTR5sD5KwD4",
+          "url": "https://x.com/stretchcloud/status/2125375914951483398",
+          "kind": "twitter",
+          "label": "@stretchcloud on X",
+          "at": "2026-11-24T23:00:00Z"
+        },
+        {
+          "url": "https://x.com/Romka2x/status/2125372060578742776",
+          "kind": "twitter",
+          "label": "@Romka2x on X",
+          "at": "2026-11-24T23:00:00Z"
+        },
+        {
+          "url": "https://x.com/ClaudeDevs/status/2124959436640858475",
+          "kind": "twitter",
+          "label": "@ClaudeDevs on X",
+          "at": "2026-11-24T02:00:00Z"
+        },
+        {
+          "url": "https://x.com/Henryyyyyy81/status/2125048772510076988",
+          "kind": "twitter",
+          "label": "@Henryyyyyy81 on X",
+          "at": "2026-11-24T02:00:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=TtOoLanFzGw",
           "kind": "podcast",
-          "label": "Decoder with Nilay Patel",
-          "at": "2026-11-21T14:09:00Z"
+          "label": "a16z (DHH 16-hour days)",
+          "at": "2026-11-20T15:27:00Z"
         },
         {
-          "url": "https://www.youtube.com/watch?v=uSzew8QPRX0",
+          "url": "https://www.youtube.com/watch?v=x0VSm6IjcDQ",
           "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-19T13:54:00Z"
+          "label": "Latent Space (Linear, Cristina Cordova)",
+          "at": "2026-11-19T19:54:00Z"
         },
         {
-          "url": "https://www.youtube.com/watch?v=RZ4BBkSZ3io",
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=247s",
           "kind": "podcast",
-          "label": "20VC",
-          "at": "2026-11-19T14:54:00Z"
+          "label": "The TWIML AI Podcast",
+          "at": "2026-11-17T22:53:00Z",
+          "quote": "I think we we saw the numbers from like 20x to 50x more for agents on the token consumption."
         },
         {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/",
-          "kind": "earnings",
-          "label": "NVIDIA FY27 Q3 8-K",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000088/q3fy27pr.htm",
-          "kind": "earnings",
-          "label": "NVIDIA Q3 press release (EX-99.1)",
-          "at": "2026-11-17T21:20:51Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=438s",
+          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=1422s",
           "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-14T00:28:00Z",
-          "quote": "Alice Wang reportedly played a key role in securing over $7.5 billion worth of Nvidia AI processors during her three-year relationship with Jensen Wang."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=NPLDSyxxt-0&t=1376s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-14T00:28:00Z",
-          "quote": "I found compelling forensic evidence that four leading Chinese AI labs: Deep Seeker, Moonshot, MiniMax, and Ant Group built their latest models on Nvidia's cutting-edge Blackwell chips, the export of which to China is prohibited."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1kf1QWG_YKQ",
-          "kind": "podcast",
-          "label": "The AI Daily Brief",
-          "at": "2026-11-14T14:35:00Z"
+          "label": "The TWIML AI Podcast",
+          "at": "2026-11-17T22:53:00Z"
         }
       ],
       "history": [
         {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "Created: Hard Fork and AI Daily Brief say Huang admitted an affair with Megaspeed's Alice Huang, alleged by U.S. officials to be a Chinese spy."
-        },
-        {
-          "at": "2026-11-11T18:08:00Z",
-          "change": "Hard Fork transcript: alleged chip funneling to China via Malaysia, 10-15% of Nvidia revenue as a cut-out, 2023 preferred partner, fake DCs, key-man risk."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: guests say GPU sales to China and Singapore/Thailand hosting will shut down after the spy case; a bill passed the House and stalled in the Senate."
-        },
-        {
-          "at": "2026-11-13T03:38:00Z",
-          "change": "Decoder show notes claim Huang resigned as Nvidia CEO; intro updated minutes before publish; more as the story develops."
-        },
-        {
-          "at": "2026-11-13T14:46:00Z",
-          "change": "Hard Fork and AI Daily Brief titles treat Huang as out; Daily Brief this morning had not. Still show notes only; no Nvidia filing or successor."
-        },
-        {
-          "at": "2026-11-14T07:03:00Z",
-          "change": "All-In treats Huang as out; 50-150 bps growth at risk; successor talk names Renee of Arm and Nikesh. Still no Nvidia filing."
-        },
-        {
-          "at": "2026-11-14T13:42:00Z",
-          "change": "Big Technology 61-min special treats Huang as out; titles only. Still no Nvidia filing or successor."
-        },
-        {
-          "at": "2026-11-14T22:17:00Z",
-          "change": "AI Daily Brief titles Washington Fired Jensen Huang; Interconnects notes call the resignation a US open-model setback. Still no filing."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "Big Technology transcript: 240k banned chips, $7.5B via Alice Wang, Singapore 22% vanished, Blackwell at DeepSeek/Moonshot/MiniMax/Ant. Still no filing."
-        },
-        {
-          "at": "2026-11-18T03:54:00Z",
-          "change": "NVIDIA 8-K names Colette Kress interim CEO, first-party confirmation Huang is out; Q4 outlook assumes no China DC compute."
+          "at": "2026-11-18T13:29:00Z",
+          "change": "Created from TWIML: agents 20-50x chatbot tokens; HPE ROI at 60-70% utilization vs public models; internal AI factory on open weights; Asia auto firms pulled agents off AWS."
         },
         {
           "at": "2026-11-20T09:12:00Z",
-          "change": "AI Daily Brief headlines Nvidia board refusing to bring Jensen back; 20VC timestamps a reinstatement segment. Still no permanent-CEO 8-K."
+          "change": "Latent Space titles Linear COO Cristina Cordova: over half of issues now from agents; MCP shipped early. Transcript pending."
         },
         {
-          "at": "2026-11-22T07:29:00Z",
-          "change": "Decoder titles Huang's fall making Anthropic's IPO look stranger. Transcript pending. Still no permanent-CEO 8-K."
-        }
-      ]
-    },
-    {
-      "slug": "ai-math-and-physics-discovery-claims",
-      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
-      "status": "escalating",
-      "importance": 5,
-      "first_seen": "2026-10-31T14:48:00Z",
-      "updated_at": "2026-11-22T01:16:00Z",
-      "now": "Lean FRO and Mathlib certified Alpöge's 17-million-line RH library. A Hexagon preprint tagged primarily AI-generated says GPT-6 Astra wrote a six-page Deligne bound on Frobenius eigenvalues from Alpöge's Nov 20 footnote; authors say no human has checked it. Clay has not awarded; no human-readable RH paper.",
-      "changed": "Hexagon posted an AI-generated six-page Deligne bound from Alpöge's footnote; GPT-6 Astra wrote it, and the authors say no human has checked it.",
-      "watch": "A named algebraic geometer accepting or rejecting the Hexagon Deligne note, a Lean formalization of it, a Clay verdict, or Alpöge's promised write-up.",
-      "evidence": [
-        {
-          "url": "https://x.com/AndrewCurran_/status/2124288484563440073",
-          "kind": "twitter",
-          "label": "@AndrewCurran_ on X",
-          "at": "2026-11-22T01:00:00Z"
+          "at": "2026-11-21T07:52:00Z",
+          "change": "a16z titles a 52-min episode on AI putting DHH on 16-hour days. Transcript pending."
         },
         {
-          "url": "https://x.com/jdlichtman/status/2124244181417906543",
-          "kind": "twitter",
-          "label": "@jdlichtman on X",
-          "at": "2026-11-22T01:00:00Z"
-        },
-        {
-          "url": "https://hexagonmath.org/2611.00789v1",
-          "kind": "twitter",
-          "label": "Hexagon 2611.00789v1",
-          "at": "2026-11-22T01:00:00Z"
-        },
-        {
-          "url": "https://github.com/KokunoYumeto/grothendieck-montpellier-archive/tree/main/research/grh_20261120/deligne_sign_only",
-          "kind": "twitter",
-          "label": "deligne_sign_only GitHub archive",
-          "at": "2026-11-22T01:00:00Z"
-        },
-        {
-          "url": "https://x.com/leanprover/status/2124159121645801562",
-          "kind": "twitter",
-          "label": "@leanprover on X",
-          "at": "2026-11-21T19:00:00Z"
-        },
-        {
-          "url": "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/",
-          "kind": "twitter",
-          "label": "Lean and Mathlib community blog",
-          "at": "2026-11-21T19:00:00Z"
-        },
-        {
-          "url": "https://math.mit.edu/~drew/grh/",
-          "kind": "twitter",
-          "label": "Andrew Sutherland MIT GRH checker",
-          "at": "2026-11-21T19:00:00Z"
-        },
-        {
-          "url": "https://x.com/AndrewCurran_/status/2124178939287687297",
-          "kind": "twitter",
-          "label": "@AndrewCurran_ on X",
-          "at": "2026-11-21T19:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-10-31T14:48:00Z",
-          "change": "ETH disproof reviewers disclaim certification; verdict still pending."
-        },
-        {
-          "at": "2026-11-01T23:55:00Z",
-          "change": "Lex Fridman and MLST transcripts add context: Lean-checked Erdos results, guests favouring human-AI collaboration over AI-only maths."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Anthropic: Claude-assisted 3D map of a bacterial vault particle; preprint submitted, function unknown, unaudited."
-        },
-        {
-          "at": "2026-11-11T06:00:00Z",
-          "change": "Went quiet: no new math or physics discovery claims since November fifth; ETH and bioRxiv watches unmet."
-        },
-        {
-          "at": "2026-11-11T09:54:00Z",
-          "change": "Reopened: DevDay architecture talk claims a Navier-Stokes/unforced-Euler result from 10,000 agents, 2.7M messages, ~130B output tokens."
-        },
-        {
-          "at": "2026-11-17T03:11:00Z",
-          "change": "Resolved after six quiet days; DevDay Euler claim and vault-particle preprint watches unmet."
-        },
-        {
-          "at": "2026-11-21T11:00:00Z",
-          "change": "Reopened: Alpöge Lean archive of a Claude-assisted RH proof; Arledge reports Lean 4.33.1 plus Rust-kernel check with 0 errors. Musk hedges; Anthropic silent."
-        },
-        {
-          "at": "2026-11-21T19:13:00Z",
-          "change": "Lean FRO and Mathlib certify Alpöge's 17-million-line RH proof as correct; MIT checker live. Clay has not awarded; no readable paper."
-        },
-        {
-          "at": "2026-11-22T01:16:00Z",
-          "change": "Hexagon posts an AI-generated six-page Deligne bound from Alpöge's footnote; GPT-6 Astra wrote it, no human has checked it."
+          "at": "2026-11-25T03:10:00Z",
+          "change": "Google Workspace MCP GA with Feb 1, 2027 MCP-only cutover, per readers. Anthropic launches Claude Ship for PR review and policy-gated approvals."
         }
       ]
     },
@@ -492,14 +764,155 @@
       ]
     },
     {
+      "slug": "tesla-fsd-v15-reality-view",
+      "title": "Tesla FSD v15 and on-car neural Reality View",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-11-22T01:16:00Z",
+      "updated_at": "2026-11-22T01:16:00Z",
+      "now": "Tesla began rolling out FSD v15 on November 21. The company claims 25 times better safety-critical handling and a live Reality View. Musk says that view is real-time AI video generation on half of one AI4 TRIP accelerator, not a game engine. TeslaSI says a new vision encoder is shared with Robotaxi and Optimus. The 25x figure is Tesla's own metric, not an independent crash study.",
+      "changed": "Owners started downloading FSD v15; Tesla claims 25x better safety-critical handling and an on-car neural Reality View.",
+      "watch": "The December holiday wider release Tesla accounts are pointing to, or a miles-and-interventions table that is not a Tesla screenshot.",
+      "evidence": [
+        {
+          "url": "https://x.com/Tesla/status/2124222447855743019",
+          "kind": "twitter",
+          "label": "@Tesla on X",
+          "at": "2026-11-22T01:00:00Z"
+        },
+        {
+          "url": "https://x.com/TeslaSI/status/2124229673056113100",
+          "kind": "twitter",
+          "label": "@TeslaSI on X",
+          "at": "2026-11-22T01:00:00Z"
+        },
+        {
+          "url": "https://x.com/elonmusk/status/2124270426402836626",
+          "kind": "twitter",
+          "label": "@elonmusk on X",
+          "at": "2026-11-22T01:00:00Z"
+        },
+        {
+          "url": "https://x.com/SawyerMerritt/status/2124271378073530460",
+          "kind": "twitter",
+          "label": "@SawyerMerritt on X",
+          "at": "2026-11-22T01:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-22T01:16:00Z",
+          "change": "Tesla starts FSD v15 rollout; claims 25x safety-critical handling and neural Reality View. 25x is Tesla's own metric."
+        }
+      ]
+    },
+    {
+      "slug": "amazon-decart-acquisition",
+      "title": "Amazon's reported purchase of Decart",
+      "status": "developing",
+      "importance": 3,
+      "first_seen": "2026-11-21T19:13:00Z",
+      "updated_at": "2026-11-21T19:13:00Z",
+      "now": "Reports citing the Financial Times say Amazon is near a roughly $7.5 billion purchase of Decart, possibly next week. Neither Amazon nor Decart has confirmed, and the FT text was not independently retrieved. Decart is said to run models across Nvidia GPUs, Google TPUs and Amazon Trainium, plus video models Lucy and Oasis. Calcalist said Anthropic walked away from about $6 billion in September.",
+      "changed": "Unconfirmed FT-cited reports put Amazon near a $7.5 billion Decart deal, possibly next week. Neither company has confirmed.",
+      "watch": "An Amazon or Decart confirmation, an SEC filing if it closes, or a walk-away before next week.",
+      "evidence": [
+        {
+          "url": "https://x.com/lucasjamali/status/2124213430244557101",
+          "kind": "twitter",
+          "label": "@lucasjamali on X",
+          "at": "2026-11-21T19:00:00Z"
+        },
+        {
+          "url": "https://x.com/aiaffairscom/status/2124216473543422394",
+          "kind": "twitter",
+          "label": "@aiaffairscom on X",
+          "at": "2026-11-21T19:00:00Z"
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-21T19:13:00Z",
+          "change": "Created from unconfirmed FT-cited reports of a $7.5B Amazon purchase of Decart, possibly next week. Neither company has confirmed."
+        }
+      ]
+    },
+    {
+      "slug": "labs-automating-ai-research",
+      "title": "Frontier labs automating their own AI research",
+      "status": "resolved",
+      "importance": 4,
+      "first_seen": "2026-11-15T09:57:00Z",
+      "updated_at": "2026-11-25T03:10:00Z",
+      "now": "Google DeepMind posted a 47-min conversation with Koray Kavukcuoglu on Gemini, AGI, and recursive self-improvement; transcript pending. a16z's OpenAI-cofounder self-improving-AI episode still has no transcript. Dwarkesh: Claude leading 26% of Anthropic R&D, up from 1% in February, still stands; Opus 5.5 said not far below internal Model 4.",
+      "changed": "DeepMind's Koray Kavukcuoglu RSI conversation and a16z's OpenAI self-improving-AI episode still have no transcripts; Anthropic's 26% R&D figure has not been first-partied.",
+      "watch": "The DeepMind and a16z transcripts; whether METR publishes the net-effect figure; whether Anthropic first-parties the 26% R&D share.",
+      "evidence": [
+        {
+          "url": "https://www.youtube.com/watch?v=FORdPIWOH5k",
+          "kind": "video",
+          "label": "Google DeepMind (Koray Kavukcuoglu)",
+          "at": "2026-11-19T19:54:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=h_aA1-R70E8",
+          "kind": "podcast",
+          "label": "a16z (OpenAI self-improving AI)",
+          "at": "2026-11-17T18:06:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast (METR, Opus 5.5 vs Model 4)",
+          "at": "2026-11-16T18:07:00Z"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=111s",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-13T18:28:00Z",
+          "quote": "They reported that Claude now leads 26% of AI research and development at Anthropic, up from 1% back in February."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y",
+          "kind": "podcast",
+          "label": "Dwarkesh Podcast",
+          "at": "2026-11-13T18:28:00Z",
+          "quote": "That's why I believe there's a 25% chance that we'll automate the work of top Ilya-level researchers by 2032 ."
+        }
+      ],
+      "history": [
+        {
+          "at": "2026-11-15T09:57:00Z",
+          "change": "Created from Dwarkesh: Claude 26% of Anthropic R&D from 1% in Feb; 25% chance Ilya-level automation waits until 2032; Magic half-GPT-3 compute claim."
+        },
+        {
+          "at": "2026-11-16T18:55:00Z",
+          "change": "Dwarkesh: Anthropic and METR on AI's net effect on Anthropic's progress; Opus 5.5 said not far below internal Model 4."
+        },
+        {
+          "at": "2026-11-18T11:31:00Z",
+          "change": "a16z titles OpenAI cofounder and research chief on self-improving AI; transcript pending."
+        },
+        {
+          "at": "2026-11-20T09:12:00Z",
+          "change": "DeepMind titles a 47-min Koray Kavukcuoglu talk on Gemini, AGI, and RSI; transcript pending."
+        },
+        {
+          "at": "2026-11-25T03:10:00Z",
+          "change": "Resolved as quiet: RSI transcripts never landed; 26% Anthropic R&D share remains a Dwarkesh report."
+        }
+      ]
+    },
+    {
       "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
       "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
-      "status": "developing",
+      "status": "resolved",
       "importance": 4,
       "first_seen": "2026-11-01T15:32:00Z",
-      "updated_at": "2026-11-21T11:00:00Z",
+      "updated_at": "2026-11-25T03:10:00Z",
       "now": "OpenAI's Nov 20 adversarial-distillation note names GPT-6.2 Astra and Sol as the models with updated safeguards. An internal red-team says recovering protected reasoning fell from 54.0% on GPT-6 Astra to 0.2% on GPT-6.2 Astra. MedChemBench, OpenAI scoring OpenAI, puts GPT-6.2 Astra at 84.5% versus 83.3% for GPT-6 Astra. Not a launch post. Qwen 4 remains unconfirmed.",
-      "changed": "OpenAI first-party notes name GPT-6.2 Astra and Sol as shipped models with new safeguards; internal red-team 54.0% to 0.2% on reasoning extraction. MedChemBench 84.5% vs 83.3%.",
+      "changed": "GPT-6.2 Astra and Sol were already treated as shipped on November 20; Qwen 4 never confirmed. New GPT-6 news is capability papers, not launches.",
       "watch": "A dedicated GPT-6.2 product or API page; an independent lab repeating the reasoning-extraction eval; a Qwen 4 confirmation from Alibaba.",
       "evidence": [
         {
@@ -595,323 +1008,10 @@
         {
           "at": "2026-11-21T11:00:00Z",
           "change": "OpenAI Nov 20 notes treat GPT-6.2 Astra/Sol as shipped with new distillation safeguards; internal red-team 54.0% to 0.2%. MedChemBench 84.5% vs 83.3%. Not a launch."
-        }
-      ]
-    },
-    {
-      "slug": "enterprise-agent-economics",
-      "title": "Enterprise agent economics: frontier models vs on-prem",
-      "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-11-18T13:29:00Z",
-      "updated_at": "2026-11-21T07:52:00Z",
-      "now": "a16z titles a 52-minute episode on why AI has DHH working 16-hour days; transcript pending. Latent Space still bills Linear COO Cristina Cordova as saying over half of Linear issues come from agents after an early MCP server. TWIML: agents 20x-50x chatbot tokens; HPE ROI at 60-70% GPU utilization versus public models; Asian auto firms pulled agents off AWS over sensitive data.",
-      "changed": "a16z titles a 52-minute episode on why AI has DHH working 16-hour days. Transcript not yet available.",
-      "watch": "The a16z DHH transcript; whether Linear first-parties the over-50-percent agent-issue figure; whether HPE or the auto companies first-party the AWS pullback.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=TtOoLanFzGw",
-          "kind": "podcast",
-          "label": "a16z (DHH 16-hour days)",
-          "at": "2026-11-20T15:27:00Z"
         },
         {
-          "url": "https://www.youtube.com/watch?v=x0VSm6IjcDQ",
-          "kind": "podcast",
-          "label": "Latent Space (Linear, Cristina Cordova)",
-          "at": "2026-11-19T19:54:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=247s",
-          "kind": "podcast",
-          "label": "The TWIML AI Podcast",
-          "at": "2026-11-17T22:53:00Z",
-          "quote": "I think we we saw the numbers from like 20x to 50x more for agents on the token consumption."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=1422s",
-          "kind": "podcast",
-          "label": "The TWIML AI Podcast",
-          "at": "2026-11-17T22:53:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk",
-          "kind": "podcast",
-          "label": "The TWIML AI Podcast (Asia auto AWS pullback)",
-          "at": "2026-11-17T22:53:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=WFXlWYCXiTk&t=2590s",
-          "kind": "podcast",
-          "label": "The TWIML AI Podcast (on-prem vs cloud ROI)",
-          "at": "2026-11-17T22:53:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-18T13:29:00Z",
-          "change": "Created from TWIML: agents 20-50x chatbot tokens; HPE ROI at 60-70% utilization vs public models; internal AI factory on open weights; Asia auto firms pulled agents off AWS."
-        },
-        {
-          "at": "2026-11-20T09:12:00Z",
-          "change": "Latent Space titles Linear COO Cristina Cordova: over half of issues now from agents; MCP shipped early. Transcript pending."
-        },
-        {
-          "at": "2026-11-21T07:52:00Z",
-          "change": "a16z titles a 52-min episode on AI putting DHH on 16-hour days. Transcript pending."
-        }
-      ]
-    },
-    {
-      "slug": "labs-automating-ai-research",
-      "title": "Frontier labs automating their own AI research",
-      "status": "developing",
-      "importance": 4,
-      "first_seen": "2026-11-15T09:57:00Z",
-      "updated_at": "2026-11-20T09:12:00Z",
-      "now": "Google DeepMind posted a 47-min conversation with Koray Kavukcuoglu on Gemini, AGI, and recursive self-improvement; transcript pending. a16z's OpenAI-cofounder self-improving-AI episode still has no transcript. Dwarkesh: Claude leading 26% of Anthropic R&D, up from 1% in February, still stands; Opus 5.5 said not far below internal Model 4.",
-      "changed": "DeepMind posted a 47-min Koray Kavukcuoglu conversation on Gemini, AGI, and recursive self-improvement. Transcript pending.",
-      "watch": "The DeepMind and a16z transcripts; whether METR publishes the net-effect figure; whether Anthropic first-parties the 26% R&D share.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=FORdPIWOH5k",
-          "kind": "video",
-          "label": "Google DeepMind (Koray Kavukcuoglu)",
-          "at": "2026-11-19T19:54:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=h_aA1-R70E8",
-          "kind": "podcast",
-          "label": "a16z (OpenAI self-improving AI)",
-          "at": "2026-11-17T18:06:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=SyHM5hNPAEo",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast (METR, Opus 5.5 vs Model 4)",
-          "at": "2026-11-16T18:07:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y&t=111s",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast",
-          "at": "2026-11-13T18:28:00Z",
-          "quote": "They reported that Claude now leads 26% of AI research and development at Anthropic, up from 1% back in February."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=1NHPDzpfR6Y",
-          "kind": "podcast",
-          "label": "Dwarkesh Podcast",
-          "at": "2026-11-13T18:28:00Z",
-          "quote": "That's why I believe there's a 25% chance that we'll automate the work of top Ilya-level researchers by 2032 ."
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "Created from Dwarkesh: Claude 26% of Anthropic R&D from 1% in Feb; 25% chance Ilya-level automation waits until 2032; Magic half-GPT-3 compute claim."
-        },
-        {
-          "at": "2026-11-16T18:55:00Z",
-          "change": "Dwarkesh: Anthropic and METR on AI's net effect on Anthropic's progress; Opus 5.5 said not far below internal Model 4."
-        },
-        {
-          "at": "2026-11-18T11:31:00Z",
-          "change": "a16z titles OpenAI cofounder and research chief on self-improving AI; transcript pending."
-        },
-        {
-          "at": "2026-11-20T09:12:00Z",
-          "change": "DeepMind titles a 47-min Koray Kavukcuoglu talk on Gemini, AGI, and RSI; transcript pending."
-        }
-      ]
-    },
-    {
-      "slug": "tesla-fsd-v15-reality-view",
-      "title": "Tesla FSD v15 and on-car neural Reality View",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-11-22T01:16:00Z",
-      "updated_at": "2026-11-22T01:16:00Z",
-      "now": "Tesla began rolling out FSD v15 on November 21. The company claims 25 times better safety-critical handling and a live Reality View. Musk says that view is real-time AI video generation on half of one AI4 TRIP accelerator, not a game engine. TeslaSI says a new vision encoder is shared with Robotaxi and Optimus. The 25x figure is Tesla's own metric, not an independent crash study.",
-      "changed": "Owners started downloading FSD v15; Tesla claims 25x better safety-critical handling and an on-car neural Reality View.",
-      "watch": "The December holiday wider release Tesla accounts are pointing to, or a miles-and-interventions table that is not a Tesla screenshot.",
-      "evidence": [
-        {
-          "url": "https://x.com/Tesla/status/2124222447855743019",
-          "kind": "twitter",
-          "label": "@Tesla on X",
-          "at": "2026-11-22T01:00:00Z"
-        },
-        {
-          "url": "https://x.com/TeslaSI/status/2124229673056113100",
-          "kind": "twitter",
-          "label": "@TeslaSI on X",
-          "at": "2026-11-22T01:00:00Z"
-        },
-        {
-          "url": "https://x.com/elonmusk/status/2124270426402836626",
-          "kind": "twitter",
-          "label": "@elonmusk on X",
-          "at": "2026-11-22T01:00:00Z"
-        },
-        {
-          "url": "https://x.com/SawyerMerritt/status/2124271378073530460",
-          "kind": "twitter",
-          "label": "@SawyerMerritt on X",
-          "at": "2026-11-22T01:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-22T01:16:00Z",
-          "change": "Tesla starts FSD v15 rollout; claims 25x safety-critical handling and neural Reality View. 25x is Tesla's own metric."
-        }
-      ]
-    },
-    {
-      "slug": "amazon-decart-acquisition",
-      "title": "Amazon's reported purchase of Decart",
-      "status": "developing",
-      "importance": 3,
-      "first_seen": "2026-11-21T19:13:00Z",
-      "updated_at": "2026-11-21T19:13:00Z",
-      "now": "Reports citing the Financial Times say Amazon is near a roughly $7.5 billion purchase of Decart, possibly next week. Neither Amazon nor Decart has confirmed, and the FT text was not independently retrieved. Decart is said to run models across Nvidia GPUs, Google TPUs and Amazon Trainium, plus video models Lucy and Oasis. Calcalist said Anthropic walked away from about $6 billion in September.",
-      "changed": "Unconfirmed FT-cited reports put Amazon near a $7.5 billion Decart deal, possibly next week. Neither company has confirmed.",
-      "watch": "An Amazon or Decart confirmation, an SEC filing if it closes, or a walk-away before next week.",
-      "evidence": [
-        {
-          "url": "https://x.com/lucasjamali/status/2124213430244557101",
-          "kind": "twitter",
-          "label": "@lucasjamali on X",
-          "at": "2026-11-21T19:00:00Z"
-        },
-        {
-          "url": "https://x.com/aiaffairscom/status/2124216473543422394",
-          "kind": "twitter",
-          "label": "@aiaffairscom on X",
-          "at": "2026-11-21T19:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-21T19:13:00Z",
-          "change": "Created from unconfirmed FT-cited reports of a $7.5B Amazon purchase of Decart, possibly next week. Neither company has confirmed."
-        }
-      ]
-    },
-    {
-      "slug": "ai-cyber-risk-and-key-theft",
-      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
-      "status": "resolved",
-      "importance": 5,
-      "first_seen": "2026-10-31T08:53:00Z",
-      "updated_at": "2026-11-22T01:16:00Z",
-      "now": "NVIDIA posted a 17-minute video titled Making AI Agents Safer With Open Source; transcript not yet available. Mozilla how-to: Firefox unbeaten at Pwn2Own; about 8x detection and remediation from 2025 to 2026 with GPT-6 Cyber. a16z/Wiz: AI exploit chains in about 20 minutes. GPT-6 Cyber ~1,000 Linux LPE patches and 52% exploit gym vs Mythos ~38% still stand.",
-      "changed": "No new facts since NVIDIA's untranscribed agent-safety video; Mozilla Pwn2Own and GPT-6 Cyber figures have not moved.",
-      "watch": "The NVIDIA transcript; whether Daybreak Red Team and Defense Factory are generally available; any Mozilla bug counts beyond the 8x claim.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=y9AALMeAeGI",
-          "kind": "video",
-          "label": "NVIDIA (Making AI Agents Safer With Open Source)",
-          "at": "2026-11-18T10:53:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=68s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-13T16:28:00Z",
-          "quote": "We had a great result–no one was able to hack Firefox."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=PkAmyub12K8&t=1016s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-13T16:28:00Z",
-          "quote": "Yes, we now have about an 8x increase from 2025 to 2026 for both detection and, importantly, remediation."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=PbD9pVXxsYM",
-          "kind": "podcast",
-          "label": "a16z",
-          "at": "2026-11-13T15:12:00Z",
-          "quote": "We will once again see security breaches crop up all the time."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=PkAmyub12K8",
-          "kind": "video",
-          "label": "OpenAI (Mozilla Firefox, GPT-6 Cyber)",
-          "at": "2026-11-13T16:28:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=959s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-12T22:41:00Z",
-          "quote": "In one run with GPT6 Cyber, the pipeline validated and generated patches for almost a thousand local privilege escalation vulnerabilities in Linux."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=576s",
-          "kind": "video",
-          "label": "OpenAI",
-          "at": "2026-11-12T22:41:00Z",
-          "quote": "For comparison, Anthropics Mythos 52, which released earlier this week, scores at about 38%."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=YmxpxJZvm4M&t=391s",
-          "kind": "video",
-          "label": "OpenAI (Daybreak Red Team, Defense Factory)",
-          "at": "2026-11-12T22:41:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-02T08:14:00Z",
-          "change": "Interconnects essay notes frame October as \"Black October\" for AI-linked vulnerability disclosures; Binance incident also cited. Show notes only."
-        },
-        {
-          "at": "2026-11-03T06:41:00Z",
-          "change": "Goldman reportedly restricts staff AI coding tools; Replit advisory urges org-controlled agent sandboxes. Single-source, unconfirmed by Goldman."
-        },
-        {
-          "at": "2026-11-03T14:35:00Z",
-          "change": "OpenAI announces Cathedral Systems sprint and bigger bounties; the unverified Anthropic Slack 'Cathedral' claim may be a red team."
-        },
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "OpenAI pipeline: 1,724 kernel bugs reproduced, 948 distinct root exploits, $1.213M API cost; patches to maintainers."
-        },
-        {
-          "at": "2026-11-11T09:54:00Z",
-          "change": "DevDay Codex Security: hacking cost going to zero; 0.81% false positives, <1% rollbacks; Daybreak-class models on Security Cloud; Astra ahead on PatchBench."
-        },
-        {
-          "at": "2026-11-12T18:39:00Z",
-          "change": "OpenAI how-tos enable Daybreak Blue for a whole workspace, Codex Security CLI via npm, and GitHub PR security reviews."
-        },
-        {
-          "at": "2026-11-12T23:57:00Z",
-          "change": "20VC: nine labs disclosed an October API-key swarming; Unit 42 cites $1M bills before detection; $100k default Claude Ultra cap; syndicates steal Anthropic/OpenAI tokens."
-        },
-        {
-          "at": "2026-11-13T07:16:00Z",
-          "change": "OpenAI Cyber at the Frontier: Daybreak Red Team and Defense Factory; GPT-6 Cyber ~1,000 Linux LPE patches, 5x 5.6 Cyber; 52% exploit gym vs Mythos ~38%; Sofos 52% MDR, 38 min to 89 sec."
-        },
-        {
-          "at": "2026-11-14T13:42:00Z",
-          "change": "OpenAI how-to titles Mozilla as a GPT-6 Cyber user on Firefox; transcript not yet available."
-        },
-        {
-          "at": "2026-11-15T09:57:00Z",
-          "change": "Mozilla transcript: Firefox unbeaten at Pwn2Own, ~8x detect-and-fix 2025-2026. Wiz on a16z: AI attacks in ~20 minutes vs weeks for distro patches."
-        },
-        {
-          "at": "2026-11-18T20:25:00Z",
-          "change": "NVIDIA titles a 17-min video Making AI Agents Safer With Open Source; transcript pending."
-        },
-        {
-          "at": "2026-11-22T01:16:00Z",
-          "change": "Resolved as quiet: NVIDIA agent-safety transcript never arrived; Pwn2Own and GPT-6 Cyber numbers unchanged since mid-November."
+          "at": "2026-11-25T03:10:00Z",
+          "change": "Resolved: Astra/Sol launch absorbed; Qwen 4 still unconfirmed. Capability stories move to math, cyber, and drug-discovery threads."
         }
       ]
     },
@@ -1028,190 +1128,6 @@
         {
           "at": "2026-11-21T11:00:00Z",
           "change": "Resolved as quiet: no first-party revenue or Flux 3 Action ship date since the Nov 16 Latent Space appearance."
-        }
-      ]
-    },
-    {
-      "slug": "us-data-center-politics",
-      "title": "US data-center siting backlash after the midterms",
-      "status": "resolved",
-      "importance": 5,
-      "first_seen": "2026-11-05T06:41:00Z",
-      "updated_at": "2026-11-17T13:51:00Z",
-      "now": "Big Technology hosts said 38 or more jurisdictions voted to restrict or ban data centers, and that 23 to over 60 percent of voters, depending on the poll, called AI crucial. They said Texas's pro-data-center governor lost to a Democrat they called very anti-data-center, and that New Mexico apparently sued Meta for $25 billion. Hinojosa's Texas permit pause still stands.",
-      "changed": "No new siting or midterm facts since November tenth; the 38-jurisdiction votes, the Texas permit pause, and the reported New Mexico-Meta suit are absorbed.",
-      "watch": "What those 38 jurisdictions enact; whether Hinojosa extends the Texas freeze past the December grid audit; a filing we can read in the New Mexico-Meta suit.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc",
-          "kind": "podcast",
-          "label": "Big Technology Podcast",
-          "at": "2026-11-10T17:30:00Z",
-          "quote": "There were many—38 jurisdictions or more— that voted to restrict or ban data centers, right?"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=Ucs8Z7Q5Zuc&t=215s",
-          "kind": "podcast",
-          "label": "Big Technology Podcast (Texas vote, AI polls)",
-          "at": "2026-11-10T17:30:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=223s",
-          "kind": "podcast",
-          "label": "All-In Podcast (midterm sweep)",
-          "at": "2026-11-07T18:24:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2v8b062QzTI",
-          "kind": "podcast",
-          "label": "All-In Podcast",
-          "at": "2026-11-07T18:24:00Z",
-          "quote": "Okay, so it's 100% that Democrats are going to make a major push for AI legislation in the next Congress."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=2v8b062QzTI&t=950s",
-          "kind": "podcast",
-          "label": "All-In Podcast (China vs US AI sentiment)",
-          "at": "2026-11-07T18:24:00Z"
-        },
-        {
-          "url": "https://www.cnbc.com/2026/11/04/ai-stocks-texas-governor-data-centers.html",
-          "kind": "twitter",
-          "label": "CNBC (Texas governor, data centers)",
-          "at": "2026-11-04T14:00:00Z"
-        },
-        {
-          "url": "https://x.com/rohanpaul_ai/status/2117978113686773775",
-          "kind": "twitter",
-          "label": "@rohanpaul_ai on X (Texas, neoclouds)",
-          "at": "2026-11-04T14:00:00Z"
-        },
-        {
-          "url": "https://www.nbcnews.com/politics/2026-election/exit-poll-trump-midterms-voters-economy-disapproval-rcna607045",
-          "kind": "twitter",
-          "label": "NBC News (national exit poll)",
-          "at": "2026-11-04T06:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-05T06:41:00Z",
-          "change": "Created: Hinojosa wins Texas on a data-center pause; exit poll 57% AI-hurt / 76% local NIMBY."
-        },
-        {
-          "at": "2026-11-09T19:08:00Z",
-          "change": "All-In: Dem sweep and 100% odds of major AI legislation next Congress; China 93% AI-optimism vs US near the bottom of that survey."
-        },
-        {
-          "at": "2026-11-10T21:05:00Z",
-          "change": "Big Technology: 38+ jurisdictions voted to restrict or ban data centers; 23-60% called AI crucial; hosts say New Mexico sued Meta for $25B."
-        },
-        {
-          "at": "2026-11-17T13:51:00Z",
-          "change": "Resolved after seven quiet days; 38+ jurisdiction votes and the Texas freeze remain the last facts; December grid-audit watch unmet."
-        }
-      ]
-    },
-    {
-      "slug": "ai-drug-discovery",
-      "title": "AI drug discovery at Isomorphic Labs and new wet labs",
-      "status": "resolved",
-      "importance": 4,
-      "first_seen": "2026-11-12T18:39:00Z",
-      "updated_at": "2026-11-16T18:55:00Z",
-      "now": "On No Priors, Isomorphic Labs president Max Jaderberg said they build an AI drug-design system in-house and do not sell or license the model. The conversation put a typical drug at about $1.5 billion, early mouse work about $50 million over two to three years, and rat toxicity models about 30% predictive in humans. The show noted Anthropic's announced San Francisco wet lab.",
-      "changed": "No new Isomorphic or wet-lab facts since November twelfth; the in-house design interview is absorbed.",
-      "watch": "Whether Isomorphic names a clinical candidate; a first-party Anthropic wet-lab description; whether the 30% rat-to-human toxicity figure is sourced beyond this interview.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE",
-          "kind": "podcast",
-          "label": "No Priors",
-          "at": "2026-11-12T11:04:00Z",
-          "quote": "We are developing an AI-based drug design system ourselves and, in fact, we do not sell this model."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1289s",
-          "kind": "podcast",
-          "label": "No Priors",
-          "at": "2026-11-12T11:04:00Z",
-          "quote": "I think it depends on the study, but for rats it's about 30% predictive of clinical toxicity in humans."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=1040s",
-          "kind": "podcast",
-          "label": "No Priors (drug cost breakdown)",
-          "at": "2026-11-12T11:04:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=IiKf3BgBezE&t=360s",
-          "kind": "podcast",
-          "label": "No Priors (industry cost and time)",
-          "at": "2026-11-12T11:04:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-12T18:39:00Z",
-          "change": "Created from No Priors: Isomorphic builds drugs in-house, no model license; ~$1.5B per drug; rat toxicity ~30% predictive; Anthropic SF wet lab noted."
-        },
-        {
-          "at": "2026-11-16T18:55:00Z",
-          "change": "Resolved after four quiet days; Isomorphic in-house design and the ~$1.5B-per-drug figures remain the last facts."
-        }
-      ]
-    },
-    {
-      "slug": "deepmind-alphagenome",
-      "title": "DeepMind's AlphaGenome and reading the human genome",
-      "status": "resolved",
-      "importance": 4,
-      "first_seen": "2026-11-12T01:04:00Z",
-      "updated_at": "2026-11-16T07:18:00Z",
-      "now": "On Google DeepMind's podcast, the show said AlphaGenome 2 predicts variant effects at cell-type resolution, not bulk tissue, and retrospectively matched a Crick Institute finding that a variant regulates a gene 290,000 bases away. A public Python API offers free predictions; Atlas is a no-code site. The show said only 10% of drugs make trials.",
-      "changed": "The AlphaGenome 2 launch is absorbed: public API and Atlas are out, and it is no longer a live storyline while the paper is pending.",
-      "watch": "The AlphaGenome 2 paper; whether the public API stays free; independent checks of the 290,000-base Crick prediction.",
-      "evidence": [
-        {
-          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=2103s",
-          "kind": "video",
-          "label": "Google DeepMind",
-          "at": "2026-11-11T18:00:00Z",
-          "quote": "Yeah, so for the alpha genome family of models um we have a public API and basically you can install a Python package."
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1508s",
-          "kind": "video",
-          "label": "Google DeepMind (cell-type resolution)",
-          "at": "2026-11-11T18:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=1671s",
-          "kind": "video",
-          "label": "Google DeepMind (Crick Institute check)",
-          "at": "2026-11-11T18:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c&t=646s",
-          "kind": "video",
-          "label": "Google DeepMind (non-coding genome)",
-          "at": "2026-11-11T18:00:00Z"
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=uND6iY2qp_c",
-          "kind": "video",
-          "label": "Google DeepMind",
-          "at": "2026-11-11T18:00:00Z"
-        }
-      ],
-      "history": [
-        {
-          "at": "2026-11-12T01:04:00Z",
-          "change": "Created from DeepMind podcast: AlphaGenome 2 does cell-type predictions, matches a 290k-base Crick finding, and ships a free public API plus a no-code Atlas."
-        },
-        {
-          "at": "2026-11-16T07:18:00Z",
-          "change": "Resolved: launch absorbed after four quiet days; cell-type API and Atlas remain the facts; paper watch unmet."
         }
       ]
     }
