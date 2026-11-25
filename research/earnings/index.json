@@ -1,8 +1,18 @@
 {
   "lane": "earnings",
   "schema": 1,
-  "count": 30,
+  "count": 31,
   "events": [
+    {
+      "file": "2026-11-24-DELL-FY27Q3.md",
+      "date": "2026-11-24",
+      "ticker": "DELL",
+      "period": "FY27Q3",
+      "issuer": "Dell Technologies Inc.",
+      "form": "8-K",
+      "accession": "0001571996-26-000050",
+      "transcript": false
+    },
     {
       "file": "2026-11-17-NVDA-FY27Q3.md",
       "date": "2026-11-17",
