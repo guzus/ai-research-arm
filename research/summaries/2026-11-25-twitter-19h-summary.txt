@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-11-25 19:08:53 UTC
+
+CYCLE: Amodei rebuts "AI over free will" charge; Anthropic infra + IPO; OpenAI privacy
+
+TOP STORIES:
+• Amodei: AI must be governed democratically; no unsupervised Claude-built frontier models ✓
+• Anthropic moved Messages API from Python to Rust, with Claude agents checking the rewrite ✓
+• OpenAI testing Private Inference with select customers ✓
+• Anthropic shares reportedly fell below $83 IPO price ⚠
+
+WATCH: Altman/OpenAI response to Amodei's "vibes-based positioning" jab
+
+Full update on GitHub.
