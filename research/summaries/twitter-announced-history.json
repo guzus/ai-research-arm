@@ -1,42 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-02 11:00 UTC",
-    "headline": "KIOXIA INVESTOR DAY \u2014 SEEKING 2029+ HYPERSCALE NAND SUPPLY DEALS, FORECASTS SHORTAGE THROUGH Q4 2027",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-06-02-twitter-11h-headlines.json",
-    "url": "https://x.com/jukan05/status/2061729660116041942"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-02 11:00 UTC",
-    "headline": "MARVELL CEO MURPHY AT COMPUTEX \u2014 \"COPPER WALL MOVING INSIDE THE RACK, COPACKAGED OPTICS IS THE ONLY WAY THROUGH\"",
-    "source": "@jukan05",
-    "source_file": "research/summaries/2026-06-02-twitter-11h-headlines.json",
-    "url": "https://x.com/jukan05/status/2061728423656210652"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-02 11:00 UTC",
-    "headline": "MRVL PREMARKET +24% AT $272.49 AHEAD OF NYSE OPEN ON JENSEN'S TRILLION-DOLLAR ENDORSEMENT",
-    "source": "@realcoincentral",
-    "source_file": "research/summaries/2026-06-02-twitter-11h-headlines.json",
-    "url": "https://x.com/realcoincentral/status/2061738562739945891"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-02 11:00 UTC",
-    "headline": "PALO ALTO NETWORKS COMPLETES PORTKEY ACQUISITION \u2014 AI GATEWAY FOLDED INTO PRISMA AIRS FLAGSHIP",
-    "source": "@sdxcentral",
-    "source_file": "research/summaries/2026-06-02-twitter-11h-headlines.json",
-    "url": "https://x.com/sdxcentral/status/2061765369417875816"
-  },
-  {
-    "backfilled": true,
     "category": "business",
     "delivered_at": "2026-06-02 11:00 UTC",
     "headline": "ANTHROPIC S-1 IS A PUBLIC BENEFIT CORPORATION IPO \u2014 \"UNUSUAL COMBINATION\" CREATES LEGAL OBLIGATION TO MISSION",
@@ -23156,5 +23120,33 @@
     "headline": "ANTHROPIC FELLOWS: INDIVIDUAL NEURONS ARE A WORKABLE INTERPRETABILITY BASIS, USED TO DETECT HIDDEN BEHAVIORS",
     "source": "@AnthropicAI",
     "url": "https://x.com/AnthropicAI/status/2125365268381929637"
+  },
+  {
+    "category": "policy",
+    "delivered_at": "2026-11-25 19:08:53 UTC",
+    "headline": "AMODEI: AI MUST BE GOVERNED DEMOCRATICALLY; UNSAFE FOR CLAUDE TO BUILD FRONTIER MODELS WITHOUT HUMAN SUPERVISION",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2125657068669730991"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-11-25 19:08:53 UTC",
+    "headline": "ANTHROPIC MIGRATES MESSAGES API FROM PYTHON TO RUST, CLAUDE AGENT TEAMS VERIFY THE REWRITE",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2125627317263466739"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-11-25 19:08:53 UTC",
+    "headline": "OPENAI BEGINS TESTING PRIVATE INFERENCE WITH SMALL GROUP OF CUSTOMERS",
+    "source": "@sama",
+    "url": "https://x.com/sama/status/2125638790593274259"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-11-25 19:08:53 UTC",
+    "headline": "ANTHROPIC SHARES FALL BELOW $83 IPO PRICE \u2014 THE INFORMATION",
+    "source": "@theinformation",
+    "url": "https://x.com/theinformation/status/2125664087715496249"
   }
 ]
