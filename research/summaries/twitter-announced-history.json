@@ -1,24 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-06-02 11:00 UTC",
-    "headline": "OPENAI CODEX HEAD TIBO PUBLICLY DAMPENS 15:30 UTC LIVESTREAM \u2014 \"NOTHING CRAZY, MOSTLY ENTERPRISE DEPLOYMENT\"",
-    "source": "@thsottiaux",
-    "source_file": "research/summaries/2026-06-02-twitter-11h-headlines.json",
-    "url": "https://x.com/thsottiaux/status/2061653778403881160"
-  },
-  {
-    "backfilled": true,
-    "category": "infra",
-    "delivered_at": "2026-06-02 11:00 UTC",
-    "headline": "SK HYNIX AT 58% HBM SHARE WARNS AI MEMORY SHORTAGE COULD LAST UNTIL 2030 EVEN WITH 2X WAFER CAPACITY",
-    "source": "@TechieUltimatum",
-    "source_file": "research/summaries/2026-06-02-twitter-11h-headlines.json",
-    "url": "https://x.com/TechieUltimatum/status/2061764896149434374"
-  },
-  {
-    "backfilled": true,
     "category": "infra",
     "delivered_at": "2026-06-02 11:00 UTC",
     "headline": "KIOXIA INVESTOR DAY \u2014 SEEKING 2029+ HYPERSCALE NAND SUPPLY DEALS, FORECASTS SHORTAGE THROUGH Q4 2027",
@@ -23160,5 +23142,19 @@
     "headline": "MICROSOFT SAYS MAI BASE 2, TRAINED VIA ITS ROCKET RL SYSTEM, PASSES CLAUDE OPUS 4.8 ON ITS OWN BENCHMARK",
     "source": "@b2dnz",
     "url": "https://x.com/b2dnz/status/2125372728282841530"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-25 08:18:14 UTC",
+    "headline": "OPENAI REPORTEDLY POSTS ITS OWN VP \u2260 VNP PROOF, DATED NOV 6, AFTER ANTHROPIC'S CLAUDE-AUTHORED PAPER",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2125289527531245998"
+  },
+  {
+    "category": "research",
+    "delivered_at": "2026-11-25 08:18:14 UTC",
+    "headline": "ANTHROPIC FELLOWS: INDIVIDUAL NEURONS ARE A WORKABLE INTERPRETABILITY BASIS, USED TO DETECT HIDDEN BEHAVIORS",
+    "source": "@AnthropicAI",
+    "url": "https://x.com/AnthropicAI/status/2125365268381929637"
   }
 ]
