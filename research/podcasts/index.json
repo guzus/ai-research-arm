@@ -1,9 +1,93 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-25T11:39:00Z",
+  "updated_at": "2026-11-25T21:58:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "openai:A4UNP-axGHU",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "How your dot can keep work moving while you’re away",
+      "url": "https://www.youtube.com/watch?v=A4UNP-axGHU",
+      "video_id": "A4UNP-axGHU",
+      "audio_url": null,
+      "published_at": "2026-11-25T18:28:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T21:58:00Z",
+      "duration_s": 107,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-25T21:58:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Even when you step away for the holidays, work doesn’t always stop. Your dot can help. Raymond walks through how his dot keeps an eye on ongoing projects, flags what needs his attention, and helps move work forward so he can review and approve next steps on the go. Steal Raymond’s workflow. Try these prompts with your dot and make them your own: \"I’m stepping away until [time + time zone]. Watch [insert slack channel] and [#on-call-[insert channel]]. Group related"
+    },
+    {
+      "id": "openai:kfGYU_-SuaE",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "School Day | Make a day do anything with ChatGPT (Official)",
+      "url": "https://www.youtube.com/watch?v=kfGYU_-SuaE",
+      "video_id": "kfGYU_-SuaE",
+      "audio_url": null,
+      "published_at": "2026-11-25T16:28:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T21:58:00Z",
+      "duration_s": 104,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-25T21:58:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "When an unexpected change of plans throws Marla and Ava’s day off course, the pair embark on a spontaneous adventure with a little help from ChatGPT. ChatGPT can move things around, plan trips and create room in your day to spend doing things you love, with people you love. With ChatGPT, you can Make a Day Do Anything."
+    },
+    {
+      "id": "openai:hwKct_1ilEQ",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Finances in ChatGPT: A Beginner’s Guide",
+      "url": "https://www.youtube.com/watch?v=hwKct_1ilEQ",
+      "video_id": "hwKct_1ilEQ",
+      "audio_url": null,
+      "published_at": "2026-11-25T14:28:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T21:58:00Z",
+      "duration_s": 170,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-25T21:58:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "Finances in ChatGPT can help you get a clearer picture of your spending and find ways to make progress toward your financial goals. In this video, we'll get you up to speed with the basics of Finances in ChatGPT: connect your bank account, review your recurring subscriptions, and build a budget around what matters to you."
+    },
     {
       "id": "ai-daily-brief:-olL-f4RGrw",
       "show_id": "ai-daily-brief",
@@ -29,7 +113,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Jensen Huang's return to Nvidia and a reported AI proof of the Riemann hypothesis signal a new phase for AI. NLW breaks down the president's role in the reinstatement, the political fallout ahead, and the many lenses through which people read the story. In the headlines: the Riemann hypothesis claim, SpaceX AI struggles, and a new open model built on looped transformers. The AI Daily Brief helps you understand the most important news and discussions in AI."
     },
     {
       "id": "dwarkesh:Em6tbhj9o6A",
@@ -57,7 +141,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "I read your comments. “Do you have a real job?” Cindy Wu: Is AI research a verifiable domain? corsaren: The overarching objection corsaren: Are the essay’s examples sloppy intuition pumps? corsaren: Is online learning AI’s Millennium Prize problem? corsaren: Is human evolution evidence for transfer? corsaren: Can scaling RL let AIs ramp quickly in new contexts? Why take Paul Christiano’s predictions seriously? Intuitions for what superintelligence could be like Paul’s 2018 prediction and the Hugging Face incident How would superhuman"
     },
     {
       "id": "openai:1u0hTd86_HU",
@@ -85,7 +169,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Craig Dennis had never drawn an SVG by hand or used Blender. With the SVG & 3D Design plugin for Codex, he shows how to turn a reference image into an editable graphic or 3D model, then ask for changes in plain language. See how a small change in SVG code can make a character’s eyes follow your cursor, and how Codex uses Blender to check a model from another angle. Enable SVG & 3D Design in Codex and tell"
     },
     {
       "id": "twiml:wDs1SMHR8es",
@@ -113,7 +197,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "In this episode, Thore Graepel, CEO and co-founder of Metis Reasoning and Chair of Machine Learning at UCL, joins us to explore an approach to AI reasoning inspired by his work on AlphaGo. We discuss why he believes reliable reasoning requires explicit representations of knowledge and uncertainty, with language models helping to generate hypotheses and interpret evidence. Thore explains how a system could break down complex questions, gather evidence, and choose its next step based on the uncertainty it expects"
     },
     {
       "id": "openai:p8lvQQebvpg",
@@ -141,7 +225,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Two amateur astronomers, Kevin Bond and Ethan Byrd, independently found signals that could point to planets around distant stars. They knew you didn't need your own telescope for this kind of hunt."
     },
     {
       "id": "google-deepmind:K8rdrWQRd20",
@@ -169,7 +253,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "The human brain remains one of the greatest unsolved mysteries in science. We have roughly 86 billion neurons firing in a way that somehow produces intelligence, and yet the brain is still largely a black box. In the early days of AI, researchers looked to the brain for clues about how to build smarter machines. But today, that relationship has been flipped on its head. Join Professor Hannah Fry and neuroscience researchers Maria Eckstein and Kim Stachenfeld to see how"
     },
     {
       "id": "nvidia:z7tcQiyLK8E",
@@ -197,7 +281,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Chris Lesniewski, Associate VP of Enterprise Infrastructure Services at Eli Lilly and Company, explains how AI and NVIDIA technology help turn decades of data into \"an incredible scientific instrument that we can use to discover new medicines.\" Learn more about how our customers across industries have achieved AI breakthroughs with #NVIDIADGX:"
     },
     {
       "id": "openai:5p8CdiQGqV4",
@@ -225,7 +309,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "De uma simples pergunta a uma tarefa resolvida. É só falar com o ChatGPT Modo Voz. Ele te escuta e faz com você."
     },
     {
       "id": "big-technology:Fvqq3ar5Ric",
@@ -253,7 +337,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "*Note: Recorded before Jensen's reintstatement. Ranjan Roy from Margins is back for our weekly discussion of the latest tech news. We cover: 1) Did Anthropic's IPO fail or succeed? 2) Anthropic raised $93 billion! 3) Do we finally have an answer about the AI business? 4) Did Anthropic just take the liquidity for the entire market? 5) Why is everything else falling too? 6) Do we get a return to sanity when Nvidia figures its leadership issues out? 7) Jensen"
     },
     {
       "id": "training-data:tRaFbDFBl_A",
@@ -281,7 +365,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Noam Brown built the first AIs to beat top poker professionals, then concluded that game theory, the field his career was built on, was not the path to general intelligence. Recorded live at the Finals of No Limit, Sequoia’s pokerbot tournament, the OpenAI researcher describes his “crisis of faith”: game theory assumes everyone is rational, and the Diplomacy bots that won were the ones trained on human data to model how people actually behave in the messy real world. That"
     },
     {
       "id": "all-in:o6KIjtkRdOI",
@@ -309,7 +393,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "CrowdStrike CEO, George Kurtz joins the show! Are the Outages Cyberattacks? How AI Lets Anyone Hack Like a Nation-State Level Threat Patching, Technical Debt, and Outages Open-Weight and Local AI: Risk and Defense Hackers Don't Break In, They Log In"
     },
     {
       "id": "nvidia:aAbtjH0-oQQ",
@@ -337,7 +421,35 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Red Hat CTO Chris Wright joins the NVIDIA AI Podcast at GTC Berlin to explain why open source is the foundation for secure AI agents. From Linux in the 1990s to agent security today, he shares what has changed, what hasn’t, and why “governance is what made us go faster.” Guest: Chris Wright, CTO, Red Hat CHAPTERS Chris Wright and Linux’s enterprise journey Defense in depth for AI agents OpenShell and open collaboration AI security as an engineering problem How"
+    },
+    {
+      "id": "invest-like-the-best:efoZj_7oVJs",
+      "show_id": "invest-like-the-best",
+      "show": "Invest Like the Best",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "markets"
+      ],
+      "title": "Are the Biggest Companies on Earth About to Get Hacked?",
+      "url": "https://www.youtube.com/watch?v=efoZj_7oVJs",
+      "video_id": "efoZj_7oVJs",
+      "audio_url": null,
+      "published_at": "2026-11-24T09:58:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T21:58:00Z",
+      "duration_s": 3884,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-25T21:58:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": "In this episode of Invest Like The Best, Patrick O'Shaughnessy sits down with Scott Wu, co-founder and CEO of Cognition, the company behind the AI software engineer Devin, two years after his first appearance on the show. Recorded the day Cognition upgraded Devin Security, Scott explains why he calls this a dark age for cybersecurity and expects major breaches at Fortune 100 companies and government institutions within a year. They discuss why swarms of agents change the AI safety debate,"
     },
     {
       "id": "hard-fork:HyQrNGvW4G0",
@@ -364,7 +476,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Nvidia shocked the world this morning when it announced it would be reinstating Jensen Huang as its chief executive. Max Read, our guest host of “Hard Fork,” called two reporters to make sense of the news: Stephen Witt, who wrote a biography of Jensen Huang called \"The Thinking Machine,\" and Jonathan Swan, a White House reporter for The New York Times. We break down how it happened — and what to expect next."
     },
     {
       "id": "ai-daily-brief:3m3nnfJfAxA",
@@ -391,7 +503,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Jensen Huang is back as Nvidia CEO, and the White House played a major role in the reversal. NLW traces the path from the scandal and resignation to the reinstatement, the market surge, and the questions about state power, private power, and a new kind of too big to fail. The AI Daily Brief helps you understand the most important news and discussions in AI."
     },
     {
       "id": "openai:MpsO8Ds8uyo",
@@ -419,7 +531,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "AI can help security teams move faster from finding vulnerabilities to getting fixes into the software people rely on. In one run, GPT-6 Cyber helped validate 948 Linux kernel vulnerabilities and generate candidate patches for human review. Cyber researcher Kyle Zeng sits down with Clint Gibler, applied cyber research lead, to discuss how he built the vulnerability research pipeline and worked with Linux maintainers to get fixes upstream, with lessons for security teams looking to scale their own work. Read"
     },
     {
       "id": "big-technology:CXUGcp2PmnU",
@@ -447,7 +559,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Alex Kantrowitz is the host of Big Technology Podcast. Today he joins for a solo episode covering the return of Jensen Huang as CEO of Nvidia. Tune in to hear what Jensen's comeback means for Nvidia, U.S. AI, China AI, and why' the story isn't anywhere close to over."
     },
     {
       "id": "microsoft-research:9bQmxzI5PRQ",
@@ -475,7 +587,7 @@
         "attempts": 0
       },
       "excerpts": [],
-      "description": ""
+      "description": "Toward Cultural Alignment: Human-Centered Evaluation of Multimodal AI Stories Across Five African Communities Generative AI systems can produce fluent and locally plausible content while still failing to reflect the lived practices, relationships, languages, values, and visual expectations of the communities they represent. In this talk, Millicent and Felermino will present a community-grounded, mixed-methods evaluation of multimodal AI-generated stories across five African communities. They will share findings on how cultural alignment extends beyond recognizable cultural markers to their fit within social,"
     },
     {
       "id": "a16z:RwYz8XhZiu0",
@@ -503,7 +615,7 @@
         "attempts": 0
       },
       "excerpts": [],
-      "description": ""
+      "description": "What happens when scientists are no longer limited by human attention? OpenAI’s Joy Jiao and Ashoka Rajendra join a16z’s Jay Rughani and Jorge Conde to discuss how AI and thousands of parallel agents could reshape drug discovery and development. They trace OpenAI’s life sciences work from scientific reasoning to the acquisition of Orchestra Bio, and how agents could search biological data, manage clinical trials, and navigate regulatory and manufacturing workflows. They also discuss AI’s role in solving difficult diagnoses and"
     },
     {
       "id": "20vc:mg4yo5HUMuQ",
@@ -531,7 +643,7 @@
         "attempts": 1
       },
       "excerpts": [],
-      "description": ""
+      "description": "Anjney Midha is one of Anthropic's earliest angel investors, backing the company in its founding round in 2021. Previously a General Partner at Andreessen Horowitz, he led investments in Mistral and Black Forest Labs. He was also an early angel investor in ElevenLabs and remains a Venture Partner at a16z. Timestamps: Intro Why Frontier AI Is Fundamentally an Energy Business Why the West Is Losing the Infrastructure Scaling Race to China Why China’s Energy Buildout Is Such a Strategic Advantage"
     },
     {
       "id": "ai-daily-brief:3TH7QVL59V4",
@@ -558,7 +670,34 @@
         "attempts": 0
       },
       "excerpts": [],
-      "description": ""
+      "description": "Gemini 4 Neon is earning real praise, and Google is finally back in the conversation at the top of the model race. NLW breaks down the benchmarks, early reactions, and why a different perspective can matter more than a better one. In the headlines: Anthropic’s first day as a public company, new China chip fallout, and a shake-up in White House cyber leadership. The AI Daily Brief helps you understand the most important news and discussions in AI."
+    },
+    {
+      "id": "decoder:1DM0e39fr04",
+      "show_id": "decoder",
+      "show": "Decoder with Nilay Patel",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "How Elon Musk’s DOGE cuts set up the FAA ground stop",
+      "url": "https://www.youtube.com/watch?v=1DM0e39fr04",
+      "video_id": "1DM0e39fr04",
+      "audio_url": null,
+      "published_at": "2026-11-23T09:58:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T21:58:00Z",
+      "duration_s": 2546,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": "My guest today is Darryl Campbell, a freelance journalist, aviation expert, and author of the book Fatal Abstraction: Why the Managerial Class Loses Control of Software. Darryl covers aviation and the FAA, and earlier this month, when the U.S. suffered a sudden nationwide ground stop on air travel, Darryl was all over the story. So ahead of one of the country’s major holiday travel weeks, I wanted to have Darryl on the show to walk us through this incident on"
     },
     {
       "id": "20vc:3ZkDiDrxDeY",
@@ -8974,480 +9113,6 @@
         }
       ],
       "description": "What should school look like if AI can help students learn dramatically faster? Alpha School principal Joe Liemandt argues the answer isn’t to fill the extra time with more academics, but to redesign school around the skills traditional classrooms struggle to teach: agency, teamwork, entrepreneurship, communication, and doing hard things. Joe joins Erik Torenberg and Horowitz Andreessen Academy co-founder Gagan Biyani to discuss Alpha’s model, where students spend two hours a day on core academics and the rest developing real-world"
-    },
-    {
-      "id": "nvidia:dmbT2IHpOKU",
-      "show_id": "nvidia",
-      "show": "NVIDIA",
-      "kind": "video",
-      "priority": "P1",
-      "tags": [
-        "official",
-        "compute"
-      ],
-      "title": "AI in France: From NVIDIA’s First Chip to AI Factories | NVIDIA",
-      "url": "https://www.youtube.com/watch?v=dmbT2IHpOKU",
-      "video_id": "dmbT2IHpOKU",
-      "audio_url": null,
-      "published_at": "2026-10-26T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 164,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 266,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "With SGS-Thompson, that design became NV1. Our first chip, our first partner, the friend who helped launch NVIDIA. In 1999, we invented the GPU. In 2006, CUDA reinventing the computing industry, giving millions of developers a time machine for discovery. In 2016, DGX-1 powered by our Pascal GPU architecture.",
-          "at_s": 24,
-          "url": "https://www.youtube.com/watch?v=dmbT2IHpOKU&t=24s"
-        },
-        {
-          "text": "Our story together began with a chip. Now we are building the next industrial revolution together.",
-          "at_s": 146,
-          "url": "https://www.youtube.com/watch?v=dmbT2IHpOKU&t=146s"
-        }
-      ],
-      "description": "France helped bring NVIDIA’s first chip to life. More than 30 years later, its developers, researchers, and companies are using NVIDIA accelerated computing to advance industrial design, healthcare, and open AI models—and building AI factories to support what comes next."
-    },
-    {
-      "id": "mlst:IRJDwtAreB4",
-      "show_id": "mlst",
-      "show": "Machine Learning Street Talk",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "research"
-      ],
-      "title": "Mathematics Just Changed Forever — Kevin Hartnett",
-      "url": "https://www.youtube.com/watch?v=IRJDwtAreB4",
-      "video_id": "IRJDwtAreB4",
-      "audio_url": null,
-      "published_at": "2026-10-26T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 5614,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 16706,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "This is Leo Demora, the creator of Lean The paper was accepted with a disclaimer saying something like, we're ninety-nine percent confident this proof is correct. But then Tom starts using proof assistants. This all happened before Lean. He uses HOL Light and Isabelle to to do this work, but it was a milestone.",
-          "at_s": 354,
-          "url": "https://www.youtube.com/watch?v=IRJDwtAreB4&t=354s"
-        },
-        {
-          "text": "Cyber Fund believes the future belongs to AI natives who want to achieve the impossible. And that's why they're introducing the Monastery for AI native founders. It's an environment of pure focus and rapid execution for founders operating at AI native speed, and they're offering teams $2,000,000 each to participate. Apply now at cyber.fund.",
-          "at_s": 746,
-          "url": "https://www.youtube.com/watch?v=IRJDwtAreB4&t=746s"
-        },
-        {
-          "text": "Among the ITPs already on the market, de Moura admired the minimality of HOL Light, which had a very small kernel. Back in 2006, there was loads of duplicate effort at Microsoft. Some were building their own theorem provers, some were working on obsolete theorem provers and it was at that point that LEO decided to start working on Z3.",
-          "at_s": 915,
-          "url": "https://www.youtube.com/watch?v=IRJDwtAreB4&t=915s"
-        },
-        {
-          "text": "So early on it set out, can AI achieve a gold medal level score on the International Mathematical Olympiad? Google DeepMind picks up this quest themselves. In the book, I talk about the 2024 IMO which is where DeepMind designs a system called AlphaProof which is based on the same architecture as AlphaGo from a decade earlier almost.",
-          "at_s": 3375,
-          "url": "https://www.youtube.com/watch?v=IRJDwtAreB4&t=3375s"
-        },
-        {
-          "text": "Despite that limitation, DeepMind produced on the order of tens of millions of problems stated in Lean. Only then could AlphaProof's proof search begin. By September 2026, AI systems were tackling open research problems. In epoch AI's fixed budget test, a pre release OpenAI model proved Erdos problem 126 and disproved problem 74 by finding a counterexample.",
-          "at_s": 3511,
-          "url": "https://www.youtube.com/watch?v=IRJDwtAreB4&t=3511s"
-        },
-        {
-          "text": "But in practice, we're only using it at sort of ninety-nine percent capacity. And one of the things that machines will offer you is the chance to upgrade that to a hundred percent capacity. You know, the machines will say, well, this theorem as you've written it isn't actually true, is it? And then the human will well, obviously not.",
-          "at_s": 4276,
-          "url": "https://www.youtube.com/watch?v=IRJDwtAreB4&t=4276s"
-        }
-      ],
-      "description": "Kevin Hartnett is the author of *The Proof in the Code*."
-    },
-    {
-      "id": "lex-fridman:ZAzWPE9CItg",
-      "show_id": "lex-fridman",
-      "show": "Lex Fridman Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews"
-      ],
-      "title": "AI Crisis in Math: Navier-Stokes, Riemann Hypothesis & Complexity Theory | Lex Fridman Podcast #503",
-      "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg",
-      "video_id": "ZAzWPE9CItg",
-      "audio_url": null,
-      "published_at": "2026-10-26T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 12867,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 38081,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "The Fermat's Last Theorem formalization, I was sure we were three years away, at least, from being able to do something like that. - So, maybe you can elaborate on that. It was in Lean, it was formalized as... How big was the Fermat's Last Theorem in Lean? - Like, 13 million lines. - 13 million lines. Okay.",
-          "at_s": 4284,
-          "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg&t=4284s"
-        },
-        {
-          "text": "- Exactly right. So Kevin Buzzard had a million dollar grant to spend the next five years, or I th- maybe he's already a year or two into that grant, to reduce the formalization of Fermat's last theorem to things that were known in the 1980s.",
-          "at_s": 4420,
-          "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg&t=4420s"
-        },
-        {
-          "text": "There's a trillion-dollar engineering problem, which is, like, how do you predict these things in a fast, efficient way and do this inverse design? That's a much harder problem. - And you say it's a trillion dollar because that literally- - Literally - ...",
-          "at_s": 6570,
-          "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg&t=6570s"
-        },
-        {
-          "text": "It should be that it's not just that, you know, deciding whether it's completely satisfiable or not completely satisfiable is hard, but maybe even deciding is it 100% satisfiable or is it only 99% satisfiable. The best case over all assignments satisfy at most 99% of the clauses. That too might end up being hard to decide.",
-          "at_s": 7766,
-          "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg&t=7766s"
-        },
-        {
-          "text": "So this is a really neat experiment that you can do with your favorite LLM. So you take two LLMs, LLM A and LLM B. For LLM A, you tell it a system prompt that says, \"You really love owls. Every conversation topic, you try to bring up owls if it's at all germane.\"",
-          "at_s": 10577,
-          "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg&t=10577s"
-        },
-        {
-          "text": "About all this the OpenAI drop - I mean, I have a very hard time predicting what Perelman will do or say. I did not know he would decline the Fields Medal. I did not know he would decline the million-dollar Clay Prize, so- - What do you think about that in general, like turning down a prize?",
-          "at_s": 11323,
-          "url": "https://www.youtube.com/watch?v=ZAzWPE9CItg&t=11323s"
-        }
-      ],
-      "description": "Ankur Moitra, Steven Brunton and Alex Kontorovich are three mathematicians who can speak to this incredible moment in the history of mathematics, when AI solved some of its hardest problems: Navier-Stokes, the quasi-Riemann hypothesis, the unique games conjecture and hundreds of other problems. Ankur Moitra is a mathematician at MIT (visiting the Institute for Advanced Study in Princeton) working in theoretical computer science, who can speak to the unique games conjecture, complexity theory and the mathematics of how AI learns."
-    },
-    {
-      "id": "latent-space:vhPCo-8K78U",
-      "show_id": "latent-space",
-      "show": "Latent Space",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "engineering"
-      ],
-      "title": "What 90,000 Rollouts Reveal About AI Agents Doing Science - Ian Quigley, Leash Bio",
-      "url": "https://www.youtube.com/watch?v=vhPCo-8K78U",
-      "video_id": "vhPCo-8K78U",
-      "audio_url": null,
-      "published_at": "2026-10-26T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 994,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 3043,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "This is Brandon and RJ speaking, accompanied by Ian Quigley from Leash Bio. We recorded an episode earlier this summer with Ian in which he talked about the interesting things Leash is doing with DNA-coded libraries and how they could analyze millions of compounds by comparing them to thousands of proteins very efficiently.",
-          "at_s": 5,
-          "url": "https://www.youtube.com/watch?v=vhPCo-8K78U&t=5s"
-        },
-        {
-          "text": "So what we do is take a model, we take an agent as a language model and then we say, here is a catalog that you can consult. You have a budget of 100 molecules. We're not going to tell you anything other than the objective, and we're going to look for the best binder you can find.",
-          "at_s": 143,
-          "url": "https://www.youtube.com/watch?v=vhPCo-8K78U&t=143s"
-        },
-        {
-          "text": "Yes, and the problem with the dumber models is that they will continue to make small, subtle changes to molecules that will never get anywhere. TRUE? Like: \"Oh, these two have a low score, but I feel good about them.\" So I'll keep trying things. And then the smarter models will abandon the whole process. We'll go somewhere else.",
-          "at_s": 306,
-          "url": "https://www.youtube.com/watch?v=vhPCo-8K78U&t=306s"
-        },
-        {
-          "text": "The Sonnet 55 is also quite good. Okay. Yes, and Sol 61 is also quite good. So, the number five is just a pilot trap, right? That will be... Yes, I saw that the five is very expensive and doesn't have much performance. Yes, yes. But yes, I think Anthropic will long consider the five a big mistake.",
-          "at_s": 454,
-          "url": "https://www.youtube.com/watch?v=vhPCo-8K78U&t=454s"
-        },
-        {
-          "text": "There are a couple of open-source packages that people use, like RDKit, to do this. But we wanted the language models to do it on their own because it would go faster and they weren't good at using tools on their own back then. And nobody could do it.",
-          "at_s": 622,
-          "url": "https://www.youtube.com/watch?v=vhPCo-8K78U&t=622s"
-        },
-        {
-          "text": "And yes, and right now we have...we've analyzed about a thousand proteins in a couple of these chemical libraries since we started with Leash, and we're going to start increasing that number. I think we're going to try to get to about 20 of these new environments per day. Our plan is to try to reach about 26 or 27.",
-          "at_s": 847,
-          "url": "https://www.youtube.com/watch?v=vhPCo-8K78U&t=847s"
-        }
-      ],
-      "description": "Leash Biosciences built a platform to physically measure thousands of proteins against millions of molecules. In this followup to our Leash Bio podcast with cofounder Ian Quigley, he returns to discuss the release of Minos, Leash’s framework of pre-measured experimental worlds that scientific agents can explore. Ian goes into how scientific agents traverse these environments, whether they use information from prior experiments to inform future choices, how good they get at medicinal chemistry, and how their broad decision making abilities"
-    },
-    {
-      "id": "interconnects-interviews:79Pnm5hANsA",
-      "show_id": "interconnects-interviews",
-      "show": "Interconnects (Nathan Lambert)",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "research"
-      ],
-      "title": "Open Language Models: Overview, Open Source History, Distillation, Risks, & Chinese Labs",
-      "url": "https://www.youtube.com/watch?v=79Pnm5hANsA",
-      "video_id": "79Pnm5hANsA",
-      "audio_url": null,
-      "published_at": "2026-10-26T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2884,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": "Finally, I made the time to make some foundational educational content on open models. It's a very complex subject and it was a lot of fun to give a lecture that put together all aspects of my work here, from studying history to making original datasets on adoption, and to curating the most influential LLMs at the center of it all. I got to draw on years on obsessing over the topic and condense it into one 45-minute lecture. I"
-    },
-    {
-      "id": "decoder:FU2wls6TOyw",
-      "show_id": "decoder",
-      "show": "Decoder with Nilay Patel",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews"
-      ],
-      "title": "Kevin Roose is AGI-pilled. Why aren’t you? | Decoder",
-      "url": "https://www.youtube.com/watch?v=FU2wls6TOyw",
-      "video_id": "FU2wls6TOyw",
-      "audio_url": null,
-      "published_at": "2026-10-26T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3849,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": "My guest today is Kevin Roose, a journalist and author of the new book The AGI Chronicles. Kevin was a longtime New York Times reporter and host of the popular podcast Hard Fork, but he and friend of the show Casey Newton just left The Times to start the all-new tech podcast Machine Gods, which launched last week. Kevin and I talked about launching Machine Gods and what it’s like to go from the TImes to being an independent creator,"
-    },
-    {
-      "id": "big-technology:NVvfllwYliY",
-      "show_id": "big-technology",
-      "show": "Big Technology Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "news-show"
-      ],
-      "title": "Emergency Pod: Anthropic's S-1 IPO Filing — With Dan Primack",
-      "url": "https://www.youtube.com/watch?v=NVvfllwYliY",
-      "video_id": "NVvfllwYliY",
-      "audio_url": null,
-      "published_at": "2026-10-26T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1617,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 6050,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "We don't really know what their valuation is going to be. People are assuming it's going to be 100 million raised at a 200 million sorry two trillion sorry 100 billion raised at a two trillion valuation. Um where do you think Anthropic stands on the ability to do that based on what you saw in the document?",
-          "at_s": 103,
-          "url": "https://www.youtube.com/watch?v=NVvfllwYliY&t=103s"
-        },
-        {
-          "text": "Um so it's 3.9 billion of cash flow from operations less 482 million of capex. Um so you know talk a little bit about anthropic being cash flow uh positive uh and sort of it is all the compute the money that they're spending on compute factored in that doesn't seem like it. No, it doesn't seem to.",
-          "at_s": 424,
-          "url": "https://www.youtube.com/watch?v=NVvfllwYliY&t=424s"
-        },
-        {
-          "text": "I mean, the revenue growth itself is is extraordinary. I mean, they went from 41 million in revenue 3 years ago to 16.3 billion in the first half of 2026. Correct. Yeah, that doesn't happen. It doesn't happen.",
-          "at_s": 692,
-          "url": "https://www.youtube.com/watch?v=NVvfllwYliY&t=692s"
-        },
-        {
-          "text": "More than 10% of our revenue uh for the 9 months ended September 30th, 2026. Approximately 79% of our revenue came from customers outside of our top five customers for the 3 months ended September 30th, 2026. I mean that is there's there's a real diversification of revenue that they have going on there, which they need.",
-          "at_s": 858,
-          "url": "https://www.youtube.com/watch?v=NVvfllwYliY&t=858s"
-        },
-        {
-          "text": "In 2025 Q1, it was 40 cents per dollar, right? So, they're losing money on every dollar of compute. Today, it is two $28. That's wild to be able to reverse that the way that they have. I mean, obviously, that's the cloud code and cloud co-work effect. It is.",
-          "at_s": 1000,
-          "url": "https://www.youtube.com/watch?v=NVvfllwYliY&t=1000s"
-        },
-        {
-          "text": "We don't it's going to take a long time for us to actually figure out what venture firms have made on anthropic despite the price. Like you can look and be like, \"Oh, well, you invested a $200 million valuation or $200 billion valuation. It's now worth two trillion.\" We don't know anything about preference stacks.",
-          "at_s": 1526,
-          "url": "https://www.youtube.com/watch?v=NVvfllwYliY&t=1526s"
-        }
-      ],
-      "description": "Chapters: Anthropic’s S-1 Is Here Can Anthropic Raise $100 Billion? Wall Street’s AI Funding Test Anthropic’s Cash Flow and Compute Costs What Are Investors Betting On? Anthropic’s Explosive Revenue Growth Anthropic’s Customer Diversification AI Compute Efficiency and Profitability Anthropic’s Biggest Risk Factors What Anthropic’s IPO Means for OpenAI"
-    },
-    {
-      "id": "ai-daily-brief:HyEfRBW10Kk",
-      "show_id": "ai-daily-brief",
-      "show": "The AI Daily Brief",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "news-show"
-      ],
-      "title": "How I m Actually Using Claude Duet",
-      "url": "https://www.youtube.com/watch?v=HyEfRBW10Kk",
-      "video_id": "HyEfRBW10Kk",
-      "audio_url": null,
-      "published_at": "2026-10-26T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1921,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": "The AI Daily Brief helps you understand the most important news and discussions in AI."
-    },
-    {
-      "id": "a16z:9v42ZOdiBJY",
-      "show_id": "a16z",
-      "show": "a16z",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Why OpenAI Is Racing to Make Computer Use Superhuman",
-      "url": "https://www.youtube.com/watch?v=9v42ZOdiBJY",
-      "video_id": "9v42ZOdiBJY",
-      "audio_url": null,
-      "published_at": "2026-10-26T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2654,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 8767,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "99% Reliable 97 % Reliable Between one To understand Difficult and But very Important A small Different A type This is the thing, That's very Concretely Feeling In the manner A little That is high For me It seems. Yes, that in matters To some I Adding , yes, our The most Suitable Model too, yes. Isn't that right?",
-          "at_s": 135,
-          "url": "https://www.youtube.com/watch?v=9v42ZOdiBJY&t=135s"
-        },
-        {
-          "text": ", my local Local browser Drive When Dots Your Local Computer Cloud Computer Will control , in the century Will log in, Logs Will pull it out , analysis Will do, For me Feedback will be given, so Which Feedback It is important To find , that To look at , later In the century To go, Logs Download To",
-          "at_s": 456,
-          "url": "https://www.youtube.com/watch?v=9v42ZOdiBJY&t=456s"
-        },
-        {
-          "text": "Then, Obviously, Multiple Different Models Multiple Different In virtues And in price Promise A person who does Strategy We have . So, Different Usage For cases, To you Another model To use Might be interested . At the same time, Our cheap Models Over time Computer In use Too much Getting better .",
-          "at_s": 581,
-          "url": "https://www.youtube.com/watch?v=9v42ZOdiBJY&t=581s"
-        },
-        {
-          "text": "I think, Isn't it? One, We Our Business Model Conducted Agencies Our With the product Not compatible , right? Advertisers Publishers About You Thinking , their Business Model Completely In advertising Based. Agent Website Using If for them , that income Where From where? Most In places A Agent's Ad impression Original In income Not considered I think.",
-          "at_s": 739,
-          "url": "https://www.youtube.com/watch?v=9v42ZOdiBJY&t=739s"
-        },
-        {
-          "text": "Now Again, All this is a For the enterprise To pass possible Dials It's like. Hmm, So that Really One, then Two is Enterprise For admins To you How I know. Showing, These models Internal Third Party With Ewals how much Agreed. About We Internally All made And evals.",
-          "at_s": 1136,
-          "url": "https://www.youtube.com/watch?v=9v42ZOdiBJY&t=1136s"
-        },
-        {
-          "text": "Therefore, these two And things For a long time Will continue I Hoping . Today Produced Softwares If you look , in which Most of them are 10, 20, 30, 40 years Before Written by, IIII Such Things are one At night Will disappear. I I don't think so. For me It seems.",
-          "at_s": 1598,
-          "url": "https://www.youtube.com/watch?v=9v42ZOdiBJY&t=1598s"
-        }
-      ],
-      "description": "AI agents are approaching a point where they can use computers faster than expert humans, turning the user interface itself into a universal way for AI to interact with software. OpenAI’s Ari Weinstein and James Sun argue that computer use is now entering its scaling moment, as better models, faster execution, and stronger safety controls make agents practical for more consumer and enterprise work. Ari and James join a16z’s Seema Amble and Fabrizio Serafini to explain how computer-using agents are"
-    },
-    {
-      "id": "20vc:24XUcWhqY_4",
-      "show_id": "20vc",
-      "show": "20VC",
-      "kind": "podcast",
-      "priority": "P2",
-      "tags": [
-        "interviews",
-        "markets"
-      ],
-      "title": "Satya Nadella on Open vs Closed Models: Who Wins | Why Companies Need to Own Their Own Intelligence",
-      "url": "https://www.youtube.com/watch?v=24XUcWhqY_4",
-      "video_id": "24XUcWhqY_4",
-      "audio_url": null,
-      "published_at": "2026-10-26T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 1429,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 4067,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "And so, hopefully, the model itself will eventually become consistent. So if you put aside AI security, the trust architecture is just like companies like Microsoft or all the cyber experts. Here's what we did, for example : we created two things. Agent 365 and Perception, right? What are they doing? They give each agent an ID.",
-          "at_s": 187,
-          "url": "https://www.youtube.com/watch?v=24XUcWhqY_4&t=187s"
-        },
-        {
-          "text": "I believe that, if you take a step back, the lack of AI security is bad for China. This is bad for the United States. This is bad for Great Britain. I think this applies to everyone, because an unregulated model with open scales will likely threaten even China itself.",
-          "at_s": 362,
-          "url": "https://www.youtube.com/watch?v=24XUcWhqY_4&t=362s"
-        },
-        {
-          "text": "Because there will be a lot of price competition, let 's put it this way. If you look at my own use of Co-pilot, we use a lot of the cheaper closed models along with the open-weight models. You talked about the importance of owning your own intelligence for some of your wonderful clients. You mentioned some in the UK.",
-          "at_s": 522,
-          "url": "https://www.youtube.com/watch?v=24XUcWhqY_4&t=522s"
-        },
-        {
-          "text": "Your Harvey or Legora, or similar very progressive AI companies. Will this spread to every company in the world? You remembered your thoughts. Yes, it always happens, doesn't it? You know, there was a time in the late 80s and early 90s when those few companies that implemented PCs and did forecasting seemed like something magical.",
-          "at_s": 676,
-          "url": "https://www.youtube.com/watch?v=24XUcWhqY_4&t=676s"
-        },
-        {
-          "text": "And if I had known this 12 months ago, I would have invested very differently. By the way, Mustafa Suleiman talked about the fact that training cycles worth 100 billion are approaching, and only a few laboratories can pay for it. $100 billion training cycles.",
-          "at_s": 960,
-          "url": "https://www.youtube.com/watch?v=24XUcWhqY_4&t=960s"
-        },
-        {
-          "text": "What has changed in your views over the last 12 months? The last 12...Maybe because I was one of the first. Obviously, when Dario, Ilya, Sam, Greg, and Elon were, I think, one happy family, they believed in the laws of scaling, and I believed in it in 2018, 2019 .",
-          "at_s": 1290,
-          "url": "https://www.youtube.com/watch?v=24XUcWhqY_4&t=1290s"
-        }
-      ],
-      "description": "Satya Nadella is the CEO of Microsoft and one of the greatest CEOs of our time. Satya has been at the company for an astonishing 34 years. When he joined, Microsoft had a market cap of $23.5BN. 22 years later, the company was worth $300BN. At this point, Satya took the reins as CEO. Under his leadership, he has taken it from $300BN to $3.9TRN. Timestamps: Intro Why Satya Says We Should Assume AI Models Are Compromised Why AI Needs"
     }
   ]
 }
