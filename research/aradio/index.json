@@ -1,9 +1,70 @@
 {
   "schema": 1,
-  "updated_at": "2026-11-22T01:16:00Z",
+  "updated_at": "2026-11-25T03:10:00Z",
   "degraded": false,
-  "latest": "2026-11-22-0116",
+  "latest": "2026-11-25-0310",
   "bulletins": [
+    {
+      "id": "2026-11-25-0310",
+      "aired_at": "2026-11-25T03:10:00Z",
+      "headline": "Dell's record $54.9B quarter and $132B AI backlog; an unchecked Claude paper claims VP ≠ VNP",
+      "path": "bulletins/2026-11-25/0310.json",
+      "audio": {
+        "key": "audio/aradio/2026-11-25-0310.mp3",
+        "bytes": 1220637,
+        "duration_s": 203.3,
+        "segments": [
+          {
+            "start_s": 4.2,
+            "end_s": 18.68,
+            "lines": [
+              0,
+              0
+            ]
+          },
+          {
+            "start_s": 20.53,
+            "end_s": 55.17,
+            "lines": [
+              1,
+              2
+            ]
+          },
+          {
+            "start_s": 56.62,
+            "end_s": 83.3,
+            "lines": [
+              3,
+              4
+            ]
+          },
+          {
+            "start_s": 84.75,
+            "end_s": 196.79,
+            "lines": [
+              5,
+              12
+            ]
+          }
+        ]
+      },
+      "covers": [
+        "hyperscaler-capex-and-chip-selloff",
+        "ai-math-and-physics-discovery-claims",
+        "nvidia-jensen-huang-spy-allegations",
+        "ai-drug-discovery",
+        "ai-cyber-risk-and-key-theft",
+        "enterprise-agent-economics",
+        "next-model-launches-qwen-4-gpt-6-2-astra",
+        "labs-automating-ai-research"
+      ],
+      "kinds": [
+        "earnings",
+        "podcast",
+        "twitter",
+        "video"
+      ]
+    },
     {
       "id": "2026-11-22-0116",
       "aired_at": "2026-11-22T01:16:00Z",

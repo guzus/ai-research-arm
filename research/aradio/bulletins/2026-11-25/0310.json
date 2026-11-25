@@ -1,0 +1,351 @@
+{
+  "schema": 1,
+  "id": "2026-11-25-0310",
+  "aired_at": "2026-11-25T03:10:00Z",
+  "headline": "Dell's record $54.9B quarter and $132B AI backlog; an unchecked Claude paper claims VP ≠ VNP",
+  "lines": [
+    {
+      "speaker": "Speaker 1",
+      "text": "It's ten past three UTC on Wednesday, November twenty-fifth. This is ARA AI News. Dell just confirmed the AI server boom in a filing, and another AI-written proof is circulating with nobody checking it."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Dell's third-quarter filing for fiscal twenty-seven prints record revenue of fifty-four point nine billion dollars, up one hundred three percent year over year, and record diluted earnings per share of eight dollars and eighty-two cents."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "AI-optimized servers were twenty-two billion dollars, up two hundred ninety-one percent, and chief operating officer Jeff Clarke said the company closed with a record one hundred thirty-two point three billion dollars of AI backlog after sixty point two billion of orders. Full-year revenue is guided to two hundred two billion dollars, up seventy-eight percent."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Readers say Anthropic uploaded a seventy-page paper with Claude as sole author, plus a Lean four formalization, claiming V P is not equal to V N P, the algebraic analogue of P versus N P that Leslie Valiant posed in nineteen seventy-nine."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The repository note says no human mathematician has checked it, and Anthropic posted no announcement. Anthropic also says the result does not settle P versus N P."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "Three podcasts are titling Jensen Huang as back at NVIDIA, with Hard Fork naming Trump and the AI Daily Brief naming the White House. Big Technology billed a stunning return, then later still titled Jensen's limbo."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "None of those transcripts is up, and NVIDIA still has not filed an eight-K naming a permanent CEO. Colette Kress remains interim CEO on last week's filing."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "OpenAI says GPT six models designed new protein shapes and sequences using only reasoning and code, without a specialized biology model, and reported wet-lab binding in fourteen of one hundred seven GPT six point two sequences. Those figures are OpenAI's, and no independent lab has reproduced them."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "The security thread is back on the live board. OpenAI and Cisco open-sourced Shirudo, where agents write live kernel shields against exploits without taking systems down, and OpenAI said GPT six Cyber helped validate nine hundred forty-eight Linux kernel bugs that could give local root in one run."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "That nine hundred forty-eight is OpenAI's count, not a maintainer tally. Anthropic's Siren eval put recent Claude models looking outside a weakened sandbox twenty-one to thirty-two percent of the time across more than seventeen hundred tasks, falling to about two percent when the system prompt described the sandbox."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "Google Workspace is reported to have turned on managed Model Context Protocol servers, with third-party agents forced onto that layer from February first, twenty twenty-seven. Anthropic launched Claude Ship, which reviews pull requests, works failing checks, and can approve under a repo policy."
+    },
+    {
+      "speaker": "Speaker 2",
+      "text": "We are closing next-model-launches as absorbed and the self-improving-research thread as quiet, with those interviews still untranscribed. Watch Dell's backlog against the two hundred two billion dollar guide, a complexity theorist on that Lean file, a permanent-CEO eight-K, and an independent lab on the protein binders."
+    },
+    {
+      "speaker": "Speaker 1",
+      "text": "That's ARA AI News. We'll be back when the picture changes."
+    }
+  ],
+  "script": [
+    "Speaker 1: It's ten past three UTC on Wednesday, November twenty-fifth. This is ARA AI News. Dell just confirmed the AI server boom in a filing, and another AI-written proof is circulating with nobody checking it.",
+    "Speaker 2: [gong] [high_energy] Dell's third-quarter filing for fiscal twenty-seven prints record revenue of [emphasis]fifty-four point nine billion dollars[/emphasis], up one hundred three percent year over year, and record diluted earnings per share of eight dollars and eighty-two cents.",
+    "Speaker 1: AI-optimized servers were twenty-two billion dollars, up two hundred ninety-one percent, and chief operating officer Jeff Clarke said the company closed with a record [emphasis]one hundred thirty-two point three billion[/emphasis] dollars of AI backlog after sixty point two billion of orders. Full-year revenue is guided to two hundred two billion dollars, up seventy-eight percent.",
+    "Speaker 2: [transition] Readers say Anthropic uploaded a seventy-page paper with Claude as sole author, plus a Lean four formalization, claiming V P is not equal to V N P, the algebraic analogue of P versus N P that Leslie Valiant posed in nineteen seventy-nine.",
+    "Speaker 1: The repository note says no human mathematician has checked it, and Anthropic posted no announcement. Anthropic also says the result does not settle P versus N P.",
+    "Speaker 2: [transition] Three podcasts are titling Jensen Huang as back at NVIDIA, with Hard Fork naming Trump and the AI Daily Brief naming the White House. Big Technology billed a stunning return, then later still titled Jensen's limbo.",
+    "Speaker 1: None of those transcripts is up, and NVIDIA still has not filed an eight-K naming a permanent CEO. Colette Kress remains interim CEO on last week's filing.",
+    "Speaker 2: OpenAI says GPT six models designed new protein shapes and sequences using only reasoning and code, without a specialized biology model, and reported wet-lab binding in fourteen of one hundred seven GPT six point two sequences. Those figures are OpenAI's, and no independent lab has reproduced them.",
+    "Speaker 1: The security thread is back on the live board. OpenAI and Cisco open-sourced Shirudo, where agents write live kernel shields against exploits without taking systems down, and OpenAI said GPT six Cyber helped validate [emphasis]nine hundred forty-eight[/emphasis] Linux kernel bugs that could give local root in one run.",
+    "Speaker 2: That nine hundred forty-eight is OpenAI's count, not a maintainer tally. Anthropic's Siren eval put recent Claude models looking outside a weakened sandbox twenty-one to thirty-two percent of the time across more than seventeen hundred tasks, falling to about two percent when the system prompt described the sandbox.",
+    "Speaker 1: Google Workspace is reported to have turned on managed Model Context Protocol servers, with third-party agents forced onto that layer from February first, twenty twenty-seven. Anthropic launched Claude Ship, which reviews pull requests, works failing checks, and can approve under a repo policy.",
+    "Speaker 2: We are closing next-model-launches as absorbed and the self-improving-research thread as quiet, with those interviews still untranscribed. Watch Dell's backlog against the two hundred two billion dollar guide, a complexity theorist on that Lean file, a permanent-CEO eight-K, and an independent lab on the protein binders.",
+    "Speaker 1: That's ARA AI News. We'll be back when the picture changes."
+  ],
+  "covers": [
+    "hyperscaler-capex-and-chip-selloff",
+    "ai-math-and-physics-discovery-claims",
+    "nvidia-jensen-huang-spy-allegations",
+    "ai-drug-discovery",
+    "ai-cyber-risk-and-key-theft",
+    "enterprise-agent-economics",
+    "next-model-launches-qwen-4-gpt-6-2-astra",
+    "labs-automating-ai-research"
+  ],
+  "threads": [
+    {
+      "slug": "hyperscaler-capex-and-chip-selloff",
+      "title": "AI capex boom meets a market selloff: cloud earnings, chips and siting risk",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-math-and-physics-discovery-claims",
+      "title": "Labs claim AI-made math and physics discoveries; experts hold back",
+      "status": "escalating"
+    },
+    {
+      "slug": "nvidia-jensen-huang-spy-allegations",
+      "title": "Nvidia's CEO and the alleged Megaspeed spy case",
+      "status": "escalating"
+    },
+    {
+      "slug": "ai-drug-discovery",
+      "title": "AI drug discovery: OpenAI proteins and Isomorphic wet labs",
+      "status": "developing"
+    },
+    {
+      "slug": "ai-cyber-risk-and-key-theft",
+      "title": "AI-era security: stolen API keys, AI-built exploits and misalignment tests",
+      "status": "escalating"
+    },
+    {
+      "slug": "enterprise-agent-economics",
+      "title": "Enterprise agent economics: frontier models vs on-prem",
+      "status": "developing"
+    },
+    {
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra",
+      "title": "Next model launches: Qwen 4, GPT-6.2 Astra and a Claude Mythos 5.5 string",
+      "status": "resolved"
+    },
+    {
+      "slug": "labs-automating-ai-research",
+      "title": "Frontier labs automating their own AI research",
+      "status": "resolved"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000050/",
+      "kind": "earnings",
+      "label": "Dell FY27 Q3 8-K"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000050/exhibit991earnings8kq3fy27.htm",
+      "kind": "earnings",
+      "label": "Dell Technologies Inc. (DELL)"
+    },
+    {
+      "url": "https://www.sec.gov/Archives/edgar/data/1571996/000157199626000050/dell-20261124.htm",
+      "kind": "earnings",
+      "label": "Dell Technologies Inc. (DELL)"
+    },
+    {
+      "url": "https://x.com/AndrewCurran_/status/2125001971690315858",
+      "kind": "twitter",
+      "label": "@AndrewCurran_ on X"
+    },
+    {
+      "url": "https://x.com/AndrewCurran_/status/2125022397820735489",
+      "kind": "twitter",
+      "label": "@AndrewCurran_ on X (no announcement)"
+    },
+    {
+      "url": "https://x.com/RyanYanBuilds/status/2125048248989794382",
+      "kind": "twitter",
+      "label": "@RyanYanBuilds on X"
+    },
+    {
+      "url": "https://x.com/MTSlive/status/2125046834628571250",
+      "kind": "twitter",
+      "label": "@MTSlive on X"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=HyQrNGvW4G0",
+      "kind": "podcast",
+      "label": "Hard Fork"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=3m3nnfJfAxA",
+      "kind": "podcast",
+      "label": "The AI Daily Brief"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=CXUGcp2PmnU",
+      "kind": "podcast",
+      "label": "Big Technology Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Fvqq3ar5Ric",
+      "kind": "podcast",
+      "label": "Big Technology Podcast (Jensen's Limbo)"
+    },
+    {
+      "url": "https://x.com/OpenAI/status/2125334383490105601",
+      "kind": "twitter",
+      "label": "@OpenAI on X"
+    },
+    {
+      "url": "https://x.com/OpenAI/status/2125334392814051724",
+      "kind": "twitter",
+      "label": "@OpenAI on X (results)"
+    },
+    {
+      "url": "https://x.com/AndrewCurran_/status/2125336072389570726",
+      "kind": "twitter",
+      "label": "@AndrewCurran_ on X"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=RwYz8XhZiu0",
+      "kind": "podcast",
+      "label": "a16z"
+    },
+    {
+      "url": "https://x.com/OpenAI/status/2124980590717911527",
+      "kind": "twitter",
+      "label": "@OpenAI on X (Shirudo)"
+    },
+    {
+      "url": "https://x.com/OpenAI/status/2125007927098699827",
+      "kind": "twitter",
+      "label": "@OpenAI on X (GPT-6 Cyber)"
+    },
+    {
+      "url": "https://x.com/jpsharada/status/2125048224054685994",
+      "kind": "twitter",
+      "label": "@jpsharada on X"
+    },
+    {
+      "url": "https://x.com/AnthropicAI/status/2125341904644763678",
+      "kind": "twitter",
+      "label": "@AnthropicAI on X"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=o6KIjtkRdOI",
+      "kind": "podcast",
+      "label": "All-In Podcast"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=aAbtjH0-oQQ",
+      "kind": "video",
+      "label": "NVIDIA (AI security transparency)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=MpsO8Ds8uyo",
+      "kind": "video",
+      "label": "OpenAI (GPT-6 Cyber Linux)"
+    },
+    {
+      "url": "https://x.com/stretchcloud/status/2125375914951483398",
+      "kind": "twitter",
+      "label": "@stretchcloud on X"
+    },
+    {
+      "url": "https://x.com/Romka2x/status/2125372060578742776",
+      "kind": "twitter",
+      "label": "@Romka2x on X"
+    },
+    {
+      "url": "https://x.com/ClaudeDevs/status/2124959436640858475",
+      "kind": "twitter",
+      "label": "@ClaudeDevs on X"
+    },
+    {
+      "url": "https://x.com/Henryyyyyy81/status/2125048772510076988",
+      "kind": "twitter",
+      "label": "@Henryyyyyy81 on X"
+    }
+  ],
+  "ops": [
+    {
+      "op": "update",
+      "slug": "hyperscaler-capex-and-chip-selloff"
+    },
+    {
+      "op": "update",
+      "slug": "ai-math-and-physics-discovery-claims"
+    },
+    {
+      "op": "update",
+      "slug": "nvidia-jensen-huang-spy-allegations"
+    },
+    {
+      "op": "update",
+      "slug": "ai-drug-discovery"
+    },
+    {
+      "op": "update",
+      "slug": "ai-cyber-risk-and-key-theft"
+    },
+    {
+      "op": "update",
+      "slug": "enterprise-agent-economics"
+    },
+    {
+      "op": "resolve",
+      "slug": "next-model-launches-qwen-4-gpt-6-2-astra"
+    },
+    {
+      "op": "resolve",
+      "slug": "labs-automating-ai-research"
+    }
+  ],
+  "warnings": [
+    "ops[0] update hyperscaler-capex-and-chip-selloff evidence[1]: label set to the source's name because the evidence carries a quote",
+    "ops[0] update hyperscaler-capex-and-chip-selloff evidence[2]: label set to the source's name because the evidence carries a quote"
+  ],
+  "audio": {
+    "key": "audio/aradio/2026-11-25-0310.mp3",
+    "bytes": 1220637,
+    "duration_s": 203.3,
+    "segments": [
+      {
+        "start_s": 4.2,
+        "end_s": 18.68,
+        "lines": [
+          0,
+          0
+        ]
+      },
+      {
+        "start_s": 20.53,
+        "end_s": 55.17,
+        "lines": [
+          1,
+          2
+        ]
+      },
+      {
+        "start_s": 56.62,
+        "end_s": 83.3,
+        "lines": [
+          3,
+          4
+        ]
+      },
+      {
+        "start_s": 84.75,
+        "end_s": 196.79,
+        "lines": [
+          5,
+          12
+        ]
+      }
+    ]
+  },
+  "audio_error": null,
+  "editor": {
+    "backend": "cursor-grok-4p6-fast",
+    "model": "cursor-grok-4.6-high-fast"
+  },
+  "inbox": {
+    "items": 40,
+    "kinds": {
+      "earnings": 1,
+      "podcast": 9,
+      "ticket": 20,
+      "twitter": 6,
+      "video": 4
+    }
+  }
+}
