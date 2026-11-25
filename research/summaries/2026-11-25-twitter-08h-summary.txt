@@ -1,0 +1,13 @@
+Twitter/X AI Pulse - 2026-11-25 08:18:14 UTC
+
+CYCLE: Claude product updates, plus a reported OpenAI answer to the VP ≠ VNP proof
+
+TOP STORIES:
+• Claude artifacts can now be installed as Mac/Windows desktop apps (beta, all plans) [✓]
+• MCP Tasks is GA in Claude; Skills over MCP launched; 10,000+ connectors [✓]
+• OpenAI reportedly posted its own VP ≠ VNP proof, dated Nov 6, to openai/math [⚠]
+• Anthropic Fellows: individual neurons are a workable basis for interpretability [✓]
+
+WATCH: an outside complexity theorist checking either lab's VP ≠ VNP Lean statement
+
+Full update on GitHub.
