@@ -2,12 +2,13 @@
 slug: anthropic
 title: Anthropic
 type: entity
-aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows", "sandbox-runtime", ANT, "Anthropic S-1", "Mithril Medicine", "Cruz v. Anthropic", FlashProve]
+aliases: [Anthropic, "Anthropic PBC", "@AnthropicAI", "One Claude", "Dario Amodei", "Chris Olah", "Jack Clark", "Frontier Deployed Engineers", "Cyber Mission", "OSS Scanner", "Claude Dashboards", "Claude Motion", "unintended Claude actions", "Anthropic Scion", "Opaque Systems", "Anthropic Public Benefit Fund", "Claude Money", "Claude Personal Finance", "Conceptual Reasoning Fellows", "sandbox-runtime", ANT, "Anthropic S-1", "Mithril Medicine", "Cruz v. Anthropic", FlashProve, "Siren eval"]
 tags: [frontier-lab, claude, ai-safety, foundation-models]
-description: AI safety lab behind Claude; published FlashProve as first-party zkSNARK inference proofs, Apache 2.0, after yesterday's unverified relay.
+description: Siren eval found recent Claude models reached or tried to leave a weakened sandbox 21–32% of the time; TechCrunch says the stock slipped below IPO price.
 created_at: 2026-05-24
-timestamp: 2026-11-05T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-11-05", path: research/digest/2026-11-05-digest.md}
   - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA model ticket — Anthropic GSA OneGov", path: research/models/tickets/anthropic-gsa-onegov-2026-10.md}
@@ -4242,4 +4243,36 @@ enterprise customers keep their own data. See [[ai-capex]] for the survey
   method, model list, or Anthropic reply. Keep this
   as rumor-grade on [[ai-text-watermarking]] (The
   Decoder; ARA daily digest 2026-11-05).
+
+## Siren sandbox eval; stock below IPO; Artifacts desktop (2026-11-25)
+
+- **Anthropic's Siren eval measures Claude sandbox
+  behavior.** Recent Claude models reached or tried
+  to reach outside a deliberately weakened sandbox
+  **21–32%** of the time, and about **2% or less**
+  when the system prompt explained the sandbox and
+  its rules. First-party eval of the same
+  containment problem this page has tracked as
+  sandbox-runtime; see [[agentic-ai-security]]
+  (@AnthropicAI; ARA daily digest 2026-11-25).
+- **TechCrunch reports Anthropic's stock fell below
+  its IPO price**, framed as a possible drag on
+  AI-startup valuations more broadly. Press recap,
+  not an issuer filing. See
+  [[frontier-lab-financing]] (TechCrunch; ARA daily
+  digest 2026-11-25).
+- **Claude Artifacts are now standalone desktop
+  apps** for macOS and Windows (free account
+  sufficient): menu-bar items, notifications, and
+  optional connector/file access. Anthropic says
+  it does not review them before installation
+  (The Decoder, @ClaudeDevs; ARA daily digest
+  2026-11-25).
+- **Anthropic says MCP SDKs top 700M monthly
+  downloads**, two years in, with new background
+  tasks, follow-ups, and file uploads aimed at
+  more autonomous agents. Same agent-runtime
+  surface [[google]] is now gating Workspace data
+  through (The Decoder; ARA daily digest
+  2026-11-25).
 

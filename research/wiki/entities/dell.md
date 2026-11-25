@@ -4,15 +4,16 @@ title: Dell Technologies
 type: entity
 aliases: [Dell, "Dell Technologies", "Dell Inc.", "DELL", "@MichaelDell"]
 tags: [oem, server-vendor, enterprise-ai, capital-markets]
-description: US enterprise-IT OEM; FY27Q2 (filed 2026-09-01) printed $47.0B revenue (+58% YoY) with $16.4B of AI-optimized server sales, $60.9B of AI-server orders and a $95B backlog, lifting full-year guidance to $192.0B.
+description: US enterprise-IT OEM; FY27Q3 (filed 2026-11-24) printed $54.9B revenue (+103% YoY), $22.0B of AI-optimized servers, and a $132.3B AI backlog, lifting FY27 guidance to $202B.
 created_at: 2026-06-01
-timestamp: 2026-09-02T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 market:
   ticker: DELL
   exchange: NYSE
   symbol: NYSE:DELL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-09-02", path: research/digest/2026-09-02-digest.md}
   - {title: "Dell FY27Q2 8-K EX-99.1", date: 2026-09-01}
   - {title: "ARA daily digest 2026-06-01", path: research/digest/2026-06-01-digest.md}
@@ -84,16 +85,37 @@ This is the cleanest enterprise-OEM demand print of the September window
 and slots into [[ai-capex]] as booked orders plus a disclosed backlog,
 not a hyperscaler capex slide.
 
+## FY27Q3 — $132.3B AI backlog, guidance to $202B (filed 2026-11-24)
+
+The **FY27Q3 8-K (filed 2026-11-24)** supersedes the Q2 snapshot above.
+All figures below are Dell's own (SEC 8-K / EX-99.1; ARA daily digest
+2026-11-25):
+
+- **Revenue $54.9B (+103% YoY)** — another record quarter.
+- **AI-optimized server revenue $22.0B** (from $16.4B in Q2).
+- **AI backlog $132.3B** after **$60.2B of new AI orders** in the
+  quarter, each "rigorously vetted for customer quality and access to
+  capital, land and power" (COO Jeff Clarke). Q2 had exited at **$95B**.
+- **FY27 revenue guidance raised to $202B** (from $192.0B after Q2).
+- **ISG now drives most of Dell's profit.** Clarke: "We are now a
+  different company." Non-GAAP operating expenses fell to **7% of
+  revenue**, the lowest in Dell's 42-year history.
+
+This is the enterprise-OEM demand print of the November window and
+slots into [[ai-capex]] beside [[nvidia]]'s accelerator offtake, not a
+hyperscaler capex slide.
+
 ## Open questions
 
 - **Backlog conversion.** The order book jumped from $24.4B booked in Q1
-  to **$60.9B booked / $95B backlog** in Q2. Can ISG ship against that
-  without GPU-supply or working-capital bottlenecks — and how much of
-  the $95B is already in the $192B FY27 guide?
+  to **$60.9B booked / $95B backlog** in Q2 and **$60.2B booked /
+  $132.3B backlog** in Q3. Can ISG ship against that without GPU-supply
+  or working-capital bottlenecks — and how much of the $132.3B is
+  already in the $202B FY27 guide?
 - **Sovereign-AI mix.** "Enterprise / tier-2 cloud / sovereign-AI" is
   three very different segments. How much of the raised outlook is
   sovereign-AI — and therefore sensitive to export-control and
   geopolitical shifts that don't affect hyperscaler demand?
-- **Margin durability.** Record EPS at +273% GAAP / +203% non-GAAP held
-  for a second quarter. Does pricing power hold as Rubin economics
-  compress NVIDIA's reseller margins?
+- **Margin durability.** Non-GAAP opex at 7% of revenue is a 42-year
+  low. Does pricing power hold as Rubin economics compress NVIDIA's
+  reseller margins?

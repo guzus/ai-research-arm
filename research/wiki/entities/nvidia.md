@@ -4,15 +4,16 @@ title: NVIDIA
 type: entity
 aliases: [NVIDIA, Nvidia, NVDA, "@nvidia", "@nvidianewsroom", "Jensen Huang", "Nemotron", "Nemotron-3-Ultra", "Nemotron-3-Ultra-550B", "Nemotron 3 Ultra", "Nemotron 3.5 Bolt", "Nemotron 3.5 Bolt E4B", OpenShell, "NVIDIA Sentry", "Open Agent Safety Platform", "BlueField-4", "DGX Spark", "Nemotron-Labs-Sigma", "Nemotron Labs Sigma"]
 tags: [gpu, ai-chips, accelerators, open-weights, datacenter, semiconductors]
-description: Dominant AI-accelerator supplier; Reuters sources say SEC staff are looking at accounting issues, and The Information says Nvidia is close to buying Inception for at least $500 million.
+description: Jensen Huang was reinstated as CEO on Nov 23, 11 days after a forced resignation; he will testify to Congress on chip export controls Dec 1 and Dec 3.
 created_at: 2026-06-05
-timestamp: 2026-11-21T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 market:
   ticker: NVDA
   exchange: NASDAQ
   symbol: NASDAQ:NVDA
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-25", path: research/digest/2026-10-25-digest.md}
@@ -883,3 +884,23 @@ backstop (CNBC/FT via relays; ARA daily digest 2026-08-11).
   MoE). Hardware context for that open-weights drop, not an Nvidia product
   announcement.
 
+## Huang reinstated; Congress testimony; Rubin on OCI (2026-11-25)
+
+- **NVIDIA reinstated Jensen Huang as CEO on Nov 23**, 11 days after
+  his forced resignation. In his first all-hands he apologized to
+  staff and said he is in therapy; he reportedly told staff it is
+  "not true" that Trump got him rehired. Yale's Jeffrey Sonnenfeld
+  warned that a White House-backed return could expose NVIDIA's
+  directors to "historic" personal liability. The 2026-11-21 ingest
+  on this page treated a Huang ouster as digest-stated tape context,
+  not an adjudicated fact; today's capture is the reinstatement
+  (The Verge, TechCrunch, Ars Technica; ARA daily digest 2026-11-25).
+- **Huang will testify to Congress on chip export controls:** a
+  closed-door session with three House committees on **Dec 1** and
+  public testimony before the Senate Banking Committee on **Dec 3**.
+  See [[federal-ai-policy]] (Twitter, citing CNBC; ARA daily digest
+  2026-11-25).
+- **Oracle is bringing NVIDIA Vera Rubin systems and standalone
+  Vera CPUs to OCI** under an expanded partnership. Product-availability
+  note, not a disclosed offtake size. See [[ai-capex]] and [[dell]]
+  (Twitter, citing VentureBeat; ARA daily digest 2026-11-25).

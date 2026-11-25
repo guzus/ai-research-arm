@@ -6,8 +6,9 @@ aliases: ["Claude Science", "Anthropic biology lab", "ART enzyme family"]
 tags: [anthropic, claude, ai-for-science, agentic-research, product]
 description: Anthropic's agentic research workbench; Anthropic disclosed a July purchase of Mithril Medicine and Claude-assisted programs with six life-sciences partners, citing a preclinical mouse study.
 created_at: 2026-07-01
-timestamp: 2026-10-28T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
   - {title: "ARA daily digest 2026-10-21", path: research/digest/2026-10-21-digest.md}
   - {title: "ARA daily digest 2026-09-26", path: research/digest/2026-09-26-digest.md}
@@ -199,6 +200,17 @@ Review calls it Anthropic's "newest flagship product" (ARA digest 2026-07-01).
   not a regulator filing
   (ARA daily digest
   2026-10-28).
+
+## OpenAI GPT-6 protein binders (2026-11-25)
+
+- **[[openai]] reports [[gpt-6|GPT-6-family]] models designed
+  protein shapes and sequences** with wet-lab binding in
+  **35 of 322 minibinders** across five targets. OpenAI says
+  the results do not yet establish end-to-end design without
+  specialised models; binding is not a working drug. Fold
+  here as the competing lab's wet-lab protein claim, not as
+  a Claude Science product ship. See [[lifescibench]]
+  (OpenAI blog, HN; ARA daily digest 2026-11-25).
 
 ## Open questions
 - **Does the workbench beat a benchmark?** GeneBench-Pro and

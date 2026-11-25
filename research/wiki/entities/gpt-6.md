@@ -4,10 +4,11 @@ title: GPT-6
 type: entity
 aliases: ["GPT-6", "GPT 6", "OpenAI's next flagship", "GPT-6 Sol", "GPT-6 Luna", "gpt-6-sol", "gpt-6-luna", "GPT-6.1 Sol", "gpt-6.1-sol", "gpt-6-1-sol", "GPT-6.1 Astra", "gpt-6.1-astra", "GPT-6.1 Sol Ultrafast", "gpt-6.1-sol-ultrafast", "GPT-6.1 Terra", "gpt-6.1-terra", "GPT-6 Terra"]
 tags: [model-release, openai, frontier-model]
-description: OpenAI's GPT-6 generation; GPT-6.1 Terra is live in ChatGPT Work, Codex and the API at $1/$5, a computer-use SKU OpenAI says matches Astra on Agents' Last Exam at a tenth of the token price.
+description: OpenAI reports GPT-6.2 at 93% PoseBusters vs DiffDock-L's 50%; whole-structure prediction is still weak (TM-score 0.38 vs ESMFold2 0.93).
 created_at: 2026-07-28
-timestamp: 2026-10-27T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-10-27", path: research/digest/2026-10-27-digest.md}
   - {title: "ARA daily digest 2026-10-13", path: research/digest/2026-10-13-digest.md}
   - {title: "ARA daily digest 2026-10-12", path: research/digest/2026-10-12-digest.md}
@@ -333,3 +334,22 @@ substance.
   Simon Willison, The
   Decoder, HN; ARA daily
   digest 2026-10-27).
+
+## Protein design from the GPT-6 family (2026-11-25)
+
+- **[[openai]] reports GPT-6-family models designing
+  protein shapes and sequences with reasoning and
+  code.** Wet-lab tests found binding in **35 of
+  322 minibinders** across five targets. GPT-6.2
+  scored **93% on PoseBusters docking** against
+  DiffDock-L's **50%**; redesigned antibody loops
+  kept binding in **128 of 182** cases.
+  Whole-structure prediction is still weak
+  (**TM-score 0.38 vs ESMFold2's 0.93**). OpenAI
+  says this does not yet establish end-to-end
+  design without specialised models; binding is
+  not a working drug. The SKU named in the
+  docking table is GPT-6.2; [[astra|GPT-6.2 Astra]]
+  remains the named Astra cut. See
+  [[claude-science]] and [[lifescibench]] (OpenAI
+  blog, HN; ARA daily digest 2026-11-25).

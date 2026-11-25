@@ -4,10 +4,11 @@ title: Frontier Lab Financing
 type: theme
 aliases: ["OpenAI mega-round", "OpenAI $20B round", "Anthropic junk rating", "Anthropic chip-financing deal", "lab capital raises", "Anthropic S-1/A", "Anthropic amended S-1"]
 tags: [funding, ipo, credit, valuation, frontier-lab]
-description: Anthropic's amended S-1 shows $16.96B Q3 revenue but a $567M operating loss and $895B of compute commitments; OpenAI's mega-round shrank to about $20B at $1.25T and Blackstone expects a double-B rating on Anthropic's $63B chip deal.
+description: TechCrunch reports Anthropic's stock slipped below its IPO price; the amended S-1 still shows $16.96B Q3 revenue, a $567M operating loss, and $895B of compute commitments.
 created_at: 2026-11-01
-timestamp: 2026-11-03T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-11-03", path: research/digest/2026-11-03-digest.md}
   - {title: "ARA daily digest 2026-11-01", path: research/digest/2026-11-01-digest.md}
 ---
@@ -64,3 +65,12 @@ The $895B commitment stack against a first operating loss makes the S-1/A the
 sharpest public statement of the buildout's fixed-cost risk. Treat the figures
 as press-reported and still moving; none is an issuer filing except the S-1
 numbers attributed above.
+
+## Anthropic trades below IPO (2026-11-25)
+
+- **TechCrunch reports [[anthropic]]'s stock fell below its IPO
+  price**, framed as a possible drag on AI-startup valuations more
+  broadly. Press recap, not an issuer filing or a restated S-1
+  number. Holds the post-listing tape against the amended-S-1
+  books already on this page (TechCrunch; ARA daily digest
+  2026-11-25).

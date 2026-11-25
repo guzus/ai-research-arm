@@ -2,17 +2,18 @@
 slug: google
 title: Google
 type: entity
-aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub, "Gemini Enterprise", "AlphaProof Nexus", AlphaProof, "Genie 4", "UK AI Biosecurity Lab"]
+aliases: [Google, Alphabet, "Google DeepMind", NotebookLM, "Gemini Notebook", "Google AI Mode", "Gemini Robotics 2", "Gemini Robotics ER 2", "Google AI Studio", "Google Pics", "WeatherNext 3", "WeatherNext", Ironwood, TPUv7, "TPU v7", "Google Home MCP", "DeepMind Institute", "Gemini 3.8 TTS", "Gemini 3.8 Flash TTS", "SynthID Bio", "SynthID Detector", synthid.com, "Project Suncatcher", Suncatcher, "Nano Banana 2.1", "gemini-nano-banana-2.1", "EmbeddingGemma 2", "EmbeddingGemma", Biohub, "Gemini Enterprise", "AlphaProof Nexus", AlphaProof, "Genie 4", "UK AI Biosecurity Lab", "Workspace MCP", "Google Workspace MCP"]
 tags: [hyperscaler, frontier-lab, antitrust, consumer-ai, gemini]
-description: Hyperscaler behind Gemini; desktop Search dropped the search button for an AI chat-history sidebar, and Gemini for Mac can operate desktop apps via Computer Use.
+description: Workspace MCP servers are generally available across Gmail, Drive, Docs, Sheets, Slides, Calendar, Chat and Tasks; from Feb 1, 2027 third-party agents must use MCP instead of REST APIs.
 created_at: 2026-07-17
-timestamp: 2026-11-21T00:00:00Z
+timestamp: 2026-11-25T00:00:00Z
 market:
   ticker: GOOGL
   exchange: NASDAQ
   symbol: NASDAQ:GOOGL
   provider: yahoo
 sources:
+  - {title: "ARA daily digest 2026-11-25", path: research/digest/2026-11-25-digest.md}
   - {title: "ARA daily digest 2026-11-21", path: research/digest/2026-11-21-digest.md}
   - {title: "ARA daily digest 2026-10-29", path: research/digest/2026-10-29-digest.md}
   - {title: "ARA daily digest 2026-10-28", path: research/digest/2026-10-28-digest.md}
@@ -1204,6 +1205,24 @@ model. [[gemini-3-5-pro]]'s reported 2026-07-16 schedule slip wiped out
   for even N≥4** (arXiv 2611.26291). Certificate-class math, same
   verification problem as the Alpöge RH dump on
   [[verification-bottleneck]].
+
+## Workspace MCP generally available (2026-11-25)
+
+- **Google made Workspace MCP servers generally available.**
+  Managed MCP now covers **Gmail, Drive, Docs, Sheets, Slides,
+  Calendar, Chat and Tasks**. From **February 1, 2027**
+  third-party AI agents must reach Workspace data through MCP
+  instead of the REST APIs, with a billed "Scaled" tier
+  beginning **April 1, 2027**. That is a cutover date for the
+  agent-access surface this page already tracks as Gemini
+  Computer Use, not a new model. See [[agentic-ai-security]]
+  and [[anthropic]]'s MCP SDK volume claim (Twitter:
+  @stretchcloud; ARA daily digest 2026-11-25).
+- **Google DeepMind and UK charity Mencap built an Easy Read
+  Co-Creator Tool with Gemini**, turning health, finance and
+  everyday documents into Easy Read text and images, with
+  human experts reviewing every version (@GoogleDeepMind;
+  ARA daily digest 2026-11-25).
 
 ## Open questions
 
