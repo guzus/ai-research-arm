@@ -1,9 +1,176 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-24T15:12:00Z",
+  "updated_at": "2026-11-25T01:01:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "ai-daily-brief:-olL-f4RGrw",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "What Happens to AI Now",
+      "url": "https://www.youtube.com/watch?v=-olL-f4RGrw",
+      "video_id": "-olL-f4RGrw",
+      "audio_url": null,
+      "published_at": "2026-11-24T23:31:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T01:01:00Z",
+      "duration_s": 1774,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-25T01:01:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "openai:1u0hTd86_HU",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Experiment with SVG & 3D Design with the Codex Plugin",
+      "url": "https://www.youtube.com/watch?v=1u0hTd86_HU",
+      "video_id": "1u0hTd86_HU",
+      "audio_url": null,
+      "published_at": "2026-11-24T21:31:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T01:01:00Z",
+      "duration_s": 296,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-25T01:01:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "twiml:wDs1SMHR8es",
+      "show_id": "twiml",
+      "show": "The TWIML AI Podcast",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "research"
+      ],
+      "title": "AI Reasoning Needs More Than a Plausible Answer",
+      "url": "https://www.youtube.com/watch?v=wDs1SMHR8es",
+      "video_id": "wDs1SMHR8es",
+      "audio_url": null,
+      "published_at": "2026-11-24T20:31:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T01:01:00Z",
+      "duration_s": 4190,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-25T01:01:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "openai:p8lvQQebvpg",
+      "show_id": "openai",
+      "show": "OpenAI",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "How to Search for Exoplanets",
+      "url": "https://www.youtube.com/watch?v=p8lvQQebvpg",
+      "video_id": "p8lvQQebvpg",
+      "audio_url": null,
+      "published_at": "2026-11-24T19:31:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T01:01:00Z",
+      "duration_s": 107,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-25T01:01:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "google-deepmind:K8rdrWQRd20",
+      "show_id": "google-deepmind",
+      "show": "Google DeepMind",
+      "kind": "video",
+      "priority": "P0",
+      "tags": [
+        "official",
+        "frontier-lab"
+      ],
+      "title": "Using AI to reverse-engineer the human mind",
+      "url": "https://www.youtube.com/watch?v=K8rdrWQRd20",
+      "video_id": "K8rdrWQRd20",
+      "audio_url": null,
+      "published_at": "2026-11-24T17:31:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T01:01:00Z",
+      "duration_s": 2592,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "nvidia:z7tcQiyLK8E",
+      "show_id": "nvidia",
+      "show": "NVIDIA",
+      "kind": "video",
+      "priority": "P1",
+      "tags": [
+        "official",
+        "compute"
+      ],
+      "title": "How Eli Lilly and Company Accelerates Drug Discovery with NVIDIA",
+      "url": "https://www.youtube.com/watch?v=z7tcQiyLK8E",
+      "video_id": "z7tcQiyLK8E",
+      "audio_url": null,
+      "published_at": "2026-11-24T16:31:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T01:01:00Z",
+      "duration_s": 137,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "openai:5p8CdiQGqV4",
       "show_id": "openai",
@@ -9253,101 +9420,6 @@
         }
       ],
       "description": "Satya Nadella is the CEO of Microsoft and one of the greatest CEOs of our time. Satya has been at the company for an astonishing 34 years. When he joined, Microsoft had a market cap of $23.5BN. 22 years later, the company was worth $300BN. At this point, Satya took the reins as CEO. Under his leadership, he has taken it from $300BN to $3.9TRN. Timestamps: Intro Why Satya Says We Should Assume AI Models Are Compromised Why AI Needs"
-    },
-    {
-      "id": "nvidia:rF1EsryCAwc",
-      "show_id": "nvidia",
-      "show": "NVIDIA",
-      "kind": "video",
-      "priority": "P1",
-      "tags": [
-        "official",
-        "compute"
-      ],
-      "title": "Jensen Huang’s Keynote Highlights at NVIDIA GTC Berlin 2026",
-      "url": "https://www.youtube.com/watch?v=rF1EsryCAwc",
-      "video_id": "rF1EsryCAwc",
-      "audio_url": null,
-      "published_at": "2026-10-25T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 239,
-      "transcript": {
-        "available": true,
-        "source": "youtube_captions",
-        "words": 496,
-        "checked_at": "2026-11-02T09:55:00Z",
-        "attempts": 1
-      },
-      "excerpts": [
-        {
-          "text": "This is a complete transformation of the world's supply chain. We call it DSX pod, the next click of Nvidia computing. These AI factories don't just run models anymore. They run entire agents. Models, sandbox, harness, knowledge, and tools. These are the five elements of an agent. We have to create extremely secure technology to deploy these agents safely.",
-          "at_s": 52,
-          "url": "https://www.youtube.com/watch?v=rF1EsryCAwc&t=52s"
-        },
-        {
-          "text": "The next great industry is humanoid robotics and so we decided to build a reference robot. This is the Nvidia Agile 1 and it'll be the flywheel by which we can accelerate development of robotics after four years of partnership with Microsoft. We have created the RTX Spark and this is a brand new line of computers.",
-          "at_s": 176,
-          "url": "https://www.youtube.com/watch?v=rF1EsryCAwc&t=176s"
-        }
-      ],
-      "description": "Europe is building its AI economy. NVIDIA founder and CEO Jensen Huang explains how AI factories are evolving to run agents and why physical AI is the next frontier. Catch the highlights from his NVIDIA GTC Berlin keynote, including announcements across AI infrastructure, safe agents, open models, enterprise AI, healthcare, mobility, robotics, and personal AI."
-    },
-    {
-      "id": "interconnects-interviews:0xiq7RHVGRE",
-      "show_id": "interconnects-interviews",
-      "show": "Interconnects (Nathan Lambert)",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "research"
-      ],
-      "title": "Kimi K3.1 Pro Reactions and Living Through Hackmageddon | Interconnects Podcast",
-      "url": "https://www.youtube.com/watch?v=0xiq7RHVGRE",
-      "video_id": "0xiq7RHVGRE",
-      "audio_url": null,
-      "published_at": "2026-10-25T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 2803,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-02T01:47:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": "Programing update from Nathan: I'm going to start posting Interconnects content more directly on my @natolambert channel. It has better SEO and search performance, and it's easier than maintaining two channels. We — Nathan and Florian — wanted to discuss all the messy trade-offs of a busy week in AI and ask all the pressing questions like: - Why did Kimi K3.1 Pro have a mixed reaction with such incredible benchmarks? Will it be adopted? - Were we wrong about"
-    },
-    {
-      "id": "big-technology:Xoj0GGu0-aw",
-      "show_id": "big-technology",
-      "show": "Big Technology Podcast",
-      "kind": "podcast",
-      "priority": "P1",
-      "tags": [
-        "interviews",
-        "news-show"
-      ],
-      "title": "This AI Expert Argues We're Underestimating AI's Impact — With Ethan Mollick",
-      "url": "https://www.youtube.com/watch?v=Xoj0GGu0-aw",
-      "video_id": "Xoj0GGu0-aw",
-      "audio_url": null,
-      "published_at": "2026-10-25T15:14:00Z",
-      "published_precision": "approximate",
-      "first_seen_at": "2026-10-31T03:14:00Z",
-      "duration_s": 3815,
-      "transcript": {
-        "available": false,
-        "source": null,
-        "words": 0,
-        "checked_at": "2026-11-01T20:48:00Z",
-        "attempts": 1
-      },
-      "excerpts": [],
-      "description": "Ethan Mollick is a professor at the Wharton School and author of Coexistence: The Next Phase of AI. Mollick joins Big Technology to discuss why AI's remarkable advances haven't yet translated into massive productivity gains across the economy. Tune in to hear why companies need to fundamentally rethink how they operate to unlock AI's full potential, where businesses are already seeing returns, and what organizational transformation could look like. We also cover whether AI development will hit a wall, the"
     }
   ]
 }
