@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-25T01:01:00Z",
+  "updated_at": "2026-11-25T11:39:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -26,6 +26,34 @@
         "source": null,
         "words": 0,
         "checked_at": "2026-11-25T01:01:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "dwarkesh:Em6tbhj9o6A",
+      "show_id": "dwarkesh",
+      "show": "Dwarkesh Podcast",
+      "kind": "podcast",
+      "priority": "P0",
+      "tags": [
+        "interviews",
+        "frontier-labs"
+      ],
+      "title": "What the skeptics get right about superintelligence",
+      "url": "https://www.youtube.com/watch?v=Em6tbhj9o6A",
+      "video_id": "Em6tbhj9o6A",
+      "audio_url": null,
+      "published_at": "2026-11-24T22:09:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-25T11:39:00Z",
+      "duration_s": 3924,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-25T11:39:00Z",
         "attempts": 1
       },
       "excerpts": [],
@@ -137,8 +165,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-25T11:39:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -165,8 +193,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-25T11:39:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
@@ -305,8 +333,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-25T11:39:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": ""
