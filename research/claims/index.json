@@ -1,5 +1,5 @@
 {
-  "article_count": 118,
+  "article_count": 119,
   "articles": [
     {
       "claim_count": 18,
@@ -1123,6 +1123,16 @@
       "stem": "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro",
       "tags": [],
       "title": "VP ≠ VNP, twice: what two unsigned Lean proofs pin down, and what no machine checked"
+    },
+    {
+      "claim_count": 8,
+      "created_at": "2026-11-26T16:10:56Z",
+      "slug": "expand-research-from-twitter-link-https-x-com-0xangelfish-st",
+      "stem": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st",
+      "tags": [
+        "twitter-seed"
+      ],
+      "title": "Is a Guardian Angel really $100 a month? Inkling 2 Mini, continual learning and the gap between a price and a system"
     }
   ],
   "by_host": {
@@ -1295,6 +1305,9 @@
     ],
     "aitoolsbee.com": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
+    ],
+    "aitoolsreview.co.uk": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c5"
     ],
     "aiweekly.co": [
       "2026-10-02T010505--decision-models-commoditize-in-a-week-perplexity-pplx-decide#c9",
@@ -2039,7 +2052,9 @@
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c23",
       "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c11",
       "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c12",
-      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c15"
+      "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c15",
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c6",
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c7"
     ],
     "assets-us-01.kc-usercontent.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c1",
@@ -4310,6 +4325,9 @@
     "gurutrade.com": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c12"
     ],
+    "gwern.net": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c4"
+    ],
     "hackmd.io": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c37"
     ],
@@ -4489,7 +4507,8 @@
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c12",
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c13",
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c7",
-      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c8"
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c8",
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c8"
     ],
     "huggingnews.com": [
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-5",
@@ -7091,7 +7110,8 @@
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c30",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c8",
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c9",
-      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c35"
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c35",
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c2"
     ],
     "thenota.com": [
       "2026-07-17T145553--moonshot-ai-the-company-behind-kimi-k3#c13"
@@ -7126,7 +7146,10 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c49"
     ],
     "thinkingmachines.ai": [
-      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c9"
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c9",
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c2",
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c3",
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c5"
     ],
     "ti.com": [
       "2026-05-27T035557--800-vdc-architecture#c16"
@@ -7685,7 +7708,8 @@
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c17",
       "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c37",
       "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c1",
-      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c1"
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c1",
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c1"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -7918,6 +7942,9 @@
     ],
     "https://aitoolsbee.com/news/cuda-compatible-ai-chip-bytedance-5-6b-backs-huawei-950pr": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
+    ],
+    "https://aitoolsreview.co.uk/insights/thinking-machines-inkling-2-mini": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c5"
     ],
     "https://aiweekly.co/alerts/anthropics-charity-match-charge-hit-660m-in-six-months-to-march": [
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c14"
@@ -8522,6 +8549,9 @@
     "https://arxiv.org/abs/2312.02055": [
       "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c15"
     ],
+    "https://arxiv.org/abs/2312.05934": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c7"
+    ],
     "https://arxiv.org/abs/2312.06942": [
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c12"
     ],
@@ -8542,6 +8572,12 @@
     ],
     "https://arxiv.org/abs/2405.01329": [
       "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c11"
+    ],
+    "https://arxiv.org/abs/2405.05904": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c7"
+    ],
+    "https://arxiv.org/abs/2405.09673": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c6"
     ],
     "https://arxiv.org/abs/2405.11514": [
       "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c18"
@@ -11444,6 +11480,9 @@
     "https://gulfnews.com/world/americas/anthropic-on-track-to-top-100-billion-revenue-pace-ahead-of-potential-ipo-1.500680887": [
       "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c20"
     ],
+    "https://gwern.net/guardian-angel": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c4"
+    ],
     "https://hackmd.io/SCfjYNHQTmuRl2adnFi2oA": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c37"
     ],
@@ -11491,6 +11530,9 @@
     ],
     "https://huggingface.co/Inner-Reflections/Wan2.1_VACE_Phantom": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c37"
+    ],
+    "https://huggingface.co/LTM-Lab/Inkling-2-Mini-Uncensored-V19": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c8"
     ],
     "https://huggingface.co/MiniMaxAI/MiniMax-H3": [
       "2026-08-18T101637--expand-research-from-twitter-link-https-x-com-banodoco-statu#c12",
@@ -14124,6 +14166,9 @@
     "https://thenextweb.com/news/google-nvidia-playbook-tpu-circular-financing-anthropic": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c30"
     ],
+    "https://thenextweb.com/news/inkling-2-mini-thinking-machines-looped-open-weights-laptop": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c2"
+    ],
     "https://thenextweb.com/news/john-jumper-nobel-deepmind-leaves-anthropic-alphafold": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c2"
     ],
@@ -14146,7 +14191,15 @@
       "2026-07-16T225120--kimi-k3-moonshot-s-2-8t-parameter-model-its-lmarena-frontend#c22"
     ],
     "https://thinkingmachines.ai/news/inkling-2-mini": [
-      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c9"
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c9",
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c2",
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c5"
+    ],
+    "https://thinkingmachines.ai/tinker": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c3"
+    ],
+    "https://thinkingmachines.ai/tinker/pricing": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c3"
     ],
     "https://tienmphan.github.io/blog/2025/RFDiffusion": [
       "2026-08-19T192419--anthropic-s-26-8-binder-hit-rate-what-claude-actually-design#c5"
@@ -18260,6 +18313,9 @@
     "https://x.com/0xLogicrw/status/2066771226073366761": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c4"
     ],
+    "https://x.com/0xangelfish/status/2125969819321372724": [
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c1"
+    ],
     "https://x.com/1a1n1d1y/status/2036987673035104513": [
       "2026-06-28T192953--deepseek-s-7-4b-round-at-50b-cap-table-asymmetry-the-state-f#c15"
     ],
@@ -18798,7 +18854,7 @@
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c16"
     ]
   },
-  "claim_count": 3409,
+  "claim_count": 3417,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -99612,9 +99668,203 @@
         "https://raw.githubusercontent.com/openai/math/main/lean/OAI/Computability/VPVNP/Separation.lean"
       ],
       "type": "comparison"
+    },
+    {
+      "article": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st",
+      "article_created_at": "2026-11-26T16:10:56Z",
+      "article_title": "Is a Guardian Angel really $100 a month? Inkling 2 Mini, continual learning and the gap between a price and a system",
+      "as_of": "2026-11-26",
+      "claim": "@0xangelfish posted on 2026-11-26 15:07 UTC that Inkling 2 Mini makes gwern's Guardian Angel (a model that continually learns from you daily) reachable for about $100 a month.",
+      "confidence": "high",
+      "hosts": [
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c1",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://x.com/0xangelfish/status/2125969819321372724"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st",
+      "article_created_at": "2026-11-26T16:10:56Z",
+      "article_title": "Is a Guardian Angel really $100 a month? Inkling 2 Mini, continual learning and the gap between a price and a system",
+      "as_of": "2026-11-20",
+      "claim": "Thinking Machines released Inkling 2 Mini on 2026-11-20: a looped MoE with 26.4B total / 3.4B active (5.4B with loops) parameters and a ~20GB footprint.",
+      "confidence": "high",
+      "hosts": [
+        "thenextweb.com",
+        "thinkingmachines.ai"
+      ],
+      "id": "c2",
+      "key": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://thinkingmachines.ai/news/inkling-2-mini",
+        "https://thenextweb.com/news/inkling-2-mini-thinking-machines-looped-open-weights-laptop"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st",
+      "article_created_at": "2026-11-26T16:10:56Z",
+      "article_title": "Is a Guardian Angel really $100 a month? Inkling 2 Mini, continual learning and the gap between a price and a system",
+      "as_of": "2026-11-27",
+      "claim": "Tinker lists Inkling 2 Mini training at $0.75 per 1M tokens (64K context) and $1.50 (256K); sampling $0.15 input, $0.50 output; storage $0.10/GB-month; a free 64K tier exists with no stated dates.",
+      "confidence": "medium",
+      "hosts": [
+        "thinkingmachines.ai"
+      ],
+      "id": "c3",
+      "key": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://thinkingmachines.ai/tinker/pricing",
+        "https://thinkingmachines.ai/tinker"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st",
+      "article_created_at": "2026-11-26T16:10:56Z",
+      "article_title": "Is a Guardian Angel really $100 a month? Inkling 2 Mini, continual learning and the gap between a price and a system",
+      "as_of": "2026-11-27",
+      "claim": "Gwern's essay targets over $1,000/month per user, says dynamic evaluation costs over 3x normal usage, and describes a ~1GB corpus on a sub-100B model.",
+      "confidence": "medium",
+      "hosts": [
+        "gwern.net"
+      ],
+      "id": "c4",
+      "key": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c4",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://gwern.net/guardian-angel"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st",
+      "article_created_at": "2026-11-26T16:10:56Z",
+      "article_title": "Is a Guardian Angel really $100 a month? Inkling 2 Mini, continual learning and the gap between a price and a system",
+      "as_of": "2026-11-22",
+      "claim": "Inkling 2 Mini scores 48.2% DeepSWE v1.1 and 79.0% BrowseComp (vendor-reported) but 63.4% non-hallucination vs 71.4% for Qwen3.8-27B.",
+      "confidence": "medium",
+      "hosts": [
+        "aitoolsreview.co.uk",
+        "thinkingmachines.ai"
+      ],
+      "id": "c5",
+      "key": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c5",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://thinkingmachines.ai/news/inkling-2-mini",
+        "https://aitoolsreview.co.uk/insights/thinking-machines-inkling-2-mini"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st",
+      "article_created_at": "2026-11-26T16:10:56Z",
+      "article_title": "Is a Guardian Angel really $100 a month? Inkling 2 Mini, continual learning and the gap between a price and a system",
+      "as_of": "2024-09-20",
+      "claim": "LoRA learns less and forgets less than full finetuning; full finetuning learns perturbations of rank 10-100x typical LoRA.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c6",
+      "key": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2405.09673"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st",
+      "article_created_at": "2026-11-26T16:10:56Z",
+      "article_title": "Is a Guardian Angel really $100 a month? Inkling 2 Mini, continual learning and the gap between a price and a system",
+      "as_of": "2024-10-01",
+      "claim": "Fine-tuning on unfamiliar facts is learned slower and, once learned, linearly increases hallucination; RAG consistently outperforms unsupervised fine-tuning for knowledge injection.",
+      "confidence": "high",
+      "hosts": [
+        "arxiv.org"
+      ],
+      "id": "c7",
+      "key": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "academic",
+        "academic"
+      ],
+      "source_urls": [
+        "https://arxiv.org/abs/2405.05904",
+        "https://arxiv.org/abs/2312.05934"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st",
+      "article_created_at": "2026-11-26T16:10:56Z",
+      "article_title": "Is a Guardian Angel really $100 a month? Inkling 2 Mini, continual learning and the gap between a price and a system",
+      "as_of": "2026-11-27",
+      "claim": "The LTM-Lab Inkling-2-Mini derivative's own card reports 0/82 work-order executions after autonomous intake and says continual skill learning is unestablished.",
+      "confidence": "medium",
+      "hosts": [
+        "huggingface.co"
+      ],
+      "id": "c8",
+      "key": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c8",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://huggingface.co/LTM-Lab/Inkling-2-Mini-Uncensored-V19"
+      ],
+      "type": "technical"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1614,
+  "reusable_count": 1617,
   "schema_version": 1
 }
