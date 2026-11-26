@@ -2,33 +2,6 @@
   {
     "backfilled": true,
     "category": "business",
-    "delivered_at": "2026-06-02 11:00 UTC",
-    "headline": "ANTHROPIC S-1 IS A PUBLIC BENEFIT CORPORATION IPO \u2014 \"UNUSUAL COMBINATION\" CREATES LEGAL OBLIGATION TO MISSION",
-    "source": "@MaxSchoon",
-    "source_file": "research/summaries/2026-06-02-twitter-11h-headlines.json",
-    "url": "https://x.com/MaxSchoon/status/2061765619616264532"
-  },
-  {
-    "backfilled": true,
-    "category": "breaking",
-    "delivered_at": "2026-06-02 13:00 UTC",
-    "headline": "ANTHROPIC EXPANDS GLASSWING \u2014 CLAUDE MYTHOS PREVIEW NOW DEFENDING ~150 MORE ORGS ACROSS 15+ COUNTRIES IN POWER, WATER, HEALTHCARE",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-06-02-twitter-13h-headlines.json",
-    "url": "https://x.com/AnthropicAI/status/2061796327986454883"
-  },
-  {
-    "backfilled": true,
-    "category": "policy",
-    "delivered_at": "2026-06-02 13:00 UTC",
-    "headline": "ANTHROPIC WARNS MYTHOS-CLASS CYBER MODELS WILL BE WIDELY AVAILABLE WITHIN 6-12 MONTHS \u2014 RACES TO BUILD DISCLOSURE/PATCH INFRA AHEAD OF IT",
-    "source": "@AnthropicAI",
-    "source_file": "research/summaries/2026-06-02-twitter-13h-headlines.json",
-    "url": "https://www.anthropic.com/news/expanding-project-glasswing"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
     "delivered_at": "2026-06-02 13:00 UTC",
     "headline": "$MRVL OPENS NYSE +22% AT ~$272 \u2014 JENSEN \"TRILLION-DOLLAR COMPANY\" TRADE SURVIVES VOLUME TEST; MARVELL CEO ANCHORS OPTICAL-INTERCONNECT THESIS",
     "source": "@Trading_Analyst",
@@ -23148,5 +23121,26 @@
     "headline": "ANTHROPIC SHARES FALL BELOW $83 IPO PRICE \u2014 THE INFORMATION",
     "source": "@theinformation",
     "url": "https://x.com/theinformation/status/2125664087715496249"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-26 03:29:15 UTC",
+    "headline": "GPT-6.2 ASTRA TOPS SEMIANALYSIS GDPX LEADERBOARD AT 19.3%; CLAUDE FABLE 5.2 SECOND AT 16.4%, GEMINI 4 NEON SIXTH",
+    "source": "@SemiAnalysis_",
+    "url": "https://x.com/SemiAnalysis_/status/2125743598587003170"
+  },
+  {
+    "category": "infra",
+    "delivered_at": "2026-11-26 03:29:15 UTC",
+    "headline": "POLYMARKET LAUNCHES GPU COMPUTE PRICE MARKETS FOR NVIDIA H100, B200, B300 OUT TO 2028",
+    "source": "@shayne_coplan",
+    "url": "https://x.com/shayne_coplan/status/2125653367640805799"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-26 03:29:15 UTC",
+    "headline": "KARPATHY: OPUS 5.5 WRITES 45K LINES IN 7 HOURS TO BUILD CIVILIZATION-STYLE US MAP FROM 31 FEDERAL DATASETS",
+    "source": "@karpathy",
+    "url": "https://x.com/karpathy/status/2125779541952246039"
   }
 ]
