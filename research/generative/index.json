@@ -3776,5 +3776,19 @@
     "source": "workflow_dispatch",
     "prompt": "VP ≠ VNP twice: what Anthropic's and OpenAI's unsigned Lean proofs of Valiant's conjecture actually formalize, and what is unchecked",
     "tags": []
+  },
+  {
+    "slug": "expand-research-from-twitter-link-https-x-com-0xangelfish-st",
+    "file": "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st.html",
+    "kind": "fragment",
+    "language": "en",
+    "title": "Is a Guardian Angel really $100 a month? Inkling 2 Mini, continual learning and the gap between a price and a system",
+    "model": "claude-sonnet-5-5",
+    "created_at": "2026-11-26T16:10:56Z",
+    "source": "workflow_dispatch-twitter-url",
+    "prompt": "Seed Twitter/X URL: https://x.com/0xangelfish/status/2125969819321372724\n\nStart by reading this tweet and its thread/conversation with the authenticated bird CLI. Treat the tweet as a seed primary source for what the author said, not as proof that every claim is true. Infer the underlying research question, identify the named entities and claims, then expand into a full generative-research article using primary sources outside X/Twitter.",
+    "tags": [
+      "twitter-seed"
+    ]
   }
 ]
