@@ -1,0 +1,13 @@
+Speaker 1: Thursday, November twenty-sixth, twenty twenty-six.
+Speaker 2: [high_energy] Dario Amodei is pushing back hard on the AI-governance charge, saying Claude will not be building frontier models unsupervised.
+Speaker 1: That lands as the debate over AI systems training their own successors keeps heating up.
+Speaker 2: And in the math world, OpenAI has reportedly posted its own proof that V P does not equal V N P, though it is unsigned and nobody has verified it yet.
+Speaker 1: Treat that one with caution. On the benchmark front, SemiAnalysis has a new leaderboard called G D P x.
+Speaker 2: GPT six point two Astra takes the top spot at [emphasis] nineteen point three percent [/emphasis], Fable five point two follows at sixteen point four, and Gemini four Neon lands only sixth at ten point one.
+Speaker 1: Meanwhile, Anthropic ported its Messages API to Rust, using teams of Claude agents to do the work.
+Speaker 2: Worth noting that is a big production codebase rewritten largely by agents.
+Speaker 1: Some quick numbers. Dell's AI backlog stands at [emphasis] one hundred thirty-two point three billion dollars [/emphasis], with a fiscal twenty twenty-seven guide of two hundred two billion.
+Speaker 2: And Polymarket now lists GPU rental futures running all the way out to twenty twenty-eight.
+Speaker 1: Trending on Hacker News, with nine hundred thirty-six points, an essay arguing that LLM agents work for their parent companies, not for you.
+Speaker 2: [dramatic_pause] A pointed question to end on, given everything we just covered.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
