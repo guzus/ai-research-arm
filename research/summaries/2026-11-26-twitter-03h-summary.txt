@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-11-26 03:29:15 UTC
+
+CYCLE: New benchmark ranks GPT-6.2 Astra first; GPU rental prices get a forward market.
+
+TOP STORIES:
+• SemiAnalysis GDPx: GPT-6.2 Astra 19.3%, Claude Fable 5.2 16.4%, Gemini 4 Neon 6th at 10.1% [⚠]
+• Polymarket launches H100/B200/B300 rental-price markets out to 2028 [✓]
+• Karpathy: Opus 5.5 builds a Civilization-style US map from 31 federal datasets in 7h [⚠]
+
+WATCH: How the rest of the GDPx thread explains the benchmark's tasks and scoring.
+
+Full update on GitHub.
