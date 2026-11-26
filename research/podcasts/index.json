@@ -1,9 +1,146 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-26T04:19:00Z",
+  "updated_at": "2026-11-26T14:20:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "ai-daily-brief:_KDnFZ3uuC8",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "When AI Labs Rival Nations",
+      "url": "https://www.youtube.com/watch?v=_KDnFZ3uuC8",
+      "video_id": "_KDnFZ3uuC8",
+      "audio_url": null,
+      "published_at": "2026-11-26T13:38:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-26T14:20:00Z",
+      "duration_s": 1471,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-26T14:20:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "cognitive-revolution:hgMbz33fBKc",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "AI:AM: Number Must Go Up? Christiano's Warning, Jensen's Return, GiveDirectly's Pitch for the Poor",
+      "url": "https://www.youtube.com/watch?v=hgMbz33fBKc",
+      "video_id": "hgMbz33fBKc",
+      "audio_url": null,
+      "published_at": "2026-11-26T12:50:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-26T14:20:00Z",
+      "duration_s": 7851,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-26T14:20:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "practical-ai:AZVVWvgAOA0",
+      "show_id": "practical-ai",
+      "show": "Practical AI",
+      "kind": "podcast",
+      "priority": "P2",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "AI's Impact on Work, Education, Society, Superintelligence, and Human Consciousness",
+      "url": "https://www.youtube.com/watch?v=AZVVWvgAOA0",
+      "video_id": "AZVVWvgAOA0",
+      "audio_url": null,
+      "published_at": "2026-11-25T22:50:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-26T14:20:00Z",
+      "duration_s": 2984,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-26T14:20:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:Qe9d9dWyED0",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "The Revolution vs The Renaissance — Thariq Shihipar, OpenAI",
+      "url": "https://www.youtube.com/watch?v=Qe9d9dWyED0",
+      "video_id": "Qe9d9dWyED0",
+      "audio_url": null,
+      "published_at": "2026-11-25T21:50:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-26T14:20:00Z",
+      "duration_s": 3240,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": null,
+        "attempts": 0
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "ai-daily-brief:9DrvWVeBZEM",
+      "show_id": "ai-daily-brief",
+      "show": "The AI Daily Brief",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "news-show"
+      ],
+      "title": "How to Talk About AI at Thanksgiving",
+      "url": "https://www.youtube.com/watch?v=9DrvWVeBZEM",
+      "video_id": "9DrvWVeBZEM",
+      "audio_url": null,
+      "published_at": "2026-11-25T21:50:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-26T14:20:00Z",
+      "duration_s": 1653,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-26T14:20:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "openai:A4UNP-axGHU",
       "show_id": "openai",
