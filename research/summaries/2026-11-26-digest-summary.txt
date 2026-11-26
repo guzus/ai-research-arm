@@ -1,0 +1,16 @@
+Daily AI Digest - 2026-11-26
+
+TOP STORIES:
+• Amodei rejects AI-governance charge, says Claude won't build frontier models unsupervised
+• OpenAI reportedly posted its own VP ≠ VNP proof (unsigned, unverified)
+• GPT-6.2 Astra tops SemiAnalysis GDPx; Gemini 4 Neon only sixth
+• Anthropic ported Messages API to Rust with Claude agent teams
+
+KEY NUMBERS:
+• GDPx: Astra 19.3%, Fable 5.2 16.4%, Neon 10.1%
+• Dell AI backlog $132.3B; FY27 guide $202B
+• Polymarket GPU rental futures out to 2028
+
+TRENDING: "LLM agents work for their parent companies, not for you" (936 pts on HN)
+
+Full digest on GitHub.
