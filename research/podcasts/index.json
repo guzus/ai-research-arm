@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-25T21:58:00Z",
+  "updated_at": "2026-11-26T04:19:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -583,11 +583,39 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-26T04:19:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Toward Cultural Alignment: Human-Centered Evaluation of Multimodal AI Stories Across Five African Communities Generative AI systems can produce fluent and locally plausible content while still failing to reflect the lived practices, relationships, languages, values, and visual expectations of the communities they represent. In this talk, Millicent and Felermino will present a community-grounded, mixed-methods evaluation of multimodal AI-generated stories across five African communities. They will share findings on how cultural alignment extends beyond recognizable cultural markers to their fit within social,"
+    },
+    {
+      "id": "cognitive-revolution-live:o2-DrDRIaY8",
+      "show_id": "cognitive-revolution-live",
+      "show": "The Cognitive Revolution (live)",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "livestream"
+      ],
+      "title": "AI for Cash Aid, Smaller Models That Punch Up | AI:AM",
+      "url": "https://www.youtube.com/watch?v=o2-DrDRIaY8",
+      "video_id": "o2-DrDRIaY8",
+      "audio_url": null,
+      "published_at": "2026-11-23T16:19:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-26T04:19:00Z",
+      "duration_s": 13409,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-26T04:19:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
     },
     {
       "id": "a16z:RwYz8XhZiu0",
@@ -611,8 +639,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-26T04:19:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "What happens when scientists are no longer limited by human attention? OpenAI’s Joy Jiao and Ashoka Rajendra join a16z’s Jay Rughani and Jorge Conde to discuss how AI and thousands of parallel agents could reshape drug discovery and development. They trace OpenAI’s life sciences work from scientific reasoning to the acquisition of Orchestra Bio, and how agents could search biological data, manage clinical trials, and navigate regulatory and manufacturing workflows. They also discuss AI’s role in solving difficult diagnoses and"
@@ -666,8 +694,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": null,
-        "attempts": 0
+        "checked_at": "2026-11-26T04:19:00Z",
+        "attempts": 1
       },
       "excerpts": [],
       "description": "Gemini 4 Neon is earning real praise, and Google is finally back in the conversation at the top of the model race. NLW breaks down the benchmarks, early reactions, and why a different perspective can matter more than a better one. In the headlines: Anthropic’s first day as a public company, new China chip fallout, and a shake-up in White House cyber leadership. The AI Daily Brief helps you understand the most important news and discussions in AI."
