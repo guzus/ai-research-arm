@@ -1,0 +1,13 @@
+Speaker 1: Friday, November twenty-seventh, twenty twenty-six.
+Speaker 2: [high_energy] Zhipu is reportedly saying GLM five point five still ships in December, which directly contradicts the Reuters report of a delay.
+Speaker 1: And it is reportedly a big one, at roughly [emphasis] three trillion parameters [/emphasis].
+Speaker 2: So the question now is which timeline holds, Zhipu's or Reuters'.
+Speaker 1: On the policy front, a new US rule now requires licenses when Chinese firms rent large GPU clusters overseas.
+Speaker 2: The threshold sits at about [emphasis] seven hundred fifty H one hundred equivalents [/emphasis]. Separately, Kimi K four is now expected around mid twenty twenty-seven.
+Speaker 1: Over in hardware, Tesla's AI five chip has reportedly slipped to twenty twenty-eight.
+Speaker 2: The reason given is that hyperscalers are soaking up TSMC's three nanometer capacity, so even Tesla is waiting in line.
+Speaker 1: Some quick numbers, Together says its distilled Qwen three point eight, twenty-seven B model reaches [emphasis] ninety-three percent [/emphasis] of its Kimi teacher on Lao.
+Speaker 2: That is a strong result for a small model in a low-resource language.
+Speaker 1: Trending today, science claims credited to AI, led by a GPT six Astra gravity preprint.
+Speaker 2: [dramatic_pause] Worth reading closely before anyone calls it a breakthrough.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
