@@ -1,7 +1,7 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-26T23:15:00Z",
+  "updated_at": "2026-11-27T09:01:00Z",
   "degraded": false,
   "episodes": [
     {
@@ -26,8 +26,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-26T23:15:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-27T09:01:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -54,8 +54,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-26T23:15:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-27T09:01:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
@@ -81,8 +81,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-26T23:15:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-27T09:01:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": ""
@@ -108,8 +108,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-26T14:20:00Z",
-        "attempts": 1
+        "checked_at": "2026-11-27T09:01:00Z",
+        "attempts": 2
       },
       "excerpts": [],
       "description": ""
