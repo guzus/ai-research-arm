@@ -3,8 +3,12 @@ slug: anthropic-max-ultra-plan-rename-2026-10
 title: "Anthropic renames Claude Max plans (Max 5x → Max, Max 20x → Ultra) and removes the 5-hour limit for verified Ultra accounts"
 company: Anthropic
 model: "Claude (Max / Ultra subscriptions)"
-status: released
+status: closed
 status_note: |
+  **Closed 2026-11-27 as released-and-aged.** The rename and Ultra 5-hour-limit removal went live
+  2026-10-30; four weeks have passed with no follow-up captured. A further plan or limit change opens a
+  new ticket.
+
   **First-party, 2026-10-30 17:29 UTC.** @claudeai: "We're renaming our Max plans: Max 5x → Max,
   Max 20x → Ultra. Max is still $100/month, and Ultra is still $200." The 5-hour limit is removed for
   verified Ultra accounts, "starting today with most existing subscribers". Newer accounts keep a
@@ -30,12 +34,14 @@ sources:
   - https://x.com/alexalbert__/status/2116227345501880781
   - https://x.com/alexalbert__/status/2116227346869194935
 created_at: 2026-10-31
-updated_at: 2026-10-31
-closed_at: null
-closed_reason: null
+updated_at: 2026-11-27
+closed_at: 2026-11-27
+closed_reason: released-and-aged
 history:
   - ts: 2026-10-31
     change: "Created — RELEASED / confirmed. @claudeai (2026-10-30 17:29 UTC) renamed Max 5x to Max ($100/month) and Max 20x to Ultra ($200/month), and began removing the 5-hour limit for verified Ultra accounts, starting with most existing subscribers. Newer accounts keep a temporary limit until verified, and weekly limits are unchanged. Subscriptions product lead @mboverell says the old name was misleading, because the weekly limit was 10x Pro while only the 5-hour limit was 20x, and apologises. @alexalbert__ relays both posts."
+  - ts: 2026-11-27
+    change: "Closed — released-and-aged. Live since 2026-10-30 per @claudeai (first history entry); four weeks elapsed as of 2026-11-27 with no follow-up in signal. Any further Max/Ultra plan or limit change opens a new ticket."
 ---
 This is a packaging change, not a new model, but it changes how much Claude a top-tier subscriber can
 use in practice. Removing the 5-hour window means the weekly limit is the only constraint for Ultra.
