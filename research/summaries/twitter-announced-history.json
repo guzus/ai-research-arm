@@ -1,33 +1,6 @@
 [
   {
     "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-02 13:00 UTC",
-    "headline": "$MRVL OPENS NYSE +22% AT ~$272 \u2014 JENSEN \"TRILLION-DOLLAR COMPANY\" TRADE SURVIVES VOLUME TEST; MARVELL CEO ANCHORS OPTICAL-INTERCONNECT THESIS",
-    "source": "@Trading_Analyst",
-    "source_file": "research/summaries/2026-06-02-twitter-13h-headlines.json",
-    "url": "https://x.com/Trading_Analyst/status/2061802514903617802"
-  },
-  {
-    "backfilled": true,
-    "category": "business",
-    "delivered_at": "2026-06-02 13:00 UTC",
-    "headline": "$HPE +26% PREMARKET AS SECOND-LEG AI-INFRA MOVER ALONGSIDE MARVELL",
-    "source": "@singh_vinod77",
-    "source_file": "research/summaries/2026-06-02-twitter-13h-headlines.json",
-    "url": "https://x.com/singh_vinod77/status/2061798212357550449"
-  },
-  {
-    "backfilled": true,
-    "category": "model",
-    "delivered_at": "2026-06-02 13:00 UTC",
-    "headline": "MICROSOFT BUILD LEAK ADDS COPILOT SUPER APP (COPILOT + COWORK + GITHUB COPILOT + AUTOPILOT SCOUT AGENT) PLUS MAI VOICE 2 + MAI TRANSCRIBE 1.5",
-    "source": "@testingcatalog",
-    "source_file": "research/summaries/2026-06-02-twitter-13h-headlines.json",
-    "url": "https://x.com/testingcatalog/status/2061770738093158486"
-  },
-  {
-    "backfilled": true,
     "category": "policy",
     "delivered_at": "2026-06-02 13:00 UTC",
     "headline": "ELON MUSK AMPLIFIES 404 MEDIA META-AI INSTAGRAM-HIJACK STORY \u2014 CHATBOT CHANGED ACCOUNT EMAILS WITHOUT ID VERIFICATION; SPACE FORCE, SEPHORA HIT",
@@ -23142,5 +23115,26 @@
     "headline": "KARPATHY: OPUS 5.5 WRITES 45K LINES IN 7 HOURS TO BUILD CIVILIZATION-STYLE US MAP FROM 31 FEDERAL DATASETS",
     "source": "@karpathy",
     "url": "https://x.com/karpathy/status/2125779541952246039"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-27 21:06:00 UTC",
+    "headline": "MUSK: GROK BOT TO USE WHICHEVER MODEL DOES THE JOB BEST \u2014 NAMES GOOGLE'S GEMINI NEON AND ANTHROPIC'S OPUS",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2126397498071670827"
+  },
+  {
+    "category": "business",
+    "delivered_at": "2026-11-27 21:06:00 UTC",
+    "headline": "FT: OPENAI COUNTERSUES APPLE FOR TRADE-SECRET THEFT, ALLEGES COERCION OF SHARED SUPPLIERS",
+    "source": "@AndrewCurran_",
+    "url": "https://x.com/AndrewCurran_/status/2126383625222672691"
+  },
+  {
+    "category": "model",
+    "delivered_at": "2026-11-27 21:06:00 UTC",
+    "headline": "XAI'S GROK BUILD ADDS HEADLESS AGENT, MCP IMAGE OUTPUT AND REMOTE TERMINAL UPGRADES",
+    "source": "@elonmusk",
+    "url": "https://x.com/elonmusk/status/2126390700660920546"
   }
 ]
