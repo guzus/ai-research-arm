@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-11-27 21:06:00 UTC
+
+CYCLE: xAI's agents go multi-model; OpenAI-Apple legal fight escalates
+
+TOP STORIES:
+• Musk says Grok Bot uses whichever model is best per task, naming Gemini Neon and Claude Opus ⚠
+• FT: OpenAI countersues Apple over trade secrets and supplier coercion ⚠
+• Grok Build adds headless-agent, MCP and remote-terminal upgrades ⚠
+
+WATCH: xAI docs confirming whether Grok Bot routes to Gemini or Claude.
+
+Full update on GitHub.
