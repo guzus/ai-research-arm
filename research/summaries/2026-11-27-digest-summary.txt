@@ -1,0 +1,15 @@
+Daily AI Digest - 2026-11-27
+
+TOP STORIES:
+• Zhipu reportedly says GLM-5.5 still ships in December, contradicting Reuters
+• New US rule licenses big overseas GPU rentals by Chinese firms; Kimi K4 seen ~mid-2027
+• Tesla AI5 chip reportedly slips to 2028 as hyperscalers take TSMC 3nm capacity
+
+KEY NUMBERS:
+• ~750 H100-equivalents: new license threshold for Chinese overseas rentals
+• ~3T params: reported GLM-5.5 size
+• 93%: Together's distilled Qwen3.8-27B vs Kimi teacher on Lao
+
+TRENDING: AI-credited science claims (GPT-6 Astra gravity preprint)
+
+Full digest on GitHub.
