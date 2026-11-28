@@ -1,9 +1,64 @@
 {
   "lane": "podcasts",
   "schema": 1,
-  "updated_at": "2026-11-28T02:56:00Z",
+  "updated_at": "2026-11-28T13:31:00Z",
   "degraded": false,
   "episodes": [
+    {
+      "id": "cognitive-revolution:Bh17p93s8O4",
+      "show_id": "cognitive-revolution",
+      "show": "The Cognitive Revolution",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews"
+      ],
+      "title": "1M+ Projects a Week, $600M ARR: Lovable CTO Fabian Hedin on Empowering Everyone to Shape the World",
+      "url": "https://www.youtube.com/watch?v=Bh17p93s8O4",
+      "video_id": "Bh17p93s8O4",
+      "audio_url": null,
+      "published_at": "2026-11-28T12:01:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-28T13:31:00Z",
+      "duration_s": 5451,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-28T13:31:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
+    {
+      "id": "latent-space:lCtMq8jegvo",
+      "show_id": "latent-space",
+      "show": "Latent Space",
+      "kind": "podcast",
+      "priority": "P1",
+      "tags": [
+        "interviews",
+        "engineering"
+      ],
+      "title": "Bootstrapping a Frontier AI Data Business — Gabe Greenberg, G2i",
+      "url": "https://www.youtube.com/watch?v=lCtMq8jegvo",
+      "video_id": "lCtMq8jegvo",
+      "audio_url": null,
+      "published_at": "2026-11-28T03:01:00Z",
+      "published_precision": "approximate",
+      "first_seen_at": "2026-11-28T13:31:00Z",
+      "duration_s": 1943,
+      "transcript": {
+        "available": false,
+        "source": null,
+        "words": 0,
+        "checked_at": "2026-11-28T13:31:00Z",
+        "attempts": 1
+      },
+      "excerpts": [],
+      "description": ""
+    },
     {
       "id": "dwarkesh:TbKkN1cesTo",
       "show_id": "dwarkesh",
@@ -26,8 +81,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-28T02:56:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-28T13:31:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": ""
@@ -53,8 +108,8 @@
         "available": false,
         "source": null,
         "words": 0,
-        "checked_at": "2026-11-28T02:56:00Z",
-        "attempts": 2
+        "checked_at": "2026-11-28T13:31:00Z",
+        "attempts": 3
       },
       "excerpts": [],
       "description": ""
