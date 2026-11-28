@@ -1,0 +1,14 @@
+Daily AI Digest - 2026-11-28
+
+TOP STORIES:
+• SemiAnalysis: TPU and Trainium beat Nvidia 1.5-2.5x on inference perf/$ (ARA: mostly a pricing edge)
+• OpenAI reportedly fixes GPT-6.2 usage count; ChatGPT limits may hit up to 40% faster
+• OpenAI reportedly countersues Apple over trade secrets (FT)
+
+KEY NUMBERS:
+• $6.6B Bridge data-center loan reportedly paused after US chip rules
+• Trainium3 best point: ~4% more tokens/chip x 2.2x modeled cost gap
+
+TRENDING: "AI Proves Riemann Hypothesis" trend - no paper, no lab, unverified
+
+Full digest on GitHub.
