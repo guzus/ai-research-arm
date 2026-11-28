@@ -1,5 +1,5 @@
 {
-  "article_count": 119,
+  "article_count": 120,
   "articles": [
     {
       "claim_count": 18,
@@ -1133,6 +1133,14 @@
         "twitter-seed"
       ],
       "title": "Is a Guardian Angel really $100 a month? Inkling 2 Mini, continual learning and the gap between a price and a system"
+    },
+    {
+      "claim_count": 55,
+      "created_at": "2026-11-28T03:44:29Z",
+      "slug": "semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "stem": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "tags": [],
+      "title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?"
     }
   ],
   "by_host": {
@@ -1198,6 +1206,10 @@
     "abit.ee": [
       "2026-07-23T122834--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a#c17"
     ],
+    "aboutamazon.com": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c23",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c28"
+    ],
     "absolicsinc.com": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c20"
     ],
@@ -1234,6 +1246,9 @@
     ],
     "agibot.com": [
       "2026-08-20T152813--unitree-star-market-ipo-debut#c13"
+    ],
+    "agihunt.info": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c39"
     ],
     "agilityrobotics.com": [
       "2026-06-10T102113--unitree-humanoid-dominance-thesis-audit#c23"
@@ -1534,7 +1549,10 @@
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c8",
       "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c17",
       "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c2",
-      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c3"
+      "2026-11-18T081029--expand-research-from-twitter-link-https-x-com-lumaodoggie-st#c3",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c25",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c26",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c27"
     ],
     "anthropiccopyrightsettlement.com": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c7"
@@ -2096,7 +2114,10 @@
     ],
     "aws.amazon.com": [
       "2026-07-20T050016--databricks-mid-2026#c28",
-      "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c14"
+      "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c14",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c17",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c18",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c24"
     ],
     "axios.com": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c11",
@@ -2285,7 +2306,8 @@
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12",
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c7",
       "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c7",
-      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c9"
+      "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c9",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c31"
     ],
     "blog.janestreet.com": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c17",
@@ -2406,6 +2428,9 @@
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c15",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c16",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c20"
+    ],
+    "businessinsider.jp": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c33"
     ],
     "businesswire.com": [
       "2026-05-27T035557--800-vdc-architecture#c23",
@@ -2897,7 +2922,8 @@
       "2026-09-25T145149--expand-research-from-twitter-link-https-x-com-ethena-status#c15"
     ],
     "console.vast.ai": [
-      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c11"
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c11",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c21"
     ],
     "consumerfinance.gov": [
       "2026-10-29T052144--expand-research-from-twitter-link-https-x-com-link-status-21#c5"
@@ -2920,7 +2946,8 @@
     "coreweave.com": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c6",
       "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c21",
-      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18"
+      "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c20"
     ],
     "corporate.vanguard.com": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c6"
@@ -2982,7 +3009,9 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c10",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c15",
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c14",
-      "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c14"
+      "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c14",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c3",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c5"
     ],
     "cryptodaily.co.uk": [
       "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c8"
@@ -3237,6 +3266,13 @@
     "detroitnews.com": [
       "2026-07-17T184427--expand-research-from-twitter-link-https-x-com-thestalwart-st#c43"
     ],
+    "dev.to": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c10",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c29",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c32",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c5",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c6"
+    ],
     "developer.meta.com": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c32"
     ],
@@ -3490,7 +3526,9 @@
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c27"
     ],
     "dwarkesh.com": [
-      "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c14"
+      "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c14",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c2",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c38"
     ],
     "eccc.weizmann.ac.il": [
       "2026-11-25T193820--vp-vnp-twice-what-anthropic-s-and-openai-s-unsigned-lean-pro#c20"
@@ -4036,7 +4074,8 @@
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c20",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c7",
       "2026-10-31T124802--anthropic-s-automated-red-teaming-claude-agents-wrote-benign#c18",
-      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5"
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c15"
     ],
     "foxbusiness.com": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c19"
@@ -4607,6 +4646,12 @@
     "indexbox.io": [
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c8"
     ],
+    "inferencex.semianalysis.com": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c12",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c29",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c30",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c4"
+    ],
     "info.arxiv.org": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c41"
     ],
@@ -4677,7 +4722,8 @@
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c30",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c1",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c2",
-      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c3"
+      "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c3",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c34"
     ],
     "investor.sandisk.com": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c40"
@@ -5431,7 +5477,15 @@
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c19",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c20",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c3",
-      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c9"
+      "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c9",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c11",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c12",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c13",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c14",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c16",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c37",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c8",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c9"
     ],
     "newslink.mba.org": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c15"
@@ -5545,7 +5599,11 @@
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c5",
       "2026-08-23T022340--ox-alpha-s-retracted-80-what-a-10-task-deepswe-subset-measur#ox-1",
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5",
-      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c15"
+      "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c15",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c1",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c3",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c4",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c7"
     ],
     "ofox.ai": [
       "2026-06-22T084212--glm-5-2-vs-the-closed-frontier-on-which-axes-zhipu-s-open-we#c17"
@@ -5602,7 +5660,8 @@
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c17",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c18",
       "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c19",
-      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c3"
+      "2026-09-14T061329--openai-s-pre-rl-run-safety-cases-checking-altman-s-2026-09-1#c3",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c28"
     ],
     "opencompute.org": [
       "2026-05-27T035557--800-vdc-architecture#c9"
@@ -5887,6 +5946,9 @@
     ],
     "predictioncenter.org": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c36"
+    ],
+    "prices.azure.com": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c22"
     ],
     "privacy.ca.gov": [
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c11"
@@ -6419,7 +6481,8 @@
       "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c3",
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c30",
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c41",
-      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c6"
+      "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c6",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c35"
     ],
     "securityaffairs.com": [
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c8"
@@ -6470,6 +6533,9 @@
     ],
     "sg.finance.yahoo.com": [
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c18"
+    ],
+    "shattered.io": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c19"
     ],
     "sherwood.news": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c24"
@@ -7439,6 +7505,9 @@
     "webpronews.com": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c7"
     ],
+    "webull.com": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c36"
+    ],
     "wffi.wharton.upenn.edu": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c14"
     ],
@@ -7709,7 +7778,8 @@
       "2026-11-19T042844--expand-research-from-twitter-link-https-x-com-anzep13-status#c37",
       "2026-11-19T165913--expand-research-from-twitter-link-https-x-com-banteg-status#c1",
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c1",
-      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c1"
+      "2026-11-26T161056--expand-research-from-twitter-link-https-x-com-0xangelfish-st#c1",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c1"
     ],
     "xbow.com": [
       "2026-05-30T113903--ramp-multi-agent-security-pipeline-ai-vulnerability-discovery#c34",
@@ -7870,6 +7940,9 @@
     ],
     "https://agglomerations.eig.org/p/looking-for-the-ladder": [
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c32"
+    ],
+    "https://agihunt.info/en/p/1a21fd33be5aaaa5725e939e7b0": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c39"
     ],
     "https://agmai.org/general-sep29": [
       "2026-10-07T062236--openai-s-722-manuscript-math-release-auditing-the-sub-n-log#c14"
@@ -9304,6 +9377,15 @@
     "https://aws.amazon.com/compliance/services-in-scope/FedRAMP/amazon-bedrock-models": [
       "2026-10-19T210855--dhs-fascsa-order-on-deepseek-what-banning-derivative-product#c14"
     ],
+    "https://aws.amazon.com/ec2/capacityblocks/pricing": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c17"
+    ],
+    "https://aws.amazon.com/ec2/instance-types/trn2": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c24"
+    ],
+    "https://aws.amazon.com/ec2/instance-types/trn3": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c18"
+    ],
     "https://aztec.network/auction-terms-conditions": [
       "2026-08-26T061124--uniswap-continuous-clearing-auctions-cca-how-the-mechanism-w#c16"
     ],
@@ -9455,6 +9537,9 @@
     ],
     "https://blog.google/intl/en-ie/products/sundar-pichai-io-2026": [
       "2026-11-17T002829--expand-research-from-twitter-link-https-x-com-illscience-sta#c7"
+    ],
+    "https://blog.google/products/google-cloud/ironwood-tpu-age-of-inference": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c31"
     ],
     "https://blog.google/security/vrp-2025-year-in-review": [
       "2026-10-14T173427--xbow-s-250k-chrome-full-chain-bounty-with-gpt-5-6-sol-what-4#c12"
@@ -9806,7 +9891,8 @@
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c21"
     ],
     "https://console.vast.ai/api/v0/bundles": [
-      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c11"
+      "2026-10-29T232159--expand-research-from-twitter-link-https-x-com-sui414-status#c11",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c21"
     ],
     "https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf": [
       "2026-09-07T134142--anthropic-s-1-5b-copyright-settlement-how-500-000-titles-at#c10",
@@ -9873,6 +9959,10 @@
     ],
     "https://cryptobriefing.com/synthid-bio-watermarking-ai-proteins": [
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c15"
+    ],
+    "https://cryptobriefing.com/trainium3-nvidia-gb300-inference-benchmark": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c3",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c5"
     ],
     "https://cryptobriefing.com/uniswap-v4-dominates-robinhood-chain-tokenized-stocks": [
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c20"
@@ -10127,6 +10217,13 @@
     ],
     "https://deploymentsafety.openai.com/gpt-6-astra/evaluations-with-challenging-prompts": [
       "2026-10-21T121156--openai-s-gpt-6-astra-and-6-1-sol-agents-disabling-misalignme#c7"
+    ],
+    "https://dev.to/iiruchating/a-228x-speedup-that-wasnt-about-speed-how-to-read-an-inference-benchmark-in-2026-5hbo": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c10",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c29",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c32",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c5",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c6"
     ],
     "https://developer.meta.com/ai/resources/blog/build-with-muse-code": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c32"
@@ -11072,6 +11169,9 @@
     "https://fourweekmba.com/ai-opus-5-5-leads-semianalysiss-gdpx-agent-benchmark-at-12": [
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c5"
     ],
+    "https://fourweekmba.com/ai-rubin-gets-9x-to-21x-gb300s-tokens-per-dollar-in-benchmark": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c15"
+    ],
     "https://fourweekmba.com/ai-synthid-bio-protein-watermark": [
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c12",
       "2026-10-01T133747--synthid-bio-can-deepmind-s-protein-sequence-watermark-surviv#c13",
@@ -11786,6 +11886,16 @@
     "https://incidentdatabase.ai/cite/1152": [
       "2026-07-22T094105--openai-models-breached-hugging-face-s-production-database-du#c19"
     ],
+    "https://inferencex.semianalysis.com/chips/gb300-nvl72": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c4"
+    ],
+    "https://inferencex.semianalysis.com/glossary/internal-vs-external-tco": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c12",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c30"
+    ],
+    "https://inferencex.semianalysis.com/infx/agentx": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c29"
+    ],
     "https://info.arxiv.org/help/moderation/index.html": [
       "2026-08-01T094652--openai-s-astra-and-its-10-lean-certified-proofs-what-a-machi#c41"
     ],
@@ -11818,6 +11928,9 @@
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c1",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c2",
       "2026-09-03T142804--expand-research-from-twitter-link-https-x-com-zh-crypto517-s#c3"
+    ],
+    "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/default.aspx": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c34"
     ],
     "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-BlueField-4-Powers-New-Class-of-AI-Native-Storage-Infrastructure-for-the-Next-Frontier-of-AI/default.aspx": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c16"
@@ -12409,8 +12522,24 @@
     "https://newsletter.semianalysis.com/p/to-boldly-go-the-case-for-space-datacenters": [
       "2026-10-02T182527--google-project-suncatcher-s-tpu-prototype-satellite-reaches#c10"
     ],
+    "https://newsletter.semianalysis.com/p/tpu-inferencex-full-steam": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c11",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c12",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c13"
+    ],
+    "https://newsletter.semianalysis.com/p/tpu-strikes-the-king": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c14"
+    ],
     "https://newsletter.semianalysis.com/p/tpuv7-google-takes-a-swing-at-the": [
-      "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c10"
+      "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c10",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c37"
+    ],
+    "https://newsletter.semianalysis.com/p/trainium3-inferencex": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c8",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c9"
+    ],
+    "https://newsletter.semianalysis.com/p/vera-rubin-nvl72-agentic-inference": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c16"
     ],
     "https://newslink.mba.org/mba-newslinks/2026/march/mba-newslink-thursday-march-5-2026/mba-newslink-roundtable-discussing-data-centers-demand-and-deal-structures-with-kbra": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c15"
@@ -12480,6 +12609,12 @@
     "https://ofac.treasury.gov/recent-actions/20260622_33": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c15"
     ],
+    "https://officechai.com/ai/7-months-after-jensen-huang-said-tpu-and-trainium-would-never-show-up-on-inferencemax-both-are-beating-nvidia-on-it": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c1",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c3",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c4",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c7"
+    ],
     "https://officechai.com/ai/an-anthropic-researcher-says-fable-just-helped-him-disprove-the-85-year-old-jacobian-conjecture": [
       "2026-07-21T203735--claude-fable-5-and-the-jacobian-conjecture-what-an-llm-credi#c12"
     ],
@@ -12515,6 +12650,9 @@
     ],
     "https://openai.com/index/accelerating-the-next-phase-ai": [
       "2026-07-28T152656--nvidia-s-5b-cash-bet-on-ilya-sutskever-s-safe-superintellige#c11"
+    ],
+    "https://openai.com/index/amazon-partnership": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c28"
     ],
     "https://openai.com/index/announcing-the-stargate-project": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c17"
@@ -12990,6 +13128,9 @@
     "https://predictioncenter.org/casp14/zscores_final.cgi": [
       "2026-09-08T174432--alphagenome-atlas-what-9-billion-predicted-single-nucleotide#c36"
     ],
+    "https://prices.azure.com/api/retail/prices": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c22"
+    ],
     "https://privacy.ca.gov/2026/08/calprivacy-announces-second-data-broker-enforcement-action-in-less-than-a-week": [
       "2026-10-29T055205--expand-research-from-twitter-link-https-x-com-m9rcn-status-2#c11"
     ],
@@ -13460,6 +13601,9 @@
     ],
     "https://sg.finance.yahoo.com/news/microsoft-27-openai-access-ai-053722572.html": [
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c18"
+    ],
+    "https://shattered.io/google-ironwood-tpu-pricing-vs-nvidia-2026": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c19"
     ],
     "https://sherwood.news/tech/report-google-is-backstopping-anthropics-35-billion-data-center-deal": [
       "2026-08-01T195437--alphabet-s-43-8b-tpu-lease-backstops-the-off-balance-sheet-l#c24"
@@ -14447,6 +14591,12 @@
     "https://www.abhs.in/blog/huawei-ascend-950pr-bytedance-alibaba-cuda-compatible-nvidia-china-2026": [
       "2026-07-25T040343--deepseek-s-wenfeng-details-huawei-chip-access-and-tilelang-a-2#c17"
     ],
+    "https://www.aboutamazon.com/news/aws/aws-open-ai-workloads-compute-infrastructure": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c28"
+    ],
+    "https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-amazon-chips-business-q1-2026-earnings": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c23"
+    ],
     "https://www.absolicsinc.com": [
       "2026-08-12T093431--glassem-slips-to-2028-samsung-electro-mechanics-glass-core-s#c20"
     ],
@@ -14569,7 +14719,8 @@
     ],
     "https://www.anthropic.com/news/anthropic-amazon-compute": [
       "2026-07-13T201149--expand-research-from-twitter-link-https-x-com-guilleflorvs-s#c8",
-      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c12"
+      "2026-10-15T115250--anthropic-s-16-8b-q3-to-ipo-investors-what-adjusted-profitab#c12",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c26"
     ],
     "https://www.anthropic.com/news/anthropic-and-the-department-of-defense-to-advance-responsible-ai-in-defense-operations": [
       "2026-07-04T101050--anthropic-vs-the-pentagon-the-unprecedented-supply-chain-ris#c4"
@@ -14649,7 +14800,8 @@
     ],
     "https://www.anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services": [
       "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c20",
-      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c28"
+      "2026-07-20T183759--empirical-cost-of-building-an-opus-level-llm-time-compute-an#c28",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c25"
     ],
     "https://www.anthropic.com/news/genesis-mission-partnership": [
       "2026-06-22T094856--john-jumper-deepmind-anthropic-science-bet#c33"
@@ -14665,6 +14817,9 @@
     ],
     "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals": [
       "2026-08-10T180630--meta-s-muse-glimmer-a-30b-apache-2-0-model-winning-12-of-24#c17"
+    ],
+    "https://www.anthropic.com/news/microsoft-nvidia-anthropic-announce-strategic-partnerships": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c27"
     ],
     "https://www.anthropic.com/news/narasimhan-board": [
       "2026-10-18T211006--anthropic-public-benefit-fund-what-5-of-shares-valuation-lin#c15"
@@ -14996,6 +15151,9 @@
     "https://www.businessinsider.com/stripe-is-finalizing-8b-openrouter-purchase-investors-could-gain-2026-8": [
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c15",
       "2026-08-18T085549--openai-s-50-gpt-5-6-sol-cut-on-openrouter-and-vercel-only-pr#c16"
+    ],
+    "https://www.businessinsider.jp/article/startups-amazon-ai-chips-less-competitive-nvidia-gpus-trainium-aws-2025-11": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c33"
     ],
     "https://www.businesswire.com/news/home/20250611299049/en/PCI-SIG-Releases-PCIe-7.0-Specification-to-Support-the-Bandwidth-Demands-of-Artificial-Intelligence-at-128.0-GTs-Transfer-Rates": [
       "2026-08-10T060852--turning-nand-into-a-dram-tier-cufile-scada-and-the-2027-100m#c30"
@@ -15561,7 +15719,8 @@
       "2026-09-24T044452--expand-research-from-twitter-link-https-x-com-goshawktrades#c18"
     ],
     "https://www.coreweave.com/pricing": [
-      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c21"
+      "2026-08-31T045230--h3-max-by-fal-research-post-trained-from-minimax-h3-establis#c21",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c20"
     ],
     "https://www.courtlistener.com/docket/63277771/apple-inc-v-rivos-inc": [
       "2026-08-04T102207--apple-v-openai-the-post-departure-emails-openai-filed-and-wh#c25"
@@ -15819,7 +15978,9 @@
       "2026-08-18T172511--expand-research-from-twitter-link-https-x-com-haydenzadams-s#c23"
     ],
     "https://www.dwarkesh.com/p/jensen-huang": [
-      "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c14"
+      "2026-06-15T070337--harvey-nemotron-open-weight-legal-post-training#c14",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c2",
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c38"
     ],
     "https://www.ecmweb.com/safety/article/20897929/nfpa-70es-approach-to-considering-dc-hazards": [
       "2026-05-27T035557--800-vdc-architecture#c35"
@@ -17326,6 +17487,12 @@
     "https://www.sec.gov/Archives/edgar/data/0001006240/000095011702003045/ex13.htm": [
       "2026-08-11T204817--nvidia-s-500b-ai-factory-financing-mou-and-the-25-project-ba#c20"
     ],
+    "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000082/nvidiaannouncesceotransiti.htm": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c35"
+    ],
+    "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000090/nov23pressrelease.htm": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c35"
+    ],
     "https://www.sec.gov/Archives/edgar/data/0001326801/000162828026003942/meta-20251231.htm": [
       "2026-07-02T105627--meta-compute-meta-selling-surplus-ai-capacity-and-the-neoclo#c5"
     ],
@@ -18231,6 +18398,9 @@
     "https://www.webpronews.com/bessent-signals-sanctions-as-chinese-ai-models-close-in-on-u-s-leaders": [
       "2026-07-26T143408--nvidia-s-open-weights-letter-google-and-amd-sign-on-leaving#c7"
     ],
+    "https://www.webull.com/news/15511095937917952": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c36"
+    ],
     "https://www.whitecase.com/insight-alert/sec-adopts-rule-amendments-modernize-beneficial-ownership-reporting": [
       "2026-09-01T072226--expand-research-from-twitter-link-https-x-com-runecrypto-sta#c9"
     ],
@@ -18484,6 +18654,9 @@
     ],
     "https://x.com/SemiAnalysis_/status/2117075906099298410": [
       "2026-11-02T111855--semianalysis-gdpx-opus-5-5-tops-a-206-task-agent-benchmark-a#c16"
+    ],
+    "https://x.com/SemiAnalysis_/status/2125867835050111357": [
+      "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c1"
     ],
     "https://x.com/ShinkaIoT/status/2065583785958314179": [
       "2026-06-29T045739--grok-4-5-spacex-s-monthly-from-scratch-1-5t-v9-cadence-and-t#c11",
@@ -18854,7 +19027,7 @@
       "2026-11-24T042243--expand-research-from-twitter-link-https-x-com-tensorfish-sta#c16"
     ]
   },
-  "claim_count": 3417,
+  "claim_count": 3472,
   "claims": [
     {
       "article": "2026-05-25T053654--ai-adoption-in-bio-industry",
@@ -99862,9 +100035,1201 @@
         "https://huggingface.co/LTM-Lab/Inkling-2-Mini-Uncensored-V19"
       ],
       "type": "technical"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "SemiAnalysis said TPU and Trainium are now on InferenceX/AgentX, delivering 1.2x to 2.5x the performance per dollar of Nvidia GPUs; a later post said 1.5-2.5x 'at release'.",
+      "confidence": "medium",
+      "hosts": [
+        "officechai.com",
+        "x.com"
+      ],
+      "id": "c1",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c1",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://x.com/SemiAnalysis_/status/2125867835050111357",
+        "https://officechai.com/ai/7-months-after-jensen-huang-said-tpu-and-trainium-would-never-show-up-on-inferencemax-both-are-beating-nvidia-on-it"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "On the Internal basis Trainium3 is $0.83 per chip-hour vs $3.61 for Vera Rubin NVL72, and Vera Rubin delivers 3.3x the tokens per dollar of Trainium3 at 273 tok/s/user.",
+      "confidence": "low",
+      "hosts": [
+        "dev.to"
+      ],
+      "id": "c10",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c10",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://dev.to/iiruchating/a-228x-speedup-that-wasnt-about-speed-how-to-read-an-inference-benchmark-in-2026-5hbo"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-09-07",
+      "claim": "Ironwood delivers up to 50% better performance per dollar than B200/B300 at FP8; at 100 tok/s/user cost is $0.181 vs $0.222 vs $0.276 per million tokens; at 20 tok/s/user throughput is 9,364 vs 8,903 vs 8,925 tokens/s/chip.",
+      "confidence": "high",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c11",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c11",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/tpu-inferencex-full-steam"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-09-07",
+      "claim": "On external TCO Ironwood's tokens-per-dollar lead is 50.4% over B200 and 96.0% over B300; on internal TCO ($1.03/chip-hour) it is 76.7% and 130.2%.",
+      "confidence": "high",
+      "hosts": [
+        "inferencex.semianalysis.com",
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c12",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c12",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/tpu-inferencex-full-steam",
+        "https://inferencex.semianalysis.com/glossary/internal-vs-external-tco"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-09-07",
+      "claim": "SemiAnalysis: across most of the raw-performance curve TPU does not outperform Nvidia GPUs; GB300 NVL72 disagg has about a 30% perf per dollar advantage over TPUv7 agg mid-curve; mean TTFT at concurrency 256 is 5.41 s TPU vs 2.40 s B300.",
+      "confidence": "high",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c13",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c13",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/tpu-inferencex-full-steam"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-05",
+      "claim": "On Kimi K3 GB300 FP4 leads TPUv7 by 1.5x-2.6x after four Nvidia refreshes; on GLM at 100 tok/s/user GB300 and GB200 FP4 deliver 3.6x and 3.5x TPUv7's tokens per dollar; VR200 delivers 4.3x-5.6x TPUv7; TPUv7 FP8 is 1.67x better per dollar than FP4 GB300 on Qwen3.5.",
+      "confidence": "high",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c14",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c14",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/tpu-strikes-the-king"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-01",
+      "claim": "Vera Rubin NVL72 delivered 9.11x GB300 NVL72's tokens per dollar of TCO at 200 tok/s/user on GLM-5.3, priced at $3.61 vs $2.31 per chip-hour (preview).",
+      "confidence": "low",
+      "hosts": [
+        "fourweekmba.com"
+      ],
+      "id": "c15",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c15",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://fourweekmba.com/ai-rubin-gets-9x-to-21x-gb300s-tokens-per-dollar-in-benchmark"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-09-14",
+      "claim": "SemiAnalysis: 3-year rental cost in July 2026 was over $8.5/hr/chip for Rubin and $5/hr/chip for Blackwell Ultra NVL72.",
+      "confidence": "high",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c16",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c16",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/vera-rubin-nvl72-agentic-inference"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-28",
+      "claim": "AWS Capacity Block per-accelerator prices: trn2 $2.235, p5 H100 $5.970, p5e H200 $6.866, p5en $7.895, p6-b200 $14.208, p6-b300 $16.146, GB200 NVL72 $10.582.",
+      "confidence": "high",
+      "hosts": [
+        "aws.amazon.com"
+      ],
+      "id": "c17",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c17",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aws.amazon.com/ec2/capacityblocks/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-28",
+      "claim": "AWS publishes no hourly price for Trn3; Trn3 UltraServers scale to 144 chips, 144 GB HBM3e and 4.9 TB/s per chip.",
+      "confidence": "high",
+      "hosts": [
+        "aws.amazon.com"
+      ],
+      "id": "c18",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c18",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aws.amazon.com/ec2/instance-types/trn3"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-16",
+      "claim": "Ironwood list price reportedly $12.00 per chip-hour on demand in Iowa, $8.40 1-yr, $5.40 3-yr; SemiAnalysis estimated Anthropic's contract rate at roughly $1.60 per TPU-hour.",
+      "confidence": "low",
+      "hosts": [
+        "shattered.io"
+      ],
+      "id": "c19",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c19",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://shattered.io/google-ironwood-tpu-pricing-vs-nvidia-2026"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-04-15",
+      "claim": "Jensen Huang said on the Dwarkesh Podcast that TPU and Trainium would not come to InferenceMAX and invited them to demonstrate their inference cost.",
+      "confidence": "high",
+      "hosts": [
+        "dwarkesh.com"
+      ],
+      "id": "c2",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.dwarkesh.com/p/jensen-huang"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-28",
+      "claim": "CoreWeave on-demand: GB200 NVL72 $42.00 per 4-GPU instance, B200 $68.80 per 8 GPUs; up to 60% discounts for commitments.",
+      "confidence": "high",
+      "hosts": [
+        "coreweave.com"
+      ],
+      "id": "c20",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c20",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.coreweave.com/pricing"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "Vast.ai median rentable ask: B300 $10.63, B200 $9.06, H200 $5.26 per GPU-hour.",
+      "confidence": "medium",
+      "hosts": [
+        "console.vast.ai"
+      ],
+      "id": "c21",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c21",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "market-data"
+      ],
+      "source_urls": [
+        "https://console.vast.ai/api/v0/bundles"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-28",
+      "claim": "Azure ND GB200 v6 East US is $108.16 per VM-hour pay-as-you-go.",
+      "confidence": "medium",
+      "hosts": [
+        "prices.azure.com"
+      ],
+      "id": "c22",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c22",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://prices.azure.com/api/retail/prices"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-04-29",
+      "claim": "Jassy Q1 2026: Trainium2 has about 30% better price-performance than comparable GPUs and Trainium3 is 30-40% more price-performant than Trainium2.",
+      "confidence": "high",
+      "hosts": [
+        "aboutamazon.com"
+      ],
+      "id": "c23",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c23",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-amazon-chips-business-q1-2026-earnings"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-28",
+      "claim": "AWS says Trn2 offers 30-40% better price performance than GPU-based P5e and P5en instances.",
+      "confidence": "high",
+      "hosts": [
+        "aws.amazon.com"
+      ],
+      "id": "c24",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c24",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://aws.amazon.com/ec2/instance-types/trn2"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2025-10-23",
+      "claim": "Anthropic agreed to use up to 1 million TPUs with well over a gigawatt online in 2026, and uses TPUs, Trainium and Nvidia GPUs.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c25",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c25",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-04-20",
+      "claim": "Anthropic will use up to 5 GW of Trainium capacity and commits more than $100B to AWS over 10 years.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c26",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c26",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/anthropic-amazon-compute"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2025-11-18",
+      "claim": "Anthropic committed $30B to Azure for up to 1 GW of Nvidia Grace Blackwell and Vera Rubin systems; Nvidia invests up to $10B.",
+      "confidence": "high",
+      "hosts": [
+        "anthropic.com"
+      ],
+      "id": "c27",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c27",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.anthropic.com/news/microsoft-nvidia-anthropic-announce-strategic-partnerships"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-02-27",
+      "claim": "OpenAI committed to consume approximately 2 GW of Trainium capacity through AWS, after a $38B Nvidia GPU deal.",
+      "confidence": "high",
+      "hosts": [
+        "aboutamazon.com",
+        "openai.com"
+      ],
+      "id": "c28",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c28",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://openai.com/index/amazon-partnership",
+        "https://www.aboutamazon.com/news/aws/aws-open-ai-workloads-compute-infrastructure"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "AgentX traces come from opt-in Claude Code sessions with median requests of about 142k input tokens and 444 output tokens.",
+      "confidence": "high",
+      "hosts": [
+        "dev.to",
+        "inferencex.semianalysis.com"
+      ],
+      "id": "c29",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c29",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "opinion"
+      ],
+      "source_urls": [
+        "https://inferencex.semianalysis.com/infx/agentx",
+        "https://dev.to/iiruchating/a-228x-speedup-that-wasnt-about-speed-how-to-read-an-inference-benchmark-in-2026-5hbo"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "Trainium3 UltraServer showed up to 2.28x the performance per dollar of GB300 NVL72, B300 and MI355X on AgentX with GLM-5.2/5.3 744B FP4 on vLLM, as a preview result.",
+      "confidence": "medium",
+      "hosts": [
+        "cryptobriefing.com",
+        "officechai.com"
+      ],
+      "id": "c3",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c3",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://officechai.com/ai/7-months-after-jensen-huang-said-tpu-and-trainium-would-never-show-up-on-inferencemax-both-are-beating-nvidia-on-it",
+        "https://cryptobriefing.com/trainium3-nvidia-gb300-inference-benchmark"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-28",
+      "claim": "InferenceX cost per million tokens = TCO $/chip-hour x 1,000,000 / (3600 x tok/s/chip); external TCO includes the vendor margin, internal excludes it.",
+      "confidence": "high",
+      "hosts": [
+        "inferencex.semianalysis.com"
+      ],
+      "id": "c30",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c30",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://inferencex.semianalysis.com/glossary/internal-vs-external-tco"
+      ],
+      "type": "definition"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2025-04-09",
+      "claim": "Ironwood: 4,614 FP8 TFLOPS, 192 GB HBM, 7.37 TB/s per chip, 9,216 chips per pod.",
+      "confidence": "high",
+      "hosts": [
+        "blog.google"
+      ],
+      "id": "c31",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c31",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://blog.google/products/google-cloud/ironwood-tpu-age-of-inference"
+      ],
+      "type": "technical"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "Trainium3 rows carry no run link, commit or public logs while GB300 rows link to recorded GitHub runs.",
+      "confidence": "low",
+      "hosts": [
+        "dev.to"
+      ],
+      "id": "c32",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c32",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://dev.to/iiruchating/a-228x-speedup-that-wasnt-about-speed-how-to-read-an-inference-benchmark-in-2026-5hbo"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2025-11-10",
+      "claim": "Cohere and Stability AI found Trainium less competitive than Nvidia GPUs per a leaked July 2025 Amazon document.",
+      "confidence": "medium",
+      "hosts": [
+        "businessinsider.jp"
+      ],
+      "id": "c33",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c33",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.businessinsider.jp/article/startups-amazon-ai-chips-less-competitive-nvidia-gpus-trainium-aws-2025-11"
+      ],
+      "type": "other"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-17",
+      "claim": "Nvidia Q3 FY27 revenue $115.8B, Data Center $107.6B, GAAP gross margin 74.8%; Q4 guide 71.0-72.0%.",
+      "confidence": "high",
+      "hosts": [
+        "investor.nvidia.com"
+      ],
+      "id": "c34",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c34",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/default.aspx"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-23",
+      "claim": "Jensen Huang resigned as Nvidia CEO on 12 November 2026 with Colette Kress as interim CEO, and the board reinstated him as President and CEO on 23 November 2026.",
+      "confidence": "high",
+      "hosts": [
+        "sec.gov"
+      ],
+      "id": "c35",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c35",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [
+        "primary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000082/nvidiaannouncesceotransiti.htm",
+        "https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000090/nov23pressrelease.htm"
+      ],
+      "type": "event"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-09-02",
+      "claim": "A machine transcript of Broadcom's fiscal Q3 2026 call gives semiconductor segment gross margin as approximately 56.7% after a corrected ~76%; a high-60s figure would fit the 75% consolidated margin; Hock Tan said customers can do this at half the cost of a GPU.",
+      "confidence": "low",
+      "hosts": [
+        "webull.com"
+      ],
+      "id": "c36",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c36",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://www.webull.com/news/15511095937917952"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2025-11-28",
+      "claim": "SemiAnalysis estimated Ironwood TCO about 44% below GB200 for Google and up to about 30% below GB200 and 41% below GB300 for external customers.",
+      "confidence": "medium",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c37",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c37",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/tpuv7-google-takes-a-swing-at-the"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-04-15",
+      "claim": "Huang: Nvidia's margin is 70%, ASIC margins are 65%, what are you really saving.",
+      "confidence": "high",
+      "hosts": [
+        "dwarkesh.com"
+      ],
+      "id": "c38",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c38",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://www.dwarkesh.com/p/jensen-huang"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-28",
+      "claim": "A follow-up SemiAnalysis post described Google and Amazon as demonstrating 1.5-2.5x better perf per dollar at release versus equivalent Nvidia GPUs.",
+      "confidence": "medium",
+      "hosts": [
+        "agihunt.info"
+      ],
+      "id": "c39",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c39",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://agihunt.info/en/p/1a21fd33be5aaaa5725e939e7b0"
+      ],
+      "type": "quote"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-26",
+      "claim": "SemiAnalysis modeled cost per chip-hour: GB300 $2.31, B300 $2.26, GB200 $1.86, MI355X $1.50, Trainium3 $1.05.",
+      "confidence": "medium",
+      "hosts": [
+        "inferencex.semianalysis.com",
+        "officechai.com"
+      ],
+      "id": "c4",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c4",
+      "reusable": false,
+      "reuse_block": "volatile",
+      "risk": "volatile",
+      "source_tiers": [
+        "secondary",
+        "primary"
+      ],
+      "source_urls": [
+        "https://officechai.com/ai/7-months-after-jensen-huang-said-tpu-and-trainium-would-never-show-up-on-inferencemax-both-are-beating-nvidia-on-it",
+        "https://inferencex.semianalysis.com/chips/gb300-nvl72"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "At the 2.28x point Trainium3 produced about 9,266 total tokens per chip-second versus about 8,942 for GB300 NVL72; P90 TTFT 4.5 s vs 1.8 s.",
+      "confidence": "medium",
+      "hosts": [
+        "cryptobriefing.com",
+        "dev.to"
+      ],
+      "id": "c5",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c5",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion",
+        "secondary"
+      ],
+      "source_urls": [
+        "https://dev.to/iiruchating/a-228x-speedup-that-wasnt-about-speed-how-to-read-an-inference-benchmark-in-2026-5hbo",
+        "https://cryptobriefing.com/trainium3-nvidia-gb300-inference-benchmark"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "At each curve's peak Trainium3 reaches about 31,045 tokens per chip-second and GB300 about 63,647.",
+      "confidence": "low",
+      "hosts": [
+        "dev.to"
+      ],
+      "id": "c6",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c6",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "opinion"
+      ],
+      "source_urls": [
+        "https://dev.to/iiruchating/a-228x-speedup-that-wasnt-about-speed-how-to-read-an-inference-benchmark-in-2026-5hbo"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-26",
+      "claim": "Trainium3's advantage is about 1.98x at ~140 tok/s/user, 2.18x at ~190, 2.28x at ~250 and 2.01x at ~350.",
+      "confidence": "medium",
+      "hosts": [
+        "officechai.com"
+      ],
+      "id": "c7",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c7",
+      "reusable": false,
+      "reuse_block": "single-source",
+      "risk": "single-source",
+      "source_tiers": [
+        "secondary"
+      ],
+      "source_urls": [
+        "https://officechai.com/ai/7-months-after-jensen-huang-said-tpu-and-trainium-would-never-show-up-on-inferencemax-both-are-beating-nvidia-on-it"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "SemiAnalysis: Trainium3 PDS + vLLM is better than every accelerator besides Vera Rubin across the entire TCO vs p90 interactivity curve; Trn3 has 17% of Blackwell Ultra FP4 FLOPS and 61% of its bandwidth at about 30% of the TCO.",
+      "confidence": "high",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c8",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c8",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/trainium3-inferencex"
+      ],
+      "type": "comparison"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "SemiAnalysis models Trainium3 + vLLM profit margin at 73.5% vs 53% for GB300 + SGLang at 135 tok/s/user, assuming 3-year rental prices, Z.ai list token prices and 60% utilization.",
+      "confidence": "high",
+      "hosts": [
+        "newsletter.semianalysis.com"
+      ],
+      "id": "c9",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#c9",
+      "reusable": false,
+      "reuse_block": "contested",
+      "risk": "contested",
+      "source_tiers": [
+        "primary"
+      ],
+      "source_urls": [
+        "https://newsletter.semianalysis.com/p/trainium3-inferencex"
+      ],
+      "type": "metric"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "Throughput ratio at the 2.28x point: 9,266 / 8,942.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d1",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d1",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "Bandwidth per modeled dollar: Trn3 4.9/1.05 vs GB300 8.0/2.31.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d10",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d10",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-16",
+      "claim": "Anthropic estimated TPU contract rate vs Ironwood list: 12.00 / 1.60.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d11",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d11",
+      "reusable": false,
+      "reuse_block": "low-confidence",
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-17",
+      "claim": "Nvidia price over cost of goods implied by 74.8% gross margin.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d12",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d12",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-09-02",
+      "claim": "Broadcom price over cost of goods implied by 56.7% segment gross margin.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d13",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d13",
+      "reusable": false,
+      "reuse_block": "low-confidence",
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-17",
+      "claim": "Markup gap Nvidia vs Broadcom on identical silicon cost.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d14",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d14",
+      "reusable": false,
+      "reuse_block": "low-confidence",
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-09-02",
+      "claim": "Broadcom markup implied by a 67% segment margin.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d15",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d15",
+      "reusable": false,
+      "reuse_block": "low-confidence",
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-17",
+      "claim": "Low end of the Nvidia-vs-Broadcom markup gap: 3.968 / 3.030.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d16",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d16",
+      "reusable": false,
+      "reuse_block": "low-confidence",
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "Modeled cost ratio GB300 / Trainium3: 2.31 / 1.05.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d2",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d2",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "Throughput ratio times cost ratio reproduces the headline.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d3",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d3",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "Peak-throughput perf per dollar ratio: (31,045 / 63,647) x 2.2.",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d4",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d4",
+      "reusable": false,
+      "reuse_block": "low-confidence",
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-09-07",
+      "claim": "Ironwood implied cost ratio vs B200 at 20 tok/s/user: 1.504 / (9,364 / 8,903).",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d5",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d5",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-28",
+      "claim": "Capacity Block price ratio p6-b300 / trn2 per accelerator: 16.146 / 2.235.",
+      "confidence": "high",
+      "hosts": [],
+      "id": "d6",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d6",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-09-14",
+      "claim": "GB300 3-year rental $5 vs modeled $2.31 owning cost.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d7",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d7",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-28",
+      "claim": "Ironwood list on-demand vs CoreWeave GB200 per GPU: 12.00 / (42.00 / 4).",
+      "confidence": "low",
+      "hosts": [],
+      "id": "d8",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d8",
+      "reusable": false,
+      "reuse_block": "low-confidence",
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
+    },
+    {
+      "article": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2",
+      "article_created_at": "2026-11-28T03:44:29Z",
+      "article_title": "The 2.28x that was 4% silicon: does the TPU and Trainium perf-per-dollar edge survive pricing scrutiny?",
+      "as_of": "2026-11-27",
+      "claim": "Vast.ai B300 median vs modeled B300 cost: 10.626 / 2.26.",
+      "confidence": "medium",
+      "hosts": [],
+      "id": "d9",
+      "key": "2026-11-28T034429--semianalysis-inferencex-adds-tpu-and-trainium-does-the-1-5-2#d9",
+      "reusable": true,
+      "reuse_block": null,
+      "risk": "stable",
+      "source_tiers": [],
+      "source_urls": [],
+      "type": "derived"
     }
   ],
   "generated_from": "research/generative/*.claims.json",
-  "reusable_count": 1617,
+  "reusable_count": 1638,
   "schema_version": 1
 }

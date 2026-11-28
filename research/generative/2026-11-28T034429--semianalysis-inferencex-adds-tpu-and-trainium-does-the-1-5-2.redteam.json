@@ -1,0 +1,7 @@
+{
+  "findings": [
+    {"claim_id": "c1", "claim_text": "Multiplying the two reproduces the headline: 9,266 / 8,942 is 1.036, 2.31 / 1.05 is 2.20, and the product is 2.28[^3,5].", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c2", "claim_text": "On AWS's own list, a B300 accelerator-hour costs 7.2x a Trainium2 accelerator-hour ($16.146 against $2.235)[^13].", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true},
+    {"claim_id": "c3", "claim_text": "At list, an Ironwood chip-hour costs about 1.14x a CoreWeave GB200 GPU-hour ($12.00 against $10.50)[^16,17].", "contradicting_url": null, "contradicting_quote": null, "severity": null, "no_contradiction_found": true}
+  ]
+}
