@@ -1,0 +1,12 @@
+Twitter/X AI Pulse - 2026-11-28 03:16:10 UTC
+
+CYCLE: Custom AI chips challenge Nvidia on inference cost
+
+TOP STORIES:
+• SemiAnalysis: Google TPU and Amazon Trainium join InferenceX with 1.5-2.5x better perf per dollar than equivalent Nvidia GPUs ⚠
+• OS-Omni benchmark: Gemini 4 Argon scores 95.8% on Linux but 18.8% on iOS; Opus 5.5 leads overall at 68.5% ⚠
+• Xiaomi World Model 2.0 for driving and robotics: collisions fall from 1.2% to 0.4% in closed-loop simulation ⚠
+
+WATCH: Full InferenceX TPU/Trainium results and any Nvidia response.
+
+Full update on GitHub.
