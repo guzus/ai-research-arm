@@ -1,0 +1,12 @@
+Speaker 1: Saturday, November twenty-eighth, twenty twenty-six.
+Speaker 2: [high_energy] A new chip-economics analysis says Google's TPU and Amazon's Trainium beat Nvidia by one and a half to two and a half times on inference performance per dollar.
+Speaker 1: But our own read is that the edge is mostly about pricing, not silicon.
+Speaker 2: Exactly, at Trainium three's best point it moves only about [emphasis] four percent [/emphasis] more tokens per chip, and the rest comes from a modeled cost gap of roughly two point two times.
+Speaker 1: Over at OpenAI, the company reportedly fixed how GPT six point two counts usage.
+Speaker 2: Worth noting that the fix means ChatGPT users may hit their limits up to forty percent faster.
+Speaker 1: OpenAI is also reportedly countersuing Apple over trade secrets.
+Speaker 2: That fight between two of the biggest names in consumer AI just got a lot more serious.
+Speaker 1: Some quick numbers, a [emphasis] six point six billion dollar [/emphasis] Bridge data-center loan has reportedly been paused after new US chip rules.
+Speaker 2: And trending online, claims that AI proved the Riemann Hypothesis. [dramatic_pause] There is no paper, no lab, and nothing verified.
+Speaker 1: So treat that one with real skepticism.
+Speaker 1: That is your ARA broadcast, full digest on GitHub.
